@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <select id="url-select">
+        {% for url in urls %}
+            <option value="{{ url }}">{{ url }}</option>
+        {% endfor %}
+    </select>
+    <div id="comments"></div>
+    <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>
