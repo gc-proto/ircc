@@ -6,7 +6,7 @@ from urllib.parse import unquote
 app = Flask(__name__)
 
 # Load the data when the application starts
-df = pd.read_csv('IRCC_Feedback.csv')
+df = pd.read_csv('data/IRCC_Feedback.csv')
 df['Date'] = pd.to_datetime(df['Date'])
 df.set_index('Date', inplace=True)
 
