@@ -5,19 +5,20 @@ from urllib.parse import unquote
 
 app = Flask(__name__)
 
+
+feedback_data = pd.read_csv('data_files/IRCC_Feedback.csv')
+
+
 # Load the data when the application starts
-df = pd.read_csv('IRCC_Feedback.csv')
+df = feedback_data
 df['Date'] = pd.to_datetime(df['Date'])
 df.set_index('Date', inplace=True)
 
 @app.route('/')
 def home():
-    return render_template('home.html')
-
-@app.route('/dashboard')
-def dashboard():
     urls = df['URL'].unique().tolist()
-    return render_template('dashboard.html', urls=urls)
+    return render_template('index.html', urls=urls)
+
 
 @app.route('/data/<path:url>')
 def data(url):
