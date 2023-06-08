@@ -7,25 +7,26 @@ app = Flask(__name__)
 
 
 feedback_data = pd.read_csv('data_files/IRCC_Feedback.csv')
+url_data = pd.read_csv('data_files/URL_list.csv', encoding='latin1')
 
 
-# Load the data when the application starts
-df = feedback_data
-df['Date'] = pd.to_datetime(df['Date'])
-df.set_index('Date', inplace=True)
+
+# Group the URLs by topic
+url_groups = url_data.groupby('Topic')['Page path', 'Opposite language page path'].apply(lambda x: x.values.tolist()).to_dict()
+
+
 
 @app.route('/')
 def home():
-    urls = df['URL'].unique().tolist()
-    return render_template('index.html', urls=urls)
+    topics = url_groups.keys()
+    return render_template('index.html', topics=topics)
 
-
-@app.route('/data/<path:url>')
-def data(url):
-    url = unquote(url)
-    url_df = df[df['URL'] == url][['Comment']].dropna()
-    # Convert the Timestamp objects to strings
-    data = [{"date": str(key), "comment": value} for key, value in url_df['Comment'].items()]
+@app.route('/data/<topic>')
+def data(topic):
+    print('Handling request for topic:', topic)
+    urls = [item for sublist in url_groups[topic] for item in sublist]  # this will flatten the list
+    feedback_df = feedback_data[feedback_data['URL'].apply(lambda x: any(url in x for url in urls))]
+    data = feedback_df[['Date', 'Comment', 'URL']].to_dict('records')
     return jsonify(data)
 
 
