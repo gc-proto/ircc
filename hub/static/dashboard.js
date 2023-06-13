@@ -9,21 +9,30 @@ function loadData(topic) {
             // Create the table
             var table = document.getElementById('feedback-table');
             var noComments = document.getElementById('no-comments');
-            if (data.length > 0) {
+            if (data.data.length > 0) {
                 table.innerHTML = '<tr><th>Date</th><th>Comment</th><th>URL</th></tr>';
-                for (var i = 0; i < data.length; i++) {
+                for (var i = 0; i < data.data.length; i++) {
                     var row = table.insertRow(-1);
-                    row.insertCell(0).innerHTML = data[i].Date;
-                    row.insertCell(1).innerHTML = data[i].Comment;
-                    row.insertCell(2).innerHTML = data[i].URL;
+                    var dateCell = row.insertCell(0);
+                    dateCell.innerHTML = data.data[i].Date;
+                    dateCell.classList.add("date-cell"); // Add class to 'Date' cells
+                    row.insertCell(1).innerHTML = data.data[i].Comment;
+                    row.insertCell(2).innerHTML = data.data[i].URL;
                 }
                 noComments.style.display = 'none';
             } else {
                 table.innerHTML = '';
                 noComments.style.display = 'block';
             }
+            // Update the plots and word clouds
+            document.getElementById('plot').src = 'data:image/png;base64,' + data.plot;
+            document.getElementById('sentiment-plot').src = 'data:image/png;base64,' + data.sentiment_plot;
+            document.getElementById('wordcloud-en').src = 'data:image/png;base64,' + data.wordcloud_en;
+            document.getElementById('wordcloud-fr').src = 'data:image/png;base64,' + data.wordcloud_fr;
         });
 }
+
+
 
 function openTab(tabName, elmnt) {
     var i, tabcontent, tablinks;

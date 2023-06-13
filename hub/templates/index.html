@@ -46,7 +46,7 @@
         <style>
             .left-col {
                 float: left;
-                width: 20%; /* adjust this as needed */
+                width: 10%; /* adjust this as needed */
             }
             .left-col button {
                 display: block;
@@ -78,6 +78,13 @@
                 border: 1px solid #ccc;
                 border-top: none;
             }
+
+            .table td:not(.date-cell) {
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                word-break: break-all;
+                hyphens: auto;
+            }
         </style>
         
      </head>
@@ -85,7 +92,7 @@
      <body vocab="http://schema.org/" typeof="WebPage">
         <section class="experimental alpha-top">
            <h2 class="wb-inv">Alpha</h2>
-           <div class="container">
+           <div>
               <small><label class="alpha-label">Alpha</label>&nbsp;&nbsp;
                  This is an experimental version of Canada.ca for public testing.</small>
            </div>
@@ -105,7 +112,7 @@
                     -->
            </ul>
            <header class="gc-app">
-              <div id="wb-bnr" class="container">
+              <div id="wb-bnr">
                  <!-- Adjust the default language flip URL or remove this <section>
                        <section id="wb-lng" class="text-right">
                            <h2 class="wb-inv">Language selection</h2>
@@ -139,7 +146,7 @@
                  </div>
               </div>
               <div class="app-bar">
-                 <div class="container">
+                 <div>
                     <div class="row">
                        <!-- If you want to use the settings or sign in/out buttons then add col-sm-7 -->
                        <section class="col-xs-12">
@@ -183,32 +190,57 @@
               "lngLinks": [{ "lang": "fr", "href": "#", "text": "Français" }]
            });
         </script>
-       <main property="mainContentOfPage" class="container">
+       <main property="mainContentOfPage">
         <h1>IRCC Data Hub</h1>
 
         <div class="row">
-            <div class="col-sm-3" id="topics">
+            <div class="col-sm-2" id="topics">
                 {% for topic in topics %}
                     <div>
                         <button class="btn btn-default" onclick="loadData('{{ topic }}')">{{ topic }}</button>
                     </div>
                 {% endfor %}
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-10">
                 <h2 id="topic-name"></h2>
                 <button class="tablink" id="feedbackToolButton" onclick="openTab('Feedback', this)">Feedback tool</button>
                 <button class="tablink" onclick="openTab('Analytics', this)">Analytics</button>
                 <button class="tablink" onclick="openTab('CallCenter', this)">Call center</button>
 
                 <div id="Feedback" class="tabcontent">
-                    <table class="provisional gc-table table" id="feedback-table">
+                    <div class="col-sm-6" id="table">
+                    <h3>Feedback for {{ topic }}</h3>
+
+                    <img id="plot" src="" alt="Plot of comments per day">
+
+                    <table class="table table-striped" id="feedback-table">
+                        <caption>Feedback by date</caption>
+                        <thead>
                         <tr>
                             <th>Date</th>
                             <th>Comment</th>
                             <th>URL</th>
                         </tr>
+                    </thead>
                     </table>
                     <p id="no-comments" style="display: none;">No comments</p>
+                
+                </div>
+                    <div class="col-sm-6" id="stats">
+                        <h3>English word cloud</h3>
+                        <img id="wordcloud-en" src="" alt="Word cloud for English comments">
+                        
+                        <h3>French word cloud</h3>
+                        <img id="wordcloud-fr" src="" alt="Word cloud for French comments">
+
+                        <h3>Average sentiment per week</h3>
+                        <img id="sentiment-plot" src="" alt="Plot of average sentiment per week">
+
+                    </div>
+
+
+                    
+
                 </div>
 
                 <div id="Analytics" class="tabcontent">
@@ -219,6 +251,8 @@
                     <p>Coming soon</p>
                 </div>
             </div>
+
+
         </div>
     </main>
 
