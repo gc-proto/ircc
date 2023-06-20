@@ -261,11 +261,18 @@
 
               {% elif tab == 'common-words' %}
               <h2>Most Common Words in English Comments</h2>
+              {% if message %}
+                    <p>{{ message }}</p>
+                {% endif %}
               <img src="data:image/png;base64,{{ wordcloud_en }}" alt="Wordcloud for English comments">
           
               <h2>Most Common Words in French Comments</h2>
               <img src="data:image/png;base64,{{ wordcloud_fr }}" alt="Wordcloud for French comments">
               {% elif tab == 'sentiment' %}
+
+              {% if message %}
+                <p>{{ message }}</p>
+            {% endif %}
             <img src="data:image/png;base64,{{ sentiment_plot }}"> 
               {% endif %}
 

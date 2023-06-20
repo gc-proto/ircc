@@ -163,61 +163,69 @@ def page_feedback():
         return render_template('page_feedback.html', facet='Page Feedback', topic=topic, time_range=time_range, tab=tab, data=data, topics=topics, plot=plot)
 
     elif tab == "common-words":
-        # Split the DataFrame based on language
-        feedback_df_en = df[df['Language'] == 'en']
-        feedback_df_fr = df[df['Language'] == 'fr']
-            
-        # Generate word clouds for English and French comments
-        wordcloud_en = generate_wordcloud(feedback_df_en['Comment'], 'english') if not feedback_df_en.empty else None
-        wordcloud_fr = generate_wordcloud(feedback_df_fr['Comment'], 'french') if not feedback_df_fr.empty else None
-            
-        return render_template('page_feedback.html', facet='Page Feedback', topic=topic, time_range=time_range, tab=tab, topics=topics, wordcloud_en=wordcloud_en, wordcloud_fr=wordcloud_fr)    
+        if df['Comment'].isna().all():
+            return render_template('page_feedback.html', facet='Page Feedback', topic=topic, time_range=time_range, tab=tab, data=[], topics=topics, plot=None, message="No comments")
+
+        else: 
+            # Split the DataFrame based on language
+            feedback_df_en = df[df['Language'] == 'en']
+            feedback_df_fr = df[df['Language'] == 'fr']
+                
+            # Generate word clouds for English and French comments
+            wordcloud_en = generate_wordcloud(feedback_df_en['Comment'], 'english') if not feedback_df_en.empty else None
+            wordcloud_fr = generate_wordcloud(feedback_df_fr['Comment'], 'french') if not feedback_df_fr.empty else None
+                
+            return render_template('page_feedback.html', facet='Page Feedback', topic=topic, time_range=time_range, tab=tab, topics=topics, wordcloud_en=wordcloud_en, wordcloud_fr=wordcloud_fr)    
     
     elif tab == "sentiment":
+        if df['Comment'].isna().all():
+            return render_template('page_feedback.html', facet='Page Feedback', topic=topic, time_range=time_range, tab=tab, data=[], topics=topics, plot=None, message="No comments")
+
+        else:
         # Perform sentiment analysis on each comment
-        df['Sentiment'] = df['Comment'].apply(lambda comment: TextBlob(comment).sentiment.polarity)
-        
-        # Make sure your 'Date' column is of datetime type
-        df['Date'] = pd.to_datetime(df['Date'])
+            df['Sentiment'] = df['Comment'].apply(lambda comment: TextBlob(comment).sentiment.polarity if comment else None)
+            
+            # Make sure your 'Date' column is of datetime type
+            df['Date'] = pd.to_datetime(df['Date'])
 
-        # Perform resampling and grouping based on language
-        df_en = df[df['Language']=='en']
-        df_fr = df[df['Language']=='fr']
+            # Perform resampling and grouping based on language
+            df_en = df[df['Language']=='en']
+            df_fr = df[df['Language']=='fr']
 
-        sentiment_en = df_en.resample('W', on='Date')['Sentiment'].mean()
-        sentiment_fr = df_fr.resample('W', on='Date')['Sentiment'].mean()
+            sentiment_en = df_en.resample('W', on='Date')['Sentiment'].mean()
+            sentiment_fr = df_fr.resample('W', on='Date')['Sentiment'].mean()
 
-        # Prepare data for sentiment plot
-        dates_en = sentiment_en.index
-        sentiment_values_en = list(sentiment_en.values)
+            # Prepare data for sentiment plot
+            dates_en = sentiment_en.index
+            sentiment_values_en = list(sentiment_en.values)
 
-        dates_fr = sentiment_fr.index
-        sentiment_values_fr = list(sentiment_fr.values)
+            dates_fr = sentiment_fr.index
+            sentiment_values_fr = list(sentiment_fr.values)
 
-        # Create sentiment analysis plot
-        img_sentiment = io.BytesIO()
+            # Create sentiment analysis plot
+            img_sentiment = io.BytesIO()
 
-        fig, ax = plt.subplots()
-        ax.plot(dates_en, sentiment_values_en, color='red', linewidth=3.0, label='Sentiment English')
-        ax.plot(dates_fr, sentiment_values_fr, color='blue', linewidth=3.0, label='Sentiment French')
-        plt.title(topic + '\n' + 'Average sentiment per week')
+            fig, ax = plt.subplots()
+            ax.plot(dates_en, sentiment_values_en, color='red', linewidth=3.0, label='Sentiment English')
+            ax.plot(dates_fr, sentiment_values_fr, color='blue', linewidth=3.0, label='Sentiment French')
+            plt.title(topic + '\n' + 'Average sentiment per week')
 
-        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
+            ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
 
-        ax.legend()
-        loc = plticker.MultipleLocator(base=7.0)
-        plt.gcf().subplots_adjust(bottom=0.2)
-        fig.autofmt_xdate()
-        ax.xaxis.set_major_locator(loc)
+            ax.legend()
+            loc = plticker.MultipleLocator(base=7.0)
+            plt.gcf().subplots_adjust(bottom=0.2)
+            fig.autofmt_xdate()
+            ax.xaxis.set_major_locator(loc)
 
-        fig.savefig(img_sentiment, format='png')
-        plt.close()
+            fig.savefig(img_sentiment, format='png')
+            plt.close()
 
-        img_sentiment.seek(0)
-        sentiment_plot = base64.b64encode(img_sentiment.getvalue()).decode()
+            img_sentiment.seek(0)
+            sentiment_plot = base64.b64encode(img_sentiment.getvalue()).decode()
 
-        # Render your template, passing in the necessary data and sentiment plot.
-        return render_template('page_feedback.html', facet='Page Feedback', topic=topic, time_range=time_range, tab=tab, topics=topics, sentiment_plot=sentiment_plot)
+            # Render your template, passing in the necessary data and sentiment plot.
+            return render_template('page_feedback.html', facet='Page Feedback', topic=topic, time_range=time_range, tab=tab, topics=topics, sentiment_plot=sentiment_plot)
 
     conn.close()
 
