@@ -1,3 +1,4 @@
+#import all libraries
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 import pandas as pd
@@ -20,16 +21,17 @@ import matplotlib.ticker as plticker
 
 app = Flask(__name__)
 
+#list topics for selection
 topics = ['All', 'Campaign', 'My application', 'Passport', 'Visit', 'Immigrate', 'Work', 'Study', 'Citizenship', 'New immigrants', 'Canadians', 'Refugees and asylum', 'Enforcement and violations', 'Help Centre']
 
-# This function fetches the comments data for a given topic from the database
+# fetches the comments data for a given topic from the database
 def fetch_comments_data(topic):
     conn = sqlite3.connect('./data/ircc_data.db')
     query = f'SELECT Date, Comment, URL, Language FROM Page_feedback WHERE Topic = "{topic}"'
     df = pd.read_sql_query(query, conn)
     return df.to_dict('records')
 
-# this function creates a word cloud
+# creates a word cloud
 def generate_wordcloud(comments, lang):
     word_list = comments.tolist()
     word_list = [str(i) for i in word_list]
@@ -65,6 +67,7 @@ def generate_wordcloud(comments, lang):
 
     return base64.b64encode(img.getvalue()).decode()
 
+# routes for different parts of the app
 @app.route('/')
 def landing():
     facets = ['Page feedback', 'GC Task Success', 'Web Analytics', 'Social media', 'Call Centre', 'Google Search']
@@ -76,9 +79,10 @@ def selected_page():
     topic = request.form.get('topics')
     time_range = request.form.get('time_range')
     facet = request.form.get('facets')
-    tab = request.form.get('tabs')  # Get the selected tab
+    tab = request.form.get('tabs') 
 
-    # Redirect to the corresponding page based on the selected facet
+
+    # Redirect to the corresponding page based on the selected facet - if other pages than Page feedback have tabs, will need to be added in first if
     if facet == "Page Feedback":
         return redirect(url_for(facet.replace(' ', '_').lower(), topic=topic, time_range=time_range, tab=tab))
     else:
@@ -93,8 +97,7 @@ def page_feedback():
     time_range = request.args.get('time_range')
     tab = request.args.get('tab', default='comments')
 
-    print(f"Topic: {topic}")  # to confirm the value of 'topic'
-
+    # code to fetch data from db
     conn = sqlite3.connect('./data/ircc_data.db')
 
     if time_range == "alldata":
@@ -109,8 +112,10 @@ def page_feedback():
         else:
             df = pd.read_sql_query("SELECT Date, Comment, URL, Language FROM Page_feedback WHERE Topic = ? AND Date >= DATE('now', ?)", conn, params=[topic, sqlite_time_range])
 
+
     # Process data for the selected tab
     if tab == "comments":
+        #list comments
         data = df.values.tolist()
 
         # Convert 'Date' column to datetime
@@ -125,26 +130,22 @@ def page_feedback():
         # Calculate daily counts
         daily_counts = df.resample('D').size()
 
-        if time_range == '7days':
-            # Plot daily values only for the last 7 days
-            fig, ax = plt.subplots()
-            daily_counts.plot(kind='bar', ax=ax, color=(0.2, 0.4, 0.6, 0.6), label='Daily value')
-            plt.title(f'{topic}\nNumber of comments per day (last 7 days)')
+       
 
-        else:      
-            # Calculate rolling mean
-                weekly_rolling_mean = daily_counts.rolling(window=7).mean()
+       
+        # Calculate rolling mean
+        weekly_rolling_mean = daily_counts.rolling(window=7).mean()
 
-                # Prepare data for graph
-                dates = daily_counts.index
-                daily_values = list(daily_counts.values)
-                weekly_values = list(weekly_rolling_mean.values)
+        # Prepare data for graph
+        dates = daily_counts.index
+        daily_values = list(daily_counts.values)
+        weekly_values = list(weekly_rolling_mean.values)
 
-                # Create graph
-                fig, ax = plt.subplots()
-                ax.bar(dates, daily_values, color=(0.2, 0.4, 0.6, 0.6), linewidth=0.5, label='Daily value')
-                ax.plot(dates, weekly_values, color='black', linewidth=3.0, label='Weekly rolling mean')
-                plt.title(f'{topic}\nNumber of comments per day')
+        # Create graph
+        fig, ax = plt.subplots()
+        ax.bar(dates, daily_values, color=(0.2, 0.4, 0.6, 0.6), linewidth=0.5, label='Daily value')
+        ax.plot(dates, weekly_values, color='black', linewidth=3.0, label='Weekly rolling mean')
+        plt.title(f'{topic}\nNumber of comments per day')
 
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
 
@@ -160,9 +161,12 @@ def page_feedback():
         img.seek(0)
         plot = base64.b64encode(img.getvalue()).decode().replace('\n', '')
 
+        #spefifies wich html template to use, and the values to pass
         return render_template('page_feedback.html', facet='Page Feedback', topic=topic, time_range=time_range, tab=tab, data=data, topics=topics, plot=plot)
 
     elif tab == "common-words":
+
+        #check if there are comments
         if df['Comment'].isna().all():
             return render_template('page_feedback.html', facet='Page Feedback', topic=topic, time_range=time_range, tab=tab, data=[], topics=topics, plot=None, message="No comments")
 
