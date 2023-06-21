@@ -24,12 +24,10 @@ app = Flask(__name__)
 #list topics for selection
 topics = ['All', 'Campaign', 'My application', 'Passport', 'Visit', 'Immigrate', 'Work', 'Study', 'Citizenship', 'New immigrants', 'Canadians', 'Refugees and asylum', 'Enforcement and violations', 'Help Centre']
 
-# fetches the comments data for a given topic from the database
-def fetch_comments_data(topic):
+#function to stramline connection to database
+def get_db_connection():
     conn = sqlite3.connect('./data/ircc_data.db')
-    query = f'SELECT Date, Comment, URL, Language FROM Page_feedback WHERE Topic = "{topic}"'
-    df = pd.read_sql_query(query, conn)
-    return df.to_dict('records')
+    return conn
 
 # creates a word cloud
 def generate_wordcloud(comments, lang):
@@ -98,7 +96,7 @@ def page_feedback():
     tab = request.args.get('tab', default='comments')
 
     # code to fetch data from db
-    conn = sqlite3.connect('./data/ircc_data.db')
+    conn = get_db_connection()
 
     if time_range == "alldata":
         if topic == "All":
