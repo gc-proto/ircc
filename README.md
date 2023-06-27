@@ -5,11 +5,11 @@ This is a repository used by IRCC to prototype and test ideas.
 ## How to use the templates
 
 1) Select one of the templates in the template folder:
-- **basic:** basic layout (https://test.canada.ca/service-canada/templates/template-basic-en.html)
-- **subway-landing:** index page for the subway pattern (https://test.canada.ca/service-canada/templates/template-subway-landing-en.html)
-- **subway-section:** page with the subway navigation on the right (https://test.canada.ca/service-canada/templates/template-subway-section-en.html)
-- **topic:** page with the beta theme-topic layout (https://test.canada.ca/service-canada/templates/template-topic-en.html)
-- **steps:** page with numbered steps (with big numbers in circles) (https://test.canada.ca/service-canada/templates/template-steps-en.html)
+- **basic:** basic layout (https://test.canada.ca/ircc/templates/template-basic-en.html)
+- **subway-landing:** index page for the subway pattern (https://test.canada.ca/ircc/templates/template-subway-landing-en.html)
+- **subway-section:** page with the subway navigation on the right (https://test.canada.ca/ircc/templates/template-subway-section-en.html)
+- **topic:** page with the beta theme-topic layout (https://test.canada.ca/ircc/templates/template-topic-en.html)
+- **steps:** page with numbered steps (with big numbers in circles) (https://test.canada.ca/ircc/templates/template-steps-en.html)
 
 
 2) Duplicate the template in the right folder - or copy the code from the template in a new file in the right folder
@@ -54,11 +54,11 @@ Ceci est un dépôt tilisé par IRCC pour réaliser des prototypes et tester des
 ## Comment utiliser les modèles
 
 1) Sélectionnez l'un des modèles dans le dossier des modèles :
-- **basic :**  mise en page de base (https://test.canada.ca/service-canada/templates/template-basic-fr.html)
-- **subway-landing :** page d'index pour la navigation de style métro (https://test.canada.ca/service-canada/templates/template-subway-landing-fr.html)
-- **subway-section :**  page de section avec la navigation de style métro sur la droite (https://test.canada.ca/service-canada/templates/template-subway-section-fr.html)
-- **topic :** page avec la mise en page Bêta pour les pages de thème et de sujet (https://test.canada.ca/service-canada/templates/template-topic-fr.html)
-- **steps :** page avec les étapes numérotées avec un gros chiffre (https://test.canada.ca/service-canada/templates/template-steps-fr.html)
+- **basic :**  mise en page de base (https://test.canada.ca/ircc/templates/template-basic-fr.html)
+- **subway-landing :** page d'index pour la navigation de style métro (https://test.canada.ca/ircc/templates/template-subway-landing-fr.html)
+- **subway-section :**  page de section avec la navigation de style métro sur la droite (https://test.canada.ca/ircc/templates/template-subway-section-fr.html)
+- **topic :** page avec la mise en page Bêta pour les pages de thème et de sujet (https://test.canada.ca/ircc/templates/template-topic-fr.html)
+- **steps :** page avec les étapes numérotées avec un gros chiffre (https://test.canada.ca/ircc/templates/template-steps-fr.html)
 
 
 2) Dupliquez le modèle dans le bon dossier - ou copiez le code du modèle dans un nouveau fichier dans le bon dossier.
