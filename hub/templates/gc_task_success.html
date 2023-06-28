@@ -201,8 +201,20 @@
             
             <h2>{{ topic }}</h2>
  
-            <p>Coming soon</p>
+            <form method="post">
+                <select name="task">
+                    <option value="All tasks" {% if selected_task == 'All tasks' %}selected{% endif %}>All tasks</option>
+                    {% for task in tasks %}
+                        <option value="{{ task }}" {% if selected_task == task %}selected{% endif %}>{{ task }}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Update">
+            </form>
 
+            <h3>{{ task }}</h3>
+            <img src="{{ plot }}" alt="plot">
+        
+              
 
         </div>
     </main>

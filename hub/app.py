@@ -1,22 +1,24 @@
 #import all libraries
-from flask import Flask, render_template, request, redirect, url_for
-import sqlite3
-import pandas as pd
-from matplotlib.dates import DateFormatter
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.dates as mdates
-import matplotlib.pyplot as plt
-import matplotlib.ticker as plticker
 import io
+import sqlite3
 import base64
-from wordcloud import WordCloud
+
+from flask import Flask, render_template, request, redirect, url_for
+import pandas as pd
 import nltk
-from nltk.probability import FreqDist
 from nltk.corpus import stopwords
+from nltk.probability import FreqDist
 from textblob import TextBlob
-import matplotlib.dates as mdates
-import matplotlib.ticker as plticker
+from wordcloud import WordCloud
+
+import matplotlib
+from matplotlib import dates as mdates, ticker as plticker
+from matplotlib.dates import DateFormatter
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+
+
+matplotlib.use('Agg')
 
 
 app = Flask(__name__)
@@ -24,10 +26,6 @@ app = Flask(__name__)
 #list topics for selection
 topics = ['All', 'Campaign', 'My application', 'Passport', 'Visit', 'Immigrate', 'Work', 'Study', 'Citizenship', 'New immigrants', 'Canadians', 'Refugees and asylum', 'Enforcement and violations', 'Help Centre']
 
-#function to stramline connection to database
-def get_db_connection():
-    conn = sqlite3.connect('./data/ircc_data.db')
-    return conn
 
 # creates a word cloud
 def generate_wordcloud(comments, lang):
@@ -96,7 +94,8 @@ def page_feedback():
     tab = request.args.get('tab', default='comments')
 
     # code to fetch data from db
-    conn = get_db_connection()
+
+    conn = sqlite3.connect('./data/ircc_data.db')
 
     if time_range == "alldata":
         if topic == "All":
@@ -236,10 +235,100 @@ def page_feedback():
 
 
 
-@app.route('/gc_task_success')
+@app.route('/gc_task_success', methods=['GET', 'POST'])
 def gc_task_success():
     topic = request.args.get('topic')
-    return render_template('gc_task_success.html', facet='GC Task Success', topic=topic, topics=topics)
+    selected_task = request.form.get('task', 'All tasks')
+
+    conn = sqlite3.connect('./data/tss_data.db')
+
+    # Fetch all data first
+    df = pd.read_sql_query("SELECT dateTime, task, taskSatisfaction, taskEase, taskCompletion, Topic FROM TSS", conn)
+
+
+    print(topic)
+    print(selected_task)
+
+    # Then filter by topic and task in pandas
+    if topic != "All":
+        df = df[df['Topic'] == topic]
+    
+    tasks = df['task'].unique().tolist()
+
+    if selected_task and selected_task != "All tasks" and selected_task != None:
+        df = df[df['task'] == selected_task]
+
+    print(df.head())  # Check if data is being read from SQL
+
+    
+
+    print(df['taskSatisfaction'].unique())
+    print(df['taskEase'].unique())
+    print(df['taskCompletion'].unique())
+
+    # Make sure your 'dateTime' column is of datetime type
+    df['dateTime'] = pd.to_datetime(df['dateTime'], format='%m/%d/%Y')
+
+    # Convert satisfaction, ease and completion to numerical values
+    satisfaction_mapping = {
+    'Very satisfied / TrÃ¨s satisfait': 5,
+    'Satisfied / Satisfait': 4,
+    'Neutral / Neutre': 3,
+    'Dissatisfied / Insatisfait': 2,
+    'Very dissatisfied / TrÃ¨s insatisfait': 1,
+    }
+
+    ease_mapping = {
+        'Very easy / TrÃ¨s facile': 5,
+        'Easy / Facile': 4,
+        'Neither difficult nor easy / Ni difficile ni facile': 3,
+        'Difficult / Difficile': 2,
+        'Very difficult / TrÃ¨s difficile': 1,
+    }
+
+    completion_mapping = {
+        "I started this survey before I finished my visit / J'ai commencé ce sondage avant d'avoir terminé ma visite": 0,
+        'Yes / Oui': 1,
+        'No / Non': 0,
+    }
+
+    df['taskSatisfaction'] = df['taskSatisfaction'].map(satisfaction_mapping)
+    df['taskEase'] = df['taskEase'].map(ease_mapping)
+    df['taskCompletion'] = df['taskCompletion'].map(completion_mapping)
+
+
+    print(df.head())  # Check if data is being transformed correctly
+
+    # Drop any rows with missing values after this mapping
+    df.dropna(subset=['taskSatisfaction', 'taskEase', 'taskCompletion'], inplace=True)
+
+    # Set the 'dateTime' column as the index of the DataFrame
+    df.set_index('dateTime', inplace=True)
+
+    # Resample and calculate the mean
+    df_resampled = df.resample('W').mean()
+
+    print(df_resampled.head())
+    
+    # Create plot
+    fig, ax = plt.subplots()
+    df_resampled[['taskSatisfaction', 'taskEase', 'taskCompletion']].plot(kind='line', ax=ax)
+    plt.title('GC Task Success')
+    plt.xlabel('Week')
+    plt.ylabel('Average Rating')
+    png_image = io.BytesIO()
+    FigureCanvas(fig).print_png(png_image)
+
+    # Encode PNG image to base64 string
+    png_image_b64_string = "data:image/png;base64,"
+    png_image_b64_string += base64.b64encode(png_image.getvalue()).decode('utf8')
+
+    plt.close(fig)  # make sure to close the figure after use to avoid memory leaks
+
+    return render_template('gc_task_success.html', facet='GC Task Success', topic=topic, task=selected_task, topics=topics, tasks=tasks, plot=png_image_b64_string)
+
+
+
 
 @app.route('/web_analytics')
 def web_analytics():
