@@ -18,6 +18,7 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 
 
+
 matplotlib.use('Agg')
 
 
@@ -242,10 +243,11 @@ def gc_task_success():
 
     conn = sqlite3.connect('./data/tss_data.db')
 
+   
     # Fetch all data first
     df = pd.read_sql_query("SELECT dateTime, task, taskSatisfaction, taskEase, taskCompletion, Topic FROM TSS", conn)
 
-
+    
     print(topic)
     print(selected_task)
 
@@ -258,24 +260,19 @@ def gc_task_success():
     if selected_task and selected_task != "All tasks" and selected_task != None:
         df = df[df['task'] == selected_task]
 
-    print(df.head())  # Check if data is being read from SQL
-
     
-
-    print(df['taskSatisfaction'].unique())
-    print(df['taskEase'].unique())
-    print(df['taskCompletion'].unique())
 
     # Make sure your 'dateTime' column is of datetime type
     df['dateTime'] = pd.to_datetime(df['dateTime'], format='%m/%d/%Y')
 
+
     # Convert satisfaction, ease and completion to numerical values
     satisfaction_mapping = {
-    'Very satisfied / TrÃ¨s satisfait': 5,
-    'Satisfied / Satisfait': 4,
-    'Neutral / Neutre': 3,
-    'Dissatisfied / Insatisfait': 2,
-    'Very dissatisfied / TrÃ¨s insatisfait': 1,
+        'Very satisfied / TrÃ¨s satisfait': 5,
+        'Satisfied / Satisfait': 4,
+        'Neutral / Neutre': 3,
+        'Dissatisfied / Insatisfait': 2,
+        'Very dissatisfied / TrÃ¨s insatisfait': 1,
     }
 
     ease_mapping = {
@@ -287,45 +284,85 @@ def gc_task_success():
     }
 
     completion_mapping = {
-        "I started this survey before I finished my visit / J'ai commencé ce sondage avant d'avoir terminé ma visite": 0,
         'Yes / Oui': 1,
         'No / Non': 0,
+        "I started this survey before I finished my visit / J'ai commencé ce sondage avant d'avoir terminé ma visite": None,
     }
 
     df['taskSatisfaction'] = df['taskSatisfaction'].map(satisfaction_mapping)
     df['taskEase'] = df['taskEase'].map(ease_mapping)
     df['taskCompletion'] = df['taskCompletion'].map(completion_mapping)
 
+    print(df.head()) 
 
-    print(df.head())  # Check if data is being transformed correctly
+    # Filter out the rows with "I started this survey..." in taskCompletion by excluding rows with taskCompletion = None
+    df_filtered = df[df['taskCompletion'].notnull()]
 
-    # Drop any rows with missing values after this mapping
-    df.dropna(subset=['taskSatisfaction', 'taskEase', 'taskCompletion'], inplace=True)
+    print(df_filtered.head()) 
 
+    # Drop any rows with missing values after this mapping in df
+    df.dropna(subset=['taskSatisfaction', 'taskEase'], inplace=True)
+
+    # Drop any rows with missing values after this mapping in df_filtered
+    df_filtered.dropna(subset=['taskCompletion'], inplace=True)
+
+    print(df_filtered.head()) 
+
+    
     # Set the 'dateTime' column as the index of the DataFrame
     df.set_index('dateTime', inplace=True)
+    df_filtered.set_index('dateTime', inplace=True)
 
     # Resample and calculate the mean
     df_resampled = df.resample('W').mean()
-
-    print(df_resampled.head())
+    df_filtered_resampled = df_filtered.resample('W').mean()
     
-    # Create plot
-    fig, ax = plt.subplots()
-    df_resampled[['taskSatisfaction', 'taskEase', 'taskCompletion']].plot(kind='line', ax=ax)
-    plt.title('GC Task Success')
-    plt.xlabel('Week')
-    plt.ylabel('Average Rating')
-    png_image = io.BytesIO()
-    FigureCanvas(fig).print_png(png_image)
+    # Create a figure with two subplots
+
+    fig, (ax1, ax2) = plt.subplots(2, figsize=(10,10))
+
+    # Add vertical space between subplots
+    plt.subplots_adjust(hspace=0.5)
+
+    
+    #plot satisfaction and ease on the first subplot
+    df_resampled[['taskSatisfaction', 'taskEase']].plot(kind='line', ax=ax1, linewidth=2.0)
+    ax1.set_title('Task ease and satisfaction')
+    ax1.set_xlabel('Week')
+    ax1.set_ylabel('Average Rating')
+    ax1.set_ylim([0, 5])  # Set a fixed scale
+    ax1.grid(True, axis='y')  # Show only horizontal grid lines
+
+    # Plot completion rate on the second subplot
+    df_filtered_resampled['taskCompletion'].plot(kind='line', ax=ax2, linewidth=2.0)
+    ax2.set_title('Task Completion Rate')
+    ax2.set_xlabel('Week')
+    ax2.set_ylabel('Completion Rate')
+    ax2.set_ylim([0, 1])  # Set a fixed scale
+    ax2.yaxis.set_major_formatter(plticker.PercentFormatter(1.0))  # Show y-axis in percentage format
+    ax2.grid(True, axis='y')  # Show only horizontal grid lines
+
+    # For subplot1
+    png_image1 = io.BytesIO()
+    FigureCanvas(fig).print_png(png_image1)
 
     # Encode PNG image to base64 string
-    png_image_b64_string = "data:image/png;base64,"
-    png_image_b64_string += base64.b64encode(png_image.getvalue()).decode('utf8')
+    png_image1_b64_string = "data:image/png;base64,"
+    png_image1_b64_string += base64.b64encode(png_image1.getvalue()).decode('utf8')
 
-    plt.close(fig)  # make sure to close the figure after use to avoid memory leaks
+    # For subplot2
+    png_image2 = io.BytesIO()
+    FigureCanvas(fig).print_png(png_image2)
 
-    return render_template('gc_task_success.html', facet='GC Task Success', topic=topic, task=selected_task, topics=topics, tasks=tasks, plot=png_image_b64_string)
+    # Encode PNG image to base64 string
+    png_image2_b64_string = "data:image/png;base64,"
+    png_image2_b64_string += base64.b64encode(png_image2.getvalue()).decode('utf8')
+
+    plt.close(fig)
+
+    conn.close()
+
+    return render_template('gc_task_success.html', facet='GC Task Success', topic=topic, task=selected_task, topics=topics, tasks=tasks, plot1=png_image1_b64_string, plot2=png_image2_b64_string)
 
 
 
