@@ -12,8 +12,8 @@
 
     <title>IRCC Data Hub— Canada.ca</title>
 
-    <link href="/src/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" class="wb-init wb-favicon-inited">
-    <link href="/src/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="https://www.canada.ca/etc/designs/canada/wet-boew/assets/favicon.ico" rel="icon" type="image/x-icon" class="wb-init wb-favicon-inited">
+    <link href="https://www.canada.ca/etc/designs/canada/wet-boew/assets/favicon.ico" rel="icon" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/theme.min.css">
 
@@ -21,114 +21,8 @@
     <noscript>
         <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/noscript.min.css" />
     </noscript>
-    
-
-    <style type="text/css">
-      
         
-        .btn-tabs {
-            background-color: #F5F5F5;
-            color: #2b4380;
-            font-size: 20px;
-            font-weight: bold;
-            border-radius: 0px;
-        }
-        	
-        .btn-tabs:hover {
-        	background-color:#26374A;
-        	color: #FFF;
-    	}
-
-        .btn-tabs.active {
-            background-color: #26374A;
-            color: #FFF;
-            font-size: 20px;
-            font-weight: bold;
-            box-shadow: none;
-            border-radius: 0px;
-    	}
-        	
-        
-        .btn-tabs-mobile {
-            background-color: #F5F5F5;
-            color: #2b4380;
-            font-size: 20px;
-            font-weight: bold;
-            border-radius: 0px;
-    	}
-        	
-
-        .btn-tabs-mobile.active {
-            background-color: #F5F5F5;
-            color: #26374A;
-            font-size: 20px;
-            font-weight: bold;
-            box-shadow: none;
-            border-radius: 0px;
-            border-bottom: 5px solid #26374A;
-    	}
-            
-        .blue-header {
-        	background-color: #26374A;
-        	color: #FFF;
-        	margin-top: 5px;
-    	}
-        
-        .btn-tabs, .btn-tabs:visited {
-    		display: inline-block;
-    		text-decoration: none;
-		}
-        		
-        
-        .app-name {	
-        	color: #d3d3d3;
-    	}
-
-        .app-name, .app-name:visited {
-    		display: inline-block;
-    		text-decoration: none;
-    		color: #d3d3d3;
-    	}
-
-    	.app-name, .app-name:visited, .app-name:focus, .app-name:hover {
-    		color: #d3d3d3;
-    	}
-    
-    	.app-name:active, .app-name:focus, .app-name:hover {
-    		text-decoration: underline;
-    	}
-        .blue-header.span  {
-        	  color: white;
-        	}
-
-    
-
-        
-        #wb-info .landscape2 {
-            background: #e3e3e3;
-        }
-    
-
-    
-    
-    	.blue-header {
-        	background-color: #26374A;
-        	color: #FFF;
-    	}
-    
-        .tabcontent {
-            display: none;
-            padding: 6px 12px;
-            border-top: none;
-            overflow: auto;
-            }
-
-        /* Style the active tab */
-        .tablink.active {
-        background-color: #ccc;
-        }
-    
-    </style>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
 
 </head>
 
@@ -145,7 +39,7 @@
         </li>
     </ul>
     
-    <header class="navbar navbar-default" id="navbar">
+    <header id="navbar">
         <div id="wb-bnr" class="container">
             <section id="wb-lng" class="text-right">
                 <h2 class="wb-inv">Language selection</h2>
@@ -185,30 +79,33 @@
         </section>
 
         <div class="container">
-            <form action="/selected_page" method="post">
-                <label for="topics">Select a topic:</label>
-                <select id="topics" name="topics">
-                    {% for option in topics %}
-                    <option value="{{ option }}" {% if option == topic %} selected {% endif %}>{{ option }}</option>
-                    {% endfor %}
-                </select>
+            <form action="/selected_page" method="post" class="form-inline">
+                <div class="form-group">
+                    <label for="topics" class="control-label">Select a topic:</label>
+                    <select id="topics" name="topics" class="form-control">
+                        {% for option in topics %}
+                        <option value="{{ option }}" {% if option == topic %} selected {% endif %}>{{ option }}</option>
+                        {% endfor %}
+                    </select>        
+                    <!-- Hidden facet selector  -->
+                    <input type="hidden" id="facets" name="facets" value="{{ facet }}">  
+                    <button class="btn btn-call-to-action btn-update" type="submit" value="Go to data">Update data</button>      
+                </div>                
             
-                <!-- Hidden facet selector  -->
-                <input type="hidden" id="facets" name="facets" value="{{ facet }}">
-           
-            <button class="btn btn-call-to-action" type="submit" value="Go to data">Update data</button>
             </form>
             
             <h2>{{ topic }}</h2>
  
             <form method="post">
-                <select name="task">
+                <div class="form-group">
+                <select name="task" class="full-width form-control">
                     <option value="All tasks" {% if selected_task == 'All tasks' %}selected{% endif %}>All tasks</option>
                     {% for task in tasks %}
                         <option value="{{ task }}" {% if selected_task == task %}selected{% endif %}>{{ task }}</option>
                     {% endfor %}
                 </select>
-                <input type="submit" value="Update">
+                <input class="btn btn-default mrgn-tp-sm" type="submit" value="Update">
+                </div>
             </form>
 
             <h3>{{ task }}</h3>

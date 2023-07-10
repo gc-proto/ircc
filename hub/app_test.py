@@ -115,7 +115,11 @@ def page_feedback():
         fig.autofmt_xdate()
         ax.xaxis.set_major_locator(loc)
 
+        if time_range == "alldata":
+            fig.set_figwidth(10)
+
         fig.savefig(img, format='png')
+
         plt.close()
 
         img.seek(0)
@@ -223,12 +227,15 @@ def gc_task_success():
 
     
     #plot satisfaction and ease on the first subplot
-    df_resampled[['taskSatisfaction', 'taskEase']].plot(kind='line', ax=ax1, linewidth=2.0)
-    ax1.set_title('Task ease and satisfaction')
+    df_resampled['taskSatisfaction'].plot(kind='line', ax=ax1, linewidth=2.0, label='Satisfaction')
+    df_resampled['taskEase'].plot(kind='line', ax=ax1, linewidth=2.0, label='Ease')
+    ax1.set_title('Task Ease and Satisfaction')
     ax1.set_xlabel('Week')
     ax1.set_ylabel('Average Rating')
     ax1.set_ylim([0, 5])  # Set a fixed scale
     ax1.grid(True, axis='y')  # Show only horizontal grid lines
+    #ax1.legend({'Task satisfaction', 'Task ease'})
+    ax1.legend()
 
     # Plot completion rate on the second subplot
     df_filtered_resampled['taskCompletion'].plot(kind='line', ax=ax2, linewidth=2.0)
