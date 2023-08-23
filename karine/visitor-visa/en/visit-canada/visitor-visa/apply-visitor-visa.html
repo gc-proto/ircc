@@ -236,87 +236,86 @@
 <h2 id="detailed-instructions">Get detailed instructions for your situation</h2>
 <p>Answer some questions to get specific instructions on how to apply for a visitor visa.</p>
 
-<div class="wb-frmvld" id="ff" data-gc-analytics-formname='IRCC: Get instructions to apply for visa' data-gc-analytics-collect='[ 
-{
-"value":"input[type=radio]",
-"emptyField": "Any"
-}
-]'>
-<form>
-    <div class='wb-fieldflow' data-wb-fieldflow='{
-        "renderas":"radio",
-        "noForm": true,
-        "base": { "live": true },
-        "default" : {"action": "toggle", "toggle": "#btnSubmit"}
-    }'>
-        <p>Do you already have an application in process?</p>
-         <ul>
-            <li>Yes
-               <div class="wb-fieldflow-sub" data-wb-fieldflow='{"default": {"action": "removeClass", "class":"hidden", "source":".withdrawn"}}'>
-                  <div class="wb-fieldflow-header">
-                     <p class="wb-fieldflow-label">Why did you apply for a visitor visa?</p>
+<div class="wb-frmvld" id="ff" data-gc-analytics-formname='IRCC: Get instructions to apply for visa' data-gc-analytics-collect='[ {"value":"input[type=radio]", "emptyField": "Any"}]'>
+   <form>
+      <div class='wb-fieldflow gc-font-2019' data-wb-fieldflow='{
+         "renderas":"radio",
+         "gcChckbxrdio":true,
+         "noForm": true,
+         "hideelm": ".result",
+         "unhideelm":  "#ff",
+         "base": { "live": true, "gcChckbxrdio":true, "renderas": "radio" },
+         "default" : {"action": "addClass", "class": "hidden", "source": "#btn-submit, .result"}
+      }'>
+         <p>Do you already have an application in process?</p>
+            <ul>
+               <li>Yes
+                  <div class="wb-fieldflow-sub" data-wb-fieldflow='{live"default": {"action": "removeClass", "class":"hidden", "source":".withdrawn, #btn-submit"}}'>
+                     <div class="wb-fieldflow-header">
+                        <p class="wb-fieldflow-label">Did you apply for a visitor for one of the following?</p>
+                        <ul>
+                           <li>To unite with a family member</li>
+                           <li>To visit on business</li>
+                           <li>To attend a funeral or provide support to a critically ill person</li>
+                           <li>To join a vessel (marine crew member)</li>
+                           <li>To assume a diplomatic post</li>
+                           <li>To come with an immediate family member who’s assuming a diplomatic post </li>
+                           <li>To handle the affairs of a victim of Ukraine Airlines PS752</li>
+                     </ul>
+                     </div>
                      <ul>
-                        <li>To unite with a family member</li>
-                        <li>To visit on business</li>
-                        <li>To attend a funeral or provide support to a critically ill person</li>
-                        <li>To join a vessel (marine crew member)</li>
-                        <li>To assume a diplomatic post</li>
-                        <li>To come with an immediate family member who’s assuming a diplomatic post </li>
-                        <li>To handle the affairs of a victim of Ukraine Airlines PS752</li>
-                    </ul>
-                  </div>
-                  <ul>
-                     <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": ".ircc-portal"}'>Yes</li>
-                     <li ata-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": ".ircc-secure-account"}'>>No</li>
-                  </ul>
-               </div>
-            </li>
-            <li>No
-               <div class="wb-sub-fieldflow">
-                  <div class="wb-fieldflow-header">
-                     <p class="wb-fieldflow-label">o	Are you using one of the following travel documents from a <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/entry-requirements-country.html#visaExempt">visa-exempt country</a>?</p>
-                     <ul>
-                        <li>Alien’s passport for stateless persons</li>
-                        <li>Other refugee travel document for non-citizens	</li>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": ".ircc-portal"}'>Yes</li>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": ".ircc-secure-account"}'>No</li>
                      </ul>
                   </div>
-                  <ul>
-                     <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".paper"}'>Yes</li>
-                     <li>No
-                        <div class="wb-fieldflow-sub" data-wb-fieldflow='{"default": {"action": "removeClass", "class":"hidden", "source":".online"}}'>
-                           <div class="wb-fieldflow-header">
-                              <p class="wb-fieldflow-label">Why did you apply for a visitor visa?</p>
+               </li>
+               <li>No
+                  <div class="wb-fieldflow-sub">
+                     <div class="wb-fieldflow-header">
+                        <p class="wb-fieldflow-label">Are you using one of the following travel documents from a <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/entry-requirements-country.html#visaExempt">visa-exempt country</a>?</p>
+                        <ul>
+                           <li>Alien’s passport for stateless persons</li>
+                           <li>Other refugee travel document for non-citizens	</li>
+                        </ul>
+                     </div>
+                     <ul>
+                        <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".paper, #btn-submit"}'>Yes</li>
+                        <li>No
+                           <div class="wb-fieldflow-sub" data-wb-fieldflow='{"default": {"action": "removeClass", "class":"hidden", "source":".online, #btn-submit"}}'>
+                              <div class="wb-fieldflow-header">
+                                 <p class="wb-fieldflow-label">Did you apply for a visitor for one of the following?</p>
+                                 <ul>
+                                    <li>To unite with a family member</li>
+                                    <li>To visit on business</li>
+                                    <li>To attend a funeral or provide support to a critically ill person</li>
+                                    <li>To join a vessel (marine crew member)</li>
+                                    <li>To assume a diplomatic post</li>
+                                    <li>To come with an immediate family member who’s assuming a diplomatic post </li>
+                                    <li>To handle the affairs of a victim of Ukraine Airlines PS752</li>
+                              </ul>
+                              </div>
                               <ul>
-                                 <li>To unite with a family member</li>
-                                 <li>To visit on business</li>
-                                 <li>To attend a funeral or provide support to a critically ill person</li>
-                                 <li>To join a vessel (marine crew member)</li>
-                                 <li>To assume a diplomatic post</li>
-                                 <li>To come with an immediate family member who’s assuming a diplomatic post </li>
-                                 <li>To handle the affairs of a victim of Ukraine Airlines PS752</li>
-                             </ul>
+                                 <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": ".ircc-portal"}'>Yes</li>
+                                 <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": ".ircc-secure-account"}'>No</li>
+                              </ul>
                            </div>
-                           <ul>
-                              <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": ".ircc-portal"}'>Yes</li>
-                              <li ata-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": ".ircc-secure-account"}'>>No</li>
-                           </ul>
-                        </div>
-                     </li>
-                  </ul>
-               </div>
-            </li>
-         </ul>
-
-
-        
-    </div>
-    <input class="btn btn-primary hidden" type="submit" id="btnSubmit" value="Get instructions">
-</form>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+            </ul>     
+      </div>
+      <input class="btn btn-primary hidden" type="submit" id="btn-submit" value="Get instructions">
+   </form>
 </div>
 
 
-<div class="withdrawn hidden"></div>
-
+   <div class="withdrawn result">withdrawn</div>
+   <div class="online result">online   
+      <div class="ircc-portal result">portal</div>
+      <div class="ircc-secure-account result">secure account</div>
+   </div>
+   <div class="paper result">paper</div>
 
          
          <nav class="mrgn-bttm-lg mrgn-tp-lg">
