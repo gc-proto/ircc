@@ -244,13 +244,14 @@
          "noForm": true,
          "hideelm": ".result",
          "unhideelm":  "#ff",
-         "base": { "live": true, "gcChckbxrdio":true, "renderas": "radio" },
-         "default" : {"action": "addClass", "class": "hidden", "source": "#btn-submit, .result"}
+         "live": true,
+         "base": { "gcChckbxrdio":true, "renderas": "radio" },
+         "default" : {"action": "addClass", "class": "hidden", "source": ".result"}
       }'>
          <p>Do you already have an application in process?</p>
             <ul>
                <li>Yes
-                  <div class="wb-fieldflow-sub" data-wb-fieldflow='{live"default": {"action": "removeClass", "class":"hidden", "source":".withdrawn, #btn-submit"}}'>
+                  <div class="wb-fieldflow-sub">
                      <div class="wb-fieldflow-header">
                         <p class="wb-fieldflow-label">Did you apply for a visitor for one of the following?</p>
                         <ul>
@@ -264,8 +265,8 @@
                      </ul>
                      </div>
                      <ul>
-                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": ".ircc-portal"}'>Yes</li>
-                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": ".ircc-secure-account"}'>No</li>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": ".withdrawn, .ircc-portal"}'>Yes</li>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": ".withdrawn, .ircc-secure-account"}'>No</li>
                      </ul>
                   </div>
                </li>
@@ -279,9 +280,9 @@
                         </ul>
                      </div>
                      <ul>
-                        <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".paper, #btn-submit"}'>Yes</li>
+                        <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".paper"}'>Yes</li>
                         <li>No
-                           <div class="wb-fieldflow-sub" data-wb-fieldflow='{"default": {"action": "removeClass", "class":"hidden", "source":".online, #btn-submit"}}'>
+                           <div class="wb-fieldflow-sub">
                               <div class="wb-fieldflow-header">
                                  <p class="wb-fieldflow-label">Did you apply for a visitor for one of the following?</p>
                                  <ul>
@@ -295,8 +296,8 @@
                               </ul>
                               </div>
                               <ul>
-                                 <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": ".ircc-portal"}'>Yes</li>
-                                 <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": ".ircc-secure-account"}'>No</li>
+                                 <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": ".ircc-portal, .online"}'>Yes</li>
+                                 <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": ".ircc-secure-account, .online"}'>No</li>
                               </ul>
                            </div>
                         </li>
@@ -305,7 +306,7 @@
                </li>
             </ul>     
       </div>
-      <input class="btn btn-primary hidden" type="submit" id="btn-submit" value="Get instructions">
+      <input class="btn btn-primary" type="submit" id="btn-submit" value="Get instructions">
    </form>
 </div>
 
