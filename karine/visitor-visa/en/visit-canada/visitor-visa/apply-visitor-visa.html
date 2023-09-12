@@ -219,12 +219,12 @@
                   "unhideelm":  "#ff",
                   "live": true,
                   "base": { "live": true, "gcChckbxrdio":true, "renderas": "radio" },
-                  "default" : {"action": "addClass", "class": "hidden", "source": "#btn-submit, .cnt-rslt"},
+                  "default" : {"action": "addClass", "class": "hidden", "source": "#btn-submit, .cnt-rslt, #cxp"},
                   "reset" : {"action": "addClass", "class": "hidden", "source": ".result, #btn-submit, .cnt-rslt"}
                   }'>
                   <p>Why are you visiting Canada?</p>
                   <ul>
-                     <li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, #ircc-secure-account, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":"#ircc-portal"}]'>To visit as a tourist</li>
+                     <li data-wb-fieldflow='{"action":"append", "source": "#cxp-question"}'>To visit as a tourist</li>
                      <li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#business, #ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":"#ircc-secure-account"}]'>For business</li>
                      <li>
                         For a family visit
@@ -248,7 +248,7 @@
                         <li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#imm-family, #ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":"#ircc-secure-account"}]'>No</li>
                      </ul>
                   </div>
-                  <div class='wb-fieldflow-sub hidden' id='cxp'>
+                  <div class='wb-fieldflow-sub hidden' id='cxp-question'>
                      <p>Who are you applying for?</p>
                      <ul>
                         <li>Myself
@@ -259,25 +259,25 @@
                                     <div class="wb-fieldflow-sub">
                                        <p>Have you applied for a visitor visa in the past?</p>
                                        <ul>
-                                          <li>Yes
+                                          <li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".already-applied, #ircc-secure-account, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":"#ircc-portal"}]'>Yes</li>
+                                          <li>No
                                              <div class="wb-fieldflow-sub">
                                                 <p>Are you travelling alone?</p>
                                                 <ul>
-                                                   <li>Yes</li>
-                                                   <li>No</li>
+                                                   <li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".cxp, #tourist, #ircc-secure-account, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":"#ircc-portal"}]'>Yes</li>
+                                                   <li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, #ircc-secure-account, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":"#ircc-portal"}]'>No</li>
                                                 </ul>
                                              </div>
                                           </li>
-                                          <li>No</li>
                                        </ul>
                                     </div>
                                  </li>
-                                 <li>No</li>
+                                 <li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, #ircc-secure-account, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":"#ircc-portal"}]'>No</li>
                               </ul>
                            </div>
                         </li>
-                        <li>Someone else</li>
-                        <li>Myself and someone else</li>
+                        <li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, #ircc-secure-account, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":"#ircc-portal"}]'>Someone else</li>
+                        <li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, #ircc-secure-account, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":"#ircc-portal"}]'>Myself and someone else</li>
                      </ul>
                   </div>
                   <button class="btn btn-primary hidden" type="button" value="Continue" id="btn-submit" data-gc-analytics-formsubmit='submit' data-wb-doaction='{"action":"removeClass", "class":"hidden", "source":".cnt-rslt"}'>Continue</button>   
@@ -2462,46 +2462,46 @@
            </div>
            </div>
            </section>
-         </div>
-         </div>
-      </div>
-         <h2 id="online">Apply online</h2>
+         
+      
+      <section class="lst-stps-itm">
+         <h2 id="online"><span class="wb-inv">Step 2</span> Apply</h2>
 
 
          <p>To apply online, you need a scanner or camera to create electronic copies of your documents, and a valid <a href="#centred-popup1" class="wb-lbx" role="button">credit</a> or <a href="#centred-popup2" class="wb-lbx" role="button">debit</a> card.</p>
          <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5256-applying-visitor-visa-temporary-resident-visa.html">Read the instruction guide</a> <strong>before</strong> you complete your application. As an online applicant, you can ignore steps 3 and 4 of the guide (paying the fees and submitting your application).</p>
          <p><strong>If you’re applying for the first time</strong>, you must pay the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/campaigns/biometrics/how-to-give-biometrics.html#fee">biometrics fee</a> <strong>when you submit your application</strong> (unless you’re exempt). Otherwise you may experience delays.</p>
 
-         <h3>If you already have an application in process</h3>
-         <p>If you choose to apply again, the current visitor visa application will be withdrawn.</p>
-         <ul>
-            <li>Make sure to include up-to-date information and, if possible, the application number of the application that is in process.</li>
-         </ul>
-         <p><strong>There is no guarantee of a refund,</strong> and you won’t receive a letter to confirm that the application has been withdrawn.</p>
-         <div class="alert alert-warning">
-            <p class="h4 mrgn-tp-0">If you applied before September&nbsp;7, 2021, and you already told us that you qualify for a COVID-19 exemption</p>
+         <div class="already-applied result">
+            <h3>If you already have an application in process</h3>
+            <p>If you choose to apply again, the current visitor visa application will be withdrawn.</p>
             <ul>
-               <li>You <strong>do not</strong> need to submit a new application.</li>
-               <li>We’ll process the application you submitted before September&nbsp;7, 2021.
-               <ul>
-                  <li>It doesn’t matter if you applied via the IRCC Portal, via your IRCC secure account or on paper.</li>
-               </ul>
-               </li>
+               <li>Make sure to include up-to-date information and, if possible, the application number of the application that is in process.</li>
             </ul>
+            <p><strong>There is no guarantee of a refund,</strong> and you won’t receive a letter to confirm that the application has been withdrawn.</p>
+            <div class="alert alert-warning">
+               <p class="h4 mrgn-tp-0">If you applied before September&nbsp;7, 2021, and you already told us that you qualify for a COVID-19 exemption</p>
+               <ul>
+                  <li>You <strong>do not</strong> need to submit a new application.</li>
+                  <li>We’ll process the application you submitted before September&nbsp;7, 2021.
+                  <ul>
+                     <li>It doesn’t matter if you applied via the IRCC Portal, via your IRCC secure account or on paper.</li>
+                  </ul>
+                  </li>
+               </ul>
+            </div>
          </div>
-
-         <div id="cxp-option">
+         <div class="cxp hidden">
             <div class="alert alert-info"><p>Try the beta platform</p><p><a href="#" class="btn btn-primary">Create an account</a></p></div>
          </div>
             
-            <div id="ircc-secure-account">          
-               <h3>Apply through the IRCC Secure account</h3>
-               <p>You need to apply through the IRCC secure account if you are applying to visit as a tourist.</p>   
-               <p>Not visiting as a tourist? <a href="#ircc-portal" data-wb-doaction='{"action": "removeClass", "class": "hidden", "source":"#ircc-portal"}'>Apply through the IRCC Portal</a></p>
-               <p class="pull-left mrgn-rght-md"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/register.html" class="btn btn-primary mrgn-tp-md">Get an IRCC secure account</a></p>
-               <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn-primary mrgn-tp-md">Sign in to your IRCC secure account</a></p> 
-               <div class="clearfix"></div>
-            </div>
+         <div id="ircc-secure-account">          
+            <h3>Apply through the IRCC Secure account</h3>
+            <p>You need to apply through the IRCC secure account if you are applying to visit as a tourist.</p> 
+            <p class="pull-left mrgn-rght-md"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/register.html" class="btn btn-primary mrgn-tp-md">Get an IRCC secure account</a></p>
+            <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn-primary mrgn-tp-md">Sign in to your IRCC secure account</a></p> 
+            <div class="clearfix"></div>
+         </div>
 
            <div id="ircc-portal">
             
@@ -2517,7 +2517,6 @@
                   <li>Handle the affairs of a victim of Ukraine Airlines PS752</li>
                </ul>
             </p>
-            <p>Visiting as a tourist? <a href="#ircc-secure-account" data-wb-doaction='{"action": "removeClass", "class": "hidden", "source":"#ircc-secure-account"}'>Apply through the IRCC Secure account</a></p>
            
 
             <ol class="lst-stps">
@@ -2532,8 +2531,10 @@
             <p><a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="btn btn-primary mrgn-tp-md">Sign in to the IRCC Portal</a></p> 
             <div class="clearfix"> </div>
            </div>
-           
-
+           </section>
+         </div>
+      </div>
+      
          
 
            <details><summary><h2 id="paper">Apply on paper</h2></summary>
