@@ -205,8 +205,9 @@
                   <p><strong>Warning:</strong> If your passport is still expired after adding 5 years to the printed expiry date, your passport is considered expired. You’re <strong>not</strong> eligible to submit an application with that passport.</p>
                </div>
             </section>
-    </div>
             <p>The way you apply and documents you need to submit with your visa application depends on why you’re traveling to Canada.</p>
+    </div>
+           
 
      
          <div class="wb-frmvld mrgn-tp-md" id="ff" data-gc-analytics-formname='IRCC: Why are you applying for a visa' data-gc-analytics-collect='[ {"value":"input[type=radio]", "emptyField": "Any"}]'>
@@ -215,12 +216,12 @@
                   "renderas":"radio",
                   "gcChckbxrdio":true,
                   "noForm": true,
-                  "hideelm": ".result, .cnt-rslt",
+                  "hideelm": ".ff-hide, .cnt-rslt",
                   "unhideelm":  "#ff",
                   "live": true,
                   "base": { "live": true, "gcChckbxrdio":true, "renderas": "radio" },
                   "default" : {"action": "addClass", "class": "hidden", "source": "#btn-submit, .cnt-rslt, #cxp"},
-                  "reset" : {"action": "addClass", "class": "hidden", "source": ".result, #btn-submit, .cnt-rslt"}
+                  "reset" : {"action": "addClass", "class": "hidden", "source": ".ff-hide, #btn-submit, .cnt-rslt"}
                   }'>
                   <p>Why are you visiting Canada?</p>
                   <ul>
@@ -285,8 +286,8 @@
             </form>
          </div>
          <div class="cnt-rslt">
-            <div class="lst-stps mrgn-tp-lg">
-               <section class="lst-stps-itm">
+            <div class="lst-stps mrgn-tp-xl mrgn-bttm-xl">
+               <section class="lst-stps-itm mrgn-bttm-lg">
              
             <h2 id="how"><span class="wb-inv">Step 1</span> Gather documents</h2>
             <p>Gather these documents to submit with your visa application and bring when you travel</p>
@@ -298,7 +299,7 @@
                <li>Even if you submit all the documents listed, there is no guarantee that we’ll approve your application.</li>
                <li>We may request more information from you outside of what is listed here.</li>
             </ul>
-            <div id="tourist" class="result">
+            <div id="tourist" class="ff-hide">
                <h3 class="mrgn-tp-md">Tourist</h3>
                <dl class="dl-horizontal">
                   <dt>Identity document</dt>
@@ -319,54 +320,61 @@
                         <li>non-machine readable passports issued by the Czech Republic</li>
                         <li>temporary passports issued by the Republic of South Africa</li>
                         <li>provisional passports issued by Venezuela</li>
-                     </ul></dd>
-                     <dd><p>A clear colour copy of your valid passport or travel document that you'll use to travel to
-                        Canada.
-                     </p>
-                     <p>If you have a passport, you must provide a copy of</p>
-                     <ul>
-                        <li>the page that shows your birth date and country of origin, and</li>
-                        <li>any pages with stamps, visas or markings</li>
                      </ul>
-                     <p>If you have a travel document, it must be issued by a government and include your</p>
-                     <ul>
-                        <li>name</li>
-                        <li>date of birth</li>
-                        <li>document number</li>
-                        <li>citizenship or residency status</li>
-                        <li>photo, and</li>
-                        <li>expiry date (if applicable)</li>
-                     </ul></dd>
-                     <dd>Submit with visa application</dd>
+                     <details><summary>Details to include</summary>
+                        <p>A clear colour copy of your valid passport or travel document that you'll use to travel to
+                           Canada.
+                        </p>
+                        <p>If you have a passport, you must provide a copy of</p>
+                        <ul>
+                           <li>the page that shows your birth date and country of origin, and</li>
+                           <li>any pages with stamps, visas or markings</li>
+                        </ul>
+                        <p>If you have a travel document, it must be issued by a government and include your</p>
+                        <ul>
+                           <li>name</li>
+                           <li>date of birth</li>
+                           <li>document number</li>
+                           <li>citizenship or residency status</li>
+                           <li>photo, and</li>
+                           <li>expiry date (if applicable)</li>
+                        </ul></details>
+                        <p>Submit this document with your visa application</p>
+                  </dd>
+                     
                      <dt>Use of a representative (IMM 5476)</dt>
                      <dd>
                         <p>Family members who apply on behalf of the applicant or third parties need to complete this form.</p>
+                        <p>Submit the completed form with your visa application</p>
                      </dd>
-                     <dd><p>Submit completed form with visa application</p></dd>
                      <dt>Family information (IMM 5645)</dt>
-                     <dd>Each applicant 18 years or older must complete this form.</dd>
-                     <dd>Submit form with visa application</dd>
+                     <dd><p>Each applicant 18 years or older must complete this form.</p><p>Submit the completed form with your visa application</p></dd>
+                   
                      <dt>Minor children (if applicable)</dt>
-                     <dd>Documents needed depend if child under 18 years of age will travel with only 1 parent, with a relative or friend, or alone.</dd>
-                     <dd><p>You may need to show</p>
-                        <ul>
-                           <li>a letter that authorizes the minor child to travel to Canada, and</li>
-                           <li>other documents, such as adoption papers or a custody decree, depending on if the minor child travels alone or not</li>
-                        </ul>
-                        <p>Consult <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/minor-children-travelling-canada.html">Minor
-                           children travelling to Canada</a> </p></dd>
-                           <dd><ol>
-                              <li>Submit with visa application</li>
-                              <li>Show border services officer when you arrive in Canada </li>
-                           </ol></dd>
+                     <dd><p>Documents needed depend if child under 18 years of age will travel with only 1 parent, with a relative or friend, or alone.</p>
+                        <details><summary>Details to include</summary>
+                           <p>You may need to show</p>
+                           <ul>
+                              <li>a letter that authorizes the minor child to travel to Canada, and</li>
+                              <li>other documents, such as adoption papers or a custody decree, depending on if the minor child travels alone or not</li>
+                           </ul>
+                           <p>Consult <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/minor-children-travelling-canada.html">Minor
+                              children travelling to Canada</a> </p>
+                           </details>
+                              <ol>
+                                 <li>Submit with visa application</li>
+                                 <li>Show border services officer when you arrive in Canada </li>
+                              </ol>
+                           </dd>
+                            
                </dl>
                <details>
                   <summary>Optional documents</summary>
                   <dl class="dl-horizontal">
                      <dt>Travel history</dt>
                      <dd><p>If you’ve travelled to Canada or to other countries, this can show that you’ve been able to get a visa in the past. </p>
-                        <p>Proof of this includes copies of previous visas in your passport.</p></dd>
-                     <dd><p>Include a clear copy of 1 or more of the following:</p>
+                        <p>Proof of this includes copies of previous visas in your passport.</p>
+                     <details><summary>Details to include</summary><p>Include a clear copy of 1 or more of the following:</p>
                         <ul>
                            <li>your previous passports and/or visas (used within the last 10 years to travel outside
                               your
@@ -375,39 +383,48 @@
                            <li>entry and exit stamps</li>
                            <li>study and/or work permits that indicate your duration outside of your country</li>
                            <li>expired or valid visas</li>
-                        </ul></dd>
-                        <dd><p>Submit with visa application</p></dd>
+                        </ul></details><p>Submit this document with your visa application</p></dd>
+                    
                         <dt>Itinerary</dt>
-                        <dd>Documents that show how long you plan to stay and what you’ll do in Canada.</dd>
-                        <dd><p>Include copies of any of the following:</p>
+                        <dd><p>Documents that show how long you plan to stay and what you’ll do in Canada.</p>
+                        <details>
+                           <summary>Details to include</summary><p>Include copies of any of the following:</p>
                            <ul>
                               <li>flight details </li>
                               <li>hotel reservations </li>
                               <li>registration for an event </li>
-                           </ul></dd>
-                           <dd><p>Submit with visa application</p></dd>
+                           </ul>
+                        </details>
+                        <p>Submit with visa application</p>
+                     </dd>
+                        
                            <dt>Account statement</dt>
-                           <dd>This can help us understand if you have enough money to support yourself during your stay in Canada.</dd>
-                           <dd><p><strong>Bank name and contact</strong><br>
-                              This allows us to contact your bank or financial institution with questions.
-                           </p>
-                           <p><strong>Proof it is your account</strong><br>
-                              Your name and address on the statement show that the account is yours.
-                           </p>
-                           <p><strong>Account details</strong><br>
-                              At least 6 months of account details, including balances, helps us understand your financial
-                              situation.
-                           </p></dd>
-                           <dd><p>Submit with visa application</p></dd>
+                           <dd><p>This can help us understand if you have enough money to support yourself during your stay in Canada.</p>
+                           <details>
+                              <summary>Details to include</summary>
+                              <p><strong>Bank name and contact</strong><br>
+                                 This allows us to contact your bank or financial institution with questions.
+                              </p>
+                              <p><strong>Proof it is your account</strong><br>
+                                 Your name and address on the statement show that the account is yours.
+                              </p>
+                              <p><strong>Account details</strong><br>
+                                 At least 6 months of account details, including balances, helps us understand your financial
+                                 situation.
+                              </p>
+                           </details>
+                           <p>Submit with visa application</p></dd>
+                       
                            <dt>Authority to release personal information to a designated individual (IMM 5475)</dt>
                            <dd><p>Use this form if you want to allow Immigration, Refugees and Citizenship Canada (IRCC) to release your personal information to someone you choose. </p>
-                           <p>The person you choose will be able to get information on your case file, such as the status of your application. </p></dd>
-                           <dd><p>Submit completed form with visa application</p></dd>
+                           <p>The person you choose will be able to get information on your case file, such as the status of your application. </p>
+                           <p>Submit completed form with visa application</p></dd>
+                        
                   </dl>
                </details>
              
             </div>            
-            <div id="business" class="result">
+            <div id="business" class="ff-hide">
                <h4>Business visitor</h4>
                <div class="table-responsive">
                   <table class="provisional gc-table table wb-tables small" data-wb-tables="{ &quot;ordering&quot; : false }">
@@ -711,7 +728,7 @@
                   </table>
                </div>
             </div>
-            <div id="imm-family" class="result">
+            <div id="imm-family" class="ff-hide">
             <h4>Visit family (Canadian citizen, person registered under Canada’s Indian Act, or permanent resident of Canada)</h4>
             <div class="table-responsive">
                <table class="provisional gc-table table wb-tables small" data-wb-tables="{ &quot;ordering&quot; : false }">
@@ -1183,7 +1200,7 @@
                </table>
             </div>
             </div>
-            <div id="super-visa-imm" class="result">
+            <div id="super-visa-imm" class="ff-hide">
                <h4>Visit children or grandchildren. Super visa option.</h4>
                <div class="table-responsive">
                   <table class="provisional gc-table table wb-tables small" data-wb-tables="{ &quot;ordering&quot; : false }">
@@ -1777,7 +1794,7 @@
                   </table>
                </div>
             </div>
-            <div id="temp-resident" class="result">
+            <div id="temp-resident" class="ff-hide">
                <h4>Visit family (temporary resident of Canada)</h4>
                <div class="table-responsive">
                   <table class="provisional gc-table table wb-tables small" data-wb-tables="{ &quot;ordering&quot; : false }">
@@ -2147,7 +2164,7 @@
                   </table>
                </div>
             </div>
-            <div id="compassionate" class="result">
+            <div id="compassionate" class="ff-hide">
             <h4>Visit for compassionate reasons</h4>
             <div class="table-responsive">
                <table class="provisional gc-table table wb-tables small" data-wb-tables="{ &quot;ordering&quot; : false }">
@@ -2472,15 +2489,15 @@
          <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5256-applying-visitor-visa-temporary-resident-visa.html">Read the instruction guide</a> <strong>before</strong> you complete your application. As an online applicant, you can ignore steps 3 and 4 of the guide (paying the fees and submitting your application).</p>
          <p><strong>If you’re applying for the first time</strong>, you must pay the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/campaigns/biometrics/how-to-give-biometrics.html#fee">biometrics fee</a> <strong>when you submit your application</strong> (unless you’re exempt). Otherwise you may experience delays.</p>
 
-         <div class="already-applied result">
+         <div class="already-applied ff-hide well">
             <h3>If you already have an application in process</h3>
             <p>If you choose to apply again, the current visitor visa application will be withdrawn.</p>
             <ul>
                <li>Make sure to include up-to-date information and, if possible, the application number of the application that is in process.</li>
             </ul>
             <p><strong>There is no guarantee of a refund,</strong> and you won’t receive a letter to confirm that the application has been withdrawn.</p>
-            <div class="alert alert-warning">
-               <p class="h4 mrgn-tp-0">If you applied before September&nbsp;7, 2021, and you already told us that you qualify for a COVID-19 exemption</p>
+            <div>
+               <p>If you applied before September&nbsp;7, 2021, and you already told us that you qualify for a COVID-19 exemption</p>
                <ul>
                   <li>You <strong>do not</strong> need to submit a new application.</li>
                   <li>We’ll process the application you submitted before September&nbsp;7, 2021.
@@ -2491,62 +2508,56 @@
                </ul>
             </div>
          </div>
-         <div class="cxp hidden">
-            <div class="alert alert-info"><p>Try the beta platform</p><p><a href="#" class="btn btn-primary">Create an account</a></p></div>
+         <div class="cxp ff-hide">
+            <div class="alert alert-info"><p>Try the beta platform placeholder</p><p><a href="#" class="">Create an account</a></p></div>
          </div>
             
-         <div id="ircc-secure-account">          
-            <h3>Apply through the IRCC Secure account</h3>
-            <p>You need to apply through the IRCC secure account if you are applying to visit as a tourist.</p> 
+         <div id="ircc-secure-account" class="mrgn-bttm-lg">          
+            <h3 class="mrgn-tp-md ff-hide">Apply through the IRCC Secure account</h3>
             <p class="pull-left mrgn-rght-md"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/register.html" class="btn btn-primary mrgn-tp-md">Get an IRCC secure account</a></p>
             <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn-primary mrgn-tp-md">Sign in to your IRCC secure account</a></p> 
             <div class="clearfix"></div>
          </div>
 
-           <div id="ircc-portal">
+           <div id="ircc-portal" class="mrgn-bttm-lg">
             
-            <h3>Apply through the IRCC Portal</h3>
-            <p>You need to apply through the IRCC Portal if you are applying to
-               <ul>
-                  <li>Unite with a family member</li>
-                  <li>Visit on business</li>
-                  <li>Attend a funeral or provide support to a critically ill person</li>
-                  <li>Join a vessel (marine crew member)</li>
-                  <li>Assume a diplomatic post</li>
-                  <li>Come with an immediate family member who's assuming a diplomatic post</li>
-                  <li>Handle the affairs of a victim of Ukraine Airlines PS752</li>
-               </ul>
-            </p>
-           
+            <h3 class="mrgn-tp-md ff-hide">Apply through the IRCC Portal</h3>
+            
+            <div class="lst-stps-sub">
+               <section class="lst-stps-itm">
+                  <h4><span class="wb-inv">Step 2a</span>Create an account and sign in</h4><p>If it’s your first time using the IRCC Portal, we’ll ask for your email and give you a code to sign up for an account.</p>
+                  </section>
+                  <section class="lst-stps-itm">
+                     <h4><span class="wb-inv">Step 2b</span>Complete the online form and upload your documents</h4>
+                     <p>After you answer all the questions, you’ll get a list of documents you need to upload. This includes the documents that support your visa application.</p>
+                  </section>
+                  <section class="lst-stps-itm">
+                     <h4><span class="wb-inv">Step 3b</span>Pay with a credit card</h4>
+                     <p>We accept credit cards and prepaid cards from Visa®, MasterCard®, American Express®, JCB® and UnionPay®.</p>
 
-            <ol class="lst-stps">
-               <li><p><b>Create an account and sign in</b>.</p><p>If it’s your first time using the IRCC Portal, we’ll ask for your email and give you a code to sign up for an account.</p></li>
-               <li><p><b>Complete the online form and upload your documents</b></p>
-                  <p>After you answer all the questions, you’ll get a list of documents you need to upload. This includes the documents that support your visa application.</p></li>
-               <li><p><b>Pay with a credit card</b></p> <p>We accept credit cards and prepaid cards from Visa®, MasterCard®, American Express®, JCB® and UnionPay®.</p></li>
-             </ol>
+                  </section>
+                  </div>
+           
 
 
             <p class="pull-left mrgn-rght-md"><a href="https://ircc.canada.ca/visit-visiter/en/get-account-ircc-portal" class="btn btn-primary mrgn-tp-md">Get an IRCC Portal Account</a></p> 
             <p><a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="btn btn-primary mrgn-tp-md">Sign in to the IRCC Portal</a></p> 
-            <div class="clearfix"> </div>
+           
            </div>
-           </section>
-         </div>
-      </div>
+           
       
          
 
-           <details><summary><h2 id="paper">Apply on paper</h2></summary>
+           
+            <h3 id="paper" class="mrgn-tp-xl">Apply on paper</h3>
             <div class="alert alert-warning">
-               <h3 class="mrgn-tp-0">If you need a visitor visa to travel to Canada, you must apply online for one.</h3> 
-               <p>Only online applications will be accepted and processed. However, you can apply on paper if:</p>
+               <p><strong>If you need a visitor visa to travel to Canada, you must apply online for one.</strong> Only online applications will be accepted and processed. However, you can apply on paper if:</p>
                <ul>
-               <li>you <strong>can’t</strong> apply online because of a disability, or</li>
-               <li>you’re travelling with an identity or travel document that was issued to a refugee, a stateless person or a non-citizen.</li>
+                  <li>you <strong>can’t</strong> apply online because of a disability, or</li>
+                  <li>you’re travelling with an identity or travel document that was issued to a refugee, a stateless person or a non-citizen.</li>
                </ul>
             </div>
-            
+            <details><summary>Instructions for paper applications</summary>
             <p>The application package includes an instruction guide and all the forms you need to fill out.</p>
             <p><strong>Read the guide carefully before you complete your application</strong>. We will not refund your application fee, so <a href="https://ircc.canada.ca/english/visit/visas.asp">make sure you need a visitor visa</a> before you apply.</p>
             <p> Each individual applicant <strong>must</strong> submit a completed application form. Applicants under the age of 18 must have this form signed by a parent or a guardian.</p>
@@ -2788,8 +2799,10 @@
             <p>If you <a href="https://ircc.canada.ca/english/visit/biometrics.asp">need to give biometrics</a> (fingerprints and photograph), <strong>and you’re applying on paper,</strong> submit your application <strong>in person</strong>. VAC staff will check that it is complete and will confirm that you have paid the correct fees before you can give your biometrics.</p>
             </details>
        
+         </section>
+      </div>
              
-             
+      </div>
     
 
 
