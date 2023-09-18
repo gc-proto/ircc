@@ -10,8 +10,10 @@ $( document ).on( "radio.createctrl.wb-fieldflow", ".wb-fieldflow", function( ev
 });
 
 $( document ).on( "removeClass.action.wb-fieldflow", ".wb-fieldflow", function( event ) {
-    let result = document.querySelector('.result:not(.hidden)');
-    result.scrollIntoView({behaviour: 'smooth'});
+    if (scroll) {
+        let result = document.querySelector('.result:not(.hidden)');
+        result.scrollIntoView({behaviour: 'smooth'});
+    }
 });
 
 function scrollOnChange(selectedInput){
