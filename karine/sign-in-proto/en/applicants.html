@@ -149,16 +149,16 @@
 						<ul>
 							<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r1"}'>Yes</li>
 							<li>No, help me find out
-								<div class="wb-fieldflow-sub">
+								<div class="wb-fieldflow-sub" id="q2">
 									<p>What do you need to do?</p>
 									<ul>
 										<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r2"}'>Start an application</li>
 										<li>Continue or view my application
-											<div class="wb-fieldflow-sub">
+											<div class="wb-fieldflow-sub" id="q3">
 												<p>What is your application about?</p>
 												<ul>
 													<li>Visiting
-														<div class="wb-fieldflow-sub">
+														<div class="wb-fieldflow-sub" id="q4">
 															<p>What did you apply for?</p>
 															<ul>
 																<li>A new visitor visa
@@ -561,5 +561,6 @@
 		<![endif]-->
 
 		<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
+		<script src="fieldflow-testscript.js"></script>
 	</body>
 </html>
