@@ -127,209 +127,42 @@
 			<!--CONTENT STARTS HERE-->
 			<h1 property="name" id="wb-cont" dir="ltr">Find my IRCC account</h1>
 
-			
-			<div class="wb-frmvld">
-				<form>
-					<div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
-						"live": true,
-						"noForm": true,
-						"renderas": "radio",
+			<form method="post">
+				<div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+					"live": true,
+					"noForm": true,
+					"renderas": "radio",
+					"gcChckbxrdio":true,
+					"base": {
+						"live": true, 
+						"renderas": "radio", 
 						"gcChckbxrdio":true,
-						"base": {
-							"live": true, 
-							"renderas": "radio", 
-							"gcChckbxrdio":true,
-							"default": {"action":"addClass", "class":"hidden", "source":".result"},
-							"reset": {"action":"addClass", "class":"hidden", "source":".result"}
-						},
 						"default": {"action":"addClass", "class":"hidden", "source":".result"},
 						"reset": {"action":"addClass", "class":"hidden", "source":".result"}
-					}'>
-						<p>Do you know which account you need to sign in to?</p>
-						<ul>
-							<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r1"}'>Yes</li>
-							<li>No, help me find out
-								<div class="wb-fieldflow-sub" id="q2">
-									<p>What do you need to do?</p>
-									<ul>
-										<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r2"}'>Start an application</li>
-										<li>Continue or view my application
-											<div class="wb-fieldflow-sub" id="q3">
-												<p>What is your application about?</p>
-												<ul>
-													<li>Visiting
-														<div class="wb-fieldflow-sub" id="q4">
-															<p>What did you apply for?</p>
-															<ul>
-																<li>A new visitor visa
-																	<div class="wb-fieldflow-sub">
-																		<p>What is your visa for?</p>
-																		<ul>
-																			<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>Visit as a tourist</li>
-																			<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r7"}'>Unite with family</li>
-																			<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r7"}'>Visit on business</li>
-																			<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r7"}'>Attend a funeral or provide support to a critically ill person</li>
-																			<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r7"}'>Join a vessel (marine crew member)</li>
-																			<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r7"}'>Assume a diplomatic post</li>
-																			<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r7"}'>Come with an immediate family member who’s assuming a diplomatic post </li>
-																			<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>None of the above </li>
-																		</ul>
-																	</div>
-																</li>
-																<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>A visitor record (to stay longer in Canada) or to restore my visitor status </li>
-															</ul>
-														</div>
-													</li>
-													<li>Working
-														<div class="wb-fieldflow-sub">
-															<p>Is your application to work temporarily or permanently in Canada?</p>
-															<ul>
-																<li>Temporarily
-																	<div class="wb-fieldflow-sub">
-																		<p>What type of work permit?</p>
-																		<ul>
-																			<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>International Experience Canada</li>
-																			<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>Post-graduation work permits</li>
-																			<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>New work permit or extension (including open and bridging open work permits) </li>
-																			<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r7"}'>Work permits for H1-B visa holders </li>
-																		</ul>
-																	</div>
-																</li>
-																<li>Permanently																	
-																	<div class="wb-fieldflow-sub">
-																		
-																			<p class="wb-fieldflow-label">What permanent work program?</p>
-																																			
-																		<ul>
-																			<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>Express Entry (including the Express Entry route for the Provincial Nominee Program)</li>
-																			<li>Temporary resident to permanent resident pathway 																				
-																				<div class="wb-fieldflow-sub">
-																					<p>What part of your application do you need to access?</p>
-																					<ul>
-																						<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r8"}'>Temporary resident to permanent resident pathway application </li>
-																						<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>Work permit </li>
-																					</ul>
-																				</div>
-																			</li>
-																			<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r5"}'>Other program&lt;details&gt;
-																				&lt;summary&gt;Other programs include:&lt;/summary&gt;
-																				&lt;ul&gt;
-																					&lt;li&gt;Agri-Food Pilot&lt;/li&gt;
-																					&lt;li&gt;Atlantic Immigration Program&lt;/li&gt;
-																					&lt;li&gt;Economic Mobility Pathways Pilot&lt;/li&gt;
-																					&lt;li&gt;Home Child Care and Home Support Worker Pilots&lt;/li&gt;
-																					&lt;li&gt;Humanitarian and compassionate reasons&lt;/li&gt;
-																					&lt;li&gt;Permanent residence pathways for Hong Kong residents&lt;/li&gt;
-																					&lt;li&gt;Protected persons&lt;/li&gt;
-																					&lt;li&gt;Provincial Nominee Program (non-Express Entry route)&lt;/li&gt;
-																					&lt;li&gt;Quebec entrepreneurs&lt;/li&gt;
-																					&lt;li&gt;Quebec investors&lt;/li&gt;
-																					&lt;li&gt;Quebec self-employed persons&lt;/li&gt;
-																					&lt;li&gt;Quebec skilled workers&lt;/li&gt;
-																					&lt;li&gt;Rural and Northern Immigration Pilot&lt;/li&gt;
-																					&lt;li&gt;Self-employed persons&lt;/li&gt;
-																					&lt;li&gt;Start-up Visa&lt;/li&gt;
-																				&lt;/ul&gt;
-																					&lt;/details&gt;</li>
-																		</ul>
-																	</div>
-																</li>
-																<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>I’m authorized to work without a work permit</li>
-															</ul>
-														</div>
-													</li>
-													<li>Studying														
-														<div class="wb-fieldflow-sub">
-															<p>What did you apply for?</p>
-															<ul>
-																<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r9"}'>A study permit </li>
-																<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>To extend my current study permit or restore my student status </li>
-																<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r9"}'>Student Direct Stream</li>
-															</ul>
-														</div>
-													</li>
-													<li>Canadian citizenship
-														<div class="wb-fieldflow-sub">
-															<p>What do you need to do?</p>
-															<ul>
-																<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r11"}'>Apply for Canadian citizenship</li>
-																<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>Apply for a citizenship certificate </li>
-																<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r12"}'>Take the citizenship test </li>
-																<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r7"}'>Download my electronic citizenship certificate </li>
-																<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>Search for my citizenship records </li>
-																<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r13"}'>Calculate my physical presence (for paper citizenship applications)  </li>
-															</ul>
-														</div>
-													</li>
-													<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r5"}'>Reuniting with family</li>
-													<li>Other
-														<div class="wb-fieldflow-sub">
-															<p>What is your application about?</p>
-															<ul>
-																<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r5"}'>Adoption (through the immigration process)</li>
-																<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r7"}'>Asylum claims </li>
-																<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r14"}'>One of the special measures (such as the special measures for Ukraine or the Nova Scotia floods) </li>
-																<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r5"}'>Permanent residence card or permanent resident travel document</li>
-																<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r5"}'>Privately sponsoring refugees</li>
-																<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>The Interim Federal Health Program (for refugees) </li>
-															</ul>
-														</div>
-													</li>
-												</ul>
-											</div>
-										</li>
-										<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r3"}'>Pay my fees</li>
-										<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r4"}'>Check my application status</li>
-									</ul>
-								</div>
-							</li>
-						</ul>					
-					</div>
-				</form>
-			</div>
+					},
+					"default": {"action":"addClass", "class":"hidden", "source":".result"},
+					"reset": {"action":"addClass", "class":"hidden", "source":".result"}
+				}'>					
+				<p>What is your visa for?</p>
+				<ul>
+					<li data-wb-fieldflow='{"action":"redir", "url":"https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html"}'>Visit as a tourist</li>
+					<li data-wb-fieldflow='{"action":"redir", "url":"https://portal-portail.apps.cic.gc.ca/signin?lang=en"}'>Unite with family</li>
+					<li data-wb-fieldflow='{"action":"redir", "url":"https://portal-portail.apps.cic.gc.ca/signin?lang=en"}'>Visit on business</li>
+					<li data-wb-fieldflow='{"action":"redir", "url":"https://portal-portail.apps.cic.gc.ca/signin?lang=en"}'>Attend a funeral or provide support to a critically ill person</li>
+					<li data-wb-fieldflow='{"action":"redir", "url":"https://portal-portail.apps.cic.gc.ca/signin?lang=en"}'>Join a vessel (marine crew member)</li>
+					<li data-wb-fieldflow='{"action":"redir", "url":"https://portal-portail.apps.cic.gc.ca/signin?lang=en"}'>Assume a diplomatic post</li>
+					<li data-wb-fieldflow='{"action":"redir", "url":"https://portal-portail.apps.cic.gc.ca/signin?lang=en"}'>Come with an immediate family member who’s assuming a diplomatic post </li>
+					<li data-wb-fieldflow='{"action":"redir", "url":"https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html"}'>None of the above </li>
+				</ul>
+				</div>
+			
+			
+				<input class="mrgn-bttm-lg btn btn-primary" type="submit" value="Continue" />
+			</form>
+			
+		
 
 			
-
-			
-			<div class="result r1 hidden">
-				<a href="all-accounts.html" class="btn btn-primary">All accounts</a>
-			</div>
-			<div class="result r2 hidden">
-				<a href="https://www.canada.ca/en/services/immigration-citizenship.html" class="btn btn-primary">Explore immigration programs (placeholder link)</a>
-			</div>
-			<div class="result r3 hidden">
-				<a href="https://ircc.canada.ca/english/information/fees/index.asp" class="btn btn-primary">Pay my fees</a>
-			</div>
-			<div class="result r4 hidden">
-				<a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html" class="btn btn-primary">Check my application status</a>
-			</div>
-			<div class="result r5 hidden">
-				<h2>PR Portal</h2>
-			</div>
-			<div class="result r6 hidden">
-				<h2>IRCC Secure account</h2>
-			</div>
-			<div class="result r7 hidden">
-				<h2>IRCC Portal</h2>
-			</div>
-			<div class="result r8 hidden">
-				<h2>TR TO PR Portal</h2>
-			</div>
-			<div class="result r9 hidden">
-				<h2>IRCC Portal OR Secure account</h2>
-			</div>
-			<div class="result r11 hidden">
-				<h2>Citizenship eApp</h2>
-			</div>
-			<div class="result r12 hidden">
-				<h2>Cit test portal</h2>
-			</div>
-			<div class="result r13 hidden">
-				<h2>eServices</h2>
-			</div>
-			<div class="result r14 hidden">
-				<h2>IRCC secure account OR IRCC Portal OR PR portal</h2>
-			</div>
 			<!-- CONTENT ENDS HERE -->
 
 			<div class="row row-no-gutters mrgn-tp-xl">
@@ -541,6 +374,5 @@
 		<![endif]-->
 
 		<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
-		<script src="fieldflow-testscript.js"></script>
 	</body>
 </html>
