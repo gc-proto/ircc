@@ -34,16 +34,17 @@ $( document ).on( "wb-ready.wb", function( event ) {
         
     }
 
-    
-
     function loadSignIn(){
-        return $.ajax({
-            url: "../../../assets/includes/sign-in.html",
-            type: "GET",
-            success: function(data){
-                resolve(data)
-            }
+        return new Promise(function(resolve) {
+            $.ajax({
+                url: "../../../assets/includes/sign-in.html",
+                type: "GET",
+                success: function(data){
+                    resolve(data)
+                }
+            })
         })
+        
     }
 });
     
