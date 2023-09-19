@@ -2,6 +2,9 @@
 
     const btnSignIn = document.getElementById('btn-sign-in');
     const btnSignOut = document.getElementById('btn-sign-out');
+    
+    const menu = document.querySelector('.menu-banner');
+    const signin = document.querySelector('.signin-banner');
 
     console.log(btnSignIn)
     if(btnSignIn) {
@@ -17,10 +20,10 @@
         btnSignOut.onclick = function(){
             localStorage.setItem('signedin', false);
             location.reload();
+            signin.classList.remove('hidden');
+            menu.classList.remove('hidden');
         }
     }
-
-    const menu = document.querySelector('.menu-banner');
 
     $( document ).on( "wb-ready.wb", function( event ) {
 
@@ -31,8 +34,8 @@
                 url: "../../../assets/includes/sign-in.html",
                 type: "GET",
                 success: function(data){
-                    $(menu).html(data);
-                    
+                    $(signin).html(data);
+                    menu.classList.add('hidden');
                 }
             })
         }
