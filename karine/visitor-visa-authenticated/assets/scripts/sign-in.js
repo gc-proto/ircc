@@ -17,8 +17,10 @@
         }
     }
     if(btnSignOut) {
-        btnSignOut.onclick = function(){
-            console.log('test');
+        console.log('test');
+        btnSignOut.onclick = function(e){
+            e.preventDefault;
+            console.log('test1');
             localStorage.setItem('signedin', false);
             location.reload();
         }
