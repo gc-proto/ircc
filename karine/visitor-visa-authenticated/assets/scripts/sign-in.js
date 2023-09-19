@@ -18,10 +18,9 @@
     }
     if(btnSignOut) {
         btnSignOut.onclick = function(){
+            console.log('test');
             localStorage.setItem('signedin', false);
             location.reload();
-            signin.classList.remove('hidden');
-            menu.classList.remove('hidden');
         }
     }
 
