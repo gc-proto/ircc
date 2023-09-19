@@ -2,7 +2,7 @@
 
     const btnSignIn = document.getElementById('btn-sign-in');
     const btnSignOut = document.getElementById('btn-sign-out');
-    
+    console.log(btnSignOut);
     const menu = document.querySelector('.menu-banner');
     const signin = document.querySelector('.signin-banner');
 
@@ -17,7 +17,7 @@
         }
     }
     if(btnSignOut) {
-        console.log('test');
+        
         btnSignOut.onclick = function(e){
             e.preventDefault;
             console.log('test1');
