@@ -1,4 +1,4 @@
-
+   $( document ).on( "wb-ready.wb", function( event ) {
 
     const btnSignIn = document.getElementById('btn-sign-in');
     const btnSignOut = document.getElementById('btn-sign-out');
@@ -26,7 +26,7 @@
         }
     }
 
-    $( document ).on( "wb-ready.wb", function( event ) {
+ 
 
         if (localStorage.getItem('signedin') == "true") {
             $.ajax({
