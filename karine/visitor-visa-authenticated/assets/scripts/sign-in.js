@@ -1,6 +1,4 @@
 $( document ).on( "wb-ready.wb", function( event ) {
-   $( document ).on( "wb-ready.wb", function( event ) {
-
     const btnSignIn = document.getElementById('btn-sign-in');
     const menu = document.querySelector('.menu-banner');
     const signin = document.querySelector('.signin-banner');
