@@ -14,26 +14,36 @@ $( document ).on( "wb-ready.wb", function( event ) {
         }
     }    
     if (localStorage.getItem('signedin') == "true") {
-        $.ajax({
+        loadSignIn().then(function(data) {
+            $(signin).html(data);
+            menu.classList.add('hidden');
+
+            const btnSignOut = document.getElementById('btn-sign-out');
+            console.log(btnSignOut);
+            if(btnSignOut) {
+                
+                btnSignOut.onclick = function(e){
+                    e.preventDefault;
+                    console.log('test1');
+                    localStorage.setItem('signedin', false);
+                    location.reload();
+                }
+            }
+        });
+        
+        
+    }
+
+    
+
+    function loadSignIn(){
+        return $.ajax({
             url: "../../../assets/includes/sign-in.html",
             type: "GET",
             success: function(data){
-                $(signin).html(data);
-                menu.classList.add('hidden');
+                resolve(data)
             }
         })
-    }
-
-    const btnSignOut = document.getElementById('btn-sign-out');
-    console.log(btnSignOut);
-    if(btnSignOut) {
-        
-        btnSignOut.onclick = function(e){
-            e.preventDefault;
-            console.log('test1');
-            localStorage.setItem('signedin', false);
-            location.reload();
-        }
     }
 });
     
