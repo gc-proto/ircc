@@ -1,0 +1,31 @@
+.signin-banner {
+    background-color: #284162!important; 
+    color: #fff!important; 
+    font-weight:bold;  
+    font-family: 'Lato';
+}
+
+.signin-banner .flex {
+    display:flex;
+    align-items: flex-end;
+}
+.signin-banner p{ 
+    font-size: 2.5em;
+    flex-basis: 40%;
+    padding-left:50px;
+    margin-bottom:0;
+}
+
+.signin-banner a {
+    color:#fff!important;
+    text-decoration: none!important;  
+    font-size:1.4em;  
+    padding:5px 20px;
+}
+
+.signin-banner button {
+    color:#fff!important;
+    font-weight:bold;
+    font-size:1.4em;
+    text-wrap:nowrap;    
+}
