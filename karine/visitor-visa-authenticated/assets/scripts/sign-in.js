@@ -8,7 +8,6 @@ $( document ).on( "wb-ready.wb", function( event ) {
         btnSignIn.onclick = function(e){
             e.preventDefault;
             localStorage.setItem('signedin', true);
-            alert(localStorage.getItem('signedin'));
             history.back();
             
         }
@@ -19,7 +18,6 @@ $( document ).on( "wb-ready.wb", function( event ) {
             menu.classList.add('hidden');
 
             const btnSignOut = document.getElementById('btn-sign-out');
-            console.log(btnSignOut);
             if(btnSignOut) {
                 
                 btnSignOut.onclick = function(e){
