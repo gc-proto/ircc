@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
     <!--CHANGE THE TITLE-->
-    <title>Studying in Canada as a minor: Who can apply</title>
+    <title>Studying in Canada as a minor: How to apply</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta name="description" content=" " />
     <link
@@ -318,8 +318,12 @@
             >
           </li>
           <li>
-            <a href="#" class="active" aria-current="page">Who can apply</a>
-            <a href="eligibility.html" class="visible-xs visible-sm"
+            <a href="eligibility.html" class="hidden-xs hidden-sm"
+              >Who can apply</a
+            >
+            <a
+              href="eligibility.html#gc-document-nav"
+              class="visible-xs visible-sm"
               >Who can apply</a
             >
           </li>
@@ -335,19 +339,16 @@
           </li>
 
           <li>
-            <a href="apply.html" class="hidden-xs hidden-sm">How to apply</a>
+            <a href="#" class="active" aria-current="page">How to apply</a>
             <a href="apply.html#gc-document-nav" class="visible-xs visible-sm"
               >How to apply</a
             >
           </li>
         </ul>
       </nav>
-      <h1 property="name" id="wb-cont" class="gc-thickline">Who can apply</h1>
-      <p>
-        Find out if your child needs a study permit by answering a few questions
-        below.
-      </p>
-      <form style="margin-top: 30px">
+      <h1 property="name" id="wb-cont" class="gc-thickline">How to apply</h1>
+      <p>Find out how to apply for a study permit for your child.</p>
+      <form>
         <div
           class="wb-fieldflow"
           data-wb-fieldflow='{ 
@@ -356,56 +357,107 @@
          "noForm": true
      }'
         >
-          <p>
-            <span data-ff-id="document"></span>Is the child a Canadian citizen
-            or permanent resident?
-          </p>
+          <p><span data-ff-id="document"></span>Where are you applying from?</p>
           <ul>
-            <li>Yes</li>
             <li>
-              No
+              Outside Canada
               <div class="wb-fieldflow-sub">
-                <p>
-                  Is the child accompanied by a parent who is a Canadian citizen
-                  or permanent resident?
-                </p>
+                <p>How long do you want to study in Canada?</p>
+                <ul>
+                  <li>
+                    6 months or less
+                    <div class="wb-fieldflow-sub">
+                      <p>
+                        Are you a minor child or applying for a minor child?
+                      </p>
+                      <ul>
+                        <li
+                          data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-minor-no-sp.html"}'
+                        >
+                          Yes
+                        </li>
+                        <li
+                          data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-short-sp.html"}'
+                        >
+                          No
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    More than 6 months
+                    <div class="wb-fieldflow-sub">
+                      <p>Do any of these describe you?</p>
+                      <ul>
+                        <li
+                          data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-minor-sp.html"}'
+                        >
+                          I’m a minor child or I’m applying for a minor child
+                        </li>
+                        <li
+                          data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-sp-exempt.html"}'
+                        >
+                          I’m a member of a foreign armed force for a designated
+                          state under the Visiting Forces Act
+                        </li>
+                        <li
+                          data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-sp-exempt.html"}'
+                        >
+                          I have registered Indian status in Canada
+                        </li>
+                        <li
+                          data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-gac.html"}'
+                        >
+                          I’m a family or staff member of a foreign
+                          representative in Canada
+                        </li>
+                        <li
+                          data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-sp.html"}'
+                        >
+                          None of these describe me
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              Inside Canada
+              <div class="wb-fieldflow-sub">
+                <p>What kind of permit do you have right now?</p>
                 <ul>
                   <li
                     data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-extend-sp.html"}'
                   >
-                    Yes
+                    Study permit
                   </li>
                   <li>
-                    No
+                    Work permit
                     <div class="wb-fieldflow-sub">
-                        <p>
-                          Is the child already in Canada with a parent who has a study or work permit?
+                      <div class="wb-fieldflow-header">
+                        <p class="wb-fieldflow-label">
+                          Do you hold one of the following documents?
                         </p>
                         <ul>
                           <li>
-                            Yes
+                            a valid work permit that was issued
+                            <strong>on or before</strong> June 7, 2023, or
                           </li>
                           <li>
-                           No
-                           <div class="wb-fieldflow-sub">
-                            <div class="wb-fieldflow-header">
-                              <p class="wb-fieldflow-label">
-                                Is the child already in Canada but neither parent is in Canada?
-                              </p>
-                            </div>
+                            a
+                            <a
+                              href="/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend/after-apply.html#online"
+                              >letter authorizing you to work</a
+                            >
+                            while we process your work permit extension
+                            application
                             <ul>
-                              <li
-                                data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-study-without-sp.html"}'
-                              >
-                                Yes
-                              </li>
-                              <li
-                                data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-extend-wp.html"}'
-                              >
-                                No
+                              <li>
+                                The letter must have been issued on or before
+                                June 7, 2023.
                               </li>
                             </ul>
-                          </div>
                           </li>
                         </ul>
                       </div>
@@ -423,6 +475,105 @@
                       </ul>
                     </div>
                   </li>
+                  <li>
+                    I don’t have either of these permits
+                    <div class="wb-fieldflow-sub">
+                      <p>How long do you want to study in Canada?</p>
+                      <ul>
+                        <li
+                          data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-outside-sp.html"}'
+                        >
+                          6 months or less
+                        </li>
+                        <li>
+                          More than 6 months
+                          <div class="wb-fieldflow-sub">
+                            <p>Do any of these describe you?</p>
+                            <ul>
+                              <li>
+                                I’m a minor child or I’m applying for a minor
+                                child
+                                <div class="wb-fieldflow-sub">
+                                  <div class="wb-fieldflow-header">
+                                    <p class="wb-fieldflow-label">
+                                      Will the minor child be doing any of the
+                                      following:
+                                    </p>
+                                    <ul>
+                                      <li>going to kindergarten</li>
+                                      <li>
+                                        going to pre-school, primary or
+                                        secondary school
+                                        <span class="text-uppercase"
+                                          ><strong>and</strong></span
+                                        >
+                                        is with a parent who has a valid work
+                                        <strong>or</strong> study permit
+                                      </li>
+                                      <li>
+                                        living as a refugee or refugee claimant
+                                      </li>
+                                      <li>
+                                        living in Canada without either of their
+                                        parents
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <ul>
+                                    <li
+                                      data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-minor-no-sp.html"}'
+                                    >
+                                      Yes
+                                    </li>
+                                    <li
+                                      data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-outside-sp-minor.html"}'
+                                    >
+                                      No
+                                    </li>
+                                  </ul>
+                                </div>
+                              </li>
+                              <li
+                                data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-sp-exempt.html"}'
+                              >
+                                I’m a member of a foreign armed force for a
+                                country that’s a designated state under the
+                                Visiting Forces Act
+                              </li>
+                              <li
+                                data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-sp-exempt.html"}'
+                              >
+                                I have registered Indian status in Canada
+                              </li>
+                              <li
+                                data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-gac.html"}'
+                              >
+                                I’m a family or staff member of a foreign
+                                representative in Canada
+                              </li>
+                              <li
+                                data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-no-sp-extend.html"}'
+                              >
+                                I’m an exchange student with a visa or visitor
+                                record and want to study longer
+                              </li>
+                              <li
+                                data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-no-sp-extend.html"}'
+                              >
+                                I’ve completed prerequisite courses and want to
+                                study longer
+                              </li>
+                              <li
+                                data-wb-fieldflow='{"action":"redir", "url": "/content/canadasite/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool/result-outside-sp.html"}'
+                              >
+                                None of these describe me
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </li>
@@ -431,31 +582,23 @@
         <input
           class="mrgn-bttm-lg btn btn-primary"
           type="submit"
-          value="Find out if your child needs a study permit"
+          value="Find out how to apply"
         />
       </form>
 
-      <h3>Why get a study permit if the minor doesn't need one</h3>
-      <p>
-        Having a study permit means, if the minor wants to, they may be able to
-      </p>
-      <ul>
-        <li>remain in school when they’re no longer a minor</li>
-        <li>get a secondary school co-op work permit</li>
-        <li>have access to social services in some provinces or territories</li>
-      </ul>
+
     </main>
     <section style="width: 70%; margin-left: auto; margin-right: auto">
-      <nav class="mrgn-bttm-lg mrgn-tp-lg" style="margin: 0">
+      <!-- <nav class="mrgn-bttm-lg mrgn-tp-lg" style="margin: 0">
         <h3 class="wb-inv">Document navigation</h3>
         <ul class="pager">
           <li class="next">
-            <a href="get-documents.html" rel="next"
-              ><span class="wb-inv">Next: </span>Next: Get your documents</a
+            <a href="eligibility.html" rel="next"
+              ><span class="wb-inv">Next: </span>Next: Who can apply</a
             >
           </li>
         </ul>
-      </nav>
+      </nav> -->
 
       <div class="clearfix"></div>
       <!-- <ul class="mrgn-lft-lg">
