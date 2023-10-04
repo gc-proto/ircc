@@ -133,22 +133,24 @@
 
 		<form method="get">
 			<div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+					"live": true,
 					"noForm": true,
 					"renderas": "radio",
 					"gcChckbxrdio":true,
-					"base": { 
+					"base": {
+						"live": true, 
 						"renderas": "radio", 
 						"gcChckbxrdio":true
 					}
 				}'>
-				<p>What is your application about?</p>
+				<p>What do you need to do?</p>
 				<ul>
-					<li data-wb-fieldflow='{"action":"redir", "url":"visit.html"}'>Visiting</li>
-					<li data-wb-fieldflow='{"action":"redir", "url":"work.html"}'>Working</li>
-					<li data-wb-fieldflow='{"action":"redir", "url":"study.html"}'>Studying</li>
-					<li data-wb-fieldflow='{"action":"redir", "url":"citizenship.html"}'>Canadian citizenship</li>
-					<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r5", "container": ".result-container", "type":"replace"}'>Reuniting with family</li>
-					<li data-wb-fieldflow='{"action":"redir", "url":"other.html"}'>Other</li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r10", "container": ".result-container", "type":"replace"}]'>Apply for Canadian citizenship</li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}]'>Apply for a citizenship certificate </li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r11", "container": ".result-container", "type":"replace"}]'>Take the citizenship test </li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r7", "container": ".result-container", "type":"replace"}]'>Download my electronic citizenship certificate </li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}]'>Search for my citizenship records </li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r12", "container": ".result-container", "type":"replace"}]'>Calculate my physical presence (for paper citizenship applications) </li>
 				</ul>
 			</div>
 

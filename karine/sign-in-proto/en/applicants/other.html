@@ -133,22 +133,24 @@
 
 		<form method="get">
 			<div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+					"live": true,
 					"noForm": true,
 					"renderas": "radio",
 					"gcChckbxrdio":true,
-					"base": { 
+					"base": {
+						"live": true, 
 						"renderas": "radio", 
 						"gcChckbxrdio":true
 					}
 				}'>
 				<p>What is your application about?</p>
 				<ul>
-					<li data-wb-fieldflow='{"action":"redir", "url":"visit.html"}'>Visiting</li>
-					<li data-wb-fieldflow='{"action":"redir", "url":"work.html"}'>Working</li>
-					<li data-wb-fieldflow='{"action":"redir", "url":"study.html"}'>Studying</li>
-					<li data-wb-fieldflow='{"action":"redir", "url":"citizenship.html"}'>Canadian citizenship</li>
-					<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r5", "container": ".result-container", "type":"replace"}'>Reuniting with family</li>
-					<li data-wb-fieldflow='{"action":"redir", "url":"other.html"}'>Other</li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r5", "container": ".result-container", "type":"replace"}]'>Adoption (through the immigration process)</li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r7", "container": ".result-container", "type":"replace"}]'>Asylum claims </li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r13", "container": ".result-container", "type":"replace"}]'>One of the special measures (such as the special measures for Ukraine or the Nova Scotia floods) </li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r5", "container": ".result-container", "type":"replace"}]'>Permanent residence card or permanent resident travel document</li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r?", "container": ".result-container", "type":"replace"}]'>Privately sponsoring refugees</li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}]'>The Interim Federal Health Program (for refugees) </li>
 				</ul>
 			</div>
 

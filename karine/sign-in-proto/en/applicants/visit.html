@@ -133,22 +133,23 @@
 
 		<form method="get">
 			<div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+					"live": true,
 					"noForm": true,
 					"renderas": "radio",
 					"gcChckbxrdio":true,
-					"base": { 
+					"base": {
+						"live": true, 
 						"renderas": "radio", 
 						"gcChckbxrdio":true
 					}
 				}'>
-				<p>What is your application about?</p>
+				<p>What did you apply for?</p>
 				<ul>
-					<li data-wb-fieldflow='{"action":"redir", "url":"visit.html"}'>Visiting</li>
-					<li data-wb-fieldflow='{"action":"redir", "url":"work.html"}'>Working</li>
-					<li data-wb-fieldflow='{"action":"redir", "url":"study.html"}'>Studying</li>
-					<li data-wb-fieldflow='{"action":"redir", "url":"citizenship.html"}'>Canadian citizenship</li>
-					<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r5", "container": ".result-container", "type":"replace"}'>Reuniting with family</li>
-					<li data-wb-fieldflow='{"action":"redir", "url":"other.html"}'>Other</li>
+					<li data-wb-fieldflow='{"action":"redir", "url":"visitor-visa.html"}'>A new visitor visa</li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r9", "container": ".result-container", "type":"replace"}]'>A transit visa</li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r9", "container": ".result-container", "type":"replace"}]'>A super visa</li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}]'>A visitor record (to stay longer in Canada) or to restore my visitor status </li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}]'>An electronic travel authorization (eTA), but I was asked to submit documents</li>
 				</ul>
 			</div>
 

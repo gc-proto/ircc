@@ -133,22 +133,21 @@
 
 		<form method="get">
 			<div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+					"live": true,
 					"noForm": true,
 					"renderas": "radio",
 					"gcChckbxrdio":true,
-					"base": { 
+					"base": {
+						"live": true, 
 						"renderas": "radio", 
 						"gcChckbxrdio":true
 					}
 				}'>
-				<p>What is your application about?</p>
+				<p>Is your application to work temporarily or permanently in Canada?</p>
 				<ul>
-					<li data-wb-fieldflow='{"action":"redir", "url":"visit.html"}'>Visiting</li>
-					<li data-wb-fieldflow='{"action":"redir", "url":"work.html"}'>Working</li>
-					<li data-wb-fieldflow='{"action":"redir", "url":"study.html"}'>Studying</li>
-					<li data-wb-fieldflow='{"action":"redir", "url":"citizenship.html"}'>Canadian citizenship</li>
-					<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r5", "container": ".result-container", "type":"replace"}'>Reuniting with family</li>
-					<li data-wb-fieldflow='{"action":"redir", "url":"other.html"}'>Other</li>
+					<li data-wb-fieldflow='{"action":"redir", "url":"work-temorarily.html"}'>Temporarily</li>
+					<li data-wb-fieldflow='{"action":"redir", "url":"work-permanently.html"}'>Permanently</li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}]'>I’m authorized to work without a work permit</li>
 				</ul>
 			</div>
 
