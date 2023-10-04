@@ -130,7 +130,13 @@
 		<h1 property="name" id="wb-cont" dir="ltr">Find my IRCC account</h1>
 
 		<form method="get">
-			<div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{"noForm": true, "renderas": "radio", "gcChckbxrdio":true}'>
+			<div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+				"noForm": true, 
+				"renderas": "radio", 
+				"gcChckbxrdio":true,
+				"default": {"action": "removeClass", "class":"hidden", "source":".result-container"},
+				"reset": {"action": "addClass", "class":"hidden", "source":".result-container"}
+			}'>
 				<p>What do you need to do?</p>
 				<ul>
 					<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r2", "container": ".result-container", "type":"replace"}'>Start an application</li>

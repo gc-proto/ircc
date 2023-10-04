@@ -136,10 +136,8 @@
 					"noForm": true,
 					"renderas": "radio",
 					"gcChckbxrdio":true,
-					"base": {
-						"renderas": "radio", 
-						"gcChckbxrdio":true
-					}
+					"default": {"action": "removeClass", "class":"hidden", "source":".result-container"},
+					"reset": {"action": "addClass", "class":"hidden", "source":".result-container"}
 				}'>
 				<p>Is your application to work temporarily or permanently in Canada?</p>
 				<ul>

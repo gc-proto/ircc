@@ -134,10 +134,8 @@
 					"noForm": true,
 					"renderas": "radio",
 					"gcChckbxrdio":true,
-					"base": {
-						"renderas": "radio", 
-						"gcChckbxrdio":true
-					}
+					"default": {"action": "removeClass", "class":"hidden", "source":".result-container"},
+					"reset": {"action": "addClass", "class":"hidden", "source":".result-container"}
 				}'>
 				<p>What part of your application do you need to access?</p>
 				<ul>
