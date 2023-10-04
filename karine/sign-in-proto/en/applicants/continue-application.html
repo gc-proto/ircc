@@ -140,12 +140,8 @@
 					"base": {
 						"live": true, 
 						"renderas": "radio", 
-						"gcChckbxrdio":true,
-						"default": {"action":"addClass", "class":"hidden", "source":".result"},
-						"reset": {"action":"addClass", "class":"hidden", "source":".result"}
-					},
-					"default": {"action":"addClass", "class":"hidden", "source":".result"},
-					"reset": {"action":"addClass", "class":"hidden", "source":".result"}
+						"gcChckbxrdio":true
+					}
 				}'>
 				<p>What is your application about?</p>
 				<ul>
@@ -154,10 +150,10 @@
 							<p>What did you apply for?</p>
 							<ul>
 								<li data-wb-fieldflow='{"action":"redir", "url":"visitor-visa.html"}'>A new visitor visa</li>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r9"}'>A transit visa</li>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r9"}'>A super visa</li>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>A visitor record (to stay longer in Canada) or to restore my visitor status </li>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>An electronic travel authorization (eTA), but I was asked to submit documents</li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r9", "container": ".result-container", "type":"replace"}'>A transit visa</li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r9", "container": ".result-container", "type":"replace"}'>A super visa</li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}'>A visitor record (to stay longer in Canada) or to restore my visitor status </li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}'>An electronic travel authorization (eTA), but I was asked to submit documents</li>
 							</ul>
 						</div>
 					</li>
@@ -167,7 +163,7 @@
 							<ul>
 								<li data-wb-fieldflow='{"action":"redir", "url":"work-temorarily.html"}'>Temporarily</li>
 								<li data-wb-fieldflow='{"action":"redir", "url":"work-permanently.html"}'>Permanently</li>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>I’m authorized to work without a work permit</li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}'>I’m authorized to work without a work permit</li>
 							</ul>
 						</div>
 					</li>
@@ -175,9 +171,9 @@
 						<div class="wb-fieldflow-sub">
 							<p>What did you apply for?</p>
 							<ul>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r9"}'>A study permit </li>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>To extend my current study permit or restore my student status </li>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r9"}'>Student Direct Stream</li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r9", "container": ".result-container", "type":"replace"}'>A study permit </li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}'>To extend my current study permit or restore my student status </li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r9", "container": ".result-container", "type":"replace"}'>Student Direct Stream</li>
 							</ul>
 						</div>
 					</li>
@@ -185,26 +181,26 @@
 						<div class="wb-fieldflow-sub">
 							<p>What do you need to do?</p>
 							<ul>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r10"}'>Apply for Canadian citizenship</li>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>Apply for a citizenship certificate </li>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r11"}'>Take the citizenship test </li>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r7"}'>Download my electronic citizenship certificate </li>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>Search for my citizenship records </li>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r12"}'>Calculate my physical presence (for paper citizenship applications) </li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r10", "container": ".result-container", "type":"replace"}'>Apply for Canadian citizenship</li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}'>Apply for a citizenship certificate </li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r11", "container": ".result-container", "type":"replace"}'>Take the citizenship test </li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r7", "container": ".result-container", "type":"replace"}'>Download my electronic citizenship certificate </li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}'>Search for my citizenship records </li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r12", "container": ".result-container", "type":"replace"}'>Calculate my physical presence (for paper citizenship applications) </li>
 							</ul>
 						</div>
 					</li>
-					<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r5"}'>Reuniting with family</li>
+					<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r5", "container": ".result-container", "type":"replace"}'>Reuniting with family</li>
 					<li>Other
 						<div class="wb-fieldflow-sub">
 							<p>What is your application about?</p>
 							<ul>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r5"}'>Adoption (through the immigration process)</li>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r7"}'>Asylum claims </li>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r13"}'>One of the special measures (such as the special measures for Ukraine or the Nova Scotia floods) </li>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r5"}'>Permanent residence card or permanent resident travel document</li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r5", "container": ".result-container", "type":"replace"}'>Adoption (through the immigration process)</li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r7", "container": ".result-container", "type":"replace"}'>Asylum claims </li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r13", "container": ".result-container", "type":"replace"}'>One of the special measures (such as the special measures for Ukraine or the Nova Scotia floods) </li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r5", "container": ".result-container", "type":"replace"}'>Permanent residence card or permanent resident travel document</li>
 								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".rtbd"}'>Privately sponsoring refugees</li>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".r6"}'>The Interim Federal Health Program (for refugees) </li>
+								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}'>The Interim Federal Health Program (for refugees) </li>
 							</ul>
 						</div>
 					</li>
@@ -214,285 +210,8 @@
 
 			<input class="mrgn-bttm-lg btn btn-primary" type="submit" value="Continue" />
 		</form>
+		<div class="result-container"></div>
 
-		<div class="result r5 hidden">
-			<h2>You’re looking for the Permanent residence portal</h2>
-			<p>Based on your selections, you want to sign in to the Permanent residence portal.</p>
-			<p><a href="https://prson-srpel.apps.cic.gc.ca/en/login" class="btn btn-call-to-action">Sign in to your Permanent residence portal account </a></p>
-			<details>
-				<summary>View services in the Permanent residence portal</summary>
-				<ul>
-					<li>apply for these permanent residence programs
-						<ul>
-							<li>Agri-Food Pilot</li>
-							<li>Atlantic Immigration Program</li>
-							<li>Economic Mobility Pathways Pilot</li>
-							<li>Family sponsorship (spouse, partner, dependent children, parents, grandparents, and other relatives)</li>
-							<li>Home Child Care and Home Support Worker Pilots</li>
-							<li>Humanitarian and compassionate reasons</li>
-							<li>Permanent residence pathways for Hong Kong residents</li>
-							<li>Protected persons</li>
-							<li>Provincial Nominee Program (non-Express Entry process)</li>
-							<li>Quebec entrepreneurs</li>
-							<li>Quebec investors</li>
-							<li>Quebec self-employed persons</li>
-							<li>Quebec skilled workers</li>
-							<li>Rural and Northern Immigration Pilot</li>
-							<li>Self-employed persons</li>
-							<li>Start-up Visa</li>
-						</ul>
-					</li>
-					<li>apply to renew or replace your permanent resident (PR) card</li>
-					<li>apply for your permanent resident travel document (PRTD)</li>
-					<li>confirm your presence in Canada</li>
-				</ul>
-			</details>
-
-		</div>
-		<div class="result r6 hidden">
-			<h2>You’re looking for the IRCC secure account</h2>
-			<p>Based on your selections, you want to sign in to the IRCC secure account.</p>
-			<p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn-call-to-action">Sign in to your IRCC secure account</a></p>
-			<details>
-				<summary>View services in the IRCC secure account</summary>
-				<ul>
-					<li>apply for a visitor visa, work permit or study permit</li>
-					<li>apply for a visitor record and to extend work permits and study permits</li>
-					<li>apply to restore your temporary status</li>
-					<li>apply for Express Entry</li>
-					<li>apply for the Interim Federal Health Program (for refugees)</li>
-					<li>apply for a citizenship certificate</li>
-					<li>apply to search citizenship records</li>
-					<li>link paper applications to check your application status</li>
-					<li>check the status of certain online applications
-						<ul>
-							<li>Agri-Food Pilot</li>
-							<li>Atlantic Immigration Program</li>
-							<li>caregivers</li>
-							<li>citizenship certificates</li>
-							<li>Economic Mobility Pathways Pilot</li>
-							<li>family sponsorship (spouse, partner, children, parents, grandparents, and other relatives)</li>
-							<li>health-care workers permanent residence pathway</li>
-							<li>humanitarian and compassionate cases</li>
-							<li>out-of-status construction workers in the Greater Toronto Area</li>
-							<li>protected persons</li>
-							<li>Quebec-selected skilled workers</li>
-							<li>Quebec investors</li>
-							<li>Quebec entrepreneurs</li>
-							<li>Rural and Northern Immigration Pilot</li>
-							<li>Search of citizenship records</li>
-							<li>self-employed persons</li>
-							<li>Start-up Visas</li>
-							<li>study permits</li>
-							<li>temporary resident permit holders</li>
-							<li>visitor visas, transit visas and super visas</li>
-							<li>work permits</li>
-						</ul>
-					</li>
-				</ul>
-				<p>You should also check our tool to confirm <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html">how to track applications for your situation</a>.</p>
-			</details>
-		</div>
-		<div class="result r7 hidden">
-			<h2>You’re looking for the IRCC Portal</h2>
-			<p>Based on your selections, you want to sign in to the IRCC Portal.</p>
-			<p><a href="https://ircc.canada.ca/visit-visiter/en/get-account-ircc-portal" class="btn btn btn-call-to-action">Sign in to your IRCC Portal account</a></p>
-			<details>
-				<summary>View services in the IRCC Portal</summary>
-				<ul>
-					<li>apply for a visitor visa, transit visa or super visa</li>
-					<li>apply for a study permit</li>
-					<li>submit an asylum claim </li>
-					<li>download an electronic citizenship certificate (if your citizenship application is approved and you chose an e-certificate)</li>
-				</ul>
-			</details>
-		</div>
-		<div class="result r8 hidden">
-			<h2>You’re looking for the Temporary Residence to Permanent Residence Portal</h2>
-			<p>Based on your selections, you want to sign in to the Temporary Residence to Permanent Residence Portal.</p>
-			<p><a href="https://trprpath-voiertrp.apps.cic.gc.ca/en/landing" class="btn btn-call-to-action">Sign in to your Temporary Residence to Permanent Residence Portal account</a></p>
-
-		</div>
-		<div class="result r9 hidden">
-			<h2>You’re looking for 1 of these 2 accounts</h2>
-			<p>Based on your selections, your application may be in either </p>
-			<div class="cnjnctn-type-or cnjnctn-md">
-				<div class="cnjnctn-col">
-					<h3>IRCC secure account</h3>
-					<p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn btn-call-to-action">Sign in to your IRCC secure account</a></p>
-					<details>
-						<summary>View services in the IRCC secure account</summary>
-						<ul>
-							<li>apply for a visitor visa, work permit or study permit</li>
-							<li>apply for a visitor record and to extend work permits and study permits</li>
-							<li>apply to restore your temporary status</li>
-							<li>apply for Express Entry</li>
-							<li>apply for the Interim Federal Health Program (for refugees)</li>
-							<li>apply for a citizenship certificate</li>
-							<li>apply to search citizenship records</li>
-							<li>link paper applications to check your application status</li>
-							<li>check the status of certain online applications
-								<ul>
-									<li>Agri-Food Pilot</li>
-									<li>Atlantic Immigration Program</li>
-									<li>caregivers</li>
-									<li>citizenship certificates</li>
-									<li>Economic Mobility Pathways Pilot</li>
-									<li>family sponsorship (spouse, partner, children, parents, grandparents, and other relatives)</li>
-									<li>health-care workers permanent residence pathway</li>
-									<li>humanitarian and compassionate cases</li>
-									<li>out-of-status construction workers in the Greater Toronto Area</li>
-									<li>protected persons</li>
-									<li>Quebec-selected skilled workers</li>
-									<li>Quebec investors</li>
-									<li>Quebec entrepreneurs</li>
-									<li>Rural and Northern Immigration Pilot</li>
-									<li>Search of citizenship records</li>
-									<li>self-employed persons</li>
-									<li>Start-up Visas</li>
-									<li>study permits</li>
-									<li>temporary resident permit holders</li>
-									<li>visitor visas, transit visas and super visas</li>
-									<li>work permits</li>
-								</ul>
-							</li>
-						</ul>
-						<p>You should also check our tool to confirm how to track applications for your situation.</p>
-
-					</details>
-				</div>
-				<div class="cnjnctn-col">
-					<h3>IRCC Portal</h3>
-					<p><a href="https://ircc.canada.ca/visit-visiter/en/get-account-ircc-portal" class="btn btn btn-call-to-action">Sign in to your IRCC Portal account</a></p>
-					<details>
-						<summary>View services in the IRCC Portal</summary>
-						<ul>
-							<li>apply for a visitor visa, transit visa or super visa</li>
-							<li>apply for a study permit</li>
-							<li>submit an asylum claim </li>
-							<li>download an electronic citizenship certificate (if your citizenship application is approved and you chose an e-certificate)</li>
-						</ul>
-					</details>
-				</div>
-			</div>
-
-		</div>
-		<div class="result r10 hidden">
-			<h2>You’re looking for the online citizenship application</h2>
-			<p>Based on your selections, you want to sign in to the online citizenship application.</p>
-			<p><a href="https://citapply-citdemande.apps.cic.gc.ca/en/sign-in" class="btn-btn-call-to-action">Sign in to your citizenship application account</a></p>
-		</div>
-		<div class="result r11 hidden">
-			<h2>You’re looking for the online citizenship test</h2>
-			<p>Based on your selections, you want to sign in to the online citizenship test.</p>
-			<p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test/online.html" class="btn-btn-call-to-action">Access the online citizenship test</a></p>
-		</div>
-		<div class="result r12 hidden">
-			<h2>You’re looking for the physical presence calculator</h2>
-			<p>Based on your selections, you want to sign in to the physical presence calculator.</p>
-			<p><a href="https://eservices.cic.gc.ca/rescalc/resCalcStartNew.do?&lang=en" class="btn-btn-call-to-action">Sign in to the physical presence calculator</a></p>
-			<h3>If you’re applying online for citizenship</h3>
-			<ul>
-				<li>You must be eligible to <a href="https://citapply-citdemande.apps.cic.gc.ca/en/landing">apply online</a>.</li>
-				<li>Use the calculator <strong>in</strong> your online account (instead of this calculator for paper applications).</li>
-			</ul>
-		</div>
-		<div class="result r13 hidden">
-			<h2>You’re looking for 1 of these 3 accounts</h2>
-			<p>Based on your selections, your application may be in 1 of these 3 accounts</p>
-			<div class="cnjnctn-type-or cnjnctn-md">
-				<div class="cnjnctn-col">
-					<h3>IRCC secure account</h3>
-					<p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn btn-call-to-action">Sign in to your IRCC secure account</a></p>
-					<details>
-						<summary>View services in the IRCC secure account</summary>
-						<ul>
-							<li>apply for a visitor visa, work permit or study permit</li>
-							<li>apply for a visitor record and to extend work permits and study permits</li>
-							<li>apply to restore your temporary status</li>
-							<li>apply for Express Entry</li>
-							<li>apply for the Interim Federal Health Program (for refugees)</li>
-							<li>apply for a citizenship certificate</li>
-							<li>apply to search citizenship records</li>
-							<li>link paper applications to check your application status</li>
-							<li>check the status of certain online applications
-								<ul>
-									<li>Agri-Food Pilot</li>
-									<li>Atlantic Immigration Program</li>
-									<li>caregivers</li>
-									<li>citizenship certificates</li>
-									<li>Economic Mobility Pathways Pilot</li>
-									<li>family sponsorship (spouse, partner, children, parents, grandparents, and other relatives)</li>
-									<li>health-care workers permanent residence pathway</li>
-									<li>humanitarian and compassionate cases</li>
-									<li>out-of-status construction workers in the Greater Toronto Area</li>
-									<li>protected persons</li>
-									<li>Quebec-selected skilled workers</li>
-									<li>Quebec investors</li>
-									<li>Quebec entrepreneurs</li>
-									<li>Rural and Northern Immigration Pilot</li>
-									<li>Search of citizenship records</li>
-									<li>self-employed persons</li>
-									<li>Start-up Visas</li>
-									<li>study permits</li>
-									<li>temporary resident permit holders</li>
-									<li>visitor visas, transit visas and super visas</li>
-									<li>work permits</li>
-								</ul>
-							</li>
-						</ul>
-						<p>You should also check our tool to confirm how to track applications for your situation.</p>
-
-					</details>
-				</div>
-				<div class="cnjnctn-col">
-					<h3>IRCC Portal</h3>
-					<p><a href="https://ircc.canada.ca/visit-visiter/en/get-account-ircc-portal" class="btn btn btn-call-to-action">Sign in to your IRCC Portal account</a></p>
-					<details>
-						<summary>View services in the IRCC Portal</summary>
-						<ul>
-							<li>apply for a visitor visa, transit visa or super visa</li>
-							<li>apply for a study permit</li>
-							<li>submit an asylum claim </li>
-							<li>download an electronic citizenship certificate (if your citizenship application is approved and you chose an e-certificate)</li>
-						</ul>
-					</details>
-				</div>
-				<div class="cnjnctn-col">
-					<h3>Permanent residence portal</h3>
-					<p><a href="https://prson-srpel.apps.cic.gc.ca/en/login" class="btn btn-call-to-action">Sign in to your Permanent residence portal account </a></p>
-					<details>
-						<summary>View services in the Permanent residence portal</summary>
-						<ul>
-							<li>apply for these permanent residence programs
-								<ul>
-									<li>Agri-Food Pilot</li>
-									<li>Atlantic Immigration Program</li>
-									<li>Economic Mobility Pathways Pilot</li>
-									<li>Family sponsorship (spouse, partner, dependent children, parents, grandparents, and other relatives)</li>
-									<li>Home Child Care and Home Support Worker Pilots</li>
-									<li>Humanitarian and compassionate reasons</li>
-									<li>Permanent residence pathways for Hong Kong residents</li>
-									<li>Protected persons</li>
-									<li>Provincial Nominee Program (non-Express Entry process)</li>
-									<li>Quebec entrepreneurs</li>
-									<li>Quebec investors</li>
-									<li>Quebec self-employed persons</li>
-									<li>Quebec skilled workers</li>
-									<li>Rural and Northern Immigration Pilot</li>
-									<li>Self-employed persons</li>
-									<li>Start-up Visa</li>
-								</ul>
-							</li>
-							<li>apply to renew or replace your permanent resident (PR) card</li>
-							<li>apply for your permanent resident travel document (PRTD)</li>
-							<li>confirm your presence in Canada</li>
-						</ul>
-					</details>
-				</div>
-			</div>
-			<p><a href="https://citapply-citdemande.apps.cic.gc.ca/en/landing" class="btn-btn-call-to-action">Sign in to the physical presence calculator</a></p>
-		</div>
 
 
 
