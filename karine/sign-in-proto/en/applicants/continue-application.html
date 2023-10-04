@@ -133,27 +133,29 @@
 
 		<form method="get">
 			<div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
-					"live": true,
 					"noForm": true,
 					"renderas": "radio",
 					"gcChckbxrdio":true,
-					"base": {
-						"live": true, 
+					"base": { 
 						"renderas": "radio", 
-						"gcChckbxrdio":true
-					}
+						"gcChckbxrdio":true,
+						"default": {"action":"addClass", "class":"hidden", "source":".result-container"},
+						"reset": {"action":"addClass", "class":"hidden", "source":".result-container"}
+					},
+					"default": {"action":"addClass", "class":"hidden", "source":".result-container"},
+					"reset": {"action":"addClass", "class":"hidden", "source":".result-container"}
 				}'>
 				<p>What is your application about?</p>
 				<ul>
 					<li>Visiting
-						<div class="wb-fieldflow-sub" id="q4">
+						<div class="wb-fieldflow-sub">
 							<p>What did you apply for?</p>
 							<ul>
 								<li data-wb-fieldflow='{"action":"redir", "url":"visitor-visa.html"}'>A new visitor visa</li>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r9", "container": ".result-container", "type":"replace"}'>A transit visa</li>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r9", "container": ".result-container", "type":"replace"}'>A super visa</li>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}'>A visitor record (to stay longer in Canada) or to restore my visitor status </li>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}'>An electronic travel authorization (eTA), but I was asked to submit documents</li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r9", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>A transit visa</li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r9", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>A super visa</li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>A visitor record (to stay longer in Canada) or to restore my visitor status </li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>An electronic travel authorization (eTA), but I was asked to submit documents</li>
 							</ul>
 						</div>
 					</li>
@@ -163,7 +165,7 @@
 							<ul>
 								<li data-wb-fieldflow='{"action":"redir", "url":"work-temorarily.html"}'>Temporarily</li>
 								<li data-wb-fieldflow='{"action":"redir", "url":"work-permanently.html"}'>Permanently</li>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}'>I’m authorized to work without a work permit</li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>I’m authorized to work without a work permit</li>
 							</ul>
 						</div>
 					</li>
@@ -171,9 +173,9 @@
 						<div class="wb-fieldflow-sub">
 							<p>What did you apply for?</p>
 							<ul>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r9", "container": ".result-container", "type":"replace"}'>A study permit </li>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}'>To extend my current study permit or restore my student status </li>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r9", "container": ".result-container", "type":"replace"}'>Student Direct Stream</li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r9", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>A study permit </li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>To extend my current study permit or restore my student status </li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r9", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Student Direct Stream</li>
 							</ul>
 						</div>
 					</li>
@@ -181,12 +183,12 @@
 						<div class="wb-fieldflow-sub">
 							<p>What do you need to do?</p>
 							<ul>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r10", "container": ".result-container", "type":"replace"}'>Apply for Canadian citizenship</li>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}'>Apply for a citizenship certificate </li>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r11", "container": ".result-container", "type":"replace"}'>Take the citizenship test </li>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r7", "container": ".result-container", "type":"replace"}'>Download my electronic citizenship certificate </li>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}'>Search for my citizenship records </li>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r12", "container": ".result-container", "type":"replace"}'>Calculate my physical presence (for paper citizenship applications) </li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r10", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Apply for Canadian citizenship</li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Apply for a citizenship certificate </li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r11", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Take the citizenship test </li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r7", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Download my electronic citizenship certificate </li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Search for my citizenship records </li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r12", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Calculate my physical presence (for paper citizenship applications) </li>
 							</ul>
 						</div>
 					</li>
@@ -195,12 +197,12 @@
 						<div class="wb-fieldflow-sub">
 							<p>What is your application about?</p>
 							<ul>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r5", "container": ".result-container", "type":"replace"}'>Adoption (through the immigration process)</li>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r7", "container": ".result-container", "type":"replace"}'>Asylum claims </li>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r13", "container": ".result-container", "type":"replace"}'>One of the special measures (such as the special measures for Ukraine or the Nova Scotia floods) </li>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r5", "container": ".result-container", "type":"replace"}'>Permanent residence card or permanent resident travel document</li>
-								<li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".rtbd"}'>Privately sponsoring refugees</li>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}'>The Interim Federal Health Program (for refugees) </li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r5", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Adoption (through the immigration process)</li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r7", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Asylum claims </li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r13", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>One of the special measures (such as the special measures for Ukraine or the Nova Scotia floods) </li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r5", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Permanent residence card or permanent resident travel document</li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r?", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Privately sponsoring refugees</li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>The Interim Federal Health Program (for refugees) </li>
 							</ul>
 						</div>
 					</li>
@@ -210,7 +212,7 @@
 
 			<input class="mrgn-bttm-lg btn btn-primary" type="submit" value="Continue" />
 		</form>
-		<div class="result-container"></div>
+		<div class="result-container hidden"></div>
 
 
 

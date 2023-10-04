@@ -138,21 +138,25 @@
 					"base": {
 						"live": true, 
 						"renderas": "radio", 
-						"gcChckbxrdio":true
-					}
+						"gcChckbxrdio":true,
+						"default": {"action":"addClass", "class":"hidden", "source":".result-container"},
+						"reset": {"action":"addClass", "class":"hidden", "source":".result-container"}
+					},
+					"default": {"action":"addClass", "class":"hidden", "source":".result-container"},
+					"reset": {"action":"addClass", "class":"hidden", "source":".result-container"}
 				}'>
 				<div class="wb-fieldflow-header">
 					<p class="wb-fieldflow-label">What permanent work program?</p>
 
 				</div>
 				<ul>
-					<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}'>Express Entry (including the Express Entry route for the Provincial Nominee Program)</li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Express Entry (including the Express Entry route for the Provincial Nominee Program)</li>
 					<li>Temporary resident to permanent resident pathway
 						<div class="wb-fieldflow-sub">
 							<p>What part of your application do you need to access?</p>
 							<ul>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r8", "container": ".result-container", "type":"replace"}'>Temporary resident to permanent resident pathway application </li>
-								<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}'>Work permit </li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r8", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Temporary resident to permanent resident pathway application </li>
+								<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Work permit </li>
 							</ul>
 						</div>
 					</li>
@@ -183,7 +187,7 @@
 			<input class="mrgn-bttm-lg btn btn-primary" type="submit" value="Continue" />
 		</form>
 
-		<div class="result-container"></div>
+		<div class="result-container hidden"></div>
 
 
 		<!-- CONTENT ENDS HERE -->
