@@ -131,45 +131,18 @@
 
 		<form method="post" action="https://prson-srpel.apps.cic.gc.ca/en/login">
 			<div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
-					"live": true,
 					"noForm": true,
 					"renderas": "radio",
 					"gcChckbxrdio":true,
 					"base": {
-						"live": true, 
 						"renderas": "radio", 
 						"gcChckbxrdio":true
 					}
 				}'>
-				<div class="wb-fieldflow-header">
-					<p class="wb-fieldflow-label">What permanent work program?</p>
-
-				</div>
+				<p>What part of your application do you need to access?</p>
 				<ul>
-					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}]'>Express Entry (including the Express Entry route for the Provincial Nominee Program)</li>
-					<li data-wb-fieldflow='{"action":"redir", "url":"tr-pr.html"}'>Temporary resident to permanent resident pathway</li>
-					<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r5", "container": ".result-container", "type":"replace"}'>Other program
-						&lt;details&gt;
-						&lt;summary&gt;Other programs include:&lt;/summary&gt;
-						&lt;ul&gt;
-						&lt;li&gt;Agri-Food Pilot&lt;/li&gt;
-						&lt;li&gt;Atlantic Immigration Program&lt;/li&gt;
-						&lt;li&gt;Economic Mobility Pathways Pilot&lt;/li&gt;
-						&lt;li&gt;Home Child Care and Home Support Worker Pilots&lt;/li&gt;
-						&lt;li&gt;Humanitarian and compassionate reasons&lt;/li&gt;
-						&lt;li&gt;Permanent residence pathways for Hong Kong residents&lt;/li&gt;
-						&lt;li&gt;Protected persons&lt;/li&gt;
-						&lt;li&gt;Provincial Nominee Program (non-Express Entry route)&lt;/li&gt;
-						&lt;li&gt;Quebec entrepreneurs&lt;/li&gt;
-						&lt;li&gt;Quebec investors&lt;/li&gt;
-						&lt;li&gt;Quebec self-employed persons&lt;/li&gt;
-						&lt;li&gt;Quebec skilled workers&lt;/li&gt;
-						&lt;li&gt;Rural and Northern Immigration Pilot&lt;/li&gt;
-						&lt;li&gt;Self-employed persons&lt;/li&gt;
-						&lt;li&gt;Start-up Visa&lt;/li&gt;
-						&lt;/ul&gt;
-						&lt;/details&gt;
-					</li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r8", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Temporary resident to permanent resident pathway application </li>
+					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Work permit </li>
 				</ul>
 			</div>
 			<input class="mrgn-bttm-lg btn btn-primary" type="submit" value="Next" />
