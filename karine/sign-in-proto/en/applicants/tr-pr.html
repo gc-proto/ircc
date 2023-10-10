@@ -363,6 +363,11 @@
 		<![endif]-->
 
 	<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
+	<script>
+		$(document).on("wb-ready", function (event) {
+			$(".wb-fieldflow").trigger("wb-init.wb-fieldflow");
+		});
+	</script>
 </body>
 
 </html>
