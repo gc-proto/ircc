@@ -83,6 +83,7 @@
 							<button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button>
 						</div>
 					</form>
+
 				</section>
 			</div>
 		</div>
@@ -139,9 +140,10 @@
 			</div>
 
 
-			<input class="mrgn-bttm-lg btn btn-primary" type="submit" value="Continue" />
+			<p class="pull-left"><a href="index.html" class="btn btn-default btn-lg mrgn-rght-md">Back</a></p>
+			<button class="mrgn-bttm-lg btn btn-primary btn-lg" type="submit">Continue</button>
 		</form>
-
+		<div class="clearfix"></div>
 
 
 		<!-- CONTENT ENDS HERE -->
@@ -355,6 +357,11 @@
 		<![endif]-->
 
 	<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
+	<script>
+		$(document).on("wb-ready", function (event) {
+			$(".wb-fieldflow").trigger("wb-init.wb-fieldflow");
+		});
+	</script>
 </body>
 
 </html>
