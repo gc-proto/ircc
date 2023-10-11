@@ -145,7 +145,7 @@
 				</ul>
 			</div>
 
-			<p class="pull-left"><a href="continue-application.html" class="btn btn-default btn-lg mrgn-rght-md">Back</a></p>
+			<p class="pull-left"><a href="work-permanently.html" class="btn btn-default btn-lg mrgn-rght-md">Back</a></p>
 			<input class="mrgn-bttm-lg btn btn-primary btn-lg" type="submit" value="Next" />
 		</form>
 
@@ -364,9 +364,13 @@
 
 	<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
 	<script>
-		$(document).on("wb-ready", function (event) {
-			$(".wb-fieldflow").trigger("wb-init.wb-fieldflow");
-		});
+		(function () {
+			window.onpageshow = function (event) {
+				if (event.persisted) {
+					window.location.reload();
+				}
+			};
+		})();
 	</script>
 </body>
 

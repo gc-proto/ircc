@@ -137,7 +137,7 @@
 				"default": {"action": "removeClass", "class":"hidden", "source":".result-container"},
 				"reset": {"action": "addClass", "class":"hidden", "source":".result-container"}
 			}'>
-				<p>What do you need to do?</p>
+				<p>What do you want to do?</p>
 				<ul>
 					<li data-wb-fieldflow='{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r2", "container": ".result-container", "type":"replace"}'>Start an application</li>
 					<li data-wb-fieldflow='{"action":"redir", "url":"continue-application.html"}'>Continue or view my application</li>
@@ -366,9 +366,13 @@
 
 	<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
 	<script>
-		$(document).on("wb-ready", function (event) {
-			$(".wb-fieldflow").trigger("wb-init.wb-fieldflow");
-		});
+		(function () {
+			window.onpageshow = function (event) {
+				if (event.persisted) {
+					window.location.reload();
+				}
+			};
+		})();
 	</script>
 </body>
 
