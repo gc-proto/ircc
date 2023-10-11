@@ -121,6 +121,9 @@
 				<ol class="breadcrumb">
 					<li><a href="https://www.canada.ca/en.html">Canada.ca</a></li>
 					<li><a href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+					<li><a href="../index.html">Sign in to an IRCC account</a></li>
+					<li><a href="find-out.html">Find your immigration account</a></li>
+					<li><a href="continue-application.html">Continue an application</a></li>
 				</ol>
 			</div>
 		</nav>
@@ -140,7 +143,9 @@
 					"default": {"action": "removeClass", "class":"hidden", "source":".result-container"},
 					"reset": {"action": "addClass", "class":"hidden", "source":".result-container"}
 				}'>
-				<p>What do you want to do?</p>
+				<div class="wb-fieldflow-header">
+					<p class="wb-fieldflow-label"><span class="h3">What do you want to do?</span></p>
+				</div>
 				<ul>
 					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r10", "container": ".result-container", "type":"replace"}]'>Apply for Canadian citizenship</li>
 					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"}]'>Apply for a citizenship certificate </li>

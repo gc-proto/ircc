@@ -119,6 +119,11 @@
 				<ol class="breadcrumb">
 					<li><a href="https://www.canada.ca/en.html">Canada.ca</a></li>
 					<li><a href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+					<li><a href="../index.html">Sign in to an IRCC account</a></li>
+					<li><a href="find-out.html">Find your immigration account</a></li>
+					<li><a href="continue-application.html">Continue an application</a></li>
+					<li><a href="work.html">Work</a></li>
+					<li><a href="work-permanently.html">Work permanently</a></li>
 				</ol>
 			</div>
 		</nav>
@@ -138,7 +143,9 @@
 					"default": {"action": "removeClass", "class":"hidden", "source":".result-container"},
 					"reset": {"action": "addClass", "class":"hidden", "source":".result-container"}
 				}'>
-				<p>What part of your application do you need to access?</p>
+				<div class="wb-fieldflow-header">
+					<p class="wb-fieldflow-label"><span class="h3">What part of your application do you need to access?</span></p>
+				</div>
 				<ul>
 					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r8", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Temporary resident to permanent resident pathway application </li>
 					<li data-wb-fieldflow='[{"action":"ajax", "url":"/ircc/karine/sign-in-proto/en/applicants/results.html .r6", "container": ".result-container", "type":"replace"},{"action":"removeClass", "class":"hidden", "source":".result-container"}]'>Work permit </li>
