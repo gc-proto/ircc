@@ -1,0 +1,169 @@
+@charset "UTF-8";
+
+/* Mixins */
+/* Color Variables */
+/* Theme Variables */
+/* Animations */
+@-webkit-keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+
+    33% {
+        transform: scale(0.9);
+    }
+
+    66% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+
+    33% {
+        transform: scale(0.9);
+    }
+
+    66% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+.progress-component {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    color: #000;
+    margin: 20px 0;
+}
+
+/* Component Styles - Steps */
+.steps {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 2rem 0;
+    list-style: none;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    pointer-events: none;
+}
+
+.step-active,
+.step-complete {
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.step:not(:last-child):before,
+.step:not(:last-child):after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 0.5rem;
+    content: "";
+    transform: translateY(-50%);
+    will-change: width;
+    z-index: 1;
+}
+
+.step:before {
+    width: 100%;
+    background-color: #DDD;
+}
+
+.step:after {
+    width: 0;
+    background-color: #59b956;
+}
+
+.step-complete:after {
+    width: 100% !important;
+    opacity: 1;
+    transition: width 0.6s ease-in-out, opacity 0.6s ease-in-out;
+}
+
+.step-icon,
+.step-label {
+    z-index: 2;
+}
+
+.step-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+    background-color: #DDD;
+    border: 0.35rem solid #DDD;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 2rem;
+}
+
+.step-icon:before {
+    display: block;
+    color: #fff;
+}
+
+.step-complete.step-active .step-icon {
+    color: #fff;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.step-incomplete.step-active .step-icon {
+    border-color: #59b956;
+    transition-delay: 0.5s;
+}
+
+.step-complete .step-icon {
+    -webkit-animation: bounce 0.5s ease-in-out;
+    animation: bounce 0.5s ease-in-out;
+    background-color: #59b956;
+    border-color: #59b956;
+    color: #fff;
+}
+
+.step-label {
+    position: absolute;
+    bottom: -3.5rem;
+    left: 50%;
+    margin-top: 1rem;
+    transform: translateX(-50%);
+
+}
+
+.step-incomplete.step-inactive .step-label {
+    color: #000;
+}
+
+.step-incomplete.step-active .step-label {
+    color: #000;
+}
+
+.step-active .step-label {
+    transition: color 0.3s ease-in-out;
+    transition-delay: 0.5s;
+}
