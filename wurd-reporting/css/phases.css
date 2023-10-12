@@ -1,0 +1,199 @@
+.phase-bar {
+    position: relative;
+    list-style: none;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+@media (min-width: 768px) {
+    .phase-bar {
+        display: -webkit-box;
+        display: -moz-box;
+        display: box;
+        display: -moz-flex;
+        display: flex;
+        box-orient: horizontal;
+        box-direction: normal;
+        -moz-flex-direction: row;
+        flex-direction: row;
+    }
+}
+
+.phase-bar>button {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    font-size: 1.2em;
+    font-weight: 500;
+    border: none !important;
+}
+
+@media (max-width: 767px) {
+    .phase-bar>button {
+        padding: 10px;
+        margin-bottom: 5px;
+    }
+}
+
+.phase-bar>button:before,
+.phase-bar>button:after {
+    position: absolute;
+    display: block;
+    content: "";
+    border-left: 4px solid #FFF;
+    top: 0;
+}
+
+.phase-bar>button:not(.seek):after {
+    transform: skew(-30deg);
+}
+
+.phase-bar>button:not(.seek):before {
+    transform: skew(30deg);
+}
+
+.phase-bar>button:first-child:after:not(.seek) {
+    content: none;
+}
+
+.phase-bar>button.move-forward,
+.phase-bar>button.move-forward:before,
+.phase-bar>button.move-forward:after {
+    background-color: #d9534f;
+}
+
+.phase-bar>button.move-forward:hover,
+.phase-bar>button.move-forward:hover:before,
+.phase-bar>button.move-forward:hover:after {
+    background-color: #c9302c;
+}
+
+.phase-bar>button.seek,
+.phase-bar>button.seek:before,
+.phase-bar>button.seek:after {
+    background-color: #3399CC;
+}
+
+.phase-bar>button.seek:hover,
+.phase-bar>button.seek:hover:before,
+.phase-bar>button.seek:hover:after {
+    background-color: #337ab7;
+}
+
+.phase-bar>button.wait,
+.phase-bar>button.wait:before,
+.phase-bar>button.wait:after {
+    background-color: #FFCC00;
+}
+
+.phase-bar>button.wait:hover,
+.phase-bar>button.wait:hover:before,
+.phase-bar>button.wait:hover:after {
+    background-color: #e2b503;
+}
+
+.phase-bar>button.apply,
+.phase-bar>button.apply:before,
+.phase-bar>button.apply:after {
+    background-color: #5cb85c;
+}
+
+.phase-bar>button.apply:hover,
+.phase-bar>button.apply:hover:before,
+.phase-bar>button.apply:hover:after {
+    background-color: #449d44;
+}
+
+.phase-bar>button.disabled {
+    pointer-events: none;
+}
+
+@media (min-width: 768px) {
+    .phase-bar>button {
+        line-height: 32px;
+        padding: 0 24px 0 16px;
+    }
+
+    .phase-bar>button:before,
+    .phase-bar>button:after {
+        left: -8px;
+        width: 16px;
+        height: 16px;
+    }
+
+    .phase-bar>button:after {
+        top: 16px;
+    }
+}
+
+@media (min-width: 768px) and (min-width: 768px) {
+    .phase-bar>button:first-child {
+        padding-left: 16px;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .phase-bar.lg>button {
+        line-height: 80px;
+        padding: 0 60px 0 20px;
+    }
+
+    .phase-bar.lg>button:before,
+    .phase-bar.lg>button:after {
+        left: -20px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .phase-bar.lg>button:after {
+        top: 40px;
+    }
+}
+
+@media (min-width: 768px) and (min-width: 768px) {
+    .phase-bar.lg>button:first-child {
+        padding-left: 40px;
+    }
+}
+
+/*Styling for projects below phase bar*/
+.project-container {
+    margin: 2px 0;
+    border: 2px solid #333;
+}
+
+.phase-project.row {
+    margin: 0;
+}
+
+.phase-project>div {
+    padding: 2px 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.phase-project a {
+    background-color: #D7E5F5;
+    padding: 5px 10px;
+    color: #333 !important;
+    text-decoration: none !important;
+    font-size: 0.8em;
+    width: 100%;
+    text-align: center;
+    display: block;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 3px 3px 3px 0px #eee;
+}
+
+.phase-project a:hover {
+    background-color: #c3d9f3;
+}
+
+.phase-project a.disabled {
+    background-color: #ddd;
+    box-shadow: none;
+}
