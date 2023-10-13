@@ -1,3 +1,30 @@
+.panel-default {
+    border-color: #33465c;
+}
+
+.panel-default>.panel-heading {
+    background-color: #33465c;
+    color: #fff;
+}
+
+.panel-body {
+    border-color: #33465c;
+}
+
+h2::after,
+h3:not(.panel-title)::after {
+    border-bottom: .18em solid #33465c;
+    content: "";
+    display: block;
+    padding-bottom: 8px;
+    width: 70px;
+}
+
+h3:not(.panel-title) {
+    border-color: #27387a;
+}
+
+
 .phase-bar {
     position: relative;
     list-style: none;
@@ -28,6 +55,7 @@
     font-size: 1em;
     font-weight: bold;
     border: none !important;
+    color: #666464;
 }
 
 @media (max-width: 767px) {
@@ -44,6 +72,7 @@
     content: "";
     border-left: 4px solid #FFF;
     top: 0;
+
 }
 
 .phase-bar>button:not(.seek):after {
@@ -61,49 +90,51 @@
 .phase-bar>button.move-forward,
 .phase-bar>button.move-forward:before,
 .phase-bar>button.move-forward:after {
-    background-color: #d9534f;
+    background-color: #374785;
+    color: #eee;
 }
 
 .phase-bar>button.move-forward:hover,
 .phase-bar>button.move-forward:hover:before,
 .phase-bar>button.move-forward:hover:after {
-    background-color: #c9302c;
+    background-color: #27387a;
 }
 
 .phase-bar>button.seek,
 .phase-bar>button.seek:before,
 .phase-bar>button.seek:after {
-    background-color: #3399CC;
+    background-color: #F8e9a1;
 }
 
 .phase-bar>button.seek:hover,
 .phase-bar>button.seek:hover:before,
 .phase-bar>button.seek:hover:after {
-    background-color: #337ab7;
+    background-color: #f7e279;
 }
 
 .phase-bar>button.wait,
 .phase-bar>button.wait:before,
 .phase-bar>button.wait:after {
-    background-color: #FFCC00;
+    background-color: #F76c6c;
+    color: #fff;
 }
 
 .phase-bar>button.wait:hover,
 .phase-bar>button.wait:hover:before,
 .phase-bar>button.wait:hover:after {
-    background-color: #e2b503;
+    background-color: #f85d5d;
 }
 
 .phase-bar>button.apply,
 .phase-bar>button.apply:before,
 .phase-bar>button.apply:after {
-    background-color: #5cb85c;
+    background-color: #A8d0e6;
 }
 
 .phase-bar>button.apply:hover,
 .phase-bar>button.apply:hover:before,
 .phase-bar>button.apply:hover:after {
-    background-color: #449d44;
+    background-color: #8fc6e4;
 }
 
 .phase-bar>button.disabled {
