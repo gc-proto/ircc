@@ -3,6 +3,7 @@ $phase-active: #59b956;
 $phase-active-font: #fff;
 $font: #474747;
 
+
 .user-journey {
     display: flex;
     margin: 20px 0;
@@ -15,8 +16,17 @@ $font: #474747;
         width: 100%;
         overflow: hidden;
 
-        display: flex;
-        flex-direction: row;
+        overflow: hidden;
+        margin: 0 !important;
+        padding: 0 5px !important;
+        padding-inline-start: 0 !important;
+        margin-block-start: 0 !important;
+        margin-block-end: 0 !important;
+
+        @media (min-width: 768px) {
+            display: flex;
+            flex-direction: row;
+        }
 
         margin: 0 !important;
         padding: 0 !important;
@@ -38,32 +48,44 @@ $font: #474747;
             line-height: 1em;
             height: 60px;
             padding: 0 60px 0 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
 
-            &::before,
-            &::after {
-                display: block;
-                position: absolute;
-                top: 0;
-                left: -20px;
-                content: "";
-                width: 30px;
-                height: 30px;
-                border-left: 4px solid #FFF;
-                background-color: $phase;
-
+            @media (max-width: 768px) {
+                border: 1px solid $font;
+                margin: 5px 0px;
+                padding: 15px;
+                height: max-content;
+                width: 100%;
             }
 
-            &:not(:first-child)::after {
-                transform: skew(-30deg);
-                top: 30px;
+            @media (min-width: 769px) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &::before,
+                &::after {
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: -20px;
+                    content: "";
+                    width: 30px;
+                    height: 30px;
+                    border-left: 4px solid #FFF;
+                    background-color: $phase;
+
+                }
+
+                &:not(:first-child)::after {
+                    transform: skew(-30deg);
+                    top: 30px;
+                }
+
+                &:not(:first-child)::before {
+                    transform: skew(30deg);
+                }
             }
 
-            &:not(:first-child)::before {
-                transform: skew(30deg);
-            }
         }
 
         li.active {
