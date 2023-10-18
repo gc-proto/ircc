@@ -1,0 +1,80 @@
+$phase: #bbdff3;
+$phase-active: #59b956;
+$phase-active-font: #fff;
+$font: #474747;
+
+.user-journey {
+    display: flex;
+    margin: 20px 0;
+
+    ol {
+        position: relative;
+        list-style: none;
+
+        text-align: center;
+        width: 100%;
+        overflow: hidden;
+
+        display: flex;
+        flex-direction: row;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        &:first-child {
+            padding-left: 16px;
+
+            &::after {
+                content: none;
+            }
+        }
+
+        li {
+            width: 100%;
+            position: relative;
+            background-color: $phase;
+            font-weight: bold;
+            color: $font;
+            line-height: 1em;
+            height: 60px;
+            padding: 0 60px 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &::before,
+            &::after {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: -20px;
+                content: "";
+                width: 30px;
+                height: 30px;
+                border-left: 4px solid #FFF;
+                background-color: $phase;
+
+            }
+
+            &:not(:first-child)::after {
+                transform: skew(-30deg);
+                top: 30px;
+            }
+
+            &:not(:first-child)::before {
+                transform: skew(30deg);
+            }
+        }
+
+        li.active {
+            background-color: $phase-active;
+            color: $phase-active-font;
+
+            &::before,
+            &::after {
+                background-color: $phase-active;
+            }
+        }
+
+    }
+}

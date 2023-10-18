@@ -1,30 +1,3 @@
-.panel-default {
-    border-color: #33465c;
-}
-
-.panel-default>.panel-heading {
-    background-color: #33465c;
-    color: #fff;
-}
-
-.panel-body {
-    border-color: #33465c;
-}
-
-h2::after,
-h3:not(.panel-title)::after {
-    border-bottom: .18em solid #33465c;
-    content: "";
-    display: block;
-    padding-bottom: 8px;
-    width: 70px;
-}
-
-h3:not(.panel-title) {
-    border-color: #27387a;
-}
-
-
 .phase-bar {
     position: relative;
     list-style: none;

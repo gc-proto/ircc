@@ -1,6 +1,7 @@
 @import url(steps-progress-bar.css);
 @import url(phases.css);
 @import url(user-journey.css);
+@import url(user-journey-simple.css);
 
 main {
     padding-bottom: 50px;
@@ -22,4 +23,31 @@ header h1 {
 
 .h1-sub {
     font-size: 0.8em;
+}
+
+.panel-default {
+    border-color: #33465c;
+}
+
+.panel-default>.panel-heading {
+    background-color: #33465c;
+    color: #fff;
+}
+
+.panel-body {
+    border-color: #33465c;
+}
+
+
+h2::after,
+h3:not(.panel-title)::after {
+    border-bottom: .18em solid #33465c;
+    content: "";
+    display: block;
+    padding-bottom: 8px;
+    width: 70px;
+}
+
+h3:not(.panel-title) {
+    border-color: #27387a;
 }

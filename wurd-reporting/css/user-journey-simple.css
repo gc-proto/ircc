@@ -1,0 +1,59 @@
+.user-journey {
+  display: flex;
+  margin: 20px 0;
+}
+.user-journey ol {
+  position: relative;
+  list-style: none;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.user-journey ol:first-child {
+  padding-left: 16px;
+}
+.user-journey ol:first-child::after {
+  content: none;
+}
+.user-journey ol li {
+  width: 100%;
+  position: relative;
+  background-color: #bbdff3;
+  font-weight: bold;
+  color: #474747;
+  line-height: 1em;
+  height: 60px;
+  padding: 0 60px 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user-journey ol li::before, .user-journey ol li::after {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -20px;
+  content: "";
+  width: 30px;
+  height: 30px;
+  border-left: 4px solid #FFF;
+  background-color: #bbdff3;
+}
+.user-journey ol li:not(:first-child)::after {
+  transform: skew(-30deg);
+  top: 30px;
+}
+.user-journey ol li:not(:first-child)::before {
+  transform: skew(30deg);
+}
+.user-journey ol li.active {
+  background-color: #59b956;
+  color: #fff;
+}
+.user-journey ol li.active::before, .user-journey ol li.active::after {
+  background-color: #59b956;
+}/*# sourceMappingURL=user-journey-simple.css.map */
