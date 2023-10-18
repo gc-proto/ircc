@@ -47,7 +47,7 @@
     justify-content: center;
     background-color: #fff;
     color: #000;
-    margin: 20px 0 40px 0;
+    margin: 40px 0 0;
 }
 
 /* Component Styles - Steps */
@@ -69,11 +69,7 @@
     pointer-events: none;
 }
 
-.step-active,
-.step-complete {
-    cursor: pointer;
-    pointer-events: all;
-}
+
 
 .step:not(:last-child):before,
 .step:not(:last-child):after {
@@ -148,11 +144,21 @@
 
 .step-label {
     position: absolute;
-    bottom: -3.5rem;
+    top: -3.5rem;
+    margin-top: 0;
     left: 50%;
-    margin-top: 1rem;
     transform: translateX(-50%);
+}
 
+@media screen and (max-width: 768px) {
+    .step-label {
+        font-size: 0.8em;
+    }
+
+    .step:nth-child(even)>.step-label {
+        bottom: 0;
+        margin-top: 7.5rem;
+    }
 }
 
 .step-incomplete.step-inactive .step-label {

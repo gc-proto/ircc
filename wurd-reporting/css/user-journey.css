@@ -1,0 +1,196 @@
+.phase {
+  background-color: #bbdff3;
+  color: #474747;
+  padding: 15px 0;
+  font-size: 1.1em;
+  font-weight: bold;
+  position: relative;
+  text-align: center;
+}
+
+.project {
+  text-align: center;
+  background-color: #F1F2F3;
+  padding: 5px 15px;
+  border: 1px solid #ccc;
+  position: relative;
+  align-self: start;
+}
+
+.project a {
+  text-decoration: none !important;
+  width: 100%;
+  height: 100%;
+}
+
+.project:is(:hover, :focus) {
+  background-color: #eee;
+}
+
+.div8,
+.div9,
+.div10 {
+  text-align: center;
+  height: 10px;
+  margin-top: 0px;
+  border-bottom: 2px solid #474747;
+  border-right: 2px solid #474747;
+  border-left: 2px solid #474747;
+  position: relative;
+}
+.div8 span,
+.div9 span,
+.div10 span {
+  transform: rotate(90deg);
+  font-size: 0.5em;
+  position: absolute;
+  bottom: -10px;
+  top: unset;
+}
+
+.div8 {
+  border-bottom: none;
+  border-top: 2px solid #474747;
+}
+.div8 span {
+  top: -10px;
+  bottom: unset;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 15px;
+  grid-template-rows: max-content;
+  margin: 30px 0;
+}
+
+.div1 {
+  grid-area: 3/1/4/2;
+}
+
+.div2 {
+  grid-area: 3/2/4/3;
+}
+
+.div3 {
+  grid-area: 3/3/4/4;
+}
+
+.div4 {
+  grid-area: 3/4/4/5;
+}
+
+.div5 {
+  grid-area: 5/1/6/2;
+}
+
+.div6 {
+  grid-area: 5/2/6/4;
+}
+
+.div7 {
+  grid-area: 1/1/2/5;
+  align-self: end;
+}
+
+.div8 {
+  grid-area: 2/1/3/5;
+}
+
+.div9 {
+  grid-area: 4/1/5/2;
+}
+
+.div10 {
+  grid-area: 4/2/5/4;
+}
+
+@media screen and (max-width: 991px) {
+  .parent {
+    grid-template-columns: 1fr 2% 1fr 2% 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 20px;
+    font-size: 0.8em !important;
+  }
+  .div1 {
+    grid-area: 1/3/2/4;
+  }
+  .div2 {
+    grid-area: 2/3/3/4;
+  }
+  .div3 {
+    grid-area: 3/3/4/4;
+  }
+  .div4 {
+    grid-area: 4/3/5/4;
+  }
+  .div5 {
+    grid-area: 1/1/2/2;
+  }
+  .div6 {
+    grid-area: 2/1/4/2;
+  }
+  .div7 {
+    grid-area: 1/5/5/6;
+    align-self: start;
+  }
+  .div8 {
+    grid-area: 1/4/5/5;
+  }
+  .div9 {
+    grid-area: 1/2/2/3;
+  }
+  .div10 {
+    grid-area: 2/2/4/3;
+  }
+  .phase {
+    font-size: 1em !important;
+    line-height: 1.5;
+    padding: 5px;
+  }
+  .project {
+    line-height: 1.5;
+    height: 100%;
+    display: flex;
+  }
+  .project span:first-child {
+    width: 100%;
+    align-self: center;
+    height: -moz-min-content;
+    height: min-content;
+  }
+  .div8,
+  .div9,
+  .div10 {
+    text-align: center;
+    width: 10px;
+    margin-top: 0px;
+    border-bottom: 2px solid #474747;
+    border-top: 2px solid #474747;
+    border-left: 2px solid #474747;
+    border-right: none;
+    position: relative;
+    align-self: center;
+    height: 100%;
+  }
+  .div8 span,
+  .div9 span,
+  .div10 span {
+    transform: rotate(0deg);
+    font-size: 0.5em;
+    position: absolute;
+    left: -9px;
+    top: 50%;
+  }
+  .div8 {
+    border-left: none;
+    border-right: 2px solid #474747;
+  }
+  .div8 span {
+    left: 9px;
+  }
+}/*# sourceMappingURL=user-journey.css.map */
