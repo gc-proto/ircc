@@ -17,7 +17,7 @@
   margin: 0 !important;
   padding: 0 !important;
 }
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .user-journey ol {
     display: flex;
     flex-direction: row;
@@ -37,9 +37,9 @@
   color: #474747;
   line-height: 1em;
   height: 60px;
-  padding: 0 60px 0 20px;
+  padding: 2px 60px 2px 20px;
 }
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .user-journey ol li {
     border: 1px solid #474747;
     margin: 5px 0px;
@@ -49,7 +49,12 @@
     width: 100%;
   }
 }
-@media (min-width: 769px) {
+@media screen and (max-width: 991px) {
+  .user-journey ol li {
+    font-size: 0.8em;
+  }
+}
+@media screen and (min-width: 769px) {
   .user-journey ol li {
     display: flex;
     justify-content: center;
