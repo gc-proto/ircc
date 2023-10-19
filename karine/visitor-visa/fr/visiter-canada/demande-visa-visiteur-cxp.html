@@ -34,7 +34,7 @@
 					<h2 class="wb-inv">Sélection de la langue</h2>
 					<ul class="list-inline mrgn-bttm-0">
 						<li>
-							<a lang="en" hreflang="en" href="../../en/visit-canada/apply-visitor-visa-cxp.html">
+							<a lang="en" hreflang="en" href="../../en/visit-canada/apply-visitor-visa.html">
 								<span class="hidden-xs">English</span>
 								<abbr title="English" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">en</abbr>
 							</a>
@@ -188,12 +188,12 @@
 					  "unhideelm":  "#ff",
 					  "live": true,
 					  "base": { "live": true, "gcChckbxrdio":true, "renderas": "radio" },
-					  "default" : [{"action": "addClass", "class": "hidden", "source": "#btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account"}],
+					  "default" : [{"action": "addClass", "class": "hidden", "source": "#btn-submit, .cnt-rslt, #cxp, .cxp, .ircc-portal, .ircc-secure-account"}],
 					  "reset" : [{"action": "addClass", "class": "hidden", "source": ".ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account"},{"action": "removeClass", "class": "hidden", "source": "dt"}]
 					  }'>
 					<p>Pourquoi venez-vous au Canada?</p>
 					<ul>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account, .alone"}]'>Pour visiter à titre de touriste</li>
+						<li data-wb-fieldflow='{"action":"append", "source": "#cxp-question"}'>Pour visiter à titre de touriste</li>
 						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#business, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>Pour des raisons d’affaires</li>
 						<li>
 							Pour visiter de la famille
@@ -203,22 +203,56 @@
 									<li data-wb-fieldflow='{"action":"append", "source": "#q2"}'>Citoyen canadien</li>
 									<li data-wb-fieldflow='{"action":"append", "source": "#q2"}'>Personne inscrites en vertu de la Loi sur les Indiens du Canada</li>
 									<li data-wb-fieldflow='{"action":"append", "source": "#q2"}'>Résident permanent du Canada</li>
-									<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#temp-resident, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt"}]'>Résident temporaire du Canada</li>
+									<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#temp-resident, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt, .cxp"}]'>Résident temporaire du Canada</li>
 								</ul>
 							</div>
 						</li>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#compassionate, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt"}]'>Pour des raisons d'ordre humanitaires</li>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-secure-account, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-portal"}]'>Aucune de ces réponses</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#compassionate, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt, .cxp"}]'>Pour des raisons d'ordre humanitaires</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-secure-account, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-portal, .cxp"}]'>Aucune de ces réponses</li>
 					</ul>
 				</div>
 				<div class="wb-fieldflow-sub hidden" id="q2">
 					<p>Avez-vous l’intention de visiter vos enfants ou vos petits-enfants pour plus de 6 mois?</p>
 					<ul>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#super-visa-imm, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt"}]'>Oui</li>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#imm-family, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>Non</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#super-visa-imm, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt, .cxp"}]'>Oui</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#imm-family, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account, .cxp"}]'>Non</li>
 					</ul>
 				</div>
-
+				<div class="wb-fieldflow-sub hidden" id="cxp-question">
+					<p>À qui s'adresse la demande?</p>
+					<ul>
+						<li data-wb-fieldflow='[{"action":"addClass", "class":"hidden", "source":".myself"}]'>
+							Moi-même
+							<div class="wb-fieldflow-sub">
+								<p>Avez-vous 18 ans ou plus?</p>
+								<ul>
+									<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".over18"}]'>
+										Oui
+										<div class="wb-fieldflow-sub">
+											<p>Avez-vous déjà demandé un visa de visiteur dans le passé?</p>
+											<ul>
+												<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".ircc-portal, #tourist, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".cxp, .ircc-secure-account"}]'>Oui</li>
+												<li>
+													Non
+													<div class="wb-fieldflow-sub">
+														<p>Vous voyagez seul?</p>
+														<ul>
+															<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".cxp, #tourist, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account, .alone"}]'>Oui</li>
+															<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-portal, #btn-submit, .alone"}, {"action":"addClass", "class":"hidden", "source":".cxp, .ircc-secure-account"}]'>Non</li>
+														</ul>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".cxp, #ircc-secure-account, .over18"}]'>Non</li>
+								</ul>
+							</div>
+						</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-portal, #btn-submit, .myself"}, {"action":"addClass", "class":"hidden", "source":".cxp, .ircc-secure-account"}]'>Quelqu'un d'autre</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-portal, #btn-submit, .myself"}, {"action":"addClass", "class":"hidden", "source":".cxp, .ircc-secure-account"}]'>Moi-même et quelqu'un d'autre</li>
+					</ul>
+				</div>
 				<button class="btn btn-primary hidden" type="button" value="Continue" id="btn-submit" data-gc-analytics-formsubmit="submit" data-wb-doaction='{"action":"removeClass", "class":"hidden", "source":".cnt-rslt"}'>Continuer</button>
 			</form>
 		</div>
@@ -1337,9 +1371,16 @@
 							</div>
 						</div>
 
-						<h3 class="text-muted">Présenter une demande sur le portail d’IRCC</h3>
-						<p><a href="https://portal-portail.apps.cic.gc.ca/signin?lang=fr" class="btn btn-call-to-action mrgn-tp-sm">Ouvrir une nouvelle session dans le portail d'IRCC</a></p>
-
+						<div class="cnjnctn-type-or cnjnctn-sm ircc-portal">
+							<div class="cnjnctn-col">
+								<h3 class="text-muted">Présenter une demande sur le portail d’IRCC<span class="wb-inv cxp">: Option 1 de 2</span></h3>
+								<p><a href="https://portal-portail.apps.cic.gc.ca/signin?lang=fr" class="btn btn-call-to-action mrgn-tp-sm">Ouvrir une nouvelle session dans le portail d'IRCC</a></p>
+							</div>
+							<div class="cnjnctn-col cxp">
+								<h3 class="text-muted">Présenter une demande sur la nouvelle plateforme bêta<span class="wb-inv">: Option 1 de 2</span></h3>
+								<p><a href="#" class="btn btn-primary mrgn-tp-sm">Ouvrir une session dans la plateforme d'expérience client</a></p>
+							</div>
+						</div>
 
 					</div>
 					<details class="">
