@@ -46,7 +46,7 @@
 						<div class="col-md-12">
 							<ul class="list-inline mrgn-bttm-0">
 								<li>
-									<a lang="fr" href="../../fr/visiter-canada/demande-visa-visiteur.html">
+									<a lang="fr" href="../../fr/visiter-canada/demande-visa-visiteur-v2.html">
 										<span class="hidden-xs">Fran&ccedil;ais</span>
 										<abbr title="Fran&ccedil;ais" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
 									</a>
@@ -227,12 +227,12 @@
                   "unhideelm":  "#ff",
                   "live": true,
                   "base": { "live": true, "gcChckbxrdio":true, "renderas": "radio" },
-                  "default" : [{"action": "addClass", "class": "hidden", "source": "#btn-submit, .cnt-rslt, #cxp, .cxp, .ircc-portal, .ircc-secure-account"}],
+                  "default" : [{"action": "addClass", "class": "hidden", "source": "#btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account"}],
                   "reset" : [{"action": "addClass", "class": "hidden", "source": ".ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account"},{"action": "removeClass", "class": "hidden", "source": "dt"}]
                   }'>
 					<p>Why are you applying for a visitor visa?</p>
 					<ul>
-						<li data-wb-fieldflow='{"action":"append", "source": "#cxp-question"}'>To visit as a tourist</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-portal, #btn-submit, .alone"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>To visit as a tourist</li>
 						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#business, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>To visit for business</li>
 						<li>
 							For a family visit
@@ -242,56 +242,22 @@
 									<li data-wb-fieldflow='{"action":"append", "source": "#q2"}'>Canadian citizen</li>
 									<li data-wb-fieldflow='{"action":"append", "source": "#q2"}'>Person registered under Canada’s Indian Act</li>
 									<li data-wb-fieldflow='{"action":"append", "source": "#q2"}'>Canadian permanent resident</li>
-									<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#temp-resident, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt, .cxp"}]'>Temporary resident in Canada</li>
+									<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#temp-resident, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt"}]'>Temporary resident in Canada</li>
 								</ul>
 							</div>
 						</li>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#compassionate, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt, .cxp"}]'>For compassionate reasons</li>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-secure-account, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-portal, .cxp"}]'>None of the above</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#compassionate, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt"}]'>For compassionate reasons</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-secure-account, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-portal"}]'>None of the above</li>
 					</ul>
 				</div>
 				<div class="wb-fieldflow-sub hidden" id="q2">
 					<p>Do you plan to visit your children or grandchildren for more than 6 months?</p>
 					<ul>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#super-visa-imm, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt, .cxp"}]'>Yes</li>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#imm-family, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account, .cxp"}]'>No</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#super-visa-imm, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt"}]'>Yes</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#imm-family, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>No</li>
 					</ul>
 				</div>
-				<div class="wb-fieldflow-sub hidden" id="cxp-question">
-					<p>Who are you applying for?</p>
-					<ul>
-						<li data-wb-fieldflow='[{"action":"addClass", "class":"hidden", "source":".myself"}]'>
-							Myself
-							<div class="wb-fieldflow-sub">
-								<p>Are you 18 years old or older?</p>
-								<ul>
-									<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".over18"}]'>
-										Yes
-										<div class="wb-fieldflow-sub">
-											<p>Have you applied for a visitor visa in the past?</p>
-											<ul>
-												<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".ircc-portal, #tourist, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".cxp, .ircc-secure-account"}]'>Yes</li>
-												<li>
-													No
-													<div class="wb-fieldflow-sub">
-														<p>Are you travelling alone?</p>
-														<ul>
-															<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".cxp, #tourist, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account, .alone"}]'>Yes</li>
-															<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-portal, #btn-submit, .alone"}, {"action":"addClass", "class":"hidden", "source":".cxp, .ircc-secure-account"}]'>No</li>
-														</ul>
-													</div>
-												</li>
-											</ul>
-										</div>
-									</li>
-									<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".cxp, #ircc-secure-account, .over18"}]'>No</li>
-								</ul>
-							</div>
-						</li>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-portal, #btn-submit, .myself"}, {"action":"addClass", "class":"hidden", "source":".cxp, .ircc-secure-account"}]'>Someone else</li>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-portal, #btn-submit, .myself"}, {"action":"addClass", "class":"hidden", "source":".cxp, .ircc-secure-account"}]'>Myself and someone else</li>
-					</ul>
-				</div>
+
 				<button class="btn btn-primary hidden" type="button" value="Continue" id="btn-submit" data-gc-analytics-formsubmit="submit" data-wb-doaction='{"action":"removeClass", "class":"hidden", "source":".cnt-rslt"}'>Continue</button>
 			</form>
 		</div>
@@ -1411,16 +1377,8 @@
 							</div>
 						</div>
 
-						<div class="cnjnctn-type-or cnjnctn-sm ircc-portal">
-							<div class="cnjnctn-col">
-								<h3 class="text-muted">Apply through the IRCC Portal<span class="wb-inv cxp">: Option 1 of 2</span></h3>
-								<p><a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="btn btn-call-to-action mrgn-tp-sm">Sign in to the IRCC portal</a></p>
-							</div>
-							<div class="cnjnctn-col cxp">
-								<h3 class="text-muted">Apply through the new beta platform<span class="wb-inv">: Option 1 of 2</span></h3>
-								<p><a href="#" class="btn btn-primary mrgn-tp-sm">Sign in to CXP</a></p>
-							</div>
-						</div>
+						<h3 class="text-muted">Apply through the IRCC Portal</h3>
+						<p><a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="btn btn-call-to-action mrgn-tp-sm">Sign in to the IRCC portal</a></p>
 
 					</div>
 					<details class="">
