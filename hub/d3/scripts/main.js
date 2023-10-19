@@ -1,3 +1,3 @@
-import includeHTML from 'template.js';
+import includeHTML from './template.js';
 
 includeHTML();
