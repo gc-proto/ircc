@@ -188,8 +188,8 @@
 					  "unhideelm":  "#ff",
 					  "live": true,
 					  "base": { "live": true, "gcChckbxrdio":true, "renderas": "radio" },
-					  "default" : [{"action": "addClass", "class": "hidden", "source": "#btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account"}],
-					  "reset" : [{"action": "addClass", "class": "hidden", "source": ".ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account"},{"action": "removeClass", "class": "hidden", "source": "dt"}]
+					  "default" : [{"action": "addClass", "class": "hidden", "source": ".def, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account"}],
+					  "reset" : [{"action": "addClass", "class": "hidden", "source": ".def, .ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account"},{"action": "removeClass", "class": "hidden", "source": "dt"}]
 					  }'>
 					<p>Pourquoi venez-vous au Canada?</p>
 					<ul>
@@ -203,18 +203,18 @@
 									<li data-wb-fieldflow='{"action":"append", "source": "#q2"}'>Citoyen canadien</li>
 									<li data-wb-fieldflow='{"action":"append", "source": "#q2"}'>Personne inscrites en vertu de la Loi sur les Indiens du Canada</li>
 									<li data-wb-fieldflow='{"action":"append", "source": "#q2"}'>Résident permanent du Canada</li>
-									<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#temp-resident, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt"}]'>Résident temporaire du Canada</li>
+									<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#temp-resident, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>Résident temporaire du Canada</li>
 								</ul>
 							</div>
 						</li>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#compassionate, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt"}]'>Pour des raisons d'ordre humanitaires</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#compassionate, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>Pour des raisons d'ordre humanitaires</li>
 						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-secure-account, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-portal"}]'>Aucune de ces réponses</li>
 					</ul>
 				</div>
 				<div class="wb-fieldflow-sub hidden" id="q2">
 					<p>Avez-vous l’intention de visiter vos enfants ou vos petits-enfants pour plus de 6 mois?</p>
 					<ul>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#super-visa-imm, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt"}]'>Oui</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#super-visa-imm, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>Oui</li>
 						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#imm-family, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>Non</li>
 					</ul>
 				</div>
@@ -235,7 +235,7 @@
 						<li>Même si vous soumettez tous les documents mentionnés, ce n’est pas un garanti que votre demande sera approuvée.</li>
 						<li>Il se peut que nous vous demandions d’autres renseignements ou documents qui ne figurent pas sur cette liste.</li>
 					</ul>
-					<div id="tourist" class="ff-hide">
+					<div id="tourist" class="def ff-hide">
 						<h3 class="mrgn-tp-md">Touriste</h3>
 						<dl class="dl-horizontal">
 							<dt>Document d’identité</dt>
@@ -382,7 +382,7 @@
 							</dl>
 						</details>
 					</div>
-					<div id="business" class="ff-hide">
+					<div id="business" class="def ff-hide">
 						<h3>Raisons d’affaires</h3>
 						<dl class="dl-horizontal">
 							<dt>Document d’identité</dt>
@@ -532,7 +532,7 @@
 							</dl>
 						</details>
 					</div>
-					<div id="imm-family" class="ff-hide">
+					<div id="imm-family" class="def ff-hide">
 						<h3>Visiter de la famille (Citoyen canadien, personne inscrite en vertu de la Loi sur les Indiens, ou résident permanent du Canada)</h3>
 
 						<dl class="dl-horizontal">
@@ -743,7 +743,7 @@
 							</dl>
 						</details>
 					</div>
-					<div id="super-visa-imm" class="ff-hide">
+					<div id="super-visa-imm" class="def ff-hide">
 						<h3>Visiter vos enfants ou vos petits-enfants. Option super visa.</h3>
 						<dl class="dl-horizontal">
 							<dt>Lettre d’invitation</dt>
@@ -993,7 +993,7 @@
 							</dl>
 						</details>
 					</div>
-					<div id="temp-resident" class="ff-hide">
+					<div id="temp-resident" class="def ff-hide">
 						<h3>Visiter de la famille (résident temporaire du Canada)</h3>
 
 						<dl class="dl-horizontal">
@@ -1160,7 +1160,7 @@
 							</dl>
 						</details>
 					</div>
-					<div id="compassionate" class="ff-hide">
+					<div id="compassionate" class="def ff-hide">
 						<h3>Raisons humanitaires</h3>
 						<dl class="dl-horizontal">
 							<dt>Document d’identité</dt>

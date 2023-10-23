@@ -227,8 +227,8 @@
                   "unhideelm":  "#ff",
                   "live": true,
                   "base": { "live": true, "gcChckbxrdio":true, "renderas": "radio" },
-                  "default" : [{"action": "addClass", "class": "hidden", "source": "#btn-submit, .cnt-rslt, #cxp, .cxp, .ircc-portal, .ircc-secure-account"}],
-                  "reset" : [{"action": "addClass", "class": "hidden", "source": ".ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account"},{"action": "removeClass", "class": "hidden", "source": "dt"}]
+                  "default" : [{"action": "addClass", "class": "hidden", "source": ".def, #btn-submit, .cnt-rslt, #cxp, .cxp, .ircc-portal, .ircc-secure-account"}],
+                  "reset" : [{"action": "addClass", "class": "hidden", "source": ".def, .ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account"},{"action": "removeClass", "class": "hidden", "source": "dt"}]
                   }'>
 					<p>Why are you applying for a visitor visa?</p>
 					<ul>
@@ -242,18 +242,18 @@
 									<li data-wb-fieldflow='{"action":"append", "source": "#q2"}'>Canadian citizen</li>
 									<li data-wb-fieldflow='{"action":"append", "source": "#q2"}'>Person registered under Canada’s Indian Act</li>
 									<li data-wb-fieldflow='{"action":"append", "source": "#q2"}'>Canadian permanent resident</li>
-									<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#temp-resident, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt, .cxp"}]'>Temporary resident in Canada</li>
+									<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#temp-resident, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account, .cxp"}]'>Temporary resident in Canada</li>
 								</ul>
 							</div>
 						</li>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#compassionate, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt, .cxp"}]'>For compassionate reasons</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#compassionate, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account, .cxp"}]'>For compassionate reasons</li>
 						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-secure-account, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-portal, .cxp"}]'>None of the above</li>
 					</ul>
 				</div>
 				<div class="wb-fieldflow-sub hidden" id="q2">
 					<p>Do you plan to visit your children or grandchildren for more than 6 months?</p>
 					<ul>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#super-visa-imm, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-accountt, .cxp"}]'>Yes</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#super-visa-imm, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account, .cxp"}]'>Yes</li>
 						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#imm-family, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account, .cxp"}]'>No</li>
 					</ul>
 				</div>
@@ -308,7 +308,7 @@
 						<li>Even if you submit all the documents listed, there is no guarantee that we’ll approve your application.</li>
 						<li>We may request more information from you outside of what is listed here.</li>
 					</ul>
-					<div id="tourist" class="ff-hide">
+					<div id="tourist" class="def ff-hide">
 						<h3 class="mrgn-tp-md">Tourist</h3>
 						<dl class="dl-horizontal">
 							<dt>Identity document</dt>
@@ -455,7 +455,7 @@
 							</dl>
 						</details>
 					</div>
-					<div id="business" class="ff-hide">
+					<div id="business" class="def ff-hide">
 						<h3>Business visitor</h3>
 						<dl class="dl-horizontal">
 							<dt>Identity document</dt>
@@ -606,7 +606,7 @@
 							</dl>
 						</details>
 					</div>
-					<div id="imm-family" class="ff-hide">
+					<div id="imm-family" class="def ff-hide">
 						<h3>Visit family (Canadian citizen, person registered under Canada’s Indian Act, or permanent resident of Canada)</h3>
 
 						<dl class="dl-horizontal">
@@ -817,7 +817,7 @@
 							</dl>
 						</details>
 					</div>
-					<div id="super-visa-imm" class="ff-hide">
+					<div id="super-visa-imm" class="def ff-hide">
 						<h3>Visit children or grandchildren. Super visa option.</h3>
 						<dl class="dl-horizontal">
 							<dt>Letter of invitation</dt>
@@ -1067,7 +1067,7 @@
 							</dl>
 						</details>
 					</div>
-					<div id="temp-resident" class="ff-hide">
+					<div id="temp-resident" class="def ff-hide">
 						<h3>Visit family (temporary resident of Canada)</h3>
 
 						<dl class="dl-horizontal">
@@ -1234,7 +1234,7 @@
 							</dl>
 						</details>
 					</div>
-					<div id="compassionate" class="ff-hide">
+					<div id="compassionate" class="def ff-hide">
 						<h3>Visit for compassionate reasons</h3>
 						<dl class="dl-horizontal">
 							<dt>Identity document</dt>
