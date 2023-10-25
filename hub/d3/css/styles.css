@@ -103,4 +103,18 @@
 /* Style the active tab */
 .tablink.active {
   background-color: #ccc;
+}
+
+path {
+  stroke: #000;
+  stroke-width: 2;
+  fill: none;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: grey;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
 }/*# sourceMappingURL=styles.css.map */
