@@ -1,3 +1,7 @@
+main {
+    padding-bottom:80px!important;
+}
+
 .btn-update {
     height: 38px !important;
     padding: 5px 15px !important;
@@ -87,15 +91,9 @@
     color: white;
 }
 
-
-
-
 #wb-info .landscape2 {
     background: #e3e3e3;
 }
-
-
-
 
 .blue-header {
     background-color: #26374A;
@@ -114,17 +112,8 @@
     background-color: #ccc;
 }
 
-
-
 path {
     stroke: #000;
     stroke-width: 2;
     fill: none;
-  }
-  .axis path,
-  .axis line {
-    fill: none;
-    stroke: grey;
-    stroke-width: 1;
-    shape-rendering: crispEdges;
-  }
+}
