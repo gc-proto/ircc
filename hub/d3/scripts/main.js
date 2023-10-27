@@ -6,6 +6,6 @@ import {includeHTML} from "./modules/template.js"
 
 includeHTML();
 $( document ).on( "wb-ready.wb", function( event ) {
-  // feedbackData();
+  feedbackData();
   wordCloud();
 });
