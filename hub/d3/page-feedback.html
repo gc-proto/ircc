@@ -124,11 +124,13 @@
         <div data-wb-urlmapping='{
             "tab=comments":[
                 {"action": "removeClass", "class" : "hidden", "source": "#comments"},
+                {"action": "addClass", "class" : "hidden", "source": "#common-words"},
                 {"action": "addClass", "class" : "active", "source": ".comments"},
                 {"action": "removeClass", "class" : "active", "source": ".common-words"}
             ],
             "tab=common-words":[
                 {"action": "removeClass", "class" : "hidden", "source": "#common-words"},
+                {"action": "addClass", "class" : "hidden", "source": "#comments"},
                 {"action": "addClass", "class" : "active", "source": ".common-words"},
                 {"action": "removeClass", "class" : "active", "source": ".comments"}
             ]
