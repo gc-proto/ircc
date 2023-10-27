@@ -106,29 +106,45 @@
                 <button class="btn btn-call-to-action btn-update" type="submit" value="Go to data">Update data</button>
             </form>
 
-
-
-
             <h2>All</h2>
 
             <nav>
                 <ul class="nav nav-tabs">
-                    <li class="active">
-                        <a href="/page_feedback?topic=All&amp;time_range=alldata&amp;tab=comments">Comments</a>
+                    <li class="active comments">
+                        <a href="page-feedback.html?topic=All&amp;time_range=alldata&amp;tab=comments">Comments</a>
                     </li>
-                    <li class="">
-                        <a href="/page_feedback?topic=All&amp;time_range=alldata&amp;tab=common-words">Most common words</a>
-                    </li>
-                    <li class="">
-                        <a href="/page_feedback?topic=All&amp;time_range=alldata&amp;tab=sentiment">Sentiment analysis</a>
+                    <li class="common-words">
+                        <a href="page-feedback.html?topic=All&amp;time_range=alldata&amp;tab=common-words">Most common words</a>
                     </li>
                 </ul>
             </nav>
 
         </div>
 
-        <div id="feedback-table" class="container table-responsive"></div>
+        <div data-wb-urlmapping='{
+            "tab=comments":[
+                {"action": "removeClass", "class" : "hidden", "source": "#comments"},
+                {"action": "addClass", "class" : "active", "source": ".comments"},
+                {"action": "removeClass", "class" : "active", "source": ".common-words"}
+            ],
+            "tab=common-words":[
+                {"action": "removeClass", "class" : "hidden", "source": "#common-words"},
+                {"action": "addClass", "class" : "active", "source": ".common-words"},
+                {"action": "removeClass", "class" : "active", "source": ".comments"}
+            ]
+        }'>
+        </div>
+        
+        <div class="container" id="comments">
+            <div id="feedback-table" class=""></div>
+            <div id="data-table" class="table-responsive"></div>
+        </div>
+        <div class="container hidden" id="common-words">
+            
+        </div>
 
+
+        
     </main>
 
 
@@ -136,14 +152,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
     <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
     <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script> -->
+    
+
     <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
     <script type="module" src="scripts/main.js"></script>
-
-
-    <script>
-
-    </script>
 
 </body>
 
