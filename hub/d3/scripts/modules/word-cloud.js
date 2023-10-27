@@ -56,7 +56,6 @@ export function wordCloud(){
             obj.size = 50 - (i/2);
             dataWords.push(obj);
         }
-        console.log(dataWords);
         // let words = countedWords.forEach(elm => elm[0])
         
         // var words = ["Hello", "Everybody", "How", "Are", "You", "Today", "It", "Is", "A", "Lovely", "Day", "I", "Love", "Coding", "In", "My", "Van", "Mate"]

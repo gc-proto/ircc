@@ -6,6 +6,17 @@ import {includeHTML} from "./modules/template.js"
 
 includeHTML();
 $( document ).on( "wb-ready.wb", function( event ) {
-  feedbackData();
-  wordCloud();
+  const urlParams = new URLSearchParams(window.location.search);
+  const tab = urlParams.get('tab');
+
+  switch (tab) {
+    case 'common-words':
+      wordCloud();
+      break;
+    case 'comments':
+    default:
+      feedbackData();
+      break;
+  }
+  
 });

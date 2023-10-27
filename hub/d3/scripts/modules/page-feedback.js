@@ -1,7 +1,6 @@
 export function feedbackData(){
-    const dates = {};
-    const parseTime = d3.timeParse("%Y-%m-%d");
 
+    
 
     var margin = {top: 30, right: 30, bottom: 70, left: 60},
         width = 1100 - margin.left - margin.right,
@@ -10,10 +9,10 @@ export function feedbackData(){
         legendHeight = legendWidth /2.5,
         legendPadding = 15;
 
-    // append the svg object to the body of the page
     var svg = d3.select("#feedback-table")
     .append("svg")
         .attr("id", "feedback-chart")
+        .attr('class', 'hidden')
         .attr("viewBox", `0 0 1100 500`)
         // .attr("width", width + margin.left + margin.right)
         // .attr("height", height + margin.top + margin.bottom)    
@@ -35,9 +34,14 @@ export function feedbackData(){
     svg.append("rect").attr("x",(width -legendWidth) + legendPadding).attr("y",0 - (margin.top / 2) + legendPadding + 40).attr("width", 20).attr("height", 2).style("stroke", "#000")    
     svg.append("text").attr("x", (width -legendWidth) + legendPadding + 30).attr("y", 0 - (margin.top / 2) + legendPadding +40).text("Weekly rolling mean").style("font-size", "15px").attr("alignment-baseline","middle")
 
-    // Parse the Data
-    d3.csv("https://test.canada.ca/ircc/hub/data/IRCC_Feedback.csv", function(data) {
-        data = data.slice().sort((a, b) => d3.ascending(a.Date, b.Date))
+// Parse the Data
+d3.csv("https://test.canada.ca/ircc/hub/data/IRCC_Feedback.csv", function(data) {
+    const dates = {};
+    const parseTime = d3.timeParse("%Y-%m-%d");
+
+
+    // append the svg object to the body of the page
+           data = data.slice().sort((a, b) => d3.ascending(a.Date, b.Date))
 
         data.forEach(function(d,i){        
             const date = d.Date;
@@ -124,6 +128,9 @@ export function feedbackData(){
 
 
         $( ".wb-tables" ).trigger( "wb-init.wb-tables" );
+            document.querySelector('.loading').classList.add('hidden');
+            document.querySelector('#feedback-chart').classList.remove('hidden');
+        
 
     })
 
@@ -179,7 +186,8 @@ export function feedbackData(){
                         return d.value; 
                     }
                 });
-          
+       
+                
       return table;     
     }
 }
