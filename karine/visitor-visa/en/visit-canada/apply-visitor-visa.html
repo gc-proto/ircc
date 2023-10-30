@@ -227,13 +227,13 @@
                   "unhideelm":  "#ff",
                   "live": true,
                   "base": { "live": true, "gcChckbxrdio":true, "renderas": "radio" },
-                  "default" : [{"action": "addClass", "class": "hidden", "source": ".def, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account"}],
-                  "reset" : [{"action": "addClass", "class": "hidden", "source": ".def, .ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account"},{"action": "removeClass", "class": "hidden", "source": "dt"}]
+                  "default" : [{"action": "addClass", "class": "hidden", "source": ".def, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .btn-business, .btn-super-visa"}],
+                  "reset" : [{"action": "addClass", "class": "hidden", "source": ".def, .ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .btn-business, .btn-super-visa"},{"action": "removeClass", "class": "hidden", "source": "dt"}]
                   }'>
 					<p>Why are you applying for a visitor visa?</p>
 					<ul>
 						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-portal, #btn-submit, .alone"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>To visit as a tourist</li>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#business, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>To visit for business</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".btn-business"}]'>To visit for business</li>
 						<li>
 							For a family visit
 							<div class="wb-fieldflow-sub">
@@ -253,15 +253,20 @@
 				<div class="wb-fieldflow-sub hidden" id="q2">
 					<p>Do you plan to visit your children or grandchildren for more than 6 months?</p>
 					<ul>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#super-visa-imm, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>Yes</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".btn-super-visa"}]'>Yes</li>
 						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#imm-family, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>No</li>
 					</ul>
 				</div>
 
-				<button class="btn btn-primary hidden" type="button" value="Continue" id="btn-submit" data-gc-analytics-formsubmit="submit" data-wb-doaction='{"action":"removeClass", "class":"hidden", "source":".cnt-rslt"}'>Continue</button>
+				<button class="btn btn-primary hidden" type="button" value="Continue" id="btn-submit" data-wb-doaction='{"action":"removeClass", "class":"hidden", "source":".cnt-rslt"}'>Continue</button>
+				<a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/business/visitors-events-conferences.html" class="btn btn-primary hidden btn-business">Continue<span class="wb-inv"> to Business visitors attending meetings, events and conferences in Canada</span></a>
+			<a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/parent-grandparent-super-visa.html" class="btn btn-primary hidden btn-super-visa">Continue<span class="wb-inv"> to Parent and Grandparent super visa</span></a>
 			</form>
 		</div>
+		
+
 		<div class="cnt-rslt">
+			
 			<div class="lst-stps stps-strpd mrgn-tp-xl">
 				<section class="lst-stps-itm">
 					<h2 id="how"><span class="wb-inv">Step 1</span> Gather documents</h2>

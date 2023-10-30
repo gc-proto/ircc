@@ -188,13 +188,13 @@
 					  "unhideelm":  "#ff",
 					  "live": true,
 					  "base": { "live": true, "gcChckbxrdio":true, "renderas": "radio" },
-					  "default" : [{"action": "addClass", "class": "hidden", "source": ".def, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account"}],
-					  "reset" : [{"action": "addClass", "class": "hidden", "source": ".def, .ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account"},{"action": "removeClass", "class": "hidden", "source": "dt"}]
+					  "default" : [{"action": "addClass", "class": "hidden", "source": ".def, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .btn-business, .btn-super-visa"}],
+                  "reset" : [{"action": "addClass", "class": "hidden", "source": ".def, .ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .btn-business, .btn-super-visa"},{"action": "removeClass", "class": "hidden", "source": "dt"}]
 					  }'>
 					<p>Pourquoi venez-vous au Canada?</p>
 					<ul>
 						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account, .alone"}]'>Pour visiter à titre de touriste</li>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#business, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>Pour des raisons d’affaires</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".btn-business"}]'>Pour des raisons d’affaires</li>
 						<li>
 							Pour visiter de la famille
 							<div class="wb-fieldflow-sub">
@@ -214,12 +214,14 @@
 				<div class="wb-fieldflow-sub hidden" id="q2">
 					<p>Avez-vous l’intention de visiter vos enfants ou vos petits-enfants pour plus de 6 mois?</p>
 					<ul>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#super-visa-imm, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>Oui</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".btn-super-visa"}]'>Oui</li>
 						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#imm-family, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>Non</li>
 					</ul>
 				</div>
 
 				<button class="btn btn-primary hidden" type="button" value="Continue" id="btn-submit" data-gc-analytics-formsubmit="submit" data-wb-doaction='{"action":"removeClass", "class":"hidden", "source":".cnt-rslt"}'>Continuer</button>
+				<a href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/visiter-canada/affaires.html" class="btn btn-primary hidden btn-business">Continue<span class="wb-inv"> vers Visiteurs commerciaux : assistez à des conférences, à des réunions et à d’autres événements au Canada</span></a>
+			<a href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/visiter-canada/super-visa-parents-grands-parents.html" class="btn btn-primary hidden btn-super-visa">Continue<span class="wb-inv"> vers Super visa pour parents et grands-parents</span></a>
 			</form>
 		</div>
 		<div class="cnt-rslt">
