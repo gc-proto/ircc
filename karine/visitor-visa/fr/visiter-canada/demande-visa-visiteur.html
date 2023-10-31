@@ -188,13 +188,13 @@
 					  "unhideelm":  "#ff",
 					  "live": true,
 					  "base": { "live": true, "gcChckbxrdio":true, "renderas": "radio" },
-					  "default" : [{"action": "addClass", "class": "hidden", "source": ".def, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .btn-business, .btn-super-visa"}],
-                  "reset" : [{"action": "addClass", "class": "hidden", "source": ".def, .ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .btn-business, .btn-super-visa"},{"action": "removeClass", "class": "hidden", "source": "dt"}]
+					  "default" : [{"action": "addClass", "class": "hidden", "source": ".def, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .btn-business, .super-visa, .business"}],
+                  "reset" : [{"action": "addClass", "class": "hidden", "source": ".def, .ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .btn-business, .super-visa .business"},{"action": "removeClass", "class": "hidden", "source": "dt"}]
 					  }'>
 					<p>Pourquoi venez-vous au Canada?</p>
 					<ul>
 						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account, .alone"}]'>Pour visiter à titre de touriste</li>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".btn-business"}]'>Pour des raisons d’affaires</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#btn-submit, .business, .ircc-portal"}]'>Pour des raisons d’affaires</li>
 						<li>
 							Pour visiter de la famille
 							<div class="wb-fieldflow-sub">
@@ -214,16 +214,21 @@
 				<div class="wb-fieldflow-sub hidden" id="q2">
 					<p>Avez-vous l’intention de visiter vos enfants ou vos petits-enfants pour plus de 6 mois?</p>
 					<ul>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".btn-super-visa"}]'>Oui</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".super-visa", "live": true}]'>Oui</li>
 						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#imm-family, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>Non</li>
 					</ul>
 				</div>
 
 				<button class="btn btn-primary hidden" type="button" value="Continue" id="btn-submit" data-gc-analytics-formsubmit="submit" data-wb-doaction='{"action":"removeClass", "class":"hidden", "source":".cnt-rslt"}'>Continuer</button>
-				<a href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/visiter-canada/affaires.html" class="btn btn-primary hidden btn-business">Continuer<span class="wb-inv"> vers Visiteurs commerciaux : assistez à des conférences, à des réunions et à d’autres événements au Canada</span></a>
-			<a href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/visiter-canada/super-visa-parents-grands-parents/au-sujet.html" class="btn btn-primary hidden btn-super-visa">Continuer<span class="wb-inv"> vers Super visa pour parents et grands-parents</span></a>
+				
+			
 			</form>
 		</div>
+		<div class="super-visa hidden">
+			<h2>Vous pourriez être admissible à un super visa</h2>
+			<p>Un super visa vous permet de rendre visite à vos enfants ou petits-enfants pendant 5 ans à la fois. Il s'agit d'un visa à entrées multiples pour une période pouvant aller jusqu'à 10 ans.</p>
+			<p><a href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/visiter-canada/super-visa-parents-grands-parents/au-sujet.html" class="btn btn-primary">Apprendre comment demander un super visa</a></p>
+			</div>
 		<div class="cnt-rslt">
 			<div class="lst-stps stps-strpd mrgn-tp-xl">
 				<section class="lst-stps-itm">
@@ -384,7 +389,7 @@
 							</dl>
 						</details>
 					</div>
-					<div id="business" class="def ff-hide">
+					<div id="business" class="business def ff-hide">
 						<h3>Raisons d’affaires</h3>
 						<dl class="dl-horizontal">
 							<dt>Document d’identité</dt>
@@ -1303,7 +1308,22 @@
 
 				<section class="lst-stps-itm">
 					<h2 id="online"><span class="wb-inv">Étape 2</span> Présenter une demande</h2>
+					<div class="business">
+						
+<p>Pour présenter une demande de visa de visiteur pour des raisons d’affaires, vous <strong>devez être admissible à titre de visiteur commercial.</strong></p>
 
+<p>Pour être admissible, vous devez faire la preuve que&nbsp;:</p>
+<ul>
+  <li>vous avez l’intention de rester au Canada pendant moins de six mois;</li>
+  <li>vous n’avez pas l’intention d’entrer sur le marché du travail canadien; <strong>et</strong></li>
+  <li>votre principal lieu d’affaires et votre principale source de revenus et de profits sont situés à l’extérieur du Canada;</li>
+</ul>
+
+<p>Les activités à titre de visiteur commercial comprennent les réunions d’affaires, les évènements spéciaux, ou la formation pour une période de quelques jours ou semaines.</p>
+
+<p>Remarque&nbsp;: Si vous avez l’intention de rester au Canada pendant plus de six mois ou d’y travailler, il se peut que vous soyez considéré comme un travailleur temporaire et que vous deviez <a href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/travailler-canada.html">présenter une demande de permis de travail</a>.</p>
+
+						</div>
 					<div class="ircc-secure-account">
 						<p>Pour présenter une demande en ligne, vous avez besoin d’un numériseur ou d’un appareil photo pour créer des copies électroniques de vos documents, ainsi que d’une <a href="#centred-popup1" class="wb-lbx" role="button">carte de crédit</a> ou d’une <a href="#centred-popup2" class="wb-lbx" role="button">carte de débit</a>.</p>
 						<p><a href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/demande/formulaires-demande-guides/guide-5256-presenter-demande-visa-visiteur-visa-resident-temporaire.html">Lisez le guide d’instructions</a> <strong>avant</strong> de remplir les formulaires de demande. En tant que demandeur en ligne, vous pouvez ignorer les étapes 3 et 4 du guide (payer les frais et soumettre votre demande).</p>

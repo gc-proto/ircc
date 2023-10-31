@@ -227,13 +227,13 @@
                   "unhideelm":  "#ff",
                   "live": true,
                   "base": { "live": true, "gcChckbxrdio":true, "renderas": "radio" },
-                  "default" : [{"action": "addClass", "class": "hidden", "source": ".def, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .btn-business, .btn-super-visa"}],
-                  "reset" : [{"action": "addClass", "class": "hidden", "source": ".def, .ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .btn-business, .btn-super-visa"},{"action": "removeClass", "class": "hidden", "source": "dt"}]
+                  "default" : [{"action": "addClass", "class": "hidden", "source": ".def, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .btn-business, .super-visa, .business"}],
+                  "reset" : [{"action": "addClass", "class": "hidden", "source": ".def, .ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .btn-business, .super-visa .business"},{"action": "removeClass", "class": "hidden", "source": "dt"}]
                   }'>
 					<p>Why are you applying for a visitor visa?</p>
 					<ul>
 						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#tourist, .ircc-portal, #btn-submit, .alone"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>To visit as a tourist</li>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".btn-business"}]'>To visit for business</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#btn-submit, .business, .ircc-portal"}]'>To visit for business</li>
 						<li>
 							For a family visit
 							<div class="wb-fieldflow-sub">
@@ -253,19 +253,27 @@
 				<div class="wb-fieldflow-sub hidden" id="q2">
 					<p>Do you plan to visit your children or grandchildren for more than 6 months?</p>
 					<ul>
-						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".btn-super-visa"}]'>Yes</li>
+						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":".super-visa", "live": true}]'>Yes</li>
 						<li data-wb-fieldflow='[{"action":"removeClass", "class":"hidden", "source":"#imm-family, .ircc-portal, #btn-submit"}, {"action":"addClass", "class":"hidden", "source":".ircc-secure-account"}]'>No</li>
 					</ul>
 				</div>
 
 				<button class="btn btn-primary hidden" type="button" value="Continue" id="btn-submit" data-wb-doaction='{"action":"removeClass", "class":"hidden", "source":".cnt-rslt"}'>Continue</button>
-				<a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/business/visitors-events-conferences.html" class="btn btn-primary hidden btn-business">Continue<span class="wb-inv"> to Business visitors attending meetings, events and conferences in Canada</span></a>
-			<a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/parent-grandparent-super-visa/about.html" class="btn btn-primary hidden btn-super-visa">Continue<span class="wb-inv"> to Parent and Grandparent super visa</span></a>
+				
+			
 			</form>
 		</div>
 		
+		<div class="super-visa hidden">
+			<h2>You may be eligible to apply for a Super Visa</h2>
+			<p>A super visa lets you visit your children or grandchildren for 5 years at a time. It’s a visa that provides multiple entries for a period up to 10 years.</p>
+			<p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/parent-grandparent-super-visa/about.html" class="btn btn-primary">Find out how to apply for a Super Visa</a></p>
+						</div>
+			
 
 		<div class="cnt-rslt">
+
+			
 			
 			<div class="lst-stps stps-strpd mrgn-tp-xl">
 				<section class="lst-stps-itm">
@@ -426,7 +434,7 @@
 							</dl>
 						</details>
 					</div>
-					<div id="business" class="def ff-hide">
+					<div id="business" class="businessdef ff-hide">
 						<h3>Business visitor</h3>
 						<dl class="dl-horizontal">
 							<dt>Identity document</dt>
@@ -1347,6 +1355,19 @@
 				<section class="lst-stps-itm">
 					<h2 id="online"><span class="wb-inv">Step 2</span> Apply</h2>
 
+					<div class="business">
+					<p>To apply for a visitor visa to visit Canada on business, you <strong>need to qualify as a business visitor.</strong></p>
+					<p>To qualify, you must show that:</p>
+					<ul>
+					<li>you plan to stay for less than 6 months,</li>
+					<li>you don’t plan to enter the Canadian labour market, <strong>and</strong></li>
+					<li>your main place of business and source of income and profits is outside Canada</li>
+					</ul>
+
+					<p>Business visitor activities include business meetings, special events or training for a few days or weeks.</p>
+
+					<p>Note: If you plan to stay for more than 6 months, or plan to work in Canada, you may be considered a temporary worker and have to&nbsp;<a href="/en/immigration-refugees-citizenship/services/work-canada.html">apply for a work permit</a>.</p>
+					</div>
 					<div class="ircc-secure-account">
 						<p>To apply online, you need a scanner or camera to create electronic copies of your documents, and a valid <a href="#centred-popup1" class="wb-lbx" role="button">credit</a> or <a href="#centred-popup2" class="wb-lbx" role="button">debit</a> card.</p>
 						<p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5256-applying-visitor-visa-temporary-resident-visa.html">Read the instruction guide</a> <strong>before</strong> you complete your application. As an online applicant, you can ignore steps 3 and 4 of the guide (paying the fees and submitting your application).</p>
@@ -1356,8 +1377,11 @@
 						<p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn-call-to-action mrgn-tp-sm">Sign in to your IRCC secure account</a></p>
 					</div>
 					<div class="ircc-portal mrgn-bttm-lg">
-						<h3 class="mrgn-tp-md ff-hide">Apply through the IRCC Portal</h3>
 
+						<a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/business/visitors-events-conferences.html" class="btn btn-primary hidden btn-business">Continue<span class="wb-inv"> to Business visitors attending meetings, events and conferences in Canada</span></a>
+
+
+						<h3 class="mrgn-tp-md ff-hide">Apply through the IRCC Portal</h3>
 						<div class="row mrgn-tp-xl">
 							<div class="col-md-2 col-sm-2 col-xs-12"> <img src="https://www.canada.ca/content/dam/ircc/images/services/visit-canada/create-account-sign-in.png" alt="" class="img-responsive center-block"> </div>
 							<div class="col-md-10 col-sm-10 col-xs-12">
