@@ -1,4 +1,4 @@
-export function feedbackData(){
+exports.feedbackData = function(){
 
     
 
