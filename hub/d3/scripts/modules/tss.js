@@ -1,6 +1,7 @@
 export function tssCharts(){
     
     const parseTime = d3.timeParse("%m/%d/%Y");
+    const formatTime = d3.timeFormat("%m");
 
     var margin = {top: 30, right: 30, bottom: 70, left: 60},
     width = 1100 - margin.left - margin.right,
@@ -25,16 +26,16 @@ export function tssCharts(){
 
     d3.csv("https://test.canada.ca/ircc/hub/data/GCTSS.csv", 
     function(d){
-      return { dateTime : d3.timeParse("%m/%d/%Y")(d.dateTime), taskEase : d.taskEase, taskSatisfaction: d.taskSatisfaction, taskCompletion: d.taskCompletion, dept: d.dept }
+      return { dateTime : d.dateTime, taskEase : d.taskEase, taskSatisfaction: d.taskSatisfaction, taskCompletion: d.taskCompletion, dept: d.dept }
     },
     function(data){
         // append the svg object to the body of the page
         data = data.slice().sort((a, b) => d3.ascending(a.dateTime, b.dateTime))
-        var cleanedData = data;
-        
-        cleanedData.forEach(function(d) {
-
-            d.dateTime = new Date(d.dateTime);
+        var totalEase = 0;
+        var totalSatisfaction = 0;
+        var totalCompletion = 0;
+        data.forEach(function(d) {
+            d.dateTime = parseTime(d.dateTime);
             if (d.dept === "IRCC / IRCC") {
                 switch (d.taskSatisfaction) {
                     case 'Very satisfied / TrÃ¨s satisfait':
@@ -101,34 +102,84 @@ export function tssCharts(){
                 }
             }
         });
-        console.log(cleanedData);
-        
-        const x = d3.scaleTime([d3.extent(data, function(d) { return d.dateTime })], [0, width]);
-        // const x = d3.scaleBand()
-        //     .range([ 0, width ])
-        //     .domain(data.map(function(d) { return d.dateTime }))
-        //     .padding(0.2);
-        x.ticks(d3.utcMonth.every(1));
+        const dates = {};
+        totalEase = {};
+        totalSatisfaction = {};
+        totalCompletion = {};
 
+        data.forEach(function(d){        
+            const date = d.dateTime;
+            const ease = d.taskEase;
+            const satisfaction = d.taskSatisfaction;
+            const completion = d.taskCompletion;
+            if (dates[date] === undefined) {
+                dates[date] = 1;
+                totalEase[date] = 1;
+                totalSatisfaction[date] = 1;
+                totalCompletion[date] = 1;
+            }
+            else {
+                dates[date] = dates[date] + 1;
+                
+                totalEase[date] += ease;
+                totalSatisfaction[date] += satisfaction;
+                totalCompletion[date] += completion;
+            }   
+            
+        });
+
+        let dataAvg = Object.values(dates);
+        let dataDates = Object.keys(dates);     
+        let averages = [];
+        for (var i = 0; i < dataAvg.length; i++){
+            let obj = {}
+            obj.date = new Date(dataDates[i]);            
+            obj.avgEase = +(totalEase[dataDates[i]] / (dataAvg[i]-1));
+            obj.avgSatisfaction = +(totalSatisfaction[dataDates[i]] / (dataAvg[i]-1));
+            obj.avgCompletion = +(totalCompletion[dataDates[i]] / (dataAvg[i]-1));
+            averages.push(obj);
+        }
+        console.log(averages);
+        console.log(data);
+
+        
+        averages = averages.slice().sort((a, b) => d3.ascending(a.date, b.date))
+
+
+        const x = d3.scaleTime()
+        .domain(d3.extent(averages, function(d){return d.date }))
+        .range([0, width]);
+        x.ticks(d3.timeWeek);
+        
         const yEaseSatisfaction = d3.scaleLinear()
-        .domain([0, d3.max(data, function(d) { return +d.taskEase; })])
+        .domain([0, 5])
         .range([ height, 0]);
 
         const yCompletion = d3.scaleLinear()
-        .domain([0, d3.max(data, function(d) { return +d.taskCompletion; })])
+        .domain([0, 1])
         .range([ height, 0]);
+
+       
 
         taskEaseSatisfaction.append("g")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x))
+        .call(d3.axisBottom(x)            
+            .tickFormat(d3.timeFormat("%B"))
+            
+        )
         .selectAll("text")
-            .attr("transform", "translate(-10,0)rotate(-45)")
-            .style("text-anchor", "end");
+            .style("text-anchor", "middle");
             
         taskEaseSatisfaction.append("g")
-        .call(d3.axisLeft(yEaseSatisfaction));
+        .call(d3.axisLeft(yEaseSatisfaction).ticks(5));
 
    
+   
+        const yAxisGridES = d3.axisLeft(yEaseSatisfaction).tickSize(-width).tickFormat('').ticks(5);
+
+        taskEaseSatisfaction.append("g")
+        .attr('class', 'axis-grid')
+        .call(yAxisGridES);
 
         taskEaseSatisfaction.append("g")
         .append("path")
@@ -144,16 +195,51 @@ export function tssCharts(){
             .attr("stroke", "orange")
             .attr("stroke-width", 1.5);
 
+
         var line1 = d3.line()
-        .x(function(d){return x(d.dateTime); })
-        .y(function(d){return yEaseSatisfaction(d.taskEase); });
+        .x(function(d){ return x(d.date); })
+        .y(function(d){return yEaseSatisfaction(+d.avgEase); });
+
         var line2 = d3.line()
-        .x(function(d){return x(d.dateTime); })
-        .y(function(d){return yEaseSatisfaction(d.taskSatisfaction); });
+        .x(function(d){return x(d.date); })
+        .y(function(d){return yEaseSatisfaction(d.avgSatisfaction); });
 
-        d3.select('#taskEase').attr('d', line1(data));
-        d3.select('#taskSatisfaction').attr('d', line2(data));
+        d3.select('#taskEase').attr('d', line1(averages));
+        d3.select('#taskSatisfaction').attr('d', line2(averages));
 
-    
+
+        taskCompletionRate.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x)            
+            .tickFormat(d3.timeFormat("%B"))
+        )
+        .selectAll("text")
+            .style("text-anchor", "middle");
+            
+        taskCompletionRate.append("g")
+        .call(d3.axisLeft(yCompletion).ticks(2));
+
+   
+   
+        const yAxisGridComp = d3.axisLeft(yCompletion).tickSize(-width).tickFormat('').ticks(2);
+
+        taskCompletionRate.append("g")
+        .attr('class', 'axis-grid')
+        .call(yAxisGridComp);
+
+        taskCompletionRate.append("g")
+        .append("path")
+            .attr("id", "taskCompletion")
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 1.5);
+
+        var line3 = d3.line()
+        .x(function(d){ return x(d.date); })
+        .y(function(d){return yCompletion(+d.avgCompletion); });
+
+
+        d3.select('#taskCompletion').attr('d', line3(averages));
+
     });
 }
