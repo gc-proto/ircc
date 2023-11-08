@@ -12,14 +12,12 @@ $( document ).on( "wb-ready.wb", function( event ) {
   const urlParams = new URLSearchParams(window.location.search);
   const tab = urlParams.get('tab');
   const page = (window.location.pathname).split('/').pop();
-  console.log(page);
 
   switch (page) {
     case 'task-survey.html':
       document.getElementById('date-range').classList.add('hidden');
       mapURLs();
       tssCharts();
-      console.log('test');
       break;
     case 'page-feedback.html': 
       switch (tab) {

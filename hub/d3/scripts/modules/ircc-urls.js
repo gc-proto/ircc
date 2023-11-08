@@ -10,7 +10,6 @@ export function mapURLs(){
             const lob = d.Topic;
             lobs[lob] = lobs[lob] === undefined ? 1 : lobs[lob] + 1;
         })
-        console.log(lobs);
     })
 }
 
