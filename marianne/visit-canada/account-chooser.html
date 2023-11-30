@@ -174,8 +174,8 @@
                         <p>What did you apply for?</p>
                         <ul>
                             <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#visitor-visa&quot;}">Visitor visa</li>
-                            <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#extend-stay&quot;}">Visitor record (to extend my stay)</li>
                             <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#eta&quot;}">Electronic Travel Authorization (eTA)</li>
+                            <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#extend-stay&quot;}">Visitor record (to extend my stay)</li>
                             <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#super-visa&quot;}">Super visa</li>
                             <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#transit&quot;}">Transit visa</li>
                         </ul>
@@ -188,28 +188,59 @@
             </div>
             
             <div class="result" id="visitor-visa">
+                <div class="well well-sm brdr-rds-0 mrgn-tp-md">
+                <div class="panel mrgn-bttm-0 brdr-rds-0">
+                <div class="panel-body">
                 <div class="cnjnctn-type-or cnjnctn-sm">
                     <div class="cnjnctn-col">
-                        <h5 class="text-muted">IRCC portal<span class="wb-inv">: Option 1 of 2</span></h5>
-                        <p><strong>Most</strong> applications use the IRCC portal.</p>
-                        <a href="" class="btn btn-primary">Go to IRCC portal</button>
+                        <h2 class="h3 text-muted">IRCC portal<span class="wb-inv">: Option 1 of 2</span></h2>
+                        <p><strong>Most</strong> applications use the IRCC portal. Use the IRCC portal if you applied for a visitor visa</p>
+                        <ul>
+                            <li>to visit as a tourist</li>
+                            <li>to visit for business</li>
+                            <li>for a family visit (under 6 months)</li>
+                            <li>for compassionate reasons</li>
+                        </ul>
+                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html" class="btn btn-primary">Go to IRCC portal</a>
                     </div>
                     <div class="cnjnctn-col">
-                        <h5 class="text-muted">IRCC secure account<span class="wb-inv">: Option 2 of 2</span></h5>
-                        <p>This is content for header B</p>
+                        <h2 class="h3 text-muted">IRCC secure account<span class="wb-inv">: Option 2 of 2</span></h2>
+                        <p>If the reason you're travelling to Canada is <strong>not</strong> listed, use the IRCC secure account instead.</p>
+                        <a href="../secure-account/sign-in.html" class="btn btn-primary">Go to IRCC secure account</a>
                     </div>
                 </div>
+                </div>
+                </div>
+                </div>
+                <p>Try signing in to each account if you’re not sure which one you used to apply.</p>
             </div>
 
-            <div class="result" id="tourist">tourist</div>
-
-            <div class="result" id="supervisa">supervisa</div>
+            <div class="result" id="eta">
+                <div class="well well-sm brdr-rds-0 mrgn-tp-md">
+                <div class="panel mrgn-bttm-0 brdr-rds-0">
+                <div class="panel-body">
+                <div class="cnjnctn-type-or cnjnctn-sm">
+                    <div class="cnjnctn-col">
+                        <h2 class="h3 text-muted">eTA application form<span class="wb-inv">: Option 1 of 2</span></h2>
+                        <p>Use the eTA application form to apply for an eTA. You won't need to sign in.</p>
+                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/important-reminders-apply-eta.html" class="btn btn-primary">Go to eTA application form</a>
+                    </div>
+                    <div class="cnjnctn-col">
+                        <h2 class="h3 text-muted">IRCC secure account<span class="wb-inv">: Option 2 of 2</span></h2>
+                        <p>If you need to <strong>submit documents</strong> for your eTA application, use the IRCC secure account instead.</p>
+                        <a href="../secure-account/sign-in.html" class="btn btn-primary">Go to IRCC secure account</a>
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                <p>Try signing in to each account if you’re not sure which one you used to apply.</p>
+            </div>
                    
     <!--class=results on all content. put in default and in hideelm.-->
         <!--live false means they need to click continue button to show results. defautl is false, can just omit line.
         reset destroys sub-questions if user changes sleection in first question. reset keep the same as default.
     can remove square brakcets because I only have singular class. 
-remove no form true to get continue button to appear****
 remove add class from default and reset-->
 
 <div class="row row-no-gutters mrgn-tp-xl">
