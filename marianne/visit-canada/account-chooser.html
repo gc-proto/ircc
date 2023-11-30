@@ -162,37 +162,55 @@
             <p>There are many accounts for different applications to visit Canada. Tell us which document you applied for to find out which account you should sign in to.</p>
             
             
-            <div class="wb-frmvld mrgn-tp-md nojs-hide" data-gc-analytics-formname="IRCC: Why are you applying for a visa" data-gc-analytics-collect="[ {&quot;value&quot;:&quot;input[type=radio]&quot;, &quot;emptyField&quot;: &quot;Any&quot;}]">
-                <form>
+            <div class="wb-frmvld">
+                <form>   
                     <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow="{
                               &quot;renderas&quot;:&quot;radio&quot;,
-                              &quot;gcChckbxrdio&quot;:true,
                               &quot;noForm&quot;: true,
-                              &quot;hideelm&quot;: &quot;.ff-hide, .cnt-rslt, #offline&quot;,
-                              &quot;live&quot;: true,
-                              &quot;base&quot;: { &quot;live&quot;: true, &quot;gcChckbxrdio&quot;:true, &quot;renderas&quot;: &quot;radio&quot; },
-                              &quot;default&quot; : [{&quot;action&quot;: &quot;addClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;.def, #transit, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .btn-business, .super-visa, .business, #offline&quot;}],
-                              &quot;reset&quot; : [{&quot;action&quot;: &quot;addClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;.def, .ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .btn-business, .super-visa .business, #offline&quot;},{&quot;action&quot;: &quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;dt, #online&quot;}]
+                              &quot;gcChckbxrdio&quot;:true,
+                              &quot;live&quot;: false,
+                              &quot;hideelm&quot;: &quot;.result&quot;
                               }">
                         <p>What did you apply for?</p>
                         <ul>
-                            <li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#visitor-visa, .ircc-portal, #btn-submit, .alone&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-secure-account&quot;}]">Visitor visa</li>
-                            <li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#visitor-visa, .ircc-portal, #btn-submit, .alone&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-secure-account&quot;}]">Visitor record (to extend my stay)</li>
-                            <li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#eta, .ircc-portal, #btn-submit&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-secure-account&quot;}]">Electronic Travel Authorization (eTA)</li>
-                            <li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#super-visa, .ircc-secure-account, #btn-submit, #offline&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-portal, #online&quot;}]">Super visa</li>
-                            <li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#transit, .ircc-secure-account, #btn-submit, #offline&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-portal, #transit&quot;}]">Transit visa</li>
+                            <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#visitor-visa&quot;}">Visitor visa</li>
+                            <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#extend-stay&quot;}">Visitor record (to extend my stay)</li>
+                            <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#eta&quot;}">Electronic Travel Authorization (eTA)</li>
+                            <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#super-visa&quot;}">Super visa</li>
+                            <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#transit&quot;}">Transit visa</li>
                         </ul>
                     </div>
+                        <input class="btn btn-primary btn-lg mrgn-bttm-md" type="submit" value="Continue">
+                    
                 </form>
-
-                <button class="btn btn-primary hidden" type="button" value="Continue" id="btn-submit" data-wb-doaction="{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.cnt-rslt&quot;}">Continue</button>
-        </div>
-
-                <div id="transit">
-                    <button class="btn btn-primary">Go to IRCC portal</button>
-                </div>
-                   
             
+                
+            </div>
+            
+            <div class="result" id="visitor-visa">
+                <div class="cnjnctn-type-or cnjnctn-sm">
+                    <div class="cnjnctn-col">
+                        <h5 class="text-muted">IRCC portal<span class="wb-inv">: Option 1 of 2</span></h5>
+                        <p><strong>Most</strong> applications use the IRCC portal.</p>
+                        <a href="" class="btn btn-primary">Go to IRCC portal</button>
+                    </div>
+                    <div class="cnjnctn-col">
+                        <h5 class="text-muted">IRCC secure account<span class="wb-inv">: Option 2 of 2</span></h5>
+                        <p>This is content for header B</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result" id="tourist">tourist</div>
+
+            <div class="result" id="supervisa">supervisa</div>
+                   
+    <!--class=results on all content. put in default and in hideelm.-->
+        <!--live false means they need to click continue button to show results. defautl is false, can just omit line.
+        reset destroys sub-questions if user changes sleection in first question. reset keep the same as default.
+    can remove square brakcets because I only have singular class. 
+remove no form true to get continue button to appear****
+remove add class from default and reset-->
 
 <div class="row row-no-gutters mrgn-tp-xl">
     <div class="col-sm-7 col-lg-6">
