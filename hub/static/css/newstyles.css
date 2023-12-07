@@ -1,3 +1,7 @@
+#navbar {
+  padding: 0 50px;
+}
+
 h1 {
   padding: 25px 0;
   margin: 0;
@@ -22,8 +26,12 @@ h1 {
 .hub-header a, .menu-navigation a {
   color: #fff !important;
   text-decoration: none;
+  font-weight: normal;
 }
-.hub-header a:hover::after, .hub-header a:focus::after, .hub-header a:active::after, .menu-navigation a:hover::after, .menu-navigation a:focus::after, .menu-navigation a:active::after {
+.hub-header a:hover, .hub-header a:focus, .hub-header a:active, .hub-header a.active, .menu-navigation a:hover, .menu-navigation a:focus, .menu-navigation a:active, .menu-navigation a.active {
+  font-weight: bold;
+}
+.hub-header a:hover::after, .hub-header a:focus::after, .hub-header a:active::after, .hub-header a.active::after, .menu-navigation a:hover::after, .menu-navigation a:focus::after, .menu-navigation a:active::after, .menu-navigation a.active::after {
   border-bottom: 0.18em solid #fff;
   content: "";
   display: block;
