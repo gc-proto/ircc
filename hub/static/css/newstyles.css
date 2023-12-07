@@ -30,12 +30,24 @@ h1 {
   padding-bottom: 8px;
   width: 70px;
 }
+.hub-header a:after, .menu-navigation a:after {
+  background-color: rgba(0, 0, 0, 0);
+  bottom: 0;
+  content: "";
+  left: 0;
+  pointer-events: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
 .hub-header ul, .menu-navigation ul {
   list-style: none;
   padding: 0 15px;
 }
 .hub-header ul li, .menu-navigation ul li {
   padding: 8px 0;
+  position: relative;
 }
 
 .main-content {

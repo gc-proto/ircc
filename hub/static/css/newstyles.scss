@@ -28,6 +28,17 @@ h1 {
                 padding-bottom: 8px;
                 width: 70px; }
         }
+
+        &:after {
+            background-color: rgba(0, 0, 0, 0);
+            bottom: 0;
+            content: "";
+            left: 0;
+            pointer-events: auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 1; }
     }
     ul{
         list-style:none;
@@ -35,6 +46,7 @@ h1 {
 
         li{
             padding:8px 0;
+            position:relative;
         }
     }
 }
