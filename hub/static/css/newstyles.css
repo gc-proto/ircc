@@ -3,7 +3,7 @@
 }
 
 h1 {
-  padding: 25px 0;
+  padding: 25px 15px;
   margin: 0;
   border: none;
 }
@@ -61,20 +61,52 @@ h1 {
 .main-content {
   padding: 25px 50px;
 }
+.main-content h2::after {
+  border-bottom: 0.18em solid #333;
+  content: "";
+  display: block;
+  padding-bottom: 8px;
+  width: 70px;
+}
+
+.section-heading {
+  background-color: #26374a;
+  border-left: solid 5px #37b99c;
+  padding: 15px 25px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: lighter;
+  margin: -20px -20px 0 -20px;
+}
 
 .data-box {
-  font-weight: bold;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+  background-color: #ececec;
+  padding: 20px;
 }
-.data-box h4 {
+.data-box div.data-cnt {
+  background-color: #fff;
+  padding: 15px;
+  margin: 15px;
+}
+.data-box div.data-cnt h4 {
+  color: #333;
+  font-weight: lighter;
   margin-top: 0;
-  display: block;
 }
-.data-box ul {
-  padding-left: 0;
-  list-style: none;
+
+.highlight {
+  margin-top: 30px;
+  font-size: 2.3em;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.details {
+  margin: 0 15px;
+}
+.details p {
+  margin: 0;
 }
 
 .data-stats {
@@ -94,9 +126,13 @@ h1 {
 }
 
 .text-neg-difference {
-  color: red;
+  color: darkred;
+  font-size: 1.3em;
+  font-weight: bold;
 }
 
 .text-pos-difference {
   color: green;
+  font-size: 1.3em;
+  font-weight: bold;
 }/*# sourceMappingURL=newstyles.css.map */

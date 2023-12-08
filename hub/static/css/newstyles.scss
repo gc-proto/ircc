@@ -1,17 +1,23 @@
+$primary-blue: #26374a;
+$primary-blue-dark: #071523;
+$primary-chart: #37b99c;
+
+
+
 #navbar {
     padding:0 50px;
 }
 
 h1 {
-    padding:25px 0;
+    padding:25px 15px;
     margin:0;
     border: none;
 }
 .hub-header{
-    background-color:#26374a;
+    background-color:$primary-blue;
 }
  .menu-navigation{
-    background-image: linear-gradient(#26374a, #071523);
+    background-image: linear-gradient($primary-blue, $primary-blue-dark);
     height:100%;
 }
 .hub-header, .menu-navigation {
@@ -31,8 +37,10 @@ h1 {
                 content: "";
                 display: block;
                 padding-bottom: 8px;
-                width: 70px; }
-                font-weight:bold;
+                width: 70px; 
+            }
+                
+            font-weight:bold;
         }
 
         &:after {
@@ -59,23 +67,58 @@ h1 {
 
 .main-content{
     padding:25px 50px;
+
+    h2::after {
+        border-bottom: .18em solid #333;
+        content: "";
+        display: block;
+        padding-bottom: 8px;
+        width: 70px;
+    } 
+}
+
+.section-heading {
+    // width: 100%;
+    background-color: $primary-blue;
+    border-left: solid 5px $primary-chart;
+    padding: 15px 25px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: lighter;
+    margin:-20px -20px 0 -20px;
+
 }
 
 .data-box {
-    font-weight:bold;
-    text-align:center;
-    display:flex;
-    flex-direction: column;
-    
+    background-color: #ececec;
+    padding:20px;
 
-    h4 {
-        margin-top: 0;
-        display:block;
+
+    div.data-cnt {
+        background-color: #fff;
+        padding: 15px;
+        margin:15px;
+
+        h4 {                    
+            color: #333;
+            font-weight: lighter;
+            margin-top:0;
+        }        
     }
+}
 
-    ul {
-        padding-left: 0;
-	    list-style: none;
+.highlight {
+    margin-top: 30px;
+    font-size: 2.3em;
+    font-weight:bold;
+    color: #333;
+    text-align: center;    
+}
+
+.details {
+    margin:0 15px;
+    p {
+        margin:0;
     }
 }
 
@@ -95,8 +138,12 @@ h1 {
     font-size:1.5em;
 }
 .text-neg-difference {
-    color:red;
+    color:darkred;
+    font-size:1.3em;
+    font-weight:bold;
 }
 .text-pos-difference {
     color:green;
+    font-size:1.3em;
+    font-weight:bold;
 }
