@@ -364,7 +364,7 @@
 
 
         new Chart(taskCompletion, {
-            type: 'bar',
+            type: 'line',
             data: {
                 labels: ['Q4 FY 2022-23', 'Q1 FY 2023-24', 'Q2'],
                 datasets: [{
@@ -392,7 +392,7 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: 100,
+                        min: 68,
                         ticks: {
                             callback: function (value, index, ticks) {
                                 return value + "%";
@@ -414,7 +414,7 @@
         );
 
         new Chart(taskEase, {
-            type: 'bar',
+            type: 'line',
             data: {
                 labels: ['Q4 FY 2022-23', 'Q1 FY 2023-24', 'Q2'],
                 datasets: [{
@@ -442,7 +442,7 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: 100,
+                        min: 58,
                         ticks: {
                             callback: function (value, index, ticks) {
                                 return value + "%";
@@ -463,7 +463,7 @@
         });
 
         new Chart(taskSatisfaction, {
-            type: 'bar',
+            type: 'line',
             data: {
                 labels: ['Q4 FY 2022-23', 'Q1 FY 2023-24', 'Q2'],
                 datasets: [{
@@ -491,7 +491,7 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: 100,
+                        min: 55,
                         ticks: {
                             callback: function (value, index, ticks) {
                                 return value + "%";
