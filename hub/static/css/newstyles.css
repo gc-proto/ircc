@@ -82,6 +82,7 @@ h1 {
 .data-box {
   background-color: #ececec;
   padding: 20px;
+  margin-top: 25px;
 }
 .data-box div.data-cnt {
   background-color: #fff;
@@ -100,6 +101,11 @@ h1 {
   font-weight: bold;
   color: #333;
   text-align: center;
+}
+@media screen and (max-width: 1399px) {
+  .highlight {
+    font-size: 1.5em !important;
+  }
 }
 
 .details {
@@ -139,4 +145,14 @@ h1 {
 
 .fade {
   opacity: 1;
+}
+
+.tab-pane {
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+
+.nav-link[aria-selected=false] {
+  background-color: #eee;
+  color: #333;
 }/*# sourceMappingURL=newstyles.css.map */

@@ -3,7 +3,6 @@ $primary-blue-dark: #071523;
 $primary-chart: #37b99c;
 
 
-
 #navbar {
     padding:0 50px;
 }
@@ -92,6 +91,7 @@ h1 {
 .data-box {
     background-color: #ececec;
     padding:20px;
+    margin-top:25px;
 
 
     div.data-cnt {
@@ -112,7 +112,11 @@ h1 {
     font-size: 2.3em;
     font-weight:bold;
     color: #333;
-    text-align: center;    
+    text-align: center;
+    
+    @media screen and (max-width: 1399px) {
+        font-size:1.5em!important;
+    }   
 }
 
 .details {
@@ -150,4 +154,14 @@ h1 {
 
 .fade {
     opacity: 1;
+}
+
+.tab-pane {
+    border: 1px solid #ddd;
+    padding:5px;
+}
+
+.nav-link[aria-selected="false"] {
+    background-color: #eee;
+    color: #333;
 }
