@@ -16,6 +16,7 @@
     <link href="https://www.canada.ca/etc/designs/canada/wet-boew/assets/favicon.ico" rel="icon" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/theme.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 
     <noscript>
@@ -177,10 +178,23 @@
                             </div>
                             <div class="col-md-8 pull-right">
 
-                                <div class="wb-tabs">
-                                    <div class="tabpanels">
-                                        <details id="details-panel1">
-                                            <summary>Top 10 English pages</summary>
+                                <div class="data-cnt">
+
+                                    
+                                    <h4 class="text-center">Top 10 pages</h4>
+
+
+                                    <div class="bd-example">
+                                        <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+                                          <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="engTopTen-tab" data-bs-toggle="tab" data-bs-target="#engTopTen" type="button" role="tab" aria-controls="engTopTen" aria-selected="true">English</button>
+                                          </li>
+                                          <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="fraTopTen-tab" data-bs-toggle="tab" data-bs-target="#fraTopTen" type="button" role="tab" aria-controls="fraTopTen" aria-selected="false">French</button>
+                                          </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent">
+                                          <div class="tab-pane fade show active" id="engTopTen" role="tabpanel" aria-labelledby="home-tab">
                                             <table class="table small">
                                                 <thead>
                                                     <tr>
@@ -253,9 +267,8 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                        </details>
-                                        <details id="details-panel2" open="open">
-                                            <summary>Top 10 French pages</summary>
+                                          </div>
+                                          <div class="tab-pane fade" id="fraTopTen" role="tabpanel" aria-labelledby="profile-tab">
                                             <table class="table small">
                                                 <thead>
                                                     <tr>
@@ -328,11 +341,18 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                        </details>
-                                    </div>
-                                
-                                </div>
+                                          </div>
+                                        </div>
+                                      </div>
 
+
+
+                                        
+                                 
+                                  </div>
+                             
+                                            
+                                        
 
 
                             </div>
@@ -351,6 +371,7 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script>
 
 
