@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>GC Task Success</h2>
+    <form action="/selected_page" method="post" class="form-inline">
+        <div class="form-group">
+            <label for="topics" class="control-label">Select a topic:</label>
+            <select id="topics" name="topics" class="form-control">
+                {% for option in topics %}
+                <option value="{{ option }}" {% if option==topic %} selected {% endif %}>{{ option }}</option>
+                {% endfor %}
+            </select>
+            <!-- Hidden facet selector  -->
+            <input type="hidden" id="facets" name="facets" value="{{ facet }}">
+            <button class="btn btn-call-to-action btn-update" type="submit" value="Go to data">Update
+                data</button>
+        </div>
+
+    </form>
+
+    <h3>{{ topic }}</h3>
+
+    <form method="post">
+        <div class="form-group">
+            <label for="task">TSS defined tasks:</label>
+            <select id="task" name="task" class="full-width form-control">
+                <option value="All tasks" {% if selected_task=='All tasks' %}selected{% endif %}>All tasks
+                </option>
+                {% for task in tasks %}
+                <option value="{{ task }}" {% if selected_task==task %}selected{% endif %}>{{ task }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="task">TSS defined tasks:</label>
+            <select id="task" name="task" class="full-width form-control">
+                <option value="All tasks" {% if selected_task=='All tasks' %}selected{% endif %}>All tasks
+                </option>
+                {% for at_task in at_task %}
+                <option value="{{ task }}" {% if selected_task==task %}selected{% endif %}>{{ at_task }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="url">Filter by specific URL</label>
+            <select id="url" name="url" class="full-width form-control">
+                <option value="All URLs" {% if selected_url=='All URLs' %}selected{% endif %}>All URLs
+                </option>
+                {% for url in urls %}
+                <option value="{{ url }}" {% if selected_url==url %}selected{% endif %}>{{ url }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <input class="btn btn-default mrgn-tp-sm" type="submit" value="Update">
+
+    </form>
+
+    <h4>{{ task }}</h4>
+    {% if selected_url!='All URLs' %}<h4>{{ url }}</h4>{% endif %}>
+    <img src="{{ plot1 }}" alt="plot">
+{% endblock %}
