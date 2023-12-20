@@ -14,6 +14,9 @@ $( document ).on( "wb-ready.wb", function( event ) {
   const page = (window.location.pathname).split('/').pop();
 
   switch (page) {
+    case 'index.html':
+      loadIndexAA();
+      break;
     case 'task-survey.html':
       document.getElementById('date-range').classList.add('hidden');
       mapURLs();
@@ -43,3 +46,7 @@ $( document ).on( "wb-ready.wb", function( event ) {
 
   
 });
+
+function loadIndexAA(){
+  
+}

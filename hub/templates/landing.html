@@ -1,5 +1,5 @@
 <html class="no-js" lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
-    
+
 <head prefix="og: http://ogp.me/ns#">
     <meta content="width=device-width,initial-scale=1" name="viewport" charset="utf-8">
     <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
@@ -8,7 +8,7 @@
     <meta name="keywords" content="data">
     <meta name="author" content="IRCC">
     <meta name="dcterms.title" content="IRCC Data Hub">
-    
+
 
     <title>IRCC Data Hub— Canada.ca</title>
 
@@ -17,12 +17,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/theme.min.css">
 
-    
+
     <noscript>
         <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/noscript.min.css" />
     </noscript>
-    
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/styles.css') }}">
 
 </head>
 
@@ -38,7 +38,7 @@
             <a class="wb-sl" href="#wb-info">Skip to "About government"</a>
         </li>
     </ul>
-    
+
     <header id="navbar">
         <div id="wb-bnr" class="container">
             <section id="wb-lng" class="text-right">
@@ -54,39 +54,74 @@
         </div>
 
     </header>
-    <main property="mainContentOfPage" id="main">  
+    <main property="mainContentOfPage" id="main">
         <section class="blue-header well well-sm brdr-0 mrgn-bttm-0 mrgn-tp-0">
             <div class="container mrgn-tp-sm">
-            <h1 class="provisional gc-thickline" property="name" id="wb-cont" dir="ltr">IRCC Data Hub</h1>
+                <h1 class="provisional gc-thickline" property="name" id="wb-cont" dir="ltr">IRCC Data Hub</h1>
                 <ul class="list-inline small mrgn-bttm-sm" style="line-height:1.65em" id="list-inline-desktop-only">
                 </ul>
             </div>
         </section>
-    
-            	      
+
+
         <div class="container">
             <form action="/selected_page" method="post">
                 <label for="topics">Choose a topic:</label>
                 <select name="topics" id="topics">
                     {% for topic in topics %}
-                        <option value="{{ topic }}">{{ topic }}</option>
+                    <option value="{{ topic }}">{{ topic }}</option>
                     {% endfor %}
                 </select>
                 <label for="facets">Choose a facet:</label>
                 <select name="facets" id="facets">
                     {% for facet in facets %}
-                        <option value="{{ facet }}">{{ facet }}</option>
+                    <option value="{{ facet }}">{{ facet }}</option>
                     {% endfor %}
                 </select>
                 <button class="btn btn-call-to-action" type="submit" value="Go to data">Go to data</button>
             </form>
+
+
+            <h2>Overview &ndash; Last 12 months</h2>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <section class="jumbotron">
+                        <h3>Total visits</h3>
+                        <p class="text-large mrgn-tp-0">{{ total_visits }}</p>
+                    </section>
+
+
+                </div>
+                <div class="col-md-4">
+                    <section class="jumbotron">
+                        <h3>Total page views</h3>
+                        <p class="text-large mrgn-tp-0">{{ total_pageviews }}</p>
+                </div>
+                </section>
+                <div class="col-md-4">
+                    <section class="jumbotron">
+                        <h3>Total unique visitors</h3>
+                        <p class="text-large mrgn-tp-0">{{ total_uniquevisitors }}</p>
+                    </section>
+                </div>
+            </div>
+            <h3 class="mrgn-tp-0">Page Views (content consumed), visits (people) and unique visitors - Trended over time period</h3>
+            <img src="data:image/png;base64,{{ keymetrics_overtime }}" class="img-responsive" alt="Page views trended overtime">
+
+            <h3>Top pages viewed pages</h3>
+           
+                    <h4>English</h4>
+                    <img src="data:image/png;base64,{{ toppagesEN }}" class="img-responsive" alt="Top english pages">
+               
+                    <h4>French</h4>
+                    <img src="data:image/png;base64,{{ toppagesFR }}" class="img-responsive" alt="Top french pages">
             
- 
-            
+
 
 
         </div>
     </main>
 
 </body>
+
 </html>
