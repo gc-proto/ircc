@@ -1,121 +1,60 @@
-<html class="no-js" lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
-    
-<head prefix="og: http://ogp.me/ns#">
-    <meta content="width=device-width,initial-scale=1" name="viewport" charset="utf-8">
-    <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
-    <link rel="canonical" href="https://www.canada.ca/en.html" />
-    <meta name="description" content="IRCC web data">
-    <meta name="keywords" content="data">
-    <meta name="author" content="IRCC">
-    <meta name="dcterms.title" content="IRCC Data Hub">
-    
-
-    <title>IRCC Data Hub— Canada.ca</title>
-
-    <link href="https://www.canada.ca/etc/designs/canada/wet-boew/assets/favicon.ico" rel="icon" type="image/x-icon" class="wb-init wb-favicon-inited">
-    <link href="https://www.canada.ca/etc/designs/canada/wet-boew/assets/favicon.ico" rel="icon" type="image/x-icon">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/theme.min.css">
-
-    
-    <noscript>
-        <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/noscript.min.css" />
-    </noscript>
-        
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
-
-</head>
-
-<body vocab="http://schema.org/" typeof="WebPage">
-
-
-    <!-- End Google Tag Manager -->
-    <ul id="wb-tphp">
-        <li class="wb-slc">
-            <a class="wb-sl" href="#wb-cont">Skip to main content</a>
-        </li>
-        <li class="wb-slc">
-            <a class="wb-sl" href="#wb-info">Skip to "About government"</a>
-        </li>
-    </ul>
-    
-    <header id="navbar">
-        <div id="wb-bnr" class="container">
-            <section id="wb-lng" class="text-right">
-                <h2 class="wb-inv">Language selection</h2>
-                <ul class="list-inline margin-bottom-none">
-                </ul>
-            </section>
-            <div class="row">
-                <div class="brand col-xs-5 col-md-4">
-                    <a href="https://www.canada.ca/en.html"><img src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg" alt=""><span class="wb-inv"> Government of Canada / <span lang="fr">Gouvernement du Canada</span></span></a>
-                </div>
-            </div>
+{% extends "base.html" %}
+{% block content %}
+    <h2>GC Task Success</h2>
+    <form action="/selected_page" method="post" class="form-inline">
+        <div class="form-group">
+            <label for="topics" class="control-label">Select a topic:</label>
+            <select id="topics" name="topics" class="form-control">
+                {% for option in topics %}
+                <option value="{{ option }}" {% if option==topic %} selected {% endif %}>{{ option }}</option>
+                {% endfor %}
+            </select>
+            <!-- Hidden facet selector  -->
+            <input type="hidden" id="facets" name="facets" value="{{ facet }}">
+            <button class="btn btn-call-to-action btn-update" type="submit" value="Go to data">Update
+                data</button>
         </div>
 
-    </header>
-    <main property="mainContentOfPage" id="main">  
-        <section class="blue-header well well-sm brdr-0 mrgn-bttm-0 mrgn-tp-0">
-            <div class="container mrgn-tp-sm">
-            <h1 class="provisional gc-thickline" property="name" id="wb-cont" dir="ltr">IRCC Data Hub</h1>
-                <ul class="list-inline small mrgn-bttm-sm" style="line-height:1.65em" id="list-inline-desktop-only">
-                </ul>
-            </div>
-        </section>
-    
-        <section class="well well-sm brdr-0 mrgn-bttm-25 mrgn-tp-0 epiNav" style="padding:0px;">
-            <div class="container">
-                <nav>
-                    <ul class="list-inline hidden-xs hidden-sm mrgn-bttm-0">
-                        <li><a class="btn btn-tabs" id="tab0" role="button" href="/page_feedback?topic={{ topic }}">Page feedback</a></li>
-                        <li><a class="active btn btn-tabs" id="active-tab1" role="button" href="#">GC Task success</a></li>
-                        <li><a class="btn btn-tabs" id="tab2" role="button" href="/web_analytics?topic={{ topic }}">Web analytics</a></li>
-                        <li><a class="btn btn-tabs" id="tab3" role="button" href="/social_media?topic={{ topic }}">Social media</a></li>
-                        <li><a class="btn btn-tabs" id="tab4" role="button" href="/call_centre?topic={{ topic }}">Call center</a></li>
-                        <li><a class="btn btn-tabs" id="tab5" role="button" href="/google_search?topic={{ topic }}">Google Search</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </section>
+    </form>
 
-        <div class="container">
-            <form action="/selected_page" method="post" class="form-inline">
-                <div class="form-group">
-                    <label for="topics" class="control-label">Select a topic:</label>
-                    <select id="topics" name="topics" class="form-control">
-                        {% for option in topics %}
-                        <option value="{{ option }}" {% if option == topic %} selected {% endif %}>{{ option }}</option>
-                        {% endfor %}
-                    </select>        
-                    <!-- Hidden facet selector  -->
-                    <input type="hidden" id="facets" name="facets" value="{{ facet }}">  
-                    <button class="btn btn-call-to-action btn-update" type="submit" value="Go to data">Update data</button>      
-                </div>                
-            
-            </form>
-            
-            <h2>{{ topic }}</h2>
- 
-            <form method="post">
-                <div class="form-group">
-                <select name="task" class="full-width form-control">
-                    <option value="All tasks" {% if selected_task == 'All tasks' %}selected{% endif %}>All tasks</option>
-                    {% for task in tasks %}
-                        <option value="{{ task }}" {% if selected_task == task %}selected{% endif %}>{{ task }}</option>
-                    {% endfor %}
-                </select>
-                <input class="btn btn-default mrgn-tp-sm" type="submit" value="Update">
-                </div>
-            </form>
+    <h3>{{ topic }}</h3>
 
-            <h3>{{ task }}</h3>
-            <img src="{{ plot1 }}" alt="plot">
-
-        
-              
-
+    <form method="post">
+        <div class="form-group">
+            <label for="task">TSS defined tasks:</label>
+            <select id="task" name="task" class="full-width form-control">
+                <option value="All tasks" {% if selected_task=='All tasks' %}selected{% endif %}>All tasks
+                </option>
+                {% for task in tasks %}
+                <option value="{{ task }}" {% if selected_task==task %}selected{% endif %}>{{ task }}</option>
+                {% endfor %}
+            </select>
         </div>
-    </main>
+        <div class="form-group">
+            <label for="task">TSS defined tasks:</label>
+            <select id="task" name="task" class="full-width form-control">
+                <option value="All tasks" {% if selected_task=='All tasks' %}selected{% endif %}>All tasks
+                </option>
+                {% for at_task in at_task %}
+                <option value="{{ task }}" {% if selected_task==task %}selected{% endif %}>{{ at_task }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="url">Filter by specific URL</label>
+            <select id="url" name="url" class="full-width form-control">
+                <option value="All URLs" {% if selected_url=='All URLs' %}selected{% endif %}>All URLs
+                </option>
+                {% for url in urls %}
+                <option value="{{ url }}" {% if selected_url==url %}selected{% endif %}>{{ url }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <input class="btn btn-default mrgn-tp-sm" type="submit" value="Update">
 
-</body>
-</html>
+    </form>
+
+    <h4>{{ task }}</h4>
+    {% if selected_url!='All URLs' %}<h4>{{ url }}</h4>{% endif %}>
+    <img src="{{ plot1 }}" alt="plot">
+{% endblock %}
