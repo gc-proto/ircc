@@ -277,8 +277,8 @@
 
 				</form>
 
-				<button class='btn btn-primary hidden' type='button' value='Continue' id='btn-submit' data-wb-doaction='{"action":"removeClass", "class":"hidden", "source":".cnt-rslt"}'>Continue</button>
-			</div>
+				<button class='btn btn-primary hidden' type='button' value='Continue' id='btn-submit' data-wb-doaction='[{"action":"removeClass", "class":"hidden", "source":".cnt-rslt"},{"action":"addClass", "class":"wb-eqht-grd", "source":".addequalheight", "trigger": true}]'>Continue</button>
+			</div>  
 
 			<div class="super-visa hidden">
 				<h2>You may be eligible to apply for a Super Visa</h2>
@@ -1380,17 +1380,18 @@
 								<div class="panel mrgn-bttm-0 brdr-rds-0">
 									<div class="panel-body">
 										<div class="cnjnctn-type-or cnjnctn-md mrgn-tp-0 brdr-0 wb-eqht-grd">
-											<div class="cnjnctn-col" style="display:flex;flex-direction:column;">
-												<div class="eqht-trgt" style="flex-grow:1;">
+											<div class="cnjnctn-col d-flex flex-column">
+												<div class="eqht-trgt hght-inhrt h-100">
 													<h3 class="h4 text-muted mrgn-tp-sm">IRCC Portal<span class="wb-inv">: Option 1 of 2</span></h3>
 													<p>You can use the IRCC Portal to apply for a visitor visa.</p>
 												</div>
-												<div class="row">
-													<div class="col-md-10 col-md-offset-1"><a class="btn btn-primary btn-block btn-lg p-sm-3 text-center" href="https://portal-portail.apps.cic.gc.ca/signin?lang=en">Go to IRCC Portal</a></div>
+												<div class="row d-flex align-items-center ">
+													<div class="col-md-10 col-md-offset-1"><a class="btn btn-primary btn-block btn-lg p-sm-3 text-center full-width" href="https://portal-portail.apps.cic.gc.ca/signin?lang=en">Go to IRCC Portal</a></div>
 												</div>
 
 											</div>
-											<div class="cnjnctn-col"><div class="eqht-trgt">
+											<div class="cnjnctn-col">
+												<div class="eqht-trgt hght-inhrt">
 													<h3 class="h4 text-muted mrgn-tp-sm">IRCC client platform<span class="wb-inv">: Option 2 of 2</span> <span class="label label-info">Beta</span></h3>
 													<p>You may be able to use the IRCC client platform if you:</p>
 													<ul>
@@ -1399,7 +1400,7 @@
 														<li>have never applied for anything with us before</li>
 														<li>are not using a representative</li>
 													</ul>
-											
+
 												</div>
 												<div class="row">
 													<div class="col-md-10 col-md-offset-1"><a href="https://test.canada.ca/ircc/marianne/sign-in/cxp/landing-page.html" class="text-center  btn-block btn btn-primary btn-lg p-sm-3">Go to IRCC client platform (Beta)</a></div>
@@ -1920,13 +1921,13 @@
 		_satellite.pageBottom();
 	</script>
 
-	<script src="https://test.canada.ca/covid-19-guidance/proto/js/alpha-banner.js"></script>
+	
 	<script type="text/javascript" src="https://www.canada.ca/etc/clientlibs/granite/jquery.min.js"></script>
 	<script type="text/javascript" src="https://www.canada.ca/etc/clientlibs/granite/utils.min.js"></script>
-	<script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/clientlib-publish.min.js"></script>
 
 	<!--[if gte IE 9 | !IE ]><!-->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/ep-pp.min.js"></script>
 	<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/wet-boew.min.js"></script>
 	<!--<![endif]-->
 
