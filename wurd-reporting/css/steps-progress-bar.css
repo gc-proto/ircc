@@ -49,6 +49,9 @@
     color: #000;
     margin: 40px 0 0;
 }
+.progress-component:has(.two-lines) {
+    margin-top:70px;
+}
 
 /* Component Styles - Steps */
 .steps {
@@ -150,14 +153,42 @@
     transform: translateX(-50%);
 }
 
+.step-label.two-lines{    
+    top: -7.5rem;
+}
+
+@media screen and (max-width: 991px) {
+    
+    .progress-component:has(.two-lines) {
+        margin-top:90px;
+    }
+
+    .step-label.two-lines{    
+        top: -9.5rem;
+    }
+
+}
 @media screen and (max-width: 768px) {
+    .progress-component:has(.two-lines) {
+        margin:90px auto;
+    }
+
     .step-label {
         font-size: 0.8em;
     }
-
     .step:nth-child(even)>.step-label {
         bottom: 0;
         margin-top: 7.5rem;
+    }
+
+    
+    .step-label.two-lines{    
+        top: -10.5rem;
+        margin-top: 0;
+    }
+    .step:nth-child(even)>.step-label.two-lines {
+        bottom: 0;
+        margin-top: 14.5rem;
     }
 }
 
