@@ -182,11 +182,11 @@
     }
 
     
-    .step-label.two-lines{    
+    .step-label.two-lines, .step-label.two-line-sm{    
         top: -10.5rem;
         margin-top: 0;
     }
-    .step:nth-child(even)>.step-label.two-lines {
+    .step:nth-child(even)>.step-label.two-lines, .step:nth-child(even)>.step-label.two-line-sm {
         bottom: 0;
         margin-top: 14.5rem;
     }
