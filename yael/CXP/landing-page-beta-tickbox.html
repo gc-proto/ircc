@@ -206,14 +206,14 @@
             "gcChckbxrdio":true,
             "isoptional": true,
             "noreqlabel": true,
-            "default": {"action": "addClass", "class":"disabled", "source": ".btn-disabled"},
-            "reset": {"action": "addClass", "class":"disabled", "source": ".btn-disabled"}
+            "default": [{"action": "addClass", "class":"disabled", "source": ".btn-disabled"}, {"action": "removeClass", "class":"hidden", "source": ".disabled-text"}],
+            "reset": [{"action": "addClass", "class":"disabled", "source": ".btn-disabled"}, {"action": "removeClass", "class":"hidden", "source": ".disabled-text"}]
         }'>
         <div class="wb-fieldflow-header">
             <p class="wb-fieldflow-label"><span class="fnt-nrml">To sign in or create an account, tick the following box to acknowledge you understand the risks.</span></p>
         </div>
             <ul>
-                <li data-wb-fieldflow='{"action": "removeClass", "class":"disabled", "source": ".btn-disabled"}'>I understand the IRCC client platform is still being developed, and that I may experience problems while using it.</li>
+                <li data-wb-fieldflow='[{"action": "removeClass", "class":"disabled", "source": ".btn-disabled"},{"action": "addClass", "class":"hidden", "source": ".disabled-text"}]'>I understand the IRCC client platform is still being developed, and that I may experience problems while using it.</li>
             </ul>
         </div>
     </form></div>
@@ -225,10 +225,8 @@
 							<h3 class="mrgn-tp-sm">Sign in<span class="wb-inv">: Option 1 of 2</span></h3>
 							<div class="row mrgn-tp-md">
 								<div class="col-sm-10 col-sm-offset-1">
-									<ul class="list-unstyled lst-spcd-2">
-										<li><a class="btn btn-primary btn-lg btn-block p-sm-3 btn-disabled disabled" href="#"></span>
-													<span class="text-center full-width">Sign in to the IRCC client platform (Beta)</span></span></a></li>
-									</ul>
+									<a class="btn btn-primary btn-lg btn-block p-sm-3 btn-disabled disabled" href="#">
+                                            <span class="text-center full-width">Sign in to the IRCC client platform (Beta)</span><span class="wb-inv hidden disabled-text"> (disabled)</span></a>
 								</div>
 							</div>
 						</div>
@@ -237,7 +235,7 @@
 							<div class="row mrgn-tp-md">
 								<div class="col-sm-10 col-sm-offset-1">
 									<a href="#" class="btn btn-default btn-lg btn-block p-sm-3 btn-disabled disabled">
-										<span class="text-center full-width">Create an IRCC client platform (Beta) account</span></span></a>
+										<span class="text-center full-width">Create an IRCC client platform (Beta) account</span><span class="wb-inv hidden disabled-text"> (disabled)</span></a>
 								</div>
 							</div>
 						</div>
