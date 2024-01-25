@@ -196,15 +196,27 @@
         </details>
         
         <h2>Try the IRCC client platform (Beta)</h2>
-        <p>To sign in or create an account, tick the following box to acknowledge you understand the risks.</p>
-        <form class="form-inline" method="get" action="#">
-            <div class="checkbox gc-chckbxrdio">
-                <input id="remember2" type="checkbox">
-                <label for="remember2">I understand the IRCC client platform is still being developed, and that I may experience problems while using it.</label>
-            </div>
-        </form>
+        <p></p>
+        <div class="wb-frmvld"><form>
 
-
+        <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+            "noForm": true,
+            "base": { "live": true},
+            "renderas": "checkbox",
+            "gcChckbxrdio":true,
+            "isoptional": true,
+            "noreqlabel": true,
+            "default": {"action": "addClass", "class":"disabled", "source": ".btn-disabled"},
+            "reset": {"action": "addClass", "class":"disabled", "source": ".btn-disabled"}
+        }'>
+        <div class="wb-fieldflow-header">
+            <p class="wb-fieldflow-label"><span class="fnt-nrml">To sign in or create an account, tick the following box to acknowledge you understand the risks.</span></p>
+        </div>
+            <ul>
+                <li data-wb-fieldflow='{"action": "removeClass", "class":"disabled", "source": ".btn-disabled"}'>I understand the IRCC client platform is still being developed, and that I may experience problems while using it.</li>
+            </ul>
+        </div>
+    </form></div>
         <div class="well well-sm brdr-rds-0 mrgn-tp-md">
 			<div class="panel mrgn-bttm-0 brdr-rds-0">
 				<div class="panel-body">
@@ -214,17 +226,17 @@
 							<div class="row mrgn-tp-md">
 								<div class="col-sm-10 col-sm-offset-1">
 									<ul class="list-unstyled lst-spcd-2">
-										<li><a class="btn btn-primary btn-lg btn-block p-sm-3" disabled href="#"></span>
+										<li><a class="btn btn-primary btn-lg btn-block p-sm-3 btn-disabled disabled" href="#"></span>
 													<span class="text-center full-width">Sign in to the IRCC client platform (Beta)</span></span></a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<div class="cnjnctn-col">
-							<h3 class="mrgn-tp-sm">Create an account</h3>
+							<h3 class="mrgn-tp-sm">Create an account<span class="wb-inv">: Option 2 of 2</span></h3>
 							<div class="row mrgn-tp-md">
 								<div class="col-sm-10 col-sm-offset-1">
-									<a href="#" class="btn btn-default btn-lg btn-block p-sm-3" disabled>
+									<a href="#" class="btn btn-default btn-lg btn-block p-sm-3 btn-disabled disabled">
 										<span class="text-center full-width">Create an IRCC client platform (Beta) account</span></span></a>
 								</div>
 							</div>
