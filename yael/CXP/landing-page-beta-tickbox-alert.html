@@ -206,17 +206,35 @@
             "gcChckbxrdio":true,
             "isoptional": true,
             "noreqlabel": true,
-            "default": [{"action": "addClass", "class":"disabled", "source": ".btn-disabled"}, {"action": "removeClass", "class":"hidden", "source": ".disabled-text"}],
-            "reset": [{"action": "addClass", "class":"disabled", "source": ".btn-disabled"}, {"action": "removeClass", "class":"hidden", "source": ".disabled-text"}]
+            "default": [
+                {"action": "addClass", "class":"disabled", "source": ".btn-disabled"}, 
+                {"action": "removeClass", "class":"hidden", "source": ".disabled-text, .beta-alert-unchecked"},
+                {"action": "addClass", "class":"hidden", "source": ".beta-alert-checked"}
+            ],
+            "reset": [
+                {"action": "addClass", "class":"disabled", "source": ".btn-disabled"}, 
+                {"action": "removeClass", "class":"hidden", "source": ".disabled-text, .beta-alert-unchecked"},
+                {"action": "addClass", "class":"hidden", "source": ".beta-alert-checked"}
+            ]
         }'>
         <div class="wb-fieldflow-header">
-            <p class="wb-fieldflow-label"><span class="fnt-nrml">To sign in or create an account, tick the following box to acknowledge you understand the risks.</span></p>
+            <p class="wb-fieldflow-label"><span class="fnt-nrml">Acknowledge you understand the risks:</span></p>
         </div>
             <ul>
-                <li data-wb-fieldflow='[{"action": "removeClass", "class":"disabled", "source": ".btn-disabled"},{"action": "addClass", "class":"hidden", "source": ".disabled-text"}]'>I understand the IRCC client platform is still being developed, and that I may experience problems while using it.</li>
+                <li data-wb-fieldflow='[
+                {"action": "removeClass", "class":"disabled", "source": ".btn-disabled"}, 
+                {"action": "addClass", "class":"hidden", "source": ".disabled-text, .beta-alert-unchecked"},
+                {"action": "removeClass", "class":"hidden", "source": ".beta-alert-checked"}
+            ]'>I understand the IRCC client platform is still being developed, and that I may experience problems while using it.</li>
             </ul>
         </div>
     </form></div>
+    <div class="alert alert-warning beta-alert-unchecked">
+        <p>To sign in or create an account, tick the following box to acknowledge you understand the risks.</p>
+    </div>
+    <div class="alert alert-success beta-alert-checked hidden">
+        <p>You can now sign in or create an account.</p>
+    </div>
         <div class="well well-sm brdr-rds-0 mrgn-tp-md">
 			<div class="panel mrgn-bttm-0 brdr-rds-0">
 				<div class="panel-body">
