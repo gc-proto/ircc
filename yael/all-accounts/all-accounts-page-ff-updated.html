@@ -161,39 +161,40 @@
 
             <p><strong>We have more than 1 account.</strong> The account you used depends on the application you submitted.</p>
 
-        <div class="wb-frmvld" id="ff">
-			<form method="get" action="#">
-				<div class="wb-fieldflow" data-wb-fieldflow="{
-                    &quot;noForm&quot;: true,
-                    &quot;base&quot;: { &quot;live&quot;:true, &quot;renderas&quot;:&quot;radio&quot;, &quot;gcChckbxrdio&quot;:true},
-                    &quot;hideelm&quot;: &quot;#visit, #immigrate, #work, #study, #citizenship, #refugees&quot;,
-                    &quot;unhideelm&quot;: &quot;#ff&quot;,
-                    &quot;renderas&quot;:&quot;radio&quot;,
-					&quot;gcChckbxrdio&quot;:true,
-                    &quot;default&quot;: { &quot;action&quot;: &quot;addClass&quot;, &quot;source&quot;:&quot;#pe,#online,#online-portal,#paper,#inside-yes,#inside-no,#poe-yes,#poe-no, #restoration, .ukraine-inside, #ukraine-poe&quot;, &quot;class&quot;: &quot;hidden&quot;}
-                }">
-					<p>Select what your application was about.</p>
-					<ul>
-						<li data-wb-fieldflow="{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#visit&quot;}">Visiting Canada</li>
-					    <li>Immigrating to Canada (to live and work permanently)
-						    <div class="wb-fieldflow-sub">
-                            <p>Did you apply through Express Entry?</p>
-                            <ul>
-                                <li data-wb-fieldflow="{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#express-entry&quot;}">Yes</li>
-                                <li data-wb-fieldflow="{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#PR&quot;}">No</li>
-                            </ul>
-                            </div>
-                        </li>
-                        <li data-wb-fieldflow="{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#work&quot;}">Working in Canada temporarily</li>
-                        <li data-wb-fieldflow="{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#study&quot;}">Studying in Canada</li>						
-                        <li data-wb-fieldflow="{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#citizenship&quot;}">Canadian citizenship</li>		
-                        <li data-wb-fieldflow="{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#refugees&quot;}">Refugees and asylum</li>		
-                    </ul>
-				</div>
-							
-			</form>
-		</div>
-		<div id="visit">
+            <div class='wb-frmvld hidden' id='ff'>
+                <form method='get' action='#'>
+                    <div class='wb-fieldflow' data-wb-fieldflow='{
+                        "noForm": true,
+                        "base": { "live":true, "renderas":"radio", "gcChckbxrdio":true},
+                        "hideelm": ".result",
+                        "unhideelm": "#ff",
+                        "renderas":"radio",
+                        "gcChckbxrdio":true,
+                        "default": { "action": "addClass", "source":".result", "class": "hidden"},
+                        "reset": { "action": "addClass", "source":".result", "class": "hidden"}
+                    }'>
+                        <p>Select what your application was about.</p>
+                        <ul>
+                            <li data-wb-fieldflow='{"action":"removeClass", "class": "hidden", "source": "#visit"}'>Visiting Canada</li>
+                            <li>Immigrating to Canada (to live and work permanently)
+                                <div class='wb-fieldflow-sub'>
+                                    <p>Did you apply through Express Entry?</p>
+                                    <ul>
+                                        <li data-wb-fieldflow='{"action":"removeClass", "class": "hidden", "source": "#express-entry"}'>Yes</li>
+                                        <li data-wb-fieldflow='{"action":"removeClass", "class": "hidden", "source": "#PR"}'>No</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li data-wb-fieldflow='{"action":"removeClass", "class": "hidden", "source": "#work"}'>Working in Canada temporarily</li>
+                            <li data-wb-fieldflow='{"action":"removeClass", "class": "hidden", "source": "#study"}'>Studying in Canada</li>						
+                            <li data-wb-fieldflow='{"action":"removeClass", "class": "hidden", "source": "#citizenship"}'>Canadian citizenship</li>		
+                            <li data-wb-fieldflow='{"action":"removeClass", "class": "hidden", "source": "#refugees"}'>Refugees and asylum</li>		
+                        </ul>
+                    </div>
+                                
+                </form>
+            </div>
+		<div id="visit" class="result">
             <h2>You applied to visit Canada</h2>
             <p>Select the document you applied for to find your account.</p>
             <p><strong>Haven't applied yet?</strong> <a href='https://ircc.canada.ca/english/visit/visas.asp'>Find out if you need a visa to travel to Canada</a>.</p>
@@ -292,13 +293,13 @@
         </details>
         </div>
         
-        <div id="express-entry">
+        <div id="express-entry" class="result">
             <h2>You applied to immigrate to Canada through Express Entry</h2>
             <p class="mrgn-tp-md">You used the IRCC secure account.</p>
             <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn-primary btn-lg mrgn-bttm-md">Go to IRCC secure account</a>
         </div>
             
-        <div id="PR">
+        <div id="PR" class="result">
             <h2>You applied to immigrate to Canada through another permanent residence program</h2>
                 <p class="mrgn-tp-md">You used the Permanent residence portal.</p>
                 <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="btn btn-primary btn-lg mrgn-bttm-md">Go to the Permanent residence portal</a>         
@@ -324,7 +325,7 @@
                 </details>
             </div>
         
-        <div id="work">
+        <div id="work" class="result">
             <h2>You applied to work temporarily in Canada</h2>
             <details>
                 <summary><h2 class="h3">Working in Canada temporarily</h2></summary>
@@ -333,7 +334,7 @@
             </details>
         </div>
 
-        <div id="study">
+        <div id="study" class="result">
             <h2>You're looking for an account about studying in Canada</h2>
                 <p>Select what you applied for to find your account.</p>
                 <p><strong>Haven't applied yet?</strong> <a href='https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool.html'>Find out if you need a study permit and how to apply</a>.</p>
@@ -377,7 +378,7 @@
         </details>
         </div>
 
-        <div id="citizenship">
+        <div id="citizenship"  class="result">
             <h2>You're looking for an account about Canadian citizenship</h2></summary>
             <p>Select what you need to do to find your account.</p>
             <details>
@@ -387,7 +388,7 @@
         </details>
         </div>
 
-        <div id="refugees">
+        <div id="refugees" class="result">
             <h2>You're looking for an account about refugees and asylum</h2>
                 [... if you want other things in there before the nested you'd put it here ...]
             <details>
