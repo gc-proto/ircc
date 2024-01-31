@@ -178,10 +178,11 @@
                             <li data-wb-fieldflow='{"action":"removeClass", "class": "hidden", "source": "#visit"}'>Visiting Canada</li>
                             <li>Immigrating to Canada (to live and work permanently)
                                 <div class='wb-fieldflow-sub'>
-                                    <p>Did you apply through Express Entry?</p>
+                                    <p>Which program did you apply for?</p>
                                     <ul>
-                                        <li data-wb-fieldflow='{"action":"removeClass", "class": "hidden", "source": "#express-entry"}'>Yes</li>
-                                        <li data-wb-fieldflow='{"action":"removeClass", "class": "hidden", "source": "#PR"}'>No</li>
+                                        <li data-wb-fieldflow='{"action":"removeClass", "class": "hidden", "source": "#express-entry"}'>Express Entry</li>
+                                        <li data-wb-fieldflow='{"action":"removeClass", "class": "hidden", "source": "#TRPR"}'>Temporary resident to permanent resident pathway</li>
+                                        <li data-wb-fieldflow='{"action":"removeClass", "class": "hidden", "source": "#PR"}'>Another immigration program (for example: Atlantic Immigration Program, caregivers, and family sponsorship, )</li>
                                     </ul>
                                 </div>
                             </li>
@@ -316,16 +317,15 @@
             <p class="mrgn-tp-md">You used the IRCC secure account.</p>
             <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn-primary btn-lg mrgn-bttm-md">Go to IRCC secure account</a>
         </div>
+
+        <div id="TRPR" class="result">
+            <h2>You applied to immigrate to Canada through the Temporary resident to permanent resident (TR-to-PR) pathway</h2>
+            <p class="mrgn-tp-md">You used the TR-to-PR portal.</p>
+            <a href="https://trprpath-voiertrp.apps.cic.gc.ca/en/landing" class="btn btn-primary btn-lg mrgn-bttm-md">Go to TR-to-PR portal</a>
+        </div>
             
         <div id="PR" class="result">
             <h2>You applied to immigrate to Canada through another permanent residence program</h2>
-            <details>
-                <summary>Temporary resident to permanent resident (TR-to-PR) pathway<span class="wb-inv">Option 2 of 3</span></summary>
-                <p class="mrgn-tp-md">You used the TR-to-PR portal.</p>
-                <a href="https://trprpath-voiertrp.apps.cic.gc.ca/en/landing" class="btn btn-primary btn-lg mrgn-bttm-md">Go to TR-to-PR portal</a>
-            </details>
-            <details>
-                <summary>Another immigration programs<span class="wb-inv">Option 3 of 3</span></summary>
                 <p class="mrgn-tp-md">You used the Permanent residence portal.</p>
                 <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="btn btn-primary btn-lg mrgn-bttm-md">Go to the Permanent residence portal</a>
                 <details>
