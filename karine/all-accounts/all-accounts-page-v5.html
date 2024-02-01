@@ -187,15 +187,18 @@
                     </div>
                 </li>
 
-                <li class="panel panel-default lob">
+                <li class="panel panel-default lob temp">
                     <div class="panel-body position-relative">
                         <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
-                        { "action": "addClass", "class": "hidden", "source": ".lob" },
-                        { "action": "removeClass", "class": "hidden", "source": ".temp, .lob-options, .reset" },
-                        { "action": "addClass", "class": "", "source": ".refugees .panel-body" }
-                    ]'>
+                                        { "action": "addClass", "class": "hidden", "source": ".lob" },
+                                        { "action": "removeClass", "class": "hidden", "source": ".temp, .lob-options, .reset" },
+                                        { "action": "removeClass", "class": "stretched-link", "source": ".temp, .lob-options, .reset" },
+                                        { "action": "addClass", "class": "", "source": ".temp .panel-body" },
+                                        { "action": "ajax", "container": ".cas_fee", "url": "#cas_fees_content" },
+                                        { "action": "addClass", "class": "h5 mrgn-tp-0", "source": ".temp .heading" }
+                                    ]'>
                             <div class="row d-flex align-items-center text-left">
-                                <div class="col-xs-11">Working in Canada temporarily</div>
+                                <div class="col-xs-11 heading">Working in Canada temporarily</div>
                                 <div class="col-xs-1"><span class="fas fa-chevron-right pull-right"></span></div>
                             </div>
                         </button>
@@ -205,7 +208,7 @@
                                 <div class="panel-body position-relative">
                                     <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
                                         { "action": "addClass", "class": "hidden", "source": ".result" },
-                                        { "action": "removeClass", "class": "hidden", "source": ".asylum, .reset" }
+                                        { "action": "removeClass", "class": "hidden", "source": ".work-permit, .reset" }
                                     ]'>
                                         <div class="row d-flex align-items-center text-left">
                                             <div class="col-xs-11">Work permit</div>
@@ -213,10 +216,10 @@
                                         </div>
                                     </button>
 
-                                    <div class="result asylum hidden mrgn-lft-md mrgn-rght-md">
-                                        <h3 class="h4 text-muted mrgn-tp-md">IRCC Portal</h3>
-                                        <p>You used the IRCC Portal to submit your asylum claim online.</p>
-                                        <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/transit/apply.html" class="btn btn-primary btn-lg mrgn-bttm-md mrgn-tp-sm">Go to IRCC Portal</a></p>
+                                    <div class="result work-permit hidden mrgn-lft-sm mrgn-rght-sm">
+                                        <h3 class="h4 text-muted mrgn-tp-md">IRCC secure account</h3>
+                                        <p class="mrgn-tp-md">You used the IRCC secure account to apply for a work permit.</p>
+                                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn-primary btn-lg mrgn-bttm-md">Go to IRCC secure account</a>
 
                                     </div>
 
@@ -226,7 +229,7 @@
                                 <div class="panel-body position-relative">
                                     <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
                                     { "action": "addClass", "class": "hidden", "source": ".result" },
-                                    { "action": "removeClass", "class": "hidden", "source": ".sponsor" }
+                                    { "action": "removeClass", "class": "hidden", "source": ".h-1b" }
                                 ]'>
                                         <div class="row d-flex align-items-center text-left">
                                             <div class="col-xs-11">H-1B visa holder work permit</div>
@@ -234,24 +237,87 @@
                                         </div>
                                     </button>
 
-                                    <div class="result sponsor hidden mrgn-lft-md mrgn-rght-md">
+                                    <div class="result h-1b hidden mrgn-lft-sm mrgn-rght-sm">
                                         <h3 class="h4 text-muted mrgn-tp-md">IRCC Portal</h3>
-                                        <p>You used the IRCC Portal to submit your asylum claim online.</p>
+                                        <p class="mrgn-tp-md">You used the IRCC Portal.</p>
                                         <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/transit/apply.html" class="btn btn-primary btn-lg mrgn-bttm-md mrgn-tp-sm">Go to IRCC Portal</a></p>
                                     </div>
                                 </div>
                             </li>
                         </ul>
+
+                        <div class="cas_fee"></div>
                     </div>
                 </li>
-                <li class="panel panel-default lob">
+                <li class="panel panel-default lob study">
                     <div class="panel-body position-relative">
-                        <button class="stretched-link btn-link no-undrln full-width">
+                        <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
+                                        { "action": "addClass", "class": "hidden", "source": ".lob" },
+                                        { "action": "removeClass", "class": "hidden", "source": ".study, .lob-options, .reset" },
+                                        { "action": "removeClass", "class": "stretched-link", "source": ".study, .lob-options, .reset" },
+                                        { "action": "addClass", "class": "", "source": ".study .panel-body" },
+                                        { "action": "ajax", "container": ".cas_fee", "url": "#cas_fees_content" },
+                                        { "action": "addClass", "class": "h5 mrgn-tp-0", "source": ".study .heading" }
+                                    ]'>
                             <div class="row d-flex align-items-center text-left">
-                                <div class="col-xs-11">Studying in Canada</div>
+                                <div class="col-xs-11 heading">Studying in Canada</div>
                                 <div class="col-xs-1"><span class="fas fa-chevron-right pull-right"></span></div>
                             </div>
                         </button>
+                        <ul class="list-unstyled lob-options mrgn-tp-md hidden">
+                            <li class="panel panel-default">
+                                <div class="panel-body position-relative">
+                                    <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
+                                        { "action": "addClass", "class": "hidden", "source": ".result" },
+                                        { "action": "removeClass", "class": "hidden", "source": ".study-permit, .reset" }
+                                    ]'>
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Study permit</div>
+                                            <div class="col-xs-1"><span class="fas fa-chevron-right pull-right"></span></div>
+                                        </div>
+                                    </button>
+
+                                    <div class="result study-permit hidden mrgn-lft-sm mrgn-rght-sm">
+                                        <p>You used one of these 2 accounts to apply for a study permit.</p>
+                                        <div class="cnjnctn-type-or brdr-0">
+                                            <div class="cnjnctn-col">
+                                                <h3 class="h4 text-muted mrgn-tp-sm"><span class="wb-inv">IRCC Portal: Option 1 of 2</span></h3>
+                                             
+                                                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html" class="btn btn-primary btn-lg mrgn-bttm-md mrgn-tp-sm">Go to IRCC Portal</a></p>
+                                            </div>
+                                            <div class="cnjnctn-col">
+                                                <h3 class="h4 text-muted mrgn-tp-sm"><span class="wb-inv">IRCC secure account: Option 2 of 2</span></h3>
+                                         
+                                                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn-primary btn-lg mrgn-tp-sm">Go to IRCC secure account</a></p>
+                                            </div>
+                                        </div>
+                                        <p><strong>If you’re not sure which account you used to apply</strong>, try signing in to both or check your email.</p>
+
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li class="panel panel-default">
+                                <div class="panel-body position-relative">
+                                    <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
+                                    { "action": "addClass", "class": "hidden", "source": ".result" },
+                                    { "action": "removeClass", "class": "hidden", "source": ".h-1b" }
+                                ]'>
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">H-1B visa holder work permit</div>
+                                            <div class="col-xs-1"><span class="fas fa-chevron-right pull-right"></span></div>
+                                        </div>
+                                    </button>
+
+                                    <div class="result h-1b hidden mrgn-lft-sm mrgn-rght-sm">
+                                        <h3 class="h4 text-muted mrgn-tp-md">IRCC Portal</h3>
+                                        <p class="mrgn-tp-md">You used the IRCC Portal.</p>
+                                        <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/transit/apply.html" class="btn btn-primary btn-lg mrgn-bttm-md mrgn-tp-sm">Go to IRCC Portal</a></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="cas_fee"></div>
                     </div>
                 </li>
                 <li class="panel panel-default lob">
@@ -279,7 +345,7 @@
                                 <div class="col-xs-1"><span class="fas fa-chevron-right pull-right"></span></div>
                             </div>
                         </button>
-                        
+
                         <ul class="list-unstyled lob-options mrgn-tp-md hidden">
                             <li class="panel panel-default">
                                 <div class="panel-body position-relative">
@@ -293,7 +359,7 @@
                                         </div>
                                     </button>
 
-                                    <div class="result asylum hidden mrgn-lft-md mrgn-rght-md">
+                                    <div class="result asylum hidden mrgn-lft-sm mrgn-rght-sm">
                                         <h3 class="h4 text-muted mrgn-tp-md">IRCC Portal</h3>
                                         <p>You used the IRCC Portal to submit your asylum claim online.</p>
                                         <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/transit/apply.html" class="btn btn-primary btn-lg mrgn-bttm-md mrgn-tp-sm">Go to IRCC Portal</a></p>
@@ -313,7 +379,7 @@
                                         </div>
                                     </button>
 
-                                    <div class="result sponsor hidden mrgn-lft-md mrgn-rght-md">
+                                    <div class="result sponsor hidden mrgn-lft-sm mrgn-rght-sm">
                                         <h3 class="h4 text-muted mrgn-tp-md">Online citizenship test</h3>
                                         <p>You need the online citizenship test portal to complete your Canadian citizenship test.</p>
                                         <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test/online.html" class="btn btn-primary btn-lg mrgn-bttm-md ">Go to the online citizenship test</a>
@@ -347,32 +413,33 @@
         <div class="hidden">
             <div class="empty"></div>
             <div id="cas_fees_content">
-        <ul class="list-unstyled">
-                <li class="panel panel-default">
-                    <div class="panel-body position-relative">
-                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html" class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
+                <ul class="list-unstyled">
+                    <li class="panel panel-default">
+                        <div class="panel-body position-relative">
+                            <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html" class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
                         { "action": "addClass", "class": "hidden", "source": ".result" },
                         { "action": "removeClass", "class": "hidden", "source": ".cas" }
                     ]'>
-                            <div class="row d-flex align-items-center text-left">
-                                <div class="col-xs-11">Check your application status</div>
-                                <div class="col-xs-1"><span class="fas fa-share pull-right"></span></div>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="panel panel-default">
-                    <div class="panel-body position-relative">
-                        <a href="https://ircc.canada.ca/english/information/fees/index.asp" class="stretched-link btn-link no-undrln full-width">
-                            <div class="row d-flex align-items-center text-left">
-                                <div class="col-xs-11">Pay your fees</div>
-                                <div class="col-xs-1"><span class="fas fa-share pull-right"></span></div>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-            </ul>
-        </div></div>
+                                <div class="row d-flex align-items-center text-left">
+                                    <div class="col-xs-11">Check your application status</div>
+                                    <div class="col-xs-1"><span class="fas fa-share pull-right"></span></div>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="panel panel-default">
+                        <div class="panel-body position-relative">
+                            <a href="https://ircc.canada.ca/english/information/fees/index.asp" class="stretched-link btn-link no-undrln full-width">
+                                <div class="row d-flex align-items-center text-left">
+                                    <div class="col-xs-11">Pay your fees</div>
+                                    <div class="col-xs-1"><span class="fas fa-share pull-right"></span></div>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
 
 
