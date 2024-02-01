@@ -192,7 +192,7 @@
                         <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
                                         { "action": "addClass", "class": "hidden", "source": ".lob" },
                                         { "action": "removeClass", "class": "hidden", "source": ".temp, .lob-options, .reset" },
-                                        { "action": "removeClass", "class": "stretched-link", "source": ".temp, .lob-options, .reset" },
+                                        { "action": "removeClass", "class": "stretched-link", "source": ".temp>div>button" },
                                         { "action": "addClass", "class": "", "source": ".temp .panel-body" },
                                         { "action": "ajax", "container": ".cas_fee", "url": "#cas_fees_content" },
                                         { "action": "addClass", "class": "h5 mrgn-tp-0", "source": ".temp .heading" }
@@ -206,8 +206,9 @@
                         <ul class="list-unstyled lob-options mrgn-tp-md hidden">
                             <li class="panel panel-default">
                                 <div class="panel-body position-relative">
-                                    <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
+                                    <button class="stretched-link btn-link no-undrln full-width work-permit" data-wb-doaction='[
                                         { "action": "addClass", "class": "hidden", "source": ".result" },
+                                        { "action": "removeClass", "class": "stretched-link", "source": ".work-permit" },
                                         { "action": "removeClass", "class": "hidden", "source": ".work-permit, .reset" }
                                     ]'>
                                         <div class="row d-flex align-items-center text-left">
@@ -227,8 +228,9 @@
                             </li>
                             <li class="panel panel-default">
                                 <div class="panel-body position-relative">
-                                    <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
+                                    <button class="stretched-link btn-link no-undrln full-width h-1b" data-wb-doaction='[
                                     { "action": "addClass", "class": "hidden", "source": ".result" },
+                                    { "action": "removeClass", "class": "stretched-link", "source": ".h-1b" },
                                     { "action": "removeClass", "class": "hidden", "source": ".h-1b" }
                                 ]'>
                                         <div class="row d-flex align-items-center text-left">
@@ -254,7 +256,7 @@
                         <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
                                         { "action": "addClass", "class": "hidden", "source": ".lob" },
                                         { "action": "removeClass", "class": "hidden", "source": ".study, .lob-options, .reset" },
-                                        { "action": "removeClass", "class": "stretched-link", "source": ".study, .lob-options, .reset" },
+                                        { "action": "removeClass", "class": "stretched-link", "source": ".study>div>button" },
                                         { "action": "addClass", "class": "", "source": ".study .panel-body" },
                                         { "action": "ajax", "container": ".cas_fee", "url": "#cas_fees_content" },
                                         { "action": "addClass", "class": "h5 mrgn-tp-0", "source": ".study .heading" }
@@ -267,8 +269,9 @@
                         <ul class="list-unstyled lob-options mrgn-tp-md hidden">
                             <li class="panel panel-default">
                                 <div class="panel-body position-relative">
-                                    <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
+                                    <button class="stretched-link btn-link no-undrln full-width study-permit" data-wb-doaction='[
                                         { "action": "addClass", "class": "hidden", "source": ".result" },
+                                        { "action": "removeClass", "class": "stretched-link", "source": ".study-permit" },
                                         { "action": "removeClass", "class": "hidden", "source": ".study-permit, .reset" }
                                     ]'>
                                         <div class="row d-flex align-items-center text-left">
@@ -299,20 +302,21 @@
                             </li>
                             <li class="panel panel-default">
                                 <div class="panel-body position-relative">
-                                    <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
+                                    <button class="stretched-link btn-link no-undrln full-width study-permit-fam" data-wb-doaction='[
                                     { "action": "addClass", "class": "hidden", "source": ".result" },
-                                    { "action": "removeClass", "class": "hidden", "source": ".h-1b" }
+                                    { "action": "removeClass", "class": "stretched-link", "source": ".study-permit-fam" },
+                                    { "action": "removeClass", "class": "hidden", "source": ".study-permit-fam" }
                                 ]'>
                                         <div class="row d-flex align-items-center text-left">
-                                            <div class="col-xs-11">H-1B visa holder work permit</div>
+                                            <div class="col-xs-11">Study permit (with a family member who needed a work permit)</div>
                                             <div class="col-xs-1"><span class="fas fa-chevron-right pull-right"></span></div>
                                         </div>
                                     </button>
 
-                                    <div class="result h-1b hidden mrgn-lft-sm mrgn-rght-sm">
-                                        <h3 class="h4 text-muted mrgn-tp-md">IRCC Portal</h3>
-                                        <p class="mrgn-tp-md">You used the IRCC Portal.</p>
-                                        <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/transit/apply.html" class="btn btn-primary btn-lg mrgn-bttm-md mrgn-tp-sm">Go to IRCC Portal</a></p>
+                                    <div class="result study-permit-fam hidden mrgn-lft-sm mrgn-rght-sm">
+                                        <h3 class="h4 text-muted mrgn-tp-md">IRCC secure account</h3>
+                                        <p>You used the IRCC secure account to apply for a study permit (if you applied with a family member who applied for a work permit).</p>
+                                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn-primary btn-lg">Go to IRCC secure account</a>
                                     </div>
                                 </div>
                             </li>
@@ -335,7 +339,7 @@
                         <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
                             { "action": "addClass", "class": "hidden", "source": ".lob" },
                             { "action": "removeClass", "class": "hidden", "source": ".refugees, .lob-options, .reset" },
-                            { "action": "removeClass", "class": "stretched-link", "source": ".refugees, .lob-options, .reset" },
+                            { "action": "removeClass", "class": "stretched-link", "source": ".refugees>div>button" },
                             { "action": "addClass", "class": "", "source": ".refugees .panel-body" },
                             { "action": "ajax", "container": ".cas_fee", "url": "#cas_fees_content" },
                             { "action": "addClass", "class": "h5 mrgn-tp-0", "source": ".refugees .heading" }
@@ -349,8 +353,9 @@
                         <ul class="list-unstyled lob-options mrgn-tp-md hidden">
                             <li class="panel panel-default">
                                 <div class="panel-body position-relative">
-                                    <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
+                                    <button class="stretched-link btn-link no-undrln full-width asylum" data-wb-doaction='[
                                         { "action": "addClass", "class": "hidden", "source": ".result" },
+                                        { "action": "removeClass", "class": "stretched-link", "source": ".asylum" },
                                         { "action": "removeClass", "class": "hidden", "source": ".asylum" }
                                     ]'>
                                         <div class="row d-flex align-items-center text-left">
@@ -369,8 +374,9 @@
                             </li>
                             <li class="panel panel-default">
                                 <div class="panel-body position-relative">
-                                    <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
+                                    <button class="stretched-link btn-link no-undrln full-width sponsor" data-wb-doaction='[
                                     { "action": "addClass", "class": "hidden", "source": ".result" },
+                                    { "action": "removeClass", "class": "stretched-link", "source": ".sponsor" },
                                     { "action": "removeClass", "class": "hidden", "source": ".sponsor" }
                                 ]'>
                                         <div class="row d-flex align-items-center text-left">
@@ -395,7 +401,7 @@
                         <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
                         { "action": "addClass", "class": "hidden", "source": ".result, .lob-options, .reset" },
                         { "action": "removeClass", "class": "hidden", "source": ".lob" },
-                        { "action": "addClass", "class": "stretched-link", "source": ".lob button" },                        
+                        { "action": "addClass", "class": "stretched-link", "source": ".btn-link" },                        
                         { "action": "ajax", "container":".cas_fee", "url":"all-accounts-page-v5.html .empty"},
                         { "action": "removeClass", "class": "h5 mrgn-tp-0", "source": ".heading" }
                     ]'>
