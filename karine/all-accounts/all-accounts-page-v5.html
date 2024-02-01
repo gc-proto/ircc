@@ -271,7 +271,7 @@
                             { "action": "removeClass", "class": "hidden", "source": ".refugees, .lob-options, .reset" },
                             { "action": "removeClass", "class": "stretched-link", "source": ".refugees, .lob-options, .reset" },
                             { "action": "addClass", "class": "", "source": ".refugees .panel-body" },
-                            { "action": "ajax", "container": ".cas_fee", "url": "all-accounts-page-v5.html .cas_fees_content", "clean":".cas_fee" }
+                            { "action": "ajax", "container": ".cas_fee", "url": "#cas_fees_content" }
                         ]'>
                             <div class="row d-flex align-items-center text-left">
                                 <div class="col-xs-11">Refugees and asylum</div>
@@ -328,7 +328,8 @@
                         <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
                         { "action": "addClass", "class": "hidden", "source": ".result, .lob-options, .reset" },
                         { "action": "removeClass", "class": "hidden", "source": ".lob" }
-                        { "action": "addClass", "class": "stretched-link", "source": ".lob" }
+                        { "action": "addClass", "class": "stretched-link", "source": ".lob" },                        
+                        { "action": "ajax", "clean":".cas_fee" }
                     ]'>
                             <div class="row d-flex align-items-center text-left">
                                 <div class="col-xs-1"><span class="fas fa-chevron-left"></span></div>
@@ -342,7 +343,7 @@
 
 
         <div class="hidden">
-            <div class="cas_fees_content">
+            <div id="cas_fees_content">
         <div class="row">
             <ul class="col-md-7 list-unstyled">
                 <li class="panel panel-default">
