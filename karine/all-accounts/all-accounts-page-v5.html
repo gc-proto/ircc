@@ -329,7 +329,7 @@
                         { "action": "addClass", "class": "hidden", "source": ".result, .lob-options, .reset" },
                         { "action": "removeClass", "class": "hidden", "source": ".lob" },
                         { "action": "addClass", "class": "stretched-link", "source": ".lob" },                        
-                        { "action": "ajax", "clean":".cas_fee" }
+                        { "action": "ajax", "container":".cas_fee", "url":".empty"}
                     ]'>
                             <div class="row d-flex align-items-center text-left">
                                 <div class="col-xs-1"><span class="fas fa-chevron-left"></span></div>
@@ -343,6 +343,7 @@
 
 
         <div class="hidden">
+            <div class="empty"></div>
             <div id="cas_fees_content">
         <ul class="list-unstyled">
                 <li class="panel panel-default">
