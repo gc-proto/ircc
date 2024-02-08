@@ -164,15 +164,15 @@
 
         <p>Select what your application was about to find your account.</p>
         <div class="row">
-            <ul class="col-md-12 list-unstyled">
-                <li class="panel panel-default mrgn-bttm-md lob visit">
+            <ul class="col-md-10 list-unstyled">
+                <li class="panel panel-default mrgn-bttm-md lob">
                     <div class="panel-body position-relative">
                         <button class="stretched-link btn-link no-undrln full-width" data-wb-doaction='[
                                         { "action": "addClass", "class": "hidden", "source": ".lob" },
-                                        { "action": "removeClass", "class": "hidden", "source": ".visit, .lob-options, .reset" },
-                                        { "action": "removeClass", "class": "stretched-link", "source": ".visit>div>button" },
-                                        { "action": "addClass", "class": "", "source": ".visit .panel-body" },
-                                        { "action": "addClass", "class": "h3 mrgn-tp-0", "source": ".visit .heading" }
+                                        { "action": "removeClass", "class": "hidden", "source": ".temp, .lob-options, .reset" },
+                                        { "action": "removeClass", "class": "stretched-link", "source": ".temp>div>button" },
+                                        { "action": "addClass", "class": "", "source": ".temp .panel-body" },
+                                        { "action": "addClass", "class": "h3 mrgn-tp-0", "source": ".temp .heading" }
                                     ]'>
                             <div class="row d-flex align-items-center text-left">
                                 <div class="col-xs-11 heading">Visiting Canada</div>
@@ -182,7 +182,13 @@
 
                         <div class="lob-options hidden">
                             <p><strong>Haven't applied yet?</strong> <a href="https://ircc.canada.ca/english/visit/visas.asp">Find out what document you need to travel to Canada.</a></p>
-                           
+                            <p>You may have used the IRCC Portal to apply for a visitor visa:</p>
+                            <ul>
+                                <li>to visit as a tourist</li>
+                                <li>to visit for business</li>
+                                <li>to visit family</li>
+                                <li>for compassionate reasons</li>
+                            </ul>
 
                             <ul class="list-unstyled mrgn-tp-md">
                                 <li class="panel panel-default mrgn-bttm-md">
@@ -200,7 +206,7 @@
     
                                         <div class="result visitor-visa hidden mrgn-lft-sm mrgn-rght-sm">
 
-                                            <p><strong>IRCC Portal</strong><span class="wb-inv">: Option 1 of 2</span></p>
+                                            <p>IRCC Portal<span class="wb-inv">: Option 1 of 2</span></p>
                                             <p>You may have used the IRCC Portal to apply for a visitor visa:</p>
                                             <ul>
                                                 <li>to visit as a tourist</li>
@@ -212,7 +218,13 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative">
                                                         
-                                                        <i class="fa-solid fa-user fa-2x text-primary"></i>
+                                                        <div class="fa-1x pull-left mrgn-rght-md">
+                                                            <span class="fa-layers fa-fw position-relative">
+                                                                <i class="fas fa-user-circle fa-2x mrgn-lft-md text-primary"></i>
+                                                                <i class="fas fa-circle fa-lg pstn-lft-xs pstn-bttm-xs mrgn-bttm-md"></i>                            
+                                                                <span class="fa-sm text-center pstn-lft-xs pstn-bttm-xs mrgn-bttm-md text-white pl-2">1</span>
+                                                            </span>
+                                                        </div>
                                                         <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html" class="stretched-link">Go to the IRCC portal</a>
                                     
                                                     </div>
@@ -347,13 +359,7 @@
                                             <li class="panel panel-default mrgn-bttm-md">
                                                 <div class="panel-body position-relative">
                                                     
-                                                    <div class="fa-1x pull-left mrgn-rght-md">
-                                                        <span class="fa-layers fa-fw position-relative">
-                                                            <i class="fa-solid fa-user fa-2x mrgn-lft-md text-primary"></i>
-                                                            <i class="fas fa-circle fa-lg pstn-lft-xs pstn-bttm-xs mrgn-bttm-md"></i>                            
-                                                            <span class="fa-sm text-center pstn-lft-xs pstn-bttm-xs mrgn-bttm-md text-white pl-2">&#8239;1</span>
-                                                        </span>
-                                                    </div>
+                                                    <i class="fas fa-user fa-2x"></i>
                                                     <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html" class="stretched-link no-undrln mrgn-tp-sm">Go to IRCC Portal</a>
                                 
                                                 </div>
@@ -361,13 +367,7 @@
                                             <li class="panel panel-default mrgn-bttm-md">
                                                 <div class="panel-body position-relative">
                                                     
-                                                    <div class="fa-1x pull-left mrgn-rght-md">
-                                                        <span class="fa-layers fa-fw position-relative">
-                                                            <i class="fa-solid fa-user fa-2x mrgn-lft-md text-primary"></i>
-                                                            <i class="fas fa-circle fa-lg pstn-lft-xs pstn-bttm-xs mrgn-bttm-md"></i>
-                                                            <span class="fa-sm pstn-lft-xs pstn-bttm-xs mrgn-bttm-md text-white pl-2">&#8239;2</span>
-                                                        </span>
-                                                    </div>
+                                                    <i class="fas fa-user fa-2x"></i>
                                                     <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html" class="stretched-link no-undrln mrgn-tp-sm">Go to IRCC secure account</a>
                                 
                                                 </div>
@@ -375,13 +375,7 @@
                                             <li class="panel panel-default mrgn-bttm-md">
                                                 <div class="panel-body position-relative">
                                                     
-                                                    <div class="fa-1x pull-left mrgn-rght-md">
-                                                        <span class="fa-layers fa-fw position-relative">
-                                                            <i class="fa-solid fa-user fa-2x mrgn-lft-md text-primary"></i>
-                                                            <i class="fas fa-circle fa-lg pstn-lft-xs pstn-bttm-xs mrgn-bttm-md"></i>
-                                                            <span class="fa-sm pstn-lft-xs pstn-bttm-xs mrgn-bttm-md text-white pl-2">&#8239;3</span>
-                                                        </span>
-                                                    </div>
+                                                    <i class="fas fa-user fa-2x"></i>
                                                     <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html" class="stretched-link no-undrln mrgn-tp-sm">Go to IRCC Client Platform</a>
                                 
                                                 </div>
