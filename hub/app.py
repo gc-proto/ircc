@@ -8,8 +8,6 @@ import pandas as pd
 import nltk
 from nltk.corpus import stopwords
 from nltk.probability import FreqDist
-from textblob import TextBlob
-from wordcloud import WordCloud
 
 import matplotlib
 from matplotlib import dates as mdates, ticker as plticker
@@ -17,58 +15,121 @@ from matplotlib.dates import DateFormatter
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 
+import json
+import pickle
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+import re
+
+import datetime
+from datetime import date
+
+import pyairtable
+from pyairtable import Api
+from pyairtable.formulas import match, FIND, to_airtable_value
+
+apikey = os.environ['AIRTABLE_API_KEY']
+api = Api(apikey)
+
+date_modified = os.path.getmtime('airtable.pkl')
+date_modified = datetime.datetime.fromtimestamp(date_modified)
+date_modified = date_modified.strftime("%Y/%m/%d")
+
+today = date.today()
+today = today.strftime("%Y/%m/%d")
+
+print('date modified = ' + date_modified)
+print('today = ' + today)
+
+
+
+if date_modified != today:
+    at_table = api.table('appe8vwq3efUYiYqN', 'tblhK8NRnfDzKDrpM')
+    at_table.all()
+    with open('airtable.pkl', 'wb') as file: 
+        pickle.dump(at_table, file)
+        file.close()
+
+else:
+    with open("airtable.pkl", "rb") as file:
+        at_table = pickle.load(file)
+        file.close()
+
+# print(type(table))
+# print(table.all())
+
+# pattern = re.compile(r"<['\",]>")
+
+
+# arr= pattern.sub("", arr)
+
+def toArray(arr, type):  
+    arr = str(arr)
+    arr = arr[2:]
+    arr = arr[:-2]  
+    arr = arr.replace("], [", ", ")
+
+    if type != "url":
+        arr = arr[1:]
+        arr = arr[:-1]  
+
+    arr = arr.split("', '") 
+    newarr = []
+    for x in arr:
+        if type != "url":
+            x = x.capitalize()
+        newarr.append(x)
+    newarr.sort()
+    newarr = list(dict.fromkeys(newarr))
+    return newarr
+
+
+topics = []
+for x in at_table.all(formula = "FIND('', {Topic})"):
+    topics.append(x['fields']['Topic'])
+topics = toArray(topics, "text")
+topics.append('All')
+topics.sort()
+
+
+urls = []
+for x in at_table.all(formula = "FIND('', {URL})"):
+    urls.append(x['fields']['URL'])
+
+# urls = toArray(urls)
+# print("urls =")
+# print(toArray(urls))
+
+at_tasks = []
+for x in at_table.all(formula = "FIND('', {Tasks})"):
+    at_tasks.append(x['fields']['Tasks'])
+at_tasks = toArray(at_tasks, "text")
+
+
+
+formula = FIND('Super visa', 'Service')
+formula
+"FIND('Super visa', {Service})"
+
+records = []
+for x in at_table.all(formula = "FIND('Super visa', {Service})"):
+    records.append(x['fields']['URL'])
 
 
 matplotlib.use('Agg')
 
-
 app = Flask(__name__)
 
 #list topics for selection
-topics = ['All', 'Campaign', 'My application', 'Passport', 'Visit', 'Immigrate', 'Work', 'Study', 'Citizenship', 'New immigrants', 'Canadians', 'Refugees and asylum', 'Enforcement and violations', 'Help Centre']
-
-
-# creates a word cloud
-def generate_wordcloud(comments, lang):
-    word_list = comments.tolist()
-    word_list = [str(i) for i in word_list]
-    all_words = ' '.join([str(elem) for elem in word_list])
-
-    tokenizer = nltk.RegexpTokenizer(r"\w+")
-    tokens = tokenizer.tokenize(all_words)
-
-    words = []
-    for word in tokens:
-        words.append(word.lower())
-
-    if lang == 'english':
-        sw = nltk.corpus.stopwords.words('english')
-    elif lang == 'french':
-        sw = nltk.corpus.stopwords.words('french')
-
-    words_ns = []
-    for word in words:
-        if word.isalpha() and word not in sw:
-            words_ns.append(word)
-
-    cloud_words = " ".join(words_ns) if words_ns else "No Comments"
-
-    img = io.BytesIO()
-    wordcloud = WordCloud(background_color='white', max_font_size=80, width=300, height=200).generate(cloud_words)
-    plt.figure(figsize=(8, 4))
-    plt.axis("off")
-    plt.imshow(wordcloud, interpolation='bilinear')
-    plt.savefig(img, format='png')
-    plt.close()
-    img.seek(0)
-
-    return base64.b64encode(img.getvalue()).decode()
+# topics = ['All', 'Campaign', 'My application', 'Passport', 'Visit', 'Immigrate', 'Work', 'Study', 'Citizenship', 'New immigrants', 'Canadians', 'Refugees and asylum', 'Enforcement and violations', 'Help Centre']
 
 # routes for different parts of the app
 @app.route('/')
 def landing():
     facets = ['Page feedback', 'GC Task Success', 'Web Analytics', 'Social media', 'Call Centre', 'Google Search']
-    return render_template('landing.html', topics=topics, facets=facets)
+    return render_template('index.html', topics=topics, facets=facets, facet='Overall',)
 
 
 @app.route('/selected_page', methods=['POST'])
@@ -94,9 +155,14 @@ def page_feedback():
     time_range = request.args.get('time_range')
     tab = request.args.get('tab', default='comments')
 
+   
+
+
     # code to fetch data from db
 
     conn = sqlite3.connect('./data/ircc_data.db')
+  
+
 
     if time_range == "alldata":
         if topic == "All":
@@ -110,9 +176,14 @@ def page_feedback():
         else:
             df = pd.read_sql_query("SELECT Date, Comment, URL, Language FROM Page_feedback WHERE Topic = ? AND Date >= DATE('now', ?)", conn, params=[topic, sqlite_time_range])
 
+    print("==============")
+    # Don't remember what I was trying to do here
+    # print('records = ', records[1])
+    # df_test = pd.read_sql_query("SELECT Date, Comment, URL, Language FROM Page_feedback WHERE URL IN(?);", conn, params=[records[1]])
+    # print("df_test = " + df_test)
 
     # Process data for the selected tab
-    if tab == "comments":
+    if tab == "comments": 
         #list comments
         data = df.values.tolist()
 
@@ -153,7 +224,11 @@ def page_feedback():
         fig.autofmt_xdate()
         ax.xaxis.set_major_locator(loc)
 
+        if time_range == "alldata":
+            fig.set_figwidth(10)
+
         fig.savefig(img, format='png')
+
         plt.close()
 
         img.seek(0)
@@ -161,78 +236,16 @@ def page_feedback():
 
         #spefifies wich html template to use, and the values to pass
         return render_template('page_feedback.html', facet='Page Feedback', topic=topic, time_range=time_range, tab=tab, data=data, topics=topics, plot=plot)
-
-    elif tab == "common-words":
-
-        #check if there are comments
-        if df['Comment'].isna().all():
-            return render_template('page_feedback.html', facet='Page Feedback', topic=topic, time_range=time_range, tab=tab, data=[], topics=topics, plot=None, message="No comments")
-
-        else: 
-            # Split the DataFrame based on language
-            feedback_df_en = df[df['Language'] == 'en']
-            feedback_df_fr = df[df['Language'] == 'fr']
-                
-            # Generate word clouds for English and French comments
-            wordcloud_en = generate_wordcloud(feedback_df_en['Comment'], 'english') if not feedback_df_en.empty else None
-            wordcloud_fr = generate_wordcloud(feedback_df_fr['Comment'], 'french') if not feedback_df_fr.empty else None
-                
-            return render_template('page_feedback.html', facet='Page Feedback', topic=topic, time_range=time_range, tab=tab, topics=topics, wordcloud_en=wordcloud_en, wordcloud_fr=wordcloud_fr)    
     
-    elif tab == "sentiment":
-        if df['Comment'].isna().all():
-            return render_template('page_feedback.html', facet='Page Feedback', topic=topic, time_range=time_range, tab=tab, data=[], topics=topics, plot=None, message="No comments")
-
-        else:
-        # Perform sentiment analysis on each comment
-            df['Sentiment'] = df['Comment'].apply(lambda comment: TextBlob(comment).sentiment.polarity if comment else None)
-            
-            # Make sure your 'Date' column is of datetime type
-            df['Date'] = pd.to_datetime(df['Date'])
-
-            # Perform resampling and grouping based on language
-            df_en = df[df['Language']=='en']
-            df_fr = df[df['Language']=='fr']
-
-            sentiment_en = df_en.resample('W', on='Date')['Sentiment'].mean()
-            sentiment_fr = df_fr.resample('W', on='Date')['Sentiment'].mean()
-
-            # Prepare data for sentiment plot
-            dates_en = sentiment_en.index
-            sentiment_values_en = list(sentiment_en.values)
-
-            dates_fr = sentiment_fr.index
-            sentiment_values_fr = list(sentiment_fr.values)
-
-            # Create sentiment analysis plot
-            img_sentiment = io.BytesIO()
-
-            fig, ax = plt.subplots()
-            ax.plot(dates_en, sentiment_values_en, color='red', linewidth=3.0, label='Sentiment English')
-            ax.plot(dates_fr, sentiment_values_fr, color='blue', linewidth=3.0, label='Sentiment French')
-            plt.title(topic + '\n' + 'Average sentiment per week')
-
-            ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
-
-            ax.legend()
-            loc = plticker.MultipleLocator(base=7.0)
-            plt.gcf().subplots_adjust(bottom=0.2)
-            fig.autofmt_xdate()
-            ax.xaxis.set_major_locator(loc)
-
-            fig.savefig(img_sentiment, format='png')
-            plt.close()
-
-            img_sentiment.seek(0)
-            sentiment_plot = base64.b64encode(img_sentiment.getvalue()).decode()
-
-            # Render your template, passing in the necessary data and sentiment plot.
-            return render_template('page_feedback.html', facet='Page Feedback', topic=topic, time_range=time_range, tab=tab, topics=topics, sentiment_plot=sentiment_plot)
+   
 
     conn.close()
 
     
 
+
+# if you select from the task dropdown, go get matching tasks from the airtables and provide URLs based on that match.
+# then when they select the URL, narrow down results further?
 
 
 
@@ -240,10 +253,11 @@ def page_feedback():
 def gc_task_success():
     topic = request.args.get('topic')
     selected_task = request.form.get('task', 'All tasks')
+    selected_url = request.form.get('url', 'All URLs')
 
     conn = sqlite3.connect('./data/tss_data.db')
 
-   
+    
     # Fetch all data first
     df = pd.read_sql_query("SELECT dateTime, task, taskSatisfaction, taskEase, taskCompletion, Topic FROM TSS", conn)
 
@@ -254,17 +268,33 @@ def gc_task_success():
     # Then filter by topic and task in pandas
     if topic != "All":
         df = df[df['Topic'] == topic]
+
+        urls = []
+        for x in at_table.all(formula = "FIND('" + topic + "', {Topic})"):
+            urls.append(x['fields']['URL'])
+
+        print("urls by topic")
+        print(urls)
     
     tasks = df['task'].unique().tolist()
 
     if selected_task and selected_task != "All tasks" and selected_task != None:
         df = df[df['task'] == selected_task]
 
+        urls = []
+        for x in at_table.all(formula = "FIND('" + selected_task.split(' / ')[0] + "', {Tasks})"):
+        # for x in at_table.all(formula = "FIND('Apply', {Tasks})"):
+            urls.append(x['fields']['URL'])
+
+        urls = toArray(urls, "url")
+        print("urls by task")
+        print(urls)
+
     
 
     # Make sure your 'dateTime' column is of datetime type
     df['dateTime'] = pd.to_datetime(df['dateTime'], format='%m/%d/%Y')
-
+    
 
     # Convert satisfaction, ease and completion to numerical values
     satisfaction_mapping = {
@@ -306,7 +336,7 @@ def gc_task_success():
     # Drop any rows with missing values after this mapping in df_filtered
     df_filtered.dropna(subset=['taskCompletion'], inplace=True)
 
-    print(df_filtered.head()) 
+    # print(df_filtered.head()) 
 
     
     # Set the 'dateTime' column as the index of the DataFrame
@@ -314,8 +344,8 @@ def gc_task_success():
     df_filtered.set_index('dateTime', inplace=True)
 
     # Resample and calculate the mean
-    df_resampled = df.resample('W').mean()
-    df_filtered_resampled = df_filtered.resample('W').mean()
+    df_resampled = df.resample('W').mean(numeric_only=True)
+    df_filtered_resampled = df_filtered.resample('W').mean(numeric_only=True)
     
     # Create a figure with two subplots
 
@@ -326,12 +356,15 @@ def gc_task_success():
 
     
     #plot satisfaction and ease on the first subplot
-    df_resampled[['taskSatisfaction', 'taskEase']].plot(kind='line', ax=ax1, linewidth=2.0)
-    ax1.set_title('Task ease and satisfaction')
+    df_resampled['taskSatisfaction'].plot(kind='line', ax=ax1, linewidth=2.0, label='Satisfaction')
+    df_resampled['taskEase'].plot(kind='line', ax=ax1, linewidth=2.0, label='Ease')
+    ax1.set_title('Task Ease and Satisfaction')
     ax1.set_xlabel('Week')
     ax1.set_ylabel('Average Rating')
     ax1.set_ylim([0, 5])  # Set a fixed scale
     ax1.grid(True, axis='y')  # Show only horizontal grid lines
+    #ax1.legend({'Task satisfaction', 'Task ease'})
+    ax1.legend()
 
     # Plot completion rate on the second subplot
     df_filtered_resampled['taskCompletion'].plot(kind='line', ax=ax2, linewidth=2.0)
@@ -360,9 +393,12 @@ def gc_task_success():
 
     plt.close(fig)
 
+
+    
+
     conn.close()
 
-    return render_template('gc_task_success.html', facet='GC Task Success', topic=topic, task=selected_task, topics=topics, tasks=tasks, plot1=png_image1_b64_string, plot2=png_image2_b64_string)
+    return render_template('gc_task_success.html', facet='GC Task Success', topic=topic, task=selected_task, topics=topics, tasks=tasks, urls=urls, plot1=png_image1_b64_string, plot2=png_image2_b64_string)
 
 
 
@@ -387,6 +423,12 @@ def call_centre():
 def google_search():
     topic = request.args.get('topic')
     return render_template('google_search.html', facet='Google Search', topic=topic, topics=topics)
+
+
+@app.route('/test')
+def test():
+    topic = request.args.get('topic')
+    return render_template('test.html', facet='Test', topic=topic, topics=topics)
 
 if __name__ == '__main__':
     app.run(debug=True)

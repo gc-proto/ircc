@@ -1,19 +1,5 @@
-﻿#=================================================================
-# Overview - IRCC - EN/FR
-# Report suite: GC
-"# Date: Nov 1, 2022 - Oct 31, 2023"
-# Segments: IRCC - EN & FR
-#=================================================================
-
-
-##############################################
-# Web content included in this report (Data table)
-# Page Views - counts of the number of web pages viewed (content consumed). Includes reloads and user’s clicks of the back button.
-"# Visits - counts of the number of continuous browsing sessions (people), without a break of greater than 30 minutes."
-# Unique Visitors - the number of unique individuals who have visited the site during a specified time period.
-##############################################
-,Visits,Page Views,Unique Visitors,Bounce Rate
-Page URL (v12),355109997,997160480,140540434,0.3055467373958498
+﻿URL,Visits,Page Views,Unique Visitors,Bounce Rate
+Total,355109997,997160480,140540434,0.3055467373958498
 www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html,91084813,131578214,27094713,0.09327824370557276
 www.canada.ca/en/services/immigration-citizenship.html,49223756,81719134,21016572,0.14708318976386592
 www.cic.gc.ca/english/helpcentre/answer.asp,22290653,32078674,15429051,0.5967691493973868
@@ -25,16 +11,7 @@ www.canada.ca/fr/services/immigration-citoyennete.html,9109625,14858203,4033011,
 www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,7944868,8839352,3279641,0.619077403452286
 www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html,7367975,10470421,5300067,0.22755962721219425
 
-
-##############################################
-# Monthly Breakdown
-# Page Views - counts of the number of web pages viewed (content consumed). Includes reloads and user’s clicks of the back button.
-"# Visits - counts of the number of continuous browsing sessions (people), without a break of greater than 30 minutes."
-# Unique Visitors - the number of unique individuals who have visited the site during a specified time period.
-# Bounce Rate - The number of bounces divided by the number of site entries.
-##############################################
-,Visits,Page Views,Unique Visitors,Bounce Rate
-Month,355109997,997160480,140540434,0.3055467373958498
+Month,Visits,Page Views,Unique Visitors,Bounce Rate
 2022-11-01,27964456,81861235,14203990,0.2950444109584662
 2022-12-01,23564831,65375553,12095352,0.3104560682161712
 2023-01-01,30288077,90607639,15420892,0.30267639939629987
@@ -48,18 +25,7 @@ Month,355109997,997160480,140540434,0.3055467373958498
 2023-09-01,27509983,74978133,13287733,0.308936634368995
 2023-10-01,27040338,72477882,12977080,0.3090339921114679
 
-
-##############################################
-# Top 10 pages - English
-"# Visits - counts of the number of continuous browsing sessions (people), without a break of greater than 30 minutes."
-# Unique Visitors - the number of unique individuals who have visited the site during a specified time period.
-"# Entry Rate - Percentage of visits that entered on this page. Calculated as Entries ÷ Visits. "
-"# Exit Rate - Percentage of visits that exited on this page. Calculated as Exits ÷ Visits. "
-"# Average Time Spent on Site - The average amount of time spent on this page. Note: This metric is not 100% accurate, as exits and bounces would not be factored into the calculation (because there is no server call sent to Adobe when someone exits)."
-##############################################
-,Language - English (v5),Language - English (v5),Language - English (v5)
-,Visits,Unique Visitors,Average Time on Site
-Page Title (v11),307200583,123398021,
+Page title,Visits,Unique Visitors,Average Time on Site
 Sign in to your IRCC secure account,91089276,27096333,182.9921588457863
 Immigration and citizenship,49233143,21021422,36.3178011246039
 Check processing times,16656753,8357641,129.51448388333029
@@ -71,18 +37,7 @@ Express Entry rounds of invitations,7945239,3279739,242.1119319418009
 Visit Canada,7368130,5300176,46.22659585010204
 "Immigration, Refugees and Citizenship Canada",7173694,4699531,50.570403819034915
 
-
-##############################################
-# Top 10 pages - French
-"# Visits - counts of the number of continuous browsing sessions (people), without a break of greater than 30 minutes."
-# Unique Visitors - the number of unique individuals who have visited the site during a specified time period.
-"# Entry Rate - Percentage of visits that entered on this page. Calculated as Entries ÷ Visits. "
-"# Exit Rate - Percentage of visits that exited on this page. Calculated as Exits ÷ Visits. "
-"# Average Time Spent on Site - The average amount of time spent on this page. Note: This metric is not 100% accurate, as exits and bounces would not be factored into the calculation (because there is no server call sent to Adobe when someone exits)."
-##############################################
-,Language - French (v5),Language - French (v5),Language - French (v5)
-,Visits,Unique Visitors,Average Time on Site
-Page Title (v11),52729615,21167866,
+Page title,Visits,Unique Visitors,Average Time on Site
 Ouvrir une session dans votre compte sécurisé d’IRCC,12297224,3221197,197.79279230351938
 Immigration et citoyenneté,9110138,4033397,44.30457593875858
 Ouvrir une session à votre compte sécurisé d'IRCC,4024554,1302525,159.715851653792
@@ -93,207 +48,3 @@ Immigrer au Canada,1352431,1017298,65.03324747164577
 Comment vérifier l’état de sa demande,1267337,605758,110.23338427143224
 "Rechercher dans Immigration, Réfugiés et Citoyenneté Canada",1261065,925192,90.67945391768812
 Ma demande,1258408,626292,28.95417001007487
-
-
-##############################################
-# Countries (Data table)
-##############################################
-,Language - English (v5)
-,Unique Visitors
-Countries,123361245
-Canada,55006943
-India,11144343
-United States,11125878
-United Kingdom,3327825
-Pakistan,3227800
-Philippines,3090666
-Nigeria,2713887
-Mexico,1934690
-United Arab Emirates,1776367
-Germany,1532986
-China,1162672
-Hong Kong SAR of China,1137896
-Turkey,1103582
-Australia,1090649
-Bangladesh,1007258
-Ghana,938193
-Saudi Arabia,902712
-Ukraine,889043
-Colombia,870825
-France,824855
-Brazil,782678
-Japan,675228
-Poland,668244
-Egypt,656504
-Kenya,614367
-
-
-##############################################
-# Countries (Data table)
-##############################################
-,Language - French (v5)
-,Unique Visitors
-Countries,21166263
-Canada,7457899
-France,2942838
-Algeria,1545416
-Morocco,1391588
-Senegal,838370
-Cameroon,787001
-Tunisia,749558
-Cote D Ivoire,509882
-Haiti,473071
-United States,430597
-Democratic Republic of The Congo,300784
-Belgium,208456
-Togo,184384
-Benin,182430
-Guinea,181973
-Mexico,142967
-Germany,134614
-Switzerland,120547
-Turkey,120402
-Madagascar,114333
-United Kingdom,104358
-Colombia,101950
-Burkina Faso,101779
-Ukraine,97847
-Dominican Republic,97505
-
-
-##############################################
-# Regions (Data table)
-##############################################
-,Language - English (v5)
-,Unique Visitors
-Regions,54211440
-Ontario (Canada),29043620
-British Columbia (Canada),10031452
-Alberta (Canada),6736013
-Quebec (Canada),4513722
-Manitoba (Canada),2676248
-Nova Scotia (Canada),1588538
-Saskatchewan (Canada),821518
-New Brunswick (Canada),464181
-Newfoundland and Labrador (Canada),308569
-Prince Edward Island (Canada),141642
-Yukon Territory (Canada),38193
-Northwest Territories (Canada),27182
-Nunavut (Canada),8417
-
-
-##############################################
-# Regions (Data table)
-##############################################
-,Language - French (v5)
-,Unique Visitors
-Regions,7375467
-Quebec (Canada),4858108
-Ontario (Canada),2492588
-British Columbia (Canada),114428
-Alberta (Canada),97500
-New Brunswick (Canada),89320
-Nova Scotia (Canada),70905
-Manitoba (Canada),39680
-Saskatchewan (Canada),12110
-Newfoundland and Labrador (Canada),7812
-Prince Edward Island (Canada),5457
-Yukon Territory (Canada),1306
-Northwest Territories (Canada),1136
-Nunavut (Canada),1095
-
-
-##############################################
-# Device Type (Data table)
-# The device (mobile / desktop / tablet) that a visitor uses to visit your site.
-##############################################
-,Unique Visitors
-Device Type (v4),140538668
-mobile,90807840
-desktop,49965060
-tablet,329959
-
-
-##############################################
-# Referrer Types (Data table)
-# Referrer Types categorize the sources of traffic to your web content. 
-# Other Websites: This tends to be primarily our site. Others are 3rd party websites that are neither social networks nor search engines
-"# Typed/Bookmarked is traffic that has no referring web page.  Examples are a link in an email, a visitor's bookmark or typed directly into the browser address bar."
-"# Search Engines: commercial search engines like Google, Bing, etc."
-"# Social Networks: Facebook, Twitter, etc."
-# Hard drive: Referrer originated from a local copy of a web page on the visitor’s hard drive.
-##############################################
-,Entries
-Referrer Type,333788988
-Search Engines,161508558
-Typed/Bookmarked,110185901
-Other Web Sites,54067165
-Social Networks,7985834
-Email,38325
-USENET (newsgroups),2894
-Hard Drive,311
-
-
-##############################################
-# Visit Depth - IRCC
-# The ‘Visit depth’ dimension reports the number of page views the visitor saw in the entire visit.
-"# "
-"# The dimension item of ""Pages per visit: 1"" represents a single-page visit, while the dimension item ""Pages per visit: 8"" represents a visit with 8 page views"
-##############################################
-,Unique Visitors
-Visit Depth,140261724
-Pages Per Visit: 1,93333062
-Pages Per Visit: 2,28075306
-Pages Per Visit: 3,19902416
-Pages Per Visit: 4,13651696
-Pages Per Visit: 5,9946316
-Pages Per Visit: 6,7518603
-Pages Per Visit: 7,5911168
-Pages Per Visit: 8,4607686
-Pages Per Visit: 9,3847847
-Pages Per Visit: 10,3140566
-Pages Per Visit: 11,2596553
-Pages Per Visit: 12,2201434
-Pages Per Visit: 13,1850634
-Pages Per Visit: 14,1545817
-Pages Per Visit: 15,1340373
-Pages Per Visit: 16,1147935
-Pages Per Visit: 17,980803
-Pages Per Visit: 18,860132
-Pages Per Visit: 19,749978
-Pages Per Visit: 20,653500
-Pages Per Visit: 21,582261
-Pages Per Visit: 22,510423
-Pages Per Visit: 23,448125
-Pages Per Visit: 24,402255
-Pages Per Visit: 25,357023
-
-
-##############################################
-# Year over year comparison
-##############################################
-Visits | Page Views | Unique Visitors
-Section
-
-
-##############################################
-# Yearly comparison (Data table)
-"# Visits - counts of the number of continuous browsing sessions (people), without a break of greater than 30 minutes."
-# Page Views - counts of the number of web pages viewed (content consumed). Includes reloads and user’s clicks of the back button.
-# Unique Visitors - the number of unique individuals who have visited the site during a specified time period.
-##############################################
-,Visits,Page Views,Unique Visitors
-Date Ranges,755786056,2163861271,302282281
-"Apr 1, 2019 - Mar 31, 2020",0,0,0
-"Apr 1, 2020 - Mar 31, 2021",120056676,342307415,48163542
-"Apr 1, 2021 - Mar 31, 2022",297347723,850937424,116284555
-"Apr 1, 2022 - Mar 31, 2023",338381657,970616432,137834184
-
-
-##############################################
-# Year over year comparison
-##############################################
-Device Type
-Section
-
-

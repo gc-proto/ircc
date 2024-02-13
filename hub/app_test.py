@@ -4,6 +4,7 @@ import sqlite3
 import base64
 
 from flask import Flask, render_template, request, redirect, url_for
+import numpy as np
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
@@ -30,7 +31,74 @@ topics = ['All', 'Campaign', 'My application', 'Passport', 'Visit', 'Immigrate',
 @app.route('/')
 def landing():
     facets = ['Page feedback', 'GC Task Success', 'Web Analytics', 'Social media', 'Call Centre', 'Google Search']
-    return render_template('landing.html', topics=topics, facets=facets)
+
+    # crit metrics?
+    totalKeyMetrics = pd.read_csv('./data/aa-ircc-site.csv', skiprows=0, nrows=10)        
+    # print('## page URL data')
+    # print(totalKeyMetrics)
+
+    total_visits = f'{totalKeyMetrics.values[0,1]:,}' 
+    total_pageviews = f'{totalKeyMetrics.values[0,2]:,}'
+    total_uniquevisitors = f'{totalKeyMetrics.values[0,3]:,}' 
+    
+    monthlyKeyMetrics = pd.read_csv('./data/aa-ircc-site.csv', skiprows=range(0,12), nrows=11)
+    
+    months = pd.to_datetime(monthlyKeyMetrics['Month'])
+    monthlyvisits = monthlyKeyMetrics['Visits']
+    monthlypageviews = monthlyKeyMetrics['Page Views']
+    monthlyuniquevisitors = monthlyKeyMetrics['Unique Visitors']
+    
+    img = io.BytesIO()
+
+    # Create graph
+    fig, ax = plt.subplots()
+
+    ax.plot(months, monthlyvisits, color='blue', linewidth=1.5, label='Visits')
+    ax.plot(months, monthlypageviews, color='red', linewidth=1.5, label='Page views')
+    ax.plot(months, monthlyuniquevisitors, color='black', linewidth=1.5, label='Unique visitors')
+
+    ax.xaxis.set_major_locator(mdates.MonthLocator())
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
+    ax.margins(x=0)
+
+    ax.yaxis.get_major_formatter().set_scientific(False)
+    scale_y = 1e6
+    ticks_y = plticker.FuncFormatter(lambda x, pos: '{0:g}'.format(x/scale_y) + "M")
+    ax.yaxis.set_major_formatter(ticks_y)
+
+    ax.legend()
+    fig.autofmt_xdate()
+
+    fig.savefig(img, format='png')
+
+    plt.close()
+
+    img.seek(0)
+    keymetrics_overtime = base64.b64encode(img.getvalue()).decode().replace('\n', '')
+
+
+    # Top english & French pages
+    toppagesEN = pd.read_csv('./data/aa-ircc-site.csv', skiprows=range(0,26), nrows=10)            
+    print(toppagesEN)
+    
+    urlsen = toppagesEN['Page title']
+    topen_visits = toppagesEN['Visits']
+    topen_uniquevisitors = toppagesEN['Unique Visitors']
+    topen_average = toppagesEN['Average Time on Site']
+
+    toppagesFR = pd.read_csv('./data/aa-ircc-site.csv', skiprows=range(0,38), nrows=10)         
+    
+    urlsfr = toppagesFR['Page title']
+    topfr_visits = toppagesFR['Visits']
+    topfr_uniquevisitors = toppagesFR['Unique Visitors']
+    topfr_average = toppagesFR['Average Time on Site']
+
+
+
+    return render_template('landing.html', topics=topics, facets=facets, total_visits=total_visits, total_pageviews=total_pageviews,total_uniquevisitors=total_uniquevisitors, keymetrics_overtime=keymetrics_overtime, toppagesEN=toppagesEN, toppagesFR=toppagesFR)
+    #spefifies wich html template to use, and the values to pass
+    # return render_template('landing.html', facet='Page Feedback', topic=topic, time_range=time_range, tab=tab, data=data, topics=topics, plot=plot)
+
 
 
 @app.route('/selected_page', methods=['POST'])
