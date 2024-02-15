@@ -182,35 +182,57 @@
             </ul>
 
             <h3>Who can use this account</h3>
-            <p>You may be able to use the IRCC client platform if you meet <strong>all</strong> these requirements:</p>
-            
-            <fieldset class="gc-chckbxrdio">
-                
-                <ul class="list-unstyled lst-spcd-2">
-                    <li class="checkbox">
-                        <input type="checkbox" id="toggle-msg-1" name="toggle-msg" onclick="isCheckedBoxes()">
-                        <label for="toggle-msg-1">You’re applying online for a visitor visa.</label>
-                    </li>
-                    <li class="checkbox">
-                        <input type="checkbox" id="toggle-msg-2" name="toggle-msg" onclick="isCheckedBoxes()">
-                        <label for="toggle-msg-2">You’re 18 years of age or older.</label>
-                    </li>
-                    <li class="checkbox">
-                        <input type="checkbox" id="toggle-msg-3" name="toggle-msg" onclick="isCheckedBoxes()">
-                        <label for="toggle-msg-3">You have never applied for anything with us before.</label>
-                    </li>
-                    <li class="checkbox">
-                        <input type="checkbox" id="toggle-msg-4" name="toggle-msg" onclick="isCheckedBoxes()">
-                        <label for="toggle-msg-4">You’re applying alone.</label>
-                    </li>
-                    <li class="checkbox">
-                        <input type="checkbox" id="toggle-msg-5" name="toggle-msg" onclick="isCheckedBoxes()">
-                        <label for="toggle-msg-5">You aren’t using a representative.</label>
-                    </li>
-                </ul>
-            </fieldset>
+            <div class="wb-frmvld">
+                <form>
+                    <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+                "noForm": true,
+                "base": { "live": true},
+                "renderas": "checkbox",
+                "gcChckbxrdio":true,
+                "isoptional": true,
+                "noreqlabel": true,
+                "default": [
+                    {"action": "removeClass", "class":"c1, c2, c3, c4, c5", "source": ".beta-alert-unchecked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5), .beta-alert-checked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"},
+                    {"action": "removeClass", "class":"hidden", "source": ".beta-alert-checked.c1.c2.c3.c4.c5"},
+                    {"action": "addClass", "class":"hidden", "source": ".beta-alert-unchecked.c1.c2.c3.c4.c5"},                    
+                    {"action": "addClass", "class":"hidden", "source": ".beta-alert-checked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"},
+                    {"action": "removeClass", "class":"hidden", "source": ".beta-alert-unchecked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"}
+                ]
+            }'>
+                        <div class="wb-fieldflow-header">
+                            <p class="wb-fieldflow-label"><span class="fnt-nrml">You may be able to use the IRCC client platform if you meet <strong>all</strong> these requirements:</span></p>
+                        </div>
+                        <ul>
+                            <li data-wb-fieldflow='[
+                            {"action": "addClass", "class":"c1", "source": ".beta-alert-unchecked, .beta-alert-checked"},
+                            {"action": "removeClass", "class":"c1", "source": ".beta-alert-unchecked:checked, .beta-alert-checked:checked"},
+                            {"action": "removeClass", "class":"hidden", "source": ".beta-alert-checked.c1.c2.c3.c4.c5"},
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-unchecked.c1.c2.c3.c4.c5"},                    
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-checked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"},
+                            {"action": "removeClass", "class":"hidden", "source": ".beta-alert-unchecked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"}
+                            ]'>You’re applying online for a visitor visa.</li>
+                            <li data-wb-fieldflow='[{"action": "addClass", "class":"c2", "source": ".beta-alert-unchecked, .beta-alert-checked"},{"action": "removeClass", "class":"hidden", "source": ".beta-alert-checked.c1.c2.c3.c4.c5"},
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-unchecked.c1.c2.c3.c4.c5"},                    
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-checked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"},
+                            {"action": "removeClass", "class":"hidden", "source": ".beta-alert-unchecked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"}]'>You’re 18 years of age or older.</li>
+                            <li data-wb-fieldflow='[{"action": "addClass", "class":"c3", "source": ".beta-alert-unchecked, .beta-alert-checked"},{"action": "removeClass", "class":"hidden", "source": ".beta-alert-checked.c1.c2.c3.c4.c5"},
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-unchecked.c1.c2.c3.c4.c5"},                    
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-checked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"},
+                            {"action": "removeClass", "class":"hidden", "source": ".beta-alert-unchecked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"}]'>You have never applied for anything with us before.</li>
+                            <li data-wb-fieldflow='[{"action": "addClass", "class":"c4", "source": ".beta-alert-unchecked, .beta-alert-checked"},{"action": "removeClass", "class":"hidden", "source": ".beta-alert-checked.c1.c2.c3.c4.c5"},
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-unchecked.c1.c2.c3.c4.c5"},                    
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-checked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"},
+                            {"action": "removeClass", "class":"hidden", "source": ".beta-alert-unchecked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"}]'>You’re applying alone.</li>
+                            <li data-wb-fieldflow='[{"action": "addClass", "class":"c5", "source": ".beta-alert-unchecked, .beta-alert-checked"},{"action": "removeClass", "class":"hidden", "source": ".beta-alert-checked.c1.c2.c3.c4.c5"},
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-unchecked.c1.c2.c3.c4.c5"},                    
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-checked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"},
+                            {"action": "removeClass", "class":"hidden", "source": ".beta-alert-unchecked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"}]'>You aren’t using a representative.</li>
+                        </ul>
+                    </div>
 
-            
+                    
+                </form>
+            </div>
             <div class="alert alert-warning beta-alert-unchecked">
                 <p>You can’t use the beta IRCC client platform to apply yet.</p>
             </div>
@@ -484,33 +506,6 @@
 <![endif]-->
 
     <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
-    <script>
-        let inputs = document.getElementsByName('toggle-msg');
-        console.log(inputs)
-        function isCheckedBoxes(){
-           
-           
-            let ischecked = false;
-            for(var x = 0; x < inputs.length; x++) {
-                if(inputs[x].type == 'checkbox') {
-                    is_checked = inputs[x].checked;
-                    console.log(is_checked)
-                    if(is_checked) break;
-                }
-            }
-
-            if (ischecked) {
-                document.getElementsByClassName('beta-alert-checked')[0].classList.remove('hidden');
-                document.getElementsByClassName('beta-alert-unchecked')[0].classList.add('hidden');
-            }
-            else {
-                document.getElementsByClassName('beta-alert-checked')[0].classList.add('hidden');
-                document.getElementsByClassName('beta-alert-unchecked')[0].classList.remove('hidden');
-            }
-        }
-        
-
-    </script>
 </body>
 
 </html>
