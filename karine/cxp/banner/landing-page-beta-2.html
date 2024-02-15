@@ -490,16 +490,10 @@
         function isCheckedBoxes(){
            
            
-            let ischecked = false;
-            for(var x = 0; x < inputs.length; x++) {
-                if(inputs[x].type == 'checkbox') {
-                    is_checked = inputs[x].checked;
-                    console.log(is_checked)
-                    if(is_checked) break;
-                }
-            }
+            console.log($('input[name="toggle-msg"]:checked').length)
+            console.log($('input[name="toggle-msg"]').length)
 
-            if (ischecked) {
+            if ($('input[name="toggle-msg"]:checked').length == $('input[name="toggle-msg"]').length) {
                 document.getElementsByClassName('beta-alert-checked')[0].classList.remove('hidden');
                 document.getElementsByClassName('beta-alert-unchecked')[0].classList.add('hidden');
             }
