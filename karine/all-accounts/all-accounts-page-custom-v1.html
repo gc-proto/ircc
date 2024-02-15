@@ -172,7 +172,7 @@
 
 
 
-        <h2 class="h3">What do you need to do?</h2>
+        <h2 class="h3">What do you want to do?</h2>
         <!-- start - do-action manager -->
         <div data-wb-actionmng='[
             { "trggroup":"reset", "action": "addClass", "class": "hidden", "source": ".result, .selection-options, .sub-selection, .sub-selection-options, .account-chooser.application, .reset" },
@@ -195,7 +195,7 @@
                     <div class="panel-body position-relative">
                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                             { "action": "addClass", "class": "hidden", "source": ".main" },
-                            { "action": "removeClass", "class": "hidden", "source": ".application, .application-reset" }
+                            { "action": "removeClass", "class": "hidden", "source": ".application, .reset" }
                         ]'>Finish or submit your application</button>
                     </div>
                 </li>
@@ -322,11 +322,14 @@
         </ul>
         </div>
 
-        <h3 class="wb-inv">Finish or submit your application</h3>
+        
         <div class="account-chooser row application hidden">
             <div class="col-md-12">
                 <p><strong>We have more than 1 account.</strong> The account you need depends on your application.</p>
+                <h3>Finish or submit your application</h3>
             </div>
+            
+            
             <ul class="col-md-8 list-unstyled lst-scpd">
                 <li class="panel panel-default selection visit">
                     <div class="panel-body position-relative">
@@ -645,7 +648,7 @@
                             { "action": "addClass", "class": "hidden", "source": ".result" },
                                 { "action": "removeClass", "class": "hidden", "source": ".work-permit" },
                                 { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
-                            ]'>Work permit</button>
+                            ]'>Work permit and work permit extension</button>
 
                             <div class="result work-permit hidden mrgn-lft-sm mrgn-rght-sm">
                                 <p>You used the IRCC secure account to apply.</p>
@@ -1110,7 +1113,7 @@
             <button class="text-left btn-link no-undrln full-width d-flex align-items-center reset hidden" data-wb-doaction='[
                     { "action": "run", "trggroup": "reset" },
                     { "action": "removeClass", "class": "hidden", "source": ".main" }
-                ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"> to "What do you need to do?"</span></button>
+                ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"> to "What do you want to do?"</span></button>
         </div>
         <h2 class="h3">Need an authorized paid representative or partner account?</h2>
         <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/partners-service-providers.html">View accounts for representatives and partners</a></p>
