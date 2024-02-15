@@ -209,7 +209,21 @@
                     </div>
                     <div class="panel-body selection-options hidden">
                         <p>Use our existing tool to find out how to track your application.</p>
-                        <p class="panel panel-default panel-body position-relative col-md-7"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html" class="stretched-link no-undrln">Check your application status</a></p>
+
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="panel panel-default  panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Check your application status</div>
+                                            <div class="col-xs-1"><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </li>
                 <li class="panel panel-default selection fees">
@@ -222,7 +236,19 @@
                     </div>
                     <div class="panel-body selection-options hidden">
                         <p>Use our existing tool to find out how to pay your fees.</p>
-                        <p class="panel panel-default panel-body position-relative col-md-7"><a href="https://ircc.canada.ca/english/information/fees/index.asp" class="stretched-link no-undrln">Pay your fees</a></p>
+
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="panel panel-default  panel-body position-relative">
+                                    <a href="https://ircc.canada.ca/english/information/fees/index.asp" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Pay your fees</div>
+                                            <div class="col-xs-1"><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </li>
                 <li class="panel panel-default selection start">
@@ -235,7 +261,7 @@
                     </div>
                     <div class="panel-body selection-options hidden">
                         <p>This tool doesn’t tell you which account you need to use to apply.</p>
-                        <div class="panel panel-default panel-body position-relative col-md-8">
+                        <div class="panel panel-default panel-body position-relative col-md-9">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                 { "action": "removeClass", "class": "hidden", "source": ".know" },
                                 { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
@@ -261,7 +287,7 @@
                             </div>
                         </div>
 
-                        <div class="panel panel-default panel-body position-relative col-md-8">
+                        <div class="panel panel-default panel-body position-relative col-md-9">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                 { "action": "removeClass", "class": "hidden", "source": ".dont-know" },
                                 { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
@@ -394,7 +420,7 @@
                                             <div class="panel panel-default mrgn-bttm-md">
                                                 <div class="panel-body position-relative d-flex align-items-center">
                                                     <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html" class="stretched-link no-undrln">IRCC portal</a>
+                                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/parent-grandparent-super-visa/apply.html" class="stretched-link no-undrln">IRCC portal</a>
 
                                                 </div>
                                             </div>
@@ -428,7 +454,7 @@
                                             <div class="panel panel-default mrgn-bttm-md">
                                                 <div class="panel-body position-relative d-flex align-items-center">
                                                     <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html" class="stretched-link no-undrln">IRCC portal</a>
+                                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/transit/apply.html" class="stretched-link no-undrln">IRCC portal</a>
 
                                                 </div>
                                             </div>
@@ -455,7 +481,7 @@
                 <li class="panel panel-default selection immigrate">
                     <div class="panel-body position-relative">
                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".selection" },
+                            { "action": "addClass", "class": "hidden", "source": ".selection, .reset" },
                             { "action": "removeClass", "class": "hidden", "source": ".immigrate, .selection-options, .application-reset" },
                             { "action": "run", "trggroup": "body-to-heading" }
                         ]'>Immigrating to Canada (to live and work permanently)</button>
@@ -490,7 +516,7 @@
 
                             <div class="result tr-pr hidden mrgn-lft-sm mrgn-rght-sm">
 
-                                <p>View your TR-to-PR application</p>
+                                <p><strong>View your TR-to-PR application</strong></p>
                                 <div class="row">
                                     <div class="col-md-9">
                                         <div class="panel panel-default mrgn-bttm-md">
@@ -503,7 +529,7 @@
                                     </div>
                                 </div>
 
-                                <p>IRCC secure account: View your TR-to-PR work permit application in the IRCC secure account.</p>
+                                <p><strong>View your work permit application</strong></p>
                                 <div class="row">
                                     <div class="col-md-9">
                                         <div class="panel panel-default mrgn-bttm-md">
@@ -564,60 +590,29 @@
                 <li class="panel panel-default selection family">
                     <div class="panel-body position-relative">
                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".selection, .reset" },
-                            { "action": "removeClass", "class": "hidden", "source": ".family, .selection-options, .application-reset" },
-                            { "action": "run", "trggroup": "body-to-heading" }
+                            { "action": "removeClass", "class": "hidden", "source": ".family-r, .reset" },
+                            { "action": "addClass", "class": "hidden", "source": ".application-reset" }
                         ]'>Family sponsorship (including adoption through the immigration process)</button>
-                    </div>
-                    <div class="panel-body selection-options hidden">
-                        <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                { "action": "removeClass", "class": "hidden", "source": ".sponsor-family" },
-                                { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
-                            ]'>Sponsoring a family member</button>
 
-                            <div class="result sponsor-family hidden mrgn-lft-sm mrgn-rght-sm">
-                                <p>You used the Permanent residence portal to apply.</p>
-                                <div class="row">
-                                    <div class="col-md-9">
-                                        <div class="panel panel-default mrgn-bttm-md">
-                                            <div class="panel-body position-relative d-flex align-items-center">
+                        <div class="result family-r hidden mrgn-lft-sm mrgn-rght-sm">
+                            <p>You used the Permanent residence portal to apply.</p>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="panel panel-default mrgn-bttm-md">
+                                        <div class="panel-body position-relative d-flex align-items-center">
 
-                                                <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln">Permanent residence portal</a>
-                                            </div>
+                                            <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                            <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln">Permanent residence portal</a>
                                         </div>
                                     </div>
                                 </div>
-
-
-                            </div>
-                        </div>
-                        <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                { "action": "removeClass", "class": "hidden", "source": ".adoption" },
-                                { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
-                            ]'>Adoption (through the immigration process)</button>
-
-                            <div class="result adoption hidden mrgn-lft-sm mrgn-rght-sm">
-                                <p>You used the Permanent residence portal to apply.</p>
-                                <div class="row">
-                                    <div class="col-md-9">
-                                        <div class="panel panel-default mrgn-bttm-md">
-                                            <div class="panel-body position-relative d-flex align-items-center">
-
-                                                <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln">Permanent residence portal</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
                             </div>
                         </div>
                     </div>
                 </li>
+
+
+                
                 <li class="panel panel-default selection working">
                     <div class="panel-body position-relative">
                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
@@ -981,18 +976,18 @@
                         ]'>Asylum claim</button>
 
                             <div class="result asylum hidden mrgn-lft-sm mrgn-rght-sm">
-                                <p>You used the IRCC Portal to claim asylum online.</p>
-                                <div class="row">
-                                    <div class="col-md-9">
-                                        <div class="panel panel-default mrgn-bttm-md">
-                                            <div class="panel-body position-relative d-flex align-items-center">
+                                <p>You used the Permanent residence portal to apply.</p>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="panel panel-default mrgn-bttm-md">
+                                        <div class="panel-body position-relative d-flex align-items-center">
 
-                                                <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                <a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal</a>
-                                            </div>
+                                            <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                            <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln">Permanent residence portal</a>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
@@ -1039,30 +1034,30 @@
                         </div>
                     </div>
                 </li>
-               
-                
+
+
                 <li class="panel panel-default selection pr">
                     <div class="panel-body position-relative">
                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                             { "action": "removeClass", "class": "hidden", "source": ".pr-card, .reset" },
                             { "action": "addClass", "class": "hidden", "source": ".application-reset" }
                         ]'>Permanent resident cards and travel documents</button>
-                           
-                    <div class="result pr-card hidden mrgn-lft-sm mrgn-rght-sm">
-                        <p>You used the IRCC secure account to apply.</p>
-                        <div class="row">
-                            <div class="col-md-9">
-                                <div class="panel panel-default mrgn-bttm-md">
-                                    <div class="panel-body position-relative d-flex align-items-center">
 
-                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account</a>
+                        <div class="result pr-card hidden mrgn-lft-sm mrgn-rght-sm">
+                            <p>You used the Permanent residence portal to apply.</p>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="panel panel-default mrgn-bttm-md">
+                                        <div class="panel-body position-relative d-flex align-items-center">
+
+                                            <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                            <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln">Permanent residence portal</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>     
                 </li>
             </ul>
         </div>
