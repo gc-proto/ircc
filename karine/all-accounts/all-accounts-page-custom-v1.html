@@ -172,7 +172,7 @@
 
 
 
-        <h2 class="h3">What do you need to do?</h2>
+        <h2 class="h3">What do you want to do?</h2>
         <!-- start - do-action manager -->
         <div data-wb-actionmng='[
             { "trggroup":"reset", "action": "addClass", "class": "hidden", "source": ".result, .selection-options, .sub-selection, .sub-selection-options, .account-chooser.application, .reset" },
@@ -195,7 +195,7 @@
                     <div class="panel-body position-relative">
                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                             { "action": "addClass", "class": "hidden", "source": ".main" },
-                            { "action": "removeClass", "class": "hidden", "source": ".application, .application-reset" }
+                            { "action": "removeClass", "class": "hidden", "source": ".application, .reset" }
                         ]'>Finish or submit your application</button>
                     </div>
                 </li>
@@ -209,7 +209,21 @@
                     </div>
                     <div class="panel-body selection-options hidden">
                         <p>Use our existing tool to find out how to track your application.</p>
-                        <p class="panel panel-default panel-body position-relative col-md-7"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html" class="stretched-link no-undrln">Check your application status</a></p>
+
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="panel panel-default  panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Check your application status</div>
+                                            <div class="col-xs-1"><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </li>
                 <li class="panel panel-default selection fees">
@@ -222,7 +236,19 @@
                     </div>
                     <div class="panel-body selection-options hidden">
                         <p>Use our existing tool to find out how to pay your fees.</p>
-                        <p class="panel panel-default panel-body position-relative col-md-7"><a href="https://ircc.canada.ca/english/information/fees/index.asp" class="stretched-link no-undrln">Pay your fees</a></p>
+
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="panel panel-default  panel-body position-relative">
+                                    <a href="https://ircc.canada.ca/english/information/fees/index.asp" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Pay your fees</div>
+                                            <div class="col-xs-1"><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </li>
                 <li class="panel panel-default selection start">
@@ -235,62 +261,76 @@
                     </div>
                     <div class="panel-body selection-options hidden">
                         <p>This tool doesn’t tell you which account you need to use to apply.</p>
-                        <div class="panel panel-default panel-body position-relative col-md-8">
+                        <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                 { "action": "removeClass", "class": "hidden", "source": ".know" },
                                 { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
-                            ]'>If you know what you want to apply for</button>
+                            ]'>If you know what program you want to apply for</button>
 
                             <div class="result know hidden mrgn-lft-sm mrgn-rght-sm">
                                 <p>Read our program information to find out how to apply. Some applications have specific instructions you must follow.</p>
-                                <div class="wb-fieldflow">
-                                    <p>Select what you’re interested in</p>
-                                    <ul>
-                                        <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html">Visiting Canada</a></li>
-                                        <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada.html ">Immigrating to Canada</a></li>
-                                        <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada.html">Working in Canada</a></li>
-                                        <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada.html">Studying in Canada</a></li>
-                                        <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship.html ">Citizenship</a></li>
-                                        <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees.html">Refugees and asylum</a></li>
-                                        <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants.html">Permanent resident cards</a></li>
-                                        <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants.html">Permanent resident travel documents</a></li>
-                                        <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadians/adopt-child-abroad.html">Adoption</a></li>
-                                    </ul>
-                                </div>
 
+                                <div class="wb-frmvld gc-font-2019">
+                                    <form>
+                                        <div class="wb-fieldflow" data-wb-fieldflow='{
+                                            "noForm": true
+                                        }'>
+                                            <p>Select what you’re interested in</p>
+                                            <ul>
+                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html">Visiting Canada</a></li>
+                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada.html ">Immigrating to Canada</a></li>
+                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada.html">Working in Canada</a></li>
+                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada.html">Studying in Canada</a></li>
+                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship.html ">Citizenship</a></li>
+                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees.html">Refugees and asylum</a></li>
+                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants.html">Permanent resident cards</a></li>
+                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants.html">Permanent resident travel documents</a></li>
+                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadians/adopt-child-abroad.html">Adoption</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel panel-default panel-body position-relative btn-submit col-md-4">
+                                            <button class="text-left stretched-link btn-link btn-lg no-undrln full-width p-0 " type="submit">Continue</button>
+                                        </div>
+                                
+                                </form>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="panel panel-default panel-body position-relative col-md-8">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                    <div class="panel panel-default panel-body position-relative">
+                        <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                 { "action": "removeClass", "class": "hidden", "source": ".dont-know" },
                                 { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                             ]'>If you don’t know the program you want to apply to</button>
 
-                            <div class="result dont-know hidden mrgn-lft-sm mrgn-rght-sm mrgn-tp-lg">
-                                <div class="panel panel-default">
-                                    <div class="panel-body position-relative">
-                                        <a href="https://ircc.canada.ca/explore-programs" class="stretched-link btn-link no-undrln full-width">
-                                            <div class="row d-flex align-items-center text-left">
-                                                <div class="col-xs-11">Explore immigration programs</div>
-                                                <div class="col-xs-1"><span class="fas fa-share pull-right"></span></div>
-                                            </div>
-                                        </a>
-                                    </div>
+                        <div class="result dont-know hidden mrgn-lft-sm mrgn-rght-sm mrgn-tp-lg">
+                            <div class="panel panel-default">
+                                <div class="panel-body position-relative">
+                                    <a href="https://ircc.canada.ca/explore-programs" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Explore immigration programs</div>
+                                            <div class="col-xs-1"><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </li>
+        </div>
+        </li>
 
-            </ul>
+        </ul>
         </div>
 
-        <h3 class="wb-inv">Finish or submit your application</h3>
+        
         <div class="account-chooser row application hidden">
             <div class="col-md-12">
+                <h3>Finish or submit your application</h3>
                 <p><strong>We have more than 1 account.</strong> The account you need depends on your application.</p>
+                
             </div>
+            
+            
             <ul class="col-md-8 list-unstyled lst-scpd">
                 <li class="panel panel-default selection visit">
                     <div class="panel-body position-relative">
@@ -303,6 +343,7 @@
                     <div class="panel-body selection-options hidden">
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                                 { "action": "removeClass", "class": "hidden", "source": ".visitor-visa" },
                                 { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                             ]'>Visitor visa</button>
@@ -337,6 +378,7 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                                 { "action": "removeClass", "class": "hidden", "source": ".eta" },
                                 { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                             ]'>Electronic travel authorization (eTA)</button>
@@ -359,6 +401,7 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                                 { "action": "removeClass", "class": "hidden", "source": ".visitor-record" },
                                 { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                             ]'>Visitor record (to extend your stay in Canada)</button>
@@ -382,6 +425,7 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                                 { "action": "removeClass", "class": "hidden", "source": ".super-visa" },
                                 { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                             ]'>Super visa (for parents and grandparents)</button>
@@ -394,7 +438,7 @@
                                             <div class="panel panel-default mrgn-bttm-md">
                                                 <div class="panel-body position-relative d-flex align-items-center">
                                                     <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html" class="stretched-link no-undrln">IRCC portal</a>
+                                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/parent-grandparent-super-visa/apply.html" class="stretched-link no-undrln">IRCC portal</a>
 
                                                 </div>
                                             </div>
@@ -416,6 +460,7 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                                 { "action": "removeClass", "class": "hidden", "source": ".transit-visa" },
                                 { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                             ]'>Transit visa</button>
@@ -428,7 +473,7 @@
                                             <div class="panel panel-default mrgn-bttm-md">
                                                 <div class="panel-body position-relative d-flex align-items-center">
                                                     <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html" class="stretched-link no-undrln">IRCC portal</a>
+                                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/transit/apply.html" class="stretched-link no-undrln">IRCC portal</a>
 
                                                 </div>
                                             </div>
@@ -455,7 +500,7 @@
                 <li class="panel panel-default selection immigrate">
                     <div class="panel-body position-relative">
                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".selection" },
+                            { "action": "addClass", "class": "hidden", "source": ".selection, .reset" },
                             { "action": "removeClass", "class": "hidden", "source": ".immigrate, .selection-options, .application-reset" },
                             { "action": "run", "trggroup": "body-to-heading" }
                         ]'>Immigrating to Canada (to live and work permanently)</button>
@@ -463,6 +508,7 @@
                     <div class="panel-body selection-options hidden">
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                                 { "action": "removeClass", "class": "hidden", "source": ".express-entry" },
                                 { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                             ]'>Express Entry</button>
@@ -484,13 +530,14 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                                 { "action": "removeClass", "class": "hidden", "source": ".tr-pr" },
                                 { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                             ]'>Temporary resident to permanent resident (TR-to-PR) pathway</button>
 
                             <div class="result tr-pr hidden mrgn-lft-sm mrgn-rght-sm">
 
-                                <p>View your TR-to-PR application</p>
+                                <p>View your TR-to-PR application:</p>
                                 <div class="row">
                                     <div class="col-md-9">
                                         <div class="panel panel-default mrgn-bttm-md">
@@ -503,7 +550,7 @@
                                     </div>
                                 </div>
 
-                                <p>IRCC secure account: View your TR-to-PR work permit application in the IRCC secure account.</p>
+                                <p>View your work permit application:</p>
                                 <div class="row">
                                     <div class="col-md-9">
                                         <div class="panel panel-default mrgn-bttm-md">
@@ -519,6 +566,7 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                                 { "action": "removeClass", "class": "hidden", "source": ".other" },
                                 { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                             ]'>Another immigration program</button>
@@ -564,60 +612,29 @@
                 <li class="panel panel-default selection family">
                     <div class="panel-body position-relative">
                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".selection, .reset" },
-                            { "action": "removeClass", "class": "hidden", "source": ".family, .selection-options, .application-reset" },
-                            { "action": "run", "trggroup": "body-to-heading" }
+                            { "action": "removeClass", "class": "hidden", "source": ".family-r, .reset" },
+                            { "action": "addClass", "class": "hidden", "source": ".application-reset" }
                         ]'>Family sponsorship (including adoption through the immigration process)</button>
-                    </div>
-                    <div class="panel-body selection-options hidden">
-                        <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                { "action": "removeClass", "class": "hidden", "source": ".sponsor-family" },
-                                { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
-                            ]'>Sponsoring a family member</button>
 
-                            <div class="result sponsor-family hidden mrgn-lft-sm mrgn-rght-sm">
-                                <p>You used the Permanent residence portal to apply.</p>
-                                <div class="row">
-                                    <div class="col-md-9">
-                                        <div class="panel panel-default mrgn-bttm-md">
-                                            <div class="panel-body position-relative d-flex align-items-center">
+                        <div class="result family-r hidden mrgn-lft-sm mrgn-rght-sm">
+                            <p>You used the Permanent residence portal to apply.</p>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="panel panel-default mrgn-bttm-md">
+                                        <div class="panel-body position-relative d-flex align-items-center">
 
-                                                <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln">Permanent residence portal</a>
-                                            </div>
+                                            <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                            <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln">Permanent residence portal</a>
                                         </div>
                                     </div>
                                 </div>
-
-
-                            </div>
-                        </div>
-                        <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                { "action": "removeClass", "class": "hidden", "source": ".adoption" },
-                                { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
-                            ]'>Adoption (through the immigration process)</button>
-
-                            <div class="result adoption hidden mrgn-lft-sm mrgn-rght-sm">
-                                <p>You used the Permanent residence portal to apply.</p>
-                                <div class="row">
-                                    <div class="col-md-9">
-                                        <div class="panel panel-default mrgn-bttm-md">
-                                            <div class="panel-body position-relative d-flex align-items-center">
-
-                                                <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln">Permanent residence portal</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
                             </div>
                         </div>
                     </div>
                 </li>
+
+
+
                 <li class="panel panel-default selection working">
                     <div class="panel-body position-relative">
                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
@@ -629,9 +646,10 @@
                     <div class="panel-body selection-options hidden">
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                                 { "action": "removeClass", "class": "hidden", "source": ".work-permit" },
                                 { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
-                            ]'>Work permit</button>
+                            ]'>Work permit and work permit extension</button>
 
                             <div class="result work-permit hidden mrgn-lft-sm mrgn-rght-sm">
                                 <p>You used the IRCC secure account to apply.</p>
@@ -652,6 +670,7 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                                 { "action": "removeClass", "class": "hidden", "source": ".iec" },
                                 { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                             ]'>International Experience Canada</button>
@@ -675,6 +694,7 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                                 { "action": "removeClass", "class": "hidden", "source": ".pgwp" },
                                 { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                             ]'>Post-graduation work permit</button>
@@ -698,6 +718,7 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                             { "action": "removeClass", "class": "hidden", "source": ".h-1b" },
                             { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                         ]'>H-1B visa holder work permit</button>
@@ -732,7 +753,8 @@
                     <div class="panel-body selection-options hidden">
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "removeClass", "class": "hidden", "source": ".study-permit" },
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
+                            { "action": "removeClass", "class": "hidden", "source": ".study-permit" },                            
                             { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                         ]'>Study permit</button>
 
@@ -765,6 +787,7 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                             { "action": "removeClass", "class": "hidden", "source": ".study-permit-fam" },
                             { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                         ]'>Study permit (with a family member who needs a work permit)</button>
@@ -786,6 +809,7 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                             { "action": "removeClass", "class": "hidden", "source": ".study-permit-ext" },
                             { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                         ]'>Study permit extension</button>
@@ -807,6 +831,7 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                             { "action": "removeClass", "class": "hidden", "source": ".change-school" },
                             { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                         ]'>Change your school</button>
@@ -839,6 +864,7 @@
                     <div class="panel-body selection-options hidden">
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                             { "action": "removeClass", "class": "hidden", "source": ".grant" },
                             { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                         ]'>Canadian citizenship (grant of citizenship) application</button>
@@ -860,6 +886,7 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                             { "action": "removeClass", "class": "hidden", "source": ".certificate" },
                             { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                         ]'>Citizenship certificate application</button>
@@ -881,6 +908,7 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                             { "action": "removeClass", "class": "hidden", "source": ".test" },
                             { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                         ]'>Canadian citizenship test</button>
@@ -902,6 +930,7 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                             { "action": "removeClass", "class": "hidden", "source": ".certificate-download" },
                             { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                         ]'>Electronic citizenship certificate download</button>
@@ -923,6 +952,7 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                             { "action": "removeClass", "class": "hidden", "source": ".cit-records" },
                             { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                         ]'>Search citizenship records</button>
@@ -944,6 +974,7 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                             { "action": "removeClass", "class": "hidden", "source": ".calculator" },
                             { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                         ]'>Physical presence calculator (for paper applications)</button>
@@ -976,19 +1007,20 @@
                     <div class="panel-body selection-options hidden">
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                             { "action": "removeClass", "class": "hidden", "source": ".asylum" },
                             { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                         ]'>Asylum claim</button>
 
                             <div class="result asylum hidden mrgn-lft-sm mrgn-rght-sm">
-                                <p>You used the IRCC Portal to claim asylum online.</p>
+                                <p>You used the Permanent residence portal to apply.</p>
                                 <div class="row">
                                     <div class="col-md-9">
                                         <div class="panel panel-default mrgn-bttm-md">
                                             <div class="panel-body position-relative d-flex align-items-center">
 
                                                 <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                <a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal</a>
+                                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln">Permanent residence portal</a>
                                             </div>
                                         </div>
                                     </div>
@@ -997,6 +1029,7 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                             { "action": "removeClass", "class": "hidden", "source": ".ifhp" },
                             { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                         ]'>Interim Federal Health Program</button>
@@ -1018,19 +1051,20 @@
                         </div>
                         <div class="panel panel-default panel-body position-relative">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                            { "action": "addClass", "class": "hidden", "source": ".result" },
                             { "action": "removeClass", "class": "hidden", "source": ".sponsor-refugee" },
                             { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
                         ]'>Sponsor a refugee</button>
 
                             <div class="result sponsor-refugee hidden mrgn-lft-sm mrgn-rght-sm">
-                                <p>You used the IRCC secure account to apply.</p>
+                                <p>You used the Permanent residence portal to apply</p>
                                 <div class="row">
                                     <div class="col-md-9">
                                         <div class="panel panel-default mrgn-bttm-md">
                                             <div class="panel-body position-relative d-flex align-items-center">
 
                                                 <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account</a>
+                                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html">Permanent residence portal</a>
                                             </div>
                                         </div>
                                     </div>
@@ -1039,30 +1073,30 @@
                         </div>
                     </div>
                 </li>
-               
-                
+
+
                 <li class="panel panel-default selection pr">
                     <div class="panel-body position-relative">
                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                             { "action": "removeClass", "class": "hidden", "source": ".pr-card, .reset" },
                             { "action": "addClass", "class": "hidden", "source": ".application-reset" }
                         ]'>Permanent resident cards and travel documents</button>
-                           
-                    <div class="result pr-card hidden mrgn-lft-sm mrgn-rght-sm">
-                        <p>You used the IRCC secure account to apply.</p>
-                        <div class="row">
-                            <div class="col-md-9">
-                                <div class="panel panel-default mrgn-bttm-md">
-                                    <div class="panel-body position-relative d-flex align-items-center">
 
-                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account</a>
+                        <div class="result pr-card hidden mrgn-lft-sm mrgn-rght-sm">
+                            <p>You used the Permanent residence portal to apply.</p>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="panel panel-default mrgn-bttm-md">
+                                        <div class="panel-body position-relative d-flex align-items-center">
+
+                                            <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                            <a href="https://prson-srpel.apps.cic.gc.ca/en/login" class="stretched-link no-undrln">Permanent residence portal</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>     
                 </li>
             </ul>
         </div>
@@ -1080,7 +1114,7 @@
             <button class="text-left btn-link no-undrln full-width d-flex align-items-center reset hidden" data-wb-doaction='[
                     { "action": "run", "trggroup": "reset" },
                     { "action": "removeClass", "class": "hidden", "source": ".main" }
-                ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"> to "What do you need to do?"</span></button>
+                ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"> to "What do you want to do?"</span></button>
         </div>
         <h2 class="h3">Need an authorized paid representative or partner account?</h2>
         <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/partners-service-providers.html">View accounts for representatives and partners</a></p>
