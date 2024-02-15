@@ -22,7 +22,6 @@
     <noscript>
         <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
     </noscript>
-    <link rel="stylesheet" href="https://test.canada.ca/covid-19-guidance/proto/css/alpha-beta-banner.css" />
     <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/méli-mélo/2023-10-mount-revelstoke.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
 
@@ -160,10 +159,15 @@
         </div>
 
 
-        <div class="bg-cover bg-center mrgn-tp-lg mrgn-bttm-lg" data-bgimg="images/young_adults_bicycles_825-200-gradient.png">
+        <div class="bg-cover bg-center mrgn-tp-lg mrgn-bttm-lg" data-bgimg="images/young_adults_bicycles_825-200-gradient2.png">
             <div class="container mrgn-tp-md mrgn-bttm-md py-4">
-                <p class="mrgn-tp-md h2">Try the beta IRCC client platform</p>
-                <p class="lead">We’re testing this new account. You may be able to use it to apply for a visitor visa.</p>
+                <div class="row">
+                    <div class="col-md-10">
+                        <p class="mrgn-tp-md h2">Try the beta IRCC client platform</p>
+                        <p class="lead">We’re testing this new account. You may be able to use it to apply for a visitor visa.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -178,15 +182,63 @@
             </ul>
 
             <h3>Who can use this account</h3>
-            <p>You may be able to use the IRCC client platform if you meet <strong>all</strong> these requirements:</p>
-            <ol>
-                <li>You’re applying online for a visitor visa.</li>
-                <li>You’re 18 years of age or older.</li>
-                <li>You have never applied for anything with us before.</li>
-                <li>You’re applying alone.</li>
-                <li>You aren’t using a representative.</li>
-            </ol>
+            <div class="wb-frmvld">
+                <form>
+                    <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+                "noForm": true,
+                "base": { "live": true},
+                "renderas": "checkbox",
+                "gcChckbxrdio":true,
+                "isoptional": true,
+                "noreqlabel": true,
+                "default": [
+                    {"action": "removeClass", "class":"c1, c2, c3, c4, c5", "source": ".beta-alert-unchecked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5), .beta-alert-checked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"},
+                    {"action": "removeClass", "class":"hidden", "source": ".beta-alert-checked.c1.c2.c3.c4.c5"},
+                    {"action": "addClass", "class":"hidden", "source": ".beta-alert-unchecked.c1.c2.c3.c4.c5"},                    
+                    {"action": "addClass", "class":"hidden", "source": ".beta-alert-checked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"},
+                    {"action": "removeClass", "class":"hidden", "source": ".beta-alert-unchecked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"}
+                ]
+            }'>
+                        <div class="wb-fieldflow-header">
+                            <p class="wb-fieldflow-label"><span class="fnt-nrml">You may be able to use the IRCC client platform if you meet <strong>all</strong> these requirements:</span></p>
+                        </div>
+                        <ul>
+                            <li data-wb-fieldflow='[
+                            {"action": "addClass", "class":"c1", "source": ".beta-alert-unchecked, .beta-alert-checked"},
+                            {"action": "removeClass", "class":"c1", "source": ".beta-alert-unchecked:checked, .beta-alert-checked:checked"},
+                            {"action": "removeClass", "class":"hidden", "source": ".beta-alert-checked.c1.c2.c3.c4.c5"},
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-unchecked.c1.c2.c3.c4.c5"},                    
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-checked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"},
+                            {"action": "removeClass", "class":"hidden", "source": ".beta-alert-unchecked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"}
+                            ]'>You’re applying online for a visitor visa.</li>
+                            <li data-wb-fieldflow='[{"action": "addClass", "class":"c2", "source": ".beta-alert-unchecked, .beta-alert-checked"},{"action": "removeClass", "class":"hidden", "source": ".beta-alert-checked.c1.c2.c3.c4.c5"},
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-unchecked.c1.c2.c3.c4.c5"},                    
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-checked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"},
+                            {"action": "removeClass", "class":"hidden", "source": ".beta-alert-unchecked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"}]'>You’re 18 years of age or older.</li>
+                            <li data-wb-fieldflow='[{"action": "addClass", "class":"c3", "source": ".beta-alert-unchecked, .beta-alert-checked"},{"action": "removeClass", "class":"hidden", "source": ".beta-alert-checked.c1.c2.c3.c4.c5"},
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-unchecked.c1.c2.c3.c4.c5"},                    
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-checked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"},
+                            {"action": "removeClass", "class":"hidden", "source": ".beta-alert-unchecked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"}]'>You have never applied for anything with us before.</li>
+                            <li data-wb-fieldflow='[{"action": "addClass", "class":"c4", "source": ".beta-alert-unchecked, .beta-alert-checked"},{"action": "removeClass", "class":"hidden", "source": ".beta-alert-checked.c1.c2.c3.c4.c5"},
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-unchecked.c1.c2.c3.c4.c5"},                    
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-checked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"},
+                            {"action": "removeClass", "class":"hidden", "source": ".beta-alert-unchecked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"}]'>You’re applying alone.</li>
+                            <li data-wb-fieldflow='[{"action": "addClass", "class":"c5", "source": ".beta-alert-unchecked, .beta-alert-checked"},{"action": "removeClass", "class":"hidden", "source": ".beta-alert-checked.c1.c2.c3.c4.c5"},
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-unchecked.c1.c2.c3.c4.c5"},                    
+                            {"action": "addClass", "class":"hidden", "source": ".beta-alert-checked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"},
+                            {"action": "removeClass", "class":"hidden", "source": ".beta-alert-unchecked:not(.c1):not(.c2):not(.c3):not(.c4):not(.c5)"}]'>You aren’t using a representative.</li>
+                        </ul>
+                    </div>
 
+                    
+                </form>
+            </div>
+            <div class="alert alert-warning beta-alert-unchecked">
+                <p>You can’t use the beta IRCC client platform to apply yet.</p>
+            </div>
+            <div class="alert alert-success beta-alert-checked hidden">
+                <p>You can use the beta IRCC client platform to apply.</p>
+            </div>
             <details>
                 <summary>If you don’t meet all these requirements, review your program content to find out how you should apply:</summary>
                 <ul>
@@ -439,7 +491,7 @@
         _satellite.pageBottom();
     </script>
 
-    <script src="https://test.canada.ca/covid-19-guidance/proto/js/alpha-banner.js"></script>
+
     <script type="text/javascript" src="https://www.canada.ca/etc/clientlibs/granite/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.canada.ca/etc/clientlibs/granite/utils.min.js"></script>
     <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/clientlib-publish.min.js"></script>
