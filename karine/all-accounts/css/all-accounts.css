@@ -25,7 +25,7 @@
   background-color: #fff;
   margin: 0 45%;
 }
-.account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:first-child:after {
+.account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:last-child):after {
   background-color: #6f6f6f;
   background-size: 3px;
   content: " ";
