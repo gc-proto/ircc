@@ -35,7 +35,7 @@
   position: absolute;
   bottom: -35px;
 }
-.account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:first-child):after {
+.account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:last-child:after {
   background: none;
   content: none;
   height: 0;
