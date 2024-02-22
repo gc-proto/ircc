@@ -158,78 +158,135 @@
     <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="container">
 
         <h1 property="name" id="wb-cont" dir="ltr">Immigration, Refugees and Citizenship Canada accounts</h1>
-        <!-- 
-
-,
-                            { "action": "removeClass", "class": "stretched-link", "source": ".visit>div>button" },
-                            { "action": "addClass", "class": "panel-heading", "source": ".lob>.panel-body" },
-                            { "action": "addClass", "class": "panel-body", "source": ".visit .lob-options" },
-                            { "action": "removeClass", "class": "panel-body", "source": ".lob>.position-relative" },
-                            { "action": "removeClass", "class": "panel-heading", "source": ".lob-options" },
-                            { "action": "addClass", "class": "panel-title", "source": ".visit>div>button" }
-
- -->
-
 
 
         <h2 class="h3">What do you want to do?</h2>
-        <div class="account-chooser row application hidden">
-            <div class="col-md-12">
-                <h3>Finish or submit your application</h3>
-                <p><strong>We have more than 1 account.</strong> The account you need depends on your application.</p>
-
-            </div>
-
-        </div>
-        <!-- start - do-action manager -->
-        <div data-wb-actionmng='[
-            { "trggroup":"reset", "action": "addClass", "class": "hidden", "source": ".result, .selection-options, .sub-selection, .sub-selection-options, .account-chooser.application, .reset" },
-            { "trggroup":"reset", "action": "removeClass", "class": "hidden", "source": ".selection, .sub-selection" },
-            { "trggroup":"reset", "action": "addClass", "class": "stretched-link", "source": ".btn-link" },
-            { "trggroup":"reset", "action": "removeClass", "class": "stretched-link", "source": ".application-reset>button, .reset>button" },
-            { "trggroup":"reset", "action": "removeClass", "class": "panel-title", "source": "button" },
-            { "trggroup":"reset", "action": "addClass", "class": "panel-body", "source": ".selection>div" },
-            { "trggroup":"reset", "action": "removeClass", "class": "panel-heading", "source": ".selection>div" },
-            { "trggroup":"body-to-heading", "action": "addClass", "class": "panel-heading", "source": ".selection>.panel-body" },
-            { "trggroup":"body-to-heading", "action": "addClass", "class": "panel-body", "source": ".selection-options" },
-            { "trggroup":"body-to-heading", "action": "removeClass", "class": "panel-body", "source": ".selection>.position-relative" },
-            { "trggroup":"body-to-heading", "action": "removeClass", "class": "panel-heading hidden", "source": ".selection-options" },
-            { "trggroup":"body-to-heading", "action": "addClass", "class": "panel-title", "source": ".selection>div>button" }
-        ]'></div>
 
         <div class="application-reset hidden">
             <button class="text-left btn-link no-undrln full-width d-flex align-items-center" data-wb-doaction='[
-                    { "action": "run", "trggroup": "reset" },
+                    { "action": "run", "trggroup": "back" },
                     { "action": "removeClass", "class": "hidden", "source": ".application, .reset" },
-                    { "action": "addClass", "class": "hidden", "source": ".application-reset" }
+                    { "action": "addClass", "class": "hidden", "source": ".selection, .application-reset" }
                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"> to all applications</span></button>
         </div>
         <div class="reset hidden">
-            <button class="text-left btn-link no-undrln full-width d-flex align-items-center reset hidden" data-wb-doaction='[
-                    { "action": "run", "trggroup": "reset" },
-                    { "action": "removeClass", "class": "hidden", "source": ".main" }
-                ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"> to "What do you want to do?"</span></button>
+            <button class="text-left btn-link no-undrln full-width d-flex align-items-center" data-wb-doaction='[
+                    { "action": "run", "trggroup": "back" }
+                ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"></span></button>
         </div>
-        <!-- end - do-action manager -->
-        <div class="account-chooser row main">
-            <ul class="col-md-8 list-unstyled lst-scpd">
-                <li class="panel panel-default selection application">
-                    <div class="panel-body position-relative">
-                        <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".main" },
+
+        <div class="account-chooser row" data-wb-actionmng='[
+            { "trggroup":"back", "action": "removeClass", "class": "hidden", "source": ".selection" },
+            { "trggroup":"back", "action": "addClass", "class": "hidden", "source": ".selection-options, .result" },
+            { "trggroup":"toggle-result", "action": "addClass", "class": "stretched-link", "source": ".account-chooser button" },
+            { "trggroup":"toggle-result", "action": "addClass", "class": "hidden", "source": ".result" }
+        ]'>
+            <div class="col-md-8">
+                <ul class="list-unstyled lst-scpd selection">
+                    <li class="panel panel-default">
+                        <div class="panel-body position-relative">
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
+                            { "action": "addClass", "class": "hidden", "source": ".selection" },
                             { "action": "removeClass", "class": "hidden", "source": ".application, .reset" }
                         ]'>Finish or submit your application</button>
-                    </div>
-                </li>
-                <li class="panel panel-default selection status">
-                    <div class="panel-body position-relative">
-                        <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                        </div>
+                    </li>
+                    <li class="panel panel-default">
+                        <div class="panel-body position-relative">
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
                             { "action": "addClass", "class": "hidden", "source": ".selection" },
-                            { "action": "removeClass", "class": "hidden", "source": ".status, .reset" },
-                            { "action": "run", "trggroup": "body-to-heading" }
+                            { "action": "removeClass", "class": "hidden", "source": ".status, .reset" }
                         ]'>Check the status of an application you already submitted</button>
+                        </div>
+                    </li>
+                    <li class="panel panel-default">
+                        <div class="panel-body position-relative">
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
+                            { "action": "addClass", "class": "hidden", "source": ".selection" },
+                            { "action": "removeClass", "class": "hidden", "source": ".fees, .reset" }
+                        ]'>Pay your fees</button>
+                        </div>
+                    </li>
+                    <li class="panel panel-default">
+                        <div class="panel-body position-relative">
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
+                                { "action": "addClass", "class": "hidden", "source": ".selection" },
+                                { "action": "removeClass", "class": "hidden", "source": ".start-application, .reset" }
+                            ]'>Start a new application</button>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="panel panel-default selection-options application hidden">
+                    <div class="panel-heading">
+                        <h3 class="mrgn-tp-0">Finish or submit your application</h3>
                     </div>
-                    <div class="panel-body selection-options hidden">
+                    <div class="panel-body">
+                        <p><strong>We have more than 1 account.</strong> The account you need depends on your application.</p>
+                        <ul class="list-unstyled lst-scpd">
+                            <li class="panel panel-default panel-body position-relative visit">
+                                <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[      
+                                    { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                    { "action": "removeClass", "class": "hidden", "source": ".visit, .application-reset" }
+                                ]'>Visiting Canada</button>
+                            </li>
+                            <li class="panel panel-default panel-body position-relative">
+                                <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                    { "action": "removeClass", "class": "hidden", "source": ".immigrate, .application-reset" }
+                                ]'>Immigrating to Canada (to live and work permanently)</button>
+                            </li>
+                            <li class="panel panel-default panel-body position-relative">
+                                <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                    { "action": "removeClass", "class": "hidden", "source": ".family, .application-reset" }
+                                ]'>Family sponsorship (including adoption through the immigration process)</button>
+                            </li>
+                            <li class="panel panel-default panel-body position-relative">
+                                <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                    { "action": "removeClass", "class": "hidden", "source": ".working, .application-reset" }
+                                ]'>Working in Canada temporarily</button>
+                            </li>
+                            <li class="panel panel-default panel-body position-relative">
+                                <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                    { "action": "removeClass", "class": "hidden", "source": ".study, .application-reset" }
+                                ]'>Studying in Canada</button>
+                            </li>
+                            <li class="panel panel-default panel-body position-relative">
+                                <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                    { "action": "removeClass", "class": "hidden", "source": ".citizenship, .application-reset" }
+                                ]'>Canadian citizenship</button>
+                            </li>
+                            <li class="panel panel-default panel-body position-relative">
+                                <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                    { "action": "removeClass", "class": "hidden", "source": ".refugees, .application-reset" }
+                                ]'>Refugees and asylum</button>
+                            </li>
+                            <li class="panel panel-default panel-body position-relative">
+                                <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                    { "action": "removeClass", "class": "hidden", "source": ".pr, .application-reset" }
+                                ]'>Permanent resident cards and travel documents</button>
+                            </li>
+                            <li class="panel panel-default panel-body position-relative">
+                                <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                    { "action": "removeClass", "class": "hidden", "source": ".special-measures, .application-reset" }
+                                ]'>One of the special measures (such as the measures for Ukraine, Sudan, or other)</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel panel-default selection-options status hidden">
+                    <div class="panel-heading">
+                        <h3 class="mrgn-tp-0">Check the status of an application you already submitted</h3>
+                    </div>
+                    <div class="panel-body">
                         <p>Use our existing tool to find out how to track your application.</p>
 
                         <div class="row">
@@ -245,18 +302,14 @@
                             </div>
                         </div>
 
+                    </div>
+                </div>
 
+                <div class="panel panel-default selection-options fees hidden">
+                    <div class="panel-heading">
+                        <h3 class="mrgn-tp-0">Pay your fees</h3>
                     </div>
-                </li>
-                <li class="panel panel-default selection fees">
-                    <div class="panel-body position-relative">
-                        <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".selection" },
-                            { "action": "removeClass", "class": "hidden", "source": ".fees, .reset" },
-                            { "action": "run", "trggroup": "body-to-heading" }
-                        ]'>Pay your fees</button>
-                    </div>
-                    <div class="panel-body selection-options hidden">
+                    <div class="panel-body">
                         <p>Use our existing tool to find out how to pay your fees.</p>
 
                         <div class="row">
@@ -272,32 +325,27 @@
                             </div>
                         </div>
                     </div>
-                </li>
-                <li class="panel panel-default selection start">
-                    <div class="panel-body position-relative">
-                        <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".selection" },
-                            { "action": "removeClass", "class": "hidden", "source": ".start, .reset" },
-                            { "action": "run", "trggroup": "body-to-heading" }
-                        ]'>Start a new application</button>
+                </div>
+
+                <div class="panel panel-default selection-options start-application hidden">
+                    <div class="panel-heading">
+                        <h3 class="mrgn-tp-0">Start a new application</h3>
                     </div>
-                    <div class="panel-body selection-options hidden">
+                    <div class="panel-body">
                         <p>This tool doesn’t tell you which account you need to use to apply.</p>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                                { "action": "removeClass", "class": "hidden", "source": ".know" },
-                                { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 know" data-wb-doaction='[                        
+                                { "action": "run", "trggroup": "toggle-result" },
+                                { "action": "removeClass", "class": "stretched-link hidden", "source": ".know" }
                             ]'>If you know the program you want to apply to</button>
-
                             <div class="result know hidden mrgn-lft-sm mrgn-rght-sm">
                                 <p>Read our program information to find out how to apply. Some applications have specific instructions you must follow.</p>
 
                                 <div class="wb-frmvld gc-font-2019">
                                     <form>
                                         <div class="wb-fieldflow" data-wb-fieldflow='{
-                                            "noForm": true
-                                        }'>
+                                        "noForm": true
+                                    }'>
                                             <p>Select what you’re interested in</p>
                                             <ul>
                                                 <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html">Visiting Canada</a></li>
@@ -329,14 +377,11 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                        { "action": "addClass", "class": "hidden", "source": ".result" },
-                                { "action": "removeClass", "class": "hidden", "source": ".dont-know" },
-                                { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 dont-know" data-wb-doaction='[                        
+                                { "action": "run", "trggroup": "toggle-result" },
+                                { "action": "removeClass", "class": "stretched-link hidden", "source": ".dont-know" }
                             ]'>If you don’t know the program you want to apply to</button>
-
                             <div class="result dont-know hidden mrgn-lft-sm mrgn-rght-sm mrgn-tp-lg">
                                 <div class="panel panel-default">
                                     <div class="panel-body position-relative">
@@ -352,32 +397,18 @@
                             </div>
                         </div>
                     </div>
-                </li>
+                </div>
 
-            </ul>
-        </div>
-
-
-
-
-
-        <div class="account-chooser row application hidden">
-            <ul class="col-md-8 list-unstyled lst-scpd">
-                <li class="panel panel-default selection visit">
-                    <div class="panel-body position-relative">
-                        <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".selection, .reset" },
-                            { "action": "removeClass", "class": "hidden", "source": ".visit, .selection-options, .application-reset" },
-                            { "action": "run", "trggroup": "body-to-heading" }
-                        ]'>Visiting Canada</button>
+                <div class="panel panel-default selection-options visit hidden">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Visiting Canada</h3>
                     </div>
-                    <div class="panel-body selection-options hidden">
+                    <div class="panel-body">
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                                { "action": "removeClass", "class": "hidden", "source": ".visitor-visa" },
-                                { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
-                            ]'>Visitor visa</button>
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 visitor-visa" data-wb-doaction='[                      
+                                { "action": "run", "trggroup": "toggle-result" },
+                                { "action": "removeClass", "class": "stretched-link hidden", "source": ".visitor-visa" }
+                                ]'>Visitor visa</button>
 
                             <div class="result visitor-visa hidden mrgn-lft-sm mrgn-rght-sm">
                                 <p>You used one of these 2 accounts to apply:</p>
@@ -408,11 +439,10 @@
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                                { "action": "removeClass", "class": "hidden", "source": ".eta" },
-                                { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
-                            ]'>Electronic travel authorization (eTA)</button>
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 eta" data-wb-doaction='[                     
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".eta" }
+                                ]'>Electronic travel authorization (eTA)</button>
 
                             <div class="result eta hidden mrgn-lft-sm mrgn-rght-sm">
                                 <p>Use the IRCC secure account if we asked you to <strong>submit documents</strong> for your eTA application.</p>
@@ -431,11 +461,10 @@
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                                { "action": "removeClass", "class": "hidden", "source": ".visitor-record" },
-                                { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
-                            ]'>Visitor record (to extend your stay in Canada)</button>
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 visitor-record" data-wb-doaction='[                      
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".visitor-record" }
+                                ]'>Visitor record (to extend your stay in Canada)</button>
 
                             <div class="result visitor-record hidden mrgn-lft-sm mrgn-rght-sm">
                                 <p>You used the IRCC secure account to apply.</p>
@@ -455,11 +484,10 @@
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                                { "action": "removeClass", "class": "hidden", "source": ".super-visa" },
-                                { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
-                            ]'>Super visa (for parents and grandparents)</button>
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 super-visa" data-wb-doaction='[                      
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".super-visa" }
+                                ]'>Super visa (for parents and grandparents)</button>
 
                             <div class="result super-visa hidden mrgn-lft-sm mrgn-rght-sm">
                                 <p>You used one of these 2 accounts to apply:</p>
@@ -490,11 +518,10 @@
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                                { "action": "removeClass", "class": "hidden", "source": ".transit-visa" },
-                                { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
-                            ]'>Transit visa</button>
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 transit-visa" data-wb-doaction='[                     
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".transit-visa" }
+                                ]'>Transit visa</button>
 
                             <div class="result transit-visa hidden mrgn-lft-sm mrgn-rght-sm">
                                 <p>You used one of these 2 accounts to apply:</p>
@@ -527,21 +554,18 @@
                         </div>
 
                     </div>
-                </li>
-                <li class="panel panel-default selection immigrate">
-                    <div class="panel-body position-relative">
-                        <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".selection, .reset" },
-                            { "action": "removeClass", "class": "hidden", "source": ".immigrate, .selection-options, .application-reset" },
-                            { "action": "run", "trggroup": "body-to-heading" }
-                        ]'>Immigrating to Canada (to live and work permanently)</button>
+                </div>
+
+                <div class="panel panel-default selection-options immigrate hidden">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Immigrating to Canada (to live and work permanently)</h3>
                     </div>
-                    <div class="panel-body selection-options hidden">
+                    <div class="panel-body">
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                                { "action": "removeClass", "class": "hidden", "source": ".express-entry" },
-                                { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 express-entry" data-wb-doaction='[                     
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".express-entry" }
                             ]'>Express Entry</button>
 
                             <div class="result express-entry hidden mrgn-lft-sm mrgn-rght-sm">
@@ -560,10 +584,9 @@
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                                { "action": "removeClass", "class": "hidden", "source": ".tr-pr" },
-                                { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 tr-pr" data-wb-doaction='[                     
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".tr-pr" }
                             ]'>Temporary resident to permanent resident (TR-to-PR) pathway</button>
 
                             <div class="result tr-pr hidden mrgn-lft-sm mrgn-rght-sm">
@@ -596,10 +619,9 @@
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                                { "action": "removeClass", "class": "hidden", "source": ".other" },
-                                { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 other" data-wb-doaction='[                     
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".other" }
                             ]'>Another immigration program</button>
 
                             <div class="result other hidden mrgn-lft-sm mrgn-rght-sm">
@@ -639,16 +661,14 @@
                             </div>
                         </div>
                     </div>
-                </li>
-                <li class="panel panel-default selection family">
-                    <div class="panel-body position-relative">
-                        <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".selection, .reset" },
-                            { "action": "removeClass", "class": "hidden", "source": ".family, .selection-options, .application-reset" },
-                            { "action": "run", "trggroup": "body-to-heading" }
-                        ]'>Family sponsorship (including adoption through the immigration process)</button>
+                </div>
+
+                <div class="panel panel-default selection-options family hidden">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Family sponsorship (including adoption through the immigration process)</h3>
                     </div>
-                    <div class="panel-body selection-options hidden">
+                    <div class="panel-body">
                         <p>You used the Permanent residence portal to apply.</p>
 
                         <div class="row">
@@ -663,25 +683,17 @@
                             </div>
                         </div>
                     </div>
-                </li>
-                
+                </div>
 
-
-
-                <li class="panel panel-default selection working">
-                    <div class="panel-body position-relative">
-                        <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".selection, .reset" },
-                            { "action": "removeClass", "class": "hidden", "source": ".working, .selection-options, .application-reset" },
-                            { "action": "run", "trggroup": "body-to-heading" }
-                        ]'>Working in Canada temporarily</button>
+                <div class="panel panel-default selection-options working hidden">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Working in Canada temporarily</h3>
                     </div>
-                    <div class="panel-body selection-options hidden">
+                    <div class="panel-body">
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                                { "action": "removeClass", "class": "hidden", "source": ".work-permit" },
-                                { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 work-permit" data-wb-doaction='[                  
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".work-permit" }
                             ]'>Work permit and work permit extension</button>
 
                             <div class="result work-permit hidden mrgn-lft-sm mrgn-rght-sm">
@@ -702,10 +714,9 @@
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                                { "action": "removeClass", "class": "hidden", "source": ".iec" },
-                                { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 iec" data-wb-doaction='[                
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".iec" }
                             ]'>International Experience Canada</button>
 
                             <div class="result iec hidden mrgn-lft-sm mrgn-rght-sm">
@@ -726,10 +737,9 @@
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                                { "action": "removeClass", "class": "hidden", "source": ".pgwp" },
-                                { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 pgwp" data-wb-doaction='[              
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".pgwp" }
                             ]'>Post-graduation work permit</button>
 
                             <div class="result pgwp hidden mrgn-lft-sm mrgn-rght-sm">
@@ -750,10 +760,9 @@
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                            { "action": "removeClass", "class": "hidden", "source": ".h-1b" },
-                            { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 h-1b" data-wb-doaction='[            
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".h-1b" }
                         ]'>H-1B visa holder work permit</button>
 
                             <div class="result h-1b hidden mrgn-lft-sm mrgn-rght-sm">
@@ -774,21 +783,18 @@
                             </div>
                         </div>
                     </div>
-                </li>
-                <li class="panel panel-default selection study">
-                    <div class="panel-body position-relative">
-                        <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".selection, .reset" },
-                            { "action": "removeClass", "class": "hidden", "source": ".study, .selection-options, .application-reset" },
-                            { "action": "run", "trggroup": "body-to-heading" }
-                        ]'>Studying in Canada</button>
+                </div>
+
+                <div class="panel panel-default selection-options study hidden">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Study permit</h3>
                     </div>
-                    <div class="panel-body selection-options hidden">
+                    <div class="panel-body">
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                            { "action": "removeClass", "class": "hidden", "source": ".study-permit" },                            
-                            { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 study-permit" data-wb-doaction='[           
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".study-permit" }
                         ]'>Study permit</button>
 
                             <div class="result study-permit hidden mrgn-lft-sm mrgn-rght-sm">
@@ -819,10 +825,9 @@
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                            { "action": "removeClass", "class": "hidden", "source": ".study-permit-fam" },
-                            { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 study-permit-fam" data-wb-doaction='[      
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".study-permit-fam" }
                         ]'>Study permit (with a family member who needs a work permit)</button>
 
                             <div class="result study-permit-fam hidden mrgn-lft-sm mrgn-rght-sm">
@@ -841,10 +846,9 @@
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                            { "action": "removeClass", "class": "hidden", "source": ".study-permit-ext" },
-                            { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 study-permit-ext" data-wb-doaction='[      
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".study-permit-ext" }
                         ]'>Study permit extension</button>
 
                             <div class="result study-permit-ext hidden mrgn-lft-sm mrgn-rght-sm">
@@ -863,10 +867,9 @@
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                            { "action": "removeClass", "class": "hidden", "source": ".change-school" },
-                            { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 change-school" data-wb-doaction='[     
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".change-school" }
                         ]'>Change your school</button>
 
                             <div class="result change-school hidden mrgn-lft-sm mrgn-rght-sm">
@@ -885,21 +888,18 @@
                             </div>
                         </div>
                     </div>
-                </li>
-                <li class="panel panel-default selection citizenship">
-                    <div class="panel-body position-relative">
-                        <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".selection, .reset" },
-                            { "action": "removeClass", "class": "hidden", "source": ".citizenship, .selection-options, .application-reset" },
-                            { "action": "run", "trggroup": "body-to-heading" }
-                        ]'>Canadian citizenship</button>
+                </div>
+
+                <div class="panel panel-default selection-options citizenship hidden">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Canadian citizenship</h3>
                     </div>
-                    <div class="panel-body selection-options hidden">
+                    <div class="panel-body">
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                            { "action": "removeClass", "class": "hidden", "source": ".grant" },
-                            { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 grant" data-wb-doaction='[   
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".grant" }
                         ]'>Canadian citizenship (grant of citizenship) application</button>
 
                             <div class="result grant hidden mrgn-lft-sm mrgn-rght-sm">
@@ -918,10 +918,9 @@
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                            { "action": "removeClass", "class": "hidden", "source": ".certificate" },
-                            { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 certificate" data-wb-doaction='[ 
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".certificate" }
                         ]'>Citizenship certificate application</button>
 
                             <div class="result certificate hidden mrgn-lft-sm mrgn-rght-sm">
@@ -940,10 +939,9 @@
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                            { "action": "removeClass", "class": "hidden", "source": ".test" },
-                            { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 test" data-wb-doaction='[
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".test" }
                         ]'>Canadian citizenship test</button>
 
                             <div class="result test hidden mrgn-lft-sm mrgn-rght-sm">
@@ -962,10 +960,9 @@
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                            { "action": "removeClass", "class": "hidden", "source": ".certificate-download" },
-                            { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 certificate-download" data-wb-doaction='[
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".certificate-download" }
                         ]'>Electronic citizenship certificate download</button>
 
                             <div class="result certificate-download hidden mrgn-lft-sm mrgn-rght-sm">
@@ -984,10 +981,9 @@
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                            { "action": "removeClass", "class": "hidden", "source": ".cit-records" },
-                            { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 cit-records" data-wb-doaction='[
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".cit-records" }
                         ]'>Search citizenship records</button>
 
                             <div class="result cit-records hidden mrgn-lft-sm mrgn-rght-sm">
@@ -1006,10 +1002,9 @@
                             </div>
                         </div>
                         <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                            { "action": "removeClass", "class": "hidden", "source": ".calculator" },
-                            { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 calculator" data-wb-doaction='[
+                            { "action": "run", "trggroup": "toggle-result" },
+                            { "action": "removeClass", "class": "stretched-link hidden", "source": ".calculator" }
                         ]'>Physical presence calculator (for paper applications)</button>
 
                             <div class="result calculator hidden mrgn-lft-sm mrgn-rght-sm">
@@ -1028,76 +1023,73 @@
                             </div>
                         </div>
                     </div>
-                </li>
-                <li class="panel panel-default selection refugees">
-                    <div class="panel-body position-relative">
-                        <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".selection, .reset" },
-                            { "action": "removeClass", "class": "hidden", "source": ".refugees, .selection-options, .application-reset" },
-                            { "action": "run", "trggroup": "body-to-heading" }
-                        ]'>Refugees and asylum</button>
+                </div>
+
+                <div class="panel panel-default selection-options refugees hidden">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Refugees and asylum</h3>
                     </div>
-                    <div class="panel-body selection-options hidden">
-                        <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                            { "action": "removeClass", "class": "hidden", "source": ".asylum" },
-                            { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
-                        ]'>Asylum claim</button>
+                    <div class="panel-body">
+                        <div class="panel-body selection-options">
+                            <div class="panel panel-default panel-body position-relative">
+                                <button class="text-left stretched-link btn-link no-undrln full-width p-0 asylum" data-wb-doaction='[
+                                { "action": "run", "trggroup": "toggle-result" },
+                                { "action": "removeClass", "class": "stretched-link hidden", "source": ".asylum" }
+                            ]'>Asylum claim</button>
 
-                            <div class="result asylum hidden mrgn-lft-sm mrgn-rght-sm">
-                                <p>You used the IRCC portal to apply.</p>
-                                <div class="row">
-                                    <div class="col-md-9">
-                                        <div class="panel panel-default mrgn-bttm-md">
-                                            <div class="panel-body position-relative d-flex align-items-center">
+                                <div class="result asylum hidden mrgn-lft-sm mrgn-rght-sm">
+                                    <p>You used the IRCC portal to apply.</p>
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <div class="panel panel-default mrgn-bttm-md">
+                                                <div class="panel-body position-relative d-flex align-items-center">
 
-                                                <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                <a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal</a>
+                                                    <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                    <a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                            { "action": "removeClass", "class": "hidden", "source": ".ifhp" },
-                            { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
-                        ]'>Interim Federal Health Program</button>
+                            <div class="panel panel-default panel-body position-relative">
+                                <button class="text-left stretched-link btn-link no-undrln full-width p-0 ifhp" data-wb-doaction='[
+                                { "action": "run", "trggroup": "toggle-result" },
+                                { "action": "removeClass", "class": "stretched-link hidden", "source": ".ifhp" }
+                            ]'>Interim Federal Health Program</button>
 
-                            <div class="result ifhp hidden mrgn-lft-sm mrgn-rght-sm">
-                                <p>You used the IRCC secure account to apply.</p>
-                                <div class="row">
-                                    <div class="col-md-9">
-                                        <div class="panel panel-default mrgn-bttm-md">
-                                            <div class="panel-body position-relative d-flex align-items-center">
+                                <div class="result ifhp hidden mrgn-lft-sm mrgn-rght-sm">
+                                    <p>You used the IRCC secure account to apply.</p>
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <div class="panel panel-default mrgn-bttm-md">
+                                                <div class="panel-body position-relative d-flex align-items-center">
 
-                                                <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account</a>
+                                                    <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".result" },
-                            { "action": "removeClass", "class": "hidden", "source": ".sponsor-refugee" },
-                            { "action": "removeClass", "class": "stretched-link", "source": ".selection-options>div>button" }
-                        ]'>Sponsor a refugee</button>
+                            <div class="panel panel-default panel-body position-relative">
+                                <button class="text-left stretched-link btn-link no-undrln full-width p-0 sponsor-refugee" data-wb-doaction='[
+                                { "action": "run", "trggroup": "toggle-result" },
+                                { "action": "removeClass", "class": "stretched-link hidden", "source": ".sponsor-refugee" }
+                            ]'>Sponsor a refugee</button>
 
-                            <div class="result sponsor-refugee hidden mrgn-lft-sm mrgn-rght-sm">
-                                <p>You used the Permanent residence portal to apply.</p>
-                                <div class="row">
-                                    <div class="col-md-9">
-                                        <div class="panel panel-default mrgn-bttm-md">
-                                            <div class="panel-body position-relative d-flex align-items-center">
+                                <div class="result sponsor-refugee hidden mrgn-lft-sm mrgn-rght-sm">
+                                    <p>You used the Permanent residence portal to apply.</p>
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <div class="panel panel-default mrgn-bttm-md">
+                                                <div class="panel-body position-relative d-flex align-items-center">
 
-                                                <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html">Permanent residence portal</a>
+                                                    <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html">Permanent residence portal</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1105,19 +1097,14 @@
                             </div>
                         </div>
                     </div>
-                </li>
+                </div>
 
+                <div class="panel panel-default selection-options pr hidden">
 
-
-                <li class="panel panel-default selection pr">
-                    <div class="panel-body position-relative">
-                        <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".selection, .reset" },
-                            { "action": "removeClass", "class": "hidden", "source": ".pr, .selection-options, .application-reset" },
-                            { "action": "run", "trggroup": "body-to-heading" }
-                        ]'>Permanent resident cards and travel documents</button>
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Permanent resident cards and travel documents</h3>
                     </div>
-                    <div class="panel-body selection-options hidden">
+                    <div class="panel-body">
                         <p>You used the Permanent residence portal to apply.</p>
 
                         <div class="row">
@@ -1132,66 +1119,66 @@
                             </div>
                         </div>
                     </div>
-                </li>
+                </div>
 
+                <div class="panel panel-default selection-options special-measures hidden">
 
-
-
-
-                <li class="panel panel-default selection special-measures">
-                    <div class="panel-body position-relative">
-                        <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                            { "action": "addClass", "class": "hidden", "source": ".selection, .reset" },
-                            { "action": "removeClass", "class": "hidden", "source": ".special-measures, .selection-options, .application-reset" },
-                            { "action": "run", "trggroup": "body-to-heading" }
-                        ]'>One of the special measures (such as the measures for Ukraine, Sudan, or other)</button>
+                    <div class="panel-heading">
+                        <h3 class="panel-title">One of the special measures (such as the measures for Ukraine, Sudan, or other)</h3>
                     </div>
-                    <div class="panel-body selection-options hidden">
+                    <div class="panel-body">
                         <p>You used one of these 3 accounts to apply:</p>
-                            <div class="row-no-gutters clearfix">
-                                <ul class="cnjnctn-type-or cnjnctn-type-or-horizontal col-md-9">
-                                    <li class="cnjnctn-col position-relative p-0">
-                                        <div class="panel panel-default mrgn-bttm-md">
-                                            <div class="panel-body position-relative d-flex align-items-center">
+                        <div class="row-no-gutters clearfix">
+                            <ul class="cnjnctn-type-or cnjnctn-type-or-horizontal col-md-9">
+                                <li class="cnjnctn-col position-relative p-0">
+                                    <div class="panel panel-default mrgn-bttm-md">
+                                        <div class="panel-body position-relative d-flex align-items-center">
 
-                                                <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account</a>
-                                            </div>
+                                            <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                            <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account</a>
                                         </div>
-                                    </li>
-                                    <li class="cnjnctn-col position-relative p-0">
-                                        <div class="panel panel-default mrgn-bttm-md">
-                                            <div class="panel-body position-relative d-flex align-items-center">
-                                                <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                <a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal</a>
+                                    </div>
+                                </li>
+                                <li class="cnjnctn-col position-relative p-0">
+                                    <div class="panel panel-default mrgn-bttm-md">
+                                        <div class="panel-body position-relative d-flex align-items-center">
+                                            <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                            <a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal</a>
 
-                                            </div>
                                         </div>
-                                    </li>
-                                    <li class="cnjnctn-col position-relative p-0">
-                                        <div class="panel panel-default mrgn-bttm-md">
-                                            <div class="panel-body position-relative d-flex align-items-center">
+                                    </div>
+                                </li>
+                                <li class="cnjnctn-col position-relative p-0">
+                                    <div class="panel panel-default mrgn-bttm-md">
+                                        <div class="panel-body position-relative d-flex align-items-center">
 
-                                                <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln">Permanent residence portal</a>
-                                            </div>
+                                            <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                            <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln">Permanent residence portal</a>
                                         </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <p><strong>If you’re not sure which account you used to apply,</strong> try signing in to each or check your email.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <p><strong>If you’re not sure which account you used to apply,</strong> try signing in to each or check your email.</p>
                     </div>
-                </li>
+                </div>
 
-
-               
-
-               
-            </ul>
+            </div>
         </div>
+        <div class="clearfix"></div>
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
         <h2 class="h3">Need an authorized paid representative or partner account?</h2>
         <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/partners-service-providers.html">View accounts for representatives and partners</a></p>
 
