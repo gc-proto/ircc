@@ -230,59 +230,59 @@
                             <p>Select the type of application you started.</p>
                             <ul class="list-unstyled lst-scpd">
                                 <li class="panel panel-default panel-body position-relative visit">
-                                    <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    <a href="#visit" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                         { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
                                         { "action": "removeClass", "class": "hidden", "source": ".visit, .application-reset" }
-                                    ]'>Visiting Canada</button>
+                                    ]'>Visiting Canada</a>
                                 </li>
                                 <li class="panel panel-default panel-body position-relative">
-                                    <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    <a href="#immigrate" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                         { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
                                         { "action": "removeClass", "class": "hidden", "source": ".immigrate, .application-reset" }
-                                    ]'>Immigrating to Canada (to live and work permanently)</button>
+                                    ]'>Immigrating to Canada (to live and work permanently)</a>
                                 </li>
                                 <li class="panel panel-default panel-body position-relative">
-                                    <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    <a href="#family" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                         { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
                                         { "action": "removeClass", "class": "hidden", "source": ".family, .application-reset" }
-                                    ]'>Family sponsorship (including adoption through the immigration process)</button>
+                                    ]'>Family sponsorship (including adoption through the immigration process)</a>
                                 </li>
                                 <li class="panel panel-default panel-body position-relative">
-                                    <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    <a id="#working" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                         { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
                                         { "action": "removeClass", "class": "hidden", "source": ".working, .application-reset" }
-                                    ]'>Working in Canada temporarily</button>
+                                    ]'>Working in Canada temporarily</a>
                                 </li>
                                 <li class="panel panel-default panel-body position-relative">
-                                    <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    <a href="#study" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                         { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
                                         { "action": "removeClass", "class": "hidden", "source": ".study, .application-reset" }
-                                    ]'>Studying in Canada</button>
+                                    ]'>Studying in Canada</a>
                                 </li>
                                 <li class="panel panel-default panel-body position-relative">
-                                    <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    <a href="#citizenship" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                         { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
                                         { "action": "removeClass", "class": "hidden", "source": ".citizenship, .application-reset" }
-                                    ]'>Canadian citizenship</button>
+                                    ]'>Canadian citizenship</a>
                                 </li>
                                 <li class="panel panel-default panel-body position-relative">
-                                    <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    <a href="#refugees" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                         { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
                                         { "action": "removeClass", "class": "hidden", "source": ".refugees, .application-reset" }
-                                    ]'>Refugees and asylum</button>
+                                    ]'>Refugees and asylum</a>
                                 </li>
 
                                 <li class="panel panel-default panel-body position-relative">
-                                    <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    <a href="#special-measures" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                         { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
                                         { "action": "removeClass", "class": "hidden", "source": ".special-measures, .application-reset" }
-                                    ]'>One of the special measures (such as the measures for Ukraine, Sudan, or other)</button>
+                                    ]'>One of the special measures (such as the measures for Ukraine, Sudan, or other)</a>
                                 </li>
                                 <li class="panel panel-default panel-body position-relative">
-                                    <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    <a href="#pr" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                         { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
                                         { "action": "removeClass", "class": "hidden", "source": ".pr, .application-reset" }
-                                    ]'>Permanent resident cards and travel documents</button>
+                                    ]'>Permanent resident cards and travel documents</a>
                                 </li>
                             </ul>
                         </div>
@@ -401,7 +401,7 @@
                     </div>
                 </div>
 
-                <div class="panel panel-default selection-options visit hidden">
+                <div id="visit" class="panel panel-default selection-options visit hidden">
                     <div class="panel-heading">
                         <h3 class="panel-title">Visiting Canada</h3>
                     </div>
@@ -558,7 +558,7 @@
                     </div>
                 </div>
 
-                <div class="panel panel-default selection-options immigrate hidden">
+                <div id="immigrate" class="panel panel-default selection-options immigrate hidden">
 
                     <div class="panel-heading">
                         <h3 class="panel-title">Immigrating to Canada (to live and work permanently)</h3>
@@ -669,7 +669,7 @@
                     </div>
                 </div>
 
-                <div class="panel panel-default selection-options family hidden">
+                <div id="family" class="panel panel-default selection-options family hidden">
 
                     <div class="panel-heading">
                         <h3 class="panel-title">Family sponsorship (including adoption through the immigration process)</h3>
@@ -691,7 +691,7 @@
                     </div>
                 </div>
 
-                <div class="panel panel-default selection-options working hidden">
+                <div id="working" class="panel panel-default selection-options working hidden">
                     <div class="panel-heading">
                         <h3 class="panel-title">Working in Canada temporarily</h3>
                     </div>
@@ -791,7 +791,7 @@
                     </div>
                 </div>
 
-                <div class="panel panel-default selection-options study hidden">
+                <div id="study" class="panel panel-default selection-options study hidden">
 
                     <div class="panel-heading">
                         <h3 class="panel-title">Study permit</h3>
@@ -896,7 +896,7 @@
                     </div>
                 </div>
 
-                <div class="panel panel-default selection-options citizenship hidden">
+                <div id="citizenship" class="panel panel-default selection-options citizenship hidden">
 
                     <div class="panel-heading">
                         <h3 class="panel-title">Canadian citizenship</h3>
@@ -1035,7 +1035,7 @@
                     </div>
                 </div>
 
-                <div class="panel panel-default selection-options refugees hidden">
+                <div id="refugees" class="panel panel-default selection-options refugees hidden">
 
                     <div class="panel-heading">
                         <h3 class="panel-title">Refugees and asylum</h3>
@@ -1109,7 +1109,7 @@
                     </div>
                 </div>
 
-                <div class="panel panel-default selection-options special-measures hidden">
+                <div id="special-measures" class="panel panel-default selection-options special-measures hidden">
 
                     <div class="panel-heading">
                         <h3 class="panel-title">One of the special measures (such as the measures for Ukraine, Sudan or other)</h3>
@@ -1119,7 +1119,7 @@
                         <div class="row-no-gutters clearfix">
                             <ul class="cnjnctn-type-or cnjnctn-type-or-horizontal col-md-9">
                                 <li class="cnjnctn-col position-relative p-0">
-                                    <div class="panel panel-default mrgn-bttm-md">
+                                    <div class="panel panel-default">
                                         <div class="panel-body position-relative d-flex align-items-center">
 
                                             <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
@@ -1128,7 +1128,7 @@
                                     </div>
                                 </li>
                                 <li class="cnjnctn-col position-relative p-0">
-                                    <div class="panel panel-default mrgn-bttm-md">
+                                    <div class="panel panel-default">
                                         <div class="panel-body position-relative d-flex align-items-center">
                                             <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
                                             <a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal</a>
@@ -1137,7 +1137,7 @@
                                     </div>
                                 </li>
                                 <li class="cnjnctn-col position-relative p-0">
-                                    <div class="panel panel-default mrgn-bttm-md">
+                                    <div class="panel panel-default">
                                         <div class="panel-body position-relative d-flex align-items-center">
 
                                             <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
@@ -1151,7 +1151,7 @@
                     </div>
                 </div>
 
-                <div class="panel panel-default selection-options pr hidden">
+                <div id="pr" class="panel panel-default selection-options pr hidden">
 
                     <div class="panel-heading">
                         <h3 class="panel-title">Permanent resident cards and travel documents</h3>
