@@ -17,13 +17,12 @@
   height: 1.8em;
   left: auto;
   line-height: 1.7em;
-  margin-top: -3.8em !important;
   padding: 0.3em;
   position: absolute;
   text-align: center;
   width: 1.8em;
   background-color: #fff;
-  margin: 0 calc(50% - 1.8em);
+  margin: -3.8em calc(50% - 1.8em) 0;
 }
 .account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:after {
   background-color: #6f6f6f;
@@ -42,4 +41,4 @@
   height: 0;
   position: relative;
   width: 0;
-}/*# sourceMappingURL=all-accounts.css.map */
+}/*# sourceMappingURL=all-accounts-v2.css.map */

@@ -23,13 +23,12 @@
             height: 1.8em;
             left: auto;
             line-height: 1.7em;
-            margin-top: -3.8em!important;
             padding: 0.3em;
             position: absolute;
             text-align: center;
             width: 1.8em;
             background-color: #fff;
-            margin: 0 calc(50% - 1.8em);
+            margin: -3.8em calc(50% - 1.8em) 0;
         }
     
         [class*=cnjnctn-type-] > [class*=cnjnctn-col]:after {
