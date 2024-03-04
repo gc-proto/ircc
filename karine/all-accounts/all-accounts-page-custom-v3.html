@@ -163,7 +163,7 @@
 
         <h2 class="h3">What do you want to do?</h2>
 
-        <div class="application-reset hidden" id="btn-reset" >
+        <div class="application-reset hidden" id="btn-reset">
             <a href="#btn-reset" class="text-left btn-link no-undrln full-width d-flex align-items-center" data-wb-doaction='[
                     { "action": "run", "trggroup": "back" },
                     { "action": "removeClass", "class": "hidden", "source": ".application, .reset" },
@@ -171,16 +171,16 @@
                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"> to all applications</span></a>
         </div>
         <div class="reset hidden">
-            <button class="text-left btn-link no-undrln full-width d-flex align-items-center" data-wb-doaction='[
+            <a href="#btn-reset" class="text-left btn-link no-undrln full-width d-flex align-items-center" data-wb-doaction='[
                     { "action": "run", "trggroup": "back" },
                     { "action": "addClass", "class": "hidden", "source": ".reset" }
-                ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"></span></button>
+                ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"></span></a>
         </div>
 
         <div id="" class="account-chooser row" data-wb-actionmng='[
             { "trggroup":"back", "action": "removeClass", "class": "hidden", "source": ".selection" },
             { "trggroup":"back", "action": "addClass", "class": "hidden", "source": ".selection-options, .result" },
-            { "trggroup":"toggle-result", "action": "addClass", "class": "stretched-link", "source": ".account-chooser button" },
+            { "trggroup":"toggle-result", "action": "addClass", "class": "stretched-link", "source": ".account-chooser a.btn-link" },
             { "trggroup":"toggle-result", "action": "addClass", "class": "hidden", "source": ".result" }
         ]'>
             <div class="col-md-8">
@@ -195,37 +195,37 @@
                     </li>
                     <li class="panel panel-default">
                         <div class="panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
+                            <a href="#status" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
                             { "action": "addClass", "class": "hidden", "source": ".selection" },
                             { "action": "removeClass", "class": "hidden", "source": ".status, .reset" }
-                        ]'>Check the status of an application you already submitted</button>
+                        ]'>Check the status of an application you already submitted</a>
                         </div>
                     </li>
                     <li class="panel panel-default">
                         <div class="panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
+                            <a href="#fees" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
                             { "action": "addClass", "class": "hidden", "source": ".selection" },
                             { "action": "removeClass", "class": "hidden", "source": ".fees, .reset" }
-                        ]'>Pay your fees</button>
+                        ]'>Pay your fees</a>
                         </div>
                     </li>
                     <li class="panel panel-default">
                         <div class="panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
+                            <a id="#start-application" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
                                 { "action": "addClass", "class": "hidden", "source": ".selection" },
                                 { "action": "removeClass", "class": "hidden", "source": ".start-application, .reset" }
-                            ]'>Start a new application</button>
+                            ]'>Start a new application</a>
                         </div>
                     </li>
                 </ul>
-<div id="application">
-    
-                    <div class="panel panel-default selection-options application hidden" >
+                <div id="application">
+
+                    <div class="panel panel-default selection-options application hidden">
                         <div class="panel-heading">
-                            <h3  class="panel-title">Finish or submit your application</h3>
+                            <h3 class="panel-title">Finish or submit your application</h3>
                         </div>
                         <div class="panel-body">
-    
+
                             <p><strong>There are different accounts depending on your application.</strong></p>
                             <p>Select the type of application you started.</p>
                             <ul class="list-unstyled lst-scpd">
@@ -271,7 +271,7 @@
                                         { "action": "removeClass", "class": "hidden", "source": ".refugees, .application-reset" }
                                     ]'>Refugees and asylum</button>
                                 </li>
-    
+
                                 <li class="panel panel-default panel-body position-relative">
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                         { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
@@ -287,118 +287,113 @@
                             </ul>
                         </div>
                     </div>
-</div>
-
-                <div class="panel panel-default selection-options status hidden">
-                    <div class="panel-heading">
-                        <h3  class="panel-title">Check the status of an application you already submitted</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>Use our existing tool to find out how to track your application.</p>
-
-                        <div class="row">
-                            <div class="col-md-9">
-                                <div class="panel panel-default  panel-body position-relative">
-                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html" class="stretched-link btn-link no-undrln full-width">
-                                        <div class="row d-flex align-items-center text-left">
-                                            <div class="col-xs-11">Check your application status</div>
-                                            <div class="col-xs-1"><span class="fas fa-share pull-right"></span></div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
 
-                <div class="panel panel-default selection-options fees hidden">
-                    <div class="panel-heading">
-                        <h3  class="panel-title">Pay your fees</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>Use our existing tool to find out how to pay your fees.</p>
-
-                        <div class="row">
-                            <div class="col-md-9">
-                                <div class="panel panel-default  panel-body position-relative">
-                                    <a href="https://ircc.canada.ca/english/information/fees/index.asp" class="stretched-link btn-link no-undrln full-width">
-                                        <div class="row d-flex align-items-center text-left">
-                                            <div class="col-xs-11">Pay your fees</div>
-                                            <div class="col-xs-1"><span class="fas fa-share pull-right"></span></div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
+                <div id="status">
+                    <div class="panel panel-default selection-options status hidden">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Check the status of an application you already submitted</h3>
                         </div>
-                    </div>
-                </div>
-
-                <div class="panel panel-default selection-options start-application hidden">
-                    <div class="panel-heading">
-                        <h3  class="panel-title">Start a new application</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>This tool doesn’t tell you which account you need to use to apply.</p>
-                        <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 know" data-wb-doaction='[                        
-                                { "action": "run", "trggroup": "toggle-result" },
-                                { "action": "removeClass", "class": "stretched-link hidden", "source": ".know" }
-                            ]'>If you know the program you want to apply to</button>
-                            <div class="result know hidden mrgn-lft-sm mrgn-rght-sm">
-                                <p>Read our program information to find out how to apply. Some applications have specific instructions you must follow.</p>
-
-                                <div class="wb-frmvld gc-font-2019">
-                                    <form>
-                                        <div class="wb-fieldflow" data-wb-fieldflow='{
-                                        "noForm": true
-                                    }'>
-                                            <p>Select what you’re interested in</p>
-                                            <ul>
-                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html">Visiting Canada</a></li>
-                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada.html ">Immigrating to Canada</a></li>
-                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada.html">Working in Canada</a></li>
-                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada.html">Studying in Canada</a></li>
-                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship.html ">Citizenship</a></li>
-                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees.html">Refugees and asylum</a></li>
-                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants.html">Permanent resident cards</a></li>
-                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants.html">Permanent resident travel documents</a></li>
-                                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadians/adopt-child-abroad.html">Adoption</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="panel panel-default panel-body position-relative btn-submit col-md-4">
-
-
-
-                                            <button class="text-left stretched-link btn-link btn-lg no-undrln full-width p-0">
-                                                <span class="row d-flex align-items-center text-left">
-                                                    <span class="col-xs-11">Continue</span>
-                                                    <span class="col-xs-1"><span class="fas fa-share pull-right"></span></span>
-                                                </span>
-                                            </button>
-
-
-                                        </div>
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default panel-body position-relative">
-                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 dont-know" data-wb-doaction='[                        
-                                { "action": "run", "trggroup": "toggle-result" },
-                                { "action": "removeClass", "class": "stretched-link hidden", "source": ".dont-know" }
-                            ]'>If you don’t know the program you want to apply to</button>
-                            <div class="result dont-know hidden mrgn-lft-sm mrgn-rght-sm mrgn-tp-lg">
-                                <div class="panel panel-default">
-                                    <div class="panel-body position-relative">
-                                        <a href="https://ircc.canada.ca/explore-programs" class="stretched-link btn-link no-undrln full-width">
+                        <div class="panel-body">
+                            <p>Use our existing tool to find out how to track your application.</p>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="panel panel-default  panel-body position-relative">
+                                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html" class="stretched-link btn-link no-undrln full-width">
                                             <div class="row d-flex align-items-center text-left">
-                                                <div class="col-xs-11">Explore immigration programs</div>
+                                                <div class="col-xs-11">Check your application status</div>
                                                 <div class="col-xs-1"><span class="fas fa-share pull-right"></span></div>
-
                                             </div>
                                         </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="fees">
+                    <div class="panel panel-default selection-options fees hidden">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Pay your fees</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>Use our existing tool to find out how to pay your fees.</p>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="panel panel-default  panel-body position-relative">
+                                        <a href="https://ircc.canada.ca/english/information/fees/index.asp" class="stretched-link btn-link no-undrln full-width">
+                                            <div class="row d-flex align-items-center text-left">
+                                                <div class="col-xs-11">Pay your fees</div>
+                                                <div class="col-xs-1"><span class="fas fa-share pull-right"></span></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="start-application">
+                    <div class="panel panel-default selection-options start-application hidden">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Start a new application</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>This tool doesn’t tell you which account you need to use to apply.</p>
+                            <div class="panel panel-default panel-body position-relative">
+                                <button class="text-left stretched-link btn-link no-undrln full-width p-0 know" data-wb-doaction='[
+                                    { "action": "run", "trggroup": "toggle-result" },
+                                    { "action": "removeClass", "class": "stretched-link hidden", "source": ".know" }
+                                ]'>If you know the program you want to apply to</button>
+                                <div class="result know hidden mrgn-lft-sm mrgn-rght-sm">
+                                    <p>Read our program information to find out how to apply. Some applications have specific instructions you must follow.</p>
+                                    <div class="wb-frmvld gc-font-2019">
+                                        <form>
+                                            <div class="wb-fieldflow" data-wb-fieldflow='{
+                                            "noForm": true
+                                        }'>
+                                                <p>Select what you’re interested in</p>
+                                                <ul>
+                                                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html">Visiting Canada</a></li>
+                                                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada.html ">Immigrating to Canada</a></li>
+                                                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada.html">Working in Canada</a></li>
+                                                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada.html">Studying in Canada</a></li>
+                                                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship.html ">Citizenship</a></li>
+                                                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees.html">Refugees and asylum</a></li>
+                                                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants.html">Permanent resident cards</a></li>
+                                                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants.html">Permanent resident travel documents</a></li>
+                                                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadians/adopt-child-abroad.html">Adoption</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="panel panel-default panel-body position-relative btn-submit col-md-4">
+                                                <button class="text-left stretched-link btn-link btn-lg no-undrln full-width p-0">
+                                                    <span class="row d-flex align-items-center text-left">
+                                                        <span class="col-xs-11">Continue</span>
+                                                        <span class="col-xs-1"><span class="fas fa-share pull-right"></span></span>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default panel-body position-relative">
+                                <button class="text-left stretched-link btn-link no-undrln full-width p-0 dont-know" data-wb-doaction='[
+                                    { "action": "run", "trggroup": "toggle-result" },
+                                    { "action": "removeClass", "class": "stretched-link hidden", "source": ".dont-know" }
+                                ]'>If you don’t know the program you want to apply to</button>
+                                <div class="result dont-know hidden mrgn-lft-sm mrgn-rght-sm mrgn-tp-lg">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body position-relative">
+                                            <a href="https://ircc.canada.ca/explore-programs" class="stretched-link btn-link no-undrln full-width">
+                                                <div class="row d-flex align-items-center text-left">
+                                                    <div class="col-xs-11">Explore immigration programs</div>
+                                                    <div class="col-xs-1"><span class="fas fa-share pull-right"></span></div>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -980,7 +975,7 @@
 
                             <div class="result certificate-download hidden mrgn-lft-sm mrgn-rght-sm">
                                 <p>Use the IRCC portal to download your electronic citizenship certificate (e-certificate) if you asked for an e-certificate in your citizenship application.</p>
-                                
+
                                 <div class="row">
                                     <div class="col-md-9">
                                         <div class="panel panel-default mrgn-bttm-md">
@@ -1046,71 +1041,71 @@
                         <h3 class="panel-title">Refugees and asylum</h3>
                     </div>
                     <div class="panel-body">
-                        
-                            <div class="panel panel-default panel-body position-relative">
-                                <button class="text-left stretched-link btn-link no-undrln full-width p-0 asylum" data-wb-doaction='[
+
+                        <div class="panel panel-default panel-body position-relative">
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 asylum" data-wb-doaction='[
                                 { "action": "run", "trggroup": "toggle-result" },
                                 { "action": "removeClass", "class": "stretched-link hidden", "source": ".asylum" }
                             ]'>Asylum claim</button>
 
-                                <div class="result asylum hidden mrgn-lft-sm mrgn-rght-sm">
-                                    <p>You used the IRCC portal to apply.</p>
-                                    <div class="row">
-                                        <div class="col-md-9">
-                                            <div class="panel panel-default mrgn-bttm-md">
-                                                <div class="panel-body position-relative d-flex align-items-center">
+                            <div class="result asylum hidden mrgn-lft-sm mrgn-rght-sm">
+                                <p>You used the IRCC portal to apply.</p>
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <div class="panel panel-default mrgn-bttm-md">
+                                            <div class="panel-body position-relative d-flex align-items-center">
 
-                                                    <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                    <a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal</a>
-                                                </div>
+                                                <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                <a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <button class="text-left stretched-link btn-link no-undrln full-width p-0 ifhp" data-wb-doaction='[
+                        </div>
+                        <div class="panel panel-default panel-body position-relative">
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 ifhp" data-wb-doaction='[
                                 { "action": "run", "trggroup": "toggle-result" },
                                 { "action": "removeClass", "class": "stretched-link hidden", "source": ".ifhp" }
                             ]'>Interim Federal Health Program</button>
 
-                                <div class="result ifhp hidden mrgn-lft-sm mrgn-rght-sm">
-                                    <p>You used the IRCC secure account to apply.</p>
-                                    <div class="row">
-                                        <div class="col-md-9">
-                                            <div class="panel panel-default mrgn-bttm-md">
-                                                <div class="panel-body position-relative d-flex align-items-center">
+                            <div class="result ifhp hidden mrgn-lft-sm mrgn-rght-sm">
+                                <p>You used the IRCC secure account to apply.</p>
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <div class="panel panel-default mrgn-bttm-md">
+                                            <div class="panel-body position-relative d-flex align-items-center">
 
-                                                    <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account</a>
-                                                </div>
+                                                <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <button class="text-left stretched-link btn-link no-undrln full-width p-0 sponsor-refugee" data-wb-doaction='[
+                        </div>
+                        <div class="panel panel-default panel-body position-relative">
+                            <button class="text-left stretched-link btn-link no-undrln full-width p-0 sponsor-refugee" data-wb-doaction='[
                                 { "action": "run", "trggroup": "toggle-result" },
                                 { "action": "removeClass", "class": "stretched-link hidden", "source": ".sponsor-refugee" }
                             ]'>Sponsor a refugee</button>
 
-                                <div class="result sponsor-refugee hidden mrgn-lft-sm mrgn-rght-sm">
-                                    <p>You used the Permanent residence portal to apply.</p>
-                                    <div class="row">
-                                        <div class="col-md-9">
-                                            <div class="panel panel-default mrgn-bttm-md">
-                                                <div class="panel-body position-relative d-flex align-items-center">
+                            <div class="result sponsor-refugee hidden mrgn-lft-sm mrgn-rght-sm">
+                                <p>You used the Permanent residence portal to apply.</p>
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <div class="panel panel-default mrgn-bttm-md">
+                                            <div class="panel-body position-relative d-flex align-items-center">
 
-                                                    <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html">Permanent residence portal</a>
-                                                </div>
+                                                <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html">Permanent residence portal</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        
+                        </div>
+
                     </div>
                 </div>
 
