@@ -163,6 +163,13 @@
 
         <h2 class="h3" id="account-chooser">What do you want to do?</h2>
 
+        <div data-wb-urlmapping='{
+            "sign-in=special-measures":[                              
+                        { "action": "addClass", "class": "hidden", "source": ".selection, .application, .reset" },
+                        { "action": "removeClass", "class": "hidden", "source": ".special-measures, .application-reset" }
+                    ]
+            }'></div>
+
         <div class="application-reset hidden">
             <a href="#account-chooser" class="text-left btn-link no-undrln full-width d-flex align-items-center" data-wb-doaction='[
                     { "action": "run", "trggroup": "back" },
