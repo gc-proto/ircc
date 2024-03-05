@@ -12,7 +12,10 @@
   margin-top: 0 !important;
 }
 .account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:last-child) {
-  margin-bottom: 5px !important;
+  margin-bottom: 0 !important;
+}
+.account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col] > :first-child:not([class*=mrgn-tp-]) {
+  margin-top: 1em;
 }
 .account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:first-child):before {
   border-color: #6f6f6f;
@@ -24,7 +27,8 @@
   height: 1.8em;
   width: 1.8em;
   background-color: #fff;
-  margin: -1.8em calc(50% - 1.8em) 1em !important;
+  margin-left: calc(50% - 1.8em) !important;
+  margin-right: calc(50% - 1.8em) !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,7 +38,7 @@
   background-color: #6f6f6f;
   background-size: 3px;
   content: " ";
-  margin-top: 1.8em;
+  margin: 1.8em 0;
   width: 100%;
   height: 3px !important;
   position: relative !important;
