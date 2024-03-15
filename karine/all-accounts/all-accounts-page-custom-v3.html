@@ -1355,9 +1355,11 @@
     <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
     <script>
         $(".account-chooser a").click(function(e){
-            console.log('tracked');
-            e.preventDefault();
-            document.getElementById('account-chooser').scrollIntoView('alignToTop');
+            if (this.getAttribute('href').charAt(0) === "#") {                
+                console.log('tracked');
+                e.preventDefault();
+                document.getElementById('account-chooser').scrollIntoView('alignToTop');
+            }
         });
     </script>
 </body>
