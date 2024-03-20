@@ -205,29 +205,29 @@
             }'></div>
 
 
-                <div class="application-reset hidden">
-                    <a href="#account-chooser" class="text-left btn-link no-undrln full-width d-flex align-items-center" data-wb-doaction='[
+                <div class="application-reset hidden position-relative">
+                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-wb-doaction='[
                         { "action": "run", "trggroup": "back" },
                         { "action": "removeClass", "class": "hidden", "source": ".application, .reset" },
                         { "action": "addClass", "class": "hidden", "source": ".selection, .application-reset" }
                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"> to all applications</span></a>
                 </div>
-                <div class="status-reset hidden">
-                    <a href="#account-chooser" class="text-left btn-link no-undrln full-width d-flex align-items-center" data-wb-doaction='[
+                <div class="status-reset hidden position-relative">
+                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-wb-doaction='[
                         { "action": "run", "trggroup": "back" },
-                        { "action": "removeClass", "class": "hidden", "source": ".check-application, .reset" },
+                        { "action": "removeClass", "class": "hidden", "source": ".check-application, .reset:not(.reset2)" },
                         { "action": "addClass", "class": "hidden", "source": ".selection, .status-reset" }
                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"> to Check your application status, messages or account</span></a>
                 </div>
-                <div class="status-reset2 hidden">
-                    <a href="#account-chooser" class="text-left btn-link no-undrln full-width d-flex align-items-center" data-wb-doaction='[
+                <div class="status-reset2 hidden position-relative">
+                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-wb-doaction='[
                         { "action": "run", "trggroup": "back" },
-                        { "action": "removeClass", "class": "hidden", "source": ".check-account, .status-reset" },
+                        { "action": "removeClass", "class": "hidden", "source": ".check-account, .status-reset:not(.status-reset1)" },
                         { "action": "addClass", "class": "hidden", "source": ".selection, .status-reset2" }
                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"> to Check your application status, messages or account</span></a>
                 </div>
-                <div class="reset hidden">
-                    <a href="#account-chooser" class="text-left btn-link no-undrln full-width d-flex align-items-center" data-wb-doaction='[
+                <div class="reset hidden position-relative">
+                    <a href="#account-chooser" class="text-left btn-link no-undrln  d-flex align-items-center" data-wb-doaction='[
                         { "action": "run", "trggroup": "back" },
                         { "action": "addClass", "class": "hidden", "source": ".reset, .application-reset, .status-reset, .status-reset2" }
                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"></span></a>
@@ -351,7 +351,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <ul class="list-unstyled lst-scpd">
-                                        <li class="panel panel-default panel-body position-relative visit">
+                                        <li class="panel panel-default panel-body position-relative">
                                             <a href="#application" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
                                             { "action": "addClass", "class": "hidden", "source": ".selection, .application-reset, .check-application, .reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".check-account, .status-reset, .check " }
@@ -360,7 +360,7 @@
                                         <li class="panel panel-default panel-body position-relative">
                                             <a href="#status" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
                                             { "action": "addClass", "class": "hidden", "source": ".selection, .check-application, .reset" },
-                                            { "action": "removeClass", "class": "hidden", "source": ".status, .status-reset, .status" }
+                                            { "action": "removeClass", "class": "hidden", "source": ".status, .status-reset:not(.status-reset1), .status" }
                                         ]'>Check your application status</a>
                                         </li>
                                     </ul>
@@ -1320,9 +1320,17 @@
                     </div>
                 </div>
 
+                
+                <div class="status-reset status-reset1 hidden position-relative">
+                    <a href="#account-chooser" class="text-left btn-link no-undrln  d-flex align-items-center" data-wb-doaction='[
+                    { "action": "run", "trggroup": "back" },
+                        { "action": "removeClass", "class": "hidden", "source": ".check-application, .reset:not(.reset2)" },
+                        { "action": "addClass", "class": "hidden", "source": ".selection, .status-reset" }
+                    ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"></span></a>
+                </div>
 
                 <div class="reset reset2 hidden">
-                    <a href="#account-chooser" class="text-left btn-link no-undrln full-width d-flex align-items-center" data-wb-doaction='[
+                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-wb-doaction='[
                         { "action": "run", "trggroup": "back" },
                         { "action": "addClass", "class": "hidden", "source": ".reset" }
                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"></span></a>
