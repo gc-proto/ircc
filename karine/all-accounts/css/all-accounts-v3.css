@@ -1,3 +1,7 @@
+#account-chooser {
+  outline: none !important;
+}
+
 .account-chooser .panel.panel-default {
   border-width: 2px;
 }
@@ -9,13 +13,10 @@
   color: #333 !important;
 }
 .account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:first-child) {
-  margin-top: 0 !important;
+  margin-top: -5px !important;
 }
 .account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:last-child) {
   margin-bottom: 0 !important;
-}
-.account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col] > :first-child:not([class*=mrgn-tp-]) {
-  margin-top: 1em;
 }
 .account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:first-child):before {
   border-color: #6f6f6f;
@@ -27,19 +28,17 @@
   height: 1.8em;
   width: 1.8em;
   background-color: #fff;
-  margin-left: calc(50% - 1.8em) !important;
-  margin-right: calc(50% - 1.8em) !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: -1.8em calc(50% - 1.8em) 1em !important;
+  display: block;
   line-height: 1.5em !important;
 }
 .account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:after {
   background-color: #6f6f6f;
   background-size: 3px;
   content: " ";
-  margin: 1.8em 0;
+  margin-top: 1.8em;
   width: 100%;
+  height: 1.8em;
   height: 3px !important;
   position: relative !important;
   display: block;
