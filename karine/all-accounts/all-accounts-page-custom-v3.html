@@ -158,7 +158,7 @@
     <!--CONTENT STARTS HERE-->
     <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="container">
 
-        <div class="container">
+       
             <h1 property="name" id="wb-cont" dir="ltr"><span class="stacked"><span>Immigration, Refugees and Citizenship Canada accounts</span>:
                     <span>Sign in</span></span></h1>
 
@@ -260,10 +260,14 @@
                             </li>
                             <li class="panel panel-default">
                                 <div class="panel-body position-relative">
-                                    <a href="#fees" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
-                                { "action": "addClass", "class": "hidden", "source": ".selection" },
-                                { "action": "removeClass", "class": "hidden", "source": ".fees, .reset:not(.reset2)" }
-                            ]'>Pay your fees</a>
+                                    <a target="_blank" href="https://ircc.canada.ca/english/information/fees/index.asp" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Pay your fees</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+
+
                                 </div>
                             </li>
                             <li class="panel panel-default">
@@ -283,7 +287,7 @@
                                 </div>
                                 <div class="panel-body">
                              
-                                        <p>Select what your application is about.</p>
+                                    <p>Select what your application is about.</p>
                                     <ul class="list-unstyled lst-scpd">
                                         <li class="panel panel-default panel-body position-relative visit">
                                             <a href="#visit" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
@@ -295,19 +299,19 @@
                                             <a href="#immigrate" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".immigrate, .application-reset" }
-                                        ]'>Immigrating to Canada (to live and work permanently)</a>
+                                        ]'>Immigrating to Canada (becoming a permanent resident)</a>
                                         </li>
                                         <li class="panel panel-default panel-body position-relative">
                                             <a href="#family" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".family, .application-reset" }
-                                        ]'>Family sponsorship (including adoption through the immigration process)</a>
+                                        ]'>Sponsoring family (including adoption through the immigration process)</a>
                                         </li>
                                         <li class="panel panel-default panel-body position-relative">
                                             <a href="#working" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".working, .application-reset" }
-                                        ]'>Working in Canada temporarily</a>
+                                        ]'>Working in Canada temporarily (work permits)</a>
                                         </li>
                                         <li class="panel panel-default panel-body position-relative">
                                             <a href="#study" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
@@ -332,13 +336,13 @@
                                             <a href="#special-measures" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".special-measures, .application-reset" }
-                                        ]'>One of the special measures (such as the measures for Ukraine, Sudan, or other)</a>
+                                        ]'>One of the special measures (such as for Ukraine, Sudan, or other)</a>
                                         </li>
                                         <li class="panel panel-default panel-body position-relative">
                                             <a href="#pr" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".pr, .application-reset" }
-                                        ]'>Permanent resident cards and travel documents</a>
+                                        ]'>Permanent resident cards and travel documents (if you’re already a permanent resident)</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -359,10 +363,15 @@
                                         ]'>Check your account (view messages, upload requested documents, and more)</a>
                                         </li>
                                         <li class="panel panel-default panel-body position-relative">
-                                            <a href="#status" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
-                                            { "action": "addClass", "class": "hidden", "source": ".selection, .check-application, .reset" },
-                                            { "action": "removeClass", "class": "hidden", "source": ".status, .status-reset:not(.status-reset1), .status" }
-                                        ]'>Check your application status</a>
+                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html" class="stretched-link btn-link no-undrln full-width">
+                                                <div class="row d-flex align-items-center text-left">
+                                                    <div class="col-xs-11">Check your application status</div>
+                                                    <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                                </div>
+                                            </a>
+
+                                            
+
                                         </li>
                                     </ul>
                                 </div>
@@ -390,19 +399,19 @@
                                             <a href="#immigrate" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".immigrate, .status-reset2" }
-                                        ]'>Immigrating to Canada (to live and work permanently)</a>
+                                        ]'>Immigrating to Canada (becoming a permanent resident)</a>
                                         </li>
                                         <li class="panel panel-default panel-body position-relative">
                                             <a href="#family" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".family, .status-reset2" }
-                                        ]'>Family sponsorship (including adoption through the immigration process)</a>
+                                        ]'>Sponsoring family (including adoption through the immigration process)</a>
                                         </li>
                                         <li class="panel panel-default panel-body position-relative">
                                             <a href="#working" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".working, .status-reset2" }
-                                        ]'>Working in Canada temporarily</a>
+                                        ]'>Working in Canada temporarily (work permits)</a>
                                         </li>
                                         <li class="panel panel-default panel-body position-relative">
                                             <a href="#study" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
@@ -427,13 +436,13 @@
                                             <a href="#special-measures" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".special-measures, .status-reset2" }
-                                        ]'>One of the special measures (such as the measures for Ukraine, Sudan, or other)</a>
+                                        ]'>One of the special measures (such as for Ukraine, Sudan, or other)</a>
                                         </li>
                                         <li class="panel panel-default panel-body position-relative">
                                             <a href="#pr" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".pr, .status-reset2" }
-                                        ]'>Permanent resident cards and travel documents</a>
+                                        ]'>Permanent resident cards and travel documents (if you’re already a permanent resident)</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -535,7 +544,7 @@
                                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 dont-know" data-wb-doaction='[
                                         { "action": "run", "trggroup": "toggle-result" },
                                         { "action": "removeClass", "class": "stretched-link hidden", "source": ".dont-know" }
-                                    ]'>You don’t know the program you want to apply to</button>
+                                    ]'>You want to explore immigration programs</button>
                                         <div class="result dont-know hidden mrgn-lft-sm mrgn-rght-sm mrgn-tp-lg">
                                             <div class="panel panel-default">
                                                 <div class="panel-body position-relative">
@@ -568,25 +577,25 @@
                                         <p>You used one of these 2 accounts:</p>
 
                                         <div class="row-no-gutters clearfix">
-                                            <ul class="cnjnctn-type-or cnjnctn-type-or-horizontal col-md-9">
+                                            <ul class="cnjnctn-type-or cnjnctn-type-or-horizontal col-md-9"><li class="cnjnctn-col p-0">
+                                                <div class="panel panel-default mrgn-bttm-md">
+                                                    <div class="panel-body position-relative d-flex align-items-center">
+
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
                                                 <li class="cnjnctn-col position-relative p-0">
                                                     <div class="panel panel-default mrgn-bttm-md">
                                                         <div class="panel-body position-relative d-flex align-items-center">
-                                                            <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                            <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                             <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
 
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li class="cnjnctn-col p-0">
-                                                    <div class="panel panel-default mrgn-bttm-md">
-                                                        <div class="panel-body position-relative d-flex align-items-center">
-
-                                                            <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                                
                                             </ul>
                                         </div>
                                         <p><strong>If you’re not sure which account you used to apply</strong>, try signing in to both or check your email.</p>
@@ -605,8 +614,8 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center ">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -627,8 +636,8 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -646,25 +655,25 @@
                                     <div class="result super-visa hidden mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used one of these 2 accounts:</p>
                                         <div class="row-no-gutters clearfix">
-                                            <ul class="cnjnctn-type-or cnjnctn-type-or-horizontal col-md-9">
+                                            <ul class="cnjnctn-type-or cnjnctn-type-or-horizontal col-md-9"><li class="cnjnctn-col p-0">
+                                                <div class="panel panel-default mrgn-bttm-md">
+                                                    <div class="panel-body position-relative d-flex align-items-center">
+
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
                                                 <li class="cnjnctn-col position-relative p-0">
                                                     <div class="panel panel-default mrgn-bttm-md">
                                                         <div class="panel-body position-relative d-flex align-items-center">
-                                                            <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                            <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                             <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/parent-grandparent-super-visa/apply.html" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
 
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li class="cnjnctn-col p-0">
-                                                    <div class="panel panel-default mrgn-bttm-md">
-                                                        <div class="panel-body position-relative d-flex align-items-center">
-
-                                                            <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                                
                                             </ul>
                                         </div>
                                         <p><strong>If you’re not sure which account you used to apply</strong>, try signing in to both or check your email.</p>
@@ -680,25 +689,25 @@
                                     <div class="result transit-visa hidden mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used one of these 2 accounts:</p>
                                         <div class="row-no-gutters clearfix">
-                                            <ul class="cnjnctn-type-or cnjnctn-type-or-horizontal col-md-9">
+                                            <ul class="cnjnctn-type-or cnjnctn-type-or-horizontal col-md-9"><li class="cnjnctn-col p-0">
+                                                <div class="panel panel-default mrgn-bttm-md">
+                                                    <div class="panel-body position-relative d-flex align-items-center">
+
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
                                                 <li class="cnjnctn-col position-relative p-0">
                                                     <div class="panel panel-default mrgn-bttm-md">
                                                         <div class="panel-body position-relative d-flex align-items-center">
-                                                            <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                            <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                             <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/transit/apply.html" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
 
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li class="cnjnctn-col p-0">
-                                                    <div class="panel panel-default mrgn-bttm-md">
-                                                        <div class="panel-body position-relative d-flex align-items-center">
-
-                                                            <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                                
                                             </ul>
                                         </div>
                                         <p><strong>If you’re not sure which account you used to apply</strong>, try signing in to both or check your email.</p>
@@ -713,7 +722,7 @@
                         <div id="immigrate" class="panel panel-default selection-options immigrate hidden">
 
                             <div class="panel-heading">
-                                <h3 class="panel-title">Immigrating to Canada (to live and work permanently)</h3>
+                                <h3 class="panel-title">Immigrating to Canada (becoming a permanent resident)</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="panel panel-default panel-body position-relative">
@@ -729,8 +738,8 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -751,7 +760,7 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                         <a target="_blank" href="https://trprpath-voiertrp.apps.cic.gc.ca/en/landing" class="stretched-link no-undrln">TR-to-PR portal <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
@@ -764,8 +773,8 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -786,7 +795,7 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                         <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln">Permanent residence portal <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
@@ -824,7 +833,7 @@
                         <div id="family" class="panel panel-default selection-options family hidden">
 
                             <div class="panel-heading">
-                                <h3 class="panel-title">Family sponsorship (including adoption through the immigration process)</h3>
+                                <h3 class="panel-title">Sponsoring family (including adoption through the immigration process)</h3>
                             </div>
                             <div class="panel-body">
                                 <p>You used the Permanent residence portal.</p>
@@ -834,7 +843,7 @@
                                         <div class="panel panel-default mrgn-bttm-md">
                                             <div class="panel-body position-relative d-flex align-items-center">
 
-                                                <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                 <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln">Permanent residence portal <span class="wb-inv">(Opens in a new tab)</span></a>
                                             </div>
                                         </div>
@@ -845,7 +854,7 @@
 
                         <div id="working" class="panel panel-default selection-options working hidden">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Working in Canada temporarily</h3>
+                                <h3 class="panel-title">Working in Canada temporarily (work permits)</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="panel panel-default panel-body position-relative">
@@ -861,8 +870,8 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -884,8 +893,8 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -907,8 +916,8 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -930,7 +939,7 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                         <a target="_blank" href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
@@ -962,21 +971,22 @@
                                                 <li class="cnjnctn-col position-relative p-0">
                                                     <div class="panel panel-default mrgn-bttm-md">
                                                         <div class="panel-body position-relative d-flex align-items-center">
-                                                            <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/portal-application-process-study.html" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
 
+                                                            <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li class="cnjnctn-col p-0">
                                                     <div class="panel panel-default mrgn-bttm-md">
                                                         <div class="panel-body position-relative d-flex align-items-center">
+                                                            <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/portal-application-process-study.html" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
 
-                                                            <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
                                                         </div>
                                                     </div>
                                                 </li>
+                                                
                                             </ul>
                                         </div>
                                         <p><strong>If you’re not sure which account you used to apply</strong>, try signing in to both or check your email.</p>
@@ -995,8 +1005,8 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1016,8 +1026,8 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1037,8 +1047,8 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1058,7 +1068,7 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 grant" data-wb-doaction='[   
                                 { "action": "run", "trggroup": "toggle-result" },
                                 { "action": "removeClass", "class": "stretched-link hidden", "source": ".grant" }
-                            ]'>Canadian citizenship (grant of citizenship) application</button>
+                            ]'>Canadian citizenship application (to become a Canadian citizen)</button>
 
                                     <div class="result grant hidden mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used the online citizenship application.</p>
@@ -1067,7 +1077,7 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                         <a target="_blank" href="https://citapply-citdemande.apps.cic.gc.ca/en/sign-in" class="stretched-link no-undrln">Online citizenship application <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
@@ -1079,7 +1089,7 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 certificate" data-wb-doaction='[ 
                                 { "action": "run", "trggroup": "toggle-result" },
                                 { "action": "removeClass", "class": "stretched-link hidden", "source": ".certificate" }
-                            ]'>Citizenship certificate application</button>
+                            ]'>Citizenship certificate application (to prove or confirm your Canadian citizenship)</button>
 
                                     <div class="result certificate hidden mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used the IRCC secure account.</p>
@@ -1088,8 +1098,8 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1109,7 +1119,7 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                         <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test/online.html" class="stretched-link no-undrln">Online citizenship test <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
@@ -1133,7 +1143,7 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                         <a target="_blank" href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
@@ -1155,8 +1165,8 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1170,13 +1180,13 @@
                             ]'>Physical presence calculator (for paper applications)</button>
 
                                     <div class="result calculator hidden mrgn-lft-sm mrgn-rght-sm">
-                                        <p>You should only use this calculator if you're applying for Canadian citizenship <strong>on paper</strong>.</p>
+                                        <p>You should only use this calculator if you’re applying for Canadian citizenship <strong>on paper</strong>.</p>
                                         <div class="row">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                         <a target="_blank" href="https://eservices.cic.gc.ca/rescalc/resCalcStartNew.do?&lang=en" class="stretched-link no-undrln">Physical presence calculator <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
@@ -1207,7 +1217,7 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                         <a target="_blank" href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
@@ -1228,8 +1238,8 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1249,7 +1259,7 @@
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
 
-                                                        <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                         <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html">Permanent residence portal</a>
                                                     </div>
                                                 </div>
@@ -1264,7 +1274,7 @@
                         <div id="special-measures" class="panel panel-default selection-options special-measures hidden">
 
                             <div class="panel-heading">
-                                <h3 class="panel-title">One of the special measures (such as the measures for Ukraine, Sudan or other)</h3>
+                                <h3 class="panel-title">One of the special measures (such as for Ukraine, Sudan or other)</h3>
                             </div>
                             <div class="panel-body">
                                 <p>You used one of these 3 accounts:</p>
@@ -1274,15 +1284,15 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-body position-relative d-flex align-items-center">
 
-                                                    <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                    <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                    <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                    <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account <span class="wb-inv">(Opens in a new tab)</span></a>
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="cnjnctn-col position-relative p-0">
                                             <div class="panel panel-default">
                                                 <div class="panel-body position-relative d-flex align-items-center">
-                                                    <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                    <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                     <a target="_blank" href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
 
                                                 </div>
@@ -1292,7 +1302,7 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-body position-relative d-flex align-items-center">
 
-                                                    <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                    <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                     <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln">Permanent residence portal <span class="wb-inv">(Opens in a new tab)</span></a>
                                                 </div>
                                             </div>
@@ -1306,7 +1316,7 @@
                         <div id="pr" class="panel panel-default selection-options pr hidden">
 
                             <div class="panel-heading">
-                                <h3 class="panel-title">Permanent resident cards and travel documents</h3>
+                                <h3 class="panel-title">Permanent resident cards and travel documents (if you’re already a permanent resident)</h3>
                             </div>
                             <div class="panel-body">
                                 <p>You used the Permanent residence portal.</p>
@@ -1316,7 +1326,7 @@
                                         <div class="panel panel-default mrgn-bttm-md">
                                             <div class="panel-body position-relative d-flex align-items-center">
 
-                                                <i class="fa-solid fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                 <a target="_blank" href="https://prson-srpel.apps.cic.gc.ca/en/login" class="stretched-link no-undrln">Permanent residence portal <span class="wb-inv">(Opens in a new tab)</span></a>
                                             </div>
                                         </div>
