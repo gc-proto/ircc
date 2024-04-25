@@ -171,17 +171,10 @@
                     <li><a href="#pass">If your passport or travel document was lost, stolen, or destroyed</a></li>
                     <li><a href="#theft">If your citizenship card or certificate was stolen</a></li>
                     <li><a href="#nomore">Documents we no longer replace</a></li>
-                  <!--          <li><a href="#expand">Expand collapse</a></li>
-                    <li><a href="#buttons">Buttons</a></li>
-                    <li><a href="#alerts">Alerts</a></li>
-                    <li><a href="#checkboxes">Interactive checkboxes</a></li>
-                    <li><a href="#table">Responsive tables</a></li>
-                    <li><a href="#labels">Labels</a></li>         -->
                 </ul>
 
 
-
-
+<!--FIELD FLOW START-->
 
                 <div class="wb-frmvld mrgn-tp-md nojs-hide" data-gc-analytics-formname="IRCC: Why are you applying for a visa" data-gc-analytics-collect="[ {&quot;value&quot;:&quot;input[type=radio]&quot;, &quot;emptyField&quot;: &quot;Any&quot;}]">
                     <form>
@@ -195,26 +188,27 @@
                                   &quot;default&quot; : [{&quot;action&quot;: &quot;addClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;.def, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .btn-business, .super-visa, .business, .spouse, #offline&quot;}],
                                   &quot;reset&quot; : [{&quot;action&quot;: &quot;addClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;.def, .ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .btn-business, .super-visa .business, .spouse, #offline&quot;},{&quot;action&quot;: &quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;dt, #online&quot;}]
                                   }">
-                            <p>Why are you applying for a visitor visa?</p>
+                            <p>What kind of document are you trying to replace?</p>
                             <ul>
-                                <li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#tourist, .ircc-portal, #btn-submit, .alone&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-secure-account&quot;}]">To visit as a tourist</li>
-                                <li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#btn-submit, .business, .ircc-portal&quot;}]">To visit for business</li>
+                                <li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#passport, .ircc-portal, #btn-submit, .alone&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-secure-account&quot;}]">A passport or other travel document</li>
+
+                                <li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#btn-submit, .business, .ircc-portal&quot;}]">A citizenship card or certificate</li>
                                 
-                                <li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#btn-submit, .spouse, .ircc-portal&quot;}]">To visit your spouse or partner who has sponsored you for permanent residence </li>
+                                <li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#btn-submit, .spouse, .ircc-portal&quot;}]">A Permanent resident card</li>
                                 
                                 <li>
-                                    For a family visit
+                                    A refugee protection claimant document (RPCD)
                                     <div class="wb-fieldflow-sub">
-                                        <p>What is your family member’s status in Canada?</p>
+                                        <p>Is your refugeed claim or pre-removal risk assessment (PRRA) still being approved or was it already approved?</p>
                                         <ul>
-                                            <li data-wb-fieldflow="{&quot;action&quot;:&quot;append&quot;, &quot;source&quot;: &quot;#q2&quot;}">Canadian citizen</li>
-                                            <li data-wb-fieldflow="{&quot;action&quot;:&quot;append&quot;, &quot;source&quot;: &quot;#q2&quot;}">Person registered under Canada’s Indian Act</li>
-                                            <li data-wb-fieldflow="{&quot;action&quot;:&quot;append&quot;, &quot;source&quot;: &quot;#q2&quot;}">Canadian permanent resident</li>
-                                            <li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#temp-resident, .ircc-portal, #btn-submit&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-secure-account&quot;}]">Temporary resident in Canada</li>
+                                            <li data-wb-fieldflow="{&quot;action&quot;:&quot;append&quot;, &quot;source&quot;: &quot;#q2&quot;}">Still being processed</li>
+                                            <li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#temp-resident, .ircc-portal, #btn-submit&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-secure-account&quot;}]">Already approved</li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#compassionate, .ircc-portal, #btn-submit&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-secure-account&quot;}]">For compassionate reasons</li>
+
+                                <li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#compassionate, .ircc-portal, #btn-submit&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-secure-account&quot;}]">Work permit, study permit, visitor record, or temporary resident permit</li>
+
                                 <li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#tourist, .ircc-secure-account, #btn-submit, #offline&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-portal, #online&quot;}]">None of the above</li>
                             </ul>
                         </div>
@@ -235,43 +229,9 @@
                 
 
 
+<!--FIELD FLOW END-->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!--PREVIOUS COTNENT-->
 
          <h2 id="docs">Immigration documents you can have replaced</h2> 
          <details>
@@ -348,10 +308,10 @@
 
 
 
+<!--END OF PREV CONTENT-->
 
 
-
-
+<!--FIELD FLOW RESULTS-->
 
             <div class="cnt-rslt">
 
@@ -359,6 +319,9 @@
 
                 <div class="lst-stps stps-strpd mrgn-tp-xl">
                     <section class="lst-stps-itm">
+
+
+                        <!--common intro text
                         <h2 id="how"><span class="wb-inv">Step 1</span> Gather documents</h2>
                         <p>Gather these documents to submit with your visa application and bring when you travel.</p>
                         <p><b>About the documents listed</b></p>
@@ -369,142 +332,16 @@
                             <li>Even if you submit all the documents listed, there is no guarantee that we’ll approve your application.</li>
                             <li>We may request more information from you in addition to what is listed here.</li>
                         </ul>
-                        <div id="tourist" class="def ff-hide">
-                            <h3 class="mrgn-tp-md">Tourist</h3>
-                            <dl class="dl-horizontal">
-                                <dt>Identity document</dt>
-                                <dd>
-                                    <p><strong>Documents we accept:</strong></p>
-                                    <ul>
-                                        <li>passports (regular, official or diplomatic)&nbsp;<strong>from most countries (see exceptions below)</strong></li>
-                                        <li>alien’s passport for stateless persons</li>
-                                        <li>US Permit to Re-Enter (Form I-327)</li>
-                                        <li>US Refugee Travel Document (Form I-571)</li>
-                                        <li>other refugee travel documents for non-citizens</li>
-                                    </ul>
-                                    <p><strong>Documents we don’t accept:</strong></p>
-                                    <ul>
-                                        <li>any passport issued by Somalia</li>
-                                        <li>non-machine-readable passports issued by the Czech Republic</li>
-                                        <li>temporary passports issued by the Republic of South Africa</li>
-                                        <li>provisional passports issued by Venezuela</li>
-                                    </ul>
-                                    <details>
-                                        <summary>Details to include</summary>
-                                        <p>A clear, colour copy of your valid passport or travel document that you’ll use to travel to Canada</p>
-                                        <p>If you have a passport, you must provide a copy of</p>
-                                        <ul>
-                                            <li>the page that shows your birth date and country of origin</li>
-                                            <li>any pages with stamps, visas or markings</li>
-                                        </ul>
-                                        <p>If you have a travel document, it must be issued by a government and include your</p>
-                                        <ul>
-                                            <li>name</li>
-                                            <li>date of birth</li>
-                                            <li>document number</li>
-                                            <li>citizenship or residency status</li>
-                                            <li>photo</li>
-                                            <li>expiry date (if applicable)</li>
-                                        </ul>
-                                    </details>
-                                    <p>Submit this document with your visa application.</p>
-                                </dd>
-            
-                                <dt class="myself"><a href="/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html">Use of a representative (IMM 5476)</a> (if applicable)</dt>
-                                <dd class="myself">
-                                    <p>Family members or third parties who apply on behalf of the applicant need to complete this form.</p>
-                                    <p>Submit the completed form with your visa application.</p>
-                                </dd>
-                                <dt class="over18"><a href="/content/dam/ircc/migration/ircc/english/pdf/kits/forms/imm5645e.pdf">Family information (IMM 5645) [PDF, 1.42 MB]</a></dt>
-                                <dd class="over18">
-                                    <p>Each applicant 18 years or older must complete this form.</p>
-                                    <p>Submit the completed form with your visa application</p>
-                                </dd>
-            
-                                <dt class="alone">Minor children (if applicable)</dt>
-                                <dd class="alone">
-                                    <p>Documents needed depend on whether a child under 18 years of age will travel with only 1 parent, with a relative or friend or alone.</p>
-                                    <details>
-                                        <summary>Details to include</summary>
-                                        <p>You may need to show</p>
-                                        <ul>
-                                            <li>a letter that authorizes the minor child to travel to Canada</li>
-                                            <li>other documents, such as adoption papers or a custody decree, depending on if the minor child travels alone or not</li>
-                                        </ul>
-                                        <p>Consult <a href="/en/immigration-refugees-citizenship/services/visit-canada/minor-children-travelling-canada.html">Minor children travelling to Canada</a>.</p>
-                                    </details>
-                                    <ol>
-                                        <li>Submit these with your visa application.</li>
-                                        <li>Show the border services officer when you arrive in Canada.</li>
-                                    </ol>
-                                </dd>
-                            </dl>
-                            <details>
-                                <summary>Recommended documents</summary>
-                                <dl class="dl-horizontal">
-                                    <dt>Travel history</dt>
-                                    <dd>
-                                        <p>If you’ve travelled to Canada or to other countries, this can show that you’ve been able to get a visa in the past.</p>
-                                        <p>Proof of this includes copies of previous visas in your passport.</p>
-                                        <details>
-                                            <summary>Details to include</summary>
-                                            <p>Include a clear copy of 1 or more of the following:</p>
-                                            <ul>
-                                                <li>your previous passports and/or visas (used within the last 10 years to travel outside your country)</li>
-                                                <li>entry and exit stamps</li>
-                                                <li>study and/or work permits that indicate your duration outside of your country</li>
-                                                <li>expired or valid visas</li>
-                                            </ul>
-                                        </details>
-                                        <p>Submit this document with your visa application</p>
-                                    </dd>
-            
-                                    <dt>Itinerary</dt>
-                                    <dd>
-                                        <p>Documents that show how long you plan to stay and what you’ll do in Canada</p>
-                                        <details>
-                                            <summary>Details to include</summary>
-                                            <p>Include copies of any of the following:</p>
-                                            <ul>
-                                                <li>flight details</li>
-                                                <li>hotel reservations</li>
-                                                <li>registration for an event</li>
-                                            </ul>
-                                        </details>
-                                        <p>Submit these with your visa application.</p>
-                                    </dd>
-            
-                                    <dt>Bank account statement</dt>
-                                    <dd>
-                                        <p>This can help us understand if you have enough money to support yourself during your stay in Canada.</p>
-                                        <details>
-                                            <summary>Details to include</summary>
-                                            <p><strong>Bank name and contact</strong><br>
-                                                This allows us to contact your bank or financial institution with questions.
-                                            </p>
-                                            <p><strong>Proof it is your account</strong><br>
-                                                Your name and address on the statement show that the account is yours.
-                                            </p>
-                                            <p><strong>Account details</strong><br>
-                                                At least 6 months of account details, including balances, helps us understand your financial situation.
-                                            </p>
-                                        </details>
-                                        <p>Submit these with your visa application.</p>
-                                    </dd>
-            
-                                    <dt>Authority to release personal information to a designated individual (IMM 5475)</dt>
-                                    <dd>
-                                        <p>Use this form if you want to allow Immigration, Refugees and Citizenship Canada (IRCC) to release your personal information to someone you choose.</p>
-                                        <p>The person you choose will be able to get information on your case file, such as the status of your application.</p>
-                                        <p>Submit the completed form with your visa application.</p>
-                                    </dd>
-            
-            
-            
-            
-            
-                                </dl>
-                            </details>
+                    -->
+
+
+                        <div id="passport" class="def ff-hide">
+                            <h3 class="mrgn-tp-md">Replacing a passport or other travel document</h3>
+                            <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/lost-stolen-inaccessible-damaged-found.html">Answer a few additional questions to find out how to replace your passport or travel document.</a></p>
+                            
+                     <!-- ERIC EVENTUALLY BRING IN THE PASSPORT FF HERE TOO AS EXPERIMENT-->
+                            
+                     
                         </div>
                         <div id="business" class="business def ff-hide">
                             <h3>Business visitor</h3>
@@ -1956,76 +1793,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!--FIELD FLOW RESULTS END-->
 
         <!-- CONTENT ENDS HERE -->
 
