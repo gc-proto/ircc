@@ -168,33 +168,43 @@
                 ]
             }'></div>
 
+            <div id="resetbuttons">
             <div class="known-program-reset hidden position-relative">
                 <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-wb-doaction='[
-                        { "action": "run", "trggroup": "back" },
-                        { "action": "removeClass", "class": "hidden", "source": ".known-program, .reset" },
-                        { "action": "addClass", "class": "hidden", "source": ".selection, .known-program-reset" }
-                    ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Retour<span class="wb-inv"> to all applications</span></a>
+                        
+                { "action": "run", "trggroup": "back" },
+                { "action": "removeClass", "class": "hidden", "source": ".find-program, .reset" },
+                { "action": "addClass", "class": "hidden", "source": ".selection, .known-program-reset" }
+                    ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Retour<span class="wb-inv"> à Trouver un programme et découvrir comment présenter une demande</span></a>
+            </div>
+            <div class="known-program-reset2 hidden position-relative">
+                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-wb-doaction='[
+                        
+                { "action": "run", "trggroup": "back" },
+                { "action": "removeClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                { "action": "addClass", "class": "hidden", "source": ".selection, .known-program-reset2" }
+                    ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Retour<span class="wb-inv"> à Vous savez quel type de demande vous souhaitez présenter</span></a>
             </div>
             <div class="application-reset hidden position-relative">
                 <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-wb-doaction='[
                         { "action": "run", "trggroup": "back" },
                         { "action": "removeClass", "class": "hidden", "source": ".application, .reset" },
                         { "action": "addClass", "class": "hidden", "source": ".selection, .application-reset" }
-                    ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Retour<span class="wb-inv"> to all applications</span></a>
+                    ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Retour<span class="wb-inv"> à toutes les deamndes</span></a>
             </div>
             <div class="status-reset hidden position-relative">
                 <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-wb-doaction='[
                         { "action": "run", "trggroup": "back" },
                         { "action": "removeClass", "class": "hidden", "source": ".check-application, .reset:not(.reset2)" },
                         { "action": "addClass", "class": "hidden", "source": ".selection, .status-reset" }
-                    ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Retour<span class="wb-inv"> to Check your application status, messages or account</span></a>
+                    ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Retour<span class="wb-inv"> à Vérifier l’état de votre demande, votre compte ou consulter vos messages</span></a>
             </div>
             <div class="status-reset2 hidden position-relative">
                 <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-wb-doaction='[
                         { "action": "run", "trggroup": "back" },
                         { "action": "removeClass", "class": "hidden", "source": ".check-account, .status-reset:not(.status-reset1)" },
                         { "action": "addClass", "class": "hidden", "source": ".selection, .status-reset2" }
-                    ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Retour<span class="wb-inv"> to Check your application status, messages or account</span></a>
+                    ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Retour<span class="wb-inv"> à Vérifier votre compte</span></a>
             </div>
             <div class="reset hidden position-relative">
                 <a href="#account-chooser" class="text-left btn-link no-undrln  d-flex align-items-center" data-wb-doaction='[
@@ -202,10 +212,11 @@
                         { "action": "addClass", "class": "hidden", "source": ".reset, .application-reset, .status-reset, .status-reset2" }
                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Retour<span class="wb-inv"></span></a>
             </div>
+        </div>
 
             <div class="account-chooser row" data-wb-actionmng='[
                 { "trggroup":"back", "action": "removeClass", "class": "hidden", "source": ".selection" },
-                { "trggroup":"back", "action": "addClass", "class": "hidden", "source": ".selection-options, .result" },
+                { "trggroup":"back", "action": "addClass", "class": "hidden", "source": ".selection-options, .result, .bottom-reset" },
                 { "trggroup":"toggle-result", "action": "addClass", "class": "stretched-link", "source": ".account-chooser a.btn-link" },
                 { "trggroup":"toggle-result", "action": "addClass", "class": "hidden", "source": ".result" }
             ]'>
@@ -215,7 +226,7 @@
                             <div class="panel-body position-relative">
                                 <a href="#application" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
                                 { "action": "addClass", "class": "hidden", "source": ".selection, .status-reset" },
-                                { "action": "removeClass", "class": "hidden", "source": ".application, .reset" }
+                                { "action": "removeClass", "class": "hidden", "source": ".application, .reset, .bottom-reset" }
                             ]'>Terminer ou soumettre la demande que vous avez commencée</a>
                             </div>
                         </li>
@@ -243,7 +254,7 @@
                             <div class="panel-body position-relative">
                                 <a href="#find-program" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
                                     { "action": "addClass", "class": "hidden", "source": ".selection" },
-                                    { "action": "removeClass", "class": "hidden", "source": ".find-program, .reset:not(.reset2)" }
+                                    { "action": "removeClass", "class": "hidden", "source": ".find-program, .reset" }
                                 ]'>Trouver un programme et découvrir comment présenter une demande</a>
                             </div>
                         </li>
@@ -328,7 +339,7 @@
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#application" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
                                             { "action": "addClass", "class": "hidden", "source": ".selection, .application-reset, .check-application, .reset" },
-                                            { "action": "removeClass", "class": "hidden", "source": ".check-account, .status-reset, .check " }
+                                            { "action": "removeClass", "class": "hidden", "source": ".check-account, .status-reset, .check, .bottom-reset " }
                                         ]'>Vérifier votre compte (voir les messages, téléverser des documents demandés, etc.)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
@@ -476,7 +487,7 @@
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#known-program" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "hidden", "source": ".find-program, .reset" },
-                                            { "action": "removeClass", "class": "hidden", "source": ".known-program, .reset" }
+                                            { "action": "removeClass", "class": "hidden", "source": ".known-program,.known-program-reset, .bottom-reset" }
                                         ]'>Vous savez quel type de demande vous souhaitez présenter</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
@@ -502,50 +513,50 @@
                                 <ul class="list-unstyled lst-scpd-known">
                                     <li class="panel panel-default panel-body position-relative visit-known">
                                         <a href="#visit-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .reset" },
-                                            { "action": "removeClass", "class": "hidden", "source": ".visit-known, .known-program-reset" }
+                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                                            { "action": "removeClass", "class": "hidden", "source": ".visit-known, .known-program-reset2" }
                                         ]'>Visiter le Canada</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#immigrate-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .reset" },
-                                            { "action": "removeClass", "class": "hidden", "source": ".immigrate-known, .known-program-reset" }
+                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                                            { "action": "removeClass", "class": "hidden", "source": ".immigrate-known, .known-program-reset2, .bottom-reset" }
                                         ]'>Immigrer au Canada (devenir résident permanent)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#family-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .reset" },
-                                            { "action": "removeClass", "class": "hidden", "source": ".family-known, .known-program-reset" }
+                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                                            { "action": "removeClass", "class": "hidden", "source": ".family-known, .known-program-reset2" }
                                         ]'>Parrainer des membres de la famille (y compris l’adoption dans le cadre du processus d’immigration)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#working-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .reset" },
-                                            { "action": "removeClass", "class": "hidden", "source": ".working-known, .known-program-reset" }
+                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                                            { "action": "removeClass", "class": "hidden", "source": ".working-known, .known-program-reset2,  .bottom-reset2"}
                                         ]'>Travailler temporairement au Canada (permis de travail)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#study-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .reset" },
-                                            { "action": "removeClass", "class": "hidden", "source": ".study-known, .known-program-reset" }
+                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                                            { "action": "removeClass", "class": "hidden", "source": ".study-known, .known-program-reset2" }
                                         ]'>Étudier au Canada</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#citizenship-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .reset" },
-                                            { "action": "removeClass", "class": "hidden", "source": ".citizenship-known, .known-program-reset" }
+                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                                            { "action": "removeClass", "class": "hidden", "source": ".citizenship-known, .known-program-reset2" }
                                         ]'>Citoyenneté canadienne</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#refugees-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .reset" },
-                                            { "action": "removeClass", "class": "hidden", "source": ".refugees-known, .known-program-reset" }
+                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                                            { "action": "removeClass", "class": "hidden", "source": ".refugees-known, .known-program-reset2" }
                                         ]'>Réfugiés et demandes d’asile</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#pr-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .reset" },
-                                            { "action": "removeClass", "class": "hidden", "source": ".pr-known, .known-program-reset" }
+                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                                            { "action": "removeClass", "class": "hidden", "source": ".pr-known, .known-program-reset2" }
                                         ]'>Cartes de résident permanent et titres de voyage pour résident permanent (si vous êtes déjà résident permanent)</a>
                                     </li>
                                 </ul>
@@ -619,7 +630,8 @@
                             <div class="panel panel-default panel-body position-relative">
                                 <a href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/demande/formulaires-demande-guides/demande-residence-permanente-programme-gens-affaires-selectionnes-quebec-investisseurs-entrepreneurs.html" target="_blank" class="stretched-link btn-link no-undrln full-width">
                             <div class="row d-flex align-items-center text-left">
-                                <div class="col-xs-11">Entrepreneurs et investisseurs (Québec)</span><span class="fas fa-share pull-right"></span></div>
+                                <div class="col-xs-11">Entrepreneurs et investisseurs (Québec)</div>
+                                <div class="col-xs-1"><span class="wb-inv">(S'ouvre dans un nouvel onglet)</span><span class="fas fa-share pull-right"></span></div>
                             </div>
                         </a>
                             </div>
@@ -1837,8 +1849,11 @@
                 </div>
             </div>
 
+            <div class="bottom-reset hidden" data-ajax-append="all-accounts-page-custom-v4-fr.html#resetbuttons"></div>
 
-            <div class="status-reset status-reset1 hidden position-relative">
+
+
+            <!-- <div class="status-reset status-reset1 hidden position-relative">
                 <a href="#account-chooser" class="text-left btn-link no-undrln  d-flex align-items-center" data-wb-doaction='[
                     { "action": "run", "trggroup": "back" },
                         { "action": "removeClass", "class": "hidden", "source": ".check-application, .reset:not(.reset2)" },
@@ -1851,7 +1866,7 @@
                         { "action": "run", "trggroup": "back" },
                         { "action": "addClass", "class": "hidden", "source": ".reset" }
                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Retour<span class="wb-inv"></span></a>
-            </div>
+            </div> -->
 
         </div>
         <div class="clearfix"></div>
