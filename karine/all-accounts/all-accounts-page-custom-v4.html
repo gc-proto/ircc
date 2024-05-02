@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
     </noscript>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/méli-mélo/2023-10-mount-revelstoke.css" />
+    <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/méli-mélo/2024-09-kejimkujik.css" />
     <link rel="stylesheet" href="https://test.canada.ca/wayfinding-orientation-2023/css/split-h1.css">
     <link rel="stylesheet" href="https://test.canada.ca/ircc/karine/all-accounts/css/all-accounts-v3.css">
     <!-- <link rel="stylesheet" href="css/all-accounts-v3.css"> -->
@@ -48,7 +48,7 @@
                         <div class="col-md-12">
                             <ul class="list-inline mrgn-bttm-0">
                                 <li>
-                                    <a lang="fr" href="visiter-comptes-fr.html">
+                                    <a lang="fr" href="all-accounts-page-custom-v4-fr.html">
 
                                         <span class="hidden-xs">Fran&ccedil;ais</span>
                                         <abbr title="Fran&ccedil;ais" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
@@ -205,6 +205,7 @@
                 ]
             }'></div>
 
+            <div id="resetbuttons">
             <div class="known-program-reset hidden position-relative">
                 <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-wb-doaction='[
                         { "action": "run", "trggroup": "back" },
@@ -239,10 +240,10 @@
                         { "action": "addClass", "class": "hidden", "source": ".reset, .application-reset, .status-reset, .status-reset2" }
                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"></span></a>
             </div>
-
+        </div>
             <div class="account-chooser row" data-wb-actionmng='[
                 { "trggroup":"back", "action": "removeClass", "class": "hidden", "source": ".selection" },
-                { "trggroup":"back", "action": "addClass", "class": "hidden", "source": ".selection-options, .result" },
+                { "trggroup":"back", "action": "addClass", "class": "hidden", "source": ".selection-options, .result, .bottom-reset" },
                 { "trggroup":"toggle-result", "action": "addClass", "class": "stretched-link", "source": ".account-chooser a.btn-link" },
                 { "trggroup":"toggle-result", "action": "addClass", "class": "hidden", "source": ".result" }
             ]'>
@@ -252,7 +253,7 @@
                             <div class="panel-body position-relative">
                                 <a href="#application" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
                                 { "action": "addClass", "class": "hidden", "source": ".selection, .status-reset" },
-                                { "action": "removeClass", "class": "hidden", "source": ".application, .reset" }
+                                { "action": "removeClass", "class": "hidden", "source": ".application, .reset, .bottom-reset" }
                             ]'>Finish or submit the application you started</a>
                             </div>
                         </li>
@@ -365,7 +366,7 @@
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#application" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
                                             { "action": "addClass", "class": "hidden", "source": ".selection, .application-reset, .check-application, .reset" },
-                                            { "action": "removeClass", "class": "hidden", "source": ".check-account, .status-reset, .check " }
+                                            { "action": "removeClass", "class": "hidden", "source": ".check-account, .status-reset, .check,  .bottom-reset " }
                                         ]'>Check your account (view messages, upload requested documents, and more)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
@@ -513,7 +514,7 @@
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#known-program" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "hidden", "source": ".find-program, .reset" },
-                                            { "action": "removeClass", "class": "hidden", "source": ".known-program, .reset" }
+                                            { "action": "removeClass", "class": "hidden", "source": ".known-program, .known-program-reset,  .bottom-reset" }
                                         ]'>You know the program you want to apply to</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
@@ -546,7 +547,7 @@
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#immigrate-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "hidden", "source": ".known-program, .reset" },
-                                            { "action": "removeClass", "class": "hidden", "source": ".immigrate-known, .known-program-reset" }
+                                            { "action": "removeClass", "class": "hidden", "source": ".immigrate-known, .known-program-reset,  .bottom-reset" }
                                         ]'>Immigrating to Canada (becoming a permanent resident)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
@@ -1875,6 +1876,26 @@
                 </div>
             </div>
 
+            <div class="bottom-reset hidden" data-ajax-append="all-accounts-page-custom-v4.html#resetbuttons">
+
+            </div>
+
+
+            <!-- <div class="known-program-reset known-program-reset2 hidden position-relative">
+                <a href="#account-chooser" class="text-left btn-link no-undrln  d-flex align-items-center" data-wb-doaction='[
+                    { "action": "run", "trggroup": "back" },
+                        { "action": "removeClass", "class": "hidden", "source": ".known-program, .known-program-reset1" },
+                        { "action": "addClass", "class": "hidden", "source": ".selection, .known-program-reset2" }
+                    ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"></span></a>
+            </div>
+
+            <div class="known-program-reset known-program-reset1 hidden position-relative">
+                <a href="#account-chooser" class="text-left btn-link no-undrln  d-flex align-items-center" data-wb-doaction='[
+                    { "action": "run", "trggroup": "back" },
+                        { "action": "removeClass", "class": "hidden", "source": ".known-program, .reset:not(.reset2)" },
+                        { "action": "addClass", "class": "hidden", "source": ".selection, .known-program-reset" }
+                    ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"></span></a>
+            </div>
 
             <div class="status-reset status-reset1 hidden position-relative">
                 <a href="#account-chooser" class="text-left btn-link no-undrln  d-flex align-items-center" data-wb-doaction='[
@@ -1889,7 +1910,7 @@
                         { "action": "run", "trggroup": "back" },
                         { "action": "addClass", "class": "hidden", "source": ".reset" }
                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"></span></a>
-            </div>
+            </div> -->
 
         </div>
         <div class="clearfix"></div>
