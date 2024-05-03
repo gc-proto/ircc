@@ -218,14 +218,14 @@
                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard:Back:KnownProgramsDeeper" data-wb-doaction='[
                             
                     { "action": "run", "trggroup": "back" },
-                    { "action": "removeClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                    { "action": "removeClass", "class": "hidden", "source": ".known-program, .known-program-reset, .bottom-reset" },
                     { "action": "addClass", "class": "hidden", "source": ".selection, .known-program-reset2" }
                         ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"> to You know the program you want to apply to</span></a>
                 </div>
                 <div class="application-reset hidden position-relative">
                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard:Back:FinishSubmit" data-wb-doaction='[
                         { "action": "run", "trggroup": "back" },
-                        { "action": "removeClass", "class": "hidden", "source": ".application, .reset" },
+                        { "action": "removeClass", "class": "hidden", "source": ".application, .reset, .bottom-reset" },
                         { "action": "addClass", "class": "hidden", "source": ".selection, .application-reset" }
                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"> to all applications</span></a>
                 </div>
@@ -240,13 +240,13 @@
                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard:Back:CheckAccount" data-wb-doaction='[
                         { "action": "run", "trggroup": "back" },
                         { "action": "removeClass", "class": "hidden", "source": ".check-account, .status-reset:not(.status-reset1)" },
-                        { "action": "addClass", "class": "hidden", "source": ".selection, .status-reset2" }
+                        { "action": "addClass", "class": "hidden", "source": ".selection, .status-reset2, .bottom-reset" }
                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"> to Check your account</span></a>
                 </div>
                 <div class="reset hidden position-relative">
                     <a href="#account-chooser" class="text-left btn-link no-undrln  d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard:Back" data-wb-doaction='[
                         { "action": "run", "trggroup": "back" },
-                        { "action": "addClass", "class": "hidden", "source": ".reset, .application-reset, .status-reset, .status-reset2" }
+                        { "action": "addClass", "class": "hidden", "source": ".reset, .application-reset, .status-reset, .status-reset2, .bottom-reset" }
                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back<span class="wb-inv"></span></a>
                 </div>
             </div>
@@ -254,7 +254,7 @@
                 { "trggroup":"back", "action": "removeClass", "class": "hidden", "source": ".selection" },
                 { "trggroup":"back", "action": "addClass", "class": "hidden", "source": ".selection-options, .result" },
                 { "trggroup":"toggle-result", "action": "addClass", "class": "stretched-link", "source": ".account-chooser a.btn-link" },
-                { "trggroup":"toggle-result", "action": "addClass", "class": "hidden", "source": ".result" }
+                { "trggroup":"toggle-result", "action": "addClass", "class": "hidden", "source": ".result, .bottom-reset" }
             ]'>
                 <div class="col-md-8">
                     <ul class="list-unstyled lst-scpd selection">
@@ -269,7 +269,7 @@
                         <li class="panel panel-default">
                             <div class="panel-body position-relative">
                                 <a href="#check-application" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
-                                { "action": "addClass", "class": "hidden", "source": ".selection, .application-reset" },
+                                { "action": "addClass", "class": "hidden", "source": ".selection, .application-reset, .bottom-reset" },
                                 { "action": "removeClass", "class": "hidden", "source": ".reset:not(.reset2), .check-application" }
                             ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q1:CheckApplication">Check your application status, messages or account</a>
                             </div>
@@ -287,7 +287,7 @@
                         <li class="panel panel-default">
                             <div class="panel-body position-relative">
                                 <a href="#find-program" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
-                                    { "action": "addClass", "class": "hidden", "source": ".selection" },
+                                    { "action": "addClass", "class": "hidden", "source": ".selection, .bottom-reset" },
                                     { "action": "removeClass", "class": "hidden", "source": ".find-program, .reset" }
                                 ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q1:FindProgram">Find a program and how to apply</a>
                             </div>
@@ -305,56 +305,56 @@
                                 <ul class="list-unstyled lst-scpd">
                                     <li class="panel panel-default panel-body position-relative visit">
                                         <a href="#visit" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".visit, .application-reset" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q2:FindProgram_Visit">Visiting Canada</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#immigrate" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".immigrate, .application-reset" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q2:FindProgram_Immigrate">Immigrating to Canada (becoming a permanent resident)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#family" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".family, .application-reset" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q2:FindProgram_Sponsor">Sponsoring family (including adoption through the immigration process)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#working" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".working, .application-reset" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q2:FindProgram_WorkingTemp">Working in Canada temporarily (work permits)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#study" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".study, .application-reset" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q2:FindProgram_Study>Studying in Canada</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#citizenship" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".citizenship, .application-reset" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q2:FindProgram_Citizenship">Canadian citizenship</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#refugees" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".refugees, .application-reset" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q2:FindProgram_RefugeesAsylum">Refugees and asylum</a>
                                     </li>
 
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#special-measures" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".special-measures, .application-reset" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q2:FindProgram_SpecialMeasures">One of the special measures (such as for Ukraine, Sudan, or other)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#pr" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".application, .reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".pr, .application-reset" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q2:FindProgram_PR">Permanent resident cards and travel documents (if you’re already a permanent resident)</a>
                                     </li>
@@ -405,56 +405,56 @@
                                 <ul class="list-unstyled lst-scpd">
                                     <li class="panel panel-default panel-body position-relative visit">
                                         <a href="#visit" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".visit, .status-reset2" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q3:CheckAccount_Visit">Visiting Canada</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#immigrate" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".immigrate, .status-reset2" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q3:CheckAccount_Immigrate">Immigrating to Canada (becoming a permanent resident)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#family" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".family, .status-reset2" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q3:CheckAccount_Sponsor">Sponsoring family (including adoption through the immigration process)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#working" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".working, .status-reset2" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q3:CheckAccount_WorkTemp">Working in Canada temporarily (work permits)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#study" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".study, .status-reset2" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q3:CheckAccount_Study">Studying in Canada</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#citizenship" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".citizenship, .status-reset2" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q3:CheckAccount_Citizenship">Canadian citizenship</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#refugees" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".refugees, .status-reset2" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q3:CheckAccount_RefugeesAsylum">Refugees and asylum</a>
                                     </li>
 
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#special-measures" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".special-measures, .status-reset2" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q3:CheckAccount_SpecialMeasures">One of the special measures (such as for Ukraine, Sudan, or other)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#pr" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".check-account, .reset, .status-reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".pr, .status-reset2" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q3:CheckAccount_PR">Permanent resident cards and travel documents (if you’re already a permanent resident)</a>
                                     </li>
@@ -547,49 +547,49 @@
                                 <ul class="list-unstyled lst-scpd-known">
                                     <li class="panel panel-default panel-body position-relative visit-known">
                                         <a href="#visit-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".visit-known, .known-program-reset2" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q3:KnownProgram_Visit">Visiting Canada</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#immigrate-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".immigrate-known, .known-program-reset,  .bottom-reset2" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q3:KnownProgram_Immigrate">Immigrating to Canada (becoming a permanent resident)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#family-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".family-known, .known-program-reset2" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q3:KnownProgram_Sponsor">Sponsoring family (including adoption through the immigration process)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#working-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".working-known, .known-program-reset2,  .bottom-reset2" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q3:KnownProgram_WorkTemp">Working in Canada temporarily (work permits)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#study-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".study-known, .known-program-reset2" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q3:KnownProgram_Study">Studying in Canada</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#citizenship-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".citizenship-known, .known-program-reset2" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q3:KnownProgram_Citizenship">Canadian citizenship</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#refugees-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".refugees-known, .known-program-reset2" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q3:KnownProgram_RefugeesAsylum">Refugees and asylum</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#pr-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset" },
+                                            { "action": "addClass", "class": "hidden", "source": ".known-program, .known-program-reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "hidden", "source": ".pr-known, .known-program-reset2" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard:Q3:KnownProgram_PR">Permanent resident cards and travel documents (if you’re already a permanent resident)</a>
                                     </li>
