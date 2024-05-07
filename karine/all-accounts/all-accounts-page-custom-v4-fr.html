@@ -169,7 +169,7 @@
             }'></div>
 
 
-            <div id="resetbuttons">
+            <div class="resetbuttons">
                 <div class="known-program-reset hidden position-relative">
                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-wb-doaction='[
                         
@@ -1856,24 +1856,9 @@
                 </div>
             </div>
 
-            <div class="bottom-reset hidden" data-ajax-append="all-accounts-page-custom-v4-fr.html#resetbuttons"></div>
+            <div class="bottom-reset hidden" data-ajax-append="all-accounts-page-custom-v4-fr.html .resetbuttons"></div>
 
 
-
-            <!-- <div class="status-reset status-reset1 hidden position-relative">
-                <a href="#account-chooser" class="text-left btn-link no-undrln  d-flex align-items-center" data-wb-doaction='[
-                    { "action": "run", "trggroup": "back" },
-                        { "action": "removeClass", "class": "hidden", "source": ".check-application, .reset:not(.reset2)" },
-                        { "action": "addClass", "class": "hidden", "source": ".selection, .status-reset" }
-                    ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Retour<span class="wb-inv"></span></a>
-            </div>
-
-            <div class="reset reset2 hidden">
-                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-wb-doaction='[
-                        { "action": "run", "trggroup": "back" },
-                        { "action": "addClass", "class": "hidden", "source": ".reset" }
-                    ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Retour<span class="wb-inv"></span></a>
-            </div> -->
 
         </div>
         <div class="clearfix"></div>
@@ -1889,7 +1874,7 @@
                 <h2 class="modal-title">Vous ne savez pas trop quel compte vous avez utilisé?</h2>
             </header>
             <div class="modal-body">
-                <p>Si vous avez ouvert une session à l’aide d’un <strong>nom d’utilisateur et d’un mot de passe CléGC</strong>, vous avez utilisé le compte sécurisé d’IRCC.</p>
+                <p>Si vous avez ouvert une session à l’aide d’un <strong>nom d’utilisateur et d’un mot de passe CléGC</strong>, ou avec votre partenaire de connexion bancaire canadien, vous avez utilisé le compte sécurisé d’IRCC.</p>
                 <p>Si vous avez ouvert une session à l’aide d’une <strong>adresse courriel</strong>, vous avez utilisé le portail d’IRCC.</p>
                 <p>Si vous <strong>ne savez toujours pas</strong> quel compte vous avez utilisé, essayez de vous connecter à chaque compte ou vérifiez votre courrier électronique.</p>
             </div>
@@ -1900,20 +1885,21 @@
                 <h2 class="modal-title">Vous ne savez pas trop quel compte vous avez utilisé?</h2>
             </header>
             <div class="modal-body">
-                <p>Vous avez utilisé le <strong>compte sécurisé d’IRCC</strong> si vous&nbsp;:</p>
+                <p>Vous avez utilisé le <strong>compte sécurisé d’IRCC</strong> si&nbsp;:</p>
                 <ul>
-                    <li>avez ouvert une session à l’aide d’un nom d’utilisateur et d’un mot de passe CléGC</li>
+                    <li>vous avez ouvert une session à l’aide d’un nom d’utilisateur et d’un mot de passe CléGC <strong>ou</strong></li>
+                    <li>vous avez ouvert une session à l’aide de votre partenaire de connexion bancaire canadien</li>
                 </ul>
-                <p>Vous avez utilisé le <strong>portail d’IRCC</strong> si vous&nbsp;:</p>
+                <p>Vous avez utilisé le <strong>portail d’IRCC</strong> si&nbsp;:</p>
                 <ul>
-                    <li>avez ouvert une session à l’aide d’une adresse courriel <strong>et</strong></li>
-                    <li>avez présenté une demande pour obtenir un visa de visiteur ou un permis d’études</li>
+                    <li>vous avez ouvert une session à l’aide d’une adresse courriel <strong>et</strong></li>
+                    <li>vous avez présenté une demande pour obtenir un visa de visiteur ou un permis d’études</li>
                 </ul>
-                <p>Vous avez utilisé le <strong>portail de résidence permanente</strong> si vous:
+                <p>Vous avez utilisé le <strong>portail de résidence permanente</strong> si&nbsp;:
                 </p>
                 <ul>
-                    <li>avez ouvert une session à l’aide d’une adresse courriel <strong>et</strong></li>
-                    <li>avez présenté une demande pour obtenir la résidence permanente, une carte de résident permanent (RP) ou un titre de voyage pour résident permanent (TVRP)</li>
+                    <li>vous avez ouvert une session à l’aide d’une adresse courriel <strong>et</strong></li>
+                    <li>vous avez présenté une demande pour obtenir la résidence permanente, une carte de résident permanent (RP) ou un titre de voyage pour résident permanent (TVRP)</li>
                 </ul>
                 <p>Si <strong>vous ne savez toujours pas</strong> quel compte vous avez utilisé, essayez de vous connecter à chacun d’eux ou vérifiez votre courrier électronique.</p>
             </div>
