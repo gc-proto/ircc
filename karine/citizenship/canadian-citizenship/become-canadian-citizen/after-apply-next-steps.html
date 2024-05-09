@@ -194,18 +194,72 @@
                 <li><a href="#processing">Processing your application</a></li>
                 <li><a href="#check">Check and update your application</a></li>
             </ul>
-
             <h2>Processing your application</h2>
 
-            <p>When we receive your application for citizenship, we review your it to make sure you</p>
-            <ul>
-                <li>answered all the questions on the online application or paper application form</li>
-                <li>provided all the required documents</li>
-                <li>paid the fees</li>
-            </ul>
-            <div class="wb-frmvld" id="ff">
-                <form>
-                    <div class='wb-fieldflow gc-font-2019' data-wb-fieldflow='{
+                <p>When we receive your application for citizenship, we review your it to make sure you</p>
+                <ul>
+                    <li>answered all the questions on the online application or paper application form</li>
+                    <li>provided all the required documents</li>
+                    <li>paid the fees</li>
+                </ul>
+
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-xs-12 col-md-5 pull-right">
+                <section class="well brdr-rds-0 position-relative">
+                    <div class="row">
+                        <div class="col-xs-2 col-lg-3"><img src="https://www.canada.ca/content/dam/ircc/images/icons/ptclock.png" alt="" class="img-responsive"></div>
+                        <div class="col-xs-10 col-md-8 col-lg-9">
+                            <h3 class="mrgn-bttm-0 mrgn-tp-sm">Processing times</h3>
+                            <div id="jsonmanagernoncountry" data-wb-jsonmanager="{
+                                &quot;url&quot;: &quot;https://www.canada.ca/content/dam/ircc/documents/json/data-ptime-non-country-en.json&quot;,
+                                &quot;name&quot;: &quot;ptime&quot;
+                            }"></div>
+                            <p class="mrgn-bttm-0"><span data-json-replace="#[ptime]/citizenship/grant_after2015">We couldn't load the data. Try again.</span></p>
+                            <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check processing times</a></p>
+                            <p>The processing time </p>
+                            <ul>
+                                <li>starts when we receive your <strong>complete </strong>application (no missing information or documents) </li>
+                                <li>ends when you become a Canadian citizen </li>
+                                <li>includes the citizenship test and ceremony, if applicable </li>
+                                <li>can be longer if the application is <a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1169&top=5">non-routine or complex</a></li>
+                            </ul>
+
+
+                            <section id="processing-times" class="mfp-hide modal-dialog modal-content overlay-def">
+                                <header class="modal-header">
+                                    <h3 class="modal-title">Processing times</h3>
+                                </header>
+                                <div class="modal-body">
+                                    <p>Processing times will vary based on:</p>
+                                    <ul>
+                                        <li>the type of application submitted</li>
+                                        <li>if the application is complete</li>
+                                        <li>how quickly we expect to process applications we’ve already received</li>
+                                        <li>how easily we can verify your information</li>
+                                        <li>how long you take to respond to any requests or concerns</li>
+                                        <li>other factors</li>
+                                    </ul>
+                                    <p>More people want to immigrate to Canada than we can bring in each year. Applications received after we meet our yearly limit may have to wait longer to be processed.</p>
+                                    <p>Learn how processing times are <a href="http://www.ircc.canada.ca/english/helpcentre/answer.asp?qnum=068&amp;top=3">calculated</a>.</p>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+
+            <div class="col-xs-12 col-md-7">
+                
+
+
+
+
+                <div class="wb-frmvld" id="ff">
+                    <form>
+                        <div class='wb-fieldflow gc-font-2019' data-wb-fieldflow='{
             "noForm" : true,
             "renderas":"radio",
             "gcChckbxrdio":true,
@@ -220,87 +274,84 @@
             }																		 
         }'>
 
-                        <p>How did you apply?</p>
-                        <ul>
-                            <li>Online
-                                <div class='wb-fieldflow-sub'>
-                                    <p>Did you apply by yourself or as a group?</p>
-                                    <ul>
-                                        <li>By myself
-                                            <div class='wb-fieldflow-sub'>
-                                                <div class='wb-fieldflow-header'>
-                                                    <p class='wb-fieldflow-label'>Do you have a representative?</p>
-                                                    <p>If you uploaded the <a href='/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html'>Use of a Representative form (IMM 5476)</a> in your submitted application, select “Yes.”</p>
+                            <p>How did you apply?</p>
+                            <ul>
+                                <li>Online
+                                    <div class='wb-fieldflow-sub'>
+                                        <p>Did you apply by yourself or as a group?</p>
+                                        <ul>
+                                            <li>By myself
+                                                <div class='wb-fieldflow-sub'>
+                                                    <div class='wb-fieldflow-header'>
+                                                        <p class='wb-fieldflow-label'>Do you have a representative?</p>
+                                                        <p>If you uploaded the <a href='/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html'>Use of a Representative form (IMM 5476)</a> in your submitted application, select “Yes.”</p>
+                                                    </div>
+                                                    <ul>
+                                                        <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result1"}'><a href='#result1'>Yes</a></li>
+                                                        <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result2"}'><a href='#result2'>No</a></li>
+                                                    </ul>
                                                 </div>
-                                                <ul>
-                                                    <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result1"}'><a href='#result1'>Yes</a></li>
-                                                    <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result2"}'><a href='#result2'>No</a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li>As a group
-                                            <div class='wb-fieldflow-sub'>
-                                                <div class='wb-fieldflow-header'>
-                                                    <p class='wb-fieldflow-label'>Does anyone in your group use a representative?</p>
-                                                    <p>If at least 1 person uploaded the <a href='/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html'>Use of a Representative form (IMM 5476)</a> in your submitted application, select “Yes.”</p>
+                                            </li>
+                                            <li>As a group
+                                                <div class='wb-fieldflow-sub'>
+                                                    <div class='wb-fieldflow-header'>
+                                                        <p class='wb-fieldflow-label'>Does anyone in your group use a representative?</p>
+                                                        <p>If at least 1 person uploaded the <a href='/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html'>Use of a Representative form (IMM 5476)</a> in your submitted application, select “Yes.”</p>
+                                                    </div>
+                                                    <ul>
+                                                        <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result3"}'><a href='#result3'>Yes</a></li>
+                                                        <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result4"}'><a href='#result4'>No</a></li>
+                                                    </ul>
                                                 </div>
-                                                <ul>
-                                                    <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result3"}'><a href='#result3'>Yes</a></li>
-                                                    <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result4"}'><a href='#result4'>No</a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>On paper
-                                <div class='wb-fieldflow-sub'>
-                                    <p>Did you apply by yourself or as a group?</p>
-                                    <ul>
-                                        <li>By myself
-                                            <div class='wb-fieldflow-sub'>
-                                                <div class='wb-fieldflow-header'>
-                                                    <p class='wb-fieldflow-label'>Do you have a representative?</p>
-                                                    <p>If you included the <a href='/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html'>Use of a Representative form (IMM 5476)</a> in your submitted application, select “Yes.”</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>On paper
+                                    <div class='wb-fieldflow-sub'>
+                                        <p>Did you apply by yourself or as a group?</p>
+                                        <ul>
+                                            <li>By myself
+                                                <div class='wb-fieldflow-sub'>
+                                                    <div class='wb-fieldflow-header'>
+                                                        <p class='wb-fieldflow-label'>Do you have a representative?</p>
+                                                        <p>If you included the <a href='/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html'>Use of a Representative form (IMM 5476)</a> in your submitted application, select “Yes.”</p>
+                                                    </div>
+                                                    <ul>
+                                                        <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result5"}'><a href='#result5'>Yes</a></li>
+                                                        <li>No
+                                                            <div class='wb-fieldflow-sub'>
+                                                                <p>Did you provide an email address in your application form?</p>
+                                                                <ul>
+                                                                    <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result6"}'><a href='#result6'>Yes</a></li>
+                                                                    <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result7"}'><a href='#result7'>No</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
                                                 </div>
-                                                <ul>
-                                                    <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result5"}'><a href='#result5'>Yes</a></li>
-                                                    <li>No
-                                                        <div class='wb-fieldflow-sub'>
-                                                            <p>Did you provide an email address in your application form?</p>
-                                                            <ul>
-                                                                <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result6"}'><a href='#result6'>Yes</a></li>
-                                                                <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result7"}'><a href='#result7'>No</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li>As a group
-                                            <div class='wb-fieldflow-sub'>
-                                                <div class='wb-fieldflow-header'>
-                                                    <p class='wb-fieldflow-label'>Does anyone in your group use a representative?</p>
-                                                    <p>If at least 1 person included the <a href='/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html'>Use of a Representative form (IMM 5476)</a> in your submitted application, select “Yes.”</p>
+                                            </li>
+                                            <li>As a group
+                                                <div class='wb-fieldflow-sub'>
+                                                    <div class='wb-fieldflow-header'>
+                                                        <p class='wb-fieldflow-label'>Does anyone in your group use a representative?</p>
+                                                        <p>If at least 1 person included the <a href='/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html'>Use of a Representative form (IMM 5476)</a> in your submitted application, select “Yes.”</p>
+                                                    </div>
+                                                    <ul>
+                                                        <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result8"}'><a href='#result8'>Yes</a></li>
+                                                        <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result9"}'><a href='#result9'>No</a></li>
+                                                    </ul>
                                                 </div>
-                                                <ul>
-                                                    <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result8"}'><a href='#result8'>Yes</a></li>
-                                                    <li data-wb-fieldflow='{"action": "toggle", "toggle": ".result9"}'><a href='#result9'>No</a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </form>
-            </div>
-            </form>
-        </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
 
-
-        </div>
+          
         <div class="mwscolumns section">
 
             <div class="row ">
@@ -1959,15 +2010,15 @@
         <h2 id="check">Check and update your application</h2>
         <p>You can check your application status online</p>
         <ul>
-          <li>to find out <a href="https://www.ircc.canada.ca/english/helpcentre/answer.asp?qnum=1465&amp;top=5">our progress with your application</a></li>
-          <li><strong>only after</strong> you’ve received an acknowledgement of receipt (AOR) letter or email
-            <ul>
-              <li>You’ll get an AOR <strong>after</strong> we receive your application <strong>and</strong> check that it’s <strong>complete</strong>.</li>
-              <li>It can take <strong>some time</strong> before you receive it.</li>
-            </ul>
-          </li>
+            <li>to find out <a href="https://www.ircc.canada.ca/english/helpcentre/answer.asp?qnum=1465&amp;top=5">our progress with your application</a></li>
+            <li><strong>only after</strong> you’ve received an acknowledgement of receipt (AOR) letter or email
+                <ul>
+                    <li>You’ll get an AOR <strong>after</strong> we receive your application <strong>and</strong> check that it’s <strong>complete</strong>.</li>
+                    <li>It can take <strong>some time</strong> before you receive it.</li>
+                </ul>
+            </li>
         </ul>
-        
+
         <p>We may contact you to get more information if your case is <a href="http://www.ircc.canada.ca/english/helpcentre/answer.asp?qnum=1169&amp;top=5">non-routine</a>.</p>
         <a class="btn btn-primary" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html">Check your application status</a>
 
@@ -2012,8 +2063,6 @@
                 </ul>
             </li>
         </ul>
-
-
         <section id="popup" class="mfp-hide modal-dialog modal-content overlay-def">
             <header class="modal-header">
                 <h2 class="modal-title">Accommodations and waivers </h2>
@@ -2033,7 +2082,9 @@
                 </ul>
             </div>
         </section>
+    </div>
 
+</div>
         <nav class="mrgn-bttm-lg mrgn-tp-lg">
             <h3 class="wb-inv">Document navigation</h3>
             <ul class="pager">
