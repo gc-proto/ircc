@@ -602,6 +602,52 @@
 <![endif]-->
 
     <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
+    <script>
+        function docReady(fn) {
+            // see if DOM is already available
+            if (document.readyState === "complete" || document.readyState === "interactive") {
+                // call on next available tick
+                setTimeout(fn, 1);
+            } else {
+                document.addEventListener("DOMContentLoaded", fn);
+            }
+        }    
+        docReady(function() {
+    
+            // let cssScript = document.createElement('style');
+            // cssScript.innerHTML = ".bg-darker {background-color: #d7d8dc}";
+            // cssScript.setAttribute('id', 'injectedCSS');
+            
+            let jsScript = document.createElement('script');
+            let jsonDiv = document.createElement('div');
+    
+            let urlParams = new URLSearchParams(window.location.search);
+            let qval = urlParams.get("q");
+    
+    
+            jsonDiv.innerHTML = '<div id=\'jminvitationRound\' data-wb-jsonmanager=\'{"url": "https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_4_en.json#/rounds","name": "invitationRound","nocache": "nocache", "patches":[{ "op": "copy", "path": "/drawNumber", "from": "/r'+qval+'/drawNumber" },{ "op": "copy", "path": "/drawDateFull", "from": "/r'+qval+'/drawDateFull" },{ "op": "copy", "path": "/drawName", "from": "/r'+qval+'/drawName" },{ "op": "copy", "path": "/drawText2", "from": "/r'+qval+'/drawText2" },{ "op": "copy", "path": "/drawSize", "from": "/r'+qval+'/drawSize" },{ "op": "copy", "path": "/drawMinister", "from": "/r'+qval+'/drawMinister" },{ "op": "copy", "path": "/drawDateTime", "from": "/r'+qval+'/drawDateTime" },{ "op": "copy", "path": "/drawCRS", "from": "/r'+qval+'/drawCRS" },{ "op": "copy", "path": "/drawCutOff", "from": "/r'+qval+'/drawCutOff" },{ "op": "copy", "path": "/drawNextDate", "from": "/r'+qval+'/drawNextDate" },{ "op": "copy", "path": "/drawText3", "from": "/r'+qval+'/drawText3" },{ "op": "copy", "path": "/drawText4", "from": "/r'+qval+'/drawText4" },{ "op": "copy", "path": "/pageContent", "from": "/r'+qval+'/pageContent" },{ "op": "copy", "path": "/fullText", "from": "/r'+qval+'/fullText" }]}\'> </div>'
+            
+            jsScript.innerHTML =   '$( ".wb-jsonmanager" ).trigger( "wb-init.wb-jsonmanager" );';
+            document.getElementsByTagName('main')[0].appendChild(jsonDiv);        
+            document.body.appendChild(jsScript);    
+            
+            
+            links = document.getElementsByTagName("a");
+    
+            for(var i = 0; i < links.length; i++) 
+            { 
+                if( links[i].href.indexOf("fr/immigration-refugies-citoyennete/organisation/mandat/politiques-directives-operationnelles-ententes-accords/instructions-ministerielles/entree-express-rondes/invitations.html")!=-1) 
+                {
+                    console.log("Url found"); 
+                    links[i].href=links[i].href+"?q="+qval;
+                } 
+            }
+            
+        });
+    
+    
+     
+    </script>
 </body>
 
 </html>
