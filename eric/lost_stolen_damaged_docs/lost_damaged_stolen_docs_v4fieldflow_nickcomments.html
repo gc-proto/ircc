@@ -189,7 +189,7 @@
                        <li data-wb-fieldflow="[{&quot;action&quot;: &quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#pr&quot;}]">A permanent resident card</li>
                        <li >A refugee protection claimant document (RPCD)
                         <div class="wb-fieldflow-sub" data-wb-fieldflow="{&quot;renderas&quot;:&quot;radio&quot;}">
-                            <p>Is your refugeed claim or pre-removal risk assessment (PRRA) still being reviewed or was it already approved?</p>
+                            <p>Is your refugee claim or pre-removal risk assessment (PRRA) still being reviewed or was it already approved?</p>
                             <ul>
                                 <li data-wb-fieldflow="[{&quot;action&quot;: &quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#RPCD1&quot;}]">Still being reviewed</li>
                                 <li data-wb-fieldflow="[{&quot;action&quot;: &quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#RPCD2&quot;}]">Already approved</li>
@@ -198,15 +198,81 @@
                        </li>
                        <li>A work permit, study permit, visitor record, or temporary resident permit
                            <div class="wb-fieldflow-sub" data-wb-fieldflow="{&quot;renderas&quot;:&quot;radio&quot;}">
+                            <p>Is your document valid or expired?</p>
+                            <ul>
+                                <li>My document is currently valid
+                                    <div class="wb-fieldflow-sub" data-wb-fieldflow="{&quot;renderas&quot;:&quot;radio&quot;}">
+                                        
+                                        <p>Was your document lost, stolen, or damaged?</p>
+                                        <ul>
+                                            <li>Lost or stolen
+                                                <div class="wb-fieldflow-sub" data-wb-fieldflow="{&quot;renderas&quot;:&quot;radio&quot;}">
+                                                    <p>Did you report the loss or theft to the police and receive a police report number?</p>
+                                                    <ul>
+                                                        <li data-wb-fieldflow="[{&quot;action&quot;: &quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#replace&quot;}]">Yes, I reported the loss or theft and have a police report number</li>
+
+                                                        <li>No, I did not report the loss or theft
+                                                            <div class="wb-fieldflow-sub" data-wb-fieldflow="{&quot;renderas&quot;:&quot;radio&quot;}">
+
+                                                    
+                                                                    
+                                                                    <strong>When was your document issued?</strong></p>
+                                                                <ul>
+
+                                                                    <li data-wb-fieldflow="[{&quot;action&quot;: &quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#permits&quot;}]">Before 1936</li>
+
+                                                                    <li>In or after 1936
+                                                                        <div class="wb-fieldflow-sub" data-wb-fieldflow="{&quot;renderas&quot;:&quot;radio&quot;}">
+
+                                                                            <p>Did you arrive in Newfoundland before 1949?</p>
+                                                                            <ul>
+                                                                                <li data-wb-fieldflow="[{&quot;action&quot;: &quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#permitsNFLD&quot;}]">Yes</li>
+                                                                                <li data-wb-fieldflow="[{&quot;action&quot;: &quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#permitsNFLDno&quot;}]">No</li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+
+                                                        </li>
+                                
+                              <li>My document is expired
+                                   <div class="wb-fieldflow-sub" data-wb-fieldflow="{&quot;renderas&quot;:&quot;radio&quot;}">
+
+                                    <p>You need to apply for a Verification of Status document. We won’t replace the actual document, but the Verification of Status will contain information that appeared on your original immigration document.
+
+                                           Note: The Verification of Status document cannot be used for travel and is not an identity document.
+                                            
+                                           When was your document issued?</p>
+                                    <ul>
+
+                                        <li data-wb-fieldflow="[{&quot;action&quot;: &quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#permits&quot;}]">Before 1936</li>
+
+                                           <li>In or after 1936
+                                               <div class="wb-fieldflow-sub" data-wb-fieldflow="{&quot;renderas&quot;:&quot;radio&quot;}">
+
+                                                <p>Did you arrive in Newfoundland before 1949?</p>
+                                                    <ul>
+                                                        <li data-wb-fieldflow="[{&quot;action&quot;: &quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#permitsNFLD&quot;}]">Yes</li>
+                                                        <li data-wb-fieldflow="[{&quot;action&quot;: &quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#permitsNFLDno&quot;}]">No</li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </li>
+
+
+                            <!-- VOS extra question flow
                                <p>When was your document issued?</p>
                                <ul>
+
                                    <li data-wb-fieldflow="[{&quot;action&quot;: &quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#permits&quot;}]">Before 1936</li>
+
                                    <li>In or after 1936
-                                        
-
-
-
                                     <div class="wb-fieldflow-sub" data-wb-fieldflow="{&quot;renderas&quot;:&quot;radio&quot;}">
+
                                         <p>Did you arrive in Newfoundland before 1949?</p>
                                         <ul>
                                             <li data-wb-fieldflow="[{&quot;action&quot;: &quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#permitsNFLD&quot;}]">Yes</li>
@@ -218,6 +284,9 @@
                            </div>
 
                        </li>
+
+
+                    -->
                        <li>Another immigration document
                         <div class="wb-fieldflow-sub" data-wb-fieldflow="{&quot;renderas&quot;:&quot;radio&quot;}">
                             <p>What document?</p>
@@ -263,7 +332,7 @@
 
 
 <div id="pr" class="def ff-hide">
-	<h3>You have to apply for a new PR card</h3>
+	<h3>You have to apply for a replacement PR card</h3>
 	<p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/how-to-apply.html">Apply for a new PR card.</a></p>
 </div>
       
