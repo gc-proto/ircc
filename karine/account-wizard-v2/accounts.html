@@ -179,14 +179,14 @@
                                 <li class="panel panel-default">
                                     <div class="panel-body position-relative">
                                         <a href="#signIn" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[
-                                        { "action": "addClass", "class": "nojs-show", "source": ".selection, .status-reset" },
-                                        { "action": "removeClass", "class": "nojs-show", "source": ".signIn, .reset, .bottom-reset" }
+                                        { "action": "addClass", "class": "nojs-show", "source": ".selection" },
+                                        { "action": "removeClass", "class": "nojs-show", "source": ".signIn" }
                                     ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q1:SignInAccount" id="signInLink">Sign in to your account</a>
                                     </div>
                                 </li>
                                 <li class="panel panel-default">
                                     <div class="panel-body position-relative">
-                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html" class="stretched-link btn-link no-undrln full-width" id="checkLink">
+                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html" class="stretched-link btn-link no-undrln full-width" id="checkLink" data-gc-analytics-customclick="IRCC:AccountWizard_Q1:CheckStatus">
                                             <div class="row d-flex align-items-center text-left">
                                                 <div class="col-xs-11">Check your application status</div>
                                                 <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
@@ -220,7 +220,7 @@
                             <div class="selection-options signIn nojs-show">
                                 <h2>What application did you start or submit?</h2>
                                 <div class="position-relative mrgn-bttm-sm">
-                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back" data-wb-doaction='[
+                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:SignIn" data-wb-doaction='[
                                         { "action": "addClass", "class": "nojs-show", "source": ".signIn, .result" },
                                         { "action": "removeClass", "class": "nojs-show", "source": ".selection" }
                                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -230,7 +230,7 @@
                                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 visitor-visa" data-wb-doaction='[                      
                                             { "action": "run", "trggroup": "toggle-result" },
                                             { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".visitor-visa" }
-                                            ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Visit_VisitorVisa">Visitor visa</button>
+                                            ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:SignIn_VisitorVisa">Visitor visa</button>
     
                                         <div class="result visitor-visa nojs-show mrgn-lft-sm mrgn-rght-sm">
                                             <p>You used one of these 2 accounts:</p>
@@ -241,7 +241,7 @@
                                                             <div class="panel-body position-relative d-flex align-items-center">
     
                                                                 <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                                <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Visit_VisitorVisa_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                                <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q2:SignIn_VisitorVisa_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                             </div>
                                                         </div>
                                                     </li>
@@ -249,7 +249,7 @@
                                                         <div class="panel panel-default mrgn-bttm-md">
                                                             <div class="panel-body position-relative d-flex align-items-center">
                                                                 <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                                <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Visit_VisitorVisa_IRCCPortal">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                                <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q2:SignIn_VisitorVisa_IRCCPortal">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
     
                                                             </div>
                                                         </div>
@@ -266,7 +266,7 @@
                                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 express-entry" data-wb-doaction='[                     
                                             { "action": "run", "trggroup": "toggle-result" },
                                             { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".express-entry" }
-                                            ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Immigrate_EE">Express Entry</button>
+                                            ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:SignIn_EE">Express Entry</button>
     
                                         <div class="result express-entry nojs-show mrgn-lft-sm mrgn-rght-sm">
                                             <p>You used the IRCC secure account (GCKey or Sign-In Partner).</p>
@@ -276,7 +276,7 @@
                                                         <div class="panel-body position-relative d-flex align-items-center">
     
                                                             <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Immigrate_EE_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q2:SignIn_EE_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -287,7 +287,7 @@
                                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 study-permit" data-wb-doaction='[           
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".study-permit" }
-                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Study_StudyPermit">Study permit</button>
+                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:SignIn_StudyPermit">Study permit</button>
     
                                         <div class="result study-permit nojs-show mrgn-lft-sm mrgn-rght-sm">
                                             <p>You used one of these 2 accounts:</p>
@@ -321,7 +321,7 @@
                                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 work-permit" data-wb-doaction='[                  
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".work-permit" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:WorkTemp_WorkPermit">Work permit and work permit extension</button>
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:SignIn_WorkPermit">Work permit and work permit extension</button>
     
                                         <div class="result work-permit nojs-show mrgn-lft-sm mrgn-rght-sm">
                                             <p>You used the IRCC secure account (GCKey or Sign-In Partner).</p>
@@ -331,7 +331,7 @@
                                                         <div class="panel-body position-relative d-flex align-items-center">
     
                                                             <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:WorkTemp_WorkPermit_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q2:SignIn_WorkPermit_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -342,7 +342,7 @@
                                         <a href="#application" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
                                             { "action": "addClass", "class": "nojs-show", "source": ".selection-options, .result, .status-reset" },
                                             { "action": "removeClass", "class": "nojs-show", "source": ".application, .reset, .bottom-reset" }
-                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q1:FinishApplication" id="finishLink">Other</a>
+                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:SignIn_FinishApplication" id="finishLink">Other</a>
     
                                     </li>
                                 </ul>
@@ -355,7 +355,7 @@
                                 <h2>Finish or submit the application you started</h2>
                                 <p>Select what your application is about.</p>
                                 <div class="position-relative mrgn-bttm-sm">
-                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back" data-wb-doaction='[
+                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:FinishSubmit" data-wb-doaction='[
                                         { "action": "addClass", "class": "nojs-show", "source": ".application" },
                                         { "action": "removeClass", "class": "nojs-show", "source": ".signIn" }
                                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -365,61 +365,61 @@
                                         <a href="#visit" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "nojs-show", "source": ".application, .reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "nojs-show", "source": ".visit" }
-                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:FindProgram_Visit">Visiting Canada</a>
+                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_Visit">Visiting Canada</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#immigrate" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "nojs-show", "source": ".application, .reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "nojs-show", "source": ".immigrate, .application-reset" }
-                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:FindProgram_Immigrate">Immigrating to Canada (becoming a permanent resident)</a>
+                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_Immigrate">Immigrating to Canada (becoming a permanent resident)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#family" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "nojs-show", "source": ".application, .reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "nojs-show", "source": ".family, .application-reset" }
-                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:FindProgram_Sponsor">Sponsoring family (including adoption through the immigration process)</a>
+                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_Sponsor">Sponsoring family (including adoption through the immigration process)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#working" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "nojs-show", "source": ".application, .reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "nojs-show", "source": ".working, .application-reset" }
-                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:FindProgram_WorkingTemp">Working in Canada temporarily (work permits)</a>
+                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_WorkingTemp">Working in Canada temporarily (work permits)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#study" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "nojs-show", "source": ".application, .reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "nojs-show", "source": ".study, .application-reset" }
-                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:FindProgram_Study">Studying in Canada</a>
+                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_Study">Studying in Canada</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#citizenship" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "nojs-show", "source": ".application, .reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "nojs-show", "source": ".citizenship, .application-reset" }
-                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:FindProgram_Citizenship">Canadian citizenship</a>
+                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_Citizenship">Canadian citizenship</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#refugees" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                             { "action": "addClass", "class": "nojs-show", "source": ".application, .reset, .bottom-reset" },
                                             { "action": "removeClass", "class": "nojs-show", "source": ".refugees, .application-reset" }
-                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:FindProgram_RefugeesAsylum">Refugees and asylum</a>
+                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_RefugeesAsylum">Refugees and asylum</a>
                                     </li>
-    
+                        
                                     <li class="panel panel-default panel-body position-relative">
                                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 special-measures" data-wb-doaction='[                  
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".special-measures" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FindProgram_SpecialMeasures">One of the special measures (such as for Ukraine, Sudan, or other)</button>
-    
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_SpecialMeasures">One of the special measures (such as for Ukraine, Sudan, or other)</button>
+                        
                                         <div class="result special-measures nojs-show mrgn-lft-sm mrgn-rght-sm">
-    
+                        
                                             <p>You used one of these 3 accounts:</p>
-    
+                        
                                             <div class="row-no-gutters clearfix">
                                                 <ul class="cnjnctn-type-or cnjnctn-type-or-horizontal col-md-9">
                                                     <li class="cnjnctn-col position-relative p-0">
                                                         <div class="panel panel-default">
                                                             <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                                 <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                                 <a target="_blank" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:SpecialMeasures_IRCCSecure" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                             </div>
@@ -430,14 +430,14 @@
                                                             <div class="panel-body position-relative d-flex align-items-center">
                                                                 <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                                 <a target="_blank" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:SpecialMeasures_IRCCPortal" href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
-    
+                        
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="cnjnctn-col position-relative p-0">
                                                         <div class="panel panel-default">
                                                             <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                                 <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                                 <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:SpecialMeasures_PRPortal" class="stretched-link no-undrln">Permanent residence portal <span class="wb-inv">(Opens in a new tab)</span></a>
                                                             </div>
@@ -452,17 +452,17 @@
                                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 pr" data-wb-doaction='[                  
                                         { "action": "run", "trggroup": "toggle-result" },
                                         { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".pr" }
-                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FindProgram_PermanentResidence">Permanent resident cards and travel documents (if you’re already a permanent resident)</button>
-    
+                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_PermanentResidence">Permanent resident cards and travel documents (if you’re already a permanent resident)</button>
+                        
                                         <div class="result pr nojs-show mrgn-lft-sm mrgn-rght-sm">
-    
+                        
                                             <p>You used the Permanent residence portal.</p>
-    
+                        
                                             <div class="row-no-gutters">
                                                 <div class="col-md-9">
                                                     <div class="panel panel-default mrgn-bttm-md">
                                                         <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                             <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
                                                             <a target="_blank" href="https://prson-srpel.apps.cic.gc.ca/en/login" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:PR_PRPortal" class="stretched-link no-undrln">Permanent residence portal <span class="wb-inv">(Opens in a new tab)</span></a>
                                                         </div>
@@ -470,8 +470,8 @@
                                                 </div>
                                             </div>
                                         </div>
-    
-    
+                        
+                        
                                     </li>
                                 </ul>
                                 <div class="position-relative mrgn-bttm-sm">
@@ -496,19 +496,19 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 visitor-visa" data-wb-doaction='[                      
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".visitor-visa" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Visit_VisitorVisa">Visitor visa</button>
-    
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Visit_VisitorVisa">Visitor visa</button>
+                        
                                     <div class="result visitor-visa nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used one of these 2 accounts:</p>
-    
+                        
                                         <div class="row-no-gutters clearfix">
                                             <ul class="cnjnctn-type-or cnjnctn-type-or-horizontal col-md-9">
                                                 <li class="cnjnctn-col p-0">
                                                     <div class="panel panel-default mrgn-bttm-md">
                                                         <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                             <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Visit_VisitorVisa_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Visit_VisitorVisa_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -516,70 +516,70 @@
                                                     <div class="panel panel-default mrgn-bttm-md">
                                                         <div class="panel-body position-relative d-flex align-items-center">
                                                             <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Visit_VisitorVisa_IRCCPortal">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
-    
+                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Visit_VisitorVisa_IRCCPortal">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
+                        
                                                         </div>
                                                     </div>
                                                 </li>
-    
+                        
                                             </ul>
                                         </div>
-    
+                        
                                         <p><a href="#hints-2" class="wb-lbx" role="button"><i class="fas fa-info-circle mrgn-rght-sm" aria-hidden="true"></i>Not sure which account you used?</a></p>
-    
+                        
                                     </div>
                                 </div>
                                 <div class="panel panel-default panel-body position-relative">
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 eta" data-wb-doaction='[                     
                                 { "action": "run", "trggroup": "toggle-result" },
                                 { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".eta" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Visit_eTA">Submit your electronic travel authorization (eTA) documents</button>
-    
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Visit_eTA">Submit your electronic travel authorization (eTA) documents</button>
+                        
                                     <div class="result eta nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>Use the IRCC secure account (GCKey or Sign-In Partner) if we asked you to <strong>submit documents</strong> for your eTA application.</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center ">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Visit_VisitorVisa_eTA_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Visit_VisitorVisa_eTA_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-    
+                        
                                     </div>
                                 </div>
                                 <div class="panel panel-default panel-body position-relative">
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 visitor-record" data-wb-doaction='[                      
                                 { "action": "run", "trggroup": "toggle-result" },
                                 { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".visitor-record" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Visit_VisitorRecord">Visitor record (to extend your stay in Canada)</button>
-    
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Visit_VisitorRecord">Visitor record (to extend your stay in Canada)</button>
+                        
                                     <div class="result visitor-record nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used the IRCC secure account (GCKey or Sign-In Partner).</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Visit_VisitorRecord_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Visit_VisitorRecord_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-    
-    
+                        
+                        
                                     </div>
                                 </div>
                                 <div class="panel panel-default panel-body position-relative">
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 super-visa" data-wb-doaction='[                      
                                 { "action": "run", "trggroup": "toggle-result" },
                                 { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".super-visa" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Visit_SuperVisa">Super visa (for parents and grandparents)</button>
-    
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Visit_SuperVisa">Super visa (for parents and grandparents)</button>
+                        
                                     <div class="result super-visa nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used one of these 2 accounts:</p>
                                         <div class="row-no-gutters clearfix">
@@ -587,9 +587,9 @@
                                                 <li class="cnjnctn-col p-0">
                                                     <div class="panel panel-default mrgn-bttm-md">
                                                         <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                             <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Visit_SuperVisa_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Visit_SuperVisa_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -597,12 +597,12 @@
                                                     <div class="panel panel-default mrgn-bttm-md">
                                                         <div class="panel-body position-relative d-flex align-items-center">
                                                             <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/parent-grandparent-super-visa/apply.html" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Visit_SuperVisa_IRCCPortal">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
-    
+                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/parent-grandparent-super-visa/apply.html" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Visit_SuperVisa_IRCCPortal">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
+                        
                                                         </div>
                                                     </div>
                                                 </li>
-    
+                        
                                             </ul>
                                         </div>
                                         <p><a href="#hints-2" class="wb-lbx" role="button"><i class="fas fa-info-circle mrgn-rght-sm" aria-hidden="true"></i>Not sure which account you used?</a></p>
@@ -612,8 +612,8 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 transit-visa" data-wb-doaction='[                     
                                 { "action": "run", "trggroup": "toggle-result" },
                                 { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".transit-visa" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Visit_TransitVisa">Transit visa</button>
-    
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Visit_TransitVisa">Transit visa</button>
+                        
                                     <div class="result transit-visa nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used one of these 2 accounts:</p>
                                         <div class="row-no-gutters clearfix">
@@ -621,9 +621,9 @@
                                                 <li class="cnjnctn-col p-0">
                                                     <div class="panel panel-default mrgn-bttm-md">
                                                         <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                             <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Visit_TransitVisa_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Visit_TransitVisa_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -631,20 +631,20 @@
                                                     <div class="panel panel-default mrgn-bttm-md">
                                                         <div class="panel-body position-relative d-flex align-items-center">
                                                             <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/transit/apply.html" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Visit_TransitVisa_IRCCPortal">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
-    
+                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/transit/apply.html" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Visit_TransitVisa_IRCCPortal">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
+                        
                                                         </div>
                                                     </div>
                                                 </li>
-    
+                        
                                             </ul>
                                         </div>
                                         <p><a href="#hints-2" class="wb-lbx" role="button"><i class="fas fa-info-circle mrgn-rght-sm" aria-hidden="true"></i>Not sure which account you used?</a></p>
-    
+                        
                                     </div>
                                 </div>
                             </div>
-    
+                        
                             <div id="immigrate" class="selection-options immigrate nojs-show">
                                 <h3 class="h2">Immigrating to Canada (becoming a permanent resident)</h3>
                                 <div class="position-relative mrgn-bttm-sm">
@@ -657,17 +657,17 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 express-entry" data-wb-doaction='[                     
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".express-entry" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Immigrate_EE">Express Entry</button>
-    
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Immigrate_EE">Express Entry</button>
+                        
                                     <div class="result express-entry nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used the IRCC secure account (GCKey or Sign-In Partner).</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Immigrate_EE_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Immigrate_EE_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -678,31 +678,31 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 tr-pr" data-wb-doaction='[                     
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".tr-pr" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Immigrate_TRPR">Temporary resident to permanent resident (TR-to-PR) pathway</button>
-    
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Immigrate_TRPR">Temporary resident to permanent resident (TR-to-PR) pathway</button>
+                        
                                     <div class="result tr-pr nojs-show mrgn-lft-sm mrgn-rght-sm">
-    
+                        
                                         <p>View your TR-to-PR application:</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Immigrate_TRPR_Portal" href="https://trprpath-voiertrp.apps.cic.gc.ca/en/landing" class="stretched-link no-undrln">TR-to-PR portal <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Immigrate_TRPR_Portal" href="https://trprpath-voiertrp.apps.cic.gc.ca/en/landing" class="stretched-link no-undrln">TR-to-PR portal <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-    
+                        
                                         <p>View your work permit application:</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Immigrate_TRPR_IRCCSecure" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Immigrate_TRPR_IRCCSecure" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -713,18 +713,18 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 other" data-wb-doaction='[                     
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".other" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Immigrate_Other">Another immigration program</button>
-    
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Immigrate_Other">Another immigration program</button>
+                        
                                     <div class="result other nojs-show mrgn-lft-sm mrgn-rght-sm">
-    
+                        
                                         <p>You used the Permanent residence portal.</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Immigrate_Other_PRPortal">Permanent residence portal <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Immigrate_Other_PRPortal">Permanent residence portal <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -752,15 +752,15 @@
                                             <li>Start-up Visa</li>
                                             <li>Temporary resident permit holder applying for permanent residence</li>
                                         </ul>
-    
+                        
                                     </div>
                                 </div>
                             </div>
-    
-    
+                        
+                        
                             <div id="family" class="selection-options family nojs-show">
-    
-    
+                        
+                        
                                 <h3 class="h2">Sponsoring family (including adoption through the immigration process)</h3>
                                 <p>You used the Permanent residence portal.</p>
                                 <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_SponsoringFamily" data-wb-doaction='[
@@ -768,23 +768,23 @@
                                     { "action": "removeClass", "class": "nojs-show", "source": ".application" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
                                 <div class="position-relative mrgn-bttm-sm">
-    
+                        
                                     <div class="row-no-gutters">
                                         <div class="col-md-9">
                                             <div class="panel panel-default mrgn-bttm-md">
                                                 <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                     <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                    <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Immigrate_Sponsor_PRPortal">Permanent residence portal <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                    <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Immigrate_Sponsor_PRPortal">Permanent residence portal <span class="wb-inv">(Opens in a new tab)</span></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-    
+                        
                             <div id="working" class="selection-options working nojs-show">
-    
+                        
                                 <h3 class="h2">Working in Canada temporarily (work permits)</h3>
                                 <div class="position-relative mrgn-bttm-sm">
                                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Working" data-wb-doaction='[
@@ -796,100 +796,100 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 work-permit" data-wb-doaction='[                  
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".work-permit" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:WorkTemp_WorkPermit">Work permit and work permit extension</button>
-    
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:WorkTemp_WorkPermit">Work permit and work permit extension</button>
+                        
                                     <div class="result work-permit nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used the IRCC secure account (GCKey or Sign-In Partner).</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:WorkTemp_WorkPermit_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:WorkTemp_WorkPermit_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-    
-    
+                        
+                        
                                     </div>
                                 </div>
                                 <div class="panel panel-default panel-body position-relative">
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 iec" data-wb-doaction='[                
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".iec" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:WorkTemp_IEC">International Experience Canada</button>
-    
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:WorkTemp_IEC">International Experience Canada</button>
+                        
                                     <div class="result iec nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used the IRCC secure account (GCKey or Sign-In Partner).</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:WorkTemp_IEC_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:WorkTemp_IEC_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-    
-    
+                        
+                        
                                     </div>
                                 </div>
                                 <div class="panel panel-default panel-body position-relative">
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 pgwp" data-wb-doaction='[              
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".pgwp" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:WorkTemp_PostGrad">Post-graduation work permit</button>
-    
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:WorkTemp_PostGrad">Post-graduation work permit</button>
+                        
                                     <div class="result pgwp nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used the IRCC secure account (GCKey or Sign-In Partner).</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:WorkTemp_PostGrad_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:WorkTemp_PostGrad_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-    
-    
+                        
+                        
                                     </div>
                                 </div>
                                 <div class="panel panel-default panel-body position-relative">
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 h-1b" data-wb-doaction='[            
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".h-1b" }
-                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:WorkTemp_H-1B">H-1B visa holder work permit</button>
-    
+                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:WorkTemp_H-1B">H-1B visa holder work permit</button>
+                        
                                     <div class="result h-1b nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used the IRCC portal.</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:WorkTemp_H-1B_IRCCPortal" href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:WorkTemp_H-1B_IRCCPortal" href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-    
-    
+                        
+                        
                                     </div>
                                 </div>
                             </div>
-    
+                        
                             <div id="study" class="selection-options study nojs-show">
-    
+                        
                                 <h3 class="h2">Studying in Canada</h3>
-    
+                        
                                 <div class="position-relative mrgn-bttm-sm">
                                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Studying" data-wb-doaction='[
                                             { "action": "run", "trggroup": "back" },
@@ -900,8 +900,8 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 study-permit" data-wb-doaction='[           
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".study-permit" }
-                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Study_StudyPermit">Study permit</button>
-    
+                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Study_StudyPermit">Study permit</button>
+                        
                                     <div class="result study-permit nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used one of these 2 accounts:</p>
                                         <div class="row-no-gutters clearfix">
@@ -909,9 +909,9 @@
                                                 <li class="cnjnctn-col position-relative p-0">
                                                     <div class="panel panel-default mrgn-bttm-md">
                                                         <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                             <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Study_StudyPermit_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Study_StudyPermit_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -919,12 +919,12 @@
                                                     <div class="panel panel-default mrgn-bttm-md">
                                                         <div class="panel-body position-relative d-flex align-items-center">
                                                             <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/portal-application-process-study.html" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Study_StudyPermit_IRCCPortal">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
-    
+                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/portal-application-process-study.html" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Study_StudyPermit_IRCCPortal">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
+                        
                                                         </div>
                                                     </div>
                                                 </li>
-    
+                        
                                             </ul>
                                         </div>
                                         <p><a href="#hints-2" class="wb-lbx" role="button"><i class="fas fa-info-circle mrgn-rght-sm" aria-hidden="true"></i>Not sure which account you used?</a></p>
@@ -934,17 +934,17 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 study-permit-fam" data-wb-doaction='[      
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".study-permit-fam" }
-                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Study_StudyPermitFamily">Study permit (with a family member who needs a work permit)</button>
-    
+                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Study_StudyPermitFamily">Study permit (with a family member who needs a work permit)</button>
+                        
                                     <div class="result study-permit-fam nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used the IRCC secure account (GCKey or Sign-In Partner).</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Study_StudyPermitFamily_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Study_StudyPermitFamily_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -955,17 +955,17 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 study-permit-ext" data-wb-doaction='[      
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".study-permit-ext" }
-                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Study_Extension">Study permit extension</button>
-    
+                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Study_Extension">Study permit extension</button>
+                        
                                     <div class="result study-permit-ext nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used the IRCC secure account (GCKey or Sign-In Partner).</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Study_Extension_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Study_Extension_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -976,17 +976,17 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 change-school" data-wb-doaction='[     
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".change-school" }
-                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Study_ChangeSchool">Change your school</button>
-    
+                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Study_ChangeSchool">Change your school</button>
+                        
                                     <div class="result change-school nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used the IRCC secure account (GCKey or Sign-In Partner).</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Study_ChangeSchool_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Study_ChangeSchool_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -994,7 +994,7 @@
                                     </div>
                                 </div>
                             </div>
-    
+                        
                             <div id="citizenship" class="selection-options citizenship nojs-show">
                                 <h3 class="h2">Canadian citizenship</h3>
                                 <div class="position-relative mrgn-bttm-sm">
@@ -1007,17 +1007,17 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 grant" data-wb-doaction='[   
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".grant" }
-                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Citizenship_Cit">Canadian citizenship application (to become a Canadian citizen)</button>
-    
+                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Citizenship_Cit">Canadian citizenship application (to become a Canadian citizen)</button>
+                        
                                     <div class="result grant nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used the online citizenship application.</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://citapply-citdemande.apps.cic.gc.ca/en/sign-in" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Citizenship_Cit_CitApp" class="stretched-link no-undrln">Online citizenship application <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://citapply-citdemande.apps.cic.gc.ca/en/sign-in" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Citizenship_Cit_CitApp" class="stretched-link no-undrln">Online citizenship application <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1028,17 +1028,17 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 certificate" data-wb-doaction='[ 
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".certificate" }
-                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Citizenship_Certificate">Citizenship certificate application (to prove or confirm your Canadian citizenship)</button>
-    
+                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Citizenship_Certificate">Citizenship certificate application (to prove or confirm your Canadian citizenship)</button>
+                        
                                     <div class="result certificate nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used the IRCC secure account (GCKey or Sign-In Partner).</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Citizenship_Certificate_IRCCSecure" class="stretched-link no-undrln">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Citizenship_Certificate_IRCCSecure" class="stretched-link no-undrln">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1049,41 +1049,41 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 test" data-wb-doaction='[
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".test" }
-                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Citizenship_Test">Canadian citizenship test</button>
-    
+                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Citizenship_Test">Canadian citizenship test</button>
+                        
                                     <div class="result test nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You need the online citizenship test portal.</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test/online.html" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Citizenship_Test_Online">Online citizenship test <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test/online.html" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Citizenship_Test_Online">Online citizenship test <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <p><strong>If you <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply/accommodation.html">requested an accommodation<span class="fas fa-share mrgn-lft-sm"><span class="wb-inv">(Opens in a new tab)</span></span></a></strong>, we may invite you to take the test on Microsoft Teams or in person. In this case, you won’t need the online test portal.</p>
                                     </div>
-    
+                        
                                 </div>
                                 <div class="panel panel-default panel-body position-relative">
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 certificate-download" data-wb-doaction='[
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".certificate-download" }
-                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Citizenship_Download">Electronic citizenship certificate download</button>
-    
+                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Citizenship_Download">Electronic citizenship certificate download</button>
+                        
                                     <div class="result certificate-download nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>Use the IRCC portal to download your electronic citizenship certificate (e-certificate) if you asked for an e-certificate in your citizenship application.</p>
-    
+                        
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Citizenship_Download_IRCCPortal" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Citizenship_Download_IRCCPortal" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1095,17 +1095,17 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 cit-records" data-wb-doaction='[
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".cit-records" }
-                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Citizenship_SearchRecords">Search citizenship records</button>
-    
+                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Citizenship_SearchRecords">Search citizenship records</button>
+                        
                                     <div class="result cit-records nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used the IRCC secure account (GCKey or Sign-In Partner).</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Citizenship_SearchRecords_IRCCSecure" class="stretched-link no-undrln">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Citizenship_SearchRecords_IRCCSecure" class="stretched-link no-undrln">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1116,17 +1116,17 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 calculator" data-wb-doaction='[
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".calculator" }
-                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Citizenship_PhysicalPresence">Physical presence calculator (for paper applications)</button>
-    
+                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Citizenship_PhysicalPresence">Physical presence calculator (for paper applications)</button>
+                        
                                     <div class="result calculator nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You should only use this calculator if you’re applying for Canadian citizenship <strong>on paper</strong>.</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://eservices.cic.gc.ca/rescalc/resCalcStartNew.do?&lang=en" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Citizenship_PhysicalPresence_calc" class="stretched-link no-undrln">Physical presence calculator <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://eservices.cic.gc.ca/rescalc/resCalcStartNew.do?&lang=en" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Citizenship_PhysicalPresence_calc" class="stretched-link no-undrln">Physical presence calculator <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1134,10 +1134,10 @@
                                     </div>
                                 </div>
                             </div>
-    
+                        
                             <div id="refugees" class="selection-options refugees nojs-show">
-    
-    
+                        
+                        
                                 <h3 class="h2">Refugees and asylum</h3>
                                 <div class="position-relative mrgn-bttm-sm">
                                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Refugees" data-wb-doaction='[
@@ -1149,17 +1149,17 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 asylum" data-wb-doaction='[
                                         { "action": "run", "trggroup": "toggle-result" },
                                         { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".asylum" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Refugee_Asylum">Asylum claim</button>
-    
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Refugee_Asylum">Asylum claim</button>
+                        
                                     <div class="result asylum nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used the IRCC portal.</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Refugee_Asylum_IRCCPortal" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Refugee_Asylum_IRCCPortal" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1170,17 +1170,17 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 ifhp" data-wb-doaction='[
                                         { "action": "run", "trggroup": "toggle-result" },
                                         { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".ifhp" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Refugee_IFHP">Interim Federal Health Program</button>
-    
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Refugee_IFHP">Interim Federal Health Program</button>
+                        
                                     <div class="result ifhp nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used the IRCC secure account (GCKey or Sign-In Partner).</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Refugee_IFHP_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Refugee_IFHP_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1191,26 +1191,26 @@
                                     <button class="text-left stretched-link btn-link no-undrln full-width p-0 sponsor-refugee" data-wb-doaction='[
                                         { "action": "run", "trggroup": "toggle-result" },
                                         { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".sponsor-refugee" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Refugee_Sponsor">Sponsor a refugee</button>
-    
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Refugee_Sponsor">Sponsor a refugee</button>
+                        
                                     <div class="result sponsor-refugee nojs-show mrgn-lft-sm mrgn-rght-sm">
                                         <p>You used the Permanent residence portal.</p>
                                         <div class="row-no-gutters">
                                             <div class="col-md-9">
                                                 <div class="panel panel-default mrgn-bttm-md">
                                                     <div class="panel-body position-relative d-flex align-items-center">
-    
+                        
                                                         <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                        <a target="_blank" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:Refugee_Sponsor" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html">Permanent residence portal</a>
+                                                        <a target="_blank" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Refugee_Sponsor" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html">Permanent residence portal</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-    
+                        
                             </div>
-    
+                        
                         </div>
     
     
@@ -1223,7 +1223,7 @@
                                 <p>How you apply depends on the program you apply to.</p>
     
                                 <div class="position-relative mrgn-bttm-sm">
-                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back" data-wb-doaction='[
+                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:FindProgram" data-wb-doaction='[
                                     { "action": "addClass", "class": "nojs-show", "source": ".find-program, .result" },
                                     { "action": "removeClass", "class": "nojs-show", "source": ".selection" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1253,7 +1253,7 @@
                                 <h3 class="h2">You know the program you want to apply to </h3>
                                 <p>Select what you’re interested in</p>
                                 <div class="position-relative mrgn-bttm-sm">
-                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back" data-wb-doaction='[
+                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnownProgram" data-wb-doaction='[
                                     { "action": "addClass", "class": "nojs-show", "source": ".known-program, .result" },
                                     { "action": "removeClass", "class": "nojs-show", "source": ".find-program" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1322,7 +1322,7 @@
     
                             <h3 class="h2">Visiting Canada</h3>
                             <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
+                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Visiting" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
                                 { "action": "removeClass", "class": "nojs-show", "source": ".known-program" }
                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1376,7 +1376,7 @@
     
                             <h3 class="h2">Immigrating to Canada (becoming a permanent resident)</h3>
                             <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
+                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Immigrating" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
                                 { "action": "removeClass", "class": "nojs-show", "source": ".known-program" }
                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1532,7 +1532,7 @@
     
                             <h3 class="h2">Sponsoring family (including adoption through the immigration process)</h3>
                             <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
+                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Sponsoring" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
                                 { "action": "removeClass", "class": "nojs-show", "source": ".known-program" }
                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1579,7 +1579,7 @@
     
                             <h3 class="h2">Working in Canada temporarily (work permits)</h3>
                             <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
+                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Working" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
                                 { "action": "removeClass", "class": "nojs-show", "source": ".known-program" }
                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1688,7 +1688,7 @@
     
                             <h3 class="h2">Study permit</h3>
                             <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
+                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Study" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
                                 { "action": "removeClass", "class": "nojs-show", "source": ".known-program" }
                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1738,7 +1738,7 @@
     
                             <h3 class="h2">Canadian citizenship</h3>
                             <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
+                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Citizenship" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
                                 { "action": "removeClass", "class": "nojs-show", "source": ".known-program" }
                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1778,7 +1778,7 @@
     
                             <h3 class="h2">Refugees and asylum</h3>
                             <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
+                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Refugees" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
                                 { "action": "removeClass", "class": "nojs-show", "source": ".known-program" }
                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1838,7 +1838,7 @@
     
                             <h3 class="h2">Permanent resident cards and travel documents (if you’re already a permanent resident)</h3>
                             <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
+                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_PR" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
                                 { "action": "removeClass", "class": "nojs-show", "source": ".known-program" }
                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -2026,36 +2026,7 @@
                 e.preventDefault();
                 document.getElementById('account-chooser').scrollIntoView('alignToTop');
             }
-        });
-
-        document.getElementById('finishLink').onclick = function () {
-            let dataElms = document.getElementById('finishOrCheck').querySelectorAll("[data-gc-analytics-customclick]");
-            console.log(dataElms);
-            for (var i = 0; i < dataElms.length; i++) {
-                var existingTracking = dataElms[i].getAttribute('data-gc-analytics-customclick');
-                if (existingTracking.indexOf("_Finish") > -1) {
-                    existingTracking = existingTracking.split("_Finish")[0];
-                }
-                else if (existingTracking.indexOf("_Check") > -1) {
-                    existingTracking = existingTracking.split("_Check")[0];
-                }
-                dataElms[i].setAttribute('data-gc-analytics-customclick', existingTracking + "_Finish");
-            }
-        }
-        document.getElementById('checkLink').onclick = function () {
-            let dataElms = document.getElementById('finishOrCheck').querySelectorAll("[data-gc-analytics-customclick]");
-            console.log(dataElms);
-            for (var i = 0; i < dataElms.length; i++) {
-                var existingTracking = dataElms[i].getAttribute('data-gc-analytics-customclick');
-                if (existingTracking.indexOf("_Finish") > -1) {
-                    existingTracking = existingTracking.split("_Finish")[0];
-                }
-                else if (existingTracking.indexOf("_Check") > -1) {
-                    existingTracking = existingTracking.split("_Check")[0];
-                }
-                dataElms[i].setAttribute('data-gc-analytics-customclick', existingTracking + "_Check");
-            }
-        }
+        });       
     </script>
 </body>
 
