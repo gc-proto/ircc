@@ -180,7 +180,7 @@
                                     <div class="panel-body position-relative">
                                         <a href="#signIn" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[
                                         { "action": "addClass", "class": "nojs-show", "source": ".selection" },
-                                        { "action": "removeClass", "class": "nojs-show", "source": ".signIn" }
+                                        { "action": "removeClass", "class": "nojs-show", "source": ".signIn, .signin-header" }
                                     ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q1:SignInAccount" id="signInLink">Sign in to your account</a>
                                     </div>
                                 </li>
@@ -208,7 +208,7 @@
                                     <div class="panel-body position-relative">
                                         <a href="#find-program" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[
                                             { "action": "addClass", "class": "nojs-show", "source": ".selection, .bottom-reset" },
-                                            { "action": "removeClass", "class": "nojs-show", "source": ".find-program, .reset" }
+                                            { "action": "removeClass", "class": "nojs-show", "source": ".find-program, .reset, .find-header" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q1:FindProgram">Find a program and how to apply</a>
                                     </div>
                                 </li>
@@ -217,11 +217,11 @@
     
     
                         <div id="signIn">
+                            <h3 class="h2 signin-header nojs-show">Sign in to your account</h3>
                             <div class="selection-options signIn nojs-show">
-                                <h2>What application did you start or submit?</h2>
                                 <div class="position-relative mrgn-bttm-sm">
                                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:SignIn" data-wb-doaction='[
-                                        { "action": "addClass", "class": "nojs-show", "source": ".signIn, .result" },
+                                        { "action": "addClass", "class": "nojs-show", "source": ".signIn, .result, .signin-header" },
                                         { "action": "removeClass", "class": "nojs-show", "source": ".selection" }
                                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
                                 </div>
@@ -230,7 +230,7 @@
                                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 visitor-visa" data-wb-doaction='[                      
                                             { "action": "run", "trggroup": "toggle-result" },
                                             { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".visitor-visa" }
-                                            ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:SignIn_VisitorVisa">Visitor visa</button>
+                                            ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:SignIn_VisitorVisa">Visitor visas</button>
     
                                         <div class="result visitor-visa nojs-show mrgn-lft-sm mrgn-rght-sm">
                                             <p>You used one of these 2 accounts:</p>
@@ -287,7 +287,7 @@
                                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 study-permit" data-wb-doaction='[           
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".study-permit" }
-                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:SignIn_StudyPermit">Study permit</button>
+                                ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:SignIn_StudyPermit">Study permits</button>
     
                                         <div class="result study-permit nojs-show mrgn-lft-sm mrgn-rght-sm">
                                             <p>You used one of these 2 accounts:</p>
@@ -321,7 +321,7 @@
                                         <button class="text-left stretched-link btn-link no-undrln full-width p-0 work-permit" data-wb-doaction='[                  
                                     { "action": "run", "trggroup": "toggle-result" },
                                     { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".work-permit" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:SignIn_WorkPermit">Work permit and work permit extension</button>
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:SignIn_WorkPermit">Work permits (including post-graduation, IEC and extensions)</button>
     
                                         <div class="result work-permit nojs-show mrgn-lft-sm mrgn-rght-sm">
                                             <p>You used the IRCC secure account (GCKey or Sign-In Partner).</p>
@@ -340,67 +340,64 @@
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#application" class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[                                
-                                            { "action": "addClass", "class": "nojs-show", "source": ".selection-options, .result, .status-reset" },
-                                            { "action": "removeClass", "class": "nojs-show", "source": ".application, .reset, .bottom-reset" }
-                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:SignIn_FinishApplication" id="finishLink">Other</a>
+                                            { "action": "addClass", "class": "nojs-show", "source": ".selection-options, .result" },
+                                            { "action": "removeClass", "class": "nojs-show", "source": ".application" }
+                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:SignIn_FinishApplication" id="finishLink">All other applications (study extensions, immigration, citizenship and more)</a>
     
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-    
-    
-                        <div id="application">
+                        
                             <div class="selection-options application nojs-show">
-                                <h2>Finish or submit the application you started</h2>
+                                
                                 <p>Select what your application is about.</p>
                                 <div class="position-relative mrgn-bttm-sm">
                                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:FinishSubmit" data-wb-doaction='[
                                         { "action": "addClass", "class": "nojs-show", "source": ".application" },
-                                        { "action": "removeClass", "class": "nojs-show", "source": ".signIn" }
+                                        { "action": "removeClass", "class": "nojs-show", "source": ".signIn, .signin-header" }
                                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
                                 </div>
                                 <ul class="list-unstyled lst-scpd">
                                     <li class="panel panel-default panel-body position-relative visit">
                                         <a href="#visit" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "nojs-show", "source": ".application, .reset, .bottom-reset" },
+                                            { "action": "addClass", "class": "nojs-show", "source": ".application, .signin-header" },
                                             { "action": "removeClass", "class": "nojs-show", "source": ".visit" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_Visit">Visiting Canada</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#immigrate" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "nojs-show", "source": ".application, .reset, .bottom-reset" },
-                                            { "action": "removeClass", "class": "nojs-show", "source": ".immigrate, .application-reset" }
+                                            { "action": "addClass", "class": "nojs-show", "source": ".application, .signin-header" },
+                                            { "action": "removeClass", "class": "nojs-show", "source": ".immigrate" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_Immigrate">Immigrating to Canada (becoming a permanent resident)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#family" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "nojs-show", "source": ".application, .reset, .bottom-reset" },
-                                            { "action": "removeClass", "class": "nojs-show", "source": ".family, .application-reset" }
+                                            { "action": "addClass", "class": "nojs-show", "source": ".application, .signin-header" },
+                                            { "action": "removeClass", "class": "nojs-show", "source": ".family" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_Sponsor">Sponsoring family (including adoption through the immigration process)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#working" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "nojs-show", "source": ".application, .reset, .bottom-reset" },
-                                            { "action": "removeClass", "class": "nojs-show", "source": ".working, .application-reset" }
+                                            { "action": "addClass", "class": "nojs-show", "source": ".application, .signin-header" },
+                                            { "action": "removeClass", "class": "nojs-show", "source": ".working" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_WorkingTemp">Working in Canada temporarily (work permits)</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#study" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "nojs-show", "source": ".application, .reset, .bottom-reset" },
-                                            { "action": "removeClass", "class": "nojs-show", "source": ".study, .application-reset" }
+                                            { "action": "addClass", "class": "nojs-show", "source": ".application, .signin-header" },
+                                            { "action": "removeClass", "class": "nojs-show", "source": ".study" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_Study">Studying in Canada</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#citizenship" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "nojs-show", "source": ".application, .reset, .bottom-reset" },
-                                            { "action": "removeClass", "class": "nojs-show", "source": ".citizenship, .application-reset" }
+                                            { "action": "addClass", "class": "nojs-show", "source": ".application, .signin-header" },
+                                            { "action": "removeClass", "class": "nojs-show", "source": ".citizenship" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_Citizenship">Canadian citizenship</a>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
                                         <a href="#refugees" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
-                                            { "action": "addClass", "class": "nojs-show", "source": ".application, .reset, .bottom-reset" },
-                                            { "action": "removeClass", "class": "nojs-show", "source": ".refugees, .application-reset" }
+                                            { "action": "addClass", "class": "nojs-show", "source": ".application, .signin-header" },
+                                            { "action": "removeClass", "class": "nojs-show", "source": ".refugees" }
                                         ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_RefugeesAsylum">Refugees and asylum</a>
                                     </li>
                         
@@ -477,7 +474,7 @@
                                 <div class="position-relative mrgn-bttm-sm">
                                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back" data-wb-doaction='[
                                         { "action": "addClass", "class": "nojs-show", "source": ".application" },
-                                        { "action": "removeClass", "class": "nojs-show", "source": ".signIn" }
+                                        { "action": "removeClass", "class": "nojs-show", "source": ".signIn, .signin-header" }
                                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
                                 </div>
                             </div>
@@ -485,11 +482,11 @@
     
                         <div id="finishOrCheck">
                             <div id="visit" class="selection-options visit nojs-show">
-                                <h3 class="h2">Visiting Canada</h3>
+                                <h3 class="h2">Sign in to your account:&nbsp;Visiting Canada</h3>
                                 <div class="position-relative mrgn-bttm-sm">
                                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
                                         { "action": "run", "trggroup": "back" },
-                                        { "action": "removeClass", "class": "nojs-show", "source": ".application" }
+                                        { "action": "removeClass", "class": "nojs-show", "source": ".application, .signin-header" }
                                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
                                 </div>
                                 <div class="panel panel-default panel-body position-relative">
@@ -646,11 +643,11 @@
                             </div>
                         
                             <div id="immigrate" class="selection-options immigrate nojs-show">
-                                <h3 class="h2">Immigrating to Canada (becoming a permanent resident)</h3>
+                                <h3 class="h2">Sign in to your account:&nbsp;Immigrating to Canada (becoming a permanent resident)</h3>
                                 <div class="position-relative mrgn-bttm-sm">
                                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Immigrating" data-wb-doaction='[
                                         { "action": "run", "trggroup": "back" },
-                                        { "action": "removeClass", "class": "nojs-show", "source": ".application" }
+                                        { "action": "removeClass", "class": "nojs-show", "source": ".application, .signin-header" }
                                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
                                 </div>
                                 <div class="panel panel-default panel-body position-relative">
@@ -761,11 +758,11 @@
                             <div id="family" class="selection-options family nojs-show">
                         
                         
-                                <h3 class="h2">Sponsoring family (including adoption through the immigration process)</h3>
+                                <h3 class="h2">Sign in to your account:&nbsp;Sponsoring family (including adoption through the immigration process)</h3>
                                 <p>You used the Permanent residence portal.</p>
                                 <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_SponsoringFamily" data-wb-doaction='[
                                     { "action": "run", "trggroup": "back" },
-                                    { "action": "removeClass", "class": "nojs-show", "source": ".application" }
+                                    { "action": "removeClass", "class": "nojs-show", "source": ".application, .signin-header" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
                                 <div class="position-relative mrgn-bttm-sm">
                         
@@ -785,11 +782,11 @@
                         
                             <div id="working" class="selection-options working nojs-show">
                         
-                                <h3 class="h2">Working in Canada temporarily (work permits)</h3>
+                                <h3 class="h2">Sign in to your account:&nbsp;Working in Canada temporarily (work permits)</h3>
                                 <div class="position-relative mrgn-bttm-sm">
                                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Working" data-wb-doaction='[
                                             { "action": "run", "trggroup": "back" },
-                                            { "action": "removeClass", "class": "nojs-show", "source": ".application" }
+                                            { "action": "removeClass", "class": "nojs-show", "source": ".application, .signin-header" }
                                         ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
                                 </div>
                                 <div class="panel panel-default panel-body position-relative">
@@ -888,12 +885,12 @@
                         
                             <div id="study" class="selection-options study nojs-show">
                         
-                                <h3 class="h2">Studying in Canada</h3>
+                                <h3 class="h2">Sign in to your account:&nbsp;Studying in Canada</h3>
                         
                                 <div class="position-relative mrgn-bttm-sm">
                                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Studying" data-wb-doaction='[
                                             { "action": "run", "trggroup": "back" },
-                                            { "action": "removeClass", "class": "nojs-show", "source": ".application" }
+                                            { "action": "removeClass", "class": "nojs-show", "source": ".application, .signin-header" }
                                         ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
                                 </div>
                                 <div class="panel panel-default panel-body position-relative">
@@ -996,11 +993,11 @@
                             </div>
                         
                             <div id="citizenship" class="selection-options citizenship nojs-show">
-                                <h3 class="h2">Canadian citizenship</h3>
+                                <h3 class="h2">Sign in to your account:&nbsp;Canadian citizenship</h3>
                                 <div class="position-relative mrgn-bttm-sm">
                                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Citizenship" data-wb-doaction='[
                                         { "action": "run", "trggroup": "back" },
-                                        { "action": "removeClass", "class": "nojs-show", "source": ".application" }
+                                        { "action": "removeClass", "class": "nojs-show", "source": ".application, .signin-header" }
                                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
                                 </div>
                                 <div class="panel panel-default panel-body position-relative">
@@ -1138,11 +1135,11 @@
                             <div id="refugees" class="selection-options refugees nojs-show">
                         
                         
-                                <h3 class="h2">Refugees and asylum</h3>
+                                <h3 class="h2">Sign in to your account:&nbsp;Refugees and asylum</h3>
                                 <div class="position-relative mrgn-bttm-sm">
                                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Refugees" data-wb-doaction='[
                                             { "action": "run", "trggroup": "back" },
-                                            { "action": "removeClass", "class": "nojs-show", "source": ".application" }
+                                            { "action": "removeClass", "class": "nojs-show", "source": ".application, .signin-header" }
                                         ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
                                 </div>
                                 <div class="panel panel-default panel-body position-relative">
@@ -1217,14 +1214,15 @@
     
     
                         <div id="find-program">
+                            <h3 class="h2 find-header nojs-show">Find a program and how to apply</h3>
                             <div class="selection-options find-program nojs-show">
     
-                                <h3 class="h2">Find a program and how to apply</h3>
+                                
                                 <p>How you apply depends on the program you apply to.</p>
     
                                 <div class="position-relative mrgn-bttm-sm">
                                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:FindProgram" data-wb-doaction='[
-                                    { "action": "addClass", "class": "nojs-show", "source": ".find-program, .result" },
+                                    { "action": "addClass", "class": "nojs-show", "source": ".find-program, .result, .find-header" },
                                     { "action": "removeClass", "class": "nojs-show", "source": ".selection" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
                                 </div>
@@ -1250,7 +1248,7 @@
     
                         <div id="known-program">
                             <div class="selection-options known-program nojs-show">
-                                <h3 class="h2">You know the program you want to apply to </h3>
+                                <h3 class="h2 nojs-show">You know the program you want to apply to </h3>
                                 <p>Select what you’re interested in</p>
                                 <div class="position-relative mrgn-bttm-sm">
                                     <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnownProgram" data-wb-doaction='[
@@ -1320,7 +1318,7 @@
     
                         <div id="visit-known" class="selection-options visit-known nojs-show">
     
-                            <h3 class="h2">Visiting Canada</h3>
+                            <h3 class="h2 nojs-show">Visiting Canada</h3>
                             <div class="position-relative mrgn-bttm-sm">
                                 <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Visiting" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
@@ -1374,7 +1372,7 @@
                         <div id="immigrate-known" class="selection-options immigrate-known nojs-show">
     
     
-                            <h3 class="h2">Immigrating to Canada (becoming a permanent resident)</h3>
+                            <h3 class="h2 nojs-show">Immigrating to Canada (becoming a permanent resident)</h3>
                             <div class="position-relative mrgn-bttm-sm">
                                 <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Immigrating" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
@@ -1530,7 +1528,7 @@
     
                         <div id="family-known" class="selection-options family-known nojs-show">
     
-                            <h3 class="h2">Sponsoring family (including adoption through the immigration process)</h3>
+                            <h3 class="h2 nojs-show">Sponsoring family (including adoption through the immigration process)</h3>
                             <div class="position-relative mrgn-bttm-sm">
                                 <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Sponsoring" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
@@ -1577,7 +1575,7 @@
     
                         <div id="working-known" class="selection-options working-known nojs-show">
     
-                            <h3 class="h2">Working in Canada temporarily (work permits)</h3>
+                            <h3 class="h2 nojs-show">Working in Canada temporarily (work permits)</h3>
                             <div class="position-relative mrgn-bttm-sm">
                                 <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Working" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
@@ -1686,7 +1684,7 @@
     
                         <div id="study-known" class="selection-options study-known nojs-show">
     
-                            <h3 class="h2">Study permit</h3>
+                            <h3 class="h2 nojs-show">Study permit</h3>
                             <div class="position-relative mrgn-bttm-sm">
                                 <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Study" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
@@ -1736,7 +1734,7 @@
                         <div id="citizenship-known" class="selection-options citizenship-known nojs-show">
     
     
-                            <h3 class="h2">Canadian citizenship</h3>
+                            <h3 class="h2 nojs-show">Canadian citizenship</h3>
                             <div class="position-relative mrgn-bttm-sm">
                                 <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Citizenship" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
@@ -1775,8 +1773,7 @@
     
     
                         <div id="refugees-known" class="selection-options refugees-known nojs-show">
-    
-                            <h3 class="h2">Refugees and asylum</h3>
+                            <h3 class="h2 nojs-show">Refugees and asylum</h3>
                             <div class="position-relative mrgn-bttm-sm">
                                 <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Refugees" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
@@ -1836,7 +1833,7 @@
     
                         <div id="pr-known" class="selection-options pr-known nojs-show">
     
-                            <h3 class="h2">Permanent resident cards and travel documents (if you’re already a permanent resident)</h3>
+                            <h3 class="h2 nojs-show">Permanent resident cards and travel documents (if you’re already a permanent resident)</h3>
                             <div class="position-relative mrgn-bttm-sm">
                                 <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_PR" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
