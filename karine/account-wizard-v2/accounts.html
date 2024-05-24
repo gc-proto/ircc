@@ -407,71 +407,22 @@
                                     </li>
 
                                     <li class="panel panel-default panel-body position-relative">
-                                        <button class="text-left stretched-link btn-link no-undrln full-width p-0 special-measures" data-wb-doaction='[                  
-                                    { "action": "run", "trggroup": "toggle-result" },
-                                    { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".special-measures" }
-                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_SpecialMeasures">One of the special measures (such as for Ukraine, Sudan, or other)</button>
+                                        <a href="#special-measures" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                            { "action": "addClass", "class": "nojs-show", "source": ".application, .signin-header" },
+                                            { "action": "removeClass", "class": "nojs-show", "source": ".special-measures" }
+                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_SpecialMeasures">One of the special measures (such as for Ukraine, Sudan, or other)</a>
 
-                                        <div class="result special-measures nojs-show mrgn-lft-sm mrgn-rght-sm">
 
-                                            <p>You used one of these 3 accounts:</p>
 
-                                            <div class="row-no-gutters clearfix">
-                                                <ul class="cnjnctn-type-or cnjnctn-type-or-horizontal col-md-9">
-                                                    <li class="cnjnctn-col position-relative p-0">
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-body position-relative d-flex align-items-center">
 
-                                                                <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                                <a target="_blank" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:SpecialMeasures_IRCCSecure" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="cnjnctn-col position-relative p-0">
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-body position-relative d-flex align-items-center">
-                                                                <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                                <a target="_blank" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:SpecialMeasures_IRCCPortal" href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
-
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="cnjnctn-col position-relative p-0">
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-body position-relative d-flex align-items-center">
-
-                                                                <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                                <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:SpecialMeasures_PRPortal" class="stretched-link no-undrln">Permanent residence portal <span class="wb-inv">(Opens in a new tab)</span></a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <p><a href="#hints-3" class="wb-lbx" role="button"><i class="fas fa-info-circle mrgn-rght-sm" aria-hidden="true"></i>Not sure which account you used?</a></p>
-                                        </div>
                                     </li>
                                     <li class="panel panel-default panel-body position-relative">
-                                        <button class="text-left stretched-link btn-link no-undrln full-width p-0 pr" data-wb-doaction='[                  
-                                        { "action": "run", "trggroup": "toggle-result" },
-                                        { "action": "removeClass", "class": "stretched-link nojs-show", "source": ".pr" }
-                                        ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_PermanentResidence">Permanent resident cards and travel documents (if you’re already a permanent resident)</button>
+                                        <a href="#pr" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                        { "action": "addClass", "class": "nojs-show", "source": ".application, .signin-header" },
+                                        { "action": "removeClass", "class": "nojs-show", "source": ".pr" }
+                                    ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:FinishSubmit_PR">Permanent resident cards and travel documents (if you’re already a permanent resident)</a>
 
-                                        <div class="result pr nojs-show mrgn-lft-sm mrgn-rght-sm">
 
-                                            <p>You used the Permanent residence portal.</p>
-
-                                            <div class="row-no-gutters">
-                                                <div class="col-md-9">
-                                                    <div class="panel panel-default mrgn-bttm-md">
-                                                        <div class="panel-body position-relative d-flex align-items-center">
-
-                                                            <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
-                                                            <a target="_blank" href="https://prson-srpel.apps.cic.gc.ca/en/login" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:PR_PRPortal" class="stretched-link no-undrln">Permanent residence portal <span class="wb-inv">(Opens in a new tab)</span></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
 
                                     </li>
@@ -773,7 +724,7 @@
                     <div id="family" class="selection-options family nojs-show">
 
 
-                        <h3 class="h2">Sign in to your account:&nbsp;Sponsoring family (including adoption through the immigration process)</h3>
+                        <h3 class="h2">Sign in to your account:&nbsp;Sponsoring family</h3>
                         <div class="row">
                             <div class="col-md-8">
                                 <p>You used the Permanent residence portal.</p>
@@ -801,7 +752,7 @@
 
                     <div id="working" class="selection-options working nojs-show">
 
-                        <h3 class="h2">Sign in to your account:&nbsp;Working in Canada temporarily (work permits)</h3>
+                        <h3 class="h2">Sign in to your account:&nbsp;Working in Canada temporarily</h3>
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="position-relative mrgn-bttm-sm">
@@ -1242,760 +1193,854 @@
                         </div>
                     </div>
 
-                </div>
+
+                    <div id="special-measures" class="selection-options special-measures nojs-show">
 
 
-
-
-                <div id="find-program">
-                    <h3 class="h2 find-header nojs-show">Find a program and how to apply</h3>
-                    <div class="selection-options find-program nojs-show">
-
+                        <h3 class="h2">Sign in to your account:&nbsp;One of the special measures</h3>
                         <div class="row">
                             <div class="col-md-8">
-                                <p>How you apply depends on the program you apply to.</p>
-
                                 <div class="position-relative mrgn-bttm-sm">
-                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:FindProgram" data-wb-doaction='[
+                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_SpecialMeasures" data-wb-doaction='[
+                                            { "action": "run", "trggroup": "back" },
+                                            { "action": "removeClass", "class": "nojs-show", "source": ".application, .signin-header" }
+                                        ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <div class="result special-measures nojs-show mrgn-lft-sm mrgn-rght-sm">
+
+                                        <p>You used one of these 3 accounts:</p>
+
+                                        <div class="row-no-gutters clearfix">
+                                            <ul class="cnjnctn-type-or cnjnctn-type-or-horizontal col-md-9">
+                                                <li class="cnjnctn-col position-relative p-0">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-body position-relative d-flex align-items-center">
+
+                                                            <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                            <a target="_blank" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:SpecialMeasures_IRCCSecure" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="cnjnctn-col position-relative p-0">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-body position-relative d-flex align-items-center">
+                                                            <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                            <a target="_blank" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:SpecialMeasures_IRCCPortal" href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="stretched-link no-undrln">IRCC portal <span class="wb-inv">(Opens in a new tab)</span></a>
+
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="cnjnctn-col position-relative p-0">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-body position-relative d-flex align-items-center">
+
+                                                            <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                            <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/how-to-apply-online.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q3:SpecialMeasures_PRPortal" class="stretched-link no-undrln">Permanent residence portal <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <p><a href="#hints-3" class="wb-lbx" role="button"><i class="fas fa-info-circle mrgn-rght-sm" aria-hidden="true"></i>Not sure which account you used?</a></p>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="pr" class="selection-options pr nojs-show">
+
+
+                        <h3 class="h2">Sign in to your account:&nbsp;Permanent resident cards and travel documents</h3>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="position-relative mrgn-bttm-sm">
+                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_PR" data-wb-doaction='[
+                                            { "action": "run", "trggroup": "back" },
+                                            { "action": "removeClass", "class": "nojs-show", "source": ".application, .signin-header" }
+                                        ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <div class="result pr nojs-show mrgn-lft-sm mrgn-rght-sm">
+
+                                        <p>You used the IRCC secure account (GCKey or Sign-In Partner).</p>
+                                        <div class="row-no-gutters">
+                                            <div class="col-md-9">
+                                                <div class="panel panel-default mrgn-bttm-md">
+                                                    <div class="panel-body position-relative d-flex align-items-center">
+
+                                                        <i class="fas fa-user fa-2x pull-left mrgn-rght-md"></i>
+                                                        <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html#alerts" class="stretched-link no-undrln" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:Study_ChangeSchool_IRCCSecure">IRCC secure account (GCKey or Sign-In Partner) <span class="wb-inv">(Opens in a new tab)</span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="find-program">
+                        <h3 class="h2 find-header nojs-show">Find a program and how to apply</h3>
+                        <div class="selection-options find-program nojs-show">
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>How you apply depends on the program you apply to.</p>
+
+                                    <div class="position-relative mrgn-bttm-sm">
+                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:FindProgram" data-wb-doaction='[
                                     { "action": "addClass", "class": "nojs-show", "source": ".find-program, .result, .find-header" },
                                     { "action": "removeClass", "class": "nojs-show", "source": ".selection" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
-                                </div>
-                                <ul class="list-unstyled lst-scpd">
-                                    <li class="panel panel-default panel-body position-relative">
-                                        <a href="#known-program" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    </div>
+                                    <ul class="list-unstyled lst-scpd">
+                                        <li class="panel panel-default panel-body position-relative">
+                                            <a href="#known-program" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                                 { "action": "addClass", "class": "nojs-show", "source": ".find-program, .reset" },
                                                 { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
                                             ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q2:FindProgram_Know">You know the program you want to apply to</a>
-                                    </li>
-                                    <li class="panel panel-default panel-body position-relative">
-                                        <a target="_blank" href="https://ircc.canada.ca/explore-programs" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q2:FindProgram_Explore">
-                                            <div class="row d-flex align-items-center text-left">
-                                                <div class="col-xs-11">You want to explore immigration programs</div>
-                                                <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
+                                        </li>
+                                        <li class="panel panel-default panel-body position-relative">
+                                            <a target="_blank" href="https://ircc.canada.ca/explore-programs" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q2:FindProgram_Explore">
+                                                <div class="row d-flex align-items-center text-left">
+                                                    <div class="col-xs-11">You want to explore immigration programs</div>
+                                                    <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
 
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div id="known-program">
-                    <div class="selection-options known-program nojs-show">
-                        <h3 class="h2 nojs-show">You know the program you want to apply to </h3>
-                        <div class="row">
-                            <div class="col-md-8">
-                                <p>Select what you’re interested in</p>
-                                <div class="position-relative mrgn-bttm-sm">
-                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnownProgram" data-wb-doaction='[
+                    <div id="known-program">
+                        <div class="selection-options known-program nojs-show">
+                            <h3 class="h2 nojs-show">You know the program you want to apply to </h3>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Select what you’re interested in</p>
+                                    <div class="position-relative mrgn-bttm-sm">
+                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnownProgram" data-wb-doaction='[
                                     { "action": "addClass", "class": "nojs-show", "source": ".known-program, .result" },
                                     { "action": "removeClass", "class": "nojs-show", "source": ".find-program" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
-                                </div>
+                                    </div>
 
-                                <ul class="list-unstyled lst-scpd-known">
-                                    <li class="panel panel-default panel-body position-relative visit-known">
-                                        <a href="#visit-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                    <ul class="list-unstyled lst-scpd-known">
+                                        <li class="panel panel-default panel-body position-relative visit-known">
+                                            <a href="#visit-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                                 { "action": "addClass", "class": "nojs-show", "source": ".known-program, .find-header" },
                                                 { "action": "removeClass", "class": "nojs-show", "source": ".visit-known" }
                                             ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:KnownProgram_Visit">Visiting Canada</a>
-                                    </li>
-                                    <li class="panel panel-default panel-body position-relative">
-                                        <a href="#immigrate-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                        </li>
+                                        <li class="panel panel-default panel-body position-relative">
+                                            <a href="#immigrate-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                                 { "action": "addClass", "class": "nojs-show", "source": ".known-program, .find-header" },
                                                 { "action": "removeClass", "class": "nojs-show", "source": ".immigrate-known" }
                                             ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:KnownProgram_Immigrate">Immigrating to Canada (becoming a permanent resident)</a>
-                                    </li>
-                                    <li class="panel panel-default panel-body position-relative">
-                                        <a href="#family-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                        </li>
+                                        <li class="panel panel-default panel-body position-relative">
+                                            <a href="#family-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                                 { "action": "addClass", "class": "nojs-show", "source": ".known-program, .find-header" },
                                                 { "action": "removeClass", "class": "nojs-show", "source": ".family-known" }
                                             ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:KnownProgram_Sponsor">Sponsoring family (including adoption through the immigration process)</a>
-                                    </li>
-                                    <li class="panel panel-default panel-body position-relative">
-                                        <a href="#working-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                        </li>
+                                        <li class="panel panel-default panel-body position-relative">
+                                            <a href="#working-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                                 { "action": "addClass", "class": "nojs-show", "source": ".known-program, .find-header" },
                                                 { "action": "removeClass", "class": "nojs-show", "source": ".working-known" }
                                             ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:KnownProgram_WorkTemp">Working in Canada temporarily (work permits)</a>
-                                    </li>
-                                    <li class="panel panel-default panel-body position-relative">
-                                        <a href="#study-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                        </li>
+                                        <li class="panel panel-default panel-body position-relative">
+                                            <a href="#study-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                                 { "action": "addClass", "class": "nojs-show", "source": ".known-program, .find-header" },
                                                 { "action": "removeClass", "class": "nojs-show", "source": ".study-known" }
                                             ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:KnownProgram_Study">Studying in Canada</a>
-                                    </li>
-                                    <li class="panel panel-default panel-body position-relative">
-                                        <a href="#citizenship-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                        </li>
+                                        <li class="panel panel-default panel-body position-relative">
+                                            <a href="#citizenship-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                                 { "action": "addClass", "class": "nojs-show", "source": ".known-program, .find-header" },
                                                 { "action": "removeClass", "class": "nojs-show", "source": ".citizenship-known" }
                                             ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:KnownProgram_Citizenship">Canadian citizenship</a>
-                                    </li>
-                                    <li class="panel panel-default panel-body position-relative">
-                                        <a href="#refugees-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                        </li>
+                                        <li class="panel panel-default panel-body position-relative">
+                                            <a href="#refugees-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                                 { "action": "addClass", "class": "nojs-show", "source": ".known-program, .find-header" },
                                                 { "action": "removeClass", "class": "nojs-show", "source": ".refugees-known" }
                                             ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:KnownProgram_RefugeesAsylum">Refugees and asylum</a>
-                                    </li>
-                                    <li class="panel panel-default panel-body position-relative">
-                                        <a href="#pr-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
+                                        </li>
+                                        <li class="panel panel-default panel-body position-relative">
+                                            <a href="#pr-known" class="text-left stretched-link btn-link no-undrln full-width p-0 " data-wb-doaction='[
                                                 { "action": "addClass", "class": "nojs-show", "source": ".known-program, .find-header" },
                                                 { "action": "removeClass", "class": "nojs-show", "source": ".pr-known" }
                                             ]' data-gc-analytics-customclick="IRCC:AccountWizard_Q3:KnownProgram_PR">Permanent resident cards and travel documents (if you’re already a permanent resident)</a>
-                                    </li>
-                                </ul>
-                                <div class="position-relative mrgn-bttm-sm">
-                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back" data-wb-doaction='[
+                                        </li>
+                                    </ul>
+                                    <div class="position-relative mrgn-bttm-sm">
+                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back" data-wb-doaction='[
                                     { "action": "addClass", "class": "nojs-show", "source": ".known-program, .result" },
                                     { "action": "removeClass", "class": "nojs-show", "source": ".find-program" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div id="visit-known" class="selection-options visit-known nojs-show">
+                    <div id="visit-known" class="selection-options visit-known nojs-show">
 
-                    <h3 class="h2">Find a program and how to apply: Visiting Canada</h3>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Visiting" data-wb-doaction='[
+                        <h3 class="h2">Find a program: Visiting Canada</h3>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="position-relative mrgn-bttm-sm">
+                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Visiting" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
                                 { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
-                            </div>
+                                </div>
 
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Visit_VisitorVisa" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Visitor visa</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Visit_eTA" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Electronic travel authorization (eTA)</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/extend-stay/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Visit_VisitorRecord" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Visitor record (to extend your stay in Canada)</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/parent-grandparent-super-visa/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Visit_SuperVisa" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Super visa (for parents and grandparents)</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/transit/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Visit_Transit" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Transit visa</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Visit_VisitorVisa" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Visitor visa</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Visit_eTA" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Electronic travel authorization (eTA)</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/extend-stay/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Visit_VisitorRecord" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Visitor record (to extend your stay in Canada)</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/parent-grandparent-super-visa/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Visit_SuperVisa" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Super visa (for parents and grandparents)</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/transit/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Visit_Transit" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Transit visa</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
+
                     </div>
 
-                </div>
-
-                <div id="immigrate-known" class="selection-options immigrate-known nojs-show">
+                    <div id="immigrate-known" class="selection-options immigrate-known nojs-show">
 
 
-                    <h3 class="h2">Find a program and how to apply: Immigrating to Canada (becoming a permanent resident)</h3>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Immigrating" data-wb-doaction='[
+                        <h3 class="h2">Find a program: Immigrating to Canada</h3>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="position-relative mrgn-bttm-sm">
+                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Immigrating" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
                                 { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
-                            </div>
+                                </div>
 
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/agri-food-pilot/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_AgriFood" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Agri-Food Pilot</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/atlantic-immigration/how-to-immigrate/permanent-residence.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_AIP" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Atlantic Immigration Program</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/economic-mobility-pathways-pilot/immigrate/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_EMPP" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Economic Mobility Pathways Pilot</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_EE" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Express Entry</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/ukraine-measures/pr-family-reunification/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_FamilyPRUkraine">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Family-based permanent residence program for Ukrainian nationals</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/sudan2023/pr-pathway/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_FamilyPRSudan">
-                                        <div class="col-xs-11">Family-based permanent residence pathway for people affected by the conflict in Sudan</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/caregivers/child-care-home-support-worker/some-experience-apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_HCCHSWP_Less">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Home Child Care and Home Support Worker Pilots (less than 12 months of experience)</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/caregivers/child-care-home-support-worker/complete-experience-apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_HCCHSWP_More">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Home Child Care and Home Support Worker Pilots (12 months or more of experience)</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/hong-kong-residents-permanent-residence/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_PRHK">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Permanent residence pathways for Hong Kong residents</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees/express-entry/get-confirm-nomination.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_PNP_EE">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Provincial Nominee Program (through Express Entry)</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees/non-express-entry/eligibility.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_PNP">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Provincial Nominee Program (non-Express Entry route)</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/application-permanent-residence-quebec-selected-business-class-applicants-investors-entrepreneurs.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_QuebecEntrepreneur" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Quebec entrepreneurs or investors</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/self-employed/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_QuebecSelfEmployed" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Quebec self-employed persons</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/quebec-skilled-workers/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_QSW" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Quebec-selected skilled workers</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/application-rural-northern-immigration.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_RNIP">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Rural and Northern Immigration Pilot</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/self-employed/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_SelfEmployed" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Self-employed persons</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/start-visa/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_StartUp" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Start-up visa</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/agri-food-pilot/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_AgriFood" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Agri-Food Pilot</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/atlantic-immigration/how-to-immigrate/permanent-residence.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_AIP" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Atlantic Immigration Program</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/economic-mobility-pathways-pilot/immigrate/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_EMPP" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Economic Mobility Pathways Pilot</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_EE" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Express Entry</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/ukraine-measures/pr-family-reunification/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_FamilyPRUkraine">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Family-based permanent residence program for Ukrainian nationals</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/sudan2023/pr-pathway/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_FamilyPRSudan">
+                                            <div class="col-xs-11">Family-based permanent residence pathway for people affected by the conflict in Sudan</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/caregivers/child-care-home-support-worker/some-experience-apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_HCCHSWP_Less">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Home Child Care and Home Support Worker Pilots (less than 12 months of experience)</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/caregivers/child-care-home-support-worker/complete-experience-apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_HCCHSWP_More">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Home Child Care and Home Support Worker Pilots (12 months or more of experience)</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/hong-kong-residents-permanent-residence/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_PRHK">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Permanent residence pathways for Hong Kong residents</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees/express-entry/get-confirm-nomination.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_PNP_EE">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Provincial Nominee Program (through Express Entry)</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees/non-express-entry/eligibility.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_PNP">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Provincial Nominee Program (non-Express Entry route)</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/application-permanent-residence-quebec-selected-business-class-applicants-investors-entrepreneurs.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_QuebecEntrepreneur" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Quebec entrepreneurs or investors</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/self-employed/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_QuebecSelfEmployed" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Quebec self-employed persons</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/quebec-skilled-workers/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_QSW" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Quebec-selected skilled workers</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/application-rural-northern-immigration.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_RNIP">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Rural and Northern Immigration Pilot</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/self-employed/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_SelfEmployed" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Self-employed persons</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/start-visa/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Immigrate_StartUp" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Start-up visa</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="position-relative mrgn-bttm-sm">
+                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
                                 { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div id="family-known" class="selection-options family-known nojs-show">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <h3 class="h2">Find a program and how to apply: Sponsoring family (including adoption through the immigration process)</h3>
-                            <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Sponsoring" data-wb-doaction='[
-                                { "action": "run", "trggroup": "back" },
-                                { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
-                            ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Sponsor_Spouse" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Sponsor your spouse, partner or children</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/sponsor-parents-grandparents/tell-us-you-want-sponsor-parent-grandparent.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Sponsor_PGP" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Sponsor your parents and grandparents</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadians/adopt-child-abroad/processes/choose-process/immigration/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Sponsor_AdoptedChild">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Sponsor your adopted child</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/other-relatives/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Sponsor_Relatives">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Sponsor your relatives</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="working-known" class="selection-options working-known nojs-show">
-                    <h3 class="h2">Find a program and how to apply: Working in Canada temporarily (work permits)</h3>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Working" data-wb-doaction='[
-                                { "action": "run", "trggroup": "back" },
-                                { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
-                            ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
-                            </div>
-
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_WorkPermit" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Work permit</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_ExtendChangePermit" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Extend or change your work permit</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/become-candidate.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_IEC" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">International Experience Canada</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_PostGrad" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Post-graduation work permit</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/francophone-mobility.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_FrancoMobility" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Francophone Mobility work permit</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/open-work-permit-spouses-dependent-children/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_OpenWorkPermit" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Open work permit for family members of work permit holders</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/open-work-permit-hong-kong-recent-graduates.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_OpenWorkPermitHK" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Open work permit for Hong Kong recent graduates</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/ukraine-measures/ukraine-open-work-permit.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_OpenWorkPermitUkraine">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Open work permit for Ukrainian nationals</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/vulnerable-workers.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_OpenWorkPermitVulnerableFW" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Open work permit for vulnerable foreign workers</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/overnight-camp-counsellor.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_Overnightcamp" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Overnight camp counsellor work permit</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
-                                { "action": "run", "trggroup": "back" },
-                                { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
-                            ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div id="study-known" class="selection-options study-known nojs-show">
-                    <h3 class="h2">Find a program and how to apply: Study permit</h3>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Study" data-wb-doaction='[
-                                { "action": "run", "trggroup": "back" },
-                                { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
-                            ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Study_permit" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Study permit</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/student-direct-stream/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Study_SDS">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Student Direct Stream</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/extend-study-permit/how-to-apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Study_ExtendPermit" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Extend your study permit</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/change-schools.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Study_ChangeScool" target="_blank" class="stretched-link btn-link no-undrln full-width">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Change your school or program</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
 
-                </div>
 
-                <div id="citizenship-known" class="selection-options citizenship-known nojs-show">
-                    <h3 class="h2">Find a program and how to apply: Canadian citizenship</h3>
-
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Citizenship" data-wb-doaction='[
+                    <div id="family-known" class="selection-options family-known nojs-show">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h3 class="h2">Find a program: Sponsoring family </h3>
+                                <div class="position-relative mrgn-bttm-sm">
+                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Sponsoring" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
                                 { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
 
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Citizenship">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Canadian citizenship</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Sponsor_Spouse" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Sponsor your spouse, partner or children</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
 
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/proof-citizenship/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Citizenship_Proof">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Proof of citizenship (citizenship certificate)</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/sponsor-parents-grandparents/tell-us-you-want-sponsor-parent-grandparent.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Sponsor_PGP" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Sponsor your parents and grandparents</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
 
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/proof-citizenship/search-records/how-to-apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Citizenship_Records">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Search citizenship records</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadians/adopt-child-abroad/processes/choose-process/immigration/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Sponsor_AdoptedChild">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Sponsor your adopted child</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/other-relatives/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Sponsor_Relatives">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Sponsor your relatives</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                </div>
-
-
-                <div id="refugees-known" class="selection-options refugees-known nojs-show">
-                    <h3 class="h2">Find a program and how to apply: Refugees and asylum</h3>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Refugees" data-wb-doaction='[
+                    <div id="working-known" class="selection-options working-known nojs-show">
+                        <h3 class="h2">Find a program: Working in Canada temporarily</h3>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="position-relative mrgn-bttm-sm">
+                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Working" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
                                 { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
-                            </div>
+                                </div>
 
+                                <div class="panel panel-default panel-body position-relative">
 
-                            <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_WorkPermit" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Work permit</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
 
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/asylum/claim-protection-inside-canada/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Refugee_Asylum">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Claim refugee protection (asylum) from inside Canada</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_ExtendChangePermit" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Extend or change your work permit</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
 
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/economic-mobility-pathways-pilot/immigrate/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Refugee_EMPP">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Economic Mobility Pathways Pilot</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/become-candidate.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_IEC" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">International Experience Canada</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
 
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/sponsor-refugee/private-sponsorship-program/agreement-holders/sponsor.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Refugee_SAH">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Sponsor a refugee as a sponsorship agreement holder (SAH)</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_PostGrad" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Post-graduation work permit</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
 
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/sponsor-refugee/private-sponsorship-program/groups-five/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Refugee_G5">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Sponsor a refugee as a group of five (G5)</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/francophone-mobility.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_FrancoMobility" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Francophone Mobility work permit</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
 
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/sponsor-refugee/private-sponsorship-program/community-sponsors/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Refugee_CommunitySponsor">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Sponsor a refugee as a community sponsor</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/open-work-permit-spouses-dependent-children/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_OpenWorkPermit" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Open work permit for family members of work permit holders</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
 
-                        </div>
-                    </div>
-                </div>
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/open-work-permit-hong-kong-recent-graduates.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_OpenWorkPermitHK" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Open work permit for Hong Kong recent graduates</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
 
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/ukraine-measures/ukraine-open-work-permit.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_OpenWorkPermitUkraine">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Open work permit for Ukrainian nationals</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
 
-                <div id="pr-known" class="selection-options pr-known nojs-show">
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/vulnerable-workers.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_OpenWorkPermitVulnerableFW" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Open work permit for vulnerable foreign workers</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
 
-                    <h3 class="h2">Find a program and how to apply: Permanent resident cards and travel documents (if you’re already a permanent resident)</h3>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="position-relative mrgn-bttm-sm">
-                                <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_PR" data-wb-doaction='[
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/overnight-camp-counsellor.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Work_Overnightcamp" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Overnight camp counsellor work permit</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="position-relative mrgn-bttm-sm">
+                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
                                 { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-                                <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/how-to-apply.html" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Refugee_PRCard">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Permanent resident card</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default panel-body position-relative">
-
-
-                                <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-travel-document/how-to-apply.html" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Refugee_PRTD">
-                                    <div class="row d-flex align-items-center text-left">
-                                        <div class="col-xs-11">Permanent resident travel document</div>
-                                        <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
-                                    </div>
-                                </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+
+
+                    <div id="study-known" class="selection-options study-known nojs-show">
+                        <h3 class="h2">Find a program: Studying in Canada</h3>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="position-relative mrgn-bttm-sm">
+                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Study" data-wb-doaction='[
+                                { "action": "run", "trggroup": "back" },
+                                { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
+                            ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Study_permit" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Study permit</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/student-direct-stream/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Study_SDS">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Student Direct Stream</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/extend-study-permit/how-to-apply.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Study_ExtendPermit" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Extend your study permit</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/change-schools.html" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Study_ChangeScool" target="_blank" class="stretched-link btn-link no-undrln full-width">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Change your school or program</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div id="citizenship-known" class="selection-options citizenship-known nojs-show">
+                        <h3 class="h2">Find a program: Canadian citizenship</h3>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="position-relative mrgn-bttm-sm">
+                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Citizenship" data-wb-doaction='[
+                                { "action": "run", "trggroup": "back" },
+                                { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
+                            ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Citizenship">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Canadian citizenship</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/proof-citizenship/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Citizenship_Proof">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Proof of citizenship (citizenship certificate)</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/proof-citizenship/search-records/how-to-apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Citizenship_Records">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Search citizenship records</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div id="refugees-known" class="selection-options refugees-known nojs-show">
+                        <h3 class="h2">Find a program: Refugees and asylum</h3>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="position-relative mrgn-bttm-sm">
+                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Refugees" data-wb-doaction='[
+                                { "action": "run", "trggroup": "back" },
+                                { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
+                            ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
+                                </div>
+
+
+                                <div class="panel panel-default panel-body position-relative">
+
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/asylum/claim-protection-inside-canada/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Refugee_Asylum">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Claim refugee protection (asylum) from inside Canada</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/economic-mobility-pathways-pilot/immigrate/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Refugee_EMPP">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Economic Mobility Pathways Pilot</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/sponsor-refugee/private-sponsorship-program/agreement-holders/sponsor.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Refugee_SAH">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Sponsor a refugee as a sponsorship agreement holder (SAH)</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/sponsor-refugee/private-sponsorship-program/groups-five/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Refugee_G5">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Sponsor a refugee as a group of five (G5)</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+
+                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/sponsor-refugee/private-sponsorship-program/community-sponsors/apply.html" target="_blank" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Refugee_CommunitySponsor">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Sponsor a refugee as a community sponsor</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="pr-known" class="selection-options pr-known nojs-show">
+
+                        <h3 class="h2">Find a program: Permanent resident cards and travel documents</h3>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="position-relative mrgn-bttm-sm">
+                                    <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_PR" data-wb-doaction='[
+                                { "action": "run", "trggroup": "back" },
+                                { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
+                            ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+
+                                    <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/how-to-apply.html" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Refugee_PRCard">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Permanent resident card</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default panel-body position-relative">
+
+
+                                    <a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-travel-document/how-to-apply.html" class="stretched-link btn-link no-undrln full-width" data-gc-analytics-customclick="IRCC:AccountWizard_Q4:KnownProgram:Refugee_PRTD">
+                                        <div class="row d-flex align-items-center text-left">
+                                            <div class="col-xs-11">Permanent resident travel document</div>
+                                            <div class="col-xs-1"><span class="wb-inv">(Opens in a new tab)</span><span class="fas fa-share pull-right"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
 
-            </div>
-        </div>
-
-
-
-
-
-
-
-        <div class="clearfix"></div>
-
-
-        <h2 class="h3">Are you an authorized representative or IRCC partner?</h2>
-        <p><a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/partners-service-providers.html">View accounts for authorized representatives and partners<span class="fas fa-share mrgn-lft-sm"><span class="wb-inv">(Opens in a new tab)</span></span></a></p>
-
-        <section id="hints-2" class="mfp-hide modal-dialog modal-content overlay-def">
-            <header class="modal-header">
-                <h2 class="modal-title">Not sure which account you used? <span class="wb-inv">Two different acounts</span></h2>
-            </header>
-            <div class="modal-body">
-                <p>If you used a <strong>GCKey username and password or Sign-in Partner</strong> to sign in, you used the IRCC secure account (GCKey or Sign-In Partner).</p>
-                <p>If you used an <strong>email address</strong> to sign in, you used the IRCC Portal.</p>
-                <p>If you’re <strong>still not sure</strong> which account you used, try signing in to both or check your email.</p>
-            </div>
-        </section>
-
-        <section id="hints-3" class="mfp-hide modal-dialog modal-content overlay-def">
-            <header class="modal-header">
-                <h2 class="modal-title">Not sure which account you used? <span class="wb-inv">Three different acounts</span></h2>
-            </header>
-            <div class="modal-body">
-                <p>You used the <strong>IRCC secure account (GCKey or Sign-In Partner)</strong> if you:</p>
-                <ul>
-                    <li>signed in with a GCKey username and password <strong>or</strong></li>
-                    <li>signed in with Sign-In Partner</li>
-                </ul>
-                <p>You used the <strong>IRCC portal</strong> if you:</p>
-                <ul>
-                    <li>signed in with an email address <strong>and</strong></li>
-                    <li>applied for a visitor visa or a study permit</li>
-                </ul>
-                <p>You used the <strong>Permanent residence portal</strong> if you:
-                </p>
-                <ul>
-                    <li>signed in with an email address <strong>and</strong></li>
-                    <li>applied for permanent residence, a permanent resident (PR) card or a permanent resident travel document (PRTD)</li>
-                </ul>
-                <p>If you’re <strong>still not sure</strong> which account you used, try signing in to each or check your email.</p>
-            </div>
-        </section>
-
-
-
-        <div class="pagedetails">
-            <div class="row">
-                <div class="col-sm-8 col-md-9 col-lg-9">
-                    <div class="wb-disable-allow" data-ajax-replace="https://www.canada.ca/etc/designs/canada/wet-boew/assets/feedback/page-feedback-en.html" data-feedback-section="Sign in" data-feedback-theme="IRCC"></div>
                 </div>
             </div>
-            <dl id="wb-dtmd">
-                <dt>Date modified:</dt>
-                <dd><time property="dateModified">2023-11-14</time></dd>
-            </dl>
-        </div>
+
+
+
+
+
+
+
+            <div class="clearfix"></div>
+
+
+            <h2 class="h3">Are you an authorized representative or IRCC partner?</h2>
+            <p><a target="_blank" href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/partners-service-providers.html">View accounts for authorized representatives and partners<span class="fas fa-share mrgn-lft-sm"><span class="wb-inv">(Opens in a new tab)</span></span></a></p>
+
+            <section id="hints-2" class="mfp-hide modal-dialog modal-content overlay-def">
+                <header class="modal-header">
+                    <h2 class="modal-title">Not sure which account you used? <span class="wb-inv">Two different acounts</span></h2>
+                </header>
+                <div class="modal-body">
+                    <p>If you used a <strong>GCKey username and password or Sign-in Partner</strong> to sign in, you used the IRCC secure account (GCKey or Sign-In Partner).</p>
+                    <p>If you used an <strong>email address</strong> to sign in, you used the IRCC Portal.</p>
+                    <p>If you’re <strong>still not sure</strong> which account you used, try signing in to both or check your email.</p>
+                </div>
+            </section>
+
+            <section id="hints-3" class="mfp-hide modal-dialog modal-content overlay-def">
+                <header class="modal-header">
+                    <h2 class="modal-title">Not sure which account you used? <span class="wb-inv">Three different acounts</span></h2>
+                </header>
+                <div class="modal-body">
+                    <p>You used the <strong>IRCC secure account (GCKey or Sign-In Partner)</strong> if you:</p>
+                    <ul>
+                        <li>signed in with a GCKey username and password <strong>or</strong></li>
+                        <li>signed in with Sign-In Partner</li>
+                    </ul>
+                    <p>You used the <strong>IRCC portal</strong> if you:</p>
+                    <ul>
+                        <li>signed in with an email address <strong>and</strong></li>
+                        <li>applied for a visitor visa or a study permit</li>
+                    </ul>
+                    <p>You used the <strong>Permanent residence portal</strong> if you:
+                    </p>
+                    <ul>
+                        <li>signed in with an email address <strong>and</strong></li>
+                        <li>applied for permanent residence, a permanent resident (PR) card or a permanent resident travel document (PRTD)</li>
+                    </ul>
+                    <p>If you’re <strong>still not sure</strong> which account you used, try signing in to each or check your email.</p>
+                </div>
+            </section>
+
+
+
+            <div class="pagedetails">
+                <div class="row">
+                    <div class="col-sm-8 col-md-9 col-lg-9">
+                        <div class="wb-disable-allow" data-ajax-replace="https://www.canada.ca/etc/designs/canada/wet-boew/assets/feedback/page-feedback-en.html" data-feedback-section="Sign in" data-feedback-theme="IRCC"></div>
+                    </div>
+                </div>
+                <dl id="wb-dtmd">
+                    <dt>Date modified:</dt>
+                    <dd><time property="dateModified">2023-11-14</time></dd>
+                </dl>
+            </div>
     </main>
 
 
