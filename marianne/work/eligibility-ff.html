@@ -169,7 +169,8 @@
             </nav>
 
             <h1 property="name" id="wb-cont" class="gc-thickline">Who can apply</h1>
-            <p>Answer a few questions to check if you're eligible to apply for a work permit. Find out what type of work permit you need and if there are special instructions to apply for your situation.</p>
+            <p>Answer a few questions to check if you're eligible to apply for a work permit.</p>
+            <p>Find out what type of work permit you need and if there are special instructions to apply for your situation.</p>
 
             
             <div class="wb-frmvld">
@@ -181,32 +182,210 @@
                               &quot;live&quot;: false,
                               &quot;hideelm&quot;: &quot;.result&quot;
                               }">
-                        <p>Where are you located?</p>
+                        <p class="wb-fieldflow-label">Did you apply for permanent residence?</p>
                         <ul>
-                            <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#visitor-visa&quot;}">Outside Canada</li>
-                            <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#eta&quot;}">Inside Canada</li>
+                            <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#wait-pr&quot;}">Yes</li>
+                            <li>No
+                        <div class="wb-fieldflow-sub" data-wb-fieldflow="{&quot;renderas&quot;:&quot;radio&quot;,&quot;gcChckbxrdio&quot;:true}">
+                            <p class="wb-fieldflow-label">Where are you applying from?</p>
+                        <ul>
+                            <li>Outside Canada
+                                <div class="wb-fieldflow-sub" data-wb-fieldflow="{&quot;renderas&quot;:&quot;radio&quot;,&quot;gcChckbxrdio&quot;:true}">
+                                      <p class="wb-fieldflow-label">Do you have a job offer in Canada?</p>
+                                      <ul>
+                                        <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#outside-job-offer&quot;}">Yes</li>
+                                        <li>No
+                                            <div class="wb-fieldflow-sub" data-wb-fieldflow="{&quot;renderas&quot;:&quot;radio&quot;,&quot;gcChckbxrdio&quot;:true}">
+                                                <p class="wb-fieldflow-label">Which of the following situations applies to you?</p>
+                                                <ul>
+                                                <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#foreign-worker-family&quot;}">You're a family member of a <Strong>foreign worker</Strong>.</li>
+                                                  <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#hong-kong&quot;}">You're a <Strong>Hong Kong</Strong> recent graduate.</li>
+                                                  <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#h1b-visa&quot;}">You or your family member is an <strong>H-1B visa</strong> holder.</li>
+                                                  <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#tr-pr&quot;}">You're a family member of an applicant under the temporary resident to permanent resident (<Strong>TRPR</Strong>) pathway.</li>
+                                                  <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#agri-food&quot;}">You're a family member of an <strong>Agri-Food Pilot</strong> applicant.</li>
+                                                  <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#atlantic&quot;}">You're a family member of an <Strong>Atlantic Immigration Program</Strong> applicant.</li>
+                                                  <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#qc-investor&quot;}">You're a family member of a <Strong>Quebec investor</Strong>.</li>
+                                                  <li>None of the above situations apply to me.
+                                                    <div class="wb-fieldflow-sub" data-wb-fieldflow="{&quot;renderas&quot;:&quot;radio&quot;,&quot;gcChckbxrdio&quot;:true}">
+                                                        <p class="wb-fieldflow-label">Are you between the ages of 18 and 35?</p>
+                                                        <ul>
+                                                            <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#iec&quot;}">Yes</li>
+                                                            <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#none&quot;}">No</li>
+                                                        </ul>
+                                                        </div>
+                                                  </li>
+                                                </ul>
+                                                </div>
+                                        </li>
+                                      </ul>
+                                </div>
+                            </li>
+                            <li>Inside Canada
+                                <div class="wb-fieldflow-sub" data-wb-fieldflow="{&quot;renderas&quot;:&quot;radio&quot;,&quot;gcChckbxrdio&quot;:true}">
+                                    <p class="wb-fieldflow-label">Which of the following situations applies to you?</p>
+                                    <ul>
+                                    <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#extend&quot;}">You have a valid work permit and you need an <strong>extension</strong>.</li>
+                                    <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#study&quot;}">You have a valid <strong>study</strong> permit.</li>
+                                    <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#foreign-worker-family&quot;}">Your family member has a valid <strong>study</strong> or <strong>work</strong> permit.</li>
+                                    <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#pgwp&quot;}">You're a recent <strong>graduate</strong> from a designated learning institution (DLI).</li>
+                                    <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#ukraine&quot;}">You or your family member is a <strong>Ukrainian</strong> national.</li>
+                                    <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#temp-resident&quot;}">You or your family member has a <Strong>temporary resident</Strong> permit that is valid for six months or more.</li>
+                                    <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#asylum&quot;}">You or your family member is an <Strong>asylum</Strong> claimant.</li>
+                                    <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#refugee&quot;}">You've been recognized as a convention <strong>refugee</strong> or protected person.</li>
+                                    <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#vulnerable&quot;}">You're a <Strong>vulnerable</Strong> foreign worker who's a victim of abuse.</li>
+                                    <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#destitute&quot;}">You're a <strong>destitute</strong> student who's no longer able to meet the cost of your studies.</li>
+                                    <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#removal&quot;}">You're a under an unenforceable <Strong>removal</Strong> order.</li>
+                                    <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#cusma&quot;}">You’re a trader, investor, intra-company transferee or professional under the Canada – United States – Mexico Agreement (<strong>CUSMA</strong>).</li>
+                                    <li data-wb-fieldflow="{&quot;action&quot;:&quot;toggle&quot;, &quot;toggle&quot;:&quot;#none&quot;}">None of the above situations apply to me.</li>    
+                                </ul>
+                                </div>
+                            </li>
                         </ul>
+                        </div>
+                        </li>
                     </div>
-                        <input class="btn btn-primary mrgn-bttm-md" type="submit" value="Continue">
+                        <input class="btn btn-primary mrgn-bttm-lg btn-lg" type="submit" value="Check if you're eligible">
                 </form>
             </div>
             
-            <div class="result" id="visitor-visa">
+            <div class="result panel panel-default" id="outside-job-offer">
+            <div class="panel-body">
+            <h3 class="mrgn-tp-sm">You're eligible for a work permit</h3>
+            <p>Your work permit will be employer-specific, meaning you can only work for the employer who made you the job offer.</p>
+            <a class="btn btn-primary mrgn-tp-0 mrgn-bttm-md" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/apply.html">Apply for a work permit</a>
+            </div>
             </div>
 
-            <div class="result" id="eta">
+            <div class="result panel panel-default" id="none">
+                <div class="panel-body">
+                    <h3 class="mrgn-tp-sm">You're not eligible for a work permit</h3>
+                <p><a href="https://ircc.canada.ca/explore-programs/index.asp">Explore other ways to come to Canada</a>.</p>
+                </div>
             </div>
 
-            <div class="result" id="extend-stay">
+            <div class="result panel panel-default" id="iec">
+                <div class="panel-body">
+                    <h3 class="mrgn-tp-sm">You may be eligible for International Experience Canada (IEC)</h3>
+                <p>If you're 18 to 35 (18 to 30 in some countries), you may be eligible to work and travel in Canada through IEC for up to 2 years.</p>
+                <a class="btn btn-primary btn-lg mrgn-tp-0 mrgn-bttm-md" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/eligibility.html">Check if your country has an IEC arrangement</a>
+            </div>
             </div>
 
-            <div class="result" id="super-visa">
+            <div class="result panel panel-default" id="hong-kong">
+            <div class="panel-body">
+                <h3 class="mrgn-tp-sm">You're eligible for a work permit</h3>
+                <p>As a recent graduate from Hong Kong, you're eligible for an open work permit under a temporary public policy for Hong Kong residents.</p>
+                <p>An <strong>open work permit</strong> lets you work for any employer without a Labour Market Impact Assessment (LMIA).</p>
+                <p>You need special instructions to apply for this work permit.</p>
+                <a class="btn btn-primary btn-lg mrgn-tp-0 mrgn-bttm-md" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/open-work-permit-hong-kong-recent-graduates.html">Get instructions to apply</a>
+            </div>
             </div>
 
+            <div class="result panel panel-default" id="foreign-worker-family">
+                <div class="panel-body">
+                    <h3 class="mrgn-tp-sm">You're eligible for a work permit</h3>
+                    <p>As a family member of a foreign worker, you're eligible for an open work permit.</p>
+                    <p>An <strong>open work permit</strong> lets you work for any employer without a Labour Market Impact Assessment (LMIA).</p>
+                    <p>You need special instructions to apply for this work permit.</p>
+                    <a class="btn btn-primary btn-lg mrgn-tp-0 mrgn-bttm-md" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/open-work-permit-spouses-dependent-children.html">Get instructions to apply</a>
+                </div>
+                </div>
+
+                <div class="result panel panel-default" id="h1b-visa">
+                    <div class="panel-body">
+                        <h3 class="mrgn-tp-sm">You're eligible for a work permit</h3>
+                        <p>As anH-1B visa holder, you and your family members are eligible for an open work permit.</p>
+                        <p>An <strong>open work permit</strong> lets you work for any employer without a Labour Market Impact Assessment (LMIA).</p>
+                        <p>You need special instructions to apply for this work permit.</p>
+                        <a class="btn btn-primary btn-lg mrgn-tp-0 mrgn-bttm-md" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/h1b.html">Get instructions to apply</a>
+                    </div>
+                    </div>
+
+                    <div class="result panel panel-default" id="tr-pr">
+                        <div class="panel-body">
+                            <h3 class="mrgn-tp-sm">You're eligible for a work permit</h3>
+                            <p>As anH-1B visa holder, you and your family members are eligible for an open work permit.</p>
+                            <p>An <strong>open work permit</strong> lets you work for any employer without a Labour Market Impact Assessment (LMIA).</p>
+                            <p>You need special instructions to apply for this work permit.</p>
+                            <a class="btn btn-primary btn-lg mrgn-tp-0 mrgn-bttm-md" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/h1b.html">Get instructions to apply</a>
+                        </div>
+                        </div>
+
+                <div class="result panel panel-default" id="extend">
+                    <div class="panel-body">
+                        <h3 class="mrgn-tp-sm">You may be eligible for a work permit extension</h3>
+                        <p>If you have a work permit that’s about to expire or that you need to change, you must apply to extend it or change the conditions on it.</p>
+                        <p>You need special instructions for a work permit extension.</p>
+                        <a class="btn btn-primary btn-lg mrgn-tp-0 mrgn-bttm-md" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html">Get instructions to apply</a>
+                    </div>
+                    </div>
+
+                    <div class="result panel panel-default" id="study">
+                    <div class="panel-body">
+                        <h3 class="mrgn-tp-sm">You're eligible for a work permit</h3>
+                        <p>As a study permit holder, you're eligible for a work permit.</p>
+                        <a class="btn btn-primary btn-lg mrgn-tp-0 mrgn-bttm-md" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/apply.html">Apply for a work permit</a>
+                    </div>
+                    </div>
+
+                    <div class="result panel panel-default" id="pgwp">
+                        <div class="panel-body">
+                            <h3 class="mrgn-tp-sm">You may be eligible for a post-graduation work permit (PGWP)</h3>
+                            <p>As a recent graduate, you may be eligible for a PGWP if you graduated from <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/prepare/designated-learning-institutions-list.html">certain designated learning institutions (DLIs)</a>.</p>
+                            <p>You need special instructions to apply for a PGWP.</p>
+                            <a class="btn btn-primary btn-lg mrgn-tp-0 mrgn-bttm-md" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html">Get instructions to apply</a>
+                        </div>
+                        </div>
+
+                        <div class="result panel panel-default" id="ukraine">
+                            <div class="panel-body">
+                                <h3 class="mrgn-tp-sm">You're eligible for a work permit</h3>
+                                <p>As a Ukrainian national, you're eligible for an open work permit.</p>
+                                <p>An <strong>open work permit</strong> lets you work for any employer without a Labour Market Impact Assessment (LMIA).</p>
+                                <p>You need special instructions to apply for this work permit.</p>
+                                <a class="btn btn-primary btn-lg mrgn-tp-0 mrgn-bttm-md" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/ukraine-measures/ukraine-open-work-permit.html">Get instructions to apply</a>
+                            </div>
+                            </div>
+
+                            <div class="result panel panel-default" id="temp-resident">
+                                <div class="panel-body">
+                                    <h3 class="mrgn-tp-sm">You're eligible for a work permit</h3>
+                                    <p>As a temporary resident permit holder, you and your family members are eligible for a work permit.</p>
+                                    <a class="btn btn-primary btn-lg mrgn-tp-0 mrgn-bttm-md" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/apply.html">Apply for a work permit</a>
+                                </div>
+                                </div>
+
+                                <div class="result panel panel-default" id="asylum">
+                                    <div class="panel-body">
+                                        <h3 class="mrgn-tp-sm">You're eligible for a work permit</h3>
+                                        <p>As an asylum claimant, you and your family members are eligible for an open work permit.</p>
+                                        <p>An open work permit lets you work for any employer without a Labour Market Impact Assessment (LMIA).</p>
+                                        <p>If you <Strong>haven’t</Strong> already submitted your asylum claim, you can request a work permit in your online claim application. You don't need to apply for a work permit separately.</p>
+                                        <p>If you <strong>already</strong> submitted your asylum claim, but didn’t apply for a permit at the same time, you can apply for a work permit separately.</p>
+                                        <a class="btn btn-primary btn-lg mrgn-tp-0 mrgn-bttm-md" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/apply.html">Apply for a work permit</a>
+                                    </div>
+                                    </div>
+
+                                    <div class="result panel panel-default" id="temp-resident">
+                                        <div class="panel-body">
+                                            <h3 class="mrgn-tp-sm">You're eligible for a work permit</h3>
+                                            <p>As a recognized Convention refugee or protected person, you're eligible for an open work permit.</p>
+                                            <p>An <strong>open work permit</strong> lets you work for any employer without a Labour Market Impact Assessment (LMIA).</p>
+                                            <a class="btn btn-primary btn-lg mrgn-tp-0 mrgn-bttm-md" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/apply.html">Apply for a work permit</a>
+                                        </div>
+                                        </div>
+
+
+                
+                                        <div class="result panel panel-default" id="wait-pr">
+                                            <div class="panel-body">
+                                                <h3 class="mrgn-tp-sm">You're eligible for a work permit</h3>
+                                                <p>You can apply for a work permit while you wait for a decision on your permanent residence.</p>
+                                                <a class="btn btn-primary btn-lg mrgn-tp-0 mrgn-bttm-md" href="./topic-pages/wait-pr.html">Find your PR program to apply for a work permit</a>
+                                            </div>
+                                            </div>
             
-            <div class="result" id="transit">
-            </div>
-            
+
             
             <nav class="mrgn-bttm-lg mrgn-tp-lg">
                 <h3 class="wb-inv">Document navigation</h3>
