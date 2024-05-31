@@ -155,92 +155,139 @@
     <!--CONTENT STARTS HERE-->
     <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="container">
 
-        <div class="mwsmediaplayer section">
-
-            <!--CHANGE THE H1-->
-
-            <h1 property="name" id="wb-cont" dir="ltr">Test wizard creator - From image</h1>
-
-            <div class="wb-frmvld hidden" id="ff">
-                <form method="get">
-                    <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
-                        "noForm": true,
-                        "renderas": "radio",
-                        "gcChckbxrdio": true,
-                        "unhideelm": "#ff",
-                        "hideelm": "#content",
-                        "base": { "live": true },
-                        "default": {"action": "addClass", "source": "#content, #in-canada, #abroad, #in-canada-has-passport, #in-canada-no-passport, #abroad-has-passport, #abroad-no-passport", "class": "hidden"},
-                        "reset": {"action": "addClass", "source": "#content, #in-canada, #abroad, #in-canada-has-passport, #in-canada-no-passport, #abroad-has-passport, #abroad-no-passport", "class": "hidden"}
-                    }'>
-                        <p>Where are you?</p>
-                        <ul>
-                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#in-canada"}'>In Canada</li>
-                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#abroad"}'>Abroad</li>
-                        </ul>
-                    </div>
-                </form>
-            </div>
+        <div class="wb-frmvld hidden" id="ff">
+            <form method="get">
+                <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+                     "noForm": true,
+                     "renderas": "radio",
+                     "gcChckbxrdio": true,
+                     "unhideelm": "#ff",
+                     "hideelm": "#content",
+                     "base": { "live": true },
+                     "default": {"action": "addClass", "source": "#step2a-q, #step2b-q, #step2c-q", "class": "hidden"},
+                     "reset": {"action": "addClass", "source": "#step2a-q, #step2b-q, #step2c-q, #step2a-yes, #step2a-no, #step3a-q, #step3b-q, #step3c-q, #step4a-q, #step4b-q, #step5a-q, #step5b-q", "class": "hidden"}
+                 }'>
+                    <p>When do you need your passport?</p>
+                    <ul>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-q"}'>End of next business day</li>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-q"}'>2 to 9 days</li>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2c-q"}'>10 to 20 days or more</li>
+                    </ul>
+                </div>
+            </form>
+        </div>
         
-            <!-- In Canada -->
-            <div id="in-canada" class="hidden">
-                <form method="get">
-                    <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
-                        "noForm": true,
-                        "renderas": "radio",
-                        "gcChckbxrdio": true,
-                        "base": { "live": true },
-                        "default": {"action": "addClass", "source": "#in-canada-has-passport, #in-canada-no-passport", "class": "hidden"},
-                        "reset": {"action": "addClass", "source": "#in-canada-has-passport, #in-canada-no-passport", "class": "hidden"}
-                    }'>
-                        <p>Do you already have a passport?</p>
-                        <ul>
-                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#in-canada-has-passport"}'>Yes</li>
-                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#in-canada-no-passport"}'>No</li>
-                        </ul>
-                    </div>
-                </form>
-            </div>
+        <!-- Step 2A -->
+        <div id="step2a-q" class="hidden">
+            <form method="get">
+                <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+                     "noForm": true,
+                     "renderas": "radio",
+                     "gcChckbxrdio": true,
+                     "base": { "live": true },
+                     "default": {"action": "addClass", "source": "#step2a-yes, #step2a-no", "class": "hidden"},
+                     "reset": {"action": "addClass", "source": "#step2a-yes, #step2a-no", "class": "hidden"}
+                 }'>
+                    <p>Is it a weekend or stat holiday?</p>
+                    <ul>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-yes"}'>Yes</li>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-no"}'>No</li>
+                    </ul>
+                </div>
+            </form>
+        </div>
         
-            <!-- In Canada - Has Passport -->
-            <div id="in-canada-has-passport" class="hidden">
-                <p>Renew by mail</p>
-            </div>
+        <div id="step2a-yes" class="hidden">
+            <p>Call + Paper</p>
+        </div>
         
-            <!-- In Canada - No Passport -->
-            <div id="in-canada-no-passport" class="hidden">
-                <p>Go to a Service Canada Center</p>
-            </div>
+        <div id="step2a-no" class="hidden">
+            <p>Paper + In person urgent</p>
+        </div>
         
-            <!-- Abroad -->
-            <div id="abroad" class="hidden">
-                <form method="get">
-                    <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
-                        "noForm": true,
-                        "renderas": "radio",
-                        "gcChckbxrdio": true,
-                        "base": { "live": true },
-                        "default": {"action": "addClass", "source": "#abroad-has-passport, #abroad-no-passport", "class": "hidden"},
-                        "reset": {"action": "addClass", "source": "#abroad-has-passport, #abroad-no-passport", "class": "hidden"}
-                    }'>
-                        <p>Do you already have a passport?</p>
-                        <ul>
-                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#abroad-has-passport"}'>Yes</li>
-                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#abroad-no-passport"}'>No</li>
-                        </ul>
-                    </div>
-                </form>
-            </div>
+        <!-- Step 2B -->
+        <div id="step2b-q" class="hidden">
+            <p>Paper + In person express</p>
+        </div>
         
-            <!-- Abroad - Has Passport -->
-            <div id="abroad-has-passport" class="hidden">
-                <p>Renew online</p>
-            </div>
+        <!-- Step 2C -->
+        <div id="step2c-q" class="hidden">
+            <form method="get">
+                <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+                     "noForm": true,
+                     "renderas": "radio",
+                     "gcChckbxrdio": true,
+                     "base": { "live": true },
+                     "default": {"action": "addClass", "source": "#step3a-q, #step3b-q, #step3c-q", "class": "hidden"},
+                     "reset": {"action": "addClass", "source": "#step3a-q, #step3b-q, #step3c-q, #step4a-q, #step4b-q, #step5a-q, #step5b-q", "class": "hidden"}
+                 }'>
+                    <p>In person, mail or electronic?</p>
+                    <ul>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step3a-q"}'>In person</li>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step3b-q"}'>Mail</li>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step3c-q"}'>Electronic</li>
+                    </ul>
+                </div>
+            </form>
+        </div>
         
-            <!-- Abroad - No Passport -->
-            <div id="abroad-no-passport" class="hidden">
-                <p>Go to the embassy</p>
-            </div>
+        <div id="step3a-q" class="hidden">
+            <p>Paper + In person</p>
+        </div>
+        
+        <div id="step3b-q" class="hidden">
+            <form method="get">
+                <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+                     "noForm": true,
+                     "renderas": "radio",
+                     "gcChckbxrdio": true,
+                     "base": { "live": true },
+                     "default": {"action": "addClass", "source": "#step4a-q, #step4b-q", "class": "hidden"},
+                     "reset": {"action": "addClass", "source": "#step4a-q, #step4b-q", "class": "hidden"}
+                 }'>
+                    <p>In which province do you live?</p>
+                    <ul>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4a-q"}'>Province A</li>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4b-q"}'>Province B</li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        
+        <div id="step4a-q" class="hidden">
+            <p>Paper + Mail (Province A)</p>
+        </div>
+        
+        <div id="step4b-q" class="hidden">
+            <p>Paper + Mail (Province B)</p>
+        </div>
+        
+        <div id="step3c-q" class="hidden">
+            <form method="get">
+                <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+                     "noForm": true,
+                     "renderas": "radio",
+                     "gcChckbxrdio": true,
+                     "base": { "live": true },
+                     "default": {"action": "addClass", "source": "#step5a-q, #step5b-q", "class": "hidden"},
+                     "reset": {"action": "addClass", "source": "#step5a-q, #step5b-q", "class": "hidden"}
+                 }'>
+                    <p>Do you meet the criteria for eApp?</p>
+                    <ul>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step5a-q"}'>Yes</li>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step5b-q"}'>No</li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        
+        <div id="step5a-q" class="hidden">
+            <p>eApp</p>
+        </div>
+        
+        <div id="step5b-q" class="hidden">
+            <p>Paper + Mail</p>
+        </div>
 
             <div class="mwsgeneric-base-html parbase section">
 
