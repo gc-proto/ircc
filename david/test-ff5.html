@@ -162,52 +162,45 @@
                     "gcChckbxrdio": true,
                     "unhideelm": "#ff",
                     "hideelm": "#content",
-                    "base": { "live": true, "renderas": "radio", "gcChckbxrdio": true},
+                    "base": { "live": true, "renderas": "radio", "gcChckbxrdio": true },
                     "default": {"action": "addClass", "source": ".result", "class": "hidden"},
                     "reset": {"action": "addClass", "source": ".result", "class": "hidden"}
                 }'>
-                    <p>Are you applying for a child under 12 years old?</p>
+                    <p>Are you over 18?</p>
                     <ul>
-                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step1-yes"}'>Yes
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#under18"}'>No</li>
+                        <li>Yes
                             <div class="wb-fieldflow-sub">
-                                <p>Do you have a Canada Child Benefit for the child?</p>
+                                <p>Do you prefer beer, wine, or cocktails?</p>
                                 <ul>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2-yes"}'>Yes
-                                        <div class="wb-fieldflow-sub">
-                                            <p>Is your adjusted income less than $90,000?</p>
-                                            <ul>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step3a-yes"}'>Yes
-                                                    <div class="wb-fieldflow-sub">
-                                                        <p>Has your child received or will receive dental care services that are not fully paid or reimbursed by any government or insurance plan?</p>
-                                                        <ul>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#eligible"}'>Yes</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#not-eligible"}'>No</li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#not-eligible"}'>No</li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#not-eligible"}'>No</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#beer"}'>Beer</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#wine"}'>Wine</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#cocktails"}'>Cocktails</li>
                                 </ul>
                             </div>
                         </li>
-                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#not-eligible"}'>No</li>
                     </ul>
                 </div>
             </form>
         </div>
         
-        <!-- Eligible Result -->
-        <div id="eligible" class="hidden result">
-            <p>You are eligible for the dental benefit. Please proceed with the application.</p>
+        <!-- Results -->
+        <div id="under18" class="hidden result">
+            <p>Sorry, we can't serve you alcohol.</p>
         </div>
         
-        <!-- Not Eligible Result -->
-        <div id="not-eligible" class="hidden result">
-            <p>Based on your responses, you are not eligible for the dental benefit.</p>
+        <div id="beer" class="hidden result">
+            <p>Potential drinks: Lager, Ale, Stout, Pilsner.</p>
         </div>
+        
+        <div id="wine" class="hidden result">
+            <p>Potential drinks: Merlot, Chardonnay, Pinot Noir, Sauvignon Blanc.</p>
+        </div>
+        
+        <div id="cocktails" class="hidden result">
+            <p>Potential drinks: Margarita, Mojito, Old Fashioned, Martini.</p>
+        </div>
+        
         
         
         
