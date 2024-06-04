@@ -1,10 +1,12 @@
 <div class="wb-frmvld hidden" id="ff">
-        <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
-             "renderas": "radio",
-             "gcChckbxrdio": true,
-             "unhideelm": "#ff",
-             "hideelm": "#content",
-             "base": {  "renderas":"radio", "gcChckbxrdio": true },
+    <form method="get">
+    <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+        "noForm": true,
+        "renderas": "radio",
+        "gcChckbxrdio": true,
+        "unhideelm": "#ff",
+        "hideelm": "#content",
+        "base": { "live": true, "renderas": "radio", "gcChckbxrdio": true},
              "default": {"action": "addClass", "source": "#content, .result", "class": "hidden"},
              "reset": {"action": "addClass", "source": "#content, .result", "class": "hidden"}
          }'>
@@ -22,7 +24,9 @@
                 </li>
             </ul>
         </div>
-</div>
+    </form>
+    </div>
+    
 
 <!-- Option 1 answer -->
 <div id="option1-answer" class="hidden result">
