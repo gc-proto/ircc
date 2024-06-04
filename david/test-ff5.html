@@ -162,20 +162,35 @@
                     "gcChckbxrdio": true,
                     "unhideelm": "#ff",
                     "hideelm": "#content",
-                    "base": { "live": true, "renderas": "radio", "gcChckbxrdio": true },
+                    "base": { "live": true, "renderas": "radio", "gcChckbxrdio": true},
                     "default": {"action": "addClass", "source": ".result", "class": "hidden"},
                     "reset": {"action": "addClass", "source": ".result", "class": "hidden"}
                 }'>
-                    <p>Are you over 18?</p>
+                    <p>Do you have children under 18?</p>
                     <ul>
-                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#under18"}'>No</li>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step1-no"}'>No</li>
                         <li>Yes
                             <div class="wb-fieldflow-sub">
-                                <p>Do you prefer beer, wine, or cocktails?</p>
+                                <p>Are you the primary caregiver for these children?</p>
                                 <ul>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#beer"}'>Beer</li>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#wine"}'>Wine</li>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#cocktails"}'>Cocktails</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2-no"}'>No</li>
+                                    <li>Yes
+                                        <div class="wb-fieldflow-sub">
+                                            <p>Are you a Canadian resident?</p>
+                                            <ul>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step3-no"}'>No</li>
+                                                <li>Yes
+                                                    <div class="wb-fieldflow-sub">
+                                                        <p>Is your adjusted family net income less than $200,000?</p>
+                                                        <ul>
+                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4-no"}'>No</li>
+                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4-yes"}'>Yes</li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
@@ -184,24 +199,25 @@
             </form>
         </div>
         
-        <!-- Results -->
-        <div id="under18" class="hidden result">
-            <p>Sorry, we can't serve you alcohol.</p>
+        <div id="step1-no" class="hidden result">
+            <p>Not eligible for CCB as there are no children under 18.</p>
         </div>
         
-        <div id="beer" class="hidden result">
-            <p>Potential drinks: Lager, Ale, Stout, Pilsner.</p>
+        <div id="step2-no" class="hidden result">
+            <p>Not eligible for CCB as you are not the primary caregiver.</p>
         </div>
         
-        <div id="wine" class="hidden result">
-            <p>Potential drinks: Merlot, Chardonnay, Pinot Noir, Sauvignon Blanc.</p>
+        <div id="step3-no" class="hidden result">
+            <p>Not eligible for CCB as you are not a Canadian resident.</p>
         </div>
         
-        <div id="cocktails" class="hidden result">
-            <p>Potential drinks: Margarita, Mojito, Old Fashioned, Martini.</p>
+        <div id="step4-no" class="hidden result">
+            <p>Not eligible for CCB as the adjusted family net income exceeds the limit.</p>
         </div>
         
-        
+        <div id="step4-yes" class="hidden result">
+            <p>You are likely eligible for the Canada Child Benefit. Please apply through the CRA website.</p>
+        </div>
         
         
             <div class="mwsgeneric-base-html parbase section">
