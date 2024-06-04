@@ -154,74 +154,96 @@
 
     <!--CONTENT STARTS HERE-->
     <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="container">
+
         <div class="wb-frmvld hidden" id="ff">
-            <form method="get">
+           
             <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
-                "noForm": true,
-                "renderas": "radio",
-                "gcChckbxrdio": true,
-                "unhideelm": "#ff",
-                "hideelm": "#content",
-                "base": { "live": true },
-                "default": {"action": "addClass", "source": ".result", "class": "hidden"},
-                "reset": {"action": "addClass", "source": ".result", "class": "hidden"}
-            }'>
-                <p>Are you or your child under 12 years old?</p>
+                 "renderas": "radio",
+                 "gcChckbxrdio": true,
+                 "unhideelm": "#ff",
+                 "hideelm": "#content",
+                 "base": { "renderas":"radio", "gcChckbxrdio": true },
+                 "default": {"action": "addClass", "source": ".result", "class": "hidden"},
+                 "reset": {"action": "addClass", "source": ".result", "class": "hidden"}
+             }'>
+                <p>When do you need your passport?</p>
                 <ul>
-                    <li>Yes
+                    <li>End of next business day
                         <div class="wb-fieldflow-sub">
-                            <p>Is your annual adjusted family net income less than $90,000?</p>
+                            <p>Is it a weekend or stat holiday?</p>
                             <ul>
-                                <li>Yes
-                                    <div class="wb-fieldflow-sub">
-                                        <p>Do you have private dental insurance?</p>
-                                        <ul>
-                                            <li>Yes
-                                                <div class="wb-fieldflow-sub">
-                                                    <p>Are you receiving any other dental benefits from a government program for the services?</p>
-                                                    <ul>
-                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4-yes"}'>Yes</li>
-                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4-no"}'>No</li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step3-no"}'>No</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2-no"}'>No</li>
+                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-yes"}'>Yes</li>
+                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-no"}'>No</li>
                             </ul>
                         </div>
                     </li>
-                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step1-no"}'>No</li>
+                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-q"}'>2 to 9 days</li>
+                    <li>10 to 20 days or more
+                        <div class="wb-fieldflow-sub">
+                            <p>In person, mail or electronic?</p>
+                            <ul>
+                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step3a-q"}'>In person</li>
+                                <li>Mail
+                                    <div class="wb-fieldflow-sub">
+                                        <p>In which province do you live?</p>
+                                        <ul>
+                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4a-q"}'>Province A</li>
+                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4b-q"}'>Province B</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step3c-q"}'>Electronic
+                                    <div class="wb-fieldflow-sub">
+                                        <p>Do you meet the criteria for eApp?</p>
+                                        <ul>
+                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step5a-q"}'>Yes</li>
+                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step5b-q"}'>No</li>
+                                        </ul>
+                                    </div>
+        
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
-         </form>
+        
         </div>
-    
-        <!-- Results -->
-        <div id="step1-no" class="hidden result">
-            <p>You are not eligible for the Dental Benefit Act.</p>
-        </div>
-        <div id="step2-no" class="hidden result">
-            <p>You are not eligible for the Dental Benefit Act.</p>
-        </div>
-        <div id="step3-yes" class="hidden result">
-            <p>You are not eligible for the Dental Benefit Act.</p>
-        </div>
-        <div id="step3-no" class="hidden result">
-            <p>You are eligible for the Dental Benefit Act.</p>
-        </div>
-        <div id="step4-yes" class="hidden result">
-            <p>You are not eligible for the Dental Benefit Act.</p>
-        </div>
-        <div id="step4-no" class="hidden result">
-            <p>You are eligible for the Dental Benefit Act.</p>
-        </div>
-    
-
         
         
+        <div id="step2a-yes" class="hidden result">
+        <p>Call + Paper</p>
+        </div>
+        
+        <div id="step2a-no" class="hidden result">
+        <p>Paper + In person urgent</p>
+        </div>
+        
+        <!-- Step 2B -->
+        <div id="step2b-q" class="hidden result">
+        <p>Paper + In person express</p>
+        </div>
+        
+        
+        <div id="step3a-q" class="hidden result">
+        <p>Paper + In person</p>
+        </div>
+        
+        <div id="step4a-q" class="hidden result">
+        <p>Paper + Mail (Province A)</p>
+        </div>
+        
+        <div id="step4b-q" class="hidden result">
+        <p>Paper + Mail (Province B)</p>
+        </div>
+        
+        <div id="step5a-q" class="hidden result">
+        <p>eApp</p>
+        </div>
+        
+        <div id="step5b-q" class="hidden result">
+        <p>Paper + Mail</p>
+        </div>
             <div class="mwsgeneric-base-html parbase section">
 
                 <div class="row row-no-gutters mrgn-tp-xl">
@@ -425,11 +447,64 @@
 
     </div>
 
+    <script type="text/javascript">
+        _satellite.pageBottom();
+    </script>
 
+    <script src="https://test.canada.ca/covid-19-guidance/proto/js/alpha-banner.js"></script>
+    <script type="text/javascript" src="https://www.canada.ca/etc/clientlibs/granite/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.canada.ca/etc/clientlibs/granite/utils.min.js"></script>
+    <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/clientlib-publish.min.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-    <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
-    <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
-    </body>
+    <!--[if gte IE 9 | !IE ]><!-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/wet-boew.min.js"></script>
+    <!--<![endif]-->
+
+    <!--[if lt IE 9]>
+<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/ie8-wet-boew2.min.js"></script>
+<![endif]-->
+
+    <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
+
+    <script>
+        function hideAllSections() {
+            document.getElementById("questionAge").classList.add("hidden");
+            document.getElementById("questionFirstTime").classList.add("hidden");
+            document.getElementById("questionTravelling").classList.add("hidden");
+            document.getElementById("result").classList.add("hidden");
+        }
+
+        function checkAge(isOver18) {
+            hideAllSections();
+            if (isOver18) {
+                document.getElementById("questionFirstTime").classList.remove("hidden");
+            } else {
+                document.getElementById("outputText").innerText = "Don't Qualify";
+                document.getElementById("result").classList.remove("hidden");
+            }
+        }
+
+        function checkFirstTime(isFirstTime) {
+            hideAllSections();
+            if (isFirstTime) {
+                document.getElementById("questionTravelling").classList.remove("hidden");
+            } else {
+                document.getElementById("outputText").innerText = "Don't Qualify";
+                document.getElementById("result").classList.remove("hidden");
+            }
+        }
+
+        function checkTravelling(isTravellingAlone) {
+            hideAllSections();
+            if (isTravellingAlone) {
+                document.getElementById("outputText").innerText = "Qualify";
+            } else {
+                document.getElementById("outputText").innerText = "Don't Qualify";
+            }
+            document.getElementById("result").classList.remove("hidden");
+        }
+    </script>
+</body>
 
 </html>
