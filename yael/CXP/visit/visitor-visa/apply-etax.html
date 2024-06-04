@@ -243,42 +243,17 @@
 							  &quot;hideelm&quot;: &quot;.ff-hide, .cnt-rslt, #offline&quot;,
 							  &quot;live&quot;: true,
 							  &quot;base&quot;: { &quot;live&quot;: true, &quot;gcChckbxrdio&quot;:true, &quot;renderas&quot;: &quot;radio&quot; },
-							  &quot;default&quot; : [{&quot;action&quot;: &quot;addClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;.def, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .ircc-portal-secure-account, .btn-business, .super-visa, .business, .spouse, #offline&quot;}],
-							  &quot;reset&quot; : [{&quot;action&quot;: &quot;addClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;.def, .ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-secure-account, .ircc-portal-secure-account, .btn-business, .super-visa .business, .spouse, #offline&quot;},{&quot;action&quot;: &quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;dt, #online, .apply-paper&quot;}]
+							  &quot;default&quot; : [{&quot;action&quot;: &quot;addClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;#btn-submit, .cnt-rslt, .ircc-portal, .ircc-portal-cxp, .ircc-secure-account, .ircc-portal-secure-account, .btn-business, .super-visa, .business, .spouse, #offline&quot;}],
+							  &quot;reset&quot; : [{&quot;action&quot;: &quot;addClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;.def, .ff-hide, #btn-submit, .cnt-rslt, .ircc-portal, .ircc-portal-cxp, .ircc-secure-account, .ircc-portal-secure-account, .btn-business, .super-visa .business, .spouse, #offline&quot;},{&quot;action&quot;: &quot;removeClass&quot;, &quot;class&quot;: &quot;hidden&quot;, &quot;source&quot;: &quot;dt, #online, .apply-paper&quot;}]
 							  }">
 						<p>Why are you applying for a visitor visa?</p>
 						<ul>
-							<li>To visit as a tourist
-								<div class="wb-fieldflow-sub">
-									<div class="wb-fieldflow-header">
-										<p class="wb-fieldflow-label">Are you using a passport from one of the following countries?</p>
-								<ul>
-									<li>Antigua and Barbuda</li>
-									<li>Argentina</li>
-									<li>Brazil</li>
-									<li>Costa Rica</li>
-									<li>Mexico</li>
-									<li>Morocco</li>
-									<li>Panama</li>
-									<li>Philippines</li>
-									<li>St. Kitts and Nevis</li>
-									<li>St. Lucia</li>
-									<li>St. Vincent and the Grenadines</li>
-									<li>Seychelles</li>
-									<li>Thailand</li>
-									<li>Trinidad and Tobago</li>
-									<li>Uruguay</li>
-								</ul>
-								</div>
-									<ul>
-										<li data-wb-fieldflow='[{"action": "removeClass", "class": "hidden", "source": "#btn-submit, .tourist, .ircc-portal-only"}]'>Yes</li>
-										<li data-wb-fieldflow='[{"action": "removeClass", "class": "hidden", "source": "#btn-submit, .tourist, .ircc-portal"}]'>No</li>
-									</ul>
-							</li>
-							<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#btn-submit, .business, .ircc-portal&quot;}]">
+							<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#tourist, .ircc-portal-cxp, .alone&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-secure-account&quot;}, {&quot;action&quot;:&quot;append&quot;, &quot;source&quot;: &quot;#q-eta-x&quot;}]">
+								To visit as a tourist</li>
+							<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#btn-submit, .business, .ircc-portal-cxp&quot;}, {&quot;action&quot;:&quot;append&quot;, &quot;source&quot;: &quot;#q-eta-x&quot;}]">
 								To visit for business</li>
 			
-							<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#btn-submit, .spouse, .ircc-portal&quot;}]">
+							<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#btn-submit, .spouse, .ircc-portal-cxp&quot;}, {&quot;action&quot;:&quot;append&quot;, &quot;source&quot;: &quot;#q-eta-x&quot;}]">
 								To visit your spouse or partner who has sponsored you for permanent residence </li>
 			
 							<li>
@@ -291,28 +266,57 @@
 											Canada’s Indian Act</li>
 										<li data-wb-fieldflow="{&quot;action&quot;:&quot;append&quot;, &quot;source&quot;: &quot;#q2&quot;}">Canadian permanent resident
 										</li>
-										<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#temp-resident, .ircc-portal, #btn-submit&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-secure-account&quot;}]">
+										<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#temp-resident, .ircc-portal-cxp&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-secure-account&quot;}, {&quot;action&quot;:&quot;append&quot;, &quot;source&quot;: &quot;#q-eta-x&quot;}]">
 											Temporary resident in Canada</li>
 									</ul>
 								</div>
 							</li>
-							<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#compassionate, .ircc-portal, #btn-submit&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-secure-account&quot;}]">
+							<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#compassionate, .ircc-portal-cxp&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-secure-account&quot;}, {&quot;action&quot;:&quot;append&quot;, &quot;source&quot;: &quot;#q-eta-x&quot;}]">
 								For compassionate reasons</li>
-							<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#seafarer, .ircc-portal-secure-account, #btn-submit&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-portal, #online, .apply-paper&quot;}]">
+							<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#seafarer, .ircc-portal-cxp&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#online, .apply-paper&quot;}, {&quot;action&quot;:&quot;append&quot;, &quot;source&quot;: &quot;#q-eta-x&quot;}]">
 								To join a vessel as a marine crew member (known as a “seafarer”)</li>
-							<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#tourist, .ircc-secure-account, #btn-submit, #offline&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-portal, #online&quot;}]">
+							<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#tourist, .ircc-secure-account, #offline, #btn-submit&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-portal-cxp, #online&quot;}]">
 								None of the above</li>
 						</ul>
 					</div>
 					<div class="wb-fieldflow-sub hidden" id="q2">
 						<p>Do you plan to visit your children or grandchildren for more than 6 months?</p>
 						<ul>
-							<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.super-visa&quot;, &quot;live&quot;: true}]">
+							<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.super-visa&quot;}, {&quot;action&quot;:&quot;append&quot;, &quot;source&quot;: &quot;#q-eta-x&quot;}]">
 								Yes</li>
-							<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#imm-family, .ircc-portal, #btn-submit&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-secure-account&quot;}]">
+							<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;#imm-family, .ircc-portal-cxp&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-secure-account&quot;}], {&quot;action&quot;:&quot;append&quot;, &quot;source&quot;: &quot;#q-eta-x&quot;}">
 								No</li>
 						</ul>
 					</div>
+					<div class="wb-fieldflow-sub hidden" id="q-eta-x">
+						<div class="wb-fieldflow-header">
+							<p class="wb-fieldflow-label">Are you using a passport from one of these countries?</p>
+							<ul>
+								<li>Antigua and Barbuda</li>
+								<li>Argentina</li>
+								<li>Brazil</li>
+								<li>Costa Rica</li>
+								<li>Mexico</li>
+								<li>Morocco</li>
+								<li>Panama</li>
+								<li>Philippines</li>
+								<li>Seychelles</li>
+								<li>St. Kitts and Nevis</li>
+								<li>St. Lucia</li>
+								<li>St. Vincent and the Grenadines</li>
+								<li>Thailand</li>
+								<li>Trinidad and Tobago</li>
+								<li>Uruguay</li>
+							</ul>
+						</div>
+						<ul>
+							<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-portal, #btn-submit&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-portal-cxp, .ircc-secure-account&quot;}]">
+								Yes</li>
+								<li data-wb-fieldflow="[{&quot;action&quot;:&quot;removeClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-portal-cxp, #btn-submit&quot;}, {&quot;action&quot;:&quot;addClass&quot;, &quot;class&quot;:&quot;hidden&quot;, &quot;source&quot;:&quot;.ircc-portal, .ircc-secure-account&quot;}]">
+								No</li>
+						</ul>
+					</div>
+			
 			
 			
 			
@@ -1996,6 +2000,33 @@
 						</div>
 						<div class="ircc-portal mrgn-bttm-lg">
 			
+						<h3 class="mrgn-tp-md ff-hide">Apply through the IRCC Portal</h3>
+				
+								<p class="nojs-show">Only for tourists, visiting for business, family visits, compassionate reasons, and using a passport from one of the identified countries</p>
+								<div class="well well-sm brdr-rds-0 mrgn-tp-md">
+									<div class="panel mrgn-bttm-0 brdr-rds-0">
+										<div class="panel-body">
+											<div class="cnjnctn-type-or cnjnctn-md mrgn-tp-0 brdr-0 wb-eqht-grd">
+												<div class="cnjnctn-col d-flex flex-column">
+													<div class="eqht-trgt hght-inhrt h-100">
+														<h3 class="h4 text-muted mrgn-tp-sm">IRCC Portal</h3>
+														<p>You can use the IRCC Portal to apply for a visitor visa.</p>
+													</div>
+													<div class="row d-flex align-items-center ">
+														<div class="col-md-10"><a class="btn btn-primary btn-lg p-sm-3 text-center" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html">Sign in to the IRCC Portal</a></div>
+													</div>
+				
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							
+							
+			
+						</div>
+						<div class="ircc-portal-cxp mrgn-bttm-lg">
+			
 							<a href="/en/immigration-refugees-citizenship/services/visit-canada/business/visitors-events-conferences.html" class="btn btn-primary hidden btn-business">Continue<span class="wb-inv"> to Business visitors
 									attending meetings, events and conferences in Canada</span></a>
 			
@@ -2038,33 +2069,11 @@
 									</div>
 								</div>
 							</div>
+			
+							
+							
+			
 						</div>
-			
-						<div class="ircc-portal-only mrgn-bttm-lg">
-			
-							<h3 class="mrgn-tp-md ff-hide">Apply through the IRCC Portal</h3>
-				
-								<p class="nojs-show">Only for tourists, visiting for business, family visits, compassionate reasons, and using a passport from one of the identified countries</p>
-								<div class="well well-sm brdr-rds-0 mrgn-tp-md">
-									<div class="panel mrgn-bttm-0 brdr-rds-0">
-										<div class="panel-body">
-											<div class="cnjnctn-type-or cnjnctn-md mrgn-tp-0 brdr-0 wb-eqht-grd">
-												<div class="cnjnctn-col d-flex flex-column">
-													<div class="eqht-trgt hght-inhrt h-100">
-														<h3 class="h4 text-muted mrgn-tp-sm">IRCC Portal</h3>
-														<p>You can use the IRCC Portal to apply for a visitor visa.</p>
-													</div>
-													<div class="row d-flex align-items-center ">
-														<div class="col-md-10 col-md-offset-1"><a class="btn btn-primary btn-block btn-lg p-sm-3 text-center full-width" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html">Sign in to the IRCC Portal</a></div>
-													</div>
-				
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-						</div>
-			
 						<div class="ircc-portal-secure-account">
 							<h2>Apply through the IRCC Portal or the IRCC secure account</h2>
 							<p>To apply for a visitor visa to <strong>join a vessel as a marine crew member (seafarer)</strong>, you must</p>
@@ -2668,17 +2677,15 @@
 					<div class="col-xs-12">
 						<dl id="wb-dtmd">
 				<dt>Date modified:</dt>
-				<dd><time property="dateModified">2024-05-23</time></dd>
+				<dd><time property="dateModified">2024-06-04</time></dd>
 			</dl>
 					</div>
 				</div>
 			</section>
 			
 					</main>
-
-
-
-	<div class="par iparys_inherited">
+			
+		<div class="par iparys_inherited">
 		<div class="global-footer">
 			<footer id="wb-info">
 				<h2 class="wb-inv">About this site</h2>
