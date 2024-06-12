@@ -1,6 +1,30 @@
-.test {
-  color: #000;
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+header {
+  background-color: #350267;
+  color: #fff;
+  font-family: "Lexend", sans-serif !important;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 300;
 }
-.test a {
-  background-color: #ff0000;
+header .wurd-header {
+  padding: 20px 0;
+}
+header img {
+  padding-right: 20px;
+}
+header h1 {
+  font-family: "Lexend", sans-serif !important;
+  font-weight: 500 !important;
+  border: none !important;
+  margin: 0;
+}
+header a {
+  color: #fff;
+}
+header a:hover, header a:focus, header a:visited {
+  color: #D5C6FF;
+}
+header #wb-bc li:before {
+  color: #fff;
 }/*# sourceMappingURL=reporting.css.map */
