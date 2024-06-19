@@ -14,7 +14,7 @@
 
     <!--CHANGE THE TITLE-->
 
-    <title>Express Entry: Eligibility for the Federal Skilled Worker Program - Canada.ca</title>
+    <title>Express Entry: Who's eligible for the Federal Skilled Worker Program - Canada.ca</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta name="description" content=" " />
     <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
@@ -226,52 +226,6 @@
             <li>be paid work (you must have been paid wages or earned commission—volunteer work or unpaid internships don’t count)</li>
             <li>be at least <strong>1 year of continuous work</strong> or 1,560 hours total (30 hours per week)</li>
             </ul>
-
-            <h3>Skilled work experience</h3>
-            <p>Your primary occupation is the job you have experience in and want to base your immigration application on. It may not be your most recent work experience. </p>
-
-            <section>
-                <p>Your skilled work experience must:</p>
-                <fieldset class="provisional gc-chckbxrdio">
-                  <ul class="list-unstyled">
-                    <li class="checkbox">
-                      <input type="checkbox" id="elig1" class="action-checkbox">
-                      <label for="elig1">be in 1 of these National Occupational Classification (NOC) TEER categories: 0, 1, 2, or 3</label>
-                    </li>
-                    <li class="checkbox">
-                      <input type="checkbox" id="elig2" class="action-checkbox">
-                      <label for="elig2">be in the same type of job (have the same NOC) as your primary occupation</label>
-                    </li>
-                    <li class="checkbox">
-                      <input type="checkbox" id="elig3" class="action-checkbox">
-                      <label for="elig3">show that you performed:
-                        <ul>
-                            <li>the actions in the lead statement of the NOC job description, and</li>
-                            <li>most of the main duties listed</li>
-                        </ul></label>
-                    </li>
-                    <li class="checkbox">
-                      <input type="checkbox" id="elig4" class="action-checkbox">
-                      <label for="elig4">have been obtained within the last 10 years, in Canada or abroad</label>
-                    </li>
-                    <li class="checkbox">
-                        <input type="checkbox" id="elig5" class="action-checkbox">
-                        <label for="elig5">be paid work (you must have been paid wages or earned commission—volunteer work or unpaid internships don’t count)</label>
-                      </li>
-                      <li class="checkbox">
-                        <input type="checkbox" id="elig6" class="action-checkbox">
-                        <label for="elig6">be at least <strong>1 year of continuous work</strong> or 1,560 hours total (30 hours per week)</label>
-                      </li>
-                  </ul>
-                </fieldset>
-                <div class="clearfix"></div>
-                <div class="alert alert-warning" id="action-no-msg" aria-live="polite">
-                  <p>Your skilled work experience must meet all of the requirements to be eligible.</p>
-                </div>
-                <div class="alert alert-success hidden" id="action-msg1" aria-live="polite">
-                  <p>Your skilled work experience meets the criteria.</hp>
-                </div>
-              </section>
 
             <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/find-national-occupation-code.html" class="btn btn-primary btn-lg">Find your NOC</a></p>
 
@@ -806,6 +760,21 @@
     <script type="text/javascript" src="https://www.canada.ca/etc/clientlibs/granite/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.canada.ca/etc/clientlibs/granite/utils.min.js"></script>
     <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/clientlib-publish.min.js"></script>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+        $(".action-checkbox").change(function(){
+        if ($('.action-checkbox:checked').length == $('.action-checkbox').length) {
+        $("#action-msg1").removeClass("hidden").addClass("visible");
+        $("#action-no-msg").addClass("hidden").removeClass("visible");
+        }
+        if ($('.action-checkbox:checked').length !== $('.action-checkbox').length) {
+        $("#action-msg1").addClass("hidden").removeClass("visible");
+        $("#action-no-msg").removeClass("hidden").addClass("visible");
+        }
+        })
+});
+     </script>
 
     <!--[if gte IE 9 | !IE ]><!-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
