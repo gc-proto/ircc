@@ -139,6 +139,7 @@
                             <li><a href='https://www.canada.ca/en/services/immigration-citizenship.html'>Immigration and citizenship</a></li>
                             <li><a href='https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada.html'>Immigrate to Canada</a></li>
                             <li><a href='0-index.html'>Express Entry</a></li>
+                            <li><a href='1-who-can-apply.html'>Who can apply</a></li>
                         </ol>
                     </div>
                 </nav>
@@ -198,38 +199,59 @@
             
                 <h2 id="minimum">Minimum requirements</h2>
             
-            <h3 id="skilled">Skilled work experience</h3>
-            <p>Your skilled work experience must:</p>
-            <ul>
-                <li>be in 1 of these National Occupational Classification (NOC) TEER categories:
-                    <ul>
-                      <li>TEER 0</li>
-                      <li>TEER 1</li>
-                      <li>TEER 2</li>
-                      <li>TEER 3</li>
-                    </ul></li>
 
-                    <li>be in the same type of job (have the same NOC) as the job you want to use for your immigration application (called your primary occupation)
+            <h3>Skilled work experience</h3>
+            <section>
+                <p>Your skilled work experience must:</p>
+                <fieldset class="provisional gc-chckbxrdio">
+                  <ul class="list-unstyled">
+                    <li class="checkbox">
+                      <input type="checkbox" id="elig1" class="action-checkbox">
+                      <label for="elig1">be in 1 of these National Occupational Classification (NOC) TEER categories: 0, 1, 2, or 3</label>
+                    </li>
+                    <li class="checkbox">
+                      <input type="checkbox" id="elig2" class="action-checkbox">
+                      <label for="elig2">have the same NOC as the job you want to use for your immigration application (called your <strong>primary occupation)</strong>
                         <ul>
                             <li>Your primary occupation may not be your most recent work experience.</li>
-                        </ul>
+                        </ul></label>
                     </li>
-                    <li>show that you performed:
+                    <li class="checkbox">
+                      <input type="checkbox" id="elig3" class="action-checkbox">
+                      <label for="elig3">show that you performed:
                         <ul>
-                            <li>the actions in the <strong>lead statement</strong> of the NOC job description</li>
+                            <li>the actions in the <strong>lead statement</strong> of the NOC job description, and</li>
                             <li>most of the main duties listed</li>
-                        </ul>
+                        </ul></label>
                     </li>
-           
-            <li>have been obtained within the last 10 years, in Canada or abroad
-            </li>
-            <li>be paid work (you must have been paid wages or earned commission—volunteer work or unpaid internships don’t count)</li>
-            <li>be at least <strong>1 year of continuous work</strong> or 1,560 hours total (30 hours per week)</li>
-            </ul>
+                    <li class="checkbox">
+                      <input type="checkbox" id="elig4" class="action-checkbox">
+                      <label for="elig4">have been obtained within the last 10 years, in Canada or abroad</label>
+                    </li>
+                    <li class="checkbox">
+                        <input type="checkbox" id="elig5" class="action-checkbox">
+                        <label for="elig5">be paid work (you must have been paid wages or earned commission—volunteer work or unpaid internships don’t count)</label>
+                      </li>
+                      <li class="checkbox">
+                        <input type="checkbox" id="elig6" class="action-checkbox">
+                        <label for="elig6">be at least <strong>1 year of continuous work</strong> or 1,560 hours total (30 hours per week)</label>
+                      </li>
+                  </ul>
+                </fieldset>
+                <div class="clearfix"></div>
+                <div class="alert alert-warning" id="action-no-msg" aria-live="polite">
+                  <p>Your skilled work experience must meet all of the requirements to be eligible.</p>
+                </div>
+                <div class="alert alert-success hidden" id="action-msg1" aria-live="polite">
+                  <h4>Your skilled work experience meets the criteria</h4>
+                  <p>You may be eligible for the Federal Skilled Worker Program if you meet all other minimum requirements.</p>
+                </div>
+              </section>
 
             <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/find-national-occupation-code.html" class="btn btn-primary btn-lg">Find your NOC</a></p>
 
-            <h4>How to count your work hours</h4>
+            <div class="well mrgn-tp-lg">
+            <h4 class="mrgn-tp-sm">How to count your work hours</h4>
             <p>You can meet the 1,560 hour requirement in a few different ways:</p>
                         <ul>
                             <li><strong>full time at 1 job</strong>: 30 hours/week for 12 months = 1 year full time (1,560 hours)</li>
@@ -238,7 +260,7 @@
                             </li>
                             <li><strong>full time at more than 1 job</strong>: 30 hours/week for 12 months at more than 1 job = 1 year full time (1,560 hours)</li>
                          </ul>       
-
+            </div>
 
             
             <details class="mrgn-tp-lg"><summary><h4>Part-time work experience</h4></summary>

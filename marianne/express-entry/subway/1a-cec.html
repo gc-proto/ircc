@@ -139,6 +139,7 @@
                             <li><a href='https://www.canada.ca/en/services/immigration-citizenship.html'>Immigration and citizenship</a></li>
                             <li><a href='https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada.html'>Immigrate to Canada</a></li>
                             <li><a href='0-index.html'>Express Entry</a></li>
+                            <li><a href='1-who-can-apply.html'>Who can apply</a></li>
                         </ol>
                     </div>
                 </nav>
@@ -193,37 +194,59 @@
             </ul>
 
             <h2 id="work">Canadian skilled work experience</h2>
-            <p>Your skilled work experience must:</p>
-            <ul>
-                <li>be in 1 or more of these National Occupational Classification (NOC) TEER categories:
-                    <ul>
-                      <li>TEER 0</li>
-                      <li>TEER 1</li>
-                      <li>TEER 2</li>
-                      <li>TEER 3</li>
-                    </ul></li>
-            <li>be gained by working in Canada while authorized to work under temporary resident status</li>
-            <li>show that you performed:
-                <ul>
-                    <li>the actions in the <strong>lead statement</strong> of the NOC job description</li>
-                    <li>most of the main duties listed</li>
-                </ul>
-            </li>
-            <li>be paid work (you must have been paid wages or earned commission—volunteer work or unpaid internships don’t count)</li>
-            <li>be at least 1 year of continuous work or 1,560 hours total (30 hours per week) in the 3 years before you apply</li>
-            </ul>
+            <section>
+                <p>Your skilled work experience must:</p>
+                <fieldset class="provisional gc-chckbxrdio">
+                  <ul class="list-unstyled">
+                    <li class="checkbox">
+                      <input type="checkbox" id="elig1" class="action-checkbox">
+                      <label for="elig1">be in 1 of these National Occupational Classification (NOC) TEER categories: 0, 1, 2, or 3</label>
+                    </li>
+                    <li class="checkbox">
+                      <input type="checkbox" id="elig2" class="action-checkbox">
+                      <label for="elig2">be gained by working <Strong>in Canada</Strong> while authorized to work under temporary resident status</label>
+                    </li>
+                    <li class="checkbox">
+                      <input type="checkbox" id="elig3" class="action-checkbox">
+                      <label for="elig3">show that you performed:
+                        <ul>
+                            <li>the actions in the <strong>lead statement</strong> of the NOC job description, and</li>
+                            <li>most of the main duties listed</li>
+                        </ul></label>
+                    </li>
+                    <li class="checkbox">
+                        <input type="checkbox" id="elig4" class="action-checkbox">
+                        <label for="elig4">be paid work (you must have been paid wages or earned commission—volunteer work or unpaid internships don’t count)</label>
+                      </li>
+                      <li class="checkbox">
+                        <input type="checkbox" id="elig5" class="action-checkbox">
+                        <label for="elig5">be at least <strong>1 year of continuous work</strong> or 1,560 hours total (30 hours per week) in the 3 years before you apply</label>
+                      </li>
+                  </ul>
+                </fieldset>
+                <div class="clearfix"></div>
+                <div class="alert alert-warning" id="action-no-msg" aria-live="polite">
+                  <p>Your skilled work experience must meet all of the requirements to be eligible.</p>
+                </div>
+                <div class="alert alert-success hidden" id="action-msg1" aria-live="polite">
+                  <h4>Your skilled work experience meets the criteria</h4>
+                  <p>You may be eligible for the Canadian Experience Class if you meet all other minimum requirements.</p>
+                </div>
+              </section>
 
             <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/find-national-occupation-code.html" class="btn btn-primary btn-lg">Find your NOC</a></p>
 
-            <h3>How to count your work hours</h3>
-            <p>You can meet the 1,560 hour requirement in a few different ways:
+            <div class="well mrgn-tp-lg">
+            <h3 class="mrgn-tp-sm">How to count your work hours</h3>
+            <p>You can meet the 1,560 hour requirement in a few different ways:</p>
                         <ul>
                             <li><strong>full time at 1 job</strong>: 30 hours/week for 12 months = 1 year full time (1,560 hours)</li>
                             <li><strong>equal amount in part-time work</strong>: for example 15 hours/week for 24 months = 1 year full time (1,560 hours)
                                 <ul><li>You can work as many part-time jobs as you need to meet this requirement.</li></ul>
                             </li>
                             <li><strong>full time at more than 1 job</strong>: 30 hours/week for 12 months at more than 1 job = 1 year full time (1,560 hours)</li>
-                         </ul>       
+                         </ul>   
+            </div>    
 
 
             
@@ -497,6 +520,21 @@
     <script type="text/javascript" src="https://www.canada.ca/etc/clientlibs/granite/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.canada.ca/etc/clientlibs/granite/utils.min.js"></script>
     <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/clientlib-publish.min.js"></script>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+        $(".action-checkbox").change(function(){
+        if ($('.action-checkbox:checked').length == $('.action-checkbox').length) {
+        $("#action-msg1").removeClass("hidden").addClass("visible");
+        $("#action-no-msg").addClass("hidden").removeClass("visible");
+        }
+        if ($('.action-checkbox:checked').length !== $('.action-checkbox').length) {
+        $("#action-msg1").addClass("hidden").removeClass("visible");
+        $("#action-no-msg").removeClass("hidden").addClass("visible");
+        }
+        })
+});
+     </script>
 
     <!--[if gte IE 9 | !IE ]><!-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
