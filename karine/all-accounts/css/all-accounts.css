@@ -25,7 +25,7 @@
   background-color: #fff;
   margin: 0 45%;
 }
-.account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:after {
+.account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:first-child:after {
   background-color: #6f6f6f;
   background-size: 3px;
   content: " ";
@@ -34,9 +34,8 @@
   left: 0;
   position: absolute;
   bottom: -35px;
-  top: unset;
 }
-.account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:last-child:after {
+.account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:first-child):after {
   background: none;
   content: none;
   height: 0;

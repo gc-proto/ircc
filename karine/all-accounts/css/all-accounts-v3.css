@@ -5,20 +5,6 @@
 .account-chooser .panel.panel-default {
   border-width: 2px;
 }
-.account-chooser .panel.panel-default :has(> a.btn-link:focus), .account-chooser .panel.panel-default :has(> button.btn-link:focus) {
-  outline-offset: 4px;
-  outline: 5px auto -webkit-focus-ring-color;
-}
-.account-chooser .panel.panel-default :has(> a.btn-link:focus) a.btn-link:focus, .account-chooser .panel.panel-default :has(> a.btn-link:focus) button.btn-link:focus, .account-chooser .panel.panel-default :has(> button.btn-link:focus) a.btn-link:focus, .account-chooser .panel.panel-default :has(> button.btn-link:focus) button.btn-link:focus {
-  outline: none !important;
-}
-.account-chooser .panel-body.d-flex:has(a:focus) {
-  outline-offset: 4px;
-  outline: 5px auto -webkit-focus-ring-color;
-}
-.account-chooser .panel-body.d-flex:has(a:focus) a:focus {
-  outline: none !important;
-}
 .account-chooser .panel.panel-default:hover {
   box-shadow: 1px 5px 7px rgba(0, 0, 0, 0.15);
 }
@@ -42,7 +28,7 @@
   height: 1.8em;
   width: 1.8em;
   background-color: #fff;
-  margin: -1.5em calc(50% - 1.8em) 1em !important;
+  margin: -1.8em calc(50% - 1.8em) 1em !important;
   display: block;
   line-height: 1.5em !important;
 }
