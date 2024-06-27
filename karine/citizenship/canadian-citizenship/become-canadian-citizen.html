@@ -16,13 +16,13 @@
 
     <title>Apply for Canadian citizenship: adults and children</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <meta name="description" content=" " />
-    <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-    <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/theme.min.css" />
+    <meta name="description" content=" " >
+    <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" >
+    <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/theme.min.css" >
     <noscript>
-        <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
+        <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" >
     </noscript>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" >
 
 </head>
 
@@ -63,9 +63,9 @@
                         <img src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg" alt="Government of Canada" property="logo">
                     </a>
 
-                    <meta property="name" content="Government of Canada" />
-                    <meta property="areaServed" typeof="Country" content="Canada" />
-                    <link property="logo" href="https://www.canada.ca/etc/designs/canada/wet-boew/assets/wmms-blk.svg" />
+                    <meta property="name" content="Government of Canada" >
+                    <meta property="areaServed" typeof="Country" content="Canada" >
+                    <link property="logo" href="https://www.canada.ca/etc/designs/canada/wet-boew/assets/wmms-blk.svg" >
                 </div>
                 <section id="wb-srch" class="col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-12 col-sm-5 col-md-4">
                     <h2>Search</h2>
@@ -73,16 +73,16 @@
                     <form action="https://www.canada.ca/en/sr/srb.html" method="get" name="cse-search-box" role="search">
                         <div class="form-group wb-srch-qry">
                             <label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
-                            <input name="cdn" value="canada" type="hidden" />
-                            <input name="st" value="s" type="hidden" />
-                            <input name="num" value="10" type="hidden" />
-                            <input name="langs" value="en" type="hidden" />
-                            <input name="st1rt" value="1" type="hidden" />
-                            <input name="s5bm3ts21rch" value="x" type="hidden" />
+                            <input name="cdn" value="canada" type="hidden" >
+                            <input name="st" value="s" type="hidden" >
+                            <input name="num" value="10" type="hidden" >
+                            <input name="langs" value="en" type="hidden" >
+                            <input name="st1rt" value="1" type="hidden" >
+                            <input name="s5bm3ts21rch" value="x" type="hidden" >
 
-                            <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search Canada.ca" />
+                            <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search Canada.ca" >
 
-                            <input type="hidden" name="_charset_" value="UTF-8" />
+                            <input type="hidden" name="_charset_" value="UTF-8" >
 
                             <datalist id="wb-srch-q-ac">
                             </datalist>
@@ -168,20 +168,31 @@
                     <div class="row">
                         <div class="col-xs-2 col-lg-3"><img src="https://www.canada.ca/content/dam/ircc/images/icons/ptclock.png" alt="" class="img-responsive"></div>
                         <div class="col-xs-10 col-md-8 col-lg-9">
-                            <h3 class="mrgn-bttm-0 mrgn-tp-sm">Processing times</h3>
+                            <h2 class="mrgn-bttm-0 mrgn-tp-sm h3">Processing times</h2>
                             <div id="jsonmanagernoncountry" data-wb-jsonmanager="{
                                     &quot;url&quot;: &quot;https://www.canada.ca/content/dam/ircc/documents/json/data-ptime-non-country-en.json&quot;,
                                     &quot;name&quot;: &quot;ptime&quot;
                                 }"></div>
-                            <p class="mrgn-bttm-0"><span data-json-replace="#[ptime]/citizenship/grant_after2015">We couldn't load the data. Try again.</span></p>
-                            <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check processing times</a></p>
-                            <p>The processing time </p>
-                            <ul>
-                                <li>starts when we receive your <strong>complete </strong>application (no missing information or documents) </li>
-                                <li>ends when you become a Canadian citizen </li>
-                                <li>includes the citizenship test and ceremony, if applicable </li>
-                                <li>can be longer if the application is <a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1169&top=5">non-routine or complex</a></li>
-                            </ul>
+                            <!-- TODO -->
+                            <!-- Uncommet below code when moved to Canada.ca's AEM-->
+                            <!-- <p class="mrgn-bttm-0"><span data-json-replace="#[ptime]/citizenship/grant_after2015">We couldn't load the data. Try again.</span></p> -->
+                            <p class="mrgn-bttm-0"><span>8 months</span></p> <!-- remove when moved to Canada.ca's AEM-->
+                            <details>
+                                <summary>About the processing time</summary>
+                                <p>The processing time</p>
+                                <ul>
+                                    <li>starts when we receive your <strong>complete</strong> application (no missing information or documents)</li>
+                                    <li>ends when you become a Canadian citizen</li>
+                                    <li>includes the citizenship test and ceremony, if applicable</li>
+                                    <li>can be longer if the application is <a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1169&top=5">non-routine or complex</a></li>
+                                </ul>
+                                <p>It’s also based on</p>
+                                <ul>
+                                    <li>how many applications we have in our inventory</li>
+                                    <li>how many people we have processing this type of application</li>
+                                    <li>how many applications we expect to get</li>
+                                </ul>
+                            </details>
 
 
                             <section id="processing-times" class="mfp-hide modal-dialog modal-content overlay-def">
@@ -204,7 +215,6 @@
                             </section>
                         </div>
                     </div>
-
                 </section>
                 <section class="well brdr-rds-0 position-relative">
                     <div class="row">
@@ -327,7 +337,7 @@
                             </ul>
                         </nav>
                         <div class="wtrmrk align-self-end">
-                            <img src="https://www.canada.ca//etc/designs/canada/wet-boew/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+                            <img src="https://www.canada.ca//etc/designs/canada/wet-boew/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" >
                         </div>
                     </div>
                 </div>
