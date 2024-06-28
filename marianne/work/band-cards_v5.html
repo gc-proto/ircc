@@ -30,37 +30,48 @@
             text-decoration: none;
             color: inherit; /* Ensure the link inherits the color of its parent */
         }
-
+    
         .panel a:visited {
             color: inherit; /* Ensure visited links do not change color */
         }
-
-
+    
         .position-relative {
             position: relative;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
         }
-
+    
         .panel {
             background-color: #fff; /* Initial background color */
-            border: 5px solid transparent; /* Initial border */
+            border: none; /* Remove initial border */
+            position: relative;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
         }
-
-        .panel:hover {
-            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
-            border-bottom: 5px solid #2b4380; /* Change border color on hover */
+    
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0; /* Initial width */
+            height: 100%;
+            background-color: #2b4380; /* Border color */
+            transition: width 0.3s ease-in-out;
         }
-
+    
+        .panel:hover::before {
+            width: 10px; /* Width of the left border on hover */
+        }
+    
         .panel .fas {
             transition: transform 0.1s ease-in-out, font-size 0.1s ease-in-out;
             font-size: 1em; /* Initial font size */
         }
-
+    
         .panel:hover .fas {
             color: #2b4380; /* Change arrow color on hover */
         }
     </style>
+    
 </head>
 
 
