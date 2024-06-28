@@ -26,52 +26,32 @@
    
     <style>
         /* Remove underline from the link and set the color to stay the same */
-        .panel a {
-            text-decoration: none;
-            color: inherit; /* Ensure the link inherits the color of its parent */
-        }
-    
-        .panel a:visited {
+       .panel a:visited {
             color: inherit; /* Ensure visited links do not change color */
         }
-    
+
+
         .position-relative {
             position: relative;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
         }
-    
+
         .panel {
             background-color: #fff; /* Initial background color */
-            border: none; /* Remove initial border */
-            position: relative;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            border: 1.5px solid #26374A; 
         }
-    
-        .panel::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0; /* Initial width */
-            height: 100%;
-            background-color: #26374a; /* Border color */
-            transition: width 0.3s ease-in-out;
+
+        .panel:hover {
+            background-color: rgba(241, 242, 243, 0.5); /* Background color on hover */
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
         }
-    
-        .panel:hover::before {
-            width: 10px; /* Width of the left border on hover */
-        }
-    
-        .panel .fas {
-            transition: transform 0.1s ease-in-out, font-size 0.1s ease-in-out;
-            font-size: 1em; /* Initial font size */
-        }
-    
-        .panel:hover .fas {
-            color: #26374a; /* Change arrow color on hover */
+  
+        .panel a:hover {
+            color: #0535d2; /* Change text color on hover */
+            text-decoration: underline; /* Add underline on hover */
+            text-decoration-thickness: 3px; /* Thicker underline */
+            text-underline-offset: 3px; /* Offset the underline for better visibility */
         }
     </style>
-    
 </head>
 
 
@@ -223,12 +203,13 @@
 
     
 	
-                    <section class="well-sm" style="background-color: #DEE7F0;">
+                    <section class="well-sm">
                         <div class="container">
 
                       
                           <h2 class="mrgn-tp-lg mrgn-bttm-lg">Before you apply</h2>
                     
+
 
                     <div class="row wb-eqht-grd gc-srvinfo">
                         <div class="col-xs-12 col-md-4">
@@ -320,7 +301,7 @@
                       </div>
                     </div>
                     </section>
-                    <section class="well-sm" style="background-color: #DEE7F0;">
+                    <section class="well-sm">
                         <div class="container">
                           <h2 class="mrgn-tp-lg mrgn-bttm-lg">Manage your application</h2>
 
@@ -402,7 +383,7 @@
                     </div>
                     </section>	
                     
-                    <section class="well-sm" style="background-color: #DEE7F0;">
+                    <section class="well-sm">
                         <div class="container">
                           <h2 class="mrgn-tp-lg mrgn-bttm-lg">Canadian employers</h2>
 
