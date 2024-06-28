@@ -23,6 +23,34 @@
     </noscript>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
 
+    <style>
+        .position-relative {
+            position: relative;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        }
+
+        .panel {
+            background-color: #fff; /* Initial background color */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        }
+
+        .panel:hover {
+            background-color: #f4fbff; /* Background color on hover */
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+            border: 1px solid #0535d2; /* Change border color on hover */
+        }
+
+        .panel .fas {
+            transition: transform 0.1s ease-in-out, font-size 0.1s ease-in-out;
+            font-size: 1em; /* Initial font size */
+        }
+
+        .panel:hover .fas {
+            font-size: 1.1em; /* Increase font size on hover */
+            color: #0535d2; /* Change arrow color on hover */
+        }
+    </style>>
+
 </head>
 
 
