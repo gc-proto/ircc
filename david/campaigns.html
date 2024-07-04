@@ -166,31 +166,49 @@
                     "default": {"action": "addClass", "source": ".result", "class": "hidden"},
                     "reset": {"action": "addClass", "source": ".result", "class": "hidden"}
                 }'>
-                    <p>Do you have children under 18?</p>
+                    <p>What are you trying to promote?</p>
                     <ul>
-                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step1-no"}'>No</li>
-                        <li>Yes
+                        <li>New high profile initiative or service
                             <div class="wb-fieldflow-sub">
-                                <p>Are you the primary caregiver for these children?</p>
+                                <p>Is the initiative temporary or permanent?</p>
                                 <ul>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2-no"}'>No</li>
-                                    <li>Yes
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#temp-initiative"}'>Temporary</li>
+                                    <li>Permanent
                                         <div class="wb-fieldflow-sub">
-                                            <p>Are you a Canadian resident?</p>
+                                            <p>Is there a need to highlight key messages?</p>
                                             <ul>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step3-no"}'>No</li>
-                                                <li>Yes
-                                                    <div class="wb-fieldflow-sub">
-                                                        <p>Is your adjusted family net income less than $200,000?</p>
-                                                        <ul>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4-no"}'>No</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4-yes"}'>Yes</li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#perm-highlight-yes"}'>Yes</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#perm-highlight-no"}'>No</li>
                                             </ul>
                                         </div>
                                     </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>Major changes to existing program/service
+                            <div class="wb-fieldflow-sub">
+                                <p>Is there a need to highlight key messages?</p>
+                                <ul>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#major-changes-highlight-yes"}'>Yes</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#major-changes-highlight-no"}'>No</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>Regular/cyclical promotion of an existing high-priority program/service
+                            <div class="wb-fieldflow-sub">
+                                <p>Is there an impactful change to highlight?</p>
+                                <ul>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#regular-highlight-yes"}'>Yes</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#regular-highlight-no"}'>No</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>Reporting on IRCC’s work and impact
+                            <div class="wb-fieldflow-sub">
+                                <p>Is it a temporary promotion of departmental actions/results, or is it a permanent report?</p>
+                                <ul>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#temp-promotion"}'>Temporary promotion</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#perm-report"}'>Permanent reporting</li>
                                 </ul>
                             </div>
                         </li>
@@ -199,26 +217,49 @@
             </form>
         </div>
         
-        <div id="step1-no" class="hidden result">
-            <p>Not eligible for CCB as there are no children under 18.</p>
+        <!-- Results -->
+        <div id="temp-initiative" class="hidden result">
+            <p>Create a temporary campaign page, and sunset it when the initiative is done.</p>
+            <p>If the initiative becomes permanent, port the content to Canada.ca core content.</p>
         </div>
         
-        <div id="step2-no" class="hidden result">
-            <p>Not eligible for CCB as you are not the primary caregiver.</p>
+        <div id="perm-highlight-yes" class="hidden result">
+            <p>Create a temporary campaign page, for the duration of the marketing campaign.</p>
+            <p>The temporary campaign would focus on what’s new, how it impacts people, and the core content would be the authoritative content on the actual program/service/initiative.</p>
         </div>
         
-        <div id="step3-no" class="hidden result">
-            <p>Not eligible for CCB as you are not a Canadian resident.</p>
+        <div id="perm-highlight-no" class="hidden result">
+            <p>Create permanent Canada.ca core content, with all the details.</p>
+            <p>Have the marketing campaign lead directly to the Canada.ca core content.</p>
         </div>
         
-        <div id="step4-no" class="hidden result">
-            <p>Not eligible for CCB as the adjusted family net income exceeds the limit.</p>
+        <div id="major-changes-highlight-yes" class="hidden result">
+            <p>Create a temporary campaign page, for the duration of the marketing campaign.</p>
+            <p>The temporary campaign would focus on what’s new, how it impacts people, and the core content would be the authoritative content on the actual program/service/initiative.</p>
         </div>
         
-        <div id="step4-yes" class="hidden result">
-            <p>You are likely eligible for the Canada Child Benefit. Please apply through the CRA website.</p>
+        <div id="major-changes-highlight-no" class="hidden result">
+            <p>Update the permanent Canada.ca core content, with all the details.</p>
+            <p>Have the marketing campaign lead directly to the Canada.ca core content.</p>
         </div>
         
+        <div id="regular-highlight-yes" class="hidden result">
+            <p>Create a temporary campaign page, for the duration of the marketing campaign. Make that campaign page very high-level, leading to the core content as soon as possible.</p>
+        </div>
+        
+        <div id="regular-highlight-no" class="hidden result">
+            <p>Update the permanent Canada.ca core content, with all the details - use evidence and research to make it as good as possible, focusing on user tasks and enabling people to get what they need; deviate from regular Canada.ca templates if needed.</p>
+        </div>
+        
+        <div id="temp-promotion" class="hidden result">
+            <p>Create a temporary campaign page, highlighting key takeaways and messages.</p>
+            <p>Link to the full corporate report (as Canada.ca core content), if applicable.</p>
+        </div>
+        
+        <div id="perm-report" class="hidden result">
+            <p>Create a corporate report in the Canada.ca core content.</p>
+            <p>Make it compelling, clear, focusing on what people are looking for from that report.</p>
+        </div>
         
             <div class="mwsgeneric-base-html parbase section">
 
