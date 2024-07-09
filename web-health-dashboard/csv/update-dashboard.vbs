@@ -10,7 +10,7 @@ Sub ExcelMacroExample()
   Dim xlBook 
 
   Set xlApp = CreateObject("Excel.Application") 
-  Set xlBook = xlApp.Workbooks.Open("Z:\test\karine\wurd\web-health-dashboard\csv\format-csv-dashboard.xlsm", 0, True) 
+  Set xlBook = xlApp.Workbooks.Open("C:\github\ircc\web-health-dashboard\csv\format-csv-dashboard.xlsm", 0, True) 
   xlApp.Run "import_csv"
   xlApp.Quit 
 
