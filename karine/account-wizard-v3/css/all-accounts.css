@@ -12,13 +12,16 @@
   cursor: default;
   color: #333 !important;
 }
-.account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:first-child) {
+
+[class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:first-child) {
   margin-top: -5px !important;
 }
-.account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:last-child) {
+
+[class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:last-child) {
   margin-bottom: 0 !important;
 }
-.account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:first-child):before {
+
+[class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:first-child):before {
   border-color: #6f6f6f;
   border-style: solid;
   font-size: 16px;
@@ -32,7 +35,8 @@
   display: block;
   line-height: 1.5em !important;
 }
-.account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:after {
+
+[class*=cnjnctn-type-] > [class*=cnjnctn-col]:after {
   background-color: #6f6f6f !important;
   background-size: 3px !important;
   content: " " !important;
@@ -43,7 +47,8 @@
   position: relative !important;
   display: block !important;
 }
-.account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:last-child:after {
+
+[class*=cnjnctn-type-] > [class*=cnjnctn-col]:last-child:after {
   background: none !important;
   content: none !important;
   height: 0 !important;
