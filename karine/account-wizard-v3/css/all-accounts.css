@@ -1,27 +1,23 @@
 #account-chooser {
   outline: none !important;
 }
-
-.account-chooser .panel.panel-default {
+#account-chooser .panel.panel-default {
   border-width: 2px;
 }
-.account-chooser .panel.panel-default:hover {
+#account-chooser .panel.panel-default:hover {
   box-shadow: 1px 5px 7px rgba(0, 0, 0, 0.15);
 }
-.account-chooser panel-heading .button {
+#account-chooser panel-heading .button {
   cursor: default;
   color: #333 !important;
 }
-
-[class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:first-child) {
+#account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:first-child) {
   margin-top: -5px !important;
 }
-
-[class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:last-child) {
+#account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:last-child) {
   margin-bottom: 0 !important;
 }
-
-[class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:first-child):before {
+#account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:not(:first-child):before {
   border-color: #6f6f6f;
   border-style: solid;
   font-size: 16px;
@@ -35,8 +31,7 @@
   display: block;
   line-height: 1.5em !important;
 }
-
-[class*=cnjnctn-type-] > [class*=cnjnctn-col]:after {
+#account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:after {
   background-color: #6f6f6f !important;
   background-size: 3px !important;
   content: " " !important;
@@ -47,8 +42,7 @@
   position: relative !important;
   display: block !important;
 }
-
-[class*=cnjnctn-type-] > [class*=cnjnctn-col]:last-child:after {
+#account-chooser [class*=cnjnctn-type-] > [class*=cnjnctn-col]:last-child:after {
   background: none !important;
   content: none !important;
   height: 0 !important;
