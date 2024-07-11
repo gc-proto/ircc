@@ -86,25 +86,25 @@ $(document).on("wb-ready.wb", function (event) {
         let daily_average = (data.map(function (d) { return d["Daily average visits"]; }))[0]
         let daily_average_lastMonth = (data.map(function (d) { return d["Daily average visits - Month before"]; }))[0]
         document.getElementById('daily-average-visits').innerHTML = formatNumber(daily_average);
-        difference(daily_average, daily_average_lastMonth, "daily-average-visits-change");
+        difference(daily_average, daily_average_lastMonth, "daily-average-visits-change", "month");
 
         // Visits & Visits - Month before
         let total_visits = (data.map(function (d) { return d["Visits"]; }))[0]
         let total_visits_lastMonth = (data.map(function (d) { return d["Visits - Month before"]; }))[0]
         document.getElementById('total-visits').innerHTML = formatNumber(total_visits);
-        difference(total_visits, total_visits_lastMonth, "total-visits-change");
+        difference(total_visits, total_visits_lastMonth, "total-visits-change", "month");
 
         // Page Views per Visit & Page Views per Visit
         let page_views_visit = (data.map(function (d) { return d["Page Views per Visit"]; }))[0]
         let page_views_visits_lastMonth = (data.map(function (d) { return d["Page Views per Visit - Month before"]; }))[0]
         document.getElementById('page-views-visits').innerHTML = formatNumber(page_views_visit);
-        difference(page_views_visit, page_views_visits_lastMonth, "page-views-visits-change");
+        difference(page_views_visit, page_views_visits_lastMonth, "page-views-visits-change", "month");
 
         //Daily average page views,Daily average page views - Month before,
         let page_views = (data.map(function (d) { return d["Daily average page views"]; }))[0]
         let page_views_lastMonth = (data.map(function (d) { return d["Daily average page views - Month before"]; }))[0]
         document.getElementById('daily-average-page-views').innerHTML = formatNumber(page_views);
-        difference(page_views, page_views_lastMonth, "daily-average-page-views-change");
+        difference(page_views, page_views_lastMonth, "daily-average-page-views-change", "month");
 
         // Page Views,Page Views - Month before
         let total_page_views = d3.sum(data, function (d, i) {
@@ -1085,16 +1085,16 @@ $(document).on("wb-ready.wb", function (event) {
 
 
         document.getElementById('tss-survey-prev-quarter').innerHTML = d3.format(",")(surveyResponses);
-        difference(surveyResponses, surveyResponsesPrior, "tss-survey-prev-quarter-change");
+        difference(surveyResponses, surveyResponsesPrior, "tss-survey-prev-quarter-change", "quarter");
 
         document.getElementById('tss-satisfaction-prev-quarter').innerHTML = d3.format("0.1%")(satisfaction);
-        difference(satisfaction, satisfactionPrior, "tss-satisfaction-prev-quarter-change");
+        difference(satisfaction, satisfactionPrior, "tss-satisfaction-prev-quarter-change", "quarter");
 
         document.getElementById('tss-ease-prev-quarter').innerHTML = d3.format("0.1%")(ease);
-        difference(ease, easePrior, "tss-ease-prev-quarter-change");
+        difference(ease, easePrior, "tss-ease-prev-quarter-change", "quarter");
 
         document.getElementById('tss-completion-prev-quarter').innerHTML = d3.format("0.1%")(completion);
-        difference(completion, completionPrior, "tss-completion-prev-quarter-change");
+        difference(completion, completionPrior, "tss-completion-prev-quarter-change", "quarter");
 
         d3.csv("csv/export/tss.txt?" + today, function (data) {
             data.forEach(function (d, i) {
@@ -1507,7 +1507,7 @@ $(document).on("wb-ready.wb", function (event) {
     });
 
 
-    function difference(a, b, elm) {
+    function difference(a, b, elm, daterange) {
 
         let dif = parseFloat((Math.abs((a - b) / b)) * 100).toFixed(1);
 
@@ -1515,7 +1515,7 @@ $(document).on("wb-ready.wb", function (event) {
             if (a > b) {
                 document.getElementById(elm).innerHTML = '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(dif) + "%";
                 let text = document.createElement('div');
-                text.innerHTML = "<span class=\"small\">increase from last month</span>"
+                text.innerHTML = "<span class=\"small\">increase from last "+daterange+"</span>"
                 document.getElementById(elm).insertAdjacentElement('afterend', text);
                 document.getElementById(elm).classList.add('text-success');
             }
@@ -1523,7 +1523,7 @@ $(document).on("wb-ready.wb", function (event) {
 
                 document.getElementById(elm).innerHTML = '<i class="fas fa-caret-down"></i>&nbsp;' + d3.format(",")(dif) + "%";
                 let text = document.createElement('div');
-                text.innerHTML = "<span class=\"small\">decrease from last month</span>"
+                text.innerHTML = "<span class=\"small\">decrease from last "+daterange+"</span>"
                 document.getElementById(elm).insertAdjacentElement('afterend', text);
                 document.getElementById(elm).classList.add('text-danger');
             }
