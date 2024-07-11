@@ -1290,11 +1290,11 @@ $(document).on("wb-ready.wb", function (event) {
     d3.csv("csv/export/top-crisis.csv?" + today, function (data) {
 
         data.forEach(function (d) {
-            d["IRCC crisis content (E/F)"] = d["IRCC crisis content (E/F)"];
+            d["Special measures (E/F)"] = d["Special measures (E/F)"];
             d["Visits"] = d3.format(",")(d["Visits"]);
         });
 
-        tabulate("crisis-content-table", data, "Top crisis content", ['IRCC crisis content (E/F)', 'Visits']);
+        tabulate("crisis-content-table", data, "Top special measures content", ['Special measures (E/F)', 'Visits']);
         $("#crisis-content-table").trigger("wb-init.gc-table");
     });
 
@@ -1306,8 +1306,8 @@ $(document).on("wb-ready.wb", function (event) {
             return true;
         });
 
-        let label = "% of IRCC traffic to crisis content";
-        let y1 = data.map(function (d) { return parseFloat(d["% of IRCC traffic to crisis content"]).toFixed(3) })
+        let label = "% of IRCC traffic to special measures";
+        let y1 = data.map(function (d) { return parseFloat(d["% of IRCC traffic to special measures"]).toFixed(3) })
         let y2 = data.map(function (d) { return parseFloat(d["Month before"]).toFixed(3) })
         let x = data.map(function (d) { return d["Day"] });
 
@@ -1375,11 +1375,11 @@ $(document).on("wb-ready.wb", function (event) {
 
         data.forEach(function (d) {
             d["Day"] = d["Day"];
-            d["% of IRCC traffic to crisis content"] = d3.format("0.2%")(d["% of IRCC traffic to crisis content"]);
+            d["% of IRCC traffic to special measures"] = d3.format("0.2%")(d["% of IRCC traffic to special measures"]);
             d["Month before"] = d3.format("0.2%")(d["Month before"]);
         });
 
-        tabulate("crisis-traffic-table", data, "Crisis traffic", ['Day', '% of IRCC traffic to crisis content', 'Month before']);
+        tabulate("crisis-traffic-table", data, "Crisis traffic", ['Day', '% of IRCC traffic to special measures', 'Month before']);
         $("#crisis-traffic-table").trigger("wb-init.gc-table");
     });
 
