@@ -40,7 +40,7 @@
           background: #fff;
           padding: 20px;
           border-radius: 8px;
-          max-width: 900px; /* Increase max-width */
+          max-width: 1200px; /* Increase max-width */
           width: 90%;
           max-height: 90vh;
           overflow: auto;
@@ -48,13 +48,13 @@
         }
         .button-container {
           text-align: right;
-          margin-top: 10px;
-          position: absolute;
-          bottom: 10px;
-          right: 10px;
+          margin-bottom: 10px;
           background: #fff;
           padding: 10px;
           border-radius: 8px;
+          position: sticky;
+          top: 0;
+          z-index: 1;
         }
         </style>
         
@@ -474,17 +474,13 @@
         fetch(url)
           .then(response => response.text())
           .then(data => {
-            document.getElementById('overlay-content').innerHTML = data;
-            
-            // Append button container
-            const buttonContainer = document.createElement('div');
-            buttonContainer.className = 'button-container';
-            buttonContainer.innerHTML = `
-              <button type="button" class="btn btn-primary" id="goto-page-button">Go to Page</button>
-              <button type="button" class="btn btn-secondary" onclick="closeOverlay()">Close</button>
+            document.getElementById('overlay-content').innerHTML = `
+              <div class="button-container">
+                <button type="button" class="btn btn-primary" id="goto-page-button">Go to Page</button>
+                <button type="button" class="btn btn-secondary" onclick="closeOverlay()">Close</button>
+              </div>
+              ${data}
             `;
-            document.getElementById('overlay-content').appendChild(buttonContainer);
-            
             document.getElementById('external-link-overlay').style.display = 'flex';
             document.getElementById('goto-page-button').onclick = function() {
               window.open(url, '_blank');
