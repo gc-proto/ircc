@@ -1513,12 +1513,12 @@ $(document).on("wb-ready.wb", function (event) {
 
         if (dif != 0) {
             if (a > b) {
-                document.getElementById(elm).innerHTML = '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(dif) + "%";
+                document.getElementById(elm).innerHTML = '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(dif) + "% up from last month";
                 document.getElementById(elm).classList.add('text-success');
             }
             else if (a < b) {
 
-                document.getElementById(elm).innerHTML = '<i class="fas fa-caret-down"></i>&nbsp;' + d3.format(",")(dif) + "%";
+                document.getElementById(elm).innerHTML = '<i class="fas fa-caret-down"></i>&nbsp;' + d3.format(",")(dif) + "% down from last month";
                 document.getElementById(elm).classList.add('text-danger');
             }
         }
