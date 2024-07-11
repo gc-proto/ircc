@@ -1511,7 +1511,7 @@ $(document).on("wb-ready.wb", function (event) {
 
        
 
-        let dif = daterange == "month" ?  parseFloat((Math.abs((a - b) / b)) * 100).toFixed(1) : parseFloat((Math.abs((a - b) / b))/b * 100).toFixed(1) ;
+        let dif = parseFloat((Math.abs((a - b) / b)) * 100).toFixed(1);
       
 
         if (dif != 0) {
