@@ -1515,7 +1515,7 @@ $(document).on("wb-ready.wb", function (event) {
             if (a > b) {
                 document.getElementById(elm).innerHTML = '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(dif) + "%";
                 let text = document.createElement('div');
-                text.innerHTML = "<span class=\"small\">decrease from last month</span>"
+                text.innerHTML = "<span class=\"small\">increase from last month</span>"
                 document.getElementById(elm).insertAdjacentElement('afterend', text);
                 document.getElementById(elm).classList.add('text-success');
             }
@@ -1523,7 +1523,7 @@ $(document).on("wb-ready.wb", function (event) {
 
                 document.getElementById(elm).innerHTML = '<i class="fas fa-caret-down"></i>&nbsp;' + d3.format(",")(dif) + "%";
                 let text = document.createElement('div');
-                text.innerHTML = "<span class=\"small\">increase from last month</span>"
+                text.innerHTML = "<span class=\"small\">decrease from last month</span>"
                 document.getElementById(elm).insertAdjacentElement('afterend', text);
                 document.getElementById(elm).classList.add('text-danger');
             }
