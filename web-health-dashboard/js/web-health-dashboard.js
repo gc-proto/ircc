@@ -1513,12 +1513,18 @@ $(document).on("wb-ready.wb", function (event) {
 
         if (dif != 0) {
             if (a > b) {
-                document.getElementById(elm).innerHTML = '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(dif) + "% <br /><span class=\"small\">decrease from last month</span>";
+                document.getElementById(elm).innerHTML = '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(dif) + "%";
+                let text = document.createElement('div');
+                text.innerHTML = "<span class=\"small\">decrease from last month</span>"
+                document.getElementById(elm).insertAdjacentElement('afterend', text);
                 document.getElementById(elm).classList.add('text-success');
             }
             else if (a < b) {
 
-                document.getElementById(elm).innerHTML = '<i class="fas fa-caret-down"></i>&nbsp;' + d3.format(",")(dif) + "% <br /><span class=\"small\">increase from last month</span>";
+                document.getElementById(elm).innerHTML = '<i class="fas fa-caret-down"></i>&nbsp;' + d3.format(",")(dif) + "%";
+                let text = document.createElement('div');
+                text.innerHTML = "<span class=\"small\">increase from last month</span>"
+                document.getElementById(elm).insertAdjacentElement('afterend', text);
                 document.getElementById(elm).classList.add('text-danger');
             }
         }
