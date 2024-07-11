@@ -1509,7 +1509,10 @@ $(document).on("wb-ready.wb", function (event) {
 
     function difference(a, b, elm, daterange) {
 
-        let dif = parseFloat((Math.abs((a - b) / b)) * 100).toFixed(1);
+       
+
+        let dif = daterange == "month" ?  parseFloat((Math.abs((a - b) / b)) * 100).toFixed(1) : parseFloat((Math.abs((a - b) / b))/b * 100).toFixed(1) ;
+      
 
         if (dif != 0) {
             if (a > b) {
