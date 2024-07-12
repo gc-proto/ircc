@@ -1,7 +1,10 @@
-.account-banner {
-  transition: height 1s ease-in-out;
-  overflow: hidden;
-  height: 0;
+@media (min-width: 687px) {
+  .account-banner {
+    transition: min-height 1s ease-out;
+    overflow: hidden;
+    min-height: 0;
+    margin: 0;
+  }
 }
 
 .account-banner.sign-in {
