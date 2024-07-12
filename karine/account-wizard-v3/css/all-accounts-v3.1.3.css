@@ -1,11 +1,15 @@
 .account-banner.sign-in {
   background-color: #26374a;
   padding: 50px 0;
+  border-top: 2px #6f6f6f solid;
+  margin-top: -2px;
 }
 
 .account-banner.create {
   background-color: #eaebed;
   padding: 50px 0;
+  border-top: 2px #6f6f6f solid;
+  margin-top: -2px;
 }
 
 @media (min-width: 768px) {
