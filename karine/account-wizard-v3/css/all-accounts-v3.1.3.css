@@ -1,12 +1,3 @@
-@media (min-width: 687px) {
-  .account-banner {
-    transition: min-height 1s ease-out;
-    overflow: hidden;
-    min-height: 0;
-    margin: 0;
-  }
-}
-
 .account-banner.sign-in {
   background-color: #26374a;
   padding: 50px 0;
@@ -17,12 +8,37 @@
   padding: 50px 0;
 }
 
-.signin-create-btn.active {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom: none;
+@media (min-width: 768px) {
+  .signin-create-btn.active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+    box-shadow: none !important;
+  }
+}
+.signin-create-btn {
+  font-size: 1.1em;
 }
 
+.signin-create-btn.signin {
+  background-color: #26374a;
+}
+.signin-create-btn.signin button {
+  color: #fff !important;
+}
+
+.signin-create-btn.create {
+  background-color: #eaebed;
+}
+.signin-create-btn.create button {
+  color: #333 !important;
+}
+
+@media (max-width: 767px) {
+  .account-banner {
+    margin-top: 25px !important;
+  }
+}
 #account-wizard {
   outline: none !important;
 }

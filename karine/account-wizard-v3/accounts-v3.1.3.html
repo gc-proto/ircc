@@ -161,24 +161,28 @@
             <h1 property="name" id="wb-cont" dir="ltr" class="mrgn-tp-md mrgn-bttm-md">Sign in to your IRCC account</h1>
             <div class="lead">
                 <p><strong>We have many accounts.</strong></p>
-                <p>Tell us what you’re applying for to get to the right account sign-in page. </p>
+                <p class="mrgn-bttm-0">Tell us what you’re applying for to get to the right account sign-in page. </p>
             </div>
         </div>
 
 
-        <div id="account-wizard">
+        <div id="account-wizard" class=" mrgn-bttm-md">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <div class="mrgn-bttm-0 panel panel-default panel-body position-relative signin-create-btn signin">
+                        <div class="mrgn-tp-md mrgn-bttm-0 panel panel-default panel-body position-relative signin-create-btn signin">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[
-                                { "action": "run", "trggroup": "back" }
-                                
+                                { "action": "run", "trggroup": "back" },
+                                { "action": "removeClass", "class": "nojs-show", "source": ".signin-opt, .account-chooser" },
+                                { "action": "addClass", "class": "nojs-show", "source": ".find-header, .find-program" },
+                                { "action": "addClass", "class": "sign-in", "source": ".account-banner" },
+                                { "action": "removeClass", "class": "create", "source": ".account-banner" },
+                                { "action": "addClass", "class": "active", "source": ".signin-create-btn" }
                             ]'>Sign in</button>
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="mrgn-bttm-0 panel panel-default panel-body position-relative signin-create-btn create">
+                        <div class="mrgn-tp-md mrgn-bttm-0 panel panel-default panel-body position-relative signin-create-btn create">
                             <button class="text-left stretched-link btn-link no-undrln full-width p-0" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
                                 { "action": "removeClass", "class": "nojs-show", "source": ".find-header, .find-program, .account-chooser" },
@@ -193,7 +197,7 @@
             </div>
             <div class="account-banner">
                 <div class="container">
-                    <div class="account-chooser panel panel-body mrgn-bttm-0  nojs-show" data-wb-actionmng='[
+                    <div class="account-chooser panel panel-body  nojs-show" data-wb-actionmng='[
                         { "trggroup":"back", "action": "addClass", "class": "nojs-show", "source": ".selection-options, .result" },
                         { "trggroup":"toggle-result", "action": "addClass", "class": "stretched-link", "source": ".account-chooser a.btn-link" },
                         { "trggroup":"toggle-result", "action": "addClass", "class": "nojs-show", "source": ".result, .bottom-reset" }
@@ -321,11 +325,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="selection-options application nojs-show">
+                        <div class="selection-options application nojs-show" id="application">
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="position-relative mrgn-bttm-sm">
-                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:FinishSubmit" data-wb-doaction='[
+                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:FinishSubmit" data-wb-doaction='[
                                             { "action": "addClass", "class": "nojs-show", "source": ".application" },
                                             { "action": "removeClass", "class": "nojs-show", "source": ".selection" }
                                         ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -387,7 +391,7 @@
                                         </li>
                                     </ul>
                                     <div class="position-relative mrgn-bttm-sm">
-                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back" data-wb-doaction='[
+                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back" data-wb-doaction='[
                                     { "action": "addClass", "class": "nojs-show", "source": ".application" },
                                     { "action": "removeClass", "class": "nojs-show", "source": ".selection" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -397,11 +401,11 @@
                         </div>
                         <div id="finishOrCheck">
                             <div id="visit" class="selection-options visit nojs-show">
-                                <h3 class="h2">Sign in to your account:&nbsp;Visiting Canada</h3>
+                                <h3 class="h2 mrgn-tp-md">Sign in to your account:&nbsp;Visiting Canada</h3>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="position-relative mrgn-bttm-sm">
-                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
+                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
                                             { "action": "run", "trggroup": "back" },
                                             { "action": "removeClass", "class": "nojs-show", "source": ".application" }
                                         ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -543,11 +547,11 @@
                                 </div>
                             </div>
                             <div id="immigrate" class="selection-options immigrate nojs-show">
-                                <h3 class="h2">Sign in to your account:&nbsp;Immigrating to Canada</h3>
+                                <h3 class="h2 mrgn-tp-md">Sign in to your account:&nbsp;Immigrating to Canada</h3>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="position-relative mrgn-bttm-sm">
-                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Immigrating" data-wb-doaction='[
+                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Immigrating" data-wb-doaction='[
                                             { "action": "run", "trggroup": "back" },
                                             { "action": "removeClass", "class": "nojs-show", "source": ".application" }
                                         ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -651,10 +655,10 @@
                                 </div>
                             </div>
                             <div id="family" class="selection-options family nojs-show">
-                                <h3 class="h2">Sign in to your account:&nbsp;Sponsoring family</h3>
+                                <h3 class="h2 mrgn-tp-md">Sign in to your account:&nbsp;Sponsoring family</h3>
                                 <div class="row">
                                     <div class="col-md-8">
-                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_SponsoringFamily" data-wb-doaction='[
+                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_SponsoringFamily" data-wb-doaction='[
                                         { "action": "run", "trggroup": "back" },
                                         { "action": "removeClass", "class": "nojs-show", "source": ".application" }
                                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -678,11 +682,11 @@
                                 </div>
                             </div>
                             <div id="working" class="selection-options working nojs-show">
-                                <h3 class="h2">Sign in to your account:&nbsp;Working in Canada temporarily</h3>
+                                <h3 class="h2 mrgn-tp-md">Sign in to your account:&nbsp;Working in Canada temporarily</h3>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="position-relative mrgn-bttm-sm">
-                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Working" data-wb-doaction='[
+                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Working" data-wb-doaction='[
                                                 { "action": "run", "trggroup": "back" },
                                                 { "action": "removeClass", "class": "nojs-show", "source": ".application" }
                                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -771,11 +775,11 @@
                                 </div>
                             </div>
                             <div id="study" class="selection-options study nojs-show">
-                                <h3 class="h2">Sign in to your account:&nbsp;Studying in Canada</h3>
+                                <h3 class="h2 mrgn-tp-md">Sign in to your account:&nbsp;Studying in Canada</h3>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="position-relative mrgn-bttm-sm">
-                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Studying" data-wb-doaction='[
+                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Studying" data-wb-doaction='[
                                                 { "action": "run", "trggroup": "back" },
                                                 { "action": "removeClass", "class": "nojs-show", "source": ".application" }
                                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -875,11 +879,11 @@
                                 </div>
                             </div>
                             <div id="citizenship" class="selection-options citizenship nojs-show">
-                                <h3 class="h2">Sign in to your account:&nbsp;Canadian citizenship</h3>
+                                <h3 class="h2 mrgn-tp-md">Sign in to your account:&nbsp;Canadian citizenship</h3>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="position-relative mrgn-bttm-sm">
-                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Citizenship" data-wb-doaction='[
+                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Citizenship" data-wb-doaction='[
                                             { "action": "run", "trggroup": "back" },
                                             { "action": "removeClass", "class": "nojs-show", "source": ".application" }
                                         ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1010,11 +1014,11 @@
                                 </div>
                             </div>
                             <div id="refugees" class="selection-options refugees nojs-show">
-                                <h3 class="h2">Sign in to your account:&nbsp;Refugees and asylum</h3>
+                                <h3 class="h2 mrgn-tp-md">Sign in to your account:&nbsp;Refugees and asylum</h3>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="position-relative mrgn-bttm-sm">
-                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Refugees" data-wb-doaction='[
+                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Refugees" data-wb-doaction='[
                                                 { "action": "run", "trggroup": "back" },
                                                 { "action": "removeClass", "class": "nojs-show", "source": ".application" }
                                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1083,11 +1087,11 @@
                                 </div>
                             </div>
                             <div id="special-measures" class="selection-options special-measures nojs-show">
-                                <h3 class="h2">Sign in to your account:&nbsp;One of the special measures</h3>
+                                <h3 class="h2 mrgn-tp-md">Sign in to your account:&nbsp;One of the special measures</h3>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="position-relative mrgn-bttm-sm">
-                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_SpecialMeasures" data-wb-doaction='[
+                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_SpecialMeasures" data-wb-doaction='[
                                                 { "action": "run", "trggroup": "back" },
                                                 { "action": "removeClass", "class": "nojs-show", "source": ".application" }
                                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1131,11 +1135,11 @@
                                 </div>
                             </div>
                             <div id="pr" class="selection-options pr nojs-show">
-                                <h3 class="h2">Sign in to your account:&nbsp;Permanent resident cards and travel documents</h3>
+                                <h3 class="h2 mrgn-tp-md">Sign in to your account:&nbsp;Permanent resident cards and travel documents</h3>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="position-relative mrgn-bttm-sm">
-                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_PR" data-wb-doaction='[
+                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_PR" data-wb-doaction='[
                                                 { "action": "run", "trggroup": "back" },
                                                 { "action": "removeClass", "class": "nojs-show", "source": ".application" }
                                             ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1193,7 +1197,7 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="position-relative mrgn-bttm-sm">
-                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnownProgram" data-wb-doaction='[
+                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnownProgram" data-wb-doaction='[
                                         { "action": "addClass", "class": "nojs-show", "source": ".known-program, .result" },
                                         { "action": "removeClass", "class": "nojs-show", "source": ".find-program" }
                                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1249,7 +1253,7 @@
                                             </li>
                                         </ul>
                                         <div class="position-relative mrgn-bttm-sm">
-                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back" data-wb-doaction='[
+                                            <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back" data-wb-doaction='[
                                         { "action": "addClass", "class": "nojs-show", "source": ".known-program, .result" },
                                         { "action": "removeClass", "class": "nojs-show", "source": ".find-program" }
                                     ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1259,12 +1263,12 @@
                             </div>
                         </div>
                         <div id="visit-known" class="selection-options visit-known nojs-show">
-                            <h3 class="h2">Create an account: Visiting Canada</h3>
+                            <h3 class="h2 mrgn-tp-md">Create an account: Visiting Canada</h3>
                             <p>Tell us what you want to apply for and we’ll point you to the page where you can find out how to apply. </p>
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="position-relative mrgn-bttm-sm">
-                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Visiting" data-wb-doaction='[
+                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Visiting" data-wb-doaction='[
                                     { "action": "run", "trggroup": "back" },
                                     { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1313,11 +1317,11 @@
                             </div>
                         </div>
                         <div id="immigrate-known" class="selection-options immigrate-known nojs-show">
-                            <h3 class="h2">Create an account: Immigrating to Canada</h3>
+                            <h3 class="h2 mrgn-tp-md">Create an account: Immigrating to Canada</h3>
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="position-relative mrgn-bttm-sm">
-                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Immigrating" data-wb-doaction='[
+                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Immigrating" data-wb-doaction='[
                                     { "action": "run", "trggroup": "back" },
                                     { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1435,7 +1439,7 @@
                                         </a>
                                     </div>
                                     <div class="position-relative mrgn-bttm-sm">
-                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
+                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
                                     { "action": "run", "trggroup": "back" },
                                     { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1446,10 +1450,10 @@
                         <div id="family-known" class="selection-options family-known nojs-show">
                             <div class="row">
                                 <div class="col-md-8">
-                                    <h3 class="h2">Create an account: Sponsoring family </h3>
+                                    <h3 class="h2 mrgn-tp-md">Create an account: Sponsoring family </h3>
                                     <p>Tell us what you want to apply for and we’ll point you to the page where you can find out how to apply. </p>
                                     <div class="position-relative mrgn-bttm-sm">
-                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Sponsoring" data-wb-doaction='[
+                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Sponsoring" data-wb-doaction='[
                                     { "action": "run", "trggroup": "back" },
                                     { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1490,12 +1494,12 @@
                             </div>
                         </div>
                         <div id="working-known" class="selection-options working-known nojs-show">
-                            <h3 class="h2">Create an account: Working in Canada temporarily</h3>
+                            <h3 class="h2 mrgn-tp-md">Create an account: Working in Canada temporarily</h3>
                             <p>Tell us what you want to apply for and we’ll point you to the page where you can find out how to apply. </p>
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="position-relative mrgn-bttm-sm">
-                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Working" data-wb-doaction='[
+                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Working" data-wb-doaction='[
                                     { "action": "run", "trggroup": "back" },
                                     { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1581,7 +1585,7 @@
                                         </a>
                                     </div>
                                     <div class="position-relative mrgn-bttm-sm">
-                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
+                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:Other_Visiting" data-wb-doaction='[
                                     { "action": "run", "trggroup": "back" },
                                     { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1590,12 +1594,12 @@
                             </div>
                         </div>
                         <div id="study-known" class="selection-options study-known nojs-show">
-                            <h3 class="h2">Create an account: Studying in Canada</h3>
+                            <h3 class="h2 mrgn-tp-md">Create an account: Studying in Canada</h3>
                             <p>Tell us what you want to apply for and we’ll point you to the page where you can find out how to apply. </p>
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="position-relative mrgn-bttm-sm">
-                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Study" data-wb-doaction='[
+                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Study" data-wb-doaction='[
                                     { "action": "run", "trggroup": "back" },
                                     { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1636,12 +1640,12 @@
                             </div>
                         </div>
                         <div id="citizenship-known" class="selection-options citizenship-known nojs-show">
-                            <h3 class="h2">Create an account: Canadian citizenship</h3>
+                            <h3 class="h2 mrgn-tp-md">Create an account: Canadian citizenship</h3>
                             <p>Tell us what you want to apply for and we’ll point you to the page where you can find out how to apply. </p>
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="position-relative mrgn-bttm-sm">
-                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Citizenship" data-wb-doaction='[
+                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Citizenship" data-wb-doaction='[
                                     { "action": "run", "trggroup": "back" },
                                     { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1674,12 +1678,12 @@
                             </div>
                         </div>
                         <div id="refugees-known" class="selection-options refugees-known nojs-show">
-                            <h3 class="h2">Create an account: Refugees and asylum</h3>
+                            <h3 class="h2 mrgn-tp-md">Create an account: Refugees and asylum</h3>
                             <p>Tell us what you want to apply for and we’ll point you to the page where you can find out how to apply. </p>
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="position-relative mrgn-bttm-sm">
-                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Refugees" data-wb-doaction='[
+                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_Refugees" data-wb-doaction='[
                                     { "action": "run", "trggroup": "back" },
                                     { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
@@ -1728,12 +1732,12 @@
                             </div>
                         </div>
                         <div id="pr-known" class="selection-options pr-known nojs-show">
-                            <h3 class="h2">Create an account: Permanent resident cards and travel documents</h3>
+                            <h3 class="h2 mrgn-tp-md">Create an account: Permanent resident cards and travel documents</h3>
                             <p>Tell us what you want to apply for and we’ll point you to the page where you can find out how to apply. </p>
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="position-relative mrgn-bttm-sm">
-                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_PR" data-wb-doaction='[
+                                        <a href="#account-chooser" class="text-left btn-link no-undrln d-flex align-items-center nojs-hide" data-gc-analytics-customclick="IRCC:AccountWizard_Back:KnowProgram_PR" data-wb-doaction='[
                                     { "action": "run", "trggroup": "back" },
                                     { "action": "removeClass", "class": "nojs-show", "source": ".known-program, .find-header" }
                                 ]'><span class="fas fa-chevron-left pull-left mrgn-rght-md"></span>Back</a>
