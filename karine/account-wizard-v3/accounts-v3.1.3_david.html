@@ -173,7 +173,7 @@
                 <div class="row">
                     <div class="col-md-5 col-md-offset-1 col-sm-6">
                         <div class="mrgn-tp-md mrgn-bttm-0 panel panel-default panel-body position-relative signin-create-btn signin">
-                            <button class="text-center stretched-link btn-link no-undrln full-width" data-wb-doaction='[
+                            <button id="sign-in-button" class="text-center stretched-link btn-link no-undrln full-width" data-scroll-target="sign-in-button" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
                                 { "action": "removeClass", "class": "nojs-show", "source": ".signin-opt, .account-chooser" },
                                 { "action": "addClass", "class": "nojs-show", "source": ".find-header, .find-program" },
@@ -185,7 +185,7 @@
                     </div>
                     <div class="col-md-5 col-sm-6">
                         <div class="mrgn-tp-md mrgn-bttm-0 panel panel-default panel-body position-relative signin-create-btn create">
-                            <button class="text-center stretched-link btn-link no-undrln full-width" data-wb-doaction='[
+                            <button id="create-account-button" class="text-center stretched-link btn-link no-undrln full-width" data-scroll-target="sign-in-button" data-wb-doaction='[
                                 { "action": "run", "trggroup": "back" },
                                 { "action": "removeClass", "class": "nojs-show", "source": ".find-header, .find-program, .account-chooser" },
                                 { "action": "addClass", "class": "nojs-show", "source": ".signin-opt" },
@@ -1927,6 +1927,30 @@
 
 
     <script src="js/all-accounts.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('button[data-scroll-target]').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var targetId = button.getAttribute('data-scroll-target');
+                    var targetElement = document.getElementById(targetId);
+    
+                    if (targetElement) {
+                        var offset = 20; // Adjust this value as needed to create space above the buttons
+                        var elementPosition = targetElement.getBoundingClientRect().top;
+                        var offsetPosition = elementPosition + window.pageYOffset - offset;
+    
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    
+    
 </body>
 
 </html>
