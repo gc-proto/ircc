@@ -1117,14 +1117,25 @@ $(document).on("wb-ready.wb", function (event) {
             return true;
         });
 
+        data = data.filter(function (d) {
+            if (d["Surveys completed"] < 384) {
+                return false;
+            }
+            return true;
+        });
+
+
         // "Task","TSS completion","TSS ease","TSS satisfaction","Surveys completed",
         let label = "Top tasks by volume of responses";
         data.forEach(function (d) {
-            d["Task"] = d["Task"];
-            d["TSS completion"] = Math.round(d["TSS completion"] * 100);
-            d["TSS ease"] = Math.round(d["TSS ease"] * 100);
-            d["TSS satisfaction"] = Math.round(d["TSS satisfaction"] * 100);
-            d["Surveys completed"] = d3.format(",")(d["Surveys completed"]);
+            
+            console.log(d["Surveys completed"]);
+                d["Task"] = d["Task"];
+                d["TSS completion"] = Math.round(d["TSS completion"] * 100);
+                d["TSS ease"] = Math.round(d["TSS ease"] * 100);
+                d["TSS satisfaction"] = Math.round(d["TSS satisfaction"] * 100);
+                d["Surveys completed"] = d3.format(",")(d["Surveys completed"]);
+            
         });
 
 
