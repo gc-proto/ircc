@@ -1,6 +1,23 @@
-
-
 $(document).on("wb-ready.wb", function (event) {
+
+
+
+
+const fs = require('fs');
+
+const directoryPath = '/export/previous';
+
+// Use fs.readdir to read the contents of the directory asynchronously
+fs.readdir(directoryPath, (err, files) => {
+  if (err) {
+    console.error('Error reading directory:', err);
+    return;
+  }
+
+  console.log('Files and folders in the directory:', files);
+});
+
+
     let today = new Date();
     today = String(today).replace(" ", "-");
 
