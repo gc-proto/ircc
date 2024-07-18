@@ -1645,11 +1645,18 @@ $(document).on("wb-ready.wb", function (event) {
     }
 
     $("#previous-data-select").change(function () {
+
+        let spinner = document.createElement("div")
+        spinner.setAttribute('class', 'spinner-wrapper');
+        spinner.innerHTML = "<div class='spinner'></div>";
+        document.getElementById('content').appendChild(spinner);
+
         let m = this.value;
         $(".addedText").remove();    
         if (m === "-1") runData();
         else runData(m);
         $(".wb-tables").trigger("wb-init.wb-tables");
+        $(spinner).remove();
     });
 
 });
