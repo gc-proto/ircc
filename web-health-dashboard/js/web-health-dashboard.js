@@ -2,6 +2,8 @@ $(document).on("wb-ready.wb", function (event) {
 
     let today = new Date();
 
+    let loaded = false;
+
     let devicesChart,
         topReferrerChart,
         topSocialChart,
@@ -21,11 +23,11 @@ $(document).on("wb-ready.wb", function (event) {
         campaignChart,
         utmChart;
 
-    let toptasktable =  document.getElementById("tss-top-tasks-table").outerHTML;
-    let mobiletable =  document.getElementById("top-mobile-table").outerHTML;
-    let monthstable =  document.getElementById("tss-over-12-months-table").outerHTML;
+    let toptasktable = document.getElementById("tss-top-tasks-table").outerHTML;
+    let mobiletable = document.getElementById("top-mobile-table").outerHTML;
+    let monthstable = document.getElementById("tss-over-12-months-table").outerHTML;
 
-    
+
 
 
     today = String(today).replace(" ", "-");
@@ -66,7 +68,7 @@ $(document).on("wb-ready.wb", function (event) {
         parseTime = d3.utcParse("%Y-%m");
         formatTime = d3.utcFormat("%B %Y");
 
-        let thisMonth =  new Date();
+        let thisMonth = new Date();
         let thisMonthOption = document.createElement('option');
         thisMonthOption.setAttribute('value', "-1");
         thisMonthOption.innerHTML = "Latest data";
@@ -81,11 +83,11 @@ $(document).on("wb-ready.wb", function (event) {
     });
 
     function tabulate(div, data, caption, columns) {
-       
+
         document.getElementById(div).innerHTML = "";
         let tempTable = document.getElementById(div).outerHTML;
         document.getElementById(div).closest('.table-responsive').innerHTML = tempTable;
-        var table = d3.select("#" + div);        
+        var table = d3.select("#" + div);
         table.append('caption')
             .text(caption)
 
@@ -125,7 +127,7 @@ $(document).on("wb-ready.wb", function (event) {
 
     runData();
 
-    function runData(previousData) {
+    async function runData(previousData) {
         let path = previousData ? "csv/export/previous/" + previousData : "csv/export/";
 
         if (previousData) {
@@ -1064,7 +1066,7 @@ $(document).on("wb-ready.wb", function (event) {
                 return true;
             });
 
-            
+
             data = data.filter(function (d) {
                 if (d["Surveys completed"] < 384) {
                     return false;
@@ -1076,13 +1078,13 @@ $(document).on("wb-ready.wb", function (event) {
             // "Task","TSS completion","TSS ease","TSS satisfaction","Surveys completed",
             let label = "Top tasks by volume of responses";
             data.forEach(function (d) {
-                
-                    d["Task"] = d["Task"];
-                    d["TSS completion"] = Math.round(d["TSS completion"] * 100);
-                    d["TSS ease"] = Math.round(d["TSS ease"] * 100);
-                    d["TSS satisfaction"] = Math.round(d["TSS satisfaction"] * 100);
-                    d["Surveys completed"] = d3.format(",")(d["Surveys completed"]);
-                
+
+                d["Task"] = d["Task"];
+                d["TSS completion"] = Math.round(d["TSS completion"] * 100);
+                d["TSS ease"] = Math.round(d["TSS ease"] * 100);
+                d["TSS satisfaction"] = Math.round(d["TSS satisfaction"] * 100);
+                d["Surveys completed"] = d3.format(",")(d["Surveys completed"]);
+
             });
 
 
@@ -1180,7 +1182,6 @@ $(document).on("wb-ready.wb", function (event) {
             $("#tss-over-12-months-table").trigger("wb-init.wb-tables");
         });
 
-
         d3.csv(path + "/contactHC.txt?" + today, function (data) {
             data.forEach(function (d, i) {
                 document.getElementById('contact-date').innerHTML = d["Date"].replace(/_/g, ",");
@@ -1194,7 +1195,7 @@ $(document).on("wb-ready.wb", function (event) {
             });
 
             tabulate("contact-us-table", data, "Pages leading to Contact us", ['Page URL', 'Visits']);
-            
+
             addURLs("contact-us-table", true);
 
 
@@ -1591,6 +1592,8 @@ $(document).on("wb-ready.wb", function (event) {
             });
         });
 
+        return Promise.resolve(true);
+
     }
 
     function addURLs(table, urls) {
@@ -1615,8 +1618,8 @@ $(document).on("wb-ready.wb", function (event) {
         if (dif != 0) {
             if (a > b) {
                 document.getElementById(elm).innerHTML = '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(dif) + "%";
-                
-                
+
+
                 let text = document.createElement('div');
                 text.setAttribute('class', 'addedText');
                 text.innerHTML = "<span class=\"small\">increase from last " + daterange + "</span>"
@@ -1646,17 +1649,29 @@ $(document).on("wb-ready.wb", function (event) {
 
     $("#previous-data-select").change(function () {
 
+        loaded = false;
         let spinner = document.createElement("div")
         spinner.setAttribute('class', 'spinner-wrapper');
         spinner.innerHTML = "<div class='spinner'></div>";
-        document.getElementById('content').appendChild(spinner);
+        document.querySelector('.content').appendChild(spinner);
+
 
         let m = this.value;
-        $(".addedText").remove();    
-        if (m === "-1") runData();
-        else runData(m);
+        $(".addedText").remove();
+        if (m === "-1") runData().then(
+            function (value) {
+                setTimeout(() => { $(".spinner-wrapper").remove() }, 2000)
+            }
+        );
+        else runData(m).then(
+            function (value) {
+                setTimeout(() => { $(".spinner-wrapper").remove() }, 2000)
+            }
+
+        );
         $(".wb-tables").trigger("wb-init.wb-tables");
-        $(spinner).remove();
+
+
     });
 
 });
