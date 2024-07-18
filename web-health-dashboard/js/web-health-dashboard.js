@@ -25,22 +25,7 @@ $(document).on("wb-ready.wb", function (event) {
     let mobiletable =  document.getElementById("top-mobile-table").outerHTML;
     let monthstable =  document.getElementById("tss-over-12-months-table").outerHTML;
 
-    d3.csv("csv/previous-data.txt ", function (data) {
-
-        let previousData = data.map(function (d) { return d["Previous"] })
-
-
-        parseTime = d3.utcParse("%Y-%m");
-        formatTime = d3.utcFormat("%B %Y");
-
-
-        for (var i = 0; i < previousData.length; i++) {
-            let previousOption = document.createElement('option');
-            previousOption.setAttribute('value', previousData[i]);
-            previousOption.innerHTML = formatTime(parseTime(previousData[i]));
-            document.getElementById('previous-data-select').appendChild(previousOption)
-        }
-    });
+    
 
 
     today = String(today).replace(" ", "-");
@@ -72,6 +57,28 @@ $(document).on("wb-ready.wb", function (event) {
     dateModified = monthNames[month - 1] + " " + day + ", " + year
 
     document.getElementById("dateModified").innerHTML = dateModified;
+
+    d3.csv("csv/previous-data.txt?" + today, function (data) {
+
+        let previousData = data.map(function (d) { return d["Previous"] })
+
+
+        parseTime = d3.utcParse("%Y-%m");
+        formatTime = d3.utcFormat("%B %Y");
+
+        let thisMonth =  new Date();
+        let thisMonthOption = document.createElement('option');
+        thisMonthOption.setAttribute('value', "-1");
+        thisMonthOption.innerHTML = "Latest data";
+        document.getElementById('previous-data-select').appendChild(thisMonthOption)
+
+        for (var i = 0; i < previousData.length; i++) {
+            let previousOption = document.createElement('option');
+            previousOption.setAttribute('value', previousData[i]);
+            previousOption.innerHTML = formatTime(parseTime(previousData[i]));
+            document.getElementById('previous-data-select').appendChild(previousOption)
+        }
+    });
 
     function tabulate(div, data, caption, columns) {
        
@@ -1639,8 +1646,9 @@ $(document).on("wb-ready.wb", function (event) {
 
     $("#previous-data-select").change(function () {
         let m = this.value;
-        $(".addedText").remove();
-        runData(m);
+        $(".addedText").remove();    
+        if (m === "-1") runData();
+        else runData(m);
         $(".wb-tables").trigger("wb-init.wb-tables");
     });
 
