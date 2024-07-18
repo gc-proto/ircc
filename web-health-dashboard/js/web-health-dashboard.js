@@ -243,7 +243,7 @@ $(document).on("wb-ready.wb", function (event) {
         let lastCells = document.getElementById('top-mobile-table').querySelectorAll('td:last-child');
 
         for (var i = 0; i < firstCells.length; i++) {
-            firstCells[i].innerHTML = '<a href="' + firstCells[i].innerHTML + '">' + firstCells[i].innerHTML + '</a>';
+            firstCells[i].innerHTML = '<a href="https://' + firstCells[i].innerHTML + '">' + firstCells[i].innerHTML + '</a>';
             firstCells[i].setAttribute('data-label', 'Page URL');
             lastCells[i].setAttribute('data-label', '% of visits');
         }
