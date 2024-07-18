@@ -62,15 +62,19 @@
         </div> -->
         <div class="content">
 
-            <div id="previous-versions">
-                
+
+            <div id="previous-data" class="mrgn-tp-md">
+                <label for="previous-data-select">Look at data from previous months:</label>
+                <select id="previous-data-select">
+                    <option value="-1" disabled selected>Make a selection</option>
+                </select>
             </div>
 
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-heading">
-                            <h2 class="h3" class="h2" id="traffic">Traffic</h2>
+                            <h2 class="h3" class="h2" id="traffic">Average daily, weekly, and monthly traffic</h2>
                         </div>
                         <div class="box-body">
 
@@ -148,14 +152,18 @@
                                                     <summary>Top referrer types</summary><canvas id="top-referrer-chart"></canvas>
                                                     <details>
                                                         <summary>Text version: Top referrer types</summary>
-                                                        <table id="top-referrer-table" class="table table-bordered"></table>
+                                                        <div class="table-responsive">
+                                                            <table id="top-referrer-table" class="table table-bordered"></table>
+                                                        </div>
                                                     </details>
                                                 </details>
                                                 <details>
                                                     <summary>Top social networks referring traffic</summary><canvas id="top-social-chart"></canvas>
                                                     <details>
                                                         <summary>Text version: Top social networks referring traffic</summary>
-                                                        <table id="top-social-table" class="table table-bordered"></table>
+                                                        <div class="table-responsive">
+                                                            <table id="top-social-table" class="table table-bordered"></table>
+                                                        </div>
                                                     </details>
                                                 </details>
                                             </div>
@@ -207,7 +215,9 @@
                                                     <canvas id="top-pages-chart"></canvas>
                                                     <details>
                                                         <summary>Text version: Top 10 pages for IRCC (English and French)</summary>
-                                                        <table id="top-pages-table" class="table table-bordered"></table>
+                                                        <div class="table-responsive">
+                                                            <table id="top-pages-table" class="table table-bordered"></table>
+                                                        </div>
                                                     </details>
                                                 </details>
                                                 <details>
@@ -232,14 +242,18 @@
                                                         <canvas id="top-topic-chart-en"></canvas>
                                                         <details>
                                                             <summary>Text version: Top clicked links on English theme page</summary>
-                                                            <table id="top-topic-table-en" class="table table-bordered"></table>
+                                                            <div class="table-responsive">
+                                                                <table id="top-topic-table-en" class="table table-bordered"></table>
+                                                            </div>
                                                         </details>
                                                     </div>
                                                     <div id="topic-french" class="hidden">
                                                         <canvas id="top-topic-chart-fr"></canvas>
                                                         <details>
                                                             <summary>Text version: Top clicked links on French theme page</summary>
-                                                            <table id="top-topic-table-fr" class="table table-bordered"></table>
+                                                            <div class="table-responsive">
+                                                                <table id="top-topic-table-fr" class="table table-bordered"></table>
+                                                            </div>
                                                         </details>
                                                     </div>
 
@@ -266,13 +280,17 @@
                                                     <div id="visit-english"><canvas id="top-visit-chart-en"></canvas>
                                                         <details>
                                                             <summary>Text version: Top clicked links on Visit topic page (English)</summary>
-                                                            <table id="top-visit-table-en" class="table table-bordered"></table>
+                                                            <div class="table-responsive">
+                                                                <table id="top-visit-table-en" class="table table-bordered"></table>
+                                                            </div>
                                                         </details>
                                                     </div>
                                                     <div id="visit-french" class="hidden"><canvas id="top-visit-chart-fr"></canvas>
                                                         <details>
                                                             <summary>Text version: Top clicked links on Visit topic page (French)</summary>
-                                                            <table id="top-visit-table-fr" class="table table-bordered"></table>
+                                                            <div class="table-responsive">
+                                                                <table id="top-visit-table-fr" class="table table-bordered"></table>
+                                                            </div>
                                                         </details>
                                                     </div>
 
@@ -299,13 +317,17 @@
                                                     <div id="immigration-english"> <canvas id="top-immigration-chart-en"></canvas>
                                                         <details>
                                                             <summary>Text version: Top clicked links on Immigration topic page (English)</summary>
-                                                            <table id="top-immigration-table-en" class="table table-bordered"></table>
+                                                            <div class="table-responsive">
+                                                                <table id="top-immigration-table-en" class="table table-bordered"></table>
+                                                            </div>
                                                         </details>
                                                     </div>
                                                     <div id="immigration-french" class="hidden"><canvas id="top-immigration-chart-fr"></canvas>
                                                         <details>
                                                             <summary>Text version: Top clicked links on Immigration topic page (French)</summary>
-                                                            <table id="top-immigration-table-fr" class="table table-bordered"></table>
+                                                            <div class="table-responsive">
+                                                                <table id="top-immigration-table-fr" class="table table-bordered"></table>
+                                                            </div>
                                                         </details>
                                                     </div>
 
@@ -329,13 +351,17 @@
                                                     <div id="work-english"> <canvas id="top-work-chart-en"></canvas>
                                                         <details>
                                                             <summary>Text version: Top clicked links on Work topic page (English)</summary>
-                                                            <table id="top-work-table-en" class="table table-bordered"></table>
+                                                            <div class="table-responsive">
+                                                                <table id="top-work-table-en" class="table table-bordered"></table>
+                                                            </div>
                                                         </details>
                                                     </div>
                                                     <div id="work-french" class="hidden"><canvas id="top-work-chart-fr"></canvas>
                                                         <details>
                                                             <summary>Text version: Top clicked links on Work topic page (French)</summary>
-                                                            <table id="top-work-table-fr" class="table table-bordered"></table>
+                                                            <div class="table-responsive">
+                                                                <table id="top-work-table-fr" class="table table-bordered"></table>
+                                                            </div>
                                                         </details>
                                                     </div>
 
@@ -359,13 +385,17 @@
                                                     <div id="study-english"> <canvas id="top-study-chart-en"></canvas>
                                                         <details>
                                                             <summary>Text version: Top clicked links on Study topic page (English)</summary>
-                                                            <table id="top-study-table-en" class="table table-bordered"></table>
+                                                            <div class="table-responsive">
+                                                                <table id="top-study-table-en" class="table table-bordered"></table>
+                                                            </div>
                                                         </details>
                                                     </div>
                                                     <div id="study-french" class="hidden"><canvas id="top-study-chart-fr"></canvas>
                                                         <details>
                                                             <summary>Text version: Top clicked links on Study topic page (French)</summary>
-                                                            <table id="top-study-table-fr" class="table table-bordered"></table>
+                                                            <div class="table-responsive">
+                                                                <table id="top-study-table-fr" class="table table-bordered"></table>
+                                                            </div>
                                                         </details>
                                                     </div>
 
@@ -436,20 +466,17 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!-- <hr />
-                                                    <div class="table-responsive">
-                                                        <table id="tss-top-tasks-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]]}'>
-                                                        </table>
-        
-                                                    </div> -->
+                                                        
 
                                                     </div>
                                                 </details>
                                                 <details>
                                                     <summary>Highest performing tasks</summary>
                                                     <div class="table-responsive">
-                                                        <table id="tss-top-tasks-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
-                                                        </table>
+                                                        <div class="table-responsive">
+                                                            <table id="tss-top-tasks-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </details>
                                                 <details>
@@ -458,7 +485,9 @@
                                                     <canvas id="tss-over-12-months-chart"></canvas>
                                                     <details>
                                                         <summary>Text version: TSS results over the last 12 months</summary>
-                                                        <table id="tss-over-12-months-table" class="table table-bordered" data-wb-tables='{"order": [[0, "desc"]]}'></table>
+                                                        <div class="table-responsive">
+                                                            <table id="tss-over-12-months-table" class="table table-bordered" data-wb-tables='{"order": [[0, "desc"]]}'></table>
+                                                        </div>
                                                     </details>
 
                                                 </details>
@@ -701,13 +730,17 @@
                                                 <div class="row-no-gutters">
                                                     <div class="col-lg-3 col-lg-offset-1 col-md-6 col-xs-12"><canvas id="devices-chart" class="no-min-height mrgn-tp-md mrgn-bttm-md"></canvas></div>
                                                     <div class="col-lg-6 col-lg-offset-1 col-md-6 col-xs-12 small">
-                                                        <table id="devices-table" class="table table-bordered mrgn-lft-lg"></table>
+                                                        <div class="table-responsive">
+                                                            <table id="devices-table" class="table table-bordered mrgn-lft-lg"></table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </details>
                                             <details>
                                                 <summary>Top mobile pages</summary>
-                                                <table id="top-mobile-table" class="provisional gc-table table table-bordered" data-wb-tables='{"lengthMenu": [5, 10]}'></table>
+                                                <div class="table-responsive">
+                                                    <table id="top-mobile-table" class="provisional gc-table table table-bordered" data-wb-tables='{"lengthMenu": [5, 10]}'></table>
+                                                </div>
                                             </details>
                                         </div>
                                     </div>
