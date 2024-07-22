@@ -1,6 +1,6 @@
 $(document).on("wb-ready.wb", function (event) {
 
-    let today = new Date();
+    let date = new Date();
 
     let loaded = false;
 
@@ -30,7 +30,7 @@ $(document).on("wb-ready.wb", function (event) {
 
 
 
-    today = String(today).replace(" ", "-");
+    today = String(date).replace(" ", "-");
     const s = d3.formatSpecifier("s");
     s.precision = d3.precisionFixed(1);
 
@@ -128,7 +128,16 @@ $(document).on("wb-ready.wb", function (event) {
     runData();
 
     async function runData(previousData) {
-        let path = previousData ? "csv/export/previous/" + previousData : "csv/export/";
+        let path = previousData ? "csv/export/previous/" + previousData + "/": "csv/export/";
+        let ajax = document.querySelectorAll('.ajax-insights');
+
+
+        for (var i = 0; i < ajax.length; i++) {
+            let src = ajax[i].getAttribute('data-ajax-replace').split("#")[1];
+            ajax[i].setAttribute('data-ajax-replace', path +"insights.html#"+ src );
+        }    
+        $( ".ajax-insights" ).trigger( "wb-init.wb-data-ajax" );
+        // $( "[data-ajax-after], [data-ajax-append], [data-ajax-before], [data-ajax-prepend], [data-ajax-replace]" ).trigger( "wb-init.wb-data-ajax" );
 
         if (previousData) {
             devicesChart.destroy();
@@ -148,10 +157,10 @@ $(document).on("wb-ready.wb", function (event) {
             tssMonthsChart.destroy();
             crisisChart.destroy();
             campaignChart.destroy();
-            utmChart.destroy();
+            utmChart.destroy();            
         }
 
-        d3.csv(path + "/traffic-volumes.csv?" + today, function (data) {
+        d3.csv(path + "traffic-volumes.csv?" + today, function (data) {
             data = data.filter(function (d) {
                 if (d["Day"].length == 0) {
                     return false;
@@ -196,7 +205,7 @@ $(document).on("wb-ready.wb", function (event) {
 
 
 
-            d3.csv(path + "/traffic.txt?" + today, function (data) {
+            d3.csv(path + "traffic.txt?" + today, function (data) {
                 data.forEach(function (d, i) {
                     document.getElementById('traffic-insights').innerHTML = d["Insights"];
                     document.getElementById('traffic-dates').innerHTML = d["Date"].replace(/_/g, ",");
@@ -206,7 +215,7 @@ $(document).on("wb-ready.wb", function (event) {
 
         });
 
-        d3.csv(path + "/referrer-type.csv?" + today, function (data) {
+        d3.csv(path + "referrer-type.csv?" + today, function (data) {
 
 
             let label = "Top referrer types";
@@ -264,7 +273,7 @@ $(document).on("wb-ready.wb", function (event) {
             tabulate("top-referrer-table", data, label, ['Referrer Type', 'Entries', 'Percentage']);
         });
 
-        d3.csv(path + "/social-networks.csv?" + today, function (data) {
+        d3.csv(path + "social-networks.csv?" + today, function (data) {
 
 
             let label = "Top social networks referring traffic";
@@ -321,7 +330,7 @@ $(document).on("wb-ready.wb", function (event) {
             });
             tabulate("top-social-table", data, label, ['Referring Domain', 'Entries', 'Percentage']);
 
-            d3.csv(path + "/trafficSources.txt?" + today, function (data) {
+            d3.csv(path + "trafficSources.txt?" + today, function (data) {
                 data.forEach(function (d, i) {
 
                     document.getElementById('referrer-date').innerHTML = d["Date"].replace(/_/g, ",");
@@ -329,7 +338,7 @@ $(document).on("wb-ready.wb", function (event) {
             });
         });
 
-        d3.csv(path + "/top-pages.csv?" + today, function (data) {
+        d3.csv(path + "top-pages.csv?" + today, function (data) {
 
             data = data.filter(function (d) {
                 if (d["Page title"].length == 0) {
@@ -386,7 +395,7 @@ $(document).on("wb-ready.wb", function (event) {
             });
             tabulate("top-pages-table", data, label, ['Page title', 'Visits']);
 
-            d3.csv(path + "/topContent.txt?" + today, function (data) {
+            d3.csv(path + "topContent.txt?" + today, function (data) {
                 data.forEach(function (d, i) {
 
                     document.getElementById('top-content-date').innerHTML = d["Date"].replace(/_/g, ",");
@@ -394,7 +403,7 @@ $(document).on("wb-ready.wb", function (event) {
             });
         });
 
-        d3.csv(path + "/top-theme-en.csv?" + today, function (data) {
+        d3.csv(path + "top-theme-en.csv?" + today, function (data) {
             data = data.filter(function (d) {
                 if (d["Link"].length == 0) {
                     return false;
@@ -457,7 +466,7 @@ $(document).on("wb-ready.wb", function (event) {
             tabulate("top-topic-table-en", data, label, ['Link', 'Clicks', 'Percentage']);
         });
 
-        d3.csv(path + "/top-theme-fr.csv?" + today, function (data) {
+        d3.csv(path + "top-theme-fr.csv?" + today, function (data) {
             data = data.filter(function (d) {
                 if (d["Link"].length == 0) {
                     return false;
@@ -520,7 +529,7 @@ $(document).on("wb-ready.wb", function (event) {
             tabulate("top-topic-table-fr", data, label, ['Link', 'Clicks', 'Percentage']);
         });
 
-        d3.csv(path + "/top-visit-en.csv?" + today, function (data) {
+        d3.csv(path + "top-visit-en.csv?" + today, function (data) {
             data = data.filter(function (d) {
                 if (d["Link"].length == 0) {
                     return false;
@@ -584,7 +593,7 @@ $(document).on("wb-ready.wb", function (event) {
             tabulate("top-visit-table-en", data, label, ['Link', 'Clicks', 'Percentage']);
         });
 
-        d3.csv(path + "/top-visit-fr.csv?" + today, function (data) {
+        d3.csv(path + "top-visit-fr.csv?" + today, function (data) {
 
             data = data.filter(function (d) {
                 if (d["Link"].length == 0) {
@@ -647,7 +656,7 @@ $(document).on("wb-ready.wb", function (event) {
             tabulate("top-visit-table-fr", data, label, ['Program', 'Clicks', 'Percentage']);
         });
 
-        d3.csv(path + "/top-immigration-en.csv?" + today, function (data) {
+        d3.csv(path + "top-immigration-en.csv?" + today, function (data) {
             data = data.filter(function (d) {
                 if (d["Link"].length == 0) {
                     return false;
@@ -710,7 +719,7 @@ $(document).on("wb-ready.wb", function (event) {
             tabulate("top-immigration-table-en", data, label, ['Link', 'Clicks', 'Percentage']);
         });
 
-        d3.csv(path + "/top-immigration-fr.csv?" + today, function (data) {
+        d3.csv(path + "top-immigration-fr.csv?" + today, function (data) {
             data = data.filter(function (d) {
                 if (d["Link"].length == 0) {
                     return false;
@@ -772,7 +781,7 @@ $(document).on("wb-ready.wb", function (event) {
             tabulate("top-immigration-table-fr", data, label, ['Link', 'Clicks']);
         });
 
-        d3.csv(path + "/top-work-en.csv?" + today, function (data) {
+        d3.csv(path + "top-work-en.csv?" + today, function (data) {
             data = data.filter(function (d) {
                 if (d["Link"].length == 0) {
                     return false;
@@ -833,7 +842,7 @@ $(document).on("wb-ready.wb", function (event) {
             tabulate("top-work-table-en", data, label, ['Link', 'Clicks']);
         });
 
-        d3.csv(path + "/top-work-fr.csv?" + today, function (data) {
+        d3.csv(path + "top-work-fr.csv?" + today, function (data) {
             data = data.filter(function (d) {
                 if (d["Link"].length == 0) {
                     return false;
@@ -896,7 +905,7 @@ $(document).on("wb-ready.wb", function (event) {
             tabulate("top-work-table-fr", data, label, ['Link', 'Clicks', 'Percentage']);
         });
 
-        d3.csv(path + "/top-study-en.csv?" + today, function (data) {
+        d3.csv(path + "top-study-en.csv?" + today, function (data) {
             data = data.filter(function (d) {
                 if (d["Link"].length == 0) {
                     return false;
@@ -957,7 +966,7 @@ $(document).on("wb-ready.wb", function (event) {
             tabulate("top-study-table-en", data, label, ['Link', 'Clicks']);
         });
 
-        d3.csv(path + "/top-study-fr.csv?" + today, function (data) {
+        d3.csv(path + "top-study-fr.csv?" + today, function (data) {
             data = data.filter(function (d) {
                 if (d["Link"].length == 0) {
                     return false;
@@ -1020,7 +1029,7 @@ $(document).on("wb-ready.wb", function (event) {
             tabulate("top-study-table-fr", data, label, ['Link', 'Clicks', 'Percentage']);
         });
 
-        d3.csv(path + "/tss-data.csv?" + today, function (data) {
+        d3.csv(path + "tss-data.csv?" + today, function (data) {
 
             let surveyResponses = data.map(function (d) { return d["TSS surveys responded"]; })
             let surveyResponsesPrior = (data.map(function (d) { return d["TSS surveys responded - Last quarter"] }));
@@ -1046,7 +1055,7 @@ $(document).on("wb-ready.wb", function (event) {
             document.getElementById('tss-completion-prev-quarter').innerHTML = d3.format("0.1%")(completion);
             difference(completion, completionPrior, "tss-completion-prev-quarter-change", "quarter");
 
-            d3.csv(path + "/tss.txt?" + today, function (data) {
+            d3.csv(path + "tss.txt?" + today, function (data) {
                 data.forEach(function (d, i) {
                     if (i === 0) {
                         document.getElementById('tss-date').innerHTML = d["Date"].replace(/_/g, ",");
@@ -1057,7 +1066,7 @@ $(document).on("wb-ready.wb", function (event) {
 
         });
 
-        d3.csv(path + "/tss-highest-performing.csv?" + today, function (data) {
+        d3.csv(path + "tss-highest-performing.csv?" + today, function (data) {
             document.getElementById("tss-top-tasks-table").outerHTML = toptasktable;
             data = data.filter(function (d) {
                 if (d["Task"].length == 0) {
@@ -1107,7 +1116,7 @@ $(document).on("wb-ready.wb", function (event) {
 
         });
 
-        d3.csv(path + "/tss-last-12-months.csv?" + today, function (data) {
+        d3.csv(path + "tss-last-12-months.csv?" + today, function (data) {
             data = data.filter(function (d) {
                 if (d["TSS completion"].length == 0) {
                     return false;
@@ -1182,12 +1191,12 @@ $(document).on("wb-ready.wb", function (event) {
             $("#tss-over-12-months-table").trigger("wb-init.wb-tables");
         });
 
-        d3.csv(path + "/contactHC.txt?" + today, function (data) {
+        d3.csv(path + "contactHC.txt?" + today, function (data) {
             data.forEach(function (d, i) {
                 document.getElementById('contact-date').innerHTML = d["Date"].replace(/_/g, ",");
             })
         });
-        d3.csv(path + "/contact.csv?" + today, function (data) {
+        d3.csv(path + "contact.csv?" + today, function (data) {
 
             data.forEach(function (d) {
                 d["Page URL"] = d["Page URL"];
@@ -1200,7 +1209,7 @@ $(document).on("wb-ready.wb", function (event) {
 
 
         });
-        d3.csv(path + "/hc.csv?" + today, function (data) {
+        d3.csv(path + "hc.csv?" + today, function (data) {
 
             data.forEach(function (d) {
                 d["Page URL"] = d["Page URL"];
@@ -1211,12 +1220,12 @@ $(document).on("wb-ready.wb", function (event) {
             addURLs("helpcentre-table", true);
         });
 
-        d3.csv(path + "/news.txt?" + today, function (data) {
+        d3.csv(path + "news.txt?" + today, function (data) {
             data.forEach(function (d, i) {
                 document.getElementById('news-date').innerHTML = d["Date"].replace(/_/g, ",");
             })
         });
-        d3.csv(path + "/news.csv?" + today, function (data) {
+        d3.csv(path + "news.csv?" + today, function (data) {
 
             data.forEach(function (d) {
                 d["IRCC news"] = d["IRCC news"];
@@ -1226,7 +1235,7 @@ $(document).on("wb-ready.wb", function (event) {
             tabulate("news-table", data, "Top newsroom products", ['IRCC news', 'Visits']);
             $("#news-table").trigger("wb-init.gc-table");
         });
-        d3.csv(path + "/webnotice.csv?" + today, function (data) {
+        d3.csv(path + "webnotice.csv?" + today, function (data) {
 
             data.forEach(function (d) {
                 d["IRCC web notices"] = d["IRCC web notices"];
@@ -1237,18 +1246,18 @@ $(document).on("wb-ready.wb", function (event) {
             $("#notices-table").trigger("wb-init.gc-table");
         });
 
-        d3.csv(path + "/news.txt?" + today, function (data) {
+        d3.csv(path + "news.txt?" + today, function (data) {
             data.forEach(function (d, i) {
                 document.getElementById('news-date').innerHTML = d["Date"].replace(/_/g, ",");
             })
         });
 
-        d3.csv(path + "/crisis.txt?" + today, function (data) {
+        d3.csv(path + "crisis.txt?" + today, function (data) {
             data.forEach(function (d, i) {
                 document.getElementById('crisis-date').innerHTML = d["Date"].replace(/_/g, ",");
             })
         });
-        d3.csv(path + "/top-crisis.csv?" + today, function (data) {
+        d3.csv(path + "top-crisis.csv?" + today, function (data) {
 
             data.forEach(function (d) {
                 d["Special measures (E/F)"] = d["Special measures (E/F)"];
@@ -1259,7 +1268,7 @@ $(document).on("wb-ready.wb", function (event) {
             $("#crisis-content-table").trigger("wb-init.gc-table");
         });
 
-        d3.csv(path + "/crisis-traffic.csv?" + today, function (data) {
+        d3.csv(path + "crisis-traffic.csv?" + today, function (data) {
             data = data.filter(function (d) {
                 if (d["Day"].length == 0) {
                     return false;
@@ -1345,13 +1354,13 @@ $(document).on("wb-ready.wb", function (event) {
         });
 
 
-        d3.csv(path + "/campaigns.txt?" + today, function (data) {
+        d3.csv(path + "campaigns.txt?" + today, function (data) {
             data.forEach(function (d, i) {
                 document.getElementById('campaign-date').innerHTML = d["Date"].replace(/_/g, ",");
             })
         });
 
-        d3.csv(path + "/campaign-top.csv?" + today, function (data) {
+        d3.csv(path + "campaign-top.csv?" + today, function (data) {
 
             data = data.filter(function (d) {
                 if (d["Visits"].length == 0) {
@@ -1416,7 +1425,7 @@ $(document).on("wb-ready.wb", function (event) {
             tabulate("campaign-landing-table", data, label, ['IRCC campaigns (E/F)', 'Visits', 'Percentage']);
         });
 
-        d3.csv(path + "/campaign-utm.csv?" + today, function (data) {
+        d3.csv(path + "campaign-utm.csv?" + today, function (data) {
             data = data.filter(function (d) {
                 if (d["Visits"].length == 0) {
                     return false;
@@ -1480,7 +1489,7 @@ $(document).on("wb-ready.wb", function (event) {
             tabulate("utm-table", data, label, ['UTM Campaign', 'Visits', 'Percentage']);
         });
 
-        d3.csv(path + "/device-type.csv?" + today, function (data) {
+        d3.csv(path + "device-type.csv?" + today, function (data) {
 
             let label = "Device types";
             let a = data.map(function (d) {
@@ -1575,7 +1584,7 @@ $(document).on("wb-ready.wb", function (event) {
             tabulate("devices-table", data, label, ['Device Type', 'Visits', 'Percentage']);
         });
 
-        d3.csv(path + "/top-mobile-pages.csv?" + today, function (data) {
+        d3.csv(path + "top-mobile-pages.csv?" + today, function (data) {
             document.getElementById("top-mobile-table").outerHTML = mobiletable;
             data.forEach(function (d) {
                 d["Page URL"] = d["Page URL"];
@@ -1585,7 +1594,7 @@ $(document).on("wb-ready.wb", function (event) {
             tabulate("top-mobile-table", data, "Top mobile pages", ['Page URL', '% mobile visits (min 1K visits)']);
             addURLs("top-mobile-table", true);
 
-            d3.csv(path + "/mobile.txt?" + today, function (data) {
+            d3.csv(path + "mobile.txt?" + today, function (data) {
                 data.forEach(function (d, i) {
                     document.getElementById('mobile-date').innerHTML = d["Date"].replace(/_/g, ",");
                 })
@@ -1658,17 +1667,12 @@ $(document).on("wb-ready.wb", function (event) {
 
         let m = this.value;
         $(".addedText").remove();
-        if (m === "-1") runData().then(
-            function (value) {
-                setTimeout(() => { $(".spinner-wrapper").remove() }, 2000)
-            }
-        );
-        else runData(m).then(
-            function (value) {
-                setTimeout(() => { $(".spinner-wrapper").remove() }, 2000)
-            }
 
-        );
+       runData(m).then(
+        function (value) {
+            setTimeout(() => { $(".spinner-wrapper").remove() }, 2000)
+        });
+
         $(".wb-tables").trigger("wb-init.wb-tables");
 
 

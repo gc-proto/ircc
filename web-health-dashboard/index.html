@@ -68,7 +68,7 @@
                                 <div class="col-md-4 text-left">
                                     <p><strong>Date: <span id="traffic-dates"></span></strong></p>
                                     <h3 class="mrgn-tp-0">Highlights</h3>
-                                    <div id="traffic-insights-cnt" data-ajax-replace="csv/insights.html#traffic-insights"></div>
+                                    <div id="traffic-insights-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights.html#traffic-insights"></div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="panel panel-body panel-default hght-inhrt">
@@ -126,7 +126,7 @@
                                     <div class="col-md-4 col-xs-12">
                                         <p><strong>Date: <span id="referrer-date"></span></strong></p>
                                         <h3>Highlights</h3>
-                                        <div id="traffic-sources-insights-cnt" data-ajax-replace="csv/insights.html#traffic-sources-insights"></div>
+                                        <div id="traffic-sources-insights-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights.html#traffic-sources-insights"></div>
                                     </div>
                                     <div class="col-md-8 col-xs-12">
                                         <div class="wb-tabs">
@@ -167,7 +167,7 @@
                                     <div class="col-md-4 col-xs-12">
                                         <p><strong>Date : <span id="top-content-date"></span></strong></p>
                                         <h3>Highlights</h3>
-                                        <div id="top-content-insight-cnt" data-ajax-replace="csv/insights.html#top-content-insights">
+                                        <div id="top-content-insight-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights.html#top-content-insights">
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-xs-12">
@@ -188,16 +188,16 @@
                                                     <summary>Theme</summary>
                                                     <div class="btn-group btn-group-lang">
                                                         <button class="btn btn-default btn-topic-english active" type="button" data-wb-doaction='[
-                                                {"action":"removeClass", "class":"hidden", "source":"#topic-english"},
-                                                {"action":"addClass", "class":"hidden", "source":"#topic-french"},
-                                                {"action":"addClass", "class":"active", "source":".btn-topic-english"},
-                                                {"action":"removeClass", "class":"active", "source":".btn-topic-french"}
+                                                {"action":"removeClass", " class":"hidden", "source":"#topic-english"},
+                                                {"action":"addClass", " class":"hidden", "source":"#topic-french"},
+                                                {"action":"addClass", " class":"active", "source":".btn-topic-english"},
+                                                {"action":"removeClass", " class":"active", "source":".btn-topic-french"}
                                             ]'>English</button>
                                                         <button class="btn btn-default btn-topic-french" type="button" data-wb-doaction='[
-                                                    {"action":"addClass", "class":"hidden", "source":"#topic-english"},
-                                                    {"action":"removeClass", "class":"hidden", "source":"#topic-french"},
-                                                    {"action":"removeClass", "class":"active", "source":".btn-topic-english"},
-                                                    {"action":"addClass", "class":"active", "source":".btn-topic-french"}
+                                                    {"action":"addClass", " class":"hidden", "source":"#topic-english"},
+                                                    {"action":"removeClass", " class":"hidden", "source":"#topic-french"},
+                                                    {"action":"removeClass", " class":"active", "source":".btn-topic-english"},
+                                                    {"action":"addClass", " class":"active", "source":".btn-topic-french"}
                                                 ]'>French</button>
                                                     </div>
 
@@ -229,16 +229,16 @@
 
                                                     <div class="btn-group btn-group-lang">
                                                         <button class="btn btn-default btn-visit-english active" type="button" data-wb-doaction='[
-                                                {"action":"removeClass", "class":"hidden", "source":"#visit-english"},
-                                                {"action":"addClass", "class":"hidden", "source":"#visit-french"},
-                                                {"action":"addClass", "class":"active", "source":".btn-visit-english"},
-                                                {"action":"removeClass", "class":"active", "source":".btn-visit-french"}
+                                                {"action":"removeClass", " class":"hidden", "source":"#visit-english"},
+                                                {"action":"addClass", " class":"hidden", "source":"#visit-french"},
+                                                {"action":"addClass", " class":"active", "source":".btn-visit-english"},
+                                                {"action":"removeClass", " class":"active", "source":".btn-visit-french"}
                                             ]'>English</button>
                                                         <button class="btn btn-default btn-visit-french" type="button" data-wb-doaction='[
-                                                    {"action":"addClass", "class":"hidden", "source":"#visit-english"},
-                                                    {"action":"removeClass", "class":"hidden", "source":"#visit-french"},
-                                                    {"action":"removeClass", "class":"active", "source":".btn-visit-english"},
-                                                    {"action":"addClass", "class":"active", "source":".btn-visit-french"}
+                                                    {"action":"addClass", " class":"hidden", "source":"#visit-english"},
+                                                    {"action":"removeClass", " class":"hidden", "source":"#visit-french"},
+                                                    {"action":"removeClass", " class":"active", "source":".btn-visit-english"},
+                                                    {"action":"addClass", " class":"active", "source":".btn-visit-french"}
                                                 ]'>French</button>
                                                     </div>
                                                     <div id="visit-english"><canvas id="top-visit-chart-en"></canvas>
@@ -265,16 +265,16 @@
 
                                                     <div class="btn-group btn-group-lang">
                                                         <button class="btn btn-default btn-immigration-english active" type="button" data-wb-doaction='[
-                                                {"action":"removeClass", "class":"hidden", "source":"#immigration-english"},
-                                                {"action":"addClass", "class":"hidden", "source":"#immigration-french"},
-                                                {"action":"addClass", "class":"active", "source":".btn-immigration-english"},
-                                                {"action":"removeClass", "class":"active", "source":".btn-immigration-french"}
+                                                {"action":"removeClass", " class":"hidden", "source":"#immigration-english"},
+                                                {"action":"addClass", " class":"hidden", "source":"#immigration-french"},
+                                                {"action":"addClass", " class":"active", "source":".btn-immigration-english"},
+                                                {"action":"removeClass", " class":"active", "source":".btn-immigration-french"}
                                             ]'>English</button>
                                                         <button class="btn btn-default btn-immigration-french" type="button" data-wb-doaction='[
-                                                    {"action":"addClass", "class":"hidden", "source":"#immigration-english"},
-                                                    {"action":"removeClass", "class":"hidden", "source":"#immigration-french"},
-                                                    {"action":"removeClass", "class":"active", "source":".btn-immigration-english"},
-                                                    {"action":"addClass", "class":"active", "source":".btn-immigration-french"}
+                                                    {"action":"addClass", " class":"hidden", "source":"#immigration-english"},
+                                                    {"action":"removeClass", " class":"hidden", "source":"#immigration-french"},
+                                                    {"action":"removeClass", " class":"active", "source":".btn-immigration-english"},
+                                                    {"action":"addClass", " class":"active", "source":".btn-immigration-french"}
                                                 ]'>French</button>
                                                     </div>
 
@@ -300,16 +300,16 @@
                                                     <summary>Work</summary>
                                                     <div class="btn-group btn-group-lang">
                                                         <button class="btn btn-default btn-work-english active" type="button" data-wb-doaction='[
-                                                {"action":"removeClass", "class":"hidden", "source":"#work-english"},
-                                                {"action":"addClass", "class":"hidden", "source":"#work-french"},
-                                                {"action":"addClass", "class":"active", "source":".btn-work-english"},
-                                                {"action":"removeClass", "class":"active", "source":".btn-work-french"}
+                                                {"action":"removeClass", " class":"hidden", "source":"#work-english"},
+                                                {"action":"addClass", " class":"hidden", "source":"#work-french"},
+                                                {"action":"addClass", " class":"active", "source":".btn-work-english"},
+                                                {"action":"removeClass", " class":"active", "source":".btn-work-french"}
                                             ]'>English</button>
                                                         <button class="btn btn-default btn-work-french" type="button" data-wb-doaction='[
-                                                    {"action":"addClass", "class":"hidden", "source":"#work-english"},
-                                                    {"action":"removeClass", "class":"hidden", "source":"#work-french"},
-                                                    {"action":"removeClass", "class":"active", "source":".btn-work-english"},
-                                                    {"action":"addClass", "class":"active", "source":".btn-work-french"}
+                                                    {"action":"addClass", " class":"hidden", "source":"#work-english"},
+                                                    {"action":"removeClass", " class":"hidden", "source":"#work-french"},
+                                                    {"action":"removeClass", " class":"active", "source":".btn-work-english"},
+                                                    {"action":"addClass", " class":"active", "source":".btn-work-french"}
                                                 ]'>French</button>
                                                     </div>
                                                     <div id="work-english"> <canvas id="top-work-chart-en"></canvas>
@@ -334,16 +334,16 @@
                                                     <summary>Study</summary>
                                                     <div class="btn-group btn-group-lang">
                                                         <button class="btn btn-default btn-study-english active" type="button" data-wb-doaction='[
-                                                {"action":"removeClass", "class":"hidden", "source":"#study-english"},
-                                                {"action":"addClass", "class":"hidden", "source":"#study-french"},
-                                                {"action":"addClass", "class":"active", "source":".btn-study-english"},
-                                                {"action":"removeClass", "class":"active", "source":".btn-study-french"}
+                                                {"action":"removeClass", " class":"hidden", "source":"#study-english"},
+                                                {"action":"addClass", " class":"hidden", "source":"#study-french"},
+                                                {"action":"addClass", " class":"active", "source":".btn-study-english"},
+                                                {"action":"removeClass", " class":"active", "source":".btn-study-french"}
                                             ]'>English</button>
                                                         <button class="btn btn-default btn-study-french" type="button" data-wb-doaction='[
-                                                    {"action":"addClass", "class":"hidden", "source":"#study-english"},
-                                                    {"action":"removeClass", "class":"hidden", "source":"#study-french"},
-                                                    {"action":"removeClass", "class":"active", "source":".btn-study-english"},
-                                                    {"action":"addClass", "class":"active", "source":".btn-study-french"}
+                                                    {"action":"addClass", " class":"hidden", "source":"#study-english"},
+                                                    {"action":"removeClass", " class":"hidden", "source":"#study-french"},
+                                                    {"action":"removeClass", " class":"active", "source":".btn-study-english"},
+                                                    {"action":"addClass", " class":"active", "source":".btn-study-french"}
                                                 ]'>French</button>
                                                     </div>
                                                     <div id="study-english"> <canvas id="top-study-chart-en"></canvas>
@@ -387,7 +387,7 @@
                                     <div class="col-lg-4 col-xs-12">
                                         <p><strong>Date: <span id="tss-date"></span></strong></p>
                                         <h3>Highlights</h3>
-                                        <div id="tss-insight-cnt" data-ajax-replace="csv/insights.html#tss-insights"></div>
+                                        <div id="tss-insight-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights.html#tss-insights"></div>
 
                                     </div>
                                     <div class="col-lg-8 col-xs-12">
@@ -475,7 +475,7 @@
                                     <div class="col-lg-4 col-xs-12">
                                         <p><strong>Date: <span id="contact-date"></span></strong></p>
                                         <h3>Highlights</h3>
-                                        <div id="contact-hc-insights-cnt" data-ajax-replace="csv/insights.html#contact-hc-insights"></div>
+                                        <div id="contact-hc-insights-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights.html#contact-hc-insights"></div>
 
                                     </div>
                                     <div class="col-lg-8 col-xs-12">
@@ -528,7 +528,7 @@
                                     <div class="col-md-4 col-xs-12">
                                         <p><strong>Date: <span id="news-date"></span></strong></p>
                                         <h3>Highlights</h3>
-                                        <div id="news-insights-cnt" data-ajax-replace="csv/insights.html#news-insights"></div>
+                                        <div id="news-insights-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights.html#news-insights"></div>
 
                                     </div>
                                     <div class="col-md-8 col-xs-12">
@@ -571,7 +571,7 @@
                                     <div class="col-md-4 col-xs-12">
                                         <p><strong>Date: <span id="crisis-date"></span></strong></p>
                                         <h3>Highlights</h3>
-                                        <div id="special-measures-insights-cnt" data-ajax-replace="csv/insights.html#special-measures-insights"></div>
+                                        <div id="special-measures-insights-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights.html#special-measures-insights"></div>
 
 
                                     </div>
@@ -619,7 +619,7 @@
                                     <div class="col-md-4 col-xs-12">
                                         <p><strong>Date: <span id="campaign-date"></span></strong></p>
                                         <h3>Highlights</h3>
-                                        <div id="campaigns-insights-cnt" data-ajax-replace="csv/insights.html#campaigns-insights"></div>
+                                        <div id="campaigns-insights-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights.html#campaigns-insights"></div>
 
 
 
@@ -667,7 +667,7 @@
                                 <div class="col-md-4 col-xs-12">
                                     <p><strong>Date: <span id="mobile-date"></span></strong></p>
                                     <h3>Highlights</h3>
-                                    <div id="mobile-insights-cnt" data-ajax-replace="csv/insights.html#mobile-insights"></div>
+                                    <div id="mobile-insights-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights.html#mobile-insights"></div>
 
 
                                 </div>
