@@ -128,7 +128,16 @@ $(document).on("wb-ready.wb", function (event) {
     runData();
 
     async function runData(previousData) {
-        let path = previousData ? "csv/export/previous/" + previousData + "/": "csv/export/";
+
+        let path;        
+        if (previousData == "-1") {
+            path = "csv/export/";
+        }
+        else {
+            path = previousData ? "csv/export/previous/" + previousData + "/" : "csv/export/";
+        }
+
+        
         let ajax = document.querySelectorAll('.ajax-insights');
 
 
