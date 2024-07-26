@@ -1,3 +1,16 @@
+.txt-campaign {
+  color: #1C9A9B;
+}
+
+.txt-xl {
+  font-size: 2.8em;
+}
+@media (max-width: 480px) {
+  .txt-xl {
+    font-size: 2em;
+  }
+}
+
 .highlight {
   border-radius: 25px;
   padding: 25px;
