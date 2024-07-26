@@ -1,0 +1,68 @@
+.highlight {
+  border-radius: 25px;
+  padding: 25px;
+}
+@media (max-width: 480px) {
+  .highlight {
+    padding: 15px;
+  }
+}
+.highlight h1,
+.highlight h2,
+.highlight h3,
+.highlight h4,
+.highlight h5,
+.highlight h6,
+.highlight .h1,
+.highlight .h2,
+.highlight .h3,
+.highlight .h4,
+.highlight .h5,
+.highlight .h6 {
+  margin-top: 0;
+}
+.highlight.highlight-primary {
+  background-color: #1C9A9B;
+  color: #fff;
+}
+.highlight.highlight-primary a:link,
+.highlight.highlight-primary a:visited,
+.highlight.highlight-primary a:hover,
+.highlight.highlight-primary a:active {
+  color: #fff;
+}
+.highlight.highlight-secondary {
+  background-color: #E8F4F4;
+}
+.highlight.highlight-primary-alternate {
+  border: 1px solid #1C9A9B;
+  color: #1C9A9B;
+}
+.highlight.highlight-primary-alternate a:link,
+.highlight.highlight-primary-alternate a:visited,
+.highlight.highlight-primary-alternate a:hover,
+.highlight.highlight-primary-alternate a:active {
+  color: #1C9A9B;
+}
+
+@media (min-width: 992px) {
+  .highlight:has(.superimposed) {
+    padding-bottom: 100px;
+  }
+}
+/* Backgrounds */
+.bg-right {
+  background-position: right;
+}
+
+.bg-bottom {
+  background-position: bottom;
+}
+
+.bg-bottom.bg-right {
+  background-position: bottom right;
+}
+
+.bg-contain {
+  background-size: contain;
+}/*# sourceMappingURL=campaign-components.css.map */
