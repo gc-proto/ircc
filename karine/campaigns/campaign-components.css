@@ -59,6 +59,23 @@
 }
 .highlight svg, .highlight img {
   overflow: visible;
+  width: 96;
+  height: 68px;
+}
+@media (min-width: 481px) {
+  .highlight svg, .highlight img {
+    transition: transform 500ms;
+    transform-origin: top left;
+  }
+}
+@media (min-width: 481px) {
+  .highlight.highlight-hover:hover {
+    background-color: #88D5D6;
+    transition: background-color 500ms linear;
+  }
+  .highlight.highlight-hover:hover svg, .highlight.highlight-hover:hover img {
+    transform: scale(1.1, 1.1);
+  }
 }
 
 @media (min-width: 992px) {
