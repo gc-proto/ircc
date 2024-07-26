@@ -57,6 +57,9 @@
 .highlight.highlight-primary-alternate a:active {
   color: #1C9A9B;
 }
+.highlight svg, .highlight img {
+  overflow: visible;
+}
 
 @media (min-width: 992px) {
   .highlight:has(.superimposed) {
