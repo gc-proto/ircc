@@ -1,3 +1,20 @@
+/* Backgrounds */
+.bg-right {
+  background-position: right;
+}
+
+.bg-bottom {
+  background-position: bottom;
+}
+
+.bg-bottom.bg-right {
+  background-position: bottom right;
+}
+
+.bg-contain {
+  background-size: contain;
+}
+
 .txt-campaign {
   color: #1C9A9B;
 }
@@ -90,29 +107,21 @@
 .interactive-navigation ul li {
   padding-left: 0;
   flex: 1;
+  display: flex;
+  flex-direction: column !important;
+  align-items: center;
   text-align: center;
+  justify-content: space-between;
+  position: relative;
 }
-
-/* Backgrounds */
-.bg-right {
-  background-position: right;
+.interactive-navigation ul li svg path.hover {
+  transition: transform 500ms;
+  transform-origin: bottom;
 }
-
-.bg-bottom {
-  background-position: bottom;
+.interactive-navigation ul li svg:hover path.hover {
+  fill: #1C9A9B;
 }
-
-.bg-bottom.bg-right {
-  background-position: bottom right;
-}
-
-.bg-contain {
-  background-size: contain;
-}
-
-.test:hover path {
-  fill: red !important;
-}
-.test:hover object > svg > path {
-  fill: red !important;
+.interactive-navigation ul li svg + a.active path.hover {
+  fill: #1C9A9B;
+  transform: scale(1.1, 1.1);
 }/*# sourceMappingURL=campaign-components.css.map */
