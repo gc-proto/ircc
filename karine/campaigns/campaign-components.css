@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Backgrounds */
 .bg-right {
   background-position: right;
@@ -100,57 +101,117 @@
     padding-bottom: 100px;
   }
 }
-.interactive-navigation ul {
-  display: flex;
-  list-style: none;
-  margin-bottom: -15px;
+@media (min-width: 992px) {
+  .interactive-navigation ul {
+    display: flex;
+    list-style: none;
+    margin-bottom: -15px;
+  }
+  .interactive-navigation ul li {
+    padding-left: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    position: relative;
+  }
+  .interactive-navigation ul li button {
+    padding: 0;
+  }
+  .interactive-navigation ul li:has(button.active):after {
+    background-image: url("https://ircc.canada.ca/css/campaign-components/assets/tab-arrow.png");
+    content: " ";
+    height: 49px;
+    width: 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    margin-bottom: 0;
+  }
+  .interactive-navigation ul li:has(button:not(.active)):after {
+    content: " ";
+    height: 49px;
+    width: 100%;
+    margin-bottom: 0;
+  }
+  .interactive-navigation ul li svg {
+    flex-grow: 1;
+  }
+  .interactive-navigation ul li svg path.hover {
+    transition: transform 500ms;
+    transform-origin: bottom;
+  }
+  .interactive-navigation ul li object svg:hover path {
+    fill: #1C9A9B;
+  }
+  .interactive-navigation ul li svg:has(+ button:hover) path.hover, .interactive-navigation ul li svg:has(+ button.active) path.hover {
+    fill: #1C9A9B;
+  }
+  .interactive-navigation ul li svg:has(+ button.active) {
+    transform: scale(1.1, 1.1);
+  }
+  .interactive-navigation div.tab-panels > div {
+    background: #E8F4F4;
+    border-radius: 25px;
+    padding: 35px;
+  }
 }
-.interactive-navigation ul li {
-  padding-left: 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column !important;
-  align-items: center;
-  text-align: center;
-  justify-content: space-between;
-  position: relative;
-}
-.interactive-navigation ul li button {
-  padding: 0;
-}
-.interactive-navigation ul li:has(button.active):after {
-  background-image: url("https://ircc.canada.ca/css/campaign-components/assets/tab-arrow.png");
-  content: " ";
-  height: 49px;
-  width: 100%;
-  background-position: bottom;
-  background-repeat: no-repeat;
-  margin-bottom: 0;
-}
-.interactive-navigation ul li:has(button:not(.active)):after {
-  content: " ";
-  height: 49px;
-  width: 100%;
-  margin-bottom: 0;
-}
-.interactive-navigation ul li svg {
-  flex-grow: 1;
-}
-.interactive-navigation ul li svg path.hover {
-  transition: transform 500ms;
-  transform-origin: bottom;
-}
-.interactive-navigation ul li object svg:hover path {
-  fill: #1C9A9B;
-}
-.interactive-navigation ul li svg:has(+ button:hover) path.hover, .interactive-navigation ul li svg:has(+ button.active) path.hover {
-  fill: #1C9A9B;
-}
-.interactive-navigation ul li svg:has(+ button.active) {
-  transform: scale(1.1, 1.1);
-}
-.interactive-navigation div.tab-panels > div {
-  background: #E8F4F4;
-  border-radius: 25px;
-  padding: 35px;
+@media (max-width: 991px) {
+  .interactive-navigation ul {
+    display: block;
+    list-style: none;
+    padding-inline-start: 0;
+    margin: 0;
+  }
+  .interactive-navigation ul li {
+    display: flex;
+    position: relative;
+    background-color: #E8F4F4;
+    border-radius: 25px;
+    padding-left: 25px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    min-height: 100px;
+    cursor: pointer;
+  }
+  .interactive-navigation ul li:has(button)::before {
+    content: "+";
+    text-decoration: none !important;
+    margin-right: 15px;
+    font-weight: bold;
+    align-self: center;
+    color: #295376;
+  }
+  .interactive-navigation ul li:has(button.active)::before {
+    content: "−";
+  }
+  .interactive-navigation ul li button {
+    padding: 0;
+    flex-grow: 1;
+    text-align: left;
+    font-weight: bold;
+    z-index: 1;
+  }
+  .interactive-navigation ul li svg {
+    position: absolute;
+    right: -25px;
+    bottom: -25px;
+    height: 100px !important;
+  }
+  .interactive-navigation ul li svg path.hover {
+    transition: transform 500ms;
+    transform-origin: bottom;
+  }
+  .interactive-navigation ul li object svg:hover path {
+    fill: #1C9A9B;
+  }
+  .interactive-navigation ul li svg:has(+ button:hover) path.hover, .interactive-navigation ul li svg:has(+ button.active) path.hover {
+    fill: #1C9A9B;
+  }
+  .interactive-navigation div.tab-panels > div {
+    background: #E8F4F4;
+    border-radius: 25px;
+    padding: 35px;
+  }
 }/*# sourceMappingURL=campaign-components.css.map */
