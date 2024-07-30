@@ -102,12 +102,11 @@
   }
 }
 @media (min-width: 992px) {
-  .interactive-navigation ul {
+  .interactive-navigation {
     display: flex;
-    list-style: none;
-    margin-bottom: -15px;
+    flex-wrap: wrap;
   }
-  .interactive-navigation ul li {
+  .interactive-navigation .tab {
     padding-left: 0;
     flex: 1;
     display: flex;
@@ -116,11 +115,12 @@
     text-align: center;
     justify-content: space-between;
     position: relative;
+    order: 1;
   }
-  .interactive-navigation ul li button {
+  .interactive-navigation .tab button {
     padding: 0;
   }
-  .interactive-navigation ul li:has(button.active):after {
+  .interactive-navigation .tab:has(button.active):after {
     background-image: url("https://ircc.canada.ca/css/campaign-components/assets/tab-arrow.png");
     content: " ";
     height: 49px;
@@ -129,53 +129,48 @@
     background-repeat: no-repeat;
     margin-bottom: 0;
   }
-  .interactive-navigation ul li:has(button:not(.active)):after {
+  .interactive-navigation .tab:has(button:not(.active)):after {
     content: " ";
     height: 49px;
     width: 100%;
     margin-bottom: 0;
   }
-  .interactive-navigation ul li svg {
+  .interactive-navigation .tab svg {
     flex-grow: 1;
   }
-  .interactive-navigation ul li svg path.hover {
+  .interactive-navigation .tab svg path.hover {
     transition: transform 500ms;
     transform-origin: bottom;
   }
-  .interactive-navigation ul li object svg:hover path {
+  .interactive-navigation .tab svg:has(+ button:hover) path.hover, .interactive-navigation .tab svg:has(+ button.active) path.hover {
     fill: #1C9A9B;
   }
-  .interactive-navigation ul li svg:has(+ button:hover) path.hover, .interactive-navigation ul li svg:has(+ button.active) path.hover {
-    fill: #1C9A9B;
-  }
-  .interactive-navigation ul li svg:has(+ button.active) {
+  .interactive-navigation .tab svg:has(+ button.active) {
     transform: scale(1.1, 1.1);
   }
-  .interactive-navigation div.tab-panels > div {
+  .interactive-navigation div.tab-panel {
     background: #E8F4F4;
     border-radius: 25px;
     padding: 35px;
+    width: 100%;
+    flex-basis: 100%;
+    order: 2;
   }
 }
 @media (max-width: 991px) {
-  .interactive-navigation ul {
-    display: block;
-    list-style: none;
-    padding-inline-start: 0;
-    margin: 0;
-  }
-  .interactive-navigation ul li {
+  .interactive-navigation .tab {
     display: flex;
     position: relative;
     background-color: #E8F4F4;
     border-radius: 25px;
     padding-left: 25px;
     overflow: hidden;
-    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-bottom: 0;
     min-height: 100px;
     cursor: pointer;
   }
-  .interactive-navigation ul li:has(button)::before {
+  .interactive-navigation .tab:has(button)::before {
     content: "+";
     text-decoration: none !important;
     margin-right: 15px;
@@ -183,35 +178,48 @@
     align-self: center;
     color: #295376;
   }
-  .interactive-navigation ul li:has(button.active)::before {
+  .interactive-navigation .tab:has(button.active)::before {
     content: "−";
   }
-  .interactive-navigation ul li button {
+  .interactive-navigation .tab:has(button.active) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    overflow: visible;
+  }
+  .interactive-navigation .tab button {
     padding: 0;
     flex-grow: 1;
     text-align: left;
     font-weight: bold;
     z-index: 1;
   }
-  .interactive-navigation ul li svg {
+  .interactive-navigation .tab svg {
     position: absolute;
     right: -25px;
     bottom: -25px;
     height: 100px !important;
   }
-  .interactive-navigation ul li svg path.hover {
+  .interactive-navigation .tab svg path.hover {
     transition: transform 500ms;
     transform-origin: bottom;
   }
-  .interactive-navigation ul li object svg:hover path {
+  .interactive-navigation .tab svg:has(+ button.active) {
+    right: 0px;
+    top: 0px;
+    transform: scale(0.8, 0.8);
+  }
+  .interactive-navigation .tab svg:has(+ button:hover) path.hover, .interactive-navigation .tab svg:has(+ button.active) path.hover {
     fill: #1C9A9B;
   }
-  .interactive-navigation ul li svg:has(+ button:hover) path.hover, .interactive-navigation ul li svg:has(+ button.active) path.hover {
-    fill: #1C9A9B;
-  }
-  .interactive-navigation div.tab-panels > div {
+  .interactive-navigation div.tab-panel {
     background: #E8F4F4;
     border-radius: 25px;
     padding: 35px;
+    margin-bottom: 25px;
+  }
+  .interactive-navigation div.tab-panel:not(.nojs-show) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding-top: 0;
   }
 }/*# sourceMappingURL=campaign-components.css.map */
