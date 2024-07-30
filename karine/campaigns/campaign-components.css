@@ -87,6 +87,9 @@
   }
 }
 @media (min-width: 481px) {
+  .highlight.highlight-hover {
+    margin-bottom: 50px;
+  }
   .highlight.highlight-hover:hover {
     background-color: #88D5D6;
     transition: background-color 500ms linear;
@@ -97,8 +100,12 @@
 }
 
 @media (min-width: 992px) {
-  .highlight:has(.superimposed) {
-    padding-bottom: 100px;
+  .highlight:has(.highlight.superimposed) {
+    margin-bottom: 100px;
+  }
+  .superimposed {
+    margin-top: 20px;
+    margin-bottom: -100px;
   }
 }
 @media (min-width: 992px) {
@@ -116,6 +123,7 @@
     justify-content: space-between;
     position: relative;
     order: 1;
+    margin-bottom: -15px;
   }
   .interactive-navigation .tab button {
     padding: 0;
@@ -149,7 +157,7 @@
     transform: scale(1.1, 1.1);
   }
   .interactive-navigation div.tab-panel {
-    background: #E8F4F4;
+    background-color: #E8F4F4;
     border-radius: 25px;
     padding: 35px;
     width: 100%;
@@ -182,8 +190,8 @@
     content: "−";
   }
   .interactive-navigation .tab:has(button.active) {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
     overflow: visible;
   }
   .interactive-navigation .tab button {
@@ -212,7 +220,7 @@
     fill: #1C9A9B;
   }
   .interactive-navigation div.tab-panel {
-    background: #E8F4F4;
+    background-color: #E8F4F4;
     border-radius: 25px;
     padding: 35px;
     margin-bottom: 25px;
