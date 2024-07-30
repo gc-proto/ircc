@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
     </noscript>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-    <link rel="stylesheet" href="my-application.css" />
+    <link rel="stylesheet" href="my-application-v2.css" />
 
 </head>
 
@@ -153,21 +153,91 @@
     <!--CONTENT STARTS HERE-->
 
 
-    <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="container">
-        
-        <h1>Proto links</h1>
+    <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
+        <!--CHANGE THE H1-->
+        <!-- IF YOU PORT THIS TO AEM, START COPYING FROM HERE-->
+        <div class="bg-cover mrgn-tp-lg mrgn-bttm-lg py-4" data-bgimg="images/banner-v1.png">
+            <div class="container mrgn-tp-md mrgn-bttm-md">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h1 property="name" id="wb-cont" dir="ltr">IRCC applications</h1>
+                        <p class="mrgn-tp-md lead">The application process, including how to find a program, prepare your application, apply, and what to do next.</p>
 
-        <h2>Big numbers, as per figma</h2>
-        <ul>
-            <li><a href="proto-v1.1.html">V1.1 muted text</a></li>
-            <li><a href="proto-v1.2.html">V1.2 #333 text</a></li>
-            <li><a href="proto-v1.3.html">V1.3 mixed text</a></li>
-        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <h2>Big numbers, tightned up</h2>
-        <ul>
-            <li><a href="proto-v1.1.html">V2.1</a></li>
-        </ul>
+        <section class="container">
+            <div class="row d-sm-flex align-items-center">
+
+                <h2 class="mrgn-tp-0 col-md-6 d-flex align-items-center text-muted">
+                    <span class="d-flex mrgn-rght-lg text-muted"><span class="wb-inv">Step </span><span class="big-number">1</span><span class="wb-inv">: </span></span>
+                    <span class="d-flex">Find out what you can apply for</span>
+                </h2>
+                <div class="clearfix visible-xs mrgn-bttm-lg"></div>
+                <p class="col-md-6 mrgn-lft-md mrgn-rght-md mrgn-tp-lg mrgn-bttm-lg"><a href="https://ircc.canada.ca/explore-programs/index.asp" class="no-undrln h4 mrgn-tp-0">Explore immigration programs<span class="fas fa-arrow-right mrgn-lft-md" aria-hidden="true"></span></a></p>
+            </div>
+        </section>
+        <section class="well brdr-0 brdr-rds-0 no-box-shadow p-0">
+            <div class="container">
+                <div class="row d-sm-flex align-items-center">
+                    <h2 class="mrgn-tp-0 col-md-6 d-flex align-items-center text-muted">
+                        <span class="d-flex mrgn-rght-lg text-muted"><span class="wb-inv">Step </span><span class="big-number">2</span><span class="wb-inv">: </span></span>
+                        <span class="d-flex">Get ready to apply</span>
+                    </h2>
+                    <div class="clearfix visible-xs mrgn-bttm-lg"></div>
+                    <div class="col-md-6 mrgn-tp-lg mrgn-bttm-lg">
+                        <ul class="list-unstyled lst-spcd-2">
+                            <li class="h4 mrgn-tp-0"><a href="#" class="no-undrln">Find forms and guides<span class="fas fa-arrow-right mrgn-lft-sm" aria-hidden="true"></span> </a></li>
+                            <li class="h4 mrgn-tp-0"><a href="#" class="no-undrln">Prepare a complete application package<span class="fas fa-arrow-right mrgn-lft-sm" aria-hidden="true"></span> </a></li>
+                            <li class="h4 mrgn-tp-0"><a href="#" class="no-undrln">Get a police check<span class="fas fa-arrow-right mrgn-lft-sm" aria-hidden="true"></span> </a></li>
+                        </ul>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="container">
+            <div class="row d-sm-flex align-items-center">
+                <h2 class="mrgn-tp-0 col-md-6 d-flex align-items-center text-muted">
+                    <span class="d-flex mrgn-rght-lg text-muted"><span class="wb-inv">Step </span><span class="big-number">3</span><span class="wb-inv">: </span></span>
+                    <span class="d-flex">Apply online or on paper</span>
+                </h2>
+                <div class="clearfix visible-xs mrgn-bttm-lg"></div>
+                <div class="col-md-6 mrgn-tp-lg mrgn-bttm-lg">
+                    <ul class="list-unstyled lst-spcd-2">
+                        <li class="h4 mrgn-tp-0"><a href="#" class="no-undrln">Sign in to your IRCC account<span class="fas fa-arrow-right mrgn-lft-sm" aria-hidden="true"></span> </a></li>
+                        <li class="h4 mrgn-tp-0"><a href="#" class="no-undrln">Pay your fees<span class="fas fa-arrow-right mrgn-lft-sm" aria-hidden="true"></span> </a></li>
+                        <li class="h4 mrgn-tp-0"><a href="#" class="no-undrln">Find an office<span class="fas fa-arrow-right mrgn-lft-sm" aria-hidden="true"></span> </a></li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </section>
+        <section class="well brdr-0 brdr-rds-0 no-box-shadow p-0">
+            <div class="container">
+                <div class="row d-sm-flex align-items-center">
+                    <h2 class="mrgn-tp-0 col-md-6 d-flex align-items-center text-muted">
+                        <span class="d-flex mrgn-rght-lg text-muted"><span class="wb-inv">Step </span><span class="big-number">4</span><span class="wb-inv">: </span></span>
+                        <span class="d-flex">Complete the next steps</span>
+                    </h2>
+                    <div class="clearfix visible-xs mrgn-bttm-lg"></div>
+                    <div class="col-md-6 mrgn-tp-lg mrgn-bttm-lg">
+                        <ul class="list-unstyled lst-spcd-2">
+                            <li class="h4 mrgn-tp-0"><a href="#" class="no-undrln">Check your application status<span class="fas fa-arrow-right mrgn-lft-sm" aria-hidden="true"></span></a></li>
+                            <li class="h4 mrgn-tp-0"><a href="#" class="no-undrln">Check processing times<span class="fas fa-arrow-right mrgn-lft-sm" aria-hidden="true"></span></a></li>
+                            <li class="h4 mrgn-tp-0"><a href="#" class="no-undrln">Get biometrics<span class="fas fa-arrow-right mrgn-lft-sm" aria-hidden="true"></span></a></li>
+                            <li class="h4 mrgn-tp-0"><a href="#" class="no-undrln">Get a medical exam<span class="fas fa-arrow-right mrgn-lft-sm" aria-hidden="true"></span> </a></li>
+                        </ul>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
         <!-- CONTENT ENDS HERE -->

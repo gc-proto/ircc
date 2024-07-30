@@ -1,0 +1,14 @@
+.big-number {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+@media (max-width: 767px) {
+    .big-number {
+        font-size: 2em;
+    }
+}
+
+.no-box-shadow {
+    box-shadow: none;
+}
