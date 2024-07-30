@@ -1,6 +1,12 @@
 .big-number {
-    font-size: 8em;
+    font-size: 4em;
     font-weight: bold;
+}
+
+@media (max-width: 767px) {
+    .big-number {
+        font-size: 3em;
+    }
 }
 
 .no-box-shadow {
