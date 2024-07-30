@@ -195,7 +195,7 @@
                         <path class="hover" d="M107.217 18.8162C104.857 13.2281 100.899 8.46144 95.8399 5.11403C90.781 1.76663 84.8463 -0.0123781 78.7802 6.48281e-05C74.605 0.0221612 70.4948 1.03673 66.7889 2.96017C63.054 4.90294 59.7274 7.54561 56.9902 10.7443C56.2159 11.6351 55.4964 12.5739 54.8078 13.54C54.1226 12.5739 53.4031 11.6351 52.6288 10.7443C49.8908 7.54641 46.5644 4.90387 42.8301 2.96017C39.124 1.03722 35.0139 0.0226848 30.8387 6.48281e-05C24.7394 -0.000665853 18.7768 1.80744 13.7052 5.19579C8.63366 8.58415 4.68093 13.4005 2.34694 19.0356C0.0129487 24.6707 -0.59742 30.8714 0.593054 36.8534C1.78353 42.8355 4.72137 48.33 9.03495 52.6422C11.8238 55.4276 51.135 90.9427 54.8215 92.505C58.508 90.9427 97.8191 55.4276 100.608 52.6422C104.944 48.3012 107.889 42.7668 109.066 36.7451C110.243 30.7234 109.599 24.4876 107.217 18.8333V18.8162ZM75.3541 53.1048H61.6497V66.8092H47.9453V53.1048H34.2408V39.4003H47.9453V25.6959H61.6497V39.4003H75.3541V53.1048Z" fill="#88D5D6" />
                     </svg>
                     <button
-                        class="stretched-link active tab2 btn-link nojs-hide"
+                        class="stretched-link  tab2 btn-link nojs-hide"
                         aria-controls="tab1"
                         data-wb-doaction='[
                             {"action":"run", "trggroup":"changetab"},
@@ -206,7 +206,7 @@
                     <noscript><a href="#tab2">Health and social services</a></noscript>
 
                 </div>
-                <div id="tab2" class="active tab-panel bg-bottom bg-right bg-norepeat highlight" data-bgimg-srcset="#no-image 991w,
+                <div id="tab2" class="nojs-show tab-panel bg-bottom bg-right bg-norepeat highlight" data-bgimg-srcset="#no-image 991w,
                         assets/highlight-card-healthcare-workers-50.png 992w,
                         assets/highlight-card-healthcare-workers.png 1280w">
                     <h2 class="mrgn-tp-0">Immigrants deliver and improve our health and social services</h2>
@@ -226,7 +226,7 @@
                     </svg>
 
                     <button
-                        class="stretched-link tab3 btn-link nojs-hide"
+                        class="stretched-link active tab3 btn-link nojs-hide"
                         aria-controls="tab1"
                         data-wb-doaction='[
                         {"action":"run", "trggroup":"changetab"},
@@ -235,10 +235,15 @@
                     ]'>Security</button>
                     <noscript><a href="#tab3">Security</a></noscript>
                 </div>
-                <div id="tab3" class="nojs-show tab-panel">
+                <div id="tab3" class="active tab-panel bg-right bg-norepeat" data-bgimg-srcset="#no-image 991w,
+                assets/campaign-icon-security.svg 992w,
+                assets/campaign-icon-security.svg 1280w">
                     <h2 class="mrgn-tp-0">Immigrants are thoroughly screened and respect our laws</h2>
-                    <p>We thoroughly screen immigrants before they arrive to make sure they have not committed serious crimes, don’t pose a security risk and are in good health.</p>
-                    <p>Immigrants who don’t respect our laws risk losing their immigration status and being removed from Canada.</p>
+                    <div class="row">
+                        <div class="col-md-9"><p>We thoroughly screen immigrants before they arrive to make sure they have not committed serious crimes, don’t pose a security risk and are in good health.</p>
+                            <p>Immigrants who don’t respect our laws risk losing their immigration status and being removed from Canada.</p></div>
+                    </div>
+                    
                 </div>
                 <div class="tab">
                     <svg width="180" height="149" viewBox="0 0 180 149" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -365,6 +370,10 @@
                         <summary>Becoming Canadian</summary>
                         <p>Everyone between the ages of 18 and 54 at the time they apply for citizenship must take the citizenship test. This test makes sure immigrants know about Canada, its history, and the responsibilities and privileges of citizenship. </p>
                     </details>
+                    <div class="col-md-5 highlight highlight-primary superimposed">
+                        <h3 class="h2">85% of newcomers</h3>
+                        <p>become citizens, putting Canada at one of the highest naturalization rates in the world</p>
+                    </div>
                 </div>
             </div>
 
