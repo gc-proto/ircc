@@ -72,7 +72,7 @@
 
             <div class="clearfix mrgn-bttm-xl"></div>
 
-           
+
             <div class="d-flex flex-column highlight highlight-secondary bg-bottom bg-right bg-norepeat highlight" data-bgimg-srcset="#no-image 991w,
                     assets/highlight-card-healthcare-workers-50.png 992w,
                     assets/highlight-card-healthcare-workers.png 1280w">
@@ -206,7 +206,7 @@
                     <noscript><a href="#tab2">Health and social services</a></noscript>
 
                 </div>
-                <div id="tab2" class="nojs-show tab-panel bg-bottom bg-right bg-norepeat highlight" data-bgimg-srcset="#no-image 991w,
+                <div id="tab2" class="nojs-show tab-panel bg-bottom bg-right bg-norepeat" data-bgimg-srcset="#no-image 991w,
                         assets/highlight-card-healthcare-workers-50.png 992w,
                         assets/highlight-card-healthcare-workers.png 1280w">
                     <h2 class="mrgn-tp-0">Immigrants deliver and improve our health and social services</h2>
@@ -226,7 +226,7 @@
                     </svg>
 
                     <button
-                        class="stretched-link active tab3 btn-link nojs-hide"
+                        class="stretched-link tab3 btn-link nojs-hide"
                         aria-controls="tab1"
                         data-wb-doaction='[
                         {"action":"run", "trggroup":"changetab"},
@@ -235,15 +235,17 @@
                     ]'>Security</button>
                     <noscript><a href="#tab3">Security</a></noscript>
                 </div>
-                <div id="tab3" class="active tab-panel bg-right bg-norepeat" data-bgimg-srcset="#no-image 991w,
+                <div id="tab3" class="nojs-show tab-panel bg-right bg-norepeat" data-bgimg-srcset="#no-image 991w,
                 assets/campaign-icon-security.svg 992w,
                 assets/campaign-icon-security.svg 1280w">
                     <h2 class="mrgn-tp-0">Immigrants are thoroughly screened and respect our laws</h2>
                     <div class="row">
-                        <div class="col-md-9"><p>We thoroughly screen immigrants before they arrive to make sure they have not committed serious crimes, don’t pose a security risk and are in good health.</p>
-                            <p>Immigrants who don’t respect our laws risk losing their immigration status and being removed from Canada.</p></div>
+                        <div class="col-md-9">
+                            <p>We thoroughly screen immigrants before they arrive to make sure they have not committed serious crimes, don’t pose a security risk and are in good health.</p>
+                            <p>Immigrants who don’t respect our laws risk losing their immigration status and being removed from Canada.</p>
+                        </div>
                     </div>
-                    
+
                 </div>
                 <div class="tab">
                     <svg width="180" height="149" viewBox="0 0 180 149" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -312,7 +314,7 @@
                         </defs>
                     </svg>
                     <button
-                        class="stretched-link tab4 btn-link nojs-hide"
+                        class="stretched-link tab4 btn-link nojs-hide active"
                         aria-controls="tab4"
                         data-wb-doaction='[
                         {"action":"run", "trggroup":"changetab"},
@@ -321,12 +323,28 @@
                     ]'>Settlement</button>
                     <noscript><a href="#tab4">Settlement</a></noscript>
                 </div>
-                <div id="tab4" class="nojs-show tab-panel">
+                <div id="tab4" class="active tab-panel">
                     <h2 class="mrgn-tp-0">Immigrants settle in communities across the country</h2>
-                    <p>According to the 2016 Census, the number of immigrants settling in small and midsize communities is growing.</p>
-                    <p>Immigration in the Prairies and Atlantic Canada has more than doubled in the last 15 years.</p>
-                    <p>The Government of Canada is promoting Francophone immigration to help Francophone minority communities thrive.</p>
-                    <p>In 1997, only about 1 in 10 economic immigrants settled outside Ontario, British Columbia and Quebec. By 2017, this number had grown to almost 4 in 10. </p>
+                    <div class="row wb-eqht ">
+                        <div class="col-md-6">
+                            <p>According to the 2016 Census, the number of immigrants settling in small and midsize communities is growing.</p>
+                            <p>Immigration in the Prairies and Atlantic Canada has more than doubled in the last 15 years.</p>
+                            <p>The Government of Canada is promoting Francophone immigration to help Francophone minority communities thrive.</p>
+                            <p>In 1997, only about 1 in 10 economic immigrants settled outside Ontario, British Columbia and Quebec. By 2017, this number had grown to almost 4 in 10. </p>
+
+
+                        </div>
+                        <img src="assets/canada-provinces.svg" class="col-md-6 hidden-xs hidden-sm" alt="" />
+
+                    </div>
+                    <div class="col-md-6 highlight highlight-primary superimposed ">
+                        <p><span class="h2 mrgn-tp- 0">4 in 10</span><br />economic immigrants settled outside Ontario, British Columbia and Quebec by 2017</p>
+                        <cite><a href="#">Source link</a></cite>
+
+                    </div>
+                    <div class="col-xs-11 col-xs-offset-1 superimposed hidden-xs hidden-sm"><img src="assets/campaign-people.png" class="center-block mrgn-tp-sm" alt="" /></div>
+
+
                 </div>
                 <div class="tab">
                     <svg width="128" height="139" viewBox="0 0 128 139" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -337,6 +355,14 @@
                         <path d="M66.2701 47.2545C66.2703 47.7007 66.1374 48.1369 65.8881 48.508C65.6388 48.8792 65.2843 49.1685 64.8696 49.3394C64.4548 49.5103 63.9983 49.5551 63.5579 49.4682C63.1174 49.3813 62.7128 49.1666 62.3952 48.8512C62.0776 48.5357 61.8613 48.1338 61.7736 47.6962C61.6859 47.2586 61.7308 46.805 61.9026 46.3928C62.0744 45.9805 62.3653 45.6282 62.7387 45.3802C63.112 45.1323 63.551 45 64 45C64.6019 45 65.1791 45.2375 65.6048 45.6603C66.0305 46.083 66.2698 46.6565 66.2701 47.2545ZM65.8447 50.8174H62.1553C61.6609 50.8172 61.1807 50.9814 60.7911 51.2836C60.4014 51.5858 60.1246 52.0089 60.0047 52.4854L58.0189 60.3827C57.9925 60.5013 57.9938 60.6243 58.0228 60.7422C58.0518 60.8602 58.1077 60.97 58.1862 61.063C58.2815 61.1823 58.4021 61.2793 58.5395 61.347C58.6768 61.4147 58.8275 61.4515 58.9807 61.4548C59.1485 61.4522 59.3119 61.4008 59.4505 61.3069C59.5892 61.213 59.6971 61.0807 59.7609 60.9265L61.6104 54.4977V59.1279L60.5089 70.0728C60.497 70.1901 60.51 70.3085 60.5471 70.4204C60.5841 70.5324 60.6444 70.6354 60.724 70.7228C60.8036 70.8101 60.9008 70.88 61.0092 70.9277C61.1176 70.9755 61.235 71.0001 61.3536 71H61.442C61.6343 70.9999 61.8205 70.9331 61.9684 70.811C62.1163 70.689 62.2166 70.5194 62.252 70.3316L64 61.0072L65.748 70.3316C65.7834 70.5194 65.8837 70.689 66.0316 70.811C66.1795 70.9331 66.3657 70.9999 66.558 71H66.6464C66.765 71.0001 66.8824 70.9755 66.9908 70.9277C67.0992 70.88 67.1964 70.8101 67.276 70.7228C67.3556 70.6354 67.4159 70.5324 67.4529 70.4204C67.49 70.3085 67.503 70.1901 67.4911 70.0728L66.3896 59.1279V54.4977L68.2391 60.9265C68.3031 61.0805 68.411 61.2125 68.5497 61.3062C68.6884 61.3999 68.8516 61.4511 69.0193 61.4536C69.1725 61.4505 69.3231 61.4139 69.4604 61.3464C69.5977 61.2788 69.7184 61.1821 69.8138 61.063C69.8923 60.97 69.9482 60.8602 69.9772 60.7422C70.0062 60.6243 70.0075 60.5013 69.9811 60.3827L67.9953 52.4854C67.8754 52.0089 67.5986 51.5858 67.2089 51.2836C66.8193 50.9814 66.3391 50.8172 65.8447 50.8174Z" fill="white" />
                     </svg>
 
+                    <!-- <button
+                        class="stretched-link tab5 btn-link nojs-hide"
+                        aria-controls="tab1"
+                        data-wb-doaction='[
+                        {"action":"run", "trggroup":"changetab"},
+                        {"action":"addClass", "class":"active", "source": ".tab5"},
+                        {"action":"removeClass", "class":"nojs-show", "source": "#tab5"}
+                    ]'>Integration</button> -->
                     <button
                         class="stretched-link tab5 btn-link nojs-hide"
                         aria-controls="tab1"
@@ -366,7 +392,7 @@
                         <summary>Community participation</summary>
                         <p>Immigrants are active in Canadian society. In 2016, one-third of immigrants volunteered and two-thirds were members of social organizations.</p>
                     </details>
-                    <details>
+                    <details class="mrgn-bttm-md">
                         <summary>Becoming Canadian</summary>
                         <p>Everyone between the ages of 18 and 54 at the time they apply for citizenship must take the citizenship test. This test makes sure immigrants know about Canada, its history, and the responsibilities and privileges of citizenship. </p>
                     </details>
