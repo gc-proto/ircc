@@ -223,6 +223,8 @@ $(document).on("wb-ready.wb", function (event) {
         for (var i = 0; i < ajax.length; i++) {
             let src = ajax[i].getAttribute('data-ajax-replace').split("#")[1];
             ajax[i].setAttribute('data-ajax-replace', path +"insights-"+lang+".html#"+ src );
+            ajax[i].setAttribute('class', 'ajax-insights');
+            ajax[i].innerHTML = "";
         }    
         $( ".ajax-insights" ).trigger( "wb-init.wb-data-ajax" );
        
@@ -1928,4 +1930,24 @@ $("#anchors").change(function () {
     let link = document.createElement('a');
     link.setAttribute('href', "#" + anchor);
     link.click();
+
+    // console.log(anchor);
+    // var url = (location.href).split("#")[0]+"#"+ anchor;             //Save down the URL without hash.
+    // // document.querySelector('[href*=#'+anchor+']').click;
+    // console.log(document.querySelectorAll("[href='#"+anchor+"']"));
+
+    // window.scrollBy(0, -50);
 });
+
+// window.onscroll = function () { scrollSticky() };
+
+// var navbar = document.getElementsByClassName("dashboard-navigation")[0];
+// var sticky = navbar.offsetTop;
+
+// function scrollSticky() {
+//     if (window.scrollY >= sticky) {
+//         navbar.classList.add("sticky")
+//     } else {
+//         navbar.classList.remove("sticky");
+//     }
+// }
