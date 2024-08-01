@@ -32,7 +32,7 @@ if (lang === "en") {
         });
 
     formatTime = d3.utcFormat("%B %Y");
-    shortMonth = d3.utcFormat("%b %Y");
+    shortMonth = d3.utcFormat("%b %d, %Y");
 }
 else {
     locale = d3.formatDefaultLocale({
@@ -54,7 +54,7 @@ else {
     });
     
     formatTime = frenchTime.format("%B %Y");
-    shortMonth = frenchTime.format("%b %Y");
+    shortMonth = frenchTime.format("%d %b, %Y");
 }
 
 $(document).on("wb-ready.wb", function (event) {
@@ -215,7 +215,7 @@ $(document).on("wb-ready.wb", function (event) {
 
         for (var i = 0; i < ajax.length; i++) {
             let src = ajax[i].getAttribute('data-ajax-replace').split("#")[1];
-            ajax[i].setAttribute('data-ajax-replace', path +"insights.html#"+ src );
+            ajax[i].setAttribute('data-ajax-replace', path +"insights-"+lang+".html#"+ src );
         }    
         $( ".ajax-insights" ).trigger( "wb-init.wb-data-ajax" );
        
