@@ -1,5 +1,5 @@
 let lang = document.getElementsByTagName('html')[0].getAttribute('lang');
-let locale, formatDate, frenchTime, formatTime, shortMonth;
+let locale, formatDate, langTime, formatTime, shortMonth;
 let loaded = false;
 
 let dict = {
@@ -27,12 +27,22 @@ if (lang === "en") {
         decimal: ".",
         thousands: ",",
         grouping: [3],
-        minus: "\u2212",
         percent: "%"
         });
+        
+        langTime = d3.timeFormatLocale({
+            dateTime: "%A, %e %B %Y %X",
+            date: "%Y-%m-%d",
+            time: "%H:%M:%S",
+            periods: ["AM", "PM"],
+            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            shortDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        });
 
-    formatTime = d3.utcFormat("%B %Y");
-    shortMonth = d3.utcFormat("%b %Y");
+    formatTime = d3.timeFormat("%B %Y");
+    shortMonth = d3.timeFormat("%b %-d, %Y");
 }
 else {
     locale = d3.formatDefaultLocale({
@@ -42,7 +52,7 @@ else {
         percent: " %",
     });
 
-    frenchTime = d3.timeFormatLocale({
+    langTime = d3.timeFormatLocale({
         dateTime: "%A, %e %B %Y %X",
         date: "%d/%m/%Y",
         time: "%H:%M:%S",
@@ -53,8 +63,8 @@ else {
         shortMonths: ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
     });
     
-    formatTime = frenchTime.format("%B %Y");
-    shortMonth = frenchTime.format("%b %Y");
+    formatTime = langTime.format("%B %Y");
+    shortMonth = langTime.format("%-d %b %Y");
 }
 
 $(document).on("wb-ready.wb", function (event) {
@@ -127,17 +137,8 @@ $(document).on("wb-ready.wb", function (event) {
     d3.csv("csv/previous-data.txt?" + today, function (data) {
 
         let previousData = data.map(function (d) { return d["Previous"] })
-        parseTime = d3.utcParse("%Y-%m");
-        if (lang === "en") {
-            formatTime = d3.utcFormat("%B %Y");
-        }
-        else {
-            formatTime = frenchTime.format("%B %Y");
-        }
+        parseTime = d3.timeParse("%Y-%m");        
         
-        
-
-        let thisMonth = Date.parse(dateModified);
         let thisMonthOption = document.createElement('option');
         thisMonthOption.setAttribute('value', "-1");
         thisMonthOption.innerHTML = dict[lang].latestData
@@ -145,8 +146,6 @@ $(document).on("wb-ready.wb", function (event) {
 
         for (var i = 0; i < previousData.length; i++) {
             let previousOption = document.createElement('option');
-            
-
             previousOption.setAttribute('value', previousData[i]);
             previousOption.innerHTML = formatTime(parseTime(previousData[i]));
             document.getElementById('previous-data-select').appendChild(previousOption)
@@ -201,6 +200,14 @@ $(document).on("wb-ready.wb", function (event) {
 
     runData();
 
+    function formatDateRage(dateRange){
+        parseTime = d3.timeParse("%b %d, %Y");
+        dateRange[0] = shortMonth(parseTime(dateRange[0]));
+        dateRange[1] = shortMonth(parseTime(dateRange[1]));
+
+        return dateRange[0] + " - " + dateRange[1]
+    }
+
     async function runData(previousData) {
         let path;        
         if (previousData == "-1") {
@@ -215,7 +222,9 @@ $(document).on("wb-ready.wb", function (event) {
 
         for (var i = 0; i < ajax.length; i++) {
             let src = ajax[i].getAttribute('data-ajax-replace').split("#")[1];
-            ajax[i].setAttribute('data-ajax-replace', path +"insights.html#"+ src );
+            ajax[i].setAttribute('data-ajax-replace', path +"insights-"+lang+".html#"+ src );
+            ajax[i].setAttribute('class', 'ajax-insights');
+            ajax[i].innerHTML = "";
         }    
         $( ".ajax-insights" ).trigger( "wb-init.wb-data-ajax" );
        
@@ -287,7 +296,7 @@ $(document).on("wb-ready.wb", function (event) {
 
 
             d3.csv(path + "traffic.txt?" + today, function (data) {
-                data.forEach(function (d, i) {
+                data.forEach(function (d) {
                     document.getElementById('traffic-dates').innerHTML = formatDateRage(d["Date"].replace(/_/g, ",").split(" - "))
                 })
             });
@@ -295,12 +304,7 @@ $(document).on("wb-ready.wb", function (event) {
 
         });
 
-        function formatDateRage(dateRange){
-            parseTime = d3.utcParse("%b %d, %Y");
-            dateRange[0] = shortMonth(parseTime(dateRange[0]));
-            dateRange[1] = shortMonth(parseTime(dateRange[1]));
-            return dateRange[0] + " - " + dateRange[1]
-        }
+        
 
         d3.csv(path + "referrer-type.csv?" + today, function (data) {
 
@@ -1347,7 +1351,7 @@ $(document).on("wb-ready.wb", function (event) {
                 }
             );
 
-            // let parseDate = d3.utcParse("%Y-%m-%d");
+            // let parseDate = d3.timeParse("%Y-%m-%d");
             let parseDate = d3.timeParse("%m/%d/%Y")
             let formatDate = d3.timeFormat("%Y-%m-%d");
             data.forEach(function (d) {
