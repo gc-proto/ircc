@@ -74,13 +74,15 @@
 .highlight.highlight-primary-alternate a:active {
   color: #1C9A9B;
 }
-.highlight svg, .highlight img {
+.highlight svg,
+.highlight img {
   overflow: visible;
   width: 96;
   height: 68px;
 }
 @media (min-width: 481px) {
-  .highlight svg, .highlight img {
+  .highlight svg,
+  .highlight img {
     transition: transform 500ms;
     transform-origin: top left;
   }
@@ -93,7 +95,8 @@
     background-color: #88D5D6;
     transition: background-color 500ms linear;
   }
-  .highlight.highlight-hover:hover svg, .highlight.highlight-hover:hover img {
+  .highlight.highlight-hover:hover svg,
+  .highlight.highlight-hover:hover img {
     transform: scale(1.1, 1.1);
   }
 }
@@ -107,60 +110,137 @@
     margin-bottom: -100px;
   }
 }
-.interactive-navigation.wb-tabs details, .interactive-navigation.wb-tabs summary, .interactive-navigation.wb-tabs ul[role=tablist] a, .interactive-navigation.wb-tabs ul[role=tablist] li {
-  border: none;
+@media (min-width: 992px) {
+  .tabs-highlight.wb-tabs.wb-tabs {
+    border: none;
+  }
+  .tabs-highlight.wb-tabs.wb-tabs > .tabpanels > details, .tabs-highlight.wb-tabs.wb-tabs > details, .tabs-highlight.wb-tabs.wb-tabs > .tabpanels > details > summary, .tabs-highlight.wb-tabs.wb-tabs > details > summary {
+    border: none !important;
+    padding: 0;
+    margin: 0;
+  }
+  .tabs-highlight.wb-tabs .tabpanels > details,
+  .tabs-highlight.wb-tabs .tabpanels > summary,
+  .tabs-highlight.wb-tabs ul[role=tablist] a,
+  .tabs-highlight.wb-tabs ul[role=tablist] li {
+    border: none;
+  }
+  .tabs-highlight.wb-tabs [role=tablist] {
+    display: flex;
+    align-items: self-end;
+    justify-content: stretch;
+    margin-bottom: -5px;
+  }
+  .tabs-highlight.wb-tabs [role=tablist] li {
+    all: unset;
+    display: flex;
+    justify-content: space-evenly;
+    background: none;
+    align-self: stretch;
+    flex: 1 1 0px;
+    text-align: center;
+  }
+  .tabs-highlight.wb-tabs [role=tablist] li a {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: 400;
+    color: #295376;
+  }
+  .tabs-highlight.wb-tabs [role=tablist] li a:after {
+    content: " ";
+    height: 49px;
+    width: 100%;
+    margin-bottom: -15px;
+  }
+  .tabs-highlight.wb-tabs [role=tablist] li a:hover, .tabs-highlight.wb-tabs [role=tablist] li a:focus {
+    color: #0535d2;
+    text-decoration: underline;
+  }
+  .tabs-highlight.wb-tabs [role=tablist] li a svg path.hover {
+    transition: transform 500ms;
+    transform-origin: bottom;
+  }
+  .tabs-highlight.wb-tabs [role=tablist] li.active a svg path.hover, .tabs-highlight.wb-tabs [role=tablist] li:hover a svg path.hover {
+    fill: #1C9A9B;
+  }
+  .tabs-highlight.wb-tabs [role=tablist] li.active a:after {
+    background-image: url("https://ircc.canada.ca/css/campaign-components/assets/tab-arrow.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+  .tabs-highlight.wb-tabs [role=tablist] li.active a svg {
+    transform: scale(1.1, 1.1);
+  }
+  .tabs-highlight.wb-tabs .tabpanels > details {
+    padding: 0 35px;
+  }
 }
-.interactive-navigation.wb-tabs [role=tablist] {
-  display: flex;
-  align-items: self-end;
-  justify-content: stretch;
-  margin-bottom: 20px;
-}
-.interactive-navigation.wb-tabs [role=tablist] li {
-  all: unset;
-  display: flex;
-  justify-content: space-evenly;
-  background: none;
-  align-self: stretch;
-  flex: 1 1 0px;
-  text-align: center;
-}
-.interactive-navigation.wb-tabs [role=tablist] li a {
-  all: unset;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  font-weight: 400;
-  color: #295376;
-}
-.interactive-navigation.wb-tabs [role=tablist] li a:after {
-  content: " ";
-  height: 49px;
-  width: 100%;
-  margin-bottom: -15px;
-}
-.interactive-navigation.wb-tabs [role=tablist] li a:hover, .interactive-navigation.wb-tabs [role=tablist] li a:focus {
-  color: #0535d2;
-  text-decoration: underline;
-}
-.interactive-navigation.wb-tabs [role=tablist] li a svg path.hover {
-  transition: transform 500ms;
-  transform-origin: bottom;
-}
-.interactive-navigation.wb-tabs [role=tablist] li.active a svg path.hover, .interactive-navigation.wb-tabs [role=tablist] li:hover a svg path.hover {
-  fill: #1C9A9B;
-}
-.interactive-navigation.wb-tabs [role=tablist] li.active a:after {
-  background-image: url("https://ircc.canada.ca/css/campaign-components/assets/tab-arrow.png");
-  background-position: bottom;
-  background-repeat: no-repeat;
-}
-.interactive-navigation.wb-tabs [role=tablist] li.active a svg {
-  transform: scale(1.1, 1.1);
-}
-.interactive-navigation.wb-tabs details[open] {
-  height: 100%;
-  overflow: visible;
+@media (max-width: 991px) {
+  .tabs-highlight summary::marker,
+  .tabs-highlight summary::-webkit-details-marker {
+    display: none !important;
+  }
+  .tabs-highlight.wb-tabs {
+    border: none;
+  }
+  .tabs-highlight.wb-tabs > .tabpanels > details, .tabs-highlight.wb-tabs > details, .tabs-highlight.wb-tabs > .tabpanels > details > summary, .tabs-highlight.wb-tabs > details > summary {
+    border: none !important;
+    padding: 0;
+    margin: 0;
+  }
+  .tabs-highlight.wb-tabs > .tabpanels > details[open] > summary, .tabs-highlight.wb-tabs > details[open] > summary {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .tabs-highlight.wb-tabs > .tabpanels > details, .tabs-highlight.wb-tabs > details {
+    margin: 10px 1px;
+  }
+  .tabs-highlight.wb-tabs > .tabpanels > details[open] svg, .tabs-highlight.wb-tabs > details[open] svg {
+    right: 0px;
+    top: 0px;
+    transform: scale(0.8, 0.8);
+  }
+  .tabs-highlight .tgl-tab {
+    border: none;
+    border-radius: 25px;
+    list-style: none;
+    position: relative;
+    overflow: hidden;
+    display: flex !important;
+    flex: 1 1 0px;
+    align-items: center;
+    min-height: 100px;
+    padding-left: 25px;
+    background-color: #E8F4F4;
+    cursor: pointer;
+    text-decoration: none !important;
+  }
+  .tabs-highlight .tgl-tab svg {
+    position: absolute;
+    right: -25px;
+    bottom: -25px;
+    height: 100px !important;
+  }
+  .tabs-highlight .tgl-tab svg path.hover {
+    transition: transform 500ms;
+    transform-origin: bottom;
+  }
+  .tabs-highlight .tgl-tab:hover svg path.hover {
+    fill: #1C9A9B;
+  }
+  .tabs-highlight .tgl-tab::before {
+    content: "+";
+    font-weight: bold;
+    color: #295376;
+    padding: 0 25px;
+  }
+  .tabs-highlight .tgl-panel, .tabs-highlight .tgl-panel > .highlight {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding-top: 0;
+  }
 }/*# sourceMappingURL=campaign-components.css.map */
