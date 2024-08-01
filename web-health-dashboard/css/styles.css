@@ -4,6 +4,20 @@ main {
   scroll-behavior: auto !important;
 }
 
+#navbar {
+  background-color: #26374a;
+  color: #fff;
+  float: right;
+  z-index: 2;
+  margin: 15px 30px;
+}
+#navbar a:link,
+#navbar a:visited,
+#navbar a:hover,
+#navbar a:active {
+  color: #fff;
+}
+
 .header {
   width: 100%;
   background-color: #26374a;
