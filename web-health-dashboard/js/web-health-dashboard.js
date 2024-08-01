@@ -288,8 +288,6 @@ $(document).on("wb-ready.wb", function (event) {
 
             d3.csv(path + "traffic.txt?" + today, function (data) {
                 data.forEach(function (d, i) {
-                    document.getElementById('traffic-insights').innerHTML = d["Insights"];
-                    
                     document.getElementById('traffic-dates').innerHTML = formatDateRage(d["Date"].replace(/_/g, ",").split(" - "))
                 })
             });
