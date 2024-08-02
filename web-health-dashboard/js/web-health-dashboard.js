@@ -143,7 +143,7 @@ $(document).on("wb-ready.wb", function (event) {
         thisMonthOption.setAttribute('value', "-1");
         thisMonthOption.innerHTML = dict[lang].latestData
         document.getElementById('previous-data-select').appendChild(thisMonthOption)
-
+        previousData.reverse();
         for (var i = 0; i < previousData.length; i++) {
             let previousOption = document.createElement('option');
             previousOption.setAttribute('value', previousData[i]);
