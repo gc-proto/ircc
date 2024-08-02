@@ -243,4 +243,15 @@
     border-top-right-radius: 0;
     padding-top: 0;
   }
+}
+.fnote-highlight .fn-rtn a {
+  background-color: #1C9A9B;
+  border-radius: 25px;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+}
+.fnote-highlight dd:focus {
+  background-color: #E8F4F4;
+  border-color: #1C9A9B;
 }/*# sourceMappingURL=campaign-components.css.map */
