@@ -244,6 +244,14 @@
     padding-top: 0;
   }
 }
+body:has(.fnote-highlight) .fn-lnk {
+  background-color: #1C9A9B;
+  border-radius: 25px;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+}
+
 .fnote-highlight .fn-rtn a {
   background-color: #1C9A9B;
   border-radius: 25px;
