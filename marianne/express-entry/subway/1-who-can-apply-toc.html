@@ -14,7 +14,7 @@
 
     <!--CHANGE THE TITLE-->
 
-    <title>Express Entry: Who's eligible for the Canadian Experience Class - Canada.ca</title>
+    <title>Express Entry: Who can apply - Canada.ca</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta name="description" content=" " />
     <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
@@ -26,7 +26,7 @@
     </head>
 
 
-    <body vocab="http://schema.org/" typeof="WebPage"><nav><ul id="wb-tphp">
+    <body class="cnt-wdth-lmtd" vocab="http://schema.org/" typeof="WebPage"><nav><ul id="wb-tphp">
      <li class="wb-slc"><a class="wb-sl" href="#wb-cont">Skip to main content</a></li><li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">Skip to &#34;About government&#34;</a></li></ul></nav>
 
             <header>
@@ -139,7 +139,6 @@
                             <li><a href='https://www.canada.ca/en/services/immigration-citizenship.html'>Immigration and citizenship</a></li>
                             <li><a href='https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada.html'>Immigrate to Canada</a></li>
                             <li><a href='0-index.html'>Express Entry</a></li>
-                            <li><a href='1-who-can-apply.html'>Who can apply</a></li>
                         </ol>
                     </div>
                 </nav>
@@ -152,7 +151,8 @@
     <!--CONTENT STARTS HERE-->
 
 
-    <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="container">
+    <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
+        <div class="container">
 
         <div class="mwsmediaplayer section">
 
@@ -162,10 +162,10 @@
             <nav class="provisional gc-subway">
                 <h1 id="gc-document-nav">Express Entry</h1>
                 <ul>
-                    <li><a href="1-who-can-apply.html" class="hidden-xs hidden-sm">Who can apply</a> <a href="1-who-can-apply.html#gc-document-nav" class="visible-xs visible-sm">Who can apply</a>
+                    <li><a href="#" class="active" aria-current="page">Who can apply</a>
                         <ul class="noline">
                             <li><a href="1b-fswp.html" class="hidden-xs hidden-sm">Federal Skilled Worker Program</a> <a href="1b-fswp.html#gc-document-nav" class="visible-xs visible-sm">Federal Skilled Worker Program</a></li>
-                            <li><a href="#" class="active" aria-current="page">Canadian Experience Class</a></li>
+                            <li><a href="1a-cec.html" class="hidden-xs hidden-sm">Canadian Experience Class</a> <a href="1a-cec.html#gc-document-nav" class="visible-xs visible-sm">Canadian Experience Class</a></li>
                             <li><a href="1c-fstp.html" class="hidden-xs hidden-sm">Federal Skilled Trades Program</a> <a href="1c-fstp.html#gc-document-nav" class="visible-xs visible-sm">Federal Skilled Trades Program</a></li>
                         </ul>
                     </li>
@@ -179,133 +179,217 @@
                 </ul>
             </nav>
 
-            <h1 property="name" id="wb-cont" class="gc-thickline">Who's eligible for the Canadian Experience Class</h1>
-    
-
-            <p>The Canadian Experience Class is for skilled workers who have Canadian work experience and want to become permanent residents.</p>
+            <h1 property="name" id="wb-cont" class="gc-thickline">Who can apply</h1>
 
             <h2 class="h3">On this page</h2>
             <ul>
-            <li><a href="#work">Canadian skilled work experience</a></li>
-            <li><a href="#language">Language ability</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#admissibility">Admissibility</a></li>
-            <li><a href="#where">Where you can live in Canada</a></li>
+            <li><a href="#programs">Immigration programs</a></li>
+            <li><a href="#differences">Key differences in eligibility criteria</a></li>
+            <li><a href="#check">Check if you're eligible</a></li>
+            <li><a href="#pnp">Provincial Nominee Program</a></li>
             </ul>
+    
 
-            <h2 id="work">Canadian skilled work experience</h2>
-            <p>First, find out the National Occupational Classification (NOC) for your job. Then check if it meets the requirements for skilled work experience. </p>
-            <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/find-national-occupation-code.html" class="btn btn-primary btn-lg mrgn-bttm-md" target="_blank">Find your NOC</a></p>
-            <section>
-                <p>Your skilled work experience must:</p>
-                <fieldset class="provisional gc-chckbxrdio">
-                  <ul class="list-unstyled">
-                    <li class="checkbox">
-                      <input type="checkbox" id="elig1" class="action-checkbox">
-                      <label for="elig1">be in 1 of these NOC training, education, experience and responsibilities (TEER) categories: 0, 1, 2, or 3
-                        <ul>
-                            <li>Your experience can be in more than one NOC.</li>
-                        </ul>
-                      </label>
-                    </li>
-                    <li class="checkbox">
-                      <input type="checkbox" id="elig2" class="action-checkbox">
-                      <label for="elig2">be gained by working <Strong>in Canada</Strong> while authorized to work under temporary resident status
+            <h2>Immigration programs</h2>
+            <p>Express Entry is an online system that we use to manage applications for permanent residence for 3 programs:</p>
+
+            <div class="row wb-eqht-grd">
+                <div class="col-xs-12 col-md-4">
+                    <div class="panel panel-body panel-default hght-inhrt full-width position-relative thumbnail  py-4 full-width">
+                        <div class="mrgn-lft-md mrgn-rght-md text-left">
+                            <h2 class="h3 mrgn-tp-0"><a href="1b-fswp.html" class="stretched-link">Federal Skilled Worker Program</a></h2>
+                            <p>For skilled workers with eligible <strong>foreign or Canadian</strong> work experience</p>
+                            <span class="fas fa-arrow-right pull-right" style="position: absolute; bottom: 10px; right: 10px;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4 ">
+                    <div class="panel panel-body panel-default hght-inhrt full-width position-relative thumbnail py-4">
+                        <div class="mrgn-lft-md mrgn-rght-md text-left">
+                            <h2 class="h3 mrgn-tp-0"><a href="1a-cec.html" class="stretched-link">Canadian Experience Class</a></h2>
+                            <p>For skilled workers with eligible <Strong>Canadian</Strong> work experience</p>
+                            <span class="fas fa-arrow-right pull-right" style="position: absolute; bottom: 10px; right: 10px;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="panel panel-body panel-default hght-inhrt full-width position-relative thumbnail  py-4 full-width">
+                        <div class="mrgn-lft-md mrgn-rght-md text-left">
+                            <h2 class="h3 mrgn-tp-0"><a href="1c-fstp.html" class="stretched-link">Federal Skilled Trades Program</a></h2>
+                            <p>For skilled workers who are qualified in a <Strong>skilled trade</Strong></p>
+                            <span class="fas fa-arrow-right pull-right" style="position: absolute; bottom: 10px; right: 10px;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <h2>Key differences in eligibility criteria</h2>
+
+                <p>Before you compare programs, here are 3 terms you should know:</p>
+                <ul>
+                    <li><strong>Canadian Language Benchmark (CLB)</strong>: The CLB is the Canadian standard used to measure English language ability of immigrants.</li>
+                    <li><strong>National Occupation Classification (NOC)</strong>: The NOC is a list of all the occupations in the Canadian labor market.</li>
+                    <li><strong>Training, education, experience and responsibilities (TEER)</strong>: The NOC has 6 TEER categories. A TEER category is based on the education and training needed for an occupation.</li>
+                </ul>
+
+<details>
+    <summary><h3>Language skills</h3></summary>
+    <dl class="dl-horizontal">
+        <dt>Canadian Experience Class</dt>
+        <dd>
+            <ul>
+            <li>CLB 7 for TEER 0 or TEER 1 occupations</li>
+            <li>CLB 5 for TEER 2 or TEER 3 occupations</li>
+          </ul>
+        </dd>
+        <dt>Federal Skilled Worker Program</dt>
+        <dd>
+            <ul>
+            <li>CLB 7</li>
+            </ul>
+        </dd>
+        <dt>Federal Skilled Trades Program</dt>
+        <dd>
+            <ul>
+                <li>CLB 5 for speaking and listening</li>
+                <li>CLB 4 for reading and writing</li>
+            </ul>
+        </dd>
+      </dl>
+</details>
+
+<details>
+    <summary><h3>Type of work experience</h3></summary>
+    <dl class="dl-horizontal">
+        <dt>Canadian Experience Class</dt>
+        <dd>
+            <p>Canadian work experience in an occupation listed in 1 or more of these NOC TEER categories:</p>
+            <ul>
+              <li>TEER 0</li>
+              <li>TEER 1</li>
+              <li>TEER 2</li>
+              <li>TEER 3</li>
+            </ul>
+        </dd>
+        <dt>Federal Skilled Worker Program</dt>
+        <dd>
+            <p>Work experience in an occupation listed in 1 of these NOC TEER categories:</p>
+            <ul>
+              <li>TEER 0</li>
+              <li>TEER 1</li>
+              <li>TEER 2</li>
+              <li>TEER 3</li>
+            </ul>
+        </dd>
+        <dt>Federal Skilled Trades Program</dt>
+        <dd>
+            <p>Work experience in a skilled trade under key groups of TEER 2 or TEER 3:</p>
+            <ul>
+                <li>Major Group 72</li>
+                <li>Major Group 73</li>
+                <li>Major Group 82</li>
+                <li>Major Group 83</li>
+                <li>Major Group 92</li>
+                <li>Major Group 93</li>
+                <li>Minor Group 6320</li>
+                <li>Unit Group 62200</li>
+              </ul>
+        </dd>
+      </dl>
+</details>
+
+<details>
+    <summary><h3>Amount of work experience</h3></summary>
+    <dl class="dl-horizontal">
+        <dt>Canadian Experience Class</dt>
+        <dd>
+            <p>1 year in Canada in the last 3 years (either combination of full-time or part-time work)</p>
+        </dd>
+        <dt>Federal Skilled Worker Program</dt>
+        <dd>
+            <p>1 year continuous within the last 10 years (combination of part-time, full-time or more than 1 job in your&nbsp;<a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1007&amp;top=">primary occupation)</a></p>
+        </dd>
+        <dt>Federal Skilled Trades Program</dt>
+        <dd>
+            <p>2 years within the last 5 years (either combination of full-time or part-time work)</p>
+        </dd>
+      </dl>
+</details>
+
+
+<details>
+    <summary><h3>Job offer</h3></summary>
+    <dl class="dl-horizontal">
+        <dt>Canadian Experience Class</dt>
+        <dd>
+            <p>Not required.</p>
+        </dd>
+        <dt>Federal Skilled Worker Program</dt>
+        <dd>
+            <p>Not required, but you can get selection criteria points for having a valid job offer.</p>
+        </dd>
+        <dt>Federal Skilled Trades Program</dt>
+        <dd>
+            <p>Required:</p>
                     <ul>
-                        <li>If you worked remotely, you must have been physically in Canada and working for a Canadian employer.</li>
-                    </ul></label>
-                    </li>
-                    <li class="checkbox">
-                      <input type="checkbox" id="elig3" class="action-checkbox">
-                      <label for="elig3">show that you performed:
-                        <ul>
-                            <li>the actions in the <strong>lead statement</strong> of the NOC job description, and</li>
-                            <li>most of the main duties listed</li>
-                        </ul></label>
-                    </li>
-                    <li class="checkbox">
-                        <input type="checkbox" id="elig4" class="action-checkbox">
-                        <label for="elig4">be paid work (you must have been paid wages or earned commission—volunteer work or unpaid internships don’t count)</label>
-                      </li>
-                      <li class="checkbox">
-                        <input type="checkbox" id="elig5" class="action-checkbox">
-                        <label for="elig5">be at least <strong>1 year of continuous work</strong> or 1,560 hours total (30 hours per week) in the 3 years before you apply</label>
-                      </li>
-                  </ul>
-                </fieldset>
-                <div class="clearfix"></div>
-                <div class="alert alert-warning" id="action-no-msg" aria-live="polite">
-                  <p>Your skilled work experience must meet all of the requirements to be eligible.</p>
-                </div>
-                <div class="alert alert-success hidden" id="action-msg1" aria-live="polite">
-                  <h4>Your skilled work experience meets the criteria</h4>
-                  <p>You may be eligible for the Canadian Experience Class if you meet all other minimum requirements.</p>
-                </div>
-              </section>
+                      <li>a valid&nbsp;<a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/offer-employment.html">job offer of full-time employment&nbsp;</a>for a total period of at least 1 year, <strong>or</strong></li>
+                      <li>a&nbsp;<a href="#light-box-d-certificate" aria-controls="light-box-d-certificate" class="wb-lbx wb-init wb-lbx-inited" role="button" id="wb-auto-4">certificate of qualification</a>&nbsp;in that skilled trade issued by a Canadian provincial, territorial or federal authority</li>
+                    </ul>
+        </dd>
+      </dl>
+</details>
 
 
-            <div class="well mrgn-tp-lg">
-            <h3 class="mrgn-tp-sm">How to count your work hours</h3>
-            <p>You can meet the 1,560 hour requirement in a few different ways:</p>
-                        <ul>
-                            <li><strong>full time at 1 job</strong>: 30 hours/week for 12 months = 1 year full time (1,560 hours)</li>
-                            <li><strong>equal amount in part-time work</strong>: for example, 15 hours/week for 24 months = 1 year full time (1,560 hours)
-                                <ul><li>You can work as many part-time jobs as you need to meet this requirement.</li></ul>
-                            </li>
-                            <li><strong>full time at more than 1 job</strong>: 30 hours/week for 12 months at more than 1 job = 1 year full time (1,560 hours)</li>
-                         </ul>   
-            </div>    
+<details>
+    <summary><h3>Education</h3></summary>
+    <dl class="dl-horizontal">
+        <dt>Canadian Experience Class</dt>
+        <dd>
+            <p>Not required.</p>
+        </dd>
+        <dt>Federal Skilled Worker Program</dt>
+        <dd>
+            <p>Secondary education required.</p>
+            <p>You can get more selection criteria points for your post-secondary education.</p>
+        </dd>
+        <dt>Federal Skilled Trades Program</dt>
+        <dd>
+            <p>Not required.</p>
+        </dd>
+      </dl>
+</details>
+
+
+            <h2>Check if you're eligible</h2>
+            <p>Answer a questionnaire to check if you’re eligible for the minimum requirements of Express Entry. To answer the questionnaire, you have 2 options:</p>
+            <details>
+                <summary><h3>Option 1: Come to Canada tool</h3></summary>
+                <p>Answer a few questions using the Come to Canada tool to assess your eligibility.</p>
+                <p>The tool gives you a number at the end (a <Strong>personal reference code</Strong>). You'll use this number to move your information from the tool to your Express Entry profile.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/come-canada-tool-immigration-express-entry.html" class="btn btn-primary btn-lg">Go to Come to Canada tool</a></p>
+            </details>
+
+            <details>
+                <summary><h3>Option 2: IRCC secure account</h3></summary>
+                <p>Fill out the questionnaire in your IRCC secure account.</p>
+                <ol>
+                    <li>Sign in to your account and choose <strong>Apply to come to Canada</strong> under <strong>Start an application</strong>.</li>
+                    <li>Choose “Express Entry” under <strong>I do not have a Personal Reference Code</strong>.</li>
+                    <li>Answer the questions.</li>
+                </ol>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn-primary btn-lg">Sign in to your account</a></p>
+            </details>
+
+
+            <h2 class="mrgnt-tp-0">Provincial Nominee Program (PNP)</h2>
+            <p>If you’re eligible for one of these programs, you can also apply through Express Entry for the Provincial Nominee Program.</p>
+            <p>If you’re nominated, you’ll get <strong>extra points</strong> so you can be invited to apply quickly.</p>
+            <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees/express-entry.html">Apply for the Provincial Nominee Program</a></p>
 
 
             
-            <details class="mrgn-tp-lg"><summary><h3>Self-employment and student work experience</h3></summary>
-            <p>Self-employment and work experience gained while you were a full-time student (even if you were on a co-op work term) <strong>doesn’t count</strong> toward the minimum requirements for this program.</p>
-            <h4>Exemption for physicians</h4>
-            <p>We introduced a <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/public-policies/physicians-4-2023.html">temporary public policy</a> for foreign national physicians who:</p>
-		<ul>
-			<li>were invited to apply for permanent residence through Express Entry on or after April 25, 2023, and submitted an application</li>
-			<li>have work experience in providing publicly funded medical services in Canada (such as fee-for-service work) <strong>and</strong></li>
-			<li>aren’t eligible because they’re self-employed</li>
-		</ul>
-		<p>We now count this work experience as Canadian work experience. When you <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile.html">create your Express Entry profile</a>, to make it possible for your work experience to count as Canadian work experience, <strong>do not</strong> check the “Self-employed work” checkbox under <strong>Work experience in Canada</strong>.</p>
-
-            </details>
-
-            <h2 id="language">Language ability</h2>
-            <p>You must <a href="2a-language-test.html#test">take approved language tests</a> in English or French and meet the <a href="2a-language-test.html#requirements">minimum score</a> in all 4 abilities:</p>
-                <ul>
-                  <li>writing</li>
-                  <li>reading</li>
-                  <li>listening</li>
-                  <li>speaking</li>
-                </ul>
-
-
-            <h2 id="education">Education</h2>
-            <p>There is <strong>no</strong> education requirement for the Canadian Experience Class.</p>
-            <details>
-                <summary>If you want to improve your rank in the pool</summary>
-<p>If you want to improve your rank in the Express Entry pool</a>, there are 2&nbsp;ways you can do this.</p>
-<ol>
-	<li>If you went to school in Canada, you can get points for a certificate, diploma or degree from a Canadian high school or post-secondary institution</li>
-	<li>If you have foreign education, you can get points if you have both of these:
-		<ul>
-			<li>a completed <a href="https://www.canada.ca/en/services/immigration-citizenship/helpcentre/glossary.html#educational_credential">educational credential</a></li>
-			<li>an <a href="2b-education.html">educational credential assessment</a> report for immigration purposes</li>
-		</ul>
-	</li>
-</ol>
-</details>
  
-<h2 id="admissibility">Admissibility</h2>
-<p>You must be <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/inadmissibility.html">admissible to Canada</a>.</p>
-<p>Some people aren’t allowed to come to Canada. There are different reasons we may not let you into Canada, such as security, criminal or medical reasons.</p>
 
-
-<h2 id="where">Where you can live in Canada</h2>
-<p>You must plan to live <Strong>outside the province of Quebec</Strong>. The province of Quebec selects its own skilled workers. If you plan on living in Quebec, see <a href="/en/immigration-refugees-citizenship/services/immigrate-canada/quebec-skilled-workers.html">Quebec-selected skilled workers for more information</a>.</p>
-<p>When you fill out your profile, we’ll ask you where you plan to live in Canada. You don’t have to settle in that province or territory.</p>
-  <p>If you’re a Provincial Nominee, you <strong>must</strong> settle in the province or territory that nominated you.</p>
             
             
             <nav class="mrgn-bttm-lg mrgn-tp-lg">
@@ -314,9 +398,7 @@
                     <li class="next"><a href="3-crs-score.html#wb-cont" rel="next"><span class="wb-inv">Next: </span>Check your score</a></li>
                 </ul>
             </nav>
-        </div>
 
-        </div>
 
         <!-- CONTENT ENDS HERE -->
 
@@ -520,27 +602,9 @@
 
     </div>
 
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
-<script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
-
-<script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-    $(".action-checkbox").change(function(){
-    if ($('.action-checkbox:checked').length == $('.action-checkbox').length) {
-    $("#action-msg1").removeClass("hidden").addClass("visible");
-    $("#action-no-msg").addClass("hidden").removeClass("visible");
-    }
-    if ($('.action-checkbox:checked').length !== $('.action-checkbox').length) {
-    $("#action-msg1").addClass("hidden").removeClass("visible");
-    $("#action-no-msg").removeClass("hidden").addClass("visible");
-    }
-    })
-});
- </script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
 </body>
 
 </html>
