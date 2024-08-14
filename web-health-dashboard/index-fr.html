@@ -10,7 +10,7 @@
     <meta name="keywords" content="data">
     <meta name="author" content="IRCC">
     <meta name="dcterms.title" content="Tableau de bord de la santé web d’IRCC">    
-    <meta property="dcterms:modified" title="W3CDTF" content="2024-07-23" />
+    <meta property="dcterms:modified" title="W3CDTF" content="2024-08-13" />
 
 
     <title>Tableau de bord de la santé web d’IRCC — Canada.ca</title>
@@ -31,11 +31,11 @@
 
 <body vocab="http://schema.org/" typeof="WebPage">
 
-<!-- Force clear cache -->
+
     <header id="navbar">
         <div id="wb-bnr" class="container-fluid">
             <section id="wb-lng" class="text-right">
-                <h2 class="h3 wb-inv">Language selection</h2>
+                <h2 class="h3" class="wb-inv">Language selection</h2>
                 <a href="index-en.html" lang="en">English</a>
             </section>
         </div>
@@ -59,7 +59,7 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-heading">
-                            <h2 class="h3" id="traffic">Trafic</h2>
+                            <h2 class="h3" class="h2" id="traffic">Trafic</h2>
                         </div>
                         <div class="box-body">
 
@@ -68,7 +68,7 @@
                                 <div class="col-md-4 text-left">
                                     <p><strong>Date&nbsp;: <span id="traffic-dates"></span></strong></p>
                                     <h3 class="mrgn-tp-0">Faits saillants</h3>
-                                    <div id="traffic-insights-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights-fr.html#traffic-insights"></div>
+                                    <div id="traffic-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#traffic-insights"}'></div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="panel panel-body panel-default hght-inhrt">
@@ -126,7 +126,7 @@
                                     <div class="col-md-4 col-xs-12">
                                         <p><strong>Date&nbsp;: <span id="referrer-date"></span></strong></p>
                                         <h3>Faits saillants</h3>
-                                        <div id="traffic-sources-insights-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights-fr.html#traffic-sources-insights"></div>
+                                        <div id="traffic-sources-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#traffic-sources-insights"}'></div>
                                     </div>
                                     <div class="col-md-8 col-xs-12">
                                         <div class="wb-tabs">
@@ -167,7 +167,7 @@
                                     <div class="col-md-4 col-xs-12">
                                         <p><strong>Date : <span id="top-content-date"></span></strong></p>
                                         <h3>Faits saillants</h3>
-                                        <div id="top-content-insight-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights-fr.html#top-content-insights">
+                                        <div id="top-content-insight-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#top-content-insights"}'>
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-xs-12">
@@ -337,7 +337,7 @@
                                                 {"action":"removeClass", "class":"hidden", "source":"#study-french"},
                                                 {"action":"removeClass", "class":"active", "source":".btn-study-english"},
                                                 {"action":"addClass", "class":"active", "source":".btn-study-french"}
-                                            ]'>Français</button>     </div>
+                                            ]'>Français</button>
                                                     <div class="btn-group btn-group-lang">
                                                         <button class="btn btn-default btn-study-english " type="button" data-wb-doaction='[
                                                 {"action":"removeClass", "class":"hidden", "source":"#study-english"},
@@ -387,7 +387,7 @@
                                     <div class="col-lg-4 col-xs-12">
                                         <p><strong>Date&nbsp;: <span id="tss-date"></span></strong></p>
                                         <h3>Faits saillants</h3>
-                                        <div id="tss-insight-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights-fr.html#tss-insights"></div>
+                                        <div id="tss-insight-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#tss-insights"}'></div>
 
                                     </div>
                                     <div class="col-lg-8 col-xs-12">
@@ -475,7 +475,7 @@
                                     <div class="col-lg-4 col-xs-12">
                                         <p><strong>Date&nbsp;: <span id="contact-date"></span></strong></p>
                                         <h3>Faits saillants</h3>
-                                        <div id="contact-hc-insights-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights-fr.html#contact-hc-insights"></div>
+                                        <div id="contact-hc-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#contact-hc-insights"}'></div>
 
                                     </div>
 
@@ -538,7 +538,7 @@
                                     <div class="col-md-4 col-xs-12">
                                         <p><strong>Date&nbsp;: <span id="news-date"></span></strong></p>
                                         <h3>Faits saillants</h3>
-                                        <div id="news-insights-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights-fr.html#news-insights"></div>
+                                        <div id="news-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#news-insights"}'></div>
 
                                     </div>
                                     <div class="col-md-8 col-xs-12">
@@ -581,7 +581,7 @@
                                     <div class="col-md-4 col-xs-12">
                                         <p><strong>Date&nbsp;: <span id="crisis-date"></span></strong></p>
                                         <h3>Faits saillants</h3>
-                                        <div id="special-measures-insights-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights-fr.html#special-measures-insights"></div>
+                                        <div id="special-measures-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#special-measures-insights"}'></div>
 
 
                                     </div>
@@ -629,7 +629,7 @@
                                     <div class="col-md-4 col-xs-12">
                                         <p><strong>Date&nbsp;: <span id="campaign-date"></span></strong></p>
                                         <h3>Faits saillants</h3>
-                                        <div id="campaigns-insights-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights-fr.html#campaigns-insights"></div>
+                                        <div id="campaigns-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#campaigns-insights"}'></div>
 
 
 
@@ -677,7 +677,7 @@
                                 <div class="col-md-4 col-xs-12">
                                     <p><strong>Date&nbsp;: <span id="mobile-date"></span></strong></p>
                                     <h3>Faits saillants</h3>
-                                    <div id="mobile-insights-cnt" class="ajax-insights" data-ajax-replace="csv/export/insights-fr.html#mobile-insights"></div>
+                                    <div id="mobile-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#mobile-insights"}'></div>
 
 
                                 </div>
@@ -710,7 +710,7 @@
 
                     </div>
                 </div>
-            </div>
+
             </div>
     </main>
 
