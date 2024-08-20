@@ -221,10 +221,12 @@ $(document).on("wb-ready.wb", function (event) {
 
 
         for (var i = 0; i < ajax.length; i++) {
-            let src = ajax[i].getAttribute('data-ajax-replace').split("#")[1];
-            ajax[i].setAttribute('data-ajax-replace', path +"insights-"+lang+".html#"+ src );
-            ajax[i].setAttribute('class', 'ajax-insights');
-            ajax[i].innerHTML = "";
+            let jData = JSON.parse(ajax[i].getAttribute('data-wb-ajax'));
+            let url = jData.url.split("#")[1];
+            jData.url = path +"insights-"+lang+".html#"+ url;
+            
+             ajax[i].outerHTML = '<div id="'+ ajax[i].getAttribute('id') +'" class="ajax-insights" data-wb-ajax=\'{&quot;type&quot;: &quot;replace&quot;, &quot;nocache&quot;: &quot;nocache&quot;,  &quot;url&quot;: &quot;'+ jData.url +'&quot;}\'></div>';
+            
         }    
         $( ".ajax-insights" ).trigger( "wb-init.wb-data-ajax" );
        
@@ -469,7 +471,7 @@ $(document).on("wb-ready.wb", function (event) {
             }
 
             let x = data.map(function (d) { return d["Page title"] })
-            let y = data.map(function (d) { return d3.format("f")(d["Visits"]) })
+            let y = data.map(function (d) { return d["Visits"] })
 
             topPagesChart = new Chart(
                 document.getElementById('top-pages-chart'),
