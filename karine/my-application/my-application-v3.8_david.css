@@ -21,6 +21,9 @@
     border-bottom: solid 2px #284162;
 }
 
+.my-application a.no-undrln.stretched-link.full-width:hover, .my-application a.no-undrln.stretched-link.full-width:focus {
+     margin-bottom: 0px
+}
 
 .my-application li:has(a.no-undrln.stretched-link.full-width:hover) span.fas, .my-application li:has(a.no-undrln.stretched-link.full-width:focus) span.fas {
     color: #0535d2;
