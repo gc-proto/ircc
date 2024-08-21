@@ -21,9 +21,13 @@
     border-bottom: solid 2px #284162;
 }
 
-.my-application a.no-undrln.stretched-link.full-width:hover, .my-application a.no-undrln.stretched-link.full-width:focus, .banded-topic a.no-undrln.stretched-link.full-width:hover, .banded-topic a.no-undrln.stretched-link.full-width:focus {
+.my-application a.no-undrln.stretched-link.full-width:hover, .my-application a.no-undrln.stretched-link.full-width:focus {
     font-weight:bold;
-    margin-bottom: -1px
+    margin-bottom: -1px;
+}
+
+.my-application a.no-undrln.stretched-link.full-width:hover, .my-application a.no-undrln.stretched-link.full-width:focus, .banded-topic a.no-undrln.stretched-link.full-width:hover, .banded-topic a.no-undrln.stretched-link.full-width:focus {    
+    font-weight:bold;
 }
 
 .my-application li:has(a.no-undrln.stretched-link.full-width:hover) span.fas, .my-application li:has(a.no-undrln.stretched-link.full-width:focus) span.fas, .banded-topic li:has(a.no-undrln.stretched-link.full-width:hover) span.fas, .banded-topic li:has(a.no-undrln.stretched-link.full-width:focus) span.fas {
