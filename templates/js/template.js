@@ -1,3 +1,13 @@
+
+let breadcrumbs = "";
+for (const [key, value] of Object.entries(pageConstants.breadcrumbs)) {
+  breadcrumbs += `<li><a href="${value}">${key}</a></li>`
+} 
+
+console.log(breadcrumbs)
+
+
+
 const headerTemplate = document.createElement('template');
 headerTemplate.innerHTML = `  
   <nav>
@@ -114,6 +124,7 @@ headerTemplate.innerHTML = `
         <ol class="breadcrumb">
           <li><a href='https://www.canada.ca/en.html'>Canada.ca</a></li>
           <li><a href='https://www.canada.ca/en/services/immigration-citizenship.html'>Immigration and citizenship</a></li>
+         `+breadcrumbs+`
         </ol>
       </div>
     </nav>
