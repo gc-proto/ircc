@@ -4,10 +4,6 @@ for (const [key, value] of Object.entries(pageConstants.breadcrumbs)) {
   breadcrumbs += `<li><a href="${value}">${key}</a></li>`
 } 
 
-console.log(breadcrumbs)
-
-
-
 const headerTemplate = document.createElement('template');
 headerTemplate.innerHTML = `  
   <nav>
