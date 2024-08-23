@@ -1,8 +1,11 @@
 
 let breadcrumbs = "";
+
+if (pageConstants.breadcrumbs) {
 for (const [key, value] of Object.entries(pageConstants.breadcrumbs)) {
   breadcrumbs += `<li><a href="${value}">${key}</a></li>`
 } 
+}
 
 const headerTemplate = document.createElement('template');
 headerTemplate.innerHTML = `  
