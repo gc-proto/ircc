@@ -15,11 +15,16 @@
       pageFeedbackTool: true, // true | false; Set to 'true' if adding the Page Feedback tool to bottom of page
       alternateLanguageURL: "#", // URL; Add the English or French URL link
       dateModified: "2024-08-16", // YYYY-MM-DD
-      fluidWidth: false // true | false; Set to 'true' if you will be using full width elements like bands.
+      fluidWidth: false, // true | false; Set to 'true' if you will be using full width elements like bands.
+      breadcrumbs: { //use "title":"url" in order of appearance or leave blank if none, ex.: 
+        // "Visit Canada": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html",
+        // "Visitor visa (temporary resident visa)":"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/visitor-visa.html"
+      }
     }
   </script>
   <!-- CONFIGURATIONS END HERE -->
   <script src="https://test.canada.ca/ircc/templates/js/template.js" type="text/javascript" defer></script>
+  
   <noscript>
     <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
   </noscript>

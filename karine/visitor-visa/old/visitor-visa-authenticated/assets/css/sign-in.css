@@ -1,0 +1,60 @@
+.signin-banner {
+    background-color: #284162!important; 
+    color: #fff!important; 
+    font-weight:bold;  
+    font-family: 'Lato';
+}
+
+.signin-banner .flex {
+    display:flex;
+    align-items: flex-end;
+}
+.signin-banner p{ 
+    font-size: 2.5em;
+    flex-basis: 40%;
+    padding-left:50px;
+    margin-bottom:0;
+}
+
+.signin-banner a {
+    color:#fff!important;
+    text-decoration: none!important;  
+    font-size:1.4em;  
+    padding:5px 20px;
+}
+
+.signin-banner button {
+    color:#fff!important;
+    font-weight:bold;
+    font-size:1.4em;
+    text-wrap:nowrap;    
+}
+
+.start-application-layout .container {
+    width: 1370px!important;
+}
+.start-application h1 {
+    border: none!important;
+}
+
+.start-application .well.active {
+    background-color: #2a4980;
+    color:#fff!important;
+    border-radius: 10px;
+    padding:40px;
+}
+.start-application .well.muted {
+    background-color: #fff;
+    color:#d5d5d6!important;
+    border-radius: 10px;
+    padding:40px;
+}
+
+.start-application .well-footer a.btn-default {
+    color: #2a4980!important;
+}
+.start-application .muted .well-footer a.btn-default {
+    color: #d5d5d6!important;
+    font-size:small;
+}
+
