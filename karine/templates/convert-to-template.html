@@ -178,11 +178,11 @@
         document.getElementById('save').onclick = function() {
             let data, filename, type;
             data = output.value;
-            filename = "generated-template";
+            filename = "generated-template.html";
             var htmlContent = [data];
             var bl = new Blob(htmlContent, {type: "text/html"});
             var a = document.createElement("a");
-            a.href = "URL.createObjectURL(bl)";
+            a.href = URL.createObjectURL(bl);
             a.download = filename;
             a.hidden = true;
             document.body.appendChild(a);
@@ -236,15 +236,14 @@
         function triggerWET(){
             (function( $, document, wb ) {
             "use strict";
-            
-                console.log($(event.currentTarget));
+                // "data.ajax-type" contains the insersion method [after, append, before, prepend, replace]
+                // "data.content" contains the
                 var $elm = $("#preview");
                 $elm
                     .find( wb.allSelectors )
                         .addClass( "wb-init" )
                         .filter( ":not(#" + $elm.attr( "id" ) + " .wb-init .wb-init)" )
-                            .trigger( "timerpoke.wb" );
-               
+                            .trigger( "timerpoke.wb" );              
         })( jQuery, document, wb );
         }
     </script>
