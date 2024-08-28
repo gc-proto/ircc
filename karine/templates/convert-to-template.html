@@ -34,7 +34,7 @@
         <h1 class="brdr-0">Generate a template from a Canada.ca page</h1>
         <form class="py-4" id="form">
             <label for="enterURL" class="mrgn-rght-sm">Page URL:</label>
-            <input type="text" placeholder="https:///www.canada.ca" size="50" id="enterURL" /><br />
+            <input type="text" placeholder="https:///www.canada.ca" class="full-width" id="enterURL" /><br />
             <button class="btn btn-info mrgn-tp-md" id="generate">Generate template</button>
         </form>
         <div id="downloadedContent" class="hidden"></div>
@@ -73,8 +73,8 @@
     <script src="template/get-template.js"></script>
     <script>
 
-        let input = document.getElementById('enterURL');
-        // input.value = "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit.html";       
+        const urlParams = (window.location.href).split("?url=")[1]
+        let input = document.getElementById('enterURL');      
         let error = false;
         let form = document.getElementById('form');
         let downloadedContent = document.getElementById('downloadedContent');
@@ -87,6 +87,11 @@
 
         // import basic_en from "./template/basic-en.js";
 
+        if (urlParams) {
+            input.value = urlParams;
+            generateTemplate();
+        }
+
         document.getElementById('generate').onclick = function (e) {
             e.preventDefault();
 
@@ -94,8 +99,8 @@
                 form.firstElementChild.remove();
                 error = false;
             }
-            let href = input.value;
-            if (!href) {
+
+            if (input.value == "") {
                 let errorMsg = document.createElement("p");
                 errorMsg.setAttribute("id", "errorMsg");
                 errorMsg.innerHTML = "Please enter a URL."
@@ -104,7 +109,13 @@
                 error = true
             }
             else {
-                page = {
+                generateTemplate()
+            }
+        }
+
+        function generateTemplate(){
+            let href = input.value;
+            page = {
                     metadata: {
                         dateModified: "",
                         description: "",
@@ -171,12 +182,7 @@
 
                 triggerWET();
                 showOutput.classList.remove('hidden');
-
-
-            }
         }
-
-
 
         document.getElementById('copyClip').onclick = function () {
             navigator.clipboard.writeText(output.value);
