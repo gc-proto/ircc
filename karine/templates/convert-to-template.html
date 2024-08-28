@@ -127,7 +127,12 @@
                 }
 
                 downloadedContent.innerHTML = getURL(href);
-                page.metadata.lang = document.getElementsByTagName('html')[0].getAttribute('lang');
+                console.log(downloadedContent.innerHTML)
+
+                if (href.indexOf("canada.ca/en/") > 1) {page.metadata.lang = "en"}
+                else {page.metadata.lang = "fr"}
+                // page.metadata.lang = downloadedContent.getElementsByTagName('html')[0].getAttribute('lang');
+                
                 page.head.title = downloadedContent.getElementsByTagName('title')[0].innerText;
                 let experimentalFeatures = downloadedContent.querySelectorAll('link[rel="stylesheet"]');
                 for (let i = 0; i < experimentalFeatures.length; i++) {
@@ -155,7 +160,7 @@
                 page.contents = downloadedContent.querySelector('main').innerHTML;
 
                 page.contents = fixLinks(page.contents);
-                generatedTemplate = page.metadata.lang == "en" ? englishTemplate(page) : FrenchTemplate(page);
+                generatedTemplate = page.metadata.lang == "en" ? englishTemplate(page) : frenchTemplate(page);
 
 
 
