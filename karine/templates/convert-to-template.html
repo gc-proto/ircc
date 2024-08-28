@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Convert a Canada.ca page to a GitHub template</title>
+    <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <style>
+        .error {
+            padding: 15px 10px;
+            border: solid red 2px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        #preview {
+            transform: scale(0.9,0.9);
+            transform-origin: top;      
+        }
+
+        #output {
+            min-height:300px;
+            z-index:2;
+        }
+    </style>
+</head>
+
+<body class="container py-4">
+
+    <h1 class="brdr-0">Generate a template from a Canada.ca page</h1>
+    <form class="py-4" id="form">
+        <label for="enterURL" class="mrgn-rght-sm">Page URL:</label>
+        <input type="text" placeholder="https:///www.canada.ca" size="50" id="enterURL" /><br />
+        <button class="btn btn-info mrgn-tp-md" id="generate">Generate template</button>
+    </form>
+
+    <div id="downloadedContent" class="hidden"></div>
+
+    <div class="hidden" id="showOutput">
+        <div class="row wb-eqht-grd">
+            <div class="col-md-6">
+                <div class="btn-group">
+                    <button id="copyClip">Copy to clipboard</button>
+                    <button id="save">Save</button>
+                    <button id="update">Run changes</button>
+                </div>
+                <textarea id="output" class="full-width hght-inhrt"></textarea></div>
+            <div class="col-md-6">
+                <h2 class="mrgn-tp-0">Page details</h2>
+                <div id="pageDetails" class="hght-inhrt"></div>
+            </div>
+        </div>
+
+        <details class="preview mrgn-tp-lg" open>
+            <summary>See page preview</summary>
+            <div id="preview"></div>
+        </details>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
+
+    <script src="template/get-template.js"></script>
+    <script>
+
+        let input = document.getElementById('enterURL');
+        // input.value = "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit.html";       
+        let error = false;
+        let form = document.getElementById('form');
+        let downloadedContent = document.getElementById('downloadedContent');
+        let output = document.getElementById('output');
+        let showOutput = document.getElementById('showOutput');
+        let preview = document.getElementById('preview');
+        let generatedTemplate = "";
+
+        let page;
+
+        // import basic_en from "./template/basic-en.js";
+
+        document.getElementById('generate').onclick = function (e) {
+            e.preventDefault();
+
+            if (error) {
+                form.firstElementChild.remove();
+                error = false;
+            }
+            let href = input.value;
+            if (!href) {
+                let errorMsg = document.createElement("p");
+                errorMsg.setAttribute("id", "errorMsg");
+                errorMsg.innerHTML = "Please enter a URL."
+                errorMsg.classList.add('error');
+                this.parentElement.prepend(errorMsg)
+                error = true
+            }
+            else {
+                page = {
+                    metadata: {
+                        dateModified: "",
+                        description: "",
+                        keywords: "",
+                        lang: "",
+                    },
+                    head: {
+                        title: "",
+                        alternateLanguageURL: "",
+                        experimentalFeatures: "",
+                        structuredData: "",
+                    },
+                    components: {
+                        breadcrumb: "",
+                        signInButton: false,
+                        fluidWidth: false,
+                        pageFeedbackTool: false,
+                    },
+                    contents: "",
+                }
+                
+                downloadedContent.innerHTML = getURL(href);
+                page.metadata.lang = document.getElementsByTagName('html')[0].getAttribute('lang');
+                page.head.title = downloadedContent.getElementsByTagName('title')[0].innerText;
+                let experimentalFeatures = downloadedContent.querySelectorAll('link[rel="stylesheet"]');
+                for (let i = 0; i < experimentalFeatures.length; i++) {
+                    if (experimentalFeatures[i]['href'].indexOf('m%C3%A9li-m%C3%A9lo') > -1) {
+                        page.head.experimentalFeatures = "https://www.canada.ca/etc/" + decodeURI(experimentalFeatures[i]['href'].split('/etc/')[1]);
+                    }
+                }
+                page.head.alternateLanguageURL = page.metadata.lang == "en" ? downloadedContent.querySelector('link[hreflang="fr"').getAttribute('href') : downloadedContent.querySelector('link[hreflang="en"').getAttribute('href');
+                page.head.structuredData = downloadedContent.querySelector('script[type="application/ld+json"]') ? downloadedContent.querySelector('script[type="application/ld+json"]').outerHTML : "";
+
+                page.metadata.dateModified = downloadedContent.querySelector('meta[name="dcterms.modified"]').getAttribute('content');
+                page.metadata.description = downloadedContent.querySelector('meta[name="dcterms.description"]').getAttribute('content');
+                page.metadata.keywords = downloadedContent.querySelector('meta[name="keywords"]').getAttribute('content');
+
+                page.components.fluidWidth = downloadedContent.getElementsByTagName('main')[0].classList.contains('container') ? true : false;
+                page.components.breadcrumb = downloadedContent.querySelector('.breadcrumb').outerHTML;
+                page.components.signInButton = downloadedContent.querySelector('#wb-so') ? true : false;
+                let feedback = downloadedContent.querySelectorAll('div[data-ajax-replace]');
+                for (let i = 0; i < feedback.length; i++) {
+                    if (feedback[i].getAttribute('data-ajax-replace').indexOf('page-feedback-') > -1) {
+                        page.components.pageFeedbackTool = true
+                    }
+                }
+
+                page.contents = downloadedContent.querySelector('main').innerHTML;
+
+                page.contents = fixLinks(page.contents);
+                generatedTemplate = page.metadata.lang == "en" ? englishTemplate(page) : FrenchTemplate(page);
+
+                
+
+                preview.innerHTML = generatedTemplate;
+                output.value = generatedTemplate;
+
+                document.getElementById('pageDetails').innerHTML = toHTML();
+                
+                triggerWET();
+                showOutput.classList.remove('hidden');
+
+                
+            }
+        }
+
+
+
+        document.getElementById('copyClip').onclick = function () {
+            navigator.clipboard.writeText(output.value);
+        }
+
+        document.getElementById('update').onclick = function () {
+            preview.innerHTML
+        }
+
+        document.getElementById('save').onclick = function() {
+            let data, filename, type;
+            data = output.value;
+            filename = "generated-template";
+            var htmlContent = [data];
+            var bl = new Blob(htmlContent, {type: "text/html"});
+            var a = document.createElement("a");
+            a.href = "URL.createObjectURL(bl)";
+            a.download = filename;
+            a.hidden = true;
+            document.body.appendChild(a);
+            a.click();
+            }
+
+        function toHTML(){
+            let details = `<dl class="dl-horizontal">`;
+            details += `<dt>Page language</dt><dd>`+page.metadata.lang+`</dd>`;
+            details += `<dt>Date modified</dt><dd>`+page.metadata.dateModified+`</dd>`;
+            details += `<dt>Page description</dt><dd>`+page.metadata.description+`</dd>`;
+            details += `<dt>Keywords</dt><dd>`+page.metadata.keywords+`</dd>`;
+            details += `<dt>Page title (not the H1)</dt><dd>`+page.head.title+`</dd>`;
+            details += `<dt>Language toggle link</dt><dd>`+page.head.alternateLanguageURL+`</dd>`;
+            if (page.head.structuredData) {
+                details += `<dt>Structured data</dt><dd style="max-height:200px;overflow:scroll;">`+JSON.stringify(JSON.parse(page.head.structuredData.replace(/<[^>]+>/g, '')))+`</dd>`;
+            }
+            else {
+                details += `<dt>Structured data</dt><dd>N/A</dd>`;
+            }           
+            details += `<dt>Breadcrumbs</dt><dd>`+page.components.breadcrumb+`</dd>`;
+            details += `<dt>Has a sign in button?</dt><dd>`+page.components.signInButton+`</dd>`;
+            details += `<dt>Has a page feedback tool?</dt><dd>`+page.components.pageFeedbackTool+`</dd>`;
+            details += `</dl>`;
+            return details;
+        };
+
+        
+
+
+        function fixLinks(html) {
+            html = html.replaceAll(`"/`+page.metadata.lang+`/`, `"https://www.canada.ca/`+page.metadata.lang+`/`)            
+            html = html.replaceAll(`"/content/canadasite/`+page.metadata.lang+`/`, `"https://www.canada.ca/`+page.metadata.lang+`/`)            
+            html = html.replaceAll(`"/content/dam/`, `"https://www.canada.ca/content/dam/`)            
+            return html
+        }
+
+        function getURL(href) {
+            return $.ajax({
+                url: href,
+                async: false
+            }).responseText;
+        }
+
+        document.getElementById('enterURL').onkeydown = function (e) {
+            if (e.keyCode == 13) {
+                document.getElementById('generate').click();
+            }
+        };
+
+        function triggerWET(){
+            (function( $, document, wb ) {
+            "use strict";
+            
+                console.log($(event.currentTarget));
+                var $elm = $("#preview");
+                $elm
+                    .find( wb.allSelectors )
+                        .addClass( "wb-init" )
+                        .filter( ":not(#" + $elm.attr( "id" ) + " .wb-init .wb-init)" )
+                            .trigger( "timerpoke.wb" );
+               
+        })( jQuery, document, wb );
+        }
+    </script>
+</body>
+
+</html>
