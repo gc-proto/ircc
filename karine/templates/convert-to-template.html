@@ -144,8 +144,8 @@
                 page.head.structuredData = downloadedContent.querySelector('script[type="application/ld+json"]') ? downloadedContent.querySelector('script[type="application/ld+json"]').outerHTML : "";
 
                 page.metadata.dateModified = downloadedContent.querySelector('meta[name="dcterms.modified"]').getAttribute('content');
-                page.metadata.description = downloadedContent.querySelector('meta[name="dcterms.description"]').getAttribute('content');
-                page.metadata.keywords = downloadedContent.querySelector('meta[name="keywords"]').getAttribute('content');
+                page.metadata.description = downloadedContent.querySelector('meta[name="dcterms.description"]') ?  downloadedContent.querySelector('meta[name="dcterms.description"]').getAttribute('content') : "";
+                page.metadata.keywords = downloadedContent.querySelector('meta[name="keywords"]') ? downloadedContent.querySelector('meta[name="keywords"]').getAttribute('content'): "";
 
                 page.components.fluidWidth = downloadedContent.getElementsByTagName('main')[0].classList.contains('container') ? true : false;
                 page.components.breadcrumb = downloadedContent.querySelector('.breadcrumb').outerHTML;
