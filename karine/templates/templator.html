@@ -6,7 +6,7 @@
     <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-    <link rel="stylesheet" href="css/syntax-highlighting.css" />
+    <link rel="stylesheet" href="css/templator.css" />
 
 
     <style>
@@ -19,8 +19,8 @@
         }
 
         #preview {
-            transform: scale(0.9, 0.9);
-            transform-origin: top;
+            /* transform: scale(0.9, 0.9);
+            transform-origin: top; */
             border: 3px solid red;
         }
     </style>
@@ -31,53 +31,68 @@
     <div class="container py-4">
         <h1 class="brdr-0" style="font-size:3em;">Templator</h1>
         <p class="h3 mrgn-tp-0">Generate GitHub code from a Canada.ca page</p>
-        <button class="btn-link p-0" id="settings" data-wb-action='{"action":"toggle", "toggle": "#setting-options"}'><i class="fas fa-cog mrgn-rght-md"></i>Settings </button>
-        <div class="hidden" id="setting-options">
-            <div class="panel panel-body panel-default brdr-rds-0">
-                <div class="wb-fieldflow" data-wb-fieldflow='{"renderas":"radio", "inline":true, "gcChckbxrdio":true}'>
-                    <p>Code theme</p>
-                </div>
-            </div>
+        <button class="btn-link p-0 wb-toggle" id="settings" data-toggle='{"selector": "#settings-options", "stateOn": "show", "stateOff":"hidden"}'><i class="fas fa-cog mrgn-rght-sm"></i>Settings</button>
+        <div class="hidden panel panel-body panel-default small" id="settings-options">
+            <form id="settings-form">
+                <fieldset class="chkbxrdio-grp">
+                    <legend>Code syntax theme</legend>
+                    <div class="radio">
+                        <label for="light"><input type="radio" name="theme" value="default" id="light" /> Light (default)</label>
+                    </div>
+                    <div class="radio">
+                        <label for="dark"><input type="radio" name="theme" value="dark" id="dark" /> Dark</label>
+                    </div>
+                </fieldset>
+            </form>
         </div>
 
-        <form class="mrgn-tp-lg mrgn-bttm-md" id="form">
-            <label for="enterURL" class="mrgn-rght-sm">Page URL:</label>
+        <div class="mrgn-tp-lg mrgn-bttm-md panel panel-body panel-default">
+            <label for="enterURL">Page URL:</label>
             <input type="text" placeholder="https:///www.canada.ca" class="full-width" id="enterURL" /><br />
             <button class="btn btn-info mrgn-tp-md" id="generate">Generate template</button>
-        </form>
+
+
+        </div>
         <div id="downloadedContent" class="hidden"></div>
     </div>
 
     <div class="hidden" id="showOutput">
         <div class="container mrgn-bttm-xl">
-            <div class="btn-group mrgn-bttm-sm">
-                <button id="copyClip" class="btn btn-default">Copy to clipboard</button>
-                <button id="save" class="btn btn-default">Save</button>
-                <button id="update" class="btn btn-default">Run changes</button>
-            </div>
 
-            <div class="row-no-gutters position-relative">
-                <div data-theme="default">
-                    <textarea class="full-width" placeholder="Enter HTML Source Code" id="output" spellcheck="false" oninput="update(this.value); sync_scroll(this);" onscroll="sync_scroll(this);" onkeydown="check_tab(this, event);"></textarea>
-                    <pre id="highlighting" aria-hidden="true" class="full-width">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="d-flex">
+                        <div class="btn-group mrgn-bttm-sm">
+                            <button id="copyClip" class="btn btn-default">Copy to clipboard</button>
+                            <button id="save" class="btn btn-default">Download</button>
+                            <button id="update" class="btn btn-default">Run changes</button>
+                        </div>
+                        <div id="status" class="align-self-center"></div>
+                    </div>
+                    <div class="position-relative" data-theme="default">
+                        <textarea class="full-width" placeholder="Enter HTML Source Code" id="output" spellcheck="false" oninput="update(this.value); sync_scroll(this);" onscroll="sync_scroll(this);" onkeydown="check_tab(this, event);"></textarea>
+                        <pre id="highlighting" aria-hidden="true" class="full-width">
                         <code class="language-html full-width" id="highlighting-content"></code>
                         </pre>
+                    </div>
+
+
+                    <!-- <textarea id="output" class="full-width hght-inhrt"></textarea> -->
                 </div>
+                <div class="col-md-4">
+                    <div class="pageDetails">
+                        <h2 class="mrgn-tp-0">Page details</h2>
+                        <div id="pageDetails"></div>
+                    </div>
+                </div>
+            </div>
 
 
-                <!-- <textarea id="output" class="full-width hght-inhrt"></textarea> -->
-            </div>
-            <div class="pageDetails">
-                <h2 class="mrgn-tp-0">Page details</h2>
-                <div id="pageDetails"></div>
-            </div>
+            <h2>Page preview</h2>
         </div>
 
-
-        <div class="container-fluid">
-            <h2 class="mrgn-lft-xl">Page preview</h2>
-        </div>
         <div id="preview"></div>
+
     </div>
 
 

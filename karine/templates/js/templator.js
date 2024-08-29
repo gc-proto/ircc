@@ -7,6 +7,8 @@ let output = document.getElementById('output');
 let showOutput = document.getElementById('showOutput');
 let preview = document.getElementById('preview');
 let generatedTemplate = "";
+let filename = "";
+let toolstatus = document.getElementById('status');
 
 let page;
 
@@ -16,6 +18,11 @@ if (urlParams) {
     input.value = urlParams;
     generateTemplate();
 }
+
+let theme = localStorage.getItem("templatorTheme");
+
+if (theme) {document.querySelector('div[data-theme]').setAttribute('data-theme', theme);}
+
 
 document.getElementById('generate').onclick = function (e) {
     e.preventDefault();
@@ -107,6 +114,10 @@ function generateTemplate() {
     document.getElementById('highlighting-content').innerHTML = generatedTemplate;
     update(output.value)
 
+    filename = document.getElementById('enterURL').value.split("/");
+    filename = filename.pop();
+    console.log(filename)
+
 
 
 
@@ -125,16 +136,20 @@ function generateTemplate() {
 
 document.getElementById('copyClip').onclick = function () {
     navigator.clipboard.writeText(output.value);
+    
+    toolstatus.innerText = `Copied to clipboard`;
+    $(toolstatus).fadeIn("fast").delay(2000).fadeOut("slow");
 }
 
 document.getElementById('update').onclick = function () {
-    preview.innerHTML
+    preview.innerHTML = output.value;
+    toolstatus.innerText = `Updated page preview`;
+    $(toolstatus).fadeIn("fast").delay(2000).fadeOut("slow");
 }
 
 document.getElementById('save').onclick = function () {
-    let data, filename, type;
+    let data;
     data = output.value;
-    filename = "generated-template.html";
     var htmlContent = [data];
     var bl = new Blob(htmlContent, { type: "text/html" });
     var a = document.createElement("a");
@@ -143,16 +158,19 @@ document.getElementById('save').onclick = function () {
     a.hidden = true;
     document.body.appendChild(a);
     a.click();
+    
+    toolstatus.innerText = `Downloaded as `+filename;
+    $(toolstatus).fadeIn("fast").delay(2000).fadeOut("slow");
 }
 
 function toHTML() {
-    let details = `<dl class="dl-horizontal">`;
+    let details = `<dl class="dl-horizontal small">`;
     details += `<dt>Page language</dt><dd>` + page.metadata.lang + `</dd>`;
     details += `<dt>Date modified</dt><dd>` + page.metadata.dateModified + `</dd>`;
     details += `<dt>Page description</dt><dd>` + page.metadata.description + `</dd>`;
     details += `<dt>Keywords</dt><dd>` + page.metadata.keywords + `</dd>`;
-    details += `<dt>Page title (not the H1)</dt><dd>` + page.head.title + `</dd>`;
-    details += `<dt>Language toggle link</dt><dd>` + page.head.alternateLanguageURL + `</dd>`;
+    details += `<dt>Page title</dt><dd>` + page.head.title + `</dd>`;
+    details += `<dt>Language toggle</dt><dd>` + page.head.alternateLanguageURL + `</dd>`;
     if (page.head.structuredData) {
         details += `<dt>Structured data</dt><dd style="max-height:200px;overflow:scroll;">` + JSON.stringify(JSON.parse(page.head.structuredData.replace(/<[^>]+>/g, ''))) + `</dd>`;
     }
@@ -160,8 +178,8 @@ function toHTML() {
         details += `<dt>Structured data</dt><dd>N/A</dd>`;
     }
     details += `<dt>Breadcrumbs</dt><dd>` + page.components.breadcrumb + `</dd>`;
-    details += `<dt>Has a sign in button?</dt><dd>` + page.components.signInButton + `</dd>`;
-    details += `<dt>Has a page feedback tool?</dt><dd>` + page.components.pageFeedbackTool + `</dd>`;
+    details += `<dt>Sign in button?</dt><dd>` + page.components.signInButton + `</dd>`;
+    details += `<dt>Page feedback tool?</dt><dd>` + page.components.pageFeedbackTool + `</dd>`;
     details += `</dl>`;
     return details;
 };
@@ -240,4 +258,13 @@ function check_tab(element, event) {
 }
 
 
+$('input[type=radio][name=theme]').change(function(){
+    if (this.value == 'default') {
+        document.querySelector('div[data-theme]').setAttribute('data-theme', "default");
+    }
+    else {        
+        document.querySelector('div[data-theme]').setAttribute('data-theme', "dark");
+    }
 
+    localStorage.setItem("templatorTheme", this.value);
+});
