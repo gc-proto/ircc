@@ -1,6 +1,6 @@
-function englishTemplate(obj){
- let classContainer = obj.components.fluidWidth ? "container" : "";
- let str = `<!doctype html>
+function englishTemplate(obj) {
+    let classContainer = obj.components.fluidWidth ? "container" : "";
+    let str = `<!doctype html>
     <html class="no-js" dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 
@@ -8,18 +8,18 @@ function englishTemplate(obj){
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta charset="utf-8">
-        <title>`+obj.head.title+`</title>
+        <title>`+ obj.head.title + `</title>
         <meta content="width=device-width, initial-scale=1" name="viewport">
-        <meta name="description" content="`+obj.metadata.description+`" />
-        <meta name="keywords" content="`+obj.metadata.keywords+`" />
+        <meta name="description" content="`+ obj.metadata.description + `" />
+        <meta name="keywords" content="`+ obj.metadata.keywords + `" />
         <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
         <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css" />
         <noscript>
             <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
         </noscript>    
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-        <link rel="stylesheet" href="`+obj.head.experimentalFeatures+`" />
-        `+obj.head.structuredData+`
+        <link rel="stylesheet" href="`+ obj.head.experimentalFeatures + `" />
+        `+ obj.head.structuredData + `
 
     </head>
 
@@ -42,7 +42,7 @@ function englishTemplate(obj){
                             <div class="col-md-12">
                                 <ul class="list-inline mrgn-bttm-0">
                                     <li>
-                                        <a lang="fr" href="`+obj.head.alternateLanguageURL+`">
+                                        <a lang="fr" href="`+ obj.head.alternateLanguageURL + `">
 
                                             <span class="hidden-xs">Fran&ccedil;ais</span>
                                             <abbr title="Fran&ccedil;ais" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
@@ -137,7 +137,7 @@ function englishTemplate(obj){
             <nav id="wb-bc" property="breadcrumb">
                 <h2 class="wb-inv">You are here:</h2>
                 <div class="container">
-                    `+obj.components.breadcrumb+`
+                    `+ obj.components.breadcrumb + `
                 </div>
             </nav>
 
@@ -145,15 +145,15 @@ function englishTemplate(obj){
 
 
     
-        <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="`+ classContainer +`"><!--CONTENT STARTS HERE-->`+obj.contents.toString()+`<!-- CONTENT ENDS HERE --></main>`
-        // str += obj.components.pageFeedbackTool ? "<div class=\"row\"><div class=\"col-sm-8 col-md-9 col-lg-9\"><div class=\"wb-disable-allow\" data-ajax-replace=\"/etc/designs/canada/wet-boew/assets/feedback/page-feedback-en.html\"></div></div></div>" : "";
-        // str += `<dl id="wb-dtmd">
-        //             <dt>Date modified:</dt>
-        //             <dd><time property="dateModified">`+obj.metadata.dateModified+`</time></dd>
-        //         </dl>
-        //         </section>
-        //     </div>`
-            str += `
+        <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="`+ classContainer + `"><!--CONTENT STARTS HERE-->` + obj.contents.toString() + `<!-- CONTENT ENDS HERE --></main>`
+    // str += obj.components.pageFeedbackTool ? "<div class=\"row\"><div class=\"col-sm-8 col-md-9 col-lg-9\"><div class=\"wb-disable-allow\" data-ajax-replace=\"/etc/designs/canada/wet-boew/assets/feedback/page-feedback-en.html\"></div></div></div>" : "";
+    // str += `<dl id="wb-dtmd">
+    //             <dt>Date modified:</dt>
+    //             <dd><time property="dateModified">`+obj.metadata.dateModified+`</time></dd>
+    //         </dl>
+    //         </section>
+    //     </div>`
+    str += `
 
             <div class="global-footer">
                 <footer id="wb-info">
@@ -237,7 +237,7 @@ function englishTemplate(obj){
 }
 
 
-function frenchTemplate(obj){
+function frenchTemplate(obj) {
     let classContainer = obj.components.fluidWidth ? "container" : "";
     let str = `
 <!DOCTYPE html>
@@ -245,18 +245,18 @@ function frenchTemplate(obj){
 
 <head>
 	<meta charset="utf-8">
-	<title>`+obj.head.title+`</title>
+	<title>`+ obj.head.title + `</title>
            <meta content="width=device-width, initial-scale=1" name="viewport">
-           <meta name="description" content="`+obj.metadata.description+`" />
-           <meta name="keywords" content="`+obj.metadata.keywords+`" />
+           <meta name="description" content="`+ obj.metadata.description + `" />
+           <meta name="keywords" content="`+ obj.metadata.keywords + `" />
            <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
            <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css" />
            <noscript>
                <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
            </noscript>    
            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-           <link rel="stylesheet" href="`+obj.head.experimentalFeatures+`" />
-           `+obj.head.structuredData+`
+           <link rel="stylesheet" href="`+ obj.head.experimentalFeatures + `" />
+           `+ obj.head.structuredData + `
    
        </head>
    
@@ -276,7 +276,7 @@ function frenchTemplate(obj){
 					<h2 class="wb-inv">Sélection de la langue</h2>
 					<ul class="list-inline mrgn-bttm-0">
 						<li>
-							<a lang="en" hreflang="en" href="`+obj.head.alternateLanguageURL+`">
+							<a lang="en" hreflang="en" href="`+ obj.head.alternateLanguageURL + `">
 								<span class="hidden-xs">English</span>
 								<abbr title="English" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">en</abbr>
 							</a>
@@ -342,7 +342,7 @@ function frenchTemplate(obj){
 		<nav id="wb-bc" property="breadcrumb">
 			<h2>Vous êtes ici :</h2>
 			<div class="container">
-                       `+obj.components.breadcrumb+`
+                       `+ obj.components.breadcrumb + `
                    </div>
                </nav>
    
@@ -350,15 +350,15 @@ function frenchTemplate(obj){
    
    
        
-           <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="`+ classContainer +`"><!--CONTENT STARTS HERE-->`+obj.contents.toString()+`<!-- CONTENT ENDS HERE --></main>`
-           // str += obj.components.pageFeedbackTool ? "<div class=\"row\"><div class=\"col-sm-8 col-md-9 col-lg-9\"><div class=\"wb-disable-allow\" data-ajax-replace=\"/etc/designs/canada/wet-boew/assets/feedback/page-feedback-en.html\"></div></div></div>" : "";
-           // str += `<dl id="wb-dtmd">
-           //             <dt>Date modified:</dt>
-           //             <dd><time property="dateModified">`+obj.metadata.dateModified+`</time></dd>
-           //         </dl>
-           //         </section>
-           //     </div>`
-               str += `
+           <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="`+ classContainer + `"><!--CONTENT STARTS HERE-->` + obj.contents.toString() + `<!-- CONTENT ENDS HERE --></main>`
+    // str += obj.components.pageFeedbackTool ? "<div class=\"row\"><div class=\"col-sm-8 col-md-9 col-lg-9\"><div class=\"wb-disable-allow\" data-ajax-replace=\"/etc/designs/canada/wet-boew/assets/feedback/page-feedback-en.html\"></div></div></div>" : "";
+    // str += `<dl id="wb-dtmd">
+    //             <dt>Date modified:</dt>
+    //             <dd><time property="dateModified">`+obj.metadata.dateModified+`</time></dd>
+    //         </dl>
+    //         </section>
+    //     </div>`
+    str += `
    
                <div class="global-footer">
 		<footer id="wb-info">
@@ -436,5 +436,5 @@ function frenchTemplate(obj){
        </body>
    
        </html>`;
-       return str;
-   }
+    return str;
+}
