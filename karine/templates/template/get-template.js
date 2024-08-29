@@ -239,7 +239,8 @@ function englishTemplate(obj){
 
 function frenchTemplate(obj){
     let classContainer = obj.components.fluidWidth ? "container" : "";
-    let str = `<!DOCTYPE html>
+    let str = `
+<!DOCTYPE html>
 <html class="no-js" lang="fr" dir="ltr">
 
 <head>

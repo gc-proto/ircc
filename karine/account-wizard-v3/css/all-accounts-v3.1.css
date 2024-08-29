@@ -1,9 +1,6 @@
 #account-chooser {
   outline: none !important;
 }
-#account-chooser .first-question {
-  text-align: center;
-}
 #account-chooser .first-question:has(.active) {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;

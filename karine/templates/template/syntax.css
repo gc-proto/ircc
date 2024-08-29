@@ -1,0 +1,200 @@
+pre, code, textarea {
+    all: initial!important;
+}
+
+#output, #highlighting {
+    /* Both elements need the same text and space styling so they are directly on top of each other */
+    margin: 0!important;
+    padding: 10px!important;
+    border: 0!important;
+    width: 100%!important;
+    height: 630px!important;
+  }
+  .pageDetails {
+    margin-top:670px!important;
+  }
+  #output, #highlighting, #highlighting * {
+    /* Also add text styles to highlighing tokens */
+    font-size: 12pt!important;
+    font-family: monospace!important;
+    line-height: 1.5!important;
+    tab-size: 2!important;
+  }
+  
+  
+  #output, #highlighting {
+    /* In the same place */
+    position: absolute!important;
+    top: 0!important;
+    left: 0!important;
+  }
+  
+  
+  /* Move the textarea in front of the result */
+  
+  #output {
+    z-index: 1!important;
+  }
+  #highlighting {
+    z-index: 0!important;
+  }
+  
+  
+  /* Make textarea almost completely transparent */
+  
+  #output {
+    color: transparent!important;
+    background: transparent!important;
+    caret-color: white!important; /* Or choose your favourite color */
+  }
+  
+  /* Can be scrolled */
+  #output, #highlighting {
+    overflow: auto!important;
+    white-space: nowrap!important; /* Allows textarea to scroll horizontally */
+  }
+  
+  /* No resize on textarea */
+  #output {
+    resize: none!important;
+  }
+
+  
+  
+  /* Syntax Highlighting from prism.js starts below, partly modified: */
+  
+  /* PrismJS 1.23.0
+  https://prismjs.com/download.html#themes=prism-funky&languages=markup */
+  /**
+   * prism.js Funky theme
+   * Based on “Polyfilling the gaps” talk slides http://lea.verou.me/polyfilling-the-gaps/
+   * @author Lea Verou
+   */
+  
+  code[class*="language-"],
+  pre[class*="language-"] {
+      font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace!important;
+      font-size: 1em!important;
+      text-align: left!important;
+      white-space: pre!important;
+      word-spacing: normal!important;
+      word-break: normal!important;
+      word-wrap: normal!important;
+      line-height: 1.5!important;
+  
+      -moz-tab-size: 4!important;
+      -o-tab-size: 4!important;
+      tab-size: 4!important;
+  
+      -webkit-hyphens: none!important;
+      -moz-hyphens: none!important;
+      -ms-hyphens: none!important;
+      hyphens: none!important;
+  }
+  
+  /* Code blocks */
+  pre[class*="language-"] {
+      padding: .4em .8em!important;
+      margin: .5em 0!important;
+      overflow: auto!important;
+      /* background: url('data:image/svg+xml;charset=utf-8,<svg%20version%3D"1.1"%20xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%20width%3D"100"%20height%3D"100"%20fill%3D"rgba(0%2C0%2C0%2C.2)">%0D%0A<polygon%20points%3D"0%2C50%2050%2C0%200%2C0"%20%2F>%0D%0A<polygon%20points%3D"0%2C100%2050%2C100%20100%2C50%20100%2C0"%20%2F>%0D%0A<%2Fsvg>');
+      background-size: 1em 1em; - WebCoder49*/
+    background: black!important; /* - WebCoder49 */
+  }
+  
+  code[class*="language-"] {
+      background: black!important;
+      color: white!important;
+      box-shadow: -.3em 0 0 .3em black, .3em 0 0 .3em black!important;
+  }
+  
+  /* Inline code */
+  :not(pre) > code[class*="language-"] {
+      padding: .2em!important;
+      border-radius: .3em!important;
+      box-shadow: none!important;
+      white-space: normal!important;
+  }
+  
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+      color: #aaa;
+  }
+  
+  .token.punctuation {
+      color: #999;
+  }
+  
+  .token.namespace {
+      opacity: .7;
+  }
+  
+  .token.property,
+  .token.tag,
+  .token.boolean,
+  .token.number,
+  .token.constant,
+  .token.symbol {
+      color: #0cf;
+  }
+  
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin {
+      color: yellow;
+  }
+  
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .token.variable,
+  .token.inserted {
+      color: yellowgreen;
+  }
+  
+  .token.atrule,
+  .token.attr-value,
+  .token.keyword {
+      color: deeppink;
+  }
+  
+  .token.regex,
+  .token.important {
+      color: orange;
+  }
+  
+  .token.important,
+  .token.bold {
+      font-weight: bold;
+  }
+  .token.italic {
+      font-style: italic;
+  }
+  
+  .token.entity {
+      cursor: help;
+  }
+  
+  .token.deleted {
+      color: red;
+  }
+  
+  /* Plugin styles: Diff Highlight */
+  pre.diff-highlight.diff-highlight > code .token.deleted:not(.prefix),
+  pre > code.diff-highlight.diff-highlight .token.deleted:not(.prefix) {
+      background-color: rgba(255, 0, 0, .3);
+      display: inline;
+  }
+  
+  pre.diff-highlight.diff-highlight > code .token.inserted:not(.prefix),
+  pre > code.diff-highlight.diff-highlight .token.inserted:not(.prefix) {
+      background-color: rgba(0, 255, 128, .3);
+      display: inline;
+  }
+  
+  /* End of prism.js syntax highlighting*/
