@@ -30,7 +30,6 @@
 
     <div class="container py-4">
         <h1 class="brdr-0" style="font-size:3em;">Templator</h1>
-        <p class="h3 mrgn-tp-0">Generate GitHub code from a Canada.ca page</p>
         <button class="btn-link p-0 wb-toggle" id="settings" data-toggle='{"selector": "#settings-options", "stateOn": "show", "stateOff":"hidden"}'><i class="fas fa-cog mrgn-rght-sm"></i>Settings</button>
         <div class="hidden panel panel-body panel-default small" id="settings-options">
             <form id="settings-form">
@@ -50,6 +49,7 @@
             <label for="enterURL">Page URL:</label>
             <input type="text" placeholder="https:///www.canada.ca" class="full-width" id="enterURL" /><br />
             <button class="btn btn-info mrgn-tp-md" id="generate">Generate template</button>
+            <button class="btn btn-info mrgn-tp-md" id="aem-extract">Extract code for AEM</button>
 
 
         </div>
@@ -72,7 +72,7 @@
                     <div class="position-relative" data-theme="default">
                         <textarea class="full-width" placeholder="Enter HTML Source Code" id="output" spellcheck="false" oninput="update(this.value); sync_scroll(this);" onscroll="sync_scroll(this);" onkeydown="check_tab(this, event);"></textarea>
                         <pre id="highlighting" aria-hidden="true" class="full-width">
-                        <code class="language-html full-width" id="highlighting-content"></code>
+                            <code class="language-html full-width" id="highlighting-content"></code>
                         </pre>
                     </div>
 

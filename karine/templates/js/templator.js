@@ -116,20 +116,7 @@ function generateTemplate() {
 
     filename = document.getElementById('enterURL').value.split("/");
     filename = filename.pop();
-    console.log(filename)
-
-
-
-
     showOutput.classList.remove('hidden');
-
-
-
-    // let hgt = document.getElementById('pageDetails').offsetHeight;
-    // console.log(hgt);
-    // output.style.height = hgt;
-    // document.getElementById('highlighting-content').style.height = hgt;
-    // document.getElementById('highlighting').style.height = hgt;
 
 
 }
@@ -163,6 +150,23 @@ document.getElementById('save').onclick = function () {
     $(toolstatus).fadeIn("fast").delay(2000).fadeOut("slow");
 }
 
+document.getElementById('aem-extract').onclick = function(){
+    let mainNoPageDetails = downloadedContent.querySelector('main');
+    // downloadedContent.querySelector('main').innerHTML;
+
+    mainNoPageDetails.querySelector('.pagedetails').remove();
+
+    console.log(mainNoPageDetails.innerHTML)
+
+    output.value = mainNoPageDetails.innerHTML;
+
+    document.getElementById('highlighting-content').innerHTML = mainNoPageDetails;
+    update(output.value)
+
+    showOutput.classList.remove('hidden');
+    
+}
+
 function toHTML() {
     let details = `<dl class="dl-horizontal small">`;
     details += `<dt>Page language</dt><dd>` + page.metadata.lang + `</dd>`;
@@ -183,9 +187,6 @@ function toHTML() {
     details += `</dl>`;
     return details;
 };
-
-
-
 
 function fixLinks(html) {
     html = html.replaceAll(`"/` + page.metadata.lang + `/`, `"https://www.canada.ca/` + page.metadata.lang + `/`)
