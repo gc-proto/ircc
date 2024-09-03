@@ -7,23 +7,6 @@
     <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/templator.css" />
-
-
-    <style>
-        .error {
-            padding: 15px 10px;
-            border: solid red 2px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 1em;
-        }
-
-        #preview {
-            /* transform: scale(0.9, 0.9);
-            transform-origin: top; */
-            border: 3px solid red;
-        }
-    </style>
 </head>
 
 <body>
@@ -44,6 +27,7 @@
                 </fieldset>
             </form>
         </div>
+        
 
         <div class="mrgn-tp-lg mrgn-bttm-md panel panel-body panel-default">
             <label for="enterURL">Page URL:</label>
@@ -55,29 +39,35 @@
         </div>
         <div id="downloadedContent" class="hidden"></div>
     </div>
-
+    
     <div class="hidden" id="showOutput">
         <div class="container mrgn-bttm-xl">
 
             <div class="row">
                 <div class="col-md-8">
+                    <div id="status" class="align-self-center"></div>
                     <div class="d-flex">
                         <div class="btn-group mrgn-bttm-sm">
                             <button id="copyClip" class="btn btn-default">Copy to clipboard</button>
                             <button id="save" class="btn btn-default">Download</button>
                             <button id="update" class="btn btn-default">Run changes</button>
+                           
                         </div>
-                        <div id="status" class="align-self-center"></div>
+                        <button class="btn-link p-0 wb-toggle text-right grow" data-toggle='{"selector": "#snippets", "stateOn": "show", "stateOff":"hidden"}'><i class="fas fa-code mrgn-rght-sm"></i></i>Add a component</button>
+                        
                     </div>
+                    <div class=" panel panel-body panel-default small" id="snippets">           
+                        <ul class="list-unstyled list-inline">
+                             <li><button class="btn-link p-0" data-add-snippet="subwayNavigationIndex">Subway navigation: Index</button></li>
+                             <li><button class="btn-link p-0" data-add-snippet="subwayNavigationStep">Subway navigation: Step</button></li>
+                        </ul>
+                     </div>
                     <div class="position-relative" data-theme="default">
                         <textarea class="full-width" placeholder="Enter HTML Source Code" id="output" spellcheck="false" oninput="update(this.value); sync_scroll(this);" onscroll="sync_scroll(this);" onkeydown="check_tab(this, event);"></textarea>
                         <pre id="highlighting" aria-hidden="true" class="full-width">
                             <code class="language-html full-width" id="highlighting-content"></code>
                         </pre>
                     </div>
-
-
-                    <!-- <textarea id="output" class="full-width hght-inhrt"></textarea> -->
                 </div>
                 <div class="col-md-4">
                     <div class="pageDetails">
@@ -89,8 +79,9 @@
 
 
             <h2>Page preview</h2>
+            
+    
         </div>
-
         <div id="preview"></div>
 
     </div>
@@ -102,6 +93,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
     <script src="js/get-template.js"></script>
+    <script src="js/snippets.js"></script>
     <script src="js/templator.js"></script>
 </body>
 

@@ -108,7 +108,7 @@ function generateTemplate() {
 
     preview.innerHTML = generatedTemplate;
     output.value = generatedTemplate;
-    document.getElementById('pageDetails').innerHTML = toHTML();
+    document.getElementById('pageDetails').innerHTML = getPageDetails();
     triggerWET();
 
     document.getElementById('highlighting-content').innerHTML = generatedTemplate;
@@ -167,7 +167,7 @@ document.getElementById('aem-extract').onclick = function(){
     
 }
 
-function toHTML() {
+function getPageDetails() {
     let details = `<dl class="dl-horizontal small">`;
     details += `<dt>Page language</dt><dd>` + page.metadata.lang + `</dd>`;
     details += `<dt>Date modified</dt><dd>` + page.metadata.dateModified + `</dd>`;
@@ -181,7 +181,7 @@ function toHTML() {
     else {
         details += `<dt>Structured data</dt><dd>N/A</dd>`;
     }
-    details += `<dt>Breadcrumbs</dt><dd>` + page.components.breadcrumb + `</dd>`;
+    details += `<dt>Breadcrumbs</dt><dd>` + page.components.breadcrumb.replace(`class="breadcrumb"`, '') + `</dd>`;
     details += `<dt>Sign in button?</dt><dd>` + page.components.signInButton + `</dd>`;
     details += `<dt>Page feedback tool?</dt><dd>` + page.components.pageFeedbackTool + `</dd>`;
     details += `</dl>`;
@@ -269,3 +269,24 @@ $('input[type=radio][name=theme]').change(function(){
 
     localStorage.setItem("templatorTheme", this.value);
 });
+
+
+$("[data-add-snippet").click(function(){
+    let component =  $(this).attr('data-add-snippet');
+    
+    console.log(snippets[component])
+    switch(component) {
+        case "subwayNavigationIndex":
+          componentID++
+          preview.querySelector('h1').insertAdjacentHTML('afterend', snippets[component]);
+          output.value = preview.innerHTML;
+          update(output.value);
+
+          break;
+        case "subwayNavigationStep":
+            console.log(component)
+          break;
+        default:
+          // code block
+    } 
+})
