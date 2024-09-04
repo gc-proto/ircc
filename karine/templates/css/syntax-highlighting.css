@@ -14,7 +14,22 @@ textarea {
   width: calc(100% - 22px) !important;
   height: 650px !important;
 }
+@media (max-width: 991px) {
+  #output,
+  #highlighting {
+    height: 400px !important;
+  }
+  #output::after,
+  #highlighting::after {
+    clear: both;
+  }
+}
 
+@media (max-width: 991px) {
+  .pageDetails {
+    margin-top: 437px;
+  }
+}
 #output,
 #highlighting,
 #highlighting * {

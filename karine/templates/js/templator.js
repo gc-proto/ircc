@@ -10,6 +10,7 @@ let generatedTemplate = "";
 let filename = "";
 let toolstatus = document.getElementById('status');
 
+let componentID = 0;
 let page;
 
 // import basic_en from "./template/basic-en.js";
@@ -129,6 +130,7 @@ document.getElementById('copyClip').onclick = function () {
 }
 
 document.getElementById('update').onclick = function () {
+    generatedTemplate = output.value;
     preview.innerHTML = output.value;
     toolstatus.innerText = `Updated page preview`;
     $(toolstatus).fadeIn("fast").delay(2000).fadeOut("slow");
@@ -272,16 +274,35 @@ $('input[type=radio][name=theme]').change(function(){
 
 
 $("[data-add-snippet").click(function(){
+
     let component =  $(this).attr('data-add-snippet');
+    componentID++;
     
-    console.log(snippets[component])
+    let pre = document.getElementById('highlighting-content');
+
     switch(component) {
         case "subwayNavigationIndex":
-          componentID++
+          snippets[component] = snippets[component].replace(/templator-\d+/, 'templator-'+componentID);          
           preview.querySelector('h1').insertAdjacentHTML('afterend', snippets[component]);
-          output.value = preview.innerHTML;
+          let insertText = output.value.replace(`</h1>`, `</h1>` + snippets[component]);
+          output.value = insertText;
+        //   let s = output.value.indexOf('</h1>')
+        //   let e = snippets[component].length + s;
+        //   console.log(s, e);
+        
           update(output.value);
 
+
+          let s = output.value.indexOf('</h1>');
+          let e = snippets[component].length + s;
+          
+          $(output).selectRange(s, e);
+          
+            
+
+        //   setCaretToPos(output, output.value.indexOf('</h1>'));
+        //   setCaretToPos(document.getElementById('highlighting-content'), pre.innerHTML.indexOf('</h1>'));
+            
           break;
         case "subwayNavigationStep":
             console.log(component)
@@ -290,3 +311,32 @@ $("[data-add-snippet").click(function(){
           // code block
     } 
 })
+
+
+
+$.fn.selectRange = function(start, end) {
+    if(end === undefined) {
+        end = start;
+    }
+    return this.each(function() {
+        if('selectionStart' in this) {
+            this.selectionStart = start;
+            this.selectionEnd = end;
+            
+            console.log(this.selectionEnd.getClientRects() );
+        } else if(this.setSelectionRange) {
+            this.setSelectionRange(start, end);
+            console.log("b");
+        } else if(this.createTextRange) {
+            var range = this.createTextRange();
+            range.collapse(true);
+            range.moveEnd('character', end);
+            range.moveStart('character', start);
+            range.select();
+            console.log("c");
+            var rects = range.getClientRects();
+            console.log(rects);
+
+        }
+    });
+};

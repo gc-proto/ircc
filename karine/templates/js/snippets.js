@@ -1,7 +1,6 @@
-
-let componentID = 0;
 let snippets = {
-    subwayNavigationIndex: `<nav id="templator-${componentID}" class="provisional gc-subway position-relative-inner gc-subway-index">
+    subwayNavigationIndex: `
+    <nav id="templator-0" class="provisional gc-subway position-relative-inner gc-subway-index">
 	<h2>Sections</h2>
 	<dl>
 		<dt>
@@ -42,7 +41,8 @@ let snippets = {
 		</dd>
 	</dl>
 </nav>`,
-subwayNavigationStep: `<nav class="provisional gc-subway no-blink">
+subwayNavigationStep: `
+<nav class="provisional gc-subway no-blink">
 	<h1 id="gc-document-nav">[Service name]</h1>
 	<ul>
 		<li>
