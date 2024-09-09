@@ -17,7 +17,7 @@ let dict = {
         latestData: "Dernières données",
         dateRange: ["mois", "trimestre"],
         difference: ["augmentation par rapport au dernier", "diminution par rapport au dernier "]
-        
+
     }
 
 }
@@ -28,18 +28,18 @@ if (lang === "en") {
         thousands: ",",
         grouping: [3],
         percent: "%"
-        });
-        
-        langTime = d3.timeFormatLocale({
-            dateTime: "%A, %e %B %Y %X",
-            date: "%Y-%m-%d",
-            time: "%H:%M:%S",
-            periods: ["AM", "PM"],
-            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            shortDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-            shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        });
+    });
+
+    langTime = d3.timeFormatLocale({
+        dateTime: "%A, %e %B %Y %X",
+        date: "%Y-%m-%d",
+        time: "%H:%M:%S",
+        periods: ["AM", "PM"],
+        days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        shortDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    });
 
     formatTime = d3.timeFormat("%B %Y");
     shortMonth = d3.timeFormat("%b %-d, %Y");
@@ -62,13 +62,13 @@ else {
         months: ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
         shortMonths: ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
     });
-    
+
     formatTime = langTime.format("%B %Y");
     shortMonth = langTime.format("%-d %b %Y");
 }
 
 $(document).on("wb-ready.wb", function (event) {
-    
+
 
     let date = new Date();
 
@@ -114,10 +114,10 @@ $(document).on("wb-ready.wb", function (event) {
         return lang === "en" ? f(num) : String(f(num)).toLowerCase();
     }
 
-  
+
 
     let dateModified = $('meta[property="dcterms:modified"').attr('content').split("-");
-    
+
 
     let month = dateModified[1];
     let day = dateModified[2];
@@ -128,17 +128,17 @@ $(document).on("wb-ready.wb", function (event) {
         dateModified = dict[lang].months[month - 1] + " " + day + ", " + year
     }
     else {
-        dateModified = day + " " +  dict[lang].months[month - 1] + " " + year
+        dateModified = day + " " + dict[lang].months[month - 1] + " " + year
     }
-   
+
 
     document.getElementById("dateModified").innerHTML = dateModified;
 
     d3.csv("csv/previous-data.txt?" + today, function (data) {
 
         let previousData = data.map(function (d) { return d["Previous"] })
-        parseTime = d3.timeParse("%Y-%m");        
-        
+        parseTime = d3.timeParse("%Y-%m");
+
         let thisMonthOption = document.createElement('option');
         thisMonthOption.setAttribute('value', "-1");
         thisMonthOption.innerHTML = dict[lang].latestData
@@ -164,7 +164,7 @@ $(document).on("wb-ready.wb", function (event) {
         var thead = table.append('thead')
         var tbody = table.append('tbody');
 
-       
+
 
 
         // append the header row
@@ -173,8 +173,8 @@ $(document).on("wb-ready.wb", function (event) {
             .data(columns[lang]).enter()
             .append('th')
             .attr('scope', 'col')
-            .text(function (column) { 
-               return column
+            .text(function (column) {
+                return column
             });
 
         // create a row for each object in the data
@@ -200,7 +200,7 @@ $(document).on("wb-ready.wb", function (event) {
 
     runData();
 
-    function formatDateRage(dateRange){
+    function formatDateRage(dateRange) {
         parseTime = d3.timeParse("%b %d, %Y");
         dateRange[0] = shortMonth(parseTime(dateRange[0]));
         dateRange[1] = shortMonth(parseTime(dateRange[1]));
@@ -209,7 +209,7 @@ $(document).on("wb-ready.wb", function (event) {
     }
 
     async function runData(previousData) {
-        let path;        
+        let path;
         if (previousData == "-1") {
             path = "csv/export/";
         }
@@ -223,13 +223,13 @@ $(document).on("wb-ready.wb", function (event) {
         for (var i = 0; i < ajax.length; i++) {
             let jData = JSON.parse(ajax[i].getAttribute('data-wb-ajax'));
             let url = jData.url.split("#")[1];
-            jData.url = path +"insights-"+lang+".html#"+ url;
-            
-             ajax[i].outerHTML = '<div id="'+ ajax[i].getAttribute('id') +'" class="ajax-insights" data-wb-ajax=\'{&quot;type&quot;: &quot;replace&quot;, &quot;nocache&quot;: &quot;nocache&quot;,  &quot;url&quot;: &quot;'+ jData.url +'&quot;}\'></div>';
-            
-        }    
-        $( ".ajax-insights" ).trigger( "wb-init.wb-data-ajax" );
-       
+            jData.url = path + "insights-" + lang + ".html#" + url;
+
+            ajax[i].outerHTML = '<div id="' + ajax[i].getAttribute('id') + '" class="ajax-insights" data-wb-ajax=\'{&quot;type&quot;: &quot;replace&quot;, &quot;nocache&quot;: &quot;nocache&quot;,  &quot;url&quot;: &quot;' + jData.url + '&quot;}\'></div>';
+
+        }
+        $(".ajax-insights").trigger("wb-init.wb-data-ajax");
+
 
         if (previousData) {
             devicesChart.destroy();
@@ -249,7 +249,7 @@ $(document).on("wb-ready.wb", function (event) {
             tssMonthsChart.destroy();
             crisisChart.destroy();
             campaignChart.destroy();
-            utmChart.destroy();            
+            utmChart.destroy();
         }
 
         d3.csv(path + "traffic-volumes.csv?" + today, function (data) {
@@ -306,7 +306,7 @@ $(document).on("wb-ready.wb", function (event) {
 
         });
 
-        
+
 
         d3.csv(path + "referrer-type.csv?" + today, function (data) {
 
@@ -316,19 +316,19 @@ $(document).on("wb-ready.wb", function (event) {
                 en: ['Referrer Type', 'Entries', 'Percentage'],
                 fr: ['Type de référent', 'Entrés', 'Pourcentage']
             }
-            
+
             data.forEach(function (d) {
                 if (lang != "en") {
                     let referrerTypes = ["Search Engines", "Typed/Bookmarked", "Other Web Sites", "Social Networks", "Hard Drive"];
                     let referrerTypesFr = ["Moteur de recherche", "Saisi/signalé", "Autres sites web", "Réseaux sociaux", "Disque dur"]
                     for (var i = 0; i < referrerTypes.length; i++) {
-                        if (d["Referrer Type"] ===  referrerTypes[i]) {
+                        if (d["Referrer Type"] === referrerTypes[i]) {
                             d["Referrer Type"] = referrerTypesFr[i]
                         }
                     }
-                   
+
                 }
-                else d["Referrer Type"] = d["Referrer Type"] 
+                else d["Referrer Type"] = d["Referrer Type"]
 
 
             });
@@ -463,7 +463,7 @@ $(document).on("wb-ready.wb", function (event) {
                 return true;
             });
 
-            
+
             let label = lang === "en" ? "Visits" : "Visites";
             let colheaders = {
                 en: ['Page title', 'Visits'],
@@ -936,7 +936,7 @@ $(document).on("wb-ready.wb", function (event) {
                 en: ['Link', 'Clicks', 'Percentage'],
                 fr: ['Lien', 'Clics', 'Pourcentage']
             }
-            
+
 
             let x = data.map(function (d) { return d["Link"] })
             let y = data.map(function (d) { return d["Clicks"] });
@@ -1066,7 +1066,7 @@ $(document).on("wb-ready.wb", function (event) {
                 }
                 return true;
             });
-            
+
             let label = lang === "en" ? "Most clicked links in Study (English)" : "Liens les plus cliqués sur la page « Étudier au Canada » (anglais)";
             let colheaders = {
                 en: ['Link', 'Clicks', 'Percentage'],
@@ -1136,7 +1136,7 @@ $(document).on("wb-ready.wb", function (event) {
                 return true;
             });
 
-      
+
             let label = lang === "en" ? "Most clicked links in Study (French)" : "Liens les plus cliqués sur la page « Étudier au Canada » (français)";
             let colheaders = {
                 en: ['Link', 'Clicks', 'Percentage'],
@@ -1259,6 +1259,103 @@ $(document).on("wb-ready.wb", function (event) {
             data.forEach(function (d) {
 
                 d["Task"] = d["Task"];
+
+                if (lang != "en")
+                    switch (d["Task"]) {
+                        case "Apply for a work permit":
+                            d["Task"] = "Présenter une demande de permis de travail"
+                            break;
+                        case "Check your application status":
+                            d["Task"] = "Vérifiez l’état de sa demande"
+                            break;
+                        case "Apply for a visitor visa to Canada":
+                            d["Task"] = "Présenter une demande de visa de visiteur au Canada"
+                            break;
+                        case "Immigrate through Express Entry":
+                            d["Task"] = "Immigrez dans le cadre d’Entrée express"
+                            break;
+                        case "Apply for a visitor visa to Canada":
+                            d["Task"] = "Présenter une demande de visa de visiteur au Canada"
+                            break;
+                        case "Apply for an Electronic Travel Authorization (eTA)":
+                            d["Task"] = "Autorisation de voyage électronique (AVE)"
+                            break;
+                        case "Renew a Canadian passport":
+                            d["Task"] = "Renouveler un passeport canadien"
+                            break;
+                        case "Apply for a study permit":
+                            d["Task"] = "Présenter une demande de permis d’études"
+                            break;
+                        case "Apply for Canadian citizenship":
+                            d["Task"] = "Présentez une demande de citoyenneté canadienne"
+                            break;
+                        case "IRCC accounts - sign in and register":
+                            d["Task"] = "Comptes d’IRCC - Se connecter et s’enregistrer"
+                            break;
+                        case "Check processing times":
+                            d["Task"] = "Vérifiez les délais de traitement"
+                            break;
+                        case "Contact Immigration, Refugees and Citizenship Canada":
+                            d["Task"] = "Communiquez avec Immigration, Réfugiés et Citoyenneté Canada"
+                            break;
+                        case "Apply for an Electronic Travel Authorization (eTA)":
+                            d["Task"] = "Autorisation de voyage électronique (AVE)"
+                            break;
+                        case "Check the status of a passport application":
+                            d["Task"] = "Vérifiez l’état de sa demande de passeport"
+                            break;
+                        case "Sponsor your family members to immigrate to Canada":
+                            d["Task"] = "Parrainez les membres de votre famille aux fins d’immigration au Canada"
+                            break;
+                        case "Immigrate as a provincial nominee":
+                            d["Task"] = "Immigrez en tant que candidat d’une province"
+                            break;
+                        case "Apply for a new Canadian passport":
+                            d["Task"] = "Demander un nouveau passeport canadien"
+                            break;
+                        case "Get, renew or replace a permanent resident card":
+                            d["Task"] = "Obtenez, renouvelez ou remplacez une carte de résident permanent"
+                            break;
+                        case "Extend your stay in Canada":
+                            d["Task"] = "Prolonger votre séjour au Canada"
+                            break;
+                        case "Check if you need a visa or electronic travel authorization (eTA) to travel to Canada":
+                            d["Task"] = "Découvrez si vous avez besoin d’un visa ou d’une autorisation de voyage électronique (AVE) pour entrer au Canada"
+                            break;
+                        case "Find an IRCC application package or form":
+                            d["Task"] = "Trouvez une trousse de demande ou un formulaire d’IRCC"
+                            break;
+                        case "Find your National Occupational Classification (NOC)":
+                            d["Task"] = "Trouvez votre code de la Classification nationale des professions (CNP)"
+                            break;
+                        case "Other - Reason for my visit is not in this list":
+                            d["Task"] = "Autre - La raison de ma visite n’est pas sur cette liste"
+                            break;
+                        case "Find a visa application centre":
+                            d["Task"] = "Trouvez un centre de réception des demandes de visa"
+                            break;
+                        case "Find a designated learning institution":
+                            d["Task"] = "Trouvez un établissement d’enseignement désigné"
+                            break;
+                        case "Apply to work and travel abroad with International Experience Canada (IEC) as a Canadian":
+                            d["Task"] = "Travailler et voyager à l’étranger avec Expérience internationale Canada (EIC) en tant que Canadien"
+                            break;
+                        case "Pay your fees online":
+                            d["Task"] = "Payez vos frais en ligne"
+                            break;
+                        case "Apply for a work permit":
+                            d["Task"] = "Présenter une demande de permis de travail"
+                            break;
+                        case "Hire a foreign worker":
+                            d["Task"] = "Embaucher un travailleur étranger"
+                            break;
+                        case "Find out if you need to give your fingerprints and photo (biometrics) and where to do that":
+                            d["Task"] = "Découvrez si vous devez fournir vos empreintes digitales et une photo (données biométriques) et où vous pouvez le faire"
+                            break;
+                        default:
+                            break;
+                    }
+
                 d["TSS completion"] = Math.round(d["TSS completion"] * 100);
                 d["TSS ease"] = Math.round(d["TSS ease"] * 100);
                 d["TSS satisfaction"] = Math.round(d["TSS satisfaction"] * 100);
@@ -1294,14 +1391,14 @@ $(document).on("wb-ready.wb", function (event) {
                 return true;
             });
 
-        
+
             // "Task","TSS completion","TSS ease","TSS satisfaction","Surveys completed",
             let label = lang === "en" ? "TSS over the last 12 months" : "Au cours des 12 derniers mois";
             let colheaders = {
                 en: ['Month', 'TSS completion', 'TSS ease', 'TSS satisfaction', 'Surveys completed'],
                 fr: ['Mois', 'Réussite', 'Facilité', 'Satisfaction', 'Réponses']
             }
-            
+
             let effectiveness = lang === "en" ? "Effectiveness" : "Efficacité";
             let ease = lang === "en" ? "Ease" : "Facilité";
 
@@ -1383,8 +1480,8 @@ $(document).on("wb-ready.wb", function (event) {
                 d["Page URL"] = d["Page URL"];
                 d["Visits"] = parseFloat((d["Visits"]) * 100).toFixed(1) + dict[lang].percent;
             });
-            
-        
+
+
             let label = lang === "en" ? "Pages leading to Contact us" : "Pages allants vers la page « Contactez-nous »";
             let colheaders = {
                 en: ['Page URL', 'Visits'],
@@ -1404,7 +1501,7 @@ $(document).on("wb-ready.wb", function (event) {
                 d["Visits"] = parseFloat(d["Visits"] * 100).toFixed(1) + dict[lang].percent;
             });
 
-            
+
             let label = lang === "en" ? "Pages leading to Help centre" : "Pages allants vers le centre d’aide";
             let colheaders = {
                 en: ['Page URL', 'Visits'],
@@ -1427,7 +1524,7 @@ $(document).on("wb-ready.wb", function (event) {
                 d["IRCC news"] = d["IRCC news"];
                 d["Visits"] = d3.format(",")(d["Visits"]);
             });
-             
+
             let label = lang === "en" ? "Top newsroom products" : "Articles de la salle de presse les plus performantes";
             let colheaders = {
                 en: ['IRCC news', 'Visits'],
@@ -1596,7 +1693,7 @@ $(document).on("wb-ready.wb", function (event) {
                 }
                 return true;
             });
-            
+
             let label = lang === "en" ? "Top campaign landing pages" : "Pages d’accueil pour les campagnes les plus performantes";
             let colheaders = {
                 en: ['IRCC campaigns (E/F)', 'Visits', 'Percentage'],
@@ -1742,15 +1839,15 @@ $(document).on("wb-ready.wb", function (event) {
                     switch (tempString) {
                         case "Desktop":
                             tempString = "Ordinateur de bureau"
-                            break;                    
+                            break;
                         case "Tablet":
                             tempString = "Tablette"
-                            break;                    
+                            break;
                         default:
                             break;
                     }
                 }
-               
+
                 return tempString;
             })
             let b = data.map(function (d) { return parseInt(d["Visits"]); })
@@ -1837,13 +1934,13 @@ $(document).on("wb-ready.wb", function (event) {
                     switch (d["Device Type"].charAt(0).toUpperCase() + d["Device Type"].slice(1)) {
                         case "Desktop":
                             d["Device Type"] = "Ordinateur de bureau"
-                            break;                    
+                            break;
                         case "Tablet":
                             d["Device Type"] = "Tablette"
-                            break;                    
+                            break;
                         case "Mobile":
                             d["Device Type"] = "Mobile"
-                            break;                    
+                            break;
                         default:
                             break;
                     }
@@ -1903,12 +2000,12 @@ $(document).on("wb-ready.wb", function (event) {
 
         if (dif != 0) {
             if (a > b) {
-                document.getElementById(elm).innerHTML = lang ==="en" ? '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(dif) + dict[lang].percent : '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(dif) + "&nbsp;%";
+                document.getElementById(elm).innerHTML = lang === "en" ? '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(dif) + dict[lang].percent : '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(dif) + "&nbsp;%";
 
 
                 let text = document.createElement('div');
                 text.setAttribute('class', 'addedText');
-                text.innerHTML = "<span class=\"small\">"+ dict[lang].difference[0] + daterange + "</span>";
+                text.innerHTML = "<span class=\"small\">" + dict[lang].difference[0] + daterange + "</span>";
                 document.getElementById(elm).insertAdjacentElement('afterend', text);
                 document.getElementById(elm).classList.add('text-success');
             }
@@ -1917,7 +2014,7 @@ $(document).on("wb-ready.wb", function (event) {
                 document.getElementById(elm).innerHTML = '<i class="fas fa-caret-down"></i>&nbsp;' + d3.format(",")(dif) + dict[lang].percent;
                 let text = document.createElement('div');
                 text.setAttribute('class', 'addedText');
-                text.innerHTML = "<span class=\"small\">"+ dict[lang].difference[1] + daterange + "</span>";
+                text.innerHTML = "<span class=\"small\">" + dict[lang].difference[1] + daterange + "</span>";
                 document.getElementById(elm).insertAdjacentElement('afterend', text);
                 document.getElementById(elm).classList.add('text-danger');
             }
@@ -1945,10 +2042,10 @@ $(document).on("wb-ready.wb", function (event) {
         let m = this.value;
         $(".addedText").remove();
 
-       runData(m).then(
-        function (value) {
-            setTimeout(() => { $(".spinner-wrapper").remove() }, 2000)
-        });
+        runData(m).then(
+            function (value) {
+                setTimeout(() => { $(".spinner-wrapper").remove() }, 2000)
+            });
 
         $(".wb-tables").trigger("wb-init.wb-tables");
 
