@@ -1301,6 +1301,9 @@ $(document).on("wb-ready.wb", function (event) {
                 en: ['Month', 'TSS completion', 'TSS ease', 'TSS satisfaction', 'Surveys completed'],
                 fr: ['Mois', 'Réussite', 'Facilité', 'Satisfaction', 'Réponses']
             }
+            
+            let effectiveness = lang === "en" ? "Effectiveness" : "Efficacité";
+            let ease = lang === "en" ? "Ease" : "Facilité";
 
 
             let y1 = data.map(function (d) { return parseFloat(d["TSS completion"]).toFixed(2) })
@@ -1316,13 +1319,13 @@ $(document).on("wb-ready.wb", function (event) {
                         labels: x.reverse(),
                         datasets: [
                             {
-                                label: 'Effectiveness',
+                                label: effectiveness,
                                 data: y1.reverse(),
                                 backgroundColor: '#37b99c',
                                 borderColor: '#37b99c'
                             },
                             {
-                                label: 'Ease',
+                                label: ease,
                                 data: y2.reverse(),
                                 backgroundColor: '#ff6384',
                                 borderColor: '#ff6384'
@@ -1735,6 +1738,19 @@ $(document).on("wb-ready.wb", function (event) {
             let a = data.map(function (d) {
                 let tempString = d["Device Type"];
                 tempString = tempString.charAt(0).toUpperCase() + tempString.slice(1);
+                if (lang != "en") {
+                    switch (tempString) {
+                        case "Desktop":
+                            tempString = "Ordinateur de bureau"
+                            break;                    
+                        case "Tablet":
+                            tempString = "Tablette"
+                            break;                    
+                        default:
+                            break;
+                    }
+                }
+               
                 return tempString;
             })
             let b = data.map(function (d) { return parseInt(d["Visits"]); })
@@ -1817,7 +1833,22 @@ $(document).on("wb-ready.wb", function (event) {
             );
 
             data.forEach(function (d) {
-                d["Device Type"] = d["Device Type"].charAt(0).toUpperCase() + d["Device Type"].slice(1);
+                if (lang != "en") {
+                    switch (d["Device Type"].charAt(0).toUpperCase() + d["Device Type"].slice(1)) {
+                        case "Desktop":
+                            d["Device Type"] = "Ordinateur de bureau"
+                            break;                    
+                        case "Tablet":
+                            d["Device Type"] = "Tablette"
+                            break;                    
+                        case "Mobile":
+                            d["Device Type"] = "Mobile"
+                            break;                    
+                        default:
+                            break;
+                    }
+                }
+
                 d["Percentage"] = d3.format("0.0%")(parseInt(d["Visits"]) / total);
                 d["Visits"] = d3.format(",")(d["Visits"]);
             });
