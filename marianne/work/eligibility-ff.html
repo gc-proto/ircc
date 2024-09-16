@@ -168,7 +168,12 @@
             </nav>
 
             <h1 property="name" id="wb-cont" class="gc-thickline">Apply</h1>
-            <p>Find out what type of work permit you need and get the instructions to apply for your situation.</p>
+            <p>Answer a few questions to find out:</p>
+            <ul>
+                <li>if you need a work permit</li>
+                <li>which type of work permit is right for you (open or employer-specific)</li>
+                <li>how to apply</li>
+            </ul>
 
             <div class="wb-frmvld hidden" id="ff">
                 <form method="get">
@@ -182,33 +187,34 @@
                     "default": {"action": "addClass", "source": ".result", "class": "hidden"},
                     "reset": {"action": "addClass", "source": ".result", "class": "hidden"}
                 }'>
-                    <p>Are you the main applicant or a family member?</p>
+                    
+                <p>Are you the main applicant or a family member?</p>
                     <ul>
                         <li>Main applicant
                             <div class="wb-fieldflow-sub">
                                 <p>Are you:</p>
                                 <ul>
                                     <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1"}'>A permanent residence applicant
-                                        <div class="wb-fieldflow-sub">
-                                            <p>Please select an option:</p>
+                                        <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas": "select"}'>
+                                            <p>Which permanent residence program did you apply to?</p>
                                             <ul>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1a"}'>Family sponsorship</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1b"}'>Temporary resident to permanent resident (TR-to-PR) pathway</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1l"}'>Agri-Food Pilot</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1f"}'>Asylum or humanitarian & compassionate grounds</li>
                                                 <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1c"}'>Atlantic Immigration Program</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1d"}'>Start-up visa</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1e"}'>Rural Northern Immigration Pilot</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1f"}'>Asylum or Humanitarian & compassionate grounds</li>
                                                 <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1g"}'>Express Entry</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1a"}'>Family sponsorship</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1k"}'>High medical needs class</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1j"}'>Home child care or home support worker pilot</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1m"}'>Permanent residence pathway for Hong Kong residents</li>
                                                 <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1h"}'>Provincial nominee program</li>
                                                 <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1i"}'>Quebec-selected skilled workers</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1j"}'>Home child care or home support worker pilot</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1k"}'>High medical needs class</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1l"}'>Agri-Food Pilot</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1m"}'>Permanent residence pathway for Hong Kong residents</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1e"}'>Rural Northern Immigration Pilot</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1d"}'>Start-up visa</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1b"}'>Temporary resident to permanent resident (TR-to-PR) pathway</li>
                                             </ul>
                                         </div>
                                     </li>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-2"}'>A refugee, protected person, or asylum claimant</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-2"}'>A refugee, an asylum claimant, or under an unenforceable removal order</li>
                                     <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-3"}'>A student, recent graduate, or youth interested in a travel and work experience
                                         <div class="wb-fieldflow-sub">
                                             <p>Please select the option that best describes you:</p>
@@ -239,7 +245,6 @@
                                         </div>
                                     </li>
                                     <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-4"}'>A temporary resident holder</li>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-5"}'>Under a removal order</li>
                                     <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-6"}'>A general skilled worker
                                         <div class="wb-fieldflow-sub">
                                             <p>Are you working in the short-term or long-term?</p>
@@ -281,21 +286,21 @@
                             <div class="wb-fieldflow-sub">
                                 <p>Are you the family member of:</p>
                                 <ul>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-1"}'>A foreign worker
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-1"}'>A foreign skilled worker or permanent residence applicant
                                         <div class="wb-fieldflow-sub">
                                             <p>Who are you the family member of?</p>
                                             <ul>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-1b"}'>TR-to-PR pathway applicant</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-1c"}'>Agri-Food Pilot applicant</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-1d"}'>Asylum claimant</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-1a"}'>Other skilled worker or permanent residence applicant</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-1b"}'>A TR-to-PR pathway applicant</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-1c"}'>An agri-Food Pilot applicant</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-1d"}'>An asylum claimant</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-1a"}'>Another skilled worker or permanent residence applicant</li>
                                             </ul>
                                         </div>
                                     </li>
                                     <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-2"}'>An international student</li>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-3"}'>A permanent residence applicant</li>
                                     <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-4"}'>A Ukrainian national</li>
                                     <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-5"}'>A foreign government representative</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#h1b-family"}'>An H-1B visa holder</li>
                                 </ul>
                             </div>
                         </li>
@@ -303,6 +308,10 @@
                 </div>
             </form>
             </div>
+
+
+
+            
             
             <!-- Results -->
             <div id="step2a-1" class="hidden result">
