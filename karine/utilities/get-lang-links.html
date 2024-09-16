@@ -48,9 +48,11 @@
                     else links[i].classList.add('noFetch');
                 });
             }
-            document.getElementById('btn.copy').classList.remove('hidden');
-            document.getElementById('btn-copy').onclick = function(){                
-                navigator.clipboard.writeText(cnt.innerHTML);
+            document.getElementById('btn-copy').classList.remove('hidden');
+            document.getElementById('btn-copy').onclick = function(){  
+                let temp = cnt.innerHTML.replaceAll('noFetch', '');             
+                temp = temp.replaceAll(`class=""`, '');             
+                navigator.clipboard.writeText(temp);
             }
         }
         
