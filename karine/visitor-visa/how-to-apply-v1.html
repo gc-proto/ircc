@@ -116,7 +116,7 @@
             </nav>
             <h1 property="name" id="wb-cont" class="gc-thickline">How to apply</h1>
 
-            
+
             <div class="mwsgeneric-base-html parbase section">
 
               <div class="reference parbase section">
@@ -126,18 +126,19 @@
                   </div>
                 </div>
               </div>
-  
-  
-          
-                <section class="panel panel-default panel-body mrgn-bttm-0 mrgn-tp-md p-0 bg-dark  d-flex flex-column">
-                  <div class="panel panel-default panel-body mrgn-bttm-0 d-flex flex-column">
-                      <h2 class="mrgn-tp-0 h3">Make sure you need a visitor visa</h2>
-                      <p>You may be eligible for an Electronic Travel Authorization (eTA).</p>
-                      <p><a class="btn btn-info" href="https://ircc.canada.ca/english/visit/visas.asp">Find out if you need a visitor visa or an eTA</a></p>
-                  </div>
-                </section>
-  
-  
+
+
+
+              
+              <iframe id="receiver" data-src="https://ircc.canada.ca/test/karine/foiynav/foiynav-storage.html?2024-09-17" class="brdr-0 embed-responsive"></iframe>
+                <details>
+                  <summary class="bg-default"><span class="mrgn-tp-0 h3">You may be eligible for an eTA</span></summary>
+                  <p>Placeholder</p>
+                  <p class="mrgn-bttm-0">Not sure? <a href="https://ircc.canada.ca/test/karine/foiynav/visas.asp">Find out if you need a visa or an eTA.</a></p>
+                </details>
+              </iframe>
+
+
               <div class="reference parbase section">
                 <div class="cq-dd-paragraph">
                   <div class="mwsgeneric_base_html mwsgeneric-base-html parbase">
@@ -2184,6 +2185,9 @@
   <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
   <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
   <script src="https://test.canada.ca/ircc/templates/js/components.js" type="text/javascript" defer></script>
+  <script>
+    document.getElementById('receiver').setAttribute('src', document.getElementById('receiver').getAttribute('data-src')+Math.random())
+  </script>
 </body>
 
 </html>
