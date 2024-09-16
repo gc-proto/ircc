@@ -16,7 +16,8 @@
 </head>
 
 <body>
-    <button id="btn-convert">Convert links</button><br />
+    <button id="btn-convert">Convert links</button>
+    <button id="btn-copy" class="hidden">Copy converted HTML</button><br />
     <textarea id="dropHTML" placeholder="Paste HTML..."></textarea>
     <div id="html-to-check"></div>
     <div id="link" class="hidden"></div>
@@ -29,7 +30,6 @@
 
      
         btn.onclick = function(){
-            console.log(input.value);
             cnt.innerHTML = input.value;
             let links = cnt.querySelectorAll('a');
 
@@ -38,10 +38,12 @@
                 let a = document.createElement('a');
                 a.href = url;
                 $("#link").load(url + " #wb-lng a", function () {
-                    links[i].setAttribute('href', a.protocol + a.hostname + $("#link a").attr('href'));
+                    links[i].setAttribute('href', a.protocol + "//" + a.hostname + $("#link a").attr('href'));
                 });
             }
-
+            document.getElementById('btn-copy').onclick = function(){                
+                navigator.clipboard.writeText(cnt.innerHTML);
+            }
         }
         
 
