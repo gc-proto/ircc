@@ -48,6 +48,7 @@
                     else links[i].classList.add('noFetch');
                 });
             }
+            document.getElementById('btn.copy').classList.remove('hidden');
             document.getElementById('btn-copy').onclick = function(){                
                 navigator.clipboard.writeText(cnt.innerHTML);
             }
