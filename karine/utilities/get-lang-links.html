@@ -12,6 +12,11 @@
         .hidden {
             display: none;
         }
+
+        .noFetch {
+            color:red;
+            font-weight:bold;
+        }
     </style>
 </head>
 
@@ -38,7 +43,9 @@
                 let a = document.createElement('a');
                 a.href = url;
                 $("#link").load(url + " #wb-lng a", function () {
-                    links[i].setAttribute('href', a.protocol + "//" + a.hostname + $("#link a").attr('href'));
+                    let hrefAttr = $("#link a").attr('href');
+                    if (hrefAttr) links[i].setAttribute('href', a.protocol + "//" + a.hostname + hrefAttr);
+                    else links[i].classList.add('noFetch');
                 });
             }
             document.getElementById('btn-copy').onclick = function(){                
