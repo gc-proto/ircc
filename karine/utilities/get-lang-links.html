@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Get alternate language URLs</title>
+    <style>
+        textarea {
+            width: 800px;
+            height: 200px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn-convert">Convert links</button><br />
+    <textarea id="dropHTML" placeholder="Paste HTML..."></textarea>
+    <div id="html-to-check"></div>
+    <div id="link" class="hidden"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
+    <script>
+
+        let input = document.getElementById('dropHTML');
+        let btn = document.getElementById('btn-convert');        
+        let cnt = document.getElementById('html-to-check');
+
+     
+        btn.onclick = function(){
+            console.log(input.value);
+            cnt.innerHTML = input.value;
+            let links = cnt.querySelectorAll('a');
+
+            for (let i = 0; i < links.length; i++) {
+                let url = links[i].getAttribute('href');
+                let a = document.createElement('a');
+                a.href = url;
+                $("#link").load(url + " #wb-lng a", function () {
+                    links[i].setAttribute('href', a.protocol + a.hostname + $("#link a").attr('href'));
+                });
+            }
+
+        }
+        
+
+    </script>
+</body>
