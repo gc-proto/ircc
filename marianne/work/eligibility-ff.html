@@ -198,8 +198,8 @@
                                         <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas": "select"}'>
                                             <p>Which permanent residence program did you apply to?</p>
                                             <ul>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#bowp, #apply-steps-1-2, #inside-docs, #open-fees, #biometrics"}'>Agri-Food Pilot</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#atlantic"}'>Atlantic Immigration Program</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#bowp, #agri-food-elig, #apply-steps-1-2, #agri-food-docs, #inside-docs, #open-fees, #biometrics"}'>Agri-Food Pilot</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #atlantic-elig, #apply-steps-1-2, #atlantic-docs, #inside-docs, #emp-fees, #biometrics"}'>Atlantic Immigration Program</li>
                                                 <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#express-entry"}'>Express Entry</li>
                                                 <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#sponsorship"}'>Family sponsorship</li>
                                                 <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1k"}'>High medical needs class</li>
@@ -300,34 +300,69 @@
             </form>
             </div>
 
-
-
-            
-            
             <!-- Employer-specific WP -->
             <div id="employer" class="hidden result">
-                <div class="well mrgn-tp-lg">
-                <h2 class="mrgn-tp-sm">Type of work permit</h2>
-                <p>You need an <Strong>employer-specific</Strong> work permit to work in Canada.</p>
-                </div>
+            <h2>Type of work permit</h2>
+            <p>Based on your answers, you need an <Strong>employer-specific</Strong> work permit to work in Canada.</p>
+            <p>You need a job offer to get an employer-specific work permit. You'll only be able to work for the employer who made you the job offer.</p>
             </div>
 
             <!-- Open WP -->
             <div id="open" class="hidden result">
-                <div class="well mrgn-tp-lg">
-                <h2 class="mrgn-tp-sm">Type of work permit</h2>
-                <p>You need an <Strong>open</Strong> work permit to work in Canada.</p>
-                </div>
+            <h2>Type of work permit</h2>
+            <p>Based on your answers, you need an <Strong>open</Strong> work permit to work in Canada.</p>
+            <p>An open work permit lets you work for any employer in Canada.</p>
             </div>
 
             <!-- BOWP -->
             <div id="bowp" class="hidden result">
-                <div class="well mrgn-tp-lg">
-                <h2 class="mrgn-tp-sm">Type of work permit</h2>
-                <p>You need a <Strong>bridging open work permit (BOWP)</Strong> to work in Canada.</p>
-                </div>
+            <h2>Type of work permit</h2>
+            <p>Based on your answers, you need a <Strong>bridging open work permit (BOWP)</Strong> to work in Canada.</p>
+            <p>A bridging open work permit (BOWP) lets you keep working while you wait for the results of your permanent residence application.</p>
             </div>
 
+            <!-- Additional eligibility info -->
+            <!-- Agri-food pilot -->
+            <div id="agri-food-elig" class="hidden result">
+            <h2>Eligibility</h2>
+                <p>To be eligible for a BOWP, you must</p>
+                    <ul>
+                        <li>live in Canada (and intend to live outside Quebec) at the time you apply for your BOWP
+                            <ul>
+                                <li>You can leave Canada while we process your application.</li>
+                                <li>However, if you leave Canada after your work permit expires, you can’t work until your new application is approved.</li>
+                            </ul>
+                        </li>
+                        <li>either
+                            <ul>
+                                <li>have a valid work permit</li>
+                                <li>have an expired work permit but <a href="/en/services/immigration-citizenship/helpcentre/glossary.html#maintained-status">maintained your status</a> as a worker</li>
+                                <li>be eligible to <a href="/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/restore.html">restore your status and get a work permit</a></li>
+                            </ul>
+                        </li>
+                        <li>be the principal applicant on your permanent residence application</li>
+                        <li>be <a href="/en/services/immigration-citizenship/helpcentre/glossary.html#approved">approved in principle</a> for permanent residence</li>
+                    </ul>
+            </div>
+
+            <!-- Atlantic immigration pilot -->
+            <div id="atlantic-elig" class="hidden result">
+            <h2>Eligibility</h2>
+            <p>This work permit is only valid for <Strong>2 years</Strong>.</p>
+            <p>To qualify for this work permit, you need:</p>
+            <ul>
+                <li>a <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/atlantic-immigration/how-to-immigrate/job-offer.html">job offer</a> from a designated employer</li>
+                <li>a referral letter from the Atlantic province where you’ll be working</li>
+                <li>to meet the requirements for:
+                    <ul>
+                        <li><a href="/en/immigration-refugees-citizenship/services/immigrate-canada/atlantic-immigration/how-to-immigrate/eligibility.html#language_requirements">language</a></li>
+                        <li><a href="/en/immigration-refugees-citizenship/services/immigrate-canada/atlantic-immigration/how-to-immigrate/eligibility.html#educational_requirements">education</a></li>
+                        <li><a href="/en/immigration-refugees-citizenship/services/immigrate-canada/atlantic-immigration/how-to-immigrate/eligibility.html#work_experience">work experience</a> (unless you’re an international graduate)</li>
+                      </ul>
+                </li>
+            </ul>
+
+            </div>
 
             <!-- Application steps 1 to 2 -->
             <div id="apply-steps-1-2" class="hidden result">
@@ -336,24 +371,106 @@
                 <p ><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/medical-police/medical-exams/requirements-temporary-residents.html#needs">Find out if you need a medical exam</a></p>
 
                 <h2>2. Get a document checklist</h2>
-                <p>Before you apply online, you’ll need:</p>
-                <ul>
-                    <li>a scanner or camera to create electronic copies of your documents</li>
-                    <li>a valid credit or debit card</li>
-                </ul>
+                <p>Sign in to your IRCC secure account to get your personalized document checklist. You'll need a scanner or camera to create electronic copies of your documents</p>
+                <a href="/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn-call-to-action">Sign in to your account</a>
+                
+                <p>After you sign in:</p>
+                <ol>
+                  <li>Select “Apply to come to Canada”.</li>
+                  <li>Select “Visitor visa, study and/or work permit” under "Determine your eligibility and apply online".</li>
+                </ol>
 
-                <p>You can get your personalized document checklist in 1 of 2 ways:</p>
-                <ul>
-                    <li><a href="/en/immigration-refugees-citizenship/services/application/account.html" >Sign in to your IRCC secure account</a></li>
-                    <li><a href="https://onlineservices-servicesenligne.cic.gc.ca/eta/applicationQuery?&amp;lang=en">Go to Come to Canada tool</a></li>
-                </ul>
                     
+            <!-- Special instructions for doc checklist -->
+            <!-- Agri-food pilot -->
+            <div id="agri-food-docs" class="hidden result">
+                <h3>Additional documents for Agri-Food Pilot applicants</h3>
+                <p>When you see a request for a document called <strong>Client information</strong>, upload the following document:</p>
+                <ul>
+                    <li><Strong>approval in principle letter</Strong>
+                    <ul>
+                        <li>This is the letter we send you after your permanent residence application is approved.</li>
+                    </ul></li>
+                </ul>
 
-                <div class="well">
-                    <h4 class="mrgn-tp-sm">Insert special instructions for document checklist here</h4>
-                </div>
             </div>
 
+            <!-- Atlantic Immigration program -->
+            <div id="atlantic-docs" class="hidden result">
+                <p>Answer the following questions <strong>exactly as shown</strong>.</p>
+
+                <div class="table-responsive">
+                    
+                  <table class="table table-striped table-bordered">
+                  <thead>
+                  <tr>
+                  <th scope="col">Question</th>
+                  
+                  <th scope="col">Answer</th>
+                  
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                  <td>
+                  What you would like to do in Canada?
+                  </td>
+                  <td>
+                  Work
+                  </td>
+                  </tr>
+                  <tr>
+                  <td>
+                  How long are you planning to stay in Canada?
+                  </td>
+                  <td>
+                  Temporarily—more than 6 months
+                  </td>
+                  </tr>
+                  <tr>
+                  <td>
+                  I have a job offer and my employer gave me an offer of employment number or LMIA number (or proof of that employer applied for an LMIA)
+                  </td>
+                  <td>
+                  Yes
+                  </td>
+                  </tr>
+                  <tr>
+                  <td>
+                  What is the status of your job offer?
+                  </td>
+                  <td>
+                  Temporary—at least one year
+                  </td>
+                  </tr>
+                  <tr>
+                  <td>
+                  What type of work permit do you want to apply for?
+                  </td>
+                  <td>
+                  A work permit with a Labour Market Impact Assessment exemption
+                  </td>
+                  </tr>
+                  </tbody>
+                  </table>
+              </div>
+
+                <h3>Additional documents for Atlantic Immigration Program applicants</h3>
+                <p>When you see a request for a document called <strong>Client information</strong>, upload the following documents as one scanned file:</p>
+                <ul>
+                    <li>your referral letter</li>
+                    <li>your signed <a href="https://www.canada.ca/content/dam/ircc/documents/pdf/english/kits/forms/imm0156e.pdf"></a>IMM&nbsp;0156 form</li>
+                    <li>your <a href="/en/immigration-refugees-citizenship/services/immigrate-canada/atlantic-immigration/education-assessment.html">educational credentials</a></li>
+                    <li>your <a href="/en/immigration-refugees-citizenship/services/immigrate-canada/atlantic-immigration/language-testing.html">language test results</a> (English or French)</li>
+                    <li>your proof of work experience, if applicable</li>
+                    <li>your <a href="#visa">additional visa office requirements</a>, if applicable for your country</li>
+                  </ul>
+                  <p><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1160">How to upload multiple documents into one field</a></p>
+            </div>
+
+
+
+            <!-- Outside Canada docs -->
             <div id="outside-docs" class="hidden result">
                 <h2>3. Fill out the forms</h2>
                 <h3>Required forms</h4>
@@ -376,6 +493,7 @@
                 </ul>
             </div>
 
+            <!-- Inside Canada docs -->
             <div id="inside-docs" class="hidden result">
                 <h2>3. Fill out the forms</h2>
                 <h4>Required forms</h4>
@@ -429,7 +547,7 @@
             <p><a href="https://ircc.canada.ca/english/visit/biometrics.asp">Find out if you need to give your biometrics</a></p>
             
             <details>
-                <summary><h3>Extend the validity of your biometrics</h3></summary>
+                <summary>Extend the validity of your biometrics</summary>
                 <p>Your biometrics are valid for <strong>10 years</strong>.</p>
                 <p>If your biometrics will expire <strong>before</strong> your work permit expires, you can give your biometrics again when you apply even if they’re still valid.</p>
                 <p>How to extend the validity of your biometrics:</p>
