@@ -162,8 +162,8 @@
                     <li><a href="types.html#gc-document-nav" class="hidden-xs hidden-sm">Types of work permits</a> <a href="types.html#gc-document-nav" class="visible-xs visible-sm">Types of work permits</a> </li>
                     <li><a href="#" class="active" aria-current="page">Apply</a></li>
                     <li><a href="#" class="hidden-xs hidden-sm">After you apply</a> <a href="##gc-document-nav" class="visible-xs visible-sm">After you apply</a> </li>
-                    <li><a href="#" class="hidden-xs hidden-sm">Prepare for arrival</a> <a href="##gc-document-nav" class="visible-xs vi sible-sm">Prepare for arrival</a> </li>
-                    <li><a href="#" class="hidden-xs hidden-sm">When you start working</a> <a href="##gc-document-nav" class="visible-xs vi sible-sm">When you start working</a> </li>
+                    <li><a href="#" class="hidden-xs hidden-sm">Prepare for arrival</a> <a href="##gc-document-nav" class="visible-xs visible-sm">Prepare for arrival</a> </li>
+                    <li><a href="#" class="hidden-xs hidden-sm">When you start working</a> <a href="##gc-document-nav" class="visible-xs visible-sm">When you start working</a> </li>
                 </ul>
             </nav>
 
@@ -174,6 +174,7 @@
                 <li>which type of work permit is right for you (open or employer-specific)</li>
                 <li>how to apply</li>
             </ul>
+
 
             <div class="wb-frmvld hidden" id="ff">
                 <form method="get">
@@ -187,259 +188,181 @@
                     "default": {"action": "addClass", "source": ".result", "class": "hidden"},
                     "reset": {"action": "addClass", "source": ".result", "class": "hidden"}
                 }'>
-                    
-                <p>Are you the main applicant or a family member?</p>
+                    <p>Are you applying from inside or outside Canada?</p>
                     <ul>
-                        <li>Main applicant
-                            <div class="wb-fieldflow-sub">
-                                <p>Are you:</p>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#inside"}'>Inside Canada
+                            <div id="inside" class="wb-fieldflow-sub hidden">
+                                <p>Are you the main applicant or a family member of an applicant?</p>
                                 <ul>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1"}'>A permanent residence applicant
-                                        <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas": "select"}'>
-                                            <p>Which permanent residence program did you apply to?</p>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#inside-main"}'>Main applicant
+                                        <div id="inside-main" class="wb-fieldflow-sub hidden">
+                                            <p>Select the option that best describes you:</p>
                                             <ul>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#bowp, #apply-steps-1-2, #inside-docs, #open-fees, #biometrics"}'>Agri-Food Pilot</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#atlantic"}'>Atlantic Immigration Program</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#express-entry"}'>Express Entry</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#sponsorship"}'>Family sponsorship</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1k"}'>High medical needs class</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1j"}'>Home Child Care or Home Support Worker Pilot</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1m"}'>Permanent residence pathway for Hong Kong residents</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1h"}'>Provincial Nominee Program</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1i"}'>Quebec-selected skilled workers</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1e"}'>Rural Northern Immigration Pilot</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1d"}'>Start-up Visa</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-1b"}'>Temporary resident to permanent resident (TR-to-PR) pathway</li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-2"}'>A refugee, an asylum claimant, or under an unenforceable removal order</li>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-3"}'>A student, recent graduate, or youth interested in a travel and work experience
-                                        <div class="wb-fieldflow-sub">
-                                            <p>Please select the option that best describes you:</p>
-                                            <ul>
-                                                <li>Student
-                                                    <div class="wb-fieldflow-sub">
-                                                        <p>Type of student:</p>
-                                                        <ul>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-3a1"}'>Work on or off campus</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-3a2"}'>Co-op student</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-3a3"}'>Health-care student</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-3a4"}'>Destitute student</li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-3b"}'>Recent graduate
-                                                    <div class="wb-fieldflow-sub">
-                                                        <p>Please select your category:</p>
-                                                        <ul>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-3b1"}'>Recent graduate from Canadian designated learning institution (DLI)</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-3b2"}'>Expired post-graudation work permit</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-3b3"}'>Recent graduate from Hong Kong</li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-3c"}'>Youth participating in International Experience Canada</li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-4"}'>A temporary resident holder</li>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-6"}'>A general skilled worker
-                                        <div class="wb-fieldflow-sub">
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#skilled"}'>Skilled worker
+                                                    <div id="skilled" class="wb-fieldflow-sub hidden">
                                                         <p>What type of work do you do?</p>
                                                         <ul>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4a"}'>Caregivers</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4b"}'>Agricultural</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4c"}'>Business person, entrepreneur, investor</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4d"}'>Teaching or researching for a university or college</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4e"}'>Medical</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4f"}'>Sports, media, arts</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4g"}'>Foreign government, military, or international organization</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4h"}'>Special event or activity (e.g. conventions)</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step4i"}'>Transportation, repair, maintenance or emergency</li>
-                                                            <li>Other skilled worker
-                                                                <div class="wb-fieldflow-sub">
-                                                                    <p>Are you:</p>
+                                                            <li>Agricultural</li>
+                                                            <li>Business</li>
+                                                            <li>Camp counsellor</li>
+                                                            <li>Caregiver</li>
+                                                            <li>Education</li>
+                                                            <li>Fishing guide</li>
+                                                            <li>Foreign government, military or international organization</li>
+                                                            <li>Medical</li>
+                                                            <li>Sports, media, arts</li>
+                                                            <li>Transportation, repair, emergency</li>
+                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#other-skilled"}'>Other skilled work
+                                                                <div id="other-skilled" class="wb-fieldflow-sub hidden">
+                                                                    <p>Do either of the following situations apply to you?</p>
                                                                     <ul>
-                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #apply-steps-1-3, #outside-docs"}'>Working under the Global Hypergrowth Project</li>
-                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step5b"}'>A French-speaking worker outside Quebec</li>
-                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step5c"}'>None of the above</li>
+                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #ghp, #outside-docs"}'>Working for employer in Global Hypergrowth Project</li>
+                                                                        <li>Working as a French-speaker outside Quebec</li>
+                                                                        <li>None of the above</li>
                                                                     </ul>
                                                                 </div>
                                                             </li>
                                                         </ul>
+                                                    </div>
+                                                </li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#pr"}'>Permanent residence applicant</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#youth"}'>Student, recent graduate, or youth (18-35)
+                                                    <div id="student" class="wb-fieldflow-sub hidden">
+                                                        <p>Select the option that best describes you:</p>
+                                                        <ul>
+                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#student"}'></li>Student
+                                                                <div id="trp" class="wb-fieldflow-sub hidden">
+                                                                    <p>Select the option that best describes you:</p>
+                                                                    <ul>
+                                                                        <li>6 months or more</li>
+                                                                        <li>Less than 6 months</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </li>
+                                                            <li>Recent graduate</li>
+                                                            <li>International Experience Canada participant</li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#refugee"}'>Refugee, asylum claimant, or under a removal order</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#trp"}'>Temporary resident permit holder
+                                                    <div id="trp" class="wb-fieldflow-sub hidden">
+                                                        <p>How long is your temporary resident permit valid for?</p>
+                                                        <ul>
+                                                            <li>6 months or more</li>
+                                                            <li>Less than 6 months</li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#ukraine"}'>Ukrainian national</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#inside-family"}'>Family member
+                                        <div id="inside-family" class="wb-fieldflow-sub hidden">
+                                            <p>Who are you the family member of?</p>
+                                            <ul>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#family-worker"}'>Foreign skilled worker or permanent residence applicant</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#ukraine"}'>Ukrainian national</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#family-govt-rep"}'>Accredited foreign government representative (e.g., diplomat)</li>
+                                            </ul>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li>Family member
-                            <div class="wb-fieldflow-sub">
-                                <p>Are you the family member of:</p>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#outside"}'>Outside Canada
+                            <div id="outside" class="wb-fieldflow-sub hidden">
+                                <p>Are you the main applicant or a family member of an applicant?</p>
                                 <ul>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-1"}'>A foreign skilled worker or permanent residence applicant
-                                        <div class="wb-fieldflow-sub">
-                                            <p>Who are you the family member of?</p>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#outside"}'>Main applicant
+                                        <div id="outside-main-applicant" class="wb-fieldflow-sub hidden">
+                                            <p>Select the option that best describes you:</p>
                                             <ul>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-1b"}'>A TR-to-PR pathway applicant</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-1c"}'>An agri-Food Pilot applicant</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-1d"}'>An asylum claimant</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-1a"}'>Another skilled worker or permanent residence applicant</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#skilled"}'>Skilled worker
+                                                    <div id="skilled" class="wb-fieldflow-sub hidden">
+                                                        <p>What type of work do you do?</p>
+                                                        <ul>
+                                                            <li>Agricultural</li>
+                                                            <li>Business</li>
+                                                            <li>Camp counsellor</li>
+                                                            <li>Caregiver</li>
+                                                            <li>Education</li>
+                                                            <li>Fishing guide</li>
+                                                            <li>Foreign government, military or international organization</li>
+                                                            <li>Medical</li>
+                                                            <li>Sports, media, arts</li>
+                                                            <li>Transportation, repair, emergency</li>
+                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#other-skilled"}'>Other skilled work
+                                                                <div id="other-skilled" class="wb-fieldflow-sub hidden">
+                                                                    <p>Do either of the following situations apply to you?</p>
+                                                                    <ul>
+                                                                        <li>Working for employer in Global Hypergrowth Project</li>
+                                                                        <li>Working as a French-speaker outside Quebec</li>
+                                                                        <li>None of the above</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#youth"}'>Student, recent graduate, or youth (18-35)
+                                                    <div id="student" class="wb-fieldflow-sub hidden">
+                                                        <p>Select the option that best describes you:</p>
+                                                        <ul>
+                                                            <li>Student</li>
+                                                            <li>Recent graduate</li>
+                                                            <li>International Experience Canada participant</li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#ukraine"}'>Ukrainian national</li>
                                             </ul>
                                         </div>
                                     </li>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-2"}'>An international student</li>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-4"}'>A Ukrainian national</li>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2a-5"}'>A foreign government representative</li>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#h1b-family"}'>An H-1B visa holder</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#outside-family"}'>Family member
+                                        <div id="outside-family" class="wb-fieldflow-sub hidden">
+                                            <p>Who are you the family member of?</p>
+                                            <ul>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#family-worker"}'>Foreign skilled worker or permanent residence applicant</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#ukraine"}'>Ukrainian national</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#family-govt-rep"}'>Accredited foreign government representative (e.g., diplomat)</li>
+                                            </ul>
+                                        </div>                                        
+                                    </li>
                                 </ul>
                             </div>
                         </li>
                     </ul>
+            
+
+        
+            
                 </div>
             </form>
             </div>
 
-
-
             
-            
-            <!-- Employer-specific WP -->
+
+            <!-- Open WP (generic) -->
             <div id="employer" class="hidden result">
-                <div class="well mrgn-tp-lg">
-                <h2 class="mrgn-tp-sm">Type of work permit</h2>
-                <p>You need an <Strong>employer-specific</Strong> work permit to work in Canada.</p>
+                <h2>Type of work permit</h2>
+                <p>You need an employer-specific work permit to work in Canada.</p>
+            </div>
+
+            <!-- GHP (special) -->
+            <div id="ghp" class="hidden result">
+                <h2>Special instructions</h2>
+                <p>You need special instructions to apply for a work permit under the Global Hypergrowth Project.</p>
+                <h3>Sign in</h3>
+                <p>Sign-in button here</p>
+                <h3>Fill out document checklist</h3>
+                <p>Answer questions exactly as shown below.</p>
+                <h3>Upload documents</h3>
+                <div id="outside-docs" class="hidden result">
+                    <p>This is the application form for outside Canada applicants.</p>
                 </div>
-            </div>
-
-            <!-- Open WP -->
-            <div id="open" class="hidden result">
-                <div class="well mrgn-tp-lg">
-                <h2 class="mrgn-tp-sm">Type of work permit</h2>
-                <p>You need an <Strong>open</Strong> work permit to work in Canada.</p>
-                </div>
-            </div>
-
-            <!-- BOWP -->
-            <div id="bowp" class="hidden result">
-                <div class="well mrgn-tp-lg">
-                <h2 class="mrgn-tp-sm">Type of work permit</h2>
-                <p>You need a <Strong>bridging open work permit (BOWP)</Strong> to work in Canada.</p>
-                </div>
-            </div>
-
-
-            <!-- Application steps 1 to 2 -->
-            <div id="apply-steps-1-2" class="hidden result">
-                <h2>1. Get a medical exam, if you need one</h2>
-                <p>You generally don’t need a medical exam unless you plan to work in healthcare or with children, or if you've lived in certain countries or territories.</p>
-                <p ><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/medical-police/medical-exams/requirements-temporary-residents.html#needs">Find out if you need a medical exam</a></p>
-
-                <h2>2. Get a document checklist</h2>
-                <p>Before you apply online, you’ll need:</p>
-                <ul>
-                    <li>a scanner or camera to create electronic copies of your documents</li>
-                    <li>a valid credit or debit card</li>
-                </ul>
-
-                <p>You can get your personalized document checklist in 1 of 2 ways:</p>
-                <ul>
-                    <li><a href="/en/immigration-refugees-citizenship/services/application/account.html" >Sign in to your IRCC secure account</a></li>
-                    <li><a href="https://onlineservices-servicesenligne.cic.gc.ca/eta/applicationQuery?&amp;lang=en">Go to Come to Canada tool</a></li>
-                </ul>
-                    
-
-                <div class="well">
-                    <h4 class="mrgn-tp-sm">Insert special instructions for document checklist here</h4>
-                </div>
-            </div>
-
-            <div id="outside-docs" class="hidden result">
-                <h2>3. Fill out the forms</h2>
-                <h3>Required forms</h4>
-                <p>You must fill out and submit <strong>all</strong> of these forms:</p>
-                <ul>
-                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm1295.html" target="_blank">Application For Work Permit Made Outside of Canada (IMM&nbsp;1295)</a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span>
-                    <ul>
-                        <li>If you need help filling out the application form, <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5487-applying-work-permit-outside-canada.html">read the instruction guide</a>.</li>
-                    </ul></li>
-                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5488.html" target="_blank">Document Checklist</em> (IMM&nbsp;5488)</a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span></li>
-                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5707.html" target="_blank">Family Information (IMM&nbsp;5707)</a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span></li>
-                </ul>
-    
-                <h3>Additional forms</h4>
-                <p>You may need to also submit these forms if they apply to you:</p>
-                <ul>
-                    <li><a href="https://www.canada.ca/content/dam/ircc/migration/ircc/english/pdf/kits/forms/imm5409e.pdf">Statutory Declaration of Common-law Union (IMM&nbsp;5409)<span data-aem-details="filedetails"> (<abbr title="Portable Document Format">PDF</abbr>, 636.51<abbr title="Kilobyte">KB</abbr>)</span></a>, if applicable</li>
-                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html" target="_blank">Use of a Representative (IMM&nbsp;5476)</a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span>&nbsp;, if applicable</li>
-                    <li><a href="https://www.canada.ca/content/dam/ircc/migration/ircc/english/pdf/kits/forms/imm5475e.pdf">Authority to release personal information to a designated individual [IMM 5475]<span data-aem-details="filedetails"> (<abbr title="Portable Document Format">PDF</abbr>, 593.57<abbr title="Kilobyte">KB</abbr>)</span></a>, if applicable</li>
-                </ul>
-            </div>
-
-            <div id="inside-docs" class="hidden result">
-                <h2>3. Fill out the forms</h2>
-                <h4>Required forms</h4>
-                <p>You must fill out and submit <strong>all</strong> of these forms:</p>
-                <ul>
-                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm1295.html" target="_blank">Application to Change Conditions, Extend Your Stay or Remain in Canada as a Worker (IMM&nbsp;5710)</a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span>
-                    <ul>
-                        <li>If you need help filling out the application form, <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5553-applying-change-conditions-extend-your-stay-canada-worker.html">read the instruction guide</a>.</li>
-                    </ul></li>
-                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5556.html" target="_blank">Document Checklist</em> (IMM&nbsp;5556)</a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span></li>
-                </ul>
-
-                <h4>Additional forms</h4>
-                <p>You may need to also submit these forms if they apply to you:</p>
-                <ul>
-                    <li><a href="https://www.canada.ca/content/dam/ircc/migration/ircc/english/pdf/kits/forms/imm5409e.pdf">Statutory Declaration of Common-law Union (IMM&nbsp;5409)<span data-aem-details="filedetails"> (<abbr title="Portable Document Format">PDF</abbr>, 636.51<abbr title="Kilobyte">KB</abbr>)</span></a>, if applicable</li>
-                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html" target="_blank">Use of a Representative (IMM&nbsp;5476)</a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span>&nbsp;, if applicable</li>
-                    <li><a href="https://www.canada.ca/content/dam/ircc/migration/ircc/english/pdf/kits/forms/imm5475e.pdf">Authority to release personal information to a designated individual [IMM 5475]<span data-aem-details="filedetails"> (<abbr title="Portable Document Format">PDF</abbr>, 593.57<abbr title="Kilobyte">KB</abbr>)</span></a>, if applicable</li>
-                </ul>
-            </div>
-
-            <!-- Fees for OWP -->
-            <div id="open-fees" class="hidden result">
-            <h2>4. Pay the fees</h2>
-            <p>We’ll ask you to pay your fees at the end of your application.</p>
-            <p>In most cases, your fees will include processing fees for you and anyone you include on your application.</p>
-            <p>You can expect to pay the following fees:</p>
-            <ul>
-                <li>work permit fee ($155)</li>
-                <li>open work permit holder fee ($100)</li>
-                <li>biometrics fee, if you need to give them</li>
-            </ul>
-            </div>
-
-            <!-- Fees for employer-specific -->
-            <div id="emp-fees" class="hidden result">
-            <h2>4. Pay the fees</h2>
-            <p>We’ll ask you to pay your fees at the end of your application.</p>
-            <p>In most cases, your fees will include processing fees for you and anyone you include on your application.</p>
-            <p>You can expect to pay the following fees:</p>
-            <ul>
-                <li>work permit fee ($155)</li>
-                <li>biometrics fee, if you need to give them</li>
-            </ul>
-            </div>
-
-            <!-- Biometrics step -->
-            <div id="biometrics" class="hidden result">
-            <h2>5. Give biometrics, if applicable</h2>
-            <p>You may need to give your biometrics for this permit. If you need to give biometrics, pay the biometrics fee <strong>when you apply</strong>. The fee covers the cost of collecting fingerprints and a digital photo.</p>
-            <p><a href="https://ircc.canada.ca/english/visit/biometrics.asp">Find out if you need to give your biometrics</a></p>
-            
-            <details>
-                <summary><h3>Extend the validity of your biometrics</h3></summary>
-                <p>Your biometrics are valid for <strong>10 years</strong>.</p>
-                <p>If your biometrics will expire <strong>before</strong> your work permit expires, you can give your biometrics again when you apply even if they’re still valid.</p>
-                <p>How to extend the validity of your biometrics:</p>
-                <ol>
-                    <li>Pay the biometrics fee when you apply for your work permit.</li>
-                    <li>Wait for your biometric instruction letter (BIL). You <Strong>must</Strong> use the BIL that was issued <Strong>for this application</Strong>.</li>
-                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/biometrics/where-to-give.html">Book an appointment</a> and visit an official biometric collection location to give your biometrics again.</li>
-                </ol>
-            </details>
-
+                <h3>Pay fees</h3>
             </div>
 
             
