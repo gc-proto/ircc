@@ -162,8 +162,8 @@
                     <li><a href="types.html#gc-document-nav" class="hidden-xs hidden-sm">Types of work permits</a> <a href="types.html#gc-document-nav" class="visible-xs visible-sm">Types of work permits</a> </li>
                     <li><a href="#" class="active" aria-current="page">Apply</a></li>
                     <li><a href="#" class="hidden-xs hidden-sm">After you apply</a> <a href="##gc-document-nav" class="visible-xs visible-sm">After you apply</a> </li>
-                    <li><a href="#" class="hidden-xs hidden-sm">Prepare for arrival</a> <a href="##gc-document-nav" class="visible-xs vi sible-sm">Prepare for arrival</a> </li>
-                    <li><a href="#" class="hidden-xs hidden-sm">When you start working</a> <a href="##gc-document-nav" class="visible-xs vi sible-sm">When you start working</a> </li>
+                    <li><a href="#" class="hidden-xs hidden-sm">Prepare for arrival</a> <a href="##gc-document-nav" class="visible-xs visible-sm">Prepare for arrival</a> </li>
+                    <li><a href="#" class="hidden-xs hidden-sm">When you start working</a> <a href="##gc-document-nav" class="visible-xs visible-sm">When you start working</a> </li>
                 </ul>
             </nav>
 
@@ -243,8 +243,8 @@
                                             <p>Select the option that best describes you:</p>
                                             <ul>
                                                 <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#open, #apply-1-2, #inside-docs, #open-fees, #biometrics"}'>Refugee (protected person) referred by the UNHCR</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#open, #asylum-elig, #apply-1-2, #asylum-apply, #inside-docs, #fees-exempt, #biometrics"}'>Asylum claimant (applied for refugee protection)</li>
-                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#open, #appeal-elig, #apply-1-2, #asylum-apply, #inside-docs, #appeal-fees, #biometrics"}'>Under a removal order or appealing a decision from the IRB</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#open, #asylum-elig, #apply-1-2, #asylum-apply, #fees-exempt, #biometrics"}'>Asylum claimant (applied for refugee protection)</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#open, #appeal-elig, #apply-1-2, #fee-exempt-checklist, #asylum-apply, #appeal-fees, #biometrics"}'>Under a removal order or appealing a decision from the IRB</li>
                                             </ul>
                                         </div>
                                     </li>
@@ -401,6 +401,7 @@
             </form>
             </div>
 
+            <!------------------------------------ TYPE OF WORK PERMIT ------------------------------------>
             <!-- Employer-specific WP -->
             <div id="employer" class="hidden result">
             <div class="well">
@@ -437,8 +438,7 @@
             </div>
             </div>
 
-            <!-- Additional eligibility info -->
-
+            <!---------------------------------------- ELIGIBILITY ---------------------------------------->
             <!-- On-campus -->
             <div id="on-campus" class="hidden result">
             <div class="well">
@@ -639,13 +639,30 @@
 
             </div>
 
-            <!-- Application steps 1 to 2 -->
+            <!-------------------------------- Fee exemption for appeal removal -------------------------------->
+            <div id="appeal-fees" class="hidden result">
+            <h2>Pay the fees</h2>
+            <p>You’re <Strong>exempt</Strong> from paying the open work permit holder fee (CAN$100). Don’t pay this fee.</p>
+<p>You must pay the work permit processing fee (CAN$155).</p>
+<p>Because you’re exempt from paying one of the fees, you need to pay your fees <strong>before</strong> you apply online.</p>
+<ol>
+  <li><a href="https://eservices.cic.gc.ca/epay/order.do?lang=en">Go to fees for temporary residence applications</a>.</li>
+  <li>Select “Work permit (including extensions) – per person”.</li>
+  <li>Enter the number of applications you’re paying for.</li>
+  <li>Select "Submit". The system will calculate the total amount you need to pay.</li>
+  <li>Keep a copy of the receipt. You’ll need to <strong>upload it</strong> under “Proof of Fee Exemption” when you apply online for your work permit.</li>
+</ol>
+
+
+            </div>
+
+            <!---------------------------- APPLICATION STEPS: MEDICAL EXAM, SIGN IN ---------------------------->
             <div id="apply-1-2" class="hidden result">
-                <h2>1. Get a medical exam, if you need one</h2>
+                <h2>Get a medical exam, if you need one</h2>
                 <p>You generally don’t need a medical exam unless you plan to work in healthcare or with children, or if you've lived in certain countries or territories.</p>
                 <p ><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/medical-police/medical-exams/requirements-temporary-residents.html#needs">Find out if you need a medical exam</a></p>
 
-                <h2>2. Get a document checklist</h2>
+                <h2>Get a document checklist</h2>
                 <p>Sign in to your IRCC secure account to get your personalized document checklist. You'll need a scanner or camera to create electronic copies of your documents</p>
                 <a href="/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn-call-to-action">Sign in to your account</a>
                 
@@ -656,8 +673,33 @@
                 </ol>
             </div>
 
-                    
-            <!-- Special instructions for doc checklist -->
+ 
+            <!-------------------------------- DOCUMENT CHECKLIST -------------------------------->
+            <!-- Fee exemption -->
+            <div id="fee-exempt-checklist" class="hidden result">
+            <p>Answer the following questions <strong>exactly as shown</strong>.</p>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                <th scope="col">Question</th>
+                <th scope="col">Answer</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>
+                There are fees associated with this application. Will you be paying your fees or are you fee-exempt?
+                </td>
+                <td>
+                No, I am exempt from paying fees for this application
+                </td>
+                </tr>
+                </tbody>
+                </table>
+                </div>
+            </div>
+
             <!-- Agri-food pilot -->
             <div id="afp-docs" class="hidden result">
                 <h3>Additional documents for Agri-Food Pilot applicants</h3>
@@ -744,11 +786,44 @@
                   <p><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1160">How to upload multiple documents into one field</a></p>
             </div>
 
+            <!-- Asylum & appeal removal docs -->
+            <div id="asylum-apply" class="hidden result">
+            <h2>Fill out the forms</h2>
+            <h4>Required forms</h4>
+                <p>You must fill out and submit <strong>all</strong> of these forms:</p>
+                <ul>
+                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm1295.html" target="_blank">Application to Change Conditions, Extend Your Stay or Remain in Canada as a Worker (IMM&nbsp;5710)</a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span>
+                    <ul>
+                        <li>If you need help filling out the application form, <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5553-applying-change-conditions-extend-your-stay-canada-worker.html">read the instruction guide</a>.</li>
+                    </ul></li>
+                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5556.html" target="_blank">Document Checklist</em> (IMM&nbsp;5556)</a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span></li>
+                </ul>
+            
+                <div class="well">
+                    <h5 class="mrgn-tp-sm">How to fill out your work permit application form</h5>
+                    <ul>
+                        <li>Select “Open Work Permit” as the type of work permit in the “Details of intended work in Canada” section.</li>
+                        <li>Leave the employer section of the application blank.</li>
+                        <li><Strong>If you don’t have a passport</Strong>, you may add a series of 0 for the passport number.
+                          <ul>
+                            <li>Provide a letter of explanation as to why you do not have a passport.</li>
+                          </ul>
+                        </li>
+                      </ul>
+                </div>
 
+            <h4>Additional forms</h4>
+                <p>You may need to also submit these forms if they apply to you:</p>
+                <ul>
+                    <li><a href="https://www.canada.ca/content/dam/ircc/migration/ircc/english/pdf/kits/forms/imm5409e.pdf">Statutory Declaration of Common-law Union (IMM&nbsp;5409)<span data-aem-details="filedetails"> (<abbr title="Portable Document Format">PDF</abbr>, 636.51<abbr title="Kilobyte">KB</abbr>)</span></a>, if applicable</li>
+                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html" target="_blank">Use of a Representative (IMM&nbsp;5476)</a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span>&nbsp;, if applicable</li>
+                    <li><a href="https://www.canada.ca/content/dam/ircc/migration/ircc/english/pdf/kits/forms/imm5475e.pdf">Authority to release personal information to a designated individual [IMM 5475]<span data-aem-details="filedetails"> (<abbr title="Portable Document Format">PDF</abbr>, 593.57<abbr title="Kilobyte">KB</abbr>)</span></a>, if applicable</li>
+                </ul>
+            </div>
 
             <!-- Outside Canada docs -->
             <div id="outside-docs" class="hidden result">
-                <h2>3. Fill out the forms</h2>
+                <h2>Fill out the forms</h2>
                 <h3>Required forms</h4>
                 <p>You must fill out and submit <strong>all</strong> of these forms:</p>
                 <ul>
@@ -771,7 +846,7 @@
 
             <!-- Inside Canada docs -->
             <div id="inside-docs" class="hidden result">
-                <h2>3. Fill out the forms</h2>
+                <h2>Fill out the forms</h2>
                 <h4>Required forms</h4>
                 <p>You must fill out and submit <strong>all</strong> of these forms:</p>
                 <ul>
@@ -791,9 +866,11 @@
                 </ul>
             </div>
 
-                        <!-- Co-op application-->
-                        <div id="coop-docs" class="hidden result">
-                            <h2>3. Fill out the forms</h2>
+            
+
+            <!-- Co-op application-->
+            <div id="coop-docs" class="hidden result">
+                            <h2>Fill out the forms</h2>
                             <h4>Required forms</h4>
                             <p>You must fill out and submit <strong>all</strong> of these forms:</p>
                             <ul>
@@ -811,11 +888,11 @@
                                 <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html" target="_blank">Use of a Representative (IMM&nbsp;5476)</a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span>&nbsp;, if applicable</li>
                                 <li><a href="https://www.canada.ca/content/dam/ircc/migration/ircc/english/pdf/kits/forms/imm5475e.pdf">Authority to release personal information to a designated individual [IMM 5475]<span data-aem-details="filedetails"> (<abbr title="Portable Document Format">PDF</abbr>, 593.57<abbr title="Kilobyte">KB</abbr>)</span></a>, if applicable</li>
                             </ul>
-                        </div>
+            </div>
 
             <!-- Fees for OWP -->
             <div id="open-fees" class="hidden result">
-            <h2>4. Pay the fees</h2>
+            <h2>Pay the fees</h2>
             <p>We’ll ask you to pay your fees at the end of your application.</p>
             <p>In most cases, your fees will include processing fees for you and anyone you include on your application.</p>
             <p>You can expect to pay the following fees:</p>
@@ -828,7 +905,7 @@
 
             <!-- Fees for employer-specific -->
             <div id="emp-fees" class="hidden result">
-            <h2>4. Pay the fees</h2>
+            <h2>Pay the fees</h2>
             <p>We’ll ask you to pay your fees at the end of your application.</p>
             <p>In most cases, your fees will include processing fees for you and anyone you include on your application.</p>
             <p>You can expect to pay the following fees:</p>
@@ -840,14 +917,13 @@
 
             <!-- Fee exemption -->
             <div id="fees-exempt" class="hidden result">
-            <h2>4. Pay the fees</h2>
+            <h2>Fee exemption</h2>
             <p>You <Strong>don't</Strong> have to pay any fees to get a work permit.</p>
-
             </div>
 
-            <!-- Biometrics step -->
+            <!-- Biometrics -->
             <div id="biometrics" class="hidden result">
-            <h2>5. Give biometrics, if applicable</h2>
+            <h2>Give biometrics, if applicable</h2>
             <p>You may need to give your biometrics for this permit. If you need to give biometrics, pay the biometrics fee <strong>when you apply</strong>. The fee covers the cost of collecting fingerprints and a digital photo.</p>
             <p><a href="https://ircc.canada.ca/english/visit/biometrics.asp">Find out if you need to give your biometrics</a></p>
             
