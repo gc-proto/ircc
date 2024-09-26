@@ -334,7 +334,7 @@
                                                                 <div class="wb-fieldflow-sub">
                                                                     <p>Select the option that best describes you:</p>
                                                                     <ul>
-                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#dont-need"}'>Business visitor</li>
+                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#business-visitor"}'>Business visitor</li>
                                                                         <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#transfer"}'>Self-employed, intra-company transfer, or on an exchange program
                                                                             <div class="wb-fieldflow-sub">
                                                                                 <p>Where are you applying from?</p>
@@ -344,14 +344,14 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </li>
-                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#coop-elig, #apply-1-2, #coop-docs, #fees-exempt, #biometrics"}'>Free trade agreement</li>
+                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #apply-1-2, #outside-docs, #emp-fees, #biometrics"}'>Free trade agreement</li>
                                                                         <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#health"}'>Quebec investor</li>
-                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#open, #apply-1-2, #inside-docs, #open-fees, #biometrics"}'>Destitute student (unable to pay for studies)</li>
+                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#open, #apply-1-2, #inside-docs, #open-fees, #biometrics"}'>Convention organizer</li>
                                                                     </ul>
                                                                 </div>                                                                
                                                             </li>
                                                             <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#education"}'>Teaching or researching for a university or college</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#medical"}'>Medical</li>
+                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #apply-1-2, #outside-docs, #emp-fees, #biometrics"}'>Medical</li>
                                                             <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#media-arts"}'>Sports, media, arts</li>
                                                             <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#govt"}'>Foreign government, military, or international organization
                                                                 <div class="wb-fieldflow-sub">
@@ -526,12 +526,11 @@
             <!-- PGWP -->
             <div id="pgwp" class="hidden result">
                 <div class="well">
-                    <h2 class="mrgn-tp-sm">Post-gradudation work permit (PGWP)</h2>
+                    <h2 class="mrgn-tp-sm">Post-graduation work permit (PGWP)</h2>
                     <p>Based on your answers, you may be eligible for a post-graduation work permit. This is a type of open work permit.</p>
                     <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html" class="btn btn-primary btn-lg">Check if you're eligible for a PGWP</a>
                 </div>
             </div>
-
 
             <!-- IEC -->
             <div id="iec" class="hidden result">
@@ -539,13 +538,23 @@
                     <h2 class="mrgn-tp-sm">International Experience Canada (IEC)</h2>
                     <p>Based on your answers, you may be eligible for a work permit under one of International Experience Canada's categories:</p>
                     <ul>
-                        <li>Working Holiday (<a href="/en/services/immigration-citizenship/helpcentre/glossary.html#open_work_permit">open work permit</a>)
+                        <li>Working Holiday (open work permit)
                         </li>
                         
-                          <li>International Co-op (Internship) (<a href="/en/services/immigration-citizenship/helpcentre/glossary.html#employer_specific_work_permit">employer-specific work permit</a>)</li>
+                          <li>International Co-op (Internship) (employer-specific work permit)</li>
                           <li>Young Professionals (employer-specific work permit)</li>
                     </ul>
                     <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html" class="btn btn-primary btn-lg">Check if you're eligible for IEC</a>
+                </div>
+            </div>
+
+            <!-- Business visitors -->
+            <div id="business-visitor" class="hidden result">
+                <div class="well">
+                    <h2 class="mrgn-tp-sm">You don't need a work permit</h2>
+                    <p>You don't need a work permit if you’re coming to Canada for business activities, but you <Strong>won’t</Strong> be part of the Canadian labour market.</p>
+                    <p><Strong>Business visitors</Strong> are people who stay in Canada for a few days or a few weeks to attend meetings, events or conferences. They can stay in Canada for up to 6 months.</p>
+                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/business/visitors-events-conferences.html" class="btn btn-primary btn-lg">Get instructions for business visitors</a>
                 </div>
             </div>
 
