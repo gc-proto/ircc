@@ -159,11 +159,12 @@
             <nav class="provisional gc-subway">
                 <h1 id="gc-document-nav">Work permit</h1>
                 <ul>
-                    <li><a href="types.html#gc-document-nav" class="hidden-xs hidden-sm">Types of work permits</a> <a href="types.html#gc-document-nav" class="visible-xs visible-sm">Types of work permits</a> </li>
-                    <li><a href="#" class="active" aria-current="page">Apply</a></li>
+                    <li><a href="types.html" class="hidden-xs hidden-sm">Types of work permits</a> <a href="types.html#gc-document-nav" class="visible-xs visible-sm">Types of work permits</a> </li>
+                    <li><a href="https://test.canada.ca/ircc/marianne/work/h2a/eligibility-v3.html" class="hidden-xs hidden-sm">Who can apply</a> <a href="https://test.canada.ca/ircc/marianne/work/h2a/eligibility-v3.html#gc-document-nav" class="visible-xs visible-sm">Who can apply</a> </li>
+                    <li><a href="#" class="active" aria-current="page">How to apply</a></li>
                     <li><a href="#" class="hidden-xs hidden-sm">After you apply</a> <a href="##gc-document-nav" class="visible-xs visible-sm">After you apply</a> </li>
-                    <li><a href="#" class="hidden-xs hidden-sm">Prepare for arrival</a> <a href="##gc-document-nav" class="visible-xs vi sible-sm">Prepare for arrival</a> </li>
-                    <li><a href="#" class="hidden-xs hidden-sm">When you start working</a> <a href="##gc-document-nav" class="visible-xs vi sible-sm">When you start working</a> </li>
+                    <li><a href="#" class="hidden-xs hidden-sm">Prepare for arrival</a> <a href="##gc-document-nav" class="visible-xs visible-sm">Prepare for arrival</a> </li>
+                    <li><a href="#" class="hidden-xs hidden-sm">When you start working</a> <a href="##gc-document-nav" class="visible-xs visible-sm">When you start working</a> </li>
                 </ul>
             </nav>
 
@@ -171,12 +172,15 @@
             <p>Answer a few questions to find out:</p>
             <ul>
                 <li>if you need a work permit</li>
-                <li>which type of work permit is right for you (open or employer-specific)</li>
-                <li>how to apply</li>
+                <li>the type of work permit you need (open or employer-specific)</li>
+                <li>any additional eligibility criteria for your work permit</li>
+                <li>how to apply and if you need any special instructions</li>
             </ul>
 
-            <div class="wb-frmvld hidden" id="ff">
-                <form method="get">
+            
+
+            <div class="wb-frmvld wb-steps hidden" id="ff">
+                <form action="#" method="get">
                 <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
                     "noForm": true,
                     "renderas": "radio",
@@ -238,7 +242,16 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#refugee"}'>A refugee, an asylum claimant, or under an unenforceable removal order</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#refugee"}'>A refugee, an asylum claimant, or under a removal order
+                                        <div class="wb-fieldflow-sub">
+                                            <p>Select the option that best describes you:</p>
+                                            <ul>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#open, #apply-1-2, #inside-docs, #open-fees, #biometrics"}'>Refugee (protected person) referred by the UNHCR</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#open, #asylum-elig, #apply-1-2, #asylum-apply, #fees-exempt, #biometrics"}'>Asylum claimant (applied for refugee protection)</li>
+                                                <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#open, #appeal-elig, #apply-1-2, #fee-exempt-checklist, #asylum-apply, #appeal-fees, #biometrics"}'>Under a removal order or appealing a decision from the IRB</li>
+                                            </ul>
+                                        </div>
+                                    </li>
                                     <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#youth"}'>A student, recent graduate, or youth (18-35)
                                         <div class="wb-fieldflow-sub">
                                             <p>Select the option that best describes you:</p>
@@ -247,23 +260,28 @@
                                                     <div class="wb-fieldflow-sub">
                                                         <p>Select the option that best describes you:</p>
                                                         <ul>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#campus"}'>Student planning to work on or off campus</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#coop"}'>Co-op student</li>
+                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#on-campus"}'>Work on campus</li>
+                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#off-campus"}'>Work off campus</li>
+                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#coop-elig, #apply-1-2, #coop-docs, #fees-exempt, #biometrics"}'>Co-op student</li>
                                                             <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#health"}'>Health-care student
-                                                                <p>Do you meet all of these conditions?</p>
+                                                                <div class="wb-fieldflow-sub">
+                                                                <div class="wb-fieldflow-header">
+                                                                    <p class="wb-fieldflow-label">Do you meet all of these conditions?</p>
                                                                 <ul>
-                                                                    <li>your training will last <strong>less than 4 months</strong></li>
+                                                                    <li>your training will last less than 4 months</li>
                                                                     <li>you’re doing clinical clerkships</li>
                                                                     <li>the main goal of your work is training</li>
                                                                     <li>you have written approval from the board that regulates your job</li>
                                                                     <li>you passed a medical exam</a></li>
                                                                 </ul>
+                                                                </div>
                                                                 <ul>
-                                                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#dont-need, #health"}'>Yes</li>
+                                                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#dont-need"}'>Yes</li>
                                                                     <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #apply-1-2, #outside-docs, #emp-fees, #biometrics"}'>No</li>
                                                                 </ul>
+                                                                </div>
                                                             </li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#destitute"}'>Destitute student (unable to pay for studies)</li>
+                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#open, #apply-1-2, #inside-docs, #open-fees, #biometrics"}'>Destitute student (unable to pay for studies)</li>
                                                         </ul>
                                                     </div>
                                                 </li>
@@ -272,8 +290,24 @@
                                                         <p>Select the option that best describes you:</p>
                                                         <ul>
                                                             <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#pgwp"}'>Recent graduate from a Canadian designated learning institution (DLI)</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step2b-3b3"}'>Recent graduate from Hong Kong</li>
-                                                            <li>None of the above</li>
+                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "hk-grad"}'>Recent graduate from Hong Kong
+                                                                <div class="wb-fieldflow-sub">
+                                                                    <p>Where are you applying from?</p>
+                                                                    <ul>
+                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#open, #hk-grad-elig, #apply-1-2, #inside-docs, #hk-grad-docs, #open-fees, #biometrics, #hk-grad-after"}'>Inside Canada</li>
+                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#open, #hk-grad-elig, #apply-1-2, #outside-docs, #hk-grad-docs, #open-fees, #biometrics, #hk-grad-after"}'>Outside Canada</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </li>
+                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #apply-1-2, ##biometrics"}'>None of the above
+                                                                <div class="wb-fieldflow-sub">
+                                                                    <p>Where are you applying from?</p>
+                                                                    <ul>
+                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #apply-1-2, #inside-docs, #emp-fees, #biometrics"}'>Inside Canada</li>
+                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #apply-1-2,  #outside-docs, #emp-fees, #biometrics"}'>Outside Canada</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </li>
@@ -290,19 +324,39 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#skilled}'>A general skilled worker
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#skilled"}'>A general skilled worker
                                         <div class="wb-fieldflow-sub">
-                                                        <p>What type of work do you do?</p>
+                                                <p>What type of work do you do?</p>
                                                         <ul>
                                                             <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#cargiver"}'>Caregivers</li>
                                                             <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#agri"}'>Agricultural</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#business"}'>Business person, entrepreneur, investor</li>
+                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#business"}'>Business person, entrepreneur, investor
+                                                                <div class="wb-fieldflow-sub">
+                                                                    <p>Select the option that best describes you:</p>
+                                                                    <ul>
+                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#business-visitor"}'>Business visitor</li>
+                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#transfer"}'>Self-employed, intra-company transfer, or on an exchange program
+                                                                            <div class="wb-fieldflow-sub">
+                                                                                <p>Where are you applying from?</p>
+                                                                                <ul>
+                                                                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #apply-1-2, #inside-docs, #emp-fees, #biometrics"}'>Inside Canada</li>
+                                                                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #apply-1-2, #outside-docs, #emp-fees, #biometrics"}'>Outside Canada</li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #apply-1-2, #outside-docs, #emp-fees, #biometrics"}'>Free trade agreement</li>
+                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#health"}'>Quebec investor</li>
+                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#open, #apply-1-2, #inside-docs, #open-fees, #biometrics"}'>Convention organizer</li>
+                                                                    </ul>
+                                                                </div>                                                                
+                                                            </li>
                                                             <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#education"}'>Teaching or researching for a university or college</li>
-                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#medical"}'>Medical</li>
+                                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #apply-1-2, #outside-docs, #emp-fees, #biometrics"}'>Medical</li>
                                                             <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#media-arts"}'>Sports, media, arts</li>
                                                             <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#govt"}'>Foreign government, military, or international organization
                                                                 <div class="wb-fieldflow-sub">
-                                                                    <p>Are you one of the following:</p>
+                                                                    <div class="wb-fieldflow-header">
+                                                                    <p class="wb-fieldflow-label">Are you one of the following:</p>
                                                                     <ul>
                                                                         <li>Military personnel</li>
                                                                         <li>Diplomat accredited by Global Affairs Canada</li>
@@ -310,6 +364,7 @@
                                                                         <li>Accredited official of international organization</li>
                                                                         <li>Employee of foreign government</li>
                                                                     </ul>
+                                                                </div>
                                                                     <ul>
                                                                         <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#dont-need"}'>Yes</li>
                                                                         <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #apply-1-2, #outside-docs, #emp-fees, #biometrics"}'>No</li>
@@ -319,7 +374,8 @@
                                                             <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#event"}'>Special event or activity (e.g. conventions)</li>
                                                             <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#transportation"}'>Transportation, repair, maintenance or emergency
                                                                 <div class="wb-fieldflow-sub">
-                                                                    <p>Are you one of the following:</p>
+                                                                    <div class="wb-fieldflow-header">
+                                                                    <p class="wb-fieldflow-label">Are you one of the following:</p>
                                                                     <ul>
                                                                         <li>Flight crew</li>
                                                                         <li>Crew member (truck driver, bus driver, shipping or airline worker)</li>
@@ -327,6 +383,7 @@
                                                                         <li>Civil aviation inspector</li>
                                                                         <li>Emergency worker needed to protect life</li>
                                                                     </ul>
+                                                                    </div>
                                                                     <ul>
                                                                         <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#dont-need"}'>Yes</li>
                                                                         <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #apply-1-2, #outside-docs, #emp-fees, #biometrics"}'>No</li>
@@ -339,6 +396,15 @@
                                                                     <ul>
                                                                         <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #apply-1-2, #outside-docs"}'>Working under the Global Hypergrowth Project</li>
                                                                         <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#step5b"}'>A French-speaking worker outside Quebec</li>
+                                                                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #apply-1-2, ##biometrics"}'>None of the above
+                                                                            <div class="wb-fieldflow-sub">
+                                                                                <p>Where are you applying from?</p>
+                                                                                <ul>
+                                                                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #apply-1-2, #inside-docs, #emp-fees, #biometrics"}'>Inside Canada</li>
+                                                                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#employer, #apply-1-2,  #outside-docs, #emp-fees, #biometrics"}'>Outside Canada</li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </li>
                                                                     </ul>
                                                                 </div>
                                                             </li>
@@ -375,35 +441,123 @@
             </form>
             </div>
 
+            <!------------------------------------ TYPE OF WORK PERMIT ------------------------------------>
             <!-- Employer-specific WP -->
             <div id="employer" class="hidden result">
-            <h2>Type of work permit</h2>
-            <p>Based on your answers, you need an <Strong>employer-specific</Strong> work permit to work in Canada.</p>
+            <div class="well">
+            <h2 class="mrgn-tp-sm">Employer-specific work permit</h2>
+            <p>Based on your answers, you need an employer-specific work permit to work in Canada.</p>
             <p>You need a job offer to get an employer-specific work permit. You'll only be able to work for the employer who made you the job offer.</p>
+            </div>
             </div>
 
             <!-- Open WP -->
             <div id="open" class="hidden result">
-            <h2>Type of work permit</h2>
-            <p>Based on your answers, you need an <Strong>open</Strong> work permit to work in Canada.</p>
+            <div class="well">
+            <h2 class="mrgn-tp-sm">Open work permit</h2>
+            <p>Based on your answers, you need an open work permit to work in Canada.</p>
             <p>An open work permit lets you work for any employer in Canada.</p>
+            </div>
             </div>
 
             <!-- BOWP -->
             <div id="bowp" class="hidden result">
-            <h2>Type of work permit</h2>
-            <p>Based on your answers, you need a <Strong>bridging open work permit (BOWP)</Strong> to work in Canada.</p>
+            <div class="well">
+            <h2 class="mrgn-tp-sm">Bridging open work permit</h2>
+            <p>Based on your answers, you need a bridging open work permit (BOWP) to work in Canada.</p>
             <p>A BOWP lets you keep working while you wait for the results of your permanent residence application.</p>
+            </div>
             </div>
 
             <!-- Don't need a WP -->
             <div id="dont-need" class="hidden result">
-                <h2>You don't need a work permit</h2>
-                <p>Based on your answers, you don't need a work permit to work in Canada.</p>
-                <p>You may need a visitor visa or eTA to enter Canada.</p>
-                </div>
+            <div class="well">
+            <h2 class="mrgn-tp-sm">You don't need a work permit</h2>
+            <p>Based on your answers, you don't need a work permit to work in Canada.</p>
+            <p>You may need a visitor visa or eTA to enter Canada.</p>
+            </div>
+            </div>
 
-            <!-- Additional eligibility info -->
+            <!---------------------------------------- ELIGIBILITY ---------------------------------------->
+            <!-- On campus -->
+            <div id="on-campus" class="hidden result">
+                <div class="well">
+                    <h2 class="mrgn-tp-sm">You don't need a work permit</h2>
+                    <p>You can work on campus as an international student if you meet all the eligibility criteria.</p>
+                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/work-on-campus.html" class="btn btn-primary btn-lg">Check if you're eligible to work on campus</a>
+                </div>
+            </div>
+
+            <!-- Off-campus -->
+            <div id="off-campus" class="hidden result">
+                <div class="well">
+                    <h2 class="mrgn-tp-sm">You don't need a work permit</h2>
+                    <p>You can work off-campus as an international student if you meet all the eligibility criteria.</p>
+                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/work-off-campus.html" class="btn btn-primary btn-lg">Check if you're eligible to work off-campus</a>
+                </div>
+            </div>
+
+            <!-- Co-op -->
+            <div id="coop-elig" class="hidden result">
+                <div class="well">
+                    <h2 class="mrgn-tp-sm">Co-op work permit</h2>
+                    <p>Based on your answers, you may be eligible for a co-op work permit, which is an <Strong>open work permit</Strong> that lists your school as your employer.</p>
+                </div>
+                <h2>Eligibility</h2>
+                <p>You must meet <Strong>all</Strong> of these conditions:</p>
+                <ul>
+                    <li>you have a valid study permit</li>
+                    <li>you're required to work to complete your study program in Canada</li>
+                    <li>you have a letter from your <a href="/en/immigration-refugees-citizenship/services/study-canada/study-permit/prepare/designated-learning-institutions-list.html">school</a> that confirms all students in your program need to complete work placements to get their degree</li>
+                    <li>your co-op placement or internship totals 50% or less of your study program</li>
+                  </ul>
+
+                  <h3>Who's not eligible</h3>
+                  <p>You aren’t eligible for a co-op work permit if you’re taking one of the following:</p>
+<ul>
+  <li>English or French as a second language (ESL/FSL),</li>
+  <li>general interest courses, or</li>
+  <li>courses to prepare for another study program.</li>
+</ul>
+<p>If you’re not eligible for a co-op work permit, but you want to work in Canada, you can apply for a regular work permit.</p>
+
+            </div>
+
+            <!-- PGWP -->
+            <div id="pgwp" class="hidden result">
+                <div class="well">
+                    <h2 class="mrgn-tp-sm">Post-graduation work permit (PGWP)</h2>
+                    <p>Based on your answers, you may be eligible for a post-graduation work permit. This is a type of open work permit.</p>
+                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html" class="btn btn-primary btn-lg">Check if you're eligible for a PGWP</a>
+                </div>
+            </div>
+
+            <!-- IEC -->
+            <div id="iec" class="hidden result">
+                <div class="well">
+                    <h2 class="mrgn-tp-sm">International Experience Canada (IEC)</h2>
+                    <p>Based on your answers, you may be eligible for a work permit under one of International Experience Canada's categories:</p>
+                    <ul>
+                        <li>Working Holiday (open work permit)
+                        </li>
+                        
+                          <li>International Co-op (Internship) (employer-specific work permit)</li>
+                          <li>Young Professionals (employer-specific work permit)</li>
+                    </ul>
+                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html" class="btn btn-primary btn-lg">Check if you're eligible for IEC</a>
+                </div>
+            </div>
+
+            <!-- Business visitors -->
+            <div id="business-visitor" class="hidden result">
+                <div class="well">
+                    <h2 class="mrgn-tp-sm">You don't need a work permit</h2>
+                    <p>You don't need a work permit if you’re coming to Canada for business activities, but you <Strong>won’t</Strong> be part of the Canadian labour market.</p>
+                    <p><Strong>Business visitors</Strong> are people who stay in Canada for a few days or a few weeks to attend meetings, events or conferences. They can stay in Canada for up to 6 months.</p>
+                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/business/visitors-events-conferences.html" class="btn btn-primary btn-lg">Get instructions for business visitors</a>
+                </div>
+            </div>
+
             <!-- Agri-food pilot -->
             <div id="afp-elig" class="hidden result">
             <h2>Eligibility</h2>
@@ -446,13 +600,94 @@
 
             </div>
 
-            <!-- Application steps 1 to 2 -->
+            <!-- Asylum -->
+            <div id="asylum-elig" class="hidden result">
+            <h2>Eligibility</h2>
+            <p>You may be eligible for an open work permit if you filed a claim for refugee protection in Canada and you meet these conditions:</p>
+            <ul>
+              <li>your claim has been found eligible and you’re waiting for the Immigration and Refugee Board of Canada to decide on your claim</li>
+              <li>you cannot pay for your basic needs without working</li>
+              <li>you have valid immigration medical exam results
+              <ul>
+                <li>we won’t issue your work permit until you pass your immigration medical exam</li>
+              </ul></li>
+            </ul>
+
+            <h2>When to apply</h2>
+            <p>Normally, you’ll apply for your open work permit when you make your claim for refugee protection.</p>
+            <p>If you didn’t apply for a work permit when you made your claim, you can apply later.</p>
+            </div>
+            
+            <!-- Appeal removal -->
+            <div id="appeal-elig" class="hidden result">
+            <h2>Eligibility</h2>
+            <p>You need a work permit if you’re appealing a decision from the Immigration Refugee Board or you’re under a removal order and cannot be removed from Canada.</p>
+            <p>You must meet these requirements:</p>
+            <ul>
+              <li>you cannot pay for your basic needs without working</li>
+              <li>you meet the <a href="https://test.canada.ca/ircc/marianne/work/h2a/eligibility-v3.html">general eligibility requirements</a> for a work permit</li>
+            </ul>
+            </div>
+
+            <!-- Hong Kong grads -->
+            <div id="hk-grad-elig" class="hidden result">
+            <h2>Public policy</h2>
+            <p>As a recent Hong Kong graduate, you may be eligible to apply for an open work permit under a <a href="/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/public-policies/hong-kong-residents-open-work-permit.html">temporary public policy for Hong Kong residents</a>.</p>
+            <p>The public policy expires on February 7, 2025.</p>
+            <h2>Validity of work permit</h2>
+            <p>Your work permit will be valid for up to <Strong>3 years</Strong> or until your passport expires, whichever comes first.</p>
+            <p>For example, if your passport is valid for 6 months, then you will be issued an open work permit for 6 months.</p>
+
+
+            <h2>Eligibility</h2>
+            <p>To be eligible, you must:</p>
+            <ul>
+                <li>hold a valid passport issued by the Hong Kong Special Administrative Region or the United Kingdom to a British National Overseas</li>
+                <li>have graduated no more than <strong>10 years</strong> before you apply for this open work permit</li>
+            </ul>
+            
+            <h3>Acceptable credentials</h3>
+            <p>You must have graduated from a <a href="/en/immigration-refugees-citizenship/services/study-canada/study-permit/prepare/designated-learning-institutions-list.html">designated learning institution (DLI)</a> in Canada or an institution abroad with <Strong>one</Strong> of these credentials:</p>
+                    <ul>
+                        <li>a degree  (for example, associate, bachelor’s, master’s or doctoral)</li>
+                        <li>a diploma from a program of at least 2 years</li>
+                        <li>a graduate or post-graduate credential that:
+                          <ul>
+                            <li>is from a program of at least one year, and</li>
+                            <li>required you to complete a post-secondary degree or diploma, as a prerequisite for acceptance into the program
+                              <ul>
+                                <li>You must have received the post-secondary degree or diploma no more than 5 years before you started the graduate/post-graduate program.</li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+            </div>
+
+            <!-------------------------------- Fee exemption for appeal removal -------------------------------->
+            <div id="appeal-fees" class="hidden result">
+            <h2>Pay the fees</h2>
+            <p>You’re <Strong>exempt</Strong> from paying the open work permit holder fee (CAN$100). Don’t pay this fee.</p>
+<p>You must pay the work permit processing fee (CAN$155).</p>
+<p>Because you’re exempt from paying one of the fees, you need to pay your fees <strong>before</strong> you apply online.</p>
+<ol>
+  <li><a href="https://eservices.cic.gc.ca/epay/order.do?lang=en">Go to fees for temporary residence applications</a>.</li>
+  <li>Select “Work permit (including extensions) – per person”.</li>
+  <li>Enter the number of applications you’re paying for.</li>
+  <li>Select "Submit". The system will calculate the total amount you need to pay.</li>
+  <li>Keep a copy of the receipt. You’ll need to <strong>upload it</strong> under “Proof of Fee Exemption” when you apply online for your work permit.</li>
+</ol>
+
+
+            </div>
+
+            <!---------------------------- APPLICATION STEPS: MEDICAL EXAM, SIGN IN ---------------------------->
             <div id="apply-1-2" class="hidden result">
-                <h2>1. Get a medical exam, if you need one</h2>
+                <h2>Step 1. Get a medical exam, if you need one</h2>
                 <p>You generally don’t need a medical exam unless you plan to work in healthcare or with children, or if you've lived in certain countries or territories.</p>
                 <p ><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/medical-police/medical-exams/requirements-temporary-residents.html#needs">Find out if you need a medical exam</a></p>
 
-                <h2>2. Get a document checklist</h2>
+                <h2>Step 2. Get a document checklist</h2>
                 <p>Sign in to your IRCC secure account to get your personalized document checklist. You'll need a scanner or camera to create electronic copies of your documents</p>
                 <a href="/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn-call-to-action">Sign in to your account</a>
                 
@@ -461,9 +696,35 @@
                   <li>Select “Apply to come to Canada”.</li>
                   <li>Select “Visitor visa, study and/or work permit” under "Determine your eligibility and apply online".</li>
                 </ol>
+            </div>
 
-                    
-            <!-- Special instructions for doc checklist -->
+ 
+            <!-------------------------------- DOCUMENT CHECKLIST -------------------------------->
+            <!-- Fee exemption -->
+            <div id="fee-exempt-checklist" class="hidden result">
+            <p>Answer the following questions <strong>exactly as shown</strong>.</p>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                <th scope="col">Question</th>
+                <th scope="col">Answer</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>
+                There are fees associated with this application. Will you be paying your fees or are you fee-exempt?
+                </td>
+                <td>
+                No, I am exempt from paying fees for this application
+                </td>
+                </tr>
+                </tbody>
+                </table>
+                </div>
+            </div>
+
             <!-- Agri-food pilot -->
             <div id="afp-docs" class="hidden result">
                 <h3>Additional documents for Agri-Food Pilot applicants</h3>
@@ -550,11 +811,44 @@
                   <p><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1160">How to upload multiple documents into one field</a></p>
             </div>
 
+            <!-- Asylum & appeal removal docs -->
+            <div id="asylum-apply" class="hidden result">
+            <h2>Step 3. Fill out the forms</h2>
+            <h4>Required forms</h4>
+                <p>You must fill out and submit <strong>all</strong> of these forms:</p>
+                <ul>
+                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm1295.html" target="_blank">Application to Change Conditions, Extend Your Stay or Remain in Canada as a Worker (IMM&nbsp;5710)</a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span>
+                    <ul>
+                        <li>If you need help filling out the application form, <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5553-applying-change-conditions-extend-your-stay-canada-worker.html">read the instruction guide</a>.</li>
+                    </ul></li>
+                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5556.html" target="_blank">Document Checklist</em> (IMM&nbsp;5556)</a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span></li>
+                </ul>
+            
+                <div class="well">
+                    <h5 class="mrgn-tp-sm">How to fill out your work permit application form</h5>
+                    <ul>
+                        <li>Select “Open Work Permit” as the type of work permit in the “Details of intended work in Canada” section.</li>
+                        <li>Leave the employer section of the application blank.</li>
+                        <li><Strong>If you don’t have a passport</Strong>, you may add a series of 0 for the passport number.
+                          <ul>
+                            <li>Provide a letter of explanation as to why you do not have a passport.</li>
+                          </ul>
+                        </li>
+                      </ul>
+                </div>
 
+            <h4>Additional forms</h4>
+                <p>You may need to also submit these forms if they apply to you:</p>
+                <ul>
+                    <li><a href="https://www.canada.ca/content/dam/ircc/migration/ircc/english/pdf/kits/forms/imm5409e.pdf">Statutory Declaration of Common-law Union (IMM&nbsp;5409)<span data-aem-details="filedetails"> (<abbr title="Portable Document Format">PDF</abbr>, 636.51<abbr title="Kilobyte">KB</abbr>)</span></a>, if applicable</li>
+                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html" target="_blank">Use of a Representative (IMM&nbsp;5476)</a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span>&nbsp;, if applicable</li>
+                    <li><a href="https://www.canada.ca/content/dam/ircc/migration/ircc/english/pdf/kits/forms/imm5475e.pdf">Authority to release personal information to a designated individual [IMM 5475]<span data-aem-details="filedetails"> (<abbr title="Portable Document Format">PDF</abbr>, 593.57<abbr title="Kilobyte">KB</abbr>)</span></a>, if applicable</li>
+                </ul>
+            </div>
 
             <!-- Outside Canada docs -->
             <div id="outside-docs" class="hidden result">
-                <h2>3. Fill out the forms</h2>
+                <h2>Step 3. Fill out the forms</h2>
                 <h3>Required forms</h4>
                 <p>You must fill out and submit <strong>all</strong> of these forms:</p>
                 <ul>
@@ -577,7 +871,7 @@
 
             <!-- Inside Canada docs -->
             <div id="inside-docs" class="hidden result">
-                <h2>3. Fill out the forms</h2>
+                <h2>Step 3. Fill out the forms</h2>
                 <h4>Required forms</h4>
                 <p>You must fill out and submit <strong>all</strong> of these forms:</p>
                 <ul>
@@ -597,9 +891,33 @@
                 </ul>
             </div>
 
+            
+
+            <!-- Co-op application-->
+            <div id="coop-docs" class="hidden result">
+                            <h2>Step 3. Fill out the forms</h2>
+                            <h4>Required forms</h4>
+                            <p>You must fill out and submit <strong>all</strong> of these forms:</p>
+                            <ul>
+                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm1295.html" target="_blank">Application to Change Conditions, Extend Your Stay or Remain in Canada as a Worker (IMM&nbsp;5710)</a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span>
+                                <ul>
+                                    <li>If you need help filling out the application form, <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5580-applying-work-permit-student-guide.html">read the instruction guide for students</a>.</li>
+                                </ul></li>
+                                <li><a href="https://www.canada.ca/content/dam/ircc/migration/ircc/english/pdf/kits/forms/imm5583e.pdf" target="_blank">Document checklist for students</em> (IMM&nbsp;5556)</a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span></li>
+                            </ul>
+            
+                            <h4>Additional forms</h4>
+                            <p>You may need to also submit these forms if they apply to you:</p>
+                            <ul>
+                                <li><a href="https://www.canada.ca/content/dam/ircc/migration/ircc/english/pdf/kits/forms/imm5409e.pdf">Statutory Declaration of Common-law Union (IMM&nbsp;5409)<span data-aem-details="filedetails"> (<abbr title="Portable Document Format">PDF</abbr>, 636.51<abbr title="Kilobyte">KB</abbr>)</span></a>, if applicable</li>
+                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html" target="_blank">Use of a Representative (IMM&nbsp;5476)</a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span>&nbsp;, if applicable</li>
+                                <li><a href="https://www.canada.ca/content/dam/ircc/migration/ircc/english/pdf/kits/forms/imm5475e.pdf">Authority to release personal information to a designated individual [IMM 5475]<span data-aem-details="filedetails"> (<abbr title="Portable Document Format">PDF</abbr>, 593.57<abbr title="Kilobyte">KB</abbr>)</span></a>, if applicable</li>
+                            </ul>
+            </div>
+
             <!-- Fees for OWP -->
             <div id="open-fees" class="hidden result">
-            <h2>4. Pay the fees</h2>
+            <h2>Step 4. Pay the fees</h2>
             <p>We’ll ask you to pay your fees at the end of your application.</p>
             <p>In most cases, your fees will include processing fees for you and anyone you include on your application.</p>
             <p>You can expect to pay the following fees:</p>
@@ -612,7 +930,7 @@
 
             <!-- Fees for employer-specific -->
             <div id="emp-fees" class="hidden result">
-            <h2>4. Pay the fees</h2>
+            <h2>Step 4. Pay the fees</h2>
             <p>We’ll ask you to pay your fees at the end of your application.</p>
             <p>In most cases, your fees will include processing fees for you and anyone you include on your application.</p>
             <p>You can expect to pay the following fees:</p>
@@ -622,9 +940,15 @@
             </ul>
             </div>
 
-            <!-- Biometrics step -->
+            <!-- Fee exemption -->
+            <div id="fees-exempt" class="hidden result">
+            <h2>Fee exemption</h2>
+            <p>You <Strong>don't</Strong> have to pay any fees to get a work permit.</p>
+            </div>
+
+            <!-- Biometrics -->
             <div id="biometrics" class="hidden result">
-            <h2>5. Give biometrics, if applicable</h2>
+            <h2>Step 5. Give biometrics, if applicable</h2>
             <p>You may need to give your biometrics for this permit. If you need to give biometrics, pay the biometrics fee <strong>when you apply</strong>. The fee covers the cost of collecting fingerprints and a digital photo.</p>
             <p><a href="https://ircc.canada.ca/english/visit/biometrics.asp">Find out if you need to give your biometrics</a></p>
             
@@ -632,7 +956,7 @@
                 <summary>Extend the validity of your biometrics</summary>
                 <p>Your biometrics are valid for <strong>10 years</strong>.</p>
                 <p>If your biometrics will expire <strong>before</strong> your work permit expires, you can give your biometrics again when you apply even if they’re still valid.</p>
-                <p>How to extend the validity of your biometrics:</p>
+                <h3>How to extend the validity of your biometrics</h3>
                 <ol>
                     <li>Pay the biometrics fee when you apply for your work permit.</li>
                     <li>Wait for your biometric instruction letter (BIL). You <Strong>must</Strong> use the BIL that was issued <Strong>for this application</Strong>.</li>
