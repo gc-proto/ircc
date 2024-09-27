@@ -2023,8 +2023,6 @@ $(document).on("wb-ready.wb", function (event) {
     function difference(a, b, elm, daterange) {
 
         let dif = parseFloat((Math.abs((a - b) / b)) * 100).toFixed(1);
-        console.log(a, b);
-        console.log(dif);
 
         if (dif != 0) {
             if (a > b) {
