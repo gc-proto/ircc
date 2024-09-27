@@ -36,4 +36,31 @@
 
 .d-flex .grow {
   flex-grow: 1;
+}
+
+.modal-header, .modal-title, .modal-footer {
+  background-color: #fff !important;
+  color: #333 !important;
+  border: none !important;
+}
+
+.modal-header select {
+  padding: 5px 0;
+  margin: 10px;
+}
+
+.modal-footer {
+  padding-top: 0;
+}
+
+.mfp-bg {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+.mfp-close {
+  color: #333 !important;
+}
+
+#snippets a:visited {
+  color: #295376;
 }/*# sourceMappingURL=templator.css.map */

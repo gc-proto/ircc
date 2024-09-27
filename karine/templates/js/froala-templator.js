@@ -1,5 +1,6 @@
 const urlParams = (window.location.href).split("?url=")[1]
 let input = document.getElementById('enterURL');
+input.value = "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit.html";
 let error = false;
 let form = document.getElementById('form');
 let downloadedContent = document.getElementById('downloadedContent');
@@ -105,15 +106,62 @@ function generateTemplate() {
     page.contents = fixLinks(page.contents);
     generatedTemplate = page.metadata.lang == "en" ? englishTemplate(page) : frenchTemplate(page);
 
+    // console.log(document.querySelector('#moreMisc-1'))
+    // document
+    // document.getElementById('output').classList.add('fr-code-view');
+    // document.querySelector(".fr-code").value = generateTemplate;
+
+    $(function() {
+        FroalaEditor.DefineIcon('insertHTML', { NAME: 'plus', SVG_KEY: 'add' });
+        FroalaEditor.RegisterCommand('insertHTML', {
+        title: 'Insert HTML',
+        focus: true,
+        undo: true,
+        refreshAfterCallback: true,
+        callback: function () {
+            this.html.insert('Some Custom HTML.');
+            this.undo.saveStep();
+        }
+        });
+
+        new FroalaEditor('div#output', {
+            pluginsEnabled: ['codeView'],
+            codeViewKeepActiveButtons: ['selectAll'],
+            toolbarButtons: [
+                ['bold', 'italic', 'underline', 'paragraphFormat', 'formatOL', 'formatUL'],
+                ['insertHTML', 'undo', 'redo', 'html']
+            ],
+            events: {
+                'codeView.update': function () {
+                // Do something here.
+                // this is the editor instance.
+                document.getElementById("eg-previewer").textContent = this.codeView.get ();
+                },
+                contentChanged: function () {
+                    $('#preview-froala').html(this.html.get());
+                },
+                'initialized': function () {
+                    // Do something here.
+                    // this is the editor instance.
+                    
+            this.html.insert(generatedTemplate);
+            // triggerWET();
+                }
+
+            }
+        });
 
 
-    preview.innerHTML = generatedTemplate;
-    output.value = generatedTemplate;
+    });
+
+
+    // preview.innerHTML = generatedTemplate;
+    // output.value = generatedTemplate;
     document.getElementById('pageDetails').innerHTML = getPageDetails();
     triggerWET();
 
-    document.getElementById('highlighting-content').innerHTML = generatedTemplate;
-    update(output.value)
+    // document.getElementById('highlighting-content').innerHTML = generatedTemplate;
+    // update(output.value)
 
     filename = document.getElementById('enterURL').value.split("/");
     filename = filename.pop();

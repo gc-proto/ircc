@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Convert a Canada.ca page to a GitHub template</title>
+    <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/templator.css" />
+
+    <link href='https://cdn.jsdelivr.net/npm/froala-editor@4.0.10/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
+
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@4.0.10/js/froala_editor.pkgd.min.js'></script> 
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/plugins/code_view.min.js'></script> 
+    
+    <link href="https://cdn.jsdelivr.net/npm/froala-editor@4.0.10/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/plugins/code_view.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .container.wrapper {
+            width: 100%;
+            margin: 0px 50px;
+        }
+
+        .fr-code {
+            width: calc(100% - 22px) !important;
+            display: block !important;
+            min-height: 200px !important;
+            padding: 15px !important;
+            padding-right: 0px !important;
+        }
+    </style>
+
+<body>
+
+    <div class="container wrapper py-4">
+        <h1 class="brdr-0" style="font-size:3em;">Templator</h1>
+        <button class="btn-link p-0 wb-toggle" id="settings" data-toggle='{"selector": "#settings-options", "stateOn": "show", "stateOff":"hidden"}'><i class="fas fa-cog mrgn-rght-sm"></i>Settings</button>
+        <div class="hidden panel panel-body panel-default small" id="settings-options">
+            <form id="settings-form">
+                <fieldset class="chkbxrdio-grp">
+                    <legend>Code syntax theme</legend>
+                    <div class="radio">
+                        <label for="light"><input type="radio" name="theme" value="default" id="light" /> Light (default)</label>
+                    </div>
+                    <div class="radio">
+                        <label for="dark"><input type="radio" name="theme" value="dark" id="dark" /> Dark</label>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+
+        <div class="mrgn-tp-lg mrgn-bttm-md panel panel-body panel-default" id="form">
+            <label for="enterURL">Page URL:</label>
+            <input type="text" placeholder="https:///www.canada.ca" class="full-width" id="enterURL" /><br />
+            <button class="btn btn-info mrgn-tp-md" id="generate">Generate template</button>
+            <button class="btn btn-info mrgn-tp-md" id="aem-extract">Extract code for AEM</button>
+
+
+        </div>
+        <div id="downloadedContent" class="hidden"></div>
+    </div>
+
+    <div class="" id="showOutput">
+        <div class="container wrapper mrgn-bttm-xl">
+            <div id="status" class="align-self-center"></div>
+            <div class="position-relative">
+                <div class="d-flex">
+                    <div class="btn-group mrgn-bttm-sm">
+                        <button id="copyClip" class="btn btn-default">Copy to clipboard</button>
+                        <button id="save" class="btn btn-default">Download</button>
+                        <button id="update" class="btn btn-default">Run changes</button>
+
+                    </div>
+                    <button class="btn-link p-0 wb-toggle text-right grow" data-toggle='{"selector": "#snippets", "stateOn": "show", "stateOff":"hidden"}'><i class="fas fa-code mrgn-rght-sm"></i></i>Add a component</button>
+
+                </div>
+            </div>
+            <div class="panel panel-body panel-default small" id="snippets">
+                <ul class="list-unstyled list-inline">
+                    <li><button class="btn-link p-0" data-add-snippet="subwayNavigationIndex">Subway navigation: Index</button></li>
+                    <li><button class="btn-link p-0" data-add-snippet="subwayNavigationStep">Subway navigation: Step</button></li>
+                    <li><a class="btn-link p-0 wb-lbx no-undrln" href="#alert-popup" aria-controls="alert-popup" role="button">Alert</a></li>
+                </ul>
+            </div>
+            
+
+
+        </div>
+        <div class="container wrapper position-relative">
+            <div id="output" data-theme="default"></div>
+            
+        </div>
+        <div class="container wrapper position-relative">
+            <div id="preview-froala" class="fr-view"></div>
+            
+        </div>
+
+
+        <div class="pageDetails hidden">
+            <h2 class="mrgn-tp-0">Page details</h2>
+            <div id="pageDetails"></div>
+        </div>
+
+
+    </div>
+    <!-- <div id="preview" class="hidden"></div> -->
+
+
+
+    <!-- Modals -->
+
+    <section id="alert-popup" class="mfp-hide modal-dialog modal-content overlay-def">
+        <header class="modal-header">
+            <div class="d-flex align-items-center">
+                <h2 class="modal-title pull-left max-content"><label for="alertType" class="control-label">What type/colour of alert?</label></h2>
+                <select class="form-control mrgn-bttm-md" id="alertType">
+                    <option value="info">Info</option>
+                    <option value="success">Success</option>
+                    <option value="warning">Warning</option>
+                    <option value="danger">Danger</option>
+                </select>
+            </div>
+        </header>
+        <div class="modal-footer">
+            <button title="Close overlay" class="btn btn-info pull-left popup-modal-dismiss" type="button" id="alert-popup-button">Okay<span class="wb-inv">Close overlay</span></button>
+        </div>
+    </section>
+    </div>
+
+    <!-- <div class="container wrapper">
+        <div id="example"></div>
+    </div> -->
+    <!-- <div id="froala-editor"></div> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="js/get-template.js"></script>
+    <script src="js/snippets.js"></script>
+    <!-- <script src="js/templator.js"></script> -->
+    <script src="js/froala-templator.js"></script>
+    <script>
+        // var editor = new FroalaEditor('#output');
+        
+        
+       
+        
+
+    </script>
+</body>
+
+</html>

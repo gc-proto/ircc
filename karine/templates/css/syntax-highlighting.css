@@ -63,7 +63,7 @@ textarea {
 #output {
   color: transparent !important;
   background: transparent !important;
-  caret-color: white !important;
+  caret-color: #000 !important;
   /* Or choose your favourite color */
 }
 
@@ -211,6 +211,10 @@ textarea {
   --token-function:#DD4A68;
   --token-var:#e90;
   --token-del:#red;
+}
+[data-theme=dark] #output {
+  caret-color: #fff !important;
+  /* Or choose your favourite color */
 }
 
 /* Plugin styles: Diff Highlight */

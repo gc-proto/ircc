@@ -27,9 +27,9 @@
                 </fieldset>
             </form>
         </div>
-        
 
-        <div class="mrgn-tp-lg mrgn-bttm-md panel panel-body panel-default">
+
+        <div class="mrgn-tp-lg mrgn-bttm-md panel panel-body panel-default" id="form">
             <label for="enterURL">Page URL:</label>
             <input type="text" placeholder="https:///www.canada.ca" class="full-width" id="enterURL" /><br />
             <button class="btn btn-info mrgn-tp-md" id="generate">Generate template</button>
@@ -39,7 +39,7 @@
         </div>
         <div id="downloadedContent" class="hidden"></div>
     </div>
-    
+
     <div class="hidden" id="showOutput">
         <div class="container mrgn-bttm-xl">
 
@@ -52,18 +52,19 @@
                                 <button id="copyClip" class="btn btn-default">Copy to clipboard</button>
                                 <button id="save" class="btn btn-default">Download</button>
                                 <button id="update" class="btn btn-default">Run changes</button>
-                        
+
                             </div>
                             <button class="btn-link p-0 wb-toggle text-right grow" data-toggle='{"selector": "#snippets", "stateOn": "show", "stateOff":"hidden"}'><i class="fas fa-code mrgn-rght-sm"></i></i>Add a component</button>
-                        
+
                         </div>
                     </div>
-                    <div class="panel panel-body panel-default small" id="snippets">           
+                    <div class="panel panel-body panel-default small" id="snippets">
                         <ul class="list-unstyled list-inline">
-                             <li><button class="btn-link p-0" data-add-snippet="subwayNavigationIndex">Subway navigation: Index</button></li>
-                             <li><button class="btn-link p-0" data-add-snippet="subwayNavigationStep">Subway navigation: Step</button></li>
+                            <li><button class="btn-link p-0" data-add-snippet="subwayNavigationIndex">Subway navigation: Index</button></li>
+                            <li><button class="btn-link p-0" data-add-snippet="subwayNavigationStep">Subway navigation: Step</button></li>
+                            <li><a class="btn-link p-0 wb-lbx no-undrln" href="#alert-popup" aria-controls="alert-popup" role="button">Alert</a></li>
                         </ul>
-                     </div>
+                    </div>
                     <div class="position-relative" data-theme="default">
                         <textarea class="full-width" placeholder="Enter HTML Source Code" id="output" spellcheck="false" oninput="update(this.value); sync_scroll(this);" onscroll="sync_scroll(this);" onkeydown="check_tab(this, event);"></textarea>
                         <pre id="highlighting" aria-hidden="true" class="full-width">
@@ -81,11 +82,31 @@
 
 
             <h2>Page preview</h2>
-            
-    
+
+
         </div>
         <div id="preview"></div>
 
+
+
+        <!-- Modals -->
+
+        <section id="alert-popup" class="mfp-hide modal-dialog modal-content overlay-def">
+            <header class="modal-header">
+                <div class="d-flex align-items-center">
+                    <h2 class="modal-title pull-left max-content"><label for="alertType" class="control-label">What type/colour of alert?</label></h2>
+                    <select class="form-control mrgn-bttm-md" id="alertType">
+                        <option value="info">Info</option>
+                        <option value="success">Success</option>
+                        <option value="warning">Warning</option>
+                        <option value="danger">Danger</option>
+                    </select>
+                </div>
+            </header>
+            <div class="modal-footer">
+                <button title="Close overlay" class="btn btn-info pull-left popup-modal-dismiss" type="button" id="alert-popup-button">Okay<span class="wb-inv">Close overlay</span></button>
+            </div>
+        </section>
     </div>
 
 
@@ -94,7 +115,7 @@
     <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
-    <script src="js/get-template.js"></script> 
+    <script src="js/get-template.js"></script>
     <script src="js/snippets.js"></script>
     <script src="js/templator.js"></script>
 </body>

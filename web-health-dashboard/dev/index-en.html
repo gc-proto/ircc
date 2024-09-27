@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html class="no-js" lang="fr" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+<html class="no-js" lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
 
 <head prefix="og: http://ogp.me/ns#">
     <meta charset="UTF-8" />
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
     <link rel="canonical" href="https://www.canada.ca/en.html" />
-    <meta name="description" content="Tableau de bord de la santé web d’IRCC">
+    <meta name="description" content="IRCC Web Health Dashboard — Canada.ca">
     <meta name="keywords" content="data">
     <meta name="author" content="IRCC">
-    <meta name="dcterms.title" content="Tableau de bord de la santé web d’IRCC">
+    <meta name="dcterms.title" content="IRCC Web Health Dashboard — Canada.ca">    
     <meta property="dcterms:modified" title="W3CDTF" content="2024-09-09" />
 
 
-    <title>Tableau de bord de la santé web d’IRCC — Canada.ca</title>
+    <title>IRCC Web Health Dashboard — Canada.ca</title>
     <link href="https://www.canada.ca/etc/designs/canada/wet-boew/assets/favicon.ico" rel="icon" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.2/css/all.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -36,22 +36,22 @@
         <div id="wb-bnr" class="container-fluid">
             <section id="wb-lng" class="text-right">
                 <h2 class="h3" class="wb-inv">Language selection</h2>
-                <a href="index-en.html" lang="en">English</a>
+                <a href="index-fr.html" lang="fr">Français</a>
             </section>
         </div>
-    </header>
+    </header> 
     <main property="mainContentOfPage" id="main">
         <div class="header">
-            <h1 property="name" id="wb-cont" dir="ltr">Tableau de bord de la santé web d’IRCC</h1>
-            <p>Modifié le <span id="dateModified"></span></p>
+            <h1 property="name"  dir="ltr">IRCC Web Health Dashboard</h1>
+            <p>Modified on <span id="dateModified"></span></p>
         </div>
         <div class="content">
 
 
             <div id="previous-data" class="mrgn-tp-md">
-                <label for="previous-data-select">Voir les données précédentes:</label>
+                <label for="previous-data-select">Look at data from previous months:</label>
                 <select id="previous-data-select">
-                    <option value="-1" disabled selected>Sélectionnez dans la liste...</option>
+                    <option value="-1" disabled selected>Make a selection</option>
                 </select>
             </div>
 
@@ -59,48 +59,48 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-heading">
-                            <h2 class="h3" class="h2" id="traffic">Trafic</h2>
+                            <h2 class="h3" class="h2" id="traffic">Traffic</h2>
                         </div>
                         <div class="box-body">
 
 
                             <div class="row text-center wb-eqht-grd">
                                 <div class="col-md-4 text-left">
-                                    <p><strong>Date&nbsp;: <span id="traffic-dates"></span></strong></p>
-                                    <h3 class="mrgn-tp-0">Faits saillants</h3>
-                                    <div id="traffic-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#traffic-insights"}'></div>
+                                    <p><strong>Date: <span id="traffic-dates"></span></strong></p>
+                                    <h3 class="mrgn-tp-0">Highlights</h3>
+                                    <div id="traffic-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-en.html#traffic-insights"}'></div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="panel panel-body panel-default hght-inhrt">
-                                        <h3 class="mrgn-tp-sm h4">Moyenne des visites quotidiennes</h3>
+                                        <h3 class="mrgn-tp-sm h4">Daily average visits</h3>
                                         <div class="number-change" id="daily-average-visits-change"></div>
                                         <div class="large-text" id="daily-average-visits"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="panel panel-body panel-default hght-inhrt">
-                                        <h3 class="mrgn-tp-sm h4">Nombre de visites totales</h3>
+                                        <h3 class="mrgn-tp-sm h4">Total visits</h3>
                                         <div class="number-change" id="total-visits-change"></div>
                                         <div class="large-text" id="total-visits"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="panel panel-body panel-default hght-inhrt">
-                                        <h3 class="mrgn-tp-sm h4">Pages vues par visites</h3>
+                                        <h3 class="mrgn-tp-sm h4">Page views per visit</h3>
                                         <div class="number-change" id="page-views-visits-change"></div>
                                         <div class="large-text" id="page-views-visits"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="panel panel-body panel-default hght-inhrt">
-                                        <h3 class="mrgn-tp-sm h4">Moyennes des pages vues quotidiennes</h3>
+                                        <h3 class="mrgn-tp-sm h4">Daily average page views</h3>
                                         <div class="number-change" id="daily-average-page-views-change"></div>
                                         <div class="large-text" id="daily-average-page-views"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="panel panel-body panel-default hght-inhrt">
-                                        <h3 class="mrgn-tp-sm h4">Pages vues totales</h3>
+                                        <h3 class="mrgn-tp-sm h4">Total page views</h3>
                                         <div class="number-change" id="total-page-views-change"></div>
                                         <div class="large-text" id="total-page-views"></div>
                                     </div>
@@ -119,32 +119,32 @@
 
                         <div class="box">
                             <div class="box-heading">
-                                <h2 class="h3" id="traffic-sources">Sources de trafic</h2>
+                                <h2 class="h3" id="traffic-sources">Traffic sources</h2>
                             </div>
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-4 col-xs-12">
-                                        <p><strong>Date&nbsp;: <span id="referrer-date"></span></strong></p>
-                                        <h3>Faits saillants</h3>
-                                        <div id="traffic-sources-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#traffic-sources-insights"}'></div>
+                                        <p><strong>Date: <span id="referrer-date"></span></strong></p>
+                                        <h3>Highlights</h3>
+                                        <div id="traffic-sources-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-en.html#traffic-sources-insights"}'></div>
                                     </div>
                                     <div class="col-md-8 col-xs-12">
                                         <div class="wb-tabs">
                                             <div class="tabpanels">
 
                                                 <details>
-                                                    <summary>Principaux types de référents</summary><canvas id="top-referrer-chart"></canvas>
+                                                    <summary>Top referrer types</summary><canvas id="top-referrer-chart"></canvas>
                                                     <details>
-                                                        <summary>Version texte&nbsp;: Principaux types de référents</summary>
+                                                        <summary>Text version: Top referrer types</summary>
                                                         <div class="table-responsive">
                                                             <table id="top-referrer-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                         </div>
                                                     </details>
                                                 </details>
                                                 <details>
-                                                    <summary>Principaux réseaux sociaux référents</summary><canvas id="top-social-chart"></canvas>
+                                                    <summary>Top social networks referring traffic</summary><canvas id="top-social-chart"></canvas>
                                                     <details>
-                                                        <summary>Version texte&nbsp;: Principaux réseaux sociaux référents</summary>
+                                                        <summary>Text version: Top social networks referring traffic</summary>
                                                         <div class="table-responsive">
                                                             <table id="top-social-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                         </div>
@@ -160,14 +160,14 @@
 
                         <div class="box">
                             <div class="box-heading">
-                                <h2 class="h3" id="top-content">Contenu principal</h2>
+                                <h2 class="h3" id="top-content">Top content</h2>
                             </div>
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-4 col-xs-12">
                                         <p><strong>Date : <span id="top-content-date"></span></strong></p>
-                                        <h3>Faits saillants</h3>
-                                        <div id="top-content-insight-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#top-content-insights"}'>
+                                        <h3>Highlights</h3>
+                                        <div id="top-content-insight-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-en.html#top-content-insights"}'>
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-xs-12">
@@ -178,80 +178,80 @@
                                                     <summary>Top 10</summary>
                                                     <canvas id="top-pages-chart"></canvas>
                                                     <details>
-                                                        <summary>Version texte&nbsp;: Top 10 pages (français et anglais)</summary>
+                                                        <summary>Text version: Top 10 pages for IRCC (English and French)</summary>
                                                         <div class="table-responsive">
                                                             <table id="top-pages-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                         </div>
                                                     </details>
                                                 </details>
                                                 <details>
-                                                    <summary>Thème</summary>
+                                                    <summary>Theme</summary>
                                                     <div class="btn-group btn-group-lang">
-                                                    </div>
-                                                    <button class="btn btn-default btn-topic-french active" type="button" data-wb-doaction='[
-                                                    {"action":"addClass", "class":"hidden", "source":"#topic-english"},
-                                                    {"action":"removeClass", "class":"hidden", "source":"#topic-french"},
-                                                    {"action":"removeClass", "class":"active", "source":".btn-topic-english"},
-                                                    {"action":"addClass", "class":"active", "source":".btn-topic-french"}
-                                                ]'>Français</button>
-                                                    <button class="btn btn-default btn-topic-english " type="button" data-wb-doaction='[
+                                                        <button class="btn btn-default btn-topic-english active" type="button" data-wb-doaction='[
                                                 {"action":"removeClass", "class":"hidden", "source":"#topic-english"},
                                                 {"action":"addClass", "class":"hidden", "source":"#topic-french"},
                                                 {"action":"addClass", "class":"active", "source":".btn-topic-english"},
                                                 {"action":"removeClass", "class":"active", "source":".btn-topic-french"}
-                                            ]'>Anglais</button>
-
-                                                    <div id="topic-french">
-                                                        <canvas id="top-topic-chart-fr"></canvas>
-                                                        <details>
-                                                            <summary>Version texte&nbsp;: Liens les plus cliqués sur la page thème (français)</summary>
-                                                            <div class="table-responsive">
-                                                                <table id="top-topic-table-fr" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
-                                                            </div>
-                                                        </details>
+                                            ]'>English</button>
+                                                        <button class="btn btn-default btn-topic-french" type="button" data-wb-doaction='[
+                                                    {"action":"addClass", "class":"hidden", "source":"#topic-english"},
+                                                    {"action":"removeClass", "class":"hidden", "source":"#topic-french"},
+                                                    {"action":"removeClass", "class":"active", "source":".btn-topic-english"},
+                                                    {"action":"addClass", "class":"active", "source":".btn-topic-french"}
+                                                ]'>French</button>
                                                     </div>
-                                                    <div id="topic-english" class="hidden">
+
+
+                                                    <div id="topic-english">
                                                         <canvas id="top-topic-chart-en"></canvas>
                                                         <details>
-                                                            <summary>Version texte&nbsp;: Liens les plus cliqués sur la page thème (anglais)</summary>
+                                                            <summary>Text version: Top clicked links on English theme page</summary>
                                                             <div class="table-responsive">
                                                                 <table id="top-topic-table-en" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                             </div>
                                                         </details>
                                                     </div>
-
+                                                    <div id="topic-french" class="hidden">
+                                                        <canvas id="top-topic-chart-fr"></canvas>
+                                                        <details>
+                                                            <summary>Text version: Top clicked links on French theme page</summary>
+                                                            <div class="table-responsive">
+                                                                <table id="top-topic-table-fr" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
+                                                            </div>
+                                                        </details>
+                                                    </div>
 
 
 
                                                 </details>
                                                 <details>
-                                                    <summary>Visiter le Canada</summary>
+                                                    <summary>Visit</summary>
 
                                                     <div class="btn-group btn-group-lang">
-                                                        <button class="btn btn-default btn-visit-french active" type="button" data-wb-doaction='[
-                                                    {"action":"addClass", "class":"hidden", "source":"#visit-english"},
-                                                    {"action":"removeClass", "class":"hidden", "source":"#visit-french"},
-                                                    {"action":"removeClass", "class":"active", "source":".btn-visit-english"},
-                                                    {"action":"addClass", "class":"active", "source":".btn-visit-french"}
-                                                ]'>Français</button>
-                                                        <button class="btn btn-default btn-visit-english" type="button" data-wb-doaction='[
+                                                        <button class="btn btn-default btn-visit-english active" type="button" data-wb-doaction='[
                                                 {"action":"removeClass", "class":"hidden", "source":"#visit-english"},
                                                 {"action":"addClass", "class":"hidden", "source":"#visit-french"},
                                                 {"action":"addClass", "class":"active", "source":".btn-visit-english"},
                                                 {"action":"removeClass", "class":"active", "source":".btn-visit-french"}
-                                            ]'>Anglais</button>
+                                            ]'>English</button>
+                                                        <button class="btn btn-default btn-visit-french" type="button" data-wb-doaction='[
+                                                    {"action":"addClass", "class":"hidden", "source":"#visit-english"},
+                                                    {"action":"removeClass", "class":"hidden", "source":"#visit-french"},
+                                                    {"action":"removeClass", "class":"active", "source":".btn-visit-english"},
+                                                    {"action":"addClass", "class":"active", "source":".btn-visit-french"}
+                                                ]'>French</button>
                                                     </div>
-                                                    <div id="visit-english" class="hidden"><canvas id="top-visit-chart-en"></canvas>
+                                                    <div id="visit-english"><canvas id="top-visit-chart-en"></canvas>
                                                         <details>
-                                                            <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Visiter le Canada&nbsp;&raquo; (anglais)</summary>
+                                                            <summary>Text version: Top clicked links on Visit topic page (English)</summary>
                                                             <div class="table-responsive">
                                                                 <table id="top-visit-table-en" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                             </div>
                                                         </details>
                                                     </div>
-                                                    <div id="visit-french"><canvas id="top-visit-chart-fr"></canvas>
+                                                    <div id="visit-french" class="hidden"><canvas id="top-visit-chart-fr"></canvas>
                                                         <details>
-                                                            <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Visiter le Canada&nbsp;&raquo; (français)</summary>
+                                                            <summary>Text version: Top clicked links on Visit topic page (French)</summary>
                                                             <div class="table-responsive">
                                                                 <table id="top-visit-table-fr" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                             </div>
@@ -264,31 +264,31 @@
                                                     <summary>Immigration</summary>
 
                                                     <div class="btn-group btn-group-lang">
-                                                        <button class="btn btn-default btn-immigration-french active" type="button" data-wb-doaction='[
-                                                    {"action":"addClass", "class":"hidden", "source":"#immigration-english"},
-                                                    {"action":"removeClass", "class":"hidden", "source":"#immigration-french"},
-                                                    {"action":"removeClass", "class":"active", "source":".btn-immigration-english"},
-                                                    {"action":"addClass", "class":"active", "source":".btn-immigration-french"}
-                                                ]'>Français</button>
-                                                        <button class="btn btn-default btn-immigration-english " type="button" data-wb-doaction='[
+                                                        <button class="btn btn-default btn-immigration-english active" type="button" data-wb-doaction='[
                                                 {"action":"removeClass", "class":"hidden", "source":"#immigration-english"},
                                                 {"action":"addClass", "class":"hidden", "source":"#immigration-french"},
                                                 {"action":"addClass", "class":"active", "source":".btn-immigration-english"},
                                                 {"action":"removeClass", "class":"active", "source":".btn-immigration-french"}
-                                            ]'>Anglais</button>
+                                            ]'>English</button>
+                                                        <button class="btn btn-default btn-immigration-french" type="button" data-wb-doaction='[
+                                                    {"action":"addClass", "class":"hidden", "source":"#immigration-english"},
+                                                    {"action":"removeClass", "class":"hidden", "source":"#immigration-french"},
+                                                    {"action":"removeClass", "class":"active", "source":".btn-immigration-english"},
+                                                    {"action":"addClass", "class":"active", "source":".btn-immigration-french"}
+                                                ]'>French</button>
                                                     </div>
 
-                                                    <div id="immigration-english" class="hidden"> <canvas id="top-immigration-chart-en"></canvas>
+                                                    <div id="immigration-english"> <canvas id="top-immigration-chart-en"></canvas>
                                                         <details>
-                                                            <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Immigrer au Canada&nbsp;&raquo;(anglais)</summary>
+                                                            <summary>Text version: Top clicked links on Immigration topic page (English)</summary>
                                                             <div class="table-responsive">
                                                                 <table id="top-immigration-table-en" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                             </div>
                                                         </details>
                                                     </div>
-                                                    <div id="immigration-french"><canvas id="top-immigration-chart-fr"></canvas>
+                                                    <div id="immigration-french" class="hidden"><canvas id="top-immigration-chart-fr"></canvas>
                                                         <details>
-                                                            <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Immigrer au Canada&nbsp;&raquo; (français)</summary>
+                                                            <summary>Text version: Top clicked links on Immigration topic page (French)</summary>
                                                             <div class="table-responsive">
                                                                 <table id="top-immigration-table-fr" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                             </div>
@@ -297,32 +297,32 @@
 
                                                 </details>
                                                 <details>
-                                                    <summary>Travailler</summary>
-                                                    <div class="btn-group btn-group-lang"> <button class="btn btn-default btn-work-french active" type="button" data-wb-doaction='[
-                                                        {"action":"addClass", "class":"hidden", "source":"#work-english"},
-                                                        {"action":"removeClass", "class":"hidden", "source":"#work-french"},
-                                                        {"action":"removeClass", "class":"active", "source":".btn-work-english"},
-                                                        {"action":"addClass", "class":"active", "source":".btn-work-french"}
-                                                    ]'>Français</button>
-                                                        <button class="btn btn-default btn-work-english " type="button" data-wb-doaction='[
+                                                    <summary>Work</summary>
+                                                    <div class="btn-group btn-group-lang">
+                                                        <button class="btn btn-default btn-work-english active" type="button" data-wb-doaction='[
                                                 {"action":"removeClass", "class":"hidden", "source":"#work-english"},
                                                 {"action":"addClass", "class":"hidden", "source":"#work-french"},
                                                 {"action":"addClass", "class":"active", "source":".btn-work-english"},
                                                 {"action":"removeClass", "class":"active", "source":".btn-work-french"}
-                                            ]'>Anglais</button>
-
+                                            ]'>English</button>
+                                                        <button class="btn btn-default btn-work-french" type="button" data-wb-doaction='[
+                                                    {"action":"addClass", "class":"hidden", "source":"#work-english"},
+                                                    {"action":"removeClass", "class":"hidden", "source":"#work-french"},
+                                                    {"action":"removeClass", "class":"active", "source":".btn-work-english"},
+                                                    {"action":"addClass", "class":"active", "source":".btn-work-french"}
+                                                ]'>French</button>
                                                     </div>
-                                                    <div id="work-english" class="hidden"> <canvas id="top-work-chart-en"></canvas>
+                                                    <div id="work-english"> <canvas id="top-work-chart-en"></canvas>
                                                         <details>
-                                                            <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Travailler au Canada&nbsp;&raquo; (anglais)</summary>
+                                                            <summary>Text version: Top clicked links on Work topic page (English)</summary>
                                                             <div class="table-responsive">
                                                                 <table id="top-work-table-en" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                             </div>
                                                         </details>
                                                     </div>
-                                                    <div id="work-french"><canvas id="top-work-chart-fr"></canvas>
+                                                    <div id="work-french" class="hidden"><canvas id="top-work-chart-fr"></canvas>
                                                         <details>
-                                                            <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Travailler au Canada&nbsp;&raquo; (français)</summary>
+                                                            <summary>Text version: Top clicked links on Work topic page (French)</summary>
                                                             <div class="table-responsive">
                                                                 <table id="top-work-table-fr" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                             </div>
@@ -331,37 +331,37 @@
 
                                                 </details>
                                                 <details>
-                                                    <summary>Étudier au Canada</summary>
-                                                    <div class="btn-group btn-group-lang"> <button class="btn btn-default btn-study-french active" type="button" data-wb-doaction='[
-                                                {"action":"addClass", "class":"hidden", "source":"#study-english"},
-                                                {"action":"removeClass", "class":"hidden", "source":"#study-french"},
-                                                {"action":"removeClass", "class":"active", "source":".btn-study-english"},
-                                                {"action":"addClass", "class":"active", "source":".btn-study-french"}
-                                            ]'>Français</button>
-                                                        <div class="btn-group btn-group-lang">
-                                                            <button class="btn btn-default btn-study-english " type="button" data-wb-doaction='[
+                                                    <summary>Study</summary>
+                                                    <div class="btn-group btn-group-lang">
+                                                        <button class="btn btn-default btn-study-english active" type="button" data-wb-doaction='[
                                                 {"action":"removeClass", "class":"hidden", "source":"#study-english"},
                                                 {"action":"addClass", "class":"hidden", "source":"#study-french"},
                                                 {"action":"addClass", "class":"active", "source":".btn-study-english"},
                                                 {"action":"removeClass", "class":"active", "source":".btn-study-french"}
-                                            ]'>Anglais</button>
-                                                        </div>
-                                                        <div id="study-english" class="hidden"> <canvas id="top-study-chart-en"></canvas>
-                                                            <details>
-                                                                <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Étudier au Canada&nbsp;&raquo; (français)</summary>
-                                                                <div class="table-responsive">
-                                                                    <table id="top-study-table-en" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
-                                                                </div>
-                                                            </details>
-                                                        </div>
-                                                        <div id="study-french"><canvas id="top-study-chart-fr"></canvas>
-                                                            <details>
-                                                                <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Étudier au Canada&nbsp;&raquo; (français)</summary>
-                                                                <div class="table-responsive">
-                                                                    <table id="top-study-table-fr" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
-                                                                </div>
-                                                            </details>
-                                                        </div>
+                                            ]'>English</button>
+                                                        <button class="btn btn-default btn-study-french" type="button" data-wb-doaction='[
+                                                    {"action":"addClass", "class":"hidden", "source":"#study-english"},
+                                                    {"action":"removeClass", "class":"hidden", "source":"#study-french"},
+                                                    {"action":"removeClass", "class":"active", "source":".btn-study-english"},
+                                                    {"action":"addClass", "class":"active", "source":".btn-study-french"}
+                                                ]'>French</button>
+                                                    </div>
+                                                    <div id="study-english"> <canvas id="top-study-chart-en"></canvas>
+                                                        <details>
+                                                            <summary>Text version: Top clicked links on Study topic page (English)</summary>
+                                                            <div class="table-responsive">
+                                                                <table id="top-study-table-en" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
+                                                            </div>
+                                                        </details>
+                                                    </div>
+                                                    <div id="study-french" class="hidden"><canvas id="top-study-chart-fr"></canvas>
+                                                        <details>
+                                                            <summary>Text version: Top clicked links on Study topic page (French)</summary>
+                                                            <div class="table-responsive">
+                                                                <table id="top-study-table-fr" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
+                                                            </div>
+                                                        </details>
+                                                    </div>
 
                                                 </details>
                                             </div>
@@ -380,49 +380,49 @@
 
                         <div class="box">
                             <div class="box-heading">
-                                <h2 class="h3" id="tss">Réussite des tâches</h2>
+                                <h2 class="h3" id="tss">Task success</h2>
                             </div>
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-lg-4 col-xs-12">
-                                        <p><strong>Date&nbsp;: <span id="tss-date"></span></strong></p>
-                                        <h3>Faits saillants</h3>
-                                        <div id="tss-insight-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#tss-insights"}'></div>
+                                        <p><strong>Date: <span id="tss-date"></span></strong></p>
+                                        <h3>Highlights</h3>
+                                        <div id="tss-insight-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-en.html#tss-insights"}'></div>
 
                                     </div>
                                     <div class="col-lg-8 col-xs-12">
                                         <div class="wb-tabs">
                                             <div class="tabpanels">
                                                 <details>
-                                                    <summary>Rendement global</summary>
-                                                    <p class="mrgn-tp-sm mrgn-bttm-0"><strong>Note&nbsp;:</strong> le nombre entre les trimestres montre la différence en points de pourcentage.</p>
+                                                    <summary>Overall performance</summary>
+                                                    <p class="mrgn-tp-sm mrgn-bttm-0"><strong>Note:</strong> the number between quarters shows the difference in percentage points.</p>
 
                                                     <div class="container-fluid">
                                                         <div class="row mrgn-tp-md text-center eqht-grd">
                                                             <div class="col-lg-6 col-md-6">
                                                                 <div class="panel panel-body panel-default d-flex flex-column hght-inhrt">
-                                                                    <h3 class="mrgn-tp-sm h4">Réussite</h3>
+                                                                    <h3 class="mrgn-tp-sm h4">Task completion</h3>
                                                                     <div class="number-change" id="tss-completion-prev-month-change"></div>
                                                                     <div class="large-text" id="tss-completion-prev-month"></div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-6 col-md-6">
                                                                 <div class="panel panel-body panel-default d-flex flex-column hght-inhrt">
-                                                                    <h3 class="mrgn-tp-sm h4">Facilité</h3>
+                                                                    <h3 class="mrgn-tp-sm h4">Task ease</h3>
                                                                     <div class="number-change" id="tss-ease-prev-month-change"></div>
                                                                     <div class="large-text" id="tss-ease-prev-month"></div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-6 col-md-6">
                                                                 <div class="panel panel-body panel-default d-flex flex-column hght-inhrt">
-                                                                    <h3 class="mrgn-tp-sm h4">Satisfaction</h3>
+                                                                    <h3 class="mrgn-tp-sm h4">Task satisfaction</h3>
                                                                     <div class="number-change" id="tss-satisfaction-prev-month-change"></div>
                                                                     <div class="large-text" id="tss-satisfaction-prev-month"></div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-6 col-md-6">
                                                                 <div class="panel panel-body panel-default d-flex flex-column hght-inhrt">
-                                                                    <h3 class="mrgn-tp-sm h4">Réponses</h3>
+                                                                    <h3 class="mrgn-tp-sm h4">Task survey responses</h3>
                                                                     <div class="number-change" id="tss-survey-prev-month-change"></div>
                                                                     <div class="large-text" id="tss-survey-prev-month"></div>
                                                                 </div>
@@ -433,7 +433,7 @@
                                                     </div>
                                                 </details>
                                                 <details>
-                                                    <summary>Tâches les plus performantes</summary>
+                                                    <summary>Highest performing tasks</summary>
                                                     <div class="table-responsive">
                                                         <div class="table-responsive">
                                                             <table id="tss-top-tasks-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
@@ -442,11 +442,11 @@
                                                     </div>
                                                 </details>
                                                 <details>
-                                                    <summary>Au cours des 12 derniers mois</summary>
-                                                    <p><strong>Note&nbsp;:</strong> Les données du rapport sur la réussite des tâches du mois précédent ne sont pas immédiatement disponibles. Les données ci-dessous affiches 11 mois.</p>
+                                                    <summary>Over the last 12 months</summary>
+                                                    <p><strong>Note:</strong> Task success survey data for the previous month is not immediately available and data below may display 11 months.</p>
                                                     <canvas id="tss-over-12-months-chart"></canvas>
                                                     <details>
-                                                        <summary>Version texte&nbsp;: Au cours des 12 derniers mois</summary>
+                                                        <summary>Text version: TSS results over the last 12 months</summary>
                                                         <div class="table-responsive">
                                                             <table id="tss-over-12-months-table" class="table table-bordered" data-wb-tables='{"order": [[0, "desc"]]}'></table>
                                                         </div>
@@ -468,25 +468,25 @@
 
                         <div class="box">
                             <div class="box-heading">
-                                <h2 class="h3" id="contact">Contactez-nous et Centre d’aide</h2>
+                                <h2 class="h3" id="contact">Contact us and Help centre</h2>
                             </div>
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-lg-4 col-xs-12">
-                                        <p><strong>Date&nbsp;: <span id="contact-date"></span></strong></p>
-                                        <h3>Faits saillants</h3>
-                                        <div id="contact-hc-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#contact-hc-insights"}'></div>
+                                        <p><strong>Date: <span id="contact-date"></span></strong></p>
+                                        <h3>Highlights</h3>
+                                        <div id="contact-hc-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-en.html#contact-hc-insights"}'></div>
 
                                     </div>
                                     <div class="col-lg-8 col-xs-12">
                                         <div class="wb-tabs">
                                             <div class="tabpanels">
                                                 <details>
-                                                    <summary>Pages allants vers la page &laquo;&nbsp;Contactez-nous&nbsp;&raquo;</summary>
-                                                    <p><strong>Notes&nbsp;:</strong></p>
+                                                    <summary>Pages leading to Contact us</summary>
+                                                    <p><strong>Notes:</strong></p>
                                                     <ul>
-                                                        <li>Les pages avec moins de 1&nbsp;000 visites par mois sont exclues.</li>
-                                                        <li>La page principale &laquo;&nbsp;Contacter IRCC&nbsp;&raquo; est exclue.</li>
+                                                        <li>Pages with less than 1K visits in a month are excluded.</li>
+                                                        <li>Main "Contact IRCC" page is excluded.</li>
                                                     </ul>
                                                     <div class="table-responsive">
                                                         <table id="contact-us-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
@@ -494,12 +494,12 @@
                                                     </div>
                                                 </details>
                                                 <details>
-                                                    <summary>Pages allants vers le centre d’aide</summary>
-                                                    <p><strong>Notes&nbsp;:</strong></p>
+                                                    <summary>Pages leading to Help centre</summary>
+                                                    <p><strong>Notes:</strong></p>
                                                     <ul>
-                                                        <li>Le lien du centre d’aide dans le pied de page est contextualisé.</li>
-                                                        <li>Les pages avec moins de 1&nbsp;000 visites par mois sont exclues.</li>
-                                                        <li>Le contenu du centre d’aide est exclu (URL filtrées avec "helpcentre" et "centre-aide").</li>
+                                                        <li>Help Centre link in footer is contextualized.</li>
+                                                        <li>Pages with less than 1K visits in a month are excluded.</li>
+                                                        <li>Help Centre content is excluded (filtered out URLs with "helpcentre" and "centre-aide").</li>
                                                     </ul>
                                                     <div class="table-responsive">
                                                         <table id="helpcentre-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
@@ -521,14 +521,14 @@
 
                         <div class="box">
                             <div class="box-heading">
-                                <h2 class="h3" id="newsroom">Salle de presse</h2>
+                                <h2 class="h3" id="newsroom">Newsroom</h2>
                             </div>
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-4 col-xs-12">
-                                        <p><strong>Date&nbsp;: <span id="news-date"></span></strong></p>
-                                        <h3>Faits saillants</h3>
-                                        <div id="news-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#news-insights"}'></div>
+                                        <p><strong>Date: <span id="news-date"></span></strong></p>
+                                        <h3>Highlights</h3>
+                                        <div id="news-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-en.html#news-insights"}'></div>
 
                                     </div>
                                     <div class="col-md-8 col-xs-12">
@@ -536,17 +536,16 @@
                                             <div class="tabpanels">
 
                                                 <details>
-                                                    <summary>Salle de presse</summary>
+                                                    <summary>Newsroom</summary>
                                                     <div class="table-responsive">
                                                         <table id="news-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
                                                         </table>
                                                     </div>
                                                 </details>
                                                 <details>
-                                                    <summary>Avis</summary>
+                                                    <summary>Web notices</summary>
                                                     <div class="table-responsive">
-                                                        <table id="notices-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
-                                                        </table>
+                                                        <table id="notices-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>                                                        
                                                     </div>
                                                 </details>
                                             </div>
@@ -564,14 +563,14 @@
 
                         <div class="box">
                             <div class="box-heading">
-                                <h2 class="h3" id="special-measures">Contenu des mesures spéciales</h2>
+                                <h2 class="h3" id="special-measures">Special measures content</h2>
                             </div>
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-4 col-xs-12">
-                                        <p><strong>Date&nbsp;: <span id="crisis-date"></span></strong></p>
-                                        <h3>Faits saillants</h3>
-                                        <div id="special-measures-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#special-measures-insights"}'></div>
+                                        <p><strong>Date: <span id="crisis-date"></span></strong></p>
+                                        <h3>Highlights</h3>
+                                        <div id="special-measures-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-en.html#special-measures-insights"}'></div>
 
 
                                     </div>
@@ -580,17 +579,17 @@
                                             <div class="tabpanels">
 
                                                 <details>
-                                                    <summary>Contenu des mesures spéciales les plus performantes</summary>
+                                                    <summary>Top special measures content</summary>
                                                     <div class="table-responsive">
                                                         <table id="crisis-content-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
                                                         </table>
                                                     </div>
                                                 </details>
                                                 <details>
-                                                    <summary>Trafic au mesures spéciales</summary>
+                                                    <summary>Traffic to special measures content</summary>
                                                     <canvas id="crisis-traffic-chart"></canvas>
                                                     <details>
-                                                        <summary>Version texte&nbsp;: Trafic au mesures spéciales</summary>
+                                                        <summary>Text version: Traffic to special measures content</summary>
 
                                                         <div class="table-responsive">
                                                             <table id="crisis-traffic-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
@@ -612,14 +611,14 @@
 
                         <div class="box">
                             <div class="box-heading">
-                                <h2 class="h3" id="campaigns">Campagnes</h2>
+                                <h2 class="h3" id="campaigns">Campaigns</h2>
                             </div>
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-4 col-xs-12">
-                                        <p><strong>Date&nbsp;: <span id="campaign-date"></span></strong></p>
-                                        <h3>Faits saillants</h3>
-                                        <div id="campaigns-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#campaigns-insights"}'></div>
+                                        <p><strong>Date: <span id="campaign-date"></span></strong></p>
+                                        <h3>Highlights</h3>
+                                        <div id="campaigns-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-en.html#campaigns-insights"}'></div>
 
 
 
@@ -629,10 +628,10 @@
                                             <div class="tabpanels">
 
                                                 <details>
-                                                    <summary>Pages d’accueil pour les campagnes les plus performantes</summary>
+                                                    <summary>Top campaign landing pages</summary>
                                                     <canvas id="campaign-landing-chart"></canvas>
                                                     <details>
-                                                        <summary>Version texte&nbsp;: Pages d’accueil pour les campagnes les plus performantes</summary>
+                                                        <summary>Text version: Top campaign landing pages</summary>
 
                                                         <div class="table-responsive">
                                                             <table id="campaign-landing-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
@@ -641,10 +640,10 @@
                                                     </details>
                                                 </details>
                                                 <details>
-                                                    <summary>Campagnes UTM les plus performantes</summary>
+                                                    <summary>Top UTM campaigns</summary>
                                                     <canvas id="utm-chart"></canvas>
                                                     <details>
-                                                        <summary>Version texte&nbsp;: Campagnes UTM les plus performantes</summary>
+                                                        <summary>Text version: Top UTM campaigns</summary>
 
                                                         <div class="table-responsive">
                                                             <table id="utm-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
@@ -660,14 +659,14 @@
                         </div>
 
                         <div class="box-heading">
-                            <h2 class="h3" id="mobile">Distribution des vues sur mobiles, ordinateurs et tablettes</h2>
+                            <h2 class="h3" id="mobile">Mobile, desktop and tablet views</h2>
                         </div>
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-4 col-xs-12">
-                                    <p><strong>Date&nbsp;: <span id="mobile-date"></span></strong></p>
-                                    <h3>Faits saillants</h3>
-                                    <div id="mobile-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#mobile-insights"}'></div>
+                                    <p><strong>Date: <span id="mobile-date"></span></strong></p>
+                                    <h3>Highlights</h3>
+                                    <div id="mobile-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-en.html#mobile-insights"}'></div>
 
 
                                 </div>
@@ -676,20 +675,20 @@
                                         <div class="tabpanels">
 
                                             <details>
-                                                <summary>Distribution des types d’instruments</summary>
+                                                <summary>Device type distribution</summary>
                                                 <div class="row-no-gutters">
                                                     <div class="col-lg-3 col-lg-offset-1 col-md-6 col-xs-12"><canvas id="devices-chart" class="no-min-height mrgn-tp-md mrgn-bttm-md"></canvas></div>
                                                     <div class="col-lg-6 col-lg-offset-1 col-md-6 col-xs-12 small">
                                                         <div class="table-responsive">
-                                                            <table id="devices-table" class="table table-bordered mrgn-lft-lg"></table>
+                                                            <table id="devices-table" class="table table-bordered mrgn-lft-lg" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </details>
                                             <details>
-                                                <summary>Page les plus performantes sur mobile</summary>
+                                                <summary>Top mobile pages</summary>
                                                 <div class="table-responsive">
-                                                    <table id="top-mobile-table" class="provisional gc-table table table-bordered" data-wb-tables='{"lengthMenu": [5, 10]}'></table>
+                                                    <table id="top-mobile-table" class="provisional gc-table table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                 </div>
                                             </details>
                                         </div>
@@ -704,6 +703,8 @@
             </div>
     </main>
 
+    <div id="datadump" class="hidden"></div>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
 
@@ -717,7 +718,7 @@
 
     <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/wet-boew.min.js"></script>
     <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
-    <script src="js/web-health-dashboard.js?a"></script>
+    <script src="js/web-health-dashboard-.js?a"></script>
 
 
 </body>
