@@ -218,7 +218,7 @@ $(document).on("wb-ready.wb", function (event) {
         else {
             path = previousData ? "csv/export/previous/" + previousData + "/" : "csv/export/";
         }
-        
+        console.log(path);
         let ajax = document.querySelectorAll('.ajax-insights');
 
 
@@ -226,7 +226,7 @@ $(document).on("wb-ready.wb", function (event) {
             let jData = JSON.parse(ajax[i].getAttribute('data-wb-ajax'));
             let url = jData.url.split("#")[1];
             jData.url = path + "insights-" + lang + ".html#" + url;
-            console.log(jData.url);
+
             ajax[i].outerHTML = '<div id="' + ajax[i].getAttribute('id') + '" class="ajax-insights" data-wb-ajax=\'{&quot;type&quot;: &quot;replace&quot;, &quot;nocache&quot;: &quot;nocache&quot;,  &quot;url&quot;: &quot;' + jData.url + '&quot;}\'></div>';
 
         }
