@@ -226,7 +226,6 @@ $(document).on("wb-ready.wb", function (event) {
             let jData = JSON.parse(ajax[i].getAttribute('data-wb-ajax'));
             let url = jData.url.split("#")[1];
             jData.url = path + "insights-" + lang + ".html#" + url;
-            console.log(jData.url);
             ajax[i].outerHTML = '<div id="' + ajax[i].getAttribute('id') + '" class="ajax-insights" data-wb-ajax=\'{&quot;type&quot;: &quot;replace&quot;, &quot;nocache&quot;: &quot;nocache&quot;,  &quot;url&quot;: &quot;' + jData.url + '&quot;}\'></div>';
 
         }
@@ -287,12 +286,9 @@ $(document).on("wb-ready.wb", function (event) {
             difference(page_views, page_views_lastMonth, "daily-average-page-views-change", dict[lang].dateRange[0]);
 
             // Page Views,Page Views - Month before
-            let total_page_views = d3.sum(data, function (d, i) {
-                if (i > 0) { return d["Page Views"]; }
-            });
-            let total_page_views_lastMonth = d3.sum(data, function (d, i) {
-                if (i > 0) { return d["Page Views - Month before"]; }
-            });
+            let total_page_views = d3.sum(data, function (d) { return d["Page Views"] });
+            let total_page_views_lastMonth = d3.sum(data, function (d) { return d["Page Views - Month before"] });
+            
 
             document.getElementById('total-page-views').innerHTML = formatNumber(total_page_views);
             difference(total_page_views, total_page_views_lastMonth, "total-page-views-change", dict[lang].dateRange[0]);
@@ -529,7 +525,7 @@ $(document).on("wb-ready.wb", function (event) {
                 return true;
             });
 
-            let label = lang === "en" ? "Most clicked links on theme page (English)" : "Liens les plus cliqués sur la page thème (anglais)";
+            let label = lang === "en" ? "Most clicked topics on theme page (English)" : "Sujets les plus cliqués sur la page thème (anglais)";
             let colheaders = {
                 en: ['Link', 'Clicks', 'Percentage'],
                 fr: ['Lien', 'Clics', 'Pourcentage']
@@ -788,7 +784,6 @@ $(document).on("wb-ready.wb", function (event) {
             );
 
             data.forEach(function (d) {
-                d["Program"] = d["Program"];
                 d["Percentage"] = d3.format("0.0%")(parseInt(d["Clicks"]) / sum);
                 d["Clicks"] = d3.format(",")(d["Clicks"]);
             });
@@ -857,7 +852,6 @@ $(document).on("wb-ready.wb", function (event) {
             );
 
             data.forEach(function (d) {
-                d["Link"] = d["Link"];
                 d["Percentage"] = d3.format("0.0%")(parseInt(d["Clicks"]) / sum);
                 d["Clicks"] = d3.format(",")(d["Clicks"]);
             });
@@ -1213,8 +1207,8 @@ $(document).on("wb-ready.wb", function (event) {
 
         d3.csv(path + "tss-data.csv?" + today, function (data) {
 
-            let surveyResponses = d3.format(",")(data.map(function (d) { return d["TSS surveys responded"]; }))
-            let surveyResponsesPrior = d3.format(",")(data.map(function (d) { return d["TSS surveys responded - Last month"] }));
+            let surveyResponses = (data.map(function (d) { return d["TSS surveys responded"]; }))
+            let surveyResponsesPrior = (data.map(function (d) { return d["TSS surveys responded - Last month"] }));
             let satisfaction = (data.map(function (d) { return d["TSS satisfaction"] }));
             let satisfactionPrior = (data.map(function (d) { return d["TSS satisfaction - Last month"] }));
             let ease = (data.map(function (d) { return d["TSS ease"] }));
@@ -1222,7 +1216,8 @@ $(document).on("wb-ready.wb", function (event) {
             let completion = (data.map(function (d) { return d["TSS completion"] }));
             let completionPrior = (data.map(function (d) { return d["TSS completion - Last month"] }));
             
-            document.getElementById('tss-survey-prev-month').innerHTML = surveyResponses;
+            
+            document.getElementById('tss-survey-prev-month').innerHTML = d3.format(",")(surveyResponses);
             difference(surveyResponses, surveyResponsesPrior, "tss-survey-prev-month-change", dict[lang].dateRange[0]);
             
             document.getElementById('tss-satisfaction-prev-month').innerHTML = d3.format("0.1%")(satisfaction);
@@ -1584,7 +1579,7 @@ $(document).on("wb-ready.wb", function (event) {
 
             data.forEach(function (d) {
                 d["Special measures (E/F)"] = d["Special measures (E/F)"];
-                d["Page Title"] = d["Page Title"];
+                d["Page URL"] = d["Page URL"];
                 d["Visits"] = d3.format(",")(d["Visits"]);
             });
 
@@ -1595,7 +1590,7 @@ $(document).on("wb-ready.wb", function (event) {
                 fr: ['Mesures spéciale', 'Visites']
             }
             tabulate("crisis-content-table", data, label, colheaders);
-            addURLs("crisis-content-table", data, "Page Title");
+            addURLs("crisis-content-table", data, "Special measures (E/F)");
             $("#crisis-content-table").trigger("wb-init.gc-table");
         });
 
@@ -2012,7 +2007,21 @@ $(document).on("wb-ready.wb", function (event) {
         let firstCells = document.getElementById(table).querySelectorAll('td:first-child');
         for (var i = 0; i < firstCells.length; i++) {
             let getTitle = (data[i][(pageTitle)] == null, data[i][(pageTitle)] == "") ? data[i][("Page URL")] : data[i][(pageTitle)];
-            firstCells[i].innerHTML = '<a href="https://' + data[i][("Page URL")] + '" target="_blank">' + getTitle + '</a>';
+            let langattr = "";
+            if (lang === "en") {
+                if ((data[i][("Page URL")].indexOf("/fr/") > -1|| data[i][("Page URL")].indexOf("/francais/") > -1)) {
+                    langattr = "fr"
+                }
+                else langattr = "en"              
+            }
+            if (lang === "fr") {
+                if ((data[i][("Page URL")].indexOf("/en/") > -1 || data[i][("Page URL")].indexOf("/english/") > -1)) {
+                    langattr = "en"
+                }
+                else langattr = "fr"
+            }
+            
+            firstCells[i].innerHTML = '<a href="https://' + data[i][("Page URL")] + '" target="_blank" lang="'+langattr+'">' + getTitle + '</a>';
         }
 
         
@@ -2023,7 +2032,7 @@ $(document).on("wb-ready.wb", function (event) {
     function difference(a, b, elm, daterange) {
 
         let dif = parseFloat((Math.abs((a - b) / b)) * 100).toFixed(1);
-
+        
         if (dif != 0) {
             if (a > b) {
                 document.getElementById(elm).innerHTML = lang === "en" ? '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(dif) + dict[lang].percent : '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(dif) + "&nbsp;%";
