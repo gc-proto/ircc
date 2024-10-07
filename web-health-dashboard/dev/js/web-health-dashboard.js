@@ -2021,15 +2021,15 @@ $(document).on("wb-ready.wb", function (event) {
                 else langattr = "fr"
             }
 
-            // if ((data[i][(pageTitle)] == null || data[i][(pageTitle)] == "")) {
-            //     getTitle(data[i][("Page URL")], firstCells[i]);                              
-            // }
-            // else {
-                
-            // }          
+            if ((data[i][(pageTitle)] == null || data[i][(pageTitle)] == "")) {
+                title = data[i][("Page URL")];                      
+            }
+            else {
+                title = data[i][(pageTitle)]
+            }          
             
-            title = data[i][(pageTitle)]
-            firstCells[i].innerHTML = '<a href="https://' + data[i][("Page URL")] + '" target="_blank" lang="'+langattr+'">' + firstCells[i].innerHTML + '</a>';   
+            
+            firstCells[i].innerHTML = '<a href="https://' + data[i][("Page URL")] + '" target="_blank" lang="'+langattr+'">' + title + '</a>';   
         }
 
         
