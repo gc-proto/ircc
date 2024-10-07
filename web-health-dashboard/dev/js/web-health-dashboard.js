@@ -2006,7 +2006,7 @@ $(document).on("wb-ready.wb", function (event) {
 
         let firstCells = document.getElementById(table).querySelectorAll('td:first-child');
         for (var i = 0; i < firstCells.length; i++) {
-            let getTitle = (data[i][(pageTitle)] == null, data[i][(pageTitle)] == "") ? data[i][("Page URL")] : data[i][(pageTitle)];
+            
             let langattr = "";
             if (lang === "en") {
                 if ((data[i][("Page URL")].indexOf("/fr/") > -1|| data[i][("Page URL")].indexOf("/francais/") > -1)) {
@@ -2020,14 +2020,26 @@ $(document).on("wb-ready.wb", function (event) {
                 }
                 else langattr = "fr"
             }
+
+            // if ((data[i][(pageTitle)] == null || data[i][(pageTitle)] == "")) {
+            //     getTitle(data[i][("Page URL")], firstCells[i]);                              
+            // }
+            // else {
+                
+            // }          
             
-            firstCells[i].innerHTML = '<a href="https://' + data[i][("Page URL")] + '" target="_blank" lang="'+langattr+'">' + getTitle + '</a>';
+            title = data[i][(pageTitle)]
+            firstCells[i].innerHTML = '<a href="https://' + data[i][("Page URL")] + '" target="_blank" lang="'+langattr+'">' + firstCells[i].innerHTML + '</a>';   
         }
 
         
         document.getElementById(table).classList.add("wb-tables");
         $("#" + table).trigger("wb-init.wb-tables");
     }
+
+    function getTitle(url, elm){
+        $(elm).load("https://" + url + " h1");
+    } 
 
     function difference(a, b, elm, daterange) {
 
