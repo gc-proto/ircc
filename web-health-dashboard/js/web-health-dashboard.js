@@ -1,6 +1,8 @@
+let tempVar;
 let lang = document.getElementsByTagName('html')[0].getAttribute('lang');
 let locale, formatDate, langTime, formatTime, shortMonth;
 let loaded = false;
+let temp = [];
 
 let dict = {
     en: {
@@ -164,9 +166,6 @@ $(document).on("wb-ready.wb", function (event) {
         var thead = table.append('thead')
         var tbody = table.append('tbody');
 
-
-
-
         // append the header row
         thead.append('tr')
             .selectAll('th')
@@ -184,8 +183,8 @@ $(document).on("wb-ready.wb", function (event) {
             .append('tr');
 
         // create a cell in each row for each column
-
-        var cells = rows.selectAll('td')
+        
+            var cells = rows.selectAll('td')
             .data(function (row) {
                 return columns["en"].map(function (column) {
                     return { column: column, value: row[column] };
@@ -193,7 +192,22 @@ $(document).on("wb-ready.wb", function (event) {
             })
             .enter()
             .append('td')
-            .text(function (d) { return d.value; });
+            .attr("data-order", function(d){
+                if ( !isNaN(d.value)) {  
+                    return parseFloat(d.value);
+                    // console.log(num)
+                    // return num.replace(" ", "");
+                }      
+            })
+            .text(function (d) { 
+                if (!isNaN(d.value)) {
+                    return d3.format(",")(d.value); 
+                }
+                else {
+                    return d.value; 
+                }
+            });
+        
 
         return table;
     }
@@ -216,7 +230,7 @@ $(document).on("wb-ready.wb", function (event) {
         else {
             path = previousData ? "csv/export/previous/" + previousData + "/" : "csv/export/";
         }
-
+        
         let ajax = document.querySelectorAll('.ajax-insights');
 
 
@@ -224,7 +238,6 @@ $(document).on("wb-ready.wb", function (event) {
             let jData = JSON.parse(ajax[i].getAttribute('data-wb-ajax'));
             let url = jData.url.split("#")[1];
             jData.url = path + "insights-" + lang + ".html#" + url;
-
             ajax[i].outerHTML = '<div id="' + ajax[i].getAttribute('id') + '" class="ajax-insights" data-wb-ajax=\'{&quot;type&quot;: &quot;replace&quot;, &quot;nocache&quot;: &quot;nocache&quot;,  &quot;url&quot;: &quot;' + jData.url + '&quot;}\'></div>';
 
         }
@@ -285,12 +298,9 @@ $(document).on("wb-ready.wb", function (event) {
             difference(page_views, page_views_lastMonth, "daily-average-page-views-change", dict[lang].dateRange[0]);
 
             // Page Views,Page Views - Month before
-            let total_page_views = d3.sum(data, function (d, i) {
-                if (i > 0) { return d["Page Views"]; }
-            });
-            let total_page_views_lastMonth = d3.sum(data, function (d, i) {
-                if (i > 0) { return d["Page Views - Month before"]; }
-            });
+            let total_page_views = d3.sum(data, function (d) { return d["Page Views"] });
+            let total_page_views_lastMonth = d3.sum(data, function (d) { return d["Page Views - Month before"] });
+            
 
             document.getElementById('total-page-views').innerHTML = formatNumber(total_page_views);
             difference(total_page_views, total_page_views_lastMonth, "total-page-views-change", dict[lang].dateRange[0]);
@@ -380,7 +390,7 @@ $(document).on("wb-ready.wb", function (event) {
 
             data.forEach(function (d) {
                 d["Percentage"] = d3.format("0.0%")(parseInt(d["Entries"]) / sum);
-                d["Entries"] = d3.format(",")(d["Entries"]);
+                d["Entries"] = d["Entries"];
             });
             tabulate("top-referrer-table", data, label, colheaders);
         });
@@ -442,7 +452,7 @@ $(document).on("wb-ready.wb", function (event) {
             data.forEach(function (d) {
                 d["Referring Domain"] = d["Referring Domain"];
                 d["Percentage"] = d3.format("0.0%")(parseInt(d["Entries"]) / sum);
-                d["Entries"] = d3.format(",")(d["Entries"]);
+                d["Entries"] = d["Entries"];
             });
             tabulate("top-social-table", data, label, colheaders);
 
@@ -457,7 +467,7 @@ $(document).on("wb-ready.wb", function (event) {
         d3.csv(path + "top-pages.csv?" + today, function (data) {
 
             data = data.filter(function (d) {
-                if (d["Page title"].length == 0) {
+                if (d["Page Title"].length == 0) {
                     return false;
                 }
                 return true;
@@ -466,11 +476,11 @@ $(document).on("wb-ready.wb", function (event) {
 
             let label = lang === "en" ? "Visits" : "Visites";
             let colheaders = {
-                en: ['Page title', 'Visits'],
+                en: ['Page Title', 'Visits'],
                 fr: ['Titre de la page', 'Visites']
             }
 
-            let x = data.map(function (d) { return d["Page title"] })
+            let x = data.map(function (d) { return d["Page Title"] })
             let y = data.map(function (d) { return d["Visits"] })
 
             topPagesChart = new Chart(
@@ -505,10 +515,11 @@ $(document).on("wb-ready.wb", function (event) {
             );
 
             data.forEach(function (d) {
-                d["Page title"] = d["Page title"];
-                d["Visits"] = d3.format(",")(d["Visits"]);
+                d["Page Title"] = d["Page Title"];
+                d["Visits"] = parseFloat(d["Visits"]);
             });
             tabulate("top-pages-table", data, label, colheaders);
+            addURLs("top-pages-table", data, "Page Title");
 
             d3.csv(path + "topContent.txt?" + today, function (data) {
                 data.forEach(function (d, i) {
@@ -526,7 +537,7 @@ $(document).on("wb-ready.wb", function (event) {
                 return true;
             });
 
-            let label = lang === "en" ? "Most clicked links on theme page (English)" : "Liens les plus cliqués sur la page thème (anglais)";
+            let label = lang === "en" ? "Most clicked topics on theme page (English)" : "Sujets les plus cliqués sur la page thème (anglais)";
             let colheaders = {
                 en: ['Link', 'Clicks', 'Percentage'],
                 fr: ['Lien', 'Clics', 'Pourcentage']
@@ -580,9 +591,10 @@ $(document).on("wb-ready.wb", function (event) {
             data.forEach(function (d) {
                 d["Link"] = d["Link"];
                 d["Percentage"] = d3.format("0.0%")(parseInt(d["Clicks"]) / sum);
-                d["Clicks"] = d3.format(",")(d["Clicks"]);
+                d["Clicks"] = d["Clicks"];
             });
             tabulate("top-topic-table-en", data, label, colheaders);
+            addURLs("top-topic-table-en", data, "Link");
         });
 
         d3.csv(path + "top-theme-fr.csv?" + today, function (data) {
@@ -647,9 +659,10 @@ $(document).on("wb-ready.wb", function (event) {
             data.forEach(function (d) {
                 d["Link"] = d["Link"];
                 d["Percentage"] = d3.format("0.0%")(parseInt(d["Clicks"]) / sum);
-                d["Clicks"] = d3.format(",")(d["Clicks"]);
+                d["Clicks"] = d["Clicks"];
             });
             tabulate("top-topic-table-fr", data, label, colheaders);
+            addURLs("top-topic-table-fr", data, "Link");
         });
 
         d3.csv(path + "top-visit-en.csv?" + today, function (data) {
@@ -715,9 +728,10 @@ $(document).on("wb-ready.wb", function (event) {
                 d["Link"] = d["Link"];
 
                 d["Percentage"] = d3.format("0.0%")(parseInt(d["Clicks"]) / sum);
-                d["Clicks"] = d3.format(",")(d["Clicks"]);
+                d["Clicks"] = d["Clicks"];
             });
             tabulate("top-visit-table-en", data, label, colheaders);
+            addURLs("top-visit-table-en", data, "Link");
         });
 
         d3.csv(path + "top-visit-fr.csv?" + today, function (data) {
@@ -782,11 +796,11 @@ $(document).on("wb-ready.wb", function (event) {
             );
 
             data.forEach(function (d) {
-                d["Program"] = d["Program"];
                 d["Percentage"] = d3.format("0.0%")(parseInt(d["Clicks"]) / sum);
-                d["Clicks"] = d3.format(",")(d["Clicks"]);
+                d["Clicks"] = d["Clicks"];
             });
             tabulate("top-visit-table-fr", data, label, colheaders);
+            addURLs("top-visit-table-fr", data, "Link");
         });
 
         d3.csv(path + "top-immigration-en.csv?" + today, function (data) {
@@ -850,11 +864,11 @@ $(document).on("wb-ready.wb", function (event) {
             );
 
             data.forEach(function (d) {
-                d["Link"] = d["Link"];
                 d["Percentage"] = d3.format("0.0%")(parseInt(d["Clicks"]) / sum);
-                d["Clicks"] = d3.format(",")(d["Clicks"]);
+                d["Clicks"] = d["Clicks"];
             });
             tabulate("top-immigration-table-en", data, label, colheaders);
+            addURLs("top-immigration-table-en", data, "Link");
         });
 
         d3.csv(path + "top-immigration-fr.csv?" + today, function (data) {
@@ -880,7 +894,6 @@ $(document).on("wb-ready.wb", function (event) {
             for (var i = 0; i < y.length; i++) {
                 percentage.push((y[i] / sum) * 100);
             }
-
 
             topImmigrationFRChart = new Chart(
                 document.getElementById('top-immigration-chart-fr'),
@@ -918,9 +931,11 @@ $(document).on("wb-ready.wb", function (event) {
 
             data.forEach(function (d) {
                 d["Link"] = d["Link"];
-                d["Clicks"] = d3.format(",")(d["Clicks"]);
+                d["Percentage"] = d3.format("0.0%")(parseInt(d["Clicks"]) / sum);
+                d["Clicks"] = d["Clicks"];
             });
             tabulate("top-immigration-table-fr", data, label, colheaders);
+            addURLs("top-immigration-table-fr", data, "Link");
         });
 
         d3.csv(path + "top-work-en.csv?" + today, function (data) {
@@ -985,9 +1000,11 @@ $(document).on("wb-ready.wb", function (event) {
 
             data.forEach(function (d) {
                 d["Link"] = d["Link"];
-                d["Clicks"] = d3.format(",")(d["Clicks"]);
+                d["Percentage"] = d3.format("0.0%")(parseInt(d["Clicks"]) / sum);
+                d["Clicks"] = d["Clicks"];
             });
             tabulate("top-work-table-en", data, label, colheaders);
+            addURLs("top-work-table-en", data, "Link");
         });
 
         d3.csv(path + "top-work-fr.csv?" + today, function (data) {
@@ -1054,9 +1071,10 @@ $(document).on("wb-ready.wb", function (event) {
             data.forEach(function (d) {
                 d["Link"] = d["Link"];
                 d["Percentage"] = d3.format("0.0%")(parseInt(d["Clicks"]) / sum);
-                d["Clicks"] = d3.format(",")(d["Clicks"]);
+                d["Clicks"] = d["Clicks"];
             });
             tabulate("top-work-table-fr", data, label, colheaders);
+            addURLs("top-work-table-fr", data, "Link");
         });
 
         d3.csv(path + "top-study-en.csv?" + today, function (data) {
@@ -1123,9 +1141,11 @@ $(document).on("wb-ready.wb", function (event) {
 
             data.forEach(function (d) {
                 d["Link"] = d["Link"];
-                d["Clicks"] = d3.format(",")(d["Clicks"]);
+                d["Percentage"] = d3.format("0.0%")(parseInt(d["Clicks"]) / sum);
+                d["Clicks"] = d["Clicks"];
             });
             tabulate("top-study-table-en", data, label, colheaders);
+            addURLs("top-study-table-en", data, "Link");
         });
 
         d3.csv(path + "top-study-fr.csv?" + today, function (data) {
@@ -1191,33 +1211,35 @@ $(document).on("wb-ready.wb", function (event) {
             data.forEach(function (d) {
                 d["Link"] = d["Link"];
                 d["Percentage"] = d3.format("0.0%")(parseInt(d["Clicks"]) / sum);
-                d["Clicks"] = d3.format(",")(d["Clicks"]);
+                d["Clicks"] = d["Clicks"];
             });
             tabulate("top-study-table-fr", data, label, colheaders);
+            addURLs("top-study-table-fr", data, "Link");
         });
 
         d3.csv(path + "tss-data.csv?" + today, function (data) {
 
-            let surveyResponses = data.map(function (d) { return d["TSS surveys responded"]; })
-            let surveyResponsesPrior = (data.map(function (d) { return d["TSS surveys responded - Last quarter"] }));
+            let surveyResponses = (data.map(function (d) { return d["TSS surveys responded"]; }))
+            let surveyResponsesPrior = (data.map(function (d) { return d["TSS surveys responded - Last month"] }));
             let satisfaction = (data.map(function (d) { return d["TSS satisfaction"] }));
-            let satisfactionPrior = (data.map(function (d) { return d["TSS satisfaction - Last quarter"] }));
+            let satisfactionPrior = (data.map(function (d) { return d["TSS satisfaction - Last month"] }));
             let ease = (data.map(function (d) { return d["TSS ease"] }));
-            let easePrior = (data.map(function (d) { return d["TSS ease - Last quarter"] }));
+            let easePrior = (data.map(function (d) { return d["TSS ease - Last month"] }));
             let completion = (data.map(function (d) { return d["TSS completion"] }));
-            let completionPrior = (data.map(function (d) { return d["TSS completion - Last quarter"] }));
+            let completionPrior = (data.map(function (d) { return d["TSS completion - Last month"] }));
+            
+            
+            document.getElementById('tss-survey-prev-month').innerHTML = d3.format(",")(surveyResponses);
+            difference(surveyResponses, surveyResponsesPrior, "tss-survey-prev-month-change", dict[lang].dateRange[0]);
+            
+            document.getElementById('tss-satisfaction-prev-month').innerHTML = d3.format("0.1%")(satisfaction);
+            difference(satisfaction, satisfactionPrior, "tss-satisfaction-prev-month-change", dict[lang].dateRange[0]);
 
-            document.getElementById('tss-survey-prev-quarter').innerHTML = d3.format(",")(surveyResponses);
-            difference(surveyResponses, surveyResponsesPrior, "tss-survey-prev-quarter-change", dict[lang].dateRange[1]);
+            document.getElementById('tss-ease-prev-month').innerHTML = d3.format("0.1%")(ease);
+            difference(ease, easePrior, "tss-ease-prev-month-change", dict[lang].dateRange[0]);
 
-            document.getElementById('tss-satisfaction-prev-quarter').innerHTML = d3.format("0.1%")(satisfaction);
-            difference(satisfaction, satisfactionPrior, "tss-satisfaction-prev-quarter-change", dict[lang].dateRange[1]);
-
-            document.getElementById('tss-ease-prev-quarter').innerHTML = d3.format("0.1%")(ease);
-            difference(ease, easePrior, "tss-ease-prev-quarter-change", dict[lang].dateRange[1]);
-
-            document.getElementById('tss-completion-prev-quarter').innerHTML = d3.format("0.1%")(completion);
-            difference(completion, completionPrior, "tss-completion-prev-quarter-change", dict[lang].dateRange[1]);
+            document.getElementById('tss-completion-prev-month').innerHTML = d3.format("0.1%")(completion);
+            difference(completion, completionPrior, "tss-completion-prev-month-change", dict[lang].dateRange[0]);
 
             d3.csv(path + "tss.txt?" + today, function (data) {
                 data.forEach(function (d, i) {
@@ -1359,7 +1381,7 @@ $(document).on("wb-ready.wb", function (event) {
                 d["TSS completion"] = Math.round(d["TSS completion"] * 100);
                 d["TSS ease"] = Math.round(d["TSS ease"] * 100);
                 d["TSS satisfaction"] = Math.round(d["TSS satisfaction"] * 100);
-                d["Surveys completed"] = d3.format(",")(d["Surveys completed"]);
+                d["Surveys completed"] = d["Surveys completed"];
 
             });
 
@@ -1413,23 +1435,23 @@ $(document).on("wb-ready.wb", function (event) {
                 {
                     type: 'line',
                     data: {
-                        labels: x.reverse(),
+                        labels: x,
                         datasets: [
                             {
                                 label: effectiveness,
-                                data: y1.reverse(),
+                                data: y1,
                                 backgroundColor: '#37b99c',
                                 borderColor: '#37b99c'
                             },
                             {
                                 label: ease,
-                                data: y2.reverse(),
+                                data: y2,
                                 backgroundColor: '#ff6384',
                                 borderColor: '#ff6384'
                             },
                             {
                                 label: 'Satisfaction',
-                                data: y3.reverse(),
+                                data: y3,
                                 backgroundColor: '#36a2eb',
                                 borderColor: '#36a2eb'
                             }
@@ -1461,7 +1483,7 @@ $(document).on("wb-ready.wb", function (event) {
                 d["TSS completion"] = Math.round(d["TSS completion"] * 100) + dict[lang].percent;
                 d["TSS ease"] = Math.round(d["TSS ease"] * 100) + dict[lang].percent;
                 d["TSS satisfaction"] = Math.round(d["TSS satisfaction"] * 100) + dict[lang].percent;
-                d["Surveys completed"] = d3.format(",")(d["Surveys completed"]);
+                d["Surveys completed"] = d["Surveys completed"];
             });
             tabulate("tss-over-12-months-table", data, label, colheaders);
 
@@ -1478,6 +1500,7 @@ $(document).on("wb-ready.wb", function (event) {
 
             data.forEach(function (d) {
                 d["Page URL"] = d["Page URL"];
+                d["Page Title"] = d["Page Title"];
                 d["Visits"] = parseFloat((d["Visits"]) * 100).toFixed(1) + dict[lang].percent;
             });
 
@@ -1489,8 +1512,7 @@ $(document).on("wb-ready.wb", function (event) {
             }
 
             tabulate("contact-us-table", data, label, colheaders);
-
-            addURLs("contact-us-table", true);
+            addURLs("contact-us-table", data, "Page Title");
 
 
         });
@@ -1498,6 +1520,7 @@ $(document).on("wb-ready.wb", function (event) {
 
             data.forEach(function (d) {
                 d["Page URL"] = d["Page URL"];
+                d["Page Title"] = d["Page Title"];
                 d["Visits"] = parseFloat(d["Visits"] * 100).toFixed(1) + dict[lang].percent;
             });
 
@@ -1510,7 +1533,7 @@ $(document).on("wb-ready.wb", function (event) {
 
 
             tabulate("helpcentre-table", data, label, colheaders);
-            addURLs("helpcentre-table", true);
+            addURLs("helpcentre-table", data, "Page Title");
         });
 
         d3.csv(path + "news.txt?" + today, function (data) {
@@ -1521,8 +1544,9 @@ $(document).on("wb-ready.wb", function (event) {
         d3.csv(path + "news.csv?" + today, function (data) {
 
             data.forEach(function (d) {
-                d["IRCC news"] = d["IRCC news"];
-                d["Visits"] = d3.format(",")(d["Visits"]);
+                d["Page URL"] = d["Page URL"];
+                d["News release"] = d["News release"];
+                d["Visits"] = d["Visits"];
             });
 
             let label = lang === "en" ? "Top newsroom products" : "Articles de la salle de presse les plus performantes";
@@ -1532,13 +1556,15 @@ $(document).on("wb-ready.wb", function (event) {
             }
 
             tabulate("news-table", data, label, colheaders);
+            addURLs("news-table", data, "News release");
             $("#news-table").trigger("wb-init.gc-table");
         });
         d3.csv(path + "webnotice.csv?" + today, function (data) {
 
             data.forEach(function (d) {
-                d["IRCC web notices"] = d["IRCC web notices"];
-                d["Visits"] = d3.format(",")(d["Visits"]);
+                d["Page URL"] = d["Page URL"];
+                d["Web notice"] = d["Web notice"];
+                d["Visits"] = d["Visits"];
             });
             let label = lang === "en" ? "Top web notices products" : "Avis les plus performantes";
             let colheaders = {
@@ -1546,6 +1572,7 @@ $(document).on("wb-ready.wb", function (event) {
                 fr: ['Avis', 'Visites']
             }
             tabulate("notices-table", data, label, colheaders);
+            addURLs("notices-table", data, "Web notice");
             $("#notices-table").trigger("wb-init.gc-table");
         });
 
@@ -1564,6 +1591,7 @@ $(document).on("wb-ready.wb", function (event) {
 
             data.forEach(function (d) {
                 d["Special measures (E/F)"] = d["Special measures (E/F)"];
+                d["Page URL"] = d["Page URL"];
                 d["Visits"] = d3.format(",")(d["Visits"]);
             });
 
@@ -1574,6 +1602,7 @@ $(document).on("wb-ready.wb", function (event) {
                 fr: ['Mesures spéciale', 'Visites']
             }
             tabulate("crisis-content-table", data, label, colheaders);
+            addURLs("crisis-content-table", data, "Special measures (E/F)");
             $("#crisis-content-table").trigger("wb-init.gc-table");
         });
 
@@ -1696,11 +1725,11 @@ $(document).on("wb-ready.wb", function (event) {
 
             let label = lang === "en" ? "Top campaign landing pages" : "Pages d’accueil pour les campagnes les plus performantes";
             let colheaders = {
-                en: ['IRCC campaigns (E/F)', 'Visits', 'Percentage'],
+                en: ['Campaign', 'Visits', 'Percentage'],
                 fr: ['Campagne', 'Visites', 'Pourcentage']
             }
 
-            let x = data.map(function (d) { return d["IRCC campaigns (E/F)"] })
+            let x = data.map(function (d) { return d["Campaign"] })
             let y = data.map(function (d) { return d["Visits"] });
             let sum = d3.sum(data.map(function (d) { return d["Visits"] }));
 
@@ -1709,7 +1738,6 @@ $(document).on("wb-ready.wb", function (event) {
             for (var i = 0; i < y.length; i++) {
                 percentage.push((y[i] / sum) * 100);
             }
-
 
             campaignChart = new Chart(
                 document.getElementById('campaign-landing-chart'),
@@ -1746,11 +1774,13 @@ $(document).on("wb-ready.wb", function (event) {
             );
 
             data.forEach(function (d) {
-                d["IRCC campaigns (E/F)"] = d["IRCC campaigns (E/F)"];
+                d["Campaign"] = d["Campaign"];
                 d["Percentage"] = d3.format("0.0%")(parseInt(d["Visits"]) / sum);
-                d["Visits"] = d3.format(",")(d["Visits"]);
+                d["Visits"] = d["Visits"];
+                d["Page URL"] = d["Page URL"];
             });
             tabulate("campaign-landing-table", data, label, colheaders);
+            addURLs("campaign-landing-table", data, "Campaign");
         });
 
         d3.csv(path + "campaign-utm.csv?" + today, function (data) {
@@ -1818,7 +1848,7 @@ $(document).on("wb-ready.wb", function (event) {
             data.forEach(function (d) {
                 d["UTM Campaign"] = d["UTM Campaign"];
                 d["Percentage"] = d3.format("0.0%")(parseInt(d["Visits"]) / sum);
-                d["Visits"] = d3.format(",")(d["Visits"]);
+                d["Visits"] = d["Visits"];
             });
             tabulate("utm-table", data, label, colheaders);
         });
@@ -1954,20 +1984,21 @@ $(document).on("wb-ready.wb", function (event) {
 
         d3.csv(path + "top-mobile-pages.csv?" + today, function (data) {
             document.getElementById("top-mobile-table").outerHTML = mobiletable;
-            data.forEach(function (d) {
-                d["Page URL"] = d["Page URL"];
-                d["% mobile visits (min 1K visits)"] = parseFloat((d["% mobile visits (min 1K visits)"]) * 100).toFixed(1);;
+            tempVar = data;
+            data.forEach(function (d) {                
+                    d["Page URL"] = d["Page URL"];
+                    d["Page Title"] = d["Page Title"];
+                    d["% mobile visits (min 1K visits)"] = parseFloat((d["% mobile visits (min 1K visits)"]) * 100).toFixed(1);                
             });
-
+                            
             let label = lang === "en" ? "Top mobile pages" : "Les pages les plus performantes sur les celluaires";
             let colheaders = {
                 en: ['Page URL', '% mobile visits (min 1K visits)'],
                 fr: ['URL', 'Pourcentage des visites d’un cellulaires']
             }
 
-
             tabulate("top-mobile-table", data, label, colheaders);
-            addURLs("top-mobile-table", true);
+            addURLs("top-mobile-table", data, "Page Title");
 
             d3.csv(path + "mobile.txt?" + today, function (data) {
                 data.forEach(function (d, i) {
@@ -1980,27 +2011,71 @@ $(document).on("wb-ready.wb", function (event) {
 
     }
 
-    function addURLs(table, urls) {
+    function addURLs(table, data, pageTitle) {
+        
         document.getElementById(table).classList.add("wb-tables");
         $("#" + table).trigger("wb-init.wb-tables");
 
         let firstCells = document.getElementById(table).querySelectorAll('td:first-child');
-
-        if (urls) {
-            for (var i = 0; i < firstCells.length; i++) {
-                firstCells[i].innerHTML = '<a href="https://' + firstCells[i].innerHTML + '">' + firstCells[i].innerHTML + '</a>';
+        for (var i = 0; i < firstCells.length; i++) {
+            
+            let langattr = "";
+            if (lang === "en") {
+                if ((data[i][("Page URL")].indexOf("/fr/") > -1|| data[i][("Page URL")].indexOf("/francais/") > -1)) {
+                    langattr = "fr"
+                }
+                else langattr = "en"              
             }
+            if (lang === "fr") {
+                if ((data[i][("Page URL")].indexOf("/en/") > -1 || data[i][("Page URL")].indexOf("/english/") > -1)) {
+                    langattr = "en"
+                }
+                else langattr = "fr"
+            }
+
+            if ((data[i][(pageTitle)] == null || data[i][(pageTitle)] == "")) {
+                title = data[i][("Page URL")];                      
+            }
+            else {
+                title = data[i][(pageTitle)]
+            }          
+            
+            
+            firstCells[i].innerHTML = '<a href="https://' + data[i][("Page URL")] + '" target="_blank" lang="'+langattr+'">' + title + '</a>';   
         }
+
+        
+        document.getElementById(table).classList.add("wb-tables");
+        $("#" + table).trigger("wb-init.wb-tables");
     }
+
+    function getTitle(url, elm){
+        $(elm).load("https://" + url + " h1");
+    } 
 
     function difference(a, b, elm, daterange) {
 
-        let dif = parseFloat((Math.abs((a - b) / b)) * 100).toFixed(1);
+        let bigNum, smallNum;
+        if (a > b) {
+            bigNum = parseFloat(a);
+            smallNum = parseFloat(b);
+        }
+        else {
+            bigNum = parseFloat(b);
+            smallNum = parseFloat(a);
+        }
+
+        let step1, step2, percentDif;
+        step1 = bigNum - smallNum;
+        step2 = parseFloat((bigNum + smallNum)/2);
+        percentDif = parseFloat((parseFloat(step1/step2))*100).toFixed(1);
 
 
-        if (dif != 0) {
+        console.log(step1, step2, percentDif, elm);
+        
+        if (percentDif != 0) {
             if (a > b) {
-                document.getElementById(elm).innerHTML = lang === "en" ? '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(dif) + dict[lang].percent : '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(dif) + "&nbsp;%";
+                document.getElementById(elm).innerHTML = lang === "en" ? '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(percentDif) + dict[lang].percent : '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(percentDif) + "&nbsp;%";
 
 
                 let text = document.createElement('div');
@@ -2011,7 +2086,7 @@ $(document).on("wb-ready.wb", function (event) {
             }
             else if (a < b) {
 
-                document.getElementById(elm).innerHTML = '<i class="fas fa-caret-down"></i>&nbsp;' + d3.format(",")(dif) + dict[lang].percent;
+                document.getElementById(elm).innerHTML = '<i class="fas fa-caret-down"></i>&nbsp;' + d3.format(",")(percentDif) + dict[lang].percent;
                 let text = document.createElement('div');
                 text.setAttribute('class', 'addedText');
                 text.innerHTML = "<span class=\"small\">" + dict[lang].difference[1] + daterange + "</span>";
@@ -2020,7 +2095,7 @@ $(document).on("wb-ready.wb", function (event) {
             }
         }
         else {
-            document.getElementById(elm).innerHTML = d3.format(",")(dif) + dict[lang].percent;
+            document.getElementById(elm).innerHTML = d3.format(",")(percentDif) + dict[lang].percent;
         }
     }
 
@@ -2060,24 +2135,4 @@ $("#anchors").change(function () {
     let link = document.createElement('a');
     link.setAttribute('href', "#" + anchor);
     link.click();
-
-    // console.log(anchor);
-    // var url = (location.href).split("#")[0]+"#"+ anchor;             //Save down the URL without hash.
-    // // document.querySelector('[href*=#'+anchor+']').click;
-    // console.log(document.querySelectorAll("[href='#"+anchor+"']"));
-
-    // window.scrollBy(0, -50);
 });
-
-// window.onscroll = function () { scrollSticky() };
-
-// var navbar = document.getElementsByClassName("dashboard-navigation")[0];
-// var sticky = navbar.offsetTop;
-
-// function scrollSticky() {
-//     if (window.scrollY >= sticky) {
-//         navbar.classList.add("sticky")
-//     } else {
-//         navbar.classList.remove("sticky");
-//     }
-// }
