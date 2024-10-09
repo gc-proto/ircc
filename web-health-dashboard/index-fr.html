@@ -9,7 +9,7 @@
     <meta name="description" content="Tableau de bord de la santé web d’IRCC">
     <meta name="keywords" content="data">
     <meta name="author" content="IRCC">
-    <meta name="dcterms.title" content="Tableau de bord de la santé web d’IRCC">    
+    <meta name="dcterms.title" content="Tableau de bord de la santé web d’IRCC">
     <meta property="dcterms:modified" title="W3CDTF" content="2024-10-09" />
 
 
@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/noscript.min.css" />
     </noscript>
 
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
 
     <script src="https://cdn.jsdelivr.net/npm/d3@4"></script>
 
@@ -39,7 +39,7 @@
                 <a href="index-en.html" lang="en">English</a>
             </section>
         </div>
-    </header> 
+    </header>
     <main property="mainContentOfPage" id="main">
         <div class="header">
             <h1 property="name" id="wb-cont" dir="ltr">Tableau de bord de la santé web d’IRCC</h1>
@@ -137,7 +137,7 @@
                                                     <details>
                                                         <summary>Version texte&nbsp;: Principaux types de référents</summary>
                                                         <div class="table-responsive">
-                                                            <table id="top-referrer-table" class="table table-bordered"></table>
+                                                            <table id="top-referrer-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                         </div>
                                                     </details>
                                                 </details>
@@ -146,7 +146,7 @@
                                                     <details>
                                                         <summary>Version texte&nbsp;: Principaux réseaux sociaux référents</summary>
                                                         <div class="table-responsive">
-                                                            <table id="top-social-table" class="table table-bordered"></table>
+                                                            <table id="top-social-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                         </div>
                                                     </details>
                                                 </details>
@@ -180,7 +180,7 @@
                                                     <details>
                                                         <summary>Version texte&nbsp;: Top 10 pages (français et anglais)</summary>
                                                         <div class="table-responsive">
-                                                            <table id="top-pages-table" class="table table-bordered"></table>
+                                                            <table id="top-pages-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                         </div>
                                                     </details>
                                                 </details>
@@ -194,32 +194,32 @@
                                                     {"action":"removeClass", "class":"active", "source":".btn-topic-english"},
                                                     {"action":"addClass", "class":"active", "source":".btn-topic-french"}
                                                 ]'>Français</button>
-                                                        <button class="btn btn-default btn-topic-english " type="button" data-wb-doaction='[
+                                                    <button class="btn btn-default btn-topic-english " type="button" data-wb-doaction='[
                                                 {"action":"removeClass", "class":"hidden", "source":"#topic-english"},
                                                 {"action":"addClass", "class":"hidden", "source":"#topic-french"},
                                                 {"action":"addClass", "class":"active", "source":".btn-topic-english"},
                                                 {"action":"removeClass", "class":"active", "source":".btn-topic-french"}
                                             ]'>Anglais</button>
 
-                                            <div id="topic-french" >
-                                                <canvas id="top-topic-chart-fr"></canvas>
-                                                <details>
-                                                    <summary>Version texte&nbsp;: Liens les plus cliqués sur la page thème (français)</summary>
-                                                    <div class="table-responsive">
-                                                        <table id="top-topic-table-fr" class="table table-bordered"></table>
-                                                    </div>
-                                                </details>
-                                            </div>
-                                                    <div id="topic-english" class="hidden">
-                                                        <canvas id="top-topic-chart-en"></canvas>
+                                                    <div id="topic-french">
+                                                        <canvas id="top-topic-chart-fr"></canvas>
                                                         <details>
-                                                            <summary>Version texte&nbsp;: Liens les plus cliqués sur la page thème (anglais)</summary>
+                                                            <summary>Version texte&nbsp;: Sujets les plus cliqués sur la page thème (français)</summary>
                                                             <div class="table-responsive">
-                                                                <table id="top-topic-table-en" class="table table-bordered"></table>
+                                                                <table id="top-topic-table-fr" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                             </div>
                                                         </details>
                                                     </div>
-                                                    
+                                                    <div id="topic-english" class="hidden">
+                                                        <canvas id="top-topic-chart-en"></canvas>
+                                                        <details>
+                                                            <summary>Version texte&nbsp;: Sujets les plus cliqués sur la page thème (anglais)</summary>
+                                                            <div class="table-responsive">
+                                                                <table id="top-topic-table-en" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
+                                                            </div>
+                                                        </details>
+                                                    </div>
+
 
 
 
@@ -245,7 +245,7 @@
                                                         <details>
                                                             <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Visiter le Canada&nbsp;&raquo; (anglais)</summary>
                                                             <div class="table-responsive">
-                                                                <table id="top-visit-table-en" class="table table-bordered"></table>
+                                                                <table id="top-visit-table-en" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                             </div>
                                                         </details>
                                                     </div>
@@ -253,7 +253,7 @@
                                                         <details>
                                                             <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Visiter le Canada&nbsp;&raquo; (français)</summary>
                                                             <div class="table-responsive">
-                                                                <table id="top-visit-table-fr" class="table table-bordered"></table>
+                                                                <table id="top-visit-table-fr" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                             </div>
                                                         </details>
                                                     </div>
@@ -282,7 +282,7 @@
                                                         <details>
                                                             <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Immigrer au Canada&nbsp;&raquo;(anglais)</summary>
                                                             <div class="table-responsive">
-                                                                <table id="top-immigration-table-en" class="table table-bordered"></table>
+                                                                <table id="top-immigration-table-en" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                             </div>
                                                         </details>
                                                     </div>
@@ -290,7 +290,7 @@
                                                         <details>
                                                             <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Immigrer au Canada&nbsp;&raquo; (français)</summary>
                                                             <div class="table-responsive">
-                                                                <table id="top-immigration-table-fr" class="table table-bordered"></table>
+                                                                <table id="top-immigration-table-fr" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                             </div>
                                                         </details>
                                                     </div>
@@ -310,21 +310,21 @@
                                                 {"action":"addClass", "class":"active", "source":".btn-work-english"},
                                                 {"action":"removeClass", "class":"active", "source":".btn-work-french"}
                                             ]'>Anglais</button>
-                                                       
+
                                                     </div>
                                                     <div id="work-english" class="hidden"> <canvas id="top-work-chart-en"></canvas>
                                                         <details>
-                                                            <summary>Version texte&nbsp;:  Liens les plus cliqués sur la page &laquo;&nbsp;Travailler au Canada&nbsp;&raquo; (anglais)</summary>
+                                                            <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Travailler au Canada&nbsp;&raquo; (anglais)</summary>
                                                             <div class="table-responsive">
-                                                                <table id="top-work-table-en" class="table table-bordered"></table>
+                                                                <table id="top-work-table-en" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                             </div>
                                                         </details>
                                                     </div>
                                                     <div id="work-french"><canvas id="top-work-chart-fr"></canvas>
                                                         <details>
-                                                            <summary>Version texte&nbsp;:  Liens les plus cliqués sur la page &laquo;&nbsp;Travailler au Canada&nbsp;&raquo; (français)</summary>
+                                                            <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Travailler au Canada&nbsp;&raquo; (français)</summary>
                                                             <div class="table-responsive">
-                                                                <table id="top-work-table-fr" class="table table-bordered"></table>
+                                                                <table id="top-work-table-fr" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                             </div>
                                                         </details>
                                                     </div>
@@ -332,36 +332,36 @@
                                                 </details>
                                                 <details>
                                                     <summary>Étudier au Canada</summary>
-                                                    <div class="btn-group btn-group-lang">  <button class="btn btn-default btn-study-french active" type="button" data-wb-doaction='[
+                                                    <div class="btn-group btn-group-lang"> <button class="btn btn-default btn-study-french active" type="button" data-wb-doaction='[
                                                 {"action":"addClass", "class":"hidden", "source":"#study-english"},
                                                 {"action":"removeClass", "class":"hidden", "source":"#study-french"},
                                                 {"action":"removeClass", "class":"active", "source":".btn-study-english"},
                                                 {"action":"addClass", "class":"active", "source":".btn-study-french"}
                                             ]'>Français</button>
-                                                    <div class="btn-group btn-group-lang">
-                                                        <button class="btn btn-default btn-study-english " type="button" data-wb-doaction='[
+                                                        <div class="btn-group btn-group-lang">
+                                                            <button class="btn btn-default btn-study-english " type="button" data-wb-doaction='[
                                                 {"action":"removeClass", "class":"hidden", "source":"#study-english"},
                                                 {"action":"addClass", "class":"hidden", "source":"#study-french"},
                                                 {"action":"addClass", "class":"active", "source":".btn-study-english"},
                                                 {"action":"removeClass", "class":"active", "source":".btn-study-french"}
                                             ]'>Anglais</button>
-                                                    </div>
-                                                    <div id="study-english" class="hidden"> <canvas id="top-study-chart-en"></canvas>
-                                                        <details>
-                                                            <summary>Version texte&nbsp;:   Liens les plus cliqués sur la page &laquo;&nbsp;Étudier au Canada&nbsp;&raquo; (français)</summary>
-                                                            <div class="table-responsive">
-                                                                <table id="top-study-table-en" class="table table-bordered"></table>
-                                                            </div>
-                                                        </details>
-                                                    </div>
-                                                    <div id="study-french"><canvas id="top-study-chart-fr"></canvas>
-                                                        <details>
-                                                            <summary>Version texte&nbsp;:   Liens les plus cliqués sur la page &laquo;&nbsp;Étudier au Canada&nbsp;&raquo; (français)</summary>
-                                                            <div class="table-responsive">
-                                                                <table id="top-study-table-fr" class="table table-bordered"></table>
-                                                            </div>
-                                                        </details>
-                                                    </div>
+                                                        </div>
+                                                        <div id="study-english" class="hidden"> <canvas id="top-study-chart-en"></canvas>
+                                                            <details>
+                                                                <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Étudier au Canada&nbsp;&raquo; (français)</summary>
+                                                                <div class="table-responsive">
+                                                                    <table id="top-study-table-en" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
+                                                                </div>
+                                                            </details>
+                                                        </div>
+                                                        <div id="study-french"><canvas id="top-study-chart-fr"></canvas>
+                                                            <details>
+                                                                <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Étudier au Canada&nbsp;&raquo; (français)</summary>
+                                                                <div class="table-responsive">
+                                                                    <table id="top-study-table-fr" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
+                                                                </div>
+                                                            </details>
+                                                        </div>
 
                                                 </details>
                                             </div>
@@ -380,7 +380,7 @@
 
                         <div class="box">
                             <div class="box-heading">
-                                <h2 class="h3" id="tss">Résultats du sondage sur la réussite des tâches du gouvernement du Canada</h2>
+                                <h2 class="h3" id="tss">Réussite des tâches</h2>
                             </div>
                             <div class="box-body">
                                 <div class="row">
@@ -395,36 +395,36 @@
                                             <div class="tabpanels">
                                                 <details>
                                                     <summary>Rendement global</summary>
-                                                    <p class="mrgn-tp-sm mrgn-bttm-0"><strong>Note&nbsp;:</strong> le nombre entre les trimestres montre la différence en points de pourcentage.</p>
+                                                    <p class="mrgn-tp-sm mrgn-bttm-0"><strong>Note&nbsp;:</strong> le nombre entre les mois montre la différence en points de pourcentage.</p>
 
                                                     <div class="container-fluid">
                                                         <div class="row mrgn-tp-md text-center eqht-grd">
                                                             <div class="col-lg-6 col-md-6">
                                                                 <div class="panel panel-body panel-default d-flex flex-column hght-inhrt">
                                                                     <h3 class="mrgn-tp-sm h4">Réussite</h3>
-                                                                    <div class="number-change" id="tss-completion-prev-quarter-change"></div>
-                                                                    <div class="large-text" id="tss-completion-prev-quarter"></div>
+                                                                    <div class="number-change" id="tss-completion-prev-month-change"></div>
+                                                                    <div class="large-text" id="tss-completion-prev-month"></div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-6 col-md-6">
                                                                 <div class="panel panel-body panel-default d-flex flex-column hght-inhrt">
                                                                     <h3 class="mrgn-tp-sm h4">Facilité</h3>
-                                                                    <div class="number-change" id="tss-ease-prev-quarter-change"></div>
-                                                                    <div class="large-text" id="tss-ease-prev-quarter"></div>
+                                                                    <div class="number-change" id="tss-ease-prev-month-change"></div>
+                                                                    <div class="large-text" id="tss-ease-prev-month"></div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-6 col-md-6">
                                                                 <div class="panel panel-body panel-default d-flex flex-column hght-inhrt">
                                                                     <h3 class="mrgn-tp-sm h4">Satisfaction</h3>
-                                                                    <div class="number-change" id="tss-satisfaction-prev-quarter-change"></div>
-                                                                    <div class="large-text" id="tss-satisfaction-prev-quarter"></div>
+                                                                    <div class="number-change" id="tss-satisfaction-prev-month-change"></div>
+                                                                    <div class="large-text" id="tss-satisfaction-prev-month"></div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-6 col-md-6">
                                                                 <div class="panel panel-body panel-default d-flex flex-column hght-inhrt">
                                                                     <h3 class="mrgn-tp-sm h4">Réponses</h3>
-                                                                    <div class="number-change" id="tss-survey-prev-quarter-change"></div>
-                                                                    <div class="large-text" id="tss-survey-prev-quarter"></div>
+                                                                    <div class="number-change" id="tss-survey-prev-month-change"></div>
+                                                                    <div class="large-text" id="tss-survey-prev-month"></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -478,16 +478,6 @@
                                         <div id="contact-hc-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-fr.html#contact-hc-insights"}'></div>
 
                                     </div>
-
-
-                                    
-
-
-
-
-
-
-
                                     <div class="col-lg-8 col-xs-12">
                                         <div class="wb-tabs">
                                             <div class="tabpanels">
@@ -499,7 +489,7 @@
                                                         <li>La page principale &laquo;&nbsp;Contacter IRCC&nbsp;&raquo; est exclue.</li>
                                                     </ul>
                                                     <div class="table-responsive">
-                                                        <table id="contact-us-table" class="table table-bordered">
+                                                        <table id="contact-us-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
                                                         </table>
                                                     </div>
                                                 </details>
@@ -512,7 +502,7 @@
                                                         <li>Le contenu du centre d’aide est exclu (URL filtrées avec "helpcentre" et "centre-aide").</li>
                                                     </ul>
                                                     <div class="table-responsive">
-                                                        <table id="helpcentre-table" class="table table-bordered">
+                                                        <table id="helpcentre-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
                                                         </table>
                                                     </div>
                                                 </details>
@@ -548,14 +538,14 @@
                                                 <details>
                                                     <summary>Salle de presse</summary>
                                                     <div class="table-responsive">
-                                                        <table id="news-table" class="table table-bordered">
+                                                        <table id="news-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
                                                         </table>
                                                     </div>
                                                 </details>
                                                 <details>
                                                     <summary>Avis</summary>
                                                     <div class="table-responsive">
-                                                        <table id="notices-table" class="table table-bordered">
+                                                        <table id="notices-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
                                                         </table>
                                                     </div>
                                                 </details>
@@ -592,7 +582,7 @@
                                                 <details>
                                                     <summary>Contenu des mesures spéciales les plus performantes</summary>
                                                     <div class="table-responsive">
-                                                        <table id="crisis-content-table" class="table table-bordered">
+                                                        <table id="crisis-content-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
                                                         </table>
                                                     </div>
                                                 </details>
@@ -603,7 +593,7 @@
                                                         <summary>Version texte&nbsp;: Trafic au mesures spéciales</summary>
 
                                                         <div class="table-responsive">
-                                                            <table id="crisis-traffic-table" class="table table-bordered">
+                                                            <table id="crisis-traffic-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
                                                             </table>
                                                         </div>
                                                     </details>
@@ -645,7 +635,7 @@
                                                         <summary>Version texte&nbsp;: Pages d’accueil pour les campagnes les plus performantes</summary>
 
                                                         <div class="table-responsive">
-                                                            <table id="campaign-landing-table" class="table table-bordered">
+                                                            <table id="campaign-landing-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
                                                             </table>
                                                         </div>
                                                     </details>
@@ -657,7 +647,7 @@
                                                         <summary>Version texte&nbsp;: Campagnes UTM les plus performantes</summary>
 
                                                         <div class="table-responsive">
-                                                            <table id="utm-table" class="table table-bordered">
+                                                            <table id="utm-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
                                                             </table>
                                                         </div>
                                                     </details>
