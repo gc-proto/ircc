@@ -1439,19 +1439,19 @@ $(document).on("wb-ready.wb", function (event) {
                         datasets: [
                             {
                                 label: effectiveness,
-                                data: y1.reverse(),
+                                data: y1,
                                 backgroundColor: '#37b99c',
                                 borderColor: '#37b99c'
                             },
                             {
                                 label: ease,
-                                data: y2.reverse(),
+                                data: y2,
                                 backgroundColor: '#ff6384',
                                 borderColor: '#ff6384'
                             },
                             {
                                 label: 'Satisfaction',
-                                data: y3.reverse(),
+                                data: y3,
                                 backgroundColor: '#36a2eb',
                                 borderColor: '#36a2eb'
                             }
