@@ -2043,11 +2043,27 @@ $(document).on("wb-ready.wb", function (event) {
 
     function difference(a, b, elm, daterange) {
 
-        let dif = parseFloat((Math.abs((a - b) / b)) * 100).toFixed(1);
+        let bigNum, smallNum;
+        if (a > b) {
+            bigNum = parseFloat(a);
+            smallNum = parseFloat(b);
+        }
+        else {
+            bigNum = parseFloat(b);
+            smallNum = parseFloat(a);
+        }
+
+        let step1, step2, percentDif;
+        step1 = bigNum - smallNum;
+        step2 = parseFloat((bigNum + smallNum)/2);
+        percentDif = parseFloat((parseFloat(step1/step2))*100).toFixed(1);
+
+
+        console.log(step1, step2, percentDif, elm);
         
-        if (dif != 0) {
+        if (percentDif != 0) {
             if (a > b) {
-                document.getElementById(elm).innerHTML = lang === "en" ? '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(dif) + dict[lang].percent : '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(dif) + "&nbsp;%";
+                document.getElementById(elm).innerHTML = lang === "en" ? '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(percentDif) + dict[lang].percent : '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(percentDif) + "&nbsp;%";
 
 
                 let text = document.createElement('div');
@@ -2058,7 +2074,7 @@ $(document).on("wb-ready.wb", function (event) {
             }
             else if (a < b) {
 
-                document.getElementById(elm).innerHTML = '<i class="fas fa-caret-down"></i>&nbsp;' + d3.format(",")(dif) + dict[lang].percent;
+                document.getElementById(elm).innerHTML = '<i class="fas fa-caret-down"></i>&nbsp;' + d3.format(",")(percentDif) + dict[lang].percent;
                 let text = document.createElement('div');
                 text.setAttribute('class', 'addedText');
                 text.innerHTML = "<span class=\"small\">" + dict[lang].difference[1] + daterange + "</span>";
@@ -2067,7 +2083,7 @@ $(document).on("wb-ready.wb", function (event) {
             }
         }
         else {
-            document.getElementById(elm).innerHTML = d3.format(",")(dif) + dict[lang].percent;
+            document.getElementById(elm).innerHTML = d3.format(",")(percentDif) + dict[lang].percent;
         }
     }
 
