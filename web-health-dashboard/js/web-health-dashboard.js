@@ -1435,7 +1435,7 @@ $(document).on("wb-ready.wb", function (event) {
                 {
                     type: 'line',
                     data: {
-                        labels: x.reverse(),
+                        labels: x,
                         datasets: [
                             {
                                 label: effectiveness,
