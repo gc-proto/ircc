@@ -1,0 +1,88 @@
+.user-journey {
+  display: flex;
+  margin: 20px 0;
+}
+.user-journey ol {
+  position: relative;
+  list-style: none;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  overflow: hidden;
+  margin: 0 !important;
+  padding: 0 5px !important;
+  padding-inline-start: 0 !important;
+  margin-block-start: 0 !important;
+  margin-block-end: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+@media screen and (min-width: 768px) {
+  .user-journey ol {
+    display: flex;
+    flex-direction: row;
+  }
+}
+.user-journey ol:first-child {
+  padding-left: 16px;
+}
+.user-journey ol:first-child::after {
+  content: none;
+}
+.user-journey ol li {
+  width: 100%;
+  position: relative;
+  background-color: #D5C6FF;
+  font-weight: bold;
+  color: #350267;
+  line-height: 1em;
+  height: 60px;
+  padding: 2px 60px 2px 20px;
+}
+@media screen and (max-width: 768px) {
+  .user-journey ol li {
+    border: 1px solid #350267;
+    margin: 5px 0px;
+    padding: 15px;
+    height: -moz-max-content;
+    height: max-content;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 991px) {
+  .user-journey ol li {
+    font-size: 0.8em;
+  }
+}
+@media screen and (min-width: 769px) {
+  .user-journey ol li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .user-journey ol li::before, .user-journey ol li::after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -20px;
+    content: "";
+    width: 30px;
+    height: 30px;
+    border-left: 4px solid #FFF;
+    background-color: #D5C6FF;
+  }
+  .user-journey ol li:not(:first-child)::after {
+    transform: skew(-30deg);
+    top: 30px;
+  }
+  .user-journey ol li:not(:first-child)::before {
+    transform: skew(30deg);
+  }
+}
+.user-journey ol li.active {
+  background-color: #350267;
+  color: #fff;
+}
+.user-journey ol li.active::before, .user-journey ol li.active::after {
+  background-color: #350267;
+}/*# sourceMappingURL=user-journey-simple.css.map */
