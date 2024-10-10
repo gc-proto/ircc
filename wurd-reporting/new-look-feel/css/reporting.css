@@ -11,6 +11,7 @@ header, #wb-bc {
   font-weight: 300;
   display: block;
   padding-left: 10px;
+  margin-top: 0;
 }
 
 header {
@@ -30,12 +31,26 @@ header .h1-sub {
   font-size: 1em;
   color: #D5C6FF;
 }
+header .background-logo {
+  opacity: 0.5;
+  position: relative;
+  flex-grow: 1;
+}
+header .background-logo .background-logo-svg {
+  width: 25%;
+  position: absolute;
+  bottom: -120px;
+  right: 50px;
+}
 
 #wb-bc a {
   color: #fff;
 }
 #wb-bc a:hover, #wb-bc a:focus, #wb-bc a:visited {
   color: #D5C6FF;
+}
+#wb-bc ol {
+  margin-top: 0 !important;
 }
 #wb-bc .breadcrumb li:before {
   color: #fff !important;
@@ -140,6 +155,12 @@ main {
   }
 }
 @media (max-width: 1199px) {
+  header h1, header .sub-h1 {
+    font-size: 1.5em;
+  }
+  .background-logo {
+    display: none;
+  }
   main {
     flex-direction: column;
   }
