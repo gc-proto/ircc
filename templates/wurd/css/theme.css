@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+.wurd, .wurd #wb-bc {
+  background-color: #350267;
+  color: #fff;
+  font-family: "Lexend", sans-serif !important;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 300;
+  display: block;
+  padding-left: 10px;
+  margin-top: 0;
+}
+
+.wurd {
+  padding: 15px 0 25px;
+}
+.wurd img {
+  padding-right: 20px;
+}
+.wurd h1, .wurd .h1-sub {
+  font-family: "Lexend", sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 2.5em;
+  border: none !important;
+  margin: 0;
+}
+.wurd .h1-sub {
+  font-size: 1em;
+  color: #D5C6FF;
+}
+.wurd .background-logo {
+  opacity: 0.5;
+  position: relative;
+  flex-grow: 1;
+}
+.wurd .background-logo .background-logo-svg {
+  width: 25%;
+  position: absolute;
+  bottom: -120px;
+  right: 50px;
+}
+
+.wurd #wb-bc a {
+  color: #fff;
+}
+.wurd #wb-bc a:hover, .wurd #wb-bc a:focus, .wurd #wb-bc a:visited {
+  color: #D5C6FF;
+}
+.wurd #wb-bc ol {
+  margin-top: 0 !important;
+}
+.wurd #wb-bc .breadcrumb li:before {
+  color: #fff !important;
+  padding-right: 5px;
+}
+
+main {
+  display: flex;
+  flex-grow: 1;
+}
+
+#left-navigation {
+  background-color: #E9E5F2;
+  color: #350267 !important;
+  font-family: "Lexend", sans-serif;
+  width: 15%;
+  float: left;
+  display: flex;
+  flex-direction: column;
+}
+#left-navigation h2 {
+  background-color: #600DB4;
+  color: #E9E5F2;
+  padding: 15px;
+  margin: 0;
+  font-size: 1em;
+}
+#left-navigation h2 a {
+  color: #E9E5F2 !important;
+  text-decoration: none !important;
+  cursor: default;
+}
+#left-navigation ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#left-navigation ul li {
+  border-bottom: 1px solid #350267;
+  padding: 15px;
+  position: relative;
+}
+#left-navigation ul li a {
+  text-decoration: none !important;
+  color: #350267 !important;
+}
+#left-navigation ul li a:after {
+  background-color: rgba(0, 0, 0, 0);
+  bottom: 0;
+  content: "";
+  left: 0;
+  pointer-events: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+#left-navigation ul li:has(a:hover, a:focus) {
+  background-color: #D5C6FF;
+}
+
+#mainContent {
+  margin-left: 2.5%;
+  width: 60%;
+  float: left;
+  display: block;
+}
+#mainContent h2::after {
+  border-bottom: 0.18em solid #350267;
+  content: "";
+  display: block;
+  padding-bottom: 8px;
+  width: 70px;
+}
+#mainContent .panel {
+  padding: 20px;
+  border-radius: 20px;
+}
+#mainContent .well {
+  border-radius: 20px;
+  border: none;
+  box-shadow: none;
+}
+#mainContent hr {
+  border-top: 3px solid #E9E5F2;
+}
+
+@media (min-width: 1200px) {
+  #mainContent {
+    width: 80%;
+  }
+}
+@media (max-width: 1199px) {
+  .wurd h1, .wurd .sub-h1 {
+    font-size: 1.5em;
+  }
+  .background-logo {
+    display: none;
+  }
+  main {
+    flex-direction: column;
+  }
+  #mainContent {
+    width: 100%;
+    margin: 0;
+    padding: 0 15px;
+    clear: both;
+  }
+  #left-navigation {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    clear: both;
+  }
+  #left-navigation h2 {
+    position: relative;
+    flex-basis: 1 1 20%;
+  }
+  #left-navigation h2:not(:last-child) {
+    border-right: 1px solid #D5C6FF;
+  }
+  #left-navigation h2:has(a:hover, a:focus) {
+    background-color: #D5C6FF;
+  }
+  #left-navigation h2 a {
+    cursor: pointer !important;
+  }
+  #left-navigation h2 a:hover, #left-navigation h2 a:focus {
+    background: #D5C6FF;
+    color: #350267 !important;
+  }
+  #left-navigation h2 a:after {
+    background-color: rgba(0, 0, 0, 0);
+    bottom: 0;
+    content: "";
+    left: 0;
+    pointer-events: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+  }
+  #left-navigation ul {
+    flex-direction: column;
+    order: 3;
+    width: 100%;
+  }
+}/*# sourceMappingURL=theme.css.map */
