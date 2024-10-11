@@ -1,0 +1,152 @@
+<!doctype html>
+
+
+<html class="no-js" dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head prefix="og: http://ogp.me/ns#">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+
+    <title>Convert a Canada.ca page to a GitHub template &ndash; Web UX Research and Design</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="description" content=" " />
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" />
+    <link rel="stylesheet" href="https://test.canada.ca/ircc/wurd-reporting/new-look-feel/css/reporting.css" />
+    <link rel="stylesheet" href="css/templator.css" />
+
+</head>
+ 
+
+<body vocab="http://schema.org/" typeof="WebPage">
+
+
+    <header class="wurd">
+        <!-- <nav id="wb-bc" property="breadcrumb">
+            <h2 class="wb-inv">You are here:</h2>
+            <div class="container-fluid">
+                <ol class="breadcrumb pull-left">
+                    <li><a href='index-eng.html'>Utilities</a></li>
+                </ol>
+
+                <p class="pull-right max-content"><a href="2023-2024-Q4-fra.html" lang="fr">Français</a></p>
+            </div>
+        </nav> -->
+
+        <div class="container-fluid d-flex">
+            <img src="https://test.canada.ca/ircc/wurd-reporting/new-look-feel/images/wurd-logo.svg" class="d-flex align-self-center img-responsive" alt="" />
+            <div class="d-flex align-self-center">
+                <h1 id="wb-cont" property="name">Templator<br><span class="h1-sub">Convert a Canada.ca page to a GitHub template</span>
+                </h1>
+            </div>
+        </div>
+
+        <div class="background-logo">
+            <div class="background-logo-svg">
+                <svg viewBox="0 0 175 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M126.874 0L175 55L126.947 109.917L96 75.5L104.793 65.7548L126.801 90.0798L157.497 55L126.874 20.0035L48.1259 110L0 55L48.0529 0.0833844L79.231 34.6669L70.438 44.4121L48.1988 19.9202L17.5034 55L48.1259 89.9965L126.874 0Z" fill="white" />
+                </svg>
+            </div>
+        </div>
+    </header>
+
+
+    <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
+       
+        <div class="container py-4">
+            
+            <button class="btn-link p-0 wb-toggle" id="settings" data-toggle='{"selector": "#settings-options", "stateOn": "show", "stateOff":"hidden"}'><i class="fas fa-cog mrgn-rght-sm"></i>Settings</button>
+            <div class="hidden panel panel-body panel-default small" id="settings-options">
+                <form id="settings-form">
+                    <fieldset class="chkbxrdio-grp">
+                        <legend>Code syntax theme</legend>
+                        <div class="radio">
+                            <label for="light"><input type="radio" name="theme" value="default" id="light" /> Light (default)</label>
+                        </div>
+                        <div class="radio">
+                            <label for="dark"><input type="radio" name="theme" value="dark" id="dark" /> Dark</label>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            
+    
+            <div class="mrgn-tp-lg mrgn-bttm-md panel panel-body panel-default">
+                <label for="enterURL">Page URL:</label>
+                <input type="text" placeholder="https:///www.canada.ca" class="full-width" id="enterURL" /><br />
+                <button class="btn btn-info mrgn-tp-md" id="generate">Generate template</button>
+                <button class="btn btn-info mrgn-tp-md" id="aem-extract">Extract code for AEM</button>
+    
+    
+            </div>
+            <div id="downloadedContent" class="hidden"></div>
+        </div>
+        
+        <div class="hidden" id="showOutput">
+            <div class="container mrgn-bttm-xl">
+    
+                <div class="row">
+                    <div class="col-md-8 col-xs-12 h-100">
+                        <div id="status" class="align-self-center"></div>
+                        <div class="position-relative">
+                            <div class="d-flex">
+                                <div class="btn-group mrgn-bttm-sm">
+                                    <button id="copyClip" class="btn btn-default">Copy to clipboard</button>
+                                    <button id="save" class="btn btn-default">Download</button>
+                                    <button id="update" class="btn btn-default">Run changes</button>
+                            
+                                </div>
+                                <button class="btn-link p-0 wb-toggle text-right grow" data-toggle='{"selector": "#snippets", "stateOn": "show", "stateOff":"hidden"}'><i class="fas fa-code mrgn-rght-sm"></i></i>Add a component</button>
+                            
+                            </div>
+                        </div>
+                        <div class="panel panel-body panel-default small" id="snippets">           
+                            <ul class="list-unstyled list-inline">
+                                 <li><button class="btn-link p-0" data-add-snippet="subwayNavigationIndex">Subway navigation: Index</button></li>
+                                 <li><button class="btn-link p-0" data-add-snippet="subwayNavigationStep">Subway navigation: Step</button></li>
+                            </ul>
+                         </div>
+                        <div class="position-relative" data-theme="default">
+                            <textarea class="full-width" placeholder="Enter HTML Source Code" id="output" spellcheck="false" oninput="update(this.value); sync_scroll(this);" onscroll="sync_scroll(this);" onkeydown="check_tab(this, event);"></textarea>
+                            <pre id="highlighting" aria-hidden="true" class="full-width">
+                                <code class="language-html full-width" id="highlighting-content"></code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="pageDetails">
+                            <h2 class="mrgn-tp-0">Page details</h2>
+                            <div id="pageDetails"></div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <h2>Page preview</h2>
+                
+        
+            </div>
+            <div id="preview"></div>
+    
+        </div>
+    
+
+           
+    </main>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="js/get-template.js"></script> 
+    <script src="js/snippets.js"></script>
+    <script src="js/templator.js"></script>
+</body>
+
+</html>
