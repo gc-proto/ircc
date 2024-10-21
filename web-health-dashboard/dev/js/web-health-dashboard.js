@@ -1258,7 +1258,6 @@ $(document).on("wb-ready.wb", function (event) {
         });
 
         d3.csv(path + "tss-highest-performing.csv?" + today, function (data) {
-            console.log(path, path.indexOf("previous"));
             let modPath;
             if (path.indexOf("previous") == -1) {
                 modPath = path + "previous/" + lastMonth
@@ -1266,13 +1265,9 @@ $(document).on("wb-ready.wb", function (event) {
             else {
                 let tempMonth = parseInt(lastMonth.split("-")[1]) - 1;
                 if (tempMonth < 10) tempMonth = "0" + tempMonth.toString();
-                console.log(path.split(lastMonth))
-                console.log(path.split(lastMonth)[0], lastMonth.split("-")[0])
                 modPath = path.split(lastMonth)[0] + lastMonth.split("-")[0] + "-" + tempMonth;
             }
-            console.log(modPath);
             d3.csv(modPath + "/tss-highest-performing.csv?" + today, function (data2) {
-                
                 
                 document.getElementById("tss-top-tasks-table").outerHTML = toptasktable;
                 data = data.filter(function (d) {
@@ -1281,7 +1276,8 @@ $(document).on("wb-ready.wb", function (event) {
                     }
                     return true;
                 });
-                           
+                
+                if (data2 != null) {
                 data2.forEach(function (d) {
                     d["TSS completion - previous month"] = Math.round(d["TSS completion"] * 100);                  
                     delete d["TSS completion"];
@@ -1295,7 +1291,7 @@ $(document).on("wb-ready.wb", function (event) {
                 for (let i = 0; i<data2.length; i++) {
                     data[i]["TSS completion - previous month"] = data2[i]["TSS completion - previous month"];
                 }       
-               
+                }
 
                 data = data.filter(function (d) {
                     if (d["Surveys completed"] < 384) {
@@ -1317,7 +1313,7 @@ $(document).on("wb-ready.wb", function (event) {
                     delete d[""];
                     d["Task"] = d["Task"];
 
-                    if (lang != "en")
+                    if (lang != "en") {
                         switch (d["Task"]) {
                             case "Apply for a work permit":
                                 d["Task"] = "Présenter une demande de permis de travail"
@@ -1412,11 +1408,15 @@ $(document).on("wb-ready.wb", function (event) {
                             default:
                                 break;
                         }
-
-                    if (d["TSS completion - previous month"] != 0) {
-                        d["diff"] = simpleDiff(Math.round(d["TSS completion"] * 100), d["TSS completion - previous month"]);
                     }
-                    else d["diff"] = `<span class="badge mrgn-lft-md">${dict[lang].unknown}</span>`
+
+                    if (data2 != null) {
+                        if (d["TSS completion - previous month"] != 0) {
+                            d["diff"] = simpleDiff(Math.round(d["TSS completion"] * 100), d["TSS completion - previous month"]);
+                        }
+                        else d["diff"] = `<span class="badge mrgn-lft-md">${dict[lang].unknown}</span>`
+                    }
+                   
                     
                     d["TSS completion"] = Math.round(d["TSS completion"] * 100);
                     d["TSS ease"] = Math.round(d["TSS ease"] * 100);
@@ -1424,7 +1424,6 @@ $(document).on("wb-ready.wb", function (event) {
                     d["Surveys completed"] = d["Surveys completed"];
 
                 });
-                console.log(data)
 
                 tabulate("tss-top-tasks-table", data, label, colheaders);
 
@@ -1436,7 +1435,7 @@ $(document).on("wb-ready.wb", function (event) {
                         document.getElementById("tss-top-tasks-table").rows[i].cells[j].style.backgroundColor = getColor(document.getElementById("tss-top-tasks-table").rows[i].cells[j].innerHTML);
                         document.getElementById("tss-top-tasks-table").rows[i].cells[j].innerHTML += "%";
 
-                        if (j===1) document.getElementById('tss-top-tasks-table').rows[i].cells[j].innerHTML += data[i-1]["diff"]
+                        if ((j===1) && (data2 != null)) document.getElementById('tss-top-tasks-table').rows[i].cells[j].innerHTML += data[i-1]["diff"]
                     }
                 }
 
@@ -2103,7 +2102,6 @@ $(document).on("wb-ready.wb", function (event) {
             bigNum = parseFloat(b);
             smallNum = parseFloat(a);
         }
-        console.log(a, b)
         let step1, step2, percentDif;
         step1 = bigNum - smallNum;
         step2 = parseFloat((bigNum + smallNum) / 2);
