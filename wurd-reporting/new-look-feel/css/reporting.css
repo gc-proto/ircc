@@ -74,6 +74,7 @@ main {
   padding: 10px 35px;
   background-color: #600DB4;
   margin: 0;
+  position: relative;
 }
 #left-navigation p:has(a:hover, a:focus) {
   background-color: #D5C6FF;
@@ -84,6 +85,18 @@ main {
 #left-navigation p a {
   text-decoration: none !important;
   color: #E9E5F2;
+}
+#left-navigation p a:after {
+  background-color: rgba(0, 0, 0, 0);
+  bottom: 0;
+  content: "";
+  left: 0;
+  pointer-events: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  font-weight: 300;
 }
 #left-navigation h2 {
   background-color: #E9E5F2;
