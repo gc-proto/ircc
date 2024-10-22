@@ -2,7 +2,6 @@
 @import url(https://test.canada.ca/ircc/wurd-reporting/new-look-feel/css/progress-bar.css);
 @import url(https://test.canada.ca/ircc/wurd-reporting/css/phases.css);
 @import url(https://test.canada.ca/ircc/wurd-reporting/new-look-feel/css/user-journey-simple.css);
-@import url(https://test.canada.ca/ircc/templates/wurd-crew/theme.css);
 .wurd, .wurd #wb-bc {
   background-color: #350267;
   color: #fff;
@@ -11,7 +10,7 @@
   font-style: normal;
   font-weight: 300;
   display: block;
-  padding: 0 20px;
+  padding-left: 10px;
   margin-top: 0;
 }
 
@@ -20,7 +19,6 @@
 }
 .wurd img {
   padding-right: 20px;
-  padding-left: 20px;
 }
 .wurd h1, .wurd .h1-sub {
   font-family: "Lexend", sans-serif !important;
@@ -68,7 +66,7 @@ main {
   background-color: #E9E5F2;
   color: #350267 !important;
   font-family: "Lexend", sans-serif;
-  width: 17.5%;
+  width: 15%;
   float: left;
   display: flex;
   flex-direction: column;
@@ -77,7 +75,6 @@ main {
   background-color: #600DB4;
   color: #E9E5F2;
   padding: 15px;
-  padding-left: 30px;
   margin: 0;
   font-size: 1em;
 }
@@ -93,7 +90,7 @@ main {
 }
 #left-navigation ul li {
   border-bottom: 1px solid #350267;
-  padding: 10px 15px 10px 35px;
+  padding: 15px;
   position: relative;
 }
 #left-navigation ul li a {
@@ -116,7 +113,7 @@ main {
 }
 
 #mainContent {
-  margin: 0 2.5%;
+  margin-left: 2.5%;
   width: 60%;
   float: left;
   display: block;
@@ -167,13 +164,10 @@ main {
   main {
     flex-direction: column;
   }
-  .wurd img {
-    width: 115px;
-  }
   #mainContent {
     width: 100%;
     margin: 0;
-    padding: 0 35px;
+    padding: 0 15px;
     clear: both;
   }
   #left-navigation {
@@ -187,7 +181,6 @@ main {
   #left-navigation h2 {
     position: relative;
     flex-basis: 1 1 20%;
-    padding-right: 35px;
   }
   #left-navigation h2:not(:last-child) {
     border-right: 1px solid #D5C6FF;
@@ -218,4 +211,4 @@ main {
     order: 3;
     width: 100%;
   }
-}/*# sourceMappingURL=reporting.css.map */
+}/*# sourceMappingURL=wurd.css.map */
