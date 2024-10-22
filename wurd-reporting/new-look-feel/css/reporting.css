@@ -6,10 +6,10 @@
 .wurd, .wurd #wb-bc {
   background-color: #350267;
   color: #fff;
-  font-family: "Lexend", sans-serif !important;
+  font-family: "Noto", sans-serif !important;
   font-optical-sizing: auto;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
   display: block;
   padding: 0 20px;
   margin-top: 0;
@@ -23,7 +23,7 @@
   padding-left: 20px;
 }
 .wurd h1, .wurd .h1-sub {
-  font-family: "Lexend", sans-serif !important;
+  font-family: "Noto", sans-serif !important;
   font-weight: 500 !important;
   font-size: 2.5em;
   border: none !important;
@@ -65,24 +65,24 @@ main {
 }
 
 #left-navigation {
-  background-color: #E9E5F2;
+  background-color: #f3f3f3;
   color: #350267 !important;
-  font-family: "Lexend", sans-serif;
+  font-family: "Noto", sans-serif;
   width: 17.5%;
   float: left;
   display: flex;
   flex-direction: column;
 }
 #left-navigation h2 {
-  background-color: #600DB4;
-  color: #E9E5F2;
+  background-color: #E9E5F2;
+  color: #350267;
   padding: 15px;
   padding-left: 30px;
   margin: 0;
   font-size: 1em;
 }
 #left-navigation h2 a {
-  color: #E9E5F2 !important;
+  color: #350267 !important;
   text-decoration: none !important;
   cursor: default;
 }
@@ -110,6 +110,7 @@ main {
   right: 0;
   top: 0;
   z-index: 1;
+  font-weight: 300;
 }
 #left-navigation ul li:has(a:hover, a:focus) {
   background-color: #D5C6FF;
@@ -150,11 +151,17 @@ main {
 }
 #mainContent hr {
   border-top: 3px solid #E9E5F2;
+  clear: both;
 }
 
 @media (min-width: 1200px) {
   #mainContent {
     width: 80%;
+  }
+  #left-navigation {
+    position: sticky !important;
+    top: 0;
+    overflow: hidden;
   }
 }
 @media (max-width: 1199px) {
