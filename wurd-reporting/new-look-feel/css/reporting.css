@@ -70,6 +70,21 @@ main {
   display: flex;
   flex-direction: column;
 }
+#left-navigation p {
+  padding: 10px 35px;
+  background-color: #600DB4;
+  margin: 0;
+}
+#left-navigation p:has(a:hover, a:focus) {
+  background-color: #D5C6FF;
+}
+#left-navigation p:has(a:hover, a:focus) a:hover, #left-navigation p:has(a:hover, a:focus) a:focus {
+  color: #600DB4;
+}
+#left-navigation p a {
+  text-decoration: none !important;
+  color: #E9E5F2;
+}
 #left-navigation h2 {
   background-color: #E9E5F2;
   color: #350267;
