@@ -1,0 +1,266 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+@import url(https://test.canada.ca/ircc/wurd-reporting/new-look-feel/css/progress-bar.css);
+@import url(https://test.canada.ca/ircc/wurd-reporting/css/phases.css);
+@import url(https://test.canada.ca/ircc/wurd-reporting/new-look-feel/css/user-journey-simple.css);
+@import url(https://test.canada.ca/ircc/templates/wurd-crew/theme.css);
+.wurd, .wurd #wb-bc {
+  background-color: #350267;
+  color: #fff;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+  display: block;
+  margin-top: 0;
+}
+
+.wurd #wb-bc {
+  padding: 15px 35px;
+}
+
+.wurd img {
+  padding: 0 35px;
+  margin-bottom: 25px;
+}
+.wurd h1, .wurd .h1-sub {
+  font-weight: 500 !important;
+  font-size: 2.5em;
+  border: none !important;
+  margin: 0;
+}
+.wurd .h1-sub {
+  font-size: 1em;
+  color: #D5C6FF;
+}
+.wurd .background-logo {
+  opacity: 0.5;
+  position: relative;
+  flex-grow: 1;
+}
+.wurd .background-logo .background-logo-svg {
+  width: 25%;
+  position: absolute;
+  bottom: -120px;
+  right: 50px;
+}
+
+.wurd #wb-bc a {
+  color: #fff;
+}
+.wurd #wb-bc a:hover, .wurd #wb-bc a:focus, .wurd #wb-bc a:visited {
+  color: #D5C6FF;
+}
+.wurd #wb-bc ol {
+  margin-top: 0 !important;
+}
+.wurd #wb-bc .breadcrumb li:before {
+  color: #fff !important;
+  padding-right: 5px;
+}
+
+main {
+  display: flex;
+  flex-grow: 1;
+}
+
+#left-navigation {
+  background-color: #f3f3f3;
+  color: #350267 !important;
+  width: 17.5%;
+  float: left;
+  display: flex;
+  flex-direction: column;
+}
+#left-navigation > div {
+  position: sticky;
+  top: 0;
+}
+#left-navigation p {
+  padding: 10px 35px;
+  background-color: #600DB4;
+  margin: 0;
+  position: relative;
+}
+#left-navigation p:has(a:hover, a:focus) {
+  background-color: #D5C6FF;
+}
+#left-navigation p:has(a:hover, a:focus) a:hover, #left-navigation p:has(a:hover, a:focus) a:focus {
+  color: #600DB4;
+}
+#left-navigation p a {
+  text-decoration: none !important;
+  color: #E9E5F2;
+}
+#left-navigation p a:after {
+  background-color: rgba(0, 0, 0, 0);
+  bottom: 0;
+  content: "";
+  left: 0;
+  pointer-events: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  font-weight: 300;
+}
+#left-navigation h2 {
+  background-color: #E9E5F2;
+  color: #350267;
+  padding: 15px;
+  padding-left: 35px;
+  margin: 0;
+  font-size: 1em;
+}
+#left-navigation h2 a {
+  color: #350267 !important;
+  text-decoration: none !important;
+  cursor: default;
+}
+#left-navigation ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#left-navigation ul li {
+  border-bottom: 1px solid #350267;
+  padding: 10px 15px 10px 35px;
+  position: relative;
+}
+#left-navigation ul li a {
+  text-decoration: none !important;
+  color: #350267 !important;
+  font-family: "Lato", sans-serif;
+}
+#left-navigation ul li a:after {
+  background-color: rgba(0, 0, 0, 0);
+  bottom: 0;
+  content: "";
+  left: 0;
+  pointer-events: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  font-weight: 300;
+}
+#left-navigation ul li:has(a:hover, a:focus) {
+  background-color: #D5C6FF;
+}
+
+#mainContent {
+  margin: 0 2.5%;
+  width: 60%;
+  float: left;
+  display: block;
+}
+#mainContent h2::after {
+  border-bottom: 0.18em solid #350267;
+  content: "";
+  display: block;
+  padding-bottom: 8px;
+  width: 70px;
+}
+#mainContent .panel {
+  padding: 20px;
+  border-radius: 20px;
+}
+#mainContent .well {
+  border-radius: 20px;
+  border: none;
+  box-shadow: none;
+}
+#mainContent .project {
+  text-align: left;
+  margin-top: 20px;
+}
+#mainContent .project.well {
+  background-color: hsl(258, 33%, 99%);
+}
+#mainContent .project h3 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+#mainContent hr {
+  border-top: 3px solid #E9E5F2;
+  clear: both;
+}
+
+@media (min-width: 1200px) {
+  #mainContent {
+    width: 80%;
+  }
+  #left-navigation {
+    position: sticky !important;
+    top: 0;
+    left: 0;
+  }
+}
+@media (max-width: 1199px) {
+  .wurd h1, .wurd .sub-h1 {
+    font-size: 1.5em;
+  }
+  .background-logo {
+    display: none;
+  }
+  main {
+    flex-direction: column;
+  }
+  .wurd img {
+    width: 155px;
+  }
+  .wurd h1 {
+    padding-bottom: 15px;
+  }
+  #mainContent {
+    width: 100%;
+    margin: 0;
+    padding: 0 35px;
+    clear: both;
+  }
+  #left-navigation {
+    width: 100%;
+  }
+  #left-navigation > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    height: 100%;
+    width: 100%;
+    clear: both;
+  }
+  #left-navigation > div p {
+    position: relative;
+    width: 50%;
+  }
+  #left-navigation > div h2 {
+    position: relative;
+    width: 50%;
+    padding-right: 35px;
+  }
+  #left-navigation > div h2:has(a:hover, a:focus) {
+    background-color: #D5C6FF;
+  }
+  #left-navigation > div h2 a {
+    cursor: pointer !important;
+  }
+  #left-navigation > div h2 a:hover, #left-navigation > div h2 a:focus {
+    background: #D5C6FF;
+    color: #350267 !important;
+  }
+  #left-navigation > div h2 a:after {
+    background-color: rgba(0, 0, 0, 0);
+    bottom: 0;
+    content: "";
+    left: 0;
+    pointer-events: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+  }
+  #left-navigation > div ul {
+    flex-direction: column;
+    order: 3;
+    width: 100%;
+  }
+}/*# sourceMappingURL=reporting-v2.css.map */
