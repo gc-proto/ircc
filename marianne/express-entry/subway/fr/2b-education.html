@@ -333,1736 +333,1767 @@
 
 <hr>
 
-    <div class="wb-frmvld hidden" id="eca">
+
+    <div class="wb-frmvld hidden col-md-4" id="ffctrl">
   <form method="get">
-    <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow="{&quot;renderas&quot;:&quot;radio&quot;,&quot;gcChckbxrdio&quot;:true,&quot;action&quot;: &quot;toggle&quot;, &quot;prop&quot;: &quot;toggle&quot;, &quot;noForm&quot;: true, &quot;hideelm&quot;: &quot;#fswp, #crs&quot;, &quot;unhideelm&quot;: &quot;#eca&quot;, &quot;base&quot;: { &quot;live&quot;: false }, &quot;noreqlabel&quot;: &quot;true&quot; }">
-      <p>Select a points system:</p>
+    <div class="wb-fieldflow" data-wb-fieldflow="{ &quot;action&quot;: &quot;toggle&quot;, &quot;prop&quot;: &quot;toggle&quot;, &quot;noForm&quot;: true, &quot;hideelm&quot;: &quot;#scg, #csptq&quot;, &quot;unhideelm&quot;: &quot;#ffctrl&quot;, &quot;base&quot;: { &quot;live&quot;: false }, &quot;noreqlabel&quot;: &quot;true&quot; }">
+      <p>Sélectionnez un système de pointage</p>
       <ul>
-        <li data-wb-fieldflow="#crs">Comprehensive Ranking System</li>
-        <li data-wb-fieldflow="#fswp">Federal Skilled Worker Program factor points</li>
+        <li data-wb-fieldflow="#scg">Système de classement global</li>
+        <li data-wb-fieldflow="#csptq">Critères de sélection du Programme des travailleurs qualifiés (fédéral)</li>
       </ul>
-      <p>&nbsp;</p>
     </div>
-    <input type="submit" class="btn btn-primary btn-lg mrgn-bttm-xl" value="See points">
+    <input type="submit" class="btn btn-primary" value="Voir les points">
   </form>
 </div>
+
 <div class="clearfix"></div>
-<div id="crs">
-  <h3>Comprehensive ranking system</h3>
+<div id="scg">
+  <h2>Système de classement global</h2>
+<div class="table-responsive">
   <table class="wb-tables table">
     <thead>
       <tr>
-        <th scope="col">Assessment result (Canadian equivalency)</th>
-        <th scope="col">Level of education for Express Entry profile</th>
-        <th scope="col">Points awarded (with spouse)</th>
-        <th scope="col">Points awarded (without spouse)</th>
+        <th scope="col">Résultats de l’évaluation (équivalent canadien)</th>
+        <th scope="col">Niveau de scolarité dans le cadre d’Entrée express</th>
+        <th scope="col">Points (avec un époux)</th>
+        <th scope="col">Points (sans époux)</th>
       </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>Doctor of Pharmacy</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+   <tr>
+        <td>Diplôme de baccalauréat avec qualifications acceptables pour l’admissibilité au programme de certification académique du CCCA</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
+        <td>112</td>
+        <td>120</td>
+      </tr>
+	  
+	  
+	  <tr>
+        <td>Diplôme de maîtrise avec qualifications acceptables pour l’admissibilité au programme de certification académique du CCCA</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
+        <td>126</td>
+        <td>135</td>
+      </tr>
+ <tr>
+        <td>Docteur en pharmacie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
 
       <tr>
-        <td>Earned Doctorate Degree</td>
-        <td>University degree at the Doctoral (PhD) level</td>
+        <td>Doctorat</td>
+        <td>Diplôme universitaire au niveau du doctorat (Ph. D.)</td>
         <td>140</td>
         <td>150</td>
       </tr>
       <tr>
-        <td>Earned Doctorate (Ph.D.)</td>
-        <td>University degree at the Doctoral (PhD) level</td>
+        <td>Doctorat acquis (Ph.D.)</td>
+        <td>Diplôme universitaire au niveau du doctorat (Ph. D.)</td>
         <td>140</td>
         <td>150</td>
       </tr>
       <tr>
-        <td>Professional Doctorate Degree</td>
-        <td>University degree at the Doctoral (PhD) level</td>
+        <td>Doctorat professionnel</td>
+        <td>Diplôme universitaire au niveau du doctorat (Ph. D.)</td>
         <td>140</td>
         <td>150</td>
       </tr>
       <tr>
-        <td>Doctor of [name of discipline, such as Business Administration, Law, Psychology]</td>
-        <td>University degree at the Doctoral (PhD) level</td>
+        <td>Docteur en [nom de la discipline, comme administration des affaires, droit, psychologie]</td>
+        <td>Diplôme universitaire au niveau du doctorat (Ph. D.)</td>
         <td>140</td>
         <td>150</td>
       </tr>
       <tr>
-        <td>Doctor of Philosophy (PhD) degree with a focus in [area of concentration]</td>
-        <td>University degree at the Doctoral (PhD) level</td>
+        <td>Doctorat en philosophie (Ph. D.) avec spécialisation en [champ de spécialisation]</td>
+        <td>Diplôme universitaire au niveau du doctorat (Ph. D.)</td>
         <td>140</td>
         <td>150</td>
       </tr>
       <tr>
-        <td>Doctorate (Ph.D.)</td>
-        <td>University degree at the Doctoral (PhD) level</td>
+        <td>Doctorat (Ph. D.)</td>
+        <td>Diplôme universitaire au niveau du doctorat (Ph. D.)</td>
         <td>140</td>
         <td>150</td>
       </tr>
       <tr>
-        <td>Master's Degree</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Master's Degree (Taught)</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise (sans thèse)</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Master of [name of discipline]</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise en [nom de la discipline]</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Master's degree, specializing in [name of discipline]</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise, spécialisation en [nom de la discipline]</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Master’s degree with a focus in [area of concentration]</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise avec spécialisation en [champ de spécialisation]</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>One-year Master’s degree with a focus in [area of concentration]</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise d’un an avec spécialisation en [champ de spécialisation]</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Two-year&nbsp; Master’s degree with a focus in [area of concentration]</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise de deux ans avec spécialisation en [champ de spécialisation]</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Master of Business Administration</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise en administration des affaires</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>One-year Master of Business Administration degree</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise d’un an en administration des affaires</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>One-year Master degree</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise d’un an</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First professional degree in medicine (Doctor of Medicine)</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade professionnel en médecine (docteur en médecine)</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First professional degree in Medicine</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade professionnel en médecine</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Doctor of Medicine degree</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Doctorat en médecine</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First professional university degree in medicine</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en médecine</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First professional university degree in medicine, preceded by prerequisite undergraduate study</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en médecine, précédé des études de premier&nbsp;cycle préalables</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Four to seven years of professional study in veterinary medicine</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Quatre à sept ans d’études professionnelles de médicine vétérinaire</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First Professional Degree in Veterinary Medicine</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade professionnel en médecine vétérinaire</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Doctor of Veterinary Medicine degree</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Doctorat en médicine vétérinaire</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First professional university degree in veterinary medicine</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en médecine vétérinaire</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First professional university degree in veterinary medicine, preceded by prerequisite undergraduate study</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en médecine vétérinaire, précédé des études de premier cycle préalables</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Four to seven years of professional study in dentistry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Quatre à sept ans d’études professionnelles de dentisterie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Five or more years of professional university study in dentistry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Cinq ans ou plus d’études universitaires professionnelles de dentisterie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First Professional Degree in Dentistry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade professionnel en dentisterie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Doctor of Dental Surgery degree</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Doctorat en chirurgie dentaire</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First professional university degree in dentistry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en médecine dentaire</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First professional university degree in dentistry, preceded by prerequisite undergraduate study</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en médecine dentaire, précédé des études de premier cycle préalables</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Four to five years of professional study in podiatry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Quatre à cinq ans d’études professionnelles de podiatrie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Five or more years of professional university study in podiatry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Cinq ans ou plus d’études universitaires professionnelles de podiatrie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Doctor of Podiatry degree</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Doctorat en podiatrie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First professional university degree in podiatric medicine</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en podiatrie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First professional university degree in podiatric medicine, preceded by prerequisite undergraduate study</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en poditrie, précédé des études de premier cycle préalables</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Three to six years of professional study in optometry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Trois à six ans d’études professionnelles d’optométrie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Five or more years of professional university study in optometry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Cinq ans ou plus d’études universitaires professionnelles d’optométrie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Doctor of Optometry degree</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Doctorat en optométrie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First professional university degree in optometry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en optométrie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First professional university degree in optometry, preceded by prerequisite undergraduate study</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en optométrie, précédé des études de premier cycle préalables</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Bachelor of Laws</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Baccalauréat en droit</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Juris Doctor</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Doctorat en droit</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First professional university degree in law</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en droit</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First professional university degree in law, preceded by [x years] prerequisite undergraduate study</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en droit, précédé de [x années] d’études de premier cycle préalables</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Five or more years of professional university study in chiropractic medicine</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Cinq ans ou plus d’études universitaires professionnelles de chiropratique</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Doctor of Chiropractic degree</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Doctorat en chiropratique</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First professional university degree in chiropractic medicine</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en chiropratique</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>First professional university degree in chiropractic medicine, preceded by prerequisite undergraduate study</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en chiropratique, précédé des études de premier cycle préalables</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Five or more years of professional university study in pharmacy</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Cinq ans ou plus d’études universitaires professionnelles de pharmacie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Bachelor of Science in Pharmacy degree&nbsp;</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Baccalauréat en pharmacie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Four-year Bachelor of Science degree with a focus in pharmacy</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Baccalauréat ès sciences de quatre ans avec spécialisation en pharmacologie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>126</td>
         <td>135</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Post-Bachelor's Certificate</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat postbaccalauréat plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Post-undergraduate certificate</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat d’études postérieures au baccalauréat plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Post-Bachelor's Diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme postbaccalauréat plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Post-undergraduate diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études postérieures au baccalauréat plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Graduate Certificate</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat d’études supérieures plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Graduate Certificate with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat de deuxième cycle avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Postgraduate certificate</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat de deuxième cycle plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Postgraduate Diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme de deuxième cycle plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Graduate Diploma with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études supérieures avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Graduate diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études supérieures plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a two-year Postgraduate Diploma, specializing in [name of discipline]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études supérieures de deux ans, spécialisation en [nom de la discipline] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a two-year Bachelor’s after degree with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat de deux ans avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a one-year Postgraduate Certificate in [name of discipline]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat de deuxième cycle d’un an en [nom de la discipline] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Dual Bachelor’s degree (four years)</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Double baccalauréat (quatre ans) plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a College Diploma (three years)</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études collégiales (trois ans) plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Diploma (three years)</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme (trois ans) plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Three-year diploma in [name of discipline]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme de trois ans en [nom de la discipline] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Three-year advanced diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme avancé de trois ans plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Bachelor's Degree</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Applied Bachelor's Degree</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat appliqué plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Bachelor's degree (three years)</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat (trois ans) plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Three-year Bachelor's degree, specializing in [name of discipline]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat de trois ans, spécialisation en [nom de la discipline] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Three-year Bachelor degree</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat de trois ans plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Three-year or more certificate, diploma, or degree plus a Bachelor's degree (four years)</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat (quatre ans) plus deux autres certificats, diplômes ou degrés nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Four-year Bachelor's degree, specializing in [name of discipline]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat de quatre ans, spécialisation en [nom de la discipline] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Four-year Bachelor degree</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat de quatre ans plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Four-year advanced diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme avancé de quatre ans plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Three-year post-secondary Diploma with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme postsecondaire de trois ans avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Bachelor’s degree with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Applied Bachelor’s degree with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat appliqué avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Bachelor of Technology degree with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat en technologie avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Three-year Bachelor’s degree with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat de trois ans avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Four-year Bachelor’s degree with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat de quatre ans avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a College Diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études collégiales plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a College Diploma (two years)</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études collégiales (deux ans) plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Diploma (two years)</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme (deux ans) plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Two-year diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme de deux ans plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Two-year diploma in [name of discipline]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme de deux ans en [nom de la discipline] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Secondary school diploma and diploma (two years)</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études secondaires et diplôme (deux ans) plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus an Associate Degree</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Grade d’associé plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus an Associate of [Arts/Science] degree&nbsp;</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Grade d’associé en [arts/sciences] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Post-secondary Diploma with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études postsecondaires avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Two-year post-secondary Diploma with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études postsecondaires de deux ans avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Two-year associate degree</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Grade d’associé de deux ans plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a College Certificate</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat d’études collégiales plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Completion of College-level certificate</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat de niveau collégial plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a University Certificate</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat universitaire plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a University Diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme universitaire plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a One-year certificate in [name of discipline]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat d’un an en [nom de la discipline] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Post-secondary certificate with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat postsecondaire avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a One-year Post-secondary certificate with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat postsecondaire d’un an avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a One-year certificate</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat d’un an plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>119</td>
         <td>128</td>
       </tr>
       <tr>
-        <td>College Diploma (three years)</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme d’études collégiales (trois ans)</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Diploma (three years)</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme (trois ans)</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Three-year diploma in [name of discipline]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme de trois ans en [nom de la discipline]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Three-year advanced diploma</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Bachelor's Degree</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme avancé de trois ans</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Applied Bachelor's Degree</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat appliqué</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Bachelor's degree (three years)</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat (trois ans)</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Three-year Bachelor's degree, specializing in [name of discipline]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat de trois ans</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Three-year Bachelor degree</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat de trois ans, spécialisation en [nom de la discipline]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Bachelor's degree (four years)</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat (quatre ans)</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Four-year Bachelor's degree, specializing in [name of discipline]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat de quatre ans, spécialisation en [nom de la discipline]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Four-year Bachelor degree</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat de quatre ans</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Four-year advanced diploma</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme avancé de quatre ans</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Three-year post-secondary Diploma with a focus in [area of concentration]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme postsecondaire de trois ans avec spécialisation en [champ de spécialisation]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Bachelor’s degree with a focus in [area of concentration]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat avec spécialisation en [champ de spécialisation]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Applied Bachelor’s degree with a focus in [area of concentration]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat avec spécialisation en [champ de spécialisation]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Bachelor of Technology degree with a focus in [area of concentration]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat en technologie avec spécialisation en [champ de spécialisation]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Three-year Bachelor’s degree with a focus in [area of concentration]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat de trois ans avec spécialisation en [champ de spécialisation]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>Four-year Bachelor’s degree with a focus in [area of concentration]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat de quatre ans avec spécialisation en [champ de spécialisation]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>112</td>
         <td>120</td>
       </tr>
       <tr>
-        <td>College Diploma</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme collégial</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>91</td>
         <td>98</td>
       </tr>
       <tr>
-        <td>College Diploma (two years)</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme d’études collégiales (deux ans)</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>91</td>
         <td>98</td>
       </tr>
       <tr>
-        <td>Diploma (two years)</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme (deux ans)</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>91</td>
         <td>98</td>
       </tr>
       <tr>
-        <td>Two-year diploma</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme de deux ans</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>91</td>
         <td>98</td>
       </tr>
       <tr>
-        <td>Two-year diploma in [name of discipline]</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme de deux ans en [nom de la discipline]</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>91</td>
         <td>98</td>
       </tr>
       <tr>
-        <td>Secondary school diploma and diploma (two years)</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme d’études secondaires et diplôme (deux ans)</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>91</td>
         <td>98</td>
       </tr>
       <tr>
-        <td>Associate Degree</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme spécialisé</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>91</td>
         <td>98</td>
       </tr>
       <tr>
-        <td>Associate of [Arts/Science] degree</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Grade d’associé en [arts/sciences]</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>91</td>
         <td>98</td>
       </tr>
       <tr>
-        <td>Post-secondary Diploma with a focus in [area of concentration]</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme d’études postsecondaires avec spécialisation en [champ de spécialisation]</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>91</td>
         <td>98</td>
       </tr>
       <tr>
-        <td>Two-year post-secondary Diploma with a focus in [area of concentration]</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme d’études postsecondaires de deux ans avec spécialisation en [champ de spécialisation]</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>91</td>
         <td>98</td>
       </tr>
       <tr>
-        <td>Two-year associate degree</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Certificat collégial</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>91</td>
         <td>98</td>
       </tr>
       <tr>
-        <td>College Certificate</td>
-        <td>One-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Certificat de niveau collégial</td>
+        <td>Degré, diplôme ou certificat de un an obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>84</td>
         <td>90</td>
       </tr>
       <tr>
-        <td>Completion of College-level certificate</td>
-        <td>One-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Certificat de premier cycle (1 an)</td>
+        <td>Degré, diplôme ou certificat de un an obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>84</td>
         <td>90</td>
       </tr>
       <tr>
-        <td>Undergraduate (1 year) certificate</td>
-        <td>One-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Certificat ou diplôme universitaire</td>
+        <td>Degré, diplôme ou certificat de un an obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>84</td>
         <td>90</td>
       </tr>
       <tr>
-        <td>University certificate or diploma</td>
-        <td>One-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Certificat d’un an en [nom de la discipline]</td>
+        <td>Degré, diplôme ou certificat de un an obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>84</td>
         <td>90</td>
       </tr>
       <tr>
-        <td>One-year certificate in [name of discipline]</td>
-        <td>One-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Certificat postsecondaire avec spécialisation en [champ de spécialisation]</td>
+        <td>Degré, diplôme ou certificat de un an obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>84</td>
         <td>90</td>
       </tr>
       <tr>
-        <td>Post-secondary certificate with a focus in [area of concentration]</td>
-        <td>One-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Certificat postsecondaire d’un an avec spécialisation en [champ de spécialisation]</td>
+        <td>Degré, diplôme ou certificat de un an obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>84</td>
         <td>90</td>
       </tr>
       <tr>
-        <td>One-year Post-secondary certificate with a focus in [area of concentration]</td>
-        <td>One-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Certificat d’un an</td>
+        <td>Degré, diplôme ou certificat de un an obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>84</td>
         <td>90</td>
       </tr>
       <tr>
-        <td>One-year certificate</td>
-        <td>One-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Certificat collégial</td>
+        <td>Degré, diplôme ou certificat de un an obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>84</td>
         <td>90</td>
       </tr>
       <tr>
-        <td>Secondary School Graduation</td>
-        <td>Secondary school (high school diploma)</td>
+        <td>Certificat de fin d'études secondaires</td>
+        <td>École secondaire (diplôme d’études secondaires)</td>
         <td>28</td>
         <td>30</td>
       </tr>
       <tr>
-        <td>Secondary School Diploma</td>
-        <td>Secondary school (high school diploma)</td>
+        <td>Diplôme d’études secondaires</td>
+        <td>École secondaire (diplôme d’études secondaires)</td>
         <td>28</td>
         <td>30</td>
       </tr>
       <tr>
-        <td>High School Equivalency Certificate</td>
-        <td>Secondary school (high school diploma)</td>
+        <td>Certificat d’équivalence d’études secondaires</td>
+        <td>École secondaire (diplôme d’études secondaires)</td>
         <td>28</td>
         <td>30</td>
       </tr>
       <tr>
-        <td>Certificate of High School Achievement</td>
-        <td>Secondary school (high school diploma)</td>
+        <td>Certificat de réussite</td>
+        <td>École secondaire (diplôme d’études secondaires)</td>
         <td>28</td>
         <td>30</td>
       </tr>
       <tr>
-        <td>Certificate of High School Achievement [plus/including] [specialized/vocational/technical] training in X</td>
-        <td>Secondary school (high school diploma)</td>
+        <td>Certificat de réussite [comprenant] une formation [spécialisée/professionnelle/technique] en X</td>
+        <td>École secondaire (diplôme d’études secondaires)</td>
         <td>28</td>
         <td>30</td>
       </tr>
       <tr>
-        <td>High School Diploma</td>
-        <td>Secondary school (high school diploma)</td>
+        <td>Diplôme d’études secondaires</td>
+        <td>École secondaire (diplôme d’études secondaires)</td>
         <td>28</td>
         <td>30</td>
       </tr>
       <tr>
-        <td>High School Diploma [plus/including] [specialized/vocational/technical] training in X</td>
-        <td>Secondary school (high school diploma)</td>
+        <td>Diplôme d’études secondaires [comprenant] une formation [spécialisée/professionnelle/technique] en X</td>
+        <td>École secondaire (diplôme d’études secondaires)</td>
         <td>28</td>
         <td>30</td>
       </tr>
       <tr>
-        <td>Grade 12 (high school completion)</td>
-        <td>Secondary school (high school diploma)</td>
+        <td>12<sup>e</sup> année – achèvement des études secondaires</td>
+        <td>École secondaire (diplôme d’études secondaires)</td>
         <td>28</td>
         <td>30</td>
       </tr>
     </tbody>
   </table>
 </div>
+</div>
 <div class="clearfix"></div>
-<div id="fswp">
-  <h3>Federal Skilled Workers Program selection factor points</h3>
-  <table class="wb-tables table">
+<div id="csptq">
+  <h2>Points du facteur du Programme des travailleurs qualifiés (fédéral)</h2>
+<div class="table-responsive">
+  <table class="table wb-tables">
     <thead>
       <tr>
-        <th scope="col">Assessment result (Canadian equivalency)</th>
-        <th scope="col">Level of education for Express Entry profile</th>
-        <th scope="col">Federal Skilled Workers Program selection factor points</th>
+        <th scope="col">Résultats de l’évaluation (équivalent canadien)</th>
+        <th scope="col">Niveau de scolarité dans le cadre d’Entrée express</th>
+        <th scope="col">Points du facteur du Programme des travailleurs qualifiés (fédéral)</th>
       </tr>
     </thead>
     <tbody>
+	   <tr>
+        <td>Diplôme de baccalauréat avec qualifications acceptables pour l’admissibilité au programme de certification académique du CCCA</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
+        <td>21</td>
+      </tr>
+	  
+	  <tr>
+        <td>Diplôme de maîtrise avec qualifications acceptables pour l’admissibilité au programme de certification académique du CCCA</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
+        <td>23</td>
+      </tr>
       <tr>
-        <td>Earned Doctorate Degree</td>
-        <td>University degree at the Doctoral (PhD) level</td>
+        <td>Doctorat</td>
+        <td>Diplôme universitaire au niveau du doctorat (Ph. D.)</td>
         <td>25</td>
       </tr>
       <tr>
-        <td>Earned Doctorate (Ph.D.)</td>
-        <td>University degree at the Doctoral (PhD) level</td>
+        <td>Doctorat acquis (Ph.D.)</td>
+        <td>Diplôme universitaire au niveau du doctorat (Ph. D.)</td>
         <td>25</td>
       </tr>
       <tr>
-        <td>Professional Doctorate Degree</td>
-        <td>University degree at the Doctoral (PhD) level</td>
+        <td>Doctorat professionnel</td>
+        <td>Diplôme universitaire au niveau du doctorat (Ph. D.)</td>
         <td>25</td>
       </tr>
       <tr>
-        <td>Doctor of [name of discipline, such as Business Administration, Law, Psychology]</td>
-        <td>University degree at the Doctoral (PhD) level</td>
+        <td>Docteur en [nom de la discipline, comme administration des affaires, droit, psychologie]</td>
+        <td>Diplôme universitaire au niveau du doctorat (Ph. D.)</td>
         <td>25</td>
       </tr>
       <tr>
-        <td>Doctor of Philosophy (PhD) degree with a focus in [area of concentration]</td>
-        <td>University degree at the Doctoral (PhD) level</td>
+        <td>Doctorat en philosophie (Ph. D.) avec spécialisation en [champ de spécialisation]</td>
+        <td>Diplôme universitaire au niveau du doctorat (Ph. D.)</td>
         <td>25</td>
       </tr>
       <tr>
-        <td>Doctorate (Ph.D.)</td>
-        <td>University degree at the Doctoral (PhD) level</td>
+        <td>Doctorat (Ph. D.)</td>
+        <td>Diplôme universitaire au niveau du doctorat (Ph. D.)</td>
         <td>25</td>
       </tr>
       <tr>
-        <td>Master's Degree</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Master's Degree (Taught)</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise (sans thèse)</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Master of [name of discipline]</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise en [nom de la discipline]</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Master's degree, specializing in [name of discipline]</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise, spécialisation en [nom de la discipline]</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Master’s degree with a focus in [area of concentration]</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise avec spécialisation en [champ de spécialisation]</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>23</td>
       </tr>
       <tr>
-        <td>One-year Master’s degree with a focus in [area of concentration]</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise d’un an avec spécialisation en [champ de spécialisation]</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Two-year&nbsp; Master’s degree with a focus in [area of concentration]</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise de deux ans avec spécialisation en [champ de spécialisation]</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Master of Business Administration</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise en administration des affaires</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>23</td>
       </tr>
       <tr>
-        <td>One-year Master of Business Administration degree</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise d’un an en administration des affaires</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>23</td>
       </tr>
       <tr>
-        <td>One-year Master degree</td>
-        <td>University degree at the Master’s level</td>
+        <td>Maîtrise d’un an</td>
+        <td>Diplôme universitaire au niveau de la maîtrise</td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First professional degree in medicine (Doctor of Medicine)</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade professionnel en médecine (docteur en médecine)</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First professional degree in Medicine</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade professionnel en médecine</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Doctor of Medicine degree</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Doctorat en médecine</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First professional university degree in medicine</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en médecine</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First professional university degree in medicine, preceded by prerequisite undergraduate study</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en médecine, précédé des études de premier&nbsp;cycle préalables</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Four to seven years of professional study in veterinary medicine</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Quatre à sept ans d’études professionnelles de médicine vétérinaire</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First Professional Degree in Veterinary Medicine</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade professionnel en médecine vétérinaire</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Doctor of Veterinary Medicine degree</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Doctorat en médicine vétérinaire</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First professional university degree in veterinary medicine</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en médecine vétérinaire</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First professional university degree in veterinary medicine, preceded by prerequisite undergraduate study</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en médecine vétérinaire, précédé des études de premier cycle préalables</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Four to seven years of professional study in dentistry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Quatre à sept ans d’études professionnelles de dentisterie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Five or more years of professional university study in dentistry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Cinq ans ou plus d’études universitaires professionnelles de dentisterie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First Professional Degree in Dentistry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade professionnel en dentisterie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Doctor of Dental Surgery degree</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Doctorat en chirurgie dentaire</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First professional university degree in dentistry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en médecine dentaire</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First professional university degree in dentistry, preceded by prerequisite undergraduate study</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en médecine dentaire, précédé des études de premier cycle préalables</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Four to five years of professional study in podiatry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Quatre à cinq ans d’études professionnelles de podiatrie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Five or more years of professional university study in podiatry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Cinq ans ou plus d’études universitaires professionnelles de podiatrie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Doctor of Podiatry degree</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Doctorat en podiatrie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First professional university degree in podiatric medicine</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en podiatrie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First professional university degree in podiatric medicine, preceded by prerequisite undergraduate study</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en poditrie, précédé des études de premier cycle préalables</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Three to six years of professional study in optometry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Trois à six ans d’études professionnelles d’optométrie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Five or more years of professional university study in optometry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Cinq ans ou plus d’études universitaires professionnelles d’optométrie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Doctor of Optometry degree</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Doctorat en optométrie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First professional university degree in optometry</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en optométrie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First professional university degree in optometry, preceded by prerequisite undergraduate study</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en optométrie, précédé des études de premier cycle préalables</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Bachelor of Laws</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Baccalauréat en droit</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Juris Doctor</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Doctorat en droit</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First professional university degree in law</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en droit</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First professional university degree in law, preceded by [x years] prerequisite undergraduate study</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en droit, précédé de [x années] d’études de premier cycle préalables</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Five or more years of professional university study in chiropractic medicine</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Cinq ans ou plus d’études universitaires professionnelles de chiropratique</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Doctor of Chiropractic degree</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Doctorat en chiropratique</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First professional university degree in chiropractic medicine</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en chiropratique</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>First professional university degree in chiropractic medicine, preceded by prerequisite undergraduate study</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Premier grade universitaire professionnel en chiropratique, précédé des études de premier cycle préalables</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Five or more years of professional university study in pharmacy</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Cinq ans ou plus d’études universitaires professionnelles de pharmacie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Bachelor of Science in Pharmacy degree&nbsp;</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Baccalauréat en pharmacie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Four-year Bachelor of Science degree with a focus in pharmacy</td>
-        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Professional degree needed to practice in a licensed profession</a></td>
+        <td>Baccalauréat ès sciences de quatre ans avec spécialisation en pharmacologie</td>
+        <td><a href="#ranking" aria-controls="ranking" class="overlay-lnk" role="button">Diplôme professionnel requis pour la pratique au sein d’une profession décernant des permis de pratique</a></td>
         <td>23</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Post-Bachelor's Certificate</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat postbaccalauréat plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Post-undergraduate certificate</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat d’études postérieures au baccalauréat plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Post-Bachelor's Diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme postbaccalauréat plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Post-undergraduate diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études postérieures au baccalauréat plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Graduate Certificate</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat d’études supérieures plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Graduate Certificate with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat de deuxième cycle avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Postgraduate certificate</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat de deuxième cycle plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Postgraduate Diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme de deuxième cycle plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Graduate Diploma with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études supérieures avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Graduate diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études supérieures plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a two-year Postgraduate Diploma, specializing in [name of discipline]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études supérieures de deux ans, spécialisation en [nom de la discipline] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a two-year Bachelor’s after degree with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat de deux ans avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a one-year Postgraduate Certificate in [name of discipline]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat de deuxième cycle d’un an en [nom de la discipline] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Dual Bachelor’s degree (four years)</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Double baccalauréat (quatre ans) plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a College Diploma (three years)</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études collégiales (trois ans) plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Diploma (three years)</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme (trois ans) plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Three-year diploma in [name of discipline]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme de trois ans en [nom de la discipline] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Three-year advanced diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme avancé de trois ans plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Bachelor's Degree</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Applied Bachelor's Degree</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat appliqué plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Bachelor's degree (three years)</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat (trois ans) plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Three-year Bachelor's degree, specializing in [name of discipline]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat de trois ans, spécialisation en [nom de la discipline] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Three-year Bachelor degree</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat de trois ans plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Three-year or more certificate, diploma, or degree plus a Bachelor's degree (four years)</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat (quatre ans) plus deux autres certificats, diplômes ou degrés nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Four-year Bachelor's degree, specializing in [name of discipline]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat de quatre ans, spécialisation en [nom de la discipline] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Four-year Bachelor degree</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat de quatre ans plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Four-year advanced diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme avancé de quatre ans plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Three-year post-secondary Diploma with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme postsecondaire de trois ans avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Bachelor’s degree with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Applied Bachelor’s degree with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat appliqué avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Bachelor of Technology degree with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat en technologie avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Three-year Bachelor’s degree with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat de trois ans avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Four-year Bachelor’s degree with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Baccalauréat de quatre ans avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a College Diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études collégiales plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a College Diploma (two years)</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études collégiales (deux ans) plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Diploma (two years)</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme (deux ans) plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Two-year diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme de deux ans plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Two-year diploma in [name of discipline]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme de deux ans en [nom de la discipline] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Secondary school diploma and diploma (two years)</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études secondaires et diplôme (deux ans) plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus an Associate Degree</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Grade d’associé plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus an Associate of [Arts/Science] degree&nbsp;</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Grade d’associé en [arts/sciences] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Post-secondary Diploma with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études postsecondaires avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Two-year post-secondary Diploma with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme d’études postsecondaires de deux ans avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Two-year associate degree</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Grade d’associé de deux ans plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a College Certificate</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat d’études collégiales plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Completion of College-level certificate</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat de niveau collégial plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a University Certificate</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat universitaire plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a University Diploma</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Diplôme universitaire plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a One-year certificate in [name of discipline]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat d’un an en [nom de la discipline] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a Post-secondary certificate with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat postsecondaire avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a One-year Post-secondary certificate with a focus in [area of concentration]</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat postsecondaire d’un an avec spécialisation en [champ de spécialisation] plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>Three-year or more certificate, diploma, or degree plus a One-year certificate</td>
-        <td>Two or more certificates, diplomas, or degrees</td>
+        <td>Certificat d’un an plus un autre certificat, diplôme ou degré nécessitant trois années d’études ou plus</td>
+        <td>Au moins deux certificats, diplômes ou degrés</td>
         <td>22</td>
       </tr>
       <tr>
-        <td>College Diploma (three years)</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme d’études collégiales (trois ans)</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Diploma (three years)</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme (trois ans)</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Three-year diploma in [name of discipline]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme de trois ans en [nom de la discipline]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Three-year advanced diploma</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Bachelor's Degree</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme avancé de trois ans</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Applied Bachelor's Degree</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat appliqué</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Bachelor's degree (three years)</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat (trois ans)</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Three-year Bachelor's degree, specializing in [name of discipline]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat de trois ans</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Three-year Bachelor degree</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat de trois ans, spécialisation en [nom de la discipline]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Bachelor's degree (four years)</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat (quatre ans)</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Four-year Bachelor's degree, specializing in [name of discipline]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat de quatre ans, spécialisation en [nom de la discipline]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Four-year Bachelor degree</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat de quatre ans</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Four-year advanced diploma</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme avancé de quatre ans</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Three-year post-secondary Diploma with a focus in [area of concentration]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme postsecondaire de trois ans avec spécialisation en [champ de spécialisation]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Bachelor’s degree with a focus in [area of concentration]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat avec spécialisation en [champ de spécialisation]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Applied Bachelor’s degree with a focus in [area of concentration]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat avec spécialisation en [champ de spécialisation]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Bachelor of Technology degree with a focus in [area of concentration]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat en technologie avec spécialisation en [champ de spécialisation]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Three-year Bachelor’s degree with a focus in [area of concentration]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat de trois ans avec spécialisation en [champ de spécialisation]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>Four-year Bachelor’s degree with a focus in [area of concentration]</td>
-        <td>Bachelor’s degree or other programs (three or more years) at a university, college, trade or technical school, or other institute</td>
+        <td>Baccalauréat de quatre ans avec spécialisation en [champ de spécialisation]</td>
+        <td>Baccalauréat ou autres programmes (trois ans ou plus) à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>21</td>
       </tr>
       <tr>
-        <td>College Diploma</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme collégial</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>19</td>
       </tr>
       <tr>
-        <td>College Diploma (two years)</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme d’études collégiales (deux ans)</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>19</td>
       </tr>
       <tr>
-        <td>Diploma (two years)</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme (deux ans)</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>19</td>
       </tr>
       <tr>
-        <td>Two-year diploma</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme de deux ans</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>19</td>
       </tr>
       <tr>
-        <td>Two-year diploma in [name of discipline]</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme de deux ans en [nom de la discipline]</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>19</td>
       </tr>
       <tr>
-        <td>Secondary school diploma and diploma (two years)</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme d’études secondaires et diplôme (deux ans)</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>19</td>
       </tr>
       <tr>
-        <td>Associate Degree</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme spécialisé</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>19</td>
       </tr>
       <tr>
-        <td>Associate of [Arts/Science] degree&nbsp;</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Grade d’associé en [arts/sciences]</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>19</td>
       </tr>
       <tr>
-        <td>Post-secondary Diploma with a focus in [area of concentration]</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme d’études postsecondaires avec spécialisation en [champ de spécialisation]</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>19</td>
       </tr>
       <tr>
-        <td>Two-year post-secondary Diploma with a focus in [area of concentration]</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme d’études postsecondaires de deux ans avec spécialisation en [champ de spécialisation]</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>19</td>
       </tr>
       <tr>
-        <td>Two-year associate degree</td>
-        <td>Two-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Certificat collégial</td>
+        <td>Degré, diplôme ou certificat de deux ans obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>19</td>
       </tr>
       <tr>
-        <td>College Certificate</td>
-        <td>One-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Certificat de niveau collégial</td>
+        <td>Degré, diplôme ou certificat de un an obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>15</td>
       </tr>
       <tr>
-        <td>Completion of College-level certificate</td>
-        <td>One-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Certificat universitaire</td>
+        <td>Degré, diplôme ou certificat de un an obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>15</td>
       </tr>
       <tr>
-        <td>University Certificate</td>
-        <td>One-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Diplôme universitaire</td>
+        <td>Degré, diplôme ou certificat de un an obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>15</td>
       </tr>
       <tr>
-        <td>University Diploma</td>
-        <td>One-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Certificat d’un an en [nom de la discipline]</td>
+        <td>Degré, diplôme ou certificat de un an obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>15</td>
       </tr>
       <tr>
-        <td>One-year certificate in [name of discipline]</td>
-        <td>One-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Certificat postsecondaire avec spécialisation en [champ de spécialisation]</td>
+        <td>Degré, diplôme ou certificat de un an obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>15</td>
       </tr>
       <tr>
-        <td>Post-secondary certificate with a focus in [area of concentration]</td>
-        <td>One-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Certificat postsecondaire d’un an avec spécialisation en [champ de spécialisation]</td>
+        <td>Degré, diplôme ou certificat de un an obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>15</td>
       </tr>
       <tr>
-        <td>One-year Post-secondary certificate with a focus in [area of concentration]</td>
-        <td>One-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Certificat d’un an</td>
+        <td>Degré, diplôme ou certificat de un an obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>15</td>
       </tr>
       <tr>
-        <td>One-year certificate</td>
-        <td>One-year degree, diploma or certificate from a program at a university, college, trade or technical school, or other institute</td>
+        <td>Certificat collégial</td>
+        <td>Degré, diplôme ou certificat de un an obtenu dans le cadre d’un programme à une université, un collège, une école technique ou de métiers ou un autre institut</td>
         <td>15</td>
       </tr>
       <tr>
-        <td>Secondary School Graduation</td>
-        <td>Secondary school (high school diploma)</td>
+        <td>Certificat de fin d'études secondaires</td>
+        <td>École secondaire (diplôme d’études secondaires)</td>
         <td>5</td>
       </tr>
       <tr>
-        <td>Secondary School Diploma</td>
-        <td>Secondary school (high school diploma)</td>
+        <td>Diplôme d’études secondaires</td>
+        <td>École secondaire (diplôme d’études secondaires)</td>
         <td>5</td>
       </tr>
       <tr>
-        <td>High School Equivalency Certificate</td>
-        <td>Secondary school (high school diploma)</td>
+        <td>Certificat d’équivalence d’études secondaires</td>
+        <td>École secondaire (diplôme d’études secondaires)</td>
         <td>5</td>
       </tr>
       <tr>
-        <td>Certificate of High School Achievement</td>
-        <td>Secondary school (high school diploma)</td>
+        <td>Certificat de réussite</td>
+        <td>École secondaire (diplôme d’études secondaires)</td>
         <td>5</td>
       </tr>
       <tr>
-        <td>Certificate of High School Achievement [plus/including] [specialized/vocational/technical] training in X</td>
-        <td>Secondary school (high school diploma)</td>
+        <td>Certificat de réussite [comprenant] une formation [spécialisée/professionnelle/technique] en X</td>
+        <td>École secondaire (diplôme d’études secondaires)</td>
         <td>5</td>
       </tr>
       <tr>
-        <td>High School Diploma</td>
-        <td>Secondary school (high school diploma)</td>
+        <td>Diplôme d’études secondaires</td>
+        <td>École secondaire (diplôme d’études secondaires)</td>
         <td>5</td>
       </tr>
       <tr>
-        <td>High School Diploma [plus/including] [specialized/vocational/technical] training in X</td>
-        <td>Secondary school (high school diploma)</td>
+        <td>Diplôme d’études secondaires [comprenant] une formation [spécialisée/professionnelle/technique] en X</td>
+        <td>École secondaire (diplôme d’études secondaires)</td>
         <td>5</td>
       </tr>
       <tr>
-        <td>Grade 12 (high school completion)</td>
-        <td>Secondary school (high school diploma)</td>
+        <td>12<sup>e</sup> année – achèvement des études secondaires</td>
+        <td>École secondaire (diplôme d’études secondaires)</td>
         <td>5</td>
       </tr>
     </tbody>
   </table>
 </div>
+</div>
+<div class="clearfix"></div>
 <div id="ranking" class="wb-overlay modal-content overlay-def wb-popup-mid">
   <header class="modal-header">
-    <h2 class="modal-title">Professional degrees for licensed professions</h2>
+    <h2 class="modal-title">Système de classement globals</h2>
   </header>
   <div class="modal-body">
-    <p>This is also known as First professional degree or Entry-to-practice professional degree.</p>
-    <p>For Express Entry, <strong>only</strong> degrees in these fields can earn equal points to a Master’s degree:</p>
+    <p>Ces diplômes sont aussi appelés premiers grades professionnels ou diplômes professionnels de premier échelon.</p>
+    <p>Pour Entrée express, <strong>seuls</strong> les diplômes dans les domaines qui suivent permettent d’obtenir autant de points qu’une maîtrise&nbsp;:</p>
     <ul>
-      <li>medicine</li>
-      <li>veterinary medicine</li>
-      <li>dentistry</li>
-      <li>podiatry</li>
-      <li>optometry</li>
-      <li>law</li>
-      <li>chiropractic medicine</li>
-      <li>pharmacy</li>
+      <li>Médecine</li>
+      <li>Médecine vétérinaire</li>
+      <li>Dentisterie</li>
+      <li>Podiatrie</li>
+      <li>Optométrie</li>
+      <li>Droit</li>
+      <li>Chiropratique</li>
+      <li>Pharmacie</li>
     </ul>
-    <p>For example, a 4-year nursing degree is not considered a first professional degree. It would earn you the same number of points as a Bachelor’s degree.</p>
+    <p>Par exemple, un diplôme de quatre ans en sciences infirmières n’est pas considéré comme un premier grade professionnel et vous permettrait seulement d’obtenir le même nombre de points qu’un baccalauréat.</p>
   </div>
 </div>
 
