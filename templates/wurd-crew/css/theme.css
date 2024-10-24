@@ -262,4 +262,34 @@ main {
     order: 3;
     width: 100%;
   }
-}/*# sourceMappingURL=theme.css.map */
+}
+/* **COMPONENTS - START** */
+.wc-panel {
+  border-radius: 20px;
+  background-color: #fff;
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+.wc-bg-primary {
+  background-color: #350267;
+}
+
+.wc-bg-primary-light {
+  background-color: #D5C6FF;
+}
+
+.wc-bg-secondary {
+  background-color: #600DB4;
+}
+
+.wc-bg-secondary-light {
+  background-color: #E9E5F2;
+}
+
+.brdr-rds-tp-0 {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+/* **COMPONENTS - END** *//*# sourceMappingURL=theme.css.map */
