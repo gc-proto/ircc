@@ -2,23 +2,22 @@
 .wurd, .wurd #wb-bc {
   background-color: #350267;
   color: #fff;
-  font-family: "Lexend", sans-serif !important;
   font-optical-sizing: auto;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
   display: block;
-  padding-left: 10px;
   margin-top: 0;
 }
 
-.wurd {
-  padding: 15px 0 25px;
+.wurd #wb-bc {
+  padding: 15px 35px;
 }
+
 .wurd img {
-  padding-right: 20px;
+  padding: 0 35px;
+  margin-bottom: 25px;
 }
 .wurd h1, .wurd .h1-sub {
-  font-family: "Lexend", sans-serif !important;
   font-weight: 500 !important;
   font-size: 2.5em;
   border: none !important;
@@ -60,23 +59,56 @@ main {
 }
 
 #left-navigation {
-  background-color: #E9E5F2;
+  background-color: #f3f3f3;
   color: #350267 !important;
-  font-family: "Lexend", sans-serif;
-  width: 15%;
+  width: 17.5%;
+  height: 100vh;
   float: left;
   display: flex;
   flex-direction: column;
 }
-#left-navigation h2 {
+#left-navigation > div {
+  position: sticky;
+  top: 0;
+}
+#left-navigation p {
+  padding: 10px 35px;
   background-color: #600DB4;
+  margin: 0;
+  position: relative;
+}
+#left-navigation p:has(a:hover, a:focus) {
+  background-color: #D5C6FF;
+}
+#left-navigation p:has(a:hover, a:focus) a:hover, #left-navigation p:has(a:hover, a:focus) a:focus {
+  color: #600DB4;
+}
+#left-navigation p a {
+  text-decoration: none !important;
   color: #E9E5F2;
+}
+#left-navigation p a:after {
+  background-color: rgba(0, 0, 0, 0);
+  bottom: 0;
+  content: "";
+  left: 0;
+  pointer-events: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  font-weight: 300;
+}
+#left-navigation h2 {
+  background-color: #E9E5F2;
+  color: #350267;
   padding: 15px;
+  padding-left: 35px;
   margin: 0;
   font-size: 1em;
 }
 #left-navigation h2 a {
-  color: #E9E5F2 !important;
+  color: #350267 !important;
   text-decoration: none !important;
   cursor: default;
 }
@@ -87,12 +119,13 @@ main {
 }
 #left-navigation ul li {
   border-bottom: 1px solid #350267;
-  padding: 15px;
+  padding: 10px 15px 10px 35px;
   position: relative;
 }
 #left-navigation ul li a {
   text-decoration: none !important;
   color: #350267 !important;
+  font-family: "Lato", sans-serif;
 }
 #left-navigation ul li a:after {
   background-color: rgba(0, 0, 0, 0);
@@ -104,13 +137,14 @@ main {
   right: 0;
   top: 0;
   z-index: 1;
+  font-weight: 300;
 }
 #left-navigation ul li:has(a:hover, a:focus) {
   background-color: #D5C6FF;
 }
 
 #mainContent {
-  margin-left: 2.5%;
+  margin: 0 2.5%;
   width: 60%;
   float: left;
   display: block;
@@ -131,43 +165,30 @@ main {
   border: none;
   box-shadow: none;
 }
+#mainContent .project {
+  text-align: left;
+  margin-top: 20px;
+}
+#mainContent .project.well {
+  background-color: hsl(258, 33%, 99%);
+}
+#mainContent .project h3 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
 #mainContent hr {
   border-top: 3px solid #E9E5F2;
+  clear: both;
 }
 
-/* **COMPONENTS - START** */
-.wc-panel {
-  border-radius: 20px;
-  background-color: #fff;
-  padding: 25px;
-  margin-bottom: 25px;
-}
-
-.wc-bg-primary {
-  background-color: #350267;
-}
-
-.wc-bg-primary-light {
-  background-color: #D5C6FF;
-}
-
-.wc-bg-secondary {
-  background-color: #600DB4;
-}
-
-.wc-bg-secondary-light {
-  background-color: #E9E5F2;
-}
-
-.brdr-rds-tp-0 {
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-}
-
-/* **COMPONENTS - END** */
 @media (min-width: 1200px) {
   #mainContent {
     width: 80%;
+  }
+  #left-navigation {
+    position: sticky !important;
+    top: 0;
+    left: 0;
   }
 }
 @media (max-width: 1199px) {
@@ -180,38 +201,52 @@ main {
   main {
     flex-direction: column;
   }
+  .wurd img {
+    width: 155px;
+  }
+  .wurd h1 {
+    padding-bottom: 15px;
+  }
   #mainContent {
     width: 100%;
     margin: 0;
-    padding: 0 15px;
+    padding: 0 35px;
     clear: both;
   }
   #left-navigation {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  #left-navigation > div {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    flex-grow: 1;
     height: 100%;
     width: 100%;
     clear: both;
   }
-  #left-navigation h2 {
+  #left-navigation > div p {
     position: relative;
-    flex-basis: 1 1 20%;
+    width: 50%;
   }
-  #left-navigation h2:not(:last-child) {
-    border-right: 1px solid #D5C6FF;
+  #left-navigation > div h2 {
+    position: relative;
+    width: 50%;
+    padding-right: 35px;
   }
-  #left-navigation h2:has(a:hover, a:focus) {
+  #left-navigation > div h2:has(a:hover, a:focus) {
     background-color: #D5C6FF;
   }
-  #left-navigation h2 a {
+  #left-navigation > div h2 a {
     cursor: pointer !important;
   }
-  #left-navigation h2 a:hover, #left-navigation h2 a:focus {
+  #left-navigation > div h2 a:hover, #left-navigation > div h2 a:focus {
     background: #D5C6FF;
     color: #350267 !important;
   }
-  #left-navigation h2 a:after {
+  #left-navigation > div h2 a:after {
     background-color: rgba(0, 0, 0, 0);
     bottom: 0;
     content: "";
@@ -222,7 +257,7 @@ main {
     top: 0;
     z-index: 1;
   }
-  #left-navigation ul {
+  #left-navigation > div ul {
     flex-direction: column;
     order: 3;
     width: 100%;
