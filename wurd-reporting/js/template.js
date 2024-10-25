@@ -18,6 +18,10 @@ $('#left-navigation ul').on( "mouseleave focusout", function(){
 
 window.onresize = function(){ displayMenu() };
 
+$('#left-navigation').on( "wb-contentupdated", function( event, data ){
+    displayMenu()
+});
+
 function displayMenu() {
     if (screen.width > 1199) { 
         $('#left-navigation ul').css("display","block");

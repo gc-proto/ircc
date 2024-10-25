@@ -242,6 +242,9 @@ main {
   #left-navigation > div h2:has(a:hover, a:focus) {
     background-color: #D5C6FF;
   }
+  #left-navigation > div h2:has(a:hover, a:focus) + ul {
+    display: block;
+  }
   #left-navigation > div h2 a {
     cursor: pointer !important;
   }
@@ -261,6 +264,7 @@ main {
     z-index: 1;
   }
   #left-navigation > div ul {
+    display: none;
     flex-direction: column;
     order: 3;
     width: 100%;
