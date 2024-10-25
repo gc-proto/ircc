@@ -273,8 +273,8 @@ main {
   padding: 25px;
   margin-bottom: 25px;
 }
-.wc-panel h2::after {
-  border: none;
+.wc-panel h2, .wc-panel h2::after {
+  border: none !important;
   padding: 0;
 }
 
