@@ -19,6 +19,7 @@ $('#left-navigation ul').on( "mouseleave focusout", function(){
 window.onresize = function(){ displayMenu() };
 
 $('#left-navigation').on( "wb-contentupdated", function( event, data ){
+    console.log('test');
     displayMenu()
 });
 
