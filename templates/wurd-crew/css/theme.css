@@ -271,15 +271,19 @@ main {
   }
 }
 /* **COMPONENTS - START** */
-.wc-panel {
+.wc-panel, .wc-band {
   border-radius: 20px;
   background-color: #fff;
   padding: 25px;
   margin-bottom: 25px;
 }
-.wc-panel h2, .wc-panel h2::after {
+.wc-panel h2, .wc-panel h2::after, .wc-band h2, .wc-band h2::after {
   border: none !important;
   padding: 0;
+}
+
+.wc-band {
+  border-radius: 0;
 }
 
 .wc-bg-primary {
