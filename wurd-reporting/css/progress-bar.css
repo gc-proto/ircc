@@ -1,0 +1,167 @@
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  33% {
+    transform: scale(0.9);
+  }
+  66% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.progress-component {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  margin: 40px 0 0;
+}
+
+.progress-component:has(.two-lines) {
+  margin-top: 70px;
+}
+
+/* Component Styles - Steps */
+.steps {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0 0 2rem 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  pointer-events: none;
+}
+
+.step:not(:last-child):before,
+.step:not(:last-child):after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 0.5rem;
+  content: "";
+  transform: translateY(-50%);
+  will-change: width;
+  z-index: 1;
+}
+
+.step:before {
+  width: 100%;
+  background-color: #DDD;
+}
+
+.step:after {
+  width: 0;
+  background-color: #350267;
+}
+
+.step-complete:after {
+  width: 100% !important;
+  opacity: 1;
+  transition: width 0.6s ease-in-out, opacity 0.6s ease-in-out;
+}
+
+.step-icon,
+.step-label {
+  z-index: 2;
+}
+
+.step-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  background-color: #E9E5F2;
+  border: 0.35rem solid #E9E5F2;
+  border-radius: 50%;
+  color: #350267;
+  font-size: 2rem;
+}
+
+.step-icon:before {
+  display: block;
+  color: #fff;
+}
+
+.step-complete.step-active .step-icon {
+  color: #fff;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.step-incomplete.step-active .step-icon {
+  border-color: #350267;
+  transition-delay: 0.5s;
+}
+
+.step-complete .step-icon {
+  animation: bounce 0.5s ease-in-out;
+  background-color: #350267;
+  border-color: #350267;
+  color: #fff;
+}
+
+.step-label {
+  position: absolute;
+  top: -3.5rem;
+  margin-top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.step-label.two-lines {
+  top: -7.5rem;
+}
+
+@media screen and (max-width: 991px) {
+  .progress-component:has(.two-lines) {
+    margin-top: 90px;
+  }
+  .step-label.two-lines {
+    top: -9.5rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .progress-component:has(.two-lines) {
+    margin: 90px auto;
+  }
+  .step-label {
+    font-size: 0.8em;
+  }
+  .step:nth-child(even) > .step-label {
+    bottom: 0;
+    margin-top: 7.5rem;
+  }
+  .step-label.two-lines, .step-label.two-line-sm {
+    top: -10.5rem;
+    margin-top: 0;
+  }
+  .step:nth-child(even) > .step-label.two-lines, .step:nth-child(even) > .step-label.two-line-sm {
+    bottom: 0;
+    margin-top: 14.5rem;
+  }
+}
+.step-incomplete.step-inactive .step-label {
+  color: #000;
+}
+
+.step-incomplete.step-active .step-label {
+  color: #000;
+}
+
+.step-active .step-label {
+  transition: color 0.3s ease-in-out;
+  transition-delay: 0.5s;
+}/*# sourceMappingURL=progress-bar.css.map */

@@ -77,6 +77,9 @@ main {
   margin: 0;
   position: relative;
 }
+#left-navigation p:not(:first-of-type) {
+  border-top: solid 1px #D5C6FF;
+}
 #left-navigation p:has(a:hover, a:focus) {
   background-color: #D5C6FF;
 }
@@ -269,6 +272,10 @@ main {
   background-color: #fff;
   padding: 25px;
   margin-bottom: 25px;
+}
+.wc-panel h2::after {
+  border: none;
+  padding: 0;
 }
 
 .wc-bg-primary {

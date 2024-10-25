@@ -32,16 +32,16 @@
 .user-journey ol li {
   width: 100%;
   position: relative;
-  background-color: #bbdff3;
+  background-color: #D5C6FF;
   font-weight: bold;
-  color: #474747;
+  color: #350267;
   line-height: 1em;
   height: 60px;
   padding: 2px 60px 2px 20px;
 }
 @media screen and (max-width: 768px) {
   .user-journey ol li {
-    border: 1px solid #474747;
+    border: 1px solid #350267;
     margin: 5px 0px;
     padding: 15px;
     height: -moz-max-content;
@@ -69,7 +69,7 @@
     width: 30px;
     height: 30px;
     border-left: 4px solid #FFF;
-    background-color: #bbdff3;
+    background-color: #D5C6FF;
   }
   .user-journey ol li:not(:first-child)::after {
     transform: skew(-30deg);
@@ -80,9 +80,9 @@
   }
 }
 .user-journey ol li.active {
-  background-color: #59b956;
+  background-color: #350267;
   color: #fff;
 }
 .user-journey ol li.active::before, .user-journey ol li.active::after {
-  background-color: #59b956;
+  background-color: #350267;
 }/*# sourceMappingURL=user-journey-simple.css.map */

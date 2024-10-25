@@ -12,870 +12,811 @@
     <title>Web UX Research and Design &ndash; Report - Q1 2024-2025</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta name="description" content=" " />
-    <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css" />
-    <noscript>
-        <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
-    </noscript>
-    <link rel="stylesheet" href="https://test.canada.ca/covid-19-guidance/proto/css/alpha-beta-banner.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" />
-    <link rel="stylesheet" href="css/reporting.css" />
+    <link rel="stylesheet" href="css/reporting-v2.css" />
 
 </head>
 
 
 <body vocab="http://schema.org/" typeof="WebPage">
-    <header>
+    <header class="wurd">
+
         <nav id="wb-bc" property="breadcrumb">
             <h2 class="wb-inv">You are here:</h2>
-            <div class="container">
-                <ol class="breadcrumb pull-left">
-                    <li><a href='index-eng.html'>WURD Reporting</a></li>
-                    <li>Q1 2024-2025</li>
-                </ol>
-                <p class="pull-right"><a href="2024-2025-Q1-fra.html" lang="fr">Français</a></p>
-            </div>
+            <ol class="breadcrumb pull-left">
+                <li><a href='index-eng.html'>WURD Reporting</a></li>
+                <li>Q1 2024-2025</li>
+            </ol>
+            <p class="pull-right"><a href="2024-2025-Q1-fra.html" lang="fr"><span class="hidden-xs">Français</span><span class="visible-xs mrgn-tp-sm" title="Français">FR</span></a></p>
+            <div class="clearfix"></div>
         </nav>
 
-    </header>
-    <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
-        <header>
-            <div class="container">
-                <h1 id="wb-cont" property="name">Web UX Research and Design<br>
-                    <span class="h1-sub">Report - Q1 2024-2025</span>
+        <div class="d-flex">
+            <img src="images/wurd-logo.svg" class="d-flex align-self-center" alt="" />
+            <div class="d-flex align-self-center">
+                <h1 id="wb-cont" property="name">Web UX Research and Design<br><span class="h1-sub">Report - Q1 2024-2025</span>
                 </h1>
-
             </div>
-        </header>
+        </div>
+
+        <div class="background-logo">
+            <div class="background-logo-svg">
+                <svg viewBox="0 0 175 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M126.874 0L175 55L126.947 109.917L96 75.5L104.793 65.7548L126.801 90.0798L157.497 55L126.874 20.0035L48.1259 110L0 55L48.0529 0.0833844L79.231 34.6669L70.438 44.4121L48.1988 19.9202L17.5034 55L48.1259 89.9965L126.874 0Z" fill="white" />
+                </svg>
+            </div>
+        </div>
+
+    </header>
 
 
-        <div class="container">
+
+    <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
+
+        <nav id="left-navigation" data-ajax-replace="https://test.canada.ca/ircc/wurd-reporting/includes/left-nav-en.html"></nav>
+
+        <div id="mainContent">
 
 
-            <div class="row mrgn-tp-lg">
-                <aside class="pull-right col-md-4 mrgn-lft-md mrgn-tp-0">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Projects</h3>
-                        </div>
-                        <div class="panel-body p-0">
-                            <div class="small list-group mrgn-bttm-0">
-                                <a class="list-group-item brdr-rds-0" href="#explore-immigration-programs">Explore immigration programs tool</a>
-                                <a class="list-group-item" href="#sign-in">Sign in</a>
-                                <a class="list-group-item" href="#cxp">Preparing for the Client Experience Platform</a>
-                                <a class="list-group-item" href="#web-performance-dashboard">Web performance dashboard</a>
-                                <a class="list-group-item" href="#ee">Express Entry redesign and testing</a>
-                                <a class="list-group-item" href="#playbook">WURD Playbook</a>
-                                <a class="list-group-item" href="#work">Work Topic</a>
-                                <a class="list-group-item" href="#campaigns">Campaign pages</a>
-                                <a class="list-group-item" href="#my-application">My application</a>
-                                <a class="list-group-item" href="#settlement">Settlement</a>
-                                <a class="list-group-item" href="#international-adoption">International adoption</a>
 
-                            </div>
-                        </div>
-                    </div>
-                </aside>
-                <div class="col-md-auto">
-                    <h2 class="mrgn-tp-0">Year 2 of WURD: tackling complex issues </h2>
-                    <p>As we started our second year of existence, WURD tackled some of the complex issues that impact user experience, like the <strong>sign in ecosystem</strong>, important programs like <strong>work permits</strong> and <strong>Express Entry</strong>, information related to related to <strong>applications</strong>, and <strong>campaign</strong> pages.</p>
-                    <p>We also supported <strong>Release 1 of the Client Experience Platform</strong>, while fostering a culture of UX excellence in Web communications by developing a <strong>playbook</strong> and a <strong>web performance dashboard</strong>.</p>
+            <h2>Year 2 of WURD: tackling complex issues </h2>
+            <p>As we started our second year of existence, WURD tackled some of the complex issues that impact user experience, like the <strong>sign in ecosystem</strong>, important programs like <strong>work permits</strong> and <strong>Express Entry</strong>, information related to related to <strong>applications</strong>, and <strong>campaign</strong> pages.</p>
+            <p>We also supported <strong>Release 1 of the Client Experience Platform</strong>, while fostering a culture of UX excellence in Web communications by developing a <strong>playbook</strong> and a <strong>web performance dashboard</strong>.</p>
 
-                    <h3>Key highlights</h3>
-                    <ul>
-                        <li>Launched a new Sign-in wizard to help people find the right account</li>
-                        <li>Completed phase 2 of the Explore immigration programs tool </li>
-                        <li>Delivered multiple research projects with tens of actionable, evidence-based recommendations</li>
+            <h3>Key highlights</h3>
+            <ul>
+                <li>Launched a new Sign-in wizard to help people find the right account</li>
+                <li>Completed phase 2 of the Explore immigration programs tool </li>
+                <li>Delivered multiple research projects with tens of actionable, evidence-based recommendations</li>
+            </ul>
+
+            <h2>Project updates</h2>
+
+            <ul class="mrgn-bttm-lg" id="projects">
+                <li><a href="#explore-immigration-programs">Explore immigration programs tool</a></li>
+                <li><a href="#sign-in">Sign in</a></li>
+                <li><a href="#cxp">Preparing for the Client Experience Platform</a></li>
+                <li><a href="#web-performance-dashboard">Web performance dashboard</a></li>
+                <li><a href="#ee">Express Entry redesign and testing</a></li>
+                <li><a href="#playbook">WURD Playbook</a></li>
+                <li><a href="#work">Work Topic</a></li>
+                <li><a href="#campaigns">Campaign pages</a></li>
+                <li><a href="#my-application">My application</a></li>
+                <li><a href="#settlement">Settlement</a></li>
+                <li><a href="#international-adoption">International adoption</a></li>
+
+            </ul>
+            <div class="project" id="explore-immigration-programs">
+                <h3>Explore immigration programs tool</h3>
+                <div class="progress-component">
+                    <ul class="steps">
+                        <li class="step step-incomplete step-active">
+                            <span class="step-icon">1</span>
+                            <span class="step-label">Research</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">2</span>
+                            <span class="step-label">Design</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">3</span>
+                            <span class="step-label">Testing</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">4</span>
+                            <span class="step-label">Launch</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive step-current">
+                            <span class="step-icon">5</span>
+                            <span class="step-label">Monitoring</span>
+                        </li>
                     </ul>
-
-                    <h2>Project updates</h2>
                 </div>
-            </div>
-            <div class="panel panel-default" id="explore-immigration-programs">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Explore immigration programs tool</h3>
+
+
+                <h4>Impact on the user journey</h4>
+                <div class="user-journey">
+                    <ol>
+                        <li class="active">Seek<span class="wb-inv"> (impacted)</span></li>
+                        <li>Apply</li>
+                        <li>Wait</li>
+                        <li>Move forward</li>
+                    </ol>
                 </div>
-                <div class="panel-body">
-
-
-                    <div class="progress-component">
-                        <ul class="steps">
-                            <li class="step step-incomplete step-active">
-                                <span class="step-icon">1</span>
-                                <span class="step-label">Research</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">2</span>
-                                <span class="step-label">Design</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">3</span>
-                                <span class="step-label">Testing</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">4</span>
-                                <span class="step-label">Launch</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive step-current">
-                                <span class="step-icon">5</span>
-                                <span class="step-label">Monitoring</span>
+                <div class="row">
+                    <div class="col-md-4 pull-right">
+                        <div class="well mrgn-tp-md">
+                            <h5 class="mrgn-tp-0">Statistics</h5>
+                            <ul>
+                                <li>In Q1 the tool had over <span class="h4 mrgn-tp-0">200K</span> visits</li>
+                                <li><span class="h4 mrgn-tp-0">74%</span> are looking to work in Canada; <span class="h4 mrgn-tp-0">10%</span> to study; <span class="h4 mrgn-tp-0">9%</span> to reunite with family; and <span class="h4 mrgn-tp-0">7%</span> to visit. </li>
+                                <li>Indicators of the usability of the tool remained stable </li>
+                            </ul>
+                            <p class="small text-muted">Sources: Adobe Analytics, UX survey</p>
+                        </div>
+                    </div>
+                    <div class="col-md-auto">
+                        <h4>Description</h4>
+                        <ul>
+                            <li>A new tool that:
+                                <ul>
+                                    <li>addresses the challenges of the Come to Canada tool</li>
+                                    <li>offers a broad, high-level overview of different programs to help clients self-serve</li>
+                                </ul>
                             </li>
                         </ul>
-                    </div>
 
+                        <h4>What we did</h4>
+                        <ul>
+                            <li>In Q4 23-24, we prepared updates to the Work branch and the list of results </li>
+                            <li>In Q1 24-25, we launched the tweaks and monitored usage and comments </li>
+                        </ul>
 
-                    <h4>Impact on the user journey</h4>
-                    <div class="user-journey">
-                        <ol>
-                            <li class="active">Seek<span class="wb-inv"> (impacted)</span></li>
-                            <li>Apply</li>
-                            <li>Wait</li>
-                            <li>Move forward</li>
-                        </ol>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 pull-right">
-                            <div class="well mrgn-tp-md">
-                                <h5 class="mrgn-tp-0">Statistics</h5>
-                                <ul>
-                                    <li>In Q1 the tool had over <span class="h4 mrgn-tp-0">200K</span> visits</li>
-                                    <li><span class="h4 mrgn-tp-0">74%</span> are looking to work in Canada; <span class="h4 mrgn-tp-0">10%</span> to study; <span class="h4 mrgn-tp-0">9%</span> to reunite with family; and <span class="h4 mrgn-tp-0">7%</span> to visit. </li>
-                                    <li>Indicators of the usability of the tool remained stable </li>
-                                </ul>
-                                <p class="small text-muted">Sources: Adobe Analytics, UX survey</p>
-                            </div>
-                        </div>
-                        <div class="col-md-auto">
-                            <h4>Description</h4>
-                            <ul>
-                                <li>A new tool that:
-                                    <ul>
-                                        <li>addresses the challenges of the Come to Canada tool</li>
-                                        <li>offers a broad, high-level overview of different programs to help clients self-serve</li>
-                                    </ul>
-                                </li>
-                            </ul>
-
-                            <h4>What we did</h4>
-                            <ul>
-                                <li>In Q4 23-24, we prepared updates to the Work branch and the list of results </li>
-                                <li>In Q1 24-25, we launched the tweaks and monitored usage and comments </li>
-                            </ul>
-
-                            <h4>Next steps</h4>
-                            <ul>
-                                <li>This project is closed for the moment </li>
-                                <li>Once DPM3 is ready to dive deeper into an integration of eligibility and the CXP, we will support as needed  </li>
-                            </ul>
-                            <h4>What we learned</h4>
-                            <ul>
-                                <li>Usage and performance has been stable for several months </li>
-                                <li>Many people are trying to find a way to come retire here or just “live” here, and are not finding an immigration program for this </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="panel panel-default" id="sign-in">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Sign in</h3>
-                </div>
-                <div class="panel-body">
-
-                    <div class="progress-component">
-                        <ul class="steps">
-                            <li class="step step-incomplete step-active">
-                                <span class="step-icon">1</span>
-                                <span class="step-label">Research</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">2</span>
-                                <span class="step-label">Design</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">3</span>
-                                <span class="step-label">Testing</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive ">
-                                <span class="step-icon">4</span>
-                                <span class="step-label">Launch</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive step-current">
-                                <span class="step-icon">5</span>
-                                <span class="step-label">Monitoring</span>
-                            </li>
+                        <h4>Next steps</h4>
+                        <ul>
+                            <li>This project is closed for the moment </li>
+                            <li>Once DPM3 is ready to dive deeper into an integration of eligibility and the CXP, we will support as needed  </li>
+                        </ul>
+                        <h4>What we learned</h4>
+                        <ul>
+                            <li>Usage and performance has been stable for several months </li>
+                            <li>Many people are trying to find a way to come retire here or just “live” here, and are not finding an immigration program for this </li>
                         </ul>
                     </div>
-                    <h4>Impact on the user journey</h4>
-                    <div class="user-journey">
-                        <ol>
-                            <li>Seek</li>
-                            <li class="active">Apply<span class="wb-inv"> (impacted)</span></li>
-                            <li class="active">Wait<span class="wb-inv"> (impacted)</span></li>
-                            <li>Move forward</li>
-                        </ol>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 pull-right">
-                            <div class="well mrgn-tp-md">
-                                <h5 class="mrgn-tp-0">Statistics</h5>
-                                <ul>
-                                    <li>Over <span class="h3 mrgn-tp-0">80%</span> of users who arrived at the account wizard tool started through the tool, with over <span class="h4 mrgn-tp-0">90%</span> completing it through to an account result </li>
-
-                                    <li>Roughly <span class="h3 mrgn-tp-0">28%</span> of users try to sign in on mobile </li>
-
-                                    <li>Roughly <span class="h3 mrgn-tp-0">75%</span> of users move to the IRCC secure account</li>
-
-                                    <li>Over <span class="h3 mrgn-tp-0">40%</span> of users are signing in for visitor visa applications </li>
-                                </ul>
-
-                                <p class="small text-muted">Source: Adobe Analytics</p>
-                            </div>
-                        </div>
-                        <div class="col-md-auto">
-                            <h4>Description</h4>
+                </div>
+            </div>
+            <hr>
+            <div class="project" id="sign-in">
+                <h3>Sign in</h3>
+                <div class="progress-component">
+                    <ul class="steps">
+                        <li class="step step-incomplete step-active">
+                            <span class="step-icon">1</span>
+                            <span class="step-label">Research</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">2</span>
+                            <span class="step-label">Design</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">3</span>
+                            <span class="step-label">Testing</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive ">
+                            <span class="step-icon">4</span>
+                            <span class="step-label">Launch</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive step-current">
+                            <span class="step-icon">5</span>
+                            <span class="step-label">Monitoring</span>
+                        </li>
+                    </ul>
+                </div>
+                <h4>Impact on the user journey</h4>
+                <div class="user-journey">
+                    <ol>
+                        <li>Seek</li>
+                        <li class="active">Apply<span class="wb-inv"> (impacted)</span></li>
+                        <li class="active">Wait<span class="wb-inv"> (impacted)</span></li>
+                        <li>Move forward</li>
+                    </ol>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 pull-right">
+                        <div class="well mrgn-tp-md">
+                            <h5 class="mrgn-tp-0">Statistics</h5>
                             <ul>
-                                <li>Redesign of the IRCC sign-in experience to:
+                                <li>Over <span class="h3 mrgn-tp-0">80%</span> of users who arrived at the account wizard tool started through the tool, with over <span class="h4 mrgn-tp-0">90%</span> completing it through to an account result </li>
+
+                                <li>Roughly <span class="h3 mrgn-tp-0">28%</span> of users try to sign in on mobile </li>
+
+                                <li>Roughly <span class="h3 mrgn-tp-0">75%</span> of users move to the IRCC secure account</li>
+
+                                <li>Over <span class="h3 mrgn-tp-0">40%</span> of users are signing in for visitor visa applications </li>
+                            </ul>
+
+                            <p class="small text-muted">Source: Adobe Analytics</p>
+                        </div>
+                    </div>
+                    <div class="col-md-auto">
+                        <h4>Description</h4>
+                        <ul>
+                            <li>Redesign of the IRCC sign-in experience to:
                                 <ul>
                                     <li>understand the current account ecosystem</li>
                                     <li>make it easier for clients to sign in to their existing accounts</li>
                                     <li>prepare for the incoming Client eXperience Platform (CXP)</li>
-                                </ul></li>
-                            </ul>
-                            <h4>What we did</h4>
-                            <ul>
-                                <li>Rolled out an account wizard to help IRCC clients get back to their account sign in page.
-                                    <ul>
-                                        <li>Monitored feedback and user activity, providing weekly updates for 6 weeks after launch. </li>
-                                    </ul>
-                                </li>
-                                <li>Developed and rolled out a version 2 of the wizard, based on user feedback, to simplify and streamline the experience for clients
-                                    <ul>
-                                        <li>Version 2 overtook the initial wizard within a week of launching. </li>
-                                        <li>Monitored feedback and user activity. </li>
-                                    </ul>
-                                </li>
-                                <li>Liaised with Principal Publisher and CDS to update the canada.ca megamenu and the GC accounts page, to point the IRCC sign-in links to the account wizard. </li>
-                                <li>Began developing a version 3 of the wizard, based on updated user feedback. </li>
-                            </ul>
-                            <h4>Next steps</h4>
-                            <ul>
-                                <li>Finalize, seek approval and launch version 3 of the account wizard </li>
-                                <li>Continue monitoring analytics and feedback data for the IRCC account wizard. </li>
-
-                            </ul>
-                            <h4>What we learned</h4>
-                            <ul>
-                                <li>The majority of our clients use the IRCC secure account to apply, even if it’s not the account we tell them to use in program content. </li>
-                                <li>Clients refer to the secure account as the GCKey account and look for that language. </li>
-                                <li>There are 4 main applications people sign in to an account for. </li>
-                                <li>Iterating, rather than trying to perfect a product before launch, is a faster way to understand what our clients need and how they use our tools. </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="panel panel-default" id="cxp">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Preparing for the Client Experience Platform</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Impact on the user journey</h4>
-                            <div class="user-journey">
-                                <ol>
-                                    <li class="active">Seek<span class="wb-inv"> (impacted)</span></li>
-                                    <li class="active">Apply<span class="wb-inv"> (impacted)</span></li>
-                                    <li class="active">Wait<span class="wb-inv"> (impacted)</span></li>
-                                    <li class="active">Move forward<span class="wb-inv"> (impacted)</span></li>
-                                </ol>
-                            </div>
-                            <div class="progress-component">
-                                <ul class="steps">
-                                    <li class="step step-incomplete step-active">
-                                        <span class="step-icon">1</span>
-                                        <span class="step-label">Research</span>
-                                    </li>
-                                    <li class="step step-incomplete step-inactive">
-                                        <span class="step-icon">2</span>
-                                        <span class="step-label">Design</span>
-                                    </li>
-                                    <li class="step step-incomplete step-inactive">
-                                        <span class="step-icon">3</span>
-                                        <span class="step-label">Testing</span>
-                                    </li>
-                                    <li class="step step-incomplete step-inactive ">
-                                        <span class="step-icon">4</span>
-                                        <span class="step-label">Launch</span>
-                                    </li>
-                                    <li class="step step-incomplete step-inactive step-current">
-                                        <span class="step-icon">5</span>
-                                        <span class="step-label">Monitoring</span>
-                                    </li>
                                 </ul>
-                            </div>
-                            <h4>Description</h4>
-                            <ul>
-                                <li>Project to:
-                                    <ul>
-
-                                        <li>support the development of the new client platform for IRCC</li>
-                                        <li>coordinate the integration of this new platform into the existing IRCC website</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <h4>What we did</h4>
-                            <ul>
-                                <li>Provided support and guidance to accommodate last-minute changes for eta-X countries that could not be supported within the CXP. </li>
-                                <li>Finalized, staged and launched changes to the IRCC site for the CXP R1. </li>
-                                <li>Monitored and provided daily updates on user activity within visitor visa/super visa and CXP site pages </li>
-                                <li>Liaised with the Passport team and DPM3 to prepare for R2 </li>
-                                <li>Developed early prototypes to demonstrate how to integrate the CXP within the redesigned passport content. </li>
-                                <li>Took part in discussions around how to provide client support for the passport launch in November (technical and program) </li>
-                            </ul>
-
-
-                            <h4>Next steps</h4>
-                            <ul>
-                                <li>Finalize draft changes to the passport content for R2 in November </li>
-                                <li>Finalize passport prototypes to demonstrate functionality to internal program and DPM folks </li>
-                                <li>Continue providing support and advice on platform and content development for release 2 </li>
-                            </ul>
-                            <h4>What we learned</h4>
-                            <ul>
-                                <li>Clients were not very interested in a new system at initial launch. Limited eligibility rules and no clear incentive for the new account may have made it a less appealing option than the current routes. </li>
-                                <li>Most clients continue to apply through the IRCC secure account, disregarding the other two options available to them. </li>
-                            </ul>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="panel panel-default" id="web-performance-dashboard">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Web performance dashboard</h3>
-                </div>
-                <div class="panel-body">
-
-                    <div class="progress-component">
-                        <ul class="steps">
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">1</span>
-                                <span class="step-label">Research</span>
-                            </li>
-                            <li class="step step-incomplete step-active step-current">
-                                <span class="step-icon">2</span>
-                                <span class="step-label">Design</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">3</span>
-                                <span class="step-label">Testing</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">4</span>
-                                <span class="step-label">Launch</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">5</span>
-                                <span class="step-label">Monitoring</span>
                             </li>
                         </ul>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p>Description </p>
-                            <ul>
-                                <li>A web performance dashboard to gather and visualize different data points about the performance of our web content. </li>
-                                <li>The goal is to allow an overview of the website performance, at a high level and by topic, tasks and URLs. </li>
-                                <li>It uses charts, tables and other data visualizations. </li>
-                            </ul>
-                            <h4>What we did</h4>
-                            <ul>
-                                <li>Prepared a web health dashboard for high-level view of the web, including data on overall traffic, top content and news, Task Success Survey, special measures, and more </li>
-                                <li>Integrated comments from Director and DG in the dashboard </li>
-                            </ul>
-                            <h4>Next steps</h4>
-                            <ul>
-                                <li>Continue to improve the dashboard: allowing users to go back to previous month’s data </li>
-                                <li>Document process to update and add insights </li>
-                                <li>Translations </li>
-                            </ul>
-                            <h4>What we learned </h4>
-                            <ul>
-                                <li>A better understanding of the needs and wants of management as well as advisors </li>
-                                <li>Users want more information on task success </li>
-                                <li>Access to the data is usually not the issue; extracting key insights is useful </li>
-                            </ul>
+                        <h4>What we did</h4>
+                        <ul>
+                            <li>Rolled out an account wizard to help IRCC clients get back to their account sign in page.
+                                <ul>
+                                    <li>Monitored feedback and user activity, providing weekly updates for 6 weeks after launch. </li>
+                                </ul>
+                            </li>
+                            <li>Developed and rolled out a version 2 of the wizard, based on user feedback, to simplify and streamline the experience for clients
+                                <ul>
+                                    <li>Version 2 overtook the initial wizard within a week of launching. </li>
+                                    <li>Monitored feedback and user activity. </li>
+                                </ul>
+                            </li>
+                            <li>Liaised with Principal Publisher and CDS to update the canada.ca megamenu and the GC accounts page, to point the IRCC sign-in links to the account wizard. </li>
+                            <li>Began developing a version 3 of the wizard, based on updated user feedback. </li>
+                        </ul>
+                        <h4>Next steps</h4>
+                        <ul>
+                            <li>Finalize, seek approval and launch version 3 of the account wizard </li>
+                            <li>Continue monitoring analytics and feedback data for the IRCC account wizard. </li>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default" id="ee">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Express Entry redesign and testing</h3>
-                </div>
-                <div class="panel-body">
-
-                    <div class="progress-component">
-                        <ul class="steps">
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">1</span>
-                                <span class="step-label">Research</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">2</span>
-                                <span class="step-label">Design</span>
-                            </li>
-                            <li class="step step-incomplete step-active step-current">
-                                <span class="step-icon">3</span>
-                                <span class="step-label">Testing</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">4</span>
-                                <span class="step-label">Launch</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">5</span>
-                                <span class="step-label">Monitoring</span>
-                            </li>
+                        </ul>
+                        <h4>What we learned</h4>
+                        <ul>
+                            <li>The majority of our clients use the IRCC secure account to apply, even if it’s not the account we tell them to use in program content. </li>
+                            <li>Clients refer to the secure account as the GCKey account and look for that language. </li>
+                            <li>There are 4 main applications people sign in to an account for. </li>
+                            <li>Iterating, rather than trying to perfect a product before launch, is a faster way to understand what our clients need and how they use our tools. </li>
                         </ul>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Description </h4>
+                </div>
+            </div>
+            <hr>
+            <div class="project" id="cxp">
+                <h3>Preparing for the Client Experience Platform</h3>
+                <h4>Impact on the user journey</h4>
+                <div class="user-journey">
+                    <ol>
+                        <li class="active">Seek<span class="wb-inv"> (impacted)</span></li>
+                        <li class="active">Apply<span class="wb-inv"> (impacted)</span></li>
+                        <li class="active">Wait<span class="wb-inv"> (impacted)</span></li>
+                        <li class="active">Move forward<span class="wb-inv"> (impacted)</span></li>
+                    </ol>
+                </div>
+                <div class="progress-component">
+                    <ul class="steps">
+                        <li class="step step-incomplete step-active">
+                            <span class="step-icon">1</span>
+                            <span class="step-label">Research</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">2</span>
+                            <span class="step-label">Design</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">3</span>
+                            <span class="step-label">Testing</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive ">
+                            <span class="step-icon">4</span>
+                            <span class="step-label">Launch</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive step-current">
+                            <span class="step-icon">5</span>
+                            <span class="step-label">Monitoring</span>
+                        </li>
+                    </ul>
+                </div>
+                <h4>Description</h4>
+                <ul>
+                    <li>Project to:
+                        <ul>
+
+                            <li>support the development of the new client platform for IRCC</li>
+                            <li>coordinate the integration of this new platform into the existing IRCC website</li>
+                        </ul>
+                    </li>
+                </ul>
+                <h4>What we did</h4>
+                <ul>
+                    <li>Provided support and guidance to accommodate last-minute changes for eta-X countries that could not be supported within the CXP. </li>
+                    <li>Finalized, staged and launched changes to the IRCC site for the CXP R1. </li>
+                    <li>Monitored and provided daily updates on user activity within visitor visa/super visa and CXP site pages </li>
+                    <li>Liaised with the Passport team and DPM3 to prepare for R2 </li>
+                    <li>Developed early prototypes to demonstrate how to integrate the CXP within the redesigned passport content. </li>
+                    <li>Took part in discussions around how to provide client support for the passport launch in November (technical and program) </li>
+                </ul>
 
 
-                            <ul>
-                                <li>Redesign project to simplify navigation of Express Entry (EE) content, based on findings in Q4 research report </li>
-                            </ul>
-                            <h4>What we did </h4>
-                            <ul>
-                                <li>Held information architecture (IA) workshops to break down all pieces of EE content and re-organize them into simplified structure </li>
-                                <li>Created a 21-page fully functional prototype, using subway navigation pattern </li>
-                                <li>Planned usability testing with CEB to evaluate task performance on the prototype </li>
-                            </ul>
-                            <h4>Next steps </h4>
-                            <ul>
-                                <li>Conduct usability testing and analyze results </li>
-                                <li>Develop implementation plan with web advisor </li>
-                            </ul>
-                            <h4>What we learned </h4>
-                            <ul>
-                                <li>Express Entry has an overwhelming amount of content, making it easy for users to get lost </li>
-                                <li>Involving web advisors in IA workshops is crucial, given their subject matter expertise </li>
-                                <li>Soliciting feedback on prototypes asynchronously was more effective </li>
-                            </ul>
+                <h4>Next steps</h4>
+                <ul>
+                    <li>Finalize draft changes to the passport content for R2 in November </li>
+                    <li>Finalize passport prototypes to demonstrate functionality to internal program and DPM folks </li>
+                    <li>Continue providing support and advice on platform and content development for release 2 </li>
+                </ul>
+                <h4>What we learned</h4>
+                <ul>
+                    <li>Clients were not very interested in a new system at initial launch. Limited eligibility rules and no clear incentive for the new account may have made it a less appealing option than the current routes. </li>
+                    <li>Most clients continue to apply through the IRCC secure account, disregarding the other two options available to them. </li>
+                </ul>
+            </div>
+            <hr>
 
+            <div class="project" id="web-performance-dashboard">
+                <h3>Web performance dashboard</h3>
+                <div class="progress-component">
+                    <ul class="steps">
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">1</span>
+                            <span class="step-label">Research</span>
+                        </li>
+                        <li class="step step-incomplete step-active step-current">
+                            <span class="step-icon">2</span>
+                            <span class="step-label">Design</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">3</span>
+                            <span class="step-label">Testing</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">4</span>
+                            <span class="step-label">Launch</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">5</span>
+                            <span class="step-label">Monitoring</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Description </p>
+                        <ul>
+                            <li>A web performance dashboard to gather and visualize different data points about the performance of our web content. </li>
+                            <li>The goal is to allow an overview of the website performance, at a high level and by topic, tasks and URLs. </li>
+                            <li>It uses charts, tables and other data visualizations. </li>
+                        </ul>
+                        <h4>What we did</h4>
+                        <ul>
+                            <li>Prepared a web health dashboard for high-level view of the web, including data on overall traffic, top content and news, Task Success Survey, special measures, and more </li>
+                            <li>Integrated comments from Director and DG in the dashboard </li>
+                        </ul>
+                        <h4>Next steps</h4>
+                        <ul>
+                            <li>Continue to improve the dashboard: allowing users to go back to previous month’s data </li>
+                            <li>Document process to update and add insights </li>
+                            <li>Translations </li>
+                        </ul>
+                        <h4>What we learned </h4>
+                        <ul>
+                            <li>A better understanding of the needs and wants of management as well as advisors </li>
+                            <li>Users want more information on task success </li>
+                            <li>Access to the data is usually not the issue; extracting key insights is useful </li>
+                        </ul>
 
-                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="panel panel-default" id="playbook">
-                <div class="panel-heading">
-                    <h3 class="panel-title">WURD Playbook </h3>
+            <hr>
+            <div class="project" id="ee">
+                <h3>Express Entry redesign and testing</h3>
+                <div class="progress-component">
+                    <ul class="steps">
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">1</span>
+                            <span class="step-label">Research</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">2</span>
+                            <span class="step-label">Design</span>
+                        </li>
+                        <li class="step step-incomplete step-active step-current">
+                            <span class="step-icon">3</span>
+                            <span class="step-label">Testing</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">4</span>
+                            <span class="step-label">Launch</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">5</span>
+                            <span class="step-label">Monitoring</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Description </h4>
 
-                    <div class="progress-component">
-                        <ul class="steps">
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">1</span>
-                                <span class="step-label">Research</span>
-                            </li>
-                            <li class="step step-incomplete step-active step-current">
-                                <span class="step-icon">2</span>
-                                <span class="step-label">Design</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">3</span>
-                                <span class="step-label">Testing</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">4</span>
-                                <span class="step-label">Launch</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">5</span>
-                                <span class="step-label">Monitoring</span>
-                            </li>
+
+                        <ul>
+                            <li>Redesign project to simplify navigation of Express Entry (EE) content, based on findings in Q4 research report </li>
+                        </ul>
+                        <h4>What we did </h4>
+                        <ul>
+                            <li>Held information architecture (IA) workshops to break down all pieces of EE content and re-organize them into simplified structure </li>
+                            <li>Created a 21-page fully functional prototype, using subway navigation pattern </li>
+                            <li>Planned usability testing with CEB to evaluate task performance on the prototype </li>
+                        </ul>
+                        <h4>Next steps </h4>
+                        <ul>
+                            <li>Conduct usability testing and analyze results </li>
+                            <li>Develop implementation plan with web advisor </li>
+                        </ul>
+                        <h4>What we learned </h4>
+                        <ul>
+                            <li>Express Entry has an overwhelming amount of content, making it easy for users to get lost </li>
+                            <li>Involving web advisors in IA workshops is crucial, given their subject matter expertise </li>
+                            <li>Soliciting feedback on prototypes asynchronously was more effective </li>
+                        </ul>
+
+
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="project" id="playbook">
+                <h3>WURD Playbook </h3>
+                <div class="progress-component">
+                    <ul class="steps">
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">1</span>
+                            <span class="step-label">Research</span>
+                        </li>
+                        <li class="step step-incomplete step-active step-current">
+                            <span class="step-icon">2</span>
+                            <span class="step-label">Design</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">3</span>
+                            <span class="step-label">Testing</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">4</span>
+                            <span class="step-label">Launch</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">5</span>
+                            <span class="step-label">Monitoring</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Description </h4>
+                        <ul>
+                            <li>Project to create a centralized, easily accessible, and practical knowledge base that fosters collaboration, enhances efficiency, and drives innovation within the web research and UX team, as well as among other web advisors. </li>
+                        </ul>
+                        <h4>What we did </h4>
+                        <ul>
+                            <li>Brainstorm session with the team to identify what should be included for: research and design, content writing, data and analytics, prototyping and coding, and improving your skills. </li>
+                            <li>Set up the framework for the Playbook in a SharePoint site so it can be easily accessible to others. </li>
+                            <li>Started drafting structured instructions and detailed guides. </li>
+                        </ul>
+                        <h4>Next steps </h4>
+                        <ul>
+                            <li>Continue drafting content for the playbook. </li>
+                            <li>Translate the content. </li>
+                        </ul>
+                        <h4>What we learned </h4>
+                        <ul>
+                            <li>Although writing these instructions can be time-consuming, it helps to formalize our processes, enhance our efficiency, and provide a deeper understanding of the nuances in each other's work. </li>
                         </ul>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Description </h4>
-                            <ul>
-                                <li>Project to create a centralized, easily accessible, and practical knowledge base that fosters collaboration, enhances efficiency, and drives innovation within the web research and UX team, as well as among other web advisors. </li>
-                            </ul>
-                            <h4>What we did </h4>
-                            <ul>
-                                <li>Brainstorm session with the team to identify what should be included for: research and design, content writing, data and analytics, prototyping and coding, and improving your skills. </li>
-                                <li>Set up the framework for the Playbook in a SharePoint site so it can be easily accessible to others. </li>
-                                <li>Started drafting structured instructions and detailed guides. </li>
-                            </ul>
-                            <h4>Next steps </h4>
-                            <ul>
-                                <li>Continue drafting content for the playbook. </li>
-                                <li>Translate the content. </li>
-                            </ul>
-                            <h4>What we learned </h4>
-                            <ul>
-                                <li>Although writing these instructions can be time-consuming, it helps to formalize our processes, enhance our efficiency, and provide a deeper understanding of the nuances in each other's work. </li>
-                            </ul>
-                        </div>
+                </div>
+            </div>
+            <hr>
+            <div class="project" id="work">
+                <h3>Work topic</h3>
+                <div class="progress-component">
+                    <ul class="steps">
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">1</span>
+                            <span class="step-label">Research</span>
+                        </li>
+                        <li class="step step-incomplete step-active step-current">
+                            <span class="step-icon">2</span>
+                            <span class="step-label">Design</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">3</span>
+                            <span class="step-label">Testing</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">4</span>
+                            <span class="step-label">Launch</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">5</span>
+                            <span class="step-label">Monitoring</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Description </h4>
+                        <ul>
+                            <li>Redesign project to simplify the navigation of the Work topic and help users get the right instructions to apply for their specific situation, given the complexity of the work permit landscape </li>
+                        </ul>
+                        <h4>What we did </h4>
+                        <ul>
+                            <li>Analyzed research from various data sources, including Reddit, Facebook, Page feedback tool, and Task success survey </li>
+                            <li>Prototyped 4 templates for special work permit programs and provided a guidance document </li>
+                            <li>Held a workshop to identify quick and big wins </li>
+                            <li>Planned tree tests to evaluate existing and proposed information architecture (IA) </li>
+                        </ul>
+                        <h4>Next steps </h4>
+                        <ul>
+                            <li>Conduct tree tests and analyze results </li>
+                            <li>Test two versions of band pattern in first-click tests </li>
+                            <li>Implement new Work topic page based on testing results </li>
+                            <li>Finish revamp of main work permit H2A </li>
+                            <li>Integrate “Find out if you need a work permit” tool into main H2A to provide users with dynamic content relevant to their situation </li>
+                        </ul>
+                        <h4>What we learned </h4>
+                        <ul>
+                            <li>The complexity of work permits, with the various special programs, may not be suitable to a simple subway pattern and may need some out-of-the-box thinking </li>
+                            <li>A phased approach is best to get some quick wins live while working towards the bigger win at the same time </li>
+                        </ul>
+
                     </div>
                 </div>
             </div>
-
-            <div class="panel panel-default" id="work">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Work topic</h3>
+            <hr>
+            <div class="project" id="campaigns">
+                <h3>Campaign pages</h3>
+                <div class="progress-component">
+                    <ul class="steps">
+                        <li class="step step-incomplete step-active step-current">
+                            <span class="step-icon">1</span>
+                            <span class="step-label">Research</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">2</span>
+                            <span class="step-label">Design</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">3</span>
+                            <span class="step-label">Testing</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">4</span>
+                            <span class="step-label">Launch</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">5</span>
+                            <span class="step-label">Monitoring</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="panel-body">
-
-                    <div class="progress-component">
-                        <ul class="steps">
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">1</span>
-                                <span class="step-label">Research</span>
-                            </li>
-                            <li class="step step-incomplete step-active step-current">
-                                <span class="step-icon">2</span>
-                                <span class="step-label">Design</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">3</span>
-                                <span class="step-label">Testing</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">4</span>
-                                <span class="step-label">Launch</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">5</span>
-                                <span class="step-label">Monitoring</span>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Description </h4>
+                        <ul>
+                            <li>Explore how campaign pages are published, and find ways to:
+                                <ul>
+                                    <li>facilitate collaboration between Web, Marketing, and Strat Comms </li>
+                                    <li>improve the user experience of IRCC campaign pages </li>
+                                    <li>optimize efforts required from the Web team </li>
+                                </ul>
                             </li>
                         </ul>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Description </h4>
-                            <ul>
-                                <li>Redesign project to simplify the navigation of the Work topic and help users get the right instructions to apply for their specific situation, given the complexity of the work permit landscape </li>
-                            </ul>
-                            <h4>What we did </h4>
-                            <ul>
-                                <li>Analyzed research from various data sources, including Reddit, Facebook, Page feedback tool, and Task success survey </li>
-                                <li>Prototyped 4 templates for special work permit programs and provided a guidance document </li>
-                                <li>Held a workshop to identify quick and big wins </li>
-                                <li>Planned tree tests to evaluate existing and proposed information architecture (IA) </li>
-                            </ul>
-                            <h4>Next steps </h4>
-                            <ul>
-                                <li>Conduct tree tests and analyze results </li>
-                                <li>Test two versions of band pattern in first-click tests </li>
-                                <li>Implement new Work topic page based on testing results </li>
-                                <li>Finish revamp of main work permit H2A </li>
-                                <li>Integrate “Find out if you need a work permit” tool into main H2A to provide users with dynamic content relevant to their situation </li>
-                            </ul>
-                            <h4>What we learned </h4>
-                            <ul>
-                                <li>The complexity of work permits, with the various special programs, may not be suitable to a simple subway pattern and may need some out-of-the-box thinking </li>
-                                <li>A phased approach is best to get some quick wins live while working towards the bigger win at the same time </li>
-                            </ul>
+                        <h4>What we did </h4>
+                        <ul>
+                            <li>Research activities, including: </li>
+                            <li>Qualitative analysis of highest-traffic IRCC campaign pages </li>
+                            <li>Many focus groups with different stakeholders (including PCO, Digital Transformation Office, Marketing ADs, and Web ADs and advisors) </li>
+                            <li>Developed two guidance documents based on findings:
+                                <ul>
+                                    <li>Intergroup alignment guidance </li>
+                                    <li>Campaign page use cases and content guidance </li>
 
-                        </div>
+                                </ul>
+                            </li>
+                            <li>Started developing new patterns and templates to improve campaign pages. </li>
+                        </ul>
+                        <h4>Next steps </h4>
+                        <ul>
+                            <li>Get feedback from marketing on the guidance pieces </li>
+                            <li>Finalize patterns and templates </li>
+                            <li>Prepare a presentation of the overall guidance and new campaign library </li>
+                        </ul>
+                        <h4>What we learned </h4>
+                        <ul>
+                            <li>Campaign pages are often used to go beyond basic Canada.ca templates </li>
+                            <li>Campaign pages often result in duplication of core content </li>
+                            <li>A better alignment of Web and Marketing teams on the campaign details would help get better outcomes </li>
+                        </ul>
+
+
                     </div>
                 </div>
             </div>
-
-            <div class="panel panel-default" id="campaigns">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Campaign pages</h3>
+            <hr>
+            <div class="project" id="my-application">
+                <h3>My application </h3>
+                <div class="progress-component">
+                    <ul class="steps">
+                        <li class="step step-incomplete step-active step-current">
+                            <span class="step-icon">1</span>
+                            <span class="step-label">Research</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">2</span>
+                            <span class="step-label">Design</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">3</span>
+                            <span class="step-label">Testing</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">4</span>
+                            <span class="step-label">Launch</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">5</span>
+                            <span class="step-label">Monitoring</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="panel-body">
-
-                    <div class="progress-component">
-                        <ul class="steps">
-                            <li class="step step-incomplete step-active step-current">
-                                <span class="step-icon">1</span>
-                                <span class="step-label">Research</span>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Description </h4>
+                        <ul>
+                            <li>Project to investigate client pain points and other issues related to general application content and how to improve the My application topic page. </li>
+                        </ul>
+                        <h4>What we did </h4>
+                        <ul>
+                            <li>Mapped out all general application content, including:
+                                <ul>
+                                    <li>content linked off the My application topic page </li>
+                                    <li>content available in the Help Centre </li>
+                                </ul>
                             </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">2</span>
-                                <span class="step-label">Design</span>
+                            <li>Reviewed and analyzed data from
+                                <ul>
+                                    <li>Adobe Analytics </li>
+                                    <li>the Page Feedback Tool </li>
+                                    <li>the GC Task Success Survey </li>
+                                    <li>Social Care </li>
+                                    <li>an environmental scan (Reddit, Twitter, Facebook, Canadavisa forum) </li>
+                                </ul>
                             </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">3</span>
-                                <span class="step-label">Testing</span>
+                            <li>Identified recurring issues identified across these data sources and grouped them into categories:
+                                <ul>
+                                    <li>issues we can’t fix </li>
+                                    <li>issues we’re already working to solve </li>
+                                    <li>new issues we can work on </li>
+                                </ul>
                             </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">4</span>
-                                <span class="step-label">Launch</span>
+                            <li>Developed a presentation, outlining the research results and the issues/possible solutions we identified. </li>
+                        </ul>
+                        <h4>Next steps </h4>
+                        <ul>
+                            <li>Present the results to the rest of the WURD team and web management </li>
+                            <li>Begin redesign of the My application topic page </li>
+                            <li>Begin analysis of information in the Help Centre and develop a plan to merge that content into the main site </li>
+                        </ul>
+                        <h4>What we learned </h4>
+                        <ul>
+                            <li>The vast majority of general information about IRCC applications is not found within the main site, or under the My application topic. </li>
+                            <li>Clients are looking for information about:
+                                <ul>
+                                    <li>how to prepare documents and applications </li>
+                                    <li>how to update and correct applications they already submitted </li>
+                                    <li>how to find programs and the overall process </li>
+                                </ul>
                             </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">5</span>
-                                <span class="step-label">Monitoring</span>
-                            </li>
+                            <li>Accounts, application status, contacting IRCC and processing times continue to be issues that web can’t fully resolve. </li>
                         </ul>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Description </h4>
-                            <ul>
-                                <li>Explore how campaign pages are published, and find ways to:
-                                    <ul>
-                                        <li>facilitate collaboration between Web, Marketing, and Strat Comms </li>
-                                        <li>improve the user experience of IRCC campaign pages </li>
-                                        <li>optimize efforts required from the Web team </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <h4>What we did </h4>
-                            <ul>
-                                <li>Research activities, including: </li>
-                                <li>Qualitative analysis of highest-traffic IRCC campaign pages </li>
-                                <li>Many focus groups with different stakeholders (including PCO, Digital Transformation Office, Marketing ADs, and Web ADs and advisors) </li>
-                                <li>Developed two guidance documents based on findings:
-                                    <ul>
-                                        <li>Intergroup alignment guidance </li>
-                                        <li>Campaign page use cases and content guidance </li>
-
-                                    </ul>
-                                </li>
-                                <li>Started developing new patterns and templates to improve campaign pages. </li>
-                            </ul>
-                            <h4>Next steps </h4>
-                            <ul>
-                                <li>Get feedback from marketing on the guidance pieces </li>
-                                <li>Finalize patterns and templates </li>
-                                <li>Prepare a presentation of the overall guidance and new campaign library </li>
-                            </ul>
-                            <h4>What we learned </h4>
-                            <ul>
-                                <li>Campaign pages are often used to go beyond basic Canada.ca templates </li>
-                                <li>Campaign pages often result in duplication of core content </li>
-                                <li>A better alignment of Web and Marketing teams on the campaign details would help get better outcomes </li>
-                            </ul>
-
-
-                        </div>
-                    </div>
                 </div>
             </div>
-            <div class="panel panel-default" id="my-application">
-                <div class="panel-heading">
-                    <h3 class="panel-title">My application </h3>
+            <hr>
+            <div class="project" id="settlement">
+                <h3>Settlement</h3>
+                <div class="progress-component">
+                    <ul class="steps">
+                        <li class="step step-incomplete step-active step-current">
+                            <span class="step-icon">1</span>
+                            <span class="step-label">Research</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">2</span>
+                            <span class="step-label">Design</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">3</span>
+                            <span class="step-label">Testing</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">4</span>
+                            <span class="step-label">Launch</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">5</span>
+                            <span class="step-label">Monitoring</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Description </h4>
+                        <ul>
+                            <li>Look into the current state of the settlement content (directed at newcomers/ new immigrants), to help the advisors plan an IA revamp for this section. </li>
+                        </ul>
+                        <h4>What we did </h4>
+                        <ul>
+                            <li>Visually mapped out the current IA in Figjam, and shared it with the advisors, making the IA issues very clear for them to see </li>
+                            <li>Performed research:
+                                <ul>
+                                    <li>Used the existing research provided by the advisors to identify more problem areas in the Settlement content and IA </li>
+                                    <li>Conducted additional research that complimented and reinforced a lot of the initial research provided by the advisors </li>
 
-                    <div class="progress-component">
-                        <ul class="steps">
-                            <li class="step step-incomplete step-active step-current">
-                                <span class="step-icon">1</span>
-                                <span class="step-label">Research</span>
+                                </ul>
                             </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">2</span>
-                                <span class="step-label">Design</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">3</span>
-                                <span class="step-label">Testing</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">4</span>
-                                <span class="step-label">Launch</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">5</span>
-                                <span class="step-label">Monitoring</span>
-                            </li>
+                            <li>Shared the full research Figjam with advisors and walked them through the findings. We were able to agree on key issues, and they were able to pick what recommendations were most important/ relevant to them </li>
+                            <li>Created a condensed report that highlights the main findings and the recommendations agreed upon by the advisors. </li>
+                        </ul>
+                        <h4>Next steps </h4>
+                        <ul>
+                            <li>Check in with advisors to assess the progress of the recommendation implementation </li>
+                            <li>Revisit the data from the pages to observe performance improvements if any </li>
+                        </ul>
+                        <h4>What we learned </h4>
+                        <ul>
+                            <li>Information related to PR cards was found to be the bulk of the problem, and would require a project of its own to tackle. </li>
+                            <li>Presenting the ‘raw’ research in an organized Figjam format can be beneficial for more focused asks like this. It really helped the advisors see the problems clearly and allowed them to prioritize the recommendations with us. </li>
                         </ul>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Description </h4>
-                            <ul>
-                                <li>Project to investigate client pain points and other issues related to general application content and how to improve the My application topic page. </li>
-                            </ul>
-                            <h4>What we did </h4>
-                            <ul>
-                                <li>Mapped out all general application content, including:
-                                    <ul>
-                                        <li>content linked off the My application topic page </li>
-                                        <li>content available in the Help Centre </li>
-                                    </ul>
-                                </li>
-                                <li>Reviewed and analyzed data from
-                                    <ul>
-                                        <li>Adobe Analytics </li>
-                                        <li>the Page Feedback Tool </li>
-                                        <li>the GC Task Success Survey </li>
-                                        <li>Social Care </li>
-                                        <li>an environmental scan (Reddit, Twitter, Facebook, Canadavisa forum) </li>
-                                    </ul>
-                                </li>
-                                <li>Identified recurring issues identified across these data sources and grouped them into categories:
-                                    <ul>
-                                        <li>issues we can’t fix </li>
-                                        <li>issues we’re already working to solve </li>
-                                        <li>new issues we can work on </li>
-                                    </ul>
-                                </li>
-                                <li>Developed a presentation, outlining the research results and the issues/possible solutions we identified. </li>
-                            </ul>
-                            <h4>Next steps </h4>
-                            <ul>
-                                <li>Present the results to the rest of the WURD team and web management </li>
-                                <li>Begin redesign of the My application topic page </li>
-                                <li>Begin analysis of information in the Help Centre and develop a plan to merge that content into the main site </li>
-                            </ul>
-                            <h4>What we learned </h4>
-                            <ul>
-                                <li>The vast majority of general information about IRCC applications is not found within the main site, or under the My application topic. </li>
-                                <li>Clients are looking for information about:
-                                    <ul>
-                                        <li>how to prepare documents and applications </li>
-                                        <li>how to update and correct applications they already submitted </li>
-                                        <li>how to find programs and the overall process </li>
-                                    </ul>
-                                </li>
-                                <li>Accounts, application status, contacting IRCC and processing times continue to be issues that web can’t fully resolve. </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
-            <div class="panel panel-default" id="settlement">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Settlement</h3>
+            <hr>
+            <div class="project" id="international-adoption">
+                <h3>International adoption</h3>
+                <div class="progress-component">
+                    <ul class="steps">
+                        <li class="step step-incomplete step-active step-current">
+                            <span class="step-icon">1</span>
+                            <span class="step-label">Research</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">2</span>
+                            <span class="step-label">Design</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">3</span>
+                            <span class="step-label">Testing</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">4</span>
+                            <span class="step-label">Launch</span>
+                        </li>
+                        <li class="step step-incomplete step-inactive">
+                            <span class="step-icon">5</span>
+                            <span class="step-label">Monitoring</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
 
-                    <div class="progress-component">
-                        <ul class="steps">
-                            <li class="step step-incomplete step-active step-current">
-                                <span class="step-icon">1</span>
-                                <span class="step-label">Research</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">2</span>
-                                <span class="step-label">Design</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">3</span>
-                                <span class="step-label">Testing</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">4</span>
-                                <span class="step-label">Launch</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">5</span>
-                                <span class="step-label">Monitoring</span>
-                            </li>
+                        <h4>Description </h4>
+                        <ul>
+                            <li>Project to assess the adoption content and recommend improvements to it </li>
+                        </ul>
+                        <h4>What we did </h4>
+                        <ul>
+                            <li>Performed research (Environmental scans, Task success survey, and Web analytics) to create recommendations for the international adoption content </li>
+                            <li>Met with advisors to go over recommendations with them </li>
+                            <li>Created a research report for their reference, showing the findings and the recommendations </li>
+                        </ul>
+                        <h4>Next steps </h4>
+                        <ul>
+                            <li>Wait for advisors to make progress on the recommendations </li>
+                            <li>Assess improvements to the pages where possible </li>
+                        </ul>
+                        <h4>What we learned </h4>
+                        <ul>
+                            <li>The choose a process page was largely unsuccessful in guiding users to the right pages because it tries to explain a lot of complex information solely through text </li>
+                            <li>One of the main issues with the adoption content was that it didn’t clearly explain the beginning of the process and what actions to take. </li>
                         </ul>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Description </h4>
-                            <ul>
-                                <li>Look into the current state of the settlement content (directed at newcomers/ new immigrants), to help the advisors plan an IA revamp for this section. </li>
-                            </ul>
-                            <h4>What we did </h4>
-                            <ul>
-                                <li>Visually mapped out the current IA in Figjam, and shared it with the advisors, making the IA issues very clear for them to see </li>
-                                <li>Performed research:
-                                    <ul>
-                                        <li>Used the existing research provided by the advisors to identify more problem areas in the Settlement content and IA </li>
-                                        <li>Conducted additional research that complimented and reinforced a lot of the initial research provided by the advisors </li>
-
-                                    </ul>
-                                </li>
-                                <li>Shared the full research Figjam with advisors and walked them through the findings. We were able to agree on key issues, and they were able to pick what recommendations were most important/ relevant to them </li>
-                                <li>Created a condensed report that highlights the main findings and the recommendations agreed upon by the advisors. </li>
-                            </ul>
-                            <h4>Next steps </h4>
-                            <ul>
-                                <li>Check in with advisors to assess the progress of the recommendation implementation </li>
-                                <li>Revisit the data from the pages to observe performance improvements if any </li>
-                            </ul>
-                            <h4>What we learned </h4>
-                            <ul>
-                                <li>Information related to PR cards was found to be the bulk of the problem, and would require a project of its own to tackle. </li>
-                                <li>Presenting the ‘raw’ research in an organized Figjam format can be beneficial for more focused asks like this. It really helped the advisors see the problems clearly and allowed them to prioritize the recommendations with us. </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default" id="international-adoption">
-                <div class="panel-heading">
-                    <h3 class="panel-title">International adoption</h3>
-                </div>
-                <div class="panel-body">
-
-                    <div class="progress-component">
-                        <ul class="steps">
-                            <li class="step step-incomplete step-active step-current">
-                                <span class="step-icon">1</span>
-                                <span class="step-label">Research</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">2</span>
-                                <span class="step-label">Design</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">3</span>
-                                <span class="step-label">Testing</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">4</span>
-                                <span class="step-label">Launch</span>
-                            </li>
-                            <li class="step step-incomplete step-inactive">
-                                <span class="step-icon">5</span>
-                                <span class="step-label">Monitoring</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-
-                            <h4>Description </h4>
-                            <ul>
-                                <li>Project to assess the adoption content and recommend improvements to it </li>
-                            </ul>
-                            <h4>What we did </h4>
-                            <ul>
-                                <li>Performed research (Environmental scans, Task success survey, and Web analytics) to create recommendations for the international adoption content </li>
-                                <li>Met with advisors to go over recommendations with them </li>
-                                <li>Created a research report for their reference, showing the findings and the recommendations </li>
-                            </ul>
-                            <h4>Next steps </h4>
-                            <ul>
-                                <li>Wait for advisors to make progress on the recommendations </li>
-                                <li>Assess improvements to the pages where possible </li>
-                            </ul>
-                            <h4>What we learned </h4>
-                            <ul>
-                                <li>The choose a process page was largely unsuccessful in guiding users to the right pages because it tries to explain a lot of complex information solely through text </li>
-                                <li>One of the main issues with the adoption content was that it didn’t clearly explain the beginning of the process and what actions to take. </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
 
-            <p><a href="2023-2024-Q4-eng.html">Previous report: 2023-2024, Q4</a></p>
 
             <div class="pagedetails">
                 <dl id="wb-dtmd">
@@ -883,14 +824,13 @@
                     <dd><time property="dateModified">2024-07-26</time></dd>
                 </dl>
             </div>
-        </div>
     </main>
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
     <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
     <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
-    <script src="js/reporting.js"></script>
+    <script src="https://test.canada.ca/ircc/wurd-reporting/js/template.js"></script>
+    <script src="https://test.canada.ca/ircc/wurd-reporting/js/reporting.js"></script>
 </body>
 
 </html>
