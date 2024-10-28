@@ -22,7 +22,11 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/méli-mélo/2025-04-nahanni.css" />
+    <style>
+
+    </style>
+
+    <link rel="stylesheet" href="custom.css" />
     <!-- CONFIGURATIONS END HERE -->
     <script src="https://test.canada.ca/ircc/templates/js/template.js" type="text/javascript" defer></script>
 
@@ -53,7 +57,7 @@
                 <h2 class="d-flex mrgn-tp-0">Algérie</h2>
                 <img src="images/ag.svg" alt="" class="mrgn-lft-lg mrgn-bttm-md d-flex" style="width:95px!important;" />
             </div>
-            <div class="panel panel-default panel-body mrgn-bttm-lg">
+            <div class="panel panel-card panel-body mrgn-bttm-lg">
                 <div class="row wb-eqht">
                     <div class="col-md-5 brdr-rght">
                         <dl>
@@ -77,80 +81,62 @@
                         </dl>
                     </div>
                     <div class="col-md-7">
-                        <table class="table" data-chart="pie" data-chart-options='{
-                            "aspectRatio": 2,
-                            "plugins": {
-                                "legend": {
-                                    "position": "right"
-                                }
-                            }
-                            }' data-chart-data='{
-                                "labels": ["Francopones", "Anglophones"],
-                                "datasets": [{
-                                    "data": ["33", "66"],
-                                    "backgroundColor": ["#00B1B2","#C6EFEF"]
-                                }]
-                            }'>
-                            <caption>Locuteurs francophone</caption>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Locuteurs</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>Francophones</th>
-                                    <td>33%</td>
-                                </tr>
-                                <tr>
-                                    <th>Anglophones</th>
-                                    <td>66%</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table class="table" data-chart="pie" data-chart-options='{
-                            "aspectRatio": 2,
-                            "plugins": {
-                                "legend": {
-                                    "position": "right"
-                                }
-                            }
-                        }' data-chart-data='{
-                            "labels": ["Primaire: 10,3%", "Secondaire: 31%", "Tertaire: 58,6%"],
-                            "datasets": [{
-                                "data": ["10.3", "31", "58.6"],
-                                "backgroundColor": ["#987B06","#F9EBB4","#EFC519"]
-                            }]
-                        }'>
-                            <caption>Répartion des secteurs</caption>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Répartion des secteurs</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>Primaire</th>
-                                    <td>10,3%</td>
-                                </tr>
-                                <tr>
-                                    <th>Secondaire</th>
-                                    <td>31%</td>
-                                </tr>
-                                <tr>
-                                    <th>Tertaire</th>
-                                    <td>58,6%</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="mrgn-lft-md mrgn-rght-md">
+                            <figure>
+                                <figcaption class="h4 mrgn-tp-0">Locuteurs francophones et anglophones</figcaption>
+                                <canvas aria-describedby="ag-locuteurs-table" id="ag-locuteurs" data-chart="pie"></canvas>
+                                <details>
+                                    <summary>Locuteurs francophones et anglophones - Table</summary>
+                                    <table class="table" id="ag-locuteurs-table">
+                                        <thead>
+                                            <tr>
+                                                <td></td>
+                                                <th>Locuteurs</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>Francophones</th>
+                                                <td>33%</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Anglophones</th>
+                                                <td>66%</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </details>
+                            </figure>
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Répartion des secteurs</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Primaire</th>
+                                        <td>10,3%</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Secondaire</th>
+                                        <td>31%</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tertaire</th>
+                                        <td>58,6%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
                     </div>
                 </div>
 
             </div>
-            <div class="panel panel-default panel-body mrgn-bttm-lg">
+            <div class="panel panel-card panel-body mrgn-bttm-xl">
                 <h2 class="h4 mrgn-tp-0">Principaux secteurs d’activités prédominants</h2>
                 <ol>
                     <li>Industrie pétrolière et gazière</li>
@@ -160,16 +146,18 @@
                     <li>Technologie de l’information et des communications</li>
                 </ol>
             </div>
-            <div class="panel panel-default panel-body mrgn-bttm-lg">
+            <div class="panel panel-card panel-body mrgn-bttm-xl">
                 <h2 class="h4 mrgn-tp-0">Info complémentaire</h2>
-               <dl class="dl-horizontal">
-                <dt>Nom du pays:</dt>
-                <dd>République algérienne démocratique et populaire</dd>
-                <dt>Langue(s) officielle(s) du pays:</dt>
-                <dd>La langue Tamazight est devenue une langue</dd>
-                <dt>% locuteurs francophones et anglophones:</dt>
-                <dd><p>Le français est enseigné de l’école primaire à l’université, et utilisé sur le lieu de travail comme moyen de communication.</p>
-                    <p>Depuis quelques années, l’anglais s’impose progressivement dans l’environnement algérien.</p></dd>
+                <dl class="dl-horizontal">
+                    <dt>Nom du pays:</dt>
+                    <dd>République algérienne démocratique et populaire</dd>
+                    <dt>Langue(s) officielle(s) du pays:</dt>
+                    <dd>La langue Tamazight est devenue une langue</dd>
+                    <dt>% locuteurs francophones et anglophones:</dt>
+                    <dd>
+                        <p>Le français est enseigné de l’école primaire à l’université, et utilisé sur le lieu de travail comme moyen de communication.</p>
+                        <p>Depuis quelques années, l’anglais s’impose progressivement dans l’environnement algérien.</p>
+                    </dd>
                 </dl>
             </div>
         </div>
@@ -181,10 +169,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
     <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
     <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
-    <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/méli-mélo/2025-04-nahanni.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@latest"></script>
     <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
     <script src="https://test.canada.ca/ircc/templates/js/components.js" type="text/javascript" defer></script>
+    <script src="chart.js" type="text/javascript" defer></script>
 </body>
 
 </html>
