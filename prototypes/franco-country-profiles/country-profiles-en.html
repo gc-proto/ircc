@@ -64,7 +64,7 @@
 
       </div>
 
-      <div class="container hidden" id="ag">
+      <div class="container" id="ag">
         <div class="d-flex align-items-center">
             <h2 class="d-flex mrgn-tp-0">Algérie</h2>
             <img src="images/ag.svg" alt="" class="mrgn-lft-lg mrgn-bttm-md d-flex" style="width:95px!important;" />
@@ -95,7 +95,10 @@
                 <div class="col-md-7 brdr-lft">
                     <div class="mrgn-lft-md mrgn-rght-md">
                         <figure class="mrgn-bttm-lg">
-                            <figcaption class="h4 mrgn-tp-0">Locuteurs francophones et anglophones</figcaption>
+                            <figcaption class="h4 mrgn-tp-0">Locuteurs francophones et autres langues <a class="wb-lbx lbx-modal" href="#inline_content_modal"><i class="fas fa-info-circle"></i></a></figcaption>
+                            Modal popup</a>
+		
+
                             <canvas aria-describedby="ag-locuteurs-table" id="ag-locuteurs" data-chart="pie"></canvas>
                             <details>
                                 <summary>Locuteurs francophones et autres langues - Tableaux</summary>
@@ -118,6 +121,15 @@
                                     </tbody>
                                 </table>
                             </details>
+                            <section id="inline_content_modal" class="mfp-hide modal-dialog modal-content overlay-def">
+                              <header class="modal-header">
+                                <h2 class="modal-title">Locuteurs francophones et autres langues</h2>
+                              </header>
+                              <div class="modal-body">
+                                <p>Le français est enseigné de l’école primaire à l’université, et utilisé sur le lieu de travail comme moyen de communication.</p>
+                                <p>Depuis quelques années, l’anglais s’impose progressivement dans l’environnement algérien.</p>
+                              </div>
+                            </section>
                         </figure>
                         <figure>
                        
