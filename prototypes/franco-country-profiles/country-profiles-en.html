@@ -22,10 +22,10 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/méli-mélo/2025-04-nahanni.css" />
   <!-- CONFIGURATIONS END HERE -->
   <script src="https://test.canada.ca/ircc/templates/js/template.js" type="text/javascript" defer></script>
 
+  <link rel="stylesheet" href="custom.css" />
   <noscript>
     <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
   </noscript>
@@ -54,34 +54,158 @@
       <h2>Country list</h2>
       <div class="wb-fieldflow" data-wb-fieldflow='{
               "live": true,
-              "action": "ajax",
-              "prop": "url",
-              "type": "replace",
-              "trigger": true,
               "isoptional": true,
               "noreqlabel": true
             }'>
         <p>Choose a country</p>
         <ul class="list-group list-unstyled ">
-          <li data-wb-fieldflow='countries-en.html#ag'><a href="countries-en.html#ag" class="list-group-item brdr-rds-0 no-undrln brdr-tp-0 d-flex align-items-center"><img src="images/ag.svg" alt="" class="col-sm-2 mrgn-rght-sm">Algérie</a></li>
-          <li data-wb-fieldflow=''><a href="#" class="list-group-item brdr-rds-0 no-undrln brdr-tp-0 d-flex align-items-center"><img src="images/be.svg" alt="" class="col-sm-2 mrgn-rght-sm">Belgique</a></li>
-          <li data-wb-fieldflow=''><a href="#" class="list-group-item brdr-rds-0 no-undrln brdr-tp-0 d-flex align-items-center"><img src="images/br.svg" alt="" class="col-sm-2 mrgn-rght-sm">Brésil</a></li>
-          <li data-wb-fieldflow=''><a href="#" class="list-group-item brdr-rds-0 no-undrln brdr-tp-0 d-flex align-items-center"><img src="images/bi.svg" alt="" class="col-sm-2 mrgn-rght-sm">Burundi</a></li>
-          <li data-wb-fieldflow=''><a href="#" class="list-group-item brdr-rds-0 no-undrln brdr-tp-0 d-flex align-items-center"><img src="images/cm.svg" alt="" class="col-sm-2 mrgn-rght-sm">Cameroun</a></li>
-          <li data-wb-fieldflow=''><a href="#" class="list-group-item brdr-rds-0 no-undrln brdr-tp-0 d-flex align-items-center"><img src="images/ci.svg" alt="" class="col-sm-2 mrgn-rght-sm">Cote d’Ivoire</a></li>
-          <li data-wb-fieldflow=''><a href="#" class="list-group-item brdr-rds-0 no-undrln brdr-tp-0 d-flex align-items-center"><img src="images/dj.svg" alt="" class="col-sm-2 mrgn-rght-sm">Djibouti</a></li>
-          <li data-wb-fieldflow=''><a href="#" class="list-group-item brdr-rds-0 no-undrln brdr-tp-0 d-flex align-items-center"><img src="images/fr.svg" alt="" class="col-sm-2 mrgn-rght-sm">France</a></li>
-          <li data-wb-fieldflow=''><a href="#" class="list-group-item brdr-rds-0 no-undrln brdr-tp-0 d-flex align-items-center"><img src="images/ga.svg" alt="" class="col-sm-2 mrgn-rght-sm">Gabon</a></li>
-          <li data-wb-fieldflow=''><a href="#" class="list-group-item brdr-rds-0 no-undrln brdr-tp-0 d-flex align-items-center"><img src="images/ht.svg" alt="" class="col-sm-2 mrgn-rght-sm">Haiti</a></li>
-          <li data-wb-fieldflow=''><a href="#" class="list-group-item brdr-rds-0 no-undrln brdr-tp-0 d-flex align-items-center"><img src="images/lb.svg" alt="" class="col-sm-2 mrgn-rght-sm">Liban</a></li>
-          <li data-wb-fieldflow=''><a href="#" class="list-group-item brdr-rds-0 no-undrln brdr-tp-0 d-flex align-items-center"><img src="images/lu.svg" alt="" class="col-sm-2 mrgn-rght-sm">Luxembourg</a></li>
-          <li data-wb-fieldflow=''><a href="#" class="list-group-item brdr-rds-0 no-undrln brdr-tp-0 d-flex align-items-center"><img src="images/mg.svg" alt="" class="col-sm-2 mrgn-rght-sm">Madagascar</a></li>
-          <li data-wb-fieldflow=''><a href="#" class="list-group-item brdr-rds-0 no-undrln brdr-tp-0 d-flex align-items-center"><img src="images/ma.svg" alt="" class="col-sm-2 mrgn-rght-sm">Maroc</a></li>
-          <li data-wb-fieldflow=''><a href="#" class="list-group-item brdr-rds-0 no-undrln brdr-tp-0 d-flex align-items-center"><img src="images/mu.svg" alt="" class="col-sm-2 mrgn-rght-sm">Mauritius</a></li>
-          <li data-wb-fieldflow=''><a href="#" class="list-group-item brdr-rds-0 no-undrln brdr-tp-0 d-flex align-items-center"><img src="images/cg.svg" alt="" class="col-sm-2 mrgn-rght-sm">R Congo</a></li>
+          <li data-wb-fieldflow='{"action":"toggle", "toggle": "#ag"}'><a href="algeria_custom.html#ag" class="list-group-item brdr-rds-0 no-undrln brdr-tp-0 d-flex align-items-center"><img src="images/ag.svg" alt="" class="col-sm-2 mrgn-rght-sm">Algérie</a></li>
         </ul>
 
       </div>
+
+      <div class="container hidden" id="ag">
+        <div class="d-flex align-items-center">
+            <h2 class="d-flex mrgn-tp-0">Algérie</h2>
+            <img src="images/ag.svg" alt="" class="mrgn-lft-lg mrgn-bttm-md d-flex" style="width:95px!important;" />
+        </div>
+        <div class="panel panel-card panel-body mrgn-bttm-lg">
+            <div class="row wb-eqht">
+                <div class="col-md-5">
+                    <dl>
+                        <dt>Population active&nbsp;:</dt>
+                        <dd class="h2 mrgn-bttm-lg mrgn-tp-md">11.8 millions <span class="small text-dark"><span aria-hidden="true"><span class="fa fa-user "></span><span class="fa fa-user mrgn-lft-sm"></span><span class="fa fa-user mrgn-lft-sm"></span><span class="fa fa-user mrgn-lft-sm"></span><span class="fa fa-user mrgn-lft-sm"></span></span></span></dd>
+                        <dt>Langue(s) officielle(s) du pays&nbsp;:</dt>
+                        <dd class="mrgn-bttm-lg">Arabe et Tamazight</dd>
+                        <dt>PIB&nbsp;:</dt>
+                        <dd class="mrgn-bttm-lg">239,9 Milliards USD (2023)</dd>
+                        <dt>Âge moyen&nbsp;:</dt>
+                        <dd class="mrgn-bttm-lg">28.2 ans (2023)</dd>
+                        <dt>Niveau moyen d’éducation&nbsp;:</dt>
+                        <dd class="mrgn-bttm-lg">Modéré</dd>
+                        <dt>Salaire moyen mensuel&nbsp;:</dt>
+                        <dd>En 2021, il était de 42 800 DA (~ 437,89&nbsp;$ CAN):
+                            <ul>
+                                <li>60&nbsp;100 DA (~ 614,90&nbsp;$ CAN) dans le public</li>
+                                <li>34&nbsp;900 DA (~ 357,06&nbsp;$ CAN) dans le privé</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-md-7 brdr-lft">
+                    <div class="mrgn-lft-md mrgn-rght-md">
+                        <figure class="mrgn-bttm-lg">
+                            <figcaption class="h4 mrgn-tp-0">Locuteurs francophones et anglophones</figcaption>
+                            <canvas aria-describedby="ag-locuteurs-table" id="ag-locuteurs" data-chart="pie"></canvas>
+                            <details>
+                                <summary>Locuteurs francophones et autres langues - Tableaux</summary>
+                                <table class="table" id="ag-locuteurs-table">
+                                    <thead>
+                                        <tr>
+                                            <td></td>
+                                            <th>Locuteurs</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>Francophones</th>
+                                            <td>33%</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Autres</th>
+                                            <td>66%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </details>
+                        </figure>
+                        <figure>
+                       
+                            <figcaption class="h4 mrgn-tp-0">Répartition des secteurs</figcaption>
+                            <canvas aria-describedby="ag-secteurs-table" id="ag-secteurs" data-chart="pie"></canvas>
+                            <details>
+                                <summary>Répartition des secteurs - Table</summary>
+                                <table class="table" id="ag-secteurs-table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Répartion des secteurs</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>Primaire</th>
+                                            <td>10,3%</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Secondaire</th>
+                                            <td>31%</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tertaire</th>
+                                            <td>58,6%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </details>
+                        </figure>
+
+                            
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="panel panel-card panel-body mrgn-bttm-xl">
+            <h2 class="h4 mrgn-tp-0">Principaux secteurs d’activités prédominants</h2>
+            <ol class="wc-ol p-0 lst-spcd">
+                <li>Industrie pétrolière et gazière</li>
+                <li>Agriculture - pêche et production connexe</li>
+                <li>Finance - Banque - Assuranc</li>
+                <li>Transport - Industrie automobile et mécanique</li>
+                <li>Technologie de l’information et des communications</li>
+            </ol>
+        </div>
+        <div class="panel panel-card panel-body mrgn-bttm-xl">
+            <h2 class="h4 mrgn-tp-0">Info complémentaire</h2>
+            <dl class="dl-horizontal wc-dl">
+                <dt>Nom du pays:</dt>
+                <dd>République algérienne démocratique et populaire</dd>
+                <dt>Langue(s) officielle(s) du pays:</dt>
+                <dd>La langue Tamazight est devenue une langue</dd>
+                <dt>% locuteurs francophones et anglophones:</dt>
+                <dd>
+                    <p>Le français est enseigné de l’école primaire à l’université, et utilisé sur le lieu de travail comme moyen de communication.</p>
+                    <p>Depuis quelques années, l’anglais s’impose progressivement dans l’environnement algérien.</p>
+                </dd>
+            </dl>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <a class="gc-dwnld-lnk" href="#">
+                    <div class="well gc-dwnld">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <p><img class="img-responsive thumbnail gc-dwnld-img" src="https://wet-boew.github.io/GCWeb/templates/img/doc.png" alt="" /></p>
+                            </div>
+                            <div class="col-xs-8">
+                                <p class="gc-dwnld-txt">
+                                    <span>Algeria country profile</span>
+                                    <span class="gc-dwnld-info">(<abbr title="Portable Document Format">PDF</abbr>, 273 <abbr title="KiloByte">KB</abbr>)</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+        
+<script src="chart.js" type="text/javascript" defer></script>
+        
+    </div>
 
 
     </div>
@@ -93,7 +217,8 @@
   <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
   <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
   <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/méli-mélo/2025-04-nahanni.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@latest"></script>
   <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
   <script src="https://test.canada.ca/ircc/templates/js/components.js" type="text/javascript" defer></script>
 </body>
