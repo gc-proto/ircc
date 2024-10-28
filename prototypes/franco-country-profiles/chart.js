@@ -59,7 +59,7 @@ let c2data = {
     datasets: [
         {
             label: "Répartition des secteurs",
-            data: ["10", "31", "59"],
+            data: [10.3, 31, 58.6],
             backgroundColor: ["#987B06","#F9EBB4","#EFC519"]
         }
     ]
