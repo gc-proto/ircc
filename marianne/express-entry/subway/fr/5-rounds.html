@@ -22,6 +22,10 @@
 <body vocab="http://schema.org/" typeof="WebPage">
 	<nav>
 		<ul id="wb-tphp">
+			<div id="jsonroundsofinvitation" data-wb-jsonmanager="{
+				&quot;url&quot;: &quot;/content/dam/ircc/documents/json/ee_rounds_123_fr.json&quot;,
+				&quot;name&quot;: &quot;roundsofinvitation&quot;
+			}" data-wb-json="{&quot;url&quot;: &quot;/content/dam/ircc/documents/json/ee_rounds_123_fr.json&quot;}"></div>
 			<li class="wb-slc"><a class="wb-sl" href="#wb-cont">Passer au contenu principal</a></li>
 			<li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">Passer à «&#160;À propos de ce site&#160;»</a></li>
 		</ul>
@@ -487,7 +491,7 @@
 				let qval = urlParams.get("q");
 		
 		
-				jsonDiv.innerHTML = '<div id=\'jminvitationRound\' data-wb-jsonmanager=\'{"url": "https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_4_en.json#/rounds","name": "invitationRound","nocache": "nocache", "patches":[{ "op": "copy", "path": "/drawNumber", "from": "/r'+qval+'/drawNumber" },{ "op": "copy", "path": "/drawDateFull", "from": "/r'+qval+'/drawDateFull" },{ "op": "copy", "path": "/drawName", "from": "/r'+qval+'/drawName" },{ "op": "copy", "path": "/drawText2", "from": "/r'+qval+'/drawText2" },{ "op": "copy", "path": "/drawSize", "from": "/r'+qval+'/drawSize" },{ "op": "copy", "path": "/drawMinister", "from": "/r'+qval+'/drawMinister" },{ "op": "copy", "path": "/drawDateTime", "from": "/r'+qval+'/drawDateTime" },{ "op": "copy", "path": "/drawCRS", "from": "/r'+qval+'/drawCRS" },{ "op": "copy", "path": "/drawCutOff", "from": "/r'+qval+'/drawCutOff" },{ "op": "copy", "path": "/drawNextDate", "from": "/r'+qval+'/drawNextDate" },{ "op": "copy", "path": "/drawText3", "from": "/r'+qval+'/drawText3" },{ "op": "copy", "path": "/drawText4", "from": "/r'+qval+'/drawText4" },{ "op": "copy", "path": "/pageContent", "from": "/r'+qval+'/pageContent" },{ "op": "copy", "path": "/fullText", "from": "/r'+qval+'/fullText" }]}\'> </div>'
+				jsonDiv.innerHTML = '<div id=\'jminvitationRound\' data-wb-jsonmanager=\'{"url": "https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_fr.json#/rounds","name": "invitationRound","nocache": "nocache", "patches":[{ "op": "copy", "path": "/drawNumber", "from": "/r'+qval+'/drawNumber" },{ "op": "copy", "path": "/drawDateFull", "from": "/r'+qval+'/drawDateFull" },{ "op": "copy", "path": "/drawName", "from": "/r'+qval+'/drawName" },{ "op": "copy", "path": "/drawText2", "from": "/r'+qval+'/drawText2" },{ "op": "copy", "path": "/drawSize", "from": "/r'+qval+'/drawSize" },{ "op": "copy", "path": "/drawMinister", "from": "/r'+qval+'/drawMinister" },{ "op": "copy", "path": "/drawDateTime", "from": "/r'+qval+'/drawDateTime" },{ "op": "copy", "path": "/drawCRS", "from": "/r'+qval+'/drawCRS" },{ "op": "copy", "path": "/drawCutOff", "from": "/r'+qval+'/drawCutOff" },{ "op": "copy", "path": "/drawNextDate", "from": "/r'+qval+'/drawNextDate" },{ "op": "copy", "path": "/drawText3", "from": "/r'+qval+'/drawText3" },{ "op": "copy", "path": "/drawText4", "from": "/r'+qval+'/drawText4" },{ "op": "copy", "path": "/pageContent", "from": "/r'+qval+'/pageContent" },{ "op": "copy", "path": "/fullText", "from": "/r'+qval+'/fullText" }]}\'> </div>'
 				
 				jsScript.innerHTML =   '$( ".wb-jsonmanager" ).trigger( "wb-init.wb-jsonmanager" );';
 				document.getElementsByTagName('main')[0].appendChild(jsonDiv);        
