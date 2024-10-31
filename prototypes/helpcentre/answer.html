@@ -59,7 +59,7 @@
                         <div class="col-md-12">
                             <ul class="list-inline mrgn-bttm-0">
                                 <li>
-                                    <a lang="fr" href="../centre-aide/index-en-vedette-can.html">
+                                    <a id="langurl" lang="fr" href="../centre-aide/reponse.html">
 
                                         <span class="hidden-xs">Fran&ccedil;ais</span>
                                         <abbr title="Fran&ccedil;ais" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
@@ -201,10 +201,10 @@
 
 
 
-            <div id="answer-container" class="mrgn-tp-lg mrgn-bttm-lg" data-wb-urlmapping='{
-                
-                "qnum": { "action": "ajax", "url": "answers/{qval}.html", "match": "^\\d*$", "default": "default.html" }
+            <div class="mrgn-tp-lg mrgn-bttm-lg" data-wb-urlmapping='{                
+                "qnum": { "action": "ajax", "url": "answers/{qval}.html", "match": "^\\d*$", "default": "default.html", "container": "#answer-container", "type":"replace" }
             }'></div>
+            <div id="answer-container"></div>
 
 
 
@@ -397,7 +397,21 @@
     <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
     <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
     <script>
+        
+      
+        $('#answer-container').on( "wb-contentupdated", function( event, data ){
+            let qnum = window.location.search.split("qnum=")[1];
+            if (qnum.indexOf("?") > 1) {qnum = qnum.split("?")["0"];}
+            console.log(qnum);
+            let h1 = document.getElementsByTagName('h1')[0];
+            if (h1) {
+                h1.setAttribute('id', "wb-cont");
+                document.title = h1.innerHTML;
+            }
+            document.getElementById('langurl').setAttribute('href', document.getElementById('langurl').getAttribute('href')+"?qnum="+qnum);
+        });
 
+       
     </script>
 </body>
 
