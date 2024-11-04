@@ -9,7 +9,7 @@ if (pageConstants.breadcrumbs) {
 }
 
 if (pageConstants.signin) {
-  signin = lang === "en" ?`<div class="col-xs-6 col-xs-offset-6 col-md-offset-0 col-md-4"> <section id="wb-so"> <h2 class="wb-inv">Sign in</h2> <a class="btn btn-primary" href="${pageConstants.signin}">Sign in</a> </section> </div>` : `<div class="col-xs-offset-6 col-xs-6 col-md-offset-0 col-md-4"> <section id="wb-so"> <h2 class="wb-inv">Se connecter</h2> <a class="btn btn-primary" href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/demande/comptes-ircc.html"><span class="visible-xs">Se connecter</span><span class="hidden-xs">Se connecter à IRCC</span></a> </section> </div>`
+  signin = lang === "en" ?`<div class="col-xs-6 col-xs-offset-6 col-md-offset-0 col-md-4"> <section id="wb-so"> <h2 class="wb-inv">Sign in</h2> <a class="btn btn-primary" href="${pageConstants.signin}">Sign in</a> </section> </div>` : `<div class="col-xs-offset-6 col-xs-6 col-md-offset-0 col-md-4"> <section id="wb-so"> <h2 class="wb-inv">Se connecter</h2> <a class="btn btn-primary" href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/demande/comptes-ircc.html"><span class="visible-xs">Se connecter</span><span class="hidden-xs">Se connecter</span></a> </section> </div>`
 }
 
 const headerTemplate = document.createElement('template');
