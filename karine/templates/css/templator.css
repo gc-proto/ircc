@@ -15,7 +15,12 @@
   padding: 5px 10px;
   color: #2890ed;
   font-weight: bold;
-  margin-left: 15px;
+  opacity: 0.9;
+  z-index: 9;
+  margin-top: 2px;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .settings {
@@ -36,4 +41,31 @@
 
 .d-flex .grow {
   flex-grow: 1;
+}
+
+.modal-header, .modal-title, .modal-footer {
+  background-color: #fff !important;
+  color: #333 !important;
+  border: none !important;
+}
+
+.modal-header select {
+  padding: 5px 0;
+  margin: 10px;
+}
+
+.modal-footer {
+  padding-top: 0;
+}
+
+.mfp-bg {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+.mfp-close {
+  color: #333 !important;
+}
+
+#snippets a:visited {
+  color: #295376;
 }/*# sourceMappingURL=templator.css.map */

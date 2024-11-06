@@ -119,7 +119,6 @@ function generateTemplate() {
     filename = filename.pop();
     showOutput.classList.remove('hidden');
 
-
 }
 
 document.getElementById('copyClip').onclick = function () {
@@ -194,6 +193,7 @@ function fixLinks(html) {
     html = html.replaceAll(`"/` + page.metadata.lang + `/`, `"https://www.canada.ca/` + page.metadata.lang + `/`)
     html = html.replaceAll(`"/content/canadasite/` + page.metadata.lang + `/`, `"https://www.canada.ca/` + page.metadata.lang + `/`)
     html = html.replaceAll(`"/content/dam/`, `"https://www.canada.ca/content/dam/`)
+    html = html.replaceAll(`"etc/`, `"https://www.canada.ca/etc/`)
     return html
 }
 
@@ -276,37 +276,66 @@ $('input[type=radio][name=theme]').change(function(){
 $("[data-add-snippet").click(function(){
 
     let component =  $(this).attr('data-add-snippet');
+    let componentClass = $(this).attr('data-snippet-class');
     componentID++;
     
     let pre = document.getElementById('highlighting-content');
+
 
     switch(component) {
         case "subwayNavigationIndex":
           snippets[component] = snippets[component].replace(/templator-\d+/, 'templator-'+componentID);          
           preview.querySelector('h1').insertAdjacentHTML('afterend', snippets[component]);
-          let insertText = output.value.replace(`</h1>`, `</h1>` + snippets[component]);
-          output.value = insertText;
-        //   let s = output.value.indexOf('</h1>')
-        //   let e = snippets[component].length + s;
-        //   console.log(s, e);
-        
+          output.value = output.value.replace(`</h1>`, `</h1>` + snippets[component]);
           update(output.value);
 
 
           let s = output.value.indexOf('</h1>');
           let e = snippets[component].length + s;
           
-          $(output).selectRange(s, e);
-          
-            
-
-        //   setCaretToPos(output, output.value.indexOf('</h1>'));
-        //   setCaretToPos(document.getElementById('highlighting-content'), pre.innerHTML.indexOf('</h1>'));
+          $(output).selectRange(s, e);                      
             
           break;
         case "subwayNavigationStep":
             console.log(component)
+            snippets[component].start = (snippets[component].start).replace(/templator-\d+/, 'templator-'+componentID); 
+
+            let h1 = preview.querySelector('h1');            
+            (snippets[component].start) = (snippets[component].start).replaceAll('_PLACEHOLDER_', h1.innerText); 
+
+            h1.remove();
+
+            let main = preview.querySelector('main');
+            main.classList.add('container');
+            main.insertAdjacentHTML('afterbegin', snippets[component].start);
+            let mainElm = preview.querySelector('main').outerHTML;
+            output.value = output.value.replace(mainElm.substring(0,mainElm.indexOf('>')+1), mainElm.substring(0,mainElm.indexOf('>')+1) + snippets[component].start);
+
+
+            let pageDetails = preview.querySelector('.pagedetails');
+            pageDetails.insertAdjacentHTML('beforebegin', snippets[component].end);            
+            output.value = output.value.replace(`<section class="pagedetails">`, snippets[component].end + `<section class="pagedetails">`);
+
+
+
+            triggerWET();
+
           break;
+        case "alert" :
+            componentClass = $(this).attr('data-snippet-class');
+            let alert = snippets.alerts.replace('_PLACEHOLDER_', componentClass);
+            navigator.clipboard.writeText(alert);
+        case "panel" :
+            componentClass = $(this).attr('data-snippet-class');
+            let panel = snippets.panels.replace('_PLACEHOLDER_', componentClass);
+            navigator.clipboard.writeText(panel);
+        case "panelsNoTitle" :
+            componentClass = $(this).attr('data-snippet-class');
+            let panelsNoTitle = snippets.panelsNoTitle.replace('_PLACEHOLDER_', componentClass);
+            navigator.clipboard.writeText(panelsNoTitle);
+        case "well":
+            componentClass = $(this).attr('data-snippet-class') ? " " + $(this).attr('data-snippet-class') : "";
+            navigator.clipboard.writeText(snippets.well.replace('_PLACEHOLDER_', componentClass));
         default:
           // code block
     } 

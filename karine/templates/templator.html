@@ -16,10 +16,11 @@
     <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" />
     <link rel="stylesheet" href="https://test.canada.ca/ircc/templates/wurd-crew/css/theme.css" />
+    <link rel="stylesheet" href="../../templates/wurd-crew/css/theme.css" />
     <link rel="stylesheet" href="css/templator.css" />
 
 </head>
- 
+
 
 <body vocab="http://schema.org/" typeof="WebPage">
 
@@ -51,10 +52,11 @@
 
     <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
         <div id="mainContent">
+
         <div class="mrgn-lft-xl mrgn-rght-xl py-4">
-            
+
             <button class="btn-link p-0 wb-toggle" id="settings" data-toggle='{"selector": "#settings-options", "stateOn": "show", "stateOff":"hidden"}'><i class="fas fa-cog mrgn-rght-sm"></i>Settings</button>
-            <div class="hidden panel panel-body panel-wurd small" id="settings-options">
+            <div class="hidden wc-panel wc-bg-secondary-light small" id="settings-options">
                 <form id="settings-form">
                     <fieldset class="chkbxrdio-grp">
                         <legend>Code syntax theme</legend>
@@ -67,44 +69,60 @@
                     </fieldset>
                 </form>
             </div>
-            
-    
-            <div class="mrgn-tp-lg mrgn-bttm-md panel panel-body panel-default">
+
+
+            <div class="mrgn-tp-lg mrgn-bttm-md wc-panel wc-bg-secondary-light" id="form">
                 <label for="enterURL">Page URL:</label>
                 <input type="text" placeholder="https:///www.canada.ca" class="full-width" id="enterURL" /><br />
                 <button class="btn btn-info mrgn-tp-md" id="generate">Generate template</button>
                 <button class="btn btn-info mrgn-tp-md" id="aem-extract">Extract code for AEM</button>
-    
-    
+
+
             </div>
             <div id="downloadedContent" class="hidden"></div>
         </div>
-        
+
         <div class="hidden" id="showOutput">
             <div class="mrgn-lft-xl mrgn-rght-xl mrgn-bttm-xl">
-    
+
                 <div class="row">
                     <div class="col-md-8 col-xs-12 h-100">
-                        <div id="status" class="align-self-center"></div>
+                        
                         <div class="position-relative">
-                            <div class="d-flex">
-                                <div class="btn-group mrgn-bttm-sm">
+                            
+                            
+                                <button class="btn-link p-0 wb-toggle text-right grow pull-right" data-toggle='{"selector": "#snippets, .snippet-clear", "stateOn": "show", "stateOff":"hidden"}'><i class="fas fa-code mrgn-rght-sm"></i></i>Add a component</button>
+                                <div class="clearfix hidden snippet-clear"></div>
+                                <div class="wc-panel wc-bg-secondary-light small full-width hidden" id="snippets">
+                                    <p class="mrgn-bttm-0"><strong>Gets added directly to the page</strong></p>
+                                    <ul class="list-unstyled list-inline">
+                                        <li><button class="btn-link p-0" data-add-snippet="subwayNavigationIndex">Subway navigation: Index</button></li>
+                                        <li><button class="btn-link p-0" data-add-snippet="subwayNavigationStep">Subway navigation: Step</button></li>
+                                    </ul>
+                                    <p class="mrgn-bttm-0"><strong>Copies to clipboard</strong></p>
+                                    <ul class="">
+                                        <li>Alert (<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="info">info</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="warning">warning</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="danger">danger</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="success">success</button>)</li>
+                                        <li>Panel (with colour band) (<button class="btn-link p-0" data-add-snippet="panel" data-snippet-class="info">info</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="warning">warning</button>|<button class="btn-link p-0" data-add-snippet="panel" data-snippet-class="danger">danger</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="success">success</button>)</li>
+                                        <li>Panel (without colour band) (<button class="btn-link p-0" data-add-snippet="panelNoHeading" data-snippet-class="info">info</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="warning">warning</button>|<button class="btn-link p-0" data-add-snippet="panelNoHeading" data-snippet-class="danger">danger</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="success">success</button>)</li>
+                                        <li><button class="btn-link p-0" data-add-snippet="well">Well</button>|<button class="btn-link p-0" data-add-snippet="well" data-snippet-class="well-sm">Small Well</button</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="btn-group mrgn-bttm-sm pull-left">
                                     <button id="copyClip" class="btn btn-default">Copy to clipboard</button>
                                     <button id="save" class="btn btn-default">Download</button>
                                     <button id="update" class="btn btn-default">Run changes</button>
-                            
+
                                 </div>
-                                <button class="btn-link p-0 wb-toggle text-right grow" data-toggle='{"selector": "#snippets", "stateOn": "show", "stateOff":"hidden"}'><i class="fas fa-code mrgn-rght-sm"></i></i>Add a component</button>
+                                
+
                             
-                            </div>
                         </div>
-                        <div class="panel panel-body panel-default small" id="snippets">           
-                            <ul class="list-unstyled list-inline">
-                                 <li><button class="btn-link p-0" data-add-snippet="subwayNavigationIndex">Subway navigation: Index</button></li>
-                                 <li><button class="btn-link p-0" data-add-snippet="subwayNavigationStep">Subway navigation: Step</button></li>
-                            </ul>
-                         </div>
+                        
+                    </div>
+                    <div class="col-md-8 col-xs-12 h-100">
                         <div class="position-relative" data-theme="default">
+                            <div id="status"></div>
                             <textarea class="full-width" placeholder="Enter HTML Source Code" id="output" spellcheck="false" oninput="update(this.value); sync_scroll(this);" onscroll="sync_scroll(this);" onkeydown="check_tab(this, event);"></textarea>
                             <pre id="highlighting" aria-hidden="true" class="full-width">
                                 <code class="language-html full-width" id="highlighting-content"></code>
@@ -118,18 +136,18 @@
                         </div>
                     </div>
                 </div>
-    
-    
+
+
                 <h2>Page preview</h2>
-                
-        
+
+
             </div>
             <div id="preview"></div>
-    
-        </div>
-    
 
-    </div> 
+        </div>
+
+
+
     </main>
 
 
@@ -139,7 +157,7 @@
     <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
-    <script src="js/get-template.js"></script> 
+    <script src="js/get-template.js"></script>
     <script src="js/snippets.js"></script>
     <script src="js/templator.js"></script>
 </body>
