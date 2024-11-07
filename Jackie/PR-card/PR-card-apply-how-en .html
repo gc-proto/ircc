@@ -168,24 +168,74 @@
             <h1 property="name" id="wb-cont" class="gc-thickline">How to apply </h1>
             <p>Depending on your situation, you may need to complete different steps to get your PR card.</p>
             <p><strong>What are you trying to do? <span style="color: red;">(required)</span></strong></p>
-<ul>
-    <li>Get a PR card for the first time</li>
-    <li>Renew an existing PR card</li>
-    <li>Correct a mistake on my card</li>
-    <li>Update information on my card (for example, name change or correcting a date of birth)</li>
-    <li>Replace a lost, stolen or damaged PR card</li>
-</ul>
-                
+            <div class="wb-frmvld hidden" id="ff">
+                <form method="get">
+                <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+                    "noForm": true,
+                    "renderas": "radio",
+                    "gcChckbxrdio": true,
+                    "unhideelm": "#ff",
+                    "hideelm": "#content",
+                    "base": { "live": true, "renderas": "radio", "gcChckbxrdio": true},
+                    "default": {"action": "addClass", "source": ".result", "class": "hidden"},
+                    "reset": {"action": "addClass", "source": ".result", "class": "hidden"}
+                }'>
+                    <p>Please select the reason for your PR card application:</p>
+                    <ul>
+                        <li>Get a PR card for the first time
+                            <div class="wb-fieldflow-sub">
+                                <p>Did you provide your address within 180 days of receiving PR status?</p>
+                                <ul>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#first-time-address"}'>Yes</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#first-time-late"}'>No</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#renew-card"}'>Renew an existing PR card</li>
+                        <li>Update information on my card
+                            <div class="wb-fieldflow-sub">
+                                <p>What information do you need to update?</p>
+                                <ul>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#update-mistake"}'>Correct a mistake</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#update-dob"}'>Correct date of birth</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#update-name"}'>Change name</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#replace-card"}'>Replace a lost, stolen, or damaged PR card</li>
+                    </ul>
+                </div>
+            </form>
+            </div>
             
-            <nav class="mrgn-bttm-lg mrgn-tp-lg">
-                <h3 class="wb-inv">Document navigation</h3>
-                <ul class="pager">
-                    <li class="next"><a href="#wb-cont" rel="next"><span class="wb-inv">Next: </span>How to apply</a></li>
-                </ul>
-            </nav>
-        </div>
-
-        </div>
+            <!-- Results with Lorem Ipsum -->
+            <div id="first-time-address" class="hidden result">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula malesuada purus. If you provided your address within 180 days, you do not need to apply for a PR card.</p>
+            </div>
+            
+            <div id="first-time-late" class="hidden result">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula malesuada purus. Please proceed with the application. Note: This process is similar to renewing an existing PR card.</p>
+            </div>
+            
+            <div id="renew-card" class="hidden result">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula malesuada purus. Instructions for renewing an existing PR card.</p>
+            </div>
+            
+            <div id="update-mistake" class="hidden result">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula malesuada purus. Instructions for correcting a mistake on your PR card.</p>
+            </div>
+            
+            <div id="update-dob" class="hidden result">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula malesuada purus. Instructions for correcting the date of birth on your PR card.</p>
+            </div>
+            
+            <div id="update-name" class="hidden result">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula malesuada purus. Instructions for changing the name on your PR card.</p>
+            </div>
+            
+            <div id="replace-card" class="hidden result">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula malesuada purus. Instructions for replacing a lost, stolen, or damaged PR card.</p>
+            </div>            
 
         <!-- CONTENT ENDS HERE -->
 
