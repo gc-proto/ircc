@@ -189,7 +189,7 @@
 
             <details>
                 <summary><h3 class="h4">Si vous refusez une invitation à présenter une demande</h3></summary>
-                <p>Si vous déclinez une invitation, votre candidature sera remise dans le bassin d’Entrée express. Elle sera prise en compte lors de prochaines rondes d’invitations, <a href="#centred-popup" aria-controls="centred-popup" class="wb-lbx" role="button">si vous êtes toujours admissible</a>.</p>
+                <p>Si vous déclinez une invitation, votre candidature sera remise dans le bassin d’Entrée express. Elle sera prise en compte lors de prochaines rondes d’invitations, si vous êtes toujours admissible.</p>
 <p>La note de passage pour la sélection des candidats varie d’une ronde à l’autre. Si votre note n’est pas assez élevée, il se pourrait que vous ne receviez pas d’autre invitation à présenter une demande. Dans certains cas, il se pourrait que vous ayez à prendre des mesures afin d’être à nouveau invité à présenter une demande. Vous pourriez avoir, par exemple&nbsp;:</p>
 <ul>
 <li><a href="4-profile.html#que-faire">à améliorer votre note</a>;</li>
@@ -224,6 +224,10 @@
 </li>
 </ul>
             </details>
+
+			<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+				Popover on top
+			  </button>
 
             <details>
                 <summary><h3 class="h4">Si votre permis de travail expire avant que vous ne présentiez une demande</h3></summary>
@@ -277,7 +281,7 @@
 <ul>
 	<li>une traduction en français ou en anglais qui&nbsp;:
 		<ul>
-			<li>porte le timbre d’un <a href="#translator-popup-fr" aria-controls="translator-popup" class="wb-lbx" role="button">traducteur agréé</a>
+			<li>porte le timbre d’un <a href="#translator-popup" aria-controls="translator-popup" class="wb-lbx" role="button">traducteur agréé</a>
 				<ul>
 					<li>Le traducteur doit photocopier votre document original et l’estampiller s’il s’agit du texte de départ pour sa traduction.</li>
 					<li>Les timbres et les sceaux qui ne sont ni en anglais ni en français doivent également être traduits. Vous pouvez joindre une copie numérisée d’une lettre indiquant que vous n’avez pas besoin d’un affidavit, car vous avez retenu les services d’un traducteur agréé.</li>
@@ -285,7 +289,7 @@
 				</ul>
 			</li>
 			<li class="lst-none"><strong>ou</strong></li>
-			<li>est accompagnée d’un <a href="#affidavit-popup-fr" aria-controls="affidavit-popup" class="wb-lbx" role="button">affidavit</a> de la personne qui a traduit le document
+			<li>est accompagnée d’un <a href="#affidavit-popup" aria-controls="affidavit-popup" class="wb-lbx" role="button">affidavit</a> de la personne qui a traduit le document
 				<ul>
 					<li>N’utilisez cette option que si le document ne peut pas être traduit par un traducteur agréé.</li>
 					<li>Le document traduit et le document original utilisé par le traducteur pour faire sa traduction doivent être mentionnés dans l’affidavit.</li>
@@ -294,112 +298,114 @@
 		</ul>
 	</li>
     <li class="lst-none"><strong>et</strong></li>
-	<li>une copie numérisée du document original ou une copie numérisée d’une <a href="#photocopy-popup-fr" aria-controls="affidavit-popup" class="wb-lbx" role="button">photocopie certifiée</a> du document de départ original utilisés par le traducteur;
+	<li>une copie numérisée du document original ou une copie numérisée d’une <a href="#photocopy-popup" aria-controls="photocopy-popup" class="wb-lbx" role="button">photocopie certifiée</a> du document de départ original utilisés par le traducteur;
 		<ul>
 			<li>Vous devez seulement fournir une copie numérisée de la <strong>photocopie certifiée</strong> du document original si le document de la photocopie certifiée a servi comme texte de départ pour la traduction.</li>
 		</ul>
 	</li>
+</ul>
 
                 
-                <section id="translator-popup-fr" class="mfp-hide modal-dialog modal-content overlay-def">
-                    <header class="modal-header">
-                        <h3 class="modal-title mrgn-tp-0">Traducteur agréé</h3>
-                    </header>
-                    <div class="modal-body">
-                        <p>Un traducteur agréé est membre en règle d’une association professionnelle de traducteur au Canada ou ailleurs. Son statut de traducteur agréé doit être confirmé par un sceau ou un timbre dans lequel figure son numéro de membre.</p>
-                        <p>Tous les sceaux et timbres dans une langue autre que le français ou l’anglais doivent également être traduits.</p>
-                        <p>Tout membre de la famille, représentant ou consultant du demandeur qu’il soit avocat, notaire ou traducteur <Strong>n’est pas</Strong> autorisé à traduire des documents.</p>
-                        <p>Si le traducteur est en cours d’obtention de sa certification ou de son accréditation, il <Strong>n’est pas</Strong> considéré comme traducteur agréé aux fins d’IRCC.</p>
-                        
-                    </div>
-                </section>
 
-                <section id="photocopy-popup-fr" class="mfp-hide modal-dialog modal-content overlay-def">
-                    <header class="modal-header">
-                        <h3 class="modal-title mrgn-tp-0">Photocopie certifiée</h3>
-                    </header>
-                    <div class="modal-body">
-                        <h4 class="mrgn-tp-sm">Qu'est-ce qu'une photocopie certifiée</h4>
-                        <p>Une photocopie certifiée est une photocopie d’un document original. Elle doit être lisible et certifiée en tant que copie authentique de l’original par une personne autorisée.</p>
-                        <p>La personne compare les documents et inscrit sur la photocopie :</p>
-                        <ul>
-                          <li>son nom et y appose sa signature;</li>
-                          <li>son poste ou titre;</li>
-                          <li>le nom du document original;</li>
-                          <li>la date où elle a certifié le document;</li>
-                          <li>la phrase « J’atteste qu’il s’agit d’une copie certifiée conforme à l’original ».</li>
-                        </ul>
-                        <h4>Who can certify photocopies</h4>
-                        <p><Strong>Au Canada</Strong>, les personnes autorisées qui peuvent certifier les copies de vos documents originaux comprennent les suivantes :</p>
-                        <ul>
-                          <li>notaire public;</li>
-                          <li>commissaire à l’assermentation;</li>
-                          <li>commissaire aux affidavits.</li>
-                        </ul>
-                        <p>Vérifiez auprès des autorités provinciales ou territoriales pour savoir quelles personnes sont autorisées à certifier vos documents.</p>
-                        <p><strong>À l’extérieur du Canada</strong>, chaque pays dispose d’autorités différentes qui certifient des documents. Il est possible qu’un notaire public puisse certifier vos documents, mais vous devriez vérifier si c’est le cas auprès des autorités locales pour en être certain.</p>
-                        <p>Les membres de votre famille et vous-même <Strong>ne pouvez pas</Strong> certifier des copies de vos documents. Dans ce cas, un membre de la famille désigne :</p>
-                        <ul>
-                          <li>un parent;</li>
-                          <li>un tuteur;</li>
-                          <li>un frère ou une sœur;</li>
-                          <li>un époux;</li>
-                          <li>un conjoint de fait;</li>
-                          <li>un partenaire conjugal;</li>
-                          <li>un grand-parent;</li>
-                          <li>un enfant;</li>
-                          <li>une tante;</li>
-                          <li>un oncle;</li>
-                          <li>une nièce;</li>
-                          <li>un neveu;</li>
-                          <li>un cousin.</li>
-                        </ul>
-                    </div>
-                </section>
-    
+            </details>
+			<section id="translator-popup" class="mfp-hide modal-dialog modal-content overlay-def">
+				<header class="modal-header">
+					<h3 class="modal-title mrgn-tp-0">Traducteur agréé</h3>
+				</header>
+				<div class="modal-body">
+					<p>Un traducteur agréé est membre en règle d’une association professionnelle de traducteur au Canada ou ailleurs. Son statut de traducteur agréé doit être confirmé par un sceau ou un timbre dans lequel figure son numéro de membre.</p>
+					<p>Tous les sceaux et timbres dans une langue autre que le français ou l’anglais doivent également être traduits.</p>
+					<p>Tout membre de la famille, représentant ou consultant du demandeur qu’il soit avocat, notaire ou traducteur <Strong>n’est pas</Strong> autorisé à traduire des documents.</p>
+					<p>Si le traducteur est en cours d’obtention de sa certification ou de son accréditation, il <Strong>n’est pas</Strong> considéré comme traducteur agréé aux fins d’IRCC.</p>
+					
+				</div>
+			</section>
 
-                <section id="affidavit-popup" class="mfp-hide modal-dialog modal-content overlay-def">
-                    <header class="modal-header">
-                        <h3 class="modal-title mrgn-tp-0">Affidavit</h3>
-                    </header>
-                    <div class="modal-body">
-                        <h4 class="mrgn-tp-sm">Qu’est-ce qu’un affidavit</h4>
-                        <p>Un affidavit pour une traduction est un document qui assure que la traduction est fidèle au texte original.</p>
+			<section id="photocopy-popup" class="mfp-hide modal-dialog modal-content overlay-def">
+				<header class="modal-header">
+					<h3 class="modal-title mrgn-tp-0">Photocopie certifiée</h3>
+				</header>
+				<div class="modal-body">
+					<h4 class="mrgn-tp-sm">Qu'est-ce qu'une photocopie certifiée</h4>
+					<p>Une photocopie certifiée est une photocopie d’un document original. Elle doit être lisible et certifiée en tant que copie authentique de l’original par une personne autorisée.</p>
+					<p>La personne compare les documents et inscrit sur la photocopie :</p>
+					<ul>
+					  <li>son nom et y appose sa signature;</li>
+					  <li>son poste ou titre;</li>
+					  <li>le nom du document original;</li>
+					  <li>la date où elle a certifié le document;</li>
+					  <li>la phrase « J’atteste qu’il s’agit d’une copie certifiée conforme à l’original ».</li>
+					</ul>
+					<h4>Who can certify photocopies</h4>
+					<p><Strong>Au Canada</Strong>, les personnes autorisées qui peuvent certifier les copies de vos documents originaux comprennent les suivantes :</p>
+					<ul>
+					  <li>notaire public;</li>
+					  <li>commissaire à l’assermentation;</li>
+					  <li>commissaire aux affidavits.</li>
+					</ul>
+					<p>Vérifiez auprès des autorités provinciales ou territoriales pour savoir quelles personnes sont autorisées à certifier vos documents.</p>
+					<p><strong>À l’extérieur du Canada</strong>, chaque pays dispose d’autorités différentes qui certifient des documents. Il est possible qu’un notaire public puisse certifier vos documents, mais vous devriez vérifier si c’est le cas auprès des autorités locales pour en être certain.</p>
+					<p>Les membres de votre famille et vous-même <Strong>ne pouvez pas</Strong> certifier des copies de vos documents. Dans ce cas, un membre de la famille désigne :</p>
+					<ul>
+					  <li>un parent;</li>
+					  <li>un tuteur;</li>
+					  <li>un frère ou une sœur;</li>
+					  <li>un époux;</li>
+					  <li>un conjoint de fait;</li>
+					  <li>un partenaire conjugal;</li>
+					  <li>un grand-parent;</li>
+					  <li>un enfant;</li>
+					  <li>une tante;</li>
+					  <li>un oncle;</li>
+					  <li>une nièce;</li>
+					  <li>un neveu;</li>
+					  <li>un cousin.</li>
+					</ul>
+				</div>
+			</section>
+
+
+			<section id="affidavit-popup" class="mfp-hide modal-dialog modal-content overlay-def">
+				<header class="modal-header">
+					<h3 class="modal-title mrgn-tp-0">Affidavit</h3>
+				</header>
+				<div class="modal-body">
+					<h4 class="mrgn-tp-sm">Qu’est-ce qu’un affidavit</h4>
+					<p>Un affidavit pour une traduction est un document qui assure que la traduction est fidèle au texte original.</p>
 <p>Le traducteur jure, devant un commissaire autorisé à faire prêter serment dans le pays où il réside, que sa traduction est une version exacte du document original. Le commissaire ou le notaire public doit maîtriser l’anglais ou le français pour pouvoir faire prêter le serment.</p>
 
 
-                        <h4>Qui peut recevoir un affidavit</h4>
-                        <p><strong>Au Canada</strong>, un affidavit peut être reçu par un :</p>
+					<h4>Qui peut recevoir un affidavit</h4>
+					<p><strong>Au Canada</strong>, un affidavit peut être reçu par un :</p>
 <ul>
-	<li>notaire public;</li>
-	<li>commissaire aux serments;</li>
-	<li>commissaire aux affidavits.</li>
+<li>notaire public;</li>
+<li>commissaire aux serments;</li>
+<li>commissaire aux affidavits.</li>
 </ul>
 <p><strong>À l’extérieur du Canada</strong>, un affidavit peut être reçu par un notaire public ou l’équivalent.</p>
 
 <h4>Qui ne peut pas recevoir d’affidavit</h4>
 <p>Les affidavits ne doivent <strong>pas</strong> être pris par les personnes suivantes :</p>
 <ul>
-	<li>les demandeurs eux-mêmes;</li>
-	<li>les membres de la famille du demandeur, même s’ils sont avocats, notaires ou traducteurs agréés, y compris :
-		<ul>
-			<li>parents,</li>
-			<li>tuteurs,</li>
-			<li>frères et sœurs,</li>
-			<li>époux,</li>
-			<li>conjoints de fait,</li>
-			<li>partenaires conjugaux,</li>
-			<li>grands-parents,</li>
-			<li>enfants,</li>
-			<li>oncles et tantes,</li>
-			<li>nièces et neveux,</li>
-			<li>cousins germains.</li>
-		</ul>
-	</li>
+<li>les demandeurs eux-mêmes;</li>
+<li>les membres de la famille du demandeur, même s’ils sont avocats, notaires ou traducteurs agréés, y compris :
+	<ul>
+		<li>parents,</li>
+		<li>tuteurs,</li>
+		<li>frères et sœurs,</li>
+		<li>époux,</li>
+		<li>conjoints de fait,</li>
+		<li>partenaires conjugaux,</li>
+		<li>grands-parents,</li>
+		<li>enfants,</li>
+		<li>oncles et tantes,</li>
+		<li>nièces et neveux,</li>
+		<li>cousins germains.</li>
+	</ul>
+</li>
 </ul>
-                    </div>
-                </section>
-            </details>
+				</div>
+			</section>
 
 <details>
 	<summary>Comment signer des formulaires PDF</summary>
@@ -410,7 +416,7 @@
 
 
             <h3>Numérisation et téléversement</h3>
-            <p>Rassemblez tous les documents qui figurent sur votre liste de contrôle et faites des copies électroniques à l’aide d’un scanneur ou d’une caméra. Assurez-vous d’utiliser <a href="http://www.cic.gc.ca/francais/centre-aide/reponse.asp?qnum=1124&top=23">un des formats acceptés.</a>. 
+            <p>Rassemblez tous les documents qui figurent sur votre liste de contrôle et faites des copies électroniques à l’aide d’un scanneur ou d’une caméra. Assurez-vous d’utiliser <a href="http://www.cic.gc.ca/francais/centre-aide/reponse.asp?qnum=1124&top=23">un des formats acceptés.</a>.</p>
             <p>Une fois que vos documents sont prêts, téléversez-les dans votre liste de contrôle des documents.</p>
 
             <h3>Subir un examen médical, au besoin</h3>
@@ -516,70 +522,11 @@
                     <li class="next"><a href="7-after-apply.html#wb-cont" rel="next"><span class="wb-inv">Suivant : </span>Après avoir présenté une demande</a></li>
                 </ul>
             </nav>
-
+</div>
 		<!-- CONTENT ENDS HERE -->
 		<div class="clearfix"></div>
 
 		<div class="pagedetails">
-			<div class="row">
-				<div class="col-sm-6 col-md-5 col-lg-4">
-					<details class="brdr-0">
-						<summary class="btn btn-default text-center">Signaler un problème sur cette page</summary>
-						<div class="well row">
-							<div class="gc-rprt-prblm">
-								<div class="gc-rprt-prblm-frm gc-rprt-prblm-tggl">
-									<form action="#">
-										<fieldset>
-											<legend><span class="field-name">Veuillez cocher toutes les réponses pertinentes&nbsp;:</span></legend>
-											<div class="checkbox">
-												<label for="gc-rprt-prblm-f1">
-													<input type="checkbox" name="problem1" value="Oui" id="gc-rprt-prblm-f1" />Un lien, un bouton ou une vidéo ne fonctionne pas
-												</label>
-												<input name="problem1" type="hidden" value="Non" />
-											</div>
-											<div class="checkbox">
-												<label for="gc-rprt-prblm-f2">
-													<input type="checkbox" name="problem2" value="Oui" id="gc-rprt-prblm-f2" />Il y a une erreur d'orthographe ou de grammaire
-												</label>
-												<input name="problem2" type="hidden" value="Non" />
-											</div>
-											<div class="checkbox">
-												<label for="gc-rprt-prblm-f3">
-													<input type="checkbox" name="problem3" value="Oui" id="gc-rprt-prblm-f3" />Les renseignements sont incomplets
-												</label>
-												<input name="problem3" type="hidden" value="Non" />
-											</div>
-											<div class="checkbox">
-												<label for="gc-rprt-prblm-f4">
-													<input type="checkbox" name="problem4" value="Oui" id="gc-rprt-prblm-f4" />L'information n'est plus à jour ou est erronée
-												</label>
-												<input name="problem4" type="hidden" value="Non" />
-											</div>
-											<div class="checkbox">
-												<label for="gc-rprt-prblm-f5">
-													<input type="checkbox" name="problem5" value="Oui" id="gc-rprt-prblm-f5" />Je n'arrive pas à trouver ce que je cherche
-												</label>
-												<input name="problem5" type="hidden" value="Non" />
-											</div>
-											<div class="checkbox">
-												<label for="gc-rprt-prblm-f6">
-													<input type="checkbox" name="problem6" value="Oui" id="gc-rprt-prblm-f6" />Autre problème qui ne figure pas sur cette liste
-												</label>
-												<input name="problem6" type="hidden" value="Non" />
-											</div>
-										</fieldset>
-										<button type="submit" class="btn btn-primary wb-toggle" data-toggle='{"stateOff": "hide", "stateOn": "show", "selector": ".gc-rprt-prblm-tggl"}'>Soumettre</button>
-									</form>
-								</div>
-								<div class="gc-rprt-prblm-thnk gc-rprt-prblm-tggl hide">
-									<h3>Merci de votre aide!</h3>
-									<p>Vous ne recevrez pas de réponse. Pour toute question, s’il vous plaît <a href="https://www.canada.ca/fr/contact.html">contactez-nous</a>.</p>
-								</div>
-							</div>
-						</div>
-					</details>
-				</div>
-			</div>
 			<dl id="wb-dtmd">
 				<dt>Date de modification&#160;:</dt>
 				<dd><time property="dateModified">2021-05-20</time></dd>
