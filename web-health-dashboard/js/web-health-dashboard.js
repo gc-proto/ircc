@@ -195,8 +195,6 @@ $(document).on("wb-ready.wb", function (event) {
             .attr("data-order", function(d){
                 if ( !isNaN(d.value)) {  
                     return parseFloat(d.value);
-                    // console.log(num)
-                    // return num.replace(" ", "");
                 }      
             })
             .text(function (d) { 
@@ -2071,7 +2069,7 @@ $(document).on("wb-ready.wb", function (event) {
         percentDif = parseFloat((parseFloat(step1/step2))*100).toFixed(1);
 
 
-        console.log(step1, step2, percentDif, elm);
+        
         
         if (percentDif != 0) {
             if (a > b) {
