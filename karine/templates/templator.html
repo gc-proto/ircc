@@ -103,6 +103,7 @@
                                     <ul class="">
                                         <li>Alert (<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="info">info</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="warning">warning</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="danger">danger</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="success">success</button>)</li>
                                         <li>Panel (with colour band) (<button class="btn-link p-0" data-add-snippet="panel" data-snippet-class="info">info</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="warning">warning</button>|<button class="btn-link p-0" data-add-snippet="panel" data-snippet-class="danger">danger</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="success">success</button>)</li>
+                                        <li>Panel (with colour band) (<button class="btn-link p-0" data-add-snippet="panel" data-snippet-class="info">info</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="warning">warning</button>|<button class="btn-link p-0" data-add-snippet="panel" data-snippet-class="danger">danger</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="success">success</button>)</li>
                                         <li>Panel (without colour band) (<button class="btn-link p-0" data-add-snippet="panelNoHeading" data-snippet-class="info">info</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="warning">warning</button>|<button class="btn-link p-0" data-add-snippet="panelNoHeading" data-snippet-class="danger">danger</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="success">success</button>)</li>
                                         <li><button class="btn-link p-0" data-add-snippet="well">Well</button>|<button class="btn-link p-0" data-add-snippet="well" data-snippet-class="well-sm">Small Well</button</li>
                                     </ul>
@@ -122,7 +123,7 @@
                     </div>
                     <div class="col-md-8 col-xs-12 h-100">
                         <div class="position-relative" data-theme="default">
-                            <div id="status"></div>
+                            <div id="status" class="hidden"></div>
                             <textarea class="full-width" placeholder="Enter HTML Source Code" id="output" spellcheck="false" oninput="update(this.value); sync_scroll(this);" onscroll="sync_scroll(this);" onkeydown="check_tab(this, event);"></textarea>
                             <pre id="highlighting" aria-hidden="true" class="full-width">
                                 <code class="language-html full-width" id="highlighting-content"></code>

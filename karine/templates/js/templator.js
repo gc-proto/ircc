@@ -123,7 +123,7 @@ function generateTemplate() {
 
 document.getElementById('copyClip').onclick = function () {
     navigator.clipboard.writeText(output.value);
-    
+    toolstatus.classList.remove('hidden');
     toolstatus.innerText = `Copied to clipboard`;
     $(toolstatus).fadeIn("fast").delay(2000).fadeOut("slow");
 }
