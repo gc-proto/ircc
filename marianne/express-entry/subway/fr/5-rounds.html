@@ -21,10 +21,6 @@
 
 <body vocab="http://schema.org/" typeof="WebPage">
 
-	<div id="jsonroundsofinvitation" data-wb-jsonmanager="{
-		&quot;url&quot;: &quot;/content/dam/ircc/documents/json/ee_rounds_123_fr.json&quot;,
-		&quot;name&quot;: &quot;roundsofinvitation&quot;
-	}" data-wb-json="{&quot;url&quot;: &quot;/content/dam/ircc/documents/json/ee_rounds_123_fr.json&quot;}"></div>
 	<nav>
 		<ul id="wb-tphp">
 			<li class="wb-slc"><a class="wb-sl" href="#wb-cont">Passer au contenu principal</a></li>
@@ -119,6 +115,11 @@
 	<!--CONTENT STARTS HERE-->
 	<main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="container">
 
+		<div id="jsonroundsofinvitation" data-wb-jsonmanager="{
+			&quot;url&quot;: &quot;/content/dam/ircc/documents/json/ee_rounds_123_fr.json&quot;,
+			&quot;name&quot;: &quot;roundsofinvitation&quot;
+		}" data-wb-json="{&quot;url&quot;: &quot;/content/dam/ircc/documents/json/ee_rounds_123_fr.json&quot;}"></div>
+
 		<div class="mwsmediaplayer section">
 
 			<!-- IF YOU PORT THIS TO AEM, START COPYING FROM HERE-->
@@ -155,11 +156,17 @@
             <h2 id="derniere">Dernière ronde d’invitations</h2>
 
 <p><strong><span data-json-replace="#[roundsofinvitation]/rounds/0/drawName"></span></strong></p>
-<p><strong>Catégorie de l’expérience canadienne</strong></p>
 <ul>
-<li>Date&nbsp;: <span data-json-replace="#[roundsofinvitation]/rounds/0/drawDateFull"></span></li>
-<li>Note obtenue dans le SCG par le candidat invité le moins bien classé&nbsp;: <span data-json-replace="#[roundsofinvitation]/rounds/0/drawCRS"></span></li>
-</ul>
+	<li><Strong>Date et heure&nbsp;:</Strong>&nbsp;<span data-json-replace="#[roundsofinvitation]/rounds/0/drawDateFull"></span></li>
+	<li><Strong>Note obtenue dans le SCG par le candidat invité le moins bien classé&nbsp;:</Strong>&nbsp;<span data-json-replace="#[roundsofinvitation]/rounds/0/drawCRS"></span></li>
+	<li><Strong>Nombre d’invitations envoyées&nbsp;:</Strong>&nbsp;<span data-json-replace="#[roundsofinvitation]/rounds/0/drawSize"></span></li>
+	<li><strong>Classement requis&nbsp;:</strong>&nbsp;<span data-json-replace="#[roundsofinvitation]/rounds/0/drawSize"></span> ou au-dessus</li>
+	<li><strong>Règle de bris d’égalité&nbsp;:</strong>&nbsp;<span data-json-replace="#[roundsofinvitation]/rounds/0/drawCutOff"></span>
+		<ul>
+			<li>Si plus d’un candidat obtient la note la plus faible, nous tranchons en fonction de la date et de l’heure qu’ils ont soumis leurs profils Entrée express.</li>
+		</ul></li>
+	</ul>
+
 <p><span data-json-replace="#[roundsofinvitation]/rounds/0/DrawText1"></span></p>
 <a href="https://www.canada.ca/fr/immigration-refugies-citoyennete/organisation/mandat/politiques-directives-operationnelles-ententes-accords/instructions-ministerielles/entree-express-rondes/invitations.html?q=315">Voir le texte intégral des instructions ministérielles</a>
 <p></p>
@@ -258,7 +265,7 @@
 
     <h2 id="precedentes">Rondes d’invitations précédentes</h2>
     <p>Consultez les notes obtenues lors des rondes d’invitations précédentes afin de déterminer vos chances de recevoir une invitation lors de la prochaine ronde.</p>
-    <p><a class="btn btn-call-to-action mrgn-tp-sm" href="https://www.canada.ca/fr/immigration-refugies-citoyennete/organisation/mandat/politiques-directives-operationnelles-ententes-accords/instructions-ministerielles/entree-express-rondes.html"><mark>Vérifier les rondes précédentes</mark></a></p>
+    <p><a class="btn btn-call-to-action mrgn-tp-sm" href="https://www.canada.ca/fr/immigration-refugies-citoyennete/organisation/mandat/politiques-directives-operationnelles-ententes-accords/instructions-ministerielles/entree-express-rondes.html">Vérifier les rondes précédentes</a></p>
     
         <h3>Rapports sur Entrée express</h3>
        <a href="https://www.canada.ca/fr/immigration-refugies-citoyennete/organisation/publications-guides/publications-entree-express.html">Consultez les rapports et les publications sur Entrée express</a>
@@ -270,9 +277,6 @@
         <li>Nous choisissons le type de ronde qui sera organisé.</li>
         <li>Nous décidons du nombre de candidats qui seront invités.</li>
         <li>Nous sélectionnons les candidats les mieux classés dans le bassin qui sont admissibles au type de ronde choisi.
-            <ul>
-                <li>Si plus d’un candidat obtient la note la plus faible, nous tranchons en fonction de la date et de l’heure qu’ils ont soumis leurs profils Entrée express.</li>
-            </ul>
         </li>
         <li>Nous invitons ces candidats à présenter une demande de résidence permanente.</li>
     </ol>
