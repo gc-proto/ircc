@@ -206,7 +206,12 @@
                                 </ul>
                             </div>
                         </li>
-                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#replace-card"}'>Replace a lost, stolen, or damaged PR card</li>
+                        <li>Replace a lost, stolen, or damaged PR card
+                            <div class="wb-fieldflow-sub">
+                                <p>You have 2 options</p>
+                                <ul>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#new-card-result"}'>Apply for a new card</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#solemn-declaration-result"}'>Submit a solemn declaration</li>
                     </ul>
                 </div>
             </form>
@@ -478,57 +483,12 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula malesuada purus. Instructions for changing the name on your PR card.</p>
             </div>
             
-            <div id="replace-card" class="hidden result">
-                <h3>Replace a lost, stolen or damaged PR card</h3>
-                <div class="wb-frmvld" id="ff">
-                    <form method="get">
-                        <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
-                            "noForm": true,
-                            "renderas": "radio",
-                            "gcChckbxrdio": true,
-                            "unhideelm": "#ff",
-                            "hideelm": "#content",
-                            "base": { "live": true, "renderas": "radio", "gcChckbxrdio": true },
-                            "default": {"action": "addClass", "source": ".result", "class": "hidden"},
-                            "reset": {"action": "addClass", "source": ".result", "class": "hidden"}
-                        }'>
-                
-                            <!-- Main Question -->
-                            <p>You have 2 options:</p>
-                
-                            <!-- Options -->
-                            <ul>
-                                <li>Apply for a new card
-                                    <div class="wb-fieldflow-sub">
-                                        <ul>
-                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#new-card-result"}'>
-                                                Apply for a new card
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>Submit a solemn declaration
-                                    <div class="wb-fieldflow-sub">
-                                        <ul>
-                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#solemn-declaration-result"}'>
-                                                Submit a solemn declaration
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </form>
+            <div id="new-card-result" class="hidden result">
+                <p>Apply newLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula malesuada purus. </p>
                 </div>
-                                <!-- Results for Each Option -->
-                <div id="new-card-result" class="hidden result">
-                    <p>Lorem ipsum result for applying for a new card.</p>
-                </div>
-                
-                <div id="solemn-declaration-result" class="hidden result">
-                    <p>Lorem ipsum result for submitting a solemn declaration.</p>
-                </div>
-                                               
+            <div id="solemn-declaration-result"" class="hidden result">
+                    <p>Solemn Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula malesuada purus. </p>
+                    </div>                                     
 
         <!-- CONTENT ENDS HERE -->
 
