@@ -479,38 +479,56 @@
             </div>
             
             <div id="replace-card" class="hidden result">
-                <p><h3>Replace a lost, stolen or damaged PR card</h3>
-    
-                    <p>You have 2 options:</p>
-                    
-                    <ol>
-                        <li>
-                            <details>
-                                <summary>Apply for a new card</summary>
-                                <p>Display instructions 1 through 5</p>
-                            </details>
-                        </li>
-                        <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/solemn-declaration-lost-stolen-destroyed-never-received-permanent-resident-card.html" target="_blank"> Submit a solemn declaration</a></li>
-                    </ol>
-                    
-                    <p>When you submit a solemn declaration, we will reissue the lost, damaged or stolen card with the same expiry date as the old card.</p></p>
-
-                <p> 
-                    <p> OR</p>
-                    <p>You have 2 options:</p>
-                    
-                    <ol>
-                        <li>apply for a new card</li>
-                        <li><a href="#" target="_blank">submit a solemn declaration</a></li>
-                    </ol>
-                    
-                    <p>When you submit a solemn declaration, we will reissue the lost, damaged or stolen card with the same expiry date as the old card.</p></p>
-                    <details>
-                        <summary>Apply for a new card</summary>
-                        <p>Display instructions 1 through 5</p>
-                    </details>
-
-            </div>            
+                <h3>Replace a lost, stolen or damaged PR card</h3>
+                <div class="wb-frmvld" id="ff">
+                    <form method="get">
+                        <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+                            "noForm": true,
+                            "renderas": "radio",
+                            "gcChckbxrdio": true,
+                            "unhideelm": "#ff",
+                            "hideelm": "#content",
+                            "base": { "live": true, "renderas": "radio", "gcChckbxrdio": true },
+                            "default": {"action": "addClass", "source": ".result", "class": "hidden"},
+                            "reset": {"action": "addClass", "source": ".result", "class": "hidden"}
+                        }'>
+                
+                            <!-- Main Question -->
+                            <p>You have 2 options:</p>
+                
+                            <!-- Options -->
+                            <ul>
+                                <li>Apply for a new card
+                                    <div class="wb-fieldflow-sub">
+                                        <ul>
+                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#new-card-result"}'>
+                                                Apply for a new card
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>Submit a solemn declaration
+                                    <div class="wb-fieldflow-sub">
+                                        <ul>
+                                            <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#solemn-declaration-result"}'>
+                                                Submit a solemn declaration
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+                                <!-- Results for Each Option -->
+                <div id="new-card-result" class="hidden result">
+                    <p>Lorem ipsum result for applying for a new card.</p>
+                </div>
+                
+                <div id="solemn-declaration-result" class="hidden result">
+                    <p>Lorem ipsum result for submitting a solemn declaration.</p>
+                </div>
+                                               
 
         <!-- CONTENT ENDS HERE -->
 
