@@ -206,7 +206,12 @@
                                 </ul>
                             </div>
                         </li>
-                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#replace-card"}'>Replace a lost, stolen, or damaged PR card</li>
+                        <li>Replace a lost, stolen, or damaged PR card
+                            <div class="wb-fieldflow-sub">
+                                <p>You have 2 options</p>
+                                <ul>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#new-card-result"}'>Apply for a new card</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#solemn-declaration-result"}'>Submit a solemn declaration</li>
                     </ul>
                 </div>
             </form>
@@ -242,50 +247,59 @@
                     <a href="https://prson-srpel.apps.cic.gc.ca/en/login" class="btn btn-call-to-action">
                         Sign in to the Permanent Residence portal
                     </a>
-                    <h3>Special circumstances</h3>
-                     <p>There are different processes available under specific circumstances.</p>
-                     <p></p>
-                     <details class="gc-details">
-                        <summary>Apply for urgent processing</summary>
-                        <p>Urgent processing is available in some circumstances. However, the minimum processing time is 3 weeks. Even if you qualify for urgent processing, we can’t guarantee you’ll get your card on time.</p>
-                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace/urgent.html" class="btn btn-primary">Apply for urgent processing</a>
-                     </P>
-                     <p></p>
-                     
-                        </details>
-                        <details class="gc-details">
-                            <summary>Apply on paper, if you can’t apply online</summary>
-                            <p>If you can’t apply online and need accommodations, including for accessibility, you can apply on paper.</p>
-                            <strong>How to submit a paper application</strong>
-                            
-                            <ol>
-                                <li>Complete the forms
-                                    <ul>
-                                        <li><a href="#" target="_blank">IMM 5444 form</a></li>
-                                        <li><a href="#" target="_blank">Document checklist IMM 5644</a></li>
-                                        <li>Any additional forms that apply to you</li>
-                                    </ul>
-                                </li>
-                                <li>Pay the CAN$50 fee <a href="#" target="_blank">online</a> and include your receipt with your application.</li>
-                            </ol>
-                            
-                            <p><em>We cannot refund the fee once the application is in process.</em></p>
-                            
-                            <p>Send your application with all the required documents to the Case Processing Centre in Sydney.</p>
-                            
-                            <p><strong>By courier:</strong><br>
-                            Case Processing Centre – PR Card<br>
-                            49 Dorchester Street<br>
-                            Sydney, NS B1P 5Z2<br>
-                            Canada</p>
-                            
-                            <p><strong>By mail (non-courier):</strong><br>
-                            Case Processing Centre — PR Card<br>
-                            P.O. Box 10020<br>
-                            Sydney, NS B1P 7C1<br>
-                            Canada</p>
-                        </p>
+                    <section class="break-out" style="background-color: #F5F5F5; padding: 2rem 0; position: relative; width: 100vw; left: 50%; transform: translateX(-50%);">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-md-8"> <!-- Aligns content with main page layout -->
+                                    <h3>Special circumstances</h3>
+                                    <p>There are different processes available under specific circumstances.</p>
                     
+                                    <details class="gc-details">
+                                        <summary>Apply for urgent processing</summary>
+                                        <p>Urgent processing is available in some circumstances. However, the minimum processing time is 3 weeks. Even if you qualify for urgent processing, we can’t guarantee you’ll get your card on time.</p>
+                                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace/urgent.html" class="btn btn-primary">Apply for urgent processing</a>
+                                    </details>
+                    
+                                    <details class="gc-details">
+                                        <summary>Apply on paper, if you can’t apply online</summary>
+                                        <p>If you can’t apply online and need accommodations, including for accessibility, you can apply on paper.</p>
+                                        <strong>How to submit a paper application</strong>
+                    
+                                        <ol>
+                                            <li>Complete the forms
+                                                <ul>
+                                                    <li><a href="#" target="_blank">IMM 5444 form</a></li>
+                                                    <li><a href="#" target="_blank">Document checklist IMM 5644</a></li>
+                                                    <li>Any additional forms that apply to you</li>
+                                                </ul>
+                                            </li>
+                                            <li>Pay the CAN$50 fee <a href="#" target="_blank">online</a> and include your receipt with your application.</li>
+                                        </ol>
+                    
+                                        <p><em>We cannot refund the fee once the application is in process.</em></p>
+                    
+                                        <p>Send your application with all the required documents to the Case Processing Centre in Sydney.</p>
+                    
+                                        <p><strong>By courier:</strong><br>
+                                        Case Processing Centre – PR Card<br>
+                                        49 Dorchester Street<br>
+                                        Sydney, NS B1P 5Z2<br>
+                                        Canada</p>
+                    
+                                        <p><strong>By mail (non-courier):</strong><br>
+                                        Case Processing Centre — PR Card<br>
+                                        P.O. Box 10020<br>
+                                        Sydney, NS B1P 7C1<br>
+                                        Canada</p>
+                                    </details>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    
+                    
+                        
                     </p>
                     </details>
 <p><h3>2. Complete additional forms and upload them to the portal</h3>
@@ -478,39 +492,119 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula malesuada purus. Instructions for changing the name on your PR card.</p>
             </div>
             
-            <div id="replace-card" class="hidden result">
-                <p><h3>Replace a lost, stolen or damaged PR card</h3>
-    
-                    <p>You have 2 options:</p>
+            <div id="new-card-result" class="hidden result">
+                <p> <p><h3>1. Start your application in the Permanent Residence Portal</h3>
+                    <p>In the portal, begin your application by filling out the application for a permanent resident card (IMM 5444).</p>
+                    <p>Need help? <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5445-applying-permanent-resident-card-card-first-application-replacement-renewal-change-gender-identifier.html" target="_blank">Our instruction guide (IMM 5445)</a> has detailed information on how to prepare, complete and submit your application.</p>
+                    <a href="https://prson-srpel.apps.cic.gc.ca/en/login" class="btn btn-call-to-action">
+                        Sign in to the Permanent Residence portal
+                    </a>
+                    <h3>Special circumstances</h3>
+                     <p>There are different processes available under specific circumstances.</p>
+                     <p></p>
+                     <details class="gc-details">
+                        <summary>Apply for urgent processing</summary>
+                        <p>Urgent processing is available in some circumstances. However, the minimum processing time is 3 weeks. Even if you qualify for urgent processing, we can’t guarantee you’ll get your card on time.</p>
+                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace/urgent.html" class="btn btn-primary">Apply for urgent processing</a>
+                     </P>
+                     <p></p>
+                     
+                        </details>
+                        <details class="gc-details">
+                            <summary>Apply on paper, if you can’t apply online</summary>
+                            <p>If you can’t apply online and need accommodations, including for accessibility, you can apply on paper.</p>
+                            <strong>How to submit a paper application</strong>
+                            
+                            <ol>
+                                <li>Complete the forms
+                                    <ul>
+                                        <li><a href="#" target="_blank">IMM 5444 form</a></li>
+                                        <li><a href="#" target="_blank">Document checklist IMM 5644</a></li>
+                                        <li>Any additional forms that apply to you</li>
+                                    </ul>
+                                </li>
+                                <li>Pay the CAN$50 fee <a href="#" target="_blank">online</a> and include your receipt with your application.</li>
+                            </ol>
+                            
+                            <p><em>We cannot refund the fee once the application is in process.</em></p>
+                            
+                            <p>Send your application with all the required documents to the Case Processing Centre in Sydney.</p>
+                            
+                            <p><strong>By courier:</strong><br>
+                            Case Processing Centre – PR Card<br>
+                            49 Dorchester Street<br>
+                            Sydney, NS B1P 5Z2<br>
+                            Canada</p>
+                            
+                            <p><strong>By mail (non-courier):</strong><br>
+                            Case Processing Centre — PR Card<br>
+                            P.O. Box 10020<br>
+                            Sydney, NS B1P 7C1<br>
+                            Canada</p>
+                        </p>
                     
-                    <ol>
-                        <li>
-                            <details>
-                                <summary>Apply for a new card</summary>
-                                <p>Display instructions 1 through 5</p>
-                            </details>
-                        </li>
-                        <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/solemn-declaration-lost-stolen-destroyed-never-received-permanent-resident-card.html" target="_blank"> Submit a solemn declaration</a></li>
-                    </ol>
-                    
-                    <p>When you submit a solemn declaration, we will reissue the lost, damaged or stolen card with the same expiry date as the old card.</p></p>
-
-                <p> 
-                    <p> OR</p>
-                    <p>You have 2 options:</p>
-                    
-                    <ol>
-                        <li>apply for a new card</li>
-                        <li><a href="#" target="_blank">submit a solemn declaration</a></li>
-                    </ol>
-                    
-                    <p>When you submit a solemn declaration, we will reissue the lost, damaged or stolen card with the same expiry date as the old card.</p></p>
-                    <details>
-                        <summary>Apply for a new card</summary>
-                        <p>Display instructions 1 through 5</p>
+                    </p>
                     </details>
-
-            </div>            
+    <p><h3>2. Complete additional forms and upload them to the portal</h3>
+    
+    <p>Complete the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5644.html" target="_blank">Document checklist [IMM 5644]</a> and upload it to the portal.</p>
+    <p>Depending on your circumstances, you may need to download, complete, and upload other forms to support your application.</p>
+    
+    <p>Forms that may be required, depending on your situation:</p>
+    
+    <details>
+        <summary>You’re using a representative</summary>
+        <ul>
+            <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html" target="_blank">Use of a representative (IMM 5476)</a></li>
+            <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5475.html" target="_blank">Authority to release personal information to a designated individual (IMM 5475)</a></li>
+        </ul>
+    </details>
+    
+    <details>
+        <summary>You’re updating the gender identifier on your card</summary>
+        <ul>
+            <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/irm0002.html" target="_blank">Request form for a change of sex or gender identifier (IRM 0002)</a></li>
+        </ul>
+    </details>
+    
+    <details>
+        <summary>You’re reclaiming an Indigenous name</summary>
+        <ul>
+            <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/irm0004.html" target="_blank">Confirmation of eligibility for a reclaimed name change gratis replacement document under Call to Action 17 (IRM 0004)</a></li>
+            <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/irm0005.html" target="_blank">Statutory declaration to reclaim an Indigenous name on Canadian citizenship certificates or permanent resident cards (IRM 0005)</a></li>
+            <li>An amended birth certificate or legal change of name document</li>
+        </ul>
+    </details></p>
+    <h3>3. Pay your fees, then upload the receipt to the portal</h3>
+    
+    <p>Fees are not paid through the Permanent Residence Portal.</p>
+    
+    <ol>
+        <li><a href="https://ircc.canada.ca/english/information/fees/pay.asp" target="_blank">Pay your fee online with IRCC</a>.</li>
+        <li>Upload your receipt to the Fee Payment section in the Permanent Residence Portal to show that you have paid.</li>
+    </ol>
+    
+    <p>Refunds are not possible while the application is in progress.</p>
+    
+    <h3>4. Review your application, then submit</h3>
+    
+    <p>Before you submit your application, make sure you:</p>
+    
+    <ul>
+        <li>answer all questions</li>
+        <li>electronically sign your application and all forms (type your full name exactly as shown on your passport)</li>
+        <li>include your processing fee receipt</li>
+        <li>upload all the supporting documents</li>
+    </ul>
+    <h3>5. Get updates about your application</h3>
+    
+    <p><a href="https://services3.cic.gc.ca/ecas/introduction.do?app=ecas" target="_blank">Track the status of your application</a>.</p>
+                        
+                </div> </p>
+                </div>
+            <div id="solemn-declaration-result"" class="hidden result">
+                <p>When you <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/solemn-declaration-lost-stolen-destroyed-never-received-permanent-resident-card.html" title="Submit a solemn declaration">submit a solemn declaration</a>, we will reissue the lost, damaged or stolen card with the same expiry date as the old card.</p>
+                    </div>                                     
 
         <!-- CONTENT ENDS HERE -->
 
