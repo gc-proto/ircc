@@ -14,7 +14,7 @@
 
     <!--CHANGE THE TITLE-->
 
-    <title>Get a permanent residence card - Who can apply- Canada.ca</title>
+    <title>Title of the page - Canada.ca</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta name="description" content=" " />
     <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
@@ -137,11 +137,11 @@
                         <ol class="breadcrumb">
                             <li><a href='https://www.canada.ca/en.html'>Canada.ca</a></li>
                             <li><a href='https://www.canada.ca/en/services/immigration-citizenship.html'>Immigration and citizenship</a></li>
-                            <li><a href='https://test.canada.ca/ircc/Jackie/PR-card/PR-topic-en.html'>Permanent residence</a></li>
-                            <li><a href='https://test.canada.ca/ircc/Jackie/PR-card/PR-card-apply.html'>Get a permanent residence card </a></li>
+                            <li><a href='https://test.canada.ca/ircc/Jackie/PR-card/PR-card-apply.html'>Permanent residence card</a></li>
                         </ol>
                     </div>
                 </nav>
+
             </header>
         </div>
 
@@ -149,51 +149,150 @@
 
     <!--CONTENT STARTS HERE-->
 
-
     <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="container">
 
-        <div class="mwsmediaplayer section">
-
-            <!-- IF YOU PORT THIS TO AEM, START COPYING FROM HERE-->
-            <!--CHANGE THE H1 AND SECTION NAMES-->
-
-            <nav class="gc-subway provisional">
-                <h1>Get a permanent residence card</h1>
-                <ul>
-                    <li><a href="#" class="active">Who can apply</a></li>
-                    <li><a href="./PR-card-apply-how-en.html">How to apply</a></li>
-                    <li><a href="./PR-card-apply-after-en.html">Getting your card</a></li>
-
-                </ul>
-            </nav>
-        
-            <!-- 2: Title -->
-            <h1 property="name" id="wb-cont" class="gc-thickline">Who can apply</h1>
-
-            
-
-            <p>To be eligible for a PR card, you must:</p>
+        <!-- Navigation -->
+        <nav class="gc-subway provisional">
+            <h1>Get a permanent residence card</h1>
             <ul>
-                <li>be a <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/understand-pr-status.html" target="_blank">permanent resident</a> of Canada</li>
-                <li>be in Canada (we don’t mail PR cards outside Canada)</li>
-                <li>not have lost your PR status, for example by:
-                    <ul>
-                        <li>being issued a removal order, or</li>
-                        <li>becoming a Canadian citizen</li>
-                    </ul>
-                </li>
+                <li><a href="./PR-card-apply-who-en.html">Who can apply</a></li>
+                <li><a href="#" class="active">How to apply</a></li>
+                <li><a href="./PR-card-apply-after-en.html">Getting your card</a></li>
             </ul>
-            
-            <nav class="mrgn-bttm-lg mrgn-tp-lg">
-                <h3 class="wb-inv">Document navigation</h3>
-                <ul class="pager">
-                    <li class="next"><a href="https://test.canada.ca/ircc/Jackie/PR-card/PR-card-apply-how-en.html" rel="next"><span class="wb-inv">Next: </span>How to apply</a></li>
-                </ul>
-            </nav>
+        </nav>
+    
+        <!-- Main Title -->
+        <h1 property="name" id="wb-cont" class="gc-thickline">How to apply</h1>
+    
+        <!-- Interactive Fieldflow -->
+        <div class="wb-frmvld" id="ff">
+            <form method="get">
+                <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
+                    "noForm": true,
+                    "renderas": "radio",
+                    "gcChckbxrdio": true,
+                    "unhideelm": "#ff",
+                    "hideelm": "#content",
+                    "base": { "live": true, "renderas": "radio", "gcChckbxrdio": true },
+                    "default": {"action": "addClass", "source": ".result", "class": "hidden"},
+                    "reset": {"action": "addClass", "source": ".result", "class": "hidden"}
+                }'>
+                    <p>What are you trying to do?</p>
+                    <ul>
+                        <li>
+                            Get a PR card for the first time
+                            <div class="wb-fieldflow-sub">
+                                <p>Are you within 180 days of receiving PR status?</p>
+                                <ul>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#first-time-address"}'>Yes</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#first-time-late"}'>No</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#renew-card"}'>Renew an existing PR card</li>
+                        <li>
+                            Update information on my card
+                            <div class="wb-fieldflow-sub">
+                                <p>What information do you need to update?</p>
+                                <ul>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#update-mistake"}'>Correct a mistake</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#update-dob"}'>Correct your date of birth or citizenship</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#update-name"}'>Change name</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            Replace a lost, stolen, or damaged PR card
+                            <div class="wb-fieldflow-sub">
+                                <p>You have 2 options:</p>
+                                <ul>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#new-card-result"}'>Apply for a new card</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#solemn-declaration-result"}'>Submit a solemn declaration</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </form>
         </div>
-
+    
+        <!-- Dynamic Content Sections -->
+        <div id="first-time-address" class="hidden result">
+            <h2>Get a PR card for the first time</h2>
+            <p>Most people don’t need to apply for their first PR card. We automatically send you your first PR card if you give us your Canadian mailing address and photo within 180 days of becoming a permanent resident.</p>
+            <h3>Give us your address within the first 180 days of becoming a Permanent Resident</h3>
+            <p>The way to give us your information depends on how you confirm your permanent resident status.</p>
+            <h4>If you confirmed your status at a port of entry</h4>
+            <p>You need to give us your address (or update your address, if applicable) within 180 days of becoming a permanent resident.</p>
+            <a href="https://services3.cic.gc.ca/ecas/introduction.do?app=coanotify">Give or update your address online</a>
+            <h4>If you are in Canada and confirm your status virtually</h4>
+            <p>You need to give your Canadian address and upload a digital photo when you confirm your permanent residence in the PR portal.</p>
+            <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/pr-confirmation-portal.html">Confirm your permanent residence and give us your address</a>
         </div>
-
+    
+        <div id="first-time-late" class="hidden result">
+            <h2>Get a PR card for the first time</h2>
+            <p>If you were not able to get us your address within 180 days, you need to apply for a PR card.</p>
+            <h3>1. Start your application in the Permanent Residence Portal</h3>
+            <p>In the portal, begin your application by filling out the application for a permanent resident card (IMM 5444).</p>
+            <p>Need help? 
+                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5445-applying-permanent-resident-card-card-first-application-replacement-renewal-change-gender-identifier.html" target="_blank">
+                    Our instruction guide (IMM 5445)
+                </a> 
+                has detailed information on how to prepare, complete, and submit your application.
+            </p>
+            <a href="https://prson-srpel.apps.cic.gc.ca/en/login" class="btn btn-call-to-action">Sign in to the Permanent Residence portal</a>
+            <h3>Special circumstances</h3>
+            <details>
+                <summary>Apply for urgent processing</summary>
+                <p>Urgent processing is available in some circumstances. However, the minimum processing time is 3 weeks. Even if you qualify for urgent processing, we can’t guarantee you’ll get your card on time.</p>
+                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace/urgent.html" class="btn btn-primary">Apply for urgent processing</a>
+            </details>
+        </div>
+    
+        <div id="renew-card" class="hidden result">
+            <h2>Renew an existing PR card</h2>
+            <p>A PR card is usually valid for 5 years. In some cases, it can be valid for one year.</p>
+            <p>Renew your PR card if:</p>
+            <ul>
+                <li>it will expire in less than 9 months, or</li>
+                <li>has expired.</li>
+            </ul>
+            <h3>1. Start your application in the Permanent Residence Portal</h3>
+            <p>In the portal, begin your application by filling out the application for a permanent resident card (IMM 5444).</p>
+            <a href="https://prson-srpel.apps.cic.gc.ca/en/login" class="btn btn-call-to-action">Sign in to the Permanent Residence portal</a>
+        </div>
+    
+        <!-- Additional sections -->
+        <div id="update-mistake" class="hidden result">
+            <h2>If we made a mistake on your PR card</h2>
+            <p>When we make a mistake or miss something on your card, you can apply to have your card reissued at no cost. You need to submit the request within 60 days of receiving your card.</p>
+            <a href="#" class="btn btn-primary">Apply to have your card reissued</a>
+            <h2>If you made a mistake on your application</h2>
+            <p>If you made a mistake on your application that resulted in a mistake on your card, apply for a new card.</p>
+        </div>
+    
+        <div id="update-dob" class="hidden result">
+            <h2>Correct your date of birth or citizenship</h2>
+            <p>To correct your date of birth or citizenship, apply for a new PR card.</p>
+        </div>
+    
+        <div id="update-name" class="hidden result">
+            <h2>Change or update your name</h2>
+            <p>If you have legally changed your name or have a name change after a marriage or divorce, you can apply for a PR card.</p>
+        </div>
+    
+        <div id="new-card-result" class="hidden result">
+            <h3>1. Start your application in the Permanent Residence Portal</h3>
+            <p>Begin your application by filling out the application for a permanent resident card (IMM 5444).</p>
+        </div>
+    
+        <div id="solemn-declaration-result" class="hidden result">
+            <p>When you submit a solemn declaration, we will reissue the lost, damaged, or stolen card with the same expiry date as the old card.</p>
+        </div>
+    </main>
+    
+    
         <!-- CONTENT ENDS HERE -->
 
         <div class="mwsgeneric-base-html parbase section">
@@ -296,7 +395,6 @@
                         </div>
                     </section>
                 </div>
-             
             </div>
 
             <!--update references-->
@@ -396,7 +494,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
     <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
     <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
-    
 </body>
 
 </html>
