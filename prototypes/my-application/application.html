@@ -159,6 +159,34 @@
             </div>
         </div>
 
+        <div class="reference parbase section"><div class="cq-dd-paragraph"><div class="mwsgeneric_base_html mwsgeneric-base-html parbase">
+
+
+
+            <span data-incl-name="canadapost-citimmtr-eng"></span>
+        <div id="alerts">
+           <section class="brdr-0 mrgn-bttm-0 infobg">
+               <div class="container">
+                   <h2 class="wb-inv">Alerts</h2>
+                   <div class="row mrgn-tp-md">
+                       <div class="col-md-2 col-xs-12 icon">
+                           <p class="text-center"><span class="fas fa-exclamation-circle fa-3x" aria-hidden="true"></span></p>
+                       </div>
+                       <div class="col-md-10 col-xs-12 small">  
+                           <details>
+                               <summary><strong>The Canada Post labour disruption will cause delays in mail delivery  </strong></summary>
+                               <p>We’re still processing applications normally. However, there will be delays in</p>
+                               <ul>
+                                   <li>sending applications mailed within or to Canada</li>
+                                   <li>getting mail from us</li>
+                               </ul>
+                               <p>We encourage you to <strong>apply online if possible</strong>. If you need to apply on paper, use a courier to send us your application.</p>
+                           </details>
+                       </div>
+                   </div>
+               </div>
+           </section>
+        </div>
         <section class="my-application">
 
 
@@ -483,5 +511,30 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
     <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
     <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
+    <script>
 
+        // CSS rules
+        var rule  = '.infobg { background-color:#d9edf7 !important; margin-bottom: 0px !important; padding: 6px !important; }';
+        
+        function addCss(rule) {
+          let css = document.createElement('style');
+          css.type = 'text/css';
+          if (css.styleSheet) css.styleSheet.cssText = rule; // Support for IE
+          else css.appendChild(document.createTextNode(rule)); // Support for the rest
+          document.getElementsByTagName("head")[0].appendChild(css);
+        }
+            
+        
+        // Load the rules and execute after the DOM loads
+        window.onload = function() {addCss(rule)};
+        
+        
+        var ht=$("#alerts").height();
+        ht=ht-27;
+        ht=ht+"px";
+        console.log(ht);
+        $(".icon").css("line-height",ht);
+        $(".icon").css("vertical-align", "middle");
+        
+        </script>
 </html>
