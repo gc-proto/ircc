@@ -151,8 +151,8 @@
     <!--CONTENT STARTS HERE-->
 
 
-    <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="container">
-
+    <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
+        <div class="container">
             <!-- IF YOU PORT THIS TO AEM, START COPYING FROM HERE-->
             <!--CHANGE THE H1 AND SECTION NAMES-->
 
@@ -199,9 +199,11 @@
                             <div class="wb-fieldflow-sub">
                                 <p>What information do you need to update?</p>
                                 <ul>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#update-mistake"}'>Correct a mistake</li>
                                     <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#update-dob"}'>Correct your date of birth or citizenship </li>
-                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#update-name"}'>Change or update your name</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#update-name"}'>Update your name</li>
+                                    <li data-wb-fieldflow='{"action": "removeClass", "class": "hidden", "source": "#update-mistake"}'>Correct any other mistake</li>
+                                 
+                                    
                                 </ul>
                             </div>
                         </li>
@@ -248,8 +250,8 @@
                     <a href="https://prson-srpel.apps.cic.gc.ca/en/login" class="btn btn-call-to-action">
                         Sign in to the Permanent Residence portal
                     </a>
-                    <div>
-                    <section class="well well-sm">
+                    <section class="well well-sm bg-lightgrey">
+                        <div class="container">
                                     <h3>Special circumstances</h3>
                                     <p>There are different processes available under specific circumstances.</p>
                     
@@ -291,9 +293,8 @@
                                         Sydney, NS B1P 7C1<br>
                                         Canada</p>
                                     </details>
-                                                        
-                 
-                </section>                   
+                </section> 
+                <div class="container">                  
 </li>
 <li>
 <h3>Complete additional forms and upload them to the portal</h3>
@@ -635,7 +636,7 @@
         </div>
     
         <div id="update-name" class="hidden result">
-            <h2>Change or update your name</h2>
+            <h2>Update your name</h2>
                 <h3>If only part of your name appears on your card</h3>
                 <p>The names on your PR card need to match your foreign passport. But there’s limited space for names on a PR card. We may shorten your name to make it fit on the card.</p>
 
