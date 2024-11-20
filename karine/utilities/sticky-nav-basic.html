@@ -1,0 +1,165 @@
+<!doctype html>
+<html class="no-js" dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head prefix="og: http://ogp.me/ns#">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+
+    <!-- CONFIGURATIONS START HERE -->
+    <title>Testing sticky nav idea</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <script id="pageConstants">
+        let pageConstants = {
+            pageFeedbackTool: true, // true | false; Set to 'true' if adding the Page Feedback tool to bottom of page
+            alternateLanguageURL: "#", // URL; Add the English or French URL link
+            dateModified: "2024-08-16", // YYYY-MM-DD
+            fluidWidth: false, // true | false; Set to 'true' if you will be using full width elements like bands.
+            breadcrumbs: { //use "title":"url" in order of appearance or leave blank if none, ex.: 
+                // "Visit Canada": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html",
+                // "Visitor visa (temporary resident visa)":"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/visitor-visa.html"
+            }
+        }
+    </script>
+    <!-- CONFIGURATIONS END HERE -->
+    <script src="https://test.canada.ca/ircc/templates/js/template.js" type="text/javascript" defer></script>
+    <link rel="stylesheet" href="css/stickynav.css" />
+    <noscript>
+        <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
+    </noscript>
+</head>
+
+
+<body vocab="http://schema.org/" typeof="WebPage">
+
+    <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="container">
+
+        <div class="sticky">
+
+            <nav class="provisional gc-subway">
+                <h1 id="gc-document-nav">Visitor visa</h1>
+                <ul>
+                    <li>
+                        <a href="#" class="active" aria-current="page">Who needs a visitor visa</a>
+                    </li>
+                    <li>
+                        <a href="/en/immigration-refugees-citizenship/services/visit-canada/eligibility.html" class="hidden-xs hidden-sm">Who can apply</a>
+                        <a href="/en/immigration-refugees-citizenship/services/visit-canada/eligibility.html#gc-document-nav" class="visible-xs visible-sm">Who can apply</a>
+                    </li>
+                    <li>
+                        <a href="/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html" class="hidden-xs hidden-sm">How to apply</a>
+                        <a href="/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html#gc-document-nav" class="visible-xs visible-sm">How to apply</a>
+                    </li>
+                    <li>
+                        <a href="/en/immigration-refugees-citizenship/services/visit-canada/after-apply-next-steps.html" class="hidden-xs hidden-sm">After you apply</a>
+                        <a href="/en/immigration-refugees-citizenship/services/visit-canada/after-apply-next-steps.html#gc-document-nav" class="visible-xs visible-sm">After you apply</a>
+                    </li>
+                    <li>
+                        <a href="/en/immigration-refugees-citizenship/services/visit-canada/prepare-arrival.html" class="hidden-xs hidden-sm">Prepare for your arrival</a>
+                        <a href="/en/immigration-refugees-citizenship/services/visit-canada/prepare-arrival.html#gc-document-nav" class="visible-xs visible-sm">Prepare for your arrival</a>
+                    </li>
+                </ul>
+
+            </nav>
+            <section id="top-bar" class="wb-overlay overlay-def show-none">
+                <div data-ajax-replace="#sticky-nav"></div>
+            </section>
+        </div>
+
+
+        <div class="gc-subway-section">
+            <h1 property="name" id="wb-cont" class="gc-thickline">Who needs a visitor visa</h1>
+            <div>
+                <section class="wb-inview show-none" data-inview="top-bar">
+                    <div id="sticky-nav">
+                        <h2 class="h3">On this page</h2>
+                        <ul>
+                            <li><a href="#most">Most travellers need a visitor visa</a></li>
+                            <li><a href="#how_long">How long you can stay</a></li>
+                            <li><a href="#make_sure">Make sure you need a visitor visa before you apply</a></li>
+                        </ul>
+                    </div>
+                </section>
+                <h2 id="most">Most travellers need a visitor visa</h2>
+                <p>Most travellers need a visitor visa to travel to Canada. You may also need one if you’re <a href="/en/immigration-refugees-citizenship/services/visit-canada/transit/about-transit-visa.html">transiting through a Canadian airport</a> on your way to your final destination.</p>
+                <p>A visitor visa (also called a temporary resident visa) is an official document that we put in your passport. It shows that you meet the requirements needed to travel to Canada.</p>
+                <p>A visa officer has discretion to issue you a single-entry visa or multiple entry visa, and decide how long it will be valid for. Generally, a visitor visa may be valid for up to a maximum of 10 years, or until the expiry of either your passport or biometrics, whichever is comes first. </p>
+                <h2 id="how_long">How long you can stay</h2>
+                <p>Most visitors can stay for up to 6 months in Canada.</p>
+                <p>At the port of entry, the border services officer may allow you to stay for less or more than 6 months. If that’s the case, they’ll put the date you need to leave by in your passport. They might also give you a document, called a <a href="http://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1452&amp;top=16">visitor record</a>, which will show the date you need to leave by.</p>
+                <p>If you do not get a stamp in your passport, you can stay for 6 months from the day you entered Canada or until the expiry of your biometrics or your passport expires, whichever comes first. Super visa holders who enter Canada after June 22, 2023 can stay for 5 years. If you need a stamp, you can ask a border services officer for one. If you arrive at an airport that uses <a href="https://www.cbsa-asfc.gc.ca/services/border-tech-frontiere/pik-bip-eng.html">primary inspection kiosks</a>, you may ask the border services officer for a stamp after you finish at the kiosk.</p>
+                <h2 id="make_sure">Make sure you need a visitor visa before you apply</h2>
+                <p>You may need a visitor visa <strong>or</strong> an Electronic Travel Authorization. The entry document you need depends on:</p>
+                <ul>
+                    <li>the type of travel document you plan to travel with</li>
+                    <li>the country that issued your travel document</li>
+                    <li>your nationality</li>
+                    <li>how you’ll travel to Canada for this trip</li>
+                </ul>
+                <p><a class="btn btn-primary" href="https://ircc.canada.ca/english/visit/visas.asp">Find out if you need a visitor visa</a></p>
+                <nav class="mrgn-bttm-lg mrgn-tp-lg">
+                    <h3 class="wb-inv">Document navigation</h3>
+                    <ul class="pager">
+                        <li class="next"><a href="/en/immigration-refugees-citizenship/services/visit-canada/eligibility.html#wb-cont" rel="next"><span class="wb-inv">Next: </span>Who can apply</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
+    <script src="https://test.canada.ca/ircc/templates/js/components.js" type="text/javascript" defer></script>
+    <script>
+
+
+
+        $('document').ready(function () {
+
+            let lastKnownScrollPosition = 0;
+            let ticking = false;
+
+            let elm1, elm2;
+            elm1 = document.querySelector('.sticky');
+            elm3 = document.querySelector('#sticky-nav');
+            elm2 = document.querySelector('.global-footer');
+
+            document.addEventListener("scroll", (event) => {
+                lastKnownScrollPosition = window.scrollY;
+
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        checkoverlap();
+                        ticking = false;
+                    });
+
+                    ticking = true;
+                }
+            });
+
+            function checkoverlap() {                
+                let rect1 = elm1.getBoundingClientRect();
+                let rect2 = elm2.getBoundingClientRect();
+                let overlap = !(rect1.right <= rect2.left || rect1.left >= rect2.right || rect1.bottom <= rect2.top || rect1.top >= rect2.bottom);
+
+                if (overlap) {
+                    elm1.style.top = "-" + elm3.offsetHeight + "px!important";
+                    elm1.setAttribute('style', `top:-${elm3.offsetHeight + 20}px!important`);         
+                }
+                else {
+                    elm1.style.top = "0";
+                }
+            }
+   
+
+            $(".wb-overlay").on("opened.wb-overlay", function (event) {
+                
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>
