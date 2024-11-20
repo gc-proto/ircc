@@ -10,7 +10,8 @@ let dict = {
         months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         latestData: "Latest data",
         dateRange: ["month", "quarter"],
-        difference: ["increase from last ", "decrease from last ", ""]
+        difference: ["increase from last ", "decrease from last ", ""],
+        unknown:"unknown",
 
     },
     fr: {
@@ -18,7 +19,8 @@ let dict = {
         months: ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
         latestData: "Dernières données",
         dateRange: ["mois", "trimestre"],
-        difference: ["augmentation par rapport au dernier", "diminution par rapport au dernier "]
+        difference: ["augmentation par rapport au dernier", "diminution par rapport au dernier "],
+        unknown: "inconnu"
 
     }
 
@@ -124,6 +126,7 @@ $(document).on("wb-ready.wb", function (event) {
     let month = dateModified[1];
     let day = dateModified[2];
     let year = dateModified[0];
+    let lastMonth;
 
 
     if (lang === "en") {
@@ -136,6 +139,7 @@ $(document).on("wb-ready.wb", function (event) {
 
     document.getElementById("dateModified").innerHTML = dateModified;
 
+
     d3.csv("csv/previous-data.txt?" + today, function (data) {
 
         let previousData = data.map(function (d) { return d["Previous"] })
@@ -146,6 +150,7 @@ $(document).on("wb-ready.wb", function (event) {
         thisMonthOption.innerHTML = dict[lang].latestData
         document.getElementById('previous-data-select').appendChild(thisMonthOption)
         previousData.reverse();
+        lastMonth = previousData[0];
         for (var i = 0; i < previousData.length; i++) {
             let previousOption = document.createElement('option');
             previousOption.setAttribute('value', previousData[i]);
@@ -183,8 +188,8 @@ $(document).on("wb-ready.wb", function (event) {
             .append('tr');
 
         // create a cell in each row for each column
-        
-            var cells = rows.selectAll('td')
+
+        var cells = rows.selectAll('td')
             .data(function (row) {
                 return columns["en"].map(function (column) {
                     return { column: column, value: row[column] };
@@ -192,20 +197,22 @@ $(document).on("wb-ready.wb", function (event) {
             })
             .enter()
             .append('td')
-            .attr("data-order", function(d){
-                if ( !isNaN(d.value)) {  
-                    return parseFloat(d.value);
-                }      
-            })
-            .text(function (d) { 
+            .attr("data-order", function (d) {
                 if (!isNaN(d.value)) {
-                    return d3.format(",")(d.value); 
+                    return parseFloat(d.value);
+                    // console.log(num)
+                    // return num.replace(" ", "");
+                }
+            })
+            .text(function (d) {
+                if (!isNaN(d.value)) {
+                    return d3.format(",")(d.value);
                 }
                 else {
-                    return d.value; 
+                    return d.value;
                 }
             });
-        
+
 
         return table;
     }
@@ -228,7 +235,7 @@ $(document).on("wb-ready.wb", function (event) {
         else {
             path = previousData ? "csv/export/previous/" + previousData + "/" : "csv/export/";
         }
-        
+
         let ajax = document.querySelectorAll('.ajax-insights');
 
 
@@ -298,7 +305,7 @@ $(document).on("wb-ready.wb", function (event) {
             // Page Views,Page Views - Month before
             let total_page_views = d3.sum(data, function (d) { return d["Page Views"] });
             let total_page_views_lastMonth = d3.sum(data, function (d) { return d["Page Views - Month before"] });
-            
+
 
             document.getElementById('total-page-views').innerHTML = formatNumber(total_page_views);
             difference(total_page_views, total_page_views_lastMonth, "total-page-views-change", dict[lang].dateRange[0]);
@@ -1225,11 +1232,11 @@ $(document).on("wb-ready.wb", function (event) {
             let easePrior = (data.map(function (d) { return d["TSS ease - Last month"] }));
             let completion = (data.map(function (d) { return d["TSS completion"] }));
             let completionPrior = (data.map(function (d) { return d["TSS completion - Last month"] }));
-            
-            
+
+
             document.getElementById('tss-survey-prev-month').innerHTML = d3.format(",")(surveyResponses);
             difference(surveyResponses, surveyResponsesPrior, "tss-survey-prev-month-change", dict[lang].dateRange[0]);
-            
+
             document.getElementById('tss-satisfaction-prev-month').innerHTML = d3.format("0.1%")(satisfaction);
             difference(satisfaction, satisfactionPrior, "tss-satisfaction-prev-month-change", dict[lang].dateRange[0]);
 
@@ -1251,156 +1258,190 @@ $(document).on("wb-ready.wb", function (event) {
         });
 
         d3.csv(path + "tss-highest-performing.csv?" + today, function (data) {
-            document.getElementById("tss-top-tasks-table").outerHTML = toptasktable;
-            data = data.filter(function (d) {
-                if (d["Task"].length == 0) {
-                    return false;
-                }
-                return true;
-            });
-
-
-            data = data.filter(function (d) {
-                if (d["Surveys completed"] < 384) {
-                    return false;
-                }
-                return true;
-            });
-
-
-            // "Task","TSS completion","TSS ease","TSS satisfaction","Surveys completed",
-            let label = lang === "en" ? "Top tasks by volume of responses" : "Tâches les plus performantes par volume de réponses";
-            let colheaders = {
-                en: ['Task', 'TSS completion', 'TSS ease', 'TSS satisfaction', 'Surveys completed'],
-                fr: ['Tâche', 'Réussite', 'Facilité', 'Satisfaction', 'Réponses']
+            let modPath;
+            if (path.indexOf("previous") == -1) {
+                modPath = path + "previous/" + lastMonth
             }
+            else {
+                let tempMonth = parseInt(lastMonth.split("-")[1]) - 1;
+                if (tempMonth < 10) tempMonth = "0" + tempMonth.toString();
+                modPath = path.split(lastMonth)[0] + lastMonth.split("-")[0] + "-" + tempMonth;
+            }
+            d3.csv(modPath + "/tss-highest-performing.csv?" + today, function (data2) {
+                
+                document.getElementById("tss-top-tasks-table").outerHTML = toptasktable;
+                data = data.filter(function (d) {
+                    if (d["Task"].length == 0) {
+                        return false;
+                    }
+                    return true;
+                });
+                
+                if (data2 != null) {
+                data2.forEach(function (d) {
+                    d["TSS completion - previous month"] = Math.round(d["TSS completion"] * 100);                  
+                    delete d["TSS completion"];
+                    delete d["TSS ease"];
+                    delete d["TSS satisfaction"];
+                    delete d["Surveys completed"];
+                    delete d["Task"];
+                    delete d[""];
+                });         
+
+                for (let i = 0; i<data2.length; i++) {
+                    data[i]["TSS completion - previous month"] = data2[i]["TSS completion - previous month"];
+                }       
+                }
+
+                data = data.filter(function (d) {
+                    if (d["Surveys completed"] < 384) {
+                        return false;
+                    }
+                    return true;
+                });
 
 
-            data.forEach(function (d) {
+                // "Task","TSS completion","TSS ease","TSS satisfaction","Surveys completed",
+                let label = lang === "en" ? "Top tasks by volume of responses" : "Tâches les plus performantes par volume de réponses";
+                let colheaders = {
+                    en: ['Task', 'TSS completion', 'TSS ease', 'TSS satisfaction', 'Surveys completed'],
+                    fr: ['Tâche', 'Réussite', 'Facilité', 'Satisfaction', 'Réponses']
+                }
 
-                d["Task"] = d["Task"];
 
-                if (lang != "en")
-                    switch (d["Task"]) {
-                        case "Apply for a work permit":
-                            d["Task"] = "Présenter une demande de permis de travail"
-                            break;
-                        case "Check your application status":
-                            d["Task"] = "Vérifiez l’état de sa demande"
-                            break;
-                        case "Apply for a visitor visa to Canada":
-                            d["Task"] = "Présenter une demande de visa de visiteur au Canada"
-                            break;
-                        case "Immigrate through Express Entry":
-                            d["Task"] = "Immigrez dans le cadre d’Entrée express"
-                            break;
-                        case "Apply for a visitor visa to Canada":
-                            d["Task"] = "Présenter une demande de visa de visiteur au Canada"
-                            break;
-                        case "Apply for an Electronic Travel Authorization (eTA)":
-                            d["Task"] = "Autorisation de voyage électronique (AVE)"
-                            break;
-                        case "Renew a Canadian passport":
-                            d["Task"] = "Renouveler un passeport canadien"
-                            break;
-                        case "Apply for a study permit":
-                            d["Task"] = "Présenter une demande de permis d’études"
-                            break;
-                        case "Apply for Canadian citizenship":
-                            d["Task"] = "Présentez une demande de citoyenneté canadienne"
-                            break;
-                        case "IRCC accounts - sign in and register":
-                            d["Task"] = "Comptes d’IRCC - Se connecter et s’enregistrer"
-                            break;
-                        case "Check processing times":
-                            d["Task"] = "Vérifiez les délais de traitement"
-                            break;
-                        case "Contact Immigration, Refugees and Citizenship Canada":
-                            d["Task"] = "Communiquez avec Immigration, Réfugiés et Citoyenneté Canada"
-                            break;
-                        case "Apply for an Electronic Travel Authorization (eTA)":
-                            d["Task"] = "Autorisation de voyage électronique (AVE)"
-                            break;
-                        case "Check the status of a passport application":
-                            d["Task"] = "Vérifiez l’état de sa demande de passeport"
-                            break;
-                        case "Sponsor your family members to immigrate to Canada":
-                            d["Task"] = "Parrainez les membres de votre famille aux fins d’immigration au Canada"
-                            break;
-                        case "Immigrate as a provincial nominee":
-                            d["Task"] = "Immigrez en tant que candidat d’une province"
-                            break;
-                        case "Apply for a new Canadian passport":
-                            d["Task"] = "Demander un nouveau passeport canadien"
-                            break;
-                        case "Get, renew or replace a permanent resident card":
-                            d["Task"] = "Obtenez, renouvelez ou remplacez une carte de résident permanent"
-                            break;
-                        case "Extend your stay in Canada":
-                            d["Task"] = "Prolonger votre séjour au Canada"
-                            break;
-                        case "Check if you need a visa or electronic travel authorization (eTA) to travel to Canada":
-                            d["Task"] = "Découvrez si vous avez besoin d’un visa ou d’une autorisation de voyage électronique (AVE) pour entrer au Canada"
-                            break;
-                        case "Find an IRCC application package or form":
-                            d["Task"] = "Trouvez une trousse de demande ou un formulaire d’IRCC"
-                            break;
-                        case "Find your National Occupational Classification (NOC)":
-                            d["Task"] = "Trouvez votre code de la Classification nationale des professions (CNP)"
-                            break;
-                        case "Other - Reason for my visit is not in this list":
-                            d["Task"] = "Autre - La raison de ma visite n’est pas sur cette liste"
-                            break;
-                        case "Find a visa application centre":
-                            d["Task"] = "Trouvez un centre de réception des demandes de visa"
-                            break;
-                        case "Find a designated learning institution":
-                            d["Task"] = "Trouvez un établissement d’enseignement désigné"
-                            break;
-                        case "Apply to work and travel abroad with International Experience Canada (IEC) as a Canadian":
-                            d["Task"] = "Travailler et voyager à l’étranger avec Expérience internationale Canada (EIC) en tant que Canadien"
-                            break;
-                        case "Pay your fees online":
-                            d["Task"] = "Payez vos frais en ligne"
-                            break;
-                        case "Apply for a work permit":
-                            d["Task"] = "Présenter une demande de permis de travail"
-                            break;
-                        case "Hire a foreign worker":
-                            d["Task"] = "Embaucher un travailleur étranger"
-                            break;
-                        case "Find out if you need to give your fingerprints and photo (biometrics) and where to do that":
-                            d["Task"] = "Découvrez si vous devez fournir vos empreintes digitales et une photo (données biométriques) et où vous pouvez le faire"
-                            break;
-                        default:
-                            break;
+                data.forEach(function (d) {
+                    delete d[""];
+                    d["Task"] = d["Task"];
+
+                    if (lang != "en") {
+                        switch (d["Task"]) {
+                            case "Apply for a work permit":
+                                d["Task"] = "Présenter une demande de permis de travail"
+                                break;
+                            case "Check your application status":
+                                d["Task"] = "Vérifiez l’état de sa demande"
+                                break;
+                            case "Apply for a visitor visa to Canada":
+                                d["Task"] = "Présenter une demande de visa de visiteur au Canada"
+                                break;
+                            case "Immigrate through Express Entry":
+                                d["Task"] = "Immigrez dans le cadre d’Entrée express"
+                                break;
+                            case "Apply for a visitor visa to Canada":
+                                d["Task"] = "Présenter une demande de visa de visiteur au Canada"
+                                break;
+                            case "Apply for an Electronic Travel Authorization (eTA)":
+                                d["Task"] = "Autorisation de voyage électronique (AVE)"
+                                break;
+                            case "Renew a Canadian passport":
+                                d["Task"] = "Renouveler un passeport canadien"
+                                break;
+                            case "Apply for a study permit":
+                                d["Task"] = "Présenter une demande de permis d’études"
+                                break;
+                            case "Apply for Canadian citizenship":
+                                d["Task"] = "Présentez une demande de citoyenneté canadienne"
+                                break;
+                            case "IRCC accounts - sign in and register":
+                                d["Task"] = "Comptes d’IRCC - Se connecter et s’enregistrer"
+                                break;
+                            case "Check processing times":
+                                d["Task"] = "Vérifiez les délais de traitement"
+                                break;
+                            case "Contact Immigration, Refugees and Citizenship Canada":
+                                d["Task"] = "Communiquez avec Immigration, Réfugiés et Citoyenneté Canada"
+                                break;
+                            case "Apply for an Electronic Travel Authorization (eTA)":
+                                d["Task"] = "Autorisation de voyage électronique (AVE)"
+                                break;
+                            case "Check the status of a passport application":
+                                d["Task"] = "Vérifiez l’état de sa demande de passeport"
+                                break;
+                            case "Sponsor your family members to immigrate to Canada":
+                                d["Task"] = "Parrainez les membres de votre famille aux fins d’immigration au Canada"
+                                break;
+                            case "Immigrate as a provincial nominee":
+                                d["Task"] = "Immigrez en tant que candidat d’une province"
+                                break;
+                            case "Apply for a new Canadian passport":
+                                d["Task"] = "Demander un nouveau passeport canadien"
+                                break;
+                            case "Get, renew or replace a permanent resident card":
+                                d["Task"] = "Obtenez, renouvelez ou remplacez une carte de résident permanent"
+                                break;
+                            case "Extend your stay in Canada":
+                                d["Task"] = "Prolonger votre séjour au Canada"
+                                break;
+                            case "Check if you need a visa or electronic travel authorization (eTA) to travel to Canada":
+                                d["Task"] = "Découvrez si vous avez besoin d’un visa ou d’une autorisation de voyage électronique (AVE) pour entrer au Canada"
+                                break;
+                            case "Find an IRCC application package or form":
+                                d["Task"] = "Trouvez une trousse de demande ou un formulaire d’IRCC"
+                                break;
+                            case "Find your National Occupational Classification (NOC)":
+                                d["Task"] = "Trouvez votre code de la Classification nationale des professions (CNP)"
+                                break;
+                            case "Other - Reason for my visit is not in this list":
+                                d["Task"] = "Autre - La raison de ma visite n’est pas sur cette liste"
+                                break;
+                            case "Find a visa application centre":
+                                d["Task"] = "Trouvez un centre de réception des demandes de visa"
+                                break;
+                            case "Find a designated learning institution":
+                                d["Task"] = "Trouvez un établissement d’enseignement désigné"
+                                break;
+                            case "Apply to work and travel abroad with International Experience Canada (IEC) as a Canadian":
+                                d["Task"] = "Travailler et voyager à l’étranger avec Expérience internationale Canada (EIC) en tant que Canadien"
+                                break;
+                            case "Pay your fees online":
+                                d["Task"] = "Payez vos frais en ligne"
+                                break;
+                            case "Apply for a work permit":
+                                d["Task"] = "Présenter une demande de permis de travail"
+                                break;
+                            case "Hire a foreign worker":
+                                d["Task"] = "Embaucher un travailleur étranger"
+                                break;
+                            case "Find out if you need to give your fingerprints and photo (biometrics) and where to do that":
+                                d["Task"] = "Découvrez si vous devez fournir vos empreintes digitales et une photo (données biométriques) et où vous pouvez le faire"
+                                break;
+                            default:
+                                break;
+                        }
                     }
 
-                d["TSS completion"] = Math.round(d["TSS completion"] * 100);
-                d["TSS ease"] = Math.round(d["TSS ease"] * 100);
-                d["TSS satisfaction"] = Math.round(d["TSS satisfaction"] * 100);
-                d["Surveys completed"] = d["Surveys completed"];
+                    if (data2 != null) {
+                        if (d["TSS completion - previous month"] != 0) {
+                            d["diff"] = simpleDiff(Math.round(d["TSS completion"] * 100), d["TSS completion - previous month"]);
+                        }
+                        else d["diff"] = `<span class="badge mrgn-lft-md">${dict[lang].unknown}</span>`
+                    }
+                   
+                    
+                    d["TSS completion"] = Math.round(d["TSS completion"] * 100);
+                    d["TSS ease"] = Math.round(d["TSS ease"] * 100);
+                    d["TSS satisfaction"] = Math.round(d["TSS satisfaction"] * 100);
+                    d["Surveys completed"] = d["Surveys completed"];
 
-            });
+                });
+
+                tabulate("tss-top-tasks-table", data, label, colheaders);
 
 
-            tabulate("tss-top-tasks-table", data, label, colheaders);
+                for (var i = 1; i < document.getElementById("tss-top-tasks-table").rows.length; i++) {
+                    let rowCells = document.getElementById("tss-top-tasks-table").rows[i].cells.length - 1;
+                    for (var j = 1; j < rowCells; j++) {    
+                        
+                        document.getElementById("tss-top-tasks-table").rows[i].cells[j].style.backgroundColor = getColor(document.getElementById("tss-top-tasks-table").rows[i].cells[j].innerHTML);
+                        document.getElementById("tss-top-tasks-table").rows[i].cells[j].innerHTML += "%";
 
-
-            for (var i = 1; i < document.getElementById("tss-top-tasks-table").rows.length; i++) {
-                let rowCells = document.getElementById("tss-top-tasks-table").rows[i].cells.length - 1;
-                for (var j = 1; j < rowCells; j++) {
-
-                    document.getElementById("tss-top-tasks-table").rows[i].cells[j].style.backgroundColor = getColor(document.getElementById("tss-top-tasks-table").rows[i].cells[j].innerHTML);
-                    document.getElementById("tss-top-tasks-table").rows[i].cells[j].innerHTML += "%";
+                        if ((j===1) && (data2 != null)) document.getElementById('tss-top-tasks-table').rows[i].cells[j].innerHTML += data[i-1]["diff"]
+                    }
                 }
-            }
 
-            document.getElementById("tss-top-tasks-table").classList.add("wb-tables");
-            $("#tss-top-tasks-table").trigger("wb-init.wb-tables");
-
-
-
+                document.getElementById("tss-top-tasks-table").classList.add("wb-tables");
+                $("#tss-top-tasks-table").trigger("wb-init.wb-tables");
+            });
         });
 
         d3.csv(path + "tss-last-12-months.csv?" + today, function (data) {
@@ -1983,12 +2024,12 @@ $(document).on("wb-ready.wb", function (event) {
         d3.csv(path + "top-mobile-pages.csv?" + today, function (data) {
             document.getElementById("top-mobile-table").outerHTML = mobiletable;
             tempVar = data;
-            data.forEach(function (d) {                
-                    d["Page URL"] = d["Page URL"];
-                    d["Page Title"] = d["Page Title"];
-                    d["% mobile visits (min 1K visits)"] = parseFloat((d["% mobile visits (min 1K visits)"]) * 100).toFixed(1);                
+            data.forEach(function (d) {
+                d["Page URL"] = d["Page URL"];
+                d["Page Title"] = d["Page Title"];
+                d["% mobile visits (min 1K visits)"] = parseFloat((d["% mobile visits (min 1K visits)"]) * 100).toFixed(1);
             });
-                            
+
             let label = lang === "en" ? "Top mobile pages" : "Les pages les plus performantes sur les celluaires";
             let colheaders = {
                 en: ['Page URL', '% mobile visits (min 1K visits)'],
@@ -2010,19 +2051,19 @@ $(document).on("wb-ready.wb", function (event) {
     }
 
     function addURLs(table, data, pageTitle) {
-        
+
         document.getElementById(table).classList.add("wb-tables");
         $("#" + table).trigger("wb-init.wb-tables");
 
         let firstCells = document.getElementById(table).querySelectorAll('td:first-child');
         for (var i = 0; i < firstCells.length; i++) {
-            
+
             let langattr = "";
             if (lang === "en") {
-                if ((data[i][("Page URL")].indexOf("/fr/") > -1|| data[i][("Page URL")].indexOf("/francais/") > -1)) {
+                if ((data[i][("Page URL")].indexOf("/fr/") > -1 || data[i][("Page URL")].indexOf("/francais/") > -1)) {
                     langattr = "fr"
                 }
-                else langattr = "en"              
+                else langattr = "en"
             }
             if (lang === "fr") {
                 if ((data[i][("Page URL")].indexOf("/en/") > -1 || data[i][("Page URL")].indexOf("/english/") > -1)) {
@@ -2032,24 +2073,55 @@ $(document).on("wb-ready.wb", function (event) {
             }
 
             if ((data[i][(pageTitle)] == null || data[i][(pageTitle)] == "")) {
-                title = data[i][("Page URL")];                      
+                title = data[i][("Page URL")];
             }
             else {
                 title = data[i][(pageTitle)]
-            }          
-            
-            
-            firstCells[i].innerHTML = '<a href="https://' + data[i][("Page URL")] + '" target="_blank" lang="'+langattr+'">' + title + '</a>';   
+            }
+
+
+            firstCells[i].innerHTML = '<a href="https://' + data[i][("Page URL")] + '" target="_blank" lang="' + langattr + '">' + title + '</a>';
         }
 
-        
+
         document.getElementById(table).classList.add("wb-tables");
         $("#" + table).trigger("wb-init.wb-tables");
     }
 
-    function getTitle(url, elm){
+    function getTitle(url, elm) {
         $(elm).load("https://" + url + " h1");
-    } 
+    }
+
+    function simpleDiff(a, b) {
+        let bigNum, smallNum;
+        if (a > b) {
+            bigNum = parseFloat(a);
+            smallNum = parseFloat(b);
+        }
+        else {
+            bigNum = parseFloat(b);
+            smallNum = parseFloat(a);
+        }
+        let step1, step2, percentDif;
+        step1 = bigNum - smallNum;
+        step2 = parseFloat((bigNum + smallNum) / 2);
+        percentDif = parseFloat((parseFloat(step1 / step2)) * 100).toFixed(1);
+
+        let val = `<span class="badge mrgn-lft-md">${dict[lang].unknown}</span>`;
+        if (percentDif != 0) {
+            if (a > b) {
+                val = lang === "en" ? '<span class="badge mrgn-lft-md"><i class="fas fa-caret-up fa-1x"></i>&nbsp;' + d3.format(",")(percentDif) + dict[lang].percent  + '</span>': '<span class="badge mrgn-lft-md"><i class="fas fa-caret-up fa-1x"></i>&nbsp;' + d3.format(",")(percentDif) + "&nbsp;%</span>";
+            }
+            else if (a < b) {
+                val = lang === "en" ? '<span class="badge mrgn-lft-md"><i class="fas fa-caret-down fa-1x"></i>&nbsp;' + d3.format(",")(percentDif) + dict[lang].percent  + '</span>': '<span class="badge mrgn-lft-md"><i class="fas fa-caret-down fa-1x"></i>&nbsp;' + d3.format(",")(percentDif) + "&nbsp;%</span>";
+            }
+        }
+        else {
+            val = `<span class="badge mrgn-lft-md">${d3.format(",")(percentDif) + dict[lang].percent}</span>`;
+        }
+
+        return val;
+    }
 
     function difference(a, b, elm, daterange) {
 
@@ -2065,12 +2137,11 @@ $(document).on("wb-ready.wb", function (event) {
 
         let step1, step2, percentDif;
         step1 = bigNum - smallNum;
-        step2 = parseFloat((bigNum + smallNum)/2);
-        percentDif = parseFloat((parseFloat(step1/step2))*100).toFixed(1);
+        step2 = parseFloat((bigNum + smallNum) / 2);
+        percentDif = parseFloat((parseFloat(step1 / step2)) * 100).toFixed(1);
 
 
-        
-        
+
         if (percentDif != 0) {
             if (a > b) {
                 document.getElementById(elm).innerHTML = lang === "en" ? '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(percentDif) + dict[lang].percent : '<i class="fas fa-caret-up"></i>&nbsp;' + d3.format(",")(percentDif) + "&nbsp;%";
@@ -2114,7 +2185,7 @@ $(document).on("wb-ready.wb", function (event) {
 
         let m = this.value;
         $(".addedText").remove();
-
+        lastMonth = m;
         runData(m).then(
             function (value) {
                 setTimeout(() => { $(".spinner-wrapper").remove() }, 2000)
