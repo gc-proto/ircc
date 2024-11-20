@@ -116,6 +116,7 @@
 
 
         $('document').ready(function () {
+            console.log(window.innerWidth);
 
             let lastKnownScrollPosition = 0;
             let ticking = false;
@@ -126,36 +127,39 @@
             elm2 = document.querySelector('.global-footer');
 
             document.addEventListener("scroll", (event) => {
-                lastKnownScrollPosition = window.scrollY;
+                if (window.innerWidth > 991) {
+                    lastKnownScrollPosition = window.scrollY;
 
-                if (!ticking) {
-                    window.requestAnimationFrame(() => {
-                        checkoverlap();
-                        ticking = false;
-                    });
+                    if (!ticking) {
+                        window.requestAnimationFrame(() => {
+                            checkoverlap();
+                            ticking = false;
+                        });
 
-                    ticking = true;
+                        ticking = true;
+                    }
                 }
             });
 
-            function checkoverlap() {                
+            function checkoverlap() {
                 let rect1 = elm1.getBoundingClientRect();
                 let rect2 = elm2.getBoundingClientRect();
                 let overlap = !(rect1.right <= rect2.left || rect1.left >= rect2.right || rect1.bottom <= rect2.top || rect1.top >= rect2.bottom);
 
                 if (overlap) {
                     elm1.style.top = "-" + elm3.offsetHeight + "px!important";
-                    elm1.setAttribute('style', `top:-${elm3.offsetHeight + 20}px!important`);         
+                    elm1.setAttribute('style', `top:-${elm3.offsetHeight + 20}px!important`);
                 }
                 else {
                     elm1.style.top = "0";
                 }
             }
-   
+
 
             $(".wb-overlay").on("opened.wb-overlay", function (event) {
-                
+
             });
+
         });
 
 

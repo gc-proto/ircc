@@ -1,23 +1,24 @@
-.sticky {
-  width: calc(33.33% - 0.5em - 5px);
-  float: right;
-  margin-left: 33px;
-}
-.sticky .gc-subway-wrapper {
-  width: 100% !important;
-  position: relative !important;
-}
-
-.sticky:has(.wb-overlay.open) {
-  padding-top: 20px;
-  right: 3.33%;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-}
-.sticky:has(.wb-overlay.open) .wb-overlay {
-  position: relative !important;
-}
-.sticky:has(.wb-overlay.open) .gc-subway-section {
-  padding-right: 0;
+@media (min-width: 992px) {
+  .sticky {
+    width: calc(33.33% - 0.5em - 5px);
+    float: right;
+    margin-left: 33px;
+  }
+  .sticky .gc-subway-wrapper {
+    width: 100% !important;
+    position: relative !important;
+  }
+  .sticky:has(.wb-overlay.open) {
+    padding-top: 20px;
+    right: 3.33%;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+  }
+  .sticky:has(.wb-overlay.open) .wb-overlay {
+    position: relative !important;
+  }
+  .sticky:has(.wb-overlay.open) .gc-subway-section {
+    padding-right: 0;
+  }
 }/*# sourceMappingURL=stickynav.css.map */
