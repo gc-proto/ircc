@@ -8,17 +8,17 @@
     width: 100% !important;
     position: relative !important;
   }
-  .sticky:has(.wb-overlay.open) {
+  .sticky:has(details) {
     padding-top: 20px;
     right: 3.33%;
     position: fixed;
     display: flex;
     flex-direction: column;
   }
-  .sticky:has(.wb-overlay.open) .wb-overlay {
+  .sticky:has(details) .wb-overlay {
     position: relative !important;
   }
-  .sticky:has(.wb-overlay.open) .gc-subway-section {
+  .sticky:has(details) .gc-subway-section {
     padding-right: 0;
   }
 }/*# sourceMappingURL=stickynav.css.map */
