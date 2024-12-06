@@ -1,3 +1,5 @@
+
+  
 let c1; 
 let c2;
 
@@ -55,7 +57,7 @@ c1 = new Chart(
 );
 
 let c2data = {
-    labels: ["Primaire: 10,3%", "Secondaire: 31%", "Tertiare: 58,6%"],
+    labels: ["Primaire: 10,3 %", "Secondaire: 31 %", "Tertiare: 58,6 %"],
     datasets: [
         {
             label: "Répartition des secteurs",
@@ -114,7 +116,6 @@ let context = popActive.getContext('2d');
 function resizeCanvas() {
     // Set canvas dimensions
     popActive.width = popActive.parentElement.getBoundingClientRect().width; // 100% width
-    console.log(popActive.parentElement.getBoundingClientRect().width);
     popActive.height = 65;              // Fixed height
 
     // Draw background rectangle that fills the canvas
@@ -133,13 +134,28 @@ function resizeCanvas() {
       context.font = 'bold 24px Noto Sans'; // Font size and style
       context.textAlign = 'left'; // left-align text
       context.textBaseline = 'middle'; // Vertically center text
-      context.fillText(text, secondBarWidth / 2, 65 / 2); // Position text in the middle of the second bar
+      context.fillText(text, 25, popActive.height / 2); // Position text in the middle of the second bar
   }
 
-  // Initial canvas setup
-  resizeCanvas();
+// // Initial canvas setup
+// resizeCanvas();
 
   // Redraw the canvas on window resize
   window.addEventListener('resize', resizeCanvas);
+
+  function docReady(fn) {
+    // see if DOM is already available
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+        // call on next available tick
+        setTimeout(fn, 1);
+    } else {
+        document.addEventListener("DOMContentLoaded", fn);
+    }
+}    
+
+docReady(function() {
+        // Initial canvas setup
+    resizeCanvas();
+})
 
 
