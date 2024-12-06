@@ -63,6 +63,19 @@
 #pop-active {
   display: block;
   border-radius: 8px;
-  width: 100%;
   min-height: 65px;
+}
+
+.icon-counter {
+  display: block;
+  width: 100%;
+  color: #acacac;
+  padding-top: 15px;
+}
+.icon-counter .active {
+  color: #00B1B2;
+}
+
+.text-primary {
+  color: #00B1B2;
 }/*# sourceMappingURL=custom.css.map */
