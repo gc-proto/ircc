@@ -130,7 +130,7 @@ function resizeCanvas() {
 
     const text = document.getElementById('pop-active-percent').innerHTML;
       context.fillStyle = 'white'; // Text color
-      context.font = 'bold 24px Arial'; // Font size and style
+      context.font = 'bold 24px Noto Sans'; // Font size and style
       context.textAlign = 'left'; // left-align text
       context.textBaseline = 'middle'; // Vertically center text
       context.fillText(text, secondBarWidth / 2, 65 / 2); // Position text in the middle of the second bar
