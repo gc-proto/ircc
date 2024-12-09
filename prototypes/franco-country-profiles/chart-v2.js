@@ -39,7 +39,7 @@ c1 = new Chart(
                     },
                     color: '#333',        // Text color
                     formatter: (value, ctx) => {
-                        return `${value.toFixed(1)}%`; // Label and percentage
+                        return `${value.toFixed(1)}&nbsp;%`; // Label and percentage
                     },
                     listeners: {
                         click: function(context) {
@@ -94,7 +94,7 @@ c2 = new Chart(
                     },
                     color: '#333',        // Text color
                     formatter: (value, ctx) => {
-                        return `${value.toFixed(1)}%`; // Label and percentage
+                        return `${value.toFixed(1)}&nbsp;%`; // Label and percentage
                     },
                     listeners: {
                         click: function(context) {
