@@ -1,7 +1,8 @@
 
 
+Chart.register(ChartDataLabels);
+console.log(Chart.version);
 let c1;
-let c2;
 
 let c1data = {
     labels: ["Francophones", "Autres"],
@@ -22,39 +23,42 @@ c1 = new Chart(
             responsive: true,
             aspectRatio: 2,
             layout: {
-                autoPadding: true,
-                padding: 20
+                padding:15,
             },
             plugins: {
                 legend: {
-                    position: "right"
+                    position: 'right'
                 },
-                labels: [
-                    {
-                        display: false
+                datalabels: {
+                    anchor: 'end',       // Anchor at the edge of the chart
+                    align: 'center',        // Align labels outside the pie chart
+                    offset: 5,          // Space between chart and labels
+                    font: {
+                        size: 16,
+                        weight: 'bold'
                     },
-                    {
-                        render: 'percentage',
-                        precision: 0,
-                        showZero: true,
-                        fontSize: 24,
-                        fontColor: '#333',
-                        fontStyle: 'bold',
-                        textShadow: false,
-                        arc: false,
-                        position: 'default',
-                        overlap: false,
-                        showActualPercentages: true,
-                        outsidePadding: 4,
-                        textMargin: 4
+                    color: '#333',        // Text color
+                    formatter: (value, ctx) => {
+                        return `${value.toFixed(1)}%`; // Label and percentage
                     },
-                ]
-
+                    listeners: {
+                        click: function(context) {
+                            console.log('Label clicked:', context);
+                        }
+                    },
+                    // Leader line settings
+                    lineWidth: 2,          // Line thickness
+                    lineColor: '#333',     // Line color
+                    backgroundColor: 'rgba(255, 255, 255, 0.8)', // Optional: Add a background
+                    borderRadius: 4,       // Optional: Rounded corners for text background
+                    padding: 5             // Padding inside label box
+                }
             }
         }
     }
 );
 
+let c2;
 let c2data = {
     labels: ["Primaire: 10,3 %", "Secondaire: 31 %", "Tertiare: 58,6 %"],
     datasets: [
@@ -65,7 +69,6 @@ let c2data = {
         }
     ]
 }
-
 c2 = new Chart(
     document.getElementById('ag-secteurs'),
     {
@@ -75,39 +78,40 @@ c2 = new Chart(
             responsive: true,
             aspectRatio: 2,
             layout: {
-                autoPadding: true,
-                padding: 20
+                padding:15,
             },
             plugins: {
                 legend: {
-                    position: "right"
+                    position: 'right'
                 },
-                labels: [
-                    {
-                        display: false
+                datalabels: {
+                    anchor: 'end',       // Anchor at the edge of the chart
+                    align: 'center',        // Align labels outside the pie chart
+                    offset: 5,          // Space between chart and labels
+                    font: {
+                        size: 16,
+                        weight: 'bold'
                     },
-                    {
-                        render: 'percentage',
-                        precision: 0,
-                        showZero: true,
-                        fontSize: 12,
-                        fontColor: ["#fff", "#333", '#333'],
-                        fontStyle: 'bold',
-                        textShadow: false,
-                        arc: false,
-                        position: 'default',
-                        overlap: false,
-                        showActualPercentages: true,
-                        outsidePadding: 4,
-                        textMargin: 4
+                    color: '#333',        // Text color
+                    formatter: (value, ctx) => {
+                        return `${value.toFixed(1)}%`; // Label and percentage
                     },
-                ]
-
+                    listeners: {
+                        click: function(context) {
+                            console.log('Label clicked:', context);
+                        }
+                    },
+                    // Leader line settings
+                    lineWidth: 2,          // Line thickness
+                    lineColor: '#333',     // Line color
+                    backgroundColor: 'rgba(255, 255, 255, 0.8)', // Optional: Add a background
+                    borderRadius: 4,       // Optional: Rounded corners for text background
+                    padding: 5             // Padding inside label box
+                }
             }
         }
     }
 );
-
 
 
 
