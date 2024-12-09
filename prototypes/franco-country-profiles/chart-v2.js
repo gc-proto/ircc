@@ -7,7 +7,6 @@ let c1data = {
     labels: ["Francophones", "Autres"],
     datasets: [
         {
-            label: "Locuteurs francophones et autres",
             data: [33, 66],
             backgroundColor: ["#00B1B2", "#C6EFEF"]
         }
@@ -38,7 +37,7 @@ c1 = new Chart(
                         render: 'percentage',
                         precision: 0,
                         showZero: true,
-                        fontSize: 12,
+                        fontSize: 24,
                         fontColor: '#333',
                         fontStyle: 'bold',
                         textShadow: false,
@@ -113,19 +112,63 @@ c2 = new Chart(
 
 
 $(document).ready(function () {
-    
-    let iconCounter = document.querySelector('.icon-counter');
-    let activePopPercent = Math.round((parseInt(document.getElementById('pop-active-percent').innerHTML)/100)*10);
-    
-    console.log(activePopPercent)
 
+    let iconCounter = document.querySelector('.icon-counter');
+    let activePopPercent = Math.round((parseInt(document.getElementById('pop-active-percent').innerHTML) / 100) * 10);
+
+    console.log(activePopPercent)
     for (let i = 0; i < 10; i++) {
+
         let icon = document.createElement('span');
         icon.classList.add('fas', 'fa-user', 'mrgn-lft-sm');
-        if (i <= (activePopPercent-1) ){
-            icon.classList.add('active');
-        }
         iconCounter.appendChild(icon);
     }
+
+    let icons = document.querySelectorAll('.icon-counter .fa-user');
+    let currentIndex = 0;
+
+    // Function to animate each icon in sequence
+    function animateIcon(index) {
+        if (index >= activePopPercent) {
+            // No need for reset since the color remains the same
+            return;
+        }
+
+        const currentIcon = icons[index];
+
+        // Add a delay before adding the animation class
+
+        currentIcon.classList.add('icon-animate');
+
+        currentIcon.addEventListener('animationend', () => {
+            animateIcon(index + 1); // Animate the next icon
+        }, { once: true });
+    }
+
+
+    // Intersection Observer callback
+    function handleIntersection(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Start the animation only when the element is visible
+                animateIcon(currentIndex);
+
+                // Stop observing after triggering the animation
+                observer.unobserve(entry.target);
+            }
+        });
+    }
+
+    // Create an Intersection Observer instance
+    const observer = new IntersectionObserver(handleIntersection, {
+        root: null, // Use the viewport as the root
+        threshold: 0.1, // Trigger when at least 10% of the element is visible
+    });
+
+    // Observe the parent container of the icons
+    document.querySelectorAll('.icon-counter').forEach(container => observer.observe(container));
+
+
+
 
 });
