@@ -29,6 +29,17 @@ c1 = new Chart(
                 legend: {
                     position: 'right'
                 },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            const dataIndex = tooltipItem.dataIndex;
+                            const label = tooltipItem.chart.data.labels[dataIndex];
+                            const value = tooltipItem.raw;
+                            const percentage = ((value / tooltipItem.chart._metasets[0].total) * 100).toFixed(1);
+                            return ` ${percentage} %`;
+                        }
+                    }
+                },
                 datalabels: {
                     anchor: 'end',       // Anchor at the edge of the chart
                     align: 'center',        // Align labels outside the pie chart
@@ -59,8 +70,9 @@ c1 = new Chart(
 );
 
 let c2;
+let c2Labels = [["Primaire", "10,3 %"], ["Secondaire","31 %"],["Tertiare","58,6 %"]]
 let c2data = {
-    labels: ["Primaire: 10,3 %", "Secondaire: 31 %", "Tertiare: 58,6 %"],
+    labels: ["Primaire", "Secondaire", "Tertiare"],
     datasets: [
         {
             label: "Répartition des secteurs",
@@ -82,7 +94,33 @@ c2 = new Chart(
             },
             plugins: {
                 legend: {
-                    position: 'right'
+                    position: 'right',
+                    labels: {
+                        generateLabels: function(chart) {
+                            const data = chart.data;
+                            return data.labels.map((label, index) => {
+                                const value = data.datasets[0].data[index];
+                                const percentage = ((value / data.datasets[0].data.reduce((a, b) => a + b, 0)) * 100).toFixed(1);
+                                return {
+                                    text: `${percentage} %`,
+                                    fillStyle: data.datasets[0].backgroundColor[index], // Match legend color with dataset
+                                    hidden: chart.getDatasetMeta(0).data[index].hidden, // Handle hidden items
+                                    index: index
+                                };
+                            });
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            const dataIndex = tooltipItem.dataIndex;
+                            const label = tooltipItem.chart.data.labels[dataIndex];
+                            const value = tooltipItem.raw;
+                            const percentage = ((value / tooltipItem.chart._metasets[0].total) * 100).toFixed(1);
+                            return ` ${percentage} %`;
+                        }
+                    }
                 },
                 datalabels: {
                     anchor: 'end',       // Anchor at the edge of the chart
