@@ -102,7 +102,7 @@ c2 = new Chart(
                                 const value = data.datasets[0].data[index];
                                 const percentage = ((value / data.datasets[0].data.reduce((a, b) => a + b, 0)) * 100).toFixed(1);
                                 return {
-                                    text: `${percentage} %`,
+                                    text: `${label} : ${percentage} %`,
                                     fillStyle: data.datasets[0].backgroundColor[index], // Match legend color with dataset
                                     hidden: chart.getDatasetMeta(0).data[index].hidden, // Handle hidden items
                                     index: index
