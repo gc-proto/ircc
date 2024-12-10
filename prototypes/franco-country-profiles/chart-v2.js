@@ -21,15 +21,20 @@ c1 = new Chart(
             responsive: true,
             aspectRatio: 2,
             layout: {
-                padding:15,
+                padding: 15,
             },
             plugins: {
                 legend: {
-                    position: 'right'
+                    position: 'right',
+                    labels: {
+                        font: {
+                            size: 16
+                        },
+                    }
                 },
                 tooltip: {
                     callbacks: {
-                        label: function(tooltipItem) {
+                        label: function (tooltipItem) {
                             const dataIndex = tooltipItem.dataIndex;
                             const label = tooltipItem.chart.data.labels[dataIndex];
                             const value = tooltipItem.raw;
@@ -79,32 +84,35 @@ c2 = new Chart(
         data: c2data,
         options: {
             responsive: true,
-            aspectRatio: 2,
+            aspectRatio: 1,
             layout: {
-                padding:15,
+                padding: 15,
             },
             plugins: {
                 legend: {
-                    position: 'right',
-                    labels: {
-                        generateLabels: function(chart) {
-                            const data = chart.data;
-                            return data.labels.map((label, index) => {
-                                const value = data.datasets[0].data[index];
-                                const percentage = ((value / data.datasets[0].data.reduce((a, b) => a + b, 0)) * 100).toFixed(1);
-                                return {
-                                    text: `${label}`,
-                                    fillStyle: data.datasets[0].backgroundColor[index], // Match legend color with dataset
-                                    hidden: chart.getDatasetMeta(0).data[index].hidden, // Handle hidden items
-                                    index: index
-                                };
-                            });
-                        }
-                    }
+                    display: false // Disable the default legend                    
                 },
+                // legend: {
+                //     position: 'right',
+                //     labels: {
+                //         generateLabels: function(chart) {
+                //             const data = chart.data;
+                //             return data.labels.map((label, index) => {
+                //                 const value = data.datasets[0].data[index];
+                //                 const percentage = ((value / data.datasets[0].data.reduce((a, b) => a + b, 0)) * 100).toFixed(1);
+                //                 return {
+                //                     text: `${label}`,
+                //                     fillStyle: data.datasets[0].backgroundColor[index], // Match legend color with dataset
+                //                     hidden: chart.getDatasetMeta(0).data[index].hidden, // Handle hidden items
+                //                     index: index
+                //                 };
+                //             });
+                //         }
+                //     }
+                // },
                 tooltip: {
                     callbacks: {
-                        label: function(tooltipItem) {
+                        label: function (tooltipItem) {
                             const dataIndex = tooltipItem.dataIndex;
                             const label = tooltipItem.chart.data.labels[dataIndex];
                             const value = tooltipItem.raw;
@@ -121,12 +129,12 @@ c2 = new Chart(
                         size: 20,
                         weight: 'bold'
                     },
-                    color: ['#fff','#333','#333'],        // Text color
+                    color: ['#fff', '#333', '#333'],        // Text color
                     formatter: (value, ctx) => {
                         return `  ${Math.round(value)} %`; // Label and percentage
                     },
                     listeners: {
-                        click: function(context) {
+                        click: function (context) {
                             console.log('Label clicked:', context);
                         }
                     },
@@ -141,13 +149,47 @@ c2 = new Chart(
     }
 );
 
+function generateCustomLegend(chart, legend) {
+    const legendContainer = document.getElementById(legend);
+    const data = chart.data;
+    const backgroundColors = data.datasets[0].backgroundColor;
+
+    // Create legend items dynamically
+    data.labels.forEach((label, index) => {
+        const legendItem = document.createElement('div');
+        legendItem.classList.add('legend-item');
+
+        // Create color box
+        const colorBox = document.createElement('span');
+        colorBox.classList.add('legend-color-box');
+        colorBox.style.backgroundColor = backgroundColors[index];
+
+        // Create label text with icon
+        const labelText = document.createElement('span');
+        labelText.innerHTML = `
+            ${label}
+            <a class="wb-lbx lbx-modal" href="#secteur-sup-info_modal">
+                <i class="fas fa-info-circle"></i>
+            </a>
+        `;
+
+        // Append color box and label to legend item
+        legendItem.appendChild(colorBox);
+        legendItem.appendChild(labelText);
+
+        // Add to the legend container
+        legendContainer.appendChild(legendItem);
+    });
+}
+generateCustomLegend(c2, 'secteur-legend');
+
 let c3;
 let c3data = {
     labels: ["Zone urbaine", "Zone rurale"],
     datasets: [
         {
             data: [25, 75],
-            backgroundColor: ["#362950","#D8CDEC"]
+            backgroundColor: ["#362950", "#D8CDEC"]
         }
     ]
 }
@@ -161,13 +203,16 @@ c3 = new Chart(
             responsive: true,
             aspectRatio: 2,
             layout: {
-                padding:15,
+                padding: 15,
             },
             plugins: {
                 legend: {
                     position: 'right',
                     labels: {
-                        generateLabels: function(chart) {
+                        font: {
+                            size: 16
+                        },
+                        generateLabels: function (chart) {
                             const data = chart.data;
                             return data.labels.map((label, index) => {
                                 const value = data.datasets[0].data[index];
@@ -184,7 +229,7 @@ c3 = new Chart(
                 },
                 tooltip: {
                     callbacks: {
-                        label: function(tooltipItem) {
+                        label: function (tooltipItem) {
                             const dataIndex = tooltipItem.dataIndex;
                             const label = tooltipItem.chart.data.labels[dataIndex];
                             const value = tooltipItem.raw;
@@ -201,7 +246,7 @@ c3 = new Chart(
                         size: 20,
                         weight: 'bold'
                     },
-                    color: ['#fff','#333'],        // Text color
+                    color: ['#fff', '#333'],        // Text color
                     formatter: (value, ctx) => {
                         return `  ${Math.round(value)} %`; // Label and percentage
                     },

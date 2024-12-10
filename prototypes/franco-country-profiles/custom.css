@@ -93,4 +93,27 @@
 
 .text-primary {
   color: #00B1B2;
+}
+
+.custom-legend {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  align-self: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.legend-color-box {
+  width: 40px;
+  height: 15px;
+  margin-right: 10px;
+  border-radius: 0px;
+  border: solid 1px #000;
 }/*# sourceMappingURL=custom.css.map */
