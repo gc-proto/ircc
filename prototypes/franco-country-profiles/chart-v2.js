@@ -1,9 +1,7 @@
 
 
 Chart.register(ChartDataLabels);
-console.log(Chart.version);
 let c1;
-
 let c1data = {
     labels: ["Francophones", "Autres"],
     datasets: [
@@ -41,26 +39,20 @@ c1 = new Chart(
                     }
                 },
                 datalabels: {
-                    anchor: 'end',       // Anchor at the edge of the chart
+                    anchor: 'center',       // Anchor at the edge of the chart
                     align: 'center',        // Align labels outside the pie chart
                     offset: 5,          // Space between chart and labels
                     font: {
-                        size: 16,
+                        size: 20,
                         weight: 'bold'
                     },
                     color: '#333',        // Text color
                     formatter: (value, ctx) => {
-                        return `${value.toFixed(1)} %`; // Label and percentage
-                    },
-                    listeners: {
-                        click: function(context) {
-                            console.log('Label clicked:', context);
-                        }
+                        return `  ${Math.round(value)} %`; // Label and percentage
                     },
                     // Leader line settings
                     lineWidth: 2,          // Line thickness
                     lineColor: '#333',     // Line color
-                    backgroundColor: 'rgba(255, 255, 255, 0.8)', // Optional: Add a background
                     borderRadius: 4,       // Optional: Rounded corners for text background
                     padding: 5             // Padding inside label box
                 }
@@ -70,7 +62,6 @@ c1 = new Chart(
 );
 
 let c2;
-let c2Labels = [["Primaire", "10,3 %"], ["Secondaire","31 %"],["Tertiare","58,6 %"]]
 let c2data = {
     labels: ["Primaire", "Secondaire", "Tertiare"],
     datasets: [
@@ -102,6 +93,86 @@ c2 = new Chart(
                                 const value = data.datasets[0].data[index];
                                 const percentage = ((value / data.datasets[0].data.reduce((a, b) => a + b, 0)) * 100).toFixed(1);
                                 return {
+                                    text: `${label}`,
+                                    fillStyle: data.datasets[0].backgroundColor[index], // Match legend color with dataset
+                                    hidden: chart.getDatasetMeta(0).data[index].hidden, // Handle hidden items
+                                    index: index
+                                };
+                            });
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            const dataIndex = tooltipItem.dataIndex;
+                            const label = tooltipItem.chart.data.labels[dataIndex];
+                            const value = tooltipItem.raw;
+                            const percentage = ((value / tooltipItem.chart._metasets[0].total) * 100).toFixed(1);
+                            return ` ${percentage} %`;
+                        }
+                    }
+                },
+                datalabels: {
+                    anchor: 'center',       // Anchor at the edge of the chart
+                    align: 'start',        // Align labels outside the pie chart
+                    offset: -50,          // Space between chart and labels
+                    font: {
+                        size: 20,
+                        weight: 'bold'
+                    },
+                    color: ['#fff','#333','#333'],        // Text color
+                    formatter: (value, ctx) => {
+                        return `  ${Math.round(value)} %`; // Label and percentage
+                    },
+                    listeners: {
+                        click: function(context) {
+                            console.log('Label clicked:', context);
+                        }
+                    },
+                    // Leader line settings
+                    lineWidth: 2,          // Line thickness
+                    lineColor: '#333',     // Line color
+                    borderRadius: 4,       // Optional: Rounded corners for text background
+                    padding: 5             // Padding inside label box
+                }
+            }
+        }
+    }
+);
+
+let c3;
+let c3data = {
+    labels: ["Zone urbaine", "Zone rurale"],
+    datasets: [
+        {
+            data: [25, 75],
+            backgroundColor: ["#362950","#D8CDEC"]
+        }
+    ]
+}
+
+c3 = new Chart(
+    document.getElementById('ag-geo'),
+    {
+        type: 'pie',
+        data: c3data,
+        options: {
+            responsive: true,
+            aspectRatio: 2,
+            layout: {
+                padding:15,
+            },
+            plugins: {
+                legend: {
+                    position: 'right',
+                    labels: {
+                        generateLabels: function(chart) {
+                            const data = chart.data;
+                            return data.labels.map((label, index) => {
+                                const value = data.datasets[0].data[index];
+                                const percentage = ((value / data.datasets[0].data.reduce((a, b) => a + b, 0)) * 100).toFixed(0);
+                                return {
                                     text: `${label} : ${percentage} %`,
                                     fillStyle: data.datasets[0].backgroundColor[index], // Match legend color with dataset
                                     hidden: chart.getDatasetMeta(0).data[index].hidden, // Handle hidden items
@@ -123,26 +194,20 @@ c2 = new Chart(
                     }
                 },
                 datalabels: {
-                    anchor: 'end',       // Anchor at the edge of the chart
+                    anchor: 'center',       // Anchor at the edge of the chart
                     align: 'center',        // Align labels outside the pie chart
                     offset: 5,          // Space between chart and labels
                     font: {
-                        size: 16,
+                        size: 20,
                         weight: 'bold'
                     },
-                    color: '#333',        // Text color
+                    color: ['#fff','#333'],        // Text color
                     formatter: (value, ctx) => {
-                        return `${value.toFixed(1)} %`; // Label and percentage
-                    },
-                    listeners: {
-                        click: function(context) {
-                            console.log('Label clicked:', context);
-                        }
+                        return `  ${Math.round(value)} %`; // Label and percentage
                     },
                     // Leader line settings
                     lineWidth: 2,          // Line thickness
                     lineColor: '#333',     // Line color
-                    backgroundColor: 'rgba(255, 255, 255, 0.8)', // Optional: Add a background
                     borderRadius: 4,       // Optional: Rounded corners for text background
                     padding: 5             // Padding inside label box
                 }
@@ -150,8 +215,6 @@ c2 = new Chart(
         }
     }
 );
-
-
 
 $(document).ready(function () {
 

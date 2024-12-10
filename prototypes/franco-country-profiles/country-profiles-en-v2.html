@@ -64,7 +64,7 @@
 
             </div>
 
-            <div class="container hidden" id="ag">
+            <div class="container " id="ag">
                 <div class="d-flex align-items-center">
                     <h2 class="d-flex mrgn-tp-0">Algérie</h2>
                     <img src="images/ag.svg" alt="" class="mrgn-lft-lg mrgn-bttm-md d-flex" style="width:95px!important;" />
@@ -104,7 +104,7 @@
 
                                     <canvas aria-describedby="ag-locuteurs-table" id="ag-locuteurs" data-chart="pie"></canvas>
                                     <details>
-                                        <summary>Locuteurs francophones et autres langues - Tableaux</summary>
+                                        <summary>Locuteurs francophones et autres langues - Tableau et information supplémentaire</summary>
                                         <table class="table" id="ag-locuteurs-table">
                                             <thead>
                                                 <tr>
@@ -115,56 +115,55 @@
                                             <tbody>
                                                 <tr>
                                                     <th>Francophones</th>
-                                                    <td>33%</td>
+                                                    <td>33&nbsp;%</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Autres</th>
-                                                    <td>66%</td>
+                                                    <td>66&nbsp;%</td>
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        <div id="locateur-sup-info">
+                                            <p>Le français est enseigné de l’école primaire à l’université, et utilisé sur le lieu de travail comme moyen de communication.</p>
+                                            <p>Depuis quelques années, l’anglais s’impose progressivement dans l’environnement algérien.</p>
+                                        </div>
                                     </details>
                                     <section id="inline_content_modal" class="mfp-hide modal-dialog modal-content overlay-def">
                                         <header class="modal-header">
                                             <h2 class="modal-title">Locuteurs francophones et autres langues</h2>
                                         </header>
                                         <div class="modal-body">
-                                            <p>Le français est enseigné de l’école primaire à l’université, et utilisé sur le lieu de travail comme moyen de communication.</p>
-                                            <p>Depuis quelques années, l’anglais s’impose progressivement dans l’environnement algérien.</p>
+                                            <div data-ajax-replace="#locateur-sup-info"></div>
                                         </div>
                                     </section>
                                 </figure>
+                               
                                 <figure>
 
-                                    <figcaption class="h4 mrgn-tp-0">Répartition des secteurs</figcaption>
-                                    <canvas aria-describedby="ag-secteurs-table" id="ag-secteurs" data-chart="pie"></canvas>
+                                    <figcaption class="h4 mrgn-tp-0">Répartition géographique</figcaption>
+                                    <canvas aria-describedby="ag-geo-table" id="ag-geo" data-chart="pie"></canvas>
                                     <details>
-                                        <summary>Répartition des secteurs - Table</summary>
-                                        <table class="table" id="ag-secteurs-table">
+                                        <summary>Répartition géographique - Tableau</summary>
+                                        <table class="table" id="ag-geo-table">
                                             <thead>
                                                 <tr>
                                                     <th></th>
-                                                    <th>Répartion des secteurs</th>
+                                                    <th>Répartion géographique</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <th>Primaire</th>
-                                                    <td>10,3%</td>
+                                                    <th>Zone urbaine</th>
+                                                    <td>75&nbsp;%</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Secondaire</th>
-                                                    <td>31%</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Tertaire</th>
-                                                    <td>58,6%</td>
+                                                    <th>Zone rurale</th>
+                                                    <td>25&nbsp;%</td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </details>
                                 </figure>
-
 
                             </div>
 
@@ -173,14 +172,49 @@
 
                 </div>
                 <div class="panel panel-card panel-body mrgn-bttm-xl">
-                    <h2 class="h4 mrgn-tp-0">Principaux secteurs d’activités prédominants</h2>
-                    <ol class="wc-ol p-0 lst-spcd">
-                        <li>Industrie pétrolière et gazière</li>
-                        <li>Agriculture - pêche et production connexe</li>
-                        <li>Finance - Banque - Assuranc</li>
-                        <li>Transport - Industrie automobile et mécanique</li>
-                        <li>Technologie de l’information et des communications</li>
-                    </ol>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h2 class="h4 mrgn-tp-0">Principaux secteurs d’activités prédominants</h2>
+                            <ol class="wc-ol p-0 lst-spcd">
+                                <li>Industrie pétrolière et gazière</li>
+                                <li>Agriculture - pêche et production connexe</li>
+                                <li>Finance - Banque - Assurances</li>
+                                <li>Transport - Industrie automobile et mécanique</li>
+                                <li>Technologie de l’information et des communications</li>
+                            </ol>
+                        </div>
+                        <div class="col-md-6 brdr-lft"> <figure>
+                            <div class="mrgn-tp-md mrgn-lft-md mrgn-rght-md">
+                            <figcaption class="h4 mrgn-tp-0">Répartition des secteurs</figcaption>
+                            <canvas aria-describedby="ag-secteurs-table" id="ag-secteurs" data-chart="pie"></canvas>
+                            <div id="custom-legend"></div>
+                            <details>
+                                <summary>Répartition des secteurs - Tableau et information supplémentaire</summary>
+                                <table class="table" id="ag-secteurs-table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Répartion des secteurs</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>Primaire</th>
+                                            <td>10,3&nbsp;%</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Secondaire</th>
+                                            <td>31&nbsp;%</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tertaire</th>
+                                            <td>58,6&nbsp;%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </details>
+                        </figure></div></div>
+                    </div>
                 </div>
                 <div class="panel panel-card panel-body mrgn-bttm-xl">
                     <h2 class="h4 mrgn-tp-0">Info complémentaire</h2>
