@@ -103,8 +103,23 @@
                                 <figure class="mrgn-bttm-lg">
                                     <figcaption class="h4 mrgn-tp-0">Locuteurs francophones et autres langues <a class="wb-lbx lbx-modal" href="#inline_content_modal"><i class="fas fa-info-circle"></i></a></figcaption>
 
+                                    <div class="row d-sm-flex">
+                                        <div class="col-sm-6 col-sm-offset-1 d-flex">
+                                            <canvas aria-describedby="ag-locuteurs-table" id="ag-locuteurs" data-chart="pie" data-chart-legend='{"custom": "#locuteurs-legend", "addValues": true}'></canvas>
+                                        </div>
+                                        <div class="col-sm-5 d-flex align-self-center">
+                                            <div id="locuteurs-legend" class="custom-legend">
+                                                <div class="legend-item"><span class="legend-color-box"></span><span>
+                                                        Francophones
+                                                    </span></div>
+                                                <div class="legend-item"><span class="legend-color-box"></span><span>
 
-                                    <canvas aria-describedby="ag-locuteurs-table" id="ag-locuteurs" data-chart="pie"></canvas>
+                                                        Autres &ndash; Il n’y a pas de données officielles sur les locuteurs anglophones.
+                                                    </span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <details>
                                         <summary>Locuteurs francophones et autres langues - Tableau et information supplémentaire</summary>
                                         <table class="table" id="ag-locuteurs-table">
@@ -143,28 +158,48 @@
                                 <figure>
 
                                     <figcaption class="h4 mrgn-tp-0">Répartition géographique</figcaption>
-                                    <canvas aria-describedby="ag-geo-table" id="ag-geo" data-chart="pie"></canvas>
-                                    <details>
-                                        <summary>Répartition géographique - Tableau</summary>
-                                        <table class="table" id="ag-geo-table">
-                                            <thead>
-                                                <tr>
-                                                    <th></th>
-                                                    <th>Répartion géographique</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th>Zone urbaine</th>
-                                                    <td>75&nbsp;%</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Zone rurale</th>
-                                                    <td>25&nbsp;%</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </details>
+                                    <div class="row d-sm-flex">
+                                        <div class="col-sm-6 col-sm-offset-1 d-flex">
+                                            <canvas aria-describedby="ag-geo-table" id="ag-geo" data-chart="pie" data-chart-legend='{"custom": "#geo-legend", "addValues": true}'></canvas>
+                                        </div>
+                                        <div class="col-sm-5 d-flex align-self-center">
+                                            <div id="geo-legend" class="custom-legend">
+                                                <div class="legend-item"><span class="legend-color-box"></span><span>
+                                                        Zone urbaine: 75&nbsp;%
+                                                    </span></div>
+                                                <div class="legend-item"><span class="legend-color-box"></span><span>
+
+                                                        Zone rurale: 25&nbsp;%
+                                                    </span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                              
+
+
+
+                                        <details>
+                                            <summary>Répartition géographique - Tableau</summary>
+                                            <table class="table" id="ag-geo-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Répartion géographique</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Zone urbaine</th>
+                                                        <td>75&nbsp;%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Zone rurale</th>
+                                                        <td>25&nbsp;%</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </details>
 
                                 </figure>
 
@@ -190,12 +225,31 @@
                             <figure>
                                 <div class="mrgn-tp-md mrgn-lft-md mrgn-rght-md">
                                     <figcaption class="h4 mrgn-tp-0">Répartition des secteurs</figcaption>
-                                    <div class="row d-flex">
-                                        <div class="col-md-6 col-md-offset-1 d-flex">
-                                            <canvas aria-describedby="ag-secteurs-table" id="ag-secteurs" data-chart="pie"></canvas>
+                                    <div class="row d-sm-flex">
+                                        <div class="col-sm-6 col-sm-offset-1 d-flex">
+                                            <canvas aria-describedby="ag-secteurs-table" id="ag-secteurs" data-chart="pie" data-chart-legend='{"custom": "#secteur-legend"}'></canvas>
                                         </div>
-                                        <div class="col-md-5 d-flex align-self-center">
-                                            <div id="secteur-legend" class="custom-legend"></div>
+                                        <div class="col-sm-5 d-flex align-self-center">
+                                            <div id="secteur-legend" class="custom-legend">
+                                                <div class="legend-item"><span class="legend-color-box"></span><span>
+                                                        Primaire
+                                                        <a class="wb-lbx lbx-modal" href="#secteur-sup-info_modal">
+                                                            <i class="fas fa-info-circle"></i>
+                                                        </a>
+                                                    </span></div>
+                                                <div class="legend-item"><span class="legend-color-box"></span><span>
+                                                        Secondaire
+                                                        <a class="wb-lbx lbx-modal" href="#secteur-sup-info_modal">
+                                                            <i class="fas fa-info-circle"></i>
+                                                        </a>
+                                                    </span></div>
+                                                <div class="legend-item"><span class="legend-color-box"></span><span>
+                                                        Tertiare
+                                                        <a class="wb-lbx lbx-modal" href="#secteur-sup-info_modal">
+                                                            <i class="fas fa-info-circle"></i>
+                                                        </a>
+                                                    </span></div>
+                                            </div>
                                         </div>
                                     </div>
                                     <details>

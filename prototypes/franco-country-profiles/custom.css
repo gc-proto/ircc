@@ -95,6 +95,21 @@
   color: #00B1B2;
 }
 
+canvas {
+  height: 400px;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  canvas {
+    height: 300px !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  canvas {
+    height: 200px !important;
+  }
+}
 .custom-legend {
   display: flex;
   flex-direction: column;
@@ -109,9 +124,12 @@
   align-items: center;
   margin-bottom: 5px;
 }
+.legend-item span:not(.legend-color-box) {
+  flex: 0 0 100%;
+}
 
 .legend-color-box {
-  width: 40px;
+  flex: 0 0 40px;
   height: 15px;
   margin-right: 10px;
   border-radius: 0px;

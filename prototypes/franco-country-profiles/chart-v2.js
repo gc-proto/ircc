@@ -1,6 +1,7 @@
 
 
 Chart.register(ChartDataLabels);
+
 let c1;
 let c1data = {
     labels: ["Francophones", "Autres"],
@@ -19,18 +20,19 @@ c1 = new Chart(
         data: c1data,
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             aspectRatio: 2,
             layout: {
-                padding: 15,
+
+                padding: {
+                    top: 15,
+                    bottom: 15,
+                    right: 15,
+                }
             },
             plugins: {
                 legend: {
-                    position: 'right',
-                    labels: {
-                        font: {
-                            size: 16
-                        },
-                    }
+                    display: false // Disable the default legend        
                 },
                 tooltip: {
                     callbacks: {
@@ -66,6 +68,8 @@ c1 = new Chart(
     }
 );
 
+generateCustomLegend(c1, 'locuteurs-legend');
+
 let c2;
 let c2data = {
     labels: ["Primaire", "Secondaire", "Tertiare"],
@@ -84,32 +88,20 @@ c2 = new Chart(
         data: c2data,
         options: {
             responsive: true,
-            aspectRatio: 1,
+            maintainAspectRatio: false,
+            aspectRatio: 2,
             layout: {
-                padding: 15,
+
+                padding: {
+                    top: 15,
+                    bottom: 15,
+                    right: 15,
+                }
             },
             plugins: {
                 legend: {
                     display: false // Disable the default legend                    
                 },
-                // legend: {
-                //     position: 'right',
-                //     labels: {
-                //         generateLabels: function(chart) {
-                //             const data = chart.data;
-                //             return data.labels.map((label, index) => {
-                //                 const value = data.datasets[0].data[index];
-                //                 const percentage = ((value / data.datasets[0].data.reduce((a, b) => a + b, 0)) * 100).toFixed(1);
-                //                 return {
-                //                     text: `${label}`,
-                //                     fillStyle: data.datasets[0].backgroundColor[index], // Match legend color with dataset
-                //                     hidden: chart.getDatasetMeta(0).data[index].hidden, // Handle hidden items
-                //                     index: index
-                //                 };
-                //             });
-                //         }
-                //     }
-                // },
                 tooltip: {
                     callbacks: {
                         label: function (tooltipItem) {
@@ -148,44 +140,11 @@ c2 = new Chart(
         }
     }
 );
-
-function generateCustomLegend(chart, legend) {
-    const legendContainer = document.getElementById(legend);
-    const data = chart.data;
-    const backgroundColors = data.datasets[0].backgroundColor;
-
-    // Create legend items dynamically
-    data.labels.forEach((label, index) => {
-        const legendItem = document.createElement('div');
-        legendItem.classList.add('legend-item');
-
-        // Create color box
-        const colorBox = document.createElement('span');
-        colorBox.classList.add('legend-color-box');
-        colorBox.style.backgroundColor = backgroundColors[index];
-
-        // Create label text with icon
-        const labelText = document.createElement('span');
-        labelText.innerHTML = `
-            ${label}
-            <a class="wb-lbx lbx-modal" href="#secteur-sup-info_modal">
-                <i class="fas fa-info-circle"></i>
-            </a>
-        `;
-
-        // Append color box and label to legend item
-        legendItem.appendChild(colorBox);
-        legendItem.appendChild(labelText);
-
-        // Add to the legend container
-        legendContainer.appendChild(legendItem);
-    });
-}
 generateCustomLegend(c2, 'secteur-legend');
 
 let c3;
 let c3data = {
-    labels: ["Zone urbaine", "Zone rurale"],
+    labels: ["Zone rurale", "Zone urbaine"],
     datasets: [
         {
             data: [25, 75],
@@ -201,31 +160,18 @@ c3 = new Chart(
         data: c3data,
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             aspectRatio: 2,
             layout: {
-                padding: 15,
+                padding: {
+                    top: 15,
+                    bottom: 15,
+                    right: 15,
+                }
             },
             plugins: {
                 legend: {
-                    position: 'right',
-                    labels: {
-                        font: {
-                            size: 16
-                        },
-                        generateLabels: function (chart) {
-                            const data = chart.data;
-                            return data.labels.map((label, index) => {
-                                const value = data.datasets[0].data[index];
-                                const percentage = ((value / data.datasets[0].data.reduce((a, b) => a + b, 0)) * 100).toFixed(0);
-                                return {
-                                    text: `${label} : ${percentage} %`,
-                                    fillStyle: data.datasets[0].backgroundColor[index], // Match legend color with dataset
-                                    hidden: chart.getDatasetMeta(0).data[index].hidden, // Handle hidden items
-                                    index: index
-                                };
-                            });
-                        }
-                    }
+                    display: false // Disable the default legend        
                 },
                 tooltip: {
                     callbacks: {
@@ -260,13 +206,51 @@ c3 = new Chart(
         }
     }
 );
+generateCustomLegend(c3, 'geo-legend');
+
+let resizeTimeout;
+function resizeCharts() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+
+        let w = window.innerWidth;
+        console.log(w);
+        let charts = [c1, c2, c3];
+        // let paddingLeft = (w > 768) && (w < 991) ? 25 : 0;
+        // let paddingRight = (w > 768) && (w < 991) ? 25 : 15;
+        // for (let i = 0; i < charts.length; i++) {
+        //     if (charts[i]) {
+        //         charts[i].options.layout.padding.left = paddingLeft;
+        //         charts[i].options.layout.padding.right = paddingRight;
+        //         charts[i].update();
+        //     }
+        // }
+        for (let i = 0; i < charts.length; i++) {
+            if (charts[i]) {
+                charts[i].resize();
+            }
+        }
+    }, 300); // Delay to prevent rapid firing   
+}
+
+resizeCharts();
+// Redraw the canvas on window resize
+window.addEventListener('resize', resizeCharts);
+
+function generateCustomLegend(chart, legend) {
+    const legendContainer = document.getElementById(legend);
+    const data = chart.data;
+    const backgroundColors = data.datasets[0].backgroundColor;
+    const legendItems = legendContainer.querySelectorAll('.legend-color-box');
+
+    legendItems.forEach((label, index) => label.style.backgroundColor = backgroundColors[index])
+}
 
 $(document).ready(function () {
 
     let iconCounter = document.querySelector('.icon-counter');
     let activePopPercent = Math.round((parseInt(document.getElementById('pop-active-percent').innerHTML) / 100) * 10);
 
-    console.log(activePopPercent)
     for (let i = 0; i < 10; i++) {
 
         let icon = document.createElement('span');
