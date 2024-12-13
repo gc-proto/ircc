@@ -101,7 +101,7 @@
                         <div class="col-md-7 brdr-lft">
                             <div class="mrgn-tp-md mrgn-lft-md mrgn-rght-md">
                                 <figure class="mrgn-bttm-lg">
-                                    <figcaption class="h4 mrgn-tp-0">Locuteurs francophones et autres langues <a class="wb-lbx lbx-modal" href="#inline_content_modal"><i class="fas fa-info-circle"></i></a></figcaption>
+                                    <figcaption class="h4 mrgn-tp-0">Locuteurs francophones et autres langues <a class="wb-lbx " href="#inline_content_modal"><i class="fas fa-info-circle"></i></a></figcaption>
 
                                     <div class="row d-sm-flex">
                                         <div class="col-sm-6 col-sm-offset-1 d-flex">
@@ -233,19 +233,19 @@
                                             <div id="secteur-legend" class="custom-legend">
                                                 <div class="legend-item"><span class="legend-color-box"></span><span>
                                                         Primaire
-                                                        <a class="wb-lbx lbx-modal" href="#secteur-sup-info_modal">
+                                                        <a class="wb-lbx" href="#secteur-sup-info_modal-primaire">
                                                             <i class="fas fa-info-circle"></i>
                                                         </a>
                                                     </span></div>
                                                 <div class="legend-item"><span class="legend-color-box"></span><span>
                                                         Secondaire
-                                                        <a class="wb-lbx lbx-modal" href="#secteur-sup-info_modal">
+                                                        <a class="wb-lbx" href="#secteur-sup-info_modal-secondaire">
                                                             <i class="fas fa-info-circle"></i>
                                                         </a>
                                                     </span></div>
                                                 <div class="legend-item"><span class="legend-color-box"></span><span>
                                                         Tertiare
-                                                        <a class="wb-lbx lbx-modal" href="#secteur-sup-info_modal">
+                                                        <a class="wb-lbx" href="#secteur-sup-info_modal-tertiare">
                                                             <i class="fas fa-info-circle"></i>
                                                         </a>
                                                     </span></div>
@@ -276,19 +276,34 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <div id="secteur-sup-info">
-                                            <p>Le secteur primaire&nbsp;: ensemble des activités économiques productrices de matières premières (l'agriculture, la sylviculture, la pêche et, dans une certaine mesure, les industries minières).</p>
-                                            <p>Le secteur secondaire&nbsp;: ensemble des activités économiques correspondant à la transformation des matières premières en biens productifs ou en biens de consommation. (C'est le secteur industriel.)</p>
-                                            <p>Secteur tertiaire&nbsp;: secteur des activités économiques comprenant notamment le commerce, les transports, les services, etc.</p>
+                                       
+                                           
+                                           
+                                            
                                         </div>
 
                                     </details>
-                                    <section id="secteur-sup-info_modal" class="mfp-hide modal-dialog modal-content overlay-def">
+                                    <section id="secteur-sup-info_modal-primaire" class="mfp-hide modal-dialog modal-content overlay-def">
+                                        <header class="modal-header">
+                                            <h2 class="modal-title">Répartition des secteurs - information supplémentaire</h2>
+                                        </header>
+                                        <div class="modal-body"> <p>Le secteur primaire&nbsp;: ensemble des activités économiques productrices de matières premières (l'agriculture, la sylviculture, la pêche et, dans une certaine mesure, les industries minières).</p>
+                                        </div>
+                                    </section>
+                                    <section id="secteur-sup-info_modal-secondaire" class="mfp-hide modal-dialog modal-content overlay-def">
                                         <header class="modal-header">
                                             <h2 class="modal-title">Répartition des secteurs - information supplémentaire</h2>
                                         </header>
                                         <div class="modal-body">
-                                            <div data-ajax-replace="#secteur-sup-info"></div>
+                                            <p>Le secteur secondaire&nbsp;: ensemble des activités économiques correspondant à la transformation des matières premières en biens productifs ou en biens de consommation. (C'est le secteur industriel.)</p>
+                                        </div>
+                                    </section>
+                                    <section id="secteur-sup-info_modal-tertiare" class="mfp-hide modal-dialog modal-content overlay-def">
+                                        <header class="modal-header">
+                                            <h2 class="modal-title">Répartition des secteurs - information supplémentaire</h2>
+                                        </header>
+                                        <div class="modal-body">
+                                            <p >Secteur tertiaire&nbsp;: secteur des activités économiques comprenant notamment le commerce, les transports, les services, etc.</p>
                                         </div>
                                     </section>
                             </figure>
@@ -308,6 +323,12 @@
                         <p>Le français est enseigné de l’école primaire à l’université, et utilisé sur le lieu de travail comme moyen de communication.</p>
                         <p>Depuis quelques années, l’anglais s’impose progressivement dans l’environnement algérien.</p>
                     </dd>
+                    <dt>Le secteur primaire(3) : </dt>
+                    <dd>Ensemble des activités économiques productrices de matières premières (l'agriculture, la sylviculture, la pêche et, dans une certaine mesure, les industries minières).</dd>
+                    <dt>Le secteur secondaire</dt>
+                    <dd>Ensemble des activités économiques correspondant à la transformation des matières premières en biens productifs ou en biens de consommation. (C'est le secteur industriel.)</dd>
+                    <dt>Le secteur tertiaire</dt>
+                    <dd>Secteur des activités économiques comprenant notamment le commerce, les transports, les services, etc.</dd>
                 </dl>
             </div> 
             <div class="row">
