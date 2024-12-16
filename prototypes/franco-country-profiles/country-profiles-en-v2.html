@@ -82,11 +82,7 @@
                                     <p><span id="pop-active-percent" class="h2 text-primary mrgn-tp-0 bold-content">78,2&nbsp;%</span> de la population totale ont 15 à 64 ans</p>
                                 </dd>
                                 <dt>Langue(s) officielle(s) du pays&nbsp;:</dt>
-                                <dd class="mrgn-bttm-lg">Arabe et Tamazight</dd>
-                                <dt>PIB (produit intérieur brut)&nbsp;:</dt>
-                                <dd class="mrgn-bttm-lg">239,9 Milliards USD (2023)</dd>
-                                <dt>Âge moyen&nbsp;:</dt>
-                                <dd class="mrgn-bttm-lg">28.2 ans (2023)</dd>
+                                <dd class="mrgn-bttm-lg">Arabe et Tamazight</dd>                               
                                 <dt>Niveau moyen d’éducation&nbsp;:</dt>
                                 <dd class="mrgn-bttm-lg">12 années</dd>
                                 <dt>Salaire moyen mensuel&nbsp;:</dt>
@@ -105,7 +101,7 @@
 
                                     <div class="row d-sm-flex">
                                         <div class="col-sm-6 col-sm-offset-1 d-flex">
-                                            <canvas aria-describedby="ag-locuteurs-table" id="ag-locuteurs" data-chart="pie" data-chart-legend='{"custom": "#locuteurs-legend", "addValues": true}'></canvas>
+                                            <canvas aria-describedby="ag-locuteurs-table" id="ag-locuteurs"></canvas>
                                         </div>
                                         <div class="col-sm-5 d-flex align-self-center">
                                             <div id="locuteurs-legend" class="custom-legend">
@@ -160,7 +156,7 @@
                                     <figcaption class="h4 mrgn-tp-0">Répartition géographique</figcaption>
                                     <div class="row d-sm-flex">
                                         <div class="col-sm-6 col-sm-offset-1 d-flex">
-                                            <canvas aria-describedby="ag-geo-table" id="ag-geo" data-chart="pie" data-chart-legend='{"custom": "#geo-legend", "addValues": true}'></canvas>
+                                            <canvas aria-describedby="ag-geo-table" id="ag-geo"></canvas>
                                         </div>
                                         <div class="col-sm-5 d-flex align-self-center">
                                             <div id="geo-legend" class="custom-legend">
@@ -175,31 +171,31 @@
                                         </div>
                                     </div>
 
-                              
 
 
 
-                                        <details>
-                                            <summary>Répartition géographique - Tableau</summary>
-                                            <table class="table" id="ag-geo-table">
-                                                <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th>Répartion géographique</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th>Zone urbaine</th>
-                                                        <td>75&nbsp;%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Zone rurale</th>
-                                                        <td>25&nbsp;%</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </details>
+
+                                    <details>
+                                        <summary>Répartition géographique - Tableau</summary>
+                                        <table class="table" id="ag-geo-table">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Répartion géographique</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th>Zone urbaine</th>
+                                                    <td>75&nbsp;%</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Zone rurale</th>
+                                                    <td>25&nbsp;%</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </details>
 
                                 </figure>
 
@@ -227,26 +223,26 @@
                                     <figcaption class="h4 mrgn-tp-0">Répartition des secteurs</figcaption>
                                     <div class="row d-sm-flex">
                                         <div class="col-sm-6 col-sm-offset-1 d-flex">
-                                            <canvas aria-describedby="ag-secteurs-table" id="ag-secteurs" data-chart="pie" data-chart-legend='{"custom": "#secteur-legend"}'></canvas>
+                                            <canvas aria-describedby="ag-secteurs-table" id="ag-secteurs"></canvas>
                                         </div>
                                         <div class="col-sm-5 d-flex align-self-center">
                                             <div id="secteur-legend" class="custom-legend">
                                                 <div class="legend-item"><span class="legend-color-box"></span><span>
                                                         Primaire
                                                         <a class="wb-lbx" href="#secteur-sup-info_modal-primaire">
-                                                            <i class="fas fa-info-circle"></i>
+                                                            <i class="fas fa-info-circle"></i><span class="wb-inv">Info supplémentaire pour secteur primaire</span>
                                                         </a>
                                                     </span></div>
                                                 <div class="legend-item"><span class="legend-color-box"></span><span>
                                                         Secondaire
                                                         <a class="wb-lbx" href="#secteur-sup-info_modal-secondaire">
-                                                            <i class="fas fa-info-circle"></i>
+                                                            <i class="fas fa-info-circle"></i><span class="wb-inv">Info supplémentaire pour secteur secondaire</span>
                                                         </a>
                                                     </span></div>
                                                 <div class="legend-item"><span class="legend-color-box"></span><span>
                                                         Tertiare
                                                         <a class="wb-lbx" href="#secteur-sup-info_modal-tertiare">
-                                                            <i class="fas fa-info-circle"></i>
+                                                            <i class="fas fa-info-circle"></i><span class="wb-inv">Info supplémentaire pour secteur tertiare</span>
                                                         </a>
                                                     </span></div>
                                             </div>
@@ -276,36 +272,37 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                       
-                                           
-                                           
-                                            
-                                        </div>
 
-                                    </details>
-                                    <section id="secteur-sup-info_modal-primaire" class="mfp-hide modal-dialog modal-content overlay-def">
-                                        <header class="modal-header">
-                                            <h2 class="modal-title">Répartition des secteurs - information supplémentaire</h2>
-                                        </header>
-                                        <div class="modal-body"> <p>Le secteur primaire&nbsp;: ensemble des activités économiques productrices de matières premières (l'agriculture, la sylviculture, la pêche et, dans une certaine mesure, les industries minières).</p>
-                                        </div>
-                                    </section>
-                                    <section id="secteur-sup-info_modal-secondaire" class="mfp-hide modal-dialog modal-content overlay-def">
-                                        <header class="modal-header">
-                                            <h2 class="modal-title">Répartition des secteurs - information supplémentaire</h2>
-                                        </header>
-                                        <div class="modal-body">
-                                            <p>Le secteur secondaire&nbsp;: ensemble des activités économiques correspondant à la transformation des matières premières en biens productifs ou en biens de consommation. (C'est le secteur industriel.)</p>
-                                        </div>
-                                    </section>
-                                    <section id="secteur-sup-info_modal-tertiare" class="mfp-hide modal-dialog modal-content overlay-def">
-                                        <header class="modal-header">
-                                            <h2 class="modal-title">Répartition des secteurs - information supplémentaire</h2>
-                                        </header>
-                                        <div class="modal-body">
-                                            <p >Secteur tertiaire&nbsp;: secteur des activités économiques comprenant notamment le commerce, les transports, les services, etc.</p>
-                                        </div>
-                                    </section>
+
+
+
+                                </div>
+
+                                </details>
+                                <section id="secteur-sup-info_modal-primaire" class="mfp-hide modal-dialog modal-content overlay-def">
+                                    <header class="modal-header">
+                                        <h2 class="modal-title">Répartition des secteurs - information supplémentaire</h2>
+                                    </header>
+                                    <div class="modal-body">
+                                        <p>Le secteur primaire&nbsp;: ensemble des activités économiques productrices de matières premières (l'agriculture, la sylviculture, la pêche et, dans une certaine mesure, les industries minières).</p>
+                                    </div>
+                                </section>
+                                <section id="secteur-sup-info_modal-secondaire" class="mfp-hide modal-dialog modal-content overlay-def">
+                                    <header class="modal-header">
+                                        <h2 class="modal-title">Répartition des secteurs - information supplémentaire</h2>
+                                    </header>
+                                    <div class="modal-body">
+                                        <p>Le secteur secondaire&nbsp;: ensemble des activités économiques correspondant à la transformation des matières premières en biens productifs ou en biens de consommation. (C'est le secteur industriel.)</p>
+                                    </div>
+                                </section>
+                                <section id="secteur-sup-info_modal-tertiare" class="mfp-hide modal-dialog modal-content overlay-def">
+                                    <header class="modal-header">
+                                        <h2 class="modal-title">Répartition des secteurs - information supplémentaire</h2>
+                                    </header>
+                                    <div class="modal-body">
+                                        <p>Secteur tertiaire&nbsp;: secteur des activités économiques comprenant notamment le commerce, les transports, les services, etc.</p>
+                                    </div>
+                                </section>
                             </figure>
                         </div>
                     </div>
@@ -318,19 +315,14 @@
                     <dd>République algérienne démocratique et populaire</dd>
                     <dt>Langue(s) officielle(s) du pays:</dt>
                     <dd>La langue Tamazight est devenue une langue</dd>
-                    <dt>% locuteurs francophones et anglophones:</dt>
-                    <dd>
-                        <p>Le français est enseigné de l’école primaire à l’université, et utilisé sur le lieu de travail comme moyen de communication.</p>
-                        <p>Depuis quelques années, l’anglais s’impose progressivement dans l’environnement algérien.</p>
-                    </dd>
-                    <dt>Le secteur primaire(3) : </dt>
+                    <dt>Le secteur primaire : </dt>
                     <dd>Ensemble des activités économiques productrices de matières premières (l'agriculture, la sylviculture, la pêche et, dans une certaine mesure, les industries minières).</dd>
                     <dt>Le secteur secondaire</dt>
                     <dd>Ensemble des activités économiques correspondant à la transformation des matières premières en biens productifs ou en biens de consommation. (C'est le secteur industriel.)</dd>
                     <dt>Le secteur tertiaire</dt>
                     <dd>Secteur des activités économiques comprenant notamment le commerce, les transports, les services, etc.</dd>
                 </dl>
-            </div> 
+            </div>
             <div class="row">
                 <div class="col-sm-4">
                     <a class="gc-dwnld-lnk" href="#">
