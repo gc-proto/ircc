@@ -25,7 +25,7 @@
     <!-- CONFIGURATIONS END HERE -->
     <script src="https://test.canada.ca/ircc/templates/js/template.js" type="text/javascript" defer></script>
 
-    <link rel="stylesheet" href="custom.css" />
+    <link rel="stylesheet" href="../custom.css" />
     <noscript>
         <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
     </noscript>
@@ -37,7 +37,7 @@
     <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
 
         <!--CONTENT STARTS HERE-->
-        <div class="bg-cover mrgn-bttm-md" data-bgimg="images/h1-banner.png">
+        <div class="bg-contain bg-norepeat mrgn-bttm-md" data-bgimg="../images/h1-banner.png">
             <div class="container py-4 text-white">
                 <div class="row">
                     <div class="col-md-10">
@@ -48,7 +48,7 @@
             </div>
         </div>
 
- 
+
 
         <div class="container">
             <h2>Country list</h2>
@@ -66,16 +66,8 @@
 
             <div class="container " id="ag">
                 <div class="d-flex align-items-center">
-                    <h2 class="d-flex mrgn-tp-0">Algérie<a class="wb-lbx " href="#nom-du-pays"><i class="fas fa-info-circle"></i><span class="wb-inv">Information supplémentaire - Nom du pays</span></a></h2>
+                    <h2 class="d-flex mrgn-tp-0">Algérie</h2>
                     <img src="images/ag.svg" alt="" class="mrgn-lft-lg mrgn-bttm-md d-flex" style="width:95px!important;" />
-                    <section id="nom-du-pays" class="mfp-hide modal-dialog modal-content overlay-def">
-                        <header class="modal-header">
-                            <h2 class="modal-title">Information supplémentaire - Nom du pays</h2>
-                        </header>
-                        <div class="modal-body">
-                            <p>République algérienne démocratique et populaire</p>
-                        </div>
-                    </section>
                 </div>
                 <div class="panel panel-card panel-body mrgn-bttm-lg">
                     <div class="row wb-eqht">
@@ -89,18 +81,8 @@
                                 <dd>
                                     <p><span id="pop-active-percent" class="h2 text-primary mrgn-tp-0 bold-content">78,2&nbsp;%</span> de la population totale ont 15 à 64 ans</p>
                                 </dd>
-                                <dt>Langue(s) officielle(s) du pays&nbsp;:<a class="wb-lbx " href="#langues-officielles"><i class="fas fa-info-circle"></i><span class="wb-inv">Information supplémentaire - Langues officielles</span></a></dt>
-                                <dd class="mrgn-bttm-lg">Arabe et Tamazight
-                                    <section id="langues-officielles" class="mfp-hide modal-dialog modal-content overlay-def">
-                                        <header class="modal-header">
-                                            <h2 class="modal-title">Information supplémentaire - Langues officielles</h2>
-                                        </header>
-                                        <div class="modal-body">
-                                            <p>La langue Tamazight est devenue une langue</p>
-                                        </div>
-                                    </section>
-
-                                </dd>
+                                <dt>Langue(s) officielle(s) du pays&nbsp;:</dt>
+                                <dd class="mrgn-bttm-lg">Arabe et Tamazight</dd>
                                 <dt>Niveau moyen d’éducation&nbsp;:</dt>
                                 <dd class="mrgn-bttm-lg">12 années</dd>
                                 <dt>Salaire moyen mensuel&nbsp;:</dt>
@@ -391,7 +373,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@latest"></script>
     <!-- <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script> -->
-    <script src="chart-v2.js" type="text/javascript"></script>
+    <script src="chart-reusable-v2.js" type="text/javascript"></script>
     <script>
 
 
