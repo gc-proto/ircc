@@ -71,8 +71,8 @@ for (let i = 0; i < canvas.length; i++) {
                 aspectRatio: 2,
                 layout: {    
                     padding: {
-                        top: 15,
-                        bottom: 15,
+                        top: 5,
+                        bottom: 5,
                         right: 15,
                     }
                 },
