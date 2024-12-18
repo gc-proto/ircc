@@ -48,7 +48,7 @@
             </div>
         </div>
 
- 
+
 
         <div class="container">
             <h2>Country list</h2>
@@ -64,10 +64,11 @@
 
             </div>
 
-            <div class="container " id="ag">
+            <div id="ag">
                 <div class="d-flex align-items-center">
-                    <h2 class="d-flex mrgn-tp-0">Algérie<a class="wb-lbx " href="#nom-du-pays"><i class="fas fa-info-circle"></i><span class="wb-inv">Information supplémentaire - Nom du pays</span></a></h2>
-                    <img src="images/ag.svg" alt="" class="mrgn-lft-lg mrgn-bttm-md d-flex" style="width:95px!important;" />
+                    <h2 class="d-flex mrgn-tp-0">Algérie</h2>
+                    <a class="wb-lbx mrgn-lft-md h5 mrgn-tp-0 pull-left" href="#nom-du-pays"><span class="fas fa-info-circle"></span><span class="wb-inv">Information supplémentaire - Nom du pays</span></a>
+                    <div class="clearfix"></div>
                     <section id="nom-du-pays" class="mfp-hide modal-dialog modal-content overlay-def">
                         <header class="modal-header">
                             <h2 class="modal-title">Information supplémentaire - Nom du pays</h2>
@@ -78,7 +79,15 @@
                     </section>
                 </div>
                 <div class="panel panel-card panel-body mrgn-bttm-lg">
-                    <div class="row wb-eqht">
+                    <div class="panel-heading panel-banner">
+                        <a href="images/world-map.png" title="Carte du monde, l'Algérie est mise en avant." class="wb-lbx"><img src="images/ag-map.png" class="full-width" alt="Carte du monde partielle, l'Algérie est mise en avant." />
+                            <span>Voir carte du monde agrandit</span></a>
+                    </div>
+
+
+
+
+                    <div class="row-no wb-eqht">
                         <div class="col-md-5 mrgn-bttm-md">
                             <dl>
                                 <dt>Population totale 2023&nbsp;:</dt>
@@ -89,7 +98,7 @@
                                 <dd>
                                     <p><span id="pop-active-percent" class="h2 text-primary mrgn-tp-0 bold-content">78,2&nbsp;%</span> de la population totale ont 15 à 64 ans</p>
                                 </dd>
-                                <dt>Langue(s) officielle(s) du pays&nbsp;:<a class="wb-lbx " href="#langues-officielles"><i class="fas fa-info-circle"></i><span class="wb-inv">Information supplémentaire - Langues officielles</span></a></dt>
+                                <dt>Langue(s) officielle(s) du pays&nbsp;: <a class="wb-lbx mrgn-lft-sm" href="#langues-officielles"><span class="fas fa-info-circle"></span><span class="wb-inv">Information supplémentaire - Langues officielles</span></a></dt>
                                 <dd class="mrgn-bttm-lg">Arabe et Tamazight
                                     <section id="langues-officielles" class="mfp-hide modal-dialog modal-content overlay-def">
                                         <header class="modal-header">
@@ -99,7 +108,6 @@
                                             <p>La langue Tamazight est devenue une langue</p>
                                         </div>
                                     </section>
-
                                 </dd>
                                 <dt>Niveau moyen d’éducation&nbsp;:</dt>
                                 <dd class="mrgn-bttm-lg">12 années</dd>
@@ -119,12 +127,12 @@
                                     <div class="row d-sm-flex">
                                         <div class="col-sm-6 col-sm-offset-1 d-flex">
                                             <canvas aria-describedby="ag-locuteurs-table" id="ag-locuteurs" data-chart-options='{
-                                                "legend": "locuteurs-legend",
-                                                "table": "ag-locuteurs-table",
-                                                "backgroundColor": "#00B1B2, #C6EFEF",
-                                                "color": "#333",
-                                                "tooltip": "percentage"
-                                            }'></canvas>
+                                                    "legend": "locuteurs-legend",
+                                                    "table": "ag-locuteurs-table",
+                                                    "backgroundColor": "#00B1B2, #C6EFEF",
+                                                    "color": "#333",
+                                                    "tooltip": "percentage"
+                                                }'></canvas>
                                         </div>
                                         <div class="col-sm-5 d-flex align-self-center">
                                             <div id="locuteurs-legend" class="custom-legend">
@@ -137,7 +145,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <details>
                                         <summary>Locuteurs francophones et autres langues - Tableau et information supplémentaire</summary>
                                         <table class="table" id="ag-locuteurs-table">
@@ -157,7 +164,7 @@
                                                     <td>66&nbsp;%</td>
                                                 </tr>
                                             </tbody>
-                                        </table>                                       
+                                        </table>
                                     </details>
                                     <section id="inline_content_modal" class="mfp-hide modal-dialog modal-content overlay-def">
                                         <header class="modal-header">
@@ -169,28 +176,24 @@
                                         </div>
                                     </section>
                                 </figure>
-
                                 <figure>
-
                                     <figcaption class="h4 mrgn-tp-0">Répartition géographique</figcaption>
                                     <div class="row d-sm-flex">
                                         <div class="col-sm-6 col-sm-offset-1 d-flex">
                                             <canvas aria-describedby="ag-geo-table" id="ag-geo" data-chart-options='{
-                                                "legend": "geo-legend",
-                                                "table": "ag-geo-table",
-                                                "backgroundColor": "#362950, #D8CDEC",
-                                                "color": "#fff, #333", 
-                                                "tooltip": "percentage"
-                                            }'></canvas>
+                                                    "legend": "geo-legend",
+                                                    "table": "ag-geo-table",
+                                                    "backgroundColor": "#362950, #D8CDEC",
+                                                    "color": "#fff, #333",
+                                                    "tooltip": "percentage"
+                                                }'></canvas>
                                         </div>
                                         <div class="col-sm-5 d-flex align-self-center">
                                             <div id="geo-legend" class="custom-legend">
-                                                
                                                 <div class="legend-item"><span class="legend-color-box"></span><span>
-
                                                         Zone rurale: 25&nbsp;%
                                                     </span></div>
-                                                    <div class="legend-item"><span class="legend-color-box"></span><span>
+                                                <div class="legend-item"><span class="legend-color-box"></span><span>
                                                         Zone urbaine: 75&nbsp;%
                                                     </span></div>
                                             </div>
@@ -205,25 +208,23 @@
                                                     <th>Répartion géographique</th>
                                                 </tr>
                                             </thead>
-                                            <tbody> <tr>
-                                                <th>Zone rurale</th>
-                                                <td>25&nbsp;%</td>
-                                            </tr>
+                                            <tbody>
+                                                <tr>
+                                                    <th>Zone rurale</th>
+                                                    <td>25&nbsp;%</td>
+                                                </tr>
                                                 <tr>
                                                     <th>Zone urbaine</th>
                                                     <td>75&nbsp;%</td>
                                                 </tr>
-                                               
                                             </tbody>
                                         </table>
                                     </details>
-
                                 </figure>
-
                             </div>
-
                         </div>
                     </div>
+
 
                 </div>
                 <div class="panel panel-card panel-body mrgn-bttm-xl">
@@ -239,12 +240,13 @@
                             </ol>
                         </div>
                         <div class="col-md-7 brdr-lft">
+                            <div class="mrgn-tp-md mrgn-lft-md mrgn-rght-md"></div>
                             <figure>
-                                <div class="mrgn-tp-md mrgn-lft-md mrgn-rght-md">
-                                    <figcaption class="h4 mrgn-tp-0">Répartition des secteurs</figcaption>
-                                    <div class="row d-sm-flex">
-                                        <div class="col-sm-6 col-sm-offset-1 d-flex">
-                                            <canvas aria-describedby="ag-secteurs-table" id="ag-secteurs" data-chart-options='{
+
+                                <figcaption class="h4 mrgn-tp-0">Répartition des secteurs</figcaption>
+                                <div class="row d-sm-flex">
+                                    <div class="col-sm-6 col-sm-offset-1 d-flex">
+                                        <canvas aria-describedby="ag-secteurs-table" id="ag-secteurs" data-chart-options='{
                                                 "legend": "secteur-legend",
                                                 "table": "ag-secteurs-table",
                                                 "backgroundColor": "#987B06, #F9EBB4, #EFC519",
@@ -253,132 +255,131 @@
                                                 "datalabels" : {
                                                     "anchor": "center",
                                                     "align": "start",
-                                                    "offset": -50
+                                                    "offset": -40
                                                 }
                                             }'></canvas>
-                                        </div>
-                                        <div class="col-sm-5 d-flex align-self-center">
-                                            <div id="secteur-legend" class="custom-legend">
-                                                <div class="legend-item"><span class="legend-color-box"></span><span>
-                                                        Primaire
-                                                        <a class="wb-lbx" href="#secteur-sup-info_modal-primaire">
-                                                            <i class="fas fa-info-circle"></i><span class="wb-inv">Info supplémentaire pour secteur primaire</span>
-                                                        </a>
-                                                    </span></div>
-                                                <div class="legend-item"><span class="legend-color-box"></span><span>
-                                                        Secondaire
-                                                        <a class="wb-lbx" href="#secteur-sup-info_modal-secondaire">
-                                                            <i class="fas fa-info-circle"></i><span class="wb-inv">Info supplémentaire pour secteur secondaire</span>
-                                                        </a>
-                                                    </span></div>
-                                                <div class="legend-item"><span class="legend-color-box"></span><span>
-                                                        Tertiare
-                                                        <a class="wb-lbx" href="#secteur-sup-info_modal-tertiare">
-                                                            <i class="fas fa-info-circle"></i><span class="wb-inv">Info supplémentaire pour secteur tertiare</span>
-                                                        </a>
-                                                    </span></div>
-                                            </div>
+                                    </div>
+                                    <div class="col-sm-5 d-flex align-self-center">
+                                        <div id="secteur-legend" class="custom-legend">
+                                            <div class="legend-item"><span class="legend-color-box"></span><span>
+                                                    Primaire
+                                                    <a class="wb-lbx" href="#secteur-sup-info_modal-primaire">
+                                                        <i class="fas fa-info-circle"></i><span class="wb-inv">Info supplémentaire pour secteur primaire</span>
+                                                    </a>
+                                                </span></div>
+                                            <div class="legend-item"><span class="legend-color-box"></span><span>
+                                                    Secondaire
+                                                    <a class="wb-lbx" href="#secteur-sup-info_modal-secondaire">
+                                                        <i class="fas fa-info-circle"></i><span class="wb-inv">Info supplémentaire pour secteur secondaire</span>
+                                                    </a>
+                                                </span></div>
+                                            <div class="legend-item"><span class="legend-color-box"></span><span>
+                                                    Tertiare
+                                                    <a class="wb-lbx" href="#secteur-sup-info_modal-tertiare">
+                                                        <i class="fas fa-info-circle"></i><span class="wb-inv">Info supplémentaire pour secteur tertiare</span>
+                                                    </a>
+                                                </span></div>
                                         </div>
                                     </div>
-                                    <details>
-                                        <summary>Répartition des secteurs - Tableau et information supplémentaire</summary>
-                                        <table class="table" id="ag-secteurs-table">
-                                            <thead>
-                                                <tr>
-                                                    <th></th>
-                                                    <th>Répartion des secteurs</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th>Primaire</th>
-                                                    <td>10,3&nbsp;%</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Secondaire</th>
-                                                    <td>31&nbsp;%</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Tertaire</th>
-                                                    <td>58,6&nbsp;%</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
                                 </div>
-
-                                </details>
-                                <section id="secteur-sup-info_modal-primaire" class="mfp-hide modal-dialog modal-content overlay-def">
-                                    <header class="modal-header">
-                                        <h2 class="modal-title">Répartition des secteurs - information supplémentaire</h2>
-                                    </header>
-                                    <div class="modal-body">
-                                        <p>Le secteur primaire&nbsp;: ensemble des activités économiques productrices de matières premières (l'agriculture, la sylviculture, la pêche et, dans une certaine mesure, les industries minières).</p>
-                                    </div>
-                                </section>
-                                <section id="secteur-sup-info_modal-secondaire" class="mfp-hide modal-dialog modal-content overlay-def">
-                                    <header class="modal-header">
-                                        <h2 class="modal-title">Répartition des secteurs - information supplémentaire</h2>
-                                    </header>
-                                    <div class="modal-body">
-                                        <p>Le secteur secondaire&nbsp;: ensemble des activités économiques correspondant à la transformation des matières premières en biens productifs ou en biens de consommation. (C'est le secteur industriel.)</p>
-                                    </div>
-                                </section>
-                                <section id="secteur-sup-info_modal-tertiare" class="mfp-hide modal-dialog modal-content overlay-def">
-                                    <header class="modal-header">
-                                        <h2 class="modal-title">Répartition des secteurs - information supplémentaire</h2>
-                                    </header>
-                                    <div class="modal-body">
-                                        <p>Secteur tertiaire&nbsp;: secteur des activités économiques comprenant notamment le commerce, les transports, les services, etc.</p>
-                                    </div>
-                                </section>
                             </figure>
+                            <details>
+                                <summary>Répartition des secteurs - Tableau et information supplémentaire</summary>
+                                <table class="table" id="ag-secteurs-table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Répartion des secteurs</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>Primaire</th>
+                                            <td>10,3&nbsp;%</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Secondaire</th>
+                                            <td>31&nbsp;%</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tertaire</th>
+                                            <td>58,6&nbsp;%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </details>
+                            <section id="secteur-sup-info_modal-primaire" class="mfp-hide modal-dialog modal-content overlay-def">
+                                <header class="modal-header">
+                                    <h2 class="modal-title">Répartition des secteurs - information supplémentaire</h2>
+                                </header>
+                                <div class="modal-body">
+                                    <p>Le secteur primaire&nbsp;: ensemble des activités économiques productrices de matières premières (l'agriculture, la sylviculture, la pêche et, dans une certaine mesure, les industries minières).</p>
+                                </div>
+                            </section>
+                            <section id="secteur-sup-info_modal-secondaire" class="mfp-hide modal-dialog modal-content overlay-def">
+                                <header class="modal-header">
+                                    <h2 class="modal-title">Répartition des secteurs - information supplémentaire</h2>
+                                </header>
+                                <div class="modal-body">
+                                    <p>Le secteur secondaire&nbsp;: ensemble des activités économiques correspondant à la transformation des matières premières en biens productifs ou en biens de consommation. (C'est le secteur industriel.)</p>
+                                </div>
+                            </section>
+                            <section id="secteur-sup-info_modal-tertiare" class="mfp-hide modal-dialog modal-content overlay-def">
+                                <header class="modal-header">
+                                    <h2 class="modal-title">Répartition des secteurs - information supplémentaire</h2>
+                                </header>
+                                <div class="modal-body">
+                                    <p>Secteur tertiaire&nbsp;: secteur des activités économiques comprenant notamment le commerce, les transports, les services, etc.</p>
+                                </div>
+                            </section>
+
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="panel panel-card panel-body mrgn-bttm-xl">
-                <h2 class="h4 mrgn-tp-0">Info complémentaire</h2>
-                <dl class="dl-horizontal wc-dl">
-                    <dt>Nom du pays:</dt>
-                    <dd>République algérienne démocratique et populaire</dd>
-                    <dt>Langue(s) officielle(s) du pays:</dt>
-                    <dd>La langue Tamazight est devenue une langue</dd>
-                    <dt>Le secteur primaire : </dt>
-                    <dd>Ensemble des activités économiques productrices de matières premières (l'agriculture, la sylviculture, la pêche et, dans une certaine mesure, les industries minières).</dd>
-                    <dt>Le secteur secondaire</dt>
-                    <dd>Ensemble des activités économiques correspondant à la transformation des matières premières en biens productifs ou en biens de consommation. (C'est le secteur industriel.)</dd>
-                    <dt>Le secteur tertiaire</dt>
-                    <dd>Secteur des activités économiques comprenant notamment le commerce, les transports, les services, etc.</dd>
-                </dl>
-            </div>
-            <div class="row">
-                <div class="col-sm-4">
-                    <a class="gc-dwnld-lnk" href="#">
-                        <div class="well gc-dwnld">
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <p><img class="img-responsive thumbnail gc-dwnld-img" src="https://wet-boew.github.io/GCWeb/templates/img/doc.png" alt="" /></p>
-                                </div>
-                                <div class="col-xs-8">
-                                    <p class="gc-dwnld-txt">
-                                        <span>Algeria country profile</span>
-                                        <span class="gc-dwnld-info">(<abbr title="Portable Document Format">PDF</abbr>, 273 <abbr title="KiloByte">KB</abbr>)</span>
-                                    </p>
+                <div class="panel panel-card panel-body mrgn-bttm-xl">
+                    <h2 class="h4 mrgn-tp-0">Info complémentaire</h2>
+                    <dl class="dl-horizontal wc-dl">
+                        <dt>Nom du pays:</dt>
+                        <dd>République algérienne démocratique et populaire</dd>
+                        <dt>Langue(s) officielle(s) du pays:</dt>
+                        <dd>La langue Tamazight est devenue une langue</dd>
+                        <dt>Le secteur primaire : </dt>
+                        <dd>Ensemble des activités économiques productrices de matières premières (l'agriculture, la sylviculture, la pêche et, dans une certaine mesure, les industries minières).</dd>
+                        <dt>Le secteur secondaire</dt>
+                        <dd>Ensemble des activités économiques correspondant à la transformation des matières premières en biens productifs ou en biens de consommation. (C'est le secteur industriel.)</dd>
+                        <dt>Le secteur tertiaire</dt>
+                        <dd>Secteur des activités économiques comprenant notamment le commerce, les transports, les services, etc.</dd>
+                    </dl>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a class="gc-dwnld-lnk" href="#">
+                            <div class="well gc-dwnld">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <p><img class="img-responsive thumbnail gc-dwnld-img" src="https://wet-boew.github.io/GCWeb/templates/img/doc.png" alt="" /></p>
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <p class="gc-dwnld-txt">
+                                            <span>Algeria country profile</span>
+                                            <span class="gc-dwnld-info">(<abbr title="Portable Document Format">PDF</abbr>, 273 <abbr title="KiloByte">KB</abbr>)</span>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
+
+
             </div>
-
-
-
-
-
         </div>
 
 
-        </div>
+
 
         <!--CONTENT ENDS HERE-->
 
