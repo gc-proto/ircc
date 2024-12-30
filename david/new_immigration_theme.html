@@ -1,0 +1,740 @@
+<!doctype html>
+
+<!--[if lt IE 9]>
+<html class="no-js lt-ie9" dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!--<![endif]-->
+
+<head prefix="og: http://ogp.me/ns#">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+
+    <!--CHANGE THE TITLE-->
+
+    <title>Immigration and citizenship- Canada.ca</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="description" content=" " />
+    <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css" />
+    <noscript>
+        <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
+    </noscript>
+    <link rel="stylesheet" href="https://test.canada.ca/covid-19-guidance/proto/css/alpha-beta-banner.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+
+    <style>
+        /* Breadcrumb */
+        #wb-bc {
+            flex: 1 0 0%;
+            padding-right: 10px;
+        }
+        #wb-bc ol {
+            margin-top: 10px;
+        }
+        #wb-bc li {
+            padding: 0;
+        }
+        #wb-bc li::before {
+            margin-left: 7px;
+            margin-right: 5px;
+            padding: 0;
+        }
+        
+        /* Banner */
+        #wb-bnr+hr {
+            border-top: 1px solid #ddd;
+            margin-bottom: 0px;
+            margin-top: 5px;
+        }
+        #wb-bnr+hr+.container {
+            display: flex;
+            font-size: 16px;
+            justify-content: flex-end;
+            position: relative;
+        }
+        
+        /* Theme page */
+        .page-type-theme #wb-bc li:first-child a {
+            border-left: solid #26374a 5px;
+            padding-left: 8px;
+        }
+        .page-type-theme #wb-bc .breadcrumb {
+            margin-bottom: 15px;
+        }
+        .page-type-theme #gridContainer > nav #menuBtn {
+            border-radius: 0;
+            display: block;
+            margin-bottom: 1em;
+            margin-left: -15px;
+            text-align: left;
+            width: calc(100% + 30px);
+        }
+        .page-type-theme #gridContainer > nav #menuBtn .glyphicon-chevron-down {
+            margin-left: 10px;
+        }
+        .page-type-theme #gridContainer > nav #menuBtn.expanded .glyphicon-chevron-down {
+            transform: rotate(180deg) translateY(2px);
+        }
+        .wb-disable .page-type-theme #gridContainer > nav #menuBtn {
+            display: none;
+        }
+        .page-type-theme #gridContainer > nav li a {
+            color: #295376;
+            display: block;
+            font-size: 16px;
+            line-height: 1.65em;
+            padding: 10px 14px;
+            text-decoration: none;
+        }
+        .page-type-theme #gridContainer > nav li a:hover {
+            background-color: #f5f5f5;
+            color: #284162;
+            text-decoration: underline;
+        }
+        .page-type-theme #gridContainer > nav li.active a, .page-type-theme #gridContainer > nav li.active a:hover {
+            background-color: #26374a;
+            color: #fff;
+        }
+        .page-type-theme #gridContainer > nav li.active a:focus {
+            outline: 5px auto #fff;
+            outline-offset: -5px;
+        }
+        .page-type-theme #gridContainer > nav + section h1#wb-cont {
+            border: none;
+            font-size: 1.2em;
+            line-height: 1.1;
+            margin: 10px 0 11.5px;
+        }
+        .page-type-theme #gridContainer > nav + section .gc-most-requested h2 {
+            float: none;
+            font-size: 1em;
+            width: auto;
+        }
+        
+        
+        /* Theme: screen-sm-max */
+        @media screen and (max-width: 991px) {
+            .page-type-theme #gridContainer > nav #menuBtn.expanded + ul {
+                display: block;
+            }
+            .page-type-theme #gridContainer > nav ul {
+                display: none;
+            }
+            .wb-disable .page-type-theme #gridContainer > nav ul {
+                display: block;
+            }
+            .page-type-theme #gridContainer > nav ul li {
+                border-bottom: #f5f5f5 solid 1px;
+                position: relative;
+            }
+            .page-type-theme #gridContainer > nav ul li a::after {
+                content: "\203A";
+                font-size: 1.5em;
+                margin-left: 10px;
+                position: absolute;
+                right: 14px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .page-type-theme #gridContainer > nav ul li.active a::after {
+                display: none;
+            }
+        }
+        
+        /* Theme: screen-md-min */
+        @media screen and (min-width: 992px) {
+            .page-type-theme #gridContainer {
+                display: flex;
+                margin: 0 auto;
+                padding: 0 15px;
+                width: 970px;
+            }
+            .page-type-theme #gridContainer > nav {
+                border-right: 5px solid #26374a;
+                flex: 0 0 300px;
+            }
+            .page-type-theme #gridContainer > nav .container {
+                padding: 0;
+                width: auto;
+            }
+            .page-type-theme #gridContainer > nav #menuBtn {
+                display: none;
+            }
+            .page-type-theme #gridContainer > nav + section {
+                flex: 1 0 0%;
+            }
+            .page-type-theme #gridContainer > nav + section .container {
+                padding-left: 35px;
+                width: auto;
+            }
+            .page-type-theme #gridContainer > nav + section .gc-most-requested {
+                position: relative;
+            }
+            .page-type-theme #gridContainer > nav + section .gc-most-requested::after {
+                background-color: #f5f5f5;
+                bottom: 0;
+                content: "";
+                left: calc(100% - 1px);
+                position: absolute;
+                top: 0;
+                width: calc((100vw - 970px + 15px)/2);
+            }
+        }
+        
+        /* Theme: screen-lg-min */
+        @media screen and (min-width: 1200px) {
+            .page-type-theme #gridContainer {
+                width: 1170px;
+            }
+            .page-type-theme #gridContainer > nav + section .gc-most-requested::after {
+                width: calc((100vw - 1170px + 15px)/2);
+            }
+        }
+        
+        
+        /* Most requested */
+        @media screen and (min-width: 992px) {
+            .gc-most-requested ul {
+                column-count: 2 !important;
+                column-gap: 0 !important;
+                display: block !important;
+                margin-bottom: 0 !important;
+                padding-left: 1.55em !important;
+            }
+            .gc-most-requested ul li {
+                display: inline-block !important;
+                font-size: 87% !important;
+                line-height: 1.25em !important;
+                margin-bottom: 10px !important;
+                padding-left: 1.15em !important;
+                padding-right: 1em !important;
+                position: relative !important;
+            }
+            .gc-most-requested ul li::before {
+                content: "\2022";
+                font-size: 0.8em;
+                left: 0;
+                position: absolute;
+                top: 0;
+            }
+            .gc-most-requested ul li::after {
+                content: "";
+                display: block;
+                width: 240px;
+            }
+        }
+        
+        /* Most requested in Theme: screen-lg-min */
+        @media screen and (min-width: 1200px) {
+            .gc-most-requested ul li::after {
+                width: 340px;
+            }
+        }
+        </style>
+
+</head>
+
+
+<body vocab="http://schema.org/" typeof="WebPage">
+    <nav>
+        <ul id="wb-tphp">
+            <li class="wb-slc"><a class="wb-sl" href="#wb-cont">Skip to main content</a></li>
+            <li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">Skip to &#34;About government&#34;</a></li>
+        </ul>
+    </nav>
+
+   <header>
+		<div id="wb-bnr" class="container">
+			<div class="row">
+				<section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
+					<h2 class="wb-inv">Language selection</h2>
+					<div class="row">
+						<div class="col-md-12">
+							<ul class="list-inline mrgn-bttm-0">
+								<li>
+									<a lang="fr" href="/fr/services/emplois/emplois-test.html">
+										<span class="hidden-xs" translate="no">Fran&ccedil;ais</span>
+										<abbr title="Fran&ccedil;ais" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase" translate="no">fr</abbr>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" resource="#wb-publisher" typeof="GovernmentOrganization">
+					<a href="/en.html" property="url">
+						<img src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg" alt="Government of Canada" property="logo"/>
+						<span class="wb-inv"> /
+
+							<span lang="fr">Gouvernement du Canada</span>
+						</span>
+					</a>
+					<meta property="name" content="Government of Canada"/>
+					<meta property="areaServed" typeof="Country" content="Canada"/>
+					<link property="logo" href="https://www.canada.ca//etc/designs/canada/wet-boew/assets/wmms-blk.svg"/>
+				</div>
+				<section id="wb-srch" class="col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-12 col-sm-5 col-md-4">
+					<h2>Search</h2>
+					<form action="/en/sr/srb.html" method="get" name="cse-search-box" role="search">
+						<div class="form-group wb-srch-qry">
+							<label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
+							<input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search Canada.ca" />
+							<datalist id="wb-srch-q-ac">
+							</datalist>
+						</div>
+						<div class="form-group submit">
+							<button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button>
+						</div>
+					</form>
+
+				</section>
+			</div>
+		</div>
+
+		<hr />
+
+		<div class="container">
+			<nav id="wb-bc" property="breadcrumb">
+				<h2 class="wb-inv">You are here:</h2>
+				<ol class="breadcrumb">
+					<li><a href='/en.html'>Canada.ca</a></li>
+				</ol>
+			</nav>
+		</div>
+	</header>
+</div>
+         
+      </header>
+      <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
+         <div class="mwsgeneric-base-html parbase section">
+
+
+
+    <div id="gridContainer">
+	<nav>
+		<div class="container">
+			<h2 class="wb-inv">Themes</h2>
+			<button id="menuBtn" class="btn btn-primary" type="button"><span class="wb-inv">Toggle </span>Menu<span class="glyphicon glyphicon-chevron-down"></span></button>
+			<ul id="theme-demo-nav-list" class="list-unstyled">
+				<li><a href="https://www.canada.ca/en/services/jobs.html">Jobs</a></li>
+				<li class="active"><a href="#">Immigration and citizenship</a></li>
+				<li><a href="https://travel.gc.ca/">Travel and tourism</a></li>
+				<li><a href="/en/services/business.html">Business and industry</a></li>
+				<li><a href="/en/services/benefits.html">Benefits</a></li>
+				<li><a href="/en/services/health.html">Health</a></li>
+				<li><a href="/en/services/taxes.html">Taxes</a></li>
+				<li><a href="/en/services/environment.html">Environment and natural resources</a></li>
+				<li><a href="/en/services/defence.html">National security and defence</a></li>
+				<li><a href="/en/services/culture.html">Culture, history and sport</a></li>
+				<li><a href="/en/services/policing.html">Policing, justice and emergencies</a></li>
+				<li><a href="/en/services/transport.html">Transport and infrastructure</a></li>
+				<li><a href="https://www.international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
+				<li><a href="/en/services/finance.html">Money and finances</a></li>
+				<li><a href="/en/services/science.html">Science and innovation</a></li>
+				<li><a href="/en/services/indigenous-peoples.html">Indigenous Peoples</a></li>
+				<li><a href="/en/services/veterans-military.html">Veterans and military</a></li>
+				<li><a href="/en/services/youth.html">Youth</a></li>
+			</ul>
+		</div>
+	</nav>
+	<section>
+		<div class="container">
+			<h1 id="wb-cont">Immigration and citizenship</h1>
+		</div>
+        <section class="provisional gc-most-requested brdr-0 infobg mrgn-bttm-0">
+			<div class="container">
+				<h2>Special measures</h2>
+				<ul>
+                    <li> <a href="/en/immigration-refugees-citizenship/services/haiti-2024.html">Haiti</a></li>
+                    <li><a href="/en/immigration-refugees-citizenship/services/iran.html">Iran</a></li>
+                    <li><a href="/en/immigration-refugees-citizenship/services/israel-west-bank-gaza-2023.html">Israel, the West Bank and the Gaza Strip</a></li>
+                    <li><a href="/en/immigration-refugees-citizenship/services/lebanon-2023.html">Lebanon</a>&nbsp;</li>
+                    <li><a href="/en/immigration-refugees-citizenship/services/sudan2023.html">Sudan</a>&nbsp;</li>
+                    <li> <a href="/en/immigration-refugees-citizenship/services/immigrate-canada/ukraine-measures.html">Ukraine</a></li>
+                    <li><a href="/en/immigration-refugees-citizenship/services/special-measures.html">See all special measures</a></li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="gc-most-requested">
+			<div class="container">
+				<h2>Most requested</h2>
+				<ul>
+                    <li> <a href="/en/immigration-refugees-citizenship/services/application/ircc-accounts.html">Sign in to your IRCC account</a> </li>
+                    <li> <a href="/en/immigration-refugees-citizenship/services/application/check-status.html">How to check your application status</a> </li>
+                    <li> <a href="/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check application processing times</a> </li>
+                    <li> <a href="/en/immigration-refugees-citizenship/services/application/application-forms-guides.html">Find an application form</a> </li>
+                    <li> <a href="https://ircc.canada.ca/english/information/fees/index.asp">Pay your fees</a> </li>
+                    <li> <a href="https://ircc.canada.ca/english/visit/visas.asp">Find out if you need an eTA or a visa to visit Canada</a> </li>
+                    <li> <a href="https://ircc.canada.ca/english/helpcentre/index-featured-can.asp">Have questions? Find answers in the Help Centre</a> </li>
+				</ul>
+			</div>
+		</section>
+		<div class="container">
+			<section class="gc-srvinfo">
+				<h2 class="wb-inv">Services and information</h2>
+<div class="wb-eqht-grd row">
+    <div class="col-md-6">
+        <h3><a href="/en/immigration-refugees-citizenship/services/application.html">My application</a></h3>
+        <p>Sign in to your IRCC account, check your application status and processing times, find forms, pay fees, change your address, get biometrics and learn about representatives</p>
+    </div>
+    <div class="col-md-6">
+        <h3><a href="/en/immigration-refugees-citizenship/services/visit-canada.html">Visit</a></h3>
+        <p>Apply for a visitor visa or electronic travel authorization (eTA) to enter Canada, and extend your stay as a visitor</p>
+    </div>
+    <div class="col-md-6">
+        <h3><a href="/en/immigration-refugees-citizenship/services/immigrate-canada.html">Immigrate</a></h3>
+        <p>Apply to immigrate to Canada through one of our permanent residence programs for skilled workers, family, entrepreneurs and more</p>
+    </div>
+    <div class="col-md-6">
+        <h3><a href="/en/immigration-refugees-citizenship/services/work-canada.html">Work</a></h3>
+        <p>Apply for or extend a work permit, learn about International Experience Canada and being a caregiver, get your credentials recognized, and hire foreign workers</p>
+    </div>
+    <div class="col-md-6">
+        <h3><a href="/en/immigration-refugees-citizenship/services/study-canada.html">Study</a></h3>
+        <p>Apply for or extend a study permit or student work permit</p>
+    </div>
+    <div class="col-md-6">
+        <h3><a href="/en/immigration-refugees-citizenship/services/canadian-citizenship.html">Citizenship</a></h3>
+        <p>Apply for, resume or give up Canadian citizenship, prepare for the citizenship test and get proof of citizenship</p>
+    </div>
+    <div class="col-md-6">
+        <h3><a href="/en/immigration-refugees-citizenship/services/new-immigrants.html">Settling in Canada</a></h3>
+        <p>Find immigrant services near you; prepare to arrive, work and live in Canada; and learn about the land, laws and life here</p>
+    </div>
+    <div class="col-md-6">
+        <h3><a href="/en/immigration-refugees-citizenship/services/new-immigrants/pr-card.html">Permanent resident cards and status</a></h3>
+        <p>Get your first card, renew or replace a card, travel outside Canada, record your trips, understand PR status, renounce your status</p>
+    </div>
+    <div class="col-md-6">
+        <h3><a href="/en/immigration-refugees-citizenship/services/canadians.html">Canadians</a></h3>
+        <p>Get a passport, sponsor your family or a refugee, get proof of citizenship, travel and work abroad, adopt a child from abroad, and take part in citizenship celebrations</p>
+    </div>
+    <div class="col-md-6">
+        <h3><a href="/en/immigration-refugees-citizenship/services/refugees.html">Refugees and asylum</a></h3>
+        <p>Claim refugee protection, sponsor a refugee, find services for refugees in Canada and appeal a refugee claim</p>
+    </div>
+    <div class="col-md-6">
+        <h3><a href="/en/services/immigration-citizenship/enforcement-violations.html">Inadmissibility, enforcement and violations</a></h3>
+        <p>Know why you may not be allowed in Canada, and learn about immigration violations, the detention review process and immigration admissibility hearings</p>
+    </div>
+    <div class="col-md-6">
+        <h3><a href="/en/immigration-refugees-citizenship/services/protect-fraud.html">Immigration fraud and scams</a></h3>
+        <p>Learn how to protect yourself from scammers and what to do if you are a victim of fraud</p>
+    </div>
+</div>
+
+			</section>
+		</div>
+	</section>
+</div>
+        <!-- CONTENT ENDS HERE -->
+
+
+            <div class="row row-no-gutters mrgn-tp-xl">
+                <div class="col-sm-7 col-lg-6">
+                    <section class="gc-pg-hlpfl provisional">
+                        <div class="well mrgn-bttm-0">
+                            <form id="gc-pg-hlpfl-frm" action="https://apps.canada.ca/x-notify/eml/send" method="post" autocomplete="off">
+                                <input type="hidden" name="pageTitle" value="Managing your business">
+                                <input type="hidden" name="submissionPage" value="covid-19-guidance/proto/business/maintaining-your-business.html">
+                                <input type="hidden" name="tid" value="tbs-wasthishelpfulen">
+                                <input type="hidden" name="auke" value="NTQxNzE1OTA3NTgwMDYyOTQ&#x3D;">
+                                <div class="gc-pg-hlpfl-btn">
+                                    <div class="row row-no-gutters">
+                                        <div class="col-xs-12 col-sm-7 mrgn-tp-sm">
+                                            <h2 class="mrgn-tp-sm h5">Did you find what you were looking for?</h2>
+                                        </div>
+                                        <div class="col-xs-8 col-sm-5 text-right">
+                                            <button data-wb5-click="postback@#gc-pg-hlpfl-frm@" type="submit" name="helpful" value="Yes" class="btn btn-primary" data-wb-doaction="[
+														{&quot;action&quot;:&quot;removeClass&quot;,&quot;source&quot;:&quot;.gc-pg-hlpfl-thnk&quot;,&quot;class&quot;:&quot;hide&quot;},
+														{&quot;action&quot;:&quot;addClass&quot;,&quot;source&quot;:&quot;#gc-pg-hlpfl-frm&quot;,&quot;class&quot;:&quot;hide&quot;}
+													]" data-gc-analytics-wtph>Yes</button>
+                                            <button type="button" class="btn btn-primary mrgn-lft-sm nojs-hide" data-wb-doaction="[
+														{&quot;action&quot;:&quot;ajax&quot;,&quot;url&quot;:&quot;/content/dam/canada/mws-swg/nohelpful.html&quot;,&quot;container&quot;:&quot;.gc-pg-hlpfl-yes&quot;},
+														{&quot;action&quot;:&quot;removeClass&quot;,&quot;source&quot;:&quot;.gc-pg-hlpfl-no&quot;,&quot;class&quot;:&quot;nojs-show&quot;},
+														{&quot;action&quot;:&quot;addClass&quot;,&quot;source&quot;:&quot;.gc-pg-hlpfl-btn&quot;,&quot;class&quot;:&quot;hide&quot;}
+													]" data-gc-analytics-wtph-no>No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="h3 hidden nojs-show">If not, tell us why:</p>
+                                <div class="gc-pg-hlpfl-no nojs-show">
+                                    <fieldset>
+                                        <legend class="h4 mrgn-tp-0 mrgn-bttm-md">What was wrong?</legend>
+                                        <div class="radio">
+                                            <label for="problem1">
+                                                <input name="problem" id="problem1" type="radio"
+                                                    value="The answer I need is missing"
+                                                    data-gc-analytics-wtph-value="The answer I need is missing-La réponse dont j’ai besoin n’est pas là"
+                                                    data-gc-analytics-collect="notPrivate">
+                                                The answer I need is missing
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label for="problem2">
+                                                <input name="problem" id="problem2" type="radio"
+                                                    value="The information isn’t clear"
+                                                    data-gc-analytics-wtph-value="The information isn’t clear-L'information n'est pas claire"
+                                                    data-gc-analytics-collect="notPrivate">
+                                                The information isn’t clear
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label for="problem3">
+                                                <input name="problem" id="problem3" type="radio"
+                                                    value="I’m not in the right place"
+                                                    data-gc-analytics-wtph-value="I’m not in the right place-Je ne suis pas au bon endroit"
+                                                    data-gc-analytics-collect="notPrivate">
+                                                I’m not in the right place
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label for="problem4">
+                                                <input name="problem" id="problem4" type="radio"
+                                                    value="Something is broken or incorrect"
+                                                    data-gc-analytics-wtph-value="Something is broken or incorrect-Quelque chose est brisé ou incorrect"
+                                                    data-gc-analytics-collect="notPrivate">
+                                                Something is broken or incorrect
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label for="problem5">
+                                                <input name="problem" id="problem5" type="radio" value="Other reason"
+                                                    data-gc-analytics-wtph-value="Other reason-Autre raison"
+                                                    data-gc-analytics-collect="notPrivate">
+                                                Other reason
+                                            </label>
+                                        </div>
+                                    </fieldset>
+                                    <label for="problem6" class="mrgn-bttm-0">Please provide more details</label>
+                                    <p class="small">
+                                        <strong>(Don’t include any personal information)</strong>
+                                        <br>
+                                        <span class="small">Maximum 300 characters</span>
+                                    </p>
+                                    <textarea id="problem6" name="details" class="full-width" maxlength="300"></textarea>
+                                    <button data-wb5-click="postback@#gc-pg-hlpfl-frm@" type="submit" name="helpful" value="No" class="btn btn-primary mrgn-tp-md mrgn-bttm-sm" data-wb-doaction="[
+												{&quot;action&quot;:&quot;removeClass&quot;,&quot;source&quot;:&quot;.gc-pg-hlpfl-thnk&quot;,&quot;class&quot;:&quot;hide&quot;},
+												{&quot;action&quot;:&quot;addClass&quot;,&quot;source&quot;:&quot;#gc-pg-hlpfl-frm&quot;,&quot;class&quot;:&quot;hide&quot;}
+											]" data-gc-analytics-wtph-submit>Submit</button>
+                                </div>
+                                <div class="gc-pg-hlpfl-yes">
+                                    <input type="hidden" name="helpful" value="Yes">
+                                </div>
+                            </form>
+                            <div class="gc-pg-hlpfl-thnk hide">
+                                <p class="h6 mrgn-tp-sm mrgn-bttm-sm"><span class="far fa-check-circle text-success mrgn-rght-sm" aria-hidden="true"></span> Thank you for your feedback</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-sm-3 col-sm-offset-1 col-lg-offset-3">
+                    <div class="wb-share" data-wb-share="{&quot;pnlId&quot;:&quot;pnlShrPg&quot;, &quot;lnkClass&quot;: &quot;btn btn-default btn-block mrgn-tp-md&quot;}">
+                    </div>
+                </div>
+            </div>
+
+            <!--update references-->
+
+       
+
+       
+
+        <div class="pagedetails">
+            <dl id="wb-dtmd">
+                <dt>Date modified:</dt>
+                <dd><time property="dateModified">2021-11-30</time></dd>
+            </dl>
+        </div>
+        </div>
+    </main>
+
+
+    <div class="par iparys_inherited">
+
+        <div class="global-footer">
+            <footer id="wb-info">
+                <h2 class="wb-inv">About this site</h2>
+                <div class="gc-contextual">
+                    <div class="container">
+                        <nav>
+                            <h3>Immigration and citizenship</h3>
+                            <ul class="list-col-xs-1 list-col-sm-2 list-col-md-3">
+                                <li><a href="https://ircc.canada.ca/english/helpcentre/index-featured-can.asp">Help Centre</a></li>
+
+                                <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc.html">Contact us</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="gc-main-footer">
+                    <div class="container">
+                        <nav>
+                            <h3>Government of Canada</h3>
+                            <ul class="list-unstyled colcount-sm-2 colcount-md-3">
+                                <li><a href="https://www.canada.ca/en/contact.html">All contacts</a></li>
+                                <li><a href="https://www.canada.ca/en/government/dept.html">Departments and agencies</a></li>
+                                <li><a href="https://www.canada.ca/en/government/system.html">About government</a></li>
+                            </ul>
+                            <h4><span class="wb-inv">Themes and topics</span></h4>
+                            <ul class="list-unstyled colcount-sm-2 colcount-md-3">
+                                <li><a href="https://www.canada.ca/en/services/jobs.html">Jobs</a></li>
+                                <li><a href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+                                <li><a href="https://travel.gc.ca/">Travel and tourism</a></li>
+                                <li><a href="https://www.canada.ca/en/services/business.html">Business</a></li>
+                                <li><a href="https://www.canada.ca/en/services/benefits.html">Benefits</a></li>
+                                <li><a href="https://www.canada.ca/en/services/health.html">Health</a></li>
+                                <li><a href="https://www.canada.ca/en/services/taxes.html">Taxes</a></li>
+                                <li><a href="https://www.canada.ca/en/services/environment.html">Environment and natural resources</a></li>
+                                <li><a href="https://www.canada.ca/en/services/defence.html">National security and defence</a></li>
+                                <li><a href="https://www.canada.ca/en/services/culture.html">Culture, history and sport</a></li>
+                                <li><a href="https://www.canada.ca/en/services/policing.html">Policing, justice and emergencies</a></li>
+                                <li><a href="https://www.canada.ca/en/services/transport.html">Transport and infrastructure</a></li>
+                                <li><a href="https://international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
+                                <li><a href="https://www.canada.ca/en/services/finance.html">Money and finance</a></li>
+                                <li><a href="https://www.canada.ca/en/services/science.html">Science and innovation</a></li>
+                                <li><a href="https://www.canada.ca/en/services/indigenous-peoples.html">Indigenous peoples</a></li>
+                                <li><a href="https://www.canada.ca/en/services/veterans.html">Veterans and military</a></li>
+                                <li><a href="https://www.canada.ca/en/services/youth.html">Youth</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                </div>
+                <div class="gc-sub-footer">
+                    <div class="container d-flex align-items-center">
+                        <nav>
+                            <h3 class="wb-inv">Government of Canada Corporate</h3>
+                            <ul>
+
+                                <li><a href="https://www.canada.ca/en/social.html">Social media</a></li>
+                                <li><a href="https://www.canada.ca/en/mobile.html">Mobile applications</a></li>
+                                <li><a href="https://www.canada.ca/en/government/about.html">About Canada.ca</a></li>
+
+                                <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+                                <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
+                            </ul>
+                        </nav>
+                        <div class="wtrmrk align-self-end">
+                            <img src="https://www.canada.ca//etc/designs/canada/wet-boew/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
+<script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
+<script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
+
+<script>
+    document.body.classList.add("page-type-theme");
+    $(document).ready(function() {
+    
+    ( function( $, window, wb ) {
+    "use strict";
+    
+    var $document = wb.doc,
+        componentName = "page-type-theme",
+        selector = "." + componentName,
+        initEvent = "wb-init " + selector,
+    
+        /**
+         * @method init
+         * @param {jQuery Event} event Event that triggered the function call
+         */
+        init = function( event ) {
+    
+            // Start initialization
+            // returns DOM object = proceed with init
+            // returns undefined = do not proceed with init (e.g., already initialized)
+            var elm = wb.init( event, componentName, selector );
+    
+            if ( elm && event.currentTarget === event.target ) {
+    
+                let themeMenuBtn = document.querySelector( "#menuBtn" ),
+                    themeMenuIcon = themeMenuBtn.querySelector( ".glyphicon" ),
+                    themeNavUL = document.querySelector( "#gridContainer > nav ul" ),
+                    activePageLink = themeNavUL.querySelector( ".active a" );
+    
+                themeNavUL.id = themeNavUL.id || wb.getId();
+                activePageLink.setAttribute( "aria-current", "page" );
+                themeMenuBtn.setAttribute( "aria-controls", themeNavUL.id );
+                themeMenuBtn.setAttribute( "aria-expanded", "false" );
+                themeMenuIcon.setAttribute( "aria-hidden", "true" );
+    
+                // Identify that initialization has completed
+                wb.ready( $( elm ), componentName );
+            }
+        };
+    
+    // Bind the init event of the plugin
+    $document.on( "timerpoke.wb " + initEvent, selector, init );
+    
+    // On click of the menu button
+    $document.on( "click", "#menuBtn", function( event ) {
+        let themeMenuBtn = event.currentTarget;
+    
+        if ( themeMenuBtn.getAttribute( "aria-expanded" ) === "true" ) {
+            themeMenuBtn.setAttribute( "aria-expanded", "false" );
+            themeMenuBtn.classList.remove( "expanded" );
+        } else {
+            themeMenuBtn.setAttribute( "aria-expanded", "true" );
+            themeMenuBtn.classList.add( "expanded" );
+        }
+    } );
+    
+    // Add the timer poke to initialize the plugin
+    wb.add( selector );
+    
+    } )( jQuery, window, wb );
+    
+    })
+    </script>
+
+<script>
+
+    // CSS rules
+    var rule  = '.infobg { background-color:#d9edf7 !important; margin-bottom: 0px !important; padding: 6px !important; }';
+    
+    function addCss(rule) {
+      let css = document.createElement('style');
+      css.type = 'text/css';
+      if (css.styleSheet) css.styleSheet.cssText = rule; // Support for IE
+      else css.appendChild(document.createTextNode(rule)); // Support for the rest
+      document.getElementsByTagName("head")[0].appendChild(css);
+    }
+        
+    
+    // Load the rules and execute after the DOM loads
+    window.onload = function() {addCss(rule)};
+    
+    
+    var width = (window.innerWidth > 0) ? window.innerWidth : 
+     document.documentElement.clientWidth;
+    var ht;
+    if(width > 1024)
+    {
+    ht=$("#alerts").height();
+    } 
+    else 
+    {
+    ht=100;
+    }    
+    
+    ht=ht-27;
+    ht=ht+"px";
+    $(".icon").css("line-height",ht);
+    $(".icon").css("vertical-align", "middle");
+    
+    </script>
+</body>
+
+</html>
