@@ -10,7 +10,7 @@
     <meta name="keywords" content="data">
     <meta name="author" content="IRCC">
     <meta name="dcterms.title" content="Tableau de bord de la santé web d’IRCC">
-    <meta property="dcterms:modified" title="W3CDTF" content="2024-12-10" />
+    <meta property="dcterms:modified" title="W3CDTF" content="2025-01-08" />
 
 
     <title>Tableau de bord de la santé web d’IRCC — Canada.ca</title>
@@ -187,7 +187,6 @@
                                                 <details>
                                                     <summary>Thème</summary>
                                                     <div class="btn-group btn-group-lang">
-                                                    </div>
                                                     <button class="btn btn-default btn-topic-french active" type="button" data-wb-doaction='[
                                                     {"action":"addClass", "class":"hidden", "source":"#topic-english"},
                                                     {"action":"removeClass", "class":"hidden", "source":"#topic-french"},
@@ -201,6 +200,7 @@
                                                 {"action":"removeClass", "class":"active", "source":".btn-topic-french"}
                                             ]'>Anglais</button>
 
+                                        </div>
                                                     <div id="topic-french">
                                                         <canvas id="top-topic-chart-fr"></canvas>
                                                         <details>
@@ -338,30 +338,30 @@
                                                 {"action":"removeClass", "class":"active", "source":".btn-study-english"},
                                                 {"action":"addClass", "class":"active", "source":".btn-study-french"}
                                             ]'>Français</button>
-                                                        <div class="btn-group btn-group-lang">
-                                                            <button class="btn btn-default btn-study-english " type="button" data-wb-doaction='[
+
+                                                        <button class="btn btn-default btn-study-english " type="button" data-wb-doaction='[
                                                 {"action":"removeClass", "class":"hidden", "source":"#study-english"},
                                                 {"action":"addClass", "class":"hidden", "source":"#study-french"},
                                                 {"action":"addClass", "class":"active", "source":".btn-study-english"},
                                                 {"action":"removeClass", "class":"active", "source":".btn-study-french"}
                                             ]'>Anglais</button>
-                                                        </div>
-                                                        <div id="study-english" class="hidden"> <canvas id="top-study-chart-en"></canvas>
-                                                            <details>
-                                                                <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Étudier au Canada&nbsp;&raquo; (français)</summary>
-                                                                <div class="table-responsive">
-                                                                    <table id="top-study-table-en" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
-                                                                </div>
-                                                            </details>
-                                                        </div>
-                                                        <div id="study-french"><canvas id="top-study-chart-fr"></canvas>
-                                                            <details>
-                                                                <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Étudier au Canada&nbsp;&raquo; (français)</summary>
-                                                                <div class="table-responsive">
-                                                                    <table id="top-study-table-fr" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
-                                                                </div>
-                                                            </details>
-                                                        </div>
+                                                    </div>
+                                                    <div id="study-english" class="hidden"> <canvas id="top-study-chart-en"></canvas>
+                                                        <details>
+                                                            <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Étudier au Canada&nbsp;&raquo; (français)</summary>
+                                                            <div class="table-responsive">
+                                                                <table id="top-study-table-en" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
+                                                            </div>
+                                                        </details>
+                                                    </div>
+                                                    <div id="study-french"><canvas id="top-study-chart-fr"></canvas>
+                                                        <details>
+                                                            <summary>Version texte&nbsp;: Liens les plus cliqués sur la page &laquo;&nbsp;Étudier au Canada&nbsp;&raquo; (français)</summary>
+                                                            <div class="table-responsive">
+                                                                <table id="top-study-table-fr" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
+                                                            </div>
+                                                        </details>
+                                                    </div>
 
                                                 </details>
                                             </div>
