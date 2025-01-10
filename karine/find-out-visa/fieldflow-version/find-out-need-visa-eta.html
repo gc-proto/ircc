@@ -1,0 +1,586 @@
+<!doctype html>
+<html class="no-js" dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head prefix="og: http://ogp.me/ns#">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+
+  <!-- CONFIGURATIONS START HERE -->
+  <title>Find out if you need a visa to travel to Canada - Canada.ca</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <script id="pageConstants">
+    let pageConstants = {
+      pageFeedbackTool: true, // true | false; Set to 'true' if adding the Page Feedback tool to bottom of page
+      alternateLanguageURL: "#", // URL; Add the English or French URL link
+      dateModified: "2024-12-12", // YYYY-MM-DD
+      fluidWidth: true, // true | false; Set to 'true' if you will be using full width elements like bands.
+      breadcrumbs: { //use "title":"url" in order of appearance or leave blank if none, ex.: 
+        "Visit Canada": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html",
+        // "Visitor visa (temporary resident visa)":"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/visitor-visa.html"
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" crossorigin="anonymous">
+  <!-- CONFIGURATIONS END HERE -->
+  <script src="https://test.canada.ca/ircc/templates/js/template.js" type="text/javascript" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
+  </noscript>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body vocab="http://schema.org/" typeof="WebPage">
+
+  <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
+
+    <div class="gradient-container">
+      <div class="container">
+        <!--CONTENT STARTS HERE-->
+        <h1 property="name" id="wb-cont" dir="ltr">Find out if you need a visa to travel to Canada</h1>
+        <!--CONTENT ENDS HERE-->
+        <div class="tool-container mrgn-tp-xl">
+
+          <div class="wb-frmvld">
+            <form id="find-out-form">
+              <div class="wb-fieldflow" data-wb-fieldflow='{
+              "renderas": "radio",
+              "gcChckbxrdio":true,
+              "isoptional": true,
+              "noreqlabel": true,
+              "noForm": true,
+              "live": true,
+              "base": {"live": true}
+            }'>
+                <p>What travel document do you plan to use to travel to Canada?</p>
+                <ul>
+                  <li>Passport
+                    <div class="wb-fieldflow-sub" data-wb-fieldflow='{
+                    "renderas":"datalist"
+                  }'>
+                      <div class="wb-fieldflow-header">
+                        <p class="wb-fieldflow-label">Select the country code that matches the one on your passport</p>
+                        <div class="row mrgn-tp-lg">
+                          <div class="col-md-3"><img src="https://www.cic.gc.ca/english/visit/images/passport-country-gbr-large.jpg" alt="Sample passport information page highlighting three letter country code" class="img-responsive mrgn-bttm-md"></div>
+                          <div class="col-md-7">
+                            <p>You can find the country code on your passport. Be careful when you select your country. Some countries have multiple options and codes are quite similar.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <ul>
+                        <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#test"}'>AFG (Afghanistan)</li>
+                        <li>AGO (Angola)</li>
+                        <li>ALB (Albania)</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>Alien’s passport for stateless persons</li>
+                  <li>Permit to re-enter the US (I-327)</li>
+                  <li>US Refugee Travel Document (I-571)</li>
+                  <li>Other refugee travel document for non-citizens</li>
+                </ul>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="test" class="hidden">bla bla</div>
+
+
+  </main>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
+  <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
+  <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
+  <script src="https://test.canada.ca/ircc/templates/js/components.js" type="text/javascript" defer></script>
+  <!-- <script src="fieldflow-mod.js"></script> -->
+  <script>
+    $(document).on("wb-ready.wb-fieldflow", ".wb-fieldflow", function (event) {
+      console.log('test')
+      componentName = "wb-fieldflow"
+      selector = "." + componentName
+      formComponent = componentName + "-form"
+      subComponentName = componentName + "-sub"
+      crtlSelectClass = componentName + "-init"
+      crtlSelectSelector = "." + crtlSelectClass
+      basenameInput = componentName + wb.getId()
+      basenameInputSelector = "[name^=" + basenameInput + "]"
+      labelClass = componentName + "-label"
+      headerClass = componentName + "-header"
+      selectorForm = "." + formComponent
+      initEvent = "wb-init" + selector
+      drawEvent = "draw" + selector
+      actionEvent = "action" + selector
+      submitEvent = "submit" + selector
+      submitedEvent = "submited" + selector
+      readyEvent = "ready" + selector
+      cleanEvent = "clean" + selector
+      resetActionEvent = "reset" + selector
+      createCtrlEvent = "createctrl" + selector
+      registerJQData = componentName + "-register" // Data that contain all the component registered (to the form element and component), used for executing action upon submit
+      registerHdnFld = componentName + "-hdnfld"
+      configData = componentName + "-config"
+      pushJQData = componentName + "-push"
+      submitJQData = componentName + "-submit" // List of action to perform upon form submission
+      actionData = componentName + "-action" // temp for code transition
+      originData = componentName + "-origin" // To carry the plugin origin ID, any implementation of "createCtrlEvent" must set that option.
+      sourceDataAttr = "data-" + componentName + "source"
+      flagOptValueData = componentName + "-flagoptvalue"
+      $document = wb.doc
+      defaults = {
+        toggle: {
+          stateOn: "visible", // For toggle plugin
+          stateOff: "hidden"  // For toggle plugin
+        },
+        i18n:
+        {
+          "en": {
+            btn: "Continue", // Action button
+            defaultsel: "Make your selection...", // text use for the first empty select
+            required: "required"// text for the required label
+          },
+          "fr": {
+            btn: "Allez",
+            defaultsel: "Sélectionnez dans la liste...", // text use for the first empty select
+            required: "obligatoire" // text for the required label
+          }
+        },
+        action: "ajax",
+        prop: "url"
+      }
+      fieldflowActionsEvents = [
+        [
+          "redir",
+          "query",
+          "ajax",
+          "addClass",
+          "removeClass",
+          "removeClass",
+          "append",
+          "tblfilter",
+          "toggle"
+        ].join("." + actionEvent + " ") + "." + actionEvent,
+        [
+          "ajax",
+          "toggle",
+          "redir",
+          "addClass",
+          "removeClass"
+        ].join("." + submitEvent + " ") + "." + submitEvent,
+        [
+          "tblfilter",
+          componentName
+        ].join("." + drawEvent + " ") + "." + drawEvent,
+        [
+          "select",
+          "checkbox",
+          "radio",
+          "datalist"
+        ].join("." + createCtrlEvent + " ") + "." + createCtrlEvent
+      ].join(" ")
+
+
+
+      $document.on(fieldflowActionsEvents, selector, function (event, data) {
+        console.log(data)
+        var eventType = event.type;
+
+        switch (event.namespace) {
+          case drawEvent:
+            switch (eventType) {
+              case componentName:
+                drwFieldflow(event, data);
+                break;
+              case "tblfilter":
+                drwTblFilter(event, data);
+                break;
+            }
+            break;
+
+          case createCtrlEvent:
+            switch (eventType) {
+              case "datalist":
+                console.log(data)
+                data.typeRadCheck = "datalist";
+                ctrlDatalist(event, data);
+                break;
+            }
+            break;
+
+          case actionEvent:
+            switch (eventType) {
+              case "append":
+                actAppend(event, data);
+                break;
+              case "redir":
+                pushData($(data.provEvt), submitJQData, data, true);
+                break;
+              case "ajax":
+                actAjax(event, data);
+                break;
+              case "tblfilter":
+                actTblFilter(event, data);
+                break;
+              case "toggle":
+                if (data.live) {
+                  subToggle(event, data);
+                } else {
+                  data.preventSubmit = true;
+                  pushData($(data.provEvt), submitJQData, data);
+                }
+                break;
+              case "addClass":
+                if (!data.source || !data.class) {
+                  return;
+                }
+                if (data.live) {
+                  $(data.source).addClass(data.class);
+                } else {
+                  data.preventSubmit = true;
+                  pushData($(data.provEvt), submitJQData, data);
+                }
+                break;
+              case "removeClass":
+                if (!data.source || !data.class) {
+                  return;
+                }
+                if (data.live) {
+                  $(data.source).removeClass(data.class);
+                } else {
+                  data.preventSubmit = true;
+                  pushData($(data.provEvt), submitJQData, data);
+                }
+                break;
+              case "query":
+                actQuery(event, data);
+                break;
+            }
+            break;
+
+          case submitEvent:
+            switch (eventType) {
+              case "redir":
+                subRedir(event, data);
+                break;
+              case "ajax":
+                subAjax(event, data);
+                break;
+              case "toggle":
+                subToggle(event, data);
+                break;
+              case "addClass":
+                $(data.source).addClass(data.class);
+                break;
+              case "removeClass":
+                $(data.source).removeClass(data.class);
+                break;
+              case "query":
+                actQuery(event, data);
+                break;
+            }
+            break;
+        }
+
+
+
+      });
+      pushData = function ($elm, prop, data, reset) {
+        var dtCache = $elm.data(prop);
+        if (!dtCache || reset) {
+          dtCache = [];
+        }
+        dtCache.push(data);
+        return $elm.data(prop, dtCache);
+      },
+      actAppend = function( event, data ) {
+            if ( event.namespace === actionEvent ) {
+                var srctype = data.srctype ? data.srctype : componentName;
+                data.container = data.provEvt.parentNode.id;
+                if ( !data.source ) {
+                    throw "A source is required to append a field flow control.";
+                }
+                $( event.currentTarget ).trigger( srctype + "." + drawEvent, data );
+            }
+        },
+      drwFieldflow = function( event, data ) {
+            if ( event.namespace === drawEvent ) {
+                var elm = event.target,
+                    $elm = $( elm ),
+                    wbDataElm,
+                    $source = $( data.source ),
+                    source = $source.get( 0 ),
+                    $labelExplicit, $firstChild,
+                    labelSelector = data.lblselector || "." + labelClass,
+                    labelTxt,
+                    itmSelector = data.itmselector || "ul:first() > li", $items,
+                    actions,
+                    renderas;
+    
+                // Extend if it is a sub-component
+                if ( $source.hasClass( subComponentName ) ) {
+                    wbDataElm = wb.getData( $source, componentName );
+                    $source.data( configData, wbDataElm );
+                    data = $.extend( {}, data, wbDataElm );
+                }
+    
+                actions = data.actions || [ ];
+                renderas = data.renderas ? data.renderas : "select"; // Default it will render as select
+    
+                // Check if the first node is a div and contain the label.
+                if ( !source.id ) {
+                    source.id = wb.getId();
+                }
+                $firstChild = $source.children().first();
+    
+                if ( !$firstChild.hasClass( headerClass ) ) {
+    
+                    // Only use what defined as the label, nothing else
+                    $labelExplicit = $firstChild.find( labelSelector );
+                    if ( $labelExplicit.length ) {
+                        labelTxt = $labelExplicit.html();
+                    } else {
+                        labelTxt = $source.find( "> p" ).html();
+                    }
+                    labelSelector = null; // unset the label selector because it not needed for the control creation
+                } else {
+                    labelTxt = $firstChild.html();
+                    itmSelector = "." + headerClass + " + " + itmSelector;
+                }
+    
+                $items = getItemsData( $source.find( itmSelector ) );
+    
+                if ( !data.outputctnrid ) {
+                    data.outputctnrid = data.provEvt.parentElement.id;
+                }
+    
+                $elm.trigger( renderas + "." + createCtrlEvent, {
+                    actions: actions,
+                    source: source,
+                    attributes: data.attributes,
+                    outputctnrid: data.outputctnrid,
+                    label: labelTxt,
+                    lblselector: labelSelector,
+                    defaultselectedlabel: data.defaultselectedlabel,
+                    required: !data.isoptional,
+                    noreqlabel: data.noreqlabel,
+                    items: $items,
+                    inline: data.inline,
+                    gcChckbxrdio: data.gcChckbxrdio,
+                    showLabel: data.showLabel
+                } );
+            }
+        },
+        ctrlDatalist = function (event, data) {
+          var bodyId = data.outputctnrid,
+            $body = $("#" + bodyId),
+            actions = data.actions,
+            lblselector = data.lblselector,
+            isReq = !!data.required,
+            useReqLabel = !data.noreqlabel,
+            items = data.items,
+            elm = event.target,
+            $elm = $(elm),
+            source = data.source,
+            attributes = data.attributes,
+            i18n = $elm.data(configData).i18n,
+            autoID = wb.getId(),
+            labelPrefix = "<label for='" + autoID + "'",
+            labelInvisible = (data.inline && !data.showLabel) ? " wb-inv" : "",
+            labelSuffix = "</span>",
+            $out, $tmpLabel,
+            selectOut, $selectOut,
+            defaultSelectedLabel = (data.defaultselectedlabel || (data.defaultselectedlabel === false && !data.live)) ? data.defaultselectedlabel : i18n.defaultsel,
+            i, i_len, j, j_len, cur_itm;
+
+          // Create the label
+          if (isReq && useReqLabel) {
+            labelPrefix += " class='required" + labelInvisible + "'";
+            labelSuffix += " <strong class='required'>(" + i18n.required + ")</strong>";
+          }
+          labelPrefix += "><span class='field-name'>";
+          labelSuffix += "</label>";
+
+          if (!lblselector) {
+            $out = $(labelPrefix + data.label + labelSuffix);
+          } else {
+            $out = $("<div>" + data.label + "</div>");
+            $tmpLabel = $out.find(lblselector);
+            $tmpLabel.html(labelPrefix + $tmpLabel.html() + labelSuffix);
+          }
+
+          // Create the select
+          selectOut = `<input type="text" id="${autoID}" name="${autoID}" list="${autoID}-datalist" />` + "<datalist id='" + autoID + "-datalist' name='" + basenameInput + autoID + "-datalist'>";
+
+          // Add a empty default if not false.
+
+          for (i = 0, i_len = items.length; i !== i_len; i += 1) {
+            cur_itm = items[i];
+
+            // Make the first item selected, if no default label
+            if (!(i || defaultSelectedLabel)) {
+              cur_itm.isSelected = true;
+            }
+
+            if (!cur_itm.group) {
+              selectOut += buildDatalistOption(cur_itm);
+            } else {
+
+              // We have a group of sub-items, the cur_itm are a group
+              selectOut += "<optgroup label='" + wb.escapeAttribute(stripHtml(cur_itm.label)) + "'>";
+              j_len = cur_itm.group.length;
+              for (j = 0; j !== j_len; j += 1) {
+                selectOut += buildDatalistOption(cur_itm.group[j]);
+              }
+              selectOut += "</optgroup>";
+            }
+          }
+          selectOut += "</datalist>";
+          $selectOut = $(selectOut);
+
+          $body.append($out).append($selectOut);
+
+          // Set post action if any
+          if (actions && actions.length > 0) {
+            $selectOut.data(pushJQData, actions);
+          }
+
+          // Register this control
+          pushData($elm, registerJQData, autoID);
+
+          // If selected default, run a change events
+          if (!defaultSelectedLabel) {
+            $selectOut.trigger("change");
+          }
+        },
+        getItemsData = function( $items, preventRecusive ) {
+            var arrItems = $items.get(),
+                i, i_len = arrItems.length, itmCached,
+                itmLabel, itmValue, grpItem,
+                j, j_len, childNodes, firstNode, firstElmNode, childNode, $childNode, childNodeID,
+                parsedItms = [],
+                actions;
+    
+            for ( i = 0; i !== i_len; i += 1 ) {
+                itmCached = arrItems[ i ];
+    
+                itmValue = "";
+                grpItem = null;
+                itmLabel = "";
+    
+                firstNode = itmCached.firstChild;
+                firstElmNode = itmCached.firstElementChild;
+                childNodes = itmCached.childNodes;
+                j_len = childNodes.length;
+    
+                if ( !firstNode ) {
+                    throw "You have a markup error, There may be an empyt <li> elements in your list.";
+                }
+    
+                actions = [];
+    
+                // Is firstElmNode an anchor?
+                if ( firstElmNode && firstElmNode.nodeName === "A" ) {
+                    itmValue = firstElmNode.getAttribute( "href" );
+                    itmLabel = $( firstElmNode ).html().trim();
+                    j_len = 1; // Force following elements to be ignored
+    
+                    actions.push( {
+                        action: "redir",
+                        url: itmValue
+                    } );
+                }
+    
+                // Iterate until we have found the labelClass or <ul> or element with subSelector or end of the array
+                for ( j = 1; j !== j_len; j += 1 ) {
+                    childNode = childNodes[ j ];
+                    $childNode = $( childNode );
+    
+                    // Sub plugin
+                    if ( $childNode.hasClass( subComponentName ) ) {
+                        childNodeID = childNode.id || wb.getId();
+                        childNode.id = childNodeID;
+                        itmValue = componentName + "-" + childNodeID;
+    
+                        actions.push( {
+                            action: "append",
+                            srctype: componentName,
+                            source: "#" + childNodeID
+                        } );
+                        break;
+                    }
+    
+                    // Grouping
+                    if ( childNode.nodeName === "UL" ) {
+                        if ( preventRecusive ) {
+                            throw "Recursive error, please check your code";
+                        }
+                        grpItem = getItemsData( $childNode.children(), true );
+                    }
+    
+                    // Explicit label to use
+                    if ( $childNode.hasClass( labelClass ) ) {
+                        itmLabel = $childNode.html();
+                    }
+                }
+    
+                if ( !itmLabel ) {
+                    const $itmCachedClean = $( itmCached ).clone();
+    
+                    // Remove nested structure in grouping (ul) and nesting (.wb-fieldflow-sub) scenarios
+                    $itmCachedClean.children( "ul, .wb-fieldflow-sub" ).remove();
+    
+                    itmLabel = $itmCachedClean.html().trim();
+                }
+    
+                // Set an id on the element
+                if ( !itmCached.id ) {
+                    itmCached.id = wb.getId();
+                }
+    
+                // Return the item parsed
+                parsedItms.push( {
+                    "bind": itmCached.id,
+                    "label": itmLabel,
+                    "actions": actions,
+                    "group": grpItem
+                } );
+            }
+            return parsedItms;
+        },
+        buildDatalistOption = function (data) {
+          var label = stripHtml(data.label),
+            out = "<option value='" + wb.escapeAttribute(label) + "'";
+
+          out += buildDataAttribute(data);
+
+          out += ">" + label + "</option>";
+
+          return out;
+        },
+        buildDataAttribute = function (data) {
+          var out = "",
+            dataFieldflow = {};
+
+          dataFieldflow.bind = data.bind || "";
+          dataFieldflow.actions = data.actions || [];
+
+          out += " data-" + componentName + "='" + JSON.stringify(dataFieldflow) + "'";
+
+          return out;
+        },
+
+        // Strip HTML markup from strings
+        // Created by Chris Coyier via CSS-Tricks (https://css-tricks.com/snippets/javascript/strip-html-tags-in-javascript/)
+        stripHtml = function (str) {
+          return str.replace(/(<([^>]+)>)/gi, "");
+        };
+    });
+  </script>
+</body>
+
+</html>
