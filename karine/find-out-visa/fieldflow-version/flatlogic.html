@@ -98,32 +98,36 @@
                     {"action":"append", "source":"#question-purpose_of_travel"}
                   ]'>US citizen</li>
                   <li data-wb-fieldflow='[
-                  {"action":"removeClass", "class":"hidden", "source":"#result-GeneralUSPR", "target":"question-purpose_of_travel-tourist"},
-                  {"action":"removeClass", "class":"hidden", "source":"#result-GeneralUSPR", "target":"question-purpose_of_travel-transit"},
-                  {"action":"removeClass", "class":"hidden", "source":"#result-GeneralUSPR", "target":"question-purpose_of_travel-business"},
+                      {"action":"removeClass", "class":"hidden", "source":"#result-GeneralUSPR", "target":"question-purpose_of_travel-tourist"},
+                      {"action":"removeClass", "class":"hidden", "source":"#result-GeneralUSPR", "target":"question-purpose_of_travel-transit"},
+                      {"action":"removeClass", "class":"hidden", "source":"#result-GeneralUSPR", "target":"question-purpose_of_travel-business"},
 
-                  {"action":"append", "source":"#question-family", "target":"question-purpose_of_travel-family"},
-                  {"action":"removeClass", "class":"hidden", "source":"#result-supervisa-USPR", "target":"question-family-yes"},
-                  {"action":"removeClass", "class":"hidden", "source":"#result-GeneralUSPR", "target":"question-family-no"},
-                
-                  {"action":"append", "source":"#question-study", "target":"question-purpose_of_travel-study"},
-                  {"action":"removeClass", "class":"hidden", "source":"#result-study-first_permit-USPR", "target":"question-study-appying_for_first_permit"},
-                  {"action":"removeClass", "class":"hidden", "source":"#result-study-have_permit-USPR", "target":"question-study-already_have_first_permit"},
-                  {"action":"removeClass", "class":"hidden", "source":"#result-study-extend_permit-USPR", "target":"question-study-extend"},
-                  {"action":"removeClass", "class":"hidden", "source":"#result-study-eligible_without_permit-USPR", "target":"question-study-eligible_without_permit"},
-                  {"action":"removeClass", "class":"hidden", "source":"#result-study-not_sure-USPR", "target":"question-study-not_sure"},
+                      {"action":"append", "source":"#question-family", "target":"question-purpose_of_travel-family"},
+                      {"action":"removeClass", "class":"hidden", "source":"#result-supervisa-USPR", "target":"question-family-yes"},
+                      {"action":"removeClass", "class":"hidden", "source":"#result-GeneralUSPR", "target":"question-family-no"},
+                    
+                      {"action":"append", "source":"#question-study", "target":"question-purpose_of_travel-study"},
+                      {"action":"removeClass", "class":"hidden", "source":"#result-study-first_permit-USPR", "target":"question-study-appying_for_first_permit"},
+                      {"action":"removeClass", "class":"hidden", "source":"#result-study-have_permit-USPR", "target":"question-study-already_have_first_permit"},
+                      {"action":"removeClass", "class":"hidden", "source":"#result-study-extend_permit-USPR", "target":"question-study-extend"},
+                      {"action":"removeClass", "class":"hidden", "source":"#result-study-eligible_without_permit-USPR", "target":"question-study-eligible_without_permit"},
+                      {"action":"removeClass", "class":"hidden", "source":"#result-study-not_sure-USPR", "target":"question-study-not_sure"},
 
 
-                  {"action":"append", "source":"#question-work", "target":"question-purpose_of_travel-work"},
-                  {"action":"removeClass", "class":"hidden", "source":"#result-work-first_permit-USPR", "target":"question-work-appying_for_first_permit"},
-                  {"action":"removeClass", "class":"hidden", "source":"#result-work-have_permit-USPR", "target":"question-work-already_have_first_permit"},
-                  {"action":"removeClass", "class":"hidden", "source":"#result-work-extend_permit-USPR", "target":"question-work-extend"},
-                  {"action":"removeClass", "class":"hidden", "source":"#result-work-eligible_without_permit-USPR", "target":"question-work-eligible_without_permit"},
-                  {"action":"removeClass", "class":"hidden", "source":"#result-work-not_sure-USPR", "target":"question-work-not_sure"},
+                      {"action":"append", "source":"#question-work", "target":"question-purpose_of_travel-work"},
+                      {"action":"removeClass", "class":"hidden", "source":"#result-work-first_permit-USPR", "target":"question-work-appying_for_first_permit"},
+                      {"action":"removeClass", "class":"hidden", "source":"#result-work-have_permit-USPR", "target":"question-work-already_have_first_permit"},
+                      {"action":"removeClass", "class":"hidden", "source":"#result-work-extend_permit-USPR", "target":"question-work-extend"},
+                      {"action":"removeClass", "class":"hidden", "source":"#result-work-eligible_without_permit-USPR", "target":"question-work-eligible_without_permit"},
+                      {"action":"removeClass", "class":"hidden", "source":"#result-work-not_sure-USPR", "target":"question-work-not_sure"},
 
+                      {"action":"append", "source":"#question-purpose_of_travel"}
+                    ]'>Lawful permanent resident of the US and do you have official proof of this status, such as a green card</li>
+                  <li data-wb-fieldflow='[
+                  {"action":"append", "source":"#question-travel_document", "target":"question-purpose_of_travel-tourist"},
+                  {"action":"append", "source":"#question-travel_document", "target":"question-purpose_of_travel-transit"},
                   {"action":"append", "source":"#question-purpose_of_travel"}
-                ]'>Lawful permanent resident of the US and do you have official proof of this status, such as a green card</li>
-                  <li>Other</li>
+                ]'>Other</li>
                 </ul>
               </div>
 
@@ -189,7 +193,509 @@
                 </ul>
               </div>
 
+              <div class="wb-fieldflow-sub hidden" id="question-travel_document">
+                <p>What travel document do you plan to use?</p>
+                <ul>
+                  <li data-wb-fieldflow='[
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"AFG"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"AGO"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"ALB"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"ARM"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"AZE"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"BDI"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"BEN"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"BFA"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"BGD"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"BHR"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"BIH"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"BLR"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"BLZ"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"BOL"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"BTN"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"BWA"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"CAF"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"CHN"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"CHN"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"CIV"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"CMR"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"COD"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"COG"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"COL"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"COM"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"CPV"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"CUB"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"DJI"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"DMA"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"DOM"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"DZA"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"ECU"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"EGY"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"ERI"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"ETH"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"FJI"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"FSM"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"GAB"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"GBS"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"GEO"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"GHA"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"GIN"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"GMB"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"GNB"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"GNQ"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"GRD"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"GTM"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"GUY"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"HND"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"HTI"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"IDN"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"IND"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"IRN"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"IRQ"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"JAM"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"JOR"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"KAZ"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"KEN"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"KGZ"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"KHM"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"KIR"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"KWT"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"LAO"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"LBN"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"LBR"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"LBY"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"LKA"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"LSO"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"MDA"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"MDG"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"MHL"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"MKD"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"MLI"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"MMR"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"MNE"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"MNG"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"MOZ"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"MRT"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"MUS"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"MWI"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"MYS"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"NAM"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"NER"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"NGA"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"NIC"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"NPL"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"NRU"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"OMN"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"PAK"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"PER"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"PLW"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"PRK"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"PRY"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"PSE"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"QAT"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"RKS"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"RUS"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"RWA"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"SAU"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"SDN"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"SEN"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"SLE"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"SLV"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"SOM"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"SRB"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"SSD"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"STP"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"SUR"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"SWZ"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"SYR"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"TCD"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"TGO"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"TJK"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"TKM"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"TLS"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"TON"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"TUN"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"TUR"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"TUV"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"TZA"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"UGA"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"UKR"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"UZB"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"VEN"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"VNM"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"VUT"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"YEM"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"ZAF"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"ZMB"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"ZWE"},
 
+                  {"action":"append", "source":"#question-travel_eta", "target":"AND"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"ANG_AIA"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"ARE"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"AUS"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"AUT"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"BEL"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"BGR"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"BHS"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"BMU"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"BRB"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"BRN"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"CHE"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"CHL"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"CHN"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"CYM"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"CYP"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"CZE"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"D"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"DNK"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"ESP"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"EST"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"FIN"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"FRA"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"GBD"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"GBN"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"GBO"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"GBR"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"GBS"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"GRC"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"HRV"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"HUN"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"IRL"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"ISL"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"ITA"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"JPN"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"KOR"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"LIE"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"LTU"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"LUX"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"LVA"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"MAR"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"MCO"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"MEX"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"MLT"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"MSR"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"NLD"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"NOR"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"NZL"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"PNG"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"POL"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"PRT"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"SGP"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"SHN"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"SLB"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"SMR"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"SVK"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"SVN"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"SWE"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"TCA"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"VAT"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"VGB"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"WSM"},
+
+                  
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"ARG"},                  
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"ATG"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"BRA"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"CRI"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"KNA"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"LCA"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"MAR"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"PAN"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"PHL"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"SYC"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"THA"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"TTO"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"URY"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"VCT"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"MEX"},
+
+                  {"action":"removeClass", "class":"hidden", "source":"#result-canadian_cit_pr", "target":"CAD"},
+
+                  {"action":"append", "source":"#question-travel_document_israel", "target":"ISR"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"question-travel_document_israel-yes"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"question-travel_document_israel-no"},
+                  
+                  {"action":"append", "source":"#question-travel_document_romania", "target":"ROU"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"question-travel_document_romania-yes"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"question-travel_document_romania-no"},
+
+                  {"action":"append", "source":"#question-travel_document_taiwan", "target":"TWN"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"question-travel_document_taiwan-yes"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"question-travel_document_taiwan-no"},
+                  
+                  
+                  {"action":"removeClass", "class":"hidden", "source":"#result-GeneralUS", "target":"USA"},
+
+                  {"action":"append", "source":"#question-passport"}
+                ]'>Passport</li>
+                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa"}'>Alien’s passport for stateless persons</li>
+                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa"}'>US refugee travel document (I-571)</li>
+                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa"}'>Permit to re-enter the U.S. (I-327)</li>
+                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa"}'>Other refugee travel document for non-citizen’s</li>
+                </ul>
+              </div>
+
+              <div class="wb-fieldflow-sub hidden" id="question-passport" data-wb-fieldflow='{"renderas":"select"}'>
+                <div class="wb-fieldflow-header">
+                  <p class="wb-fieldflow-label">Select the country code that matches the one on your passport</p>
+                  <div class="row mrgn-tp-lg">
+                    <div class="col-md-3"><img src="https://ircc.canada.ca/english/visit/images/passport-country-gbr-large.jpg" alt="Sample passport information page highlighting three letter country code" class="img-responsive mrgn-bttm-md"></div>
+                    <div class="col-md-7">
+                      <p>You can find the country code on your passport. Be careful when you select your country. Some countries have multiple options and codes are quite similar.</p>
+                    </div>
+                  </div>
+                </div>
+                <ul>
+                  <li id="AFG">AFG (Afghanistan)</li>
+                  <li id="AGO">AGO (Angola)</li>
+                  <li id="ALB">ALB (Albania)</li>
+                  <li id="AND">AND (Andorra)</li>
+                  <li id="ANG_AIA">ANG/AIA (Anguilla)</li>
+                  <li id="ARE">ARE (United Arab Emirates)</li>
+                  <li id="ARG">ARG (Argentina)</li>
+                  <li id="ARM">ARM (Armenia)</li>
+                  <li id="ATG">ATG (Antigua and Barbuda)</li>
+                  <li id="AUS">AUS (Australia)</li>
+                  <li id="AUT">AUT (Austria)</li>
+                  <li id="AZE">AZE (Azerbaijan)</li>
+                  <li id="BDI">BDI (Burundi)</li>
+                  <li id="BEL">BEL (Belgium)</li>
+                  <li id="BEN">BEN (Benin)</li>
+                  <li id="BFA">BFA (Burkina Faso)</li>
+                  <li id="BGD">BGD (Bangladesh)</li>
+                  <li id="BGR">BGR (Bulgaria)</li>
+                  <li id="BHR">BHR (Bahrain)</li>
+                  <li id="BHS">BHS (Bahamas)</li>
+                  <li id="BIH">BIH (Bosnia and Herzegovina)</li>
+                  <li id="BLR">BLR (Belarus)</li>
+                  <li id="BLZ">BLZ (Belize)</li>
+                  <li id="BMU">BMU (Bermuda)</li>
+                  <li id="BOL">BOL (Bolivia)</li>
+                  <li id="BRA">BRA (Brazil)</li>
+                  <li id="BRB">BRB (Barbados)</li>
+                  <li id="BRN">BRN (Brunei Darussalam)</li>
+                  <li id="BTN">BTN (Bhutan)</li>
+                  <li id="BWA">BWA (Botswana)</li>
+                  <li id="CAF">CAF (Central African Republic)</li>
+                  <li id="CHE">CHE (Switzerland)</li>
+                  <li id="CAN">CAN (Canada)</li>
+                  <li id="CHL">CHL (Chile)</li>
+                  <li id="CHN">CHN (China)</li>
+                  <li id="CHN">CHN (Hong Kong SAR)</li>
+                  <li id="CHN">CHN (MACAO SAR)</li>
+                  <li id="CIV">CIV (Ivory Coast)</li>
+                  <li id="CMR">CMR (Cameroon)</li>
+                  <li id="COD">COD (Democratic Rep. of Congo)</li>
+                  <li id="COG">COG (Republic of Congo)</li>
+                  <li id="COL">COL (Colombia)</li>
+                  <li id="COM">COM (Comoros)</li>
+                  <li id="CPV">CPV (Cabo Verde)</li>
+                  <li id="CRI">CRI (Costa Rica)</li>
+                  <li id="CUB">CUB (Cuba)</li>
+                  <li id="CYM">CYM (Cayman Islands)</li>
+                  <li id="CYP">CYP (Cyprus)</li>
+                  <li id="CZE">CZE (Czech Republic)</li>
+                  <li id="D">D (Germany)</li>
+                  <li id="DJI">DJI (Djibouti)</li>
+                  <li id="DMA">DMA (Dominica)</li>
+                  <li id="DNK">DNK (Denmark)</li>
+                  <li id="DOM">DOM (Dominican Republic)</li>
+                  <li id="DZA">DZA (Algeria)</li>
+                  <li id="ECU">ECU (Ecuador)</li>
+                  <li id="EGY">EGY (Egypt)</li>
+                  <li id="ERI">ERI (Eritrea)</li>
+                  <li id="ESP">ESP (Spain)</li>
+                  <li id="EST">EST (Estonia)</li>
+                  <li id="ETH">ETH (Ethiopia)</li>
+                  <li id="FIN">FIN (Finland)</li>
+                  <li id="FJI">FJI (Fiji)</li>
+                  <li id="FRA">FRA (France)</li>
+                  <li id="FSM">FSM (Micronesia)</li>
+                  <li id="GAB">GAB (Gabon)</li>
+                  <li id="GBD">GBD (UK - Brit. overseas terr.)</li>
+                  <li id="GBN">GBN (UK - Brit. Ntl. overseas)</li>
+                  <li id="GBO">GBO (UK - British overseas citizen)</li>
+                  <li id="GBR">GBR (UK - British citizen)</li>
+                  <li id="GBS">GBS (UK - British subject)</li>
+                  <li id="GBS">GBS (UK - Brit. subject, subject to control)</li>
+                  <li id="GEO">GEO (Georgia)</li>
+                  <li id="GHA">GHA (Ghana)</li>
+                  <li id="GIN">GIN (Guinea)</li>
+                  <li id="GMB">GMB (Gambia)</li>
+                  <li id="GNB">GNB (Guinea-Bissau)</li>
+                  <li id="GNQ">GNQ (Equatorial Guinea)</li>
+                  <li id="GRC">GRC (Greece)</li>
+                  <li id="GRD">GRD (Grenada)</li>
+                  <li id="GTM">GTM (Guatemala)</li>
+                  <li id="GUY">GUY (Guyana)</li>
+                  <li id="HND">HND (Honduras)</li>
+                  <li id="HRV">HRV (Croatia)</li>
+                  <li id="HTI">HTI (Haiti)</li>
+                  <li id="HUN">HUN (Hungary)</li>
+                  <li id="IDN">IDN (Indonesia)</li>
+                  <li id="IND">IND (India)</li>
+                  <li id="IRL">IRL (Ireland)</li>
+                  <li id="IRN">IRN (Iran)</li>
+                  <li id="IRQ">IRQ (Iraq)</li>
+                  <li id="ISL">ISL (Iceland)</li>
+                  <li id="ISR">ISR (Israel)</li>
+                  <li id="ITA">ITA (Italy)</li>
+                  <li id="JAM">JAM (Jamaica)</li>
+                  <li id="JOR">JOR (Jordan)</li>
+                  <li id="JPN">JPN (Japan)</li>
+                  <li id="KAZ">KAZ (Kazakhstan)</li>
+                  <li id="KEN">KEN (Kenya)</li>
+                  <li id="KGZ">KGZ (Kyrgyzstan)</li>
+                  <li id="KHM">KHM (Cambodia)</li>
+                  <li id="KIR">KIR (Kiribati)</li>
+                  <li id="KNA">KNA (Saint Kitts and Nevis)</li>
+                  <li id="KOR">KOR (Korea, South)</li>
+                  <li id="KWT">KWT (Kuwait)</li>
+                  <li id="LAO">LAO (Laos)</li>
+                  <li id="LBN">LBN (Lebanon)</li>
+                  <li id="LBR">LBR (Liberia)</li>
+                  <li id="LBY">LBY (Libya)</li>
+                  <li id="LCA">LCA (Saint Lucia)</li>
+                  <li id="LIE">LIE (Liechtenstein)</li>
+                  <li id="LKA">LKA (Sri Lanka)</li>
+                  <li id="LSO">LSO (Lesotho)</li>
+                  <li id="LTU">LTU (Lithuania)</li>
+                  <li id="LUX">LUX (Luxembourg)</li>
+                  <li id="LVA">LVA (Latvia)</li>
+                  <li id="MAR">MAR (Morocco)</li>
+                  <li id="MCO">MCO (Monaco)</li>
+                  <li id="MDA">MDA (Moldova)</li>
+                  <li id="MDG">MDG (Madagascar)</li>
+                  <li id="MEX">MEX (Mexico)</li>
+                  <li id="MHL">MHL (Marshall Islands)</li>
+                  <li id="MKD">MKD (Macedonia)</li>
+                  <li id="MLI">MLI (Mali)</li>
+                  <li id="MLT">MLT (Malta)</li>
+                  <li id="MMR">MMR (Burma - Myanmar)</li>
+                  <li id="MNE">MNE (Montenegro)</li>
+                  <li id="MNG">MNG (Mongolia)</li>
+                  <li id="MOZ">MOZ (Mozambique)</li>
+                  <li id="MRT">MRT (Mauritania)</li>
+                  <li id="MSR">MSR (Montserrat)</li>
+                  <li id="MUS">MUS (Mauritius)</li>
+                  <li id="MWI">MWI (Malawi)</li>
+                  <li id="MYS">MYS (Malaysia)</li>
+                  <li id="NAM">NAM (Namibia)</li>
+                  <li id="NER">NER (Niger)</li>
+                  <li id="NGA">NGA (Nigeria)</li>
+                  <li id="NIC">NIC (Nicaragua)</li>
+                  <li id="NLD">NLD (Netherlands)</li>
+                  <li id="NOR">NOR (Norway)</li>
+                  <li id="NPL">NPL (Nepal)</li>
+                  <li id="NRU">NRU (Nauru)</li>
+                  <li id="NZL">NZL (New Zealand)</li>
+                  <li id="OMN">OMN (Oman)</li>
+                  <li id="PAK">PAK (Pakistan)</li>
+                  <li id="PAN">PAN (Panama)</li>
+                  <li id="PER">PER (Peru)</li>
+                  <li id="PHL">PHL (Philippines)</li>
+                  <li id="PLW">PLW (Palau)</li>
+                  <li id="PNG">PNG (Papua New Guinea)</li>
+                  <li id="POL">POL (Poland)</li>
+                  <li id="PRK">PRK (Korea, North - DPRK)</li>
+                  <li id="PRT">PRT (Portugal)</li>
+                  <li id="PRY">PRY (Paraguay)</li>
+                  <li id="PSE">PSE (Palestinian Authority)</li>
+                  <li id="QAT">QAT (Qatar)</li>
+                  <li id="RKS">RKS (Kosovo)</li>
+                  <li id="ROU">ROU (Romania)</li>
+                  <li id="RUS">RUS (Russia)</li>
+                  <li id="RWA">RWA (Rwanda)</li>
+                  <li id="SAU">SAU (Saudi Arabia)</li>
+                  <li id="SDN">SDN (Sudan)</li>
+                  <li id="SEN">SEN (Senegal)</li>
+                  <li id="SGP">SGP (Singapore)</li>
+                  <li id="SHN">SHN (Saint Helena)</li>
+                  <li id="SLB">SLB (Solomon Islands)</li>
+                  <li id="SLE">SLE (Sierra Leone)</li>
+                  <li id="SLV">SLV (El Salvador)</li>
+                  <li id="SMR">SMR (San Marino)</li>
+                  <li id="SOM">SOM (Somalia)</li>
+                  <li id="SRB">SRB (Serbia)</li>
+                  <li id="SSD">SSD (South Sudan)</li>
+                  <li id="STP">STP (Sao Tome e Principe)</li>
+                  <li id="SUR">SUR (Suriname)</li>
+                  <li id="SVK">SVK (Slovakia)</li>
+                  <li id="SVN">SVN (Slovenia)</li>
+                  <li id="SWE">SWE (Sweden)</li>
+                  <li id="SWZ">SWZ (Swaziland)</li>
+                  <li id="SYC">SYC (Seychelles)</li>
+                  <li id="SYR">SYR (Syria)</li>
+                  <li id="TCA">TCA (Turks and Caicos Islands)</li>
+                  <li id="TCD">TCD (Chad)</li>
+                  <li id="TGO">TGO (Togo)</li>
+                  <li id="THA">THA (Thailand)</li>
+                  <li id="TJK">TJK (Tajikistan)</li>
+                  <li id="TKM">TKM (Turkmenistan)</li>
+                  <li id="TLS">TLS (East Timor)</li>
+                  <li id="TON">TON (Tonga)</li>
+                  <li id="TTO">TTO (Trinidad and Tobago)</li>
+                  <li id="TUN">TUN (Tunisia)</li>
+                  <li id="TUR">TUR (Turkey)</li>
+                  <li id="TUV">TUV (Tuvalu)</li>
+                  <li id="TWN">TWN (Taiwan)</li>
+                  <li id="TZA">TZA (Tanzania)</li>
+                  <li id="UGA">UGA (Uganda)</li>
+                  <li id="UKR">UKR (Ukraine)</li>
+                  <li id="URY">URY (Uruguay)</li>
+                  <li id="USA">USA (United States of America)</li>
+                  <li id="UZB">UZB (Uzbekistan)</li>
+                  <li id="VAT">VAT (Vatican City State)</li>
+                  <li id="VCT">VCT (St. Vincent and the Grenadines)</li>
+                  <li id="VEN">VEN (Venezuela)</li>
+                  <li id="VGB">VGB (British Virgin Islands)</li>
+                  <li id="VNM">VNM (Vietnam)</li>
+                  <li id="VUT">VUT (Vanuatu)</li>
+                  <li id="WSM">WSM (Samoa)</li>
+                  <li id="YEM">YEM (Yemen)</li>
+                  <li id="ZAF">ZAF (South Africa)</li>
+                  <li id="ZMB">ZMB (Zambia)</li>
+                  <li id="ZWE">ZWE (Zimbabwe)</li>
+                </ul>
+              </div>
+
+              <div class="wb-fieldflow-sub hidden" id="question-travel_eta">
+                <p>How do you plan to travel to Canada?</p>
+                <ul>
+                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-eta"}'>By air, via a Canadian airport</li>
+                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-identification_document"}'>By car, train, bus or boat (including cruise ship)</li>
+              </div>
+              <div class="wb-fieldflow-sub hidden" id="question-travel_eta_x">
+                <p>How do you plan to travel to Canada?</p>
+                <ul>
+                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-eta_x"}'>By air, via a Canadian airport</li>
+                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa"}'>By car, train, bus or boat (including cruise ship)</li>
+              </div>
+
+              <div class="wb-fieldflow-sub hidden" id="question-cad_visitor_visa_nonimmigrant_visa">
+                <p>Have you held a Canadian visitor visa in the past 10 years, or do you currently hold a valid U.S. nonimmigrant visa?</p>
+                <ul>
+                  <li data-wb-fieldflow='{"action":"append", "source":"#question-travel_eta_x"}'>Yes</li>
+                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa"}'>No</li>
+              </div>
+
+              <div class="wb-fieldflow-sub hidden" id="question-travel_document_israel">
+                <p>For this trip, will you use a national Israeli passport</p>
+                <ul>
+                  <li id="question-travel_document_israel-yes">Yes</li>
+                  <li id="question-travel_document_israel-no">No</li>
+              </div>
+              <div class="wb-fieldflow-sub hidden" id="question-travel_document_romania">
+                <p>For this trip, will you use an electronic passport</p>
+                <ul>
+                  <li id="question-travel_document_romania-yes">Yes</li>
+                  <li id="question-travel_document_romania-no">No</li>
+              </div>
+              <div class="wb-fieldflow-sub hidden" id="question-travel_document_taiwan">
+                <p>For this trip, will you travel with an ordinary passport issued by the Ministry in Taiwan that includes your personal identification number?</p>
+                <ul>
+                  <li id="question-travel_document_taiwan-yes">Yes</li>
+                  <li id="question-travel_document_taiwan-no">No</li>
+              </div>
 
             </form>
           </div>
@@ -201,6 +707,18 @@
           </div>
           <div class="result" id="result-canadian_cit_pr">
             <p>Canadian cit or PR result</p>
+          </div>
+          <div class="result" id="result-visitor_visa">
+            <p>You need a visitor visa</p>
+          </div>
+          <div class="result" id="result-eta">
+            <p>You are eligible for an eTA</p>
+          </div>
+          <div class="result" id="result-eta_x">
+            <p>You are eligible for an eTA</p>
+          </div>
+          <div class="result" id="result-identification_document">
+            <p>Use travel documentation</p>
           </div>
 
           <div id="US-results">
