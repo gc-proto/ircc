@@ -22,6 +22,9 @@ body {
   width: 1px;
 }
 
+.slide {
+  width: 80%;
+}
 .slide h1 {
   font-size: 100pt;
   padding: 20px;
@@ -193,53 +196,122 @@ body {
   right: 0;
   width: 500px;
   height: 100%;
-  z-index: 0; /* SVG sits below content */
+  z-index: 0;
+  /* SVG sits below content */
 }
 
 .bg-svg h2,
 .bg-svg p {
   position: relative;
-  z-index: 1; /* Content sits above SVG */
+  z-index: 1;
+  /* Content sits above SVG */
 }
 
 .bar {
-  transition: height 1s ease, y 1s ease; /* Smooth animation */
+  transition: height 1s ease, y 1s ease;
+  /* Smooth animation */
 }
 
-#slide-controls {
+#slide-6 {
+  background-color: #350267;
+  color: #dfd6f9;
+  padding: 80px 200px;
+  height: calc(100% - 160px);
+}
+#slide-6 .slide-content {
+  flex-direction: row;
+  gap: 50px;
+  position: relative;
+}
+#slide-6 .slide-content > div {
+  width: 40%;
+}
+#slide-6 .slide-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+#slide-6 .slide-content a {
+  color: #92F141 !important;
+}
+#slide-6 .slide-content h2 {
+  font-size: 50pt;
+  margin-top: 0;
+  z-index: 2;
+  padding: 0;
+}
+#slide-6 .slide-content p {
+  font-size: 14pt;
+  margin-bottom: 10px;
+}
+#slide-6 .slide-content ul {
+  margin-left: 25px;
+}
+#slide-6 .slide-content li {
+  font-size: 25pt;
+  z-index: 2;
+}
+
+#slide-deck {
   position: absolute;
   top: 0;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-grow: 1;
   width: 100%;
 }
-#slide-controls div {
-  flex-grow: 1;
+#slide-deck div.button {
   color: #fff;
   font-size: 50pt;
+  background: #350267;
 }
-#slide-controls button {
+#slide-deck button {
   all: unset;
 }
-#slide-controls div > button {
+#slide-deck div > button {
   opacity: 0.5;
   display: inline-flex;
   height: 100%;
   flex-direction: column;
   justify-content: center;
 }
-#slide-controls div > button:hover {
+#slide-deck div > button:hover {
   opacity: 1;
 }
-#slide-controls #previous {
-  float: left;
-  margin-left: 20px;
+#slide-deck #previous {
+  padding-left: 20px;
 }
-#slide-controls #next {
-  float: right;
-  margin-right: 20px;
+#slide-deck #next {
+  padding-right: 20px;
+}
+
+#slide-deck:has(#slide-0:not(.hidden)) div.button {
+  background-color: #350267;
+}
+
+#slide-deck:has(#slide-1:not(.hidden)) div.button {
+  background-color: #dfd6f9;
+}
+
+#slide-deck:has(#slide-2:not(.hidden)) div.button {
+  background-color: #600DB4;
+}
+
+#slide-deck:has(#slide-3:not(.hidden)) div.button {
+  background-color: #E9E5F2;
+}
+
+#slide-deck:has(#slide-4:not(.hidden)) div.button {
+  background-color: #350267;
+}
+
+#slide-deck:has(#slide-5:not(.hidden)) div.button {
+  background-color: #E9E5F2;
+}
+
+#slide-deck:has(#slide-6:not(.hidden)) div.button {
+  background-color: #350267;
 }
 
 /*Animations*/

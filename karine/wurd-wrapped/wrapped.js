@@ -17,7 +17,7 @@ btnNext.onclick = function () {
 
     }
 
-    if (parseInt(currentSlide.getAttribute('id').split("-")[1] + 1) === maxSlides) {
+    if ((parseInt(currentSlide.getAttribute('id').split("-")[1]) + 1) === maxSlides) {
         btnNext.classList.add('hidden');
     }
     else {
