@@ -1,0 +1,249 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  font-family: "Lexend", sans-serif !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.invisible {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+}
+
+.slide h1 {
+  font-size: 100pt;
+  padding: 20px;
+  margin-bottom: 100px;
+}
+.slide h2 {
+  font-size: 70pt;
+  padding: 20px;
+  margin-bottom: 80px;
+}
+.slide p {
+  font-size: 20pt;
+}
+
+.slide-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.big-numbers {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-items: center;
+  align-items: center;
+}
+.big-numbers .box {
+  flex-grow: 1;
+  background-color: #E9E5F2;
+  border-radius: 25px;
+  padding: 30px;
+  margin: 20px;
+  text-align: center;
+}
+.big-numbers .number {
+  font-size: 3em;
+  font-weight: bold;
+  transition: all 0.5s ease;
+}
+
+.highlight-green {
+  color: #92F141;
+}
+
+.caret::after {
+  position: absolute;
+  content: "^";
+  font-weight: bold;
+  margin-top: 80px;
+  margin-left: -50px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+#slide-0 {
+  background-color: #350267;
+  color: #fff;
+  padding: 200px;
+  height: calc(100% - 400px);
+}
+#slide-0 .bg-img {
+  background-image: url("img/wurd-crew-logo.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 100%;
+}
+
+#slide-1 {
+  background-color: #dfd6f9;
+  color: #350267;
+  padding: 80px 200px;
+  height: calc(100% - 160px);
+}
+
+#slide-2 {
+  background-color: #600DB4;
+  color: #E9E5F2;
+  padding: 80px 200px;
+  height: calc(100% - 160px);
+}
+
+#slide-3 {
+  background-color: #E9E5F2;
+  color: #350267;
+  padding: 80px 200px;
+  height: calc(100% - 160px);
+}
+#slide-3 .slide-content {
+  flex-direction: row;
+  gap: 30px;
+}
+#slide-3 .slide-content img {
+  border-radius: 25px;
+}
+#slide-3 .slide-content h2 {
+  font-size: 50pt;
+  margin-top: 0;
+}
+#slide-3 .slide-content p {
+  margin: 20px;
+  font-size: 25pt;
+}
+#slide-3 .slide-content .number {
+  font-size: 2em;
+  text-shadow: 1px 1px 10px #dfd6f9, 1px 1px 10px #350267;
+}
+
+#slide-4 {
+  background-color: #350267;
+  color: #dfd6f9;
+  padding: 80px 200px;
+  height: calc(100% - 160px);
+}
+#slide-4 .slide-content {
+  flex-direction: row;
+  gap: 30px;
+}
+#slide-4 .slide-content img {
+  border-radius: 25px;
+}
+#slide-4 .slide-content h2 {
+  font-size: 50pt;
+  margin-top: 0;
+}
+#slide-4 .slide-content p {
+  margin: 20px;
+  font-size: 25pt;
+}
+#slide-4 .slide-content .number {
+  font-size: 2em;
+  color: #92F141;
+}
+
+#slide-5 {
+  background-color: #E9E5F2;
+  color: #350267;
+  padding: 80px 200px;
+  height: calc(100% - 160px);
+}
+#slide-5 .slide-content {
+  flex-direction: row;
+  gap: 30px;
+  position: relative;
+}
+#slide-5 .slide-content img {
+  border-radius: 25px;
+}
+#slide-5 .slide-content h2 {
+  font-size: 50pt;
+  margin-top: 0;
+  z-index: 2;
+}
+#slide-5 .slide-content p {
+  margin: 20px;
+  font-size: 25pt;
+  z-index: 2;
+}
+
+#slide-5 .bg-svg {
+  position: relative;
+}
+
+.background-svg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 500px;
+  height: 100%;
+  z-index: 0; /* SVG sits below content */
+}
+
+.bg-svg h2,
+.bg-svg p {
+  position: relative;
+  z-index: 1; /* Content sits above SVG */
+}
+
+.bar {
+  transition: height 1s ease, y 1s ease; /* Smooth animation */
+}
+
+#slide-controls {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+}
+#slide-controls div {
+  flex-grow: 1;
+  color: #fff;
+  font-size: 50pt;
+}
+#slide-controls button {
+  all: unset;
+}
+#slide-controls div > button {
+  opacity: 0.5;
+  display: inline-flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+#slide-controls div > button:hover {
+  opacity: 1;
+}
+#slide-controls #previous {
+  float: left;
+  margin-left: 20px;
+}
+#slide-controls #next {
+  float: right;
+  margin-right: 20px;
+}
+
+/*Animations*/
+.animate-number {
+  transform: scale(2);
+  margin-bottom: 20px;
+}/*# sourceMappingURL=wrapped.css.map */
