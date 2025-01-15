@@ -2,7 +2,7 @@ let slides = document.getElementsByClassName('slide');
 let btnPrevious = document.getElementById('previous');
 let btnNext = document.getElementById('next');
 
-let maxSlides = slides.length;
+let maxSlides = slides.length - 1;
 let currentSlide;
 
 btnNext.onclick = function () {
@@ -16,7 +16,7 @@ btnNext.onclick = function () {
         btnPrevious.classList.remove('hidden');
 
     }
-
+    console.log((parseInt(currentSlide.getAttribute('id').split("-")[1]) + 1), maxSlides)
     if ((parseInt(currentSlide.getAttribute('id').split("-")[1]) + 1) === maxSlides) {
         btnNext.classList.add('hidden');
     }
@@ -66,6 +66,28 @@ btnPrevious.onclick = function () {
     }
     else {
         btnPrevious.classList.remove('hidden');
+    }
+}
+
+window.addEventListener('keydown', (event) => {
+    const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
+
+    const callback = {
+        "ArrowLeft": leftHandler,
+        "ArrowRight": rightHandler,
+    }[event.key]
+    callback?.()
+});
+
+
+function leftHandler() {
+    if (!btnPrevious.classList.contains('hidden')) {
+        btnPrevious.click();
+    }
+}
+function rightHandler() {
+    if (!btnNext.classList.contains('hidden')) {
+        btnNext.click();
     }
 }
 
