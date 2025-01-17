@@ -1,11 +1,17 @@
+let slideDeck = document.getElementById('slide-deck');
 let slides = document.getElementsByClassName('slide');
+let slidesContainer = document.querySelector('.slides');
 let btnPrevious = document.getElementById('previous');
 let btnNext = document.getElementById('next');
+let progressIcons = document.querySelectorAll('.slide-progress a');
+let progressBar = document.querySelector('.slide-progress');
 
 let maxSlides = slides.length - 1;
 let currentSlide;
 
-btnNext.onclick = function () {
+btnNext.onclick = goToNext;
+
+function goToNext(x) {
     currentSlide = document.querySelector(".slide:not(.hidden)");
     let nextSlideNum = (parseInt(currentSlide.getAttribute('id').split("-")[1]) + 1);
     let nextSlide = document.getElementById('slide-' + nextSlideNum);
@@ -13,15 +19,17 @@ btnNext.onclick = function () {
 
         currentSlide.classList.add('hidden');
         nextSlide.classList.remove('hidden');
-        btnPrevious.classList.remove('hidden');
+        btnPrevious.classList.remove('not-visible');
+        progressIcons[nextSlideNum - 1].classList.remove('active');
+        progressIcons[nextSlideNum].classList.add('active');
 
     }
-    console.log((parseInt(currentSlide.getAttribute('id').split("-")[1]) + 1), maxSlides)
+
     if ((parseInt(currentSlide.getAttribute('id').split("-")[1]) + 1) === maxSlides) {
-        btnNext.classList.add('hidden');
+        btnNext.classList.add('not-visible');
     }
     else {
-        btnNext.classList.remove('hidden');
+        btnNext.classList.remove('not-visible');
     }
 
     let delay;
@@ -35,7 +43,7 @@ btnNext.onclick = function () {
                     element.classList.add('animate-number'); // Add the class to enlarge the element
                 }, delay);
 
-                delay += 1000; // Increase the delay for the next element
+                delay += 500; // Increase the delay for the next element
             });
             break;
         case 5:
@@ -52,20 +60,47 @@ btnNext.onclick = function () {
     }
 }
 
-btnPrevious.onclick = function () {
-    currentSlide = document.querySelector(".slide:not(.hidden)");
-    let previousSlide = document.getElementById('slide-' + (parseInt(currentSlide.getAttribute('id').split("-")[1]) - 1));
-    if (previousSlide) {
-        currentSlide.classList.add('hidden');
-        previousSlide.classList.remove('hidden');
-        btnNext.classList.remove('hidden');
-    }
+btnPrevious.onclick = goToPrev;
 
-    if (parseInt(currentSlide.getAttribute('id').split("-")[1] - 1) === 0) {
-        btnPrevious.classList.add('hidden');
+function goToPrev(x) {
+    currentSlide = document.querySelector(".slide:not(.hidden)");
+
+    if (x) {
+
+      
+            currentSlide.classList.add('hidden');
+            document.getElementById('slide-'+ x).classList.remove('hidden');
+            btnNext.classList.remove('not-visible')
+            progressIcons[x].classList.add('active');
+
+        
+
+        if (parseInt(currentSlide.getAttribute('id').split("-")[1] - 1) === 0) {
+            btnPrevious.classList.add('not-visible');
+        }
+        else {
+            btnPrevious.classList.remove('not-visible');
+        }
     }
     else {
-        btnPrevious.classList.remove('hidden');
+
+        let previousSlide = document.getElementById('slide-' + (parseInt(currentSlide.getAttribute('id').split("-")[1]) - 1));
+        let previousSlideNum = (parseInt(currentSlide.getAttribute('id').split("-")[1]) - 1);
+        if (previousSlide) {
+            currentSlide.classList.add('hidden');
+            previousSlide.classList.remove('hidden');
+            btnNext.classList.remove('not-visible')
+            progressIcons[previousSlideNum + 1].classList.remove('active');
+            progressIcons[previousSlideNum].classList.add('active');
+
+        }
+
+        if (parseInt(currentSlide.getAttribute('id').split("-")[1] - 1) === 0) {
+            btnPrevious.classList.add('not-visible');
+        }
+        else {
+            btnPrevious.classList.remove('not-visible');
+        }
     }
 }
 
@@ -75,19 +110,69 @@ window.addEventListener('keydown', (event) => {
     const callback = {
         "ArrowLeft": leftHandler,
         "ArrowRight": rightHandler,
+        "ArrowUp": upHandler,
+        "ArrowDown": downHandler,
     }[event.key]
     callback?.()
 });
 
 
 function leftHandler() {
-    if (!btnPrevious.classList.contains('hidden')) {
+    if (!btnPrevious.classList.contains('not-visible')) {
         btnPrevious.click();
     }
 }
 function rightHandler() {
-    if (!btnNext.classList.contains('hidden')) {
+    if (!btnNext.classList.contains('not-visible')) {
         btnNext.click();
     }
 }
+function upHandler() {
+    let currentSlide = document.querySelector(".slide:not(.hidden)");
+    let close = currentSlide.querySelector('button.close');
+    if (close) {
+        close.click();
+    }
+}
+function downHandler() {
+    let currentSlide = document.querySelector(".slide:not(.hidden)");
+    let open = currentSlide.querySelector('button.open');
+    if (open) {
+        open.click();
+    }
+}
 
+$(".open").on("click", function () {
+    let slide = document.getElementById($(this).attr('data-slide'));
+    let mainSlide = slide.querySelector('.main-slide');
+    let subSlide = slide.querySelector('.sub-slide');
+
+    mainSlide.classList.add('hidden');
+    subSlide.classList.remove('hidden');
+});
+
+$(".close").on("click", function () {
+    let slide = document.getElementById($(this).attr('data-slide'));
+    let mainSlide = slide.querySelector('.main-slide');
+    let subSlide = slide.querySelector('.sub-slide');
+
+    mainSlide.classList.remove('hidden');
+    subSlide.classList.add('hidden');
+});
+
+$(".slide-progress a").on("click", function () {
+    $(".slide-progress a").removeClass('active');
+    let goTo = parseInt($(this).attr('href').split("-")[1]);
+    let currentSlide = parseInt(document.querySelector('.slide:not(.hidden)').getAttribute('id').split("-")[1]);
+    console.log(goTo, currentSlide);
+
+    if (goTo > currentSlide) {
+        goToNext(goTo);
+    }
+    else {
+        goToPrev(goTo);
+    }
+    //get current slide
+    //if clicked button is less, go to prev pass query, else go to next pass query.
+    //in next/prev adjust to take query which takes over next slide?
+});

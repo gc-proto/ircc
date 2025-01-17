@@ -4,13 +4,22 @@
   padding: 0;
 }
 
+button {
+  all: unset;
+}
+
 body {
   height: 100vh;
   font-family: "Lexend", sans-serif !important;
+  width: 100%;
 }
 
 .hidden {
   display: none !important;
+}
+
+.not-visible {
+  visibility: hidden !important;
 }
 
 .invisible {
@@ -23,7 +32,7 @@ body {
 }
 
 .slide {
-  width: 80%;
+  text-align: center;
 }
 .slide h1 {
   font-size: 100pt;
@@ -47,23 +56,32 @@ body {
   height: 100%;
 }
 
+@media screen and (max-width: 768px) {
+  .big-numbers {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
 .big-numbers {
   display: flex;
   flex-direction: row;
-  width: 80%;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
 }
 .big-numbers .box {
-  flex-grow: 1;
-  background-color: #E9E5F2;
-  border-radius: 25px;
+  flex-basis: 50%;
   padding: 30px;
   margin: 20px;
   text-align: center;
+  border-radius: 32px;
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  font-weight: 700;
+  height: 100%;
 }
 .big-numbers .number {
-  font-size: 3em;
+  font-size: 1.5em;
   font-weight: bold;
   transition: all 0.5s ease;
 }
@@ -84,8 +102,6 @@ body {
 #slide-0 {
   background-color: #350267;
   color: #fff;
-  padding: 200px;
-  height: calc(100% - 400px);
 }
 #slide-0 .bg-img {
   background-image: url("img/wurd-crew-logo.svg");
@@ -94,52 +110,71 @@ body {
   background-position: center;
   height: 100%;
 }
+@media screen and (max-width: 768px) {
+  #slide-0 .bg-img {
+    height: auto;
+    display: flex;
+  }
+}
 
 #slide-1 {
   background-color: #dfd6f9;
   color: #350267;
-  padding: 80px 200px;
-  height: calc(100% - 160px);
 }
 
 #slide-2 {
   background-color: #600DB4;
   color: #E9E5F2;
-  padding: 80px 200px;
-  height: calc(100% - 160px);
 }
 
 #slide-3 {
-  background-color: #E9E5F2;
-  color: #350267;
-  padding: 80px 200px;
-  height: calc(100% - 160px);
+  background-color: #26374a;
+  color: #fff;
+  padding: 0 !important;
 }
-#slide-3 .slide-content {
+#slide-3 img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  width: 60%;
+  margin: 80px auto 0;
+}
+#slide-3 .sub-slide {
   flex-direction: row;
   gap: 30px;
+  color: #fff;
+  background-image: url("img/confetti.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
-#slide-3 .slide-content img {
-  border-radius: 25px;
-}
-#slide-3 .slide-content h2 {
+#slide-3 .sub-slide h2 {
   font-size: 50pt;
   margin-top: 0;
 }
-#slide-3 .slide-content p {
-  margin: 20px;
+#slide-3 .sub-slide p {
   font-size: 25pt;
+  margin: 20px;
 }
-#slide-3 .slide-content .number {
-  font-size: 2em;
-  text-shadow: 1px 1px 10px #dfd6f9, 1px 1px 10px #350267;
+#slide-3 .sub-slide .number {
+  font-size: 2.5em;
+}
+#slide-3 .sub-slide img.gif {
+  display: block;
+  width: 100px;
+}
+@media screen and (max-width: 768px) {
+  #slide-3 .sub-slide .number {
+    font-size: 2em;
+  }
+  #slide-3 .sub-slide p {
+    font-size: 16px;
+  }
 }
 
 #slide-4 {
   background-color: #350267;
   color: #dfd6f9;
-  padding: 80px 200px;
-  height: calc(100% - 160px);
 }
 #slide-4 .slide-content {
   flex-direction: row;
@@ -164,8 +199,6 @@ body {
 #slide-5 {
   background-color: #E9E5F2;
   color: #350267;
-  padding: 80px 200px;
-  height: calc(100% - 160px);
 }
 #slide-5 .slide-content {
   flex-direction: row;
@@ -185,29 +218,16 @@ body {
   font-size: 25pt;
   z-index: 2;
 }
-
 #slide-5 .bg-svg {
   position: relative;
 }
-
-.background-svg {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 500px;
-  height: 100%;
-  z-index: 0;
-  /* SVG sits below content */
-}
-
-.bg-svg h2,
-.bg-svg p {
+#slide-5 .bg-svg h2,
+#slide-5 .bg-svg p {
   position: relative;
   z-index: 1;
   /* Content sits above SVG */
 }
-
-.bar {
+#slide-5 .bar {
   transition: height 1s ease, y 1s ease;
   /* Smooth animation */
 }
@@ -215,8 +235,6 @@ body {
 #slide-6 {
   background-color: #350267;
   color: #dfd6f9;
-  padding: 80px 200px;
-  height: calc(100% - 160px);
 }
 #slide-6 .slide-content {
   flex-direction: row;
@@ -253,8 +271,6 @@ body {
 #slide-7 {
   background-color: #E9E5F2;
   color: #350267;
-  padding: 80px 200px;
-  height: calc(100% - 160px);
 }
 #slide-7 h2 {
   font-size: 50pt;
@@ -275,30 +291,37 @@ body {
 }
 
 #slide-deck {
-  position: absolute;
-  top: 0;
-  height: 100vh;
   display: flex;
-  justify-content: space-between;
-  flex-grow: 1;
+  height: 100vh;
   width: 100%;
 }
 #slide-deck div.button {
   color: #fff;
-  font-size: 50pt;
+  font-size: 50px;
   background: #350267;
+  width: 10%;
+  align-items: center;
+  justify-content: center;
 }
-#slide-deck button {
-  all: unset;
+@media screen and (max-width: 768px) {
+  #slide-deck div.button {
+    font-size: 40px;
+  }
 }
-#slide-deck div > button {
+#slide-deck .slides {
+  width: 80%;
+}
+#slide-deck .slide {
+  padding: 50px;
+}
+#slide-deck div.button > button {
   opacity: 0.5;
   display: inline-flex;
   height: 100%;
   flex-direction: column;
   justify-content: center;
 }
-#slide-deck div > button:hover {
+#slide-deck div.button > button:hover {
   opacity: 1;
 }
 #slide-deck #previous {
@@ -306,37 +329,137 @@ body {
 }
 #slide-deck #next {
   padding-right: 20px;
+  float: right;
 }
 
-#slide-deck:has(#slide-0:not(.hidden)) div.button {
+.slide-progress {
+  display: flex;
+  flex-grow: 1;
+  gap: 15px;
+  justify-content: center;
+}
+.slide-progress a {
+  width: 15px !important;
+  height: 15px !important;
+  border-radius: 15px;
+  content: " ";
+  background-color: #fff;
+  transition: width 0.5s ease;
+}
+.slide-progress a.active {
+  width: 45px !important;
+}
+
+.slides {
+  display: flex;
+  flex-direction: column;
+}
+.slides .slide {
+  flex-grow: 1;
+}
+
+@media screen and (min-width: 769px) {
+  .slide {
+    height: calc(auto - 60px);
+  }
+}
+@media screen and (max-width: 768px) {
+  body {
+    display: flex;
+  }
+  .slides {
+    width: 100% !important;
+  }
+  .slide {
+    width: 100%;
+    padding: 0 !important;
+    display: flex;
+    align-self: stretch;
+    justify-content: center;
+    flex-grow: 1;
+    text-align: center;
+  }
+  .slide h1 {
+    font-size: 50pt;
+    padding: 10px;
+    margin-bottom: 50px;
+  }
+  .slide h2 {
+    font-size: 35pt;
+    padding: 10px;
+    margin-bottom: 40px;
+  }
+  .slide-content {
+    align-self: center;
+  }
+  #slide-deck {
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  #slide-deck div:has(#previous) {
+    order: 1;
+  }
+  #slide-deck div:has(#next) {
+    order: 3;
+    float: right;
+  }
+  #slide-deck .slide-progress {
+    order: 2;
+  }
+  #slide-deck div.button {
+    justify-content: space-evenly;
+    text-align: center;
+    flex-grow: 1;
+  }
+  #slide-deck div.button > button {
+    height: auto;
+    flex-grow: 1;
+  }
+  .slide-content {
+    height: auto;
+  }
+  .slide-progress {
+    padding-top: 15px;
+  }
+}
+#slide-deck:has(#slide-0:not(.hidden)) div.button,
+#slide-deck:has(#slide-0:not(.hidden)) .slide-progress {
   background-color: #350267;
 }
 
-#slide-deck:has(#slide-1:not(.hidden)) div.button {
+#slide-deck:has(#slide-1:not(.hidden)) div.button,
+#slide-deck:has(#slide-1:not(.hidden)) .slide-progress {
   background-color: #dfd6f9;
 }
 
-#slide-deck:has(#slide-2:not(.hidden)) div.button {
+#slide-deck:has(#slide-2:not(.hidden)) div.button,
+#slide-deck:has(#slide-2:not(.hidden)) .slide-progress {
   background-color: #600DB4;
 }
 
-#slide-deck:has(#slide-3:not(.hidden)) div.button {
-  background-color: #E9E5F2;
+#slide-deck:has(#slide-3:not(.hidden)) div.button,
+#slide-deck:has(#slide-3:not(.hidden)) .slide-progress {
+  background-color: #26374a;
 }
 
-#slide-deck:has(#slide-4:not(.hidden)) div.button {
+#slide-deck:has(#slide-4:not(.hidden)) div.button,
+#slide-deck:has(#slide-4:not(.hidden)) .slide-progress {
   background-color: #350267;
 }
 
-#slide-deck:has(#slide-5:not(.hidden)) div.button {
+#slide-deck:has(#slide-5:not(.hidden)) div.button,
+#slide-deck:has(#slide-5:not(.hidden)) .slide-progress {
   background-color: #E9E5F2;
 }
 
-#slide-deck:has(#slide-6:not(.hidden)) div.button {
+#slide-deck:has(#slide-6:not(.hidden)) div.button,
+#slide-deck:has(#slide-6:not(.hidden)) .slide-progress {
   background-color: #350267;
 }
 
-#slide-deck:has(#slide-7:not(.hidden)) div.button {
+#slide-deck:has(#slide-7:not(.hidden)) div.button,
+#slide-deck:has(#slide-7:not(.hidden)) .slide-progress {
   background-color: #E9E5F2;
 }
 
@@ -344,4 +467,35 @@ body {
 .animate-number {
   transform: scale(2);
   margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+  .hidden-xs {
+    display: none !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .hidden-sm {
+    display: none !important;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .hidden-md {
+    display: none !important;
+  }
+}
+@media (min-width: 1200px) {
+  .hidden-lg {
+    display: none !important;
+  }
+}
+.open,
+.close {
+  padding: 15px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+.open:hover,
+.close:hover {
+  opacity: 1;
 }/*# sourceMappingURL=wrapped.css.map */

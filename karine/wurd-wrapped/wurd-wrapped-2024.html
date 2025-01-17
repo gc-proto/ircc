@@ -22,141 +22,143 @@
 
 <body>
     <div id="slide-deck">
-        <div class="button"><button id="previous" class="hidden"><i class="fa-solid fa-circle-chevron-left"></i><span class="invisible">Previous</span></button></div>
-
-        <div id="slide-0" class="slide">
-            <div class="bg-img">
-                <div class="slide-content">
-                    <h1>WURD’s 2024</h1>
-                    <p>What we accomplished this year</p>
+        <div class="button"><button id="previous" class="not-visible"><i class="fa-solid fa-circle-chevron-left"></i><span class="invisible">Previous</span></button></div>
+        
+        <div class="slides">
+            <div id="slide-0" class="slide">
+                <div class="bg-img">
+                    <div class="slide-content">
+                        <h1>WURD’s 2024</h1>
+                        <p>What we accomplished this year</p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div id="slide-1" class="slide hidden">
-            <div class="bg-img">
-                <div class="slide-content">
-                    <h2>The year in numbers</h2>
-                    <div class="big-numbers">
-                        <div class="box">
-                            <div class="number">X</div> big projects
-                        </div>
-                        <div class="box">
-                            <div class="number">X</div> research reports
-                        </div>
-                        <div class="box">
-                            <div class="number">X</div> prototypes
+            <div id="slide-1" class="slide hidden">
+                <div class="bg-img">
+                    <div class="slide-content">
+                        <h2>We completed</h2>
+                        <div class="big-numbers">
+                            <div class="box">
+                                <div class="number">4</div> big improvement projects
+                            </div>
+                            <div class="box">
+                                <div class="number">9</div> research reports
+                            </div>
+                            <div class="box">
+                                <div class="number">100+</div> prototyped pages
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div id="slide-2" class="slide hidden">
-            <div class="slide-content">
-                <h2>Here’s some of the cool stuff we did<span class="highlight-green caret">:</span></h2>
+            <div id="slide-2" class="slide hidden">
+                <div class="slide-content">
+                    <h2>Here’s some of the cool stuff we did<span class="highlight-green caret">:</span></h2>
+                </div>
             </div>
-        </div>
-
-        <div id="slide-3" class="slide hidden">
-            <div class="slide-content">
-                <img src="img/programfinder.png" alt="Screenshot of the Explore Immigration Program tool" />
-
-                <div>
-                    <h2>Explore immigration programs</h2>
+            <div id="slide-3" class="slide hidden">
+                <div class="main-slide">
+                    <img src="img/program-finder-recording.gif" alt="Screenshot of the Explore Immigration Program tool" />
+                    <button class="open" data-slide="slide-3"><img src="img/down-chevron.png" alt="Expand"></button>
+                </div>
+                <div class="sub-slide hidden">
+                    <button class="close" data-slide="slide-3"><img src="img/up-chevron.png" alt="Close"></button>
+                    <p><span class="number">1 million visits</span><br /> since launch</p>
                     <p>Helping people find find our different programs</p>
-                    <p>Close to <span class="number">1 million</span> visits since launch</p>
+                    <img src="img/partyblob.gif" alt="" class="gif" />
                 </div>
             </div>
-        </div>
-        <div id="slide-4" class="slide hidden">
-            <div class="slide-content">
-                <img src="img/signinwizard.png" alt="Screenshot of the Sign in to your IRCC account wizard" />
-
-                <div>
-                    <h2>Sign in wizard</h2>
-                    <p>Helping people find the right IRCC account</p>
-                    <p>Over <span class="number">8 million</span> visits since launch</p>
+            <div id="slide-4" class="slide hidden">
+                <div class="slide-content">
+                    <img src="img/signinwizard.png" alt="Screenshot of the Sign in to your IRCC account wizard" />
+                    <div>
+                        <h2>Sign in wizard</h2>
+                        <p>Helping people find the right IRCC account</p>
+                        <p>Over <span class="number">8 million</span> visits since launch</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="slide-5" class="slide hidden">
-
-            <div class="slide-content">
-                <img src="img/webhealthdashboard.png" alt="Screenshot of the Web Health Dashboard" />
-
-                <div class="bg-svg">
-                    <h2>Web Performance dahsboard</h2>
-                    <p>Making sense of the vast amount of data on IRCC’s web performance</p>
-                    <svg class="background-svg" xmlns="http://www.w3.org/2000/svg" fill="none">
-                        <rect class="bar" width="50" x="110" height="0" y="500" fill="#dfd6f9"></rect>
-                        <rect class="bar" width="50" x="170" height="0" y="500" fill="#dfd6f9"></rect>
-                        <rect class="bar" width="50" x="230" height="0" y="500" fill="#dfd6f9"></rect>
-                        <rect class="bar" width="50" x="290" height="0" y="500" fill="#dfd6f9"></rect>
-                        <rect class="bar" width="50" x="350" height="0" y="500" fill="#dfd6f9"></rect>
-                    </svg>
+            <div id="slide-5" class="slide hidden">
+                <div class="slide-content">
+                    <img src="img/webhealthdashboard.png" alt="Screenshot of the Web Health Dashboard" />
+                    <div class="bg-svg">
+                        <h2>Web Performance dahsboard</h2>
+                        <p>Making sense of the vast amount of data on IRCC’s web performance</p>
+                        <svg class="background-svg" xmlns="http://www.w3.org/2000/svg" fill="none">
+                            <rect class="bar" width="50" x="110" height="0" y="500" fill="#dfd6f9"></rect>
+                            <rect class="bar" width="50" x="170" height="0" y="500" fill="#dfd6f9"></rect>
+                            <rect class="bar" width="50" x="230" height="0" y="500" fill="#dfd6f9"></rect>
+                            <rect class="bar" width="50" x="290" height="0" y="500" fill="#dfd6f9"></rect>
+                            <rect class="bar" width="50" x="350" height="0" y="500" fill="#dfd6f9"></rect>
+                        </svg>
+                    </div>
                 </div>
-
+            </div>
+            <div id="slide-6" class="slide hidden">
+                <div class="slide-content">
+                    <div><img src="img/wurd-dall-e.png" alt="ChatGPT generated image of WURD" />
+                    </div>
+                    <div>
+                        <h2>Experimenting with AI</h2>
+                        <ul>
+                            <li>Custom GPTs</li>
+                            <li>Brainstorm ideas</li>
+                            <li>Reviewing content</li>
+                            <li>Writing metadata</li>
+                            <li>Summarizing user feedback</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="slide-7" class="slide hidden">
+                <div class="slide-content">
+                    <div>
+                        <h2>Researching, testing, and prototyping</h2>
+                        <ul>
+                            <li>Asylum</li>
+                            <li>Express Entry</li>
+                            <li>IEC</li>
+                            <li>Study documents</li>
+                            <li>Using an IRCC rep</li>
+                            <li>Work in Canada</li>
+                            <li>Settlement</li>
+                            <li>International adoption</li>
+                            <li>PR Card</li>
+                            <li>Citizenship test</li>
+                            <li>Francophone country profiles</li>
+                            <li>Guidance on campaign pages</li>
+                            <li>Preparing the web site for the IRCC Portal - New version</li>
+                            <li>... and more! </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
 
-        </div>
-
-        <div id="slide-6" class="slide hidden">
-            <div class="slide-content">
-                <div><img src="img/wurd-dall-e.png" alt="ChatGPT generated image of WURD" />
-                    <p>We asked ChatGPT to render an image of WURD based on a quick description.</p>
-                    <p><a href="https://chatgpt.com/c/67856d6a-0868-8004-91f7-a3865e8d113d" class="highlight-green">See how that conversation panned out</a>.</p>
-                </div>
-
-                <div>
-                    <h2>Experimenting with AI</h2>
-                    <ul>
-                        <li>Custom GPTs</li>
-                        <li>Brainstorm ideas</li>
-                        <li>Reviewing content</li>
-                        <li>Writing metadata</li>
-                        <li>Summarizing user feedback</li>
-                    </ul>
-                </div>
+            <div class="slide-progress hidden-xs">
+                <a href="#slide-0" class="active"><span class="invisible">Slide 1</span></a>
+                <a href="#slide-1"><span class="invisible">Slide 2</span></a>
+                <a href="#slide-2"><span class="invisible">Slide 3</span></a>
+                <a href="#slide-3"><span class="invisible">Slide 4</span></a>
+                <a href="#slide-4"><span class="invisible">Slide 5</span></a>
+                <a href="#slide-5"><span class="invisible">Slide 6</span></a>
+                <a href="#slide-6"><span class="invisible">Slide 7</span></a>
+                <a href="#slide-7"><span class="invisible">Slide 8</span></a>
             </div>
         </div>
-
-        <div id="slide-7" class="slide hidden">
-            <div class="slide-content">
-
-
-                <div>
-                    <h2>Researching, testing, and prototyping</h2>
-                    <ul>
-                        <li>Asylum</li>
-                        <li>Express Entry</li>
-                        <li>IEC</li>
-                        <li>Study documents</li>
-                        <li>Using an IRCC rep</li>
-                        <li>Work in Canada</li>
-                        <li>Settlement</li>
-                        <li>International adoption</li>
-                        <li>PR Card</li>
-                        <li>Citizenship test</li>
-                        <li>Francophone country profiles</li>
-                        <li>Guidance on campaign pages</li>
-                        <li>Preparing the web site for the IRCC Portal - New version</li>
-                        <li>... and more! </li>
-                    </ul>
-                </div>
-            </div>
+        <div class="slide-progress hidden-sm hidden-md hidden-lg">
+            <a href="#slide-0" class="active"><span class="invisible">Slide 1</span></a>
+            <a href="#slide-1"><span class="invisible">Slide 2</span></a>
+            <a href="#slide-2"><span class="invisible">Slide 3</span></a>
+            <a href="#slide-3"><span class="invisible">Slide 4</span></a>
+            <a href="#slide-4"><span class="invisible">Slide 5</span></a>
+            <a href="#slide-5"><span class="invisible">Slide 6</span></a>
+            <a href="#slide-6"><span class="invisible">Slide 7</span></a>
+            <a href="#slide-7"><span class="invisible">Slide 8</span></a>
         </div>
-
-
-
         <div class="button"><button id="next"><i class="fa-solid fa-circle-chevron-right"></i><span class="invisible">Next</span></button></div>
-    </div>
-    <!-- <div id="slide-progress">        
-        <button id="play"><span class="invisible">Play</span></button>  
-        <button id="pause" class="hidden"><span class="invisible">Pause</span></button>  
-        <button id="restart" class="hidden"><span class="invisible">Restart</span></button>  
-    </div> -->
+    </div>   
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="wrapped.js"></script>
 </body>
 
