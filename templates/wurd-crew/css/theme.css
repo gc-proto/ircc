@@ -80,10 +80,10 @@ main {
 #left-navigation p:not(:first-of-type) {
   border-top: solid 1px #D5C6FF;
 }
-#left-navigation p:has(a:hover, a:focus) {
+#left-navigation p:has(a:hover, a:focus, a.active) {
   background-color: #D5C6FF;
 }
-#left-navigation p:has(a:hover, a:focus) a:hover, #left-navigation p:has(a:hover, a:focus) a:focus {
+#left-navigation p:has(a:hover, a:focus, a.active) a:hover, #left-navigation p:has(a:hover, a:focus, a.active) a:focus, #left-navigation p:has(a:hover, a:focus, a.active) a.active {
   color: #600DB4;
 }
 #left-navigation p a {
@@ -142,7 +142,7 @@ main {
   z-index: 1;
   font-weight: 300;
 }
-#left-navigation ul li:has(a:hover, a:focus) {
+#left-navigation ul li:has(a:hover, a:focus, a.active) {
   background-color: #D5C6FF;
 }
 
@@ -239,16 +239,16 @@ main {
     width: 50%;
     padding-right: 35px;
   }
-  #left-navigation > div h2:has(a:hover, a:focus) {
+  #left-navigation > div h2:has(a:hover, a:focus, a.active) {
     background-color: #D5C6FF;
   }
-  #left-navigation > div h2:has(a:hover, a:focus) + ul {
+  #left-navigation > div h2:has(a:hover, a:focus, a.active) + ul {
     display: block;
   }
   #left-navigation > div h2 a {
     cursor: pointer !important;
   }
-  #left-navigation > div h2 a:hover, #left-navigation > div h2 a:focus {
+  #left-navigation > div h2 a:hover, #left-navigation > div h2 a:focus, #left-navigation > div h2 a a.active {
     background: #D5C6FF;
     color: #350267 !important;
   }
