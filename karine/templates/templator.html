@@ -48,49 +48,49 @@
 
     </header>
 
-    
+
 
     <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
-        <div id="mainContent">
+        <div id="container">
 
-        <div class="mrgn-lft-xl mrgn-rght-xl py-4">
+            <div class="mrgn-lft-xl mrgn-rght-xl py-4">
 
-            <button class="btn-link p-0 wb-toggle" id="settings" data-toggle='{"selector": "#settings-options", "stateOn": "show", "stateOff":"hidden"}'><i class="fas fa-cog mrgn-rght-sm"></i>Settings</button>
-            <div class="hidden wc-panel wc-bg-secondary-light small" id="settings-options">
-                <form id="settings-form">
-                    <fieldset class="chkbxrdio-grp">
-                        <legend>Code syntax theme</legend>
-                        <div class="radio">
-                            <label for="light"><input type="radio" name="theme" value="default" id="light" /> Light (default)</label>
-                        </div>
-                        <div class="radio">
-                            <label for="dark"><input type="radio" name="theme" value="dark" id="dark" /> Dark</label>
-                        </div>
-                    </fieldset>
-                </form>
+                <button class="btn-link p-0 wb-toggle" id="settings" data-toggle='{"selector": "#settings-options", "stateOn": "show", "stateOff":"hidden"}'><i class="fas fa-cog mrgn-rght-sm"></i>Settings</button>
+                <div class="hidden wc-panel wc-bg-secondary-light small" id="settings-options">
+                    <form id="settings-form">
+                        <fieldset class="chkbxrdio-grp">
+                            <legend>Code syntax theme</legend>
+                            <div class="radio">
+                                <label for="light"><input type="radio" name="theme" value="default" id="light" /> Light (default)</label>
+                            </div>
+                            <div class="radio">
+                                <label for="dark"><input type="radio" name="theme" value="dark" id="dark" /> Dark</label>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+
+                <div class="mrgn-tp-lg mrgn-bttm-md wc-panel wc-bg-secondary-light" id="form">
+                    <label for="enterURL">Page URL:</label>
+                    <input type="text" placeholder="https:///www.canada.ca" class="full-width" id="enterURL" /><br />
+                    <button class="btn btn-info mrgn-tp-md" id="generate">Generate template</button>
+                    <button class="btn btn-info mrgn-tp-md" id="aem-extract">Extract code for AEM</button>
+
+
+                </div>
+                <div id="downloadedContent" class="hidden"></div>
             </div>
+            <div class="clearfix"></div>
+            <div class="hidden" id="showOutput">
+                <div class="mrgn-lft-xl mrgn-rght-xl mrgn-bttm-xl">
+
+                    <div class="row">
+                        <div class="col-md-8 col-xs-12 h-100">
+
+                            <div class="position-relative">
 
 
-            <div class="mrgn-tp-lg mrgn-bttm-md wc-panel wc-bg-secondary-light" id="form">
-                <label for="enterURL">Page URL:</label>
-                <input type="text" placeholder="https:///www.canada.ca" class="full-width" id="enterURL" /><br />
-                <button class="btn btn-info mrgn-tp-md" id="generate">Generate template</button>
-                <button class="btn btn-info mrgn-tp-md" id="aem-extract">Extract code for AEM</button>
-
-
-            </div>
-            <div id="downloadedContent" class="hidden"></div>
-        </div>
-
-        <div class="hidden" id="showOutput">
-            <div class="mrgn-lft-xl mrgn-rght-xl mrgn-bttm-xl">
-
-                <div class="row">
-                    <div class="col-md-8 col-xs-12 h-100">
-                        
-                        <div class="position-relative">
-                            
-                            
                                 <button class="btn-link p-0 wb-toggle text-right grow pull-right" data-toggle='{"selector": "#snippets, .snippet-clear", "stateOn": "show", "stateOff":"hidden"}'><i class="fas fa-code mrgn-rght-sm"></i></i>Add a component</button>
                                 <div class="clearfix hidden snippet-clear"></div>
                                 <div class="wc-panel wc-bg-secondary-light small full-width hidden" id="snippets">
@@ -105,47 +105,45 @@
                                         <li>Panel (with colour band) (<button class="btn-link p-0" data-add-snippet="panel" data-snippet-class="info">info</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="warning">warning</button>|<button class="btn-link p-0" data-add-snippet="panel" data-snippet-class="danger">danger</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="success">success</button>)</li>
                                         <li>Panel (with colour band) (<button class="btn-link p-0" data-add-snippet="panel" data-snippet-class="info">info</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="warning">warning</button>|<button class="btn-link p-0" data-add-snippet="panel" data-snippet-class="danger">danger</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="success">success</button>)</li>
                                         <li>Panel (without colour band) (<button class="btn-link p-0" data-add-snippet="panelNoHeading" data-snippet-class="info">info</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="warning">warning</button>|<button class="btn-link p-0" data-add-snippet="panelNoHeading" data-snippet-class="danger">danger</button>|<button class="btn-link p-0" data-add-snippet="alert" data-snippet-class="success">success</button>)</li>
-                                        <li><button class="btn-link p-0" data-add-snippet="well">Well</button>|<button class="btn-link p-0" data-add-snippet="well" data-snippet-class="well-sm">Small Well</button</li>
+                                        <li><button class="btn-link p-0" data-add-snippet="well">Well</button>|<button class="btn-link p-0" data-add-snippet="well" data-snippet-class="well-sm">Small Well</button< /li>
                                     </ul>
                                 </div>
-                                
+
                                 <div class="btn-group mrgn-bttm-sm pull-left">
                                     <button id="copyClip" class="btn btn-default">Copy to clipboard</button>
                                     <button id="save" class="btn btn-default">Download</button>
                                     <button id="update" class="btn btn-default">Run changes</button>
 
                                 </div>
-                                
 
-                            
+
+
+                            </div>
+
                         </div>
-                        
                     </div>
-                    <div class="col-md-8 col-xs-12 h-100">
-                        <div class="position-relative" data-theme="default">
-                            <div id="status" class="hidden"></div>
-                            <textarea class="full-width" placeholder="Enter HTML Source Code" id="output" spellcheck="false" oninput="update(this.value); sync_scroll(this);" onscroll="sync_scroll(this);" onkeydown="check_tab(this, event);"></textarea>
-                            <pre id="highlighting" aria-hidden="true" class="full-width">
+
+                    <div class="position-relative" data-theme="default">
+                        <div id="status" class="hidden"></div>
+                        <textarea class="full-width" placeholder="Enter HTML Source Code" id="output" spellcheck="false" oninput="update(this.value); sync_scroll(this);" onscroll="sync_scroll(this);" onkeydown="check_tab(this, event);"></textarea>
+                        <pre id="highlighting" aria-hidden="true" class="full-width">
                                 <code class="language-html full-width" id="highlighting-content"></code>
                             </pre>
-                        </div>
                     </div>
-                    <div class="col-md-4 col-xs-12">
-                        <div class="pageDetails">
-                            <h2 class="mrgn-tp-0">Page details</h2>
-                            <div id="pageDetails"></div>
-                        </div>
-                    </div>
+                    <details>
+                        <summary>Page details</summary>
+                        <div id="pageDetails"></div>
+                    </details>
+
+
+
+                    <h2>Page preview</h2>
+
+
                 </div>
-
-
-                <h2>Page preview</h2>
-
+                <div id="preview"></div>
 
             </div>
-            <div id="preview"></div>
-
-        </div>
 
 
 

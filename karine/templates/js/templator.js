@@ -1,5 +1,7 @@
 const urlParams = (window.location.href).split("?url=")[1]
 let input = document.getElementById('enterURL');
+input.value = "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit.html";
+
 let error = false;
 let form = document.getElementById('form');
 let downloadedContent = document.getElementById('downloadedContent');
