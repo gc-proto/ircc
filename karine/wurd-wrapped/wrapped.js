@@ -4,8 +4,6 @@ let slides = document.getElementsByClassName('slide');
 let slidesContainer = document.querySelector('.slides');
 let btnPrevious = document.getElementById('previous');
 let btnNext = document.getElementById('next');
-let progressIcons = document.querySelectorAll('.slide-progress a');
-let progressBar = document.querySelector('.slide-progress');
 
 let maxSlides = slides.length - 1;
 let currentSlide;
@@ -14,7 +12,7 @@ function goToNext(x) {
     currentSlide = document.querySelector(".slide:not(.hidden)");
     if (currentSlide.querySelector('video')) currentSlide.querySelector('video').pause();
 
-    let nextSlideNum = x ? x : (parseInt(currentSlide.getAttribute('id').split("-")[1]) + 1);
+    let nextSlideNum = x ? parseInt(x) : (parseInt(currentSlide.getAttribute('id').split("-")[1]) + 1);
     let nextSlide = document.getElementById('slide-' + nextSlideNum);
 
     if (nextSlide) {
@@ -22,9 +20,11 @@ function goToNext(x) {
         currentSlide.classList.add('hidden');
         nextSlide.classList.remove('hidden');
         btnPrevious.classList.remove('not-visible');
-        if (!x) progressIcons[nextSlideNum - 1].classList.remove('active');
-        progressIcons[nextSlideNum].classList.add('active');
 
+        
+        $(".slide-progress a").removeClass('active');
+        $(".slide-progress a[href='#slide-"+ (nextSlideNum) +"']").addClass('active');
+    
     }
 
     if ((parseInt(currentSlide.getAttribute('id').split("-")[1]) + 1) === maxSlides) {
@@ -35,6 +35,7 @@ function goToNext(x) {
     }
 
     let delay;
+    console.log('test', nextSlideNum)
     switch (nextSlideNum) {
         case 1:
             let nums = nextSlide.querySelectorAll('.number');
@@ -53,11 +54,12 @@ function goToNext(x) {
             nextSlide.querySelector('video').play();
         case 5:
             const bars = nextSlide.querySelectorAll('.bar');
+            console.log(bars.length);
             bars.forEach((bar, index) => {
-                const finalHeight = Math.random() * 490 + 50; // Random height (50-200px)
+                let min = index + 10;
+                const finalwidth = Math.random() * 390 + min; // Random height (50-200px)
                 setTimeout(() => {
-                    bar.setAttribute('height', finalHeight);
-                    bar.setAttribute('y', 500 - finalHeight); // Adjust y to grow upwards
+                    bar.setAttribute('width', finalwidth);
                 }, index * 300); // Stagger animations
             });
         default:
@@ -68,7 +70,7 @@ function goToNext(x) {
 function goToPrevious(x) {
     currentSlide = document.querySelector(".slide:not(.hidden)");
 
-    let previousSlideNum = x ? x : (parseInt(currentSlide.getAttribute('id').split("-")[1]) - 1);
+    let previousSlideNum = x ? parseInt(x) : (parseInt(currentSlide.getAttribute('id').split("-")[1]) - 1);
     let previousSlide = document.getElementById('slide-' + previousSlideNum);
 
     
@@ -76,8 +78,10 @@ function goToPrevious(x) {
         currentSlide.classList.add('hidden');
         previousSlide.classList.remove('hidden');
         btnNext.classList.remove('not-visible')
-        if (!x) progressIcons[previousSlideNum + 1].classList.remove('active');
-        progressIcons[previousSlideNum].classList.add('active');
+        
+        
+        $(".slide-progress a").removeClass('active');
+        $(".slide-progress a[href='#slide-"+ (previousSlideNum) +"']").addClass('active');
 
     }
 
@@ -87,11 +91,37 @@ function goToPrevious(x) {
     else {
         btnPrevious.classList.remove('not-visible');
     }
+
+    let delay;
+    switch (previousSlideNum) {
+        case 1:
+            let nums = previousSlide.querySelectorAll('.number');
+
+            delay = 0;
+            nums.forEach((element, index) => {
+                setTimeout(() => {
+                    element.classList.add('animate-number'); // Add the class to enlarge the element
+                }, delay);
+
+                delay += 500; // Increase the delay for the next element
+            });
+            break;
+        case 5:
+            const bars = previousSlide.querySelectorAll('.bar');
+            bars.forEach((bar, index) => {
+                let min = index + 10;
+                const finalwidth = Math.random() * 390 + min; // Random width (50-200px)
+                setTimeout(() => {
+                    bar.setAttribute('width', finalwidth);
+                }, index * 300); // Stagger animations
+            });
+        default:
+            break;
+    }
 }
 
 window.addEventListener('keydown', (event) => {
-    const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
-    console.log("keypressed")
+    const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"    
     const callback = {
         "ArrowLeft": leftHandler,
         "ArrowRight": rightHandler,
@@ -148,6 +178,10 @@ $(".close").on("click", function () {
 $(".slide-progress a").on("click", function () {
     $(".slide-progress a").removeClass('active');
     let goTo = $(this).attr('href').split("-")[1];
+    
+    $(".slide-"+goTo).addClass('active');
+
+
     let currentSlide = parseInt(document.querySelector('.slide:not(.hidden)').getAttribute('id').split("-")[1]);
 
     if (goTo > currentSlide) {
