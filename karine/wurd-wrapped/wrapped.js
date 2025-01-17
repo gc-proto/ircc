@@ -65,24 +65,24 @@ btnPrevious.onclick = goToPrev;
 function goToPrev(x) {
     currentSlide = document.querySelector(".slide:not(.hidden)");
 
-    if (x) {
+    // if (x) {
 
       
-            currentSlide.classList.add('hidden');
-            document.getElementById('slide-'+ x).classList.remove('hidden');
-            btnNext.classList.remove('not-visible')
-            progressIcons[x].classList.add('active');
+    //         currentSlide.classList.add('hidden');
+    //         document.getElementById('slide-'+ x).classList.remove('hidden');
+    //         btnNext.classList.remove('not-visible')
+    //         progressIcons[x].classList.add('active');
 
         
 
-        if (parseInt(currentSlide.getAttribute('id').split("-")[1] - 1) === 0) {
-            btnPrevious.classList.add('not-visible');
-        }
-        else {
-            btnPrevious.classList.remove('not-visible');
-        }
-    }
-    else {
+    //     if (parseInt(currentSlide.getAttribute('id').split("-")[1] - 1) === 0) {
+    //         btnPrevious.classList.add('not-visible');
+    //     }
+    //     else {
+    //         btnPrevious.classList.remove('not-visible');
+    //     }
+    // }
+    // else {
 
         let previousSlide = document.getElementById('slide-' + (parseInt(currentSlide.getAttribute('id').split("-")[1]) - 1));
         let previousSlideNum = (parseInt(currentSlide.getAttribute('id').split("-")[1]) - 1);
@@ -101,7 +101,7 @@ function goToPrev(x) {
         else {
             btnPrevious.classList.remove('not-visible');
         }
-    }
+    // }
 }
 
 window.addEventListener('keydown', (event) => {
