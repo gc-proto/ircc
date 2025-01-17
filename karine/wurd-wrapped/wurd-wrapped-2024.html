@@ -22,7 +22,7 @@
 
 <body>
     <div id="slide-deck">
-        <div class="button"><button id="previous" class="not-visible"><i class="fa-solid fa-circle-chevron-left"></i><span class="invisible">Previous</span></button></div>
+        <div class="button"><button id="previous" class="not-visible" onclick="goToPrevious()"><i class="fa-solid fa-circle-chevron-left"></i><span class="invisible">Previous</span></button></div>
         
         <div class="slides">
             <div id="slide-0" class="slide">
@@ -58,25 +58,39 @@
             </div>
             <div id="slide-3" class="slide hidden">
                 <div class="main-slide">
-                    <img src="img/program-finder-recording.gif" alt="Screenshot of the Explore Immigration Program tool" />
-                    <button class="open" data-slide="slide-3"><img src="img/down-chevron.png" alt="Expand"></button>
+                    <h2>Explore Immigration Programs</h2>
+                    <video controls preload="auto">                      
+                        <source src="img/program_finder-recording.mp4"  type="video/mp4" />
+                      </video>
+
+                      
+                    <!-- <img src="img/program-finder-recording.gif" alt="Gif of the Explore immigration program, showing a user going through the Work option." /> -->
+                    <button class="open" data-slide="slide-3"><img src="img/chevron-down.png" alt="Go to subslide 3"></button>
                 </div>
                 <div class="sub-slide hidden">
-                    <button class="close" data-slide="slide-3"><img src="img/up-chevron.png" alt="Close"></button>
+                    <button class="close" data-slide="slide-3"><img src="img/chevron-up.png" alt="Go back to main slide 3"></button>
                     <p><span class="number">1 million visits</span><br /> since launch</p>
-                    <p>Helping people find find our different programs</p>
+                    <p>Helping people find our different programs</p>
                     <img src="img/partyblob.gif" alt="" class="gif" />
                 </div>
             </div>
             <div id="slide-4" class="slide hidden">
-                <div class="slide-content">
-                    <img src="img/signinwizard.png" alt="Screenshot of the Sign in to your IRCC account wizard" />
-                    <div>
-                        <h2>Sign in wizard</h2>
-                        <p>Helping people find the right IRCC account</p>
-                        <p>Over <span class="number">8 million</span> visits since launch</p>
-                    </div>
+                <div class="main-slide">
+                    <h2>Sign in to your IRCC account</h2>
+                    <video controls preload="auto">                      
+                        <source src="img/sign_in-wizard-recording.mp4"  type="video/mp4" />
+                      </video>
+
+                    <!-- <img src="img/sign_in-wizard-recording.gif" alt="Gif of the Sign in wizard, showing a user going through the work option." /> -->
+                    <button class="open" data-slide="slide-4"><img src="img/chevron-down-purple.png" alt="Go to subslide 4"></button>
                 </div>
+                <div class="sub-slide hidden">
+                    <button class="close" data-slide="slide-4"><img src="img/chevron-up-purple.png" alt="Go back to main slide 4"></button>
+                    <p><span class="number">8 million visits</span><br /> since launch</p>
+                    <p>Helping people find the right IRCC account</p>
+                    <img src="img/kaboom-warthog 1.png" alt="" class="gif" />
+                </div>
+                
             </div>
             <div id="slide-5" class="slide hidden">
                 <div class="slide-content">
@@ -156,7 +170,7 @@
             <a href="#slide-6"><span class="invisible">Slide 7</span></a>
             <a href="#slide-7"><span class="invisible">Slide 8</span></a>
         </div>
-        <div class="button"><button id="next"><i class="fa-solid fa-circle-chevron-right"></i><span class="invisible">Next</span></button></div>
+        <div class="button"><button id="next" onclick="goToNext()"><i class="fa-solid fa-circle-chevron-right"></i><span class="invisible">Next</span></button></div>
     </div>   
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="wrapped.js"></script>

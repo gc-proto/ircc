@@ -1,3 +1,4 @@
+
 let slideDeck = document.getElementById('slide-deck');
 let slides = document.getElementsByClassName('slide');
 let slidesContainer = document.querySelector('.slides');
@@ -9,18 +10,19 @@ let progressBar = document.querySelector('.slide-progress');
 let maxSlides = slides.length - 1;
 let currentSlide;
 
-btnNext.onclick = goToNext;
-
-function goToNext(x) {
+function goToNext(x) {    
     currentSlide = document.querySelector(".slide:not(.hidden)");
-    let nextSlideNum = (parseInt(currentSlide.getAttribute('id').split("-")[1]) + 1);
+    if (currentSlide.querySelector('video')) currentSlide.querySelector('video').pause();
+
+    let nextSlideNum = x ? x : (parseInt(currentSlide.getAttribute('id').split("-")[1]) + 1);
     let nextSlide = document.getElementById('slide-' + nextSlideNum);
+
     if (nextSlide) {
 
         currentSlide.classList.add('hidden');
         nextSlide.classList.remove('hidden');
         btnPrevious.classList.remove('not-visible');
-        progressIcons[nextSlideNum - 1].classList.remove('active');
+        if (!x) progressIcons[nextSlideNum - 1].classList.remove('active');
         progressIcons[nextSlideNum].classList.add('active');
 
     }
@@ -46,6 +48,9 @@ function goToNext(x) {
                 delay += 500; // Increase the delay for the next element
             });
             break;
+        case 3:
+        case 4:
+            nextSlide.querySelector('video').play();
         case 5:
             const bars = nextSlide.querySelectorAll('.bar');
             bars.forEach((bar, index) => {
@@ -60,53 +65,33 @@ function goToNext(x) {
     }
 }
 
-btnPrevious.onclick = goToPrev;
-
-function goToPrev(x) {
+function goToPrevious(x) {
     currentSlide = document.querySelector(".slide:not(.hidden)");
 
-    // if (x) {
+    let previousSlideNum = x ? x : (parseInt(currentSlide.getAttribute('id').split("-")[1]) - 1);
+    let previousSlide = document.getElementById('slide-' + previousSlideNum);
 
-      
-    //         currentSlide.classList.add('hidden');
-    //         document.getElementById('slide-'+ x).classList.remove('hidden');
-    //         btnNext.classList.remove('not-visible')
-    //         progressIcons[x].classList.add('active');
+    
+    if (previousSlide) {
+        currentSlide.classList.add('hidden');
+        previousSlide.classList.remove('hidden');
+        btnNext.classList.remove('not-visible')
+        if (!x) progressIcons[previousSlideNum + 1].classList.remove('active');
+        progressIcons[previousSlideNum].classList.add('active');
 
-        
+    }
 
-    //     if (parseInt(currentSlide.getAttribute('id').split("-")[1] - 1) === 0) {
-    //         btnPrevious.classList.add('not-visible');
-    //     }
-    //     else {
-    //         btnPrevious.classList.remove('not-visible');
-    //     }
-    // }
-    // else {
-
-        let previousSlide = document.getElementById('slide-' + (parseInt(currentSlide.getAttribute('id').split("-")[1]) - 1));
-        let previousSlideNum = (parseInt(currentSlide.getAttribute('id').split("-")[1]) - 1);
-        if (previousSlide) {
-            currentSlide.classList.add('hidden');
-            previousSlide.classList.remove('hidden');
-            btnNext.classList.remove('not-visible')
-            progressIcons[previousSlideNum + 1].classList.remove('active');
-            progressIcons[previousSlideNum].classList.add('active');
-
-        }
-
-        if (parseInt(currentSlide.getAttribute('id').split("-")[1] - 1) === 0) {
-            btnPrevious.classList.add('not-visible');
-        }
-        else {
-            btnPrevious.classList.remove('not-visible');
-        }
-    // }
+    if (parseInt(currentSlide.getAttribute('id').split("-")[1] - 1) === 0) {
+        btnPrevious.classList.add('not-visible');
+    }
+    else {
+        btnPrevious.classList.remove('not-visible');
+    }
 }
 
 window.addEventListener('keydown', (event) => {
     const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
-
+    console.log("keypressed")
     const callback = {
         "ArrowLeft": leftHandler,
         "ArrowRight": rightHandler,
@@ -162,17 +147,13 @@ $(".close").on("click", function () {
 
 $(".slide-progress a").on("click", function () {
     $(".slide-progress a").removeClass('active');
-    let goTo = parseInt($(this).attr('href').split("-")[1]);
+    let goTo = $(this).attr('href').split("-")[1];
     let currentSlide = parseInt(document.querySelector('.slide:not(.hidden)').getAttribute('id').split("-")[1]);
-    console.log(goTo, currentSlide);
 
     if (goTo > currentSlide) {
         goToNext(goTo);
     }
     else {
-        goToPrev(goTo);
+        goToPrevious(goTo);
     }
-    //get current slide
-    //if clicked button is less, go to prev pass query, else go to next pass query.
-    //in next/prev adjust to take query which takes over next slide?
 });
