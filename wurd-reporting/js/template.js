@@ -1,3 +1,5 @@
+
+
 displayMenu();
 
 window.onresize = function(){ displayMenu() };
@@ -21,6 +23,15 @@ $('#left-navigation').on( "wb-contentupdated", function( event, data ){
         }
     });
 
+    let currentPage = (window.location.href).split('/').pop();
+    let links = document.querySelectorAll('#left-navigation a');
+    for (let i = 0; i < links.length; i++) {
+
+        if (links[i].getAttribute('href') === currentPage) {
+            links[i].classList.add('active');
+        }
+    }
+
 });
 
 function displayMenu() {
@@ -30,13 +41,6 @@ function displayMenu() {
     else {
         $('#left-navigation ul').css("display","none");
     }
-
-    let currentPage = (window.location.href).split('/').pop();
-    let links = document.querySelectorAll('#left-navigation a');
-    for (let i = 0; i > links.length; i++) {
-        if (links[i].getAttribute('href') === currentPage) {
-            links[i].classList.add('active');
-        }
-    }
-    console.log(links)
+   
+   
 }
