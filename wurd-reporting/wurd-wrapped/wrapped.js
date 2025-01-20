@@ -191,3 +191,13 @@ $(".slide-progress a").on("click", function () {
         goToPrevious(goTo);
     }
 });
+
+$(window).bind('mousewheel', function(event) {
+    
+    if (event.originalEvent.wheelDelta >= 0) {
+       
+        upHandler();
+    }
+    else {downHandler();
+    }
+});

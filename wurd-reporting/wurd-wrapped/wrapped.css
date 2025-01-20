@@ -195,8 +195,9 @@ body {
   display: block;
   max-width: 100%;
   height: auto;
-  width: 60%;
+  width: 50%;
   margin: 60px auto 0;
+  position: relative;
 }
 #slide-3 h2 {
   font-size: 50pt;
@@ -237,7 +238,7 @@ body {
   display: block;
   max-width: 100%;
   height: auto;
-  width: 70%;
+  width: 50%;
   margin: 60px auto 0;
 }
 #slide-4 .sub-slide {
@@ -269,7 +270,8 @@ body {
     justify-content: center;
     align-items: normal;
   }
-  #slide-5 .slide-content div, #slide-5 .slide-content h2 {
+  #slide-5 .slide-content div,
+  #slide-5 .slide-content h2 {
     width: auto !important;
   }
   #slide-5 .slide-content svg {
@@ -339,7 +341,8 @@ body {
     justify-content: center;
     align-items: normal;
   }
-  #slide-6 .slide-content div, #slide-6 .slide-content h2 {
+  #slide-6 .slide-content div,
+  #slide-6 .slide-content h2 {
     width: auto !important;
   }
   #slide-6 .slide-content svg {
@@ -370,7 +373,8 @@ body {
   height: auto;
   margin: 0 auto;
 }
-#slide-6 .slide-content ul, #slide-6 .slide-content li {
+#slide-6 .slide-content ul,
+#slide-6 .slide-content li {
   font-size: 25pt;
   text-align: left;
 }
