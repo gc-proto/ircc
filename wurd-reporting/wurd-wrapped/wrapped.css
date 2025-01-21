@@ -196,7 +196,7 @@ body {
   max-width: 100%;
   height: auto;
   width: 50%;
-  margin: 60px auto 0;
+  margin: 30px auto 0;
   position: relative;
 }
 #slide-3 h2 {
@@ -239,7 +239,7 @@ body {
   max-width: 100%;
   height: auto;
   width: 50%;
-  margin: 60px auto 0;
+  margin: 30px auto 0;
 }
 #slide-4 .sub-slide {
   background-image: url("img/confetti.png");
@@ -442,6 +442,9 @@ body {
 }
 #slide-8 .flex-row {
   height: 40%;
+}
+#slide-8 p {
+  margin: 30px 0;
 }
 @media screen and (max-width: 768px) {
   #slide-8 img {
