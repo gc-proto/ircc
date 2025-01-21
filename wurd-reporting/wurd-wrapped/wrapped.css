@@ -159,6 +159,9 @@ body {
     display: flex;
   }
 }
+#slide-0 .bg-img .slide-content img {
+  margin: 40px 0;
+}
 
 #slide-deck:has(#slide-1:not(.hidden)) div.button,
 #slide-deck:has(#slide-1:not(.hidden)) .slide-progress {
