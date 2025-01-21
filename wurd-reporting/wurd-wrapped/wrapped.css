@@ -107,6 +107,12 @@ body {
   margin-left: -50px;
   font-family: "Times New Roman", Times, serif;
 }
+@media screen and (max-width: 768px) {
+  .caret::after {
+    margin-top: 40px;
+    margin-left: -18px;
+  }
+}
 
 .sub-slide {
   flex-direction: row;
@@ -182,6 +188,14 @@ body {
   background-color: #600DB4;
   color: #E9E5F2;
 }
+#slide-2 .smaller {
+  font-size: 45pt;
+}
+@media screen and (max-width: 768px) {
+  #slide-2 h2.smaller {
+    font-size: 30pt;
+  }
+}
 
 #slide-deck:has(#slide-3:not(.hidden)) div.button,
 #slide-deck:has(#slide-3:not(.hidden)) .slide-progress {
@@ -202,8 +216,17 @@ body {
   margin: 30px auto 0;
   position: relative;
 }
+@media screen and (max-width: 768px) {
+  #slide-3 img,
+  #slide-3 video {
+    width: 90%;
+  }
+}
 #slide-3 h2 {
   font-size: 50pt;
+}
+#slide-3 h2.smaller {
+  font-size: 40pt;
 }
 @media screen and (max-width: 768px) {
   #slide-3 h2 {
@@ -212,6 +235,11 @@ body {
 }
 #slide-3 .sub-slide {
   background-image: url("img/confetti.png");
+}
+@media screen and (max-width: 768px) {
+  #slide-3 .sub-slide {
+    background-position-y: center;
+  }
 }
 #slide-3 .gif {
   display: block;
@@ -231,6 +259,9 @@ body {
 #slide-4 h2 {
   font-size: 50pt;
 }
+#slide-4 h2 .smaller {
+  font-size: 45pt;
+}
 @media screen and (max-width: 768px) {
   #slide-4 h2 {
     font-size: 30pt;
@@ -244,9 +275,20 @@ body {
   width: 50%;
   margin: 30px auto 0;
 }
+@media screen and (max-width: 768px) {
+  #slide-4 img,
+  #slide-4 video {
+    width: 90%;
+  }
+}
 #slide-4 .sub-slide {
   background-image: url("img/confetti.png");
   color: #600DB4;
+}
+@media screen and (max-width: 768px) {
+  #slide-4 .sub-slide {
+    background-position-y: center;
+  }
 }
 #slide-4 .gif {
   width: 100px;
@@ -400,11 +442,23 @@ body {
   z-index: 2;
   padding: 0;
 }
+@media screen and (max-width: 768px) {
+  #slide-7 h2 {
+    font-size: 30pt;
+  }
+}
 #slide-7 ul {
   margin-left: 55px;
   columns: 2;
   -webkit-columns: 2;
   -moz-columns: 2;
+}
+@media screen and (max-width: 768px) {
+  #slide-7 ul {
+    columns: 1;
+    -webkit-columns: 1;
+    -moz-columns: 1;
+  }
 }
 #slide-7 li {
   font-size: 16pt;
@@ -605,6 +659,7 @@ body {
 .animate-number {
   transform: scale(2);
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 @media (max-width: 767px) {
