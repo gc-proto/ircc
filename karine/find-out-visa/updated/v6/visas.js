@@ -74,6 +74,7 @@ btnNext.onclick = function () {
     }
 
     console.log("Next: ", next);
+    console.log("Traveller: ", traveller_type);
 
     userAnswers.push(currentQuestion);
 
@@ -104,7 +105,7 @@ $("button.passport-code").on("click", function(){
     console.log(code);
     console.log(traveller_type);
 
-    document.getElementById('passport-selection').innerHTML = document.querySelector('[data-passport-code="'+code+'"]').innerHTML;
+    document.getElementById('passport-selection').innerHTML = `${document.querySelector('[data-passport-code="'+code+'"]').innerHTML} (${document.querySelectorAll('[data-passport-code="'+code+'"]')[1].innerHTML})`;
 
     document.getElementById('passport-code').classList.add('hidden');
     document.getElementById('passport-code-selection').classList.remove('hidden');
@@ -114,3 +115,15 @@ $("#passport-selection-change").on("click", function(){
     document.getElementById('passport-code').classList.remove('hidden');
     document.getElementById('passport-code-selection').classList.add('hidden');
 });
+
+// function layoutShift(){
+//     let tableInformation = document.querySelector('.table-information');
+    
+//     document.querySelector('.top').insertAdjacentHTML("afterend",tableInformation.outerHTML);
+//     tableInformation.remove();
+    
+// } 
+
+// $( ".wb-tables" ).on( "wb-ready.wb-tables", function( event ) {
+//     layoutShift();
+// });

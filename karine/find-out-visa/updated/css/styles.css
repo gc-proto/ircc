@@ -14,13 +14,25 @@
   padding: 30px 40px;
   border-radius: 30px;
 }
-.tool-container legend, .tool-container .legend {
+.tool-container legend,
+.tool-container .legend {
   font-size: 1.5em !important;
 }
-.tool-container .wb-fieldflow-form legend, .tool-container .wb-fieldflow-form .wb-fieldflow-label, .tool-container .wb-fieldflow-form .field-name {
+.tool-container .wb-fieldflow-form legend,
+.tool-container .wb-fieldflow-form .wb-fieldflow-label,
+.tool-container .wb-fieldflow-form .field-name {
   font-size: 24px !important;
   font-family: Lato, sans-serif;
 }
-.tool-container select, .tool-container input[type=text] {
+.tool-container select,
+.tool-container input[type=text] {
   padding: 0 !important;
+}
+
+.dataTables_wrapper table {
+  margin: 0;
+  width: 50% !important;
+}
+.dataTables_wrapper .dataTables_paginate {
+  text-align: left;
 }/*# sourceMappingURL=styles.css.map */

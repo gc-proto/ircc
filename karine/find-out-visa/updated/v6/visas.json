@@ -114,6 +114,13 @@
             "us_refugee": "result-visitor_visa",
             "permit_reenter_us": "result-visitor_visa",
             "other_refugee": "result-visitor_visa"
+        },
+        "transit": {
+            "passport": "question-passport_code",
+            "alien_passport_stateless_persons": "question-transit",
+            "us_refugee": "question-transit",
+            "permit_reenter_us": "question-transit",
+            "other_refugee": "question-transit"
         }
     },
     "question-travel": {
@@ -170,11 +177,51 @@
         "taiwan": {
             "air": "result-eTA",
             "ground": "result-identification_document"
+        },
+        "alien_passport_stateless_persons":  {
+            "air": "question-travel_length",
+            "ground": "result-visitor_visa"
+        },
+        "us_refugee":  {
+            "air": "question-travel_length",
+            "ground": "result-visitor_visa"
+        },
+        "permit_reenter_us":  {
+            "air": "question-travel_length",
+            "ground": "result-visitor_visa"
+        },
+        "other_refugee":  {
+            "air": "question-travel_length",
+            "ground": "result-visitor_visa"
         }
     },
     "question-transit_length": {
         "visa": {
             "tourist": {
+                "no": "result-visitor_visa",
+                "yes": "result-transit_visa"
+            }
+        },
+        "alien_passport_stateless_persons":  {
+            "transit": {
+                "no": "result-visitor_visa",
+                "yes": "result-transit_visa"
+            }
+        },
+        "us_refugee":  {
+            "transit": {
+                "no": "result-visitor_visa",
+                "yes": "result-transit_visa"
+            }
+        },
+        "permit_reenter_us":  {
+            "transit": {
+                "no": "result-visitor_visa",
+                "yes": "result-transit_visa"
+            }
+        },
+        "other_refugee":  {
+            "transit": {
                 "no": "result-visitor_visa",
                 "yes": "result-transit_visa"
             }
