@@ -33,6 +33,11 @@
   margin: 0;
   width: 50% !important;
 }
+@media screen and (max-width: 991px) {
+  .dataTables_wrapper table {
+    width: 100% !important;
+  }
+}
 .dataTables_wrapper .dataTables_paginate {
   text-align: left;
 }/*# sourceMappingURL=styles.css.map */
