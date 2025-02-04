@@ -330,6 +330,8 @@
                 $( event.currentTarget ).trigger( srctype + "." + drawEvent, data );
             }
         },
+
+        
         actTblFilter = function( event, data ) {
             if ( event.namespace === actionEvent ) {
                 var sourceSelector = data.source,

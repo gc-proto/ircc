@@ -1,0 +1,143 @@
+{
+    "dual_citizen": "result-dual_citizen",
+    "canadian_citizen": "result-canadian_cit_pr",
+    "us_citizen": {        
+        "purpose_of_travel": {
+            "tourist": "result-GeneralUS",
+            "transit": "result-GeneralUS",
+            "business": "result-GeneralUS",
+            "family": {
+                "more": "result-supervisa-US",
+                "less": "result-GeneralUS"
+            },
+            "study": {
+                "first_permit": "result-study-first_permit-US",
+                "have_permit": "result-study-have_permit-US",
+                "eligible_without_permit": "result-study-eligible_without_permit-US",
+                "not_sure": "result-study-not_sure-US"
+            },
+            "work": {
+                "first_permit": "result-work-first_permit-US",
+                "have_permit": "result-work-have_permit-US",
+                "eligible_without_permit": "result-work-eligible_without_permit-US",
+                "not_sure": "result-work-not_sure-US"
+            }
+        }
+    },
+    "none": {
+        "uspr": {
+            "yes": {
+                "purpose_of_travel": {
+                    "tourist": "result-GeneralUSPR",
+                    "transit": "result-GeneralUSPR",
+                    "business": "result-GeneralUSPR",
+                    "family": {
+                        "more": "result-supervisa-USPR",
+                        "less": "result-GeneralUSPR"
+                    },
+                    "study": {
+                        "first_permit": "result-study-first_permit-USPR",
+                        "have_permit": "result-study-have_permit-USPR",
+                        "eligible_without_permit": "result-study-eligible_without_permit-USPR",
+                        "not_sure": "result-study-not_sure-USPR"
+                    },
+                    "work": {
+                        "first_permit": "result-work-first_permit-USPR",
+                        "have_permit": "result-work-have_permit-USPR",
+                        "eligible_without_permit": "result-work-eligible_without_permit-USPR",
+                        "not_sure": "result-work-not_sure-USPR"
+                    }
+                }
+            },
+            "no": {
+                "purpose_of_travel": {
+                    "tourist": {
+                        "travel_document": {
+                            "alien_passport_stateless": "result-visitor_visa",
+                            "us_refugee_travel_document": "result-visitor_visa",
+                            "permit_re-enter": "result-visitor_visa",
+                            "other_refugee": "result-visitor_visa",
+                            "passport": {
+                                "visa_required": "result-visitor_visa",
+                                "eTA": {
+                                    "travel": {
+                                        "air": "result-eta",
+                                        "ground": "result-id_document"
+                                    }
+                                },
+                                "eTA-X": {
+                                    "nonimmigrant": {
+                                        "yes": {
+                                            "travel": {
+                                                "air": "result-eta_x",
+                                                "ground": "result-visitor_visa"
+                                            }
+                                        },
+                                        "no": "result-visitor_visa"
+                                    }
+                                },
+                                "eTA-X-TWOV": {
+                                    "nonimmigrant": {
+                                        "yes": {
+                                            "travel": {
+                                                "air": "result-eta_x",
+                                                "ground": "result-visitor_visa"
+                                            }
+                                        },
+                                        "no": "result-visitor_visa"
+                                    }
+                                },
+                                "MEX": {
+                                    "nonimmigrant": {
+                                        "yes": {
+                                            "travel": {
+                                                "air": "result-eta_x",
+                                                "ground": "result-visitor_visa"
+                                            }
+                                        },
+                                        "no": "result-visitor_visa"
+                                    }
+                                },
+                                "CAD": "result-canadian_cit_pr",
+                                "USA": "result-GeneralUS",
+                                "ROU": {
+                                    "travel_document": {
+                                        "yes": {
+                                            "travel": {
+                                                "air": "result-eta",
+                                                "ground": "result-id_document"
+                                            }
+                                        },
+                                        "no": "result-visitor_visa"
+                                    }
+                                },
+                                "ISR": {
+                                    "travel_document": {
+                                        "yes": {
+                                            "travel": {
+                                                "air": "result-eta",
+                                                "ground": "result-id_document"
+                                            }
+                                        },
+                                        "no": "result-visitor_visa"
+                                    }
+                                },
+                                "TWN": {
+                                    "travel_document": {
+                                        "yes": {
+                                            "travel": {
+                                                "air": "result-eta",
+                                                "ground": "result-id_document"
+                                            }
+                                        },
+                                        "no": "result-visitor_visa"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
