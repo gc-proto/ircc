@@ -202,14 +202,12 @@
 
         <div class="row gc-font-2019">
            
-            <div id="video-player" class="hidden col-md-8">
-
-            </div>
-            <div id="video-1" class="video col-md-4">
+            <div id="video-player" class="col-md-8" data-ajax-replace="#video-player-1"></div>
+            <div id="video-1" class="video col-md-4 hidden">
                 <button class="btn-link" data-wb-doaction='[
-                    {"action":"removeClass", "class":"hidden", "source": "#video-player, .video img"},
+                    {"action":"removeClass", "class":"hidden", "source": "#video-player, .video"},
                     {"action":"addClass", "class":"col-md-2", "source": "#video-2, #video-3"},
-                    {"action":"addClass", "class":"hidden", "source": "#video-1 img, .video-player"},
+                    {"action":"addClass", "class":"hidden", "source": "#video-1, .video-player"},
                     {"action":"ajax", "container":"#video-player", "url": "#video-player-1", "trigger": true}
                 ]'>
                     <img src="https://www.canada.ca/content/dam/ircc/images/campaigns/3956-im-dr-khorshid-mohammad-348x196-final.jpg" alt="" class="img-responsive thumbnail" />
@@ -220,9 +218,9 @@
             </div>
             <div id="video-2" class="video col-md-4">
                 <button class="btn-link" data-wb-doaction='[
-                {"action":"removeClass", "class":"hidden", "source": "#video-player, .video img"},
+                {"action":"removeClass", "class":"hidden", "source": "#video-player, .video"},
                 {"action":"addClass", "class":"col-md-2", "source": "#video-1, #video-3"},
-                {"action":"addClass", "class":"hidden", "source": "#video-2 img, .video-player"},
+                {"action":"addClass", "class":"hidden", "source": "#video-2, .video-player"},
                 {"action":"ajax", "container":"#video-player", "url": "#video-player-2", "trigger": true}
             ]'>
                     <img src="https://www.canada.ca/content/dam/ircc/images/campaigns/3724_im_felicia_voss-shafiq_348x196_final.jpg" alt="" class="img-responsive thumbnail" />
@@ -232,9 +230,9 @@
             </div>
             <div id="video-3" class="video col-md-4">
                 <button class="btn-link" data-wb-doaction='[
-                {"action":"removeClass", "class":"hidden", "source": "#video-player, .video img"},
+                {"action":"removeClass", "class":"hidden", "source": "#video-player, .video"},
                 {"action":"addClass", "class":"col-md-2", "source": "#video-1, #video-2"},
-                {"action":"addClass", "class":"hidden", "source": "#video-3 img, .video-player"},
+                {"action":"addClass", "class":"hidden", "source": "#video-3, .video-player"},
                 {"action":"ajax", "container":"#video-player", "url": "#video-player-3", "trigger": true}
             ]'>
                     <img src="https://www.canada.ca/content/dam/ircc/images/campaigns/tabitha-mcintyre-348x196.jpg" alt="" class="img-responsive thumbnail" />
