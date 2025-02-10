@@ -194,7 +194,17 @@ btnPrevious.onclick = function () {
         traveller_type = "unknown"
     }
 
+
+
     userAnswers[userAnswers.length - 1].classList.remove('hidden');
+    if ((userAnswers[userAnswers.length - 1].getAttribute("id") === "question-study" || userAnswers[userAnswers.length - 1].getAttribute("id") === "question-work") && traveller_type === "us_citizen") {
+        document.getElementById('study-extend_permit').parentElement.classList.add('hidden');
+        document.getElementById('work-extend_permit').parentElement.classList.add('hidden');
+    }
+    else {
+        document.getElementById('study-extend_permit').parentElement.classList.remove('hidden');
+        document.getElementById('work-extend_permit').parentElement.classList.remove('hidden');
+    }
     userAnswers.pop();
 
     if (userAnswers.length === 0) {
@@ -219,9 +229,3 @@ $("#passport-selection-change").on("click", function () {
     document.getElementById('passport-code').classList.remove('hidden');
     document.getElementById('passport-code-selection').classList.add('hidden');
 });
-
-function isNested(obj) {
-    return Object.keys(obj).some(function (key) {
-        return obj[key] && typeof obj[key] === 'object';
-    });
-}
