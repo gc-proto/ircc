@@ -1537,6 +1537,12 @@ $(document).on("wb-ready.wb", function (event) {
         });
         d3.csv(path + "contact.csv?" + today, function (data) {
 
+            data = data.filter(function (d) {
+                if (d["Page URL"].length == 0) {
+                    return false;
+                }
+                return true;
+            });
             data.forEach(function (d) {
                 d["Page URL"] = d["Page URL"];
                 d["Page Title"] = d["Page Title"];
@@ -1556,7 +1562,12 @@ $(document).on("wb-ready.wb", function (event) {
 
         });
         d3.csv(path + "hc.csv?" + today, function (data) {
-
+            data = data.filter(function (d) {
+                if (d["Page URL"].length == 0) {
+                    return false;
+                }
+                return true;
+            });
             data.forEach(function (d) {
                 d["Page URL"] = d["Page URL"];
                 d["Page Title"] = d["Page Title"];
@@ -1582,6 +1593,12 @@ $(document).on("wb-ready.wb", function (event) {
         });
         d3.csv(path + "news.csv?" + today, function (data) {
 
+            data = data.filter(function (d) {
+                if (d["Page URL"].length == 0) {
+                    return false;
+                }
+                return true;
+            });
             data.forEach(function (d) {
                 d["Page URL"] = d["Page URL"];
                 d["News release"] = d["News release"];
@@ -1600,6 +1617,12 @@ $(document).on("wb-ready.wb", function (event) {
         });
         d3.csv(path + "webnotice.csv?" + today, function (data) {
 
+            data = data.filter(function (d) {
+                if (d["Page URL"].length == 0) {
+                    return false;
+                }
+                return true;
+            });
             data.forEach(function (d) {
                 d["Page URL"] = d["Page URL"];
                 d["Web notice"] = d["Web notice"];
@@ -1628,6 +1651,12 @@ $(document).on("wb-ready.wb", function (event) {
         });
         d3.csv(path + "top-crisis.csv?" + today, function (data) {
 
+            data = data.filter(function (d) {
+                if (d["Page URL"].length == 0) {
+                    return false;
+                }
+                return true;
+            });
             data.forEach(function (d) {
                 d["Special measures (E/F)"] = d["Special measures (E/F)"];
                 d["Page URL"] = d["Page URL"];
@@ -1755,6 +1784,12 @@ $(document).on("wb-ready.wb", function (event) {
 
         d3.csv(path + "campaign-top.csv?" + today, function (data) {
 
+            data = data.filter(function (d) {
+                if (d["Visits"].length == 0) {
+                    return false;
+                }
+                return true;
+            });
             data = data.filter(function (d) {
                 if (d["Visits"].length == 0) {
                     return false;
