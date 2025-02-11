@@ -1265,10 +1265,12 @@ $(document).on("wb-ready.wb", function (event) {
             else {
                 let tempMonth = parseInt(lastMonth.split("-")[1]) - 1;
                 if (tempMonth < 10) tempMonth = "0" + tempMonth.toString();
+                
                 modPath = path.split(lastMonth)[0] + lastMonth.split("-")[0] + "-" + tempMonth;
             }
+            console.log(modPath);
             d3.csv(modPath + "/tss-highest-performing.csv?" + today, function (data2) {
-                
+                console.log(data2);
                 document.getElementById("tss-top-tasks-table").outerHTML = toptasktable;
                 data = data.filter(function (d) {
                     if (d["Task"].length == 0) {
@@ -1289,7 +1291,8 @@ $(document).on("wb-ready.wb", function (event) {
                 });         
 
                 for (let i = 0; i<data2.length; i++) {
-                    data[i]["TSS completion - previous month"] = data2[i]["TSS completion - previous month"];
+                    if (data2[i]["TSS completion - previous month"]){
+                    data[i]["TSS completion - previous month"] = data2[i]["TSS completion - previous month"];}
                 }       
                 }
 
