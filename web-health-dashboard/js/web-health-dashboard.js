@@ -1268,9 +1268,7 @@ $(document).on("wb-ready.wb", function (event) {
                 
                 modPath = path.split(lastMonth)[0] + lastMonth.split("-")[0] + "-" + tempMonth;
             }
-            console.log(modPath);
             d3.csv(modPath + "/tss-highest-performing.csv?" + today, function (data2) {
-                console.log(data2);
                 document.getElementById("tss-top-tasks-table").outerHTML = toptasktable;
                 data = data.filter(function (d) {
                     if (d["Task"].length == 0) {
