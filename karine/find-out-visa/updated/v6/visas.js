@@ -215,6 +215,7 @@ btnPrevious.onclick = function () {
 
     btnNext.classList.remove('hidden');
 }
+/*For quick coding.
 window.addEventListener('keydown', ({key}) => {
     if (key === "Backspace") {
         btnPrevious.click();
@@ -224,7 +225,7 @@ window.addEventListener('keydown', ({key}) => {
     }
 
 });
-
+*/
 $("button.passport-code").on("click", function () {
     console.log('passport btn firing')
     let code = $(this).attr('data-passport-code');
