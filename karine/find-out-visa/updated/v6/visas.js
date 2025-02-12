@@ -79,7 +79,6 @@ btnNext.onclick = function () {
                 next = document.getElementById(data[question][traveller_type][travel_type][selectedInput]);
             }
             else if (passport_type === true) {
-                console.log("tesT?");
                 next = document.getElementById(data[question][traveller_type][passport_type][selectedInput]);
             }
             else {
@@ -193,9 +192,11 @@ btnPrevious.onclick = function () {
     currentQuestion.classList.add('hidden');
 
     if (currentQuestion.getAttribute("id") === 'question-passport_code' || currentQuestion.getAttribute('id') === 'question-travel_document') {
-        traveller_type = "unknown"
+        traveller_type = "unknown";
+        passport_type = false;
+        travel_type = false;
     }
-    
+
     userAnswers[userAnswers.length - 1].classList.remove('hidden');
     if ((userAnswers[userAnswers.length - 1].getAttribute("id") === "question-study" || userAnswers[userAnswers.length - 1].getAttribute("id") === "question-work") && traveller_type === "us_citizen") {
         document.getElementById('study-extend_permit').parentElement.classList.add('hidden');
