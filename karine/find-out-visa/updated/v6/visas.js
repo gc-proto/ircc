@@ -75,7 +75,7 @@ btnNext.onclick = function () {
         case "question-study":
         case "question-work":
             console.log("passport_type: ", passport_type);
-            if (travel_type === "air") {
+            if (travel_type === "air" && userAnswers.includes(document.getElementById("question-travel"))) {
                 next = document.getElementById(data[question][traveller_type][travel_type][selectedInput]);
             }
             else if (passport_type === true) {
@@ -105,6 +105,8 @@ btnNext.onclick = function () {
             }
             break;
         case "question-transit_length":
+            next = document.getElementById(data[question][traveller_type][selectedInput]);
+            break;
         case "question-nonimmigrant_visa":
             next = document.getElementById(data[question][traveller_type][purpose_of_travel][selectedInput]);
             break;
@@ -213,6 +215,15 @@ btnPrevious.onclick = function () {
 
     btnNext.classList.remove('hidden');
 }
+window.addEventListener('keydown', ({key}) => {
+    if (key === "Backspace") {
+        btnPrevious.click();
+    }
+    if (key === "Enter") {
+        btnNext.click();
+    }
+
+});
 
 $("button.passport-code").on("click", function () {
     console.log('passport btn firing')

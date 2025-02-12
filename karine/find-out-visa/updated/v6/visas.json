@@ -300,16 +300,16 @@
             }
         },
         "israel": {
-            "air": "result-eTA",
-            "ground": "result-identification_document"
+            "air": "question-transit_length",
+            "ground": "result-visitor_visa"
         },
         "romania": {
-            "air": "result-eTA",
-            "ground": "result-identification_document"
+            "air": "question-transit_length",
+            "ground": "result-visitor_visa"
         },
         "taiwan": {
-            "air": "result-eTA",
-            "ground": "result-identification_document"
+            "air": "question-transit_length",
+            "ground": "result-visitor_visa"
         },
         "alien_passport_stateless_persons": {
             "air": "question-transit_length",
@@ -330,52 +330,48 @@
     },
     "question-transit_length": {
         "visa": {
-            "transit": {
-                "no": "result-visitor_visa",
-                "yes": "result-transit_visa"
-            }
+            "no": "result-visitor_visa",
+            "yes": "result-transit_visa"
         },
         "eTA-X": {
-            "transit": {
-                "no": "result-visitor_visa",
-                "yes": "result-transit_visa"
-            }
+            "no": "result-visitor_visa",
+            "yes": "result-transit_visa"
         },
         "eTA-X-TWOV": {
-            "transit": {
-                "no": "result-visitor_visa",
-                "yes": "result-transit_visa"
-            }
+            "no": "result-visitor_visa",
+            "yes": "result-transit_visa"
         },
         "mexico": {
-            "transit": {
-                "no": "result-visitor_visa",
-                "yes": "result-transit_visa"
-            }
+            "no": "result-visitor_visa",
+            "yes": "result-transit_visa"
+        },
+        "israel": {
+            "no": "result-visitor_visa",
+            "yes": "result-transit_visa"
+        },
+        "romania": {
+            "no": "result-visitor_visa",
+            "yes": "result-transit_visa"
+        },
+        "taiwan": {
+            "no": "result-visitor_visa",
+            "yes": "result-transit_visa"
         },
         "alien_passport_stateless_persons": {
-            "transit": {
-                "no": "result-visitor_visa",
-                "yes": "result-transit_visa"
-            }
+            "no": "result-visitor_visa",
+            "yes": "result-transit_visa"
         },
         "us_refugee": {
-            "transit": {
-                "no": "result-visitor_visa",
-                "yes": "result-transit_visa"
-            }
+            "no": "result-visitor_visa",
+            "yes": "result-transit_visa"
         },
         "permit_reenter_us": {
-            "transit": {
-                "no": "result-visitor_visa",
-                "yes": "result-transit_visa"
-            }
+            "no": "result-visitor_visa",
+            "yes": "result-transit_visa"
         },
         "other_refugee": {
-            "transit": {
-                "no": "result-visitor_visa",
-                "yes": "result-transit_visa"
-            }
+            "no": "result-visitor_visa",
+            "yes": "result-transit_visa"
         }
     },
     "question-family": {
@@ -471,7 +467,7 @@
             "eligible_without_permit": "result-study-eligible_without_permit-visitor_visa",
             "not_sure": "result-study-not_sure-visitor_visa"
         },
-        "israel":  {
+        "israel": {
             "true": {
                 "first_permit": "result-study-first_permit-eTA",
                 "have_permit": "result-study-have_permit-eTA",
@@ -484,7 +480,6 @@
             "extend_permit": "result-study-extend_permit-visitor_visa",
             "eligible_without_permit": "result-study-eligible_without_permit-visitor_visa",
             "not_sure": "result-study-not_sure-visitor_visa"
-        
         },
         "romania": {
             "true": {
@@ -499,7 +494,6 @@
             "extend_permit": "result-study-extend_permit-visitor_visa",
             "eligible_without_permit": "result-study-eligible_without_permit-visitor_visa",
             "not_sure": "result-study-not_sure-visitor_visa"
-        
         },
         "taiwan": {
             "true": {
@@ -514,7 +508,6 @@
             "extend_permit": "result-study-extend_permit-visitor_visa",
             "eligible_without_permit": "result-study-eligible_without_permit-visitor_visa",
             "not_sure": "result-study-not_sure-visitor_visa"
-        
         },
         "alien_passport_stateless_persons": {
             "first_permit": "result-study-first_permit-visitor_visa",
@@ -629,7 +622,6 @@
             "extend_permit": "result-work-extend_permit-visitor_visa",
             "eligible_without_permit": "result-work-eligible_without_permit-visitor_visa",
             "not_sure": "result-work-not_sure-visitor_visa"
-        
         },
         "romania": {
             "true": {
@@ -644,7 +636,6 @@
             "extend_permit": "result-work-extend_permit-visitor_visa",
             "eligible_without_permit": "result-work-eligible_without_permit-visitor_visa",
             "not_sure": "result-work-not_sure-visitor_visa"
-        
         },
         "taiwan": {
             "true": {
@@ -659,7 +650,6 @@
             "extend_permit": "result-work-extend_permit-visitor_visa",
             "eligible_without_permit": "result-work-eligible_without_permit-visitor_visa",
             "not_sure": "result-work-not_sure-visitor_visa"
-        
         },
         "alien_passport_stateless_persons": {
             "first_permit": "result-work-first_permit-visitor_visa",
@@ -855,15 +845,15 @@
         "work": "question-work"
     },
     "question-study-vi-march2024": {
-       "mexico": {
+        "mexico": {
             "before": "result-work-study_have-permit_visa-required-mex",
-            "after": "result-work-have_permit-visitor_visa" 
-       }
+            "after": "result-work-have_permit-visitor_visa"
+        }
     },
     "question-work-vi-march2024": {
         "mexico": {
-             "before": "result-work-study_have-permit_visa-required-mex",
-             "after": "result-work-have_permit-visitor_visa" 
+            "before": "result-work-study_have-permit_visa-required-mex",
+            "after": "result-work-have_permit-visitor_visa"
         }
     },
     "question-passport_code": {
