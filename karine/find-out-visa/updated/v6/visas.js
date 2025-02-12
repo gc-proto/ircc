@@ -192,12 +192,10 @@ btnPrevious.onclick = function () {
     let currentQuestion = document.querySelector('.question:not(.hidden)') ? document.querySelector('.question:not(.hidden)') : document.querySelector('.result:not(.hidden)');
     currentQuestion.classList.add('hidden');
 
-    if (currentQuestion.getAttribute("id") === 'question-passport_code') {
+    if (currentQuestion.getAttribute("id") === 'question-passport_code' || currentQuestion.getAttribute('id') === 'question-travel_document') {
         traveller_type = "unknown"
     }
-
-
-
+    
     userAnswers[userAnswers.length - 1].classList.remove('hidden');
     if ((userAnswers[userAnswers.length - 1].getAttribute("id") === "question-study" || userAnswers[userAnswers.length - 1].getAttribute("id") === "question-work") && traveller_type === "us_citizen") {
         document.getElementById('study-extend_permit').parentElement.classList.add('hidden');
