@@ -1,5 +1,17 @@
-//keep anchor to the top of the page
+/*For QA
+window.addEventListener('keydown', ({key}) => {
+    if (key === "Backspace") {
+        btnPrevious.click();
+    }
+    if (key === "Enter") {
+        btnNext.click();
+    }
 
+});
+*/
+let clear = false; // For QA
+
+//Prevent form submission
 document.getElementById('find-out-form').onsubmit = function (e) { e.preventDefault() };
 
 
@@ -14,10 +26,9 @@ let traveller_type, purpose_of_travel, travel_document, travel_type;
 let passport_type = false;
 let visit_length = false;
 
-let clear = false;
 
+// Load JSON file and assign data to variable
 getJSON();
-
 async function getJSON() {
     const requestURL =
         "visas.json";
@@ -29,23 +40,28 @@ async function getJSON() {
     data = jsonData;
 }
 
+// On Next button click
 btnNext.onclick = function () {
+
+    // For QA, if you type clear = true in console, it'll clear the console long on each next button click. Will be removed from prod.
     if (clear) {
-        console.clear();
+        console.clear(); 
     }
+
+    //Get current question & if no selection was made, force form validation to show error. Else, if something was selected, continue with rest of script.
     let currentQuestion = document.querySelector('.question:not(.hidden)');
-    if (!currentQuestion.querySelector('input:checked')) {
+    console.log(document.getElementById('passport-code-selection').classList.contains('hidden'))
+    
+    if (!currentQuestion.querySelector('input:checked') && (!currentQuestion.getAttribute('id') == "question-passport_code")) {
         $(form).validate();
         $(form).valid();
     }
     else {
-
-
+        
+        // if user has previously went to the country table and made a selection, force variable assignment of type of traveller and selected input; else get the checked radio button.
         if (currentQuestion.querySelector('#passport-code-selection') && (!document.getElementById('passport-code-selection').classList.contains('hidden'))) {
-            if (!document.getElementById('passport-code-selection').classList.contains('hidden')) {
-                traveller_type = (data["question-passport_code"][document.getElementById('passport-selection').getAttribute('data-passport-code')]).trim();
-                selectedInput = traveller_type;
-            }
+            traveller_type = (data["question-passport_code"][document.getElementById('passport-selection').getAttribute('data-passport-code')]).trim();
+            selectedInput = traveller_type;
         }
         else {
             selectedInput = currentQuestion.querySelector('input:checked').value;
@@ -54,6 +70,7 @@ btnNext.onclick = function () {
         let question = currentQuestion.getAttribute('id');
         let next;
 
+        // show previous button
         btnPrevious.classList.remove('hidden');
 
         switch (question) {
@@ -141,8 +158,6 @@ btnNext.onclick = function () {
                 break;
 
             case "question-passport_code":
-
-
                 if (traveller_type === "us_citizen" && purpose_of_travel === "family") {
                     next = document.getElementById(data["question-purpose_of_travel"][traveller_type]["family_notsupervisa"]);
                 }
@@ -193,7 +208,7 @@ btnNext.onclick = function () {
 
         currentQuestion.classList.add('hidden');
         next.classList.remove('hidden');
-        toolContainer.scrollIntoView({block: "start"})
+        toolContainer.scrollIntoView({ block: "start" })
     }
 };
 
@@ -201,7 +216,7 @@ btnNext.onclick = function () {
 btnPrevious.onclick = function () {
     var validator = $(form).validate();
     validator.resetForm();
-    if (document.getElementById('errors-'+form.getAttribute('id'))) document.getElementById('errors-'+form.getAttribute('id')).remove();
+    if (document.getElementById('errors-' + form.getAttribute('id'))) document.getElementById('errors-' + form.getAttribute('id')).remove();
 
     let currentQuestion = document.querySelector('.question:not(.hidden)') ? document.querySelector('.question:not(.hidden)') : document.querySelector('.result:not(.hidden)');
     currentQuestion.classList.add('hidden');
@@ -222,7 +237,7 @@ btnPrevious.onclick = function () {
         document.getElementById('study-extend_permit').parentElement.classList.remove('hidden');
         document.getElementById('work-extend_permit').parentElement.classList.remove('hidden');
     }
-    toolContainer.scrollIntoView({block: "start"})
+    toolContainer.scrollIntoView({ block: "start" })
     userAnswers.pop();
 
     if (userAnswers.length === 0) {
@@ -231,17 +246,7 @@ btnPrevious.onclick = function () {
 
     btnNext.classList.remove('hidden');
 }
-/*For quick coding.
-window.addEventListener('keydown', ({key}) => {
-    if (key === "Backspace") {
-        btnPrevious.click();
-    }
-    if (key === "Enter") {
-        btnNext.click();
-    }
 
-});
-*/
 $("button.passport-code").on("click", function () {
     console.log('passport btn firing')
     let code = $(this).attr('data-passport-code');
