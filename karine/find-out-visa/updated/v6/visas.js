@@ -2,7 +2,9 @@
 
 document.getElementById('find-out-form').onsubmit = function (e) { e.preventDefault() };
 
+
 let data;
+let toolContainer = document.querySelector(".tool-container")
 let btnNext = document.getElementById("btn-next");
 let btnPrevious = document.getElementById("btn-previous");
 let form = document.getElementById("find-out-form");
@@ -191,6 +193,7 @@ btnNext.onclick = function () {
 
         currentQuestion.classList.add('hidden');
         next.classList.remove('hidden');
+        toolContainer.scrollIntoView({block: "start"})
     }
 };
 
@@ -219,6 +222,7 @@ btnPrevious.onclick = function () {
         document.getElementById('study-extend_permit').parentElement.classList.remove('hidden');
         document.getElementById('work-extend_permit').parentElement.classList.remove('hidden');
     }
+    toolContainer.scrollIntoView({block: "start"})
     userAnswers.pop();
 
     if (userAnswers.length === 0) {
