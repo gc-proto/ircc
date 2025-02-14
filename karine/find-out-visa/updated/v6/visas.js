@@ -22,12 +22,15 @@ let btnPrevious = document.getElementById("btn-previous");
 let form = document.getElementById("find-out-form");
 let userAnswers = [];
 
+let doclang = document.getElementsByTagName('html')[0].getAttribute('lang') == "en" ? "en" : "fr";
+
 let traveller_type, purpose_of_travel, travel_document, travel_type;
 let passport_type = false;
 let visit_length = false;
 
-let errorMessageDiv = `<section id="errors-${form.getAttribute('id')}" class="alert alert-danger" tabindex="-1"><h2>The form could not be submitted because 1 error was found.</h2><ul><li><a href="#passport_code_table"><span class="prefix">Error&nbsp;1: </span>This field is required.</a></li></ul></section>`;
-let errorMessageH2 = `<strong id="passport_code_table-error" class="error"><span class="label label-danger"><span class="prefix">Error&nbsp;1: </span>This field is required.</span></strong>`
+
+let errorMessageDiv = doclang == "en" ? `<section id="errors-${form.getAttribute('id')}" class="alert alert-danger" tabindex="-1"><h2>The form could not be submitted because 1 error was found.</h2><ul><li><a href="#passport_code_table"><span class="prefix">Error&nbsp;1: </span>This field is required.</a></li></ul></section>`: `<section id="errors-${form.getAttribute('id')}" class="alert alert-danger" tabindex="-1"><h2>Le formulaire n'a pu être soumis car 1 erreur a été trouvée.</h2><ul><li><a href="#q1-item-0"><span class="prefix">Erreur&nbsp;1&nbsp;: </span>Ce champ est obligatoire.</a></li></ul></section>`;
+let errorMessageH2 = doclang == "en" ? `<strong id="passport_code_table-error" class="error"><span class="label label-danger"><span class="prefix">Error&nbsp;1: </span>This field is required.</span></strong>` : `<strong id="passport_code_table-error" class="error"><span class="label label-danger"><span class="prefix">Erreur&nbsp;1&nbsp;: </span>Ce champ est obligatoire.</span></strong>`;
 
 
 // Load JSON file and assign data to variable
@@ -53,11 +56,7 @@ btnNext.onclick = function () {
 
     //Get current question & if no selection was made, force form validation to show error. Else, if something was selected, continue with rest of script.
     let currentQuestion = document.querySelector('.question:not(.hidden)');
-    
-    // if (!currentQuestion.querySelector('input:checked') && (!currentQuestion.getAttribute('id') === "question-passport_code")) {
-    //     $(form).validate();
-    //     $(form).valid();
-    // }
+  
     if (currentQuestion.querySelector('input') && !currentQuestion.querySelector('input:checked')) {
         $(form).validate();
         $(form).valid();
@@ -95,21 +94,13 @@ btnNext.onclick = function () {
                 traveller_type = selectedInput;
                 next = document.getElementById(data[question][selectedInput]);
                 break;
-
             case "question-uspr":
-                if (selectedInput === "yes") {
-                    traveller_type = "uspr"
-                }
-                else {
-                    traveller_type = "unknown"
-                }
+                traveller_type = selectedInput === "yes" ? "uspr": "unknown";
                 next = document.getElementById(data[question]);
                 break;
             case "question-purpose_of_travel":
                 purpose_of_travel = selectedInput;
-
                 next = document.getElementById(data[question][traveller_type][selectedInput]);
-
                 break;
             case "question-family":
                 purpose_of_travel = selectedInput;
@@ -130,14 +121,8 @@ btnNext.onclick = function () {
                 break;
             case "question-travel":
                 travel_type = selectedInput;
-                if (!data[question][purpose_of_travel][traveller_type]) {
-                    next = document.getElementById(data[question][purpose_of_travel]);
-                }
-                else {
-                    next = document.getElementById(data[question][purpose_of_travel][traveller_type][selectedInput]);
-                }
+                next = !data[question][purpose_of_travel][traveller_type] ? document.getElementById(data[question][purpose_of_travel]) : document.getElementById(data[question][purpose_of_travel][traveller_type][selectedInput]);
                 break;
-
             case "question-transit":
                 if ((traveller_type === "eTA-X" || traveller_type === "eTA-X-TWOV" || traveller_type === "mexico")) {
                     next = document.getElementById(data[question][traveller_type][travel_type][selectedInput]);
@@ -160,20 +145,9 @@ btnNext.onclick = function () {
             case "question-travel_document_israel":
             case "question-travel_document_romania":
             case "question-travel_document_taiwan":
-                if (selectedInput === "yes") {
-                    passport_type = true;
-                }
-                else {
-                    passport_type = false;
-                }
-                if (!data[question][purpose_of_travel][selectedInput]) {
-                    next = document.getElementById(data[question][purpose_of_travel]);
-                }
-                else {
-                    next = document.getElementById(data[question][purpose_of_travel][selectedInput]);
-                }
+                passport_type = selectedInput === "yes" ? true : false;
+                next = !data[question][purpose_of_travel][selectedInput] ? document.getElementById(data[question][purpose_of_travel]) : document.getElementById(data[question][purpose_of_travel][selectedInput]);
                 break;
-
             case "question-passport_code":
                 if (traveller_type === "us_citizen" && purpose_of_travel === "family") {
                     next = document.getElementById(data["question-purpose_of_travel"][traveller_type]["family_notsupervisa"]);
@@ -186,13 +160,7 @@ btnNext.onclick = function () {
                 }
                 break;
             default:
-                if (!data[question][traveller_type][selectedInput]) {
-                    next = document.getElementById(data[question][traveller_type]);
-                }
-                else {
-                    next = document.getElementById(data[question][traveller_type][selectedInput]);
-
-                }
+                next = !data[question][traveller_type][selectedInput] ? document.getElementById(data[question][traveller_type]) : document.getElementById(data[question][traveller_type][selectedInput]);
                 break;
         }
 
