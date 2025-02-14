@@ -26,6 +26,9 @@ let traveller_type, purpose_of_travel, travel_document, travel_type;
 let passport_type = false;
 let visit_length = false;
 
+let errorMessageDiv = `<section id="errors-${form.getAttribute('id')}" class="alert alert-danger" tabindex="-1"><h2>The form could not be submitted because 1 error was found.</h2><ul><li><a href="#passport_code_table"><span class="prefix">Error&nbsp;1: </span>This field is required.</a></li></ul></section>`;
+let errorMessageH2 = `<strong id="passport_code_table-error" class="error"><span class="label label-danger"><span class="prefix">Error&nbsp;1: </span>This field is required.</span></strong>`
+
 
 // Load JSON file and assign data to variable
 getJSON();
@@ -50,13 +53,27 @@ btnNext.onclick = function () {
 
     //Get current question & if no selection was made, force form validation to show error. Else, if something was selected, continue with rest of script.
     let currentQuestion = document.querySelector('.question:not(.hidden)');
-    console.log(document.getElementById('passport-code-selection').classList.contains('hidden'))
     
-    if (!currentQuestion.querySelector('input:checked') && (!currentQuestion.getAttribute('id') == "question-passport_code")) {
+    // if (!currentQuestion.querySelector('input:checked') && (!currentQuestion.getAttribute('id') === "question-passport_code")) {
+    //     $(form).validate();
+    //     $(form).valid();
+    // }
+    if (currentQuestion.querySelector('input') && !currentQuestion.querySelector('input:checked')) {
         $(form).validate();
         $(form).valid();
     }
+    if ((currentQuestion.getAttribute('id') === "question-passport_code") && document.getElementById('passport-code-selection').classList.contains('hidden')) {        
+        
+       currentQuestion.insertAdjacentHTML('beforebegin', errorMessageDiv)
+       currentQuestion.querySelector('legend').insertAdjacentHTML('beforeend', errorMessageH2);
+       document.getElementById(`errors-${form.getAttribute('id')}`).focus();
+    }
     else {
+        if ((currentQuestion.getAttribute('id') === "question-passport_code") && currentQuestion.querySelector(`#errors-${form.getAttribute('id')}`)) {
+            document.getElementById(`errors-${form.getAttribute('id')}`).remove();
+            document.getElementById('passport_code_table-error').remove();
+
+        }
         
         // if user has previously went to the country table and made a selection, force variable assignment of type of traveller and selected input; else get the checked radio button.
         if (currentQuestion.querySelector('#passport-code-selection') && (!document.getElementById('passport-code-selection').classList.contains('hidden'))) {
@@ -251,9 +268,9 @@ $("button.passport-code").on("click", function () {
     console.log('passport btn firing')
     let code = $(this).attr('data-passport-code');
     traveller_type = data["question-passport_code"][code].trim();
+
     document.getElementById('passport-selection').innerHTML = `${document.querySelector('[data-passport-code="' + code + '"]').innerHTML} (${document.querySelectorAll('[data-passport-code="' + code + '"]')[1].innerHTML})`;
     document.getElementById('passport-selection').setAttribute('data-passport-code', code.trim());
-
     document.getElementById('passport-code').classList.add('hidden');
     document.getElementById('passport-code-selection').classList.remove('hidden');
 });
