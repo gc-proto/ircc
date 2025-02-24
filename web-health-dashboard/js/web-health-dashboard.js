@@ -1265,10 +1265,10 @@ $(document).on("wb-ready.wb", function (event) {
             else {
                 let tempMonth = parseInt(lastMonth.split("-")[1]) - 1;
                 if (tempMonth < 10) tempMonth = "0" + tempMonth.toString();
+                
                 modPath = path.split(lastMonth)[0] + lastMonth.split("-")[0] + "-" + tempMonth;
             }
             d3.csv(modPath + "/tss-highest-performing.csv?" + today, function (data2) {
-                
                 document.getElementById("tss-top-tasks-table").outerHTML = toptasktable;
                 data = data.filter(function (d) {
                     if (d["Task"].length == 0) {
@@ -1289,7 +1289,8 @@ $(document).on("wb-ready.wb", function (event) {
                 });         
 
                 for (let i = 0; i<data2.length; i++) {
-                    data[i]["TSS completion - previous month"] = data2[i]["TSS completion - previous month"];
+                    if (data2[i]["TSS completion - previous month"]){
+                    data[i]["TSS completion - previous month"] = data2[i]["TSS completion - previous month"];}
                 }       
                 }
 
@@ -1537,6 +1538,12 @@ $(document).on("wb-ready.wb", function (event) {
         });
         d3.csv(path + "contact.csv?" + today, function (data) {
 
+            data = data.filter(function (d) {
+                if (d["Page URL"].length == 0) {
+                    return false;
+                }
+                return true;
+            });
             data.forEach(function (d) {
                 d["Page URL"] = d["Page URL"];
                 d["Page Title"] = d["Page Title"];
@@ -1556,7 +1563,12 @@ $(document).on("wb-ready.wb", function (event) {
 
         });
         d3.csv(path + "hc.csv?" + today, function (data) {
-
+            data = data.filter(function (d) {
+                if (d["Page URL"].length == 0) {
+                    return false;
+                }
+                return true;
+            });
             data.forEach(function (d) {
                 d["Page URL"] = d["Page URL"];
                 d["Page Title"] = d["Page Title"];
@@ -1582,6 +1594,12 @@ $(document).on("wb-ready.wb", function (event) {
         });
         d3.csv(path + "news.csv?" + today, function (data) {
 
+            data = data.filter(function (d) {
+                if (d["Page URL"].length == 0) {
+                    return false;
+                }
+                return true;
+            });
             data.forEach(function (d) {
                 d["Page URL"] = d["Page URL"];
                 d["News release"] = d["News release"];
@@ -1600,6 +1618,12 @@ $(document).on("wb-ready.wb", function (event) {
         });
         d3.csv(path + "webnotice.csv?" + today, function (data) {
 
+            data = data.filter(function (d) {
+                if (d["Page URL"].length == 0) {
+                    return false;
+                }
+                return true;
+            });
             data.forEach(function (d) {
                 d["Page URL"] = d["Page URL"];
                 d["Web notice"] = d["Web notice"];
@@ -1628,6 +1652,12 @@ $(document).on("wb-ready.wb", function (event) {
         });
         d3.csv(path + "top-crisis.csv?" + today, function (data) {
 
+            data = data.filter(function (d) {
+                if (d["Page URL"].length == 0) {
+                    return false;
+                }
+                return true;
+            });
             data.forEach(function (d) {
                 d["Special measures (E/F)"] = d["Special measures (E/F)"];
                 d["Page URL"] = d["Page URL"];
@@ -1755,6 +1785,12 @@ $(document).on("wb-ready.wb", function (event) {
 
         d3.csv(path + "campaign-top.csv?" + today, function (data) {
 
+            data = data.filter(function (d) {
+                if (d["Visits"].length == 0) {
+                    return false;
+                }
+                return true;
+            });
             data = data.filter(function (d) {
                 if (d["Visits"].length == 0) {
                     return false;

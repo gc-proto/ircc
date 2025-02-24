@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
   </noscript>
   <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/méli-mélo/2025-04-nahanni.css" />
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 
@@ -124,77 +124,13 @@
                       {"action":"append", "source":"#question-purpose_of_travel"}
                     ]'>Lawful permanent resident of the US and do you have official proof of this status, such as a green card</li>
                   <li data-wb-fieldflow='[
-                  {"action":"append", "source":"#question-travel_document", "target":"question-purpose_of_travel-tourist"},
-                  {"action":"append", "source":"#question-travel_document", "target":"question-purpose_of_travel-transit"},
                   {"action":"append", "source":"#question-purpose_of_travel"}
-                ]'>Other</li>
+                ]'>None of these describe me</li>
                 </ul>
               </div>
 
               <div class="wb-fieldflow-sub hidden" id="question-purpose_of_travel">
                 <p>What do you plan to do?</p>
-                <ul>
-                  <li id="question-purpose_of_travel-tourist">Visit as a tourist</li>
-                  <li id="question-purpose_of_travel-transit">Transit through Canada</li>
-                  <li id="question-purpose_of_travel-business">Attend a conference of business meeting</li>
-                  <li id="question-purpose_of_travel-family">Visit family</li>
-                  <li id="question-purpose_of_travel-study">Study</li>
-                  <li id="question-purpose_of_travel-work">Work</li>
-                </ul>
-              </div>
-
-              <div class="wb-fieldflow-sub hidden" id="question-family">
-                <p>Do you plan to visit your children or grand-children for more than 6 months?</p>
-                <ul>
-                  <li id="question-family-yes">Visit as a tourist</li>
-                  <li id="question-family-no">Transit through Canada</li>
-                </ul>
-              </div>
-
-              <div class="wb-fieldflow-sub hidden" id="question-study">
-                <p>Select the option that best matches your situation</p>
-                <ul>
-                  <li id="question-study-appying_for_first_permit">Applying for my first permit</li>
-                  <li id="question-study-already_have_first_permit">Already have my first permit</li>
-                  <li id="question-study-extend">Extend my permit</li>
-                  <li id="question-study-eligible_without_permit">Eligible to study without a permit</li>
-                  <li id="question-study-not_sure">Not sure what I need</li>
-                </ul>
-              </div>
-
-              <div class="wb-fieldflow-sub hidden" id="question-work">
-                <p>Select the option that best matches your situation</p>
-                <ul>
-                  <li id="question-work-appying_for_first_permit">Applying for my first permit</li>
-                  <li id="question-work-already_have_first_permit">Already have my first permit</li>
-                  <li id="question-work-extend">Extend my permit</li>
-                  <li id="question-work-eligible_without_permit">Eligible to work without a permit</li>
-                  <li id="question-work-not_sure">Not sure what I need</li>
-                </ul>
-              </div>
-
-              <div class="wb-fieldflow-sub hidden" id="question-study-usa">
-                <p>Select the option that best matches your situation</p>
-                <ul>
-                  <li id="question-study-appying_for_first_permit">Applying for my first permit</li>
-                  <li id="question-study-already_have_first_permit">Already have my first permit</li>
-                  <li id="question-study-eligible_without_permit">Eligible to study without a permit</li>
-                  <li id="question-study-not_sure">Not sure what I need</li>
-                </ul>
-              </div>
-
-              <div class="wb-fieldflow-sub hidden" id="question-work-usa">
-                <p>Select the option that best matches your situation</p>
-                <ul>
-                  <li id="question-work-appying_for_first_permit">Applying for my first permit</li>
-                  <li id="question-work-already_have_first_permit">Already have my first permit</li>
-                  <li id="question-work-eligible_without_permit">Eligible to work without a permit</li>
-                  <li id="question-work-not_sure">Not sure what I need</li>
-                </ul>
-              </div>
-
-              <div class="wb-fieldflow-sub hidden" id="question-travel_document">
-                <p>What travel document do you plan to use?</p>
                 <ul>
                   <li data-wb-fieldflow='[
                   {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"AFG"},
@@ -390,7 +326,8 @@
                   {"action":"append", "source":"#question-travel_eta", "target":"VAT"},
                   {"action":"append", "source":"#question-travel_eta", "target":"VGB"},
                   {"action":"append", "source":"#question-travel_eta", "target":"WSM"},
-
+                  {"action":"removeClass", "class":"hidden", "source":"#result-eta", "target":"question-travel_eta-air"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-identification_document", "target":"question-travel_eta-ground"},
                   
                   {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"ARG"},                  
                   {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"ATG"},
@@ -407,6 +344,9 @@
                   {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"URY"},
                   {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"VCT"},
                   {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"MEX"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-eta_x", "target":"question-travel_eta_x-air"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"question-travel_eta_x-ground"},
+
 
                   {"action":"removeClass", "class":"hidden", "source":"#result-canadian_cit_pr", "target":"CAD"},
 
@@ -426,7 +366,301 @@
                   {"action":"removeClass", "class":"hidden", "source":"#result-GeneralUS", "target":"USA"},
 
                   {"action":"append", "source":"#question-passport"}
-                ]'>Passport</li>
+                ]'>Visit as a tourist</li>
+                  <li data-wb-fieldflow='[
+                  {"action":"append", "source":"#question-transit", "target":"AFG"},
+                  {"action":"append", "source":"#question-transit", "target":"AGO"},
+                  {"action":"append", "source":"#question-transit", "target":"ALB"},
+                  {"action":"append", "source":"#question-transit", "target":"ARM"},
+                  {"action":"append", "source":"#question-transit", "target":"AZE"},
+                  {"action":"append", "source":"#question-transit", "target":"BDI"},
+                  {"action":"append", "source":"#question-transit", "target":"BEN"},
+                  {"action":"append", "source":"#question-transit", "target":"BFA"},
+                  {"action":"append", "source":"#question-transit", "target":"BGD"},
+                  {"action":"append", "source":"#question-transit", "target":"BHR"},
+                  {"action":"append", "source":"#question-transit", "target":"BIH"},
+                  {"action":"append", "source":"#question-transit", "target":"BLR"},
+                  {"action":"append", "source":"#question-transit", "target":"BLZ"},
+                  {"action":"append", "source":"#question-transit", "target":"BOL"},
+                  {"action":"append", "source":"#question-transit", "target":"BTN"},
+                  {"action":"append", "source":"#question-transit", "target":"BWA"},
+                  {"action":"append", "source":"#question-transit", "target":"CAF"},
+                  {"action":"append", "source":"#question-transit", "target":"CHN"},
+                  {"action":"append", "source":"#question-transit", "target":"CHN"},
+                  {"action":"append", "source":"#question-transit", "target":"CIV"},
+                  {"action":"append", "source":"#question-transit", "target":"CMR"},
+                  {"action":"append", "source":"#question-transit", "target":"COD"},
+                  {"action":"append", "source":"#question-transit", "target":"COG"},
+                  {"action":"append", "source":"#question-transit", "target":"COL"},
+                  {"action":"append", "source":"#question-transit", "target":"COM"},
+                  {"action":"append", "source":"#question-transit", "target":"CPV"},
+                  {"action":"append", "source":"#question-transit", "target":"CUB"},
+                  {"action":"append", "source":"#question-transit", "target":"DJI"},
+                  {"action":"append", "source":"#question-transit", "target":"DMA"},
+                  {"action":"append", "source":"#question-transit", "target":"DOM"},
+                  {"action":"append", "source":"#question-transit", "target":"DZA"},
+                  {"action":"append", "source":"#question-transit", "target":"ECU"},
+                  {"action":"append", "source":"#question-transit", "target":"EGY"},
+                  {"action":"append", "source":"#question-transit", "target":"ERI"},
+                  {"action":"append", "source":"#question-transit", "target":"ETH"},
+                  {"action":"append", "source":"#question-transit", "target":"FJI"},
+                  {"action":"append", "source":"#question-transit", "target":"FSM"},
+                  {"action":"append", "source":"#question-transit", "target":"GAB"},
+                  {"action":"append", "source":"#question-transit", "target":"GBS"},
+                  {"action":"append", "source":"#question-transit", "target":"GEO"},
+                  {"action":"append", "source":"#question-transit", "target":"GHA"},
+                  {"action":"append", "source":"#question-transit", "target":"GIN"},
+                  {"action":"append", "source":"#question-transit", "target":"GMB"},
+                  {"action":"append", "source":"#question-transit", "target":"GNB"},
+                  {"action":"append", "source":"#question-transit", "target":"GNQ"},
+                  {"action":"append", "source":"#question-transit", "target":"GRD"},
+                  {"action":"append", "source":"#question-transit", "target":"GTM"},
+                  {"action":"append", "source":"#question-transit", "target":"GUY"},
+                  {"action":"append", "source":"#question-transit", "target":"HND"},
+                  {"action":"append", "source":"#question-transit", "target":"HTI"},
+                  {"action":"append", "source":"#question-transit", "target":"IDN"},
+                  {"action":"append", "source":"#question-transit", "target":"IND"},
+                  {"action":"append", "source":"#question-transit", "target":"IRN"},
+                  {"action":"append", "source":"#question-transit", "target":"IRQ"},
+                  {"action":"append", "source":"#question-transit", "target":"JAM"},
+                  {"action":"append", "source":"#question-transit", "target":"JOR"},
+                  {"action":"append", "source":"#question-transit", "target":"KAZ"},
+                  {"action":"append", "source":"#question-transit", "target":"KEN"},
+                  {"action":"append", "source":"#question-transit", "target":"KGZ"},
+                  {"action":"append", "source":"#question-transit", "target":"KHM"},
+                  {"action":"append", "source":"#question-transit", "target":"KIR"},
+                  {"action":"append", "source":"#question-transit", "target":"KWT"},
+                  {"action":"append", "source":"#question-transit", "target":"LAO"},
+                  {"action":"append", "source":"#question-transit", "target":"LBN"},
+                  {"action":"append", "source":"#question-transit", "target":"LBR"},
+                  {"action":"append", "source":"#question-transit", "target":"LBY"},
+                  {"action":"append", "source":"#question-transit", "target":"LKA"},
+                  {"action":"append", "source":"#question-transit", "target":"LSO"},
+                  {"action":"append", "source":"#question-transit", "target":"MDA"},
+                  {"action":"append", "source":"#question-transit", "target":"MDG"},
+                  {"action":"append", "source":"#question-transit", "target":"MHL"},
+                  {"action":"append", "source":"#question-transit", "target":"MKD"},
+                  {"action":"append", "source":"#question-transit", "target":"MLI"},
+                  {"action":"append", "source":"#question-transit", "target":"MMR"},
+                  {"action":"append", "source":"#question-transit", "target":"MNE"},
+                  {"action":"append", "source":"#question-transit", "target":"MNG"},
+                  {"action":"append", "source":"#question-transit", "target":"MOZ"},
+                  {"action":"append", "source":"#question-transit", "target":"MRT"},
+                  {"action":"append", "source":"#question-transit", "target":"MUS"},
+                  {"action":"append", "source":"#question-transit", "target":"MWI"},
+                  {"action":"append", "source":"#question-transit", "target":"MYS"},
+                  {"action":"append", "source":"#question-transit", "target":"NAM"},
+                  {"action":"append", "source":"#question-transit", "target":"NER"},
+                  {"action":"append", "source":"#question-transit", "target":"NGA"},
+                  {"action":"append", "source":"#question-transit", "target":"NIC"},
+                  {"action":"append", "source":"#question-transit", "target":"NPL"},
+                  {"action":"append", "source":"#question-transit", "target":"NRU"},
+                  {"action":"append", "source":"#question-transit", "target":"OMN"},
+                  {"action":"append", "source":"#question-transit", "target":"PAK"},
+                  {"action":"append", "source":"#question-transit", "target":"PER"},
+                  {"action":"append", "source":"#question-transit", "target":"PLW"},
+                  {"action":"append", "source":"#question-transit", "target":"PRK"},
+                  {"action":"append", "source":"#question-transit", "target":"PRY"},
+                  {"action":"append", "source":"#question-transit", "target":"PSE"},
+                  {"action":"append", "source":"#question-transit", "target":"QAT"},
+                  {"action":"append", "source":"#question-transit", "target":"RKS"},
+                  {"action":"append", "source":"#question-transit", "target":"RUS"},
+                  {"action":"append", "source":"#question-transit", "target":"RWA"},
+                  {"action":"append", "source":"#question-transit", "target":"SAU"},
+                  {"action":"append", "source":"#question-transit", "target":"SDN"},
+                  {"action":"append", "source":"#question-transit", "target":"SEN"},
+                  {"action":"append", "source":"#question-transit", "target":"SLE"},
+                  {"action":"append", "source":"#question-transit", "target":"SLV"},
+                  {"action":"append", "source":"#question-transit", "target":"SOM"},
+                  {"action":"append", "source":"#question-transit", "target":"SRB"},
+                  {"action":"append", "source":"#question-transit", "target":"SSD"},
+                  {"action":"append", "source":"#question-transit", "target":"STP"},
+                  {"action":"append", "source":"#question-transit", "target":"SUR"},
+                  {"action":"append", "source":"#question-transit", "target":"SWZ"},
+                  {"action":"append", "source":"#question-transit", "target":"SYR"},
+                  {"action":"append", "source":"#question-transit", "target":"TCD"},
+                  {"action":"append", "source":"#question-transit", "target":"TGO"},
+                  {"action":"append", "source":"#question-transit", "target":"TJK"},
+                  {"action":"append", "source":"#question-transit", "target":"TKM"},
+                  {"action":"append", "source":"#question-transit", "target":"TLS"},
+                  {"action":"append", "source":"#question-transit", "target":"TON"},
+                  {"action":"append", "source":"#question-transit", "target":"TUN"},
+                  {"action":"append", "source":"#question-transit", "target":"TUR"},
+                  {"action":"append", "source":"#question-transit", "target":"TUV"},
+                  {"action":"append", "source":"#question-transit", "target":"TZA"},
+                  {"action":"append", "source":"#question-transit", "target":"UGA"},
+                  {"action":"append", "source":"#question-transit", "target":"UKR"},
+                  {"action":"append", "source":"#question-transit", "target":"UZB"},
+                  {"action":"append", "source":"#question-transit", "target":"VEN"},
+                  {"action":"append", "source":"#question-transit", "target":"VNM"},
+                  {"action":"append", "source":"#question-transit", "target":"VUT"},
+                  {"action":"append", "source":"#question-transit", "target":"YEM"},
+                  {"action":"append", "source":"#question-transit", "target":"ZAF"},
+                  {"action":"append", "source":"#question-transit", "target":"ZMB"},
+                  {"action":"append", "source":"#question-transit", "target":"ZWE"},
+
+                  {"action":"append", "source":"#question-transit_eta", "target":"AND"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"ANG_AIA"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"ARE"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"AUS"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"AUT"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"BEL"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"BGR"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"BHS"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"BMU"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"BRB"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"BRN"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"CHE"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"CHL"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"CHN"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"CYM"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"CYP"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"CZE"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"D"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"DNK"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"ESP"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"EST"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"FIN"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"FRA"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"GBD"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"GBN"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"GBO"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"GBR"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"GBS"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"GRC"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"HRV"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"HUN"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"IRL"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"ISL"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"ITA"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"JPN"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"KOR"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"LIE"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"LTU"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"LUX"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"LVA"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"MAR"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"MCO"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"MEX"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"MLT"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"MSR"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"NLD"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"NOR"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"NZL"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"PNG"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"POL"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"PRT"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"SGP"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"SHN"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"SLB"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"SMR"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"SVK"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"SVN"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"SWE"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"TCA"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"VAT"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"VGB"},
+                  {"action":"append", "source":"#question-transit_eta", "target":"WSM"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-eta", "target":"question-transit_eta-air"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-identification_document", "target":"question-transit_eta-ground"},
+                  
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"ARG"},                  
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"ATG"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"BRA"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"CRI"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"KNA"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"LCA"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"MAR"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"PAN"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"PHL"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"SYC"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"THA"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"TTO"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"URY"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"VCT"},
+                  {"action":"append", "source":"#question-cad_visitor_visa_nonimmigrant_visa", "target":"MEX"},
+                  {"action":"append", "source":"#question-transit_eta_x", "target":"question-travel_eta_x-air"},
+                  {"action":"append", "source":"#question-transit", "target":"question-travel_eta_x-ground"},
+
+
+                  {"action":"removeClass", "class":"hidden", "source":"#result-canadian_cit_pr", "target":"CAD"},
+
+                  {"action":"append", "source":"#question-travel_document_israel", "target":"ISR"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"question-travel_document_israel-yes"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"question-travel_document_israel-no"},
+                  
+                  {"action":"append", "source":"#question-travel_document_romania", "target":"ROU"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"question-travel_document_romania-yes"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"question-travel_document_romania-no"},
+
+                  {"action":"append", "source":"#question-travel_document_taiwan", "target":"TWN"},
+                  {"action":"append", "source":"#question-travel_eta", "target":"question-travel_document_taiwan-yes"},
+                  {"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa", "target":"question-travel_document_taiwan-no"},
+                  
+                  
+                  {"action":"removeClass", "class":"hidden", "source":"#result-GeneralUS", "target":"USA"}
+                ]'>Transit through Canada</li>
+                  <li id="question-purpose_of_travel-business">Attend a conference of business meeting</li>
+                  <li id="question-purpose_of_travel-family">Visit family</li>
+                  <li id="question-purpose_of_travel-study">Study</li>
+                  <li id="question-purpose_of_travel-work">Work</li>
+                </ul>
+              </div>
+
+              <div class="wb-fieldflow-sub hidden" id="question-family">
+                <p>Do you plan to visit your children or grand-children for more than 6 months?</p>
+                <ul>
+                  <li id="question-family-yes">Visit as a tourist</li>
+                  <li id="question-family-no">Transit through Canada</li>
+                </ul>
+              </div>
+
+              <div class="wb-fieldflow-sub hidden" id="question-study">
+                <p>Select the option that best matches your situation</p>
+                <ul>
+                  <li id="question-study-appying_for_first_permit">Applying for my first permit</li>
+                  <li id="question-study-already_have_first_permit">Already have my first permit</li>
+                  <li id="question-study-extend">Extend my permit</li>
+                  <li id="question-study-eligible_without_permit">Eligible to study without a permit</li>
+                  <li id="question-study-not_sure">Not sure what I need</li>
+                </ul>
+              </div>
+
+              <div class="wb-fieldflow-sub hidden" id="question-work">
+                <p>Select the option that best matches your situation</p>
+                <ul>
+                  <li id="question-work-appying_for_first_permit">Applying for my first permit</li>
+                  <li id="question-work-already_have_first_permit">Already have my first permit</li>
+                  <li id="question-work-extend">Extend my permit</li>
+                  <li id="question-work-eligible_without_permit">Eligible to work without a permit</li>
+                  <li id="question-work-not_sure">Not sure what I need</li>
+                </ul>
+              </div>
+
+              <div class="wb-fieldflow-sub hidden" id="question-study-usa">
+                <p>Select the option that best matches your situation</p>
+                <ul>
+                  <li id="question-study-appying_for_first_permit">Applying for my first permit</li>
+                  <li id="question-study-already_have_first_permit">Already have my first permit</li>
+                  <li id="question-study-eligible_without_permit">Eligible to study without a permit</li>
+                  <li id="question-study-not_sure">Not sure what I need</li>
+                </ul>
+              </div>
+
+              <div class="wb-fieldflow-sub hidden" id="question-work-usa">
+                <p>Select the option that best matches your situation</p>
+                <ul>
+                  <li id="question-work-appying_for_first_permit">Applying for my first permit</li>
+                  <li id="question-work-already_have_first_permit">Already have my first permit</li>
+                  <li id="question-work-eligible_without_permit">Eligible to work without a permit</li>
+                  <li id="question-work-not_sure">Not sure what I need</li>
+                </ul>
+              </div>
+
+              <div class="wb-fieldflow-sub hidden" id="question-travel_document">
+                <p>What travel document do you plan to use?</p>
+                <ul>
+                  <li id="question-travel_document-passport">Passport</li>
                   <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa"}'>Alien’s passport for stateless persons</li>
                   <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa"}'>US refugee travel document (I-571)</li>
                   <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa"}'>Permit to re-enter the U.S. (I-327)</li>
@@ -661,14 +895,40 @@
               <div class="wb-fieldflow-sub hidden" id="question-travel_eta">
                 <p>How do you plan to travel to Canada?</p>
                 <ul>
-                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-eta"}'>By air, via a Canadian airport</li>
-                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-identification_document"}'>By car, train, bus or boat (including cruise ship)</li>
+                  <li id="question-travel_eta-air">By air, via a Canadian airport</li>
+                  <li id="question-travel_eta-ground">By car, train, bus or boat (including cruise ship)</li>
               </div>
               <div class="wb-fieldflow-sub hidden" id="question-travel_eta_x">
                 <p>How do you plan to travel to Canada?</p>
                 <ul>
+                  <li id="question-travel_eta_x-air">By air, via a Canadian airport</li>
+                  <li id="question-travel_eta_x-ground">By car, train, bus or boat (including cruise ship)</li>
+              </div>
+
+              <div class="wb-fieldflow-sub hidden" id="question-transit">
+                <p>How do you plan to transit through Canada?</p>
+                <ul>
+                  <li data-wb-fieldflow='{"action":"append", "source":"#question-transit_length"}'>By air, via a Canadian airport</li>
+                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa"}'>By car, train, bus or boat (including cruise ship)</li>
+              </div>
+              <div class="wb-fieldflow-sub hidden" id="question-transit_eta">
+                <p>How do you plan to transit through Canada?</p>
+                <ul>
+                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-eta"}'>By air, via a Canadian airport</li>
+                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-identification_document"}'>By car, train, bus or boat (including cruise ship)</li>
+              </div>
+              <div class="wb-fieldflow-sub hidden" id="question-transit_eta_x">
+                <p>How do you plan to transit through Canada?</p>
+                <ul>
                   <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-eta_x"}'>By air, via a Canadian airport</li>
                   <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa"}'>By car, train, bus or boat (including cruise ship)</li>
+              </div>
+              <div class="wb-fieldflow-sub hidden" id="question-transit_length">
+                <p>Will you transit in less than 48h</p>
+                <ul>
+                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa"}'>Yes, and I will visit Canada while transiting</li>
+                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-transit_visa"}'>Yes, and I will not visit Canada while transiting</li>
+                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#result-visitor_visa"}'>No, I will not transit in less than 48 hours</li>
               </div>
 
               <div class="wb-fieldflow-sub hidden" id="question-cad_visitor_visa_nonimmigrant_visa">
@@ -701,100 +961,103 @@
           </div>
 
 
+          <div class="results">
+            <div class="result" id="result-dual_citizen">
+              <p>Dual canadian result</p>
+            </div>
+            <div class="result" id="result-canadian_cit_pr">
+              <p>Canadian cit or PR result</p>
+            </div>
+            <div class="result" id="result-visitor_visa">
+              <p>You need a visitor visa</p>
+            </div>
+            <div class="result" id="result-transit_visa">
+              <p>You need a transit visa</p>
+            </div>
+            <div class="result" id="result-eta">
+              <p>You are eligible for an eTA</p>
+            </div>
+            <div class="result" id="result-eta_x">
+              <p>You are eligible for an eTA-X</p>
+            </div>
+            <div class="result" id="result-identification_document">
+              <p>Use travel documentation</p>
+            </div>
 
-          <div class="result" id="result-dual_citizen">
-            <p>Dual canadian result</p>
-          </div>
-          <div class="result" id="result-canadian_cit_pr">
-            <p>Canadian cit or PR result</p>
-          </div>
-          <div class="result" id="result-visitor_visa">
-            <p>You need a visitor visa</p>
-          </div>
-          <div class="result" id="result-eta">
-            <p>You are eligible for an eTA</p>
-          </div>
-          <div class="result" id="result-eta_x">
-            <p>You are eligible for an eTA</p>
-          </div>
-          <div class="result" id="result-identification_document">
-            <p>Use travel documentation</p>
-          </div>
-
-          <div id="US-results">
-            <div class="result" id="result-GeneralUS">
-              <p>General US tourist, transit or business</p>
+            <div id="US-results">
+              <div class="result" id="result-GeneralUS">
+                <p>General US tourist, transit or business</p>
+              </div>
+              <div class="result" id="result-supervisa-US">
+                <p>Supervisa US</p>
+              </div>
+              <div class="result" id="result-study-first_permit-US">
+                <p>US applying for first study permit</p>
+              </div>
+              <div class="result" id="result-study-have_permit-US">
+                <p>US already have study permit</p>
+              </div>
+              <div class="result" id="result-study-eligible_without_permit-US">
+                <p>US eligible w/o study permit</p>
+              </div>
+              <div class="result" id="result-study-not_sure-US">
+                <p>US study permit - not sure what I need</p>
+              </div>
+              <div class="result" id="result-work-first_permit-US">
+                <p>US applying for first work permit</p>
+              </div>
+              <div class="result" id="result-work-have_permit-US">
+                <p>US already have work permit</p>
+              </div>
+              <div class="result" id="result-work-eligible_without_permit-US">
+                <p>US eligible w/o work permit</p>
+              </div>
+              <div class="result" id="result-work-not_sure-US">
+                <p>US work permit - not sure what I need</p>
+              </div>
             </div>
-            <div class="result" id="result-supervisa-US">
-              <p>Supervisa US</p>
-            </div>
-            <div class="result" id="result-study-first_permit-US">
-              <p>US applying for first study permit</p>
-            </div>
-            <div class="result" id="result-study-have_permit-US">
-              <p>US already have study permit</p>
-            </div>
-            <div class="result" id="result-study-eligible_without_permit-US">
-              <p>US eligible w/o study permit</p>
-            </div>
-            <div class="result" id="result-study-not_sure-US">
-              <p>US study permit - not sure what I need</p>
-            </div>
-            <div class="result" id="result-work-first_permit-US">
-              <p>US applying for first work permit</p>
-            </div>
-            <div class="result" id="result-work-have_permit-US">
-              <p>US already have work permit</p>
-            </div>
-            <div class="result" id="result-work-eligible_without_permit-US">
-              <p>US eligible w/o work permit</p>
-            </div>
-            <div class="result" id="result-work-not_sure-US">
-              <p>US work permit - not sure what I need</p>
-            </div>
-          </div>
-          <div id="USPR-results">
-            <div class="result" id="result-GeneralUSPR">
-              <p>General USPR tourist, transit or business</p>
-            </div>
-            <div class="result" id="result-supervisa-USPR">
-              <p>Supervisa USPR</p>
-            </div>
-            <div class="result" id="result-study-first_permit-USPR">
-              <p>USPR applying for first study permit</p>
-            </div>
-            <div class="result" id="result-study-have_permit-USPR">
-              <p>USPR already have study permit</p>
-            </div>
-            <div class="result" id="result-study-extend_permit-USPR">
-              <p>USPR extend study permit</p>
-            </div>
-            <div class="result" id="result-study-eligible_without_permit-USPR">
-              <p>USPR eligible w/o study permit</p>
-            </div>
-            <div class="result" id="result-study-not_sure-USPR">
-              <p>USPR study permit - not sure what I need</p>
-            </div>
-            <div class="result" id="result-work-first_permit-USPR">
-              <p>USPR applying for first work permit</p>
-            </div>
-            <div class="result" id="result-work-have_permit-USPR">
-              <p>USPR already have work permit</p>
-            </div>
-            <div class="result" id="result-work-extend_permit-USPR">
-              <p>USPR extend work permit</p>
-            </div>
-            <div class="result" id="result-work-eligible_without_permit-USPR">
-              <p>USPR eligible w/o work permit</p>
-            </div>
-            <div class="result" id="result-work-not_sure-USPR">
-              <p>USPR work permit - not sure what I need</p>
+            <div id="USPR-results">
+              <div class="result" id="result-GeneralUSPR">
+                <p>General USPR tourist, transit or business</p>
+              </div>
+              <div class="result" id="result-supervisa-USPR">
+                <p>Supervisa USPR</p>
+              </div>
+              <div class="result" id="result-study-first_permit-USPR">
+                <p>USPR applying for first study permit</p>
+              </div>
+              <div class="result" id="result-study-have_permit-USPR">
+                <p>USPR already have study permit</p>
+              </div>
+              <div class="result" id="result-study-extend_permit-USPR">
+                <p>USPR extend study permit</p>
+              </div>
+              <div class="result" id="result-study-eligible_without_permit-USPR">
+                <p>USPR eligible w/o study permit</p>
+              </div>
+              <div class="result" id="result-study-not_sure-USPR">
+                <p>USPR study permit - not sure what I need</p>
+              </div>
+              <div class="result" id="result-work-first_permit-USPR">
+                <p>USPR applying for first work permit</p>
+              </div>
+              <div class="result" id="result-work-have_permit-USPR">
+                <p>USPR already have work permit</p>
+              </div>
+              <div class="result" id="result-work-extend_permit-USPR">
+                <p>USPR extend work permit</p>
+              </div>
+              <div class="result" id="result-work-eligible_without_permit-USPR">
+                <p>USPR eligible w/o work permit</p>
+              </div>
+              <div class="result" id="result-work-not_sure-USPR">
+                <p>USPR work permit - not sure what I need</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
 
 
   </main>

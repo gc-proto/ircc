@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
   </noscript>
   <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/méli-mélo/2025-04-nahanni.css" />
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 
@@ -48,32 +48,30 @@
           <div class="wb-frmvld">
             <form id="find-out-form">
 
-
-              <div class="wb-fieldflow" id="find-out-ff" data-wb-fieldflow='{
+              <div id="travel-document">
+                <div class="wb-fieldflow current" data-wb-fieldflow='{
                 "renderas": "radio",
                 "gcChckbxrdio":true,
                 "isoptional": true,
                 "noreqlabel": true,
-                "noForm": true,    
-                "live":true,
-                "base": {
-                    "renderas": "radio",
-                    "gcChckbxrdio":true,
-                    "isoptional": true,
-                    "noreqlabel": true,
-                    "noForm": true,    
-                    "live":true
-                }
+                "noForm": true,
+                "base" : {
+                  "renderas": "radio",
+                  "gcChckbxrdio":true,
+                  "isoptional": true,
+                  "noreqlabel": true
+                },
+                "default": [{"action":"addClass", "class":"hidden", "source":"#travel-document"}]
               }'>
-                <p>What travel document do you plan to use to travel to Canada?</p>
-                <ul>
-                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":".datalist-passport"}'>Passport</li>
-                  <li data-wb-fieldflow='{"action":"removeClass", "class":"hidden", "source":"#dualcit-wrapper"}'>append</li>
-                  <li>Alien’s passport for stateless persons</li>
-                  <li>Permit to re-enter the US (I-327)</li>
-                  <li>US Refugee Travel Document (I-571)</li>
-                  <li>Other refugee travel document for non-citizens</li>
-                </ul>
+                  <p>What travel document do you plan to use to travel to Canada?</p>
+                  <ul>
+                    <li data-wb-fieldflow='{"action":"toggle", "toggle":".datalist-passport"}'>Passport</li>
+                    <li>Alien’s passport for stateless persons</li>
+                    <li>Permit to re-enter the US (I-327)</li>
+                    <li>US Refugee Travel Document (I-571)</li>
+                    <li>Other refugee travel document for non-citizens</li>
+                  </ul>
+                </div>
               </div>
 
               <div class="datalist-passport hidden">
@@ -95,30 +93,20 @@
                 </div>
               </div>
 
-              <div id="dualcit-wrapper">
-                <div class="wb-fieldflow " id="dualcit" data-wb-fieldflow='{
-                  "hideelm":"#dualcit-wrapper",
-                    "renderas": "radio",
-                    "gcChckbxrdio":true,
-                    "isoptional": true,
-                    "noreqlabel": true,
-                    "noForm": true,
-                    "live":true
-                  }'>
-                  <div class="wb-fieldflow-header">
-                    <p class="wb-fieldflow-label">Are you a dual Canadian citizen?</p>
-                    <p>Answer yes if you’re a citizen of Canada and another country.</p>
-                  </div>
-                  <ul>
-                    <li data-wb-fieldflow='{"action":"append", "source":"#dualcit3"}'>Yes</li>
-                    <li>No</li>
-                  </ul>
-                </div>
+
+
+              <div class="wb-fieldflow-sub hidden">
+                <p>Are you a dual Canadian citizen?</p>
+                <ul>
+                  <li>Yes</li>
+                  <li>No</li>
+                </ul>
               </div>
 
+              <button id="btn-next">Next</button>
+              <button id="btn-previous">Previous</button>
+
             </form>
-            <button id="btn-next">Next</button>
-            <button id="btn-previous">Previous</button>
           </div>
         </div>
       </div>
@@ -134,22 +122,21 @@
   <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
   <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
   <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/méli-mélo/2025-04-nahanni.js"></script>
-  <!-- <script src="fieldflow-mod.js"></script> -->
   <script src="https://test.canada.ca/ircc/templates/js/components.js" type="text/javascript" defer></script>
 
   <script>
-
-
     $("#datalist-passport").on('input', function (e) {
+      console.log('test');
       let selected = this.value;
-      let options = document.getElementById(this.getAttribute("list")).getElementsByTagName('option');
+      let options = this.getElementsByTagName('datalist')[0].getElementsByTagName('options');
 
       for (let i = 0; i < options.length; i++) {
-
-        if (selected === options[i].getAttribute('value')) {
-
-          $("#dualcit-wrapper").removeClass('hidden');
+        if (selected === options[i]) {
+          console.log('true');
           break;
+        }
+        else {
+          console.log('false');
         }
       }
     });
