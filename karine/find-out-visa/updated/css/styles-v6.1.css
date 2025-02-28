@@ -1,0 +1,94 @@
+#changeAnswers:has(dl) {
+  background-color: #E7E6F9;
+  padding: 30px 40px;
+  border-radius: 40px;
+  scroll-margin-top: 20px;
+  border: none;
+}
+
+.tool-container.results {
+  background-color: #fff;
+  border: 2px solid #B5B2E3;
+}
+
+.tool-container {
+  background-color: #E7E6F9;
+  padding: 30px 40px;
+  border-radius: 40px;
+  scroll-margin-top: 20px;
+  border: none;
+}
+@media screen and (max-width: 767px) {
+  .tool-container {
+    margin: 30px -15px;
+    border-radius: 0;
+  }
+}
+.tool-container h2, .tool-container legend, .tool-container .legend {
+  border-bottom: 0.18em solid #B5B2E3;
+  -o-border-image: linear-gradient(to right, #B5B2E3 51px, transparent 51px);
+  border-image: linear-gradient(to right, #B5B2E3 51px, transparent 51px);
+  border-image-slice: 1;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+}
+.tool-container legend,
+.tool-container .legend {
+  font-size: 1.5em !important;
+}
+.tool-container .wb-fieldflow-form legend,
+.tool-container .wb-fieldflow-form .wb-fieldflow-label,
+.tool-container .wb-fieldflow-form .field-name {
+  font-size: 24px !important;
+  font-family: Lato, sans-serif;
+}
+.tool-container select,
+.tool-container input[type=text] {
+  padding: 0 !important;
+}
+.tool-container .gc-chckbxrdio input[type=checkbox] + label::before,
+.tool-container .gc-chckbxrdio input[type=radio] + label::before {
+  background-color: #fff;
+}
+.tool-container .gc-chckbxrdio input[type=radio]:checked + label::before {
+  background: #444;
+}
+.tool-container .btn-nav {
+  border-radius: 25px;
+  background-color: #fff;
+  border: solid 2px #B5B2E3;
+  min-width: 150px;
+}
+@media screen and (min-width: 768px) {
+  .tool-container #btn-previous {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .tool-container #btn-next, .tool-container #btn-reset {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .tool-container:has(#btn-previous.hidden) #btn-next {
+    border-radius: 25px !important;
+  }
+}
+.tool-container #btn-next, .tool-container #btn-reset {
+  background-color: #B5B2E3 !important;
+}
+.tool-container #btn-next:hover, .tool-container #btn-next:active, .tool-container #btn-reset:hover, .tool-container #btn-reset:active {
+  background-color: #fff !important;
+}
+
+.dataTables_wrapper table {
+  margin: 0;
+  width: 50% !important;
+}
+@media screen and (max-width: 991px) {
+  .dataTables_wrapper table {
+    width: 100% !important;
+  }
+}
+.dataTables_wrapper .dataTables_paginate {
+  text-align: left;
+}/*# sourceMappingURL=styles-v6.1.css.map */
