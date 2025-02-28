@@ -77,6 +77,13 @@
     border-radius: 25px !important;
   }
 }
+@media screen and (max-width: 767px) {
+  .tool-container .btn-nav {
+    border-radius: 25px !important;
+    width: 100%;
+    margin: 15px 25px;
+  }
+}
 .tool-container #btn-next, .tool-container #btn-reset {
   background-color: #B5B2E3 !important;
 }
