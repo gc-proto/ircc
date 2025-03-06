@@ -1,11 +1,3 @@
-#changeAnswers:has(dl) {
-  background-color: #E7E6F9;
-  padding: 30px 40px;
-  border-radius: 40px;
-  scroll-margin-top: 20px;
-  border: none;
-}
-
 .tool-container.results {
   background-color: #fff;
   border: 2px solid #B5B2E3;
@@ -33,6 +25,9 @@
   border-right-width: 0;
   border-top-width: 0;
 }
+.tool-container .alert h2 {
+  border: none !important;
+}
 .tool-container legend,
 .tool-container .legend {
   font-size: 1.5em !important;
@@ -59,8 +54,9 @@
   background-color: #fff;
   border: solid 2px #B5B2E3;
   min-width: 150px;
+  margin-right: -6px;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 480px) {
   .tool-container #btn-previous {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -77,11 +73,22 @@
     border-radius: 25px !important;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 479px) {
+  .tool-container .btn-navigation {
+    display: flex;
+    flex-direction: column;
+  }
+  .tool-container #btn-next {
+    order: 1;
+  }
+  .tool-container #btn-previous {
+    order: 2;
+  }
   .tool-container .btn-nav {
     border-radius: 25px !important;
     width: 100%;
-    margin: 15px 25px;
+    margin: 5px auto;
+    display: block;
   }
 }
 .tool-container #btn-next, .tool-container #btn-reset {
@@ -89,6 +96,9 @@
 }
 .tool-container #btn-next:hover, .tool-container #btn-next:active, .tool-container #btn-reset:hover, .tool-container #btn-reset:active {
   background-color: #fff !important;
+}
+.tool-container table th, .tool-container table thead {
+  background-color: #B5B2E3 !important;
 }
 
 .dataTables_wrapper table {
@@ -102,4 +112,26 @@
 }
 .dataTables_wrapper .dataTables_paginate {
   text-align: left;
+}
+.dataTables_wrapper .top {
+  margin-bottom: 10px;
+}
+
+#changeAnswers:has(dl) {
+  background-color: #E7E6F9;
+  padding: 30px 20px;
+  border-radius: 40px;
+  scroll-margin-top: 20px;
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+#changeAnswers:has(dl) dl {
+  width: 100%;
+}
+
+.btn-toggle {
+  background: none !important;
+  border: none;
 }/*# sourceMappingURL=styles-v6.1.css.map */

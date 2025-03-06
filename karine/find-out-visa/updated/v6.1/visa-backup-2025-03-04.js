@@ -1,83 +1,101 @@
-// Prevent form submission
-const form = document.getElementById('find-out-form');
-form.onsubmit = e => e.preventDefault();
+/*For QA
+window.addEventListener('keydown', ({key}) => {
+    if (key === "Backspace") {
+        btnPrevious.click();
+    }
+    if (key === "Enter") {
+        btnNext.click();
+    }
 
-// DOM elements
-const toolContainer = document.querySelector('.tool-container');
-const btnNext = document.getElementById('btn-next');
-const btnPrevious = document.getElementById('btn-previous');
-const btnReset = document.getElementById('btn-reset');
-const changeAnswersContainer = document.getElementById('changeAnswers');
+});
+*/
+let clear = false; // For QA
 
-// JSON data and user answers
+//Prevent form submission
+document.getElementById('find-out-form').onsubmit = function (e) { e.preventDefault() };
+
+
 let data;
+let toolContainer = document.querySelector(".tool-container")
+let btnNext = document.getElementById("btn-next");
+let btnPrevious = document.getElementById("btn-previous");
+let btnReset = document.getElementById("btn-reset");
+let form = document.getElementById("find-out-form");
 let userAnswers = [];
 
-// Language settings
+
 let doclang = document.getElementsByTagName('html')[0].getAttribute('lang') == "en" ? "en" : "fr";
 let langSettings = {
     en: {
-        errorMessageDiv: `<section id="errors-${form.id}" class="alert alert-danger" tabindex="-1"><h2>The form could not be submitted because 1 error was found.</h2><ul><li><a href="#passport_code_table"><span class="prefix">Error&nbsp;1: </span>This field is required.</a></li></ul></section>`,
-        errorMessageH2: `<strong id="passport_code_table-error" class="error"><span class="label label-danger"><span class="prefix">Error&nbsp;1: </span>This field is required.</span></strong>`
+        errorMessageDiv: `<section id="errors-${form.getAttribute('id')}" class="alert alert-danger" tabindex="-1"><h2>The form could not be submitted because 1 error was found.</h2><ul><li><a href="#passport_code_table"><span class="prefix">Error&nbsp;1: </span>This field is required.</a></li></ul></section>`,
+        errorMessageH2: `<strong id="passport_code_table-error" class="error"><span class="label label-danger"><span class="prefix">Error&nbsp;1: </span>This field is required.</span></strong>`,
+        answerHeading: `<h2>You told us</h2>`
     },
     fr: {
-        errorMessageDiv: `<section id="errors-${form.id}" class="alert alert-danger" tabindex="-1"><h2>Le formulaire n'a pu être soumis car 1 erreur a été trouvée.</h2><ul><li><a href="#q1-item-0"><span class="prefix">Erreur&nbsp;1&nbsp;: </span>Ce champ est obligatoire.</a></li></ul></section>`,
-        errorMessageH2: `<strong id="passport_code_table-error" class="error"><span class="label label-danger"><span class="prefix">Erreur&nbsp;1&nbsp;: </span>Ce champ est obligatoire.</span></strong>`
+        errorMessageDiv: `<section id="errors-${form.getAttribute('id')}" class="alert alert-danger" tabindex="-1"><h2>Le formulaire n'a pu être soumis car 1 erreur a été trouvée.</h2><ul><li><a href="#q1-item-0"><span class="prefix">Erreur&nbsp;1&nbsp;: </span>Ce champ est obligatoire.</a></li></ul></section>`,
+        errorMessageH2: `<strong id="passport_code_table-error" class="error"><span class="label label-danger"><span class="prefix">Erreur&nbsp;1&nbsp;: </span>Ce champ est obligatoire.</span></strong>`,
+        answerHeading: `<h2>Vous nous avez dit</h2>`
     }
 }
 
-// Variables for travel data
-let traveller_type, purpose_of_travel, travel_type, passport_type = false;
-let passportCodeSelectionParent = document.getElementById('passport-code-selection');
-let passportCodeSelection = document.getElementById('passport-selection');
-let passportCodeTable = document.getElementById('passport-code');
+let traveller_type, purpose_of_travel, travel_document, travel_type;
+let passport_type = false;
+let visit_length = false;
 
-// Fetch JSON data
-(async function fetchData() {
-    const response = await fetch('visas.json');
-    data = await response.json();
-})();
+// Load JSON file and assign data to variable
+getJSON();
+async function getJSON() {
+    const requestURL =
+        "visas.json";
+    const request = new Request(requestURL);
 
-btnNext.addEventListener("click", handleNextClick);
-btnPrevious.addEventListener("click", () => handlePreviousClick(false));
-btnReset.addEventListener("click", () => handlePreviousClick(userAnswers[0]?.id));
+    const response = await fetch(request);
+    const jsonData = await response.json();
+
+    data = jsonData;
+}
 
 // On Next button click
-function handleNextClick() {
+btnNext.onclick = function () {
+
+    // For QA, if you type clear = true in console, it'll clear the console long on each next button click. Will be removed from prod.
+    if (clear) {
+        console.clear();
+    }
 
     //Get current question & if no selection was made, force form validation to show error. Else, if something was selected, continue with rest of script.
     let currentQuestion = document.querySelector('.question:not(.hidden)');
-
-    
-    console.log(currentQuestion.querySelector('input'));
-    console.log(currentQuestion.querySelector('input:checked'));
 
     if (currentQuestion.querySelector('input') && !currentQuestion.querySelector('input:checked')) {
         $(form).validate();
         $(form).valid();
     }
-    if ((currentQuestion.id === "question-passport_code") && passportCodeSelectionParent.classList.contains('hidden')) {
+    if ((currentQuestion.getAttribute('id') === "question-passport_code") && document.getElementById('passport-code-selection').classList.contains('hidden')) {
         currentQuestion.insertAdjacentHTML('beforebegin', langSettings[doclang].errorMessageDiv)
         currentQuestion.querySelector('legend').insertAdjacentHTML('beforeend', langSettings[doclang].errorMessageH2);
-        document.getElementById(`errors-${form.id}`).focus();
-        return
+        document.getElementById(`errors-${form.getAttribute('id')}`).focus();
     }
     else {
-        if ((currentQuestion.id === "question-passport_code") && currentQuestion.querySelector(`#errors-${form.id}`)) {
-            document.getElementById(`errors-${form.id}`).remove();
+        if ((currentQuestion.getAttribute('id') === "question-passport_code") && currentQuestion.querySelector(`#errors-${form.getAttribute('id')}`)) {
+            document.getElementById(`errors-${form.getAttribute('id')}`).remove();
             document.getElementById('passport_code_table-error').remove();
         }
 
         // if user has previously went to the country table and made a selection, force variable assignment of type of traveller and selected input; else get the checked radio button.
-        if (currentQuestion.querySelector('#passport-code-selection') && (!passportCodeSelectionParent.classList.contains('hidden'))) {
-            traveller_type = (data["question-passport_code"][passportCodeSelection.getAttribute('data-passport-code')]).trim();
+        if (currentQuestion.querySelector('#passport-code-selection') && (!document.getElementById('passport-code-selection').classList.contains('hidden'))) {
+            traveller_type = (data["question-passport_code"][document.getElementById('passport-selection').getAttribute('data-passport-code')]).trim();
             selectedInput = traveller_type;
         }
         else {
             selectedInput = currentQuestion.querySelector('input:checked').value;
         }
 
-        const question = currentQuestion.id;
+        let question = currentQuestion.getAttribute('id');
+        let next;
+
+        // show previous button
+        btnPrevious.classList.remove('hidden');
+
 
         /*
             For the object:
@@ -160,22 +178,35 @@ function handleNextClick() {
         // ** Main Logic to get the next question **
         const nextQuestionId = questionHandlers[question] ? questionHandlers[question]() : (data[question][traveller_type][selectedInput] || data[question][traveller_type]);
 
-        const nextQuestion = document.getElementById(nextQuestionId);
+        next = document.getElementById(nextQuestionId);
 
-        
-        
+        console.log("===================");
+        console.log("Question: " + question);
+        console.log("Selected input: ", selectedInput);
+        console.log("Traveller: ", traveller_type);
+        console.log("purpose_of_travel: ", purpose_of_travel);
+        console.log("Next: ", next);
+        console.log("===================");
+
         userAnswers.push(currentQuestion);
 
-        // button control
-        btnPrevious.classList.remove('hidden');
-        btnReset.classList.toggle('hidden', nextQuestion.id.includes('question'));
-        btnNext.classList.toggle('hidden', nextQuestion.id.includes('result'));
+        if ((next.getAttribute("id") === "question-study" || next.getAttribute("id") === "question-work") && traveller_type === "us_citizen") {
+            document.getElementById('study-extend_permit').parentElement.classList.add('hidden');
+            document.getElementById('work-extend_permit').parentElement.classList.add('hidden');
+        }
+        else {
+            document.getElementById('study-extend_permit').parentElement.classList.remove('hidden');
+            document.getElementById('work-extend_permit').parentElement.classList.remove('hidden');
+        }
 
-        currentQuestion.classList.add('hidden');
-        nextQuestion.classList.remove('hidden');  
-
-        toolContainer.classList.toggle('results', nextQuestion.id.includes('result'));
-        if (nextQuestion.id.includes('result')) {
+        if (next.getAttribute('id').indexOf('question') > -1) {
+            toolContainer.classList.remove('results');
+            btnReset.classList.add('hidden');
+        }
+        else {
+            toolContainer.classList.add('results');
+            btnReset.classList.remove('hidden');
+            btnNext.classList.add('hidden');
 
             let changeAnswersDL = document.createElement("dl");
             changeAnswersDL.classList.add('hidden');
@@ -189,75 +220,51 @@ function handleNextClick() {
                 let changeAnswersLink = document.createElement('button');
                 changeAnswersLink.classList.add('btn-change-answer', 'mrgn-lft-md', 'btn-link');
                 changeAnswersLink.innerHTML = `Change answer<span class="wb-inv"> for "${changeAnswersDT.innerText}"</span>`;
-                changeAnswersLink.setAttribute('data-change', `${userAnswers[i].id}`);
+                changeAnswersLink.setAttribute('data-change', `${userAnswers[i].getAttribute('id')}`);
                 changeAnswersLink.setAttribute('type', 'button');
                 changeAnswersLink.addEventListener('click', function (e) {
-                    previous(userAnswers[i].id)
+                    previous(userAnswers[i].getAttribute('id'))
                 });
 
                 changeAnswersDD.appendChild(changeAnswersLink);
-                changeAnswersDL.append(changeAnswersDT, changeAnswersDD);
+                changeAnswersDL.appendChild(changeAnswersDT);
+                changeAnswersDL.appendChild(changeAnswersDD);
             }
-            changeAnswersContainer.appendChild(changeAnswersDL);
-            changeAnswersContainer.classList.remove('hidden');
+            document.getElementById('changeAnswers').appendChild(changeAnswersDL);
+            document.querySelector('#changeAnswers').classList.remove('hidden');
             expandSection();
-        }
-        else {
-            nextQuestion.focus();
+
+
         }
 
-        
+        currentQuestion.classList.add('hidden');
+        next.classList.remove('hidden');        
+        if (next.getAttribute('id').indexOf('question') > -1) next.focus();
         
         toolContainer.scrollIntoView({ block: "start" })
     }
 };
 
 function expandSection() {
-    let dl = changeAnswersContainer.querySelector('dl');
-    let btnToggle = document.querySelector('.btn-toggle');
     if (window.innerWidth < 768) {
         
         
-        if (!btnToggle) {
+        if (!document.querySelector('.btn-toggle')) {
             let expand_collapse = document.createElement('button');
             expand_collapse.classList.add('btn-expand', 'btn-toggle', 'pull-left');
             expand_collapse.innerHTML = `<span class="fas fa-plus fa-x2" aria-hidden="true"></span>`;
-            changeAnswersContainer.prepend(expand_collapse);
+            document.getElementById('changeAnswers').prepend(expand_collapse);
             expand_collapse.addEventListener('click', function (e) {
-                expando(dl, btnToggle);
+                expando();
             });
         }
 
-        dl.classList.add('hidden');
+        document.querySelector('#changeAnswers dl').classList.add('hidden');
 
     }
     else {
-        if (btnToggle) btnToggle.remove();
-        dl.classList.remove('hidden');
-    }
-}
-
-function expando() {
-    // let div = changeAnswersContainer;
-    // let btn = div.querySelector('button');
-
-    let dl = changeAnswersContainer.querySelector('dl');
-    let btnToggle = changeAnswersContainer.querySelector('.btn-toggle');
-    let icon = btnToggle.querySelector('span');
-
-    if (btnToggle.classList.contains('btn-collapse')) {
-        dl.classList.add('hidden');
-        btnToggle.classList.add('btn-expand');
-        btnToggle.classList.remove('btn-collapse');
-        icon.classList.remove('fa-minus');
-        icon.classList.add('fa-plus');
-    }
-    else {
-        dl.classList.remove('hidden');
-        btnToggle.classList.add('btn-collapse');
-        btnToggle.classList.remove('btn-expand');
-        icon.classList.add('fa-minus');
-        icon.classList.remove('fa-plus');
+        if (document.querySelector('.btn-toggle')) document.querySelector('.btn-toggle').remove();
+        document.querySelector('#changeAnswers dl').classList.remove('hidden');
     }
 }
 
@@ -265,26 +272,64 @@ window.onresize = function (event) {
     expandSection();
 };
 
-function handlePreviousClick(changeAnswer) {
+function expando() {
+    let div = document.getElementById('changeAnswers');
+    let btn = div.querySelector('button');
+
+    if (btn.classList.contains('btn-collapse')) {
+        div.querySelector('dl').classList.add('hidden');
+        btn.classList.add('btn-expand');
+        btn.classList.remove('btn-collapse');
+        btn.querySelector('span').classList.remove('fa-minus');
+        btn.querySelector('span').classList.add('fa-plus');
+    }
+    else {
+        div.querySelector('dl').classList.remove('hidden');
+        btn.classList.add('btn-collapse');
+        btn.classList.remove('btn-expand');
+        btn.querySelector('span').classList.add('fa-minus');
+        btn.querySelector('span').classList.remove('fa-plus');
+    }
+}
+
+
+btnPrevious.onclick = function () {
+    previous();
+}
+btnReset.onclick = function () {
+    previous(userAnswers[0].getAttribute('id'));
+}
+
+function previous(changeAnswer) {
     // revalidated the form and clear and empty the error if there was one; clear the "change answer" section
     var validator = $(form).validate();
     validator.resetForm();
-    if (document.getElementById('errors-' + form.id)) document.getElementById('errors-' + form.id).remove();
-    changeAnswersContainer.innerHTML = "";
+    if (document.getElementById('errors-' + form.getAttribute('id'))) document.getElementById('errors-' + form.getAttribute('id')).remove();
+    document.getElementById('changeAnswers').innerHTML = "";
 
     // get previous question, using array if previous click or change answer option
     let previousQuestion = changeAnswer ? document.getElementById(changeAnswer) : userAnswers[userAnswers.length - 1];
-    changeAnswersContainer.classList.add('hidden');
+    document.querySelector('#changeAnswers').classList.add('hidden');
     // get what's on screen, either a question or a result and hide it. If it's a question, remove the required attribute to prevent a form error.
     let currentQuestion = document.querySelector('.question:not(.hidden)') ? document.querySelector('.question:not(.hidden)') : document.querySelector('.result:not(.hidden)');
     currentQuestion.classList.add('hidden');
     if (currentQuestion.querySelector('input')) currentQuestion.querySelector('input').removeAttribute('required');
 
     // clear some of the variables that are question specific
-    if (currentQuestion.id === 'question-passport_code' || currentQuestion.id === 'question-travel_document') {
+    if (currentQuestion.getAttribute("id") === 'question-passport_code' || currentQuestion.getAttribute('id') === 'question-travel_document') {
         traveller_type = "unknown";
         passport_type = false;
         travel_type = false;
+    }
+
+    // US specific, update the work and study questions with/without the extend option
+    if ((previousQuestion.getAttribute("id") === "question-study" || previousQuestion.getAttribute("id") === "question-work") && traveller_type === "us_citizen") {
+        document.getElementById('study-extend_permit').parentElement.classList.add('hidden');
+        document.getElementById('work-extend_permit').parentElement.classList.add('hidden');
+    }
+    else {
+        document.getElementById('study-extend_permit').parentElement.classList.remove('hidden');
+        document.getElementById('work-extend_permit').parentElement.classList.remove('hidden');
     }
 
     toolContainer.classList.remove('results');
@@ -297,24 +342,29 @@ function handlePreviousClick(changeAnswer) {
     else {
         userAnswers.pop();
     }
-    
-    btnPrevious.classList.toggle('hidden', userAnswers.length === 0);
+
+    toolContainer.scrollIntoView({ block: "start" })
+
+    if (userAnswers.length === 0) {
+        btnPrevious.classList.add('hidden');
+    }
+
     btnNext.classList.remove('hidden');
     btnReset.classList.add('hidden');
-    toolContainer.scrollIntoView({ block: "start" })
 }
 
 $("button.passport-code").on("click", function () {
+    console.log('passport btn firing')
     let code = $(this).attr('data-passport-code');
     traveller_type = data["question-passport_code"][code].trim();
 
-    passportCodeSelection.innerHTML = `${document.querySelector('[data-passport-code="' + code + '"]').innerHTML} (${document.querySelectorAll('[data-passport-code="' + code + '"]')[1].innerHTML})`;
-    passportCodeSelection.setAttribute('data-passport-code', code.trim());
-    passportCodeTable.classList.add('hidden');
-    passportCodeSelectionParent.classList.remove('hidden');
+    document.getElementById('passport-selection').innerHTML = `${document.querySelector('[data-passport-code="' + code + '"]').innerHTML} (${document.querySelectorAll('[data-passport-code="' + code + '"]')[1].innerHTML})`;
+    document.getElementById('passport-selection').setAttribute('data-passport-code', code.trim());
+    document.getElementById('passport-code').classList.add('hidden');
+    document.getElementById('passport-code-selection').classList.remove('hidden');
 });
 
 $("#passport-selection-change").on("click", function () {
-    passportCodeTable.classList.remove('hidden');
-    passportCodeSelectionParent.classList.add('hidden');
+    document.getElementById('passport-code').classList.remove('hidden');
+    document.getElementById('passport-code-selection').classList.add('hidden');
 });
