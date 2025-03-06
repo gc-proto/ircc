@@ -192,7 +192,7 @@ function handleNextClick() {
                 changeAnswersLink.setAttribute('data-change', `${userAnswers[i].id}`);
                 changeAnswersLink.setAttribute('type', 'button');
                 changeAnswersLink.addEventListener('click', function (e) {
-                    previous(userAnswers[i].id)
+                    handlePreviousClick(userAnswers[i].id)
                 });
 
                 changeAnswersDD.appendChild(changeAnswersLink);
