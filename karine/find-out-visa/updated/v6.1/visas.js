@@ -34,7 +34,7 @@ let passportCodeTable = document.getElementById('passport-code');
 
 // Fetch JSON data
 (async function fetchData() {
-    const response = await fetch('visas.json');
+    const response = await fetch('https://test.canada.ca/ircc/karine/find-out-visa/updated/v6.1/visas.json');
     data = await response.json();
 })();
 
