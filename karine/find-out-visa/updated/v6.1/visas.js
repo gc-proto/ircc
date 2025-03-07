@@ -48,10 +48,6 @@ function handleNextClick() {
     //Get current question & if no selection was made, force form validation to show error. Else, if something was selected, continue with rest of script.
     let currentQuestion = document.querySelector('.question:not(.hidden)');
 
-    
-    console.log(currentQuestion.querySelector('input'));
-    console.log(currentQuestion.querySelector('input:checked'));
-
     if (currentQuestion.querySelector('input') && !currentQuestion.querySelector('input:checked')) {
         $(form).validate();
         $(form).valid();
@@ -191,6 +187,7 @@ function handleNextClick() {
                 changeAnswersLink.innerHTML = `Change answer<span class="wb-inv"> for "${changeAnswersDT.innerText}"</span>`;
                 changeAnswersLink.setAttribute('data-change', `${userAnswers[i].id}`);
                 changeAnswersLink.setAttribute('type', 'button');
+                changeAnswersLink.setAttribute('data-gc-analytics-customclick', 'button');
                 changeAnswersLink.addEventListener('click', function (e) {
                     handlePreviousClick(userAnswers[i].id)
                 });
@@ -206,8 +203,7 @@ function handleNextClick() {
             nextQuestion.focus();
         }
 
-        
-        
+        analytics(btnNext, nextQuestion.id);
         toolContainer.scrollIntoView({ block: "start" })
     }
 };
@@ -301,12 +297,21 @@ function handlePreviousClick(changeAnswer) {
     btnPrevious.classList.toggle('hidden', userAnswers.length === 0);
     btnNext.classList.remove('hidden');
     btnReset.classList.add('hidden');
-    toolContainer.scrollIntoView({ block: "start" })
+    toolContainer.scrollIntoView({ block: "start" });
+    
+    analytics(btnPrevious, previousQuestion.id);
+}
+
+function analytics(inpt, val){
+    let attribute = inpt.dataset.gcAnalyticsCustomclick.split("__")[0];
+    inpt.dataset.gcAnalyticsCustomclick = inpt.dataset.gcAnalyticsCustomclick.split("__")[0] + "__" +  val;
+
 }
 
 $("button.passport-code").on("click", function () {
     let code = $(this).attr('data-passport-code');
     traveller_type = data["question-passport_code"][code].trim();
+    document.getElementById('passport-code-track').value = traveller_type;
 
     passportCodeSelection.innerHTML = `${document.querySelector('[data-passport-code="' + code + '"]').innerHTML} (${document.querySelectorAll('[data-passport-code="' + code + '"]')[1].innerHTML})`;
     passportCodeSelection.setAttribute('data-passport-code', code.trim());
@@ -317,4 +322,10 @@ $("button.passport-code").on("click", function () {
 $("#passport-selection-change").on("click", function () {
     passportCodeTable.classList.remove('hidden');
     passportCodeSelectionParent.classList.add('hidden');
+});
+
+
+// Testing analytics
+$("[data-gc-analytics-customclick]").on("click", function(){
+    console.log($(this).attr("data-gc-analytics-customclick"));
 });

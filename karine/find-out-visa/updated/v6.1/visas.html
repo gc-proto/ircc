@@ -44,7 +44,7 @@
       <div class="tool-container mrgn-tp-lg">
 
         <div class="wb-frmvld">
-          <form id="find-out-form" class="gc-font-2019">
+          <form id="find-out-form" class="gc-font-2019" data-gc-analytics-formname="IRCC:Find out if you need a visa" data-gc-analytics-collect='[{"value":"select, input", "emptyField": "Any"}]'>
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question" id="question-traveller_type">
               <legend>What type of traveller are you?</legend>
               <ul class="list-unstyled lst-spcd-2">
@@ -1169,7 +1169,7 @@
                 <p tabindex="-1"><b>You selected:</b> </p>
                 <span id="passport-selection" class="mrgn-rght-sm"></span>
                 <button class="btn-link p-0 mrgn-lft-sm" id="passport-selection-change"><span class="fas fa-times mrgn-rght-md" aria-hidden="true"></span>Select another country, territory or country code.</button>
-
+                <input type="hidden" value="" id="passport-selection-track" />
               </div>
 
             </fieldset>
@@ -1276,10 +1276,11 @@
               </ul>
             </fieldset>
 
+            <input type="hidden" id="questionFlow" value="" />
             <div class="btn-navigation">
-              <button id="btn-previous" class="btn btn-nav hidden" type="button"><span class="glyphicon glyphicon-arrow-left mrgn-rght-sm" aria-hidden="true"></span>Previous</button>
-              <button id="btn-next" class="btn btn-nav" type="button">Next<span class="glyphicon glyphicon-arrow-right mrgn-lft-sm" aria-hidden="true"></span></button>
-              <button id="btn-reset" class="btn btn-nav hidden" type="button"><span class="fa-solid fa-rotate-right mrgn-rght-sm" aria-hidden="true"></span>Start over</button>
+              <button id="btn-previous" class="btn btn-nav hidden" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Previous__"><span class="glyphicon glyphicon-arrow-left mrgn-rght-sm" aria-hidden="true"></span>Previous</button>
+              <button id="btn-next" class="btn btn-nav" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Next__">Next<span class="glyphicon glyphicon-arrow-right mrgn-lft-sm" aria-hidden="true"></span></button>
+              <button id="btn-reset" class="btn btn-nav hidden" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Reset"><span class="fa-solid fa-rotate-right mrgn-rght-sm" aria-hidden="true"></span>Start over</button>
             </div>
 
           </form>
