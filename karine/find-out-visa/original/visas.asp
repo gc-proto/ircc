@@ -1095,9 +1095,9 @@
                 <label class="radio" for="q5_visa_eTA-X_required_mexico-2">
                   <input type="radio" value="q6_visa_eTA-X_required" data-progress-increase="25" name="q5_visa_eTA-X_required_mexico-question" id="q5_visa_eTA-X_required_mexico-2">
                   Visit family</label>
-                <!--       <label class="radio" for="q5_visa_eTA-X_required-3">
+                      <label class="radio" for="q5_visa_eTA-X_required-3">
                       <input type="radio" value="q8_visa_eTA-X_required" data-progress-increase="25" name="q5_visa_eTA-X_required_mexico-question" id="q5_visa_eTA-X_required-3">
-                      Transit through Canada</label>-->
+                      Transit through Canada</label>
                 <label class="radio" for="q5_visa_eTA-X_required_mexico-3">
                   <input type="radio" value="#result_visitorVisa" data-progress-increase="25" name="q5_visa_eTA-X_required_mexico-question" id="q5_visa_eTA-X_required_mexico-3">
                   Attend a meeting, conference, or trade show</label>
@@ -1210,9 +1210,9 @@
                 <label class="radio" for="q5_visa_eTA-X_required-2">
                   <input type="radio" value="q6_visa_eTA-X_required" data-progress-increase="25" name="q5_visa_eTA-X_required-question" id="q5_visa_eTA-X_required-2">
                   Visit family</label>
-                <!--       <label class="radio" for="q5_visa_eTA-X_required-3">
+                      <label class="radio" for="q5_visa_eTA-X_required-3">
                       <input type="radio" value="q8_visa_eTA-X_required" data-progress-increase="25" name="q5_visa_eTA-X_required-question" id="q5_visa_eTA-X_required-3">
-                      Transit through Canada</label>-->
+                      Transit through Canada</label>
                 <label class="radio" for="q5_visa_eTA-X_required-4">
                   <input type="radio" value="#result_visitorVisa" data-progress-increase="25" name="q5_visa_eTA-X_required-question" id="q5_visa_eTA-X_required-4">
                   Attend a meeting, conference, or trade show</label>
@@ -1371,9 +1371,9 @@
                 <label class="radio" for="q5_visa_eTA-X-TWOV_required-2">
                   <input type="radio" value="q6_visa_eTA-X-TWOV_required" data-progress-increase="25" name="q5_visa_eTA-X-TWOV_required-question" id="q5_visa_eTA-X-TWOV_required-2">
                   Visit family</label>
-                <!--       <label class="radio" for="q5_visa_eTA-X-TWOV_required-3">
+                      <label class="radio" for="q5_visa_eTA-X-TWOV_required-3">
                       <input type="radio" value="q8_visa_eTA-X-TWOV_required" data-progress-increase="25" name="q5_visa_eTA-X-TWOV_required-question" id="q5_visa_eTA-X-TWOV_required-3">
-                      Transit through Canada</label>-->
+                      Transit through Canada</label>
                 <label class="radio" for="q5_visa_eTA-X-TWOV_required-4">
                   <input type="radio" value="#result_visitorVisa" data-progress-increase="25" name="q5_visa_eTA-X-TWOV_required-question" id="q5_visa_eTA-X-TWOV_required-4">
                   Attend a meeting, conference, or trade show</label>

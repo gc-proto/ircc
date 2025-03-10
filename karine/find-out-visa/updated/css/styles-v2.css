@@ -1,0 +1,39 @@
+.tool-container {
+  background-color: #E7E6F9;
+  padding: 30px 40px;
+  border-radius: 30px;
+  scroll-margin-top: 20px;
+}
+.tool-container legend,
+.tool-container .legend {
+  font-size: 1.5em !important;
+}
+.tool-container .wb-fieldflow-form legend,
+.tool-container .wb-fieldflow-form .wb-fieldflow-label,
+.tool-container .wb-fieldflow-form .field-name {
+  font-size: 24px !important;
+  font-family: Lato, sans-serif;
+}
+.tool-container select,
+.tool-container input[type=text] {
+  padding: 0 !important;
+}
+.tool-container .gc-chckbxrdio input[type=radio] + label::before {
+  background-color: #fff;
+}
+.tool-container .gc-chckbxrdio input[type=radio]:checked + label::before {
+  background: #444;
+}
+
+.dataTables_wrapper table {
+  margin: 0;
+  width: 50% !important;
+}
+@media screen and (max-width: 991px) {
+  .dataTables_wrapper table {
+    width: 100% !important;
+  }
+}
+.dataTables_wrapper .dataTables_paginate {
+  text-align: left;
+}/*# sourceMappingURL=styles-v2.css.map */
