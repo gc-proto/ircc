@@ -316,7 +316,7 @@ function analytics(){
 $("button.passport-code").on("click", function () {
     let code = $(this).attr('data-passport-code');
     traveller_type = data["question-passport_code"][code].trim();
-    document.getElementById('passport-code-track').value = traveller_type;
+    document.getElementById('passport-selection-track').value = traveller_type;
 
     passportCodeSelection.innerHTML = `${document.querySelector('[data-passport-code="' + code + '"]').innerHTML} (${document.querySelectorAll('[data-passport-code="' + code + '"]')[1].innerHTML})`;
     passportCodeSelection.setAttribute('data-passport-code', code.trim());
