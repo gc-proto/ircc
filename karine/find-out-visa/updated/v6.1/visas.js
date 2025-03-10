@@ -202,8 +202,7 @@ function handleNextClick() {
         else {
             nextQuestion.focus();
         }
-
-        analytics(btnNext, nextQuestion.id);
+        analytics();
         toolContainer.scrollIntoView({ block: "start" })
     }
 };
@@ -298,13 +297,19 @@ function handlePreviousClick(changeAnswer) {
     btnNext.classList.remove('hidden');
     btnReset.classList.add('hidden');
     toolContainer.scrollIntoView({ block: "start" });
+    analytics();
     
-    analytics(btnPrevious, previousQuestion.id);
 }
 
-function analytics(inpt, val){
-    let attribute = inpt.dataset.gcAnalyticsCustomclick.split("__")[0];
-    inpt.dataset.gcAnalyticsCustomclick = inpt.dataset.gcAnalyticsCustomclick.split("__")[0] + "__" +  val;
+analytics();
+
+function analytics(){
+    let currentQuestion = document.querySelector('.question:not(.hidden)');
+    let attributeNext = btnNext.dataset.gcAnalyticsCustomclick.split("__")[0];
+    let attributePrevious = btnPrevious.dataset.gcAnalyticsCustomclick.split("__")[0];
+
+    btnNext.dataset.gcAnalyticsCustomclick = btnNext.dataset.gcAnalyticsCustomclick.split("__")[0] + "__" +  currentQuestion.id;
+    btnPrevious.dataset.gcAnalyticsCustomclick = btnPrevious.dataset.gcAnalyticsCustomclick.split("__")[0] + "__" +  currentQuestion.id;
 
 }
 
