@@ -304,7 +304,7 @@ function handlePreviousClick(changeAnswer) {
 analytics();
 
 function analytics(){
-    let currentQuestion = document.querySelector('.question:not(.hidden)') ? document.querySelector('.question:not(.hidden)') : document.querySelector('.result:not(.hidden)');
+    let currentQuestion = document.querySelector('.question:not(.hidden)');
     let attributeNext = btnNext.dataset.gcAnalyticsCustomclick.split("__")[0];
     let attributePrevious = btnPrevious.dataset.gcAnalyticsCustomclick.split("__")[0];
 
@@ -320,13 +320,17 @@ $("button.passport-code").on("click", function () {
 
     passportCodeSelection.innerHTML = `${document.querySelector('[data-passport-code="' + code + '"]').innerHTML} (${document.querySelectorAll('[data-passport-code="' + code + '"]')[1].innerHTML})`;
     passportCodeSelection.setAttribute('data-passport-code', code.trim());
-    passportCodeTable.classList.add('hidden');
+    // passportCodeTable.classList.add('hidden');
     passportCodeSelectionParent.classList.remove('hidden');
+    $("tr.active").removeClass('active');
+    this.parentElement.parentElement.classList.add('active');
+    
 });
 
 $("#passport-selection-change").on("click", function () {
-    passportCodeTable.classList.remove('hidden');
-    passportCodeSelectionParent.classList.add('hidden');
+    // passportCodeTable.classList.remove('hidden');
+    // passportCodeSelectionParent.classList.add('hidden');
+    
 });
 
 
