@@ -325,7 +325,12 @@ $("button.passport-code").on("click", function () {
     $("tr.active").removeClass('active');
     this.parentElement.parentElement.classList.add('active');
     
-    passportCodeSelectionParent.style.marginTop = document.querySelector('.top').clientHeight + "px";
+    if (window.innerWidth > 991) {
+        passportCodeSelectionParent.style.marginTop = document.querySelector('.top').clientHeight + "px";
+    }
+
+    passportCodeSelectionParent.querySelector("p").focus();
+    passportCodeSelectionParent.querySelector("p").scrollIntoView({ block: "start" });
     
 });
 
