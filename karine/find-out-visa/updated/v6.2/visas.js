@@ -325,11 +325,14 @@ $("button.passport-code").on("click", function () {
     $("tr.active").removeClass('active');
     this.parentElement.parentElement.classList.add('active');
     
+    passportCodeSelectionParent.style.marginTop = document.querySelector('.top').clientHeight + "px";
+    
 });
 
 $("#passport-selection-change").on("click", function () {
     // passportCodeTable.classList.remove('hidden');
-    // passportCodeSelectionParent.classList.add('hidden');
+    passportCodeSelectionParent.classList.add('hidden');
+    $("tr.active").removeClass('active');
     
 });
 

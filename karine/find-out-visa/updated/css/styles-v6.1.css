@@ -50,7 +50,7 @@
   background: #444;
 }
 .tool-container .btn-nav {
-  border-radius: 25px;
+  border-radius: 25px !important;
   background-color: #fff;
   border: solid 2px #B5B2E3;
   min-width: 150px;
@@ -58,16 +58,16 @@
 }
 @media screen and (min-width: 480px) {
   .tool-container #btn-previous {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
   }
   .tool-container #btn-next {
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
   }
   .tool-container #btn-next, .tool-container #btn-reset {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
   }
   .tool-container:has(#btn-previous.hidden) #btn-next {
     border-radius: 25px !important;
