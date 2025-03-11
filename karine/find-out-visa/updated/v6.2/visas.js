@@ -327,10 +327,10 @@ $("button.passport-code").on("click", function () {
     
     if (window.innerWidth > 991) {
         passportCodeSelectionParent.style.marginTop = document.querySelector('.top').clientHeight + "px";
+        passportCodeSelectionParent.querySelector("p").scrollIntoView({ block: "start" });
     }
 
     passportCodeSelectionParent.querySelector("p").focus();
-    passportCodeSelectionParent.querySelector("p").scrollIntoView({ block: "start" });
     
 });
 
