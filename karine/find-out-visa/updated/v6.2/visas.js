@@ -327,6 +327,8 @@ $("button.passport-code").on("click", function () {
     
     if (window.innerWidth > 991) {
         passportCodeSelectionParent.style.marginTop = document.querySelector('.top').clientHeight + "px";
+    }
+    else {
         passportCodeSelectionParent.querySelector("p").scrollIntoView({ block: "start" });
     }
 
