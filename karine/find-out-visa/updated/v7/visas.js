@@ -174,7 +174,7 @@ function handleNextClick() {
         if (nextQuestion.id.includes('result')) {
 
             let changeAnswersDL = document.createElement("dl");            
-            changeAnswersDL.classList.add('hidden', 'small');
+            changeAnswersDL.classList.add('hidden', 'small', 'mrgn-tp-lg');
             for (let i = 0; i < userAnswers.length; i++) {
                 let changeAnswersDT = document.createElement('dt');
                 changeAnswersDT.innerHTML = `<b>${userAnswers[i].querySelector('legend').innerText}</b>`;
@@ -183,7 +183,7 @@ function handleNextClick() {
                 changeAnswersDD.innerHTML = userAnswers[i].id === "question-passport_code" ? userAnswers[i].querySelector('#passport-selection').innerText : userAnswers[i].querySelector('input:checked').parentElement.innerText;
 
                 let changeAnswersLink = document.createElement('button');
-                changeAnswersLink.classList.add('btn-change-answer', 'mrgn-lft-md', 'btn-link');
+                changeAnswersLink.classList.add('btn-change-answer', 'mrgn-lft-md', 'btn-link', 'pull-right');
                 changeAnswersLink.innerHTML = `Change <span class="wb-inv">answer for "${changeAnswersDT.innerText}"</span>`;
                 changeAnswersLink.setAttribute('data-change', `${userAnswers[i].id}`);
                 changeAnswersLink.setAttribute('type', 'button');
@@ -213,15 +213,15 @@ function expandSection() {
     if (window.innerWidth < 768) {
         
         
-        if (!btnToggle) {
-            let expand_collapse = document.createElement('button');
-            expand_collapse.classList.add('btn-expand', 'btn-toggle', 'pull-left');
-            expand_collapse.innerHTML = `<span class="fas fa-plus fa-x2" aria-hidden="true"></span>`;
-            changeAnswersContainer.prepend(expand_collapse);
-            expand_collapse.addEventListener('click', function (e) {
-                expando(dl, btnToggle);
-            });
-        }
+        if (btnToggle) { btnToggle.remove() }
+        let expand_collapse = document.createElement('button');
+        expand_collapse.classList.add('btn-expand', 'btn-toggle', 'pull-left', 'stretched-link');
+        expand_collapse.innerHTML = `<span class="fas fa-plus fa-x2" aria-hidden="true"></span>`;
+        changeAnswersContainer.querySelector('div').prepend(expand_collapse);
+        expand_collapse.addEventListener('click', function (e) {
+         expando(dl, btnToggle);
+        });
+        
 
         dl.classList.add('hidden');
 

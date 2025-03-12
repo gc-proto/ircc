@@ -16,7 +16,7 @@
     border-radius: 0;
   }
 }
-.tool-container h2, .tool-container legend, .tool-container .legend {
+.tool-container h2:not(.undrln-0), .tool-container legend, .tool-container .legend {
   border-bottom: 0.18em solid #B5B2E3;
   -o-border-image: linear-gradient(to right, #B5B2E3 51px, transparent 51px);
   border-image: linear-gradient(to right, #B5B2E3 51px, transparent 51px);
@@ -129,6 +129,10 @@
 }
 #changeAnswers:has(dl) dl {
   width: 100%;
+}
+#changeAnswers:has(dl) dd:not(:last-child) {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #B5B2E3;
 }
 
 .btn-toggle {
