@@ -173,8 +173,8 @@ function handleNextClick() {
         toolContainer.classList.toggle('results', nextQuestion.id.includes('result'));
         if (nextQuestion.id.includes('result')) {
 
-            let changeAnswersDL = document.createElement("dl");
-            changeAnswersDL.classList.add('hidden');
+            let changeAnswersDL = document.createElement("dl");            
+            changeAnswersDL.classList.add('hidden', 'small');
             for (let i = 0; i < userAnswers.length; i++) {
                 let changeAnswersDT = document.createElement('dt');
                 changeAnswersDT.innerHTML = `<b>${userAnswers[i].querySelector('legend').innerText}</b>`;
@@ -184,7 +184,7 @@ function handleNextClick() {
 
                 let changeAnswersLink = document.createElement('button');
                 changeAnswersLink.classList.add('btn-change-answer', 'mrgn-lft-md', 'btn-link');
-                changeAnswersLink.innerHTML = `Change answer<span class="wb-inv"> for "${changeAnswersDT.innerText}"</span>`;
+                changeAnswersLink.innerHTML = `Change <span class="wb-inv">answer for "${changeAnswersDT.innerText}"</span>`;
                 changeAnswersLink.setAttribute('data-change', `${userAnswers[i].id}`);
                 changeAnswersLink.setAttribute('type', 'button');
                 changeAnswersLink.setAttribute('data-gc-analytics-customclick', 'button');
@@ -265,7 +265,8 @@ function handlePreviousClick(changeAnswer) {
     var validator = $(form).validate();
     validator.resetForm();
     if (document.getElementById('errors-' + form.id)) document.getElementById('errors-' + form.id).remove();
-    changeAnswersContainer.innerHTML = "";
+    if (changeAnswersContainer.querySelector('dl')) changeAnswersContainer.querySelector('dl').remove();
+    // changeAnswersContainer.innerHTML = "";
 
     // get previous question, using array if previous click or change answer option
     let previousQuestion = changeAnswer ? document.getElementById(changeAnswer) : userAnswers[userAnswers.length - 1];
