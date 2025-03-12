@@ -329,6 +329,7 @@ $("button.passport-code").on("click", function () {
         passportCodeSelectionParent.style.marginTop = document.querySelector('.top').clientHeight + "px";
     }
     else {
+        passportCodeSelectionParent.style.marginTop = "15px";
         passportCodeSelectionParent.querySelector("p").scrollIntoView({ block: "start" });
     }
 
@@ -340,6 +341,8 @@ $("#passport-selection-change").on("click", function () {
     // passportCodeTable.classList.remove('hidden');
     passportCodeSelectionParent.classList.add('hidden');
     $("tr.active").removeClass('active');
+    document.getElementById("question-passport_code").querySelector('input[type=search]').value = "";
+    
     
 });
 
