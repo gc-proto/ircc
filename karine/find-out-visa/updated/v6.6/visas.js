@@ -350,8 +350,8 @@ $("[data-gc-analytics-customclick]").on("click", function(){
 });
 
 $( ".wb-tables" ).on( "wb-ready.wb-tables", function( event ) {
-    console.log("ready");
-    document.querySelectorAll(".sorting-icons").forEach(element => {
-        element.innerHTML += `<span class="fa-solid fa-sort pull-left pt-sm-1 text-primary"></span>`;
-    });    
+    // console.log("ready");
+    // document.querySelectorAll(".sorting-icons").forEach(element => {
+    //     element.innerHTML += `<span class="fa-solid fa-sort pull-left pt-sm-1 text-primary"></span>`;
+    // });    
 });
