@@ -281,6 +281,10 @@ function handlePreviousClick(changeAnswer) {
         passport_type = false;
         travel_type = false;
     }
+    console.log(previousQuestion)
+    if (previousQuestion.id === "question-passport_code") {        
+        clearPassportTable();
+    }
 
     toolContainer.classList.remove('results');
     previousQuestion.classList.remove('hidden');
@@ -339,12 +343,18 @@ $("button.passport-code").on("click", function () {
 
 $("#passport-selection-change").on("click", function () {
     // passportCodeTable.classList.remove('hidden');
+    clearPassportTable();     
+ 
+});
+
+function clearPassportTable(){
     passportCodeSelectionParent.classList.add('hidden');
     $("tr.active").removeClass('active');
     document.getElementById("question-passport_code").querySelector('input[type=search]').value = "";
-    
-    
-});
+    document.getElementById("question-passport_code").querySelector('input[type=search]').focus;
+    let dtable = new DataTable(document.querySelector('#passport_code_table'));
+    dtable.search("").draw()
+}
 
 
 // Testing analytics
