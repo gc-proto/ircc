@@ -348,3 +348,9 @@ $("#passport-selection-change").on("click", function () {
 $("[data-gc-analytics-customclick]").on("click", function(){
     console.log($(this).attr("data-gc-analytics-customclick"));
 });
+
+$( ".wb-tables" ).on( "wb-ready.wb-tables", function( event ) {
+    document.querySelectorAll(".sorting-icons").forEach(element => {
+        element.innerHTML += `<span class="fa-solid fa-sort pull-left pt-sm-1 text-primary"></span>`;
+    });    
+});

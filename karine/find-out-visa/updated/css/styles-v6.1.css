@@ -98,12 +98,12 @@
   background-color: #fff !important;
 }
 .tool-container table th, .tool-container table thead {
-  background-color: #B5B2E3 !important;
+  background-color: #fff !important;
 }
 
 .dataTables_wrapper table {
   margin: 0;
-  width: 50% !important;
+  width: 100% !important;
 }
 @media screen and (max-width: 991px) {
   .dataTables_wrapper table {
@@ -134,4 +134,64 @@
 .btn-toggle {
   background: none !important;
   border: none;
+}
+
+.tool-container .well {
+  border-radius: 40px;
+  padding: 20px 30px;
+  background-color: #fff;
+}
+
+.sorting button {
+  display: inline-flex;
+  align-items: center;
+}
+
+.sorting-cnt {
+  margin-left: 10px;
+}
+
+.sorting:not(.sorting_asc):not(.sorting_desc) .sorting-icons:before {
+  color: #707070 !important;
+}
+
+.sorting:not(.sorting_asc) .sorting-icons:before {
+  font-family: "Font Awesome 6 Free" !important;
+  content: "\f0dc" !important;
+  font-weight: 900 !important;
+  background: none !important;
+  border: none !important;
+  color: #333 !important;
+  position: absolute;
+  padding-top: 5px;
+}
+
+.sorting.sorting_asc .sorting-icons:before {
+  font-family: "Font Awesome 6 Free" !important;
+  content: "\f0dd" !important;
+  font-weight: 900 !important;
+  background: none !important;
+  border: none !important;
+  color: #707070 !important;
+  position: absolute;
+  padding-top: 5px;
+}
+
+.sorting.sorting_desc .sorting-icons:before {
+  font-family: "Font Awesome 6 Free" !important;
+  content: "\f0de" !important;
+  font-weight: 900 !important;
+  background: none !important;
+  border: none !important;
+  color: #707070 !important;
+  position: absolute;
+  padding-top: 5px;
+}
+
+.sorting-icons:after {
+  display: none;
+}
+
+table.dataTable thead button {
+  position: relative;
 }/*# sourceMappingURL=styles-v6.1.css.map */
