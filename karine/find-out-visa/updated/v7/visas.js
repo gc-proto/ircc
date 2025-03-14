@@ -199,9 +199,7 @@ function handleNextClick() {
             changeAnswersContainer.classList.remove('hidden');
             expandSection();
         }
-        else {
-            nextQuestion.focus();
-        }
+        nextQuestion.focus();
         analytics();
         toolContainer.scrollIntoView({ block: "start" })
     }
