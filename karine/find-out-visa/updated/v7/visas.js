@@ -256,10 +256,6 @@ function expando() {
     }
 }
 
-window.onresize = function (event) {
-    expandSection();
-};
-
 function handlePreviousClick(changeAnswer) {
     // revalidated the form and clear and empty the error if there was one; clear the "change answer" section
     var validator = $(form).validate();
