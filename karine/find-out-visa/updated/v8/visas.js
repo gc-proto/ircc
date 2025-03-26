@@ -88,11 +88,11 @@ function handleNextClick() {
         */
 
         const questionHandlers = {
-            "question-traveller_type": () => {
+            "question-canadian_citizen": () => {
                 traveller_type = selectedInput;
                 return data[question][selectedInput];
             },
-            "question-uspr": () => {
+            "question-traveller_type": () => {
                 traveller_type = selectedInput;
                 return data[question];
             },
