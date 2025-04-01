@@ -534,19 +534,57 @@
                                     <div class="col-md-8 col-xs-12">
                                         <div class="wb-tabs">
                                             <div class="tabpanels">
+                                               
 
                                                 <details>
                                                     <summary>Salle de presse</summary>
-                                                    <div class="table-responsive">
-                                                        <table id="news-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
-                                                        </table>
+                                                    <div class="btn-group btn-group-lang mrgn-bttm-md btn-news-group">
+                                                        <button class="btn btn-default btn-news-french active" type="button" data-wb-doaction='[
+                                                    {"action":"addClass", "class":"hidden", "source":"#news-english"},
+                                                    {"action":"removeClass", "class":"hidden", "source":"#news-french"},
+                                                    {"action":"removeClass", "class":"active", "source":".btn-news-english"},
+                                                    {"action":"addClass", "class":"active", "source":".btn-news-french"}
+                                                ]'>Français</button>
+                                                        <button class="btn btn-default btn-news-english " type="button" data-wb-doaction='[
+                                                {"action":"removeClass", "class":"hidden", "source":"#news-english"},
+                                                {"action":"addClass", "class":"hidden", "source":"#news-french"},
+                                                {"action":"addClass", "class":"active", "source":".btn-news-english"},
+                                                {"action":"removeClass", "class":"active", "source":".btn-news-french"}
+                                            ]'>Anglais</button>
+                                                        
+                                                    </div>
+                                                    <div id="news-french">
+                                                        <div class="table-responsive">
+                                                            <table id="news-fr-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div id="news-english" class="hidden">
+                                                        <div class="table-responsive">
+                                                            <table id="news-en-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </details>
+                                                <details>
+                                                    <summary>Communiqués de presse</summary>
+                                                    <div id="message-nr">Aucune données pour ces dates</div>
+                                                    <div class="table-responsive" id="updated-newsreleases">
+                                                        <table id="newsreleases-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
+                                                    </div>
+                                                </details>
+                                                <details>
+                                                    <summary>Déclarations</summary>
+                                                    <div id="message-statements">Aucune données pour ces dates</div>
+                                                    <div class="table-responsive" id="updated-statements">
+                                                        <table id="statements-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                     </div>
                                                 </details>
                                                 <details>
                                                     <summary>Avis</summary>
                                                     <div class="table-responsive">
-                                                        <table id="notices-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
-                                                        </table>
+                                                        <table id="notices-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                     </div>
                                                 </details>
                                             </div>

@@ -9,7 +9,7 @@
     <meta name="description" content="IRCC Web Health Dashboard — Canada.ca">
     <meta name="keywords" content="data">
     <meta name="author" content="IRCC">
-    <meta name="dcterms.title" content="IRCC Web Health Dashboard — Canada.ca">    
+    <meta name="dcterms.title" content="IRCC Web Health Dashboard — Canada.ca">
     <meta property="dcterms:modified" title="W3CDTF" content="2025-03-10" />
 
 
@@ -39,10 +39,10 @@
                 <a href="index-fr.html" lang="fr">Français</a>
             </section>
         </div>
-    </header> 
+    </header>
     <main property="mainContentOfPage" id="main">
         <div class="header">
-            <h1 property="name"  dir="ltr">IRCC Web Health Dashboard</h1>
+            <h1 property="name" dir="ltr">IRCC Web Health Dashboard</h1>
             <p>Modified on <span id="dateModified"></span></p>
         </div>
         <div class="content">
@@ -537,15 +537,52 @@
 
                                                 <details>
                                                     <summary>Newsroom</summary>
-                                                    <div class="table-responsive">
-                                                        <table id="news-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
-                                                        </table>
+                                                    <div class="btn-group btn-group-lang mrgn-bttm-md btn-news-group">
+                                                        <button class="btn btn-default btn-news-english active" type="button" data-wb-doaction='[
+                                                {"action":"removeClass", "class":"hidden", "source":"#news-english"},
+                                                {"action":"addClass", "class":"hidden", "source":"#news-french"},
+                                                {"action":"addClass", "class":"active", "source":".btn-news-english"},
+                                                {"action":"removeClass", "class":"active", "source":".btn-news-french"}
+                                            ]'>English</button>
+                                                        <button class="btn btn-default btn-news-french" type="button" data-wb-doaction='[
+                                                    {"action":"addClass", "class":"hidden", "source":"#news-english"},
+                                                    {"action":"removeClass", "class":"hidden", "source":"#news-french"},
+                                                    {"action":"removeClass", "class":"active", "source":".btn-news-english"},
+                                                    {"action":"addClass", "class":"active", "source":".btn-news-french"}
+                                                ]'>French</button>
+                                                    </div>
+
+                                                    <div id="news-english">
+                                                        <div class="table-responsive">
+                                                            <table id="news-en-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div id="news-french" class="hidden">
+                                                        <div class="table-responsive">
+                                                            <table id="news-fr-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </details>
+                                                <details>
+                                                    <summary>News releases</summary>
+                                                    <div id="message-nr">No data for this time range</div>
+                                                    <div class="table-responsive" id="updated-newsreleases">
+                                                        <table id="newsreleases-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
+                                                    </div>
+                                                </details>
+                                                <details>
+                                                    <summary>Statements</summary>
+                                                    <div id="message-statements">No data for this time range</div>
+                                                    <div class="table-responsive" id="updated-statements">
+                                                        <table id="statements-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                     </div>
                                                 </details>
                                                 <details>
                                                     <summary>Web notices</summary>
                                                     <div class="table-responsive">
-                                                        <table id="notices-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>                                                        
+                                                        <table id="notices-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                     </div>
                                                 </details>
                                             </div>
