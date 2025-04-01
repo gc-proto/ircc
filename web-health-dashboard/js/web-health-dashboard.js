@@ -1621,12 +1621,61 @@ $(document).on("wb-ready.wb", function (event) {
                     });
                     data.forEach(function (d) {
                         d["Page URL"] = d["Page URL"];
+
+                        if (lang === "fr") {
+                            switch (d["Type"]) {
+                                case "News release":
+                                    d["Type"] = "Communiqué de presse"                                   
+                                    break;        
+                                case "Statement":
+                                    d["Type"] = "Déclaration"                                   
+                                    break;        
+                                case "Web notice":
+                                    d["Type"] = "Avis"                                   
+                                    break;        
+                                case "Speech":
+                                    d["Type"] = "Discours"                                   
+                                    break;        
+                                case "Media advisory":
+                                    d["Type"] = "Avis aux médias"                                   
+                                    break;        
+                                case "Backgrouder":
+                                    d["Type"] = "Document d'information"                                    
+                                    break;                            
+                                default:
+                                    break;
+                            }
+                        }
+                        else {
+                            switch (d["Type"]) {
+                                case "Communiqué de presse":
+                                    d["Type"] = "News release"                                   
+                                    break;        
+                                case "Déclaration":
+                                    d["Type"] = "Statement"                                   
+                                    break;        
+                                case "Avis":
+                                    d["Type"] = "Web notice"                                   
+                                    break;        
+                                case "Discours":
+                                    d["Type"] = "Speech"                                   
+                                    break;        
+                                case "Avis aux médias":
+                                    d["Type"] = "Media advisory"                                   
+                                    break;        
+                                case "Document d'information":
+                                    d["Type"] = "Backgrouder"                                    
+                                    break;                            
+                                default:
+                                    break;
+                            }
+                        }
+
                         d["Type"] = d["Type"];
                         d["Visits"] = d["Visits"];
                         d["Top news product"] = d["Top news product (EN)"];
                     });
 
-                    console.log(data);
 
                     let label = lang === "en" ? "Top newsroom products" : "Articles de la salle de presse les plus performantes";
                     let colheaders = {
@@ -1657,8 +1706,8 @@ $(document).on("wb-ready.wb", function (event) {
 
                     let label = lang === "en" ? "Top newsroom products" : "Articles de la salle de presse les plus performants";
                     let colheaders = {
-                        en: ['Top news product (FR)', 'Visits', 'Type'],
-                        fr: ['Produits de nouvelle les plus performants (français)', 'Visites', 'Type']
+                        en: ['Top news product', 'Visits', 'Type'],
+                        fr: ['Produits de nouvelle les plus performants', 'Visites', 'Type']
                     }
 
                     tabulate("news-fr-table", data, label, colheaders);
@@ -1681,8 +1730,6 @@ $(document).on("wb-ready.wb", function (event) {
                         d["Visits"] = d["Visits"];
                         d["News release"] = d["News release"];
                     });
-
-                    console.log(data);
 
                     let label = lang === "en" ? "Top news releases" : "Communiqués de presse les plus performants";
                     let colheaders = {
