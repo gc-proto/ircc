@@ -534,9 +534,21 @@
                                     <div class="col-md-8 col-xs-12">
                                         <div class="wb-tabs">
                                             <div class="tabpanels">
+                                                
+                                                <details>
+                                                    <summary>Traffic</summary>
+                                                    <div id="newsroom-count">No data for this time range</div>
+                                                <div class="mrgn-bttm-lg mrgn-tp-lg">
+                                                    <div class="table-responsive">
+                                                        <table id="total-newsroom-table" class="table table-bordered">
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </details>
+
 
                                                 <details>
-                                                    <summary>Newsroom</summary>
+                                                    <summary>Top newsroom pages</summary>
                                                     <div class="btn-group btn-group-lang mrgn-bttm-md btn-news-group">
                                                         <button class="btn btn-default btn-news-english active" type="button" data-wb-doaction='[
                                                 {"action":"removeClass", "class":"hidden", "source":"#news-english"},
@@ -551,6 +563,8 @@
                                                     {"action":"addClass", "class":"active", "source":".btn-news-french"}
                                                 ]'>French</button>
                                                     </div>
+
+                                                   
 
                                                     <div id="news-english">
                                                         <div class="table-responsive">
@@ -610,53 +624,109 @@
                                         <div id="special-measures-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-en.html#special-measures-insights"}'></div>
 
 
-                                    </div>
-                                    <div class="col-md-8 col-xs-12">
-                                        <div class="wb-tabs">
-                                            <div class="tabpanels">
+                                        
+                                                
 
-                                                <details>
-                                                    <summary>Top special measures content</summary>
-                                                    <div class="table-responsive">
-                                                        <table id="crisis-content-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
-                                                        </table>
-                                                    </div>
-                                                </details>
-                                                <details>
-                                                    <summary>Traffic to special measures content</summary>
-                                                    <canvas id="crisis-traffic-chart"></canvas>
+                                        </div>
+                                        <div class="col-md-8 col-xs-12">
+                                            <div class="wb-tabs">
+                                                <div class="tabpanels">
+
                                                     <details>
-                                                        <summary>Text version: Traffic to special measures content</summary>
-
+                                                        <summary>Top special measures content</summary>
+                                                        <div id="special-measures-count" class="mrgn-bttm-lg mrgn-tp-lg">
+                                                            <p class="mrgn-tp-sm h4"><strong>Total traffic to special measures content:</strong> <span id="total-specialmeasures"></span></p>
+                                                            
+                                                        </div>
                                                         <div class="table-responsive">
-                                                            <table id="crisis-traffic-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
+                                                            <table id="crisis-content-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
                                                             </table>
                                                         </div>
+
+
                                                     </details>
-                                                </details>
+                                                    <details>
+                                                        <summary>Traffic to special measures content</summary>
+                                                        <canvas id="crisis-traffic-chart"></canvas>
+                                                        <details>
+                                                            <summary>Text version: Traffic to special measures content</summary>
+
+                                                            <div class="table-responsive">
+                                                                <table id="crisis-traffic-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
+                                                                </table>
+                                                            </div>
+                                                        </details>
+                                                    </details>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                            </div>
+
+                            <div class="box">
+                                <div class="box-heading">
+                                    <h2 class="h3" id="campaigns">Campaigns</h2>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-md-4 col-xs-12">
+                                            <p><strong>Date: <span id="campaign-date"></span></strong></p>
+                                            <h3>Highlights</h3>
+                                            <div id="campaigns-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-en.html#campaigns-insights"}'></div>
+
+
+
+                                        </div>
+                                        <div class="col-md-8 col-xs-12">
+                                            <div class="wb-tabs">
+                                                <div class="tabpanels">
+
+                                                    <details>
+                                                        <summary>Top campaign landing pages</summary>
+                                                        <canvas id="campaign-landing-chart"></canvas>
+                                                        <details>
+                                                            <summary>Text version: Top campaign landing pages</summary>
+
+                                                            <div class="table-responsive">
+                                                                <table id="campaign-landing-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
+                                                                </table>
+                                                            </div>
+                                                        </details>
+                                                    </details>
+                                                    <details>
+                                                        <summary>Top UTM campaigns</summary>
+                                                        <canvas id="utm-chart"></canvas>
+                                                        <details>
+                                                            <summary>Text version: Top UTM campaigns</summary>
+
+                                                            <div class="table-responsive">
+                                                                <table id="utm-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
+                                                                </table>
+                                                            </div>
+                                                        </details>
+                                                    </details>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
-
                             </div>
-                        </div>
 
-                        <div class="box">
                             <div class="box-heading">
-                                <h2 class="h3" id="campaigns">Campaigns</h2>
+                                <h2 class="h3" id="mobile">Mobile, desktop and tablet views</h2>
                             </div>
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-4 col-xs-12">
-                                        <p><strong>Date: <span id="campaign-date"></span></strong></p>
+                                        <p><strong>Date: <span id="mobile-date"></span></strong></p>
                                         <h3>Highlights</h3>
-                                        <div id="campaigns-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-en.html#campaigns-insights"}'></div>
-
+                                        <div id="mobile-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-en.html#mobile-insights"}'></div>
 
 
                                     </div>
@@ -665,79 +735,32 @@
                                             <div class="tabpanels">
 
                                                 <details>
-                                                    <summary>Top campaign landing pages</summary>
-                                                    <canvas id="campaign-landing-chart"></canvas>
-                                                    <details>
-                                                        <summary>Text version: Top campaign landing pages</summary>
-
-                                                        <div class="table-responsive">
-                                                            <table id="campaign-landing-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
-                                                            </table>
+                                                    <summary>Device type distribution</summary>
+                                                    <div class="row-no-gutters">
+                                                        <div class="col-lg-3 col-lg-offset-1 col-md-6 col-xs-12"><canvas id="devices-chart" class="no-min-height mrgn-tp-md mrgn-bttm-md"></canvas></div>
+                                                        <div class="col-lg-6 col-lg-offset-1 col-md-6 col-xs-12 small">
+                                                            <div class="table-responsive">
+                                                                <table id="devices-table" class="table table-bordered mrgn-lft-lg" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
+                                                            </div>
                                                         </div>
-                                                    </details>
+                                                    </div>
                                                 </details>
                                                 <details>
-                                                    <summary>Top UTM campaigns</summary>
-                                                    <canvas id="utm-chart"></canvas>
-                                                    <details>
-                                                        <summary>Text version: Top UTM campaigns</summary>
-
-                                                        <div class="table-responsive">
-                                                            <table id="utm-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
-                                                            </table>
-                                                        </div>
-                                                    </details>
+                                                    <summary>Top mobile pages</summary>
+                                                    <div class="table-responsive">
+                                                        <table id="top-mobile-table" class="provisional gc-table table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
+                                                    </div>
                                                 </details>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-
-                        <div class="box-heading">
-                            <h2 class="h3" id="mobile">Mobile, desktop and tablet views</h2>
-                        </div>
-                        <div class="box-body">
-                            <div class="row">
-                                <div class="col-md-4 col-xs-12">
-                                    <p><strong>Date: <span id="mobile-date"></span></strong></p>
-                                    <h3>Highlights</h3>
-                                    <div id="mobile-insights-cnt" class="ajax-insights" data-wb-ajax='{ "type": "replace", "nocache": "nocache",  "url": "csv/export/insights-en.html#mobile-insights"}'></div>
-
-
-                                </div>
-                                <div class="col-md-8 col-xs-12">
-                                    <div class="wb-tabs">
-                                        <div class="tabpanels">
-
-                                            <details>
-                                                <summary>Device type distribution</summary>
-                                                <div class="row-no-gutters">
-                                                    <div class="col-lg-3 col-lg-offset-1 col-md-6 col-xs-12"><canvas id="devices-chart" class="no-min-height mrgn-tp-md mrgn-bttm-md"></canvas></div>
-                                                    <div class="col-lg-6 col-lg-offset-1 col-md-6 col-xs-12 small">
-                                                        <div class="table-responsive">
-                                                            <table id="devices-table" class="table table-bordered mrgn-lft-lg" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </details>
-                                            <details>
-                                                <summary>Top mobile pages</summary>
-                                                <div class="table-responsive">
-                                                    <table id="top-mobile-table" class="provisional gc-table table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
-                                                </div>
-                                            </details>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-                </div>
 
-            </div>
+                </div>
     </main>
 
     <div id="datadump" class="hidden"></div>

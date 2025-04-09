@@ -1605,10 +1605,81 @@ $(document).on("wb-ready.wb", function (event) {
             document.querySelector('#updated-newsreleases').classList.remove("hidden");
             document.querySelector('#message-nr').classList.add("hidden");
             document.querySelector('#message-statements').classList.add("hidden");
-            
-
-
+            document.querySelector('#newsroom-count').classList.add("hidden");
             document.querySelector('#updated-statements').classList.remove("hidden");
+            document.querySelector('#newsroom-count').classList.add("hidden");
+            document.querySelector('#total-newsroom-table').classList.remove("hidden");
+
+            d3.csv(path + "newstypes-en.csv?" + today,
+                function (data) {
+
+
+                    data = data.filter(function (d) {
+                        if (d["Visits"].length == 0) {
+                            return false;
+                        }
+                        return true;
+                    });
+                    let sum = d3.sum(data.map(function (d) { return d["Visits"] }));
+                    data.forEach(function (d) {
+
+                        d["Visits"] = d["Visits"];
+                        if (lang === "fr") {
+                            switch (d["News product"]) {
+                                case "News releases (E/F)":
+                                    d["Type"] = "Communiqués de presse";
+                                    break;
+                                case "Backgrounders (E/F)":
+                                    d["Type"] = "Documents d'information";
+                                    break;
+                                case "Web notices (E/F)":
+                                    d["Type"] = "Avis";
+                                    break;
+                                case "Statements (E/F)":
+                                    d["Type"] = "Déclarations";
+                                    break;
+                                case "Media advisories (E/F)":
+                                    d["Type"] = "Avis aux médias";
+                                    break;
+                                case "Speeches (E/F)":
+                                    d["Type"] = "Discours";
+                                    break;
+                                case "Readouts (E/F)":
+                                    d["Type"] = "Comptes rendu";
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        else {
+                            d["Type"] = d["News product"].replace(" (E/F)", "");
+                        }
+                    });
+                    
+                    console.log(sum, data, typeof data);
+
+
+
+                    let label = lang === "en" ? "Total traffic to the newsroom" : "Total du trafic vers la salle de presse";
+                    let colheaders = {
+                        en: ['Type', 'Visits'],
+                        fr: ['Type', 'Visites']
+                    }
+
+                    tabulate("total-newsroom-table", data, label, colheaders);
+
+                    let t = document.getElementById("total-newsroom-table");
+                    let tf = t.createTFoot();
+                    let r = tf.insertRow(0);
+
+                    let c1 = r.insertCell(0);
+                    let c2 = r.insertCell(1);
+
+                    c1.innerHTML = `<strong>Total</strong>`;
+                    c2.innerHTML = `<strong>${d3.format(",")(sum)}</strong>`;
+
+                });
+
             d3.csv(path + "news-en.csv?" + today,
                 function (data) {
 
@@ -1625,23 +1696,23 @@ $(document).on("wb-ready.wb", function (event) {
                         if (lang === "fr") {
                             switch (d["Type"]) {
                                 case "News release":
-                                    d["Type"] = "Communiqué de presse"                                   
-                                    break;        
+                                    d["Type"] = "Communiqué de presse"
+                                    break;
                                 case "Statement":
-                                    d["Type"] = "Déclaration"                                   
-                                    break;        
+                                    d["Type"] = "Déclaration"
+                                    break;
                                 case "Web notice":
-                                    d["Type"] = "Avis"                                   
-                                    break;        
+                                    d["Type"] = "Avis"
+                                    break;
                                 case "Speech":
-                                    d["Type"] = "Discours"                                   
-                                    break;        
+                                    d["Type"] = "Discours"
+                                    break;
                                 case "Media advisory":
-                                    d["Type"] = "Avis aux médias"                                   
-                                    break;        
+                                    d["Type"] = "Avis aux médias"
+                                    break;
                                 case "Backgrouder":
-                                    d["Type"] = "Document d'information"                                    
-                                    break;                            
+                                    d["Type"] = "Document d'information"
+                                    break;
                                 default:
                                     break;
                             }
@@ -1649,23 +1720,23 @@ $(document).on("wb-ready.wb", function (event) {
                         else {
                             switch (d["Type"]) {
                                 case "Communiqué de presse":
-                                    d["Type"] = "News release"                                   
-                                    break;        
+                                    d["Type"] = "News release"
+                                    break;
                                 case "Déclaration":
-                                    d["Type"] = "Statement"                                   
-                                    break;        
+                                    d["Type"] = "Statement"
+                                    break;
                                 case "Avis":
-                                    d["Type"] = "Web notice"                                   
-                                    break;        
+                                    d["Type"] = "Web notice"
+                                    break;
                                 case "Discours":
-                                    d["Type"] = "Speech"                                   
-                                    break;        
+                                    d["Type"] = "Speech"
+                                    break;
                                 case "Avis aux médias":
-                                    d["Type"] = "Media advisory"                                   
-                                    break;        
+                                    d["Type"] = "Media advisory"
+                                    break;
                                 case "Document d'information":
-                                    d["Type"] = "Backgrouder"                                    
-                                    break;                            
+                                    d["Type"] = "Backgrouder"
+                                    break;
                                 default:
                                     break;
                             }
@@ -1777,6 +1848,8 @@ $(document).on("wb-ready.wb", function (event) {
             document.querySelector('#updated-statements').classList.add("hidden");
             document.querySelector('#message-nr').classList.remove("hidden");
             document.querySelector('#message-statements').classList.remove("hidden");
+            document.querySelector('#newsroom-count').classList.remove("hidden");
+            document.querySelector('#total-newsroom-table').classList.add("hidden");
 
             d3.csv(path + "news.csv?" + today,
                 function (data) {
@@ -1837,6 +1910,17 @@ $(document).on("wb-ready.wb", function (event) {
                 document.getElementById('news-date').innerHTML = formatDateRage(d["Date"].replace(/_/g, ",").split(" - "));
             })
         });
+
+        if (fileExists(path + "special-measure-content.csv")) {
+            document.getElementById('special-measures-count').classList.remove('hidden');
+            d3.csv(path + "special-measure-content.csv?" + today, function (data) {
+                let totalSpecialMeasures = (data.map(function (d) { return d["Visits"]; }))[0]
+                document.getElementById("total-specialmeasures").innerHTML = formatNumber(totalSpecialMeasures);
+            });
+        }
+        else {
+            document.getElementById('special-measures-count').classList.add('hidden');
+        }
 
         d3.csv(path + "crisis.txt?" + today, function (data) {
             data.forEach(function (d, i) {

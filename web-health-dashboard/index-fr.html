@@ -187,20 +187,20 @@
                                                 <details>
                                                     <summary>Thème</summary>
                                                     <div class="btn-group btn-group-lang">
-                                                    <button class="btn btn-default btn-topic-french active" type="button" data-wb-doaction='[
+                                                        <button class="btn btn-default btn-topic-french active" type="button" data-wb-doaction='[
                                                     {"action":"addClass", "class":"hidden", "source":"#topic-english"},
                                                     {"action":"removeClass", "class":"hidden", "source":"#topic-french"},
                                                     {"action":"removeClass", "class":"active", "source":".btn-topic-english"},
                                                     {"action":"addClass", "class":"active", "source":".btn-topic-french"}
                                                 ]'>Français</button>
-                                                    <button class="btn btn-default btn-topic-english " type="button" data-wb-doaction='[
+                                                        <button class="btn btn-default btn-topic-english " type="button" data-wb-doaction='[
                                                 {"action":"removeClass", "class":"hidden", "source":"#topic-english"},
                                                 {"action":"addClass", "class":"hidden", "source":"#topic-french"},
                                                 {"action":"addClass", "class":"active", "source":".btn-topic-english"},
                                                 {"action":"removeClass", "class":"active", "source":".btn-topic-french"}
                                             ]'>Anglais</button>
 
-                                        </div>
+                                                    </div>
                                                     <div id="topic-french">
                                                         <canvas id="top-topic-chart-fr"></canvas>
                                                         <details>
@@ -534,7 +534,16 @@
                                     <div class="col-md-8 col-xs-12">
                                         <div class="wb-tabs">
                                             <div class="tabpanels">
-                                               
+                                                <details>
+                                                    <summary>Trafic</summary>
+                                                    <div id="newsroom-count">Aucune données pour ces dates</div>
+                                                <div class="mrgn-bttm-lg mrgn-tp-lg">
+                                                    <div class="table-responsive">
+                                                        <table id="total-newsroom-table" class="table table-bordered">
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </details>
 
                                                 <details>
                                                     <summary>Salle de presse</summary>
@@ -551,8 +560,9 @@
                                                 {"action":"addClass", "class":"active", "source":".btn-news-english"},
                                                 {"action":"removeClass", "class":"active", "source":".btn-news-french"}
                                             ]'>Anglais</button>
-                                                        
+
                                                     </div>
+
                                                     <div id="news-french">
                                                         <div class="table-responsive">
                                                             <table id="news-fr-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
@@ -565,7 +575,7 @@
                                                             </table>
                                                         </div>
                                                     </div>
-                                                    
+
                                                 </details>
                                                 <details>
                                                     <summary>Communiqués de presse</summary>
@@ -616,9 +626,13 @@
                                     <div class="col-md-8 col-xs-12">
                                         <div class="wb-tabs">
                                             <div class="tabpanels">
-
+                                               
                                                 <details>
                                                     <summary>Contenu des mesures spéciales les plus performantes</summary>
+                                                    <div id="special-measures-count" class="mrgn-bttm-lg mrgn-tp-lg">
+                                                        <p class="mrgn-tp-sm h4"><strong>Total du trafic au contenu de mesure spéciale:</strong> <span id="total-specialmeasures"></span></p>
+                                                        
+                                                    </div>
                                                     <div class="table-responsive">
                                                         <table id="crisis-content-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
                                                         </table>
@@ -628,7 +642,7 @@
                                                     <summary>Trafic au mesures spéciales</summary>
                                                     <canvas id="crisis-traffic-chart"></canvas>
                                                     <details>
-                                                        <summary>Version texte&nbsp;: Trafic au mesures spéciales</summary>
+                                                        <summary>Version texte&nbsp;: trafic au mesures spéciales</summary>
 
                                                         <div class="table-responsive">
                                                             <table id="crisis-traffic-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
