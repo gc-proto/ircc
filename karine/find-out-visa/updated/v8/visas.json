@@ -15,12 +15,12 @@
             "work": "question-work"
         },
         "uspr": {
-            "tourist": "result-GeneralUSPR",
-            "transit": "result-GeneralUSPR",
-            "business": "result-GeneralUSPR",
+            "tourist": "question-travel_document",
+            "transit": "question-travel_document",
+            "business": "question-travel_document",
             "family": "question-family",
-            "study": "question-study",
-            "work": "question-work"
+            "study": "question-travel_document",
+            "work": "question-travel_document"
         },
         "unknown": {
             "tourist": "question-travel",
@@ -41,35 +41,46 @@
         "work": "question-travel_document"
     },
     "question-travel_document": {
-        "passport": "question-passport_code",
-        "other": {
-            "tourist": {
-                "air": "result-visitor_visa",
-                "land_sea": "result-visitor_visa"
-            },
-            "transit": {
-                "air": "question-transit",
-                "land_sea": "result-visitor_visa"
-            },
-            "business": {
-                "air": "result-visitor_visa",
-                "land_sea": "result-visitor_visa"
-            },
-            "family_supervisa": {
-                "air": "result-supervisa-visitor_visa",
-                "land_sea": "result-supervisa-visitor_visa"
-            },
-            "family": {
-                "air": "result-visitor_visa",
-                "land_sea": "result-visitor_visa"
-            },
-            "study": {
-                "air": "question-study",
-                "land_sea": "question-study"
-            },
-            "work": {
-                "air": "question-work",
-                "land_sea": "question-work"
+        "uspr": {
+            "tourist": "result-GeneralUSPR",
+            "transit": "result-GeneralUSPR",
+            "business": "result-GeneralUSPR",
+            "family_supervisa": "result-supervisa-USPR",
+            "family": "result-GeneralUSPR",
+            "study": "question-study",
+            "work": "question-work"
+        },
+        "unknown": {
+            "passport": "question-passport_code",
+            "other": {
+                "tourist": {
+                    "air": "result-visitor_visa",
+                    "land_sea": "result-visitor_visa"
+                },
+                "transit": {
+                    "air": "question-transit",
+                    "land_sea": "result-visitor_visa"
+                },
+                "business": {
+                    "air": "result-visitor_visa",
+                    "land_sea": "result-visitor_visa"
+                },
+                "family_supervisa": {
+                    "air": "result-supervisa-visitor_visa",
+                    "land_sea": "result-supervisa-visitor_visa"
+                },
+                "family": {
+                    "air": "result-visitor_visa",
+                    "land_sea": "result-visitor_visa"
+                },
+                "study": {
+                    "air": "question-study",
+                    "land_sea": "question-study"
+                },
+                "work": {
+                    "air": "question-work",
+                    "land_sea": "question-work"
+                }
             }
         }
     },
@@ -167,12 +178,12 @@
         "family_supervisa": {
             "unknown": "question-travel_document",
             "us_citizen": "result-supervisa-US",
-            "uspr": "result-supervisa-USPR"
+            "uspr": "question-travel_document"
         },
         "family": {
             "unknown": "question-travel_document",
             "us_citizen": "result-GeneralUS",
-            "uspr": "result-GeneralUSPR"
+            "uspr": "question-travel_document"
         }
     },
     "question-study": {

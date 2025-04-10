@@ -106,10 +106,15 @@ function handleNextClick() {
                 return data[question][purpose_of_travel];
             },
             "question-travel_document": () => {
-                traveller_type = selectedInput;
-                return traveller_type === "passport"
-                    ? data[question][traveller_type]
-                    : data[question][traveller_type][purpose_of_travel][method_of_travel];
+                //traveller_type = selectedInput;
+                // return traveller_type === "passport"
+                //     ? data[question][traveller_type]
+                //     : data[question][traveller_type][purpose_of_travel][method_of_travel];
+
+                return data[question]?.[traveller_type]?.[selectedInput]?.[purpose_of_travel]?.[method_of_travel] ||
+                    data[question]?.[traveller_type]?.[selectedInput] ||
+                    data[question]?.[traveller_type]?.[purpose_of_travel];
+
             },
             "question-passport_code": () => {
                 passport_type = selectedInput
@@ -144,9 +149,9 @@ function handleNextClick() {
 
         const getNextForStudyOrWork = () => {
             return data[question]?.[traveller_type]?.[method_of_travel]?.[passport_type]?.[selectedInput] ||
-            data[question]?.[traveller_type]?.[method_of_travel]?.[selectedInput] ||
-            data[question]?.[traveller_type]?.[method_of_travel] ||
-            data[question]?.[traveller_type]?.[selectedInput];
+                data[question]?.[traveller_type]?.[method_of_travel]?.[selectedInput] ||
+                data[question]?.[traveller_type]?.[method_of_travel] ||
+                data[question]?.[traveller_type]?.[selectedInput];
         };
 
         const handleTravelDocument = () => {
@@ -272,7 +277,7 @@ function handlePreviousClick(changeAnswer) {
     if (currentQuestion.querySelector('input')) currentQuestion.querySelector('input').removeAttribute('required');
 
     // clear some of the variables that are question specific
-    if (currentQuestion.id === 'question-passport_code' || currentQuestion.id === 'question-travel_document') {
+    if (currentQuestion.id === 'question-passport_code' || currentQuestion.id === 'question-travel_document' && traveller_type != 'uspr') {
         traveller_type = "unknown";
         passport_type = false;
     }
