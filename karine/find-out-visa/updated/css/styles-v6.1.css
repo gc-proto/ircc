@@ -193,4 +193,110 @@
 
 table.dataTable thead button {
   position: relative;
+}
+
+.result details {
+  border: none !important;
+}
+.result details:not([open]) summary {
+  border-radius: 25px !important;
+  background-color: #eee;
+  color: #333 !important;
+  border: none !important;
+  padding: 15px 25px;
+}
+.result details[open] {
+  margin-bottom: 15px;
+  background-color: #eee;
+  border-radius: 25px !important;
+}
+.result details[open] summary {
+  padding: 15px 25px;
+  color: #333 !important;
+  border-radius: 25px !important;
+  background-color: #eee !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.result details summary::-webkit-details-marker, .result details summary::marker {
+  display: none !important;
+}
+.result details[open] summary .item1::before {
+  content: "-" !important;
+  font-size: 1.8em;
+  margin: -5px 10px;
+  font-weight: bold;
+}
+.result details:not([open]) summary .item1::before {
+  content: "+" !important;
+  font-size: 1.5em;
+  margin-right: 10px;
+  font-weight: bold;
+}
+.result summary {
+  display: flex !important;
+  flex-direction: row;
+  text-decoration: none !important;
+}
+.result summary .flex-item {
+  display: flex;
+  flex-grow: 0;
+}
+.result summary .flex-item.item1 {
+  order: 2;
+  margin-left: 15px;
+}
+.result summary .flex-item.item2 {
+  flex-direction: column;
+  align-items: stretch;
+  flex-grow: 1;
+}
+.result summary .flex-item.item2 .nested-item {
+  flex-grow: 1;
+  display: flex;
+}
+@media screen and (max-width: 1000px) {
+  .result summary .flex-item.item2 .nested-item {
+    display: block;
+  }
+}
+.result summary .flex-item.item2 .nested-item1 {
+  display: block;
+}
+
+@media screen and (max-width: 991px) {
+  details {
+    margin-top: 16px;
+    padding: 0 15px;
+    border-radius: 25px;
+    min-height: 20px;
+    border: 1px solid #d9edf7 !important;
+    background-color: #d9edf7 !important;
+  }
+  details[open] summary {
+    margin-top: -1px;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    background-color: #6584A6 !important;
+    color: #fff !important;
+  }
+  details[open] summary:hover, details[open] summary:active, details[open] summary:focus {
+    color: #fff !important;
+  }
+  details summary:hover, details summary:active, details summary:focus {
+    color: #fff !important;
+  }
+  details summary {
+    width: auto;
+    padding: 15px 20px;
+    margin: -1px -16px;
+    color: #43474E !important;
+    text-decoration: none;
+    border-radius: 25px !important;
+    border: none;
+  }
+  details summary:hover, details summary:active, details summary:focus {
+    background-color: #6584A6 !important;
+    color: #fff;
+  }
 }/*# sourceMappingURL=styles-v6.1.css.map */
