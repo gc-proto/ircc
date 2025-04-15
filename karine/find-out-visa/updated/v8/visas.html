@@ -30,13 +30,11 @@
     <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
   </noscript>
   <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/méli-mélo/2025-04-nahanni.css" />
-  <link rel="stylesheet" href="../css/styles-v6.1.css">
+  <link rel="stylesheet" href="../css/styles-v8.css">
 </head>
 
 
 <body vocab="http://schema.org/" typeof="WebPage">
-  <div class="hidden"><span data-ajax-replace="https://ircc.canada.ca/test/karine/wurd/foiynav/fees-test.asp .fee-visitor-visa">We couldn't get that data. Try again later.</span></div>
-  <div class="hidden"><span data-ajax-replace="https://ircc.canada.ca/test/karine/wurd/foiynav/fees-test.asp#fee-visitor-visa">We couldn't get that data. Try again later.</span></div>
   <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
     <div class="container">
 
@@ -1214,17 +1212,20 @@
             </fieldset>
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel_document_romania">
               <legend>Will you use an electronic passport for this trip?</legend>
-              <div class="row">
-                <div class="col-md-2"><img src="https://ircc.canada.ca/english/visit/images/epassport.jpg" alt="" class="img-responsive"></div>
-                <div class="col-md-7">
-                  <p class="mrgn-tp-md">You have an electronic passport if there’s a rectangle with a circle in the middle on the front cover of your passport </p>
-                </div>
-              </div>
+
+              <p class="mrgn-tp-md gc-font-2019">You have an electronic passport if there’s a rectangle with a circle in the middle on the front cover of your passport.</p>
+              <button type="button" class="btn-link p-0 btn-show" data-wb-doaction='[
+              {"action": "removeClass", "class": "hidden", "source": "#romania-passport-picture, .btn-hide"},
+                  {"action": "addClass", "class": "hidden", "source": ".btn-show"}]'>View an image</button>
+              <button type="button" class="btn-link p-0 btn-hide hidden" data-wb-doaction='[{
+                    "action": "addClass", "class": "hidden", "source": "#romania-passport-picture, .btn-hide"},
+                  {"action": "removeClass", "class": "hidden", "source": ".btn-show"}]'>Hide image</button>
+              <img id="romania-passport-picture" src="romania-epassport.png" alt="Image of a Romanian electronic passport. The electronic icon below the words 'Passport Passeport' is zoomed in." class="img-responsive hidden">
               <ul class="list-unstyled lst-spcd-2">
                 <li class="radio"><input value="yes" name="travel_document_romania" type="radio" id="travel_document_romania-yes" required><label for="travel_document_romania-yes">Yes</label></li>
                 <li class="radio"><input value="no" name="travel_document_romania" type="radio" id="travel_document_romania-no"><label for="travel_document_romania-no">No</label></li>
               </ul>
-             
+
             </fieldset>
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel_document_taiwan">
               <legend>Will you use a passport that includes your personal identification number and was issued by the Ministry of Foreign Affairs in Taiwan for this trip?</legend>
@@ -1234,7 +1235,7 @@
               </ul>
             </fieldset>
 
-           
+
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-transit">
               <legend>How do you plan to transit through Canada?</legend>
               <ul class="list-unstyled lst-spcd-2">
@@ -1244,7 +1245,7 @@
             </fieldset>
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-transit_length">
               <legend>Will you transit in less than 48 hours?</legend>
-              <p class="gc-font-2019">Transiting means your only purpose for being in Canada is to travel through on your way to another location. You would be visiting Canada too if, for example, you plan to visit tourist attractions or see family or friends while you’re here. </p>
+              <p class="gc-font-2019"><span class="fa-solid fa-circle-info mrgn-rght-md" aria-hidden="true"></span> Transiting means your only purpose for being in Canada is to travel through on your way to another location. You would be visiting Canada too if, for example, you plan to visit tourist attractions or see family or friends while you’re here. </p>
               <ul class="list-unstyled lst-spcd-2">
                 <li class="radio"><input value="no" name="transit_length" type="radio" id="transit_length-yes_visit" required><label for="transit_length-yes_visit">Yes, and I will visit Canada at the same time</label></li>
                 <li class="radio"><input value="yes" name="transit_length" type="radio" id="transit_length-yes_no_visit"><label for="transit_length-yes_no_visit">Yes, and I’m transiting only (I will not visit Canada)</label></li>
@@ -1312,7 +1313,7 @@
           <div class="col-md-5 col-xs-12 pull-right">
             <div id="changeAnswers" class="mrgn-tp-md mrgn-bttm-md position-relative hidden">
               <div class="position-relative full-width d-flex align-items-center">
-                <h2 class="mrgn-tp-0 mrgn-bttm-0 undrln-0">You told us</h2>
+                <h2 class="mrgn-tp-0 mrgn-bttm-0 undrln-0">You selected</h2>
               </div>
             </div>
             <div class="clearfix"></div>
@@ -1534,6 +1535,10 @@
 
 
 
+      </div>
+      <div class="legal-disclaimer">
+        <h2 class="mrgn-tp-0">This tool provides information only</h2>
+        <p>This tool was created to assist you as you decide what travel document you may need to travel to Canada. This tool may not provide information on all travel documents or your particular situation. If you choose to apply, we will assess your application in accordance with the Immigration and Refugee Protection Act and its related Regulations. <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/terms-conditions.html" target="_blank">Read our complete terms and conditions (opens in a new tab)</a>.</p>
       </div>
     </div>
 

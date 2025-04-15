@@ -98,7 +98,9 @@ function handleNextClick() {
             },
             "question-purpose_of_travel": () => {
                 purpose_of_travel = selectedInput;
-                return data[question][traveller_type][selectedInput];
+                return data[question][traveller_type][purpose_of_travel]
+                    ? data[question][traveller_type][purpose_of_travel]
+                    : data[question][purpose_of_travel];
             },
             "question-family": () => {
                 purpose_of_travel = selectedInput;
@@ -159,7 +161,7 @@ function handleNextClick() {
         const nextQuestion = document.getElementById(nextQuestionId);
 
         
-        
+        console.log(traveller_type);
         userAnswers.push(currentQuestion);
 
         // button control
