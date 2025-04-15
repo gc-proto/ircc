@@ -220,6 +220,7 @@ table.dataTable thead button {
   color: #333 !important;
   border: none !important;
   padding: 15px 25px;
+  font-weight: normal !important;
 }
 .result details[open] {
   margin-bottom: 15px;
@@ -234,6 +235,10 @@ table.dataTable thead button {
   border-bottom-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   margin: -1px -23px 0;
+  font-weight: bold !important;
+}
+.result details summary {
+  margin-bottom: 15px;
 }
 .result details summary::-webkit-details-marker, .result details summary::marker {
   display: none !important;

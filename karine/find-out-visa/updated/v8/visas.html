@@ -1213,18 +1213,28 @@
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel_document_romania">
               <legend>Will you use an electronic passport for this trip?</legend>
 
-              <p class="mrgn-tp-md gc-font-2019">You have an electronic passport if there’s a rectangle with a circle in the middle on the front cover of your passport.</p>
-              <button type="button" class="btn-link p-0 btn-show" data-wb-doaction='[
-              {"action": "removeClass", "class": "hidden", "source": "#romania-passport-picture, .btn-hide"},
-                  {"action": "addClass", "class": "hidden", "source": ".btn-show"}]'>View an image</button>
-              <button type="button" class="btn-link p-0 btn-hide hidden" data-wb-doaction='[{
-                    "action": "addClass", "class": "hidden", "source": "#romania-passport-picture, .btn-hide"},
-                  {"action": "removeClass", "class": "hidden", "source": ".btn-show"}]'>Hide image</button>
-              <img id="romania-passport-picture" src="romania-epassport.png" alt="Image of a Romanian electronic passport. The electronic icon below the words 'Passport Passeport' is zoomed in." class="img-responsive hidden">
-              <ul class="list-unstyled lst-spcd-2">
-                <li class="radio"><input value="yes" name="travel_document_romania" type="radio" id="travel_document_romania-yes" required><label for="travel_document_romania-yes">Yes</label></li>
-                <li class="radio"><input value="no" name="travel_document_romania" type="radio" id="travel_document_romania-no"><label for="travel_document_romania-no">No</label></li>
-              </ul>
+              <div class="row-no-gutters">
+  
+                <div class="col-md-2 pull-right"><img id="romania-passport-picture" src="romania-epassport.png" alt="Image of a Romanian electronic passport. The electronic icon below the words 'Passport Passeport' is zoomed in." class="img-responsive hidden mrgn-lft-md"></div>
+                <div class="col-md-10">
+                  <p class="mrgn-tp-md gc-font-2019">You have an electronic passport if there’s a rectangle with a circle in the middle on the front cover of your passport.</p>
+                  <button type="button" class="btn-link p-0 btn-show" data-wb-doaction='[
+                  {"action": "removeClass", "class": "hidden", "source": "#romania-passport-picture, .btn-hide"},
+                      {"action": "addClass", "class": "hidden", "source": ".btn-show"}]'>Show image of electronic passport</button>
+                  <button type="button" class="btn-link p-0 btn-hide hidden" data-wb-doaction='[{
+                        "action": "addClass", "class": "hidden", "source": "#romania-passport-picture, .btn-hide"},
+                      {"action": "removeClass", "class": "hidden", "source": ".btn-show"}]'>Hide image of electronic passport</button>
+                      <ul class="list-unstyled lst-spcd-2">
+                        <li class="radio"><input value="yes" name="travel_document_romania" type="radio" id="travel_document_romania-yes" required><label for="travel_document_romania-yes">Yes</label></li>
+                        <li class="radio"><input value="no" name="travel_document_romania" type="radio" id="travel_document_romania-no"><label for="travel_document_romania-no">No</label></li>
+                      </ul>
+                </div>
+
+           
+            </div>
+            
+
+             
 
             </fieldset>
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel_document_taiwan">
@@ -1538,7 +1548,8 @@
       </div>
       <div class="legal-disclaimer">
         <h2 class="mrgn-tp-0 h3">This tool provides information only</h2>
-        <p>This tool was created to assist you as you decide what travel document you may need to travel to Canada. This tool may not provide information on all travel documents or your particular situation. If you choose to apply, we will assess your application in accordance with the Immigration and Refugee Protection Act and its related Regulations. <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/terms-conditions.html" target="_blank">Read our complete terms and conditions (opens in a new tab)</a>.</p>
+        <p>This tool was created to assist you as you decide what travel document you may need to travel to Canada. This tool may not provide information on all travel documents or your particular situation. If you choose to apply, we will assess your application in accordance with the Immigration and Refugee Protection Act and its related Regulations.</p>
+        <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/terms-conditions.html" target="_blank">Read our complete terms and conditions<span class="glyphicon glyphicon-new-window mrgn-lft-sm" aria-hidden="true"><span class="wb-inv"> Opens in a new tab</span></span></a>.</p>
       </div>
     </div>
 
