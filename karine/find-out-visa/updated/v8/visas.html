@@ -1217,7 +1217,12 @@
 
                 <div class="col-md-2 pull-right"><img id="romania-passport-picture" src="romania-epassport.png" alt="Image of a Romanian electronic passport. The electronic icon below the words 'Passport Passeport' is zoomed in." class="img-responsive hidden visible-md visible-lg mrgn-lft-md"></div>
                 <div class="col-md-10">
-                  <p class="mrgn-tp-md gc-font-2019">You have an electronic passport if there’s a rectangle with a circle in the middle on the front cover of your passport.</p>
+                  <div class="d-flex align-items-center">
+                    <span class="fa-solid fa-circle-info mrgn-rght-lg fa-2x" aria-hidden="true"></span>
+                    <div>
+                      <p class="gc-font-2019 mrgn-tp-md">You have an electronic passport if there’s a rectangle with a circle in the middle on the front cover of your passport.</p>
+                    </div>
+                  </div>
                   <button type="button" class="btn-link p-0 btn-show hidden" data-wb-doaction='[
                       {"action": "removeClass", "class": "hidden", "source": "#romania-passport-picture, .btn-hide"},
                       {"action": "addClass", "class": "hidden", "source": ".btn-show"}]'>Show image of electronic passport</button>
@@ -1256,7 +1261,7 @@
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-transit_length">
               <legend>Will you transit in less than 48 hours?</legend>
               <div class="d-flex align-items-center">
-                <span class="fa-solid fa-circle-info mrgn-rght-md fa-2x" aria-hidden="true"></span>
+                <span class="fa-solid fa-circle-info mrgn-rght-lg fa-2x" aria-hidden="true"></span>
                 <div>
                   <p class="gc-font-2019 mrgn-tp-md">Transiting means your only purpose for being in Canada is to travel through on your way to another location. You would be visiting Canada too if, for example, you plan to visit tourist attractions or see family or friends while you’re here.</p>
                 </div>
@@ -1273,7 +1278,7 @@
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-family">
               <legend>Do you plan to visit your children or grandchildren who are Canadian citizens or permanent residents of Canada?</legend>
               <div class="d-flex align-items-center">
-                <span class="fa-solid fa-triangle-exclamation mrgn-rght-md fa-2x" aria-hidden="true"></span>
+                <span class="fa-solid fa-triangle-exclamation mrgn-rght-lg fa-2x" aria-hidden="true"></span>
                 <div>
                   <p class="gc-font-2019 mrgn-tp-md">If you’re visiting children or grandchildren who are <strong>not</strong> Canadian citizens or permanent residents of Canada, select “No, I’m visiting other family”. </p>
                 </div>
@@ -1333,225 +1338,238 @@
         </div>
 
         <div class="row">
-          <div class="col-md-5 col-xs-12 pull-right">
-            <div id="changeAnswers" class="mrgn-tp-md mrgn-bttm-md position-relative hidden">
-              <div class="position-relative full-width d-flex align-items-center">
-                <h2 class="mrgn-tp-0 mrgn-bttm-0 undrln-0">You selected</h2>
-              </div>
+          <div id="changeAnswers" class="mrgn-tp-lg mrgn-bttm-md position-relative hidden col-md-5 col-xs-12 pull-right">
+            <div class="position-relative full-width d-flex align-items-center">
+              <span class="fa-solid fa-up-right-and-down-left-from-center fa-2x mrgn-rght-md expand-icon" aria-hidden="true"></span>
+              <div class="full-width">
+                <h2 class="mrgn-tp-0 mrgn-bttm-0 undrln-0 h3">Change your answers</h2>
+                <button class="stretched-link btn-link p-0 btn-maximize" data-wb-doaction='[
+                  {"action":"removeClass", "class": "hidden", "source": "dl.change-answers,  .btn-minimize, .collapse-icon"},
+                  {"action":"removeClass", "class": "col-md-5", "source":"#changeAnswers"},
+                  {"action":"removeClass", "class": "col-md-7", "source":".results-container"},
+                  {"action":"addClass", "class": "hidden", "source":".btn-maximize, .expand-icon"}
+
+                ]'>Expand to see your selections</button>
+                <button class="stretched-link btn-link p-0 btn-minimize hidden" data-wb-doaction='[
+                  {"action":"addClass", "class": "hidden", "source": "dl.change-answers, .btn-minimize, .collapse-icon"},
+                  {"action":"addClass", "class": "col-md-5", "source":"#changeAnswers"},
+                  {"action":"addClass", "class": "col-md-7", "source":".results-container"},
+                  {"action":"removeClass", "class": "hidden", "source":".btn-maximize, .expand-icon"}
+                ]'>See less</button>
+              </div>              
+              <span class="fa-solid fa-down-left-and-up-right-to-center fa-2x mrgn-rght-md collapse-icon hidden pull-right" aria-hidden="true"></span>
             </div>
             <div class="clearfix"></div>
           </div>
-          <div class="col-md-7 position-relative pull-left">
-            <div class="results mrgn-tp-md">
-              <div class="result hidden" id="result-dual_citizen" data-wb-ajax='{"type": "replace", "url": "results/dual_citizen.html", "trigger": true}'></div>
-              <div class="result hidden" id="result-canadian_cit_pr" data-wb-ajax='{"type": "replace", "url": "results/canadian_cit_pr.html", "trigger": true}'></div>
-              <div class="result hidden" id="result-visitor_visa" data-wb-ajax='{"type": "replace", "url": "results/visitor_visa.html", "trigger": true}'></div>
-              <div class="result hidden" id="result-transit_visa">
-                <h2>result-transit_visa</h2>
+          <div class="results-container mrgn-tp-md col-md-7 position-relative pull-left">
+            <div class="result hidden" id="result-dual_citizen" data-wb-ajax='{"type": "replace", "url": "results/dual_citizen.html", "trigger": true}'></div>
+            <div class="result hidden" id="result-canadian_cit_pr" data-wb-ajax='{"type": "replace", "url": "results/canadian_cit_pr.html", "trigger": true}'></div>
+            <div class="result hidden" id="result-visitor_visa" data-wb-ajax='{"type": "replace", "url": "results/visitor_visa.html", "trigger": true}'></div>
+            <div class="result hidden" id="result-transit_visa">
+              <h2>result-transit_visa</h2>
+            </div>
+            <div class="result hidden" id="result-eTA" data-wb-ajax='{"type": "replace", "url": "results/eta.html", "trigger": true}'></div>
+            <div class="result hidden" id="result-eTA_X">
+              <h2>result-eTA_x</h2>
+            </div>
+            <div class="result hidden" id="result-identification_document">
+              <h2>result-identification_document</h2>
+            </div>
+            <div id="US-results">
+              <div class="result hidden" id="result-GeneralUS">
+                <h2>result-GeneralUS</h2>
               </div>
-              <div class="result hidden" id="result-eTA" data-wb-ajax='{"type": "replace", "url": "results/eta.html", "trigger": true}'></div>
-              <div class="result hidden" id="result-eTA_X">
-                <h2>result-eTA_x</h2>
+              <div class="result hidden" id="result-supervisa-US">
+                <h2>result-supervisa-US</h2>
               </div>
-              <div class="result hidden" id="result-identification_document">
-                <h2>result-identification_document</h2>
+              <div class="result hidden" id="result-study-first_permit-US">
+                <h2>result-study-first_permit-US</h2>
               </div>
-              <div id="US-results">
-                <div class="result hidden" id="result-GeneralUS">
-                  <h2>result-GeneralUS</h2>
-                </div>
-                <div class="result hidden" id="result-supervisa-US">
-                  <h2>result-supervisa-US</h2>
-                </div>
-                <div class="result hidden" id="result-study-first_permit-US">
-                  <h2>result-study-first_permit-US</h2>
-                </div>
-                <div class="result hidden" id="result-study-have_permit-US">
-                  <h2>result-study-have_permit-US</h2>
-                </div>
-                <div class="result hidden" id="result-study-extend_permit-US">
-                  <h2>result-study-extend_permit-US</h2>
-                </div>
-                <div class="result hidden" id="result-study-eligible_without_permit-US">
-                  <h2>result-study-eligible_without_permit-US</h2>
-                </div>
-                <div class="result hidden" id="result-study-not_sure-US">
-                  <h2>result-study-not_sure-US</h2>
-                </div>
-                <div class="result hidden" id="result-work-first_permit-US">
-                  <h2>result-work-first_permit-US</h2>
-                </div>
-                <div class="result hidden" id="result-work-have_permit-US">
-                  <h2>result-work-have_permit-US</h2>
-                </div>
-                <div class="result hidden" id="result-work-extend_permit-US">
-                  <h2>result-work-extend_permit-US</h2>
-                </div>
-                <div class="result hidden" id="result-work-eligible_without_permit-US">
-                  <h2>result-work-eligible_without_permit-US</h2>
-                </div>
-                <div class="result hidden" id="result-work-not_sure-US">
-                  <h2>result-work-not_sure-US</h2>
-                </div>
+              <div class="result hidden" id="result-study-have_permit-US">
+                <h2>result-study-have_permit-US</h2>
               </div>
-              <div id="USPR-results">
-                <div class="result hidden" id="result-GeneralUSPR">
-                  <h2>result-GeneralUSPR</h2>
-                </div>
-                <div class="result hidden" id="result-supervisa-USPR">
-                  <h2>result-supervisa-USPR</h2>
-                </div>
-                <div class="result hidden" id="result-study-first_permit-USPR">
-                  <h2>result-study-first_permit-USPR</h2>
-                </div>
-                <div class="result hidden" id="result-study-have_permit-USPR">
-                  <h2>result-study-have_permit-USPR</h2>
-                </div>
-                <div class="result hidden" id="result-study-extend_permit-USPR">
-                  <h2>result-study-extend_permit-USPR</h2>
-                </div>
-                <div class="result hidden" id="result-study-eligible_without_permit-USPR">
-                  <h2>result-study-eligible_without_permit-USPR</h2>
-                </div>
-                <div class="result hidden" id="result-study-not_sure-USPR">
-                  <h2>result-study-not_sure-USPR</h2>
-                </div>
-                <div class="result hidden" id="result-work-first_permit-USPR">
-                  <h2>result-work-first_permit-USPR</h2>
-                </div>
-                <div class="result hidden" id="result-work-have_permit-USPR">
-                  <h2>result-work-have_permit-USPR</h2>
-                </div>
-                <div class="result hidden" id="result-work-extend_permit-USPR">
-                  <h2>result-work-extend_permit-USPR</h2>
-                </div>
-                <div class="result hidden" id="result-work-eligible_without_permit-USPR">
-                  <h2>result-work-eligible_without_permit-USPR</h2>
-                </div>
-                <div class="result hidden" id="result-work-not_sure-USPR">
-                  <h2>result-work-not_sure-USPR</h2>
-                </div>
+              <div class="result hidden" id="result-study-extend_permit-US">
+                <h2>result-study-extend_permit-US</h2>
+              </div>
+              <div class="result hidden" id="result-study-eligible_without_permit-US">
+                <h2>result-study-eligible_without_permit-US</h2>
+              </div>
+              <div class="result hidden" id="result-study-not_sure-US">
+                <h2>result-study-not_sure-US</h2>
+              </div>
+              <div class="result hidden" id="result-work-first_permit-US">
+                <h2>result-work-first_permit-US</h2>
+              </div>
+              <div class="result hidden" id="result-work-have_permit-US">
+                <h2>result-work-have_permit-US</h2>
+              </div>
+              <div class="result hidden" id="result-work-extend_permit-US">
+                <h2>result-work-extend_permit-US</h2>
+              </div>
+              <div class="result hidden" id="result-work-eligible_without_permit-US">
+                <h2>result-work-eligible_without_permit-US</h2>
+              </div>
+              <div class="result hidden" id="result-work-not_sure-US">
+                <h2>result-work-not_sure-US</h2>
+              </div>
+            </div>
+            <div id="USPR-results">
+              <div class="result hidden" id="result-GeneralUSPR">
+                <h2>result-GeneralUSPR</h2>
+              </div>
+              <div class="result hidden" id="result-supervisa-USPR">
+                <h2>result-supervisa-USPR</h2>
+              </div>
+              <div class="result hidden" id="result-study-first_permit-USPR">
+                <h2>result-study-first_permit-USPR</h2>
+              </div>
+              <div class="result hidden" id="result-study-have_permit-USPR">
+                <h2>result-study-have_permit-USPR</h2>
+              </div>
+              <div class="result hidden" id="result-study-extend_permit-USPR">
+                <h2>result-study-extend_permit-USPR</h2>
+              </div>
+              <div class="result hidden" id="result-study-eligible_without_permit-USPR">
+                <h2>result-study-eligible_without_permit-USPR</h2>
+              </div>
+              <div class="result hidden" id="result-study-not_sure-USPR">
+                <h2>result-study-not_sure-USPR</h2>
+              </div>
+              <div class="result hidden" id="result-work-first_permit-USPR">
+                <h2>result-work-first_permit-USPR</h2>
+              </div>
+              <div class="result hidden" id="result-work-have_permit-USPR">
+                <h2>result-work-have_permit-USPR</h2>
+              </div>
+              <div class="result hidden" id="result-work-extend_permit-USPR">
+                <h2>result-work-extend_permit-USPR</h2>
+              </div>
+              <div class="result hidden" id="result-work-eligible_without_permit-USPR">
+                <h2>result-work-eligible_without_permit-USPR</h2>
+              </div>
+              <div class="result hidden" id="result-work-not_sure-USPR">
+                <h2>result-work-not_sure-USPR</h2>
+              </div>
+            </div>
+
+            <div id="supervisa-results">
+              <div class="result hidden" id="result-supervisa-eTA">
+                <h2>result-supervisa-eTA</h2>
+              </div>
+              <div class="result hidden" id="result-supervisa-visitor_visa">
+                <h2>result-supervisa-visitor_visa</h2>
+              </div>
+            </div>
+
+            <div id="study-results">
+              <div class="result hidden" id="result-study-first_permit-visitor_visa">
+                <h2>result-study-first_permit-visitor_visa</h2>
+              </div>
+              <div class="result hidden" id="result-study-have_permit-visitor_visa">
+                <h2>result-study-have_permit-visitor_visa</h2>
+              </div>
+              <div class="result hidden" id="result-study-extend_permit-visitor_visa">
+                <h2>result-study-extend-visitor_visa</h2>
+              </div>
+              <div class="result hidden" id="result-study-eligible_without_permit-visitor_visa">
+                <h2>result-study-eligible_without_permit-visitor_visa</h2>
+              </div>
+              <div class="result hidden" id="result-study-not_sure-visitor_visa">
+                <h2>result-study-not_sure-visitor_visa</h2>
+              </div>
+              <div class="result hidden" id="result-study-first_permit-eTA">
+                <h2>result-study-first_permit-eTA</h2>
+              </div>
+              <div class="result hidden" id="result-study-have_permit-eTA">
+                <h2>result-study-have_permit-eTA</h2>
+              </div>
+              <div class="result hidden" id="result-study-extend_permit-eTA">
+                <h2>result-study-extend-eTA</h2>
+              </div>
+              <div class="result hidden" id="result-study-extend_permit-eTA-X">
+                <h2>result-study-extend-eTA-x</h2>
+              </div>
+              <div class="result hidden" id="result-study-eligible_without_permit-eTA">
+                <h2>result-study-eligible_without_permit-eTA</h2>
+              </div>
+              <div class="result hidden" id="result-study-not_sure-eTA">
+                <h2>result-study-not_sure-eTA</h2>
+              </div>
+              <div class="result hidden" id="result-study-first_permit-id">
+                <h2>result-study-first_permit-id</h2>
+              </div>
+              <div class="result hidden" id="result-study-have_permit-id">
+                <h2>result-study-have_permit-id</h2>
+              </div>
+              <div class="result hidden" id="result-study-extend_permit-id">
+                <h2>result-study-extend-id</h2>
+              </div>
+              <div class="result hidden" id="result-study-eligible_without_permit-id">
+                <h2>result-study-eligible_without_permit-id</h2>
+              </div>
+              <div class="result hidden" id="result-study-not_sure-id">
+                <h2>result-study-not_sure-id</h2>
+              </div>
+              <div class="result hidden" id="result-study-not_sure">
+                <h2>result-study-not_sure</h2>
+              </div>
+            </div>
+            <div id="work-results">
+              <div class="result hidden" id="result-work-first_permit-visitor_visa">
+                <h2>result-work-first_permit-visitor_visa</h2>
+              </div>
+              <div class="result hidden" id="result-work-have_permit-visitor_visa">
+                <h2>result-work-have_permit-visitor_visa</h2>
+              </div>
+              <div class="result hidden" id="result-work-extend_permit-visitor_visa">
+                <h2>result-work-extend-visitor_visa</h2>
+              </div>
+              <div class="result hidden" id="result-work-eligible_without_permit-visitor_visa">
+                <h2>result-work-eligible_without_permit-visitor_visa</h2>
+              </div>
+              <div class="result hidden" id="result-work-not_sure-visitor_visa">
+                <h2>result-work-not_sure-visitor_visa</h2>
+              </div>
+              <div class="result hidden" id="result-work-first_permit-eTA">
+                <h2>result-work-first_permit-eTA</h2>
+              </div>
+              <div class="result hidden" id="result-work-have_permit-eTA">
+                <h2>result-work-have_permit-eTA</h2>
+              </div>
+              <div class="result hidden" id="result-work-extend_permit-eTA">
+                <h2>result-work-extend-eTA</h2>
+              </div>
+              <div class="result hidden" id="result-work-extend_permit-eTA-X">
+                <h2>result-work-extend-eTA-x</h2>
+              </div>
+              <div class="result hidden" id="result-work-eligible_without_permit-eTA">
+                <h2>result-work-eligible_without_permit-eTA</h2>
+              </div>
+              <div class="result hidden" id="result-work-not_sure-eTA">
+                <h2>result-work-not_sure-eTA</h2>
+              </div>
+              <div class="result hidden" id="result-work-first_permit-id">
+                <h2>result-work-first_permit-id</h2>
+              </div>
+              <div class="result hidden" id="result-work-have_permit-id">
+                <h2>result-work-have_permit-id</h2>
+              </div>
+              <div class="result hidden" id="result-work-extend_permit-id">
+                <h2>result-work-extend-id</h2>
+              </div>
+              <div class="result hidden" id="result-work-eligible_without_permit-id">
+                <h2>result-work-eligible_without_permit-id</h2>
+              </div>
+              <div class="result hidden" id="result-work-not_sure-id">
+                <h2>result-work-not_sure-id</h2>
+              </div>
+              <div class="result hidden" id="result-work-not_sure">
+                <h2>result-work-not_sure</h2>
               </div>
 
-              <div id="supervisa-results">
-                <div class="result hidden" id="result-supervisa-eTA">
-                  <h2>result-supervisa-eTA</h2>
-                </div>
-                <div class="result hidden" id="result-supervisa-visitor_visa">
-                  <h2>result-supervisa-visitor_visa</h2>
-                </div>
-              </div>
-
-              <div id="study-results">
-                <div class="result hidden" id="result-study-first_permit-visitor_visa">
-                  <h2>result-study-first_permit-visitor_visa</h2>
-                </div>
-                <div class="result hidden" id="result-study-have_permit-visitor_visa">
-                  <h2>result-study-have_permit-visitor_visa</h2>
-                </div>
-                <div class="result hidden" id="result-study-extend_permit-visitor_visa">
-                  <h2>result-study-extend-visitor_visa</h2>
-                </div>
-                <div class="result hidden" id="result-study-eligible_without_permit-visitor_visa">
-                  <h2>result-study-eligible_without_permit-visitor_visa</h2>
-                </div>
-                <div class="result hidden" id="result-study-not_sure-visitor_visa">
-                  <h2>result-study-not_sure-visitor_visa</h2>
-                </div>
-                <div class="result hidden" id="result-study-first_permit-eTA">
-                  <h2>result-study-first_permit-eTA</h2>
-                </div>
-                <div class="result hidden" id="result-study-have_permit-eTA">
-                  <h2>result-study-have_permit-eTA</h2>
-                </div>
-                <div class="result hidden" id="result-study-extend_permit-eTA">
-                  <h2>result-study-extend-eTA</h2>
-                </div>
-                <div class="result hidden" id="result-study-extend_permit-eTA-X">
-                  <h2>result-study-extend-eTA-x</h2>
-                </div>
-                <div class="result hidden" id="result-study-eligible_without_permit-eTA">
-                  <h2>result-study-eligible_without_permit-eTA</h2>
-                </div>
-                <div class="result hidden" id="result-study-not_sure-eTA">
-                  <h2>result-study-not_sure-eTA</h2>
-                </div>
-                <div class="result hidden" id="result-study-first_permit-id">
-                  <h2>result-study-first_permit-id</h2>
-                </div>
-                <div class="result hidden" id="result-study-have_permit-id">
-                  <h2>result-study-have_permit-id</h2>
-                </div>
-                <div class="result hidden" id="result-study-extend_permit-id">
-                  <h2>result-study-extend-id</h2>
-                </div>
-                <div class="result hidden" id="result-study-eligible_without_permit-id">
-                  <h2>result-study-eligible_without_permit-id</h2>
-                </div>
-                <div class="result hidden" id="result-study-not_sure-id">
-                  <h2>result-study-not_sure-id</h2>
-                </div>
-                <div class="result hidden" id="result-study-not_sure">
-                  <h2>result-study-not_sure</h2>
-                </div>
-              </div>
-              <div id="work-results">
-                <div class="result hidden" id="result-work-first_permit-visitor_visa">
-                  <h2>result-work-first_permit-visitor_visa</h2>
-                </div>
-                <div class="result hidden" id="result-work-have_permit-visitor_visa">
-                  <h2>result-work-have_permit-visitor_visa</h2>
-                </div>
-                <div class="result hidden" id="result-work-extend_permit-visitor_visa">
-                  <h2>result-work-extend-visitor_visa</h2>
-                </div>
-                <div class="result hidden" id="result-work-eligible_without_permit-visitor_visa">
-                  <h2>result-work-eligible_without_permit-visitor_visa</h2>
-                </div>
-                <div class="result hidden" id="result-work-not_sure-visitor_visa">
-                  <h2>result-work-not_sure-visitor_visa</h2>
-                </div>
-                <div class="result hidden" id="result-work-first_permit-eTA">
-                  <h2>result-work-first_permit-eTA</h2>
-                </div>
-                <div class="result hidden" id="result-work-have_permit-eTA">
-                  <h2>result-work-have_permit-eTA</h2>
-                </div>
-                <div class="result hidden" id="result-work-extend_permit-eTA">
-                  <h2>result-work-extend-eTA</h2>
-                </div>
-                <div class="result hidden" id="result-work-extend_permit-eTA-X">
-                  <h2>result-work-extend-eTA-x</h2>
-                </div>
-                <div class="result hidden" id="result-work-eligible_without_permit-eTA">
-                  <h2>result-work-eligible_without_permit-eTA</h2>
-                </div>
-                <div class="result hidden" id="result-work-not_sure-eTA">
-                  <h2>result-work-not_sure-eTA</h2>
-                </div>
-                <div class="result hidden" id="result-work-first_permit-id">
-                  <h2>result-work-first_permit-id</h2>
-                </div>
-                <div class="result hidden" id="result-work-have_permit-id">
-                  <h2>result-work-have_permit-id</h2>
-                </div>
-                <div class="result hidden" id="result-work-extend_permit-id">
-                  <h2>result-work-extend-id</h2>
-                </div>
-                <div class="result hidden" id="result-work-eligible_without_permit-id">
-                  <h2>result-work-eligible_without_permit-id</h2>
-                </div>
-                <div class="result hidden" id="result-work-not_sure-id">
-                  <h2>result-work-not_sure-id</h2>
-                </div>
-                <div class="result hidden" id="result-work-not_sure">
-                  <h2>result-work-not_sure</h2>
-                </div>
-
-              </div>
-              <div class="result hidden" id="result-work-study_have-permit_visa-required-mex">
-                <h2>result-work-study_have-permit_visa-required-mex</h2>
-              </div>
+            </div>
+            <div class="result hidden" id="result-work-study_have-permit_visa-required-mex">
+              <h2>result-work-study_have-permit_visa-required-mex</h2>
             </div>
           </div>
         </div>
