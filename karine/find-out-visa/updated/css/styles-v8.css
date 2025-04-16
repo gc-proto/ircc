@@ -1,4 +1,5 @@
-.tool-container.results, .legal-disclaimer {
+.tool-container.results,
+.legal-disclaimer {
   background-color: #fff;
   border: 2px solid #B5B2E3;
 }
@@ -51,6 +52,13 @@
 .tool-container .wb-fieldflow-form .field-name {
   font-size: 24px !important;
   font-family: Lato, sans-serif;
+}
+@media (min-width: 768px) {
+  .tool-container .dl-horizontal dt {
+    width: 45% !important;
+    -webkit-hyphens: none;
+            hyphens: none;
+  }
 }
 .tool-container select,
 .tool-container input[type=text] {
@@ -151,6 +159,7 @@
 }
 #changeAnswers:has(dl) dl {
   width: 100%;
+  margin-bottom: 0;
 }
 
 .btn-toggle {

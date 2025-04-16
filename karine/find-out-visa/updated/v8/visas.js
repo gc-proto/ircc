@@ -180,7 +180,7 @@ function handleNextClick() {
         if (nextQuestion.id.includes('result')) {
 
             let changeAnswersDL = document.createElement("dl");
-            changeAnswersDL.classList.add('hidden', 'small', 'mrgn-tp-lg', 'change-answers');
+            changeAnswersDL.classList.add('hidden', 'small', 'mrgn-tp-lg', 'change-answers', 'dl-horizontal');
             for (let i = 0; i < userAnswers.length; i++) {
                 let changeAnswersDT = document.createElement('dt');
                 changeAnswersDT.innerHTML = `<b>${userAnswers[i].querySelector('legend').innerText}</b>`;
