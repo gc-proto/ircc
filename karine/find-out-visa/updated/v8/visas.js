@@ -212,27 +212,27 @@ function handleNextClick() {
 };
 
 function expandSection() {
-    let dl = changeAnswersContainer.querySelector('dl');
-    let btnToggle = document.querySelector('.btn-toggle');
-    if (window.innerWidth < 991) {
+    // let dl = changeAnswersContainer.querySelector('dl');
+    // let btnToggle = document.querySelector('.btn-toggle');
+    // if (window.innerWidth < 991) {
 
 
-        if (btnToggle) { btnToggle.remove() }
-        let expand_collapse = document.createElement('button');
-        expand_collapse.classList.add('btn-expand', 'btn-toggle', 'pull-left', 'stretched-link');
-        expand_collapse.innerHTML = `<span class="fas fa-plus fa-x2" aria-hidden="true"></span>`;
-        changeAnswersContainer.querySelector('div').prepend(expand_collapse);
-        expand_collapse.addEventListener('click', function (e) {
-            expando(dl, btnToggle);
-        });
+    //     if (btnToggle) { btnToggle.remove() }
+    //     let expand_collapse = document.createElement('button');
+    //     expand_collapse.classList.add('btn-expand', 'btn-toggle', 'pull-left', 'stretched-link');
+    //     expand_collapse.innerHTML = `<span class="fas fa-plus fa-x2" aria-hidden="true"></span>`;
+    //     changeAnswersContainer.querySelector('div').prepend(expand_collapse);
+    //     expand_collapse.addEventListener('click', function (e) {
+    //         expando(dl, btnToggle);
+    //     });
 
 
-        dl.classList.add('hidden');
+    //     dl.classList.add('hidden');
 
-    }
-    else {
-        if (btnToggle) btnToggle.remove();
-    }
+    // }
+    // else {
+    //     if (btnToggle) btnToggle.remove();
+    // }
 }
 
 function expando() {
