@@ -1214,7 +1214,7 @@
               <legend>Will you use an electronic passport for this trip?</legend>
 
               <div class="row-no-gutters">
-  
+
                 <div class="col-md-2 pull-right"><img id="romania-passport-picture" src="romania-epassport.png" alt="Image of a Romanian electronic passport. The electronic icon below the words 'Passport Passeport' is zoomed in." class="img-responsive hidden mrgn-lft-md"></div>
                 <div class="col-md-10">
                   <p class="mrgn-tp-md gc-font-2019">You have an electronic passport if there’s a rectangle with a circle in the middle on the front cover of your passport.</p>
@@ -1224,17 +1224,17 @@
                   <button type="button" class="btn-link p-0 btn-hide hidden" data-wb-doaction='[{
                         "action": "addClass", "class": "hidden", "source": "#romania-passport-picture, .btn-hide"},
                       {"action": "removeClass", "class": "hidden", "source": ".btn-show"}]'>Hide image of electronic passport</button>
-                      <ul class="list-unstyled lst-spcd-2">
-                        <li class="radio"><input value="yes" name="travel_document_romania" type="radio" id="travel_document_romania-yes" required><label for="travel_document_romania-yes">Yes</label></li>
-                        <li class="radio"><input value="no" name="travel_document_romania" type="radio" id="travel_document_romania-no"><label for="travel_document_romania-no">No</label></li>
-                      </ul>
+                  <ul class="list-unstyled lst-spcd-2">
+                    <li class="radio"><input value="yes" name="travel_document_romania" type="radio" id="travel_document_romania-yes" required><label for="travel_document_romania-yes">Yes</label></li>
+                    <li class="radio"><input value="no" name="travel_document_romania" type="radio" id="travel_document_romania-no"><label for="travel_document_romania-no">No</label></li>
+                  </ul>
                 </div>
 
-           
-            </div>
-            
 
-             
+              </div>
+
+
+
 
             </fieldset>
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel_document_taiwan">
@@ -1265,7 +1265,13 @@
 
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-family">
               <legend>Do you plan to visit your children or grandchildren who are Canadian citizens or permanent residents of Canada?</legend>
-              <p class="gc-font-2019"><span class="fa-solid fa-triangle-exclamation mrgn-rght-md" aria-hidden="true"></span> If you’re visiting children or grandchildren who are <strong>not</strong> Canadian citizens or permanent residents of Canada, select “No, I’m visiting other family”. </p>
+              <div class="d-flex align-items-center">
+                <span class="fa-solid fa-triangle-exclamation mrgn-rght-md fa-2x" aria-hidden="true"></span>
+                <div>
+                  <p class="gc-font-2019 mrgn-tp-md">If you’re visiting children or grandchildren who are <strong>not</strong> Canadian citizens or permanent residents of Canada, select “No, I’m visiting other family”. </p>
+                </div>
+              </div>
+
               <ul class="list-unstyled lst-spcd-2">
                 <li class="radio"><input value="family" name="family" type="radio" id="family-yes-less" required><label for="family-yes-less">Yes, and I plan to visit for 6 months or less </label></li>
                 <li class="radio"><input value="family_supervisa" name="family" type="radio" id="family-yes-more" required><label for="family-yes-more">Yes, and I plan to visit for longer than 6 months </label></li>
