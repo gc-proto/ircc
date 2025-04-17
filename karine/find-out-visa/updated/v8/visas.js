@@ -264,12 +264,23 @@ function handlePreviousClick(changeAnswer) {
     var validator = $(form).validate();
     validator.resetForm();
     if (document.getElementById('errors-' + form.id)) document.getElementById('errors-' + form.id).remove();
-    if (changeAnswersContainer.querySelector('dl')) changeAnswersContainer.querySelector('dl').remove();
+    if (changeAnswersContainer.querySelector('dl')) {
+        changeAnswersContainer.classList.add('hidden');
+        document.querySelector(".collapse-icon").classList.add('hidden');
+        document.querySelector(".change-answers").classList.add('hidden');
+        document.querySelector(".btn-minimize").classList.add('hidden');
+        document.querySelector("#changeAnswers").classList.add('col-md-5');
+        document.querySelector(".results-container").classList.add('col-md-7');
+        document.querySelector(".btn-maximize").classList.remove('hidden');
+        document.querySelector(".expand-icon").classList.remove('hidden');
+    }
+    changeAnswersContainer.querySelector('dl').remove();
     // changeAnswersContainer.innerHTML = "";
 
     // get previous question, using array if previous click or change answer option
     let previousQuestion = changeAnswer ? document.getElementById(changeAnswer) : userAnswers[userAnswers.length - 1];
-    changeAnswersContainer.classList.add('hidden');
+
+
     // get what's on screen, either a question or a result and hide it. If it's a question, remove the required attribute to prevent a form error.
     let currentQuestion = document.querySelector('.question:not(.hidden)') ? document.querySelector('.question:not(.hidden)') : document.querySelector('.result:not(.hidden)');
     currentQuestion.classList.add('hidden');
