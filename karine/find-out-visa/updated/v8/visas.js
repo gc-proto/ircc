@@ -186,7 +186,8 @@ function handleNextClick() {
                 changeAnswersDT.innerHTML = `<b>${userAnswers[i].querySelector('legend').innerText}</b>`;
 
                 let changeAnswersDD = document.createElement('dd');
-                changeAnswersDD.innerHTML = userAnswers[i].id === "question-passport_code" ? userAnswers[i].querySelector('#passport-selection').innerText : userAnswers[i].querySelector('input:checked').parentElement.innerText;
+                changeAnswersDD.classList.add("d-flex", "align-items-center");
+                changeAnswersDD.innerHTML = userAnswers[i].id === "question-passport_code" ? `<span>${userAnswers[i].querySelector('#passport-selection').innerText}</span>` : `<span>${userAnswers[i].querySelector('input:checked').parentElement.innerText}</span>`;
 
                 let changeAnswersLink = document.createElement('button');
                 changeAnswersLink.classList.add('btn-change-answer', 'mrgn-lft-md', 'btn-link', 'pull-right');

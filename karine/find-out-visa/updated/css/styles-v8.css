@@ -54,10 +54,31 @@
   font-family: Lato, sans-serif;
 }
 @media (min-width: 768px) {
+  .tool-container .dl-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: stretch;
+    margin-left: 50px;
+  }
   .tool-container .dl-horizontal dt {
-    width: 45% !important;
+    width: unset;
+    flex-basis: 50%;
     -webkit-hyphens: none;
             hyphens: none;
+    padding: 10px !important;
+    align-self: stretch;
+  }
+  .tool-container .dl-horizontal dd {
+    width: unset;
+    flex-basis: 50%;
+    margin: 0 !important;
+    padding: 10px !important;
+    align-self: stretch;
+  }
+  .tool-container .dl-horizontal dd > span {
+    flex-grow: 1;
   }
 }
 .tool-container select,
@@ -155,11 +176,12 @@
   border: none;
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
 }
 #changeAnswers:has(dl) dl {
   width: 100%;
   margin-bottom: 0;
+  justify-items: stretch;
+  align-items: baseline;
 }
 
 .btn-toggle {
