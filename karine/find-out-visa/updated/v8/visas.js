@@ -273,8 +273,9 @@ function handlePreviousClick(changeAnswer) {
         document.querySelector(".results-container").classList.add('col-md-7');
         document.querySelector(".btn-maximize").classList.remove('hidden');
         document.querySelector(".expand-icon").classList.remove('hidden');
-    }
+        
     changeAnswersContainer.querySelector('dl').remove();
+    }
     // changeAnswersContainer.innerHTML = "";
 
     // get previous question, using array if previous click or change answer option
