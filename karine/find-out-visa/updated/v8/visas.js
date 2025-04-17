@@ -206,6 +206,7 @@ function handleNextClick() {
             expandSection();
         }
         nextQuestion.focus();
+        console.log(nextQuestion);
         analytics();
         toolContainer.scrollIntoView({ block: "start" })
     }
