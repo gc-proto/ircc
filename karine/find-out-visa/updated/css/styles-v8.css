@@ -81,6 +81,24 @@
     flex-grow: 1;
   }
 }
+@media (max-width: 767px) {
+  .tool-container .dl-horizontal dd {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .tool-container .dl-horizontal dd > span {
+    flex-basis: 100%;
+  }
+  .tool-container .dl-horizontal dd > button {
+    clear: both;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    flex-basis: 100%;
+    text-align: left;
+  }
+}
 .tool-container select,
 .tool-container input[type=text] {
   padding: 0 !important;
