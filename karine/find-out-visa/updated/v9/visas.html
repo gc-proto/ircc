@@ -1332,12 +1332,14 @@
               <button id="btn-previous" class="btn btn-nav btn-lg hidden" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Previous__"><span class="glyphicon glyphicon-arrow-left mrgn-rght-md" aria-hidden="true"></span>Previous question</button>
               <button id="btn-next" class="btn btn-nav btn-lg" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Next__">Next question<span class="glyphicon glyphicon-arrow-right mrgn-lft-md" aria-hidden="true"></span></button>
               <button id="btn-reset" class="btn btn-nav btn-lg hidden" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Reset"><span class="fa-solid fa-rotate-right mrgn-rght-md" aria-hidden="true"></span>Start over</button>
-              <button id="btn-change" class="btn btn-nav btn-lg hidden" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_ChangeAnswer" data-wb-doaction='[
+              <button id="btn-change-collapse" class="btn btn-nav btn-lg hidden" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_ChangeAnswer" data-wb-doaction='[
               {"action":"removeClass", "class": "hidden", "source": "dl.change-answers,  .btn-minimize, .collapse-icon, #changeAnswers"},
               {"action":"addClass", "class": "hidden", "source":".btn-maximize, .expand-icon"}
 
             ]'><span class="fa-solid fa-up-right-and-down-left-from-center  mrgn-rght-md expand-icon" aria-hidden="true" ></span>
                 <span class="fa-solid fa-down-left-and-up-right-to-center mrgn-rght-md collapse-icon hidden" aria-hidden="true"></span>Change your answer</button>
+            </div>
+           
             </div>
 
           </form>
@@ -1359,6 +1361,7 @@
              
             </div>
             <div class="clearfix"></div>
+          </div>
           </div>
           <div class="results-container position-relative">
             <div tabindex="-1" class="result hidden" id="result-dual_citizen" data-wb-ajax='{"type": "replace", "url": "results/dual_citizen.html", "trigger": true}'></div>
