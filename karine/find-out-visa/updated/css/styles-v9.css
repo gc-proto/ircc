@@ -39,6 +39,7 @@
   border-left-width: 0;
   border-right-width: 0;
   border-top-width: 0;
+  padding-bottom: 5px;
 }
 .tool-container .alert h2 {
   border: none !important;
@@ -133,7 +134,7 @@
     border-radius: 0 !important;
   }
   .tool-container #btn-next,
-  .tool-container #btn-change {
+  .tool-container #btn-change-collapse {
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
   }

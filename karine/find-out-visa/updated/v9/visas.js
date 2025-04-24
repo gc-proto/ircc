@@ -7,7 +7,8 @@ const toolContainer = document.querySelector('.tool-container');
 const btnNext = document.getElementById('btn-next');
 const btnPrevious = document.getElementById('btn-previous');
 const btnReset = document.getElementById('btn-reset');
-const btnChange = document.getElementById('btn-change');
+const btnChangeC = document.getElementById('btn-change-collapse');
+const btnChangeE = document.getElementById('btn-change-expand');
 const changeAnswersContainer = document.getElementById('changeAnswers');
 
 // JSON data and user answers
@@ -180,7 +181,8 @@ function handleNextClick() {
         // button control
         btnPrevious.classList.remove('hidden');
         btnReset.classList.toggle('hidden', nextQuestion.id.includes('question'));
-        btnChange.classList.toggle('hidden', nextQuestion.id.includes('question'));
+        btnChangeC.classList.toggle('hidden', nextQuestion.id.includes('question'));
+        btnChangeE.classList.toggle('hidden', nextQuestion.id.includes('question'));
         btnNext.classList.toggle('hidden', nextQuestion.id.includes('result'));
 
         currentQuestion.classList.add('hidden');
@@ -332,7 +334,8 @@ function handlePreviousClick(changeAnswer) {
     btnPrevious.classList.toggle('hidden', userAnswers.length === 0);
     btnNext.classList.remove('hidden');
     btnReset.classList.add('hidden');
-    btnChange.classList.add('hidden');
+    btnChangeC.classList.add('hidden');
+    btnChangeE.classList.add('hidden');
     toolContainer.scrollIntoView({ block: "start" });
     analytics();
 

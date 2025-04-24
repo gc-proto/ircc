@@ -1343,9 +1343,8 @@
             </div>
 
           </form>
-        </div>
 
-        <div class="row">
+        <div>
           <div id="changeAnswers" class="mrgn-tp-lg mrgn-bttm-md position-relative hidden">
             <div class="position-relative full-width d-flex align-items-center">
                     
@@ -1353,7 +1352,7 @@
               <div class="full-width">
                 <!-- <span class="fa-solid fa-down-left-and-up-right-to-center mrgn-rght-md collapse-icon hidden pull-left fa-2x" aria-hidden="true"></span>  -->
                 <h2 class="mrgn-tp-0 mrgn-bttm-0 undrln-0 h3">Change your answers</h2>
-                <button class="stretched-link btn-link p-0 btn-minimize hidden" data-wb-doaction='[
+                <button id="btn-change-expand" class="stretched-link btn-link p-0 btn-minimize hidden" data-wb-doaction='[
                   {"action":"addClass", "class": "hidden", "source": "dl.change-answers, .btn-minimize, .collapse-icon, #changeAnswers"},
                   {"action":"removeClass", "class": "hidden", "source":".btn-maximize, .expand-icon"}
                 ]'>Hide your selections</button>
@@ -1362,7 +1361,7 @@
             </div>
             <div class="clearfix"></div>
           </div>
-          </div>
+          
           <div class="results-container position-relative">
             <div tabindex="-1" class="result hidden" id="result-dual_citizen" data-wb-ajax='{"type": "replace", "url": "results/dual_citizen.html", "trigger": true}'></div>
             <div tabindex="-1" class="result hidden" id="result-canadian_cit_pr" data-wb-ajax='{"type": "replace", "url": "results/canadian_cit_pr.html", "trigger": true}'></div>
@@ -1575,16 +1574,16 @@
             </div>
           </div>
         </div>
-
-
-
       </div>
+
+
       <div class="legal-disclaimer">
         <h2 class="mrgn-tp-0 h3">This tool provides information only</h2>
         <p>This tool was created to assist you as you decide what travel document you may need to travel to Canada. This tool may not provide information on all travel documents or your particular situation. If you choose to apply, we will assess your application in accordance with the Immigration and Refugee Protection Act and its related Regulations.</p>
         <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/terms-conditions.html" target="_blank">Read our complete terms and conditions<span class="glyphicon glyphicon-new-window mrgn-lft-sm" aria-hidden="true"><span class="wb-inv"> Opens in a new tab</span></span></a>.</p>
       </div>
     </div>
+  </div>
 
 
   </main>
