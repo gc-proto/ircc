@@ -1,5 +1,9 @@
 @charset "UTF-8";
-.tool-container.results,
+.tool-container.results {
+  background-color: #fff;
+  border: 2px solid #B5B2E3;
+}
+
 .tool-container {
   background-color: #E7E6F9;
   padding: 30px 40px;
@@ -9,15 +13,11 @@
   margin: 30px 0;
 }
 @media screen and (max-width: 767px) {
-  .tool-container.results,
   .tool-container {
     margin: 30px -15px;
     border-radius: 0;
   }
 }
-.tool-container.results h2:not(.undrln-0),
-.tool-container.results legend,
-.tool-container.results .legend,
 .tool-container h2:not(.undrln-0),
 .tool-container legend,
 .tool-container .legend {
@@ -30,19 +30,13 @@
   border-top-width: 0;
   padding-bottom: 5px;
 }
-.tool-container.results .alert h2,
 .tool-container .alert h2 {
   border: none !important;
 }
-.tool-container.results legend,
-.tool-container.results .legend,
 .tool-container legend,
 .tool-container .legend {
   font-size: 1.5em !important;
 }
-.tool-container.results .wb-fieldflow-form legend,
-.tool-container.results .wb-fieldflow-form .wb-fieldflow-label,
-.tool-container.results .wb-fieldflow-form .field-name,
 .tool-container .wb-fieldflow-form legend,
 .tool-container .wb-fieldflow-form .wb-fieldflow-label,
 .tool-container .wb-fieldflow-form .field-name {
@@ -50,7 +44,6 @@
   font-family: Lato, sans-serif;
 }
 @media (min-width: 768px) {
-  .tool-container.results .dl-horizontal,
   .tool-container .dl-horizontal {
     display: flex;
     flex-wrap: wrap;
@@ -58,7 +51,6 @@
     align-items: flex-end;
     justify-content: stretch;
   }
-  .tool-container.results .dl-horizontal dt,
   .tool-container .dl-horizontal dt {
     width: unset;
     flex-basis: 50%;
@@ -67,7 +59,6 @@
     padding: 10px !important;
     align-self: stretch;
   }
-  .tool-container.results .dl-horizontal dd,
   .tool-container .dl-horizontal dd {
     width: unset;
     flex-basis: 50%;
@@ -75,23 +66,19 @@
     padding: 10px !important;
     align-self: stretch;
   }
-  .tool-container.results .dl-horizontal dd > span,
   .tool-container .dl-horizontal dd > span {
     flex-grow: 1;
   }
 }
 @media (max-width: 767px) {
-  .tool-container.results .dl-horizontal dd,
   .tool-container .dl-horizontal dd {
     flex-direction: row;
     flex-wrap: wrap;
   }
-  .tool-container.results .dl-horizontal dd > span,
   .tool-container .dl-horizontal dd > span {
     flex-basis: 100%;
     padding: 10px 0;
   }
-  .tool-container.results .dl-horizontal dd > button,
   .tool-container .dl-horizontal dd > button {
     clear: both;
     margin: 0;
@@ -102,23 +89,17 @@
     text-align: left;
   }
 }
-.tool-container.results select,
-.tool-container.results input[type=text],
 .tool-container select,
 .tool-container input[type=text] {
   padding: 0 !important;
 }
-.tool-container.results .gc-chckbxrdio input[type=checkbox] + label::before,
-.tool-container.results .gc-chckbxrdio input[type=radio] + label::before,
 .tool-container .gc-chckbxrdio input[type=checkbox] + label::before,
 .tool-container .gc-chckbxrdio input[type=radio] + label::before {
   background-color: #fff;
 }
-.tool-container.results .gc-chckbxrdio input[type=radio]:checked + label::before,
 .tool-container .gc-chckbxrdio input[type=radio]:checked + label::before {
   background: #444;
 }
-.tool-container.results .btn-nav,
 .tool-container .btn-nav {
   border-radius: 25px !important;
   border: solid 2px #B5B2E3;
@@ -126,42 +107,33 @@
   margin-right: -6px;
   background-color: #fff;
 }
-.tool-container.results #btn-next,
 .tool-container #btn-next {
   background-color: #B5B2E3;
 }
-.tool-container.results #btn-change,
 .tool-container #btn-change {
   background-color: #E4E3F3;
   float: right;
 }
-.tool-container.results .btn-primary,
 .tool-container .btn-primary {
   border-radius: 25px;
 }
 @media screen and (min-width: 480px) {
-  .tool-container.results #btn-previous,
   .tool-container #btn-previous {
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
   }
-  .tool-container.results #btn-next,
   .tool-container #btn-next {
     border-top-right-radius: 25px !important;
     border-bottom-right-radius: 25px !important;
   }
-  .tool-container.results #btn-next,
-  .tool-container.results #btn-reset,
   .tool-container #btn-next,
   .tool-container #btn-reset {
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
   }
-  .tool-container.results:has(#btn-previous.hidden) #btn-next,
   .tool-container:has(#btn-previous.hidden) #btn-next {
     border-radius: 25px !important;
   }
-  .tool-container.results #changeAnswers::before,
   .tool-container #changeAnswers::before {
     content: "▲";
     position: absolute;
@@ -172,20 +144,16 @@
   }
 }
 @media screen and (max-width: 479px) {
-  .tool-container.results .btn-navigation,
   .tool-container .btn-navigation {
     display: flex;
     flex-direction: column;
   }
-  .tool-container.results #btn-next,
   .tool-container #btn-next {
     order: 1;
   }
-  .tool-container.results #btn-previous,
   .tool-container #btn-previous {
     order: 2;
   }
-  .tool-container.results .btn-nav,
   .tool-container .btn-nav {
     border-radius: 25px !important;
     width: 100%;
@@ -194,17 +162,14 @@
   }
 }
 @media screen and (max-width: 767px) {
-  .tool-container.results .btn-navigation,
   .tool-container .btn-navigation {
     display: block;
   }
-  .tool-container.results #btn-change,
   .tool-container #btn-change {
     margin-top: 20px;
     clear: both;
     display: block;
   }
-  .tool-container.results #changeAnswers::before,
   .tool-container #changeAnswers::before {
     content: "▲";
     position: absolute;
@@ -214,17 +179,12 @@
     font-size: 2em;
   }
 }
-.tool-container.results #btn-next,
 .tool-container #btn-next {
   background-color: #B5B2E3 !important;
 }
-.tool-container.results #btn-next:hover, .tool-container.results #btn-next:active,
-.tool-container #btn-next:hover,
-.tool-container #btn-next:active {
+.tool-container #btn-next:hover, .tool-container #btn-next:active {
   background-color: #fff !important;
 }
-.tool-container.results table th,
-.tool-container.results table thead,
 .tool-container table th,
 .tool-container table thead {
   background-color: #fff !important;
