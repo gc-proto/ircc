@@ -52,8 +52,6 @@ btnReset.addEventListener("click", () => handlePreviousClick(userAnswers[0]?.id)
 function handleNextClick() {
 
     document.querySelector('.legal-disclaimer details').removeAttribute('open');
-    // document.querySelector('#intro').classList.add('hidden');
-    // document.querySelector('.legal-disclaimer').classList.add('hidden');
 
     //Get current question & if no selection was made, force form validation to show error. Else, if something was selected, continue with rest of script.
     let currentQuestion = document.querySelector('.question:not(.hidden)');
