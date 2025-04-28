@@ -7,8 +7,7 @@ const toolContainer = document.querySelector('.tool-container');
 const btnNext = document.getElementById('btn-next');
 const btnPrevious = document.getElementById('btn-previous');
 const btnReset = document.getElementById('btn-reset');
-const btnChangeC = document.getElementById('btn-change-collapse');
-const btnChangeE = document.getElementById('btn-change-expand');
+const btnChange = document.getElementById('btn-change');
 const changeAnswersContainer = document.getElementById('changeAnswers');
 
 // JSON data and user answers
@@ -52,8 +51,9 @@ btnReset.addEventListener("click", () => handlePreviousClick(userAnswers[0]?.id)
 // On Next button click
 function handleNextClick() {
 
-    document.querySelector('#intro').classList.add('hidden');
-    document.querySelector('.legal-disclaimer').classList.add('hidden');
+    document.querySelector('.legal-disclaimer details').removeAttribute('open');
+    // document.querySelector('#intro').classList.add('hidden');
+    // document.querySelector('.legal-disclaimer').classList.add('hidden');
 
     //Get current question & if no selection was made, force form validation to show error. Else, if something was selected, continue with rest of script.
     let currentQuestion = document.querySelector('.question:not(.hidden)');
@@ -181,8 +181,7 @@ function handleNextClick() {
         // button control
         btnPrevious.classList.remove('hidden');
         btnReset.classList.toggle('hidden', nextQuestion.id.includes('question'));
-        btnChangeC.classList.toggle('hidden', nextQuestion.id.includes('question'));
-        btnChangeE.classList.toggle('hidden', nextQuestion.id.includes('question'));
+        btnChange.classList.toggle('hidden', nextQuestion.id.includes('question'));
         btnNext.classList.toggle('hidden', nextQuestion.id.includes('result'));
 
         currentQuestion.classList.add('hidden');
@@ -192,7 +191,7 @@ function handleNextClick() {
         if (nextQuestion.id.includes('result')) {
 
             let changeAnswersDL = document.createElement("dl");
-            changeAnswersDL.classList.add('hidden', 'small', 'mrgn-tp-lg', 'change-answers', 'dl-horizontal');
+            changeAnswersDL.classList.add('small', 'mrgn-tp-lg', 'change-answers', 'dl-horizontal');
             for (let i = 0; i < userAnswers.length; i++) {
                 let changeAnswersDT = document.createElement('dt');
                 changeAnswersDT.innerHTML = `<b>${userAnswers[i].querySelector('legend').innerText}</b>`;
@@ -273,10 +272,10 @@ function expando() {
 
 function handlePreviousClick(changeAnswer) {
 
-    if (changeAnswer === "question-canadian_citizen") {
-        document.querySelector('#intro').classList.remove('hidden');
-        document.querySelector('.legal-disclaimer').classList.remove('hidden');
-    }
+    // if (changeAnswer === "question-canadian_citizen") {
+    //     document.querySelector('#intro').classList.remove('hidden');
+    //     document.querySelector('.legal-disclaimer').classList.remove('hidden');
+    // }
     // revalidated the form and clear and empty the error if there was one; clear the "change answer" section
     var validator = $(form).validate();
     validator.resetForm();
@@ -286,7 +285,6 @@ function handlePreviousClick(changeAnswer) {
         document.querySelector(".collapse-icon").classList.add('hidden');
         document.querySelector(".change-answers").classList.add('hidden');
         document.querySelector(".btn-minimize").classList.add('hidden');
-        document.querySelector(".btn-maximize").classList.remove('hidden');
         document.querySelector(".expand-icon").classList.remove('hidden');
         
     changeAnswersContainer.querySelector('dl').remove();
@@ -334,8 +332,7 @@ function handlePreviousClick(changeAnswer) {
     btnPrevious.classList.toggle('hidden', userAnswers.length === 0);
     btnNext.classList.remove('hidden');
     btnReset.classList.add('hidden');
-    btnChangeC.classList.add('hidden');
-    btnChangeE.classList.add('hidden');
+    btnChange.classList.add('hidden');
     toolContainer.scrollIntoView({ block: "start" });
     analytics();
 
@@ -358,12 +355,12 @@ $("button.passport-code").on("click", function () {
     traveller_type = data["question-passport_code"][code].trim();
     document.getElementById('passport-selection-track').value = traveller_type;
 
-    passportCodeSelection.innerHTML = `${document.querySelector('[data-passport-code="' + code + '"]').innerHTML} (${document.querySelectorAll('[data-passport-code="' + code + '"]')[1].innerHTML})`;
+    passportCodeSelection.innerHTML = `${document.querySelector('[data-passport-code="' + code + '"]').innerHTML}`;
     passportCodeSelection.setAttribute('data-passport-code', code.trim());
     // passportCodeTable.classList.add('hidden');
     passportCodeSelectionParent.classList.remove('hidden');
-    $("tr.active").removeClass('active');
-    this.parentElement.parentElement.classList.add('active');
+    $("td.active").removeClass('active');
+    this.parentElement.classList.add('active');
 
     if (window.innerWidth > 991) {
         passportCodeSelectionParent.style.marginTop = document.querySelector('.top').clientHeight + "px";
@@ -385,7 +382,7 @@ $("#passport-selection-change").on("click", function () {
 
 function clearPassportTable() {
     passportCodeSelectionParent.classList.add('hidden');
-    $("tr.active").removeClass('active');
+    $("td.active").removeClass('active');
     document.getElementById("question-passport_code").querySelector('input[type=search]').value = "";
     document.getElementById("question-passport_code").querySelector('input[type=search]').focus;
     let dtable = new DataTable(document.querySelector('#passport_code_table'));

@@ -36,20 +36,18 @@
 
 <body vocab="http://schema.org/" typeof="WebPage">
   <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
+    <div class="container">
 
-
-      <div class="banner">
-        <div class="container">
-          <div id="intro" class="row"></div>
-          <div class="col-md-8">
-            <h1 property="name" id="wb-cont" dir="ltr">Find out if you need a visa or eTA to travel to Canada</h1>
-            
-              <p class="lead mrgn-tp-md">Everyone needs something to travel to Canada: an electronic travel authorization (eTA), a visitor visa, or just a passport.</p></div>
-            <div class="pull-right hidden-xs hidden-sm col-md-4"><img src="banner.png" class="img-responsive" /></div>
-          </div>
-        </div>
+      <h1 property="name" id="wb-cont" dir="ltr">Find out if you need a visa or eTA to travel to Canada</h1>
+      <div id="intro">
+        <p>Everyone needs something to travel to Canada:</p>
+        <ul>
+          <li>You likely need a visa or an electronic travel authorization (not both).</li>
+          <li>You will need a valid passport or travel document. </li>
+        </ul>
+        <p>What you need depends on who you are, what you plan to do in Canada and the passport or travel document you use. </p>
+        <p>Answer a few questions to find out. </p>
       </div>
-      <div class="container">
       <div class="tool-container mrgn-tp-lg">
 
         <div class="wb-frmvld">
@@ -103,7 +101,7 @@
               </ul>
             </fieldset>
 
-            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-passport_code">
+            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question" id="question-passport_code">
               <legend>Select the country or territory code that matches the one on your passport</legend>
               <div class="row table-information mrgn-bttm-lg d-sm-flex align-items-center">
                 <div class="col-md-2 col-sm-4"><img src="https://ircc.canada.ca/english/visit/images/passport-country-gbr-large.jpg" alt="Sample passport information page highlighting three letter country code" class="img-responsive mrgn-rght-md"></div>
@@ -116,22 +114,13 @@
 
                 
                 <div class="well">
-                  <div id="passport-code-selection" class="hidden well well-drk" aria-live="polite">
-                    <div class="d-flex align-items-center">
-                      <p tabindex="-1" class="p-0 pull-left gc-font-2019 mrgn-bttm-0"><b>My country is:</b> <span id="passport-selection"></span> </p>
-                      <button class="btn-link p-0 text-left pull-left" id="passport-selection-change"><span class="wb-inv">Select a different country or territory</span><span class="fas fa-times mrgn-lft-sm" aria-hidden="true"></span></button>
-                    </div>      
-                    <div class="clearfix" ></div>
-                    <input type="hidden" value="" id="passport-selection-track" />
-                  </div>
-
-
+                
                   <table id="passport_code_table" class="table wb-tables" data-wb-tables='{
                     "lengthMenu": [ [5, 10, 25, 50, -1], [5, 10, 25, 50, "All"] ],
                     "order": [],
                     "language": { "search": "Find your code:" }
                   }'>
-                    <thead class="wb-inv"><tr><th scope="col">Country or territory name and passport code</th></tr></thead>
+                    <thead class="hidden"><tr><th scope="col">Country or territory name and passport code</th></tr></thead>
                     <tbody>
                       <tr><td><button class="btn-link p-0 passport-code text-left" data-passport-code="AFG">Afghanistan (AFG)</button></td></tr>
                       <tr><td><button class="btn-link p-0 passport-code text-left" data-passport-code="ALB">Albania (ALB)</button></td></tr>
@@ -345,7 +334,224 @@
                       <tr><td><button class="btn-link p-0 passport-code text-left" data-passport-code="ZWE">Zimbabwe (ZWE)</button></td></tr>
                     </tbody>
                   </table>
-                 
+                  <!-- <ul class="wb-filter wb-paginate provisional list-group" data-wb-paginate='{"itemsPerPage": 5}' data-wb-filter='{"language": { "search": "Find your code:" }"}'>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="AFG">Afghanistan (AFG)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="ALB">Albania (ALB)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="DZA">Algeria (DZA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="AND">Andorra (AND)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="AGO">Angola (AGO)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="AIA">Anguilla (ANG/AIA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="ATG">Antigua and Barbuda (ATG)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="ARG">Argentina (ARG)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="ARM">Armenia (ARM)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="AUS">Australia (AUS)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="AUT">Austria (AUT)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="AZE">Azerbaijan (AZE)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BHS">Bahamas (BHS)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BHR">Bahrain (BHR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BGD">Bangladesh (BGD)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BRB">Barbados (BRB)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BLR">Belarus (BLR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BEL">Belgium (BEL)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BLZ">Belize (BLZ)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BEN">Benin (BEN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BMU">Bermuda (BMU)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BTN">Bhutan (BTN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BOL">Bolivia (BOL)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BIH">Bosnia and Herzegovina (BIH)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BWA">Botswana (BWA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BRA">Brazil (BRA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="VGB">British Virgin Islands (VGB)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BRN">Brunei Darussalam (BRN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BGR">Bulgaria (BGR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BFA">Burkina Faso (BFA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MMR">Burma - Myanmar (MMR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="BDI">Burundi (BDI)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="CPV">Cabo Verde (CPV)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="KHM">Cambodia (KHM)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="CMR">Cameroon (CMR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="CAN">Canada (CAN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="CYM">Cayman Islands (CYM)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="CAF">Central African Republic (CAF)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="TCD">Chad (TCD)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="CHL">Chile (CHL)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="CHN_CN">China (CHN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="COL">Colombia (COL)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="COM">Comoros (COM)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="CRI">Costa Rica (CRI)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="HRV">Croatia (HRV)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="CUB">Cuba (CUB)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="CYP">Cyprus (CYP)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="CZE">Czech Republic (CZE)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="COD">Democratic Rep. of Congo (COD)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="DNK">Denmark (DNK)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="DJI">Djibouti (DJI)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="DMA">Dominica (DMA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="DOM">Dominican Republic (DOM)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="TLS">East Timor (TLS)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="ECU">Ecuador (ECU)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="EGY">Egypt (EGY)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SLV">El Salvador (SLV)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="GNQ">Equatorial Guinea (GNQ)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="ERI">Eritrea (ERI)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="EST">Estonia (EST)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="ETH">Ethiopia (ETH)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="FJI">Fiji (FJI)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="FIN">Finland (FIN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="FRA">France (FRA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="GAB">Gabon (GAB)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="GMB">Gambia (GMB)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="GEO">Georgia (GEO)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="D">Germany (D)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="GHA">Ghana (GHA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="GRC">Greece (GRC)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="GRD">Grenada (GRD)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="GTM">Guatemala (GTM)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="GIN">Guinea (GIN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="GNB">Guinea-Bissau (GNB)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="GUY">Guyana (GUY)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="HTI">Haiti (HTI)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="HND">Honduras (HND)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="CHN_HK">Hong Kong SAR (CHN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="HUN">Hungary (HUN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="ISL">Iceland (ISL)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="IND">India (IND)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="IDN">Indonesia (IDN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="IRN">Iran (IRN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="IRQ">Iraq (IRQ)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="IRL">Ireland (IRL)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="ISR">Israel (ISR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="ITA">Italy (ITA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="CIV">Ivory Coast (CIV)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="JAM">Jamaica (JAM)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="JPN">Japan (JPN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="JOR">Jordan (JOR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="KAZ">Kazakhstan (KAZ)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="KEN">Kenya (KEN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="KIR">Kiribati (KIR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="PRK">Korea, North - DPRK (PRK)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="KOR">Korea, South (KOR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="RKS">Kosovo (RKS)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="KWT">Kuwait (KWT)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="KGZ">Kyrgyzstan (KGZ)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="LAO">Laos (LAO)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="LVA">Latvia (LVA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="LBN">Lebanon (LBN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="LSO">Lesotho (LSO)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="LBR">Liberia (LBR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="LBY">Libya (LBY)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="LIE">Liechtenstein (LIE)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="LTU">Lithuania (LTU)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="LUX">Luxembourg (LUX)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="CHN_MO">Macao SAR (CHN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MKD">Macedonia (MKD)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MDG">Madagascar (MDG)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MWI">Malawi (MWI)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MYS">Malaysia (MYS)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MLI">Mali (MLI)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MLT">Malta (MLT)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MHL">Marshall Islands (MHL)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MRT">Mauritania (MRT)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MUS">Mauritius (MUS)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MEX">Mexico (MEX)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="FSM">Micronesia (FSM)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MDA">Moldova (MDA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MCO">Monaco (MCO)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MNG">Mongolia (MNG)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MNE">Montenegro (MNE)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MSR">Montserrat (MSR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MAR">Morocco (MAR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="MOZ">Mozambique (MOZ)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="NAM">Namibia (NAM)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="NRU">Nauru (NRU)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="NPL">Nepal (NPL)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="NLD">Netherlands (NLD)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="NZL">New Zealand (NZL)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="NIC">Nicaragua (NIC)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="NER">Niger (NER)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="NGA">Nigeria (NGA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="NOR">Norway (NOR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="OMN">Oman (OMN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="PAK">Pakistan (PAK)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="PLW">Palau (PLW)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="PSE">Palestinian Authority (PSE)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="PAN">Panama (PAN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="PNG">Papua New Guinea (PNG)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="PRY">Paraguay (PRY)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="PER">Peru (PER)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="PHL">Philippines (PHL)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="POL">Poland (POL)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="PRT">Portugal (PRT)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="QAT">Qatar (QAT)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="COG">Republic of Congo (COG)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="ROU">Romania (ROU)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="RUS">Russia (RUS)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="RWA">Rwanda (RWA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SHN">Saint Helena (SHN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="KNA">Saint Kitts and Nevis (KNA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="LCA">Saint Lucia (LCA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="WSM">Samoa (WSM)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SMR">San Marino (SMR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="STP">Sao Tome e Principe (STP)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SAU">Saudi Arabia (SAU)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SEN">Senegal (SEN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SRB">Serbia (SRB)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SYC">Seychelles (SYC)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SLE">Sierra Leone (SLE)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SGP">Singapore (SGP)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SVK">Slovakia (SVK)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SVN">Slovenia (SVN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SLB">Solomon Islands (SLB)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SOM">Somalia (SOM)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="ZAF">South Africa (ZAF)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SSD">South Sudan (SSD)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="ESP">Spain (ESP)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="LKA">Sri Lanka (LKA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="VCT">St. Vincent and the Grenadines (VCT)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SDN">Sudan (SDN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SUR">Suriname (SUR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SWZ">Swaziland (SWZ)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SWE">Sweden (SWE)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="CHE">Switzerland (CHE)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="SYR">Syria (SYR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="TWN">Taiwan (TWN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="TJK">Tajikistan (TJK)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="TZA">Tanzania (TZA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="THA">Thailand (THA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="TGO">Togo (TGO)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="TON">Tonga (TON)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="TTO">Trinidad and Tobago (TTO)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="TUN">Tunisia (TUN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="TUR">Turkey (TUR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="TKM">Turkmenistan (TKM)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="TCA">Turks and Caicos Islands (TCA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="TUV">Tuvalu (TUV)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="UGA">Uganda (UGA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="GBN">UK - Brit. Ntl. overseas (GBN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="GBD">UK - Brit. overseas terr. (GBD)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="GBS">UK - Brit. subject, subject to control (GBS)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="GBR">UK - British citizen (GBR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="GBO">UK - British overseas citizen (GBO)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="GBP">UK - British subject (GBP)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="UKR">Ukraine (UKR)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="ARE">United Arab Emirates (ARE)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="USA">United States of America (USA)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="URY">Uruguay (URY)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="UZB">Uzbekistan (UZB)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="VUT">Vanuatu (VUT)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="VAT">Vatican City State (VAT)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="VEN">Venezuela (VEN)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="VNM">Vietnam (VNM)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="YEM">Yemen (YEM)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="ZMB">Zambia (ZMB)</button></li>
+                    <li><button class="btn-link p-0 passport-code text-left" data-passport-code="ZWE">Zimbabwe (ZWE)</button></li>
+</ul> -->
+                  <div id="passport-code-selection" class="gc-font-2019 hidden">
+                    <p tabindex="-1"><b>You selected:</b></p>
+                    <span id="passport-selection" class="h4 mrgnp-tp-0"></span><br />
+                    <button class="btn-link p-0 text-left" id="passport-selection-change"><span class="fas fa-times mrgn-rght-sm" aria-hidden="true"></span>Select a different country or territory</button>
+                    <input type="hidden" value="" id="passport-selection-track" />
+                  </div>
                 </div>
               </div>
 
@@ -491,13 +697,19 @@
               <button id="btn-previous" class="btn btn-nav btn-lg hidden" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Previous__"><span class="glyphicon glyphicon-arrow-left mrgn-rght-md" aria-hidden="true"></span>Previous question</button>
               <button id="btn-next" class="btn btn-nav btn-lg" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Next__">Next question<span class="glyphicon glyphicon-arrow-right mrgn-lft-md" aria-hidden="true"></span></button>
               <button id="btn-reset" class="btn btn-nav btn-lg hidden" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Reset"><span class="fa-solid fa-rotate-right mrgn-rght-md" aria-hidden="true"></span>Start over</button>
-              <button id="btn-change" class="btn btn-nav btn-lg hidden wb-toggle" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_ChangeAnswer" data-toggle='{
-                "selector": "#changeAnswers", 
-                "print": "on", 
-                "stateOn":"visible", 
-                "stateOff": "hidden", 
-                "state":"hidden"}'><span class="fa-solid fa-pencil" aria-hidden="true"></span>
+              <!-- <button id="btn-change-collapse" class="btn btn-nav btn-lg hidden" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_ChangeAnswer" data-wb-doaction='[
+              {"action":"removeClass", "class": "hidden", "source": "dl.change-answers,  .btn-minimize, .collapse-icon, #changeAnswers"},
+              {"action":"addClass", "class": "hidden", "source":".btn-maximize, .expand-icon"}
+
+            ]'><span class="fa-solid fa-up-right-and-down-left-from-center  mrgn-rght-md expand-icon" aria-hidden="true" ></span>
+                <span class="fa-solid fa-down-left-and-up-right-to-center mrgn-rght-md collapse-icon hidden" aria-hidden="true"></span>Change your answer</button> -->
+
+              <button id="btn-change-collapse" class="btn btn-nav btn-lg hidden" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_ChangeAnswer"><span class="fa-solid fa-up-right-and-down-left-from-center  mrgn-rght-md expand-icon" aria-hidden="true"></span>
                 Change your answer</button>
+              <button id="btn-change-collapse" class="btn btn-nav btn-lg hidden" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_ChangeAnswer"><span class="fa-solid fa-up-right-and-down-left-from-center  mrgn-rght-md expand-icon" aria-hidden="true"></span>
+                Change your answer</button>
+              <span class="fa-solid fa-down-left-and-up-right-to-center mrgn-rght-md collapse-icon hidden" aria-hidden="true"></span>
+
 
             </div>
 
@@ -505,238 +717,243 @@
 
         </form>
 
-        <div id="changeAnswers" class="mrgn-tp-lg mrgn-bttm-md position-relative hidden">
-          <div class="d-flex align-items-center full-width position-relative">
-            <h2 class="mrgn-tp-0 mrgn-bttm-0 undrln-0 h3 full-width">Change your answers</h2>
-            <button id="btn-change-expand" class="btn-link p-0 btn-minimize pull-right wb-toggle" data-toggle='{
-              "selector": "#changeAnswers", 
-              "print": "on", 
-              "stateOn":"visible", 
-              "stateOff": "hidden"}'><span class="wb-inv">Hide your answers</span><span class="fas fa-times mrgn-lft-sm" aria-hidden="true"></span></button>
-          </div>
+        <div>
+          <div id="changeAnswers" class="mrgn-tp-lg mrgn-bttm-md position-relative hidden">
+            <div class="position-relative full-width d-flex align-items-center">
 
-        </div>
 
-        <div class="results-container position-relative">
-          <div tabindex="-1" class="result hidden" id="result-dual_citizen" data-wb-ajax='{"type": "replace", "url": "results/dual_citizen.html", "trigger": true}'></div>
-          <div tabindex="-1" class="result hidden" id="result-canadian_cit_pr" data-wb-ajax='{"type": "replace", "url": "results/canadian_cit_pr.html", "trigger": true}'></div>
-          <div tabindex="-1" class="result hidden" id="result-visitor_visa" data-wb-ajax='{"type": "replace", "url": "results/visitor_visa.html", "trigger": true}'></div>
-          <div tabindex="-1" class="result hidden" id="result-transit_visa">
-            <h2>result-transit_visa</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-eTA" data-wb-ajax='{"type": "replace", "url": "results/eta.html", "trigger": true}'></div>
-          <div tabindex="-1" class="result hidden" id="result-eTA_X">
-            <h2>result-eTA_x</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-identification_document">
-            <h2>result-identification_document</h2>
-          </div>
-          <div id="US-results">
-            <div tabindex="-1" class="result hidden" id="result-GeneralUS">
-              <h2>result-GeneralUS</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-supervisa-US">
-              <h2>result-supervisa-US</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-first_permit-US">
-              <h2>result-study-first_permit-US</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-have_permit-US">
-              <h2>result-study-have_permit-US</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-extend_permit-US">
-              <h2>result-study-extend_permit-US</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-US">
-              <h2>result-study-eligible_without_permit-US</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-not_sure-US">
-              <h2>result-study-not_sure-US</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-first_permit-US">
-              <h2>result-work-first_permit-US</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-have_permit-US">
-              <h2>result-work-have_permit-US</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-extend_permit-US">
-              <h2>result-work-extend_permit-US</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-US">
-              <h2>result-work-eligible_without_permit-US</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-not_sure-US">
-              <h2>result-work-not_sure-US</h2>
-            </div>
-          </div>
-          <div id="USPR-results">
-            <div tabindex="-1" class="result hidden" id="result-GeneralUSPR">
-              <h2>result-GeneralUSPR</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-supervisa-USPR">
-              <h2>result-supervisa-USPR</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-first_permit-USPR">
-              <h2>result-study-first_permit-USPR</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-have_permit-USPR">
-              <h2>result-study-have_permit-USPR</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-extend_permit-USPR">
-              <h2>result-study-extend_permit-USPR</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-USPR">
-              <h2>result-study-eligible_without_permit-USPR</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-not_sure-USPR">
-              <h2>result-study-not_sure-USPR</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-first_permit-USPR">
-              <h2>result-work-first_permit-USPR</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-have_permit-USPR">
-              <h2>result-work-have_permit-USPR</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-extend_permit-USPR">
-              <h2>result-work-extend_permit-USPR</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-USPR">
-              <h2>result-work-eligible_without_permit-USPR</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-not_sure-USPR">
-              <h2>result-work-not_sure-USPR</h2>
-            </div>
-          </div>
+              <div class="full-width">
+                <!-- <span class="fa-solid fa-down-left-and-up-right-to-center mrgn-rght-md collapse-icon hidden pull-left fa-2x" aria-hidden="true"></span>  -->
+                <h2 class="mrgn-tp-0 mrgn-bttm-0 undrln-0 h3">Change your answers</h2>
+                <button id="btn-change-expand" class="stretched-link btn-link p-0 btn-minimize hidden" data-wb-doaction='[
+                  {"action":"addClass", "class": "hidden", "source": "dl.change-answers, .btn-minimize, .collapse-icon, #changeAnswers"},
+                  {"action":"removeClass", "class": "hidden", "source":".btn-maximize, .expand-icon"}
+                ]'>Hide your selections</button>
+              </div>
 
-          <div id="supervisa-results">
-            <div tabindex="-1" class="result hidden" id="result-supervisa-eTA">
-              <h2>result-supervisa-eTA</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-supervisa-visitor_visa">
-              <h2>result-supervisa-visitor_visa</h2>
-            </div>
-          </div>
-
-          <div id="study-results">
-            <div tabindex="-1" class="result hidden" id="result-study-first_permit-visitor_visa">
-              <h2>result-study-first_permit-visitor_visa</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-have_permit-visitor_visa">
-              <h2>result-study-have_permit-visitor_visa</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-extend_permit-visitor_visa">
-              <h2>result-study-extend-visitor_visa</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-visitor_visa">
-              <h2>result-study-eligible_without_permit-visitor_visa</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-not_sure-visitor_visa">
-              <h2>result-study-not_sure-visitor_visa</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-first_permit-eTA">
-              <h2>result-study-first_permit-eTA</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-have_permit-eTA">
-              <h2>result-study-have_permit-eTA</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-extend_permit-eTA">
-              <h2>result-study-extend-eTA</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-extend_permit-eTA-X">
-              <h2>result-study-extend-eTA-x</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-eTA">
-              <h2>result-study-eligible_without_permit-eTA</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-not_sure-eTA">
-              <h2>result-study-not_sure-eTA</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-first_permit-id">
-              <h2>result-study-first_permit-id</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-have_permit-id">
-              <h2>result-study-have_permit-id</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-extend_permit-id">
-              <h2>result-study-extend-id</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-id">
-              <h2>result-study-eligible_without_permit-id</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-not_sure-id">
-              <h2>result-study-not_sure-id</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-study-not_sure">
-              <h2>result-study-not_sure</h2>
-            </div>
-          </div>
-          <div id="work-results">
-            <div tabindex="-1" class="result hidden" id="result-work-first_permit-visitor_visa">
-              <h2>result-work-first_permit-visitor_visa</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-have_permit-visitor_visa">
-              <h2>result-work-have_permit-visitor_visa</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-extend_permit-visitor_visa">
-              <h2>result-work-extend-visitor_visa</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-visitor_visa">
-              <h2>result-work-eligible_without_permit-visitor_visa</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-not_sure-visitor_visa">
-              <h2>result-work-not_sure-visitor_visa</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-first_permit-eTA">
-              <h2>result-work-first_permit-eTA</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-have_permit-eTA">
-              <h2>result-work-have_permit-eTA</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-extend_permit-eTA">
-              <h2>result-work-extend-eTA</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-extend_permit-eTA-X">
-              <h2>result-work-extend-eTA-x</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-eTA">
-              <h2>result-work-eligible_without_permit-eTA</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-not_sure-eTA">
-              <h2>result-work-not_sure-eTA</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-first_permit-id">
-              <h2>result-work-first_permit-id</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-have_permit-id">
-              <h2>result-work-have_permit-id</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-extend_permit-id">
-              <h2>result-work-extend-id</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-id">
-              <h2>result-work-eligible_without_permit-id</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-not_sure-id">
-              <h2>result-work-not_sure-id</h2>
-            </div>
-            <div tabindex="-1" class="result hidden" id="result-work-not_sure">
-              <h2>result-work-not_sure</h2>
             </div>
 
           </div>
-          <div tabindex="-1" class="result hidden" id="result-work-study_have-permit_visa-required-mex">
-            <h2>result-work-study_have-permit_visa-required-mex</h2>
+
+          <div class="results-container position-relative">
+            <div tabindex="-1" class="result hidden" id="result-dual_citizen" data-wb-ajax='{"type": "replace", "url": "results/dual_citizen.html", "trigger": true}'></div>
+            <div tabindex="-1" class="result hidden" id="result-canadian_cit_pr" data-wb-ajax='{"type": "replace", "url": "results/canadian_cit_pr.html", "trigger": true}'></div>
+            <div tabindex="-1" class="result hidden" id="result-visitor_visa" data-wb-ajax='{"type": "replace", "url": "results/visitor_visa.html", "trigger": true}'></div>
+            <div tabindex="-1" class="result hidden" id="result-transit_visa">
+              <h2>result-transit_visa</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-eTA" data-wb-ajax='{"type": "replace", "url": "results/eta.html", "trigger": true}'></div>
+            <div tabindex="-1" class="result hidden" id="result-eTA_X">
+              <h2>result-eTA_x</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-identification_document">
+              <h2>result-identification_document</h2>
+            </div>
+            <div id="US-results">
+              <div tabindex="-1" class="result hidden" id="result-GeneralUS">
+                <h2>result-GeneralUS</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-supervisa-US">
+                <h2>result-supervisa-US</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-first_permit-US">
+                <h2>result-study-first_permit-US</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-have_permit-US">
+                <h2>result-study-have_permit-US</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-extend_permit-US">
+                <h2>result-study-extend_permit-US</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-US">
+                <h2>result-study-eligible_without_permit-US</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-not_sure-US">
+                <h2>result-study-not_sure-US</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-first_permit-US">
+                <h2>result-work-first_permit-US</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-have_permit-US">
+                <h2>result-work-have_permit-US</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-extend_permit-US">
+                <h2>result-work-extend_permit-US</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-US">
+                <h2>result-work-eligible_without_permit-US</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-not_sure-US">
+                <h2>result-work-not_sure-US</h2>
+              </div>
+            </div>
+            <div id="USPR-results">
+              <div tabindex="-1" class="result hidden" id="result-GeneralUSPR">
+                <h2>result-GeneralUSPR</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-supervisa-USPR">
+                <h2>result-supervisa-USPR</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-first_permit-USPR">
+                <h2>result-study-first_permit-USPR</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-have_permit-USPR">
+                <h2>result-study-have_permit-USPR</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-extend_permit-USPR">
+                <h2>result-study-extend_permit-USPR</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-USPR">
+                <h2>result-study-eligible_without_permit-USPR</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-not_sure-USPR">
+                <h2>result-study-not_sure-USPR</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-first_permit-USPR">
+                <h2>result-work-first_permit-USPR</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-have_permit-USPR">
+                <h2>result-work-have_permit-USPR</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-extend_permit-USPR">
+                <h2>result-work-extend_permit-USPR</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-USPR">
+                <h2>result-work-eligible_without_permit-USPR</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-not_sure-USPR">
+                <h2>result-work-not_sure-USPR</h2>
+              </div>
+            </div>
+
+            <div id="supervisa-results">
+              <div tabindex="-1" class="result hidden" id="result-supervisa-eTA">
+                <h2>result-supervisa-eTA</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-supervisa-visitor_visa">
+                <h2>result-supervisa-visitor_visa</h2>
+              </div>
+            </div>
+
+            <div id="study-results">
+              <div tabindex="-1" class="result hidden" id="result-study-first_permit-visitor_visa">
+                <h2>result-study-first_permit-visitor_visa</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-have_permit-visitor_visa">
+                <h2>result-study-have_permit-visitor_visa</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-extend_permit-visitor_visa">
+                <h2>result-study-extend-visitor_visa</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-visitor_visa">
+                <h2>result-study-eligible_without_permit-visitor_visa</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-not_sure-visitor_visa">
+                <h2>result-study-not_sure-visitor_visa</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-first_permit-eTA">
+                <h2>result-study-first_permit-eTA</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-have_permit-eTA">
+                <h2>result-study-have_permit-eTA</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-extend_permit-eTA">
+                <h2>result-study-extend-eTA</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-extend_permit-eTA-X">
+                <h2>result-study-extend-eTA-x</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-eTA">
+                <h2>result-study-eligible_without_permit-eTA</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-not_sure-eTA">
+                <h2>result-study-not_sure-eTA</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-first_permit-id">
+                <h2>result-study-first_permit-id</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-have_permit-id">
+                <h2>result-study-have_permit-id</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-extend_permit-id">
+                <h2>result-study-extend-id</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-id">
+                <h2>result-study-eligible_without_permit-id</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-not_sure-id">
+                <h2>result-study-not_sure-id</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-study-not_sure">
+                <h2>result-study-not_sure</h2>
+              </div>
+            </div>
+            <div id="work-results">
+              <div tabindex="-1" class="result hidden" id="result-work-first_permit-visitor_visa">
+                <h2>result-work-first_permit-visitor_visa</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-have_permit-visitor_visa">
+                <h2>result-work-have_permit-visitor_visa</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-extend_permit-visitor_visa">
+                <h2>result-work-extend-visitor_visa</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-visitor_visa">
+                <h2>result-work-eligible_without_permit-visitor_visa</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-not_sure-visitor_visa">
+                <h2>result-work-not_sure-visitor_visa</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-first_permit-eTA">
+                <h2>result-work-first_permit-eTA</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-have_permit-eTA">
+                <h2>result-work-have_permit-eTA</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-extend_permit-eTA">
+                <h2>result-work-extend-eTA</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-extend_permit-eTA-X">
+                <h2>result-work-extend-eTA-x</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-eTA">
+                <h2>result-work-eligible_without_permit-eTA</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-not_sure-eTA">
+                <h2>result-work-not_sure-eTA</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-first_permit-id">
+                <h2>result-work-first_permit-id</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-have_permit-id">
+                <h2>result-work-have_permit-id</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-extend_permit-id">
+                <h2>result-work-extend-id</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-id">
+                <h2>result-work-eligible_without_permit-id</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-not_sure-id">
+                <h2>result-work-not_sure-id</h2>
+              </div>
+              <div tabindex="-1" class="result hidden" id="result-work-not_sure">
+                <h2>result-work-not_sure</h2>
+              </div>
+
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-study_have-permit_visa-required-mex">
+              <h2>result-work-study_have-permit_visa-required-mex</h2>
+            </div>
           </div>
         </div>
       </div>
 
 
-      <div class="legal-disclaimer" >
-        <details open>
-          <summary><span class="flex-item item1"></span><span class="flex-item item2">This tool provides information only</span></summary>
-          <p>This tool was created to assist you as you decide what travel document you may need to travel to Canada. This tool may not provide information on all travel documents or your particular situation. If you choose to apply, we will assess your application in accordance with the Immigration and Refugee Protection Act and its related Regulations.</p>
-          <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/terms-conditions.html" target="_blank">Read our complete terms and conditions<span class="glyphicon glyphicon-new-window mrgn-lft-sm" aria-hidden="true"><span class="wb-inv"> Opens in a new tab</span></span></a>.</p>
-        </details>
+      <div class="legal-disclaimer">
+        <h2 class="mrgn-tp-0 h3">This tool provides information only</h2>
+        <p>This tool was created to assist you as you decide what travel document you may need to travel to Canada. This tool may not provide information on all travel documents or your particular situation. If you choose to apply, we will assess your application in accordance with the Immigration and Refugee Protection Act and its related Regulations.</p>
+        <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/terms-conditions.html" target="_blank">Read our complete terms and conditions<span class="glyphicon glyphicon-new-window mrgn-lft-sm" aria-hidden="true"><span class="wb-inv"> Opens in a new tab</span></span></a>.</p>
       </div>
     </div>
     </div>
