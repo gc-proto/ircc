@@ -280,10 +280,6 @@ function handlePreviousClick(changeAnswer) {
     if (document.getElementById('errors-' + form.id)) document.getElementById('errors-' + form.id).remove();
     if (changeAnswersContainer.querySelector('dl')) {
         changeAnswersContainer.classList.add('hidden');
-        document.querySelector(".collapse-icon").classList.add('hidden');
-        document.querySelector(".change-answers").classList.add('hidden');
-        document.querySelector(".btn-minimize").classList.add('hidden');
-        document.querySelector(".expand-icon").classList.remove('hidden');
         
     changeAnswersContainer.querySelector('dl').remove();
     }
