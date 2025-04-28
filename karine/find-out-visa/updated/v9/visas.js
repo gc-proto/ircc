@@ -216,7 +216,7 @@ function handleNextClick() {
         }
         nextQuestion.focus();
         analytics();
-        toolContainer.scrollIntoView({ block: "start" })
+        // toolContainer.scrollIntoView({ block: "start" })
     }
 };
 
@@ -331,7 +331,7 @@ function handlePreviousClick(changeAnswer) {
     btnNext.classList.remove('hidden');
     btnReset.classList.add('hidden');
     btnChange.classList.add('hidden');
-    toolContainer.scrollIntoView({ block: "start" });
+    // toolContainer.scrollIntoView({ block: "start" });
     analytics();
 
 }
