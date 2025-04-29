@@ -112,7 +112,6 @@
 }
 .tool-container #btn-change {
   background-color: #E4E3F3;
-  float: right;
 }
 .tool-container .btn-primary {
   border-radius: 25px;
@@ -145,14 +144,21 @@
 }
 @media screen and (max-width: 479px) {
   .tool-container .btn-navigation {
-    display: flex;
-    flex-direction: column;
+    display: block;
+  }
+  .tool-container .btn-navigation::after {
+    clear: both;
   }
   .tool-container #btn-next {
     order: 1;
   }
   .tool-container #btn-previous {
     order: 2;
+  }
+  .tool-container #btn-change {
+    margin: 20px 0px;
+    clear: both;
+    display: block;
   }
   .tool-container .btn-nav {
     border-radius: 25px !important;
@@ -161,14 +167,25 @@
     display: block;
   }
 }
+@media screen and (min-width: 768px) {
+  .tool-container #btn-change {
+    float: right;
+  }
+}
 @media screen and (max-width: 767px) {
   .tool-container .btn-navigation {
     display: block;
   }
+  .tool-container .btn-navigation::after {
+    clear: both;
+  }
   .tool-container #btn-change {
-    margin-top: 20px;
+    margin: 20px 0px;
     clear: both;
     display: block;
+  }
+  .tool-container #changeAnswers {
+    position: relative;
   }
   .tool-container #changeAnswers::before {
     content: "▲";
@@ -177,6 +194,9 @@
     top: -25px;
     color: #E7E6F9;
     font-size: 2em;
+  }
+  .tool-container #changeAnswers::after {
+    clear: both;
   }
 }
 .tool-container #btn-next {
