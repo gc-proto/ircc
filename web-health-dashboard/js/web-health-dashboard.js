@@ -11,7 +11,7 @@ let dict = {
         latestData: "Latest data",
         dateRange: ["month", "quarter"],
         difference: ["increase from last ", "decrease from last ", ""],
-        unknown:"unknown",
+        unknown: "unknown",
 
     },
     fr: {
@@ -25,6 +25,8 @@ let dict = {
     }
 
 }
+
+
 
 if (lang === "en") {
     locale = d3.formatDefaultLocale({
@@ -140,6 +142,8 @@ $(document).on("wb-ready.wb", function (event) {
     document.getElementById("dateModified").innerHTML = dateModified;
 
 
+
+
     d3.csv("csv/previous-data.txt?" + today, function (data) {
 
         let previousData = data.map(function (d) { return d["Previous"] })
@@ -216,6 +220,7 @@ $(document).on("wb-ready.wb", function (event) {
 
         return table;
     }
+
 
     runData();
 
@@ -1265,7 +1270,7 @@ $(document).on("wb-ready.wb", function (event) {
             else {
                 let tempMonth = parseInt(lastMonth.split("-")[1]) - 1;
                 if (tempMonth < 10) tempMonth = "0" + tempMonth.toString();
-                
+
                 modPath = path.split(lastMonth)[0] + lastMonth.split("-")[0] + "-" + tempMonth;
             }
             d3.csv(modPath + "/tss-highest-performing.csv?" + today, function (data2) {
@@ -1276,22 +1281,23 @@ $(document).on("wb-ready.wb", function (event) {
                     }
                     return true;
                 });
-                
-                if (data2 != null) {
-                data2.forEach(function (d) {
-                    d["TSS completion - previous month"] = Math.round(d["TSS completion"] * 100);                  
-                    delete d["TSS completion"];
-                    delete d["TSS ease"];
-                    delete d["TSS satisfaction"];
-                    delete d["Surveys completed"];
-                    delete d["Task"];
-                    delete d[""];
-                });         
 
-                for (let i = 0; i<data2.length; i++) {
-                    if (data2[i]["TSS completion - previous month"]){
-                    data[i]["TSS completion - previous month"] = data2[i]["TSS completion - previous month"];}
-                }       
+                if (data2 != null) {
+                    data2.forEach(function (d) {
+                        d["TSS completion - previous month"] = Math.round(d["TSS completion"] * 100);
+                        delete d["TSS completion"];
+                        delete d["TSS ease"];
+                        delete d["TSS satisfaction"];
+                        delete d["Surveys completed"];
+                        delete d["Task"];
+                        delete d[""];
+                    });
+
+                    for (let i = 0; i < data2.length; i++) {
+                        if (data2[i]["TSS completion - previous month"]) {
+                            data[i]["TSS completion - previous month"] = data2[i]["TSS completion - previous month"];
+                        }
+                    }
                 }
 
                 data = data.filter(function (d) {
@@ -1417,8 +1423,8 @@ $(document).on("wb-ready.wb", function (event) {
                         }
                         else d["diff"] = `<span class="badge mrgn-lft-md">${dict[lang].unknown}</span>`
                     }
-                   
-                    
+
+
                     d["TSS completion"] = Math.round(d["TSS completion"] * 100);
                     d["TSS ease"] = Math.round(d["TSS ease"] * 100);
                     d["TSS satisfaction"] = Math.round(d["TSS satisfaction"] * 100);
@@ -1431,12 +1437,12 @@ $(document).on("wb-ready.wb", function (event) {
 
                 for (var i = 1; i < document.getElementById("tss-top-tasks-table").rows.length; i++) {
                     let rowCells = document.getElementById("tss-top-tasks-table").rows[i].cells.length - 1;
-                    for (var j = 1; j < rowCells; j++) {    
-                        
+                    for (var j = 1; j < rowCells; j++) {
+
                         document.getElementById("tss-top-tasks-table").rows[i].cells[j].style.backgroundColor = getColor(document.getElementById("tss-top-tasks-table").rows[i].cells[j].innerHTML);
                         document.getElementById("tss-top-tasks-table").rows[i].cells[j].innerHTML += "%";
 
-                        if ((j===1) && (data2 != null)) document.getElementById('tss-top-tasks-table').rows[i].cells[j].innerHTML += data[i-1]["diff"]
+                        if ((j === 1) && (data2 != null)) document.getElementById('tss-top-tasks-table').rows[i].cells[j].innerHTML += data[i - 1]["diff"]
                     }
                 }
 
@@ -1592,30 +1598,236 @@ $(document).on("wb-ready.wb", function (event) {
                 document.getElementById('news-date').innerHTML = formatDateRage(d["Date"].replace(/_/g, ",").split(" - "));
             })
         });
-        d3.csv(path + "news.csv?" + today, function (data) {
 
-            data = data.filter(function (d) {
-                if (d["Page URL"].length == 0) {
-                    return false;
-                }
-                return true;
-            });
-            data.forEach(function (d) {
-                d["Page URL"] = d["Page URL"];
-                d["News release"] = d["News release"];
-                d["Visits"] = d["Visits"];
-            });
+        if (fileExists(path + "news-en.csv")) {
 
-            let label = lang === "en" ? "Top newsroom products" : "Articles de la salle de presse les plus performantes";
-            let colheaders = {
-                en: ['IRCC news', 'Visits'],
-                fr: ['Article', 'Visites']
-            }
+            document.querySelector('.btn-news-group').classList.remove("hidden");
+            document.querySelector('#updated-newsreleases').classList.remove("hidden");
+            document.querySelector('#message-nr').classList.add("hidden");
+            document.querySelector('#message-statements').classList.add("hidden");
+            document.querySelector('#newsroom-count').classList.add("hidden");
+            document.querySelector('#updated-statements').classList.remove("hidden");
+            document.querySelector('#newsroom-count').classList.add("hidden");
+            document.querySelector('#total-newsroom-table').classList.remove("hidden");
 
-            tabulate("news-table", data, label, colheaders);
-            addURLs("news-table", data, "News release");
-            $("#news-table").trigger("wb-init.gc-table");
-        });
+            d3.csv(path + "newstypes-en.csv?" + today,
+                function (data) {
+
+
+                    data = data.filter(function (d) {
+                        if (d["Visits"].length == 0) {
+                            return false;
+                        }
+                        return true;
+                    });
+                    let sum = d3.sum(data.map(function (d) { return d["Visits"] }));
+                    data.forEach(function (d) {
+
+                        d["Visits"] = d["Visits"];
+                        if (lang === "fr") {
+                            switch (d["News product"]) {
+                                case "News releases (E/F)":
+                                    d["Type"] = "Communiqués de presse";
+                                    break;
+                                case "Backgrounders (E/F)":
+                                    d["Type"] = "Documents d'information";
+                                    break;
+                                case "Web notices (E/F)":
+                                    d["Type"] = "Avis";
+                                    break;
+                                case "Statements (E/F)":
+                                    d["Type"] = "Déclarations";
+                                    break;
+                                case "Media advisories (E/F)":
+                                    d["Type"] = "Avis aux médias";
+                                    break;
+                                case "Speeches (E/F)":
+                                    d["Type"] = "Discours";
+                                    break;
+                                case "Readouts (E/F)":
+                                    d["Type"] = "Comptes rendu";
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        else {
+                            d["Type"] = d["News product"].replace(" (E/F)", "");
+                        }
+                    });
+                    
+                    console.log(sum, data, typeof data);
+
+
+
+                    let label = lang === "en" ? "Total traffic to the newsroom" : "Total du trafic vers la salle de presse";
+                    let colheaders = {
+                        en: ['Type', 'Visits'],
+                        fr: ['Type', 'Visites']
+                    }
+
+                    tabulate("total-newsroom-table", data, label, colheaders);
+
+                    let t = document.getElementById("total-newsroom-table");
+                    let tf = t.createTFoot();
+                    let r = tf.insertRow(0);
+
+                    let c1 = r.insertCell(0);
+                    let c2 = r.insertCell(1);
+
+                    c1.innerHTML = `<strong>Total</strong>`;
+                    c2.innerHTML = `<strong>${d3.format(",")(sum)}</strong>`;
+
+                });
+
+            d3.csv(path + "news-en.csv?" + today,
+                function (data) {
+
+
+                    data = data.filter(function (d) {
+                        if (d["Page URL"].length == 0) {
+                            return false;
+                        }
+                        return true;
+                    });
+                    data.forEach(function (d) {
+                        d["Page URL"] = d["Page URL"];
+                        d["Visits"] = d["Visits"];
+                    });
+
+
+                    let label = lang === "en" ? "Top newsroom products" : "Articles de la salle de presse les plus performantes";
+                    let colheaders = {
+                        en: ['Page URL', 'Visits'],
+                        fr: ['URL', 'Visites']
+                    }
+
+                    tabulate("news-en-table", data, label, colheaders);
+                    addURLs("news-en-table", data, "Page title");
+                    $("#news-en-table").trigger("wb-init.gc-table");
+                });
+            d3.csv(path + "news-fr.csv?" + today,
+                function (data) {
+
+
+                    data = data.filter(function (d) {
+                        if (d["Page URL"].length == 0) {
+                            return false;
+                        }
+                        return true;
+                    });
+                    data.forEach(function (d) {
+                        d["Page URL"] = d["Page URL"];
+                        d["Visits"] = d["Visits"];
+                    });
+
+                    let label = lang === "en" ? "Top newsroom products" : "Articles de la salle de presse les plus performants";
+                    let colheaders = {
+                        en: ['Page URL', 'Visits'],
+                        fr: ['URL', 'Visites']
+                    }
+
+                    tabulate("news-fr-table", data, label, colheaders);
+                    addURLs("news-fr-table", data, "Page title");
+                    $("#news-fr-table").trigger("wb-init.gc-table");
+                });
+
+            d3.csv(path + "newsreleases.csv?" + today,
+                function (data) {
+
+
+                    data = data.filter(function (d) {
+                        if (d["Page URL"].length == 0) {
+                            return false;
+                        }
+                        return true;
+                    });
+                    data.forEach(function (d) {
+                        d["Page URL"] = d["Page URL"];
+                        d["Visits"] = d["Visits"];
+                        d["News release"] = d["News release"];
+                    });
+
+                    let label = lang === "en" ? "Top news releases" : "Communiqués de presse les plus performants";
+                    let colheaders = {
+                        en: ['News releases', 'Visits'],
+                        fr: ['Communiqué de presses', 'Visites']
+                    }
+
+                    tabulate("newsreleases-table", data, label, colheaders);
+                    addURLs("newsreleases-table", data, "News release");
+                    $("#newsreleases-table").trigger("wb-init.gc-table");
+                });
+            d3.csv(path + "statements.csv?" + today,
+                function (data) {
+
+
+                    data = data.filter(function (d) {
+                        if (d["Page URL"].length == 0) {
+                            return false;
+                        }
+                        return true;
+                    });
+                    data.forEach(function (d) {
+                        d["Page URL"] = d["Page URL"];
+                        d["Visits"] = d["Visits"];
+                        d["Statements"] = d["Statements"];
+                    });
+
+                    console.log(data);
+
+                    let label = lang === "en" ? "Top statements" : "Déclarations les plus performantes";
+                    let colheaders = {
+                        en: ['Statements', 'Visits'],
+                        fr: ['Déclarations', 'Visites']
+                    }
+
+                    tabulate("statements-table", data, label, colheaders);
+                    addURLs("statements-table", data, "Statements");
+                    $("#statements-table").trigger("wb-init.gc-table");
+                });
+        }
+        else {
+            document.querySelector('.btn-news-group').classList.add("hidden");
+            document.querySelector('#news-french').classList.add("hidden");
+            document.querySelector('#updated-newsreleases').classList.add("hidden");
+            document.querySelector('#updated-statements').classList.add("hidden");
+            document.querySelector('#message-nr').classList.remove("hidden");
+            document.querySelector('#message-statements').classList.remove("hidden");
+            document.querySelector('#newsroom-count').classList.remove("hidden");
+            document.querySelector('#total-newsroom-table').classList.add("hidden");
+
+            d3.csv(path + "news.csv?" + today,
+                function (data) {
+
+
+                    data = data.filter(function (d) {
+                        if (d["Page URL"].length == 0) {
+                            return false;
+                        }
+                        return true;
+                    });
+                    data.forEach(function (d) {
+                        d["Page URL"] = d["Page URL"];
+                        d["News release"] = d["News release"];
+                        d["Visits"] = d["Visits"];
+                    });
+
+                    let label = lang === "en" ? "Top newsroom products" : "Articles de la salle de presse les plus performants";
+                    let colheaders = {
+                        en: ['IRCC news', 'Visits'],
+                        fr: ['Article', 'Visites']
+                    }
+
+                    tabulate("news-en-table", data, label, colheaders);
+                    addURLs("news-en-table", data, "News release");
+                    $("#news-en-table").trigger("wb-init.gc-table");
+                });
+        }
+
+
+
+
         d3.csv(path + "webnotice.csv?" + today, function (data) {
 
             data = data.filter(function (d) {
@@ -1644,6 +1856,17 @@ $(document).on("wb-ready.wb", function (event) {
                 document.getElementById('news-date').innerHTML = formatDateRage(d["Date"].replace(/_/g, ",").split(" - "));
             })
         });
+
+        if (fileExists(path + "special-measure-content.csv")) {
+            document.getElementById('special-measures-count').classList.remove('hidden');
+            d3.csv(path + "special-measure-content.csv?" + today, function (data) {
+                let totalSpecialMeasures = (data.map(function (d) { return d["Visits"]; }))[0]
+                document.getElementById("total-specialmeasures").innerHTML = formatNumber(totalSpecialMeasures);
+            });
+        }
+        else {
+            document.getElementById('special-measures-count').classList.add('hidden');
+        }
 
         d3.csv(path + "crisis.txt?" + today, function (data) {
             data.forEach(function (d, i) {
@@ -2146,10 +2369,10 @@ $(document).on("wb-ready.wb", function (event) {
         let val = `<span class="badge mrgn-lft-md">${dict[lang].unknown}</span>`;
         if (percentDif != 0) {
             if (a > b) {
-                val = lang === "en" ? '<span class="badge mrgn-lft-md"><i class="fas fa-caret-up fa-1x"></i>&nbsp;' + d3.format(",")(percentDif) + dict[lang].percent  + '</span>': '<span class="badge mrgn-lft-md"><i class="fas fa-caret-up fa-1x"></i>&nbsp;' + d3.format(",")(percentDif) + "&nbsp;%</span>";
+                val = lang === "en" ? '<span class="badge mrgn-lft-md"><i class="fas fa-caret-up fa-1x"></i>&nbsp;' + d3.format(",")(percentDif) + dict[lang].percent + '</span>' : '<span class="badge mrgn-lft-md"><i class="fas fa-caret-up fa-1x"></i>&nbsp;' + d3.format(",")(percentDif) + "&nbsp;%</span>";
             }
             else if (a < b) {
-                val = lang === "en" ? '<span class="badge mrgn-lft-md"><i class="fas fa-caret-down fa-1x"></i>&nbsp;' + d3.format(",")(percentDif) + dict[lang].percent  + '</span>': '<span class="badge mrgn-lft-md"><i class="fas fa-caret-down fa-1x"></i>&nbsp;' + d3.format(",")(percentDif) + "&nbsp;%</span>";
+                val = lang === "en" ? '<span class="badge mrgn-lft-md"><i class="fas fa-caret-down fa-1x"></i>&nbsp;' + d3.format(",")(percentDif) + dict[lang].percent + '</span>' : '<span class="badge mrgn-lft-md"><i class="fas fa-caret-down fa-1x"></i>&nbsp;' + d3.format(",")(percentDif) + "&nbsp;%</span>";
             }
         }
         else {
@@ -2241,3 +2464,10 @@ $("#anchors").change(function () {
     link.setAttribute('href', "#" + anchor);
     link.click();
 });
+
+function fileExists(url) {
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    return http.status != 404;
+}

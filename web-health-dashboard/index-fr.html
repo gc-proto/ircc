@@ -10,7 +10,7 @@
     <meta name="keywords" content="data">
     <meta name="author" content="IRCC">
     <meta name="dcterms.title" content="Tableau de bord de la santé web d’IRCC">
-    <meta property="dcterms:modified" title="W3CDTF" content="2025-03-10" />
+    <meta property="dcterms:modified" title="W3CDTF" content="2025-04-09" />
 
 
     <title>Tableau de bord de la santé web d’IRCC — Canada.ca</title>
@@ -187,20 +187,20 @@
                                                 <details>
                                                     <summary>Thème</summary>
                                                     <div class="btn-group btn-group-lang">
-                                                    <button class="btn btn-default btn-topic-french active" type="button" data-wb-doaction='[
+                                                        <button class="btn btn-default btn-topic-french active" type="button" data-wb-doaction='[
                                                     {"action":"addClass", "class":"hidden", "source":"#topic-english"},
                                                     {"action":"removeClass", "class":"hidden", "source":"#topic-french"},
                                                     {"action":"removeClass", "class":"active", "source":".btn-topic-english"},
                                                     {"action":"addClass", "class":"active", "source":".btn-topic-french"}
                                                 ]'>Français</button>
-                                                    <button class="btn btn-default btn-topic-english " type="button" data-wb-doaction='[
+                                                        <button class="btn btn-default btn-topic-english " type="button" data-wb-doaction='[
                                                 {"action":"removeClass", "class":"hidden", "source":"#topic-english"},
                                                 {"action":"addClass", "class":"hidden", "source":"#topic-french"},
                                                 {"action":"addClass", "class":"active", "source":".btn-topic-english"},
                                                 {"action":"removeClass", "class":"active", "source":".btn-topic-french"}
                                             ]'>Anglais</button>
 
-                                        </div>
+                                                    </div>
                                                     <div id="topic-french">
                                                         <canvas id="top-topic-chart-fr"></canvas>
                                                         <details>
@@ -534,19 +534,67 @@
                                     <div class="col-md-8 col-xs-12">
                                         <div class="wb-tabs">
                                             <div class="tabpanels">
+                                                <details>
+                                                    <summary>Trafic</summary>
+                                                    <div id="newsroom-count">Aucune données pour ces dates</div>
+                                                <div class="mrgn-bttm-lg mrgn-tp-lg">
+                                                    <div class="table-responsive">
+                                                        <table id="total-newsroom-table" class="table table-bordered">
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </details>
 
                                                 <details>
                                                     <summary>Salle de presse</summary>
-                                                    <div class="table-responsive">
-                                                        <table id="news-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
-                                                        </table>
+                                                    <div class="btn-group btn-group-lang mrgn-bttm-md btn-news-group">
+                                                        <button class="btn btn-default btn-news-french active" type="button" data-wb-doaction='[
+                                                    {"action":"addClass", "class":"hidden", "source":"#news-english"},
+                                                    {"action":"removeClass", "class":"hidden", "source":"#news-french"},
+                                                    {"action":"removeClass", "class":"active", "source":".btn-news-english"},
+                                                    {"action":"addClass", "class":"active", "source":".btn-news-french"}
+                                                ]'>Français</button>
+                                                        <button class="btn btn-default btn-news-english " type="button" data-wb-doaction='[
+                                                {"action":"removeClass", "class":"hidden", "source":"#news-english"},
+                                                {"action":"addClass", "class":"hidden", "source":"#news-french"},
+                                                {"action":"addClass", "class":"active", "source":".btn-news-english"},
+                                                {"action":"removeClass", "class":"active", "source":".btn-news-french"}
+                                            ]'>Anglais</button>
+
+                                                    </div>
+
+                                                    <div id="news-french">
+                                                        <div class="table-responsive">
+                                                            <table id="news-fr-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div id="news-english" class="hidden">
+                                                        <div class="table-responsive">
+                                                            <table id="news-en-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                </details>
+                                                <details>
+                                                    <summary>Communiqués de presse</summary>
+                                                    <div id="message-nr">Aucune données pour ces dates</div>
+                                                    <div class="table-responsive" id="updated-newsreleases">
+                                                        <table id="newsreleases-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
+                                                    </div>
+                                                </details>
+                                                <details>
+                                                    <summary>Déclarations</summary>
+                                                    <div id="message-statements">Aucune données pour ces dates</div>
+                                                    <div class="table-responsive" id="updated-statements">
+                                                        <table id="statements-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                     </div>
                                                 </details>
                                                 <details>
                                                     <summary>Avis</summary>
                                                     <div class="table-responsive">
-                                                        <table id="notices-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
-                                                        </table>
+                                                        <table id="notices-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'></table>
                                                     </div>
                                                 </details>
                                             </div>
@@ -578,9 +626,13 @@
                                     <div class="col-md-8 col-xs-12">
                                         <div class="wb-tabs">
                                             <div class="tabpanels">
-
+                                               
                                                 <details>
                                                     <summary>Contenu des mesures spéciales les plus performantes</summary>
+                                                    <div id="special-measures-count" class="mrgn-bttm-lg mrgn-tp-lg">
+                                                        <p class="mrgn-tp-sm h4"><strong>Total du trafic au contenu de mesure spéciale:</strong> <span id="total-specialmeasures"></span></p>
+                                                        
+                                                    </div>
                                                     <div class="table-responsive">
                                                         <table id="crisis-content-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
                                                         </table>
@@ -590,7 +642,7 @@
                                                     <summary>Trafic au mesures spéciales</summary>
                                                     <canvas id="crisis-traffic-chart"></canvas>
                                                     <details>
-                                                        <summary>Version texte&nbsp;: Trafic au mesures spéciales</summary>
+                                                        <summary>Version texte&nbsp;: trafic au mesures spéciales</summary>
 
                                                         <div class="table-responsive">
                                                             <table id="crisis-traffic-table" class="table table-bordered" data-wb-tables='{"order": [[1, "desc"]], "lengthMenu": [5, 10]}'>
