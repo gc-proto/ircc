@@ -299,11 +299,13 @@ table.dataTable thead button {
   position: relative;
 }
 
-.result details, .legal-disclaimer details {
+.result details,
+.legal-disclaimer details {
   border: 3px solid #ddd !important;
   border-radius: 25px !important;
 }
-.result details:not([open]) summary, .legal-disclaimer details:not([open]) summary {
+.result details:not([open]) summary,
+.legal-disclaimer details:not([open]) summary {
   border-radius: 25px !important;
   background-color: #fff;
   color: #333 !important;
@@ -311,12 +313,14 @@ table.dataTable thead button {
   padding: 15px 25px;
   font-weight: normal !important;
 }
-.result details[open], .legal-disclaimer details[open] {
+.result details[open],
+.legal-disclaimer details[open] {
   margin-bottom: 15px;
   background-color: #fff;
   border-radius: 25px !important;
 }
-.result details[open] summary, .legal-disclaimer details[open] summary {
+.result details[open] summary,
+.legal-disclaimer details[open] summary {
   padding: 15px 25px;
   color: #333 !important;
   border-radius: 25px !important;
@@ -327,49 +331,60 @@ table.dataTable thead button {
   font-weight: bold !important;
   margin-bottom: 15px;
 }
-.result details summary::-webkit-details-marker, .result details summary::marker, .legal-disclaimer details summary::-webkit-details-marker, .legal-disclaimer details summary::marker {
+.result details summary::-webkit-details-marker, .result details summary::marker,
+.legal-disclaimer details summary::-webkit-details-marker,
+.legal-disclaimer details summary::marker {
   display: none !important;
 }
-.result details[open] summary .item1::before, .legal-disclaimer details[open] summary .item1::before {
+.result details[open] summary .item1::before,
+.legal-disclaimer details[open] summary .item1::before {
   content: "-" !important;
   font-size: 1.8em;
   margin: -5px 10px;
   font-weight: bold;
 }
-.result details:not([open]) summary .item1::before, .legal-disclaimer details:not([open]) summary .item1::before {
+.result details:not([open]) summary .item1::before,
+.legal-disclaimer details:not([open]) summary .item1::before {
   content: "+" !important;
   font-size: 1.5em;
   margin-right: 10px;
   font-weight: bold;
 }
-.result summary, .legal-disclaimer summary {
+.result summary,
+.legal-disclaimer summary {
   display: flex !important;
   flex-direction: row;
   text-decoration: none !important;
 }
-.result summary .flex-item, .legal-disclaimer summary .flex-item {
+.result summary .flex-item,
+.legal-disclaimer summary .flex-item {
   display: flex;
   flex-grow: 0;
 }
-.result summary .flex-item.item1, .legal-disclaimer summary .flex-item.item1 {
+.result summary .flex-item.item1,
+.legal-disclaimer summary .flex-item.item1 {
   order: 2;
   margin-left: 15px;
 }
-.result summary .flex-item.item2, .legal-disclaimer summary .flex-item.item2 {
+.result summary .flex-item.item2,
+.legal-disclaimer summary .flex-item.item2 {
   flex-direction: column;
   align-items: stretch;
   flex-grow: 1;
 }
-.result summary .flex-item.item2 .nested-item, .legal-disclaimer summary .flex-item.item2 .nested-item {
+.result summary .flex-item.item2 .nested-item,
+.legal-disclaimer summary .flex-item.item2 .nested-item {
   flex-grow: 1;
   display: flex;
 }
 @media screen and (max-width: 1000px) {
-  .result summary .flex-item.item2 .nested-item, .legal-disclaimer summary .flex-item.item2 .nested-item {
+  .result summary .flex-item.item2 .nested-item,
+  .legal-disclaimer summary .flex-item.item2 .nested-item {
     display: block;
   }
 }
-.result summary .flex-item.item2 .nested-item1, .legal-disclaimer summary .flex-item.item2 .nested-item1 {
+.result summary .flex-item.item2 .nested-item1,
+.legal-disclaimer summary .flex-item.item2 .nested-item1 {
   display: block;
 }
 
@@ -439,4 +454,169 @@ table.dataTable thead button {
 .banner {
   background: linear-gradient(90deg, #E4E3F3 0%, rgba(240, 249, 248, 0) 75%);
   padding: 20px 0;
+}
+
+[role=listbox] {
+  padding: 0;
+  min-height: 18em;
+  border: 1px solid #ccc;
+  background: white;
+}
+
+[role=listbox]#ss_elem_list {
+  position: relative;
+  max-height: 18em;
+  overflow-y: auto;
+}
+
+[role=group] {
+  margin: 0;
+  padding: 0;
+}
+
+[role=group] > [role=presentation] {
+  display: block;
+}
+
+[role=option] {
+  position: relative;
+  display: block;
+  padding: 2px 1em 2px 1.5em;
+  line-height: 1.8em;
+  cursor: pointer;
+}
+
+[role=listbox]:focus [role=option].focused,
+[role=option]:hover {
+  background-color: #f3f3f3;
+}
+
+.move-right-btn span.checkmark::after {
+  content: " →";
+}
+
+.move-left-btn span.checkmark::before {
+  content: "← ";
+}
+
+[role=option][aria-selected=true] span.checkmark::before {
+  position: absolute;
+  left: 0.5em;
+  content: "✓";
+}
+
+button[aria-haspopup=listbox] {
+  position: relative;
+  padding: 5px 10px;
+  width: 150px;
+  border-radius: 0;
+  text-align: left;
+}
+
+button[aria-haspopup=listbox]::after {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-top-color: currentcolor;
+  border-bottom: 0;
+  content: "";
+}
+
+button[aria-haspopup=listbox][aria-expanded=true]::after {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-top: 0;
+  border-bottom-color: currentcolor;
+  content: "";
+}
+
+button[aria-haspopup=listbox] + [role=listbox] {
+  position: absolute;
+  margin: 0;
+  width: 9.5em;
+  max-height: 10em;
+  border-top: 0;
+  overflow-y: auto;
+}
+
+[role=toolbar] {
+  display: flex;
+}
+
+[role=toolbar] > * {
+  border: 1px solid #aaa;
+  background: #ccc;
+}
+
+[role=toolbar] > [aria-disabled=false]:focus {
+  background-color: #eee;
+}
+
+button {
+  font-size: inherit;
+}
+
+button[aria-disabled=true] {
+  opacity: 0.5;
+}
+
+#lb-filter {
+  width: calc(98% - 30px);
+  margin: 10px 2.5%;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+
+input[type=search]::-webkit-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+}
+
+#ss_elem_list {
+  padding-top: 50px;
+}
+
+#lb-dropdown-inpt {
+  display: block;
+  text-align: left;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 16px;
+  color: rgb(85, 85, 85);
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+#lb-dropdown-inpt.focus {
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+#lb-dropdown-inpt:not(.opened):after {
+  content: "▼";
+  padding-right: 10px;
+  float: right;
+}
+
+#lb-dropdown-inpt.opened:after {
+  content: "▲";
+  padding-right: 10px;
+  float: right;
+}
+
+#lb-dropdown-inpt.opened {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }/*# sourceMappingURL=styles-v9.css.map */
