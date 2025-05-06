@@ -411,12 +411,13 @@ Array.prototype.forEach.call(lbSelect.children, child => {
 
 
 lbBtn.onclick = function () {
-    lbBtn.classList.toggle("opened");
-    openDropdown();
     if (!lbBtn.classList.contains("opened")) {
         document.getElementById('lb-filter').value = "";
         filterFunction();
     }
+    
+    lbBtn.classList.toggle("opened");
+    openDropdown();
 }
 function openDropdown() {
     document.getElementById("listbox").classList.toggle("hidden");
