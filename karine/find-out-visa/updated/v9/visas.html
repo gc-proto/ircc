@@ -104,7 +104,7 @@
               </ul>
             </fieldset>
 
-            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question" id="question-passport_code">
+            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-passport_code">
               <legend>Select the country or territory code that matches the one on your passport</legend>
               <div class="row table-information mrgn-bttm-lg d-sm-flex align-items-center">
                 <div class="col-md-2 col-sm-4"><img src="https://ircc.canada.ca/english/visit/images/passport-country-gbr-large.jpg" alt="Sample passport information page highlighting three letter country code" class="img-responsive mrgn-rght-md"></div>
@@ -132,7 +132,7 @@
                       <button id="lb-dropdown-inpt">Make a selection</button>
                       <div class="clearfix"></div>
                       <div id="listbox" class="position-relative hidden">
-                        <div><input type="search" results placeholder="Filter" id="lb-filter" onkeyup="filterFunction()" class="form-control full-width closed"></div>
+                        <div class="lb-filter-container"><input type="search" results placeholder="Filter" id="lb-filter" onkeyup="filterFunction()" class="form-control full-width closed"></div>
                         <ul id="ss_elem_list" tabindex="0" role="listbox" aria-labelledby="ss_elem">
                           <li role="option" id="AFG">Afghanistan (AFG)</li>
                           <li role="option" id="ALB">Albania (ALB)</li>
