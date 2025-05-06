@@ -281,8 +281,8 @@ function handlePreviousClick(changeAnswer) {
     if (document.getElementById('errors-' + form.id)) document.getElementById('errors-' + form.id).remove();
     if (changeAnswersContainer.querySelector('dl')) {
         changeAnswersContainer.classList.add('hidden');
-        
-    changeAnswersContainer.querySelector('dl').remove();
+
+        changeAnswersContainer.querySelector('dl').remove();
     }
     // changeAnswersContainer.innerHTML = "";
 
@@ -370,20 +370,11 @@ function analytics() {
 // });
 
 $("#passport-selection-change").on("click", function () {
-    // passportCodeTable.classList.remove('hidden');
-    clearPassportTable();
+
+    document.getElementById('lb-dropdown-inpt').innerHTML = "Make a selection...";
+    document.getElementById('passport-code-selection').classList.add('hidden');
 
 });
-
-function clearPassportTable() {
-    // passportCodeSelectionParent.classList.add('hidden');
-    // $("td.active").removeClass('active');
-    // document.getElementById("question-passport_code").querySelector('input[type=search]').value = "";
-    // document.getElementById("question-passport_code").querySelector('input[type=search]').focus;
-    // let dtable = new DataTable(document.querySelector('#passport_code_table'));
-    // dtable.search("").draw()
-}
-
 
 // Testing analytics
 $("[data-gc-analytics-customclick]").on("click", function () {
@@ -400,46 +391,55 @@ let lbSelect = document.getElementById('ss_elem_list');
 let lbOptions = lbSelect.getElementsByTagName('li');
 
 Array.prototype.forEach.call(lbSelect.children, child => {
-    child.addEventListener("click", function(){
+    child.addEventListener("click", function () {
         code = child.id;
         traveller_type = data["question-passport_code"][code].trim();
         document.getElementById('passport-selection-track').value = traveller_type;
-    
+
         passportCodeSelection.innerHTML = child.innerHTML;
         document.getElementById('lb-dropdown-inpt').innerHTML = child.innerHTML;
         passportCodeSelection.setAttribute('data-passport-code', code.trim());
         passportCodeSelectionParent.classList.remove('hidden');
         $("td.active").removeClass('active');
         this.parentElement.classList.add('active');
-    
+
         passportCodeSelectionParent.querySelector("p").focus();
         document.getElementById("listbox").classList.add("hidden");
         lbBtn.classList.toggle("opened");
     })
-  });
+});
 
 
-lbBtn.onclick = function(){
+lbBtn.onclick = function () {
     lbBtn.classList.toggle("opened");
     openDropdown();
+    if (!lbBtn.classList.contains("opened")) {
+        document.getElementById('lb-filter').value = "";
+        filterFunction();
+    }
 }
 function openDropdown() {
     document.getElementById("listbox").classList.toggle("hidden");
-  }
+    for (let i = 0; i < lbOptions.length; i++) {
+        lbOptions[i].removeAttribute('aria-selected');
+        lbOptions[i].classList.remove('focused');
+    }
+    lbSelect.focus();
+}
 
-  function filterFunction() {
+function filterFunction() {
     const input = document.getElementById("lb-filter");
     const filter = input.value.toUpperCase();
     const div = document.getElementById("listbox");
     const a = div.getElementsByTagName("li");
     for (let i = 0; i < a.length; i++) {
-      txtValue = a[i].textContent || a[i].innerText;
-      if (a[i].id != "lb-filter-li") {
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          a[i].style.display = "";
-        } else {
-          a[i].style.display = "none";
+        txtValue = a[i].textContent || a[i].innerText;
+        if (a[i].value != "lb-filter-li") {
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "";
+            } else {
+                a[i].style.display = "none";
+            }
         }
-      }
     }
-  }
+}

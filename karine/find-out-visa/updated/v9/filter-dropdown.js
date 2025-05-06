@@ -1,4 +1,4 @@
-
+let test;
 /*
  *   This content is licensed according to the W3C Software License at
  *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
@@ -712,4 +712,5 @@ var aria = aria || {};
 
 window.addEventListener('load', function () {
   new aria.Listbox(document.getElementById('ss_elem_list'));
+  test = new aria.Listbox(document.getElementById('ss_elem_list'));
 });
