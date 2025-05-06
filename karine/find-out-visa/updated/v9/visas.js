@@ -302,7 +302,7 @@ function handlePreviousClick(changeAnswer) {
     }
 
     if (previousQuestion.id === "question-passport_code") {
-        clearPassportTable();
+        // clearPassportTable();
     }
 
 
