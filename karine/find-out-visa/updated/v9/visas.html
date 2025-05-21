@@ -7,7 +7,7 @@
   <meta charset="utf-8">
 
   <!-- CONFIGURATIONS START HERE -->
-  <title>Find out if you need a visa or eTA to travel to Canada - Canada.ca</title>
+  <title>Check if you need a visa or eTA to travel to Canada - Canada.ca</title>
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <script id="pageConstants">
@@ -42,7 +42,7 @@
       <div class="container">
         <div id="intro" class="row"></div>
         <div class="col-md-8">
-          <h1 property="name" id="wb-cont" dir="ltr">Find out if you need a visa or eTA to travel to Canada</h1>
+          <h1 property="name" id="wb-cont" dir="ltr">Check if you need a visa or eTA to travel to Canada</h1>
 
           <p class="lead mrgn-tp-md">Everyone needs something to travel to Canada: an electronic travel authorization (eTA), a visitor visa, or just a passport.</p>
         </div>
@@ -55,21 +55,31 @@
 
         <div class="wb-frmvld">
           <form id="find-out-form" class="gc-font-2019" data-gc-analytics-formname="IRCC:Find out if you need a visa" data-gc-analytics-collect='[{"value":"select, input", "emptyField": "Any"}]'>
-            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question " id="question-canadian_citizen">
-              <legend>Are you a Canadian citizen or permanent resident of Canada?</legend>
+
+
+            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question" id="question-travel">
+              <legend>How do you plan to travel to Canada?</legend>
               <ul class="list-unstyled lst-spcd-2">
-                <li class="radio"><input value="unknown" name="canadian_citizen" type="radio" id="canadian_citizen-unknown"><label for="canadian_citizen-unknown">No, I’m not a Canadian citizen or permanent resident of Canada </label></li>
-                <li class="radio"><input value="dual_citizen" name="canadian_citizen" type="radio" id="canadian_citizen-dual_citizen" required><label for="canadian_citizen-dual_citizen">I’m a dual Canadian citizen (a citizen of Canada and another country)</label></li>
-                <li class="radio"><input value="canadian_citizen" name="canadian_citizen" type="radio" id="canadian_citizen-canadian_cit"><label for="canadian_citizen-canadian_cit">I’m a Canadian citizen or Canadian permanent resident</label></li>
+                <li class="radio"><input value="air" name="travel" type="radio" id="travel-air" required><label for="travel-air">By air, arriving at a Canadian airport</label></li>
+                <li class="radio"><input value="land_sea" name="travel" type="radio" id="travel-land_sea"><label for="travel-land_sea">By car, train, bus or boat (including cruise ship)</label></li>
               </ul>
             </fieldset>
 
-            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-traveller_type">
-              <legend>What kind of traveller are you?</legend>
+
+            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-canadian_citizen">
+              <legend>Are you a Canadian citizen or permanent resident of Canada?</legend>
               <ul class="list-unstyled lst-spcd-2">
-                <li class="radio"><input value="us_citizen" name="traveller_type" type="radio" id="traveller_type-us_citizen" required><label for="traveller_type-us_citizen">I’m a US citizen travelling with a US passport</label></li>
-                <li class="radio"><input value="uspr" name="traveller_type" type="radio" id="traveller_type-uspr"><label for="traveller_type-uspr">I’m a lawful permanent resident of the US with official proof of my status (like a green card) </label></li>
-                <li class="radio"><input value="unknown" name="traveller_type" type="radio" id="traveller_type-unknown"><label for="traveller_type-unknown">I’m a citizen or resident of another country or territory </label></li>
+                <li class="radio"><input value="unknown" name="canadian_citizen" type="radio" id="canadian_citizen-unknown"><label for="canadian_citizen-unknown">No, I’m not a Canadian citizen or permanent resident of Canada</label></li>
+                <li class="radio"><input value="dual_citizen" name="canadian_citizen" type="radio" id="canadian_citizen-dual_citizen"><label for="canadian_citizen-dual_citizen">I’m a dual Canadian citizen (a citizen of Canada and another country) </label></li>
+                <li class="radio"><input value="canadian_cit" name="canadian_citizen" type="radio" id="canadian_citizen-canadian_cit" required><label for="canadian_citizen-canadian_cit">I’m a Canadian citizen or permanent resident of Canada </label></li>
+              </ul>
+            </fieldset>
+
+            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-uspr">
+              <legend>Are you a lawful permanent resident of the US with official proof of your status (like a green card)?</legend>
+              <ul class="list-unstyled lst-spcd-2">
+                <li class="radio"><input value="yes_uspr" name="uspr" type="radio" id="uspr-yes_uspr" required><label for="uspr-yes_uspr">Yes</label></li>
+                <li class="radio"><input value="no_uspr" name="uspr" type="radio" id="uspr-no_uspr"><label for="uspr-no_uspr">No</label></li>
               </ul>
             </fieldset>
 
@@ -85,13 +95,6 @@
               </ul>
             </fieldset>
 
-            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel">
-              <legend>How do you plan to travel to Canada?</legend>
-              <ul class="list-unstyled lst-spcd-2">
-                <li class="radio"><input value="air" name="travel" type="radio" id="travel-air" required><label for="travel-air">By air, arriving at a Canadian airport</label></li>
-                <li class="radio"><input value="land_sea" name="travel" type="radio" id="travel-land_sea"><label for="travel-land_sea">By car, train, bus or boat (including cruise ship)</label></li>
-              </ul>
-            </fieldset>
 
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel_document">
               <legend>What travel document do you plan to use?</legend>
@@ -101,6 +104,7 @@
                 <li class="radio"><input value="other" name="travel_document" type="radio" id="travel_document-us_refugee"><label for="travel_document-us_refugee">Permit to re-enter the US (I-327)</label></li>
                 <li class="radio"><input value="other" name="travel_document" type="radio" id="travel_document-permit_reenter_us"><label for="travel_document-permit_reenter_us">US Refugee Travel Document (I-571)</label></li>
                 <li class="radio"><input value="other" name="travel_document" type="radio" id="travel_document-other_refugee"><label for="travel_document-other_refugee">Other refugee travel document for non-citizens</label></li>
+                <li class="radio"><input value="no_document" name="travel_document" type="radio" id="travel_document-no_document"><label for="travel_document-no_document">I don’t have a valid passport or travel document</label></li>
               </ul>
             </fieldset>
 
@@ -355,394 +359,434 @@
 
 
 
-        </fieldset>
+            </fieldset>
 
-        <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-nonimmigrant_visa">
-          <legend>Do you have one of these documents</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio"><input value="yes" name="nonimmigrant_visa" type="radio" id="nonimmigrant_visa-nonimmigrant" required><label for="nonimmigrant_visa-nonimmigrant">I have a valid US nonimmigrant visa</label></li>
-            <li class="radio"><input value="yes" name="nonimmigrant_visa" type="radio" id="nonimmigrant_visa-cadvisa"><label for="nonimmigrant_visa-cadvisa">I’ve had a Canadian visitor visa in the last 10 years </label></li>
-            <li class="radio"><input value="yes" name="nonimmigrant_visa" type="radio" id="nonimmigrant_visa-both"><label for="nonimmigrant_visa-both">Both: I have a valid US nonimmigrant visa and had a Canadian visitor visa in the last 10 years </label></li>
-            <li class="radio"><input value="no" name="nonimmigrant_visa" type="radio" id="nonimmigrant_visa-no"><label for="nonimmigrant_visa-no">No, I don’t have either of these documents </label></li>
-          </ul>
-        </fieldset>
-        <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel_document_israel">
-          <legend>Will you use a national Israeli passport for this trip?</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio"><input value="yes" name="travel_document_israel" type="radio" id="travel_document_israel-yes" required><label for="travel_document_israel-yes">Yes</label></li>
-            <li class="radio"><input value="no" name="travel_document_israel" type="radio" id="travel_document_israel-no"><label for="travel_document_israel-no">No</label></li>
-          </ul>
-        </fieldset>
-        <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel_document_romania">
-          <legend>Will you use an electronic passport for this trip?</legend>
+            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-nonimmigrant_visa">
+              <legend>Do you have one of these documents</legend>
+              <ul class="list-unstyled lst-spcd-2">
+                <li class="radio"><input value="yes" name="nonimmigrant_visa" type="radio" id="nonimmigrant_visa-nonimmigrant" required><label for="nonimmigrant_visa-nonimmigrant">I have a valid US nonimmigrant visa</label></li>
+                <li class="radio"><input value="yes" name="nonimmigrant_visa" type="radio" id="nonimmigrant_visa-cadvisa"><label for="nonimmigrant_visa-cadvisa">I’ve had a Canadian visitor visa in the last 10 years </label></li>
+                <li class="radio"><input value="yes" name="nonimmigrant_visa" type="radio" id="nonimmigrant_visa-both"><label for="nonimmigrant_visa-both">Both: I have a valid US nonimmigrant visa and had a Canadian visitor visa in the last 10 years </label></li>
+                <li class="radio"><input value="no" name="nonimmigrant_visa" type="radio" id="nonimmigrant_visa-no"><label for="nonimmigrant_visa-no">No, I don’t have either of these documents </label></li>
+              </ul>
+            </fieldset>
+            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel_document_israel">
+              <legend>Will you use a national Israeli passport for this trip?</legend>
+              <ul class="list-unstyled lst-spcd-2">
+                <li class="radio"><input value="yes" name="travel_document_israel" type="radio" id="travel_document_israel-yes" required><label for="travel_document_israel-yes">Yes</label></li>
+                <li class="radio"><input value="no" name="travel_document_israel" type="radio" id="travel_document_israel-no"><label for="travel_document_israel-no">No</label></li>
+              </ul>
+            </fieldset>
+            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel_document_romania">
+              <legend>Will you use an electronic passport for this trip?</legend>
 
-          <div class="row-no-gutters">
+              <div class="row-no-gutters">
 
-            <div class="col-md-2 pull-right"><img id="romania-passport-picture" src="romania-epassport.png" alt="Image of a Romanian electronic passport. The electronic icon below the words 'Passport Passeport' is zoomed in." class="img-responsive hidden visible-md visible-lg mrgn-lft-md"></div>
-            <div class="col-md-10">
+                <div class="col-md-2 pull-right"><img id="romania-passport-picture" src="romania-epassport.png" alt="Image of a Romanian electronic passport. The electronic icon below the words 'Passport Passeport' is zoomed in." class="img-responsive hidden visible-md visible-lg mrgn-lft-md"></div>
+                <div class="col-md-10">
+                  <div class="d-flex align-items-center">
+                    <span class="fa-solid fa-circle-info mrgn-rght-lg fa-2x" aria-hidden="true"></span>
+                    <div>
+                      <p class="gc-font-2019 mrgn-tp-md">You have an electronic passport if there’s a rectangle with a circle in the middle on the front cover of your passport.</p>
+                    </div>
+                  </div>
+                  <button type="button" class="btn-link p-0 btn-show hidden" data-wb-doaction='[
+                      {"action": "removeClass", "class": "hidden", "source": "#romania-passport-picture, .btn-hide"},
+                      {"action": "addClass", "class": "hidden", "source": ".btn-show"}]'>Show image of electronic passport</button>
+                  <button type="button" class="btn-link p-0 btn-hide hidden" data-wb-doaction='
+                      {"action": "addClass", "class": "hidden", "source": "#romania-passport-picture, .btn-hide"},
+                      {"action": "removeClass", "class": "hidden", "source": ".btn-show"}]'>Hide image of electronic passport</button>
+                  <ul class="list-unstyled lst-spcd-2">
+                    <li class="radio"><input value="yes" name="travel_document_romania" type="radio" id="travel_document_romania-yes" required><label for="travel_document_romania-yes">Yes</label></li>
+                    <li class="radio"><input value="no" name="travel_document_romania" type="radio" id="travel_document_romania-no"><label for="travel_document_romania-no">No</label></li>
+                  </ul>
+                </div>
+
+
+              </div>
+
+
+
+
+            </fieldset>
+            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel_document_taiwan">
+              <legend>Will you use a passport that includes your personal identification number and was issued by the Ministry of Foreign Affairs in Taiwan for this trip?</legend>
+              <ul class="list-unstyled lst-spcd-2">
+                <li class="radio"><input value="yes" name="travel_document_taiwan" type="radio" id="travel_document_taiwan-yes" required><label for="travel_document_taiwan-yes">Yes</label></li>
+                <li class="radio"><input value="no" name="travel_document_taiwan" type="radio" id="travel_document_taiwan-no"><label for="travel_document_taiwan-no">No</label></li>
+              </ul>
+            </fieldset>
+
+
+            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-transit">
+              <legend>How do you plan to transit through Canada?</legend>
+              <ul class="list-unstyled lst-spcd-2">
+                <li class="radio"><input value="air" name="transit" type="radio" id="transit-air" required><label for="transit-air">By air, between 2 international flights at Canadian airports</label></li>
+                <li class="radio"><input value="land_sea" name="transit" type="radio" id="transit-land_sea"><label for="transit-land_sea">By car, train, bus or boat (including cruise ship)</label></li>
+              </ul>
+            </fieldset>
+            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-transit_length">
+              <legend>Will you transit in less than 48 hours?</legend>
               <div class="d-flex align-items-center">
                 <span class="fa-solid fa-circle-info mrgn-rght-lg fa-2x" aria-hidden="true"></span>
                 <div>
-                  <p class="gc-font-2019 mrgn-tp-md">You have an electronic passport if there’s a rectangle with a circle in the middle on the front cover of your passport.</p>
+                  <p class="gc-font-2019 mrgn-tp-md">Transiting means your only purpose for being in Canada is to travel through on your way to another location. You would be visiting Canada too if, for example, you plan to visit tourist attractions or see family or friends while you’re here.</p>
                 </div>
               </div>
-              <button type="button" class="btn-link p-0 btn-show hidden" data-wb-doaction='[
-                      {"action": "removeClass", "class": "hidden", "source": "#romania-passport-picture, .btn-hide"},
-                      {"action": "addClass", "class": "hidden", "source": ".btn-show"}]'>Show image of electronic passport</button>
-              <button type="button" class="btn-link p-0 btn-hide hidden" data-wb-doaction='
-                      {"action": "addClass", "class": "hidden", "source": "#romania-passport-picture, .btn-hide"},
-                      {"action": "removeClass", "class": "hidden", "source": ".btn-show"}]'>Hide image of electronic passport</button>
+
+
               <ul class="list-unstyled lst-spcd-2">
-                <li class="radio"><input value="yes" name="travel_document_romania" type="radio" id="travel_document_romania-yes" required><label for="travel_document_romania-yes">Yes</label></li>
-                <li class="radio"><input value="no" name="travel_document_romania" type="radio" id="travel_document_romania-no"><label for="travel_document_romania-no">No</label></li>
+                <li class="radio"><input value="no" name="transit_length" type="radio" id="transit_length-yes_visit" required><label for="transit_length-yes_visit">Yes, and I will visit Canada at the same time</label></li>
+                <li class="radio"><input value="yes" name="transit_length" type="radio" id="transit_length-yes_no_visit"><label for="transit_length-yes_no_visit">Yes, and I’m transiting only (I will not visit Canada)</label></li>
+                <li class="radio"><input value="no" name="transit_length" type="radio" id="transit_length-no"><label for="transit_length-no">No, I will not transit in less than 48 hours</label></li>
               </ul>
-            </div>
+            </fieldset>
 
+            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-family">
+              <legend>Do you plan to visit your children or grandchildren who are Canadian citizens or permanent residents of Canada?</legend>
+              <div class="d-flex align-items-center">
+                <span class="fa-solid fa-triangle-exclamation mrgn-rght-lg fa-2x" aria-hidden="true"></span>
+                <div>
+                  <p class="gc-font-2019 mrgn-tp-md">If you’re visiting children or grandchildren who are <strong>not</strong> Canadian citizens or permanent residents of Canada, select “No, I’m visiting other family”. </p>
+                </div>
+              </div>
 
-          </div>
+              <ul class="list-unstyled lst-spcd-2">
+                <li class="radio"><input value="family" name="family" type="radio" id="family-yes-less" required><label for="family-yes-less">Yes, and I plan to visit for 6 months or less </label></li>
+                <li class="radio"><input value="family_supervisa" name="family" type="radio" id="family-yes-more" required><label for="family-yes-more">Yes, and I plan to visit for longer than 6 months </label></li>
+                <li class="radio"><input value="family" name="family" type="radio" id="family-no"><label for="family-no">No, I’m visiting other family </label></li>
+              </ul>
+            </fieldset>
 
+            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-study">
+              <legend>Select the option that best matches your situation:</legend>
+              <ul class="list-unstyled lst-spcd-2">
+                <li class="radio"><input value="first_permit" name="study" type="radio" id="study-first_permit" required><label for="study-first_permit">I’m applying for my first study permit</label></li>
+                <li class="radio"><input value="have_permit" name="study" type="radio" id="study-have_permit"><label for="study-have_permit">I already have a study permit</label></li>
+                <li class="radio"><input value="extend_permit" name="study" type="radio" id="study-extend_permit"><label for="study-extend_permit">I extended or plan to extend my study permit</label></li>
+                <li class="radio"><input value="eligible_without_permit" name="study" type="radio" id="study-eligible_without_permit"><label for="study-eligible_without_permit">I’m eligible to study without a permit</label></li>
+                <li class="radio"><input value="not_sure" name="study" type="radio" id="study-not_sure"><label for="study-not_sure">I’m not sure what I need to study</label></li>
+              </ul>
+            </fieldset>
+            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-work">
+              <legend>Select the option that best matches your situation:</legend>
+              <ul class="list-unstyled lst-spcd-2">
+                <li class="radio"><input value="first_permit" name="work" type="radio" id="work-first_permit" required><label for="work-first_permit">I’m applying for my first work permit</label></li>
+                <li class="radio"><input value="have_permit" name="work" type="radio" id="work-have_permit"><label for="work-have_permit">I already have a work permit</label></li>
+                <li class="radio"><input value="extend_permit" name="work" type="radio" id="work-extend_permit"><label for="work-extend_permit">I extended or plan to extend my work permit</label></li>
+                <li class="radio"><input value="eligible_without_permit" name="work" type="radio" id="work-eligible_without_permit"><label for="work-eligible_without_permit">I’m eligible to work without a permit</label></li>
+                <li class="radio"><input value="not_sure" name="work" type="radio" id="work-not_sure"><label for="work-not_sure">I’m not sure what I need to work</label></li>
+              </ul>
+            </fieldset>
 
+            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-study-vi-march2024">
+              <legend>When was your study permit approved?</legend>
+              <ul class="list-unstyled lst-spcd-2">
+                <li class="radio"><input value="before" name="study-vi-march2024" type="radio" id="study-vi-march2024-before" required><label for="study-vi-march2024-before">My study permit was approved before March 1, 2024</label></li>
+                <li class="radio"><input value="after" name="study-vi-march2024" type="radio" id="study-vi-march2024-after"><label for="study-vi-march2024-after">My study permit was approved on or after March 1, 2024</label></li>
+              </ul>
+            </fieldset>
+            <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-work-vi-march2024">
+              <legend>When was your work permit approved?</legend>
+              <ul class="list-unstyled lst-spcd-2">
+                <li class="radio"><input value="before" name="work-vi-march2024" type="radio" id="work-vi-march2024-before" required><label for="work-vi-march2024-before">My work permit was approved before March 1, 2024</label></li>
+                <li class="radio"><input value="after" name="work-vi-march2024" type="radio" id="work-vi-march2024-after"><label for="work-vi-march2024-after">My work permit was approved on or after March 1, 2024</label></li>
+              </ul>
+            </fieldset>
 
-
-        </fieldset>
-        <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel_document_taiwan">
-          <legend>Will you use a passport that includes your personal identification number and was issued by the Ministry of Foreign Affairs in Taiwan for this trip?</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio"><input value="yes" name="travel_document_taiwan" type="radio" id="travel_document_taiwan-yes" required><label for="travel_document_taiwan-yes">Yes</label></li>
-            <li class="radio"><input value="no" name="travel_document_taiwan" type="radio" id="travel_document_taiwan-no"><label for="travel_document_taiwan-no">No</label></li>
-          </ul>
-        </fieldset>
-
-
-        <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-transit">
-          <legend>How do you plan to transit through Canada?</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio"><input value="air" name="transit" type="radio" id="transit-air" required><label for="transit-air">By air, between 2 international flights at Canadian airports</label></li>
-            <li class="radio"><input value="land_sea" name="transit" type="radio" id="transit-land_sea"><label for="transit-land_sea">By car, train, bus or boat (including cruise ship)</label></li>
-          </ul>
-        </fieldset>
-        <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-transit_length">
-          <legend>Will you transit in less than 48 hours?</legend>
-          <div class="d-flex align-items-center">
-            <span class="fa-solid fa-circle-info mrgn-rght-lg fa-2x" aria-hidden="true"></span>
-            <div>
-              <p class="gc-font-2019 mrgn-tp-md">Transiting means your only purpose for being in Canada is to travel through on your way to another location. You would be visiting Canada too if, for example, you plan to visit tourist attractions or see family or friends while you’re here.</p>
-            </div>
-          </div>
-
-
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio"><input value="no" name="transit_length" type="radio" id="transit_length-yes_visit" required><label for="transit_length-yes_visit">Yes, and I will visit Canada at the same time</label></li>
-            <li class="radio"><input value="yes" name="transit_length" type="radio" id="transit_length-yes_no_visit"><label for="transit_length-yes_no_visit">Yes, and I’m transiting only (I will not visit Canada)</label></li>
-            <li class="radio"><input value="no" name="transit_length" type="radio" id="transit_length-no"><label for="transit_length-no">No, I will not transit in less than 48 hours</label></li>
-          </ul>
-        </fieldset>
-
-        <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-family">
-          <legend>Do you plan to visit your children or grandchildren who are Canadian citizens or permanent residents of Canada?</legend>
-          <div class="d-flex align-items-center">
-            <span class="fa-solid fa-triangle-exclamation mrgn-rght-lg fa-2x" aria-hidden="true"></span>
-            <div>
-              <p class="gc-font-2019 mrgn-tp-md">If you’re visiting children or grandchildren who are <strong>not</strong> Canadian citizens or permanent residents of Canada, select “No, I’m visiting other family”. </p>
-            </div>
-          </div>
-
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio"><input value="family" name="family" type="radio" id="family-yes-less" required><label for="family-yes-less">Yes, and I plan to visit for 6 months or less </label></li>
-            <li class="radio"><input value="family_supervisa" name="family" type="radio" id="family-yes-more" required><label for="family-yes-more">Yes, and I plan to visit for longer than 6 months </label></li>
-            <li class="radio"><input value="family" name="family" type="radio" id="family-no"><label for="family-no">No, I’m visiting other family </label></li>
-          </ul>
-        </fieldset>
-
-        <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-study">
-          <legend>Select the option that best matches your situation:</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio"><input value="first_permit" name="study" type="radio" id="study-first_permit" required><label for="study-first_permit">I’m applying for my first study permit</label></li>
-            <li class="radio"><input value="have_permit" name="study" type="radio" id="study-have_permit"><label for="study-have_permit">I already have a study permit</label></li>
-            <li class="radio"><input value="extend_permit" name="study" type="radio" id="study-extend_permit"><label for="study-extend_permit">I extended or plan to extend my study permit</label></li>
-            <li class="radio"><input value="eligible_without_permit" name="study" type="radio" id="study-eligible_without_permit"><label for="study-eligible_without_permit">I’m eligible to study without a permit</label></li>
-            <li class="radio"><input value="not_sure" name="study" type="radio" id="study-not_sure"><label for="study-not_sure">I’m not sure what I need to study</label></li>
-          </ul>
-        </fieldset>
-        <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-work">
-          <legend>Select the option that best matches your situation:</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio"><input value="first_permit" name="work" type="radio" id="work-first_permit" required><label for="work-first_permit">I’m applying for my first work permit</label></li>
-            <li class="radio"><input value="have_permit" name="work" type="radio" id="work-have_permit"><label for="work-have_permit">I already have a work permit</label></li>
-            <li class="radio"><input value="extend_permit" name="work" type="radio" id="work-extend_permit"><label for="work-extend_permit">I extended or plan to extend my work permit</label></li>
-            <li class="radio"><input value="eligible_without_permit" name="work" type="radio" id="work-eligible_without_permit"><label for="work-eligible_without_permit">I’m eligible to work without a permit</label></li>
-            <li class="radio"><input value="not_sure" name="work" type="radio" id="work-not_sure"><label for="work-not_sure">I’m not sure what I need to work</label></li>
-          </ul>
-        </fieldset>
-
-        <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-study-vi-march2024">
-          <legend>When was your study permit approved?</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio"><input value="before" name="study-vi-march2024" type="radio" id="study-vi-march2024-before" required><label for="study-vi-march2024-before">My study permit was approved before March 1, 2024</label></li>
-            <li class="radio"><input value="after" name="study-vi-march2024" type="radio" id="study-vi-march2024-after"><label for="study-vi-march2024-after">My study permit was approved on or after March 1, 2024</label></li>
-          </ul>
-        </fieldset>
-        <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-work-vi-march2024">
-          <legend>When was your work permit approved?</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio"><input value="before" name="work-vi-march2024" type="radio" id="work-vi-march2024-before" required><label for="work-vi-march2024-before">My work permit was approved before March 1, 2024</label></li>
-            <li class="radio"><input value="after" name="work-vi-march2024" type="radio" id="work-vi-march2024-after"><label for="work-vi-march2024-after">My work permit was approved on or after March 1, 2024</label></li>
-          </ul>
-        </fieldset>
-
-        <input type="hidden" id="questionFlow" value="" />
-        <div class="btn-navigation">
-          <button id="btn-previous" class="btn btn-nav btn-lg hidden" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Previous__"><span class="glyphicon glyphicon-arrow-left mrgn-rght-md" aria-hidden="true"></span>Previous question</button>
-          <button id="btn-next" class="btn btn-nav btn-lg" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Next__">Next question<span class="glyphicon glyphicon-arrow-right mrgn-lft-md" aria-hidden="true"></span></button>
-          <button id="btn-reset" class="btn btn-nav btn-lg hidden" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Reset"><span class="fa-solid fa-rotate-right mrgn-rght-md" aria-hidden="true"></span>Start over</button>
-          <button id="btn-change" class="btn btn-nav btn-lg hidden wb-toggle" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_ChangeAnswer" data-toggle='{
+            <input type="hidden" id="questionFlow" value="" />
+            <div class="btn-navigation">
+              <button id="btn-previous" class="btn btn-nav btn-lg hidden" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Previous__"><span class="glyphicon glyphicon-arrow-left mrgn-rght-md" aria-hidden="true"></span>Previous question</button>
+              <button id="btn-next" class="btn btn-nav btn-lg" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Next__">Next question<span class="glyphicon glyphicon-arrow-right mrgn-lft-md" aria-hidden="true"></span></button>
+              <button id="btn-reset" class="btn btn-nav btn-lg hidden" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Reset"><span class="fa-solid fa-rotate-right mrgn-rght-md" aria-hidden="true"></span>Start over</button>
+              <button id="btn-change" class="btn btn-nav btn-lg hidden wb-toggle" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_ChangeAnswer" data-toggle='{
                 "selector": "#changeAnswers", 
                 "print": "on", 
                 "stateOn":"visible", 
                 "stateOff": "hidden", 
                 "state":"hidden"}'><span class="fa-solid fa-pencil mrgn-rght-sm" aria-hidden="true"></span>
-            Change your answers</button>
+                Change your answers</button>
+
+            </div>
+
 
         </div>
 
+        </form>
 
-      </div>
-
-      </form>
-
-      <div id="changeAnswers" class="mrgn-tp-lg mrgn-bttm-md position-relative hidden">
-        <div class="d-flex align-items-center full-width position-relative">
-          <h2 class="mrgn-tp-0 mrgn-bttm-0 undrln-0 h3 full-width">Change your answers</h2>
-          <button id="btn-change-expand" class="btn-link p-0 btn-minimize pull-right wb-toggle" data-toggle='{
+        <div id="changeAnswers" class="mrgn-tp-lg mrgn-bttm-md position-relative hidden">
+          <div class="d-flex align-items-center full-width position-relative">
+            <h2 class="mrgn-tp-0 mrgn-bttm-0 undrln-0 h3 full-width">Change your answers</h2>
+            <button id="btn-change-expand" class="btn-link p-0 btn-minimize pull-right wb-toggle" data-toggle='{
               "selector": "#changeAnswers", 
               "print": "on", 
               "stateOn":"visible", 
               "stateOff": "hidden"}'><span class="wb-inv">Hide your answers</span><span class="fas fa-times mrgn-lft-sm" aria-hidden="true"></span></button>
+          </div>
+
         </div>
 
+        <div class="results-container position-relative">
+
+
+          <div tabindex="-1" class="result hidden" id="result-canadian_cit_pr-air" data-wb-ajax='{"type": "replace", "url": "results/canadian_cit_pr-air.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-canadian_cit_pr-land_sea" data-wb-ajax='{"type": "replace", "url": "results/canadian_cit_pr-land_sea.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-canadian_cit_pr" data-wb-ajax='{"type": "replace", "url": "results/canadian_cit_pr.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-dual_citizen-air" data-wb-ajax='{"type": "replace", "url": "results/dual_citizen-air.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-dual_citizen-land_sea" data-wb-ajax='{"type": "replace", "url": "results/dual_citizen-land_sea.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-eTA_eTAX_TWOV" data-wb-ajax='{"type": "replace", "url": "results/eTA_eTAX_TWOV.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-eTA_eTAX" data-wb-ajax='{"type": "replace", "url": "results/eTA_eTAX.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-eta" data-wb-ajax='{"type": "replace", "url": "results/eta.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-GeneralUS-land_sea" data-wb-ajax='{"type": "replace", "url": "results/GeneralUS-land_sea.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-GeneralUSPR-land_sea" data-wb-ajax='{"type": "replace", "url": "results/GeneralUSPR-land_sea.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-IDDoc" data-wb-ajax='{"type": "replace", "url": "results/IDDoc.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-need_passport-air" data-wb-ajax='{"type": "replace", "url": "results/need_passport-air.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-need_passport-land_sea" data-wb-ajax='{"type": "replace", "url": "results/need_passport-land_sea.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-template" data-wb-ajax='{"type": "replace", "url": "results/template.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-transit_without_visa-china" data-wb-ajax='{"type": "replace", "url": "results/transit_without_visa-china.html", "trigger": true}'></div>
+
+<div tabindex=" -1" class="result hidden" id="result-transit" data-wb-ajax='{"type": "replace", "url": "results/transit.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-usa" data-wb-ajax='{"type": "replace", "url": "results/usa.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-GeneralUSPR-air" data-wb-ajax='{"type": "replace", "url": "results/GeneralUSPR-air.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-visitor_visa_or_eTA_x" data-wb-ajax='{"type": "replace", "url": "results/visitor_visa_or_eTA_x.html", "trigger": true}'></div>
+
+          <div tabindex="-1" class="result hidden" id="result-visitor_visa" data-wb-ajax='{"type": "replace", "url": "results/visitor_visa.html", "trigger": true}'></div>
+
+
+          <div tabindex="-1" class="result hidden" id="result-transit_visa">
+            <h2>result-transit_visa</h2>
+          </div>
+
+          <div tabindex="-1" class="result hidden" id="result-eTA_X">
+            <h2>result-eTA_x</h2>
+          </div>
+          <div tabindex="-1" class="result hidden" id="result-identification_document">
+            <h2>result-identification_document</h2>
+          </div>
+          <div id="US-results">
+            <div tabindex="-1" class="result hidden" id="result-GeneralUS">
+              <h2>result-GeneralUS</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-supervisa-US">
+              <h2>result-supervisa-US</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-first_permit-US">
+              <h2>result-study-first_permit-US</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-have_permit-US">
+              <h2>result-study-have_permit-US</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-extend_permit-US">
+              <h2>result-study-extend_permit-US</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-US">
+              <h2>result-study-eligible_without_permit-US</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-not_sure-US">
+              <h2>result-study-not_sure-US</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-first_permit-US">
+              <h2>result-work-first_permit-US</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-have_permit-US">
+              <h2>result-work-have_permit-US</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-extend_permit-US">
+              <h2>result-work-extend_permit-US</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-US">
+              <h2>result-work-eligible_without_permit-US</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-not_sure-US">
+              <h2>result-work-not_sure-US</h2>
+            </div>
+          </div>
+          <div id="USPR-results">
+            <div tabindex="-1" class="result hidden" id="result-GeneralUSPR">
+              <h2>result-GeneralUSPR</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-supervisa-USPR">
+              <h2>result-supervisa-USPR</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-first_permit-USPR">
+              <h2>result-study-first_permit-USPR</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-have_permit-USPR">
+              <h2>result-study-have_permit-USPR</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-extend_permit-USPR">
+              <h2>result-study-extend_permit-USPR</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-USPR">
+              <h2>result-study-eligible_without_permit-USPR</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-not_sure-USPR">
+              <h2>result-study-not_sure-USPR</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-first_permit-USPR">
+              <h2>result-work-first_permit-USPR</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-have_permit-USPR">
+              <h2>result-work-have_permit-USPR</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-extend_permit-USPR">
+              <h2>result-work-extend_permit-USPR</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-USPR">
+              <h2>result-work-eligible_without_permit-USPR</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-not_sure-USPR">
+              <h2>result-work-not_sure-USPR</h2>
+            </div>
+          </div>
+
+          <div id="supervisa-results">
+            <div tabindex="-1" class="result hidden" id="result-supervisa-eTA">
+              <h2>result-supervisa-eTA</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-supervisa-visitor_visa">
+              <h2>result-supervisa-visitor_visa</h2>
+            </div>
+          </div>
+
+          <div id="study-results">
+            <div tabindex="-1" class="result hidden" id="result-study-first_permit-visitor_visa">
+              <h2>result-study-first_permit-visitor_visa</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-have_permit-visitor_visa">
+              <h2>result-study-have_permit-visitor_visa</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-extend_permit-visitor_visa">
+              <h2>result-study-extend-visitor_visa</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-visitor_visa">
+              <h2>result-study-eligible_without_permit-visitor_visa</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-not_sure-visitor_visa">
+              <h2>result-study-not_sure-visitor_visa</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-first_permit-eTA">
+              <h2>result-study-first_permit-eTA</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-have_permit-eTA">
+              <h2>result-study-have_permit-eTA</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-extend_permit-eTA">
+              <h2>result-study-extend-eTA</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-extend_permit-eTA-X">
+              <h2>result-study-extend-eTA-x</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-eTA">
+              <h2>result-study-eligible_without_permit-eTA</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-not_sure-eTA">
+              <h2>result-study-not_sure-eTA</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-first_permit-id">
+              <h2>result-study-first_permit-id</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-have_permit-id">
+              <h2>result-study-have_permit-id</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-extend_permit-id">
+              <h2>result-study-extend-id</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-id">
+              <h2>result-study-eligible_without_permit-id</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-not_sure-id">
+              <h2>result-study-not_sure-id</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-study-not_sure">
+              <h2>result-study-not_sure</h2>
+            </div>
+          </div>
+          <div id="work-results">
+            <div tabindex="-1" class="result hidden" id="result-work-first_permit-visitor_visa">
+              <h2>result-work-first_permit-visitor_visa</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-have_permit-visitor_visa">
+              <h2>result-work-have_permit-visitor_visa</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-extend_permit-visitor_visa">
+              <h2>result-work-extend-visitor_visa</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-visitor_visa">
+              <h2>result-work-eligible_without_permit-visitor_visa</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-not_sure-visitor_visa">
+              <h2>result-work-not_sure-visitor_visa</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-first_permit-eTA">
+              <h2>result-work-first_permit-eTA</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-have_permit-eTA">
+              <h2>result-work-have_permit-eTA</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-extend_permit-eTA">
+              <h2>result-work-extend-eTA</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-extend_permit-eTA-X">
+              <h2>result-work-extend-eTA-x</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-eTA">
+              <h2>result-work-eligible_without_permit-eTA</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-not_sure-eTA">
+              <h2>result-work-not_sure-eTA</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-first_permit-id">
+              <h2>result-work-first_permit-id</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-have_permit-id">
+              <h2>result-work-have_permit-id</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-extend_permit-id">
+              <h2>result-work-extend-id</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-id">
+              <h2>result-work-eligible_without_permit-id</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-not_sure-id">
+              <h2>result-work-not_sure-id</h2>
+            </div>
+            <div tabindex="-1" class="result hidden" id="result-work-not_sure">
+              <h2>result-work-not_sure</h2>
+            </div>
+
+          </div>
+          <div tabindex="-1" class="result hidden" id="result-work-study_have-permit_visa-required-mex">
+            <h2>result-work-study_have-permit_visa-required-mex</h2>
+          </div>
+        </div>
       </div>
 
-      <div class="results-container position-relative">
-        <div tabindex="-1" class="result hidden" id="result-dual_citizen" data-wb-ajax='{"type": "replace", "url": "results/dual_citizen.html", "trigger": true}'></div>
-        <div tabindex="-1" class="result hidden" id="result-canadian_cit_pr" data-wb-ajax='{"type": "replace", "url": "results/canadian_cit_pr.html", "trigger": true}'></div>
-        <div tabindex="-1" class="result hidden" id="result-visitor_visa" data-wb-ajax='{"type": "replace", "url": "results/visitor_visa.html", "trigger": true}'></div>
-        <div tabindex="-1" class="result hidden" id="result-transit_visa">
-          <h2>result-transit_visa</h2>
-        </div>
-        <div tabindex="-1" class="result hidden" id="result-eTA" data-wb-ajax='{"type": "replace", "url": "results/eta.html", "trigger": true}'></div>
-        <div tabindex="-1" class="result hidden" id="result-eTA_X">
-          <h2>result-eTA_x</h2>
-        </div>
-        <div tabindex="-1" class="result hidden" id="result-identification_document">
-          <h2>result-identification_document</h2>
-        </div>
-        <div id="US-results">
-          <div tabindex="-1" class="result hidden" id="result-GeneralUS">
-            <h2>result-GeneralUS</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-supervisa-US">
-            <h2>result-supervisa-US</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-first_permit-US">
-            <h2>result-study-first_permit-US</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-have_permit-US">
-            <h2>result-study-have_permit-US</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-extend_permit-US">
-            <h2>result-study-extend_permit-US</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-US">
-            <h2>result-study-eligible_without_permit-US</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-not_sure-US">
-            <h2>result-study-not_sure-US</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-first_permit-US">
-            <h2>result-work-first_permit-US</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-have_permit-US">
-            <h2>result-work-have_permit-US</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-extend_permit-US">
-            <h2>result-work-extend_permit-US</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-US">
-            <h2>result-work-eligible_without_permit-US</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-not_sure-US">
-            <h2>result-work-not_sure-US</h2>
-          </div>
-        </div>
-        <div id="USPR-results">
-          <div tabindex="-1" class="result hidden" id="result-GeneralUSPR">
-            <h2>result-GeneralUSPR</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-supervisa-USPR">
-            <h2>result-supervisa-USPR</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-first_permit-USPR">
-            <h2>result-study-first_permit-USPR</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-have_permit-USPR">
-            <h2>result-study-have_permit-USPR</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-extend_permit-USPR">
-            <h2>result-study-extend_permit-USPR</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-USPR">
-            <h2>result-study-eligible_without_permit-USPR</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-not_sure-USPR">
-            <h2>result-study-not_sure-USPR</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-first_permit-USPR">
-            <h2>result-work-first_permit-USPR</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-have_permit-USPR">
-            <h2>result-work-have_permit-USPR</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-extend_permit-USPR">
-            <h2>result-work-extend_permit-USPR</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-USPR">
-            <h2>result-work-eligible_without_permit-USPR</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-not_sure-USPR">
-            <h2>result-work-not_sure-USPR</h2>
-          </div>
-        </div>
 
-        <div id="supervisa-results">
-          <div tabindex="-1" class="result hidden" id="result-supervisa-eTA">
-            <h2>result-supervisa-eTA</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-supervisa-visitor_visa">
-            <h2>result-supervisa-visitor_visa</h2>
-          </div>
-        </div>
-
-        <div id="study-results">
-          <div tabindex="-1" class="result hidden" id="result-study-first_permit-visitor_visa">
-            <h2>result-study-first_permit-visitor_visa</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-have_permit-visitor_visa">
-            <h2>result-study-have_permit-visitor_visa</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-extend_permit-visitor_visa">
-            <h2>result-study-extend-visitor_visa</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-visitor_visa">
-            <h2>result-study-eligible_without_permit-visitor_visa</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-not_sure-visitor_visa">
-            <h2>result-study-not_sure-visitor_visa</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-first_permit-eTA">
-            <h2>result-study-first_permit-eTA</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-have_permit-eTA">
-            <h2>result-study-have_permit-eTA</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-extend_permit-eTA">
-            <h2>result-study-extend-eTA</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-extend_permit-eTA-X">
-            <h2>result-study-extend-eTA-x</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-eTA">
-            <h2>result-study-eligible_without_permit-eTA</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-not_sure-eTA">
-            <h2>result-study-not_sure-eTA</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-first_permit-id">
-            <h2>result-study-first_permit-id</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-have_permit-id">
-            <h2>result-study-have_permit-id</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-extend_permit-id">
-            <h2>result-study-extend-id</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-eligible_without_permit-id">
-            <h2>result-study-eligible_without_permit-id</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-not_sure-id">
-            <h2>result-study-not_sure-id</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-study-not_sure">
-            <h2>result-study-not_sure</h2>
-          </div>
-        </div>
-        <div id="work-results">
-          <div tabindex="-1" class="result hidden" id="result-work-first_permit-visitor_visa">
-            <h2>result-work-first_permit-visitor_visa</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-have_permit-visitor_visa">
-            <h2>result-work-have_permit-visitor_visa</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-extend_permit-visitor_visa">
-            <h2>result-work-extend-visitor_visa</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-visitor_visa">
-            <h2>result-work-eligible_without_permit-visitor_visa</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-not_sure-visitor_visa">
-            <h2>result-work-not_sure-visitor_visa</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-first_permit-eTA">
-            <h2>result-work-first_permit-eTA</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-have_permit-eTA">
-            <h2>result-work-have_permit-eTA</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-extend_permit-eTA">
-            <h2>result-work-extend-eTA</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-extend_permit-eTA-X">
-            <h2>result-work-extend-eTA-x</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-eTA">
-            <h2>result-work-eligible_without_permit-eTA</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-not_sure-eTA">
-            <h2>result-work-not_sure-eTA</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-first_permit-id">
-            <h2>result-work-first_permit-id</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-have_permit-id">
-            <h2>result-work-have_permit-id</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-extend_permit-id">
-            <h2>result-work-extend-id</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-eligible_without_permit-id">
-            <h2>result-work-eligible_without_permit-id</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-not_sure-id">
-            <h2>result-work-not_sure-id</h2>
-          </div>
-          <div tabindex="-1" class="result hidden" id="result-work-not_sure">
-            <h2>result-work-not_sure</h2>
-          </div>
-
-        </div>
-        <div tabindex="-1" class="result hidden" id="result-work-study_have-permit_visa-required-mex">
-          <h2>result-work-study_have-permit_visa-required-mex</h2>
-        </div>
+      <div class="legal-disclaimer">
+        <details open>
+          <summary><span class="flex-item item1"></span><span class="flex-item item2 align-self-center">This tool provides information only</span></summary>
+          <p class="mrgn-tp-md">This tool was created to assist you as you decide what travel document you may need to travel to Canada. This tool may not provide information on all travel documents or your particular situation. If you choose to apply, we will assess your application in accordance with the Immigration and Refugee Protection Act and its related Regulations.</p>
+          <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/terms-conditions.html" target="_blank">Read our complete terms and conditions<span class="glyphicon glyphicon-new-window mrgn-lft-sm" aria-hidden="true"><span class="wb-inv"> Opens in a new tab</span></span></a>.</p>
+        </details>
       </div>
-    </div>
-
-
-    <div class="legal-disclaimer">
-      <details open>
-        <summary><span class="flex-item item1"></span><span class="flex-item item2">This tool provides information only</span></summary>
-        <p>This tool was created to assist you as you decide what travel document you may need to travel to Canada. This tool may not provide information on all travel documents or your particular situation. If you choose to apply, we will assess your application in accordance with the Immigration and Refugee Protection Act and its related Regulations.</p>
-        <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/terms-conditions.html" target="_blank">Read our complete terms and conditions<span class="glyphicon glyphicon-new-window mrgn-lft-sm" aria-hidden="true"><span class="wb-inv"> Opens in a new tab</span></span></a>.</p>
-      </details>
-    </div>
     </div>
     </div>
 
@@ -765,7 +809,7 @@
     /* When the user clicks on the button,
     toggle between hiding and showing the dropdown content */
 
-   
+
   </script>
 </body>
 

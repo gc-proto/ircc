@@ -29,7 +29,7 @@ let langSettings = {
 }
 
 // Variables for travel data
-let traveller_type, purpose_of_travel, method_of_travel, passport_type = false;
+let traveller_type, purpose_of_travel, method_of_travel, passport_code = false;
 let passportCodeSelectionParent = document.getElementById('passport-code-selection');
 let passportCodeSelection = document.getElementById('passport-selection');
 let passportCodeTable = document.getElementById('passport-code');
@@ -75,7 +75,7 @@ function handleNextClick() {
 
         // if user has previously went to the country table and made a selection, force variable assignment of type of traveller and selected input; else get the checked radio button.
         if (currentQuestion.querySelector('#passport-code-selection') && (!passportCodeSelectionParent.classList.contains('hidden'))) {
-            traveller_type = (data["question-passport_code"][passportCodeSelection.getAttribute('data-passport-code')]).trim();
+            traveller_type = data["question-passport_code"][passportCodeSelection.getAttribute('data-passport-code')]?.[method_of_travel]?.[purpose_of_travel] || data["question-passport_code"][passportCodeSelection.getAttribute('data-passport-code')];
             selectedInput = traveller_type;
         }
         else {
@@ -97,37 +97,31 @@ function handleNextClick() {
         */
 
         const questionHandlers = {
+            
+            "question-travel": () => {
+                method_of_travel = selectedInput;
+                return data[question];
+            },
             "question-canadian_citizen": () => {
                 traveller_type = selectedInput;
-                return data[question][selectedInput];
-            },
-            "question-traveller_type": () => {
-                traveller_type = selectedInput;
-                return data[question];
+                return data[question]?.[selectedInput];
             },
             "question-purpose_of_travel": () => {
                 purpose_of_travel = selectedInput;
-                return data[question][traveller_type][purpose_of_travel];
+                return data[question]?.[selectedInput];
             },
-            "question-travel": () => {
-                console.log(selectedInput);
-                method_of_travel = selectedInput;
-                return data[question][purpose_of_travel];
+            "question-uspr": () => {
+                console.log(passport_code);
+                return data[question]?.[method_of_travel]?.[purpose_of_travel]?.[passport_code]?.[selectedInput] || data[question]?.[method_of_travel]?.[purpose_of_travel]?.[passport_code];
             },
             "question-travel_document": () => {
-                //traveller_type = selectedInput;
-                // return traveller_type === "passport"
-                //     ? data[question][traveller_type]
-                //     : data[question][traveller_type][purpose_of_travel][method_of_travel];
-
-                return data[question]?.[traveller_type]?.[selectedInput]?.[purpose_of_travel]?.[method_of_travel] ||
-                    data[question]?.[traveller_type]?.[selectedInput] ||
-                    data[question]?.[traveller_type]?.[purpose_of_travel];
-
+                return data[question]?.[selectedInput]
             },
             "question-passport_code": () => {
-                passport_type = selectedInput
-                return data["function-handlePassportCode"][purpose_of_travel][method_of_travel][passport_type];
+                passport_code = selectedInput;
+                console.log(selectedInput);
+                console.log(passport_code);
+                return data["function-handlePassportCode"][purpose_of_travel]?.[passport_code];
             },
             "question-family": () => {
                 purpose_of_travel = selectedInput;
@@ -142,8 +136,7 @@ function handleNextClick() {
             },
             "question-transit_length": () => data[question][traveller_type][selectedInput],
             "question-nonimmigrant_visa": () => {
-                passport_type = selectedInput === "yes"
-                return data[question]?.[traveller_type]?.[purpose_of_travel]?.[method_of_travel]?.[selectedInput] || data[question]?.[traveller_type]?.[purpose_of_travel]?.[method_of_travel] || data[question]?.[traveller_type]?.[purpose_of_travel]
+                return data[question]?.[passport_code]?.[purpose_of_travel]?.[selectedInput];
             },
             "question-travel_document_israel": () => handleTravelDocument(),
             "question-travel_document_romania": () => handleTravelDocument(),
@@ -157,14 +150,13 @@ function handleNextClick() {
         // ** Helper functions **
 
         const getNextForStudyOrWork = () => {
-            return data[question]?.[traveller_type]?.[method_of_travel]?.[passport_type]?.[selectedInput] ||
+            return data[question]?.[traveller_type]?.[method_of_travel]?.[passport_code]?.[selectedInput] ||
                 data[question]?.[traveller_type]?.[method_of_travel]?.[selectedInput] ||
                 data[question]?.[traveller_type]?.[method_of_travel] ||
                 data[question]?.[traveller_type]?.[selectedInput];
         };
 
         const handleTravelDocument = () => {
-            passport_type = selectedInput === "yes";
             return data[question]?.[purpose_of_travel]?.[method_of_travel]?.[selectedInput] || data[question]?.[purpose_of_travel]?.[method_of_travel] || data[question]?.[purpose_of_travel];
         };
 
@@ -213,41 +205,13 @@ function handleNextClick() {
                 changeAnswersDL.append(changeAnswersDT, changeAnswersDD);
             }
             changeAnswersContainer.appendChild(changeAnswersDL);
-            expandSection();
         }
         nextQuestion.focus();
         analytics();
-        // toolContainer.scrollIntoView({ block: "start" })
     }
 };
 
-function expandSection() {
-    // let dl = changeAnswersContainer.querySelector('dl');
-    // let btnToggle = document.querySelector('.btn-toggle');
-    // if (window.innerWidth < 991) {
-
-
-    //     if (btnToggle) { btnToggle.remove() }
-    //     let expand_collapse = document.createElement('button');
-    //     expand_collapse.classList.add('btn-expand', 'btn-toggle', 'pull-left', 'stretched-link');
-    //     expand_collapse.innerHTML = `<span class="fas fa-plus fa-x2" aria-hidden="true"></span>`;
-    //     changeAnswersContainer.querySelector('div').prepend(expand_collapse);
-    //     expand_collapse.addEventListener('click', function (e) {
-    //         expando(dl, btnToggle);
-    //     });
-
-
-    //     dl.classList.add('hidden');
-
-    // }
-    // else {
-    //     if (btnToggle) btnToggle.remove();
-    // }
-}
-
 function expando() {
-    // let div = changeAnswersContainer;
-    // let btn = div.querySelector('button');
 
     let dl = changeAnswersContainer.querySelector('dl');
     let btnToggle = changeAnswersContainer.querySelector('.btn-toggle');
@@ -271,40 +235,21 @@ function expando() {
 
 function handlePreviousClick(changeAnswer) {
 
-    // if (changeAnswer === "question-canadian_citizen") {
-    //     document.querySelector('#intro').classList.remove('hidden');
-    //     document.querySelector('.legal-disclaimer').classList.remove('hidden');
-    // }
-    // revalidated the form and clear and empty the error if there was one; clear the "change answer" section
     var validator = $(form).validate();
     validator.resetForm();
     if (document.getElementById('errors-' + form.id)) document.getElementById('errors-' + form.id).remove();
     if (changeAnswersContainer.querySelector('dl')) {
         changeAnswersContainer.classList.add('hidden');
-
         changeAnswersContainer.querySelector('dl').remove();
     }
-    // changeAnswersContainer.innerHTML = "";
 
     // get previous question, using array if previous click or change answer option
     let previousQuestion = changeAnswer ? document.getElementById(changeAnswer) : userAnswers[userAnswers.length - 1];
-
 
     // get what's on screen, either a question or a result and hide it. If it's a question, remove the required attribute to prevent a form error.
     let currentQuestion = document.querySelector('.question:not(.hidden)') ? document.querySelector('.question:not(.hidden)') : document.querySelector('.result:not(.hidden)');
     currentQuestion.classList.add('hidden');
     if (currentQuestion.querySelector('input')) currentQuestion.querySelector('input').removeAttribute('required');
-
-    // clear some of the variables that are question specific
-    if (currentQuestion.id === 'question-passport_code' || currentQuestion.id === 'question-travel_document' && traveller_type != 'uspr') {
-        traveller_type = "unknown";
-        passport_type = false;
-    }
-
-    if (previousQuestion.id === "question-passport_code") {
-        // clearPassportTable();
-    }
-
 
     toolContainer.classList.remove('results');
     previousQuestion.classList.remove('hidden');
@@ -314,13 +259,18 @@ function handlePreviousClick(changeAnswer) {
         userAnswers = userAnswers.slice(0, x);
         if (!userAnswers.includes(document.getElementById("question-passport_code"))) {
             traveller_type = "unknown";
-            passport_type = false;
+            passport_code = false;
         }
     }
     else {
         userAnswers.pop();
+        if (!userAnswers.includes(document.getElementById("question-passport_code"))) {
+            traveller_type = "unknown";
+            passport_code = false;
+        }
     }
 
+    
 
 
 
@@ -328,7 +278,6 @@ function handlePreviousClick(changeAnswer) {
     btnNext.classList.remove('hidden');
     btnReset.classList.add('hidden');
     btnChange.classList.add('hidden');
-    // toolContainer.scrollIntoView({ block: "start" });
     analytics();
 
 }
@@ -345,29 +294,6 @@ function analytics() {
 
 }
 
-// $("button.passport-code").on("click", function () {
-//     let code = $(this).attr('data-passport-code');
-//     traveller_type = data["question-passport_code"][code].trim();
-//     document.getElementById('passport-selection-track').value = traveller_type;
-
-//     passportCodeSelection.innerHTML = `${document.querySelector('[data-passport-code="' + code + '"]').innerHTML}`;
-//     passportCodeSelection.setAttribute('data-passport-code', code.trim());
-//     // passportCodeTable.classList.add('hidden');
-//     passportCodeSelectionParent.classList.remove('hidden');
-//     $("td.active").removeClass('active');
-//     this.parentElement.classList.add('active');
-
-//     if (window.innerWidth > 991) {
-//         passportCodeSelectionParent.style.marginTop = document.querySelector('.top').clientHeight + "px";
-//     }
-//     else {
-//         passportCodeSelectionParent.style.marginTop = "15px";
-//         passportCodeSelectionParent.querySelector("p").scrollIntoView({ block: "start" });
-//     }
-
-//     passportCodeSelectionParent.querySelector("p").focus();
-
-// });
 
 $("#passport-selection-change").on("click", function () {
 
@@ -393,12 +319,18 @@ let lbOptions = lbSelect.getElementsByTagName('li');
 Array.prototype.forEach.call(lbSelect.children, child => {
     child.addEventListener("click", function () {
         code = child.id;
-        traveller_type = data["question-passport_code"][code].trim();
+        traveller_type = data["question-passport_code"]?.[code]?.[method_of_travel]?.[purpose_of_travel] || data["question-passport_code"]?.[code];
+
+
+        // traveller_type = data["question-passport_code"][code].trim();
+
+
+
         document.getElementById('passport-selection-track').value = traveller_type;
 
         passportCodeSelection.innerHTML = child.innerHTML;
         document.getElementById('lb-dropdown-inpt').innerHTML = child.innerHTML;
-        passportCodeSelection.setAttribute('data-passport-code', code.trim());
+        passportCodeSelection.setAttribute('data-passport-code', code);
         passportCodeSelectionParent.classList.remove('hidden');
         $("td.active").removeClass('active');
         this.parentElement.classList.add('active');
