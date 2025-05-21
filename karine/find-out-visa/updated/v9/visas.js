@@ -259,14 +259,12 @@ function handlePreviousClick(changeAnswer) {
         userAnswers = userAnswers.slice(0, x);
         if (!userAnswers.includes(document.getElementById("question-passport_code"))) {
             traveller_type = "unknown";
-            passport_code = false;
         }
     }
     else {
         userAnswers.pop();
         if (!userAnswers.includes(document.getElementById("question-passport_code"))) {
             traveller_type = "unknown";
-            passport_code = false;
         }
     }
 
