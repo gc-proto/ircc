@@ -115,6 +115,16 @@
 }
 .tool-container .btn-primary {
   border-radius: 25px;
+  background-color: #B5B2E3;
+  border: none;
+  color: #333 !important;
+  padding: 10px 20px;
+}
+.tool-container .btn-secondary {
+  border-radius: 25px;
+  background-color: #fff;
+  border: 2px solid #B5B2E3;
+  color: #333 !important;
 }
 @media screen and (min-width: 480px) {
   .tool-container #btn-previous {
@@ -303,6 +313,7 @@ table.dataTable thead button {
 .legal-disclaimer details {
   border: 3px solid #ddd !important;
   border-radius: 25px !important;
+  margin-bottom: 15px;
 }
 .result details:not([open]) > summary,
 .legal-disclaimer details:not([open]) > summary {

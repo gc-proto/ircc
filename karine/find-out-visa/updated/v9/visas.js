@@ -112,9 +112,10 @@ function handleNextClick() {
             },
             "question-uspr": () => {
                 console.log(passport_code);
-                return data[question]?.[method_of_travel]?.[purpose_of_travel]?.[passport_code]?.[selectedInput] || data[question]?.[method_of_travel]?.[purpose_of_travel]?.[passport_code];
+                return data[question]?.[method_of_travel]?.[purpose_of_travel]?.[traveller_type]?.[selectedInput] || data[question]?.[method_of_travel]?.[purpose_of_travel]?.[passport_code]?.[selectedInput] || data[question]?.[method_of_travel]?.[purpose_of_travel]?.[passport_code];
             },
             "question-travel_document": () => {
+                traveller_type = selectedInput;
                 return data[question]?.[selectedInput]
             },
             "question-passport_code": () => {
@@ -258,13 +259,13 @@ function handlePreviousClick(changeAnswer) {
         let x = userAnswers.indexOf(previousQuestion);
         userAnswers = userAnswers.slice(0, x);
         if (!userAnswers.includes(document.getElementById("question-passport_code"))) {
-            traveller_type = "unknown";
+            // traveller_type = "unknown";
         }
     }
     else {
         userAnswers.pop();
         if (!userAnswers.includes(document.getElementById("question-passport_code"))) {
-            traveller_type = "unknown";
+            // traveller_type = "unknown";
         }
     }
 
