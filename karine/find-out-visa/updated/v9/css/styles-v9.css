@@ -304,8 +304,8 @@ table.dataTable thead button {
   border: 3px solid #ddd !important;
   border-radius: 25px !important;
 }
-.result details:not([open]) summary,
-.legal-disclaimer details:not([open]) summary {
+.result details:not([open]) > summary,
+.legal-disclaimer details:not([open]) > summary {
   border-radius: 25px !important;
   background-color: #fff;
   color: #333 !important;
@@ -319,8 +319,8 @@ table.dataTable thead button {
   background-color: #fff;
   border-radius: 25px !important;
 }
-.result details[open] summary,
-.legal-disclaimer details[open] summary {
+.result details[open] > summary,
+.legal-disclaimer details[open] > summary {
   padding: 15px 25px;
   color: #333 !important;
   border-radius: 25px !important;
@@ -329,22 +329,22 @@ table.dataTable thead button {
   border-bottom-right-radius: 0 !important;
   margin: -1px -23px 0;
   font-weight: bold !important;
-  margin-bottom: 15px;
+  margin-bottom: 15px !important;
 }
-.result details summary::-webkit-details-marker, .result details summary::marker,
-.legal-disclaimer details summary::-webkit-details-marker,
-.legal-disclaimer details summary::marker {
+.result details > summary::-webkit-details-marker, .result details > summary::marker,
+.legal-disclaimer details > summary::-webkit-details-marker,
+.legal-disclaimer details > summary::marker {
   display: none !important;
 }
-.result details[open] summary .item1::before,
-.legal-disclaimer details[open] summary .item1::before {
+.result details[open] > summary .item1::before,
+.legal-disclaimer details[open] > summary .item1::before {
   content: "-" !important;
   font-size: 1.8em;
   margin: -5px 10px;
   font-weight: bold;
 }
-.result details:not([open]) summary .item1::before,
-.legal-disclaimer details:not([open]) summary .item1::before {
+.result details:not([open]) > summary .item1::before,
+.legal-disclaimer details:not([open]) > summary .item1::before {
   content: "+" !important;
   font-size: 1.5em;
   margin-right: 10px;
@@ -395,7 +395,7 @@ table.dataTable thead button {
 .legal-disclaimer details[open] {
   background-color: #fff;
 }
-.legal-disclaimer details[open] summary {
+.legal-disclaimer details[open] > summary {
   background-color: #E7E6F9 !important;
 }
 
@@ -408,7 +408,7 @@ table.dataTable thead button {
     border: 3px solid #ddd !important;
     background-color: #fff !important;
   }
-  details[open] summary {
+  details[open] > summary {
     margin-top: -1px;
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
@@ -416,10 +416,10 @@ table.dataTable thead button {
     color: #43474E !important;
     margin: -1px -16px !important;
   }
-  details[open] summary:hover, details[open] summary:active, details[open] summary:focus {
+  details[open] > summary:hover, details[open] > summary:active, details[open] > summary:focus {
     color: #43474E !important;
   }
-  details summary:hover, details summary:active, details summary:focus {
+  details > summary:hover, details > summary:active, details > summary:focus {
     color: #43474E !important;
   }
   details summary {
