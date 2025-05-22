@@ -741,20 +741,32 @@
     "question-nonimmigrant_visa": {
         "eTA-X": {
             "tourist": {
-                "yes": "result-eTA_X",
+                "yes": "result-eTA_eTAX",
                 "no": "result-visitor_visa"
+            },
+            "transit": {
+                "yes": "result-eTA-eTAX",
+                "no": "question-transit"
             }
         },
         "eTA-X-TWOV": {
             "tourist": {
-                "yes": "result-eTA_X",
+                "yes": "result-eTA_eTAX",
                 "no": "result-visitor_visa"
+            },
+            "transit": {
+                "yes": "result-eTA-eTAX",
+                "no": "question-transit"
             }
         },
         "mexico": {
             "tourist": {
-                "yes": "result-eTA_X",
+                "yes": "result-eTA_eTAX",
                 "no": "result-visitor_visa"
+            },
+            "transit": {
+                "yes": "result-eTA-eTAX",
+                "no": "question-transit"
             }
         }
     },
