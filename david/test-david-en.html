@@ -159,33 +159,55 @@
 
             <!--CHANGE THE H1-->
 
-            <h1 property="name" id="wb-cont" dir="ltr">Test ChatGPT image</h1>
-
-            <div id="questionAge">
-                <p>Are you 18 and over?</p>
-                <button onclick="checkAge(true)">Yes</button>
-                <button onclick="checkAge(false)">No</button>
-            </div>
+            <h1 id="wb-cont" class="gc-thickline">Canada Child Benefit (CCB) Calculator<br><small>July 2024 – June 2025</small></h1>
+            <p class="mrgn-bttm-md">Estimate your CCB payment for July 2024 – June 2025 using current rules. This calculator provides an <strong>estimate</strong> only.</p>
         
-            <!-- Question 2: First-time Applicant -->
-            <div id="questionFirstTime" class="hidden">
-                <p>Are you a first-time applicant?</p>
-                <button onclick="checkFirstTime(true)">Yes</button>
-                <button onclick="checkFirstTime(false)">No</button>
-            </div>
+            <form id="ccb-calc-form" class="wb-frm">
+                <fieldset>
+                    <legend class="h3">Eligible children</legend>
+                    <div class="form-group">
+                        <label for="childrenUnder6">
+                            Number of eligible children under age 6 as of July 1, 2024 <span class="required">*</span>
+                        </label>
+                        <input type="number" id="childrenUnder6" name="childrenUnder6" min="0" max="15" value="0" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="children6to17">
+                            Number of eligible children aged 6 to 17 as of July 1, 2024 <span class="required">*</span>
+                        </label>
+                        <input type="number" id="children6to17" name="children6to17" min="0" max="15" value="0" class="form-control" required>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend class="h3">Family net income (2023)</legend>
+                    <div class="form-group">
+                        <label for="netIncome">
+                            Enter your adjusted family net income for 2023 (CAD) <span class="required">*</span>
+                        </label>
+                        <input type="number" id="netIncome" name="netIncome" min="0" class="form-control" required>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend class="h3">Custody arrangement</legend>
+                    <div class="form-group">
+                        <label for="custodyArrangement">Which matches your situation?</label>
+                        <select id="custodyArrangement" name="custodyArrangement" class="form-control">
+                            <option value="full">I have full primary responsibility (child(ren) live with me &ge;60% of the time)</option>
+                            <option value="shared">I have shared physical custody (each parent has &ge;40% of the time)</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <button type="submit" class="btn btn-primary">Calculate your CCB</button>
+            </form>
         
-            <!-- Question 3: Travelling Alone -->
-            <div id="questionTravelling" class="hidden">
-                <p>Are you travelling alone?</p>
-                <button onclick="checkTravelling(true)">Yes</button>
-                <button onclick="checkTravelling(false)">No</button>
-            </div>
-        
-            <!-- Result -->
-            <div id="result" class="hidden">
-                <p id="outputText"></p>
-            </div>
-        
+            <section id="ccb-result" class="well well-sm mrgn-tp-lg hidden">
+                <h2 class="h3">Estimated Canada Child Benefit</h2>
+                <ul>
+                    <li><strong>Annual payment:</strong> <span id="result-ann"></span></li>
+                    <li><strong>Monthly payment:</strong> <span id="result-month"></span></li>
+                </ul>
+                <div id="result-note" class="mrgn-tp-sm"></div>
+            </section>
 
             <div class="mwsgeneric-base-html parbase section">
 
@@ -390,63 +412,85 @@
 
     </div>
 
-    <script type="text/javascript">
-        _satellite.pageBottom();
-    </script>
-
-    <script src="https://test.canada.ca/covid-19-guidance/proto/js/alpha-banner.js"></script>
-    <script type="text/javascript" src="https://www.canada.ca/etc/clientlibs/granite/jquery.min.js"></script>
-    <script type="text/javascript" src="https://www.canada.ca/etc/clientlibs/granite/utils.min.js"></script>
-    <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/clientlib-publish.min.js"></script>
-
-    <!--[if gte IE 9 | !IE ]><!-->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/wet-boew.min.js"></script>
-    <!--<![endif]-->
-
-    <!--[if lt IE 9]>
-<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/ie8-wet-boew2.min.js"></script>
-<![endif]-->
-
-    <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
 
     <script>
-        function hideAllSections() {
-            document.getElementById("questionAge").classList.add("hidden");
-            document.getElementById("questionFirstTime").classList.add("hidden");
-            document.getElementById("questionTravelling").classList.add("hidden");
-            document.getElementById("result").classList.add("hidden");
-        }
-
-        function checkAge(isOver18) {
-            hideAllSections();
-            if (isOver18) {
-                document.getElementById("questionFirstTime").classList.remove("hidden");
-            } else {
-                document.getElementById("outputText").innerText = "Don't Qualify";
-                document.getElementById("result").classList.remove("hidden");
+        function calculate_ccb(num_children_under_6, num_children_6_to_17, adjusted_family_net_income) {
+            const max_per_under_6 = 7787;
+            const max_per_6_to_17 = 6570;
+            const first_threshold = 36502;
+            const second_threshold = 79087;
+            const num_children = num_children_under_6 + num_children_6_to_17;
+    
+            let first_rate, second_rate, fixed_reduction;
+            if (num_children === 1) {
+                first_rate = 0.07;   // 7%
+                second_rate = 0.032; // 3.2%
+                fixed_reduction = 2981;
+            } else if (num_children === 2) {
+                first_rate = 0.135;
+                second_rate = 0.057;
+                fixed_reduction = 5749;
+            } else if (num_children === 3) {
+                first_rate = 0.19;
+                second_rate = 0.08;
+                fixed_reduction = 8091;
+            } else if (num_children >= 4) {
+                first_rate = 0.23;
+                second_rate = 0.095;
+                fixed_reduction = 9795;
             }
-        }
-
-        function checkFirstTime(isFirstTime) {
-            hideAllSections();
-            if (isFirstTime) {
-                document.getElementById("questionTravelling").classList.remove("hidden");
-            } else {
-                document.getElementById("outputText").innerText = "Don't Qualify";
-                document.getElementById("result").classList.remove("hidden");
+    
+            // Base CCB before reductions
+            const base_amount =
+                (num_children_under_6 * max_per_under_6) +
+                (num_children_6_to_17 * max_per_6_to_17);
+    
+            let reduction = 0;
+    
+            if (adjusted_family_net_income <= first_threshold) {
+                reduction = 0;
+            } else if (adjusted_family_net_income > first_threshold && adjusted_family_net_income <= second_threshold) {
+                reduction = (adjusted_family_net_income - first_threshold) * first_rate;
+            } else if (adjusted_family_net_income > second_threshold) {
+                reduction = fixed_reduction + ((adjusted_family_net_income - second_threshold) * second_rate);
             }
+    
+            const final_ccb = Math.max(0, base_amount - reduction);
+            return final_ccb;
         }
-
-        function checkTravelling(isTravellingAlone) {
-            hideAllSections();
-            if (isTravellingAlone) {
-                document.getElementById("outputText").innerText = "Qualify";
-            } else {
-                document.getElementById("outputText").innerText = "Don't Qualify";
+    
+        document.getElementById('ccb-calc-form').addEventListener('submit', function(e){
+            e.preventDefault();
+    
+            const under6 = parseInt(document.getElementById('childrenUnder6').value) || 0;
+            const age6to17 = parseInt(document.getElementById('children6to17').value) || 0;
+            if (under6 < 0 || age6to17 < 0) { alert("Please enter zero or a positive number for children."); return; }
+            if (under6 + age6to17 === 0) { alert("You must have at least one eligible child."); return; }
+    
+            const income = parseFloat(document.getElementById('netIncome').value) || 0;
+            if (income < 0) { alert("Family net income cannot be negative."); return; }
+    
+            const custody = document.getElementById('custodyArrangement').value;
+    
+            let total = calculate_ccb(under6, age6to17, income);
+    
+            let note = '';
+            if(custody === 'shared') {
+                total = total / 2;
+                note = "You selected a shared custody arrangement. Each eligible parent receives 50% of the total CCB for the child(ren).";
             }
-            document.getElementById("result").classList.remove("hidden");
-        }
+    
+            const annual = Math.round(total * 100) / 100;
+            const monthly = Math.round((annual / 12) * 100) / 100;
+    
+            document.getElementById('ccb-result').classList.remove('hidden');
+            document.getElementById('result-ann').innerText = '$' + annual.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
+            document.getElementById('result-month').innerText = '$' + monthly.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
+            document.getElementById('result-note').innerText = note;
+        });
     </script>
 </body>
 
