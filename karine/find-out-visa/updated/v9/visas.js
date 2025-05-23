@@ -307,6 +307,7 @@ $("[data-gc-analytics-customclick]").on("click", function () {
     // console.log($(this).attr("data-gc-analytics-customclick"));
 });
 
+});
 $(".wb-tables").on("wb-ready.wb-tables", function (event) {
     document.querySelectorAll(".sorting-icons").forEach(element => {
         // element.innerHTML += `<span class="fa-solid fa-sort pull-left pt-sm-1 text-primary"></span>`;
@@ -351,6 +352,7 @@ lbBtn.onclick = function () {
     lbBtn.classList.toggle("opened");
     openDropdown();
 }
+
 function openDropdown() {
     document.getElementById("listbox").classList.toggle("hidden");
     for (let i = 0; i < lbOptions.length; i++) {
@@ -376,4 +378,3 @@ function filterFunction() {
         }
     }
 }
-});
