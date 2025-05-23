@@ -104,14 +104,13 @@ function handleNextClick() {
             },
             "question-canadian_citizen": () => {
                 traveller_type = selectedInput;
-                return data[question]?.[selectedInput];
+                return data[question]?.[method_of_travel]?.[selectedInput];
             },
             "question-purpose_of_travel": () => {
                 purpose_of_travel = selectedInput;
                 return data[question]?.[selectedInput];
             },
-            "question-uspr": () => {
-                console.log(passport_code);
+            "question-uspr": () => {             
                 return data[question]?.[method_of_travel]?.[purpose_of_travel]?.[traveller_type]?.[selectedInput] || data[question]?.[method_of_travel]?.[purpose_of_travel]?.[passport_code]?.[selectedInput] || data[question]?.[method_of_travel]?.[purpose_of_travel]?.[passport_code];
             },
             "question-travel_document": () => {
@@ -120,9 +119,7 @@ function handleNextClick() {
             },
             "question-passport_code": () => {
                 passport_code = selectedInput;
-                console.log(selectedInput);
-                console.log(passport_code);
-                return data["function-handlePassportCode"][purpose_of_travel]?.[passport_code];
+                return data["function-handlePassportCode"][purpose_of_travel]?.[method_of_travel]?.[passport_code];
             },
             "question-family": () => {
                 purpose_of_travel = selectedInput;
@@ -144,10 +141,6 @@ function handleNextClick() {
             "question-travel_document_taiwan": () => handleTravelDocument()
         };
 
-        console.log(traveller_type);
-        console.log(purpose_of_travel);
-        console.log(method_of_travel);
-
         // ** Helper functions **
 
         const getNextForStudyOrWork = () => {
@@ -163,9 +156,15 @@ function handleNextClick() {
 
         // ** Main Logic to get the next question **
         const nextQuestionId = questionHandlers[question] ? questionHandlers[question]() : (data[question][traveller_type][selectedInput] || data[question][traveller_type]);
-
         const nextQuestion = document.getElementById(nextQuestionId);
-        console.log(nextQuestion);
+
+        
+
+        console.log("___");
+        console.log(traveller_type);
+        console.log(purpose_of_travel);
+        console.log(method_of_travel);
+        console.log(nextQuestion.id);
 
 
         userAnswers.push(currentQuestion);
@@ -284,7 +283,7 @@ function handlePreviousClick(changeAnswer) {
 analytics();
 
 function analytics() {
-    let currentQuestion = document.querySelector('.question:not(.hidden)');
+    let currentQuestion = document.querySelector('.question:not(.hidden)') || document.querySelector('.result:not(.hidden)');
     let attributeNext = btnNext.dataset.gcAnalyticsCustomclick.split("__")[0];
     let attributePrevious = btnPrevious.dataset.gcAnalyticsCustomclick.split("__")[0];
 
@@ -303,7 +302,7 @@ $("#passport-selection-change").on("click", function () {
 
 // Testing analytics
 $("[data-gc-analytics-customclick]").on("click", function () {
-    console.log($(this).attr("data-gc-analytics-customclick"));
+    // console.log($(this).attr("data-gc-analytics-customclick"));
 });
 
 $(".wb-tables").on("wb-ready.wb-tables", function (event) {
