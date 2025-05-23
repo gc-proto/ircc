@@ -40,6 +40,8 @@ let passportCodeTable = document.getElementById('passport-code');
     data = await response.json();
 })();
 
+$( document ).on( "wb-ready.wb", function( event ) {
+
 btnNext.addEventListener("click", handleNextClick);
 btnPrevious.addEventListener("click", () => handlePreviousClick(false));
 btnReset.addEventListener("click", () => handlePreviousClick(userAnswers[0]?.id));
@@ -374,3 +376,4 @@ function filterFunction() {
         }
     }
 }
+});
