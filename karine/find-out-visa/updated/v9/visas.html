@@ -362,12 +362,10 @@
             </fieldset>
 
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-nonimmigrant_visa">
-              <legend>Do you have one of these documents</legend>
+              <legend>Have you held a Canadian visitor visa in the past 10 years, or do you currently hold a valid U.S. nonimmigrant visa?</legend>
               <ul class="list-unstyled lst-spcd-2">
-                <li class="radio"><input value="yes" name="nonimmigrant_visa" type="radio" id="nonimmigrant_visa-nonimmigrant" required><label for="nonimmigrant_visa-nonimmigrant">I have a valid US nonimmigrant visa</label></li>
-                <li class="radio"><input value="yes" name="nonimmigrant_visa" type="radio" id="nonimmigrant_visa-cadvisa"><label for="nonimmigrant_visa-cadvisa">I’ve had a Canadian visitor visa in the last 10 years </label></li>
-                <li class="radio"><input value="yes" name="nonimmigrant_visa" type="radio" id="nonimmigrant_visa-both"><label for="nonimmigrant_visa-both">Both: I have a valid US nonimmigrant visa and had a Canadian visitor visa in the last 10 years </label></li>
-                <li class="radio"><input value="no" name="nonimmigrant_visa" type="radio" id="nonimmigrant_visa-no"><label for="nonimmigrant_visa-no">No, I don’t have either of these documents </label></li>
+                <li class="radio"><input value="yes" name="nonimmigrant_visa" type="radio" id="nonimmigrant_visa-yes" required><label for="nonimmigrant_visa-yes">Yes</label></li>
+                <li class="radio"><input value="no" name="nonimmigrant_visa" type="radio" id="nonimmigrant_visa-no"><label for="nonimmigrant_visa-no">No</label></li>
               </ul>
             </fieldset>
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel_document_israel">
@@ -560,7 +558,7 @@
 
           <div tabindex="-1" class="result hidden" id="result-transit_without_visa-china" data-wb-ajax='{"type": "replace", "url": "results/transit_without_visa-china.html", "trigger": true}'></div>
 
-          <div tabindex=" -1" class="result hidden" id="result-transit" data-wb-ajax='{"type": "replace", "url": "results/transit.html", "trigger": true}'></div>
+          <div tabindex=" -1" class="result hidden" id="result-transit_visa" data-wb-ajax='{"type": "replace", "url": "results/transit_visa.html", "trigger": true}'></div>
 
        
 
