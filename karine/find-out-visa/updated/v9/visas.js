@@ -130,9 +130,10 @@ function handleNextClick() {
             "question-study": () => getNextForStudyOrWork(),
             "question-work": () => getNextForStudyOrWork(),
             "question-transit": () => {
-                return ["eTA-X", "eTA-X-TWOV", "mexico"].includes(traveller_type)
-                    ? data[question][traveller_type][method_of_travel][selectedInput]
-                    : data[question][traveller_type][selectedInput];
+                 return data[question][method_of_travel][traveller_type][selectedInput];
+                // return ["eTA-X", "eTA-X-TWOV", "mexico"].includes(traveller_type)
+                //     ? data[question][traveller_type][method_of_travel][selectedInput]
+                //     : data[question][traveller_type][selectedInput];
             },
             "question-transit_length": () => data[question][traveller_type][selectedInput],
             "question-nonimmigrant_visa": () => {
@@ -242,6 +243,7 @@ function handlePreviousClick(changeAnswer) {
     if (document.getElementById('errors-' + form.id)) document.getElementById('errors-' + form.id).remove();
     if (changeAnswersContainer.querySelector('dl')) {
         changeAnswersContainer.classList.add('hidden');
+        changeAnswersContainer.classList.remove('visible');
         changeAnswersContainer.querySelector('dl').remove();
     }
 
