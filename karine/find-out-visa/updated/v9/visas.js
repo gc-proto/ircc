@@ -211,7 +211,7 @@ function handleNextClick() {
 
             
 
-            $(nextQuestion).load(("results/" + (nextQuestion.id).split("result-")[1] + ".html").toLowerCase);
+            $(nextQuestion).load(("results/" + nextQuestion.id).split("result-")[1] + ".html");
         }
         nextQuestion.focus();
         analytics();
