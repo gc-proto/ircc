@@ -28,172 +28,172 @@
     "question-uspr": {
         "air": {
             "tourist": {
-                "eTA": {
-                    "yes_uspr": "result-GeneralUSPR-air",
-                    "no_uspr": "result-eTA"
+                "eta": {
+                    "yes_uspr": "result-generaluspr-air",
+                    "no_uspr": "result-eta"
                 },
                 "visa": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "result-visitor_visa"
                 },
-                "eTA-X": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                "eta-X": {
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "question-nonimmigrant_visa"
                 },
-                "eTA-X-TWOV": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                "eta-X-TWOV": {
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "question-nonimmigrant_visa"
                 },
                 "mexico": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "question-nonimmigrant_visa"
                 },
                 "canada": "result-canadian_cit_pr-air",
-                "usa": "result-GeneralUS-air",
+                "usa": "result-generalus-air",
                 "israel": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "question-travel_document_israel"
                 },
                 "romania": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "question-travel_document_romania"
                 },
                 "taiwan": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "question-travel_document_taiwan"
                 },
                 "other": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "result-visitor_visa"
                 }
             },
             "transit": {
-                "eTA": {
-                    "yes_uspr": "result-GeneralUSPR-air",
-                    "no_uspr": "result-eTA"
+                "eta": {
+                    "yes_uspr": "result-generaluspr-air",
+                    "no_uspr": "result-eta"
                 },
                 "visa": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "question-transit"
                 },
-                "eTA-X": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                "eta-X": {
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "question-nonimmigrant_visa"
                 },
-                "eTA-X-TWOV": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                "eta-X-TWOV": {
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "question-nonimmigrant_visa"
                 },
                 "mexico": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "question-nonimmigrant_visa"
                 },
                 "canada": "result-canadian_cit_pr-air",
-                "usa": "result-GeneralUS-air",
+                "usa": "result-generalus-air",
                 "china": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "question-transit"
                 },
                 "indonesia": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "question-transit"
                 },
                 "israel": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "question-travel_document_israel"
                 },
                 "romania": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "question-travel_document_romania"
                 },
                 "taiwan": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "question-travel_document_taiwan"
                 },
                 "other": {
-                    "yes_uspr": "result-GeneralUSPR-air",
+                    "yes_uspr": "result-generaluspr-air",
                     "no_uspr": "question-transit"
                 }
             }
         },
         "land_sea": {
             "tourist": {
-                "eTA": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
-                    "no_uspr": "result-IDDoc"
+                "eta": {
+                    "yes_uspr": "result-generaluspr-land_sea",
+                    "no_uspr": "result-iddoc"
                 },
                 "visa": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
+                    "yes_uspr": "result-generaluspr-land_sea",
                     "no_uspr": "result-visitor_visa"
                 },
-                "eTA-X": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
-                    "no_uspr": "result-visitor_visa_or_eTA_x"
+                "eta-X": {
+                    "yes_uspr": "result-generaluspr-land_sea",
+                    "no_uspr": "result-visitor_visa_or_eta_x"
                 },
-                "eTA-X-TWOV": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
-                    "no_uspr": "result-visitor_visa_or_eTA_x"
+                "eta-X-TWOV": {
+                    "yes_uspr": "result-generaluspr-land_sea",
+                    "no_uspr": "result-visitor_visa_or_eta_x"
                 },
                 "mexico": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
-                    "no_uspr": "result-visitor_visa_or_eTA_x"
+                    "yes_uspr": "result-generaluspr-land_sea",
+                    "no_uspr": "result-visitor_visa_or_eta_x"
                 },
                 "canada": "result-canadian_cit_pr-land_sea",
-                "usa": "result-GeneralUS-land_sea",
+                "usa": "result-generalus-land_sea",
                 "israel": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
+                    "yes_uspr": "result-generaluspr-land_sea",
                     "no_uspr": "question-travel_document_israel"
                 },
                 "romania": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
+                    "yes_uspr": "result-generaluspr-land_sea",
                     "no_uspr": "question-travel_document_romania"
                 },
                 "taiwan": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
+                    "yes_uspr": "result-generaluspr-land_sea",
                     "no_uspr": "question-travel_document_taiwan"
                 },
                 "other": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
+                    "yes_uspr": "result-generaluspr-land_sea",
                     "no_uspr": "result-visitor_visa"
                 }
             },            
             "transit": {
-                "eTA": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
-                    "no_uspr": "result-IDDoc"
+                "eta": {
+                    "yes_uspr": "result-generaluspr-land_sea",
+                    "no_uspr": "result-iddoc"
                 },
                 "visa": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
+                    "yes_uspr": "result-generaluspr-land_sea",
                     "no_uspr": "result-visitor_visa"
                 },
-                "eTA-X": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
-                    "no_uspr": "result-visitor_visa_or_eTA_x"
+                "eta-X": {
+                    "yes_uspr": "result-generaluspr-land_sea",
+                    "no_uspr": "result-visitor_visa_or_eta_x"
                 },
-                "eTA-X-TWOV": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
-                    "no_uspr": "result-visitor_visa_or_eTA_x"
+                "eta-X-TWOV": {
+                    "yes_uspr": "result-generaluspr-land_sea",
+                    "no_uspr": "result-visitor_visa_or_eta_x"
                 },
                 "mexico": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
-                    "no_uspr": "result-visitor_visa_or_eTA_x"
+                    "yes_uspr": "result-generaluspr-land_sea",
+                    "no_uspr": "result-visitor_visa_or_eta_x"
                 },
                 "canada": "result-canadian_cit_pr-land_sea",
-                "usa": "result-GeneralUS-land_sea",
+                "usa": "result-generalus-land_sea",
                 "israel": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
+                    "yes_uspr": "result-generaluspr-land_sea",
                     "no_uspr": "question-travel_document_israel"
                 },
                 "romania": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
+                    "yes_uspr": "result-generaluspr-land_sea",
                     "no_uspr": "question-travel_document_romania"
                 },
                 "taiwan": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
+                    "yes_uspr": "result-generaluspr-land_sea",
                     "no_uspr": "question-travel_document_taiwan"
                 },
                 "other": {
-                    "yes_uspr": "result-GeneralUSPR-land_sea",
+                    "yes_uspr": "result-generaluspr-land_sea",
                     "no_uspr": "result-visitor_visa"
                 }
             }
@@ -205,11 +205,11 @@
                 "air": "question-transit_length",
                 "land_sea": "result-visitor_visa"
             },
-            "eTA-X": {
+            "eta-X": {
                 "air": "question-transit_length",
                 "land_sea": "result-visitor_visa"
             },
-            "eTA-X-TWOV": {
+            "eta-X-TWOV": {
                 "air": "question-transit_length",
                 "land_sea": "result-visitor_visa"
             },
@@ -249,11 +249,11 @@
             "no": "result-visitor_visa",
             "yes": "result-transit_visa"
         },
-        "eTA-X": {
+        "eta-X": {
             "no": "result-visitor_visa",
             "yes": "result-transit_visa"
         },
-        "eTA-X-TWOV": {
+        "eta-X-TWOV": {
             "no": "result-visitor_visa",
             "yes": "result-transit_without_visa"
         },
@@ -294,7 +294,7 @@
         },
         "family": {
             "unknown": "question-travel_document",
-            "us_citizen": "result-GeneralUS",
+            "us_citizen": "result-generalus",
             "uspr": "question-travel_document"
         }
     },
@@ -337,12 +337,12 @@
                 "not_sure": "result-study-not_sure-visitor_visa"
             }
         },
-        "eTA": {
+        "eta": {
             "air": {
-                "first_permit": "result-study-first_permit-eTA",
-                "have_permit": "result-study-have_permit-eTA",
-                "extend_permit": "result-study-extend_permit-eTA",
-                "eligible_without_permit": "result-study-eligible_without_permit-eTA",
+                "first_permit": "result-study-first_permit-eta",
+                "have_permit": "result-study-have_permit-eta",
+                "extend_permit": "result-study-extend_permit-eta",
+                "eligible_without_permit": "result-study-eligible_without_permit-eta",
                 "not_sure": "result-study-not_sure"
             },
             "land_sea": {
@@ -353,14 +353,14 @@
                 "not_sure": "result-study-not_sure"
             }
         },
-        "eTA-X": {
+        "eta-X": {
             "air": {
                 "true": {
                     "first_permit": "result-study-first_permit-visitor_visa",
-                    "have_permit": "result-study-have_permit-eTA",
-                    "extend_permit": "result-study-extend_permit-eTA",
-                    "eligible_without_permit": "result-study-eligible_without_permit-eTA",
-                    "not_sure": "result-study-not_sure-eTA"
+                    "have_permit": "result-study-have_permit-eta",
+                    "extend_permit": "result-study-extend_permit-eta",
+                    "eligible_without_permit": "result-study-eligible_without_permit-eta",
+                    "not_sure": "result-study-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-study-first_permit-visitor_visa",
@@ -378,14 +378,14 @@
                 "not_sure": "result-study-not_sure-visitor_visa"
             }
         },
-        "eTA-X-TWOV": {
+        "eta-X-TWOV": {
             "air": {
                 "true": {
                     "first_permit": "result-study-first_permit-visitor_visa",
-                    "have_permit": "result-study-have_permit-eTA",
-                    "extend_permit": "result-study-extend_permit-eTA",
-                    "eligible_without_permit": "result-study-eligible_without_permit-eTA",
-                    "not_sure": "result-study-not_sure-eTA"
+                    "have_permit": "result-study-have_permit-eta",
+                    "extend_permit": "result-study-extend_permit-eta",
+                    "eligible_without_permit": "result-study-eligible_without_permit-eta",
+                    "not_sure": "result-study-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-study-first_permit-visitor_visa",
@@ -408,9 +408,9 @@
                 "true": {
                     "first_permit": "result-study-first_permit-visitor_visa",
                     "have_permit": "question-study-vi-march2024",
-                    "extend_permit": "result-study-extend_permit-eTA",
-                    "eligible_without_permit": "result-study-eligible_without_permit-eTA",
-                    "not_sure": "result-study-not_sure-eTA"
+                    "extend_permit": "result-study-extend_permit-eta",
+                    "eligible_without_permit": "result-study-eligible_without_permit-eta",
+                    "not_sure": "result-study-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-study-first_permit-visitor_visa",
@@ -431,11 +431,11 @@
         "israel": {
             "air": {
                 "true": {
-                    "first_permit": "result-study-first_permit-eTA",
-                    "have_permit": "result-study-have_permit-eTA",
-                    "extend_permit": "result-study-extend_permit-eTA",
-                    "eligible_without_permit": "result-study-eligible_without_permit-eTA",
-                    "not_sure": "result-study-not_sure-eTA"
+                    "first_permit": "result-study-first_permit-eta",
+                    "have_permit": "result-study-have_permit-eta",
+                    "extend_permit": "result-study-extend_permit-eta",
+                    "eligible_without_permit": "result-study-eligible_without_permit-eta",
+                    "not_sure": "result-study-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-study-first_permit-visitor_visa",
@@ -447,11 +447,11 @@
             },
             "land_sea": {
                 "true": {
-                    "first_permit": "result-study-first_permit-eTA",
-                    "have_permit": "result-study-have_permit-eTA",
-                    "extend_permit": "result-study-extend_permit-eTA",
-                    "eligible_without_permit": "result-study-eligible_without_permit-eTA",
-                    "not_sure": "result-study-not_sure-eTA"
+                    "first_permit": "result-study-first_permit-eta",
+                    "have_permit": "result-study-have_permit-eta",
+                    "extend_permit": "result-study-extend_permit-eta",
+                    "eligible_without_permit": "result-study-eligible_without_permit-eta",
+                    "not_sure": "result-study-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-study-first_permit-visitor_visa",
@@ -465,11 +465,11 @@
         "romania": {
             "air": {
                 "true": {
-                    "first_permit": "result-study-first_permit-eTA",
-                    "have_permit": "result-study-have_permit-eTA",
-                    "extend_permit": "result-study-extend_permit-eTA",
-                    "eligible_without_permit": "result-study-eligible_without_permit-eTA",
-                    "not_sure": "result-study-not_sure-eTA"
+                    "first_permit": "result-study-first_permit-eta",
+                    "have_permit": "result-study-have_permit-eta",
+                    "extend_permit": "result-study-extend_permit-eta",
+                    "eligible_without_permit": "result-study-eligible_without_permit-eta",
+                    "not_sure": "result-study-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-study-first_permit-visitor_visa",
@@ -481,11 +481,11 @@
             },
             "land_sea": {
                 "true": {
-                    "first_permit": "result-study-first_permit-eTA",
-                    "have_permit": "result-study-have_permit-eTA",
-                    "extend_permit": "result-study-extend_permit-eTA",
-                    "eligible_without_permit": "result-study-eligible_without_permit-eTA",
-                    "not_sure": "result-study-not_sure-eTA"
+                    "first_permit": "result-study-first_permit-eta",
+                    "have_permit": "result-study-have_permit-eta",
+                    "extend_permit": "result-study-extend_permit-eta",
+                    "eligible_without_permit": "result-study-eligible_without_permit-eta",
+                    "not_sure": "result-study-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-study-first_permit-visitor_visa",
@@ -499,11 +499,11 @@
         "taiwan": {
             "air": {
                 "true": {
-                    "first_permit": "result-study-first_permit-eTA",
-                    "have_permit": "result-study-have_permit-eTA",
-                    "extend_permit": "result-study-extend_permit-eTA",
-                    "eligible_without_permit": "result-study-eligible_without_permit-eTA",
-                    "not_sure": "result-study-not_sure-eTA"
+                    "first_permit": "result-study-first_permit-eta",
+                    "have_permit": "result-study-have_permit-eta",
+                    "extend_permit": "result-study-extend_permit-eta",
+                    "eligible_without_permit": "result-study-eligible_without_permit-eta",
+                    "not_sure": "result-study-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-study-first_permit-visitor_visa",
@@ -515,11 +515,11 @@
             },
             "land_sea": {
                 "true": {
-                    "first_permit": "result-study-first_permit-eTA",
-                    "have_permit": "result-study-have_permit-eTA",
-                    "extend_permit": "result-study-extend_permit-eTA",
-                    "eligible_without_permit": "result-study-eligible_without_permit-eTA",
-                    "not_sure": "result-study-not_sure-eTA"
+                    "first_permit": "result-study-first_permit-eta",
+                    "have_permit": "result-study-have_permit-eta",
+                    "extend_permit": "result-study-extend_permit-eta",
+                    "eligible_without_permit": "result-study-eligible_without_permit-eta",
+                    "not_sure": "result-study-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-study-first_permit-visitor_visa",
@@ -586,12 +586,12 @@
                 "not_sure": "result-work-not_sure-visitor_visa"
             }
         },
-        "eTA": {
+        "eta": {
             "air": {
-                "first_permit": "result-work-first_permit-eTA",
-                "have_permit": "result-work-have_permit-eTA",
-                "extend_permit": "result-work-extend_permit-eTA",
-                "eligible_without_permit": "result-work-eligible_without_permit-eTA",
+                "first_permit": "result-work-first_permit-eta",
+                "have_permit": "result-work-have_permit-eta",
+                "extend_permit": "result-work-extend_permit-eta",
+                "eligible_without_permit": "result-work-eligible_without_permit-eta",
                 "not_sure": "result-work-not_sure"
             },
             "land_sea": {
@@ -602,14 +602,14 @@
                 "not_sure": "result-work-not_sure"
             }
         },
-        "eTA-X": {
+        "eta-X": {
             "air": {
                 "true": {
                     "first_permit": "result-work-first_permit-visitor_visa",
-                    "have_permit": "result-work-have_permit-eTA",
-                    "extend_permit": "result-work-extend_permit-eTA",
-                    "eligible_without_permit": "result-work-eligible_without_permit-eTA",
-                    "not_sure": "result-work-not_sure-eTA"
+                    "have_permit": "result-work-have_permit-eta",
+                    "extend_permit": "result-work-extend_permit-eta",
+                    "eligible_without_permit": "result-work-eligible_without_permit-eta",
+                    "not_sure": "result-work-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-work-first_permit-visitor_visa",
@@ -627,14 +627,14 @@
                 "not_sure": "result-work-not_sure-visitor_visa"
             }
         },
-        "eTA-X-TWOV": {
+        "eta-X-TWOV": {
             "air": {
                 "true": {
                     "first_permit": "result-work-first_permit-visitor_visa",
-                    "have_permit": "result-work-have_permit-eTA",
-                    "extend_permit": "result-work-extend_permit-eTA",
-                    "eligible_without_permit": "result-work-eligible_without_permit-eTA",
-                    "not_sure": "result-work-not_sure-eTA"
+                    "have_permit": "result-work-have_permit-eta",
+                    "extend_permit": "result-work-extend_permit-eta",
+                    "eligible_without_permit": "result-work-eligible_without_permit-eta",
+                    "not_sure": "result-work-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-work-first_permit-visitor_visa",
@@ -657,9 +657,9 @@
                 "true": {
                     "first_permit": "result-work-first_permit-visitor_visa",
                     "have_permit": "question-work-vi-march2024",
-                    "extend_permit": "result-work-extend_permit-eTA",
-                    "eligible_without_permit": "result-work-eligible_without_permit-eTA",
-                    "not_sure": "result-work-not_sure-eTA"
+                    "extend_permit": "result-work-extend_permit-eta",
+                    "eligible_without_permit": "result-work-eligible_without_permit-eta",
+                    "not_sure": "result-work-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-work-first_permit-visitor_visa",
@@ -680,11 +680,11 @@
         "israel": {
             "air": {
                 "true": {
-                    "first_permit": "result-work-first_permit-eTA",
-                    "have_permit": "result-work-have_permit-eTA",
-                    "extend_permit": "result-work-extend_permit-eTA",
-                    "eligible_without_permit": "result-work-eligible_without_permit-eTA",
-                    "not_sure": "result-work-not_sure-eTA"
+                    "first_permit": "result-work-first_permit-eta",
+                    "have_permit": "result-work-have_permit-eta",
+                    "extend_permit": "result-work-extend_permit-eta",
+                    "eligible_without_permit": "result-work-eligible_without_permit-eta",
+                    "not_sure": "result-work-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-work-first_permit-visitor_visa",
@@ -696,11 +696,11 @@
             },
             "land_sea": {
                 "true": {
-                    "first_permit": "result-work-first_permit-eTA",
-                    "have_permit": "result-work-have_permit-eTA",
-                    "extend_permit": "result-work-extend_permit-eTA",
-                    "eligible_without_permit": "result-work-eligible_without_permit-eTA",
-                    "not_sure": "result-work-not_sure-eTA"
+                    "first_permit": "result-work-first_permit-eta",
+                    "have_permit": "result-work-have_permit-eta",
+                    "extend_permit": "result-work-extend_permit-eta",
+                    "eligible_without_permit": "result-work-eligible_without_permit-eta",
+                    "not_sure": "result-work-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-work-first_permit-visitor_visa",
@@ -714,11 +714,11 @@
         "romania": {
             "air": {
                 "true": {
-                    "first_permit": "result-work-first_permit-eTA",
-                    "have_permit": "result-work-have_permit-eTA",
-                    "extend_permit": "result-work-extend_permit-eTA",
-                    "eligible_without_permit": "result-work-eligible_without_permit-eTA",
-                    "not_sure": "result-work-not_sure-eTA"
+                    "first_permit": "result-work-first_permit-eta",
+                    "have_permit": "result-work-have_permit-eta",
+                    "extend_permit": "result-work-extend_permit-eta",
+                    "eligible_without_permit": "result-work-eligible_without_permit-eta",
+                    "not_sure": "result-work-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-work-first_permit-visitor_visa",
@@ -730,11 +730,11 @@
             },
             "land_sea": {
                 "true": {
-                    "first_permit": "result-work-first_permit-eTA",
-                    "have_permit": "result-work-have_permit-eTA",
-                    "extend_permit": "result-work-extend_permit-eTA",
-                    "eligible_without_permit": "result-work-eligible_without_permit-eTA",
-                    "not_sure": "result-work-not_sure-eTA"
+                    "first_permit": "result-work-first_permit-eta",
+                    "have_permit": "result-work-have_permit-eta",
+                    "extend_permit": "result-work-extend_permit-eta",
+                    "eligible_without_permit": "result-work-eligible_without_permit-eta",
+                    "not_sure": "result-work-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-work-first_permit-visitor_visa",
@@ -748,11 +748,11 @@
         "taiwan": {
             "air": {
                 "true": {
-                    "first_permit": "result-work-first_permit-eTA",
-                    "have_permit": "result-work-have_permit-eTA",
-                    "extend_permit": "result-work-extend_permit-eTA",
-                    "eligible_without_permit": "result-work-eligible_without_permit-eTA",
-                    "not_sure": "result-work-not_sure-eTA"
+                    "first_permit": "result-work-first_permit-eta",
+                    "have_permit": "result-work-have_permit-eta",
+                    "extend_permit": "result-work-extend_permit-eta",
+                    "eligible_without_permit": "result-work-eligible_without_permit-eta",
+                    "not_sure": "result-work-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-work-first_permit-visitor_visa",
@@ -764,11 +764,11 @@
             },
             "land_sea": {
                 "true": {
-                    "first_permit": "result-work-first_permit-eTA",
-                    "have_permit": "result-work-have_permit-eTA",
-                    "extend_permit": "result-work-extend_permit-eTA",
-                    "eligible_without_permit": "result-work-eligible_without_permit-eTA",
-                    "not_sure": "result-work-not_sure-eTA"
+                    "first_permit": "result-work-first_permit-eta",
+                    "have_permit": "result-work-have_permit-eta",
+                    "extend_permit": "result-work-extend_permit-eta",
+                    "eligible_without_permit": "result-work-eligible_without_permit-eta",
+                    "not_sure": "result-work-not_sure-eta"
                 },
                 "false": {
                     "first_permit": "result-work-first_permit-visitor_visa",
@@ -797,33 +797,33 @@
         }
     },
     "question-nonimmigrant_visa": {
-        "eTA-X": {
+        "eta-X": {
             "tourist": {
-                "yes": "result-eTA_eTAX",
+                "yes": "result-eta_etax",
                 "no": "result-visitor_visa"
             },
             "transit": {
-                "yes": "result-eTA_eTAX",
+                "yes": "result-eta_etax",
                 "no": "question-transit"
             }
         },
-        "eTA-X-TWOV": {
+        "eta-X-TWOV": {
             "tourist": {
-                "yes": "result-eTA_eTAX",
+                "yes": "result-eta_etax",
                 "no": "result-visitor_visa"
             },
             "transit": {
-                "yes": "result-eTA_eTAX",
+                "yes": "result-eta_etax",
                 "no": "question-transit"
             }
         },
         "mexico": {
             "tourist": {
-                "yes": "result-eTA_eTAX",
+                "yes": "result-eta_etax",
                 "no": "result-visitor_visa"
             },
             "transit": {
-                "yes": "result-eTA_eTAX",
+                "yes": "result-eta_etax",
                 "no": "question-transit"
             }
         }
@@ -831,51 +831,51 @@
     "question-travel_document_israel": {
         "tourist": {
             "air": {
-                "yes": "result-eTA",
+                "yes": "result-eta",
                 "no": "result-visitor_visa"
             },
             "land_sea": {
-                "yes": "result-IDDoc",
+                "yes": "result-iddoc",
                 "no": "result-visitor_visa"
             }
         },
         "transit": {
             "air": {
-                "yes": "result-eTA",
+                "yes": "result-eta",
                 "no": "question-transit"
             },
             "land_sea": {
-                "yes": "result-IDDoc",
+                "yes": "result-iddoc",
                 "no": "result-visitor_visa"
             }
         },
         "business": {
             "air": {
-                "yes": "result-eTA",
+                "yes": "result-eta",
                 "no": "result-visitor_visa"
             },
             "land_sea": {
-                "yes": "result-IDDoc",
+                "yes": "result-iddoc",
                 "no": "result-visitor_visa"
             }
         },
         "family_supervisa": {
             "air": {
-                "yes": "result-supervisa-eTA",
+                "yes": "result-supervisa-eta",
                 "no": "result-supervisa-visitor_visa"
             },
             "land_sea": {
-                "yes": "result-supervisa-eTA",
+                "yes": "result-supervisa-eta",
                 "no": "result-supervisa-visitor_visa"
             }
         },
         "family": {
             "air": {
-                "yes": "result-eTA",
+                "yes": "result-eta",
                 "no": "result-visitor_visa"
             },
             "land_sea": {
-                "yes": "result-IDDoc",
+                "yes": "result-iddoc",
                 "no": "result-visitor_visa"
             }
         },
@@ -885,51 +885,51 @@
     "question-travel_document_romania": {
         "tourist": {
             "air": {
-                "yes": "result-eTA",
+                "yes": "result-eta",
                 "no": "result-visitor_visa"
             },
             "land_sea": {
-                "yes": "result-IDDoc",
+                "yes": "result-iddoc",
                 "no": "result-visitor_visa"
             }
         },
         "transit": {
             "air": {
-                "yes": "result-eTA",
+                "yes": "result-eta",
                 "no": "question-transit"
             },
             "land_sea": {
-                "yes": "result-IDDoc",
+                "yes": "result-iddoc",
                 "no": "result-visitor_visa"
             }
         },
         "business": {
             "air": {
-                "yes": "result-eTA",
+                "yes": "result-eta",
                 "no": "result-visitor_visa"
             },
             "land_sea": {
-                "yes": "result-IDDoc",
+                "yes": "result-iddoc",
                 "no": "result-visitor_visa"
             }
         },
         "family_supervisa": {
             "air": {
-                "yes": "result-supervisa-eTA",
+                "yes": "result-supervisa-eta",
                 "no": "result-supervisa-visitor_visa"
             },
             "land_sea": {
-                "yes": "result-supervisa-eTA",
+                "yes": "result-supervisa-eta",
                 "no": "result-supervisa-visitor_visa"
             }
         },
         "family": {
             "air": {
-                "yes": "result-eTA",
+                "yes": "result-eta",
                 "no": "result-visitor_visa"
             },
             "land_sea": {
-                "yes": "result-IDDoc",
+                "yes": "result-iddoc",
                 "no": "result-visitor_visa"
             }
         },
@@ -939,51 +939,51 @@
     "question-travel_document_taiwan": {
         "tourist": {
             "air": {
-                "yes": "result-eTA",
+                "yes": "result-eta",
                 "no": "result-visitor_visa"
             },
             "land_sea": {
-                "yes": "result-IDDoc",
+                "yes": "result-iddoc",
                 "no": "result-visitor_visa"
             }
         },
         "transit": {
             "air": {
-                "yes": "result-eTA",
+                "yes": "result-eta",
                 "no": "question-transit"
             },
             "land_sea": {
-                "yes": "result-IDDoc",
+                "yes": "result-iddoc",
                 "no": "result-visitor_visa"
             }
         },
         "business": {
             "air": {
-                "yes": "result-eTA",
+                "yes": "result-eta",
                 "no": "result-visitor_visa"
             },
             "land_sea": {
-                "yes": "result-IDDoc",
+                "yes": "result-iddoc",
                 "no": "result-visitor_visa"
             }
         },
         "family_supervisa": {
             "air": {
-                "yes": "result-supervisa-eTA",
+                "yes": "result-supervisa-eta",
                 "no": "result-supervisa-visitor_visa"
             },
             "land_sea": {
-                "yes": "result-supervisa-eTA",
+                "yes": "result-supervisa-eta",
                 "no": "result-supervisa-visitor_visa"
             }
         },
         "family": {
             "air": {
-                "yes": "result-eTA",
+                "yes": "result-eta",
                 "no": "result-visitor_visa"
             },
             "land_sea": {
-                "yes": "result-IDDoc",
+                "yes": "result-iddoc",
                 "no": "result-visitor_visa"
             }
         },
@@ -1006,37 +1006,37 @@
         "AFG": "visa",
         "AGO": "visa",
         "ALB": "visa",
-        "AND": "eTA",
-        "AIA": "eTA",
-        "ARE": "eTA",
-        "ARG": "eTA-X",
+        "AND": "eta",
+        "AIA": "eta",
+        "ARE": "eta",
+        "ARG": "eta-X",
         "ARM": "visa",
-        "ATG": "eTA-X",
-        "AUS": "eTA",
-        "AUT": "eTA",
+        "ATG": "eta-X",
+        "AUS": "eta",
+        "AUT": "eta",
         "AZE": "visa",
         "BDI": "visa",
-        "BEL": "eTA",
+        "BEL": "eta",
         "BEN": "visa",
         "BFA": "visa",
         "BGD": "visa",
-        "BGR": "eTA",
+        "BGR": "eta",
         "BHR": "visa",
-        "BHS": "eTA",
+        "BHS": "eta",
         "BIH": "visa",
         "BLR": "visa",
         "BLZ": "visa",
-        "BMU": "eTA",
+        "BMU": "eta",
         "BOL": "visa",
-        "BRA": "eTA-X",
-        "BRB": "eTA",
-        "BRN": "eTA",
+        "BRA": "eta-X",
+        "BRB": "eta",
+        "BRN": "eta",
         "BTN": "visa",
         "BWA": "visa",
         "CAN": "canada",
         "CAF": "visa",
-        "CHE": "eTA",
-        "CHL": "eTA",
+        "CHE": "eta",
+        "CHL": "eta",
         "CHN_CN": {
             "air": {
                 "transit": "china",
@@ -1055,7 +1055,7 @@
                 "work": "visa"
             }
         },
-        "CHN_HK": "eTA",
+        "CHN_HK": "eta",
         "CHN_MO": "visa",
         "CIV": "visa",
         "CMR": "visa",
@@ -1064,33 +1064,33 @@
         "COL": "visa",
         "COM": "visa",
         "CPV": "visa",
-        "CRI": "eTA-X",
+        "CRI": "eta-X",
         "CUB": "visa",
-        "CYM": "eTA",
-        "CYP": "eTA",
-        "CZE": "eTA",
-        "D": "eTA",
+        "CYM": "eta",
+        "CYP": "eta",
+        "CZE": "eta",
+        "D": "eta",
         "DJI": "visa",
         "DMA": "visa",
-        "DNK": "eTA",
+        "DNK": "eta",
         "DOM": "visa",
         "DZA": "visa",
         "ECU": "visa",
         "EGY": "visa",
         "ERI": "visa",
-        "ESP": "eTA",
-        "EST": "eTA",
+        "ESP": "eta",
+        "EST": "eta",
         "ETH": "visa",
-        "FIN": "eTA",
+        "FIN": "eta",
         "FJI": "visa",
-        "FRA": "eTA",
+        "FRA": "eta",
         "FSM": "visa",
         "GAB": "visa",
-        "GBD": "eTA",
-        "GBN": "eTA",
-        "GBO": "eTA",
-        "GBR": "eTA",
-        "GBP": "eTA",
+        "GBD": "eta",
+        "GBN": "eta",
+        "GBO": "eta",
+        "GBR": "eta",
+        "GBP": "eta",
         "GBS": "visa",
         "GEO": "visa",
         "GHA": "visa",
@@ -1098,14 +1098,14 @@
         "GMB": "visa",
         "GNB": "visa",
         "GNQ": "visa",
-        "GRC": "eTA",
+        "GRC": "eta",
         "GRD": "visa",
         "GTM": "visa",
         "GUY": "visa",
         "HND": "visa",
-        "HRV": "eTA",
+        "HRV": "eta",
         "HTI": "visa",
-        "HUN": "eTA",
+        "HUN": "eta",
         "IDN": {
             "air": {
                 "transit": "indonesia",
@@ -1125,49 +1125,49 @@
             }
         },
         "IND": "visa",
-        "IRL": "eTA",
+        "IRL": "eta",
         "IRN": "visa",
         "IRQ": "visa",
-        "ISL": "eTA",
+        "ISL": "eta",
         "ISR": "israel",
-        "ITA": "eTA",
+        "ITA": "eta",
         "JAM": "visa",
         "JOR": "visa",
-        "JPN": "eTA",
+        "JPN": "eta",
         "KAZ": "visa",
         "KEN": "visa",
         "KGZ": "visa",
         "KHM": "visa",
         "KIR": "visa",
-        "KNA": "eTA-X",
-        "KOR": "eTA",
+        "KNA": "eta-X",
+        "KOR": "eta",
         "KWT": "visa",
         "LAO": "visa",
         "LBN": "visa",
         "LBR": "visa",
         "LBY": "visa",
-        "LCA": "eTA-X",
-        "LIE": "eTA",
+        "LCA": "eta-X",
+        "LIE": "eta",
         "LKA": "visa",
         "LSO": "visa",
-        "LTU": "eTA",
-        "LUX": "eTA",
-        "LVA": "eTA",
-        "MAR": "eTA-X",
-        "MCO": "eTA",
+        "LTU": "eta",
+        "LUX": "eta",
+        "LVA": "eta",
+        "MAR": "eta-X",
+        "MCO": "eta",
         "MDA": "visa",
         "MDG": "visa",
         "MEX": "mexico",
         "MHL": "visa",
         "MKD": "visa",
         "MLI": "visa",
-        "MLT": "eTA",
+        "MLT": "eta",
         "MMR": "visa",
         "MNE": "visa",
         "MNG": "visa",
         "MOZ": "visa",
         "MRT": "visa",
-        "MSR": "eTA",
+        "MSR": "eta",
         "MUS": "visa",
         "MWI": "visa",
         "MYS": "visa",
@@ -1175,21 +1175,21 @@
         "NER": "visa",
         "NGA": "visa",
         "NIC": "visa",
-        "NLD": "eTA",
-        "NOR": "eTA",
+        "NLD": "eta",
+        "NOR": "eta",
         "NPL": "visa",
         "NRU": "visa",
-        "NZL": "eTA",
+        "NZL": "eta",
         "OMN": "visa",
         "PAK": "visa",
-        "PAN": "eTA-X",
+        "PAN": "eta-X",
         "PER": "visa",
-        "PHL": "eTA-X-TWOV",
+        "PHL": "eta-X-TWOV",
         "PLW": "visa",
-        "PNG": "eTA",
-        "POL": "eTA",
+        "PNG": "eta",
+        "POL": "eta",
         "PRK": "visa",
-        "PRT": "eTA",
+        "PRT": "eta",
         "PRY": "visa",
         "PSE": "visa",
         "QAT": "visa",
@@ -1200,32 +1200,32 @@
         "SAU": "visa",
         "SDN": "visa",
         "SEN": "visa",
-        "SGP": "eTA",
-        "SHN": "eTA",
-        "SLB": "eTA",
+        "SGP": "eta",
+        "SHN": "eta",
+        "SLB": "eta",
         "SLE": "visa",
         "SLV": "visa",
-        "SMR": "eTA",
+        "SMR": "eta",
         "SOM": "visa",
         "SRB": "visa",
         "SSD": "visa",
         "STP": "visa",
         "SUR": "visa",
-        "SVK": "eTA",
-        "SVN": "eTA",
-        "SWE": "eTA",
+        "SVK": "eta",
+        "SVN": "eta",
+        "SWE": "eta",
         "SWZ": "visa",
-        "SYC": "eTA-X",
+        "SYC": "eta-X",
         "SYR": "visa",
-        "TCA": "eTA",
+        "TCA": "eta",
         "TCD": "visa",
         "TGO": "visa",
-        "THA": "eTA-X-TWOV",
+        "THA": "eta-X-TWOV",
         "TJK": "visa",
         "TKM": "visa",
         "TLS": "visa",
         "TON": "visa",
-        "TTO": "eTA-X",
+        "TTO": "eta-X",
         "TUN": "visa",
         "TUR": "visa",
         "TUV": "visa",
@@ -1233,16 +1233,16 @@
         "TZA": "visa",
         "UGA": "visa",
         "UKR": "visa",
-        "URY": "eTA-X",
+        "URY": "eta-X",
         "USA": "usa",
         "UZB": "visa",
-        "VAT": "eTA",
-        "VCT": "eTA-X",
+        "VAT": "eta",
+        "VCT": "eta-X",
         "VEN": "visa",
-        "VGB": "eTA",
+        "VGB": "eta",
         "VNM": "visa",
         "VUT": "visa",
-        "WSM": "eTA",
+        "WSM": "eta",
         "YEM": "visa",
         "ZAF": "visa",
         "ZMB": "visa",
@@ -1252,12 +1252,12 @@
         "tourist": {
             "air": {
                 "visa": "question-uspr",
-                "eTA": "question-uspr",
-                "eTA-X": "question-uspr",
-                "eTA-X-TWOV": "question-uspr",
+                "eta": "question-uspr",
+                "eta-X": "question-uspr",
+                "eta-X-TWOV": "question-uspr",
                 "mexico": "question-uspr",
                 "canada": "result-canadian_cit_pr-air",
-                "usa": "result-GeneralUS-air",
+                "usa": "result-generalus-air",
                 "israel": "question-uspr",
                 "romania": "question-uspr",
                 "taiwan": "question-uspr",
@@ -1265,12 +1265,12 @@
             },
             "land_sea": {
                 "visa": "question-uspr",
-                "eTA": "question-uspr",
-                "eTA-X": "question-uspr",
-                "eTA-X-TWOV": "question-uspr",
+                "eta": "question-uspr",
+                "eta-X": "question-uspr",
+                "eta-X-TWOV": "question-uspr",
                 "mexico": "question-uspr",
                 "canada": "result-canadian_cit_pr-land_sea",
-                "usa": "result-GeneralUS-land_sea",
+                "usa": "result-generalus-land_sea",
                 "israel": "question-uspr",
                 "romania": "question-uspr",
                 "taiwan": "question-uspr",
@@ -1280,12 +1280,12 @@
         "transit": {
             "air": {
                 "visa": "question-uspr",
-                "eTA": "question-uspr",
-                "eTA-X": "question-uspr",
-                "eTA-X-TWOV": "question-uspr",
+                "eta": "question-uspr",
+                "eta-X": "question-uspr",
+                "eta-X-TWOV": "question-uspr",
                 "mexico": "question-uspr",
                 "canada": "result-canadian_cit_pr-air",
-                "usa": "result-GeneralUS-air",
+                "usa": "result-generalus-air",
                 "china": "question-uspr",
                 "indonesia": "question-uspr",
                 "israel": "question-uspr",
@@ -1295,12 +1295,12 @@
             },
             "land_sea": {
                 "visa": "question-uspr",
-                "eTA": "question-uspr",
-                "eTA-X": "question-uspr",
-                "eTA-X-TWOV": "question-uspr",
+                "eta": "question-uspr",
+                "eta-X": "question-uspr",
+                "eta-X-TWOV": "question-uspr",
                 "mexico": "question-uspr",
                 "canada": "result-canadian_cit_pr-land_sea",
-                "usa": "result-GeneralUS-land_sea",
+                "usa": "result-generalus-land_sea",
                 "china": "question-uspr",
                 "indonesia": "question-uspr",
                 "israel": "question-uspr",
@@ -1312,12 +1312,12 @@
         "business": {
             "air": {
                 "visa": "result-visitor_visa",
-                "eTA": "result-eTA",
-                "eTA-X": "question-nonimmigrant_visa",
-                "eTA-X-TWOV": "question-nonimmigrant_visa",
+                "eta": "result-eta",
+                "eta-X": "question-nonimmigrant_visa",
+                "eta-X-TWOV": "question-nonimmigrant_visa",
                 "mexico": "question-nonimmigrant_visa",
                 "canada": "result-canadian_cit_pr",
-                "usa": "result-GeneralUS",
+                "usa": "result-generalus",
                 "israel": "question-travel_document_israel",
                 "romania": "question-travel_document_romania",
                 "taiwan": "question-travel_document_taiwan",
@@ -1325,12 +1325,12 @@
             },
             "land_sea": {
                 "visa": "result-visitor_visa",
-                "eTA": "result-IDDoc",
-                "eTA-X": "result-visitor_visa",
-                "eTA-X-TWOV": "result-visitor_visa",
+                "eta": "result-iddoc",
+                "eta-X": "result-visitor_visa",
+                "eta-X-TWOV": "result-visitor_visa",
                 "mexico": "result-visitor_visa",
                 "canada": "result-canadian_cit_pr",
-                "usa": "result-GeneralUS",
+                "usa": "result-generalus",
                 "israel": "question-travel_document_israel",
                 "romania": "question-travel_document_romania",
                 "taiwan": "question-travel_document_taiwan",
@@ -1340,9 +1340,9 @@
         "family_supervisa": {
             "air": {
                 "visa": "result-supervisa-visitor_visa",
-                "eTA": "result-supervisa-eTA",
-                "eTA-X": "question-nonimmigrant_visa",
-                "eTA-X-TWOV": "question-nonimmigrant_visa",
+                "eta": "result-supervisa-eta",
+                "eta-X": "question-nonimmigrant_visa",
+                "eta-X-TWOV": "question-nonimmigrant_visa",
                 "mexico": "question-nonimmigrant_visa",
                 "canada": "result-canadian_cit_pr",
                 "usa": "result-supervisa-US",
@@ -1353,12 +1353,12 @@
             },
             "land_sea": {
                 "visa": "result-supervisa-visitor_visa",
-                "eTA": "result-supervisa-eTA",
-                "eTA-X": "result-supervisa-visitor_visa",
-                "eTA-X-TWOV": "result-supervisa-visitor_visa",
+                "eta": "result-supervisa-eta",
+                "eta-X": "result-supervisa-visitor_visa",
+                "eta-X-TWOV": "result-supervisa-visitor_visa",
                 "mexico": "result-supervisa-visitor_visa",
                 "canada": "result-canadian_cit_pr",
-                "usa": "result-GeneralUS",
+                "usa": "result-generalus",
                 "israel": "question-travel_document_israel",
                 "romania": "question-travel_document_romania",
                 "taiwan": "question-travel_document_taiwan",
@@ -1368,12 +1368,12 @@
         "family": {
             "air": {
                 "visa": "result-visitor_visa",
-                "eTA": "result-eTA",
-                "eTA-X": "question-nonimmigrant_visa",
-                "eTA-X-TWOV": "question-nonimmigrant_visa",
+                "eta": "result-eta",
+                "eta-X": "question-nonimmigrant_visa",
+                "eta-X-TWOV": "question-nonimmigrant_visa",
                 "mexico": "question-nonimmigrant_visa",
                 "canada": "result-canadian_cit_pr",
-                "usa": "result-GeneralUS",
+                "usa": "result-generalus",
                 "israel": "question-travel_document_israel",
                 "romania": "question-travel_document_romania",
                 "taiwan": "question-travel_document_taiwan",
@@ -1381,12 +1381,12 @@
             },
             "land_sea": {
                 "visa": "result-visitor_visa",
-                "eTA": "result-IDDoc",
-                "eTA-X": "result-visitor_visa",
-                "eTA-X-TWOV": "result-visitor_visa",
+                "eta": "result-iddoc",
+                "eta-X": "result-visitor_visa",
+                "eta-X-TWOV": "result-visitor_visa",
                 "mexico": "result-visitor_visa",
                 "canada": "result-canadian_cit_pr",
-                "usa": "result-GeneralUS",
+                "usa": "result-generalus",
                 "israel": "question-travel_document_israel",
                 "romania": "question-travel_document_romania",
                 "taiwan": "question-travel_document_taiwan",
@@ -1396,9 +1396,9 @@
         "study": {
             "air": {
                 "visa": "question-study",
-                "eTA": "question-study",
-                "eTA-X": "question-nonimmigrant_visa",
-                "eTA-X-TWOV": "question-nonimmigrant_visa",
+                "eta": "question-study",
+                "eta-X": "question-nonimmigrant_visa",
+                "eta-X-TWOV": "question-nonimmigrant_visa",
                 "mexico": "question-nonimmigrant_visa",
                 "canada": "result-canadian_cit_pr",
                 "usa": "question-study",
@@ -1409,9 +1409,9 @@
             },
             "land_sea": {
                 "visa": "question-study",
-                "eTA": "question-study",
-                "eTA-X": "question-study",
-                "eTA-X-TWOV": "question-study",
+                "eta": "question-study",
+                "eta-X": "question-study",
+                "eta-X-TWOV": "question-study",
                 "mexico": "question-study",
                 "canada": "result-canadian_cit_pr",
                 "usa": "question-study",
@@ -1424,9 +1424,9 @@
         "work": {
             "air": {
                 "visa": "question-work",
-                "eTA": "question-work",
-                "eTA-X": "question-nonimmigrant_visa",
-                "eTA-X-TWOV": "question-nonimmigrant_visa",
+                "eta": "question-work",
+                "eta-X": "question-nonimmigrant_visa",
+                "eta-X-TWOV": "question-nonimmigrant_visa",
                 "mexico": "question-nonimmigrant_visa",
                 "canada": "result-canadian_cit_pr",
                 "usa": "question-work",
@@ -1437,9 +1437,9 @@
             },
             "land_sea": {
                 "visa": "question-work",
-                "eTA": "question-work",
-                "eTA-X": "question-work",
-                "eTA-X-TWOV": "question-work",
+                "eta": "question-work",
+                "eta-X": "question-work",
+                "eta-X-TWOV": "question-work",
                 "mexico": "question-work",
                 "canada": "result-canadian_cit_pr",
                 "usa": "question-work",
