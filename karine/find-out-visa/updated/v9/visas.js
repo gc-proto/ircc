@@ -208,6 +208,10 @@ function handleNextClick() {
                 changeAnswersDL.append(changeAnswersDT, changeAnswersDD);
             }
             changeAnswersContainer.appendChild(changeAnswersDL);
+
+            
+
+            $(nextQuestion).load("results/" + (nextQuestion.id).split("result-")[1] + ".html");
         }
         nextQuestion.focus();
         analytics();
