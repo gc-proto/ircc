@@ -44,14 +44,29 @@
   font-family: Lato, sans-serif;
 }
 @media (min-width: 768px) {
+  .tool-container .dl-horizontal dd:first-of-type,
+  .tool-container .dl-horizontal dt:first-of-type {
+    border-top: none;
+  }
   .tool-container .dl-horizontal {
+    display: inline-grid;
+    grid-template-columns: fit-content(35%) 1fr;
+  }
+  .tool-container dt {
+    width: unset;
+    padding-right: 20px;
+  }
+  .tool-container dd {
+    margin-left: 0;
+  }
+  .tool-container #changeAnswers .dl-horizontal {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     align-items: flex-end;
     justify-content: stretch;
   }
-  .tool-container .dl-horizontal dt {
+  .tool-container #changeAnswers .dl-horizontal dt {
     width: unset;
     flex-basis: 50%;
     -webkit-hyphens: none;
@@ -59,27 +74,27 @@
     padding: 10px !important;
     align-self: stretch;
   }
-  .tool-container .dl-horizontal dd {
+  .tool-container #changeAnswers .dl-horizontal dd {
     width: unset;
     flex-basis: 50%;
     margin: 0 !important;
     padding: 10px !important;
     align-self: stretch;
   }
-  .tool-container .dl-horizontal dd > span {
+  .tool-container #changeAnswers .dl-horizontal dd > span {
     flex-grow: 1;
   }
 }
 @media (max-width: 767px) {
-  .tool-container .dl-horizontal dd {
+  .tool-container #changeAnswers .dl-horizontal dd {
     flex-direction: row;
     flex-wrap: wrap;
   }
-  .tool-container .dl-horizontal dd > span {
+  .tool-container #changeAnswers .dl-horizontal dd > span {
     flex-basis: 100%;
     padding: 10px 0;
   }
-  .tool-container .dl-horizontal dd > button {
+  .tool-container #changeAnswers .dl-horizontal dd > button {
     clear: both;
     margin: 0;
     padding: 0;
@@ -113,12 +128,14 @@
 .tool-container #btn-change {
   background-color: #E4E3F3;
 }
-.tool-container .btn-primary {
-  border-radius: 25px;
+.tool-container .btn-primary,
+.tool-container .btn-primary:hover {
+  border-radius: 40px;
   background-color: #B5B2E3;
   border: none;
   color: #333 !important;
-  padding: 10px 20px;
+  padding: 0.58em 1em;
+  font-size: 1.1em;
 }
 .tool-container .btn-secondary {
   border-radius: 25px;
