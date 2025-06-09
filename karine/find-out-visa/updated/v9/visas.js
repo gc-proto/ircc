@@ -57,7 +57,6 @@ $(document).on("wb-ready.wb", function (event) {
         if (firstclick) {
             document.querySelectorAll("a:has(span.glyphicon-new-window)").forEach(element => {
                 element.setAttribute('target', '_blank');
-                console.log(element);
             });
             firstclick = false;
         }
