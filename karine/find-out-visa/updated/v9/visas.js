@@ -124,7 +124,7 @@ $(document).on("wb-ready.wb", function (event) {
                 },
                 "question-travel_document": () => {
                     traveller_type = selectedInput;
-                    return data[question]?.[selectedInput]
+                    return data[question]?.[method_of_travel]?.[selectedInput];
                 },
                 "question-passport_code": () => {
                     passport_code = selectedInput;
