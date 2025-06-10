@@ -21,9 +21,16 @@
         "work": "question-travel_document"
     },
     "question-travel_document": {
-        "passport": "question-passport_code",
-        "other": "question-uspr",
-        "no_document": "result-need_passport-air"
+        "air": {
+            "passport": "question-passport_code",
+            "other": "question-uspr",
+            "no_document": "result-need_passport-air"
+        },
+        "land_sea": {
+            "passport": "question-passport_code",
+            "other": "question-uspr",
+            "no_document": "result-need_passport-land_sea"
+        }
     },
     "question-uspr": {
         "air": {
@@ -156,7 +163,7 @@
                     "yes_uspr": "result-generaluspr-land_sea",
                     "no_uspr": "result-visitor_visa"
                 }
-            },            
+            },
             "transit": {
                 "eta": {
                     "yes_uspr": "result-generaluspr-land_sea",
