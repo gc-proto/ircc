@@ -29,7 +29,7 @@ let langSettings = {
 }
 
 // Variables for travel data
-let traveller_type, purpose_of_travel, method_of_travel, passport_code = false;
+let traveller_type, purpose_of_travel, method_of_travel, passport_code, uspr, nonimmigrant_visa, travel_document = false;
 let passportCodeSelectionParent = document.getElementById('passport-code-selection');
 let passportCodeSelection = document.getElementById('passport-selection');
 let passportCodeTable = document.getElementById('passport-code');
@@ -120,6 +120,7 @@ $(document).on("wb-ready.wb", function (event) {
                     return data[question]?.[selectedInput];
                 },
                 "question-uspr": () => {
+                    uspr = selectedInput;
                     return data[question]?.[method_of_travel]?.[purpose_of_travel]?.[traveller_type]?.[selectedInput] || data[question]?.[method_of_travel]?.[purpose_of_travel]?.[passport_code]?.[selectedInput] || data[question]?.[method_of_travel]?.[purpose_of_travel]?.[passport_code];
                 },
                 "question-travel_document": () => {
@@ -132,18 +133,16 @@ $(document).on("wb-ready.wb", function (event) {
                 },
                 "question-family": () => {
                     purpose_of_travel = selectedInput;
-                    return data[question][purpose_of_travel][traveller_type];
+                    return data[question];
                 },
                 "question-study": () => getNextForStudyOrWork(),
                 "question-work": () => getNextForStudyOrWork(),
                 "question-transit": () => {
                     return data[question][method_of_travel][traveller_type][selectedInput];
-                    // return ["eTA-X", "eTA-X-TWOV", "mexico"].includes(traveller_type)
-                    //     ? data[question][traveller_type][method_of_travel][selectedInput]
-                    //     : data[question][traveller_type][selectedInput];
                 },
                 "question-transit_length": () => data[question][traveller_type][selectedInput],
                 "question-nonimmigrant_visa": () => {
+                    nonimmigrant_visa = selectedInput;
                     return data[question]?.[passport_code]?.[purpose_of_travel]?.[selectedInput];
                 },
                 "question-travel_document_israel": () => handleTravelDocument(),
@@ -154,13 +153,19 @@ $(document).on("wb-ready.wb", function (event) {
             // ** Helper functions **
 
             const getNextForStudyOrWork = () => {
-                return data[question]?.[traveller_type]?.[method_of_travel]?.[passport_code]?.[selectedInput] ||
-                    data[question]?.[traveller_type]?.[method_of_travel]?.[selectedInput] ||
-                    data[question]?.[traveller_type]?.[method_of_travel] ||
-                    data[question]?.[traveller_type]?.[selectedInput];
+                return data[question]?.[method_of_travel]?.[traveller_type]?.[uspr]?.[nonimmigrant_visa]?.[selectedInput] ||
+                    data[question]?.[method_of_travel]?.[traveller_type]?.[uspr]?.[selectedInput] ||
+                    data[question]?.[method_of_travel]?.[traveller_type]?.[selectedInput] ||
+                    data[question]?.[method_of_travel]?.[traveller_type]
+                // return data[question]?.[method_of_travel]?.[]?.[passport_code]?.[selectedInput] ||
+                //     data[question]?.[traveller_type]?.[method_of_travel]?.[passport_code]?.[selectedInput] ||
+                //     data[question]?.[traveller_type]?.[method_of_travel]?.[selectedInput] ||
+                //     data[question]?.[traveller_type]?.[method_of_travel] ||
+                //     data[question]?.[traveller_type]?.[selectedInput];
             };
 
             const handleTravelDocument = () => {
+                travel_document = selectedInput;
                 return data[question]?.[purpose_of_travel]?.[method_of_travel]?.[selectedInput] || data[question]?.[purpose_of_travel]?.[method_of_travel] || data[question]?.[purpose_of_travel];
             };
 
@@ -174,6 +179,7 @@ $(document).on("wb-ready.wb", function (event) {
             console.log(traveller_type);
             console.log(purpose_of_travel);
             console.log(method_of_travel);
+            console.log(nextQuestionId);
             console.log(nextQuestion.id);
 
 
