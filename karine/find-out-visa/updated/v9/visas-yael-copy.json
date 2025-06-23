@@ -74,6 +74,46 @@
                     "no_uspr": "result-visitor_visa"
                 }
             },
+            "business" : {
+                "eta": {
+                    "yes_uspr": "result-generaluspr-air",
+                    "no_uspr": "result-eta"
+                },
+                "visa": {
+                    "yes_uspr": "result-generaluspr-air",
+                    "no_uspr": "result-visitor_visa"
+                },
+                "eta-X": {
+                    "yes_uspr": "result-generaluspr-air",
+                    "no_uspr": "question-nonimmigrant_visa"
+                },
+                "eta-X-TWOV": {
+                    "yes_uspr": "result-generaluspr-air",
+                    "no_uspr": "question-nonimmigrant_visa"
+                },
+                "mexico": {
+                    "yes_uspr": "result-generaluspr-air",
+                    "no_uspr": "question-nonimmigrant_visa"
+                },
+                "canada": "result-canadian_cit_pr-air",
+                "usa": "result-generalus-air",
+                "israel": {
+                    "yes_uspr": "result-generaluspr-air",
+                    "no_uspr": "question-travel_document_israel"
+                },
+                "romania": {
+                    "yes_uspr": "result-generaluspr-air",
+                    "no_uspr": "question-travel_document_romania"
+                },
+                "taiwan": {
+                    "yes_uspr": "result-generaluspr-air",
+                    "no_uspr": "question-travel_document_taiwan"
+                },
+                "other": {
+                    "yes_uspr": "result-generaluspr-air",
+                    "no_uspr": "result-visitor_visa"
+                }
+            },
             "transit": {
                 "eta": {
                     "yes_uspr": "result-generaluspr-air",
@@ -284,6 +324,46 @@
             }
         },
         "land_sea": {
+            "tourist": {
+                "eta": {
+                    "yes_uspr": "result-generaluspr-land_sea",
+                    "no_uspr": "result-identification_document"
+                },
+                "visa": {
+                    "yes_uspr": "result-generaluspr-land_sea",
+                    "no_uspr": "result-visitor_visa"
+                },
+                "eta-X": {
+                    "yes_uspr": "result-generaluspr-land_sea",
+                    "no_uspr": "result-visitor_visa_or_eta_x"
+                },
+                "eta-X-TWOV": {
+                    "yes_uspr": "result-generaluspr-land_sea",
+                    "no_uspr": "result-visitor_visa_or_eta_x"
+                },
+                "mexico": {
+                    "yes_uspr": "result-generaluspr-land_sea",
+                    "no_uspr": "result-visitor_visa_or_eta_x"
+                },
+                "canada": "result-canadian_cit_pr-land_sea",
+                "usa": "result-generalus-land_sea",
+                "israel": {
+                    "yes_uspr": "result-generaluspr-land_sea",
+                    "no_uspr": "question-travel_document_israel"
+                },
+                "romania": {
+                    "yes_uspr": "result-generaluspr-land_sea",
+                    "no_uspr": "question-travel_document_romania"
+                },
+                "taiwan": {
+                    "yes_uspr": "result-generaluspr-land_sea",
+                    "no_uspr": "question-travel_document_taiwan"
+                },
+                "other": {
+                    "yes_uspr": "result-generaluspr-land_sea",
+                    "no_uspr": "result-visitor_visa"
+                }
+            },
             "tourist": {
                 "eta": {
                     "yes_uspr": "result-generaluspr-land_sea",
@@ -1406,6 +1486,10 @@
                 "yes": "result-eta_etax",
                 "no": "question-transit"
             },
+            "business": {
+                "yes": "result-eta_etax",
+                "no": "question-visitor_visa"
+            },
             "family_supervisa": {
                 "yes": "result-supervisa-eta-air",
                 "no": "result-supervisa-visitor_visa"
@@ -1989,30 +2073,30 @@
         },
         "business": {
             "air": {
-                "visa": "result-visitor_visa",
-                "eta": "result-eta",
+                "visa": "question-uspr",
+                "eta": "question-uspr",
                 "eta-X": "question-nonimmigrant_visa",
                 "eta-X-TWOV": "question-nonimmigrant_visa",
                 "mexico": "question-nonimmigrant_visa",
                 "canada": "result-canadian_cit_pr-air",
                 "usa": "result-generalus-air",
-                "israel": "question-travel_document_israel",
-                "romania": "question-travel_document_romania",
-                "taiwan": "question-travel_document_taiwan",
-                "other": "result-visitor_visa"
+                "israel": "question-uspr",
+                "romania": "question-uspr",
+                "taiwan": "question-uspr",
+                "other": "question-uspr"
             },
             "land_sea": {
-                "visa": "result-visitor_visa",
-                "eta": "result-identification_document",
-                "eta-X": "result-visitor_visa",
-                "eta-X-TWOV": "result-visitor_visa",
-                "mexico": "result-visitor_visa",
+                "visa": "question-uspr",
+                "eta": "question-uspr",
+                "eta-X": "question-uspr",
+                "eta-X-TWOV": "question-uspr",
+                "mexico": "question-uspr",
                 "canada": "result-canadian_cit_pr-land_sea",
                 "usa": "result-generalus-land_sea",
-                "israel": "question-travel_document_israel",
-                "romania": "question-travel_document_romania",
-                "taiwan": "question-travel_document_taiwan",
-                "other": "result-visitor_visa"
+                "israel": "question-uspr",
+                "romania": "question-uspr",
+                "taiwan": "question-uspr",
+                "other": "question-uspr"
             }
         },
         "family_supervisa": {
