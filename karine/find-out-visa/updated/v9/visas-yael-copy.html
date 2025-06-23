@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html class="no-js" dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head prefix="og: http://ogp.me/ns#">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+
+    <!-- CONFIGURATIONS START HERE -->
+    <title>Check if you need a visa or eTA to travel to Canada - Canada.ca</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <script id="pageConstants">
+      let pageConstants = {
+        pageFeedbackTool: true, // true | false; Set to 'true' if adding the Page Feedback tool to bottom of page
+        alternateLanguageURL: "#", // URL; Add the English or French URL link
+        dateModified: "2024-12-12", // YYYY-MM-DD
+        fluidWidth: true, // true | false; Set to 'true' if you will be using full width elements like bands.
+        breadcrumbs: {
+          //use "title":"url" in order of appearance or leave blank if none, ex.:
+          "Visit Canada": "https://www.canada.ca/en/immigration-refugees_citizenship/services/visit-canada.html",
+          // "Visitor visa (temporary resident visa)":"https://www.canada.ca/en/immigration-refugees_citizenship/services/visit-canada/visitor-visa.html"
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" crossorigin="anonymous" />
+    <!-- CONFIGURATIONS END HERE -->
+    <script src="https://test.canada.ca/ircc/templates/js/template.js" type="text/javascript" defer></script>
+
+    <noscript>
+      <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
+    </noscript>
+    <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/méli-mélo/2025-04-nahanni.css" />
+    <link rel="stylesheet" href="css/styles-v9.css" />
+  </head>
+
+  <body vocab="http://schema.org/" typeof="WebPage">
+    <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
+      <div class="banner">
+        <div class="container">
+          <div id="intro" class="row"></div>
+          <div class="col-md-8">
+            <h1 property="name" id="wb-cont" dir="ltr">Check if you need a visa or eTA to travel to Canada</h1>
+
+            <p class="lead mrgn-tp-md">Everyone needs something to travel to Canada: an electronic travel authorization (eTA), a visitor visa, or just a passport.</p>
+          </div>
+          <div class="pull-right hidden-xs hidden-sm col-md-4"><img src="banner.png" class="img-responsive" alt="" /></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="nojs-show">
+          <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/entry-requirements-country.html">Entry requirements by country or territory</a></p>
+        </div>
+        <div class="tool-container mrgn-tp-lg nojs-hide">
+          <div class="wb-frmvld">
+            <form id="find-out-form" class="gc-font-2019" data-gc-analytics-formname="IRCC:Find out if you need a visa" data-gc-analytics-collect='[{"value":"select, input", "emptyField": "Any"}]'>
+              <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question" id="question-travel">
+                <legend>How do you plan to travel to Canada?</legend>
+                <ul class="list-unstyled lst-spcd-2">
+                  <li class="radio">
+                    <input value="air" name="travel" type="radio" id="travel-air" required />
+                    <label for="travel-air">By air, arriving at a Canadian airport</label>
+                  </li>
+                  <li class="radio">
+                    <input value="land_sea" name="travel" type="radio" id="travel-land_sea" />
+                    <label for="travel-land_sea">By car, train, bus or boat (including cruise ship)</label>
+                  </li>
+                </ul>
+              </fieldset>
+
+              <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-canadian_citizen">
+                <legend>Are you a Canadian citizen or permanent resident of Canada?</legend>
+                <ul class="list-unstyled lst-spcd-2">
+                  <li class="radio">
+                    <input value="unknown" name="canadian_citizen" type="radio" id="canadian_citizen-unknown" />
+                    <label for="canadian_citizen-unknown">No, I’m not a Canadian citizen or permanent resident of Canada</label>
+                  </li>
+                  <li class="radio">
+                    <input value="dual_citizen" name="canadian_citizen" type="radio" id="canadian_citizen-dual_citizen" />
+                    <label for="canadian_citizen-dual_citizen">I’m a dual Canadian citizen (a citizen of Canada and another country)</label>
+                  </li>
+                  <li class="radio">
+                    <input value="canadian_cit" name="canadian_citizen" type="radio" id="canadian_citizen-canadian_cit" required />
+                    <label for="canadian_citizen-canadian_cit">I’m a Canadian citizen or permanent resident of Canada</label>
+                  </li>
+                </ul>
+              </fieldset>
+
+              <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-uspr">
+                <legend>Are you a lawful permanent resident of the US with official proof of your status (like a green card)?</legend>
+                <ul class="list-unstyled lst-spcd-2">
+                  <li class="radio">
+                    <input value="yes_uspr" name="uspr" type="radio" id="uspr-yes_uspr" required />
+                    <label for="uspr-yes_uspr">Yes</label>
+                  </li>
+                  <li class="radio">
+                    <input value="no_uspr" name="uspr" type="radio" id="uspr-no_uspr" />
+                    <label for="uspr-no_uspr">No</label>
+                  </li>
+                </ul>
+              </fieldset>
+
+              <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-purpose_of_travel">
+                <legend>What do you plan to do?</legend>
+                <ul class="list-unstyled lst-spcd-2">
+                  <li class="radio">
+                    <input value="tourist" name="purpose_of_travel" type="radio" id="purpose_of_travel-tourist" required />
+                    <label for="purpose_of_travel-tourist">Visit as a tourist</label>
+                  </li>
+                  <li class="radio">
+                    <input value="transit" name="purpose_of_travel" type="radio" id="purpose_of_travel-transit" />
+                    <label for="purpose_of_travel-transit">Transit (travel) through Canada</label>
+                  </li>
+                  <li class="radio">
+                    <input value="business" name="purpose_of_travel" type="radio" id="purpose_of_travel-business" />
+                    <label for="purpose_of_travel-business">Attend a meeting, conference or trade show (you’re coming to Canada on business)</label>
+                  </li>
+                  <li class="radio">
+                    <input value="family" name="purpose_of_travel" type="radio" id="purpose_of_travel-family" />
+                    <label for="purpose_of_travel-family">Visit family</label>
+                  </li>
+                  <li class="radio">
+                    <input value="study" name="purpose_of_travel" type="radio" id="purpose_of_travel-study" />
+                    <label for="purpose_of_travel-study">Study</label>
+                  </li>
+                  <li class="radio">
+                    <input value="work" name="purpose_of_travel" type="radio" id="purpose_of_travel-work" />
+                    <label for="purpose_of_travel-work">Work</label>
+                  </li>
+                </ul>
+              </fieldset>
+
+              <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel_document">
+                <legend>What travel document do you plan to use?</legend>
+                <ul class="list-unstyled lst-spcd-2">
+                  <li class="radio">
+                    <input value="passport" name="travel_document" type="radio" id="travel_document-passport" required />
+                    <label for="travel_document-passport">Passport</label>
+                  </li>
+                  <li class="radio">
+                    <input value="other" name="travel_document" type="radio" id="travel_document-alien_passport_stateless_persons" />
+                    <label for="travel_document-alien_passport_stateless_persons">Alien’s passport for stateless persons</label>
+                  </li>
+                  <li class="radio">
+                    <input value="other" name="travel_document" type="radio" id="travel_document-us_refugee" />
+                    <label for="travel_document-us_refugee">Permit to re-enter the US (I-327)</label>
+                  </li>
+                  <li class="radio">
+                    <input value="other" name="travel_document" type="radio" id="travel_document-permit_reenter_us" />
+                    <label for="travel_document-permit_reenter_us">US Refugee Travel Document (I-571)</label>
+                  </li>
+                  <li class="radio">
+                    <input value="other" name="travel_document" type="radio" id="travel_document-other_refugee" />
+                    <label for="travel_document-other_refugee">Other refugee travel document for non-citizens</label>
+                  </li>
+                  <li class="radio">
+                    <input value="no_document" name="travel_document" type="radio" id="travel_document-no_document" />
+                    <label for="travel_document-no_document">I don’t have a valid passport or travel document</label>
+                  </li>
+                </ul>
+              </fieldset>
+
+              <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-passport_code">
+                <legend>Select the country code that matches the one on your passport</legend>
+                <div class="row table-information mrgn-bttm-lg d-sm-flex align-items-center">
+                  <div class="col-md-2 col-sm-4"><img src="https://ircc.canada.ca/english/visit/images/passport-country-gbr-large.jpg" alt="Sample passport information page highlighting three letter country code" class="img-responsive mrgn-rght-md" /></div>
+                  <div class="col-md-10 col-sm-8">
+                    <p class="gc-font-2019">The country code is on your passport. Select your code carefully: some countries and territories have more than one option and the codes can be similar.</p>
+                  </div>
+                </div>
+
+                <div class="responsive mrgn-tp-md row" id="passport-code">
+                  <div class="well">
+                    <div id="passport-code-selection" class="hidden well well-drk" aria-live="polite">
+                      <div class="d-flex align-items-center">
+                        <p tabindex="-1" class="p-0 pull-left gc-font-2019 mrgn-bttm-0">
+                          <b>You selected:</b>
+                          <span id="passport-selection"></span>
+                        </p>
+                        <button class="btn-link p-0 text-left pull-left" id="passport-selection-change">
+                          <span class="wb-inv">Select a different country or territory</span>
+                          <span class="fas fa-times mrgn-lft-sm" aria-hidden="true"></span>
+                        </button>
+                      </div>
+                      <div class="clearfix"></div>
+                      <input type="hidden" value="" id="passport-selection-track" />
+                    </div>
+
+                    <div class="listbox-area">
+                      <span id="ss_elem" class="listbox-label">Select the country code that matches the one on your passport:</span>
+                      <button id="lb-dropdown-inpt">Make a selection</button>
+                      <div class="clearfix"></div>
+                      <div id="listbox" class="position-relative hidden">
+                        <div class="lb-filter-container"><input type="search" results placeholder="Find your country or territory" id="lb-filter" onkeyup="filterFunction()" class="form-control full-width closed" /></div>
+                        <ul id="ss_elem_list" tabindex="0" role="listbox" aria-labelledby="ss_elem">
+                          <li role="option" id="AFG">Afghanistan (AFG)</li>
+                          <li role="option" id="ALB">Albania (ALB)</li>
+                          <li role="option" id="DZA">Algeria (DZA)</li>
+                          <li role="option" id="AND">Andorra (AND)</li>
+                          <li role="option" id="AGO">Angola (AGO)</li>
+                          <li role="option" id="AIA">Anguilla (ANG/AIA)</li>
+                          <li role="option" id="ATG">Antigua and Barbuda (ATG)</li>
+                          <li role="option" id="ARG">Argentina (ARG)</li>
+                          <li role="option" id="ARM">Armenia (ARM)</li>
+                          <li role="option" id="AUS">Australia (AUS)</li>
+                          <li role="option" id="AUT">Austria (AUT)</li>
+                          <li role="option" id="AZE">Azerbaijan (AZE)</li>
+                          <li role="option" id="BHS">Bahamas (BHS)</li>
+                          <li role="option" id="BHR">Bahrain (BHR)</li>
+                          <li role="option" id="BGD">Bangladesh (BGD)</li>
+                          <li role="option" id="BRB">Barbados (BRB)</li>
+                          <li role="option" id="BLR">Belarus (BLR)</li>
+                          <li role="option" id="BEL">Belgium (BEL)</li>
+                          <li role="option" id="BLZ">Belize (BLZ)</li>
+                          <li role="option" id="BEN">Benin (BEN)</li>
+                          <li role="option" id="BMU">Bermuda (BMU)</li>
+                          <li role="option" id="BTN">Bhutan (BTN)</li>
+                          <li role="option" id="BOL">Bolivia (BOL)</li>
+                          <li role="option" id="BIH">Bosnia and Herzegovina (BIH)</li>
+                          <li role="option" id="BWA">Botswana (BWA)</li>
+                          <li role="option" id="BRA">Brazil (BRA)</li>
+                          <li role="option" id="VGB">British Virgin Islands (VGB)</li>
+                          <li role="option" id="BRN">Brunei Darussalam (BRN)</li>
+                          <li role="option" id="BGR">Bulgaria (BGR)</li>
+                          <li role="option" id="BFA">Burkina Faso (BFA)</li>
+                          <li role="option" id="MMR">Burma - Myanmar (MMR)</li>
+                          <li role="option" id="BDI">Burundi (BDI)</li>
+                          <li role="option" id="CPV">Cabo Verde (CPV)</li>
+                          <li role="option" id="KHM">Cambodia (KHM)</li>
+                          <li role="option" id="CMR">Cameroon (CMR)</li>
+                          <li role="option" id="CAN">Canada (CAN)</li>
+                          <li role="option" id="CYM">Cayman Islands (CYM)</li>
+                          <li role="option" id="CAF">Central African Republic (CAF)</li>
+                          <li role="option" id="TCD">Chad (TCD)</li>
+                          <li role="option" id="CHL">Chile (CHL)</li>
+                          <li role="option" id="CHN_CN">China (CHN)</li>
+                          <li role="option" id="COL">Colombia (COL)</li>
+                          <li role="option" id="COM">Comoros (COM)</li>
+                          <li role="option" id="CRI">Costa Rica (CRI)</li>
+                          <li role="option" id="HRV">Croatia (HRV)</li>
+                          <li role="option" id="CUB">Cuba (CUB)</li>
+                          <li role="option" id="CYP">Cyprus (CYP)</li>
+                          <li role="option" id="CZE">Czech Republic (CZE)</li>
+                          <li role="option" id="COD">Democratic Republic of Congo (COD)</li>
+                          <li role="option" id="DNK">Denmark (DNK)</li>
+                          <li role="option" id="DJI">Djibouti (DJI)</li>
+                          <li role="option" id="DMA">Dominica (DMA)</li>
+                          <li role="option" id="DOM">Dominican Republic (DOM)</li>
+                          <li role="option" id="ECU">Ecuador (ECU)</li>
+                          <li role="option" id="EGY">Egypt (EGY)</li>
+                          <li role="option" id="SLV">El Salvador (SLV)</li>
+                          <li role="option" id="GNQ">Equatorial Guinea (GNQ)</li>
+                          <li role="option" id="ERI">Eritrea (ERI)</li>
+                          <li role="option" id="EST">Estonia (EST)</li>
+                          <li role="option" id="SWZ">Eswatini (SWZ) — formerly Swaziland (SWZ)</li>
+                          <li role="option" id="ETH">Ethiopia (ETH)</li>
+                          <li role="option" id="FJI">Fiji (FJI)</li>
+                          <li role="option" id="FIN">Finland (FIN)</li>
+                          <li role="option" id="FRA">France (FRA)</li>
+                          <li role="option" id="GAB">Gabon (GAB)</li>
+                          <li role="option" id="GMB">Gambia (GMB)</li>
+                          <li role="option" id="GEO">Georgia (GEO)</li>
+                          <li role="option" id="D">Germany (D)</li>
+                          <li role="option" id="GHA">Ghana (GHA)</li>
+                          <li role="option" id="GRC">Greece (GRC)</li>
+                          <li role="option" id="GRD">Grenada (GRD)</li>
+                          <li role="option" id="GTM">Guatemala (GTM)</li>
+                          <li role="option" id="GIN">Guinea (GIN)</li>
+                          <li role="option" id="GNB">Guinea-Bissau (GNB)</li>
+                          <li role="option" id="GUY">Guyana (GUY)</li>
+                          <li role="option" id="HTI">Haiti (HTI)</li>
+                          <li role="option" id="HND">Honduras (HND)</li>
+                          <li role="option" id="CHN_HK">Hong Kong SAR (CHN)</li>
+                          <li role="option" id="HUN">Hungary (HUN)</li>
+                          <li role="option" id="ISL">Iceland (ISL)</li>
+                          <li role="option" id="IND">India (IND)</li>
+                          <li role="option" id="IDN">Indonesia (IDN)</li>
+                          <li role="option" id="IRN">Iran (IRN)</li>
+                          <li role="option" id="IRQ">Iraq (IRQ)</li>
+                          <li role="option" id="IRL">Ireland (IRL)</li>
+                          <li role="option" id="ISR">Israel (ISR)</li>
+                          <li role="option" id="ITA">Italy (ITA)</li>
+                          <li role="option" id="CIV">Ivory Coast (CIV)</li>
+                          <li role="option" id="JAM">Jamaica (JAM)</li>
+                          <li role="option" id="JPN">Japan (JPN)</li>
+                          <li role="option" id="JOR">Jordan (JOR)</li>
+                          <li role="option" id="KAZ">Kazakhstan (KAZ)</li>
+                          <li role="option" id="KEN">Kenya (KEN)</li>
+                          <li role="option" id="KIR">Kiribati (KIR)</li>
+                          <li role="option" id="PRK">Korea, North - DPRK (PRK)</li>
+                          <li role="option" id="KOR">Korea, South (KOR)</li>
+                          <li role="option" id="RKS">Kosovo (RKS)</li>
+                          <li role="option" id="KWT">Kuwait (KWT)</li>
+                          <li role="option" id="KGZ">Kyrgyzstan (KGZ)</li>
+                          <li role="option" id="LAO">Laos (LAO)</li>
+                          <li role="option" id="LVA">Latvia (LVA)</li>
+                          <li role="option" id="LBN">Lebanon (LBN)</li>
+                          <li role="option" id="LSO">Lesotho (LSO)</li>
+                          <li role="option" id="LBR">Liberia (LBR)</li>
+                          <li role="option" id="LBY">Libya (LBY)</li>
+                          <li role="option" id="LIE">Liechtenstein (LIE)</li>
+                          <li role="option" id="LTU">Lithuania (LTU)</li>
+                          <li role="option" id="LUX">Luxembourg (LUX)</li>
+                          <li role="option" id="CHN_MO">Macao SAR (CHN)</li>
+                          <li role="option" id="MKD">Macedonia (MKD)</li>
+                          <li role="option" id="MDG">Madagascar (MDG)</li>
+                          <li role="option" id="MWI">Malawi (MWI)</li>
+                          <li role="option" id="MYS">Malaysia (MYS)</li>
+                          <li role="option" id="MLI">Mali (MLI)</li>
+                          <li role="option" id="MLT">Malta (MLT)</li>
+                          <li role="option" id="MHL">Marshall Islands (MHL)</li>
+                          <li role="option" id="MRT">Mauritania (MRT)</li>
+                          <li role="option" id="MUS">Mauritius (MUS)</li>
+                          <li role="option" id="MEX">Mexico (MEX)</li>
+                          <li role="option" id="FSM">Micronesia (FSM)</li>
+                          <li role="option" id="MDA">Moldova (MDA)</li>
+                          <li role="option" id="MCO">Monaco (MCO)</li>
+                          <li role="option" id="MNG">Mongolia (MNG)</li>
+                          <li role="option" id="MNE">Montenegro (MNE)</li>
+                          <li role="option" id="MSR">Montserrat (MSR)</li>
+                          <li role="option" id="MAR">Morocco (MAR)</li>
+                          <li role="option" id="MOZ">Mozambique (MOZ)</li>
+                          <li role="option" id="NAM">Namibia (NAM)</li>
+                          <li role="option" id="NRU">Nauru (NRU)</li>
+                          <li role="option" id="NPL">Nepal (NPL)</li>
+                          <li role="option" id="NLD">Netherlands (NLD)</li>
+                          <li role="option" id="NZL">New Zealand (NZL)</li>
+                          <li role="option" id="NIC">Nicaragua (NIC)</li>
+                          <li role="option" id="NER">Niger (NER)</li>
+                          <li role="option" id="NGA">Nigeria (NGA)</li>
+                          <li role="option" id="NOR">Norway (NOR)</li>
+                          <li role="option" id="OMN">Oman (OMN)</li>
+                          <li role="option" id="PAK">Pakistan (PAK)</li>
+                          <li role="option" id="PLW">Palau (PLW)</li>
+                          <li role="option" id="PSE">Palestinian Authority (PSE)</li>
+                          <li role="option" id="PAN">Panama (PAN)</li>
+                          <li role="option" id="PNG">Papua New Guinea (PNG)</li>
+                          <li role="option" id="PRY">Paraguay (PRY)</li>
+                          <li role="option" id="PER">Peru (PER)</li>
+                          <li role="option" id="PHL">Philippines (PHL)</li>
+                          <li role="option" id="POL">Poland (POL)</li>
+                          <li role="option" id="PRT">Portugal (PRT)</li>
+                          <li role="option" id="QAT">Qatar (QAT)</li>
+                          <li role="option" id="COG">Republic of Congo (COG)</li>
+                          <li role="option" id="ROU">Romania (ROU)</li>
+                          <li role="option" id="RUS">Russia (RUS)</li>
+                          <li role="option" id="RWA">Rwanda (RWA)</li>
+                          <li role="option" id="SHN">Saint Helena (SHN)</li>
+                          <li role="option" id="KNA">Saint Kitts and Nevis (KNA)</li>
+                          <li role="option" id="LCA">Saint Lucia (LCA)</li>
+                          <li role="option" id="WSM">Samoa (WSM)</li>
+                          <li role="option" id="SMR">San Marino (SMR)</li>
+                          <li role="option" id="STP">Sao Tome e Principe (STP)</li>
+                          <li role="option" id="SAU">Saudi Arabia (SAU)</li>
+                          <li role="option" id="SEN">Senegal (SEN)</li>
+                          <li role="option" id="SRB">Serbia (SRB)</li>
+                          <li role="option" id="SYC">Seychelles (SYC)</li>
+                          <li role="option" id="SLE">Sierra Leone (SLE)</li>
+                          <li role="option" id="SGP">Singapore (SGP)</li>
+                          <li role="option" id="SVK">Slovakia (SVK)</li>
+                          <li role="option" id="SVN">Slovenia (SVN)</li>
+                          <li role="option" id="SLB">Solomon Islands (SLB)</li>
+                          <li role="option" id="SOM">Somalia (SOM)</li>
+                          <li role="option" id="ZAF">South Africa (ZAF)</li>
+                          <li role="option" id="SSD">South Sudan (SSD)</li>
+                          <li role="option" id="ESP">Spain (ESP)</li>
+                          <li role="option" id="LKA">Sri Lanka (LKA)</li>
+                          <li role="option" id="VCT">St. Vincent and the Grenadines (VCT)</li>
+                          <li role="option" id="SDN">Sudan (SDN)</li>
+                          <li role="option" id="SUR">Suriname (SUR)</li>
+                          <li role="option" id="SWE">Sweden (SWE)</li>
+                          <li role="option" id="CHE">Switzerland (CHE)</li>
+                          <li role="option" id="SYR">Syria (SYR)</li>
+                          <li role="option" id="TWN">Taiwan (TWN)</li>
+                          <li role="option" id="TJK">Tajikistan (TJK)</li>
+                          <li role="option" id="TZA">Tanzania (TZA)</li>
+                          <li role="option" id="THA">Thailand (THA)</li>
+                          <li role="option" id="TLS">Timor-Leste (TLS) — formerly East Timor (TLS)</li>
+                          <li role="option" id="TGO">Togo (TGO)</li>
+                          <li role="option" id="TON">Tonga (TON)</li>
+                          <li role="option" id="TTO">Trinidad and Tobago (TTO)</li>
+                          <li role="option" id="TUN">Tunisia (TUN)</li>
+                          <li role="option" id="TUR">Turkïye (TUR)</li>
+                          <li role="option" id="TKM">Turkmenistan (TKM)</li>
+                          <li role="option" id="TCA">Turks and Caicos Islands (TCA)</li>
+                          <li role="option" id="TUV">Tuvalu (TUV)</li>
+                          <li role="option" id="UGA">Uganda (UGA)</li>
+                          <li role="option" id="GBN">United Kingdom - British National overseas (GBN)</li>
+                          <li role="option" id="GBD">United Kingdom - British overseas territory (GBD)</li>
+                          <li role="option" id="GBS">United Kingdom - British subject, subject to control (GBS)</li>
+                          <li role="option" id="GBR">United Kingdom - British citizen (GBR)</li>
+                          <li role="option" id="GBO">United Kingdom - British overseas citizen (GBO)</li>
+                          <li role="option" id="GBP">United Kingdom - British subject (GBP)</li>
+                          <li role="option" id="UKR">Ukraine (UKR)</li>
+                          <li role="option" id="ARE">United Arab Emirates (ARE)</li>
+                          <li role="option" id="USA">United States of America (USA)</li>
+                          <li role="option" id="URY">Uruguay (URY)</li>
+                          <li role="option" id="UZB">Uzbekistan (UZB)</li>
+                          <li role="option" id="VUT">Vanuatu (VUT)</li>
+                          <li role="option" id="VAT">Vatican City State (VAT)</li>
+                          <li role="option" id="VEN">Venezuela (VEN)</li>
+                          <li role="option" id="VNM">Vietnam (VNM)</li>
+                          <li role="option" id="YEM">Yemen (YEM)</li>
+                          <li role="option" id="ZMB">Zambia (ZMB)</li>
+                          <li role="option" id="ZWE">Zimbabwe (ZWE)</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-nonimmigrant_visa">
+                <legend>Have you held a Canadian visitor visa in the past 10 years, or do you currently hold a valid US nonimmigrant visa?</legend>
+                <ul class="list-unstyled lst-spcd-2">
+                  <li class="radio">
+                    <input value="yes" name="nonimmigrant_visa" type="radio" id="nonimmigrant_visa-yes" required />
+                    <label for="nonimmigrant_visa-yes">Yes</label>
+                  </li>
+                  <li class="radio">
+                    <input value="no" name="nonimmigrant_visa" type="radio" id="nonimmigrant_visa-no" />
+                    <label for="nonimmigrant_visa-no">No</label>
+                  </li>
+                </ul>
+              </fieldset>
+              <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel_document_israel">
+                <legend>Will you use a national Israeli passport for this trip?</legend>
+                <ul class="list-unstyled lst-spcd-2">
+                  <li class="radio">
+                    <input value="yes" name="travel_document_israel" type="radio" id="travel_document_israel-yes" required />
+                    <label for="travel_document_israel-yes">Yes</label>
+                  </li>
+                  <li class="radio">
+                    <input value="no" name="travel_document_israel" type="radio" id="travel_document_israel-no" />
+                    <label for="travel_document_israel-no">No</label>
+                  </li>
+                </ul>
+              </fieldset>
+              <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel_document_romania">
+                <legend>Will you use an electronic passport for this trip?</legend>
+
+                <div class="row-no-gutters">
+                  <div class="col-md-2 pull-right"><img id="romania-passport-picture" src="romania-epassport.png" alt="Image of a Romanian electronic passport. The electronic icon below the words 'Passport Passeport' is zoomed in." class="img-responsive hidden visible-md visible-lg mrgn-lft-md" /></div>
+                  <div class="col-md-10">
+                    <div class="d-flex align-items-center">
+                      <span class="fa-solid fa-circle-info mrgn-rght-lg fa-2x" aria-hidden="true"></span>
+                      <div>
+                        <p class="gc-font-2019 mrgn-tp-md">You have an electronic passport if there’s a rectangle with a circle in the middle on the front cover of your passport.</p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      class="btn-link p-0 btn-show hidden"
+                      data-wb-doaction='[
+                      {"action": "removeClass", "class": "hidden", "source": "#romania-passport-picture, .btn-hide"},
+                      {"action": "addClass", "class": "hidden", "source": ".btn-show"}]'>
+                      Show image of electronic passport
+                    </button>
+                    <button
+                      type="button"
+                      class="btn-link p-0 btn-hide hidden"
+                      data-wb-doaction='
+                      {"action": "addClass", "class": "hidden", "source": "#romania-passport-picture, .btn-hide"},
+                      {"action": "removeClass", "class": "hidden", "source": ".btn-show"}]'>
+                      Hide image of electronic passport
+                    </button>
+                    <ul class="list-unstyled lst-spcd-2">
+                      <li class="radio">
+                        <input value="yes" name="travel_document_romania" type="radio" id="travel_document_romania-yes" required />
+                        <label for="travel_document_romania-yes">Yes</label>
+                      </li>
+                      <li class="radio">
+                        <input value="no" name="travel_document_romania" type="radio" id="travel_document_romania-no" />
+                        <label for="travel_document_romania-no">No</label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-travel_document_taiwan">
+                <legend>Will you use a passport that includes your personal identification number and was issued by the Ministry of Foreign Affairs in Taiwan for this trip?</legend>
+                <ul class="list-unstyled lst-spcd-2">
+                  <li class="radio">
+                    <input value="yes" name="travel_document_taiwan" type="radio" id="travel_document_taiwan-yes" required />
+                    <label for="travel_document_taiwan-yes">Yes</label>
+                  </li>
+                  <li class="radio">
+                    <input value="no" name="travel_document_taiwan" type="radio" id="travel_document_taiwan-no" />
+                    <label for="travel_document_taiwan-no">No</label>
+                  </li>
+                </ul>
+              </fieldset>
+
+              <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-transit">
+                <legend>How do you plan to transit through Canada?</legend>
+                <ul class="list-unstyled lst-spcd-2">
+                  <li class="radio">
+                    <input value="air" name="transit" type="radio" id="transit-air" required />
+                    <label for="transit-air">By air, between 2 international flights at Canadian airports</label>
+                  </li>
+                  <li class="radio">
+                    <input value="land_sea" name="transit" type="radio" id="transit-land_sea" />
+                    <label for="transit-land_sea">By car, train, bus or boat (including cruise ship)</label>
+                  </li>
+                </ul>
+              </fieldset>
+              <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-transit_length">
+                <legend>Will you transit in less than 48 hours?</legend>
+                <div class="d-flex align-items-center">
+                  <span class="fa-solid fa-circle-info mrgn-rght-lg fa-2x" aria-hidden="true"></span>
+                  <div>
+                    <p class="gc-font-2019 mrgn-tp-md">Transiting means your only purpose for being in Canada is to travel through on your way to another destination. If you plan to visit tourist attractions or see family or friends while you're here, you're visiting Canada.</p>
+                  </div>
+                </div>
+
+                <ul class="list-unstyled lst-spcd-2">
+                  <li class="radio">
+                    <input value="yes" name="transit_length" type="radio" id="transit_length-yes_no_visit" />
+                    <label for="transit_length-yes_no_visit">Yes, and I’m transiting only (I will not visit Canada)</label>
+                  </li>
+                  <li class="radio">
+                    <input value="no" name="transit_length" type="radio" id="transit_length-yes_visit" required />
+                    <label for="transit_length-yes_visit">Yes, and I will visit Canada at the same time</label>
+                  </li>
+
+                  <li class="radio">
+                    <input value="no" name="transit_length" type="radio" id="transit_length-no" />
+                    <label for="transit_length-no">No, I will not transit in less than 48 hours</label>
+                  </li>
+                </ul>
+              </fieldset>
+
+              <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-family">
+                <legend>Do you plan to visit your children or grandchildren (who are Canadian citizens or permanent residents of Canada) for longer than 6 months?</legend>
+                <div class="d-flex align-items-center">
+                  <span class="fa-solid fa-triangle-exclamation mrgn-rght-lg fa-2x hidden" aria-hidden="true"></span>
+                  <div>
+                    <p class="gc-font-2019 mrgn-tp-md hidden">
+                      If you’re visiting children or grandchildren who are
+                      <strong>not</strong>
+                      Canadian citizens or permanent residents of Canada, select “No, I’m visiting other family”.
+                    </p>
+                  </div>
+                </div>
+
+                <ul class="list-unstyled lst-spcd-2">
+                  <li class="radio hidden">
+                    <input value="family" name="family" type="radio" id="family-yes-less" required />
+                    <label for="family-yes-less">Yes, and I plan to visit for 6 months or less</label>
+                  </li>
+                  <li class="radio">
+                    <input value="family_supervisa" name="family" type="radio" id="family-yes-more" required />
+                    <label for="family-yes-more">Yes</label>
+                  </li>
+                  <li class="radio">
+                    <input value="family" name="family" type="radio" id="family-no" />
+                    <label for="family-no">No</label>
+                  </li>
+                </ul>
+              </fieldset>
+
+              <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-study">
+                <legend>Select the option that best matches your situation:</legend>
+                <ul class="list-unstyled lst-spcd-2">
+                  <li class="radio">
+                    <input value="first_permit" name="study" type="radio" id="study-first_permit" required />
+                    <label for="study-first_permit">I’m applying for my first study permit</label>
+                  </li>
+                  <li class="radio">
+                    <input value="have_permit" name="study" type="radio" id="study-have_permit" />
+                    <label for="study-have_permit">I already have a study permit</label>
+                  </li>
+                  <li class="radio">
+                    <input value="extend_permit" name="study" type="radio" id="study-extend_permit" />
+                    <label for="study-extend_permit">I extended or plan to extend my study permit</label>
+                  </li>
+                  <li class="radio">
+                    <input value="eligible_without_permit" name="study" type="radio" id="study-eligible_without_permit" />
+                    <label for="study-eligible_without_permit">I’m eligible to study without a permit</label>
+                  </li>
+                  <li class="radio">
+                    <input value="not_sure" name="study" type="radio" id="study-not_sure" />
+                    <label for="study-not_sure">I’m not sure what I need to study</label>
+                  </li>
+                </ul>
+              </fieldset>
+              <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-work">
+                <legend>Select the option that best matches your situation:</legend>
+                <ul class="list-unstyled lst-spcd-2">
+                  <li class="radio">
+                    <input value="first_permit" name="work" type="radio" id="work-first_permit" required />
+                    <label for="work-first_permit">I’m applying for my first work permit</label>
+                  </li>
+                  <li class="radio">
+                    <input value="have_permit" name="work" type="radio" id="work-have_permit" />
+                    <label for="work-have_permit">I already have a work permit</label>
+                  </li>
+                  <li class="radio">
+                    <input value="extend_permit" name="work" type="radio" id="work-extend_permit" />
+                    <label for="work-extend_permit">I extended or plan to extend my work permit</label>
+                  </li>
+                  <li class="radio">
+                    <input value="eligible_without_permit" name="work" type="radio" id="work-eligible_without_permit" />
+                    <label for="work-eligible_without_permit">I’m eligible to work without a permit</label>
+                  </li>
+                  <li class="radio">
+                    <input value="not_sure" name="work" type="radio" id="work-not_sure" />
+                    <label for="work-not_sure">I’m not sure what I need to work</label>
+                  </li>
+                </ul>
+              </fieldset>
+
+              <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-study-vi-march2024">
+                <legend>When was your study permit approved?</legend>
+                <ul class="list-unstyled lst-spcd-2">
+                  <li class="radio">
+                    <input value="before" name="study-vi-march2024" type="radio" id="study-vi-march2024-before" required />
+                    <label for="study-vi-march2024-before">My study permit was approved before March 1, 2024</label>
+                  </li>
+                  <li class="radio">
+                    <input value="after" name="study-vi-march2024" type="radio" id="study-vi-march2024-after" />
+                    <label for="study-vi-march2024-after">My study permit was approved on or after March 1, 2024</label>
+                  </li>
+                </ul>
+              </fieldset>
+              <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-work-vi-march2024">
+                <legend>When was your work permit approved?</legend>
+                <ul class="list-unstyled lst-spcd-2">
+                  <li class="radio">
+                    <input value="before" name="work-vi-march2024" type="radio" id="work-vi-march2024-before" required />
+                    <label for="work-vi-march2024-before">My work permit was approved before March 1, 2024</label>
+                  </li>
+                  <li class="radio">
+                    <input value="after" name="work-vi-march2024" type="radio" id="work-vi-march2024-after" />
+                    <label for="work-vi-march2024-after">My work permit was approved on or after March 1, 2024</label>
+                  </li>
+                </ul>
+              </fieldset>
+
+              <input type="hidden" id="questionFlow" value="" />
+              <div class="btn-navigation">
+                <button id="btn-previous" class="btn btn-nav btn-lg hidden" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Previous__">
+                  <span class="glyphicon glyphicon-arrow-left mrgn-rght-md" aria-hidden="true"></span>
+                  Previous question
+                </button>
+                <button id="btn-next" class="btn btn-nav btn-lg" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Next__">
+                  Next question
+                  <span class="glyphicon glyphicon-arrow-right mrgn-lft-md" aria-hidden="true"></span>
+                </button>
+                <button id="btn-reset" class="btn btn-nav btn-lg hidden" type="button" data-gc-analytics-customclick="IRCC:FindOutTool_Reset">
+                  <span class="fa-solid fa-rotate-right mrgn-rght-md" aria-hidden="true"></span>
+                  Start over
+                </button>
+                <button
+                  id="btn-change"
+                  class="btn btn-nav btn-lg hidden wb-toggle"
+                  type="button"
+                  data-gc-analytics-customclick="IRCC:FindOutTool_ChangeAnswer"
+                  data-toggle='{
+                "selector": "#changeAnswers", 
+                "print": "on", 
+                "stateOn":"visible", 
+                "stateOff": "hidden", 
+                "state":"hidden"}'>
+                  <span class="fa-solid fa-pencil mrgn-rght-sm" aria-hidden="true"></span>
+                  Change your answers
+                </button>
+              </div>
+            </form>
+
+            <div id="changeAnswers" class="mrgn-tp-lg mrgn-bttm-md position-relative hidden">
+              <div class="d-flex align-items-center full-width position-relative">
+                <h2 class="mrgn-tp-0 mrgn-bttm-0 undrln-0 h3 full-width">Change your answers</h2>
+                <button
+                  id="btn-change-expand"
+                  class="btn-link p-0 btn-minimize pull-right wb-toggle"
+                  data-toggle='{
+              "selector": "#changeAnswers", 
+              "print": "on", 
+              "stateOn":"visible", 
+              "stateOff": "hidden"}'>
+                  <span class="wb-inv">Hide your answers</span>
+                  <span class="fas fa-times mrgn-lft-sm" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="results-container position-relative">
+              <div class="results-container position-relative">
+                <div tabindex="-1" class="result hidden" id="result-canadian_cit_pr-air" data-wb-ajax='{"type": "append", "url": "results/canadian_cit_pr-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-canadian_cit_pr-land_sea" data-wb-ajax='{"type": "append", "url": "results/canadian_cit_pr-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-canadian_cit_pr" data-wb-ajax='{"type": "append", "url": "results/canadian_cit_pr.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-dual_citizen-air" data-wb-ajax='{"type": "append", "url": "results/dual_citizen-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-dual_citizen-land_sea" data-wb-ajax='{"type": "append", "url": "results/dual_citizen-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-eta" data-wb-ajax='{"type": "append", "url": "results/eta.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-eta_etax" data-wb-ajax='{"type": "append", "url": "results/eta_etax.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-generalus-air" data-wb-ajax='{"type": "append", "url": "results/generalus-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-generalus-land_sea" data-wb-ajax='{"type": "append", "url": "results/generalus-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-generaluspr-air" data-wb-ajax='{"type": "append", "url": "results/generaluspr-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-generaluspr-land_sea" data-wb-ajax='{"type": "append", "url": "results/generaluspr-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-identification_document" data-wb-ajax='{"type": "append", "url": "results/identification_document.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-need_passport-air" data-wb-ajax='{"type": "append", "url": "results/need_passport-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-need_passport-land_sea" data-wb-ajax='{"type": "append", "url": "results/need_passport-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-quick-admin-tool" data-wb-ajax='{"type": "append", "url": "results/quick-admin-tool.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-extend_permit-eta" data-wb-ajax='{"type": "append", "url": "results/study-extend_permit-eta.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-extend_permit-eta_x-air" data-wb-ajax='{"type": "append", "url": "results/study-extend_permit-eta_x-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-extend_permit-eta_x-land_sea" data-wb-ajax='{"type": "append", "url": "results/study-extend_permit-eta_x-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-extend_permit-eta_x-mexico-air" data-wb-ajax='{"type": "append", "url": "results/study-extend_permit-eta_x-mexico-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-extend_permit-eta_x-mexico-land_sea" data-wb-ajax='{"type": "append", "url": "results/study-extend_permit-eta_x-mexico-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-extend_permit-identification_document" data-wb-ajax='{"type": "append", "url": "results/study-extend_permit-identification_document.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-extend_permit-us-air" data-wb-ajax='{"type": "append", "url": "results/study-extend_permit-us-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-extend_permit-us-land_sea" data-wb-ajax='{"type": "append", "url": "results/study-extend_permit-us-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-extend_permit-uspr-air" data-wb-ajax='{"type": "append", "url": "results/study-extend_permit-uspr-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-extend_permit-uspr-land_sea" data-wb-ajax='{"type": "append", "url": "results/study-extend_permit-uspr-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-extend_permit-visitor_visa" data-wb-ajax='{"type": "append", "url": "results/study-extend_permit-visitor_visa.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-first_permit-eta" data-wb-ajax='{"type": "append", "url": "results/study-first_permit-eta.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-first_permit-identification_document" data-wb-ajax='{"type": "append", "url": "results/study-first_permit-identification_document.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-first_permit-us-air" data-wb-ajax='{"type": "append", "url": "results/study-first_permit-us-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-first_permit-us-land_sea" data-wb-ajax='{"type": "append", "url": "results/study-first_permit-us-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-first_permit-uspr-air" data-wb-ajax='{"type": "append", "url": "results/study-first_permit-uspr-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-first_permit-uspr-land_sea" data-wb-ajax='{"type": "append", "url": "results/study-first_permit-uspr-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-first_permit-visitor_visa" data-wb-ajax='{"type": "append", "url": "results/study-first_permit-visitor_visa.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-have_permit-eta" data-wb-ajax='{"type": "append", "url": "results/study-have_permit-eta.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-have_permit-eta_x-air" data-wb-ajax='{"type": "append", "url": "results/study-have_permit-eta_x-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-have_permit-eta_x-before-eta-air" data-wb-ajax='{"type": "append", "url": "results/study-have_permit-eta_x-before-eta-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-have_permit-eta_x-before-need_visa-land_sea" data-wb-ajax='{"type": "append", "url": "results/study-have_permit-eta_x-before-need_visa-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-have_permit-eta_x-land_sea" data-wb-ajax='{"type": "append", "url": "results/study-have_permit-eta_x-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-have_permit-identification_document" data-wb-ajax='{"type": "append", "url": "results/study-have_permit-identification_document.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-have_permit-us-air" data-wb-ajax='{"type": "append", "url": "results/study-have_permit-us-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-have_permit-us-land_sea" data-wb-ajax='{"type": "append", "url": "results/study-have_permit-us-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-have_permit-uspr-air" data-wb-ajax='{"type": "append", "url": "results/study-have_permit-uspr-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-have_permit-uspr-land_sea" data-wb-ajax='{"type": "append", "url": "results/study-have_permit-uspr-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-have_permit-visitor_visa" data-wb-ajax='{"type": "append", "url": "results/study-have_permit-visitor_visa.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-study-not_sure" data-wb-ajax='{"type": "append", "url": "results/study-not_sure.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-supervisa-eta-air" data-wb-ajax='{"type": "append", "url": "results/supervisa-eta-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-supervisa-eta-land_sea" data-wb-ajax='{"type": "append", "url": "results/supervisa-eta-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-supervisa-us-air" data-wb-ajax='{"type": "append", "url": "results/supervisa-us-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-supervisa-us-land_sea" data-wb-ajax='{"type": "append", "url": "results/supervisa-us-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-supervisa-uspr-air" data-wb-ajax='{"type": "append", "url": "results/supervisa-uspr-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-supervisa-uspr-land_sea" data-wb-ajax='{"type": "append", "url": "results/supervisa-uspr-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-supervisa-visitor_visa" data-wb-ajax='{"type": "append", "url": "results/supervisa-visitor_visa.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-template" data-wb-ajax='{"type": "append", "url": "results/template.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-transit_visa" data-wb-ajax='{"type": "append", "url": "results/transit_visa.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-transit_without_visa-china" data-wb-ajax='{"type": "append", "url": "results/transit_without_visa-china.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-transit_without_visa" data-wb-ajax='{"type": "append", "url": "results/transit_without_visa.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-visitor_visa" data-wb-ajax='{"type": "append", "url": "results/visitor_visa.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-visitor_visa_or_eta_x" data-wb-ajax='{"type": "append", "url": "results/visitor_visa_or_eta_x.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-extend_permit-eta" data-wb-ajax='{"type": "append", "url": "results/work-extend_permit-eta.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-extend_permit-eta_x-air" data-wb-ajax='{"type": "append", "url": "results/work-extend_permit-eta_x-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-extend_permit-eta_x-land_sea" data-wb-ajax='{"type": "append", "url": "results/work-extend_permit-eta_x-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-extend_permit-eTA_x-mexico-air" data-wb-ajax='{"type": "append", "url": "results/work-extend_permit-eTA_x-mexico-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-extend_permit-eta_x-mexico-land_sea" data-wb-ajax='{"type": "append", "url": "results/work-extend_permit-eta_x-mexico-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-extend_permit-identification_document" data-wb-ajax='{"type": "append", "url": "results/work-extend_permit-identification_document.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-extend_permit-us-air" data-wb-ajax='{"type": "append", "url": "results/work-extend_permit-us-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-extend_permit-us-land_sea" data-wb-ajax='{"type": "append", "url": "results/work-extend_permit-us-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-extend_permit-uspr-air" data-wb-ajax='{"type": "append", "url": "results/work-extend_permit-uspr-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-extend_permit-uspr-land_sea" data-wb-ajax='{"type": "append", "url": "results/work-extend_permit-uspr-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-extend_permit-visitor_visa" data-wb-ajax='{"type": "append", "url": "results/work-extend_permit-visitor_visa.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-first_permit-eta" data-wb-ajax='{"type": "append", "url": "results/work-first_permit-eta.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-first_permit-identification_document" data-wb-ajax='{"type": "append", "url": "results/work-first_permit-identification_document.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-first_permit-us-air" data-wb-ajax='{"type": "append", "url": "results/work-first_permit-us-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-first_permit-us-land_sea" data-wb-ajax='{"type": "append", "url": "results/work-first_permit-us-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-first_permit-uspr-air" data-wb-ajax='{"type": "append", "url": "results/work-first_permit-uspr-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-first_permit-uspr-land_sea" data-wb-ajax='{"type": "append", "url": "results/work-first_permit-uspr-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-first_permit-visitor_visa" data-wb-ajax='{"type": "append", "url": "results/work-first_permit-visitor_visa.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-have_permit-eta" data-wb-ajax='{"type": "append", "url": "results/work-have_permit-eta.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-have_permit-eta_x-air" data-wb-ajax='{"type": "append", "url": "results/work-have_permit-eta_x-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-have_permit-eta_x-before-eta-air" data-wb-ajax='{"type": "append", "url": "results/work-have_permit-eta_x-before-eta-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-have_permit-eta_x-before-need_visa-land_sea" data-wb-ajax='{"type": "append", "url": "results/work-have_permit-eta_x-before-need_visa-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-have_permit-eta_x-land_sea" data-wb-ajax='{"type": "append", "url": "results/work-have_permit-eta_x-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-have_permit-identification_document" data-wb-ajax='{"type": "append", "url": "results/work-have_permit-identification_document.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-have_permit-us-air" data-wb-ajax='{"type": "append", "url": "results/work-have_permit-us-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-have_permit-us-land_sea" data-wb-ajax='{"type": "append", "url": "results/work-have_permit-us-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-have_permit-uspr-air" data-wb-ajax='{"type": "append", "url": "results/work-have_permit-uspr-air.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-have_permit-uspr-land_sea" data-wb-ajax='{"type": "append", "url": "results/work-have_permit-uspr-land_sea.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-have_permit-visitor_visa" data-wb-ajax='{"type": "append", "url": "results/work-have_permit-visitor_visa.html", "nocache": "nocache", "trigger": true}'></div>
+                <div tabindex="-1" class="result hidden" id="result-work-not_sure" data-wb-ajax='{"type": "append", "url": "results/work-not_sure.html", "nocache": "nocache", "trigger": true}'></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="legal-disclaimer">
+          <details open>
+            <summary>
+              <span class="flex-item item1"></span>
+              <span class="flex-item item2 align-self-center">This tool provides information only</span>
+            </summary>
+            <p class="mrgn-tp-md">This tool was created to assist you as you decide what travel document you may need to travel to Canada. This tool may not provide information on all travel documents or your particular situation. If you choose to apply, we will assess your application in accordance with the Immigration and Refugee Protection Act and its related Regulations.</p>
+            <p>
+              <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/terms-conditions.html" target="_blank">
+                Read our complete terms and conditions
+                <span class="glyphicon glyphicon-new-window mrgn-lft-sm" aria-hidden="true"><span class="wb-inv">Opens in a new tab</span></span>
+              </a>
+              .
+            </p>
+          </details>
+        </div>
+      </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/méli-mélo/2025-04-nahanni.js"></script>
+    <!-- <script src="fieldflow-mod.js"></script> -->
+    <script src="https://test.canada.ca/ircc/templates/js/components.js" type="text/javascript" defer></script>
+    <!-- <script src="flatlogic-v5.json"></script> -->
+    <script src="visas-yael-copy.js"></script>
+    <script src="filter-dropdown.js"></script>
+    <script>
+      /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    </script>
+  </body>
+</html>
