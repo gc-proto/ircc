@@ -2007,9 +2007,9 @@
             "air": {
                 "visa": "question-uspr",
                 "eta": "question-uspr",
-                "eta-X": "question-nonimmigrant_visa",
-                "eta-X-TWOV": "question-nonimmigrant_visa",
-                "mexico": "question-nonimmigrant_visa",
+                "eta-X": "question-uspr",
+                "eta-X-TWOV": "question-uspr",
+                "mexico": "question-uspr",
                 "canada": "result-canadian_cit_pr-air",
                 "usa": "result-supervisa-us-air",
                 "israel": "question-uspr",
@@ -2033,30 +2033,30 @@
         },
         "family": {
             "air": {
-                "visa": "result-visitor_visa",
-                "eta": "result-eta",
-                "eta-X": "question-nonimmigrant_visa",
-                "eta-X-TWOV": "question-nonimmigrant_visa",
-                "mexico": "question-nonimmigrant_visa",
+                "visa": "question-uspr",
+                "eta": "question-uspr",
+                "eta-X": "question-uspr",
+                "eta-X-TWOV": "question-uspr",
+                "mexico": "question-uspr",
                 "canada": "result-canadian_cit_pr-air",
                 "usa": "result-generalus-air",
-                "israel": "question-travel_document_israel",
-                "romania": "question-travel_document_romania",
-                "taiwan": "question-travel_document_taiwan",
-                "other": "result-visitor_visa"
+                "israel": "question-uspr",
+                "romania": "question-uspr",
+                "taiwan": "question-uspr",
+                "other": "question-uspr"
             },
             "land_sea": {
-                "visa": "result-visitor_visa",
-                "eta": "result-identification_document",
-                "eta-X": "result-visitor_visa",
-                "eta-X-TWOV": "result-visitor_visa",
-                "mexico": "result-visitor_visa",
+                "visa": "question-uspr",
+                "eta": "question-uspr",
+                "eta-X": "question-uspr",
+                "eta-X-TWOV": "question-uspr",
+                "mexico": "question-uspr",
                 "canada": "result-canadian_cit_pr-land_sea",
                 "usa": "result-generalus-land_sea",
-                "israel": "question-travel_document_israel",
-                "romania": "question-travel_document_romania",
-                "taiwan": "question-travel_document_taiwan",
-                "other": "result-visitor_visa"
+                "israel": "question-uspr",
+                "romania": "question-uspr",
+                "taiwan": "question-uspr",
+                "other": "question-uspr"
             }
         },
         "study": {
