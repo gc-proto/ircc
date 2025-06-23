@@ -364,7 +364,7 @@
                     "no_uspr": "result-visitor_visa"
                 }
             },
-            "tourist": {
+            "transit": {
                 "eta": {
                     "yes_uspr": "result-generaluspr-land_sea",
                     "no_uspr": "result-identification_document"
@@ -404,7 +404,7 @@
                     "no_uspr": "result-visitor_visa"
                 }
             },
-            "transit": {
+            "business": {
                 "eta": {
                     "yes_uspr": "result-generaluspr-land_sea",
                     "no_uspr": "result-identification_document"
@@ -2075,9 +2075,9 @@
             "air": {
                 "visa": "question-uspr",
                 "eta": "question-uspr",
-                "eta-X": "question-nonimmigrant_visa",
-                "eta-X-TWOV": "question-nonimmigrant_visa",
-                "mexico": "question-nonimmigrant_visa",
+                "eta-X": "question-uspr",
+                "eta-X-TWOV": "question-uspr",
+                "mexico": "question-uspr",
                 "canada": "result-canadian_cit_pr-air",
                 "usa": "result-generalus-air",
                 "israel": "question-uspr",
