@@ -1495,7 +1495,7 @@
                 "no": "result-supervisa-visitor_visa"
             },
             "family": {
-                "yes": "result-eta-etax",
+                "yes": "result-eta_etax",
                 "no": "result-visitor_visa"
             },
             "study": {
@@ -1516,12 +1516,16 @@
                 "yes": "result-eta_etax",
                 "no": "question-transit"
             },
+            "business": {
+                "yes": "result-eta_etax",
+                "no": "result-visitor_visa"
+            },
             "family_supervisa": {
                 "yes": "result-supervisa-eta-air",
                 "no": "result-supervisa-visitor_visa"
             },
             "family": {
-                "yes": "result-eta-etax",
+                "yes": "result-eta_etax",
                 "no": "result-visitor_visa"
             },
             "study": {
@@ -1542,12 +1546,16 @@
                 "yes": "result-eta_etax",
                 "no": "question-transit"
             },
+            "business": {
+                "yes": "result-eta_etax",
+                "no": "result-visitor_visa"
+            },
             "family_supervisa": {
                 "yes": "result-supervisa-eta-air",
                 "no": "result-supervisa-visitor_visa"
             },
             "family": {
-                "yes": "result-eta-etax",
+                "yes": "result-eta_etax",
                 "no": "result-visitor_visa"
             },
             "study": {
@@ -2191,7 +2199,7 @@
                 "eta-X-TWOV": "question-uspr",
                 "mexico": "question-uspr",
                 "canada": "result-canadian_cit_pr-air",
-                "usa": "question-uspr",
+                "usa": "question-work",
                 "israel": "question-uspr",
                 "romania": "question-uspr",
                 "taiwan": "question-uspr",
@@ -2204,7 +2212,7 @@
                 "eta-X-TWOV": "question-uspr",
                 "mexico": "question-uspr",
                 "canada": "result-canadian_cit_pr-land_sea",
-                "usa": "question-uspr",
+                "usa": "question-work",
                 "israel": "question-uspr",
                 "romania": "question-uspr",
                 "taiwan": "question-uspr",
