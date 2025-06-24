@@ -1734,8 +1734,10 @@
         "mexico": {
             "air": {
                 "yes_uspr": {
-                    "before": "result-study-have_permit-eTA_x-before-eTA",
-                    "after": "result-study-have_permit-eTA_x-air"
+                    "have_permit": {
+                        "before": "result-study-have_permit-eTA_x-before-eTA",
+                        "after": "result-study-have_permit-eTA_x-air"
+                    }
                 },
                 "no_uspr": {
                     "before": "result-study-have_permit-eTA_x-before-need_visa",
@@ -1743,7 +1745,10 @@
                 }
             },
             "land_sea": {
-                "no_uspr": {
+                "yes_uspr": {
+                    "before": "result-study-have_permit-eTA_x-before-eTA",
+                    "after": "result-study-have_permit-eTA_x-air"
+                },"no_uspr": {
                     "before": "result-study-have_permit-eTA_x-before-eTA",
                     "after": "result-study-have_permit-eTA_x-land_sea"
                 }
@@ -1764,6 +1769,10 @@
                 }
             },
             "land_sea": {
+                "yes_uspr": {
+                    "before": "result-work-have_permit-eTA_x-before-eTA",
+                    "after": "result-work-have_permit-eTA_x-air"
+                },
                 "no_uspr": {
                     "before": "result-work-have_permit-eTA_x-before-eTA",
                     "after": "result-work-have_permit-eTA_x-land_sea"
