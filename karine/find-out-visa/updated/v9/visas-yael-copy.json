@@ -261,7 +261,7 @@
                 },
                 "mexico": {
                     "yes_uspr": "question-study",
-                    "no_uspr": "question-study"
+                    "no_uspr": "question-nonimmigrant_visa"
                 },
                 "canada": "result-canadian_cit_pr-air",
                 "usa": "question-study",
@@ -301,7 +301,7 @@
                 },
                 "mexico": {
                     "yes_uspr": "question-work",
-                    "no_uspr": "question-work"
+                    "no_uspr": "question-nonimmigrant_visa"
                 },
                 "canada": "result-canadian_cit_pr-air",
                 "usa": "question-work",
@@ -698,9 +698,9 @@
         "air": {
             "eta": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-air",
+                    "have_permit": "result-study-have_permit-uspr-air",
+                    "extend_permit": "result-study-extend_permit-uspr-air",
                     "eligible_without_permit": "result-generaluspr-air",
                     "not_sure": "result-study-not_sure"
                 },
@@ -714,9 +714,9 @@
             },
             "visa": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-air",
+                    "have_permit": "result-study-have_permit-uspr-air",
+                    "extend_permit": "result-study-extend_permit-uspr-air",
                     "eligible_without_permit": "result-generaluspr-air",
                     "not_sure": "result-study-not_sure"
                 },
@@ -730,9 +730,9 @@
             },
             "eta-X": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-air",
+                    "have_permit": "result-study-have_permit-uspr-air",
+                    "extend_permit": "result-study-extend_permit-uspr-air",
                     "eligible_without_permit": "result-generaluspr-air",
                     "not_sure": "result-study-not_sure"
                 },
@@ -755,9 +755,9 @@
             },
             "eta-X-TWOV": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-air",
+                    "have_permit": "result-study-have_permit-uspr-air",
+                    "extend_permit": "result-study-extend_permit-uspr-air",
                     "eligible_without_permit": "result-generaluspr-air",
                     "not_sure": "result-study-not_sure"
                 },
@@ -780,9 +780,9 @@
             },
             "mexico": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-air",
+                    "have_permit": "result-study-have_permit-uspr-air",
+                    "extend_permit": "result-study-extend_permit-uspr-air",
                     "eligible_without_permit": "result-generaluspr-air",
                     "not_sure": "result-study-not_sure"
                 },
@@ -805,17 +805,17 @@
             },
             "canada": "result-canadian_cit_pr-air",
             "usa": {
-                "first_permit": "result-study-first_permit-us",
-                "have_permit": "result-study-have_permit-us",
-                "extend_permit": "result-study-extend_permit-us",
+                "first_permit": "result-study-first_permit-us-air",
+                "have_permit": "result-study-have_permit-us-air",
+                "extend_permit": "result-study-extend_permit-us-air",
                 "eligible_without_permit": "result-generalus-air",
                 "not_sure": "result-study-not_sure"
             },
             "israel": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-air",
+                    "have_permit": "result-study-have_permit-uspr-air",
+                    "extend_permit": "result-study-extend_permit-uspr-air",
                     "eligible_without_permit": "result-generaluspr-air",
                     "not_sure": "result-study-not_sure"
                 },
@@ -838,9 +838,9 @@
             },
             "romania": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-air",
+                    "have_permit": "result-study-have_permit-uspr-air",
+                    "extend_permit": "result-study-extend_permit-uspr-air",
                     "eligible_without_permit": "result-generaluspr-air",
                     "not_sure": "result-study-not_sure"
                 },
@@ -863,9 +863,9 @@
             },
             "taiwan": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-air",
+                    "have_permit": "result-study-have_permit-uspr-air",
+                    "extend_permit": "result-study-extend_permit-uspr-air",
                     "eligible_without_permit": "result-generaluspr-air",
                     "not_sure": "result-study-not_sure"
                 },
@@ -888,9 +888,9 @@
             },
             "other": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-air",
+                    "have_permit": "result-study-have_permit-uspr-air",
+                    "extend_permit": "result-study-extend_permit-uspr-air",
                     "eligible_without_permit": "result-generaluspr-air",
                     "not_sure": "result-study-not_sure"
                 },
@@ -906,9 +906,9 @@
         "land_sea": {
             "eta": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-land_sea",
+                    "have_permit": "result-study-have_permit-uspr-land_sea",
+                    "extend_permit": "result-study-extend_permit-uspr-land_sea",
                     "eligible_without_permit": "result-generaluspr-land_sea",
                     "not_sure": "result-study-not_sure"
                 },
@@ -922,9 +922,9 @@
             },
             "visa": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-land_sea",
+                    "have_permit": "result-study-have_permit-uspr-land_sea",
+                    "extend_permit": "result-study-extend_permit-uspr-land_sea",
                     "eligible_without_permit": "result-generaluspr-land_sea",
                     "not_sure": "result-study-not_sure"
                 },
@@ -938,9 +938,9 @@
             },
             "eta-X": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-land_sea",
+                    "have_permit": "result-study-have_permit-uspr-land_sea",
+                    "extend_permit": "result-study-extend_permit-uspr-land_sea",
                     "eligible_without_permit": "result-generaluspr-land_sea",
                     "not_sure": "result-study-not_sure"
                 },
@@ -954,9 +954,9 @@
             },
             "eta-X-TWOV": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-land_sea",
+                    "have_permit": "result-study-have_permit-uspr-land_sea",
+                    "extend_permit": "result-study-extend_permit-uspr-land_sea",
                     "eligible_without_permit": "result-generaluspr-land_sea",
                     "not_sure": "result-study-not_sure"
                 },
@@ -970,9 +970,9 @@
             },
             "mexico": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-land_sea",
+                    "have_permit": "result-study-have_permit-uspr-land_sea",
+                    "extend_permit": "result-study-extend_permit-uspr-land_sea",
                     "eligible_without_permit": "result-generaluspr-land_sea",
                     "not_sure": "result-study-not_sure"
                 },
@@ -986,17 +986,17 @@
             },
             "canada": "result-canadian_cit_pr-land_sea",
             "usa": {
-                "first_permit": "result-study-first_permit-us",
-                "have_permit": "result-study-have_permit-us",
-                "extend_permit": "result-study-extend_permit-us",
+                "first_permit": "result-study-first_permit-us-land_sea",
+                "have_permit": "result-study-have_permit-us-land_sea",
+                "extend_permit": "result-study-extend_permit-us-land_sea",
                 "eligible_without_permit": "result-generalus-land_sea",
                 "not_sure": "result-study-not_sure"
             },
             "israel": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-land_sea",
+                    "have_permit": "result-study-have_permit-uspr-land_sea",
+                    "extend_permit": "result-study-extend_permit-uspr-land_sea",
                     "eligible_without_permit": "result-generaluspr-land_sea",
                     "not_sure": "result-study-not_sure"
                 },
@@ -1019,9 +1019,9 @@
             },
             "romania": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-land_sea",
+                    "have_permit": "result-study-have_permit-uspr-land_sea",
+                    "extend_permit": "result-study-extend_permit-uspr-land_sea",
                     "eligible_without_permit": "result-generaluspr-land_sea",
                     "not_sure": "result-study-not_sure"
                 },
@@ -1044,9 +1044,9 @@
             },
             "taiwan": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-land_sea",
+                    "have_permit": "result-study-have_permit-uspr-land_sea",
+                    "extend_permit": "result-study-extend_permit-uspr-land_sea",
                     "eligible_without_permit": "result-generaluspr-land_sea",
                     "not_sure": "result-study-not_sure"
                 },
@@ -1069,9 +1069,9 @@
             },
             "other": {
                 "yes_uspr": {
-                    "first_permit": "result-study-first_permit-uspr",
-                    "have_permit": "result-study-have_permit-uspr",
-                    "extend_permit": "result-study-extend_permit-uspr",
+                    "first_permit": "result-study-first_permit-uspr-land_sea",
+                    "have_permit": "result-study-have_permit-uspr-land_sea",
+                    "extend_permit": "result-study-extend_permit-uspr-land_sea",
                     "eligible_without_permit": "result-generaluspr-land_sea",
                     "not_sure": "result-study-not_sure"
                 },
@@ -1736,7 +1736,6 @@
                 "yes_uspr": {
                         "before": "result-study-have_permit-eTA_x-before-eTA",
                         "after": "result-study-have_permit-eTA_x-air"
-                    
                 },
                 "no_uspr": {
                     "before": "result-study-have_permit-eTA_x-before-need_visa",
