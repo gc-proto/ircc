@@ -1732,16 +1732,21 @@
     },
     "question-study-vi-march2024": {
         "mexico": {
-            "study": {
-                "air": {
+            "air": {
+                "yes_uspr": {
                     "before": "result-study-have_permit-eTA_x-before-eTA",
                     "after": "result-study-have_permit-eTA_x-air"
                 },
-                
-                "land_sea": {
+                "no_uspr": {
+                    "before": "result-study-have_permit-eTA_x-before-need_visa",
+                    "after": "result-study-have_permit-eTA_x-visitor_visa"
+                }
+            },
+            "land_sea": {
+                "no_uspr": {
                     "before": "result-study-have_permit-eTA_x-before-eTA",
                     "after": "result-study-have_permit-eTA_x-land_sea"
-                    }
+                }
             }
             
         }
