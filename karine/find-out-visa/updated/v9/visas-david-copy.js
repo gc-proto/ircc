@@ -153,17 +153,22 @@ $(document).on("wb-ready.wb", function (event) {
             // ** Helper functions **
 
             const getNextForStudyOrWork = () => {
-                // For Mexico with no_uspr, we need to check nonimmigrant_visa status
-                if (passport_code === "mexico" && uspr === "no_uspr") {
-                    return data[question]?.[method_of_travel]?.[passport_code]?.[uspr]?.[nonimmigrant_visa]?.[selectedInput];
+                // Handle passport_code-based structure (like Mexico, Israel, Romania, Taiwan)
+                if (passport_code && data[question]?.[method_of_travel]?.[passport_code]) {
+                    // For Mexico/Israel/Romania/Taiwan with no_uspr, check if nonimmigrant_visa is needed
+                    if (uspr === "no_uspr" && data[question]?.[method_of_travel]?.[passport_code]?.[uspr]?.[nonimmigrant_visa]) {
+                        return data[question][method_of_travel][passport_code][uspr][nonimmigrant_visa][selectedInput];
+                    }
+                    // For all other cases with passport_code (including yes_uspr)
+                    return data[question][method_of_travel][passport_code][uspr]?.[selectedInput];
                 }
                 
-                // For all other cases (including Mexico with yes_uspr)
-                return data[question]?.[method_of_travel]?.[passport_code]?.[uspr]?.[selectedInput] ||
+                // Handle traveller_type-based structure (like eta, visa, usa, etc.)
+                return data[question]?.[method_of_travel]?.[traveller_type]?.[uspr]?.[nonimmigrant_visa]?.[selectedInput] ||
                     data[question]?.[method_of_travel]?.[traveller_type]?.[uspr]?.[selectedInput] ||
-                    data[question]?.[method_of_travel]?.[traveller_type]?.[selectedInput];
+                    data[question]?.[method_of_travel]?.[traveller_type]?.[selectedInput] ||
+                    data[question]?.[traveller_type]?.[selectedInput];
             };
-
             const handleTravelDocument = () => {
                 travel_document = selectedInput;
                 return data[question]?.[purpose_of_travel]?.[method_of_travel]?.[selectedInput] || data[question]?.[purpose_of_travel]?.[method_of_travel] || data[question]?.[purpose_of_travel];
