@@ -148,12 +148,6 @@ $(document).on("wb-ready.wb", function (event) {
                 "question-travel_document_israel": () => handleTravelDocument(),
                 "question-travel_document_romania": () => handleTravelDocument(),
                 "question-travel_document_taiwan": () => handleTravelDocument()
-                "question-study-vi-march2024": () => {
-                   return data[question]?.[passport_code]?.[method_of_travel]?.[uspr]?.[selectedInput];
-                },
-                "question-work-vi-march2024": () => {
-                   return data[question]?.[passport_code]?.[method_of_travel]?.[uspr]?.[selectedInput];
-                }
             };
 
             // ** Helper functions **
