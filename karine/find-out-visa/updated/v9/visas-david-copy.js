@@ -153,15 +153,15 @@ $(document).on("wb-ready.wb", function (event) {
             // ** Helper functions **
 
             const getNextForStudyOrWork = () => {
-                return data[question]?.[method_of_travel]?.[traveller_type]?.[uspr]?.[nonimmigrant_visa]?.[selectedInput] ||
+                // For Mexico with no_uspr, we need to check nonimmigrant_visa status
+                if (passport_code === "mexico" && uspr === "no_uspr") {
+                    return data[question]?.[method_of_travel]?.[passport_code]?.[uspr]?.[nonimmigrant_visa]?.[selectedInput];
+                }
+                
+                // For all other cases (including Mexico with yes_uspr)
+                return data[question]?.[method_of_travel]?.[passport_code]?.[uspr]?.[selectedInput] ||
                     data[question]?.[method_of_travel]?.[traveller_type]?.[uspr]?.[selectedInput] ||
-                    data[question]?.[method_of_travel]?.[traveller_type]?.[selectedInput] ||
-                    data[question]?.[method_of_travel]?.[traveller_type]
-                // return data[question]?.[method_of_travel]?.[]?.[passport_code]?.[selectedInput] ||
-                //     data[question]?.[traveller_type]?.[method_of_travel]?.[passport_code]?.[selectedInput] ||
-                //     data[question]?.[traveller_type]?.[method_of_travel]?.[selectedInput] ||
-                //     data[question]?.[traveller_type]?.[method_of_travel] ||
-                //     data[question]?.[traveller_type]?.[selectedInput];
+                    data[question]?.[method_of_travel]?.[traveller_type]?.[selectedInput];
             };
 
             const handleTravelDocument = () => {
