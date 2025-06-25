@@ -1659,7 +1659,7 @@
                 "no": "result-supervisa-visitor_visa"
             },
             "land_sea": {
-                "yes": "result-supervisa-eta-land)sea",
+                "yes": "result-supervisa-eta-land_sea",
                 "no": "result-supervisa-visitor_visa"
             }
         },
@@ -1731,42 +1731,45 @@
         "work": "question-work"
     },
     "question-study-vi-march2024": {
-        "mexico": {
-            "air": {
-                "yes_uspr": {
-                    "before": "result-study-have_permit-eTA_x-before-eTA",
-                    "after": "result-study-have_permit-eTA_x-air"
-                },
-                "no_uspr": {
-                    "before": "result-study-have_permit-eTA_x-before-need_visa",
-                    "after": "result-study-have_permit-eTA_x-visitor_visa"
-                }
+    "mexico": {
+        "air": {
+            "yes_uspr": {
+                "before": "result-study-have_permit-eta_x-before-eta-air",
+                "after": "result-study-have_permit-eta_x-air"
             },
-            "land_sea": {
-                "no_uspr": {
-                    "before": "result-study-have_permit-eTA_x-before-eTA",
-                    "after": "result-study-have_permit-eTA_x-land_sea"
-                }
+            "no_uspr": {
+                "before": "result-study-have_permit-eta_x-before-eta-air",
+                "after": "result-study-have_permit-eta_x-air"
             }
-            
+        },
+        "land_sea": {
+            "no_uspr": {
+                "before": "result-study-have_permit-eta_x-before-eta-air",
+                "after": "result-study-have_permit-eta_x-land_sea"
+            }
         }
-    },
+    }
+},
     "question-work-vi-march2024": {
         "mexico": {
             "air": {
                 "yes_uspr": {
-                    "before": "result-work-have_permit-eTA_x-before-eTA",
+                    "before": "result-work-have_permit-eta_x-before-eta-air",
                     "after": "result-work-have_permit-eTA_x-air"
                 },
                 "no_uspr": {
-                    "before": "result-work-have_permit-eTA_x-before-need_visa",
-                    "after": "result-work-have_permit-eTA_x-visitor_visa"
+                    "before": "result-work-have_permit-eta_x-before-eta-air",
+                    "after": "result-work-have_permit-eTA_x-air"
                 }
             },
             "land_sea": {
+                "yes_uspr": {
+                    "before": "result-study-have_permit-eta_x-before-eta-air",
+                    "after": "result-study-have_permit-eta_x-land_sea"
+                },
                 "no_uspr": {
-                    "before": "result-work-have_permit-eTA_x-before-eTA",
-                    "after": "result-work-have_permit-eTA_x-land_sea"
+                    "before": "result-study-have_permit-eta_x-before-eta-air",
+                    "after": "result-study-have_permit-eta_x-land_sea"
                 }
             }
             
