@@ -1738,13 +1738,13 @@
                 "after": "result-study-have_permit-eta_x-air"
             },
             "no_uspr": {
-                "before": "result-study-have_permit-eta_x-before-need_visa-land_sea",
-                "after": "result-study-have_permit-visitor_visa"
+                "before": "result-study-have_permit-eta_x-before-eta-air",
+                "after": "result-study-have_permit-eta_x-air"
             }
         },
         "land_sea": {
             "no_uspr": {
-                "before": "result-study-have_permit-eta_x-before-eta-air",
+                "before": "result-study-have_permit-eta_x-before-need_visa-land_sea",
                 "after": "result-study-have_permit-eta_x-land_sea"
             }
         }
@@ -1754,22 +1754,22 @@
         "mexico": {
             "air": {
                 "yes_uspr": {
-                    "before": "result-work-have_permit-eTA_x-before-eTA",
+                    "before": "result-work-have_permit-eta_x-before-eta-air",
                     "after": "result-work-have_permit-eTA_x-air"
                 },
                 "no_uspr": {
-                    "before": "result-work-have_permit-eTA_x-before-need_visa",
-                    "after": "result-work-have_permit-eTA_x-visitor_visa"
+                    "before": "result-work-have_permit-eta_x-before-eta-air",
+                    "after": "result-work-have_permit-eTA_x-air"
                 }
             },
             "land_sea": {
                 "yes_uspr": {
-                    "before": "result-work-have_permit-eTA_x-before-eTA",
-                    "after": "result-work-have_permit-eTA_x-air"
+                    "before": "result-work-have_permit-eta_x-before-need_visa-land_sea",
+                    "after": "result-work-have_permit-eta_x-land_sea"
                 },
                 "no_uspr": {
-                    "before": "result-work-have_permit-eTA_x-before-eTA",
-                    "after": "result-work-have_permit-eTA_x-land_sea"
+                    "before": "result-work-have_permit-eta_x-before-need_visa-land_sea",
+                    "after": "result-work-have_permit-eta_x-land_sea"
                 }
             }
             
