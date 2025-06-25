@@ -56,14 +56,19 @@ $(document).on("wb-ready.wb", function (event) {
 
     // On Next button click
     function handleNextClick() {
-        let currentQuestion = document.querySelector('.question:not(.hidden)');
-        
+
         if (firstclick) {
             document.querySelectorAll("a:has(span.glyphicon-new-window)").forEach(element => {
                 element.setAttribute('target', '_blank');
             });
             firstclick = false;
         }
+
+        
+        document.querySelector('.legal-disclaimer details').removeAttribute('open');
+
+        //Get current question & if no selection was made, force form validation to show error. Else, if something was selected, continue with rest of script.
+        let currentQuestion = document.querySelector('.question:not(.hidden)');
 
         if (currentQuestion.id === "question-travel_document_israel") {
             travel_document_israel_answer = selectedInput; // "yes" or "no"
@@ -74,11 +79,7 @@ $(document).on("wb-ready.wb", function (event) {
         if (currentQuestion.id === "question-travel_document_taiwan") {
             travel_document_taiwan_answer = selectedInput;
         }
-        document.querySelector('.legal-disclaimer details').removeAttribute('open');
-
-        //Get current question & if no selection was made, force form validation to show error. Else, if something was selected, continue with rest of script.
-        let currentQuestion = document.querySelector('.question:not(.hidden)');
-
+    
         if (currentQuestion.querySelector('input') && !currentQuestion.querySelector('input:checked')) {
             $(form).validate();
             $(form).valid();
