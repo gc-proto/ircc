@@ -173,6 +173,7 @@ $(document).on("wb-ready.wb", function (event) {
                 "question-travel_document_romania": () => handleTravelDocument(),
                 "question-travel_document_taiwan": () => handleTravelDocument()
             };
+            
                  console.log("Question for handler lookup:", question);
                  console.log("Handler exists:", !!questionHandlers[question]);
             // ** Helper functions **
