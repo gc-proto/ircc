@@ -1734,17 +1734,17 @@
         "mexico": {
             "air": {
                 "yes_uspr": {
-                    "before": "result-study-have_permit-eTA_x-before-eTA",
+                    "before": "result-study-have_permit-eTA_x-before-eTA-air",
                     "after": "result-study-have_permit-eTA_x-air"
                 },
                 "no_uspr": {
-                    "before": "result-study-have_permit-eTA_x-before-need_visa",
-                    "after": "result-study-have_permit-eTA_x-visitor_visa"
+                    "before": "result-study-have_permit-eTA_x-before-need_visa-land_sea",
+                    "after": "result-study-have_permit-visitor_visa"
                 }
             },
             "land_sea": {
                 "no_uspr": {
-                    "before": "result-study-have_permit-eTA_x-before-eTA",
+                    "before": "result-study-have_permit-eTA_x-before-need_visa-land_sea",
                     "after": "result-study-have_permit-eTA_x-land_sea"
                 }
             }
