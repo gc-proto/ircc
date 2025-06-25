@@ -137,7 +137,16 @@ $(document).on("wb-ready.wb", function (event) {
                 },
                 "question-study": () => getNextForStudyOrWork(),
                 "question-work": () => getNextForStudyOrWork(),
-                "question-transit": () => {
+                "question-study-vi-march2024": () => {
+                    const usprKey = uspr === "yes_uspr" ? "yes_uspr" : "no_uspr";
+                    return data[question]?.[passport_code]?.[method_of_travel]?.[usprKey]?.[selectedInput];
+                },
+                
+                "question-work-vi-march2024": () => {
+                    const usprKey = uspr === "yes_uspr" ? "yes_uspr" : "no_uspr";
+                    return data[question]?.[passport_code]?.[method_of_travel]?.[usprKey]?.[selectedInput];
+                },
+                            "question-transit": () => {
                     return data[question][method_of_travel][traveller_type][selectedInput];
                 },
                 "question-transit_length": () => data[question][traveller_type][selectedInput],
