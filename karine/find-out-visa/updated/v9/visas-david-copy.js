@@ -33,6 +33,9 @@ let traveller_type, purpose_of_travel, method_of_travel, passport_code, uspr, no
 let passportCodeSelectionParent = document.getElementById('passport-code-selection');
 let passportCodeSelection = document.getElementById('passport-selection');
 let passportCodeTable = document.getElementById('passport-code');
+let travel_document_israel_answer;
+let travel_document_romania_answer;
+let travel_document_taiwan_answer;
 
 // Fetch JSON data
 (async function fetchData() {
@@ -61,6 +64,15 @@ $(document).on("wb-ready.wb", function (event) {
             firstclick = false;
         }
 
+        if (currentQuestion.id === "question-travel_document_israel") {
+            travel_document_israel_answer = selectedInput; // "yes" or "no"
+        }
+        if (currentQuestion.id === "question-travel_document_romania") {
+            travel_document_romania_answer = selectedInput;
+        }
+        if (currentQuestion.id === "question-travel_document_taiwan") {
+            travel_document_taiwan_answer = selectedInput;
+        }
         document.querySelector('.legal-disclaimer details').removeAttribute('open');
 
         //Get current question & if no selection was made, force form validation to show error. Else, if something was selected, continue with rest of script.
@@ -161,6 +173,9 @@ $(document).on("wb-ready.wb", function (event) {
                             "question-transit": () => {
                     return data[question][method_of_travel][traveller_type][selectedInput];
                 },
+                "question-transit": () => {
+                    return data[question][method_of_travel][traveller_type][selectedInput];
+                },
                 "question-transit_length": () => data[question][traveller_type][selectedInput],
                 "question-nonimmigrant_visa": () => {
                     nonimmigrant_visa = selectedInput;
@@ -170,29 +185,43 @@ $(document).on("wb-ready.wb", function (event) {
                 "question-travel_document_romania": () => handleTravelDocument(),
                 "question-travel_document_taiwan": () => handleTravelDocument()
             };
-
-            console.log("Question for handler lookup:", question);
-            console.log("Handler exists:", !!questionHandlers[question]);
             
+                 console.log("Question for handler lookup:", question);
+                 console.log("Handler exists:", !!questionHandlers[question]);
             // ** Helper functions **
 
             const getNextForStudyOrWork = () => {
-                // Handle passport_code-based structure (like Mexico, Israel, Romania, Taiwan)
-                if (passport_code && data[question]?.[method_of_travel]?.[passport_code]) {
-                    // For Mexico/Israel/Romania/Taiwan with no_uspr, check if nonimmigrant_visa is needed
-                    if (uspr === "no_uspr" && data[question]?.[method_of_travel]?.[passport_code]?.[uspr]?.[nonimmigrant_visa]) {
-                        return data[question][method_of_travel][passport_code][uspr][nonimmigrant_visa][selectedInput];
-                    }
-                    // For all other cases with passport_code (including yes_uspr)
-                    return data[question][method_of_travel][passport_code][uspr]?.[selectedInput];
+                // Use this constant to DRY up code:
+                let base = data[question]?.[method_of_travel]?.[traveller_type];
+                let answer; // Will store the result string
+
+                if (traveller_type === "israel") {
+                    // Exception: Must use the Israel passport answer for next key
+                    answer = base?.[uspr]?.[travel_document_israel_answer]?.[selectedInput];
+                } else if (traveller_type === "romania") {
+                    answer = base?.[uspr]?.[travel_document_romania_answer]?.[selectedInput];
+                } else if (traveller_type === "taiwan") {
+                    answer = base?.[uspr]?.[travel_document_taiwan_answer]?.[selectedInput];
+                } else {
+                    // Regular countries (no extra nesting)
+                    answer = base?.[uspr]?.[selectedInput] 
+                        || base?.[uspr]                 // sometimes study flows straight to string result here
+                        || base?.[selectedInput] 
+                        || base;
                 }
-                
-                // Handle traveller_type-based structure (like eta, visa, usa, etc.)
-                return data[question]?.[method_of_travel]?.[traveller_type]?.[uspr]?.[nonimmigrant_visa]?.[selectedInput] ||
-                    data[question]?.[method_of_travel]?.[traveller_type]?.[uspr]?.[selectedInput] ||
-                    data[question]?.[method_of_travel]?.[traveller_type]?.[selectedInput] ||
-                    data[question]?.[traveller_type]?.[selectedInput];
+
+                if (typeof answer !== "string") {
+                    // Defensive logging
+                    console.error("Failed to resolve branch in getNextForStudyOrWork", {
+                        question, method_of_travel, traveller_type, uspr, selectedInput,
+                        travel_document_israel_answer, travel_document_romania_answer, travel_document_taiwan_answer,
+                        answer
+                    });
+                    return undefined;
+                }
+                return answer;
             };
+
             const handleTravelDocument = () => {
                 travel_document = selectedInput;
                 return data[question]?.[purpose_of_travel]?.[method_of_travel]?.[selectedInput] || data[question]?.[purpose_of_travel]?.[method_of_travel] || data[question]?.[purpose_of_travel];
