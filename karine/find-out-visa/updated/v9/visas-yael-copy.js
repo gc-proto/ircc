@@ -137,7 +137,7 @@ $(document).on("wb-ready.wb", function (event) {
                 },
                 "question-study": () => getNextForStudyOrWork(),
                 "question-work": () => getNextForStudyOrWork(),
-                 "question-study-vi-march2024": () => {
+                "question-study-vi-march2024": () => {
                     console.log("Handler called for question-study-vi-march2024");
                     console.log("passport_code:", passport_code);
                     console.log("method_of_travel:", method_of_travel);
@@ -173,7 +173,8 @@ $(document).on("wb-ready.wb", function (event) {
                 "question-travel_document_romania": () => handleTravelDocument(),
                 "question-travel_document_taiwan": () => handleTravelDocument()
             };
-
+                 console.log("Question for handler lookup:", question);
+                 console.log("Handler exists:", !!questionHandlers[question]);
             // ** Helper functions **
 
             const getNextForStudyOrWork = () => {
