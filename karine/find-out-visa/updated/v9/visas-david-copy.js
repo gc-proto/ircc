@@ -193,27 +193,35 @@ $(document).on("wb-ready.wb", function (event) {
             // ** Helper functions **
 
             const getNextForStudyOrWork = () => {
-                // Use this constant to DRY up code:
+                // Base branch under study
                 let base = data[question]?.[method_of_travel]?.[traveller_type];
-                let answer; // Will store the result string
+                let answer;
 
+                // Special passport-exception countries all use the same structure
                 if (traveller_type === "israel") {
-                    // Exception: Must use the Israel passport answer for next key
-                    answer = base?.[uspr]?.[travel_document_israel_answer]?.[selectedInput];
+                    // Only try passport answer key if it's defined
+                    if (typeof travel_document_israel_answer === "string") {
+                        answer = base?.[uspr]?.[travel_document_israel_answer]?.[selectedInput];
+                    }
                 } else if (traveller_type === "romania") {
-                    answer = base?.[uspr]?.[travel_document_romania_answer]?.[selectedInput];
+                    if (typeof travel_document_romania_answer === "string") {
+                        answer = base?.[uspr]?.[travel_document_romania_answer]?.[selectedInput];
+                    }
                 } else if (traveller_type === "taiwan") {
-                    answer = base?.[uspr]?.[travel_document_taiwan_answer]?.[selectedInput];
-                } else {
-                    // Regular countries (no extra nesting)
+                    if (typeof travel_document_taiwan_answer === "string") {
+                        answer = base?.[uspr]?.[travel_document_taiwan_answer]?.[selectedInput];
+                    }
+                } 
+                
+                // Regular countries (no extra nesting)
+                if (typeof answer !== "string") {
                     answer = base?.[uspr]?.[selectedInput] 
-                        || base?.[uspr]                 // sometimes study flows straight to string result here
+                        || base?.[uspr]
                         || base?.[selectedInput] 
                         || base;
                 }
 
                 if (typeof answer !== "string") {
-                    // Defensive logging
                     console.error("Failed to resolve branch in getNextForStudyOrWork", {
                         question, method_of_travel, traveller_type, uspr, selectedInput,
                         travel_document_israel_answer, travel_document_romania_answer, travel_document_taiwan_answer,
