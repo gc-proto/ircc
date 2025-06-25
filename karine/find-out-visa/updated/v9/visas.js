@@ -137,6 +137,30 @@ $(document).on("wb-ready.wb", function (event) {
                 },
                 "question-study": () => getNextForStudyOrWork(),
                 "question-work": () => getNextForStudyOrWork(),
+                "question-study-vi-march2024": () => {
+                    console.log("Handler called for question-study-vi-march2024");
+                    console.log("passport_code:", passport_code);
+                    console.log("method_of_travel:", method_of_travel);
+                    console.log("uspr:", uspr);
+                    console.log("selectedInput:", selectedInput);
+                    
+                    const usprKey = uspr === "yes_uspr" ? "yes_uspr" : "no_uspr";
+                    const result = data[question]?.[passport_code]?.[method_of_travel]?.[usprKey]?.[selectedInput];
+                    
+                    console.log("usprKey:", usprKey);
+                    console.log("Looking for path:", `${question} -> ${passport_code} -> ${method_of_travel} -> ${usprKey} -> ${selectedInput}`);
+                    console.log("Result:", result);
+                    
+                    return result;
+                },
+                
+                "question-work-vi-march2024": () => {
+                    const usprKey = uspr === "yes_uspr" ? "yes_uspr" : "no_uspr";
+                    return data[question]?.[passport_code]?.[method_of_travel]?.[usprKey]?.[selectedInput];
+                },
+                            "question-transit": () => {
+                    return data[question][method_of_travel][traveller_type][selectedInput];
+                },
                 "question-transit": () => {
                     return data[question][method_of_travel][traveller_type][selectedInput];
                 },
@@ -149,7 +173,8 @@ $(document).on("wb-ready.wb", function (event) {
                 "question-travel_document_romania": () => handleTravelDocument(),
                 "question-travel_document_taiwan": () => handleTravelDocument()
             };
-
+                 console.log("Question for handler lookup:", question);
+                 console.log("Handler exists:", !!questionHandlers[question]);
             // ** Helper functions **
 
             const getNextForStudyOrWork = () => {
