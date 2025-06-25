@@ -56,7 +56,8 @@ $(document).on("wb-ready.wb", function (event) {
 
     // On Next button click
     function handleNextClick() {
-
+        let currentQuestion = document.querySelector('.question:not(.hidden)');
+        
         if (firstclick) {
             document.querySelectorAll("a:has(span.glyphicon-new-window)").forEach(element => {
                 element.setAttribute('target', '_blank');
