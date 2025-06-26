@@ -454,33 +454,33 @@
                     "no_uspr": "result-supervisa-visitor_visa"
                 },
                 "eta-X": {
-                    "yes_uspr": "result-generaluspr-land_sea",
+                    "yes_uspr": "result-supervisa-uspr-land_sea",
                     "no_uspr": "result-supervisa-visitor_visa"
                 },
                 "eta-X-TWOV": {
-                    "yes_uspr": "result-generaluspr-land_sea",
+                    "yes_uspr": "result-supervisa-uspr-land_sea",
                     "no_uspr": "result-supervisa-visitor_visa"
                 },
                 "mexico": {
-                    "yes_uspr": "result-generaluspr-land_sea",
+                    "yes_uspr": "result-supervisa-uspr-land_sea",
                     "no_uspr": "result-supervisa-visitor_visa"
                 },
                 "canada": "result-canadian_cit_pr-land_sea",
                 "usa": "result-supervisa-us-land_sea",
                 "israel": {
-                    "yes_uspr": "result-generaluspr-air",
+                    "yes_uspr": "result-supervisa-uspr-land_sea",
                     "no_uspr": "question-travel_document_israel"
                 },
                 "romania": {
-                    "yes_uspr": "result-generaluspr-air",
+                    "yes_uspr": "result-supervisa-uspr-land_sea",
                     "no_uspr": "question-travel_document_romania"
                 },
                 "taiwan": {
-                    "yes_uspr": "result-generaluspr-air",
+                    "yes_uspr": "result-supervisa-uspr-land_sea",
                     "no_uspr": "question-travel_document_taiwan"
                 },
                 "other": {
-                    "yes_uspr": "result-supervisa-uspr-air",
+                    "yes_uspr": "result-supervisa-uspr-land_sea",
                     "no_uspr": "result-supervisa-visitor_visa"
                 }
             },
@@ -979,7 +979,7 @@
                 "no_uspr": {
                     "first_permit": "result-study-first_permit-visitor_visa",
                     "have_permit": "question-study-vi-march2024",
-                    "extend_permit": "result-study-extend_permit-eta_x-land_sea",
+                    "extend_permit": "result-study-extend_permit-eta_x-mexico-land_sea",
                     "eligible_without_permit": "result-visitor_visa_or_eta_x",
                     "not_sure": "result-study-not_sure"
                 }
@@ -1339,7 +1339,7 @@
                     "first_permit": "result-work-first_permit-visitor_visa",
                     "have_permit": "result-work-have_permit-eta_x-land_sea",
                     "extend_permit": "result-work-extend_permit-eta_x-land_sea",
-                    "eligible_without_permit": "result-visitor_visa_or_eTA_x",
+                    "eligible_without_permit": "result-visitor_visa_or_eta_x",
                     "not_sure": "result-work-not_sure"
                 }
             },
@@ -1355,7 +1355,7 @@
                     "first_permit": "result-work-first_permit-visitor_visa",
                     "have_permit": "result-work-have_permit-eta_x-land_sea",
                     "extend_permit": "result-work-extend_permit-eta_x-land_sea",
-                    "eligible_without_permit": "result-visitor_visa_or_eTA_x",
+                    "eligible_without_permit": "result-visitor_visa_or_eta_x",
                     "not_sure": "result-work-not_sure"
                 }
             },
@@ -1370,8 +1370,8 @@
                 "no_uspr": {
                     "first_permit": "result-work-first_permit-visitor_visa",
                     "have_permit": "question-work-vi-march2024",
-                    "extend_permit": "result-work-extend_permit-eta_x-land_sea",
-                    "eligible_without_permit": "result-visitor_visa_or_eTA_x",
+                    "extend_permit": "result-work-extend_permit-eta_x-mexico-land_sea",
+                    "eligible_without_permit": "result-visitor_visa_or_eta_x",
                     "not_sure": "result-work-not_sure"
                 }
             },
@@ -1764,11 +1764,11 @@
             },
             "land_sea": {
                 "yes_uspr": {
-                    "before": "result-study-have_permit-eta_x-before-eta-air",
+                    "before": "result-study-have_permit-eta_x-before-need_visa-land_sea",
                     "after": "result-study-have_permit-eta_x-land_sea"
                 },
                 "no_uspr": {
-                    "before": "result-study-have_permit-eta_x-before-eta-air",
+                    "before": "result-study-have_permit-eta_x-before-need_visa-land_sea",
                     "after": "result-study-have_permit-eta_x-land_sea"
                 }
             }
