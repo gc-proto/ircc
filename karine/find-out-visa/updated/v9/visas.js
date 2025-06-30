@@ -136,20 +136,16 @@ $(document).on("wb-ready.wb", function (event) {
         "question-study": () => getNextForStudyOrWork(),
         "question-work": () => getNextForStudyOrWork(),
         "question-study-vi-march2024": () => {
-          console.log("Handler called for question-study-vi-march2024");
-          console.log("passport_code:", passport_code);
-          console.log("method_of_travel:", method_of_travel);
-          console.log("uspr:", uspr);
-          console.log("selectedInput:", selectedInput);
+          //   const usprKey = uspr === "yes_uspr" ? "yes_uspr" : "no_uspr";
+          //   const result = data[question]?.[passport_code]?.[method_of_travel]?.[usprKey]?.[selectedInput];
 
+          //   console.log("usprKey:", usprKey);
+          //   console.log("Looking for path:", `${question} -> ${passport_code} -> ${method_of_travel} -> ${usprKey} -> ${selectedInput}`);
+          //   console.log("Result:", result);
+
+          //   return result;
           const usprKey = uspr === "yes_uspr" ? "yes_uspr" : "no_uspr";
-          const result = data[question]?.[passport_code]?.[method_of_travel]?.[usprKey]?.[selectedInput];
-
-          console.log("usprKey:", usprKey);
-          console.log("Looking for path:", `${question} -> ${passport_code} -> ${method_of_travel} -> ${usprKey} -> ${selectedInput}`);
-          console.log("Result:", result);
-
-          return result;
+          return data[question]?.[passport_code]?.[method_of_travel]?.[usprKey]?.[selectedInput];
         },
 
         "question-work-vi-march2024": () => {
