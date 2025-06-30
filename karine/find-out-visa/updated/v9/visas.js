@@ -326,6 +326,7 @@ $(".wb-tables").on("wb-ready.wb-tables", function (event) {
 });
 
 let lbSelect = document.getElementById("ss_elem_list");
+let lbFilter = document.getElementById("lb-filter");
 let lbOptions = lbSelect.getElementsByTagName("li");
 
 Array.prototype.forEach.call(lbSelect.children, (child) => {
@@ -366,7 +367,7 @@ function openDropdown() {
     lbOptions[i].removeAttribute("aria-selected");
     lbOptions[i].classList.remove("focused");
   }
-  lbSelect.focus();
+  lbFilter.focus();
 }
 
 function filterFunction() {
