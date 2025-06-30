@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
 
     <!-- CONFIGURATIONS START HERE -->
-    <title>Check if you need a visa or eTA to travel to Canada - Canada.ca</title>
+    <title>Admin find out tool - Canada.ca</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <script id="pageConstants">
@@ -415,9 +415,14 @@
       /* When the user clicks on the button,
     toggle between hiding and showing the dropdown content */
 
-      $(document).on("wb-ready.wb", function (event) {
-        console.log("Test");
-      });
+    
+
+      $('.result').on( "wb-contentupdated", function( event, data ){
+        this.querySelectorAll("a:has(span.glyphicon-new-window)").forEach((element) => {
+                element.setAttribute("target", "_blank");
+            });
+});
+
     </script>
   </body>
 </html>
