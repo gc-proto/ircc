@@ -48,8 +48,8 @@ let passportCodeTable = document.getElementById("passport-code");
 
 $(document).on("wb-ready.wb", function (event) {
     btnNext.addEventListener("click", handleNextClick);
-    btnPrevious.addEventListener("click", () => handlePreviousClick(false));
-    btnReset.addEventListener("click", () => handlePreviousClick(userAnswers[0]?.id));
+    btnPrevious.addEventListener("click", () => handlePreviousClick(false, false));
+    btnReset.addEventListener("click", () => handlePreviousClick(userAnswers[0]?.id, true)); //true = reset is true
 
     let firstclick = true;
 
@@ -136,21 +136,11 @@ $(document).on("wb-ready.wb", function (event) {
                 "question-study": () => getNextForStudyOrWork(),
                 "question-work": () => getNextForStudyOrWork(),
                 "question-study-vi-march2024": () => {
-                    //   const usprKey = uspr === "yes_uspr" ? "yes_uspr" : "no_uspr";
-                    //   const result = data[question]?.[passport_code]?.[method_of_travel]?.[usprKey]?.[selectedInput];
-
-                    //   console.log("usprKey:", usprKey);
-                    //   console.log("Looking for path:", `${question} -> ${passport_code} -> ${method_of_travel} -> ${usprKey} -> ${selectedInput}`);
-                    //   console.log("Result:", result);
-
-                    //   return result;
-                    const usprKey = uspr === "yes_uspr" ? "yes_uspr" : "no_uspr";
-                    return data[question]?.[passport_code]?.[method_of_travel]?.[usprKey]?.[selectedInput];
+                    return data[question]?.[passport_code]?.[method_of_travel]?.[nonimmigrant_visa]?.[selectedInput] || data[question]?.[passport_code]?.[method_of_travel]?.[selectedInput];;
                 },
 
                 "question-work-vi-march2024": () => {
-                    const usprKey = uspr === "yes_uspr" ? "yes_uspr" : "no_uspr";
-                    return data[question]?.[passport_code]?.[method_of_travel]?.[usprKey]?.[selectedInput];
+                    return data[question]?.[passport_code]?.[method_of_travel]?.[nonimmigrant_visa]?.[selectedInput] || data[question]?.[passport_code]?.[method_of_travel]?.[selectedInput];
                 },
                 "question-transit": () => {
                     return data[question][method_of_travel][traveller_type][selectedInput];
@@ -224,7 +214,7 @@ $(document).on("wb-ready.wb", function (event) {
                     changeAnswersLink.setAttribute("type", "button");
                     changeAnswersLink.setAttribute("data-gc-analytics-customclick", "button");
                     changeAnswersLink.addEventListener("click", function (e) {
-                        handlePreviousClick(userAnswers[i].id);
+                        handlePreviousClick(userAnswers[i].id, false);
                     });
 
                     changeAnswersDD.appendChild(changeAnswersLink);
@@ -257,7 +247,7 @@ $(document).on("wb-ready.wb", function (event) {
         }
     }
 
-    function handlePreviousClick(changeAnswer) {
+    function handlePreviousClick(changeAnswer, reset) {
         var validator = $(form).validate();
         validator.resetForm();
         if (document.getElementById("errors-" + form.id)) document.getElementById("errors-" + form.id).remove();
@@ -277,27 +267,29 @@ $(document).on("wb-ready.wb", function (event) {
 
         toolContainer.classList.remove("results");
         previousQuestion.classList.remove("hidden");
-
+        console.log(reset)
         if (changeAnswer) {
             let x = userAnswers.indexOf(previousQuestion);
             userAnswers = userAnswers.slice(0, x);
-            traveller_type, purpose_of_travel, method_of_travel, passport_code, uspr, nonimmigrant_visa, (travel_document = false);
-            var radioButtons = form.querySelectorAll('input[type="radio"]');
-            for (var i = 0; i < radioButtons.length; i++) {
-                radioButtons[i].checked = false;
-            }
-            const input = document.getElementById("lb-filter");
-            input.value = "";
-            const div = document.getElementById("listbox");
-            const a = div.getElementsByTagName("li");
-            for (let i = 0; i < a.length; i++) {
-                txtValue = a[i].textContent || a[i].innerText;
-                if (a[i].value != "lb-filter-li") {
-                    a[i].style.display = "";
+            if (reset) {
+                traveller_type, purpose_of_travel, method_of_travel, passport_code, uspr, nonimmigrant_visa, (travel_document = false);
+                var radioButtons = form.querySelectorAll('input[type="radio"]');
+                for (var i = 0; i < radioButtons.length; i++) {
+                    radioButtons[i].checked = false;
                 }
+                const input = document.getElementById("lb-filter");
+                input.value = "";
+                const div = document.getElementById("listbox");
+                const a = div.getElementsByTagName("li");
+                for (let i = 0; i < a.length; i++) {
+                    txtValue = a[i].textContent || a[i].innerText;
+                    if (a[i].value != "lb-filter-li") {
+                        a[i].style.display = "";
+                    }
+                }
+                document.getElementById("lb-dropdown-inpt").innerHTML = "Make a selection...";
+                document.getElementById("passport-code-selection").classList.add("hidden");
             }
-            document.getElementById("lb-dropdown-inpt").innerHTML = "Make a selection...";
-            document.getElementById("passport-code-selection").classList.add("hidden");
         } else {
             userAnswers.pop();
         }
