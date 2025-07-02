@@ -296,6 +296,8 @@ $(document).on("wb-ready.wb", function (event) {
                     a[i].style.display = "";
                 }
             }
+            document.getElementById("lb-dropdown-inpt").innerHTML = "Make a selection...";
+            document.getElementById("passport-code-selection").classList.add("hidden");
         } else {
             userAnswers.pop();
         }
