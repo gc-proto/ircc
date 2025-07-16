@@ -30,6 +30,11 @@
         </noscript>
         <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/méli-mélo/2025-04-nahanni.css" />
         <link rel="stylesheet" href="css/styles-v9.css" />
+        <style>
+          .results-container:not(.hidden) .result.hidden {
+            display: block!important;
+          }
+        </style>
     </head>
 
     <body vocab="http://schema.org/" typeof="WebPage">
@@ -46,12 +51,24 @@
                 </div>
             </div>
             <div class="container">
-                <div class="hidden"><span id="error">Query string error</span></div>
+               
                 <div class="tool-container results mrgn-tp-lg nojs-hide">
                     <div class="mapping-container hidden">
                       <div
                           class="result"
                           data-wb-urlmapping='{
+                            "result=all": [
+                              {
+                                  "action": "removeClass",
+                                  "class": "hidden",
+                                  "source": ".results-container"
+                                },
+                                {
+                                  "action": "addClass",
+                                  "class": "hidden",
+                                  "source": ".mapping-container"
+                                }
+                            ],
                             "result":
                               [
                                 {
@@ -90,14 +107,17 @@
                 toggle between hiding and showing the dropdown content */
 
             $(document).ajaxStop(function () {
-                console.log("all ajax loaded");
-                // place code to be executed on completion of last outstanding ajax call here
+                console.log("all ajax loaded");                
                 let results = document.querySelectorAll(".result");
+                console.log(results);
                 for (let i = 0; i < results.length; i++) {
                     results[i].classList.remove("hidden");
-                    lbltext = results[i].id.indexOf("wb-auto") == 0 ? getparams() : results[i].id;
+                    param = getparams();
+                    if (param != null || results[i].id.indexOf("wb-auto") >= 0 ) lbltext = param
+                    else lbltext = results[i].id;                  
                     results[i].insertAdjacentHTML("afterbegin", `<span class="label label-info">${lbltext}</span>`);
                 }
+
             });
 
             $(".results-container").on("wb-contentupdated", function (event, data) {
@@ -108,7 +128,10 @@
 
             function getparams() {
                 const urlParams = new URLSearchParams(window.location.search);
-                return urlParams.get("result");
+                let param = urlParams.get("result");
+                if (param === null || param === "all") return null;
+                else if (param.indexOf("result") > -1 ) return param.replace('result-', '')
+                else return param;
             }
         </script>
     </body>
