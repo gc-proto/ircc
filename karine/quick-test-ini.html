@@ -25,22 +25,34 @@
         <script src="https://test.canada.ca/ircc/templates/js/template.js" type="text/javascript" defer></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" type="text/javascript" defer></script>
         <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/theme.min.css" />
-
+        <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/méli-mélo/2025-04-nahanni.css" />
         <noscript>
             <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
         </noscript>
         <style>
-             .brdr-rounded {
+            .brdr-rounded {
                 border-radius: 20px;
                 border-color: #eee;
-             }
+            }
 
-             .brdr-rounded > .panel-heading  {
+            .brdr-rounded > .panel-heading {
                 border-top-left-radius: 20px;
                 border-top-right-radius: 20px;
-                
+
                 border-color: #8e8e8e;
-             }
+            }
+
+            .lst-stps.custom li {
+                margin-top:0!important;
+            }
+            .lst-stps.custom li:before {
+                margin-top:2%;
+                display: flex;
+                justify-content: center;
+                
+            }
+
+          
         </style>
     </head>
 
@@ -54,19 +66,56 @@
                     <h5 class="mrgn-tp-0 mrgn-bttm-0">Documents to submit with your application</h5>
                 </header>
                 <div class="panel-body">
-                    <div class="px-2">
-                        <div class="mrgn-lft-md mrgn-rght-md">
-                            <p><strong>The original document or a certified copy</strong></p>
-                            <p>The stamp of the translator must be included on the copy if that is what you're submitting.</p>
+                    <div class="px-2 pt-2">
+                        <div class="mrgn-lft-md mrgn-rght-md d-flex align-items-center">
+                            <div class="d-flex position-relative mrgn-rght-md d-flex">
+                                <span class="text-primary fnt-nrml"><i class="far fa-circle fa-3x fnt-nrml"></i></span>
+                                <span class="h3 fnt-nrml mrgn-tp-sm pt-1 pstn-lft-xs text-center full-width">1</span>
+                            </div>
+                            <div class="d-flex">
+                                <p><strong>The original document or a certified copy</strong></p>
+                                <p>The stamp of the translator must be included on the copy if that is what you're submitting.</p>
+                            </div>
                         </div>
                         <hr />
-                        <div class="mrgn-lft-md mrgn-rght-md">
-                            <p><strong>The translation of the document</strong></p>
-                            <p>The translation of the original document must be stamped by the translator.</p>
+                        <div class="mrgn-lft-md mrgn-rght-md d-flex align-items-center">
+                            <div class="d-flex position-relative mrgn-rght-md d-flex">
+                                <span class="text-primary fnt-nrml"><i class="far fa-circle fa-3x fnt-nrml"></i></span>
+                                <span class="h3 mrgn-tp-sm pt-1 pstn-lft-xs text-center full-width fnt-nrml">2</span>
+                            </div>
+                            <div class="d-flex">
+                                <p><strong>The translation of the document</strong></p>
+                                <p>The translation of the original document must be stamped by the translator.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="panel panel-default brdr-lft brdr-rght brdr-tp brdr-bttm">
+                <header class="panel-heading d-flex align-items-center brdr-0">
+                    <i class="fas fa-file-import mrgn-rght-md"></i>
+                    <h5 class="mrgn-tp-0 mrgn-bttm-0">Documents to submit with your application</h5>
+                </header>
+                <div class="panel-body">
+                    <div class="px-2">
+                        <ol class="lst-stps">
+                            <li>
+                                <p><strong>The original document or a certified copy</strong></p>
+                                <p>The stamp of the translator must be included on the copy if that is what you're submitting.</p>
+                            </li>
+                        </ol>
+                        <hr />
+                        <ol class="lst-stps" start="2">
+                            <li>
+                                <p><strong>The translation of the document</strong></p>
+                                <p>The translation of the original document must be stamped by the translator.</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            
 
             <h2>Custom:</h2>
             <div class="panel panel-default brdr-rounded">
@@ -76,16 +125,21 @@
                 </header>
                 <div class="panel-body">
                     <div class="px-2">
-                        <div class="mrgn-lft-md mrgn-rght-md">
-                            <p><strong>The original document or a certified copy</strong></p>
-                            <p>The stamp of the translator must be included on the copy if that is what you're submitting.</p>
-                        </div>
+                        <ol class="lst-stps custom">
+                            <li>
+                                <p><strong>The original document or a certified copy</strong></p>
+                                <p>The stamp of the translator must be included on the copy if that is what you're submitting.</p>
+                            </li>
+                        </ol>
                         <hr />
-                        <div class="mrgn-lft-md mrgn-rght-md">
-                            <p><strong>The translation of the document</strong></p>
-                            <p>The translation of the original document must be stamped by the translator.</p>
-                        </div>
+                        <ol class="lst-stps custom" start="2">
+                            <li>
+                                <p><strong>The translation of the document</strong></p>
+                                <p>The translation of the original document must be stamped by the translator.</p>
+                            </li>
+                        </ol>
                     </div>
+                </div>
                 </div>
             </div>
 
