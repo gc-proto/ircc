@@ -814,6 +814,19 @@ ol.lst-stps.lst-stps-highlight:not(.ld-zr) > li:before, ol.lst-stps.lst-stps-hig
   margin-top:0px;
 }
 
+li.lst-stps-icon-passport:before {
+  content: '\f5ab'!important;
+  font-family: 'FontAwesome'!important;
+  display: inline-block!important;
+}
+
+li.lst-stps-icon-address-card:before {
+  content: '\f2bb'!important;
+  font-family: 'FontAwesome'!important;
+  display: inline-block!important;
+}
+
+
 /* dark mode fix */
 
 @media (prefers-color-scheme: dark) {
