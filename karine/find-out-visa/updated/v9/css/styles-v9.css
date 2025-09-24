@@ -174,6 +174,7 @@
   background-color: #fff;
   border: 2px solid #B5B2E3;
   color: #333 !important;
+  padding: 0.58em 1em;
   font-size: 1.1em;
 }
 
@@ -335,7 +336,7 @@
 
 .tool-container .well {
   border-radius: 40px;
-  padding: 20px 30px;
+  padding: 20px 30px 0px;
   background-color: #fff;
 }
 
@@ -389,6 +390,14 @@ table.dataTable thead button {
   position: relative;
 }
 
+.result .lst-stps ul:first-of-type {
+  list-style-type: disc;
+}
+
+.result .lst-stps ul:nth-of-type(2) {
+  list-style-type: circle;
+}
+
 .result details,
 .legal-disclaimer details {
   border: 3px solid #ddd !important;
@@ -412,12 +421,6 @@ table.dataTable thead button {
   background-color: #fff;
   border-radius: 25px !important;
 }
-
-
-
-
-
-
 .result details[open]>summary,
 .legal-disclaimer details[open]>summary {
   padding: 15px 25px;
@@ -430,26 +433,32 @@ table.dataTable thead button {
   font-weight: bold !important;
   margin-bottom: 15px !important;
 }
+
 .result details.details-grey {
-  border:2px solid #F5F5F5!important;
+  border: 2px solid #F5F5F5 !important;
 }
 
-.result details.details-grey:not([open])>summary, .result details.details-grey[open]>summary {  
-  background-color: #F5F5F5 !important;   
-  padding: 5px 15px; 
+.result details:not(.details-grey) {
+  margin-top: 20px;
+}
+
+.result details.details-grey:not([open])>summary,
+.result details.details-grey[open]>summary {
+  background-color: #F5F5F5 !important;
+  padding: 5px 15px;
   border-radius: 10px !important;
-  border:none;
+  border: none;
 }
 
-.result details.details-grey[open]>summary {  
-  border:2px solid #CFD1D5!important;
+.result details.details-grey[open]>summary {
+  border: 2px solid #CFD1D5 !important;
   border-bottom-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   margin: -2px -24px 0;
 }
 
-.results details.details-grey[open] {  
-  border:2px solid #CFD1D5!important;
+.results details.details-grey[open] {
+  border: 2px solid #CFD1D5 !important;
   border-radius: 10px !important;
 }
 
@@ -776,20 +785,23 @@ input[type=search]::-webkit-search-cancel-button {
   border-color: #CFD1D5;
 }
 
-.hr-highlight {  
+.hr-highlight {
   border: 2px solid #B5B2E3;
 }
+
 .rounded-border {
   border: 2px solid #B5B2E3;
   border-radius: 20px;
   padding: 20px 30px 0px;
 }
+
 .row-reduced-gutters {
-    margin-right: -5px;
-    margin-left: -5px;
+  margin-right: -5px;
+  margin-left: -5px;
 }
+
 .rounded-border h2 {
-  border: none!important;
+  border: none !important;
 }
 
 .result .well {
@@ -800,39 +812,57 @@ input[type=search]::-webkit-search-cancel-button {
   box-shadow: none;
 }
 
+.result .well p:last-of-type {
+  margin-bottom:0;
+}
+
 @media screen and (max-width: 991px) {
-  
+
   .lst-stps li:before {
     margin-top: 0px !important;
   }
 }
-  
+
 
 hr.short-center {
   width: 80%;
   margin: auto 10%;
 }
-ol.lst-stps:not(.stps-strpd) > li, ol.lst-stps-sub:not(.stps-strpd) > li {  
+
+hr.short-center + p {
+  margin-top: 20px;
+}
+
+hr.short-center:has(+ h2), hr.short-center:has(+ h3) {
+  margin-bottom: -15px;
+}
+
+ol.lst-stps:not(.stps-strpd)>li,
+ol.lst-stps-sub:not(.stps-strpd)>li {
   min-height: 2.5em;
 }
 
-ol.lst-stps.lst-stps-highlight:not(.ld-zr) > li:before, ol.lst-stps.lst-stps-highlight:not(.ld-zr) > li ol.lst-stps-sub > li:before {
+ol.lst-stps.lst-stps-highlight:not(.ld-zr)>li:before,
+ol.lst-stps.lst-stps-highlight:not(.ld-zr)>li ol.lst-stps-sub>li:before {
   border-color: #B5B2E3;
 }
-.lst-stps li:has(h2:first-child):before , .lst-stps li:has(h3:first-child):before, .lst-stps li:has(h4:first-child):before {
-  margin-top:0px;
+
+.lst-stps li:has(h2:first-child):before,
+.lst-stps li:has(h3:first-child):before,
+.lst-stps li:has(h4:first-child):before {
+  margin-top: 0px;
 }
 
 li.lst-stps-icon-passport:before {
-  content: '\f5ab'!important;
-  font-family: 'FontAwesome'!important;
-  display: inline-block!important;
+  content: '\f5ab' !important;
+  font-family: 'FontAwesome' !important;
+  display: inline-block !important;
 }
 
 li.lst-stps-icon-address-card:before {
-  content: '\f2bb'!important;
-  font-family: 'FontAwesome'!important;
-  display: inline-block!important;
+  content: '\f2bb' !important;
+  font-family: 'FontAwesome' !important;
+  display: inline-block !important;
 }
 
 
@@ -840,8 +870,8 @@ li.lst-stps-icon-address-card:before {
 
 @media (prefers-color-scheme: dark) {
 
-  .gc-chckbxrdio input[type=radio] + label:hover::before,
-  .gc-chckbxrdio input[type=checkbox] + label:hover::before {
+  .gc-chckbxrdio input[type=radio]+label:hover::before,
+  .gc-chckbxrdio input[type=checkbox]+label:hover::before {
     background-image: -webkit-gradient(linear, left top, left bottom, from(hsl(0%, 0%, 0%)), color-stop(50%, hsl(0%, 0%, 0%)));
     background-image: linear-gradient(to bottom, hsl(0%, 0%, 0%), hsl(0%, 0%, 0%) 50%);
   }
