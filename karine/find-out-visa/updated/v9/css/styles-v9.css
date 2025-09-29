@@ -210,20 +210,8 @@
 }
 
 @media screen and (max-width: 479px) {
-  .tool-container .btn-navigation {
-    display: block;
-  }
-
   .tool-container .btn-navigation::after {
     clear: both;
-  }
-
-  .tool-container #btn-next {
-    order: 1;
-  }
-
-  .tool-container #btn-previous {
-    order: 2;
   }
 
   .tool-container #btn-change {
@@ -248,7 +236,16 @@
 
 @media screen and (max-width: 767px) {
   .tool-container .btn-navigation {
-    display: block;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tool-container #btn-next {
+    order: 1;
+  }
+
+  .tool-container #btn-previous {
+    order: 2;
   }
 
   .tool-container .btn-navigation::after {
@@ -276,6 +273,10 @@
 
   .tool-container #changeAnswers::after {
     clear: both;
+  }
+
+  .tool-container .btn-primary{
+    font-size: 1.2em;
   }
 }
 
