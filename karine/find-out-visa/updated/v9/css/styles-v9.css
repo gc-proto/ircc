@@ -214,6 +214,19 @@
     clear: both;
   }
 
+  .tool-container .btn-navigation {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tool-container #btn-next {
+    order: 1;
+  }
+
+  .tool-container #btn-previous {
+    order: 2;
+  }
+
   .tool-container #btn-change {
     margin: 20px 0px;
     clear: both;
@@ -235,18 +248,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  .tool-container .btn-navigation {
-    display: flex;
-    flex-direction: column;
-  }
 
-  .tool-container #btn-next {
-    order: 1;
-  }
-
-  .tool-container #btn-previous {
-    order: 2;
-  }
 
   .tool-container .btn-navigation::after {
     clear: both;
@@ -447,9 +449,14 @@ table.dataTable thead button {
 .result details.details-grey[open]>summary {
   background-color: #F5F5F5 !important;
   padding: 5px 15px;
-  border-radius: 10px !important;
+  border-radius: 25px !important;
   border: none;
 }
+
+.result details.details-grey>summary {
+  margin: -2px -25px 0;
+}
+
 
 .result details.details-grey[open]>summary {
   border: 2px solid #CFD1D5 !important;
@@ -458,9 +465,10 @@ table.dataTable thead button {
   margin: -2px -24px 0;
 }
 
+
 .results details.details-grey[open] {
   border: 2px solid #CFD1D5 !important;
-  border-radius: 10px !important;
+  border-radius: 25px !important;
 }
 
 .result details>summary::-webkit-details-marker,
