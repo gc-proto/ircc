@@ -177,13 +177,6 @@ $(document).on("wb-ready.wb", function (event) {
             const nextQuestionId = questionHandlers[question] ? questionHandlers[question]() : data[question][traveller_type][selectedInput] || data[question][traveller_type];
             const nextQuestion = document.getElementById(nextQuestionId);
 
-            console.log("___");
-            console.log(traveller_type);
-            console.log(purpose_of_travel);
-            console.log(method_of_travel);
-            console.log(nextQuestionId);
-            console.log(nextQuestion.id);
-
             userAnswers.push(currentQuestion);
 
             // button control
@@ -370,7 +363,7 @@ function openDropdown() {
         lbOptions[i].removeAttribute("aria-selected");
         lbOptions[i].classList.remove("focused");
     }
-    lbFilter.focus();
+    lbSelect.focus();
 }
 
 function filterFunction() {
