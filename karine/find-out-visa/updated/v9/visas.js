@@ -68,157 +68,158 @@ $(document).on("wb-ready.wb", function (event) {
         let currentQuestion = document.querySelector(".question:not(.hidden)");
         console.log(currentQuestion.querySelector("input"), !currentQuestion.querySelector("input:checked"))
         if (currentQuestion.querySelector("input") && !currentQuestion.querySelector("input:checked")) {
-            
+
             $(form).validate();
             $(form).valid();
         }
         else {
             var validator = $(form).validate();
             validator.resetForm();
-            if (currentQuestion.id === "question-passport_code" && passportCodeSelectionParent.classList.contains("hidden")) {
-                currentQuestion.insertAdjacentHTML("beforebegin", langSettings[doclang].errorMessageDiv);
-                currentQuestion.querySelector("legend").insertAdjacentHTML("beforeend", langSettings[doclang].errorMessageH2);
-                document.getElementById(`errors-${form.id}`).focus();
-                return;
-            } else {
-                if (currentQuestion.id === "question-passport_code" && currentQuestion.querySelector(`#errors-${form.id}`)) {
-                    document.getElementById(`errors-${form.id}`).remove();
-                    document.getElementById("passport_code_table-error").remove();
-                }
-
-                // if user has previously went to the country table and made a selection, force variable assignment of type of traveller and selected input; else get the checked radio button.
-                if (currentQuestion.querySelector("#passport-code-selection") && !passportCodeSelectionParent.classList.contains("hidden")) {
-                    traveller_type = data["question-passport_code"][passportCodeSelection.getAttribute("data-passport-code")]?.[method_of_travel]?.[purpose_of_travel] || data["question-passport_code"][passportCodeSelection.getAttribute("data-passport-code")];
-                    selectedInput = traveller_type;
-                } else {
-                    selectedInput = currentQuestion.querySelector("input:checked").value;
-                }
-
-                const question = currentQuestion.id;
-
-                /*
-                    For the object:
-        
-                    question = the current question displayed on the screen
-                    selectedInput = the selected radio button OR selected country
-                    traveller_type = canadian/visa/eta/usa/eta-x/etc
-                    purpose_of_travel = tourist/transit/business/family/study/work
-                    next = where are they going to next
-        
-                    This logic follows what is in the JSON file, and we're essentially getting the next question by going to the current question and following the JSON path.
-                */
-
-                const questionHandlers = {
-                    "question-travel": () => {
-                        method_of_travel = selectedInput;
-                        return data[question];
-                    },
-                    "question-canadian_citizen": () => {
-                        traveller_type = selectedInput;
-                        return data[question]?.[method_of_travel]?.[selectedInput];
-                    },
-                    "question-purpose_of_travel": () => {
-                        purpose_of_travel = selectedInput;
-                        return data[question]?.[selectedInput];
-                    },
-                    "question-uspr": () => {
-                        uspr = selectedInput;
-                        return data[question]?.[method_of_travel]?.[purpose_of_travel]?.[traveller_type]?.[selectedInput] || data[question]?.[method_of_travel]?.[purpose_of_travel]?.[passport_code]?.[selectedInput] || data[question]?.[method_of_travel]?.[purpose_of_travel]?.[passport_code];
-                    },
-                    "question-travel_document": () => {
-                        traveller_type = selectedInput;
-                        return data[question]?.[method_of_travel]?.[selectedInput];
-                    },
-                    "question-passport_code": () => {
-                        passport_code = selectedInput;
-                        return data["function-handlePassportCode"][purpose_of_travel]?.[method_of_travel]?.[passport_code];
-                    },
-                    "question-family": () => {
-                        purpose_of_travel = selectedInput;
-                        return data[question];
-                    },
-                    "question-study": () => getNextForStudyOrWork(),
-                    "question-work": () => getNextForStudyOrWork(),
-                    "question-study-vi-march2024": () => {
-                        return data[question]?.[passport_code]?.[method_of_travel]?.[nonimmigrant_visa]?.[selectedInput] || data[question]?.[passport_code]?.[method_of_travel]?.[selectedInput];;
-                    },
-
-                    "question-work-vi-march2024": () => {
-                        return data[question]?.[passport_code]?.[method_of_travel]?.[nonimmigrant_visa]?.[selectedInput] || data[question]?.[passport_code]?.[method_of_travel]?.[selectedInput];
-                    },
-                    "question-transit": () => {
-                        return data[question][method_of_travel][traveller_type][selectedInput];
-                    },
-                    "question-transit": () => {
-                        return data[question][method_of_travel][traveller_type][selectedInput];
-                    },
-                    "question-transit_length": () => data[question][traveller_type][selectedInput],
-                    "question-nonimmigrant_visa": () => {
-                        nonimmigrant_visa = selectedInput;
-                        travel_document = false;
-                        return data[question]?.[passport_code]?.[purpose_of_travel]?.[selectedInput];
-                    },
-                    "question-travel_document_israel": () => handleTravelDocument(),
-                    "question-travel_document_romania": () => handleTravelDocument(),
-                    "question-travel_document_taiwan": () => handleTravelDocument(),
-                };
-
-                const getNextForStudyOrWork = () => {
-                    return data[question]?.[method_of_travel]?.[traveller_type]?.[uspr]?.[nonimmigrant_visa]?.[selectedInput] || data[question]?.[method_of_travel]?.[traveller_type]?.[uspr]?.[travel_document]?.[selectedInput] || data[question]?.[method_of_travel]?.[traveller_type]?.[uspr]?.[selectedInput] || data[question]?.[method_of_travel]?.[traveller_type]?.[selectedInput] || data[question]?.[method_of_travel]?.[traveller_type];
-                };
-
-                const handleTravelDocument = () => {
-                    travel_document = selectedInput;
-                    nonimmigrant_visa = false;
-                    return data[question]?.[purpose_of_travel]?.[method_of_travel]?.[selectedInput] || data[question]?.[purpose_of_travel]?.[method_of_travel] || data[question]?.[purpose_of_travel];
-                };
-
-                // ** Main Logic to get the next question **
-                const nextQuestionId = questionHandlers[question] ? questionHandlers[question]() : data[question][traveller_type][selectedInput] || data[question][traveller_type];
-                const nextQuestion = document.getElementById(nextQuestionId);
-
-                userAnswers.push(currentQuestion);
-
-                // button control
-                btnPrevious.classList.remove("hidden");
-                btnReset.classList.toggle("hidden", nextQuestion.id.includes("question"));
-                btnChange.classList.toggle("hidden", nextQuestion.id.includes("question"));
-                btnNext.classList.toggle("hidden", nextQuestion.id.includes("result"));
-
-                currentQuestion.classList.add("hidden");
-                nextQuestion.classList.remove("hidden");
-
-                toolContainer.classList.toggle("results", nextQuestion.id.includes("result"));
-                if (nextQuestion.id.includes("result")) {
-                    let changeAnswersDL = document.createElement("dl");
-                    changeAnswersDL.classList.add("small", "mrgn-tp-lg", "change-answers", "dl-horizontal");
-                    for (let i = 0; i < userAnswers.length; i++) {
-                        let changeAnswersDT = document.createElement("dt");
-                        changeAnswersDT.innerHTML = `<b>${userAnswers[i].querySelector("legend").innerText}</b>`;
-
-                        let changeAnswersDD = document.createElement("dd");
-                        changeAnswersDD.classList.add("d-flex", "align-items-center");
-                        changeAnswersDD.innerHTML = userAnswers[i].id === "question-passport_code" ? `<span>${userAnswers[i].querySelector("#passport-selection").innerText}</span>` : `<span>${userAnswers[i].querySelector("input:checked").parentElement.innerText}</span>`;
-
-                        let changeAnswersLink = document.createElement("button");
-                        changeAnswersLink.classList.add("btn-change-answer", "mrgn-lft-md", "btn-link", "pull-right");
-                        changeAnswersLink.innerHTML = `Change <span class="wb-inv">answer for "${changeAnswersDT.innerText}"</span>`;
-                        changeAnswersLink.setAttribute("data-change", `${userAnswers[i].id}`);
-                        changeAnswersLink.setAttribute("type", "button");
-                        changeAnswersLink.setAttribute("data-gc-analytics-customclick", "button");
-                        changeAnswersLink.addEventListener("click", function (e) {
-                            handlePreviousClick(userAnswers[i].id, false);
-                        });
-
-                        changeAnswersDD.appendChild(changeAnswersLink);
-                        changeAnswersDL.append(changeAnswersDT, changeAnswersDD);
-                    }
-                    changeAnswersContainer.appendChild(changeAnswersDL);
-                }
-                nextQuestion.focus();
-                analytics();
-            }
         }
+        if (currentQuestion.id === "question-passport_code" && passportCodeSelectionParent.classList.contains("hidden")) {
+            currentQuestion.insertAdjacentHTML("beforebegin", langSettings[doclang].errorMessageDiv);
+            currentQuestion.querySelector("legend").insertAdjacentHTML("beforeend", langSettings[doclang].errorMessageH2);
+            document.getElementById(`errors-${form.id}`).focus();
+            return;
+        } else {
+            if (currentQuestion.id === "question-passport_code" && currentQuestion.querySelector(`#errors-${form.id}`)) {
+                document.getElementById(`errors-${form.id}`).remove();
+                document.getElementById("passport_code_table-error").remove();
+            }
+
+            // if user has previously went to the country table and made a selection, force variable assignment of type of traveller and selected input; else get the checked radio button.
+            if (currentQuestion.querySelector("#passport-code-selection") && !passportCodeSelectionParent.classList.contains("hidden")) {
+                traveller_type = data["question-passport_code"][passportCodeSelection.getAttribute("data-passport-code")]?.[method_of_travel]?.[purpose_of_travel] || data["question-passport_code"][passportCodeSelection.getAttribute("data-passport-code")];
+                selectedInput = traveller_type;
+            } else {
+                selectedInput = currentQuestion.querySelector("input:checked").value;
+            }
+
+            const question = currentQuestion.id;
+
+            /*
+                For the object:
+    
+                question = the current question displayed on the screen
+                selectedInput = the selected radio button OR selected country
+                traveller_type = canadian/visa/eta/usa/eta-x/etc
+                purpose_of_travel = tourist/transit/business/family/study/work
+                next = where are they going to next
+    
+                This logic follows what is in the JSON file, and we're essentially getting the next question by going to the current question and following the JSON path.
+            */
+
+            const questionHandlers = {
+                "question-travel": () => {
+                    method_of_travel = selectedInput;
+                    return data[question];
+                },
+                "question-canadian_citizen": () => {
+                    traveller_type = selectedInput;
+                    return data[question]?.[method_of_travel]?.[selectedInput];
+                },
+                "question-purpose_of_travel": () => {
+                    purpose_of_travel = selectedInput;
+                    return data[question]?.[selectedInput];
+                },
+                "question-uspr": () => {
+                    uspr = selectedInput;
+                    return data[question]?.[method_of_travel]?.[purpose_of_travel]?.[traveller_type]?.[selectedInput] || data[question]?.[method_of_travel]?.[purpose_of_travel]?.[passport_code]?.[selectedInput] || data[question]?.[method_of_travel]?.[purpose_of_travel]?.[passport_code];
+                },
+                "question-travel_document": () => {
+                    traveller_type = selectedInput;
+                    return data[question]?.[method_of_travel]?.[selectedInput];
+                },
+                "question-passport_code": () => {
+                    passport_code = selectedInput;
+                    return data["function-handlePassportCode"][purpose_of_travel]?.[method_of_travel]?.[passport_code];
+                },
+                "question-family": () => {
+                    purpose_of_travel = selectedInput;
+                    return data[question];
+                },
+                "question-study": () => getNextForStudyOrWork(),
+                "question-work": () => getNextForStudyOrWork(),
+                "question-study-vi-march2024": () => {
+                    return data[question]?.[passport_code]?.[method_of_travel]?.[nonimmigrant_visa]?.[selectedInput] || data[question]?.[passport_code]?.[method_of_travel]?.[selectedInput];;
+                },
+
+                "question-work-vi-march2024": () => {
+                    return data[question]?.[passport_code]?.[method_of_travel]?.[nonimmigrant_visa]?.[selectedInput] || data[question]?.[passport_code]?.[method_of_travel]?.[selectedInput];
+                },
+                "question-transit": () => {
+                    return data[question][method_of_travel][traveller_type][selectedInput];
+                },
+                "question-transit": () => {
+                    return data[question][method_of_travel][traveller_type][selectedInput];
+                },
+                "question-transit_length": () => data[question][traveller_type][selectedInput],
+                "question-nonimmigrant_visa": () => {
+                    nonimmigrant_visa = selectedInput;
+                    travel_document = false;
+                    return data[question]?.[passport_code]?.[purpose_of_travel]?.[selectedInput];
+                },
+                "question-travel_document_israel": () => handleTravelDocument(),
+                "question-travel_document_romania": () => handleTravelDocument(),
+                "question-travel_document_taiwan": () => handleTravelDocument(),
+            };
+
+            const getNextForStudyOrWork = () => {
+                return data[question]?.[method_of_travel]?.[traveller_type]?.[uspr]?.[nonimmigrant_visa]?.[selectedInput] || data[question]?.[method_of_travel]?.[traveller_type]?.[uspr]?.[travel_document]?.[selectedInput] || data[question]?.[method_of_travel]?.[traveller_type]?.[uspr]?.[selectedInput] || data[question]?.[method_of_travel]?.[traveller_type]?.[selectedInput] || data[question]?.[method_of_travel]?.[traveller_type];
+            };
+
+            const handleTravelDocument = () => {
+                travel_document = selectedInput;
+                nonimmigrant_visa = false;
+                return data[question]?.[purpose_of_travel]?.[method_of_travel]?.[selectedInput] || data[question]?.[purpose_of_travel]?.[method_of_travel] || data[question]?.[purpose_of_travel];
+            };
+
+            // ** Main Logic to get the next question **
+            const nextQuestionId = questionHandlers[question] ? questionHandlers[question]() : data[question][traveller_type][selectedInput] || data[question][traveller_type];
+            const nextQuestion = document.getElementById(nextQuestionId);
+
+            userAnswers.push(currentQuestion);
+
+            // button control
+            btnPrevious.classList.remove("hidden");
+            btnReset.classList.toggle("hidden", nextQuestion.id.includes("question"));
+            btnChange.classList.toggle("hidden", nextQuestion.id.includes("question"));
+            btnNext.classList.toggle("hidden", nextQuestion.id.includes("result"));
+
+            currentQuestion.classList.add("hidden");
+            nextQuestion.classList.remove("hidden");
+
+            toolContainer.classList.toggle("results", nextQuestion.id.includes("result"));
+            if (nextQuestion.id.includes("result")) {
+                let changeAnswersDL = document.createElement("dl");
+                changeAnswersDL.classList.add("small", "mrgn-tp-lg", "change-answers", "dl-horizontal");
+                for (let i = 0; i < userAnswers.length; i++) {
+                    let changeAnswersDT = document.createElement("dt");
+                    changeAnswersDT.innerHTML = `<b>${userAnswers[i].querySelector("legend").innerText}</b>`;
+
+                    let changeAnswersDD = document.createElement("dd");
+                    changeAnswersDD.classList.add("d-flex", "align-items-center");
+                    changeAnswersDD.innerHTML = userAnswers[i].id === "question-passport_code" ? `<span>${userAnswers[i].querySelector("#passport-selection").innerText}</span>` : `<span>${userAnswers[i].querySelector("input:checked").parentElement.innerText}</span>`;
+
+                    let changeAnswersLink = document.createElement("button");
+                    changeAnswersLink.classList.add("btn-change-answer", "mrgn-lft-md", "btn-link", "pull-right");
+                    changeAnswersLink.innerHTML = `Change <span class="wb-inv">answer for "${changeAnswersDT.innerText}"</span>`;
+                    changeAnswersLink.setAttribute("data-change", `${userAnswers[i].id}`);
+                    changeAnswersLink.setAttribute("type", "button");
+                    changeAnswersLink.setAttribute("data-gc-analytics-customclick", "button");
+                    changeAnswersLink.addEventListener("click", function (e) {
+                        handlePreviousClick(userAnswers[i].id, false);
+                    });
+
+                    changeAnswersDD.appendChild(changeAnswersLink);
+                    changeAnswersDL.append(changeAnswersDT, changeAnswersDD);
+                }
+                changeAnswersContainer.appendChild(changeAnswersDL);
+            }
+            nextQuestion.focus();
+            analytics();
+        }
+
     }
 
     function expando() {
