@@ -258,7 +258,7 @@ $(document).on("wb-ready.wb", function (event) {
         // get what's on screen, either a question or a result and hide it. If it's a question, remove the required attribute to prevent a form error.
         let currentQuestion = document.querySelector(".question:not(.hidden)") ? document.querySelector(".question:not(.hidden)") : document.querySelector(".result:not(.hidden)");
         currentQuestion.classList.add("hidden");
-        if (currentQuestion.querySelector("input")) currentQuestion.querySelector("input").removeAttribute("required");
+        // if (currentQuestion.querySelector("input")) currentQuestion.querySelector("input").removeAttribute("required");
 
         toolContainer.classList.remove("results");
         previousQuestion.classList.remove("hidden");
