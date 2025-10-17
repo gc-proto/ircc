@@ -178,6 +178,10 @@ $(document).on("wb-ready.wb", function (event) {
             const nextQuestionId = questionHandlers[question] ? questionHandlers[question]() : data[question][traveller_type][selectedInput] || data[question][traveller_type];
             const nextQuestion = document.getElementById(nextQuestionId);
 
+            console.log("next question :", nextQuestionId)
+            console.log("country type: ", passport_code)
+            console.log("selected country: ", document.getElementById('ss_elem_list').getAttribute("aria-activedescendant"))
+
             userAnswers.push(currentQuestion);
 
             // button control
