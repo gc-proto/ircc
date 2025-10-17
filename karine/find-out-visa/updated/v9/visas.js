@@ -320,6 +320,9 @@ $(document).on("wb-ready.wb", function (event) {
     $("[data-gc-analytics-customclick]").on("click", function () {
         // console.log($(this).attr("data-gc-analytics-customclick"));
     });
+
+
+    document.getElementById('jsloading').remove();
 });
 $(".wb-tables").on("wb-ready.wb-tables", function (event) {
     document.querySelectorAll(".sorting-icons").forEach((element) => {
