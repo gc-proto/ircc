@@ -66,7 +66,7 @@ $(document).on("wb-ready.wb", function (event) {
 
         //Get current question & if no selection was made, force form validation to show error. Else, if something was selected, continue with rest of script.
         let currentQuestion = document.querySelector(".question:not(.hidden)");
-        console.log(currentQuestion.querySelector("input"), !currentQuestion.querySelector("input:checked"))
+        
         if (currentQuestion.querySelector("input") && !currentQuestion.querySelector("input:checked")) {
 
             $(form).validate();
@@ -266,7 +266,7 @@ $(document).on("wb-ready.wb", function (event) {
 
         toolContainer.classList.remove("results");
         previousQuestion.classList.remove("hidden");
-        console.log(reset)
+    
         if (changeAnswer) {
             let x = userAnswers.indexOf(previousQuestion);
             userAnswers = userAnswers.slice(0, x);
