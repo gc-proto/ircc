@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guitar Scale & Chord Generator</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      margin: 2rem;
+      background: #fafafa;
+      color: #111;
+    }
+    select, button {
+      font-size: 1rem;
+      padding: 0.5rem;
+      margin-right: 0.5rem;
+    }
+    .result {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.06);
+    }
+    h2 {
+      margin-bottom: 0.5rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    .playProg {
+      margin-left: 0.5rem;
+      font-size: 0.9rem;
+      padding: 0.25rem 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Guitar Scale & Chord Generator</h1>
+
+  <div>
+    <label>Key: </label>
+    <select id="keySelect"></select>
+    <label>Scale/Mode: </label>
+    <select id="scaleSelect"></select>
+    <button id="genBtn">Generate</button>
+  </div>
+
+  <div class="result" id="result">
+    <p>Choose a key and scale, then click Generate.</p>
+  </div>
+
+  <script>
+    // ----- Audio Setup -----
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    
+    function noteToFreq(note) {
+      const noteMap = {
+        'C':261.63, 'C#':277.18, 'D':293.66, 'D#':311.13,
+        'E':329.63, 'F':349.23, 'F#':369.99, 'G':392.00,
+        'G#':415.30, 'A':440.00, 'A#':466.16, 'B':493.88
+      };
+      return noteMap[note] || 440;
+    }
+
+    function playNote(freq, startTime, duration = 0.5) {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      
+      gain.gain.setValueAtTime(0.3, startTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, startTime + duration);
+      
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      
+      osc.start(startTime);
+      osc.stop(startTime + duration);
+    }
+
+    function playChord(notes, startTime, duration = 1.5) {
+      notes.forEach(note => {
+        const freq = noteToFreq(note);
+        playNote(freq, startTime, duration);
+      });
+    }
+
+    // ----- Data -----
+    const chromatic = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+
+    const scales = {
+      'Major (Ionian)': [2,2,1,2,2,2,1],
+      'Natural Minor (Aeolian)': [2,1,2,2,1,2,2],
+      'Dorian': [2,1,2,2,2,1,2],
+      'Phrygian': [1,2,2,2,1,2,2],
+      'Lydian': [2,2,2,1,2,2,1],
+      'Mixolydian': [2,2,1,2,2,1,2],
+      'Locrian': [1,2,2,1,2,2,2],
+      'Pentatonic Major': [2,2,3,2,3],
+      'Pentatonic Minor': [3,2,2,3,2],
+      'Blues (minor)': [3,2,1,1,3,2]
+    };
+
+    const chordFormulas = {
+      'Major (Ionian)': ['maj','min','min','maj','maj','min','dim'],
+      'Natural Minor (Aeolian)': ['min','dim','maj','min','min','maj','maj'],
+      'Dorian': ['min','min','maj','maj','min','dim','maj'],
+      'Phrygian': ['min','maj','maj','min','dim','maj','min'],
+      'Lydian': ['maj','maj','min','dim','maj','min','min'],
+      'Mixolydian': ['maj','min','dim','maj','min','min','maj'],
+      'Locrian': ['dim','maj','min','min','maj','maj','min']
+    };
+
+    const progressions = {
+      major: [
+        { roman: 'I–V–vi–IV', degrees: [1,5,6,4] },
+        { roman: 'ii–V–I', degrees: [2,5,1] },
+        { roman: 'I–vi–IV–V', degrees: [1,6,4,5] },
+        { roman: 'I–IV–V', degrees: [1,4,5] },
+        { roman: 'vi–IV–I–V', degrees: [6,4,1,5] }
+      ],
+      minor: [
+        { roman: 'i–VII–VI', degrees: [1,7,6] },
+        { roman: 'i–iv–v', degrees: [1,4,5] },
+        { roman: 'i–VI–III–VII', degrees: [1,6,3,7] },
+        { roman: 'i–v–VI–III', degrees: [1,5,6,3] }
+      ]
+    };
+
+    // ----- Helpers -----
+    function findIndex(note) { return chromatic.indexOf(note); }
+    function getNoteByIndex(idx) { return chromatic[((idx % 12) + 12) % 12]; }
+
+    function buildScale(root, intervals) {
+      const start = findIndex(root);
+      const notes = [ getNoteByIndex(start) ];
+      let idx = start;
+      for (let i = 0; i < intervals.length - 1; i++) {
+        idx = idx + intervals[i];
+        notes.push(getNoteByIndex(idx));
+      }
+      return notes;
+    }
+    
+    function parseChordToNotes(chordName) {
+      const root = chordName.replace(/m|dim/g, '');
+      const rootIdx = findIndex(root);
+      if (rootIdx === -1) return [root];
+      
+      if (chordName.includes('dim')) {
+        return [
+          getNoteByIndex(rootIdx),
+          getNoteByIndex(rootIdx + 3),
+          getNoteByIndex(rootIdx + 6)
+        ];
+      } else if (chordName.includes('m')) {
+        return [
+          getNoteByIndex(rootIdx),
+          getNoteByIndex(rootIdx + 3),
+          getNoteByIndex(rootIdx + 7)
+        ];
+      } else {
+        return [
+          getNoteByIndex(rootIdx),
+          getNoteByIndex(rootIdx + 4),
+          getNoteByIndex(rootIdx + 7)
+        ];
+      }
+    }
+
+    function prettyChordName(root, type) {
+      if (type === 'maj') return root;
+      if (type === 'min') return root + 'm';
+      if (type === 'dim') return root + 'dim';
+      return root;
+    }
+
+    function isMajorMode(scaleName) {
+      return ['Major (Ionian)','Lydian','Mixolydian'].includes(scaleName);
+    }
+
+    // ----- UI Setup -----
+    const keySelect = document.getElementById('keySelect');
+    const scaleSelect = document.getElementById('scaleSelect');
+    const genBtn = document.getElementById('genBtn');
+
+    chromatic.forEach(n => {
+      const o = document.createElement('option');
+      o.value = n;
+      o.textContent = n;
+      keySelect.appendChild(o);
+    });
+    Object.keys(scales).forEach(s => {
+      const o = document.createElement('option');
+      o.value = s;
+      o.textContent = s;
+      scaleSelect.appendChild(o);
+    });
+
+    // ----- Generate -----
+    genBtn.addEventListener('click', () => {
+      const key = keySelect.value;
+      const scaleName = scaleSelect.value;
+      const intervals = scales[scaleName];
+      const scaleNotes = buildScale(key, intervals);
+      const formula = chordFormulas[scaleName] || [];
+      const chords = [];
+      for (let i = 0; i < formula.length; i++) {
+        chords.push(prettyChordName(scaleNotes[i], formula[i]));
+      }
+
+      const type = isMajorMode(scaleName) ? 'major' : 'minor';
+      const chosenProgressions = progressions[type];
+
+      let progHTML = '<ul>';
+      chosenProgressions.forEach((p, idx) => {
+        const chordList = p.degrees.map(d => chords[d-1] || '?').join(' – ');
+        progHTML += `<li>${p.roman} → ${chordList} <button class="playProg" data-idx="${idx}">▶ Play</button></li>`;
+      });
+      progHTML += '</ul>';
+
+      document.getElementById('result').innerHTML = `
+        <h2>${key} ${scaleName}</h2>
+        <p><strong>Scale notes:</strong> ${scaleNotes.join(', ')} <button id="playScale">▶ Play Scale</button></p>
+        <p><strong>Chords:</strong> ${chords.join(', ')} <button id="playChords">▶ Play Chords</button></p>
+        <h3>Common progressions:</h3>
+        ${progHTML}
+      `;
+
+      // Play scale button
+      document.getElementById('playScale').addEventListener('click', () => {
+        const now = audioCtx.currentTime;
+        scaleNotes.forEach((note, i) => {
+          const freq = noteToFreq(note);
+          playNote(freq, now + i * 0.3, 0.4);
+        });
+      });
+
+      // Play all chords button
+      document.getElementById('playChords').addEventListener('click', () => {
+        const now = audioCtx.currentTime;
+        chords.forEach((chord, i) => {
+          const notes = parseChordToNotes(chord);
+          playChord(notes, now + i * 1.2, 1.0);
+        });
+      });
+
+      // Play progression buttons
+      document.querySelectorAll('.playProg').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const idx = parseInt(e.target.dataset.idx);
+          const prog = chosenProgressions[idx];
+          const now = audioCtx.currentTime;
+          
+          prog.degrees.forEach((degree, i) => {
+            const chord = chords[degree - 1];
+            if (chord) {
+              const notes = parseChordToNotes(chord);
+              playChord(notes, now + i * 1.5, 1.3);
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
