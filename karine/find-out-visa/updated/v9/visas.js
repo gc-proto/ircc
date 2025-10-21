@@ -162,6 +162,7 @@ $(document).on("wb-ready.wb", function (event) {
                 "question-travel_document_israel": () => handleTravelDocument(),
                 "question-travel_document_romania": () => handleTravelDocument(),
                 "question-travel_document_taiwan": () => handleTravelDocument(),
+                "question-citizenship_uae": () => handleTravelDocument(),
             };
 
             const getNextForStudyOrWork = () => {
