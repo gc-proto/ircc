@@ -29,6 +29,11 @@
     ul {
       padding-left: 1.2rem;
     }
+    .playProg {
+      margin-left: 0.5rem;
+      font-size: 0.9rem;
+      padding: 0.25rem 0.5rem;
+    }
   </style>
 </head>
 <body>
@@ -47,6 +52,42 @@
   </div>
 
   <script>
+    // ----- Audio Setup -----
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    
+    function noteToFreq(note) {
+      const noteMap = {
+        'C':261.63, 'C#':277.18, 'D':293.66, 'D#':311.13,
+        'E':329.63, 'F':349.23, 'F#':369.99, 'G':392.00,
+        'G#':415.30, 'A':440.00, 'A#':466.16, 'B':493.88
+      };
+      return noteMap[note] || 440;
+    }
+
+    function playNote(freq, startTime, duration = 0.5) {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      
+      gain.gain.setValueAtTime(0.3, startTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, startTime + duration);
+      
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      
+      osc.start(startTime);
+      osc.stop(startTime + duration);
+    }
+
+    function playChord(notes, startTime, duration = 1.5) {
+      notes.forEach(note => {
+        const freq = noteToFreq(note);
+        playNote(freq, startTime, duration);
+      });
+    }
+
     // ----- Data -----
     const chromatic = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
 
@@ -97,8 +138,37 @@
       const start = findIndex(root);
       const notes = [ getNoteByIndex(start) ];
       let idx = start;
-      intervals.forEach(step => { idx = idx + step; notes.push(getNoteByIndex(idx)); });
+      for (let i = 0; i < intervals.length - 1; i++) {
+        idx = idx + intervals[i];
+        notes.push(getNoteByIndex(idx));
+      }
       return notes;
+    }
+    
+    function parseChordToNotes(chordName) {
+      const root = chordName.replace(/m|dim/g, '');
+      const rootIdx = findIndex(root);
+      if (rootIdx === -1) return [root];
+      
+      if (chordName.includes('dim')) {
+        return [
+          getNoteByIndex(rootIdx),
+          getNoteByIndex(rootIdx + 3),
+          getNoteByIndex(rootIdx + 6)
+        ];
+      } else if (chordName.includes('m')) {
+        return [
+          getNoteByIndex(rootIdx),
+          getNoteByIndex(rootIdx + 3),
+          getNoteByIndex(rootIdx + 7)
+        ];
+      } else {
+        return [
+          getNoteByIndex(rootIdx),
+          getNoteByIndex(rootIdx + 4),
+          getNoteByIndex(rootIdx + 7)
+        ];
+      }
     }
 
     function prettyChordName(root, type) {
@@ -146,19 +216,54 @@
       const chosenProgressions = progressions[type];
 
       let progHTML = '<ul>';
-      chosenProgressions.forEach(p => {
+      chosenProgressions.forEach((p, idx) => {
         const chordList = p.degrees.map(d => chords[d-1] || '?').join(' – ');
-        progHTML += `<li>${p.roman} → ${chordList}</li>`;
+        progHTML += `<li>${p.roman} → ${chordList} <button class="playProg" data-idx="${idx}">▶ Play</button></li>`;
       });
       progHTML += '</ul>';
 
       document.getElementById('result').innerHTML = `
         <h2>${key} ${scaleName}</h2>
-        <p><strong>Scale notes:</strong> ${scaleNotes.join(', ')}</p>
-        <p><strong>Chords:</strong> ${chords.join(', ')}</p>
+        <p><strong>Scale notes:</strong> ${scaleNotes.join(', ')} <button id="playScale">▶ Play Scale</button></p>
+        <p><strong>Chords:</strong> ${chords.join(', ')} <button id="playChords">▶ Play Chords</button></p>
         <h3>Common progressions:</h3>
         ${progHTML}
       `;
+
+      // Play scale button
+      document.getElementById('playScale').addEventListener('click', () => {
+        const now = audioCtx.currentTime;
+        scaleNotes.forEach((note, i) => {
+          const freq = noteToFreq(note);
+          playNote(freq, now + i * 0.3, 0.4);
+        });
+      });
+
+      // Play all chords button
+      document.getElementById('playChords').addEventListener('click', () => {
+        const now = audioCtx.currentTime;
+        chords.forEach((chord, i) => {
+          const notes = parseChordToNotes(chord);
+          playChord(notes, now + i * 1.2, 1.0);
+        });
+      });
+
+      // Play progression buttons
+      document.querySelectorAll('.playProg').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const idx = parseInt(e.target.dataset.idx);
+          const prog = chosenProgressions[idx];
+          const now = audioCtx.currentTime;
+          
+          prog.degrees.forEach((degree, i) => {
+            const chord = chords[degree - 1];
+            if (chord) {
+              const notes = parseChordToNotes(chord);
+              playChord(notes, now + i * 1.5, 1.3);
+            }
+          });
+        });
+      });
     });
   </script>
 </body>
