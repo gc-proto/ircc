@@ -299,17 +299,23 @@ $(document).on("wb-ready.wb", function (event) {
         btnReset.classList.add("hidden");
         btnChange.classList.add("hidden");
         analytics();
+        
+        
     }
 
     analytics();
 
     function analytics() {
         let currentQuestion = document.querySelector(".question:not(.hidden)") || document.querySelector(".result:not(.hidden)");
-        let attributeNext = btnNext.dataset.gcAnalyticsCustomclick.split("__")[0];
-        let attributePrevious = btnPrevious.dataset.gcAnalyticsCustomclick.split("__")[0];
 
         btnNext.dataset.gcAnalyticsCustomclick = btnNext.dataset.gcAnalyticsCustomclick.split("__")[0] + "__" + currentQuestion.id;
         btnPrevious.dataset.gcAnalyticsCustomclick = btnPrevious.dataset.gcAnalyticsCustomclick.split("__")[0] + "__" + currentQuestion.id;
+
+        let str = "";
+        userAnswers.forEach(elm => str += elm.id + "|");
+        if (currentQuestion.id.indexOf('result') > -1) { str += currentQuestion.id }
+        document.getElementById('questionFlow').value = str;
+
     }
 
     $("#passport-selection-change").on("click", function () {
@@ -324,11 +330,6 @@ $(document).on("wb-ready.wb", function (event) {
 
 
     document.getElementById('jsloading').remove();
-});
-$(".wb-tables").on("wb-ready.wb-tables", function (event) {
-    document.querySelectorAll(".sorting-icons").forEach((element) => {
-        // element.innerHTML += `<span class="fa-solid fa-sort pull-left pt-sm-1 text-primary"></span>`;
-    });
 });
 
 let lbSelect = document.getElementById("ss_elem_list");
