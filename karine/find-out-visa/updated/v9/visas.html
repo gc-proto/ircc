@@ -48,7 +48,7 @@
       
       <div class="tool-container mrgn-tp-lg nojs-hide">
         <div class="wb-frmvld">
-          <form id="find-out-form" class="gc-font-2019" data-gc-analytics-formname="IRCC:Find out if you need a visa" data-gc-analytics-collect='[{"value":"select, input", "emptyField": "Any"}]'>
+          <form id="find-out-form" class="gc-font-2019" data-gc-analytics-formname="IRCC:Find out if you need a visa" data-gc-analytics-collect='[{"value":"select, input", "emptyField": "Any"}]' data-tool-results="results/">
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question" id="question-travel">
               <div id="jsloading" class=" alert alert-warning"><p class="h2">JavaScript is still loading - this will not be an issue after testing.</p></div>
               <legend>How do you plan to travel to Canada?</legend>
@@ -645,13 +645,7 @@
                 id="btn-change"
                 class="btn btn-nav btn-lg hidden wb-toggle"
                 type="button"
-                data-gc-analytics-customclick="IRCC:FindOutTool_ChangeAnswer"
-                data-toggle='{
-                "selector": "#changeAnswers", 
-                "print": "on", 
-                "stateOn":"visible", 
-                "stateOff": "hidden", 
-                "state":"hidden"}'>
+                data-gc-analytics-customclick="IRCC:FindOutTool_ChangeAnswer">
                 <span class="fa-solid fa-pencil mrgn-rght-sm" aria-hidden="true"></span> Change your answers </button>
             </div>
           </form>

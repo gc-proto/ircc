@@ -10,6 +10,7 @@ const btnReset = document.getElementById("btn-reset");
 const btnChange = document.getElementById("btn-change");
 const changeAnswersContainer = document.getElementById("changeAnswers");
 const lbBtn = document.getElementById("lb-dropdown-inpt");
+const resultPath = form.getAttribute('data-tool-result')
 
 // JSON data and user answers
 let data;
@@ -48,6 +49,7 @@ let passportCodeTable = document.getElementById("passport-code");
 
 $(document).on("wb-ready.wb", function (event) {
     btnNext.addEventListener("click", handleNextClick);
+    btnChange.addEventListener("click", handleChangeClick);
     btnPrevious.addEventListener("click", () => handlePreviousClick(false, false));
     btnReset.addEventListener("click", () => handlePreviousClick(userAnswers[0]?.id, true)); //true = reset is true
 
@@ -392,4 +394,10 @@ function filterFunction() {
             }
         }
     }
+}
+
+function handleChangeClick() {
+    let changeDiv = document.getElementById('changeAnswers');
+    if (changeDiv.classList.contains('hidden')) changeDiv.classList.remove('hidden');
+    else changeDiv.classList.add('hidden');
 }
