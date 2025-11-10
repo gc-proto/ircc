@@ -687,50 +687,84 @@
   });
 </script>
 
+One likely reason nothing appears is that the event listeners aren’t getting attached because the DOM elements aren’t ready when the script runs. To fix this, try wrapping your code in a DOMContentLoaded handler so that the elements exist when you query them. Also, add a couple of debug log messages so you can see if the click event is firing and whether fetch is even being called.
+
+Below is an updated version of your script. (Make sure your main page includes the link with id="openOverlay", the overlay div with id="overlay", and the close button with id="closeOverlay" as before.)
+
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <title>Main Service Page</title> <style> /* Basic page styling */ body { font-family: Arial, sans-serif; margin: 0; padding: 20px; } .content { max-width: 800px; margin: auto; } /* Link styling */ a { color: #0071bb; text-decoration: none; cursor: pointer; } a:hover { text-decoration: underline; } /* Overlay (slide-out) styles */ .overlay { position: fixed; top: 0; right: -80%; /* start hidden off-screen; now 80% width */ width: 80%; height: 100%; background: #f9f9f9; box-shadow: -2px 0 6px rgba(0,0,0,0.2); overflow-y: auto; transition: right 0.3s ease-in-out; z-index: 1000; padding: 20px; } .overlay.active { right: 0; /* slide in */ } /* Close button styles */ .overlay .close-btn { display: inline-block; background: #0071bb; color: #fff; padding: 5px 10px; margin-bottom: 20px; border: none; cursor: pointer; } </style> </head> <body>
+php
+Copy code
+Download
+<!-- Main Content -->
+<div class="content">
+  <h1>Main Service Page</h1>
+  <p>
+    Welcome to our main service page. If you need translation services, please 
+    <a id="openOverlay" href="#">click here</a>.
+  </p>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Praesent pretium, nisl nec gravida ultricies, magna libero ornare justo, non aliquet mauris libero sit amet dolor.
+  </p>
+</div>
+
+<!-- Slide-out Overlay (content will be loaded here via AJAX) -->
+<div id="overlay" class="overlay">
+  <button class="close-btn" id="closeOverlay">Close</button>
+  <!-- Overlay content will appear here -->
+  <div id="overlayContent">
+    <p>Loading translation services…</p>
+  </div>
+</div>
+
 <script>
-  // Get elements  
-  var openBtn = document.getElementById('openOverlay');
-  var overlay = document.getElementById('overlay');
-  var closeBtn = document.getElementById('closeOverlay');
-  var overlayContent = document.getElementById('overlayContent');
-  
-  // Function to load translation content via AJAX (using fetch)
-  function loadTranslationContent() {
-    // Change "translation.html" to the URL/path where your translation page is located
-    fetch('https://test.canada.ca/ircc/david/playground/translation.html')
-      .then(function(response) {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.text();
-      })
-      .then(function(html) {
-        overlayContent.innerHTML = html;
-      })
-      .catch(function(error) {
-        overlayContent.innerHTML = '<p>Error loading translation services. Please try again later.</p>';
-        console.error('Error loading translation content:', error);
-      });
-  }
-  
-  // Open overlay on click
-  openBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    // Load content only when opening the overlay
-    loadTranslationContent();
-    overlay.classList.add('active');
-  });
-  
-  // Close overlay on click of the close button
-  closeBtn.addEventListener('click', function() {
-    overlay.classList.remove('active');
-  });
-  
-  // Optionally, close the overlay when the user clicks outside it (not required)
-  window.addEventListener('click', function(e) {
-    if (e.target === overlay) {
-      overlay.classList.remove('active');
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get elements  
+    var openBtn = document.getElementById('openOverlay');
+    var overlay = document.getElementById('overlay');
+    var closeBtn = document.getElementById('closeOverlay');
+    var overlayContent = document.getElementById('overlayContent');
+    
+    console.log("DOM ready. Elements:", {openBtn, overlay, closeBtn, overlayContent});
+    
+    // Function to load translation content via AJAX using fetch
+    function loadTranslationContent() {
+      console.log("Loading translation content…");
+      fetch('https://test.canada.ca/ircc/david/playground/translation.html')
+        .then(function(response) {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(function(html) {
+          console.log("Translation content loaded.");
+          overlayContent.innerHTML = html;
+        })
+        .catch(function(error) {
+          overlayContent.innerHTML = '<p>Error loading translation services. Please try again later.</p>';
+          console.error('Error loading translation content:', error);
+        });
     }
+    
+    // Open overlay on click
+    openBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      console.log("Open button clicked.");
+      loadTranslationContent();
+      overlay.classList.add('active');
+    });
+    
+    // Close overlay on click of the close button
+    closeBtn.addEventListener('click', function() {
+      overlay.classList.remove('active');
+    });
+    
+    // Optionally, close the overlay when the user clicks outside it (not required)
+    window.addEventListener('click', function(e) {
+      if (e.target === overlay) {
+        overlay.classList.remove('active');
+      }
+    });
   });
 </script>
 
