@@ -31,26 +31,29 @@
 </head>
 <body vocab="http://schema.org/" typeof="WebPage">
   <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
-    <div class="banner">
-      <div class="container">
-        <div id="intro" class="row"></div>
-        <div class="col-md-8">
-          <h1 property="name" id="wb-cont" dir="ltr">Check if you need a visa or eTA to travel to Canada</h1>
-          <p class="lead mrgn-tp-md">Everyone needs the right documents to travel to or transit through Canada: an electronic travel authorization (eTA), a visitor visa, or just a passport.</p>
+    <div class="banner  position-relative ">
+      <div class="container mrgn-bttm-md mrgn-tp-md">
+        <h1 property="name" id="wb-cont" dir="ltr" class="mrgn-tp-md" >Check if you need a visa or eTA to travel to Canada</h1>
+        <div id="intro" class="row">
+          <div class="col-md-9">
+            <p class="lead mrgn-tp-md">Everyone needs the right documents to travel to or transit through Canada: an electronic travel authorization (eTA), a visitor visa, or just a passport.</p>
+          </div>
+            <div class="pstn-tp-xs pstn-rght-xs pull-right hidden-xs hidden-sm"><img style="width:75%;margin-top:-15px" src="banner.png" class="img-responsive" alt="" /></div>
         </div>
-        <div class="pull-right hidden-xs hidden-sm col-md-4"><img src="banner.png" class="img-responsive" alt="" /></div>
+       
       </div>
     </div>
     <div class="container">
       <div class="nojs-show">
         <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/entry-requirements-country.html">Entry requirements by country or territory</a></p>
       </div>
-      
       <div class="tool-container mrgn-tp-lg nojs-hide">
         <div class="wb-frmvld">
           <form id="find-out-form" class="gc-font-2019" data-gc-analytics-formname="IRCC:Find out if you need a visa" data-gc-analytics-collect='[{"value":"select, input", "emptyField": "Any"}]' data-tool-results="results/">
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question" id="question-travel">
-              <div id="jsloading" class=" alert alert-warning"><p class="h2">JavaScript is still loading - this will not be an issue after testing.</p></div>
+              <div id="jsloading" class=" alert alert-warning">
+                <p class="h2">JavaScript is still loading - this will not be an issue after testing.</p>
+              </div>
               <legend>How do you plan to travel to Canada?</legend>
               <ul class="list-unstyled lst-spcd-2">
                 <li class="radio">
