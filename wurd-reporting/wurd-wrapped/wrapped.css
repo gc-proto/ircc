@@ -246,6 +246,11 @@ body {
   width: 100px;
 }
 
+#slide-3 .slide-content p {
+  font-size: 25pt;
+  margin: 20px 0;
+}
+
 #slide-deck:has(#slide-4:not(.hidden)) div.button,
 #slide-deck:has(#slide-4:not(.hidden)) .slide-progress {
   background-color: #dfd6f9;
@@ -292,6 +297,11 @@ body {
 }
 #slide-4 .gif {
   width: 100px;
+}
+
+#slide-4 .slide-content p {
+  font-size: 25pt;
+  margin: 20px 0;
 }
 
 #slide-deck:has(#slide-5:not(.hidden)) div.button,
@@ -374,57 +384,36 @@ body {
   background-color: #350267;
   color: #dfd6f9;
 }
-#slide-6 .slide-content {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: flex-end;
-}
-@media screen and (max-width: 768px) {
-  #slide-6 .slide-content {
-    flex-direction: column;
-    justify-content: center;
-    align-items: normal;
-  }
-  #slide-6 .slide-content div,
-  #slide-6 .slide-content h2 {
-    width: auto !important;
-  }
-  #slide-6 .slide-content svg {
-    display: none;
-  }
-  #slide-6 .slide-content img {
-    width: 90%;
-  }
-}
-#slide-6 .slide-content h2 {
+
+#slide-6 h2 {
   font-size: 50pt;
-  width: 100%;
-  margin-bottom: 0;
+}
+#slide-6 h2 .smaller {
+  font-size: 45pt;
 }
 @media screen and (max-width: 768px) {
-  #slide-6 .slide-content h2 {
+  #slide-6 h2 {
     font-size: 30pt;
   }
 }
-#slide-6 .slide-content div {
-  width: 50%;
-  align-self: stretch;
-  justify-content: space-around;
-}
-#slide-6 .slide-content img {
+#slide-6 img,
+#slide-6 video {
   display: block;
   max-width: 100%;
   height: auto;
-  margin: 0 auto;
+  width: 50%;
+  margin: 30px auto 0;
 }
-#slide-6 .slide-content ul,
-#slide-6 .slide-content li {
+@media screen and (max-width: 768px) {
+  #slide-6 img,
+  #slide-6 video {
+    width: 90%;
+  }
+}
+
+#slide-6 .slide-content p {
   font-size: 25pt;
-  text-align: left;
-}
-#slide-6 .slide-content ul {
-  margin-left: 55px;
+  margin: 20px 0;
 }
 
 #slide-deck:has(#slide-7:not(.hidden)) div.button,
@@ -503,6 +492,38 @@ body {
 #slide-8 p {
   margin: 30px 0;
 }
+
+
+#slide-1 h2 {
+  font-size: 50pt;
+  margin-top: 0;
+  z-index: 2;
+  padding: 0;
+}
+#slide-1 ul {
+  margin-left: 55px;
+}
+#slide-1 li {
+  font-size: 16pt;
+  z-index: 2;
+  text-align: left;
+}
+#slide-1 img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  width: 70%;
+  height: 60%;
+  margin: 30px auto 0;
+}
+#slide-1 .flex-row {
+  height: 40%;
+}
+#slide-1 p {
+  margin: 30px 0;
+}
+
+
 @media screen and (max-width: 768px) {
   #slide-8 img {
     width: 40%;
