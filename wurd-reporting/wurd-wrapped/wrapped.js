@@ -51,6 +51,7 @@ function goToNext(x) {
             break;
         case 3:
         case 4:
+        case 6:
             nextSlide.querySelector('video').play();
         case 5:
             const bars = nextSlide.querySelectorAll('.bar');
