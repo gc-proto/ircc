@@ -350,13 +350,11 @@
             </ul>
           </div>
         </li>
-        <li>Temporary Residence Program (TR)
-          <div class="wb-fieldflow-sub">
-            <section class="alert alert-info mrgn-tp-md">
-              <h3 class="h4 mrgn-tp-0">Temporary Residence Program (TR)</h3>
-              <p>Create result for this.</p>
-            </section>
-          </div>
+        <li data-wb-fieldflow='[
+            {"action":"addClass","source":".ff-step, .ff-result","class":"hidden"},
+            {"action":"removeClass","source":"#tr","class":"hidden"}
+          ]'>Temporary Residence Program (TR)
+          
         </li>
       </ul>
       </div>
@@ -385,7 +383,9 @@
   <div id="result-assist-no" class="hidden ff-result result">
     <p><strong>Result:</strong> No – Assistance loan</p>
   </div>
-  
+  <div id="tr" class="hidden ff-result result">
+    <p><strong>Result:</strong> TR</p>
+  </div>
   <!-- CONTENT ENDS HERE -->
   
   <div class="mwsgeneric-base-html parbase section">
