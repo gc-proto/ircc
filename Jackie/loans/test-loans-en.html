@@ -119,8 +119,6 @@
     </div>
   </nav>
 </header>
- 
- 
 
 <!--CONTENT STARTS HERE-->
 
@@ -131,258 +129,465 @@
     
     <!-- 2: Title -->
     <h1 property="name" id="wb-cont" class="gc-thickline">How to get an immigration loan</h1>
-      <div class="wb-frmvld hidden" id="ff">
-      <form method="get">
-        <div class="wb-fieldflow gc-font-2019" data-wb-fieldflow='{
-        "noForm": true,
-        "renderas": "radio",
-        "gcChckbxrdio": true,
-        "unhideelm": "#ff",
-        "hideelm": "#content",
-        "base": { "live": true, "renderas": "radio", "gcChckbxrdio": true },
-        "default": [{ "action": "addClass", "source": ".ff-step, .ff-result", "class": "hidden" }],
-        "reset":   [{ "action": "addClass", "source": ".ff-step, .ff-result", "class": "hidden" }]
-    }'> 
-          <!-- Q1 -->
-          <p>What did you apply for?</p>
-          <ul>
-            <li data-wb-fieldflow='[
-          {"action":"addClass","source":".ff-step, .ff-result","class":"hidden"},
-          {"action":"removeClass","source":"#q2","class":"hidden"}
-        ]'>Resettlement or Special Immigration Program (Public policy)</li>
-            <li data-wb-fieldflow='[
-          {"action":"addClass","source":".ff-step, .ff-result","class":"hidden"},
-          {"action":"removeClass","source":"#q2","class":"hidden"}
-        ]'>Family Class or Dependants of Protected Persons Abroad</li>
-            <li data-wb-fieldflow='[
-          {"action":"addClass","source":".ff-step, .ff-result","class":"hidden"},
-          {"action":"removeClass","source":"#q2","class":"hidden"}
-        ]'>Economic Mobility Pathways Pilot (EMPP)</li>
-            <li data-wb-fieldflow='[
-          {"action":"addClass","source":".ff-step, .ff-result","class":"hidden"},
-          {"action":"removeClass","source":"#q2","class":"hidden"}
-        ]'>Other Permanent Residence Program</li>
-            <li data-wb-fieldflow='[
-          {"action":"addClass","source":".ff-step, .ff-result","class":"hidden"},
-          {"action":"removeClass","source":"#result-tr","class":"hidden"}
-        ]'>Temporary Residence Program (TR)</li>
-          </ul>
-          <!-- Q2 -->
-          <div id="q2" class="hidden ff-step">
-            <p>Which type of loan are you applying for?</p>
+    <div class="wb-frmvld hidden" id="ff">
+    <form method="get">
+  <div class="wb-fieldflow gc-font-2019"
+  data-wb-fieldflow='{
+    "noForm": true,
+    "renderas": "radio",
+    "gcChckbxrdio": true, "unhideelm": "#ff",
+    "base": {
+      "live": true, "renderas": "radio", "gcChckbxrdio": true
+    }
+  }'>
+      <p>What did you apply for?</p>
+      <ul>
+        <li>Resettlement or Special Immigration Program (Public policy)
+          <div class="wb-fieldflow-sub">
+            <p class="wb-fieldflow-label">Which type of loan are you applying for?</p>
             <ul>
-              <li data-wb-fieldflow='[
-            {"action":"addClass","source":".ff-step, .ff-result","class":"hidden"},
-            {"action":"removeClass","source":"#q3","class":"hidden"}
-          ]'>RPRF Loan (Right of Permanent Residence Fee)</li>
-              <li data-wb-fieldflow='[
-            {"action":"addClass","source":".ff-step, .ff-result","class":"hidden"},
-            {"action":"removeClass","source":"#q4","class":"hidden"}
-          ]'>Loan for Transportation to Canada</li>
-              <li data-wb-fieldflow='[
-            {"action":"addClass","source":".ff-step, .ff-result","class":"hidden"},
-            {"action":"removeClass","source":"#q5","class":"hidden"}
-          ]'>Assistance Loan</li>
+              <li>RPRF Loan (Right of Permanent Residence Fee)
+                <div class="wb-fieldflow-sub">
+                  <p class="wb-fieldflow-label">Have you been invited to pay your Right of Permanent Residence Fee (RPRF)?</p>
+                  <ul>
+                    <li>Yes
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-success mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">Yes – RPRF loan</h3>
+                          <p>Create result: <strong>Yes- RPRF loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                    <li>No
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-warning mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">No – RPRF loan</h3>
+                          <p>Create result: <strong>No - RPFR loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>Loan for Transportation to Canada
+                <div class="wb-fieldflow-sub">
+                  <p class="wb-fieldflow-label">Is your application approved AND are you and/or your beneficiaries ready to travel?</p>
+                  <ul>
+                    <li>Yes
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-success mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">Yes – Transportation loan</h3>
+                          <p>Create result: <strong>Yes - Transportation loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                    <li>No
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-warning mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">No – Transportation loan</h3>
+                          <p>Create result: <strong>No- Transportation loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>Assistance Loan
+                <div class="wb-fieldflow-sub">
+                  <p class="wb-fieldflow-label">Are you in Canada and have you been in Canada for less than 12 months?</p>
+                  <ul>
+                    <li>Yes
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-success mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">Yes – Assistance loan</h3>
+                          <p>Create result: <strong>Yes - assistance loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                    <li>No
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-warning mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">No – Assistance loan</h3>
+                          <p>Create result: <strong>No - assistance loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
             </ul>
           </div>
-          <!-- Q3 -->
-          <div id="q3" class="hidden ff-step">
-            <p>Have you been invited to pay your Right of Permanent Residence Fee (RPRF)?</p>
+        </li>
+        <li>Family Class or Dependants of Protected Persons Abroad
+          <div class="wb-fieldflow-sub">
+            <p class="wb-fieldflow-label">Which type of loan are you applying for?</p>
             <ul>
-              <li data-wb-fieldflow='[
-            {"action":"addClass","source":".ff-step, .ff-result","class":"hidden"},
-            {"action":"removeClass","source":"#result-rprf-yes","class":"hidden"}
-          ]'>Yes</li>
-              <li data-wb-fieldflow='[
-            {"action":"addClass","source":".ff-step, .ff-result","class":"hidden"},
-            {"action":"removeClass","source":"#result-rprf-no","class":"hidden"}
-          ]'>No</li>
+              <li>RPRF Loan (Right of Permanent Residence Fee)
+                <div class="wb-fieldflow-sub">
+                  <p class="wb-fieldflow-label">Have you been invited to pay your Right of Permanent Residence Fee (RPRF)?</p>
+                  <ul>
+                    <li>Yes
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-success mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">Yes – RPRF loan</h3>
+                          <p>Create result: <strong>Yes- RPRF loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                    <li>No
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-warning mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">No – RPRF loan</h3>
+                          <p>Create result: <strong>No - RPFR loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>Loan for Transportation to Canada
+                <div class="wb-fieldflow-sub">
+                  <p class="wb-fieldflow-label">Is your application approved AND are you and/or your beneficiaries ready to travel?</p>
+                  <ul>
+                    <li>Yes
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-success mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">Yes – Transportation loan</h3>
+                          <p>Create result: <strong>Yes - Transportation loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                    <li>No
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-warning mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">No – Transportation loan</h3>
+                          <p>Create result: <strong>No- Transportation loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>Assistance Loan
+                <div class="wb-fieldflow-sub">
+                  <p class="wb-fieldflow-label">Are you in Canada and have you been in Canada for less than 12 months?</p>
+                  <ul>
+                    <li>Yes
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-success mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">Yes – Assistance loan</h3>
+                          <p>Create result: <strong>Yes - assistance loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                    <li>No
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-warning mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">No – Assistance loan</h3>
+                          <p>Create result: <strong>No - assistance loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
             </ul>
           </div>
-          <!-- Q4 -->
-          <div id="q4" class="hidden ff-step">
-            <p>Is your application approved AND are you and/or your beneficiaries ready to travel?</p>
+        </li>
+        <li>Economic Mobility Pathways Pilot (EMPP)
+          <div class="wb-fieldflow-sub">
+            <p class="wb-fieldflow-label">Which type of loan are you applying for?</p>
             <ul>
-              <li data-wb-fieldflow='[
-            {"action":"addClass","source":".ff-step, .ff-result","class":"hidden"},
-            {"action":"removeClass","source":"#result-trans-yes","class":"hidden"}
-          ]'>Yes</li>
-              <li data-wb-fieldflow='[
-            {"action":"addClass","source":".ff-step, .ff-result","class":"hidden"},
-            {"action":"removeClass","source":"#result-trans-no","class":"hidden"}
-          ]'>No</li>
+              <li>RPRF Loan (Right of Permanent Residence Fee)
+                <div class="wb-fieldflow-sub">
+                  <p class="wb-fieldflow-label">Have you been invited to pay your Right of Permanent Residence Fee (RPRF)?</p>
+                  <ul>
+                    <li>Yes
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-success mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">Yes – RPRF loan</h3>
+                          <p>Create result: <strong>Yes- RPRF loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                    <li>No
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-warning mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">No – RPRF loan</h3>
+                          <p>Create result: <strong>No - RPFR loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>Loan for Transportation to Canada
+                <div class="wb-fieldflow-sub">
+                  <p class="wb-fieldflow-label">Is your application approved AND are you and/or your beneficiaries ready to travel?</p>
+                  <ul>
+                    <li>Yes
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-success mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">Yes – Transportation loan</h3>
+                          <p>Create result: <strong>Yes - Transportation loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                    <li>No
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-warning mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">No – Transportation loan</h3>
+                          <p>Create result: <strong>No- Transportation loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>Assistance Loan
+                <div class="wb-fieldflow-sub">
+                  <p class="wb-fieldflow-label">Are you in Canada and have you been in Canada for less than 12 months?</p>
+                  <ul>
+                    <li>Yes
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-success mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">Yes – Assistance loan</h3>
+                          <p>Create result: <strong>Yes - assistance loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                    <li>No
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-warning mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">No – Assistance loan</h3>
+                          <p>Create result: <strong>No - assistance loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
             </ul>
           </div>
-          
-          <!-- Q5 -->
-          <div id="q5" class="hidden ff-step">
-            <p>Are you in Canada and have you been in Canada for less than 12 months?</p>
+        </li>
+        <li>Other Permanent Residence Program
+          <div class="wb-fieldflow-sub">
+            <p class="wb-fieldflow-label">Which type of loan are you applying for?</p>
             <ul>
-              <li data-wb-fieldflow='[
-            {"action":"addClass","source":".ff-step, .ff-result","class":"hidden"},
-            {"action":"removeClass","source":"#result-assist-yes","class":"hidden"}
-          ]'>Yes</li>
-              <li data-wb-fieldflow='[
-            {"action":"addClass","source":".ff-step, .ff-result","class":"hidden"},
-            {"action":"removeClass","source":"#result-assist-no","class":"hidden"}
-          ]'>No</li>
+              <li>RPRF Loan (Right of Permanent Residence Fee)
+                <div class="wb-fieldflow-sub">
+                  <p class="wb-fieldflow-label">Have you been invited to pay your Right of Permanent Residence Fee (RPRF)?</p>
+                  <ul>
+                    <li>Yes
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-success mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">Yes – RPRF loan</h3>
+                          <p>Create result: <strong>Yes- RPRF loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                    <li>No
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-warning mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">No – RPRF loan</h3>
+                          <p>Create result: <strong>No - RPFR loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>Loan for Transportation to Canada
+                <div class="wb-fieldflow-sub">
+                  <p class="wb-fieldflow-label">Is your application approved AND are you and/or your beneficiaries ready to travel?</p>
+                  <ul>
+                    <li>Yes
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-success mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">Yes – Transportation loan</h3>
+                          <p>Create result: <strong>Yes - Transportation loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                    <li>No
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-warning mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">No – Transportation loan</h3>
+                          <p>Create result: <strong>No- Transportation loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>Assistance Loan
+                <div class="wb-fieldflow-sub">
+                  <p class="wb-fieldflow-label">Are you in Canada and have you been in Canada for less than 12 months?</p>
+                  <ul>
+                    <li>Yes
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-success mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">Yes – Assistance loan</h3>
+                          <p>Create result: <strong>Yes - assistance loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                    <li>No
+                      <div class="wb-fieldflow-sub">
+                        <section class="alert alert-warning mrgn-tp-md">
+                          <h3 class="h4 mrgn-tp-0">No – Assistance loan</h3>
+                          <p>Create result: <strong>No - assistance loan</strong></p>
+                        </section>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
             </ul>
           </div>
-        </div>
-      </form>
-    </div>
-    <!--<div id="step5-q" class="hidden result">
-      <p>Temporary Residence Program Result</p>
-    </div>
-    <div id="step3a-q" class="hidden result">
-      <p>Yes - RPRF loan check</p>
-    </div>
-    <div id="step3b-q" class="hidden result">
-      <p>No - RPFR loan check</p>
-    </div>
-    <div id="step4a-q" class="hidden result">
-      <p>Yes - Transportation loan check</p>
-    </div>
-    <div id="step4b-q" class="hidden result">
-      <p>No - Transportation loan check</p>
-    </div>
-    <div id="step5a-q" class="hidden result">
-      <p>Yes - Assistance loan check</p>
-    </div>
-    <div id="step5b-q" class="hidden result">
-      <p>No - Assistance loan check</p>
-    </div>--> 
-    
-    <!-- RESULTS -->
-    <div id="result-tr" class="hidden ff-result result">
-      <p><strong>Result:</strong> Temporary Residence Program (TR)</p>
-    </div>
-    <div id="result-rprf-yes" class="hidden ff-result result">
-      <p><strong>Result:</strong> Yes – RPRF loan</p>
-    </div>
-    <div id="result-rprf-no" class="hidden ff-result result">
-      <p><strong>Result:</strong> No – RPRF loan</p>
-    </div>
-    <div id="result-trans-yes" class="hidden ff-result result">
-      <p><strong>Result:</strong> Yes – Transportation loan</p>
-    </div>
-    <div id="result-trans-no" class="hidden ff-result result">
-      <p><strong>Result:</strong> No – Transportation loan</p>
-    </div>
-    <div id="result-assist-yes" class="hidden ff-result result">
-      <p><strong>Result:</strong> Yes – Assistance loan</p>
-    </div>
-    <div id="result-assist-no" class="hidden ff-result result">
-      <p><strong>Result:</strong> No – Assistance loan</p>
-    </div>
-     
-    
-    <!-- CONTENT ENDS HERE -->
-    
-    <div class="mwsgeneric-base-html parbase section">
-      <div class="row row-no-gutters mrgn-tp-xl">
-        <div class="col-sm-7 col-lg-6">
-          <section class="gc-pg-hlpfl provisional">
-            <div class="well mrgn-bttm-0">
-              <form id="gc-pg-hlpfl-frm" action="https://apps.canada.ca/x-notify/eml/send" method="post" autocomplete="off">
-                <input type="hidden" name="pageTitle" value="Managing your business">
-                <input type="hidden" name="submissionPage" value="covid-19-guidance/proto/business/maintaining-your-business.html">
-                <input type="hidden" name="tid" value="tbs-wasthishelpfulen">
-                <input type="hidden" name="auke" value="NTQxNzE1OTA3NTgwMDYyOTQ&#x3D;">
-                <div class="gc-pg-hlpfl-btn">
-                  <div class="row row-no-gutters">
-                    <div class="col-xs-12 col-sm-7 mrgn-tp-sm">
-                      <h2 class="mrgn-tp-sm h5">Did you find what you were looking for?</h2>
-                    </div>
-                    <div class="col-xs-8 col-sm-5 text-right">
-                      <button data-wb5-click="postback@#gc-pg-hlpfl-frm@" type="submit" name="helpful" value="Yes" class="btn btn-primary" data-wb-doaction="[
+        </li>
+        <li>Temporary Residence Program (TR)
+          <div class="wb-fieldflow-sub">
+            <section class="alert alert-info mrgn-tp-md">
+              <h3 class="h4 mrgn-tp-0">Temporary Residence Program (TR)</h3>
+              <p>Create result for this.</p>
+            </section>
+          </div>
+        </li>
+      </ul>
+      </div>
+    </form>
+  </div>
+  
+  <!-- RESULTS -->
+  <div id="result-tr" class="hidden ff-result result">
+    <p><strong>Result:</strong> Temporary Residence Program (TR)</p>
+  </div>
+  <div id="result-rprf-yes" class="hidden ff-result result">
+    <p><strong>Result:</strong> Yes – RPRF loan</p>
+  </div>
+  <div id="result-rprf-no" class="hidden ff-result result">
+    <p><strong>Result:</strong> No – RPRF loan</p>
+  </div>
+  <div id="result-trans-yes" class="hidden ff-result result">
+    <p><strong>Result:</strong> Yes – Transportation loan</p>
+  </div>
+  <div id="result-trans-no" class="hidden ff-result result">
+    <p><strong>Result:</strong> No – Transportation loan</p>
+  </div>
+  <div id="result-assist-yes" class="hidden ff-result result">
+    <p><strong>Result:</strong> Yes – Assistance loan</p>
+  </div>
+  <div id="result-assist-no" class="hidden ff-result result">
+    <p><strong>Result:</strong> No – Assistance loan</p>
+  </div>
+  
+  <!-- CONTENT ENDS HERE -->
+  
+  <div class="mwsgeneric-base-html parbase section">
+    <div class="row row-no-gutters mrgn-tp-xl">
+      <div class="col-sm-7 col-lg-6">
+        <section class="gc-pg-hlpfl provisional">
+          <div class="well mrgn-bttm-0">
+            <form id="gc-pg-hlpfl-frm" action="https://apps.canada.ca/x-notify/eml/send" method="post" autocomplete="off">
+              <input type="hidden" name="pageTitle" value="Managing your business">
+              <input type="hidden" name="submissionPage" value="covid-19-guidance/proto/business/maintaining-your-business.html">
+              <input type="hidden" name="tid" value="tbs-wasthishelpfulen">
+              <input type="hidden" name="auke" value="NTQxNzE1OTA3NTgwMDYyOTQ&#x3D;">
+              <div class="gc-pg-hlpfl-btn">
+                <div class="row row-no-gutters">
+                  <div class="col-xs-12 col-sm-7 mrgn-tp-sm">
+                    <h2 class="mrgn-tp-sm h5">Did you find what you were looking for?</h2>
+                  </div>
+                  <div class="col-xs-8 col-sm-5 text-right">
+                    <button data-wb5-click="postback@#gc-pg-hlpfl-frm@" type="submit" name="helpful" value="Yes" class="btn btn-primary" data-wb-doaction="[
 														{&quot;action&quot;:&quot;removeClass&quot;,&quot;source&quot;:&quot;.gc-pg-hlpfl-thnk&quot;,&quot;class&quot;:&quot;hide&quot;},
 														{&quot;action&quot;:&quot;addClass&quot;,&quot;source&quot;:&quot;#gc-pg-hlpfl-frm&quot;,&quot;class&quot;:&quot;hide&quot;}
 													]" data-gc-analytics-wtph>Yes</button>
-                      <button type="button" class="btn btn-primary mrgn-lft-sm nojs-hide" data-wb-doaction="[
+                    <button type="button" class="btn btn-primary mrgn-lft-sm nojs-hide" data-wb-doaction="[
 														{&quot;action&quot;:&quot;ajax&quot;,&quot;url&quot;:&quot;/content/dam/canada/mws-swg/nohelpful.html&quot;,&quot;container&quot;:&quot;.gc-pg-hlpfl-yes&quot;},
 														{&quot;action&quot;:&quot;removeClass&quot;,&quot;source&quot;:&quot;.gc-pg-hlpfl-no&quot;,&quot;class&quot;:&quot;nojs-show&quot;},
 														{&quot;action&quot;:&quot;addClass&quot;,&quot;source&quot;:&quot;.gc-pg-hlpfl-btn&quot;,&quot;class&quot;:&quot;hide&quot;}
 													]" data-gc-analytics-wtph-no>No</button>
-                    </div>
                   </div>
                 </div>
-                <p class="h3 hidden nojs-show">If not, tell us why:</p>
-                <div class="gc-pg-hlpfl-no nojs-show">
-                  <fieldset>
-                    <legend class="h4 mrgn-tp-0 mrgn-bttm-md">What was wrong?</legend>
-                    <div class="radio">
-                      <label for="problem1">
-                        <input name="problem" id="problem1" type="radio"
+              </div>
+              <p class="h3 hidden nojs-show">If not, tell us why:</p>
+              <div class="gc-pg-hlpfl-no nojs-show">
+                <fieldset>
+                  <legend class="h4 mrgn-tp-0 mrgn-bttm-md">What was wrong?</legend>
+                  <div class="radio">
+                    <label for="problem1">
+                      <input name="problem" id="problem1" type="radio"
                                                         value="The answer I need is missing"
                                                         data-gc-analytics-wtph-value="The answer I need is missing-La réponse dont j’ai besoin n’est pas là"
                                                         data-gc-analytics-collect="notPrivate">
-                        The answer I need is missing </label>
-                    </div>
-                    <div class="radio">
-                      <label for="problem2">
-                        <input name="problem" id="problem2" type="radio"
+                      The answer I need is missing </label>
+                  </div>
+                  <div class="radio">
+                    <label for="problem2">
+                      <input name="problem" id="problem2" type="radio"
                                                         value="The information isn’t clear"
                                                         data-gc-analytics-wtph-value="The information isn’t clear-L'information n'est pas claire"
                                                         data-gc-analytics-collect="notPrivate">
-                        The information isn’t clear </label>
-                    </div>
-                    <div class="radio">
-                      <label for="problem3">
-                        <input name="problem" id="problem3" type="radio"
+                      The information isn’t clear </label>
+                  </div>
+                  <div class="radio">
+                    <label for="problem3">
+                      <input name="problem" id="problem3" type="radio"
                                                         value="I’m not in the right place"
                                                         data-gc-analytics-wtph-value="I’m not in the right place-Je ne suis pas au bon endroit"
                                                         data-gc-analytics-collect="notPrivate">
-                        I’m not in the right place </label>
-                    </div>
-                    <div class="radio">
-                      <label for="problem4">
-                        <input name="problem" id="problem4" type="radio"
+                      I’m not in the right place </label>
+                  </div>
+                  <div class="radio">
+                    <label for="problem4">
+                      <input name="problem" id="problem4" type="radio"
                                                         value="Something is broken or incorrect"
                                                         data-gc-analytics-wtph-value="Something is broken or incorrect-Quelque chose est brisé ou incorrect"
                                                         data-gc-analytics-collect="notPrivate">
-                        Something is broken or incorrect </label>
-                    </div>
-                    <div class="radio">
-                      <label for="problem5">
-                        <input name="problem" id="problem5" type="radio" value="Other reason"
+                      Something is broken or incorrect </label>
+                  </div>
+                  <div class="radio">
+                    <label for="problem5">
+                      <input name="problem" id="problem5" type="radio" value="Other reason"
                                                         data-gc-analytics-wtph-value="Other reason-Autre raison"
                                                         data-gc-analytics-collect="notPrivate">
-                        Other reason </label>
-                    </div>
-                  </fieldset>
-                  <label for="problem6" class="mrgn-bttm-0">Please provide more details</label>
-                  <p class="small"> <strong>(Don’t include any personal information)</strong> <br>
-                    <span class="small">Maximum 300 characters</span> </p>
-                  <textarea id="problem6" name="details" class="full-width" maxlength="300"></textarea>
-                  <button data-wb5-click="postback@#gc-pg-hlpfl-frm@" type="submit" name="helpful" value="No" class="btn btn-primary mrgn-tp-md mrgn-bttm-sm" data-wb-doaction="[
+                      Other reason </label>
+                  </div>
+                </fieldset>
+                <label for="problem6" class="mrgn-bttm-0">Please provide more details</label>
+                <p class="small"> <strong>(Don’t include any personal information)</strong> <br>
+                  <span class="small">Maximum 300 characters</span> </p>
+                <textarea id="problem6" name="details" class="full-width" maxlength="300"></textarea>
+                <button data-wb5-click="postback@#gc-pg-hlpfl-frm@" type="submit" name="helpful" value="No" class="btn btn-primary mrgn-tp-md mrgn-bttm-sm" data-wb-doaction="[
 												{&quot;action&quot;:&quot;removeClass&quot;,&quot;source&quot;:&quot;.gc-pg-hlpfl-thnk&quot;,&quot;class&quot;:&quot;hide&quot;},
 												{&quot;action&quot;:&quot;addClass&quot;,&quot;source&quot;:&quot;#gc-pg-hlpfl-frm&quot;,&quot;class&quot;:&quot;hide&quot;}
 											]" data-gc-analytics-wtph-submit>Submit</button>
-                </div>
-                <div class="gc-pg-hlpfl-yes">
-                  <input type="hidden" name="helpful" value="Yes">
-                </div>
-              </form>
-              <div class="gc-pg-hlpfl-thnk hide">
-                <p class="h6 mrgn-tp-sm mrgn-bttm-sm"><span class="far fa-check-circle text-success mrgn-rght-sm" aria-hidden="true"></span> Thank you for your feedback</p>
               </div>
+              <div class="gc-pg-hlpfl-yes">
+                <input type="hidden" name="helpful" value="Yes">
+              </div>
+            </form>
+            <div class="gc-pg-hlpfl-thnk hide">
+              <p class="h6 mrgn-tp-sm mrgn-bttm-sm"><span class="far fa-check-circle text-success mrgn-rght-sm" aria-hidden="true"></span> Thank you for your feedback</p>
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
       </div>
-      
-      <!--update references--> 
-      
     </div>
-    <div class="pagedetails">
-      <dl id="wb-dtmd">
-        <dt>Date modified:</dt>
-        <dd>
-          <time property="dateModified">2026-01-29</time>
-        </dd>
-      </dl>
-    </div>
+    
+    <!--update references--> 
+    
+  </div>
+  <div class="pagedetails">
+    <dl id="wb-dtmd">
+      <dt>Date modified:</dt>
+      <dd>
+        <time property="dateModified">2026-01-29</time>
+      </dd>
+    </dl>
+  </div>
   </div>
 </main>
 <div class="par iparys_inherited"> </div>
