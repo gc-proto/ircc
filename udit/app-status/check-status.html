@@ -23,9 +23,7 @@
 </noscript>
 <link rel="stylesheet" href="https://test.canada.ca/covid-19-guidance/proto/css/alpha-beta-banner.css" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-    
-    
-    <link blocking="render" rel="stylesheet" crossorigin="anonymous" integrity="sha384-0CRuUE9X0B5RfCdDx1BDT6Ru1MajB7Ngy0CmoORlBF+ey/W8T75AKwLehkl+QaGR" href="css/gcds.css">
+<link blocking="render" rel="stylesheet" crossorigin="anonymous" integrity="sha384-0CRuUE9X0B5RfCdDx1BDT6Ru1MajB7Ngy0CmoORlBF+ey/W8T75AKwLehkl+QaGR" href="css/gcds.css">
 <link rel="stylesheet" href="css/theme.min.css">
 <link rel="apple-touch-icon" sizes="57x57 72x72 114x114 144x144 150x150" class="wb-favicon" href="https://www.canada.ca/etc/designs/canada/wet-boew/assets/favicon-mobile.png">
 <link href="https://www.canada.ca/etc/designs/canada/wet-boew/assets/favicon.ico" rel="icon" type="image/x-icon" class="wb-favicon">
@@ -137,10 +135,8 @@
   
   <!-- IF YOU PORT THIS TO AEM, START COPYING FROM HERE-->
   
- 
-    <p>The way to check the status of your application depends on what you applied for. For some types of applications, it also matters how you applied.</p>
-<p>Answer a few questions to find out how to get your application status.</p>
-  
+  <p>The way to check the status of your application depends on what you applied for. For some types of applications, it also matters how you applied.</p>
+  <p>Answer a few questions to find out how to get your application status.</p>
   <div>
     <div class="wb-frmvld gc-font-2019" data-gc-analytics-formname="IRCC: Check your application status" data-gc-analytics-collect="[ 
     {
@@ -158,7 +154,7 @@
             &quot;unhideelm&quot;: &quot;#contButton&quot;}">
           <p>What did you apply for?</p>
           <ul>
-            <li>Citizenship
+            <!--            <li>Citizenship
               <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                 <p>Which citizenship application?</p>
                 <ul>
@@ -312,55 +308,96 @@
                   <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;#Renunciation&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#Renunciation">Giving up Canadian citizenship (renunciation)</a></li>
                 </ul>
               </div>
-            </li>
-            <li data-wb-fieldflow="{&quot;action&quot;:&quot;redir&quot;, &quot;url&quot;: &quot;/content/canadasite/en/immigration-refugees-citizenship/services/canadian-passports/check-passport-travel-document-application.html&quot;}">Passport</li>
-            <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.visit&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#visit">Visitor visa</a></li>
-            <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.pr&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#pr">Permanent resident card (PR Card)</a></li>
-            <li>Family sponsorship
+            </li>-->
+            
+            <li>Temporary residence (for example visitor visas, study and work permits)
               <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
-                <p>What kind of family sponsorship?</p>
+                <p>What kind of temporary residence application?</p>
                 <ul>
-                  <li>Spouse, partner or dependent child
+                  <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.visit&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#visit">Visitor visa</a></li>
+                  <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;#eta&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#eta">Electronic travel authorization (eTA)</a></li>
+                  <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;#work-permit&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#work-permit">Work permit</a></li>
+                  <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.study&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#study">Study permit</a></li>
+                  <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.supervisa&quot;}"><a href="">Super Visa</a></li>
+                  <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.supervisa&quot;}"><a href="">Transit Visa</a></li>
+                  <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.vos&quot;}"><a href="">Verification of status or request to amend</a></li>
+                </ul>
+              </div>
+            <li>Permanent residence (for example, Express entry, family sponsorship, refugees)
+              <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                <p>What kind of permanent residence application?</p>
+                <ul>
+                  <li>Family sponsorship
                     <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
-                      <p>Which application process?</p>
+                      <p>What kind of family sponsorship application?</p>
                       <ul>
-                        <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.canada-spousal-result&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#canada-spousal-result">In Canada</a></li>
-                        <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.outside-spousal-result&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#outside-spousal-result">Outside Canada</a> </li>
+                        <li>Spouse, partner or dependent child
+                          <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                            <p>Which application process?</p>
+                            <ul>
+                              <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.canada-spousal-result&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#canada-spousal-result">In Canada</a></li>
+                              <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.outside-spousal-result&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#outside-spousal-result">Outside Canada</a> </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li>Parent or grandparent
+                          <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                            <p>Are you the sponsor or the person being sponsored?</p>
+                            <ul>
+                              <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.pgp-fam-result-1&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#pgp-fam-result-1">The sponsor</a></li>
+                              <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.pgp-fam-result-2&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#pgp-fam-result-2">The person being sponsored</a></li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.other-fam-result&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#other-fam-result">Adoptive child or other relative</a></li>
                       </ul>
                     </div>
                   </li>
-                  <li>Parent or grandparent
-                    <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
-                      <p>Are you the sponsor or the person being sponsored?</p>
-                      <ul>
-                        <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.pgp-fam-result-1&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#pgp-fam-result-1">The sponsor</a></li>
-                        <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.pgp-fam-result-2&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#pgp-fam-result-2">The person being sponsored</a></li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.other-fam-result&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#other-fam-result">Adoptive child or other relative</a></li>
+                </ul>
+              </div>
+            <li>Spouse, partner or dependent child
+              <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                <p>Which application process?</p>
+                <ul>
+                  <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.canada-spousal-result&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#canada-spousal-result">In Canada</a></li>
+                  <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.outside-spousal-result&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#outside-spousal-result">Outside Canada</a> </li>
                 </ul>
               </div>
             </li>
-            <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;#work-permit&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#work-permit">Work permit</a></li>
-            <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.study&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#study">Study permit</a></li>
+            <li>Parent or grandparent
+              <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                <p>Are you the sponsor or the person being sponsored?</p>
+                <ul>
+                  <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.pgp-fam-result-1&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#pgp-fam-result-1">The sponsor</a></li>
+                  <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.pgp-fam-result-2&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#pgp-fam-result-2">The person being sponsored</a></li>
+                </ul>
+              </div>
+            </li>
+            <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.other-fam-result&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#other-fam-result">Adoptive child or other relative</a></li>
+          </ul>
+          <ul>
+            <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.express-entry&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#express-entry">Express Entry</a></li>
+            <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.other-immigration-programs&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#other-immigration-programs">Other immigration programs</a> </li>
             <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.refugees&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#refugees">Refugees</a></li>
-            <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;#eta&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#eta">Electronic travel authorization (eTA)</a></li>
-            <li>Immigration
-              <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
-                <p>What kind of immigration application? </p>
-                <ul>
-                  <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.express-entry&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#express-entry">Express Entry</a></li>
-                  <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.other-immigration-programs&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#other-immigration-programs">Other immigration programs</a> </li>
-                </ul>
-              </div>
-            </li>
-            <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.refugee_certificate&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#refugee_certificate">Refugee travel document or certificate of identity</a></li>
-            <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;#verification_amend&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#verification_amend">Verification of status or request to amend</a></li>
           </ul>
         </div>
+        </li>
+        <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.pr&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#pr">Permanent resident card (PR Card)</a></li>
+        <li data-wb-fieldflow="{&quot;action&quot;:&quot;redir&quot;, &quot;url&quot;: &quot;/content/canadasite/en/immigration-refugees-citizenship/services/canadian-passports/check-passport-travel-document-application.html&quot;}">Passport (new and renewals)</li>
+        
+        <!--   <li>Immigration
+        <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+          <p>What kind of immigration application? </p>
+          <ul>
+            
+          </ul>
+        </div>
+      </li>-->
+        <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.refugee_certificate&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#refugee_certificate">Refugee travel document or certificate of identity</a></li>
+        <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;#verification_amend&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#verification_amend">Verification of status or request to amend</a></li>
+        </ul>
         <input class="btn btn-primary mrgn-bttm-lg hidden" id="contButton" type="submit" value="Continue">
-        </form>
+      </form>
     </div>
   </div>
   <div>
@@ -2102,7 +2139,6 @@
       </dd>
     </dl>
   </div>
- 
 </main>
 <div>
   <div class="global-footer">
