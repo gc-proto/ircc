@@ -35,16 +35,6 @@
   .bg-info .gc-chckbxrdio label::before {
     background-color: #fff;
   }
-  .full-width-bg {
-    margin-left: calc(-50vw + 50%);
-    width: 100vw;
-    padding-left: 0;
-    padding-right: 0;
-    box-sizing: border-box;
-  }
-  main.container {
-    overflow-x: hidden;
-  }
 </style>
 </head>
 
@@ -152,9 +142,10 @@
   
   <p>The way to check the status of your application depends on what you applied for. For some types of applications, it also matters how you applied.</p>
   <p>Answer a few questions to find out how to get your application status.</p>
+</main>
 
-  <div class="full-width-bg bg-info mrgn-bttm-lg mrgn-tp-lg">
-  <div class="container mrgn-tp-lg mrgn-bttm-lg">
+<section class="bg-info pddng-tp-xl pddng-bttm-xl">
+  <div class="container">
   <div class="wb-frmvld gc-font-2019" data-gc-analytics-formname="IRCC: Check your application status" data-gc-analytics-collect="[
     {
     &quot;value&quot;:&quot;select&quot;,
@@ -163,7 +154,7 @@
 
 ]">
   <form>
-    <div class="wb-fieldflow gc-font-2019 mrgn-tp-lg" data-wb-fieldflow="{
+    <div class="wb-fieldflow mrgn-tp-lg" data-wb-fieldflow="{
             &quot;noForm&quot;: true,
             &quot;renderas&quot;: &quot;radio&quot;,
             &quot;gcChckbxrdio&quot;: true,
@@ -172,22 +163,22 @@
       <p>What did you apply for?</p>
       <ul>
         <li>Citizenship
-          <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+          <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
             <p>Which citizenship application?</p>
             <ul>
               <li>Becoming a Canadian citizen (grant of citizenship)
-                <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                   <p>Select the application type:</p>
                   <ul>
                     <li>Adult (18 and older)
-                      <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                      <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                         <div class="wb-fieldflow-header">
                           <p class="wb-fieldflow-label">Have you received your acknowledgement of receipt letter or email?</p>
                           <p>You’ll get this letter or email <strong>after</strong> we receive your application <strong>and</strong> check that it’s complete. It can take some time to get it.</p>
                         </div>
                         <ul>
                           <li>Yes
-                            <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                            <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                               <p>Is this your first time checking your citizenship application status? </p>
                               <ul>
                                 <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.with-aor-acc&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#with-aor-acc">Yes</a></li>
@@ -200,14 +191,14 @@
                       </div>
                     </li>
                     <li>Minor (under 18)
-                      <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                      <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                         <div class="wb-fieldflow-header">
                           <p class="wb-fieldflow-label">Have you received your acknowledgement of receipt letter or email?</p>
                           <p>You’ll get this letter or email <strong>after</strong> we receive your application <strong>and</strong> check that it’s complete. It can take some time to get it.</p>
                         </div>
                         <ul>
                           <li>Yes
-                            <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                            <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                               <p>Is this your first time checking the minor’s citizenship application status?</p>
                               <ul>
                                 <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.with-aor-acc&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#with-aor-acc">Yes</a></li>
@@ -220,7 +211,7 @@
                       </div>
                     </li>
                     <li>Canadian Armed Forces member
-                      <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                      <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                         <div class="wb-fieldflow-header">
                           <p class="wb-fieldflow-label">Have you received your acknowledgement of receipt (AOR) letter or email?</p>
                           <p>You’ll get this letter or email <strong>after</strong> we receive your application <strong>and</strong> check that it’s <strong>complete</strong>. It can take some time before you receive it. </p>
@@ -232,7 +223,7 @@
                       </div>
                     </li>
                     <li>Adoption
-                      <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                      <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                         <div class="wb-fieldflow-header">
                           <p class="wb-fieldflow-label">Have you received your acknowledgement of receipt (AOR) letter or email?</p>
                           <p>You’ll get this letter or email <strong>after</strong> we receive your application <strong>and</strong> check that it’s <strong>complete</strong>. It can take some time before you receive it. </p>
@@ -247,16 +238,16 @@
                 </div>
               </li>
               <li>Citizenship certificate (proof of citizenship)
-                <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                   <p>How did you apply?</p>
                   <ul>
                     <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.proof-online-aor&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#proof-online-aor">Online (digital)</a></li>
                     <li>By mail (paper)
-                      <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                      <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                         <p>Where did you apply from?</p>
                         <ul>
                           <li>Canada or the United States
-                            <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                            <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                               <div class="wb-fieldflow-header">
                                 <p class="wb-fieldflow-label">Have you received your acknowledgement of receipt (AOR) letter or email?</p>
                                 <p>You’ll get your AOR after we receive your application and check that it’s complete. It can take a while before you get it.</p>
@@ -268,11 +259,11 @@
                             </div>
                           </li>
                           <li>Outside Canada and the United States
-                            <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                            <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                               <p class="wb-fieldflow-label">Did you provide your email in your application?</p>
                               <ul>
                                 <li>Yes
-                                  <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                                  <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                                     <div class="wb-fieldflow-header">
                                       <p class="wb-fieldflow-label">Have you received your acknowledgement of receipt (AOR) letter or email?</p>
                                       <p>You’ll get your AOR after we receive your application and check that it’s complete. It can take a while before you get it.</p>
@@ -284,7 +275,7 @@
                                   </div>
                                 </li>
                                 <li>No
-                                  <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                                  <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                                     <div class="wb-fieldflow-header">
                                       <p class="wb-fieldflow-label">Do you have your client ID number or your unique client identifier (UCI)?</p>
                                       <p>If you didn’t include an email address on your application, you <strong>won’t</strong> automatically get your UCI and the confirmation that we received your application. Contact the office where you mailed your application to get your client ID or UCI.</p>
@@ -305,12 +296,12 @@
                 </div>
               </li>
               <li>Search of citizenship records
-                <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                   <p>How did you apply? </p>
                   <ul>
                     <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.search-online&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#search-online">Online (digital)</a></li>
                     <li>By mail (paper)
-                      <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                      <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                         <p>Where did you apply from?</p>
                         <ul>
                           <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.search-paper-inside&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#search-paper-inside">Canada or the United States</a></li>
@@ -327,7 +318,7 @@
           </div>
         </li>
         <li>Temporary residence (for example visitor visas, study and work permits)
-          <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+          <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
             <p>What kind of temporary residence application?</p>
             <ul>
               <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.visit&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#visit">Visitor visa</a></li>
@@ -340,15 +331,15 @@
           </div>
         </li>
         <li>Permanent residence (for example, Express entry, family sponsorship, refugees)
-          <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+          <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
           <p>What kind of permanent residence application?</p>
           <ul>
             <li>Family sponsorship
-              <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+              <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
               <p>What kind of family sponsorship application?</p>
               <ul>
                 <li>Spouse, partner or dependent child
-                  <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+                  <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                     <p>Which application process?</p>
                     <ul>
                       <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.canada-spousal-result&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#canada-spousal-result">In Canada</a></li>
@@ -358,7 +349,7 @@
                 </li>
              
             <li>Parent or grandparent
-              <div class="wb-fieldflow-sub gc-font-2019" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
+              <div class="wb-fieldflow-sub" data-wb-fieldflow='{"renderas":"radio","gcChckbxrdio":true}'>
                 <p>Are you the sponsor or the person being sponsored?</p>
                 <ul>
                   <li data-wb-fieldflow="{&quot;action&quot;: &quot;toggle&quot;, &quot;toggle&quot;: &quot;.pgp-fam-result-1&quot;}"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html#pgp-fam-result-1">The sponsor</a></li>
@@ -384,9 +375,7 @@
     <input class="btn btn-primary mrgn-bttm-lg hidden" id="contButton" type="submit" value="Continue">
   </form>
   </div>
-  </div>
-
-  <div class="container">
+  <div>
   <div>
     <div class="row">
       <div class="col-xs-12 express-entry rslt hidden">
@@ -1990,7 +1979,10 @@
   </div>
   </div>
   <!-- CONTENT ENDS HERE -->
+  </div>
+</section>
 
+<main property="mainContentOfPage" class="container">
   <div class="row row-no-gutters mrgn-tp-xl">
     <div class="col-sm-7 col-lg-6">
       <section class="gc-pg-hlpfl provisional">
