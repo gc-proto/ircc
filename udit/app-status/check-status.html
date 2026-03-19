@@ -48,6 +48,7 @@
 	color: #2b7da3;
 	margin-right: 15px;
 }
+    .tp { background-color: whitesmoke}
 </style>
 </head>
 
@@ -718,53 +719,51 @@
         <div class="row">
           <div class="col-xs-12 visit rslt hidden">
             <h2 class="mrgn-tp-0" id="visit">Visitor visa</h2>
-            <div class="well mrgn-tp-lg">
+            <div class="panel panel-default p-4"><div class="panel-body mrgn-tp-0">
               <h3 class="mrgn-tp-0">Online applications</h3>
               <p>Select the account you used to apply. What you used to make the account depends on which you used to apply.</p>
               <div class="account-card"> <span class="fas fa-user-circle" aria-hidden="true"></span> <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html">IRCC secure account (GCKey or Sign-in partner)</a> </div>
               <div class="account-card"> <span class="fas fa-user-circle" aria-hidden="true"></span> <a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en">IRCC portal (email address)</a> </div>
               <div class="account-card"> <span class="fas fa-user-circle" aria-hidden="true"></span> <a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en">IRCC portal - New version (email address)</a> </div>
-              <div class="alert alert-info mrgn-tp-md mrgn-bttm-md">
-                <p><strong><span class="fas fa-info-circle" aria-hidden="true"></span> Not sure which account you used?</strong></p>
+              <section class="alert alert-info mrgn-tp-md mrgn-bttm-md">
+                <h3>Not sure which account you used?</h3>
                 <p>Check your email or try signing into each account.</p>
-              </div>
+              </section>
               <details>
                 <summary>You can also try our Application status tracker</summary>
                 <p>It may show updates on your application sooner than some accounts. It’s updated daily. <strong>You need to create another account to use it.</strong></p>
-                <p><a href="https://ircc-tracker-suivi.apps.cic.gc.ca/en" target="_blank" class="btn btn-default">Use the Application status tracker<span class="wb-inv"> (opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></p>
+                <p><a href="https://ircc-tracker-suivi.apps.cic.gc.ca/en" target="_blank" class="btn btn-default">Use the Application status tracker<span class="wb-inv"> (opens in a new tab)</span>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></p>
               </details>
-            </div>
-            <details class="mrgn-tp-lg">
+         </div>  </div>
+                <div class="">
+            <details class="mrgn-tp-lg panel panel-default">
               <summary><strong>Paper applications</strong></summary>
               <p>If you were eligible to submit a paper application, you need to check your application status in a different way.</p>
-              <div class="row mrgn-tp-md">
-                <div class="col-md-6">
-                  <div class="account-card"> <span class="fas fa-user-circle" aria-hidden="true"></span> <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account/link-paper-online.html">Link your application to an IRCC secure account</a> </div>
-                  <p class="small mrgn-lft-lg"><span class="label label-success">Updated in real time</span></p>
-                </div>
-                <div class="col-md-6">
-                  <div class="account-card"> <span class="fas fa-user-circle" aria-hidden="true"></span> <a href="https://services3.cic.gc.ca/ecas/security.do?app=ecas&amp;lang=en">Use the Client Application Status tool</a> </div>
-                  <p class="small mrgn-lft-lg"><span class="label label-info">Updated daily</span></p>
-                </div>
-              </div>
+               
+                  <div class="account-card"> <span class="fas fa-user-circle" aria-hidden="true"></span> <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account/link-paper-online.html">Link your application to an IRCC secure account</a> 
+                  <p class="small mrgn-lft-lg"><span class="label label-success">Updated in real time</span></p></div>
+             
+                  <div class="account-card"> <span class="fas fa-user-circle" aria-hidden="true"></span> <a href="https://services3.cic.gc.ca/ecas/security.do?app=ecas&amp;lang=en">Use the Client Application Status tool</a>
+                  <p class="small mrgn-lft-lg"><span class="label label-info">Updated daily</span></p> </div>
+           
               <details class="mrgn-tp-md">
                 <summary>You can also try our Application status tracker</summary>
                 <p>It may show updates on your application sooner than some accounts. It’s updated daily. <strong>You need to create another account to use it.</strong></p>
-                <p><a href="https://ircc-tracker-suivi.apps.cic.gc.ca/en" target="_blank" class="btn btn-default">Use the Application status tracker<span class="wb-inv"> (opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></p>
+                <p><a href="https://ircc-tracker-suivi.apps.cic.gc.ca/en" target="_blank" class="btn btn-default">Use the Application status tracker<span class="wb-inv"> (opens in a new tab)</span>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></p>
               </details>
-            </details>
-            <div class="well well-sm mrgn-tp-lg">
-              <div class="row">
-                <div class="col-xs-1 text-center"> <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span> </div>
+            </details></div>
+            <div class="panel panel-default mrgn-tp-lg">
+              
+              <div class="panel-body">  <div class="col-xs-1 text-center"> <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span> </div>
                 <div class="col-xs-11">
-                  <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                  <h3 class="mrgn-tp-sm h4">Check the processing time for your application</h3>
                   <p>You can see how long it’s taking us to process your type of application right now.</p>
                   <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                </div></div>
+              
+            </div>     </div>
+        
+        </div></div>
       </div>
       <div>
         <div class="row">
@@ -1870,21 +1869,21 @@
         </div>
       </div>
     </div>
-  </div>
+  
 </section>
-<h2 class="mrgn-tp-xl"><span class="fas fa-question-circle" aria-hidden="true"></span> Top questions</h2>
-<details class="mrgn-bttm-sm">
+<section class="tp"><div class="container"><h2 class="mrgn-tp-md"><span class="fas fa-question-circle" aria-hidden="true"></span> Top questions</h2>
+<details class="mrgn-bttm-md">
   <summary>When can I check my application status?</summary>
   <p>You can check the status of your application after you receive an acknowledgement of receipt (AOR) letter or email from us. This confirms we received your application and that it's complete.</p>
 </details>
-<details class="mrgn-bttm-sm">
+<details class="mrgn-bttm-md">
   <summary>How can I check if my application has been received?</summary>
   <p>If you applied online, you'll get a confirmation email right after submitting. If you applied on paper and have a tracking number, you can check if it was delivered. You'll get an AOR after we confirm your application is complete.</p>
 </details>
-<details class="mrgn-bttm-sm">
+<details class="mrgn-bttm-lg">
   <summary>How can I update or ask about my application after it's been submitted?</summary>
   <p>You can <a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3">update or ask about an application in progress</a> through our online tools or by contacting the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/client-support-centre.html">Client Support Centre</a>.</p>
-</details>
+</details></div></section>
 
 <!-- CONTENT ENDS HERE -->
 
