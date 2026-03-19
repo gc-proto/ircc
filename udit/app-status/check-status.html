@@ -35,9 +35,18 @@
   .bg-info .gc-chckbxrdio label::before {
     background-color: #fff;
   }
-  .bg-info details {
-    background-color: #fff;
+  .account-card {
+    border: 1px solid #ddd;
+    border-radius: 4px;
     padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .account-card .fas {
+    font-size: 1.5em;
+    color: #2b7da3;
+    margin-right: 15px;
   }
 </style>
 </head>
@@ -144,8 +153,15 @@
   
   <!-- IF YOU PORT THIS TO AEM, START COPYING FROM HERE-->
   
-  <p>The way to check the status of your application depends on what you applied for. For some types of applications, it also matters how you applied.</p>
-  <p>Answer a few questions to find out how to get your application status.</p>
+  <div class="row mrgn-bttm-lg">
+    <div class="col-md-8">
+      <p>The way to check the status of your application depends on what you applied for. For some types of applications, it also matters how you applied.</p>
+      <p>Answer a few questions to find out how to get your application status.</p>
+    </div>
+    <div class="col-md-4 hidden-xs hidden-sm text-center">
+      <img src="https://www.canada.ca/content/dam/ircc/images/ircc/services/check-status-illust.png" alt="" class="img-responsive mrgn-tp-md" style="max-height: 180px;">
+    </div>
+  </div>
 </main>
 
 <section class="bg-info pddng-tp-xl pddng-bttm-xl">
@@ -379,56 +395,74 @@
     <input class="btn btn-primary mrgn-bttm-lg hidden" id="contButton" type="submit" value="Continue">
   </form>
   </div>
-  <div>
+</section>
+
+<div class="container">
   <div>
     <div class="row">
       <div class="col-xs-12 express-entry rslt hidden">
-        <div>
-          <h2 id="express-entry" class="mrgn-tp-0">Express Entry</h2>
-          <p>This includes applications for</p>
-          <ul>
-            <li>Canadian Experience Class (CEC)</li>
-            <li>Provincial Nominee Program (PNP)</li>
-            <li>Federal Skilled Workers</li>
-            <li>Federal Skilled Trades</li>
-          </ul>
-          <h2>How to check your application status</h2>
-          <p>You can check the status of your application in the <a href="https://ircc-tracker-suivi.apps.cic.gc.ca/en" target="_blank">Application status tracker<span class="wb-inv">(opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>.</p>
-          <p>You&nbsp;<strong>must</strong>&nbsp;create a&nbsp;<strong>new account</strong>&nbsp;if</p>
-          <ul>
-            <li>this is your first time checking your application status in the application status tracker</li>
-            <li>you’ve been using the <a href="https://services3.cic.gc.ca/ecas/security.do?app=ecas&amp;lang=en" target="_blank">Client Application Status (CAS) tool<span class="wb-inv">(opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>&nbsp;to check your application status
-              <ul>
-                <li>You&nbsp;<strong>can</strong><strong>’t</strong>&nbsp;use your CAS username and password.</li>
-              </ul>
-            </li>
-          </ul>
-          <p>To register, you need your</p>
-          <ul class="list-unstyled">
-            <li><span class="fas fa-check small">&nbsp;</span><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=013&amp;top=4" target="_blank">unique client identifier (UCI) or client ID <span class="wb-inv">(opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></li>
-            <li><span class="fas fa-check small">&nbsp;</span>application number</li>
-            <li><span class="fas fa-check small">&nbsp;</span>first and last name</li>
-            <li><span class="fas fa-check small">&nbsp;</span>date of birth</li>
-            <li><span class="fas fa-check small">&nbsp;</span>place of birth</li>
-          </ul>
-          <p>If you’re a representative or designated person, you also need your</p>
-          <ul class="list-unstyled">
-            <li><span class="fas fa-check small">&nbsp;</span><a href="https://ircc-tracker-suivi.apps.cic.gc.ca/en/forgot-party" target="_blank">party ID<span class="wb-inv">(opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></li>
-            <li><span class="fas fa-check small">&nbsp;</span>first and last name</li>
-          </ul>
-          <p>Status updates will&nbsp;<strong>only</strong>&nbsp;show up&nbsp;<strong>after&nbsp;</strong>you get an acknowledgement of receipt (AOR) letter or email.</p>
-          <p>Until then, you may be able to see</p>
-          <ul>
-            <li>the date we got your application</li>
-            <li>the name of the sponsor</li>
-            <li>your contact information</li>
-          </ul>
-          <p>If you applied on paper, you can</p>
-          <ul>
-            <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/register.html">create an online account</a></li>
-            <li><a href="https://www.ircc.canada.ca/english/helpcentre/answer.asp?qnum=1222&amp;top=3">link your paper application to it</a></li>
-          </ul>
-          <p>You’ll see any updates to your application status there.</p>
+        <h2 id="express-entry" class="mrgn-tp-0">Express Entry</h2>
+        <p>This includes applications for Canadian Experience Class (CEC), Provincial Nominee Program (PNP), Federal Skilled Workers and Federal Skilled Trades.</p>
+
+        <div class="well mrgn-tp-lg">
+          <h3 class="mrgn-tp-0">Online applications</h3>
+          <p>Check your application status using one of these accounts.</p>
+          <div class="account-card">
+            <span class="fas fa-user-circle" aria-hidden="true"></span>
+            <a href="https://ircc-tracker-suivi.apps.cic.gc.ca/en" target="_blank">Application status tracker<span class="wb-inv"> (opens in a new tab)</span></a>
+          </div>
+          <div class="account-card">
+            <span class="fas fa-user-circle" aria-hidden="true"></span>
+            <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html">IRCC secure account (GCKey or Sign-in partner)</a>
+          </div>
+          <div class="alert alert-info mrgn-tp-md mrgn-bttm-md">
+            <p><strong><span class="fas fa-info-circle" aria-hidden="true"></span> Status updates</strong> will <strong>only</strong> show up <strong>after</strong> you get an acknowledgement of receipt (AOR) letter or email.</p>
+          </div>
+          <details>
+            <summary>What you need to register for the Application status tracker</summary>
+            <ul>
+              <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=013&amp;top=4" target="_blank">unique client identifier (UCI) or client ID<span class="wb-inv"> (opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></li>
+              <li>application number</li>
+              <li>first and last name</li>
+              <li>date of birth</li>
+              <li>place of birth</li>
+            </ul>
+            <p>If you’re a representative or designated person, you also need your <a href="https://ircc-tracker-suivi.apps.cic.gc.ca/en/forgot-party" target="_blank">party ID<span class="wb-inv"> (opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> and first and last name.</p>
+          </details>
+        </div>
+
+        <details class="mrgn-tp-lg">
+          <summary><strong>Paper applications</strong></summary>
+          <p>If you applied on paper, you can link your application to an online account to see status updates.</p>
+          <div class="row mrgn-tp-md">
+            <div class="col-md-6">
+              <div class="account-card">
+                <span class="fas fa-user-circle" aria-hidden="true"></span>
+                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account/link-paper-online.html">Link your application to an IRCC secure account</a>
+              </div>
+              <p class="small mrgn-lft-lg"><span class="label label-success">Updated in real time</span></p>
+            </div>
+            <div class="col-md-6">
+              <div class="account-card">
+                <span class="fas fa-user-circle" aria-hidden="true"></span>
+                <a href="https://services3.cic.gc.ca/ecas/security.do?app=ecas&amp;lang=en">Use the Client Application Status tool</a>
+              </div>
+              <p class="small mrgn-lft-lg"><span class="label label-info">Updated daily</span></p>
+            </div>
+          </div>
+        </details>
+
+        <div class="well well-sm mrgn-tp-lg">
+          <div class="row">
+            <div class="col-xs-1 text-center">
+              <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+            </div>
+            <div class="col-xs-11">
+              <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+              <p>You can see how long it’s taking us to process your type of application right now.</p>
+              <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -436,60 +470,37 @@
   <div>
     <div class="row ">
       <div class="col-xs-12 other-immigration-programs rslt hidden">
-        <div>
-          <h2 id="other-immigration-programs" class="mrgn-tp-0">Other immigration programs</h2>
-          <p>This includes applications for the following:</p>
-          <ul>
-            <li>Agri-Food Pilot</li>
-            <li>Atlantic Immigration Program</li>
-            <li>caregivers</li>
-            <li>Economic Mobility Pathways Pilot</li>
-            <li>health-care workers permanent residence pathway</li>
-            <li>humanitarian and compassionate cases</li>
-            <li>out-of-status construction workers in the Greater Toronto Area</li>
-            <li>protected persons</li>
-            <li>Quebec-selected skilled workers</li>
-            <li>Quebec investors</li>
-            <li>Quebec entrepreneurs</li>
-            <li>Rural and Northern Immigration Pilot</li>
-            <li>self-employed persons</li>
-            <li>start-up visas</li>
-            <li>temporary resident permit holders</li>
-          </ul>
-          <div class="well">
-            <h2 class="mrgn-tp-0">How to check your application status</h2>
-            <p>There are 2 ways to check your application status online.</p>
-            <div class="row">
-              <div class="col-md-6">
-                <p><strong>Option 1: Use the Client Application Status tool</strong></p>
-                <p>This online tool is updated <strong>daily</strong>.</p>
-                <a href="https://services3.cic.gc.ca/ecas/security.do?app=ecas&amp;lang=en" class="btn btn-primary">Check
-                application status</a> </div>
-              <div class="col-md-6">
-                <p><strong>Option 2: Check your application status in your online account</strong></p>
-                <p>You can create a secure IRCC online account and link it to your existing application. If you applied online,
-                  this is a different account to the one you used when you applied.</p>
-                <p><a href="http://www.ircc.canada.ca/english/helpcentre/answer.asp?qnum=1222&amp;top=3">Find out which applications
-                  you can link to an online account</a>.</p>
-                <p>In your online account, you get</p>
-                <ul>
-                  <li>status updates</li>
-                  <li>messages about your application online instead of by mail</li>
-                </ul>
-                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account/link-paper-online.html" class="btn btn-primary">Link your existing application to an online account</a> </div>
-            </div>
+        <h2 id="other-immigration-programs" class="mrgn-tp-0">Other immigration programs</h2>
+        <p>This includes applications for the Agri-Food Pilot, Atlantic Immigration Program, caregivers, Economic Mobility Pathways Pilot, health-care workers permanent residence pathway, humanitarian and compassionate cases, out-of-status construction workers in the Greater Toronto Area, protected persons, Quebec-selected skilled workers, Quebec investors, Quebec entrepreneurs, Rural and Northern Immigration Pilot, self-employed persons, start-up visas and temporary resident permit holders.</p>
+
+        <div class="well mrgn-tp-lg">
+          <h3 class="mrgn-tp-0">How to check your application status</h3>
+          <p>Select the account or tool you want to use to check your status.</p>
+          <div class="account-card">
+            <span class="fas fa-user-circle" aria-hidden="true"></span>
+            <a href="https://services3.cic.gc.ca/ecas/security.do?app=ecas&amp;lang=en">Client Application Status tool</a>
+          </div>
+          <p class="small mrgn-lft-lg"><span class="label label-info">Updated daily</span></p>
+          <div class="account-card">
+            <span class="fas fa-user-circle" aria-hidden="true"></span>
+            <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account/link-paper-online.html">Link your application to an IRCC secure account</a>
+          </div>
+          <p class="small mrgn-lft-lg"><span class="label label-success">Updated in real time</span></p>
+          <div class="alert alert-info mrgn-tp-md mrgn-bttm-md">
+            <p><strong><span class="fas fa-info-circle" aria-hidden="true"></span> Not sure which to use?</strong></p>
+            <p>If you applied online, you can link to an IRCC secure account (this is a different account than the one you used to apply). <a href="https://www.ircc.canada.ca/english/helpcentre/answer.asp?qnum=1222&amp;top=3">Find out which applications you can link to an online account</a>.</p>
           </div>
         </div>
-        <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
-              </div>
+
+        <div class="well well-sm mrgn-tp-lg">
+          <div class="row">
+            <div class="col-xs-1 text-center">
+              <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+            </div>
+            <div class="col-xs-11">
+              <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+              <p>You can see how long it’s taking us to process your type of application right now.</p>
+              <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
             </div>
           </div>
         </div>
@@ -499,71 +510,66 @@
   <div>
     <div class="row ">
       <div class="col-xs-12 canada-spousal-result rslt hidden">
-        <div>
-          <h2 id="canada-spousal-result">Spouse, partner or dependent child: In Canada process</h2>
-        </div>
-        <div>
-          <p class="mrgn-tp-md">We’re still accepting family sponsorship applications.</p>
-        </div>
-        <div>
-          <h3>Let us contact you online or by email</h3>
-          <p>If you’re the person being sponsored, you can <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html">create an online account</a> and <a href="https://ircc.canada.ca/english/helpcentre/index-featured-can.asp">link your paper application</a> to it. Through this account, we will </p>
-          <ol>
-            <li>send you alerts and messages about your application</li>
-            <li>ask you for other documents or information we need to process your application</li>
-          </ol>
-          <h3>Check your application status</h3>
-          <p>You can check the status of your application through the <a href="https://ircc-tracker-suivi.apps.cic.gc.ca/en" target="_blank">application status tracker<span class="wb-inv">(opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>.</p>
-          <p>You <strong>must</strong> create a <strong>new account</strong> if</p>
-          <ul>
-            <li>this is your first time checking your application status</li>
-            <li>you’ve been using the Client Application Status (CAS) tool to check your application status
-              <ul>
-                <li>you <strong>cannot</strong> reuse your CAS username and password</li>
-              </ul>
-            </li>
-          </ul>
-          <p>To register, you’ll need your</p>
-          <ul>
-            <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=013&amp;top=4" target="_blank">unique client identifier (UCI) or client ID<span class="wb-inv">(opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></li>
-            <li>application number</li>
-            <li>first and last name</li>
-            <li>date of birth</li>
-            <li>place of birth</li>
-          </ul>
-          <p>If you’re a representative or designated person, you’ll also need your</p>
-          <ul>
-            <li><a href="https://ircc-tracker-suivi.apps.cic.gc.ca/en/forgot-party" target="_blank">party ID<span class="wb-inv">(opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></li>
-            <li>first and last name</li>
-          </ul>
-          <p>Status updates will <strong>only</strong> show up <strong>after </strong>you get an acknowledgement of receipt (AOR) letter or email.</p>
-          <ul>
-            <li>Until then, you may be able to see
-              <ul>
-                <li>the date we got your application</li>
-                <li>the name of the sponsor</li>
-                <li>your contact information</li>
-              </ul>
-            </li>
-          </ul>
-          <div class="alert alert-info">
-            <p>You need a <a href="https://support.google.com/chrome/answer/95346?co=GENIE.Platform%3DDesktop&amp;hl=en-GB" rel="external" target="_blank">Chrome<span class="wb-inv"> (opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>, <a href="https://support.apple.com/downloads/safari" rel="external" target="_blank">Safari<span class="wb-inv"> (opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> or <a href="https://www.mozilla.org/en-CA/firefox/new/" rel="external" target="_blank">Firefox<span class="wb-inv"> (opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> web browser to access your account.</p>
+        <h2 id="canada-spousal-result" class="mrgn-tp-0">Spouse, partner or dependent child: In Canada process</h2>
+        <p>We’re still accepting family sponsorship applications.</p>
+
+        <div class="well mrgn-tp-lg">
+          <h3 class="mrgn-tp-0">Online applications</h3>
+          <p>Check your application status using one of these accounts.</p>
+          <div class="account-card">
+            <span class="fas fa-user-circle" aria-hidden="true"></span>
+            <a href="https://ircc-tracker-suivi.apps.cic.gc.ca/en" target="_blank">Application status tracker<span class="wb-inv"> (opens in a new tab)</span></a>
           </div>
-          <h3 class="mrgn-tp-0">Create an account</h3>
-          <p class="text-left mrgn-tp-md"><a class="btn btn-primary btn-lg" href="https://ircc-tracker-suivi.apps.cic.gc.ca/en/register">Register</a></p>
-          <h3 class="mrgn-tp-0">Sign in to check your status</h3>
-          <p class="text-left mrgn-tp-md"><a class="btn btn-default btn-lg" href="https://ircc-tracker-suivi.apps.cic.gc.ca/en/login">Sign in</a></p>
+          <div class="account-card">
+            <span class="fas fa-user-circle" aria-hidden="true"></span>
+            <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html">IRCC secure account (GCKey or Sign-in partner)</a>
+          </div>
+          <div class="alert alert-info mrgn-tp-md mrgn-bttm-md">
+            <p><strong><span class="fas fa-info-circle" aria-hidden="true"></span> Status updates</strong> will <strong>only</strong> show up <strong>after</strong> you get an acknowledgement of receipt (AOR) letter or email.</p>
+          </div>
+          <details>
+            <summary>What you need to register for the Application status tracker</summary>
+            <ul>
+              <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=013&amp;top=4" target="_blank">unique client identifier (UCI) or client ID<span class="wb-inv"> (opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></li>
+              <li>application number</li>
+              <li>first and last name</li>
+              <li>date of birth</li>
+              <li>place of birth</li>
+            </ul>
+            <p>If you’re a representative or designated person, you also need your <a href="https://ircc-tracker-suivi.apps.cic.gc.ca/en/forgot-party" target="_blank">party ID<span class="wb-inv"> (opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> and first and last name.</p>
+          </details>
         </div>
-        <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+
+        <details class="mrgn-tp-lg">
+          <summary><strong>Paper applications</strong></summary>
+          <p>If you’re the person being sponsored, you can link your paper application to an online account. Through this account, we will send you alerts and messages about your application.</p>
+          <div class="row mrgn-tp-md">
+            <div class="col-md-6">
+              <div class="account-card">
+                <span class="fas fa-user-circle" aria-hidden="true"></span>
+                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account/link-paper-online.html">Link your application to an IRCC secure account</a>
               </div>
+              <p class="small mrgn-lft-lg"><span class="label label-success">Updated in real time</span></p>
+            </div>
+            <div class="col-md-6">
+              <div class="account-card">
+                <span class="fas fa-user-circle" aria-hidden="true"></span>
+                <a href="https://services3.cic.gc.ca/ecas/security.do?app=ecas&amp;lang=en">Use the Client Application Status tool</a>
+              </div>
+              <p class="small mrgn-lft-lg"><span class="label label-info">Updated daily</span></p>
+            </div>
+          </div>
+        </details>
+
+        <div class="well well-sm mrgn-tp-lg">
+          <div class="row">
+            <div class="col-xs-1 text-center">
+              <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+            </div>
+            <div class="col-xs-11">
+              <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+              <p>You can see how long it’s taking us to process your type of application right now.</p>
+              <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
             </div>
           </div>
         </div>
@@ -629,14 +635,15 @@
           <p class="text-left mrgn-tp-md"><a class="btn btn-default btn-lg" href="https://ircc-tracker-suivi.apps.cic.gc.ca/en/login">Sign in</a></p>
         </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -671,14 +678,15 @@
           <p>The person sponsoring you can check the status of your application by using our <a href="https://services3.cic.gc.ca/ecas/security.do?lang=en">online tool</a>.</p>
         </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -700,14 +708,15 @@
           </ul>
           <a href="https://services3.cic.gc.ca/ecas/security.do?app=ecas&amp;lang=en" class="btn btn-primary mrgn-bttm-lg">Check your application status</a> </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -746,14 +755,15 @@
           </div>
         </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -762,126 +772,71 @@
     </div>
   </div>
   <div>
-    <div class="row ">
+    <div class="row">
       <div class="col-xs-12 visit rslt hidden">
-        <div>
-          <h2 class="mrgn-tp-0" id="visit">Visitor visa</h2>
-          <p>This includes</p>
-          <ul>
-            <li>temporary resident visas</li>
-            <li>super visas</li>
-            <li>transit visas</li>
-            <li>business visas </li>
-          </ul>
-          <p>There are a couple of ways to check your application status. The one you use depends on how you applied.</p>
-        </div>
-        <div>
-          <div class="row ">
-            <div class="col-md-6">
-              <div>
-                <details>
-                  <summary>I applied using the<strong> IRCC secure account</strong></summary>
-                  <div>
-                    <p>Click “Check status and messages” under <strong>View my submitted applications or profiles</strong>.</p>
-                    <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn-primary">Sign in to your IRCC secure account</a></p>
-                  </div>
-                  <div>
-                    <div class="cq-dd-paragraph">
-                      <div> <span data-incl-name="cas-app-status-tracker-en"></span>
-                        <details>
-                          <summary>You may be able to get more information in the Application status tracker</summary>
-                          <p>You can get a timeline of events in your application that may include more details than what’s shown in your main account. <strong>You need to create another account to use it.</strong> You need your</p>
-                          <ul>
-                            <li><a href="https://www.ircc.canada.ca/english/helpcentre/answer.asp?qnum=013&amp;top=4">unique client identifier</a>&nbsp;(UCI)</li>
-                            <li><a href="https://www.ircc.canada.ca/english/helpcentre/answer.asp?qnum=1521&amp;top=4">application number</a></li>
-                          </ul>
-                          <p><a href="https://ircc-tracker-suivi.apps.cic.gc.ca/en" target="_blank">Use the&nbsp;application status tracker</a><span class="wb-inv">(opens in a new tab)</span>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>.</p>
-                        </details>
-                      </div>
-                    </div>
-                  </div>
-                </details>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div>
-                <details>
-                  <summary>I applied using the<strong> IRCC portal</strong></summary>
-                  <div>
-                    <p>Sign in to your account to get your application status.</p>
-                    <p><a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en" class="btn btn-primary">Sign in to the IRCC portal</a></p>
-                  </div>
-                  <div>
-                    <div class="cq-dd-paragraph">
-                      <div> <span data-incl-name="cas-app-status-tracker-en"></span>
-                        <details>
-                          <summary>You may be able to get more information in the Application status tracker</summary>
-                          <p>You can get a timeline of events in your application that may include more details than what’s shown in your main account. <strong>You need to create another account to use it.</strong> You need your</p>
-                          <ul>
-                            <li><a href="https://www.ircc.canada.ca/english/helpcentre/answer.asp?qnum=013&amp;top=4">unique client identifier</a>&nbsp;(UCI)</li>
-                            <li><a href="https://www.ircc.canada.ca/english/helpcentre/answer.asp?qnum=1521&amp;top=4">application number</a></li>
-                          </ul>
-                          <p><a href="https://ircc-tracker-suivi.apps.cic.gc.ca/en" target="_blank">Use the&nbsp;application status tracker</a><span class="wb-inv">(opens in a new tab)</span>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>.</p>
-                        </details>
-                      </div>
-                    </div>
-                  </div>
-                </details>
-              </div>
-            </div>
+        <h2 class="mrgn-tp-0" id="visit">Visitor visa</h2>
+
+        <div class="well mrgn-tp-lg">
+          <h3 class="mrgn-tp-0">Online applications</h3>
+          <p>Select the account you used to apply. What you used to make the account depends on which you used to apply.</p>
+          <div class="account-card">
+            <span class="fas fa-user-circle" aria-hidden="true"></span>
+            <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html">IRCC secure account (GCKey or Sign-in partner)</a>
           </div>
-        </div>
-        <div>
-          <div class="alert alert-info mrgn-tp-md">
-            <p><strong>If you’re not sure which account you used to apply</strong>, try signing in to both or check your email.</p>
+          <div class="account-card">
+            <span class="fas fa-user-circle" aria-hidden="true"></span>
+            <a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en">IRCC portal (email address)</a>
           </div>
-        </div>
-        <div>
+          <div class="account-card">
+            <span class="fas fa-user-circle" aria-hidden="true"></span>
+            <a href="https://portal-portail.apps.cic.gc.ca/signin?lang=en">IRCC portal - New version (email address)</a>
+          </div>
+          <div class="alert alert-info mrgn-tp-md mrgn-bttm-md">
+            <p><strong><span class="fas fa-info-circle" aria-hidden="true"></span> Not sure which account you used?</strong></p>
+            <p>Check your email or try signing into each account.</p>
+          </div>
           <details>
-            <summary>I applied on paper</summary>
-            <div>
-              <h3>Link your paper application to an IRCC secure account</h3>
-              <p>You need to</p>
-              <ul>
-                <li>gather all the emails about your application you’ve received</li>
-                <li>have the identification numbers from them ready</li>
-              </ul>
-              <p>Your status is updated <strong>in real time</strong>.</p>
-              <p>In your account, you will get</p>
-              <ul>
-                <li>your application status</li>
-                <li>messages about your application, instead of by mail</li>
-                <li>requests from us for other documents or info we may need to process your application</li>
-              </ul>
-              <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account/link-paper-online.html" class="btn btn-primary">Link your paper application to an IRCC secure account</a></p>
-            </div>
-            <div>
-              <div class="cq-dd-paragraph">
-                <div> <span data-incl-name="cas-app-status-tracker-en"></span>
-                  <details>
-                    <summary>You may be able to get more information in the Application status tracker</summary>
-                    <p>You can get a timeline of events in your application that may include more details than what’s shown in your main account. <strong>You need to create another account to use it.</strong> You need your</p>
-                    <ul>
-                      <li><a href="https://www.ircc.canada.ca/english/helpcentre/answer.asp?qnum=013&amp;top=4">unique client identifier</a>&nbsp;(UCI)</li>
-                      <li><a href="https://www.ircc.canada.ca/english/helpcentre/answer.asp?qnum=1521&amp;top=4">application number</a></li>
-                    </ul>
-                    <p><a href="https://ircc-tracker-suivi.apps.cic.gc.ca/en" target="_blank">Use the&nbsp;application status tracker</a><span class="wb-inv">(opens in a new tab)</span>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>.</p>
-                  </details>
-                </div>
-              </div>
-            </div>
+            <summary>You can also try our Application status tracker</summary>
+            <p>It may show updates on your application sooner than some accounts. It’s updated daily. <strong>You need to create another account to use it.</strong></p>
+            <p><a href="https://ircc-tracker-suivi.apps.cic.gc.ca/en" target="_blank" class="btn btn-default">Use the Application status tracker<span class="wb-inv"> (opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></p>
           </details>
         </div>
-        <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+
+        <details class="mrgn-tp-lg">
+          <summary><strong>Paper applications</strong></summary>
+          <p>If you were eligible to submit a paper application, you need to check your application status in a different way.</p>
+          <div class="row mrgn-tp-md">
+            <div class="col-md-6">
+              <div class="account-card">
+                <span class="fas fa-user-circle" aria-hidden="true"></span>
+                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account/link-paper-online.html">Link your application to an IRCC secure account</a>
               </div>
+              <p class="small mrgn-lft-lg"><span class="label label-success">Updated in real time</span></p>
+            </div>
+            <div class="col-md-6">
+              <div class="account-card">
+                <span class="fas fa-user-circle" aria-hidden="true"></span>
+                <a href="https://services3.cic.gc.ca/ecas/security.do?app=ecas&amp;lang=en">Use the Client Application Status tool</a>
+              </div>
+              <p class="small mrgn-lft-lg"><span class="label label-info">Updated daily</span></p>
+            </div>
+          </div>
+          <details class="mrgn-tp-md">
+            <summary>You can also try our Application status tracker</summary>
+            <p>It may show updates on your application sooner than some accounts. It’s updated daily. <strong>You need to create another account to use it.</strong></p>
+            <p><a href="https://ircc-tracker-suivi.apps.cic.gc.ca/en" target="_blank" class="btn btn-default">Use the Application status tracker<span class="wb-inv"> (opens in a new tab)</span></a>&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></p>
+          </details>
+        </details>
+
+        <div class="well well-sm mrgn-tp-lg">
+          <div class="row">
+            <div class="col-xs-1 text-center">
+              <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+            </div>
+            <div class="col-xs-11">
+              <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+              <p>You can see how long it’s taking us to process your type of application right now.</p>
+              <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
             </div>
           </div>
         </div>
@@ -925,7 +880,7 @@
               <div class="well hght-inhrt">
                 <h3 class="mrgn-tp-0"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span>&nbsp;Online
                   applications</h3>
-                <p>If you’re applying to extend or change the conditions of your study permit, you <strong>can’t</strong> use the application status tracker. Sign in to your account to check your application status. Click “Check status and messages” under <strong>View
+                <p>If you’re applying to extend or change the conditions of your study permit, you <strong>can’t</strong> use the application status tracker. Sign in to your account to check your application status. Click "Check status and messages" under <strong>View
                   my submitted applications or profiles</strong> section.</p>
                 <p><a class="btn btn-primary" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">Sign in to your
                   account</a></p>
@@ -943,14 +898,15 @@
           </div>
         </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -997,8 +953,18 @@
             <p><a class="btn btn-primary" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">Check processing
               times</a></p>
           </div>
-          <p><img alt="" src="css/icon_small.png"> Find out more about <a href="http://www.ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);"> how you can update or
-            ask about an application in progress</a>.</p>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it's taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1044,14 +1010,15 @@
           </div>
         </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -1066,8 +1033,18 @@
         <p>You can get online updates on pending applications and the expiration date or status of existing eTAs.</p>
         <p><a class="btn btn-primary" href="https://eta.onlineservices-servicesenligne.apps.cic.gc.ca/eta/applicationQuery?lang=en">Check your eTA status</a> </p>
       </div>
-      <p><img alt="" src="css/icon_small.png"> Find out more about <a href="http://www.ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);"> how you can update or
-        ask about an application in progress</a>.</p>
+      <div class="well well-sm mrgn-tp-lg">
+        <div class="row">
+          <div class="col-xs-1 text-center">
+            <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+          </div>
+          <div class="col-xs-11">
+            <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+            <p>You can see how long it's taking us to process your type of application right now.</p>
+            <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div>
@@ -1185,14 +1162,15 @@
           </section>
         </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -1234,14 +1212,15 @@
           </div>
         </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -1406,14 +1385,15 @@
           </div>
         </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -1481,14 +1461,15 @@
           <p><a href="https://services3.cic.gc.ca/ecas/security.do?app=ecas&amp;lang=en" class="btn btn-primary">Check the Client Application Status tool</a></p>
         </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -1524,14 +1505,15 @@
           </div>
         </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -1617,7 +1599,7 @@
           <div class="well hght-inhrt">
             <h3 class="mrgn-tp-0"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span>&nbsp;Online
               applications</h3>
-            <p>Sign in to your account to check your application status. Click “Check status and messages” under <strong>View my submitted applications or profiles</strong>.</p>
+            <p>Sign in to your account to check your application status. Click "Check status and messages" under <strong>View my submitted applications or profiles</strong>.</p>
             <p><a class="btn btn-primary" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">Sign in to your
               account</a></p>
           </div>
@@ -1651,7 +1633,18 @@
         <p>If you cannot use the check application status tool, you can check processing times to see how long it takes to process your type of application.</p>
         <p><a class="btn btn-primary" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">Check processing times</a></p>
       </div>
-      <p><img alt="" src="css/icon_small.png"> Find out more about <a href="http://www.ircc.canada.ca/english/helpcentre/answer.asp?q=022&amp;t=4" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">what happens after you submit your application</a>.</p>
+      <div class="well well-sm mrgn-tp-lg">
+        <div class="row">
+          <div class="col-xs-1 text-center">
+            <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+          </div>
+          <div class="col-xs-11">
+            <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+            <p>You can see how long it's taking us to process your type of application right now.</p>
+            <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div>
@@ -1669,14 +1662,15 @@
           </div>
         </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -1699,14 +1693,15 @@
           </div>
         </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -1731,14 +1726,15 @@
           <p><a href="https://services3.cic.gc.ca/ecas/security.do?app=ecas&amp;lang=en" class="btn btn-primary">Check the client application status tool</a></p>
         </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -1803,14 +1799,15 @@
           <p><a href="https://services3.cic.gc.ca/ecas/security.do?app=ecas&amp;lang=en" class="btn btn-primary">Check the client application status tool</a></p>
         </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -1842,14 +1839,15 @@
           <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn-primary">Sign in to your account</a></p>
         </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -1870,14 +1868,15 @@
           </ul>
         </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -1965,14 +1964,15 @@
           </ul>
         </div>
         <div>
-          <div class="cq-dd-paragraph">
-            <div> <span data-incl-name="check-app-processing-times-en"></span>
-              <div class="mrgn-tp-md">
-                <p><img alt="" src="css/icon_small.png"> Find out how to</p>
-                <ul class="mrgn-lft-md">
-                  <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3" onclick="javascript:urchinTracker(&#39;/linktracker/english/my_application/internal/ecas&#39;);">update or ask about an application in progress</a></li>
-                  <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">check our processing times</a> to see how quickly we’re processing your type of application these days</li>
-                </ul>
+          <div class="well well-sm mrgn-tp-lg">
+            <div class="row">
+              <div class="col-xs-1 text-center">
+                <span class="fas fa-info-circle fa-2x text-info" aria-hidden="true"></span>
+              </div>
+              <div class="col-xs-11">
+                <h3 class="mrgn-tp-0 h4">Check the processing time for your application</h3>
+                <p>You can see how long it’s taking us to process your type of application right now.</p>
+                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times&nbsp;<span class="fas fa-arrow-right" aria-hidden="true"></span></a></p>
               </div>
             </div>
           </div>
@@ -1983,8 +1983,23 @@
   </div>
   </div>
   <!-- CONTENT ENDS HERE -->
+
+  <h2 class="mrgn-tp-xl"><span class="fas fa-question-circle" aria-hidden="true"></span> Top questions</h2>
+  <details class="mrgn-bttm-sm">
+    <summary>When can I check my application status?</summary>
+    <p>You can check the status of your application after you receive an acknowledgement of receipt (AOR) letter or email from us. This confirms we received your application and that it's complete.</p>
+  </details>
+  <details class="mrgn-bttm-sm">
+    <summary>How can I check if my application has been received?</summary>
+    <p>If you applied online, you'll get a confirmation email right after submitting. If you applied on paper and have a tracking number, you can check if it was delivered. You'll get an AOR after we confirm your application is complete.</p>
+  </details>
+  <details class="mrgn-bttm-sm">
+    <summary>How can I update or ask about my application after it's been submitted?</summary>
+    <p>You can <a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052&amp;top=3">update or ask about an application in progress</a> through our online tools or by contacting the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/client-support-centre.html">Client Support Centre</a>.</p>
+  </details>
+
   </div>
-</section>
+</div>
 
 <main property="mainContentOfPage" class="container">
   <div class="row row-no-gutters mrgn-tp-xl">
