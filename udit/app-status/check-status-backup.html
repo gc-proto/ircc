@@ -30,10 +30,32 @@
 </noscript>
 <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/m%C3%A9li-m%C3%A9lo/2024-09-kejimkujik.min.css">
 <style>
-    .bg-info {background-color: #D6E4F5;}
-    
+.bg-info {background-color: #D6E4F5;}
+.bg-info .gc-chckbxrdio {
+	position: relative;
+	min-height: 28px;
+	margin-bottom: 8px;
+	padding-left: 32px;
+}
+.bg-info .gc-chckbxrdio label {
+	margin-left: 0 !important;
+	display: inline !important;
+}
 .bg-info .gc-chckbxrdio label::before {
-	background-color: #fff;
+	background-color: #fff !important;
+	border: 1px solid #aaa !important;
+	width: 22px !important;
+	height: 22px !important;
+	left: 0 !important;
+	top: 2px !important;
+}
+.bg-info .gc-chckbxrdio input[type=radio]:checked + label::before {
+	background: #444 !important;
+	border-color: #444 !important;
+	box-shadow: inset 0 0 0 3px #fff;
+}
+.question.hidden {
+	display: none !important;
 }
     
 .account-card {
@@ -52,7 +74,44 @@
 .tp {
 	background-color: whitesmoke
 }
-</style>
+
+    .btn-nav {
+      display: inline-block;
+      padding: 8px 20px;
+      border: 1px solid #335075;
+      border-radius: 4px;
+      background: #fff;
+      color: #335075;
+      cursor: pointer;
+      margin-right: 10px;
+      font-size: 16px;
+    }
+    .btn-nav:hover {
+      background: #335075;
+      color: #fff;
+    }
+    .btn-nav:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .question {
+      border: none;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+    .question legend {
+      font-size: 1.3em;
+      font-weight: 700;
+      margin-bottom: 5px;
+      border-bottom: none;
+      width: 100%;
+      display: block;
+      float: none;
+    }
+    .question .gc-chckbxrdio:first-of-type {
+      margin-top: 15px;
+    }
+  </style>
 </head>
 
 <body vocab="http://schema.org/" typeof="WebPage">
@@ -176,329 +235,352 @@
       <form id="status-form" novalidate>
 
         
-        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question mrgn-tp-lg h2" id="q-what" tabindex="-1">
+        <fieldset class="question" id="q-what">
           <legend>What did you apply for?</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio">
-              <input type="radio" name="q-what" id="q-what-0" value="citizenship">
+                    <div class="gc-chckbxrdio">
+            <input type="radio" name="q-what" id="q-what-0" value="citizenship">
               <label for="q-what-0">Citizenship</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-what" id="q-what-1" value="temp-res">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-what" id="q-what-1" value="temp-res">
               <label for="q-what-1">Temporary residence (visitor visas, study and work permits)</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-what" id="q-what-2" value="perm-res">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-what" id="q-what-2" value="perm-res">
               <label for="q-what-2">Permanent residence (Express Entry, family sponsorship, refugees)</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-what" id="q-what-3" value="pr-card">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-what" id="q-what-3" value="pr-card">
               <label for="q-what-3">Permanent resident card (PR Card)</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-what" id="q-what-4" value="passport">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-what" id="q-what-4" value="passport">
               <label for="q-what-4">Passport (new and renewals)</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-what" id="q-what-5" value="refugee-cert">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-what" id="q-what-5" value="refugee-cert">
               <label for="q-what-5">Refugee travel document or certificate of identity</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-what" id="q-what-6" value="verification-amend">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-what" id="q-what-6" value="verification-amend">
               <label for="q-what-6">Verification of status or request to amend</label>
-            </li>
-          </ul>
+          </div>
         </fieldset>
 
         
-        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-citizenship-type" tabindex="-1">
+        <fieldset class="question hidden" id="q-citizenship-type">
           <legend>Which citizenship application?</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio">
-              <input type="radio" name="q-citizenship-type" id="q-citizenship-type-0" value="grant">
+                    <div class="gc-chckbxrdio">
+            <input type="radio" name="q-citizenship-type" id="q-citizenship-type-0" value="grant">
               <label for="q-citizenship-type-0">Becoming a Canadian citizen (grant of citizenship)</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-citizenship-type" id="q-citizenship-type-1" value="proof">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-citizenship-type" id="q-citizenship-type-1" value="proof">
               <label for="q-citizenship-type-1">Citizenship certificate (proof of citizenship)</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-citizenship-type" id="q-citizenship-type-2" value="search">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-citizenship-type" id="q-citizenship-type-2" value="search">
               <label for="q-citizenship-type-2">Search of citizenship records</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-citizenship-type" id="q-citizenship-type-3" value="resumption">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-citizenship-type" id="q-citizenship-type-3" value="resumption">
               <label for="q-citizenship-type-3">Resuming Canadian citizenship</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-citizenship-type" id="q-citizenship-type-4" value="renunciation">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-citizenship-type" id="q-citizenship-type-4" value="renunciation">
               <label for="q-citizenship-type-4">Giving up Canadian citizenship (renunciation)</label>
-            </li>
-          </ul>
+          </div>
         </fieldset>
 
         
-        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-citizen-grant-type" tabindex="-1">
+        <fieldset class="question hidden" id="q-citizen-grant-type">
           <legend>Select the application type:</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio">
-              <input type="radio" name="q-citizen-grant-type" id="q-citizen-grant-type-0" value="adult">
+                    <div class="gc-chckbxrdio">
+            <input type="radio" name="q-citizen-grant-type" id="q-citizen-grant-type-0" value="adult">
               <label for="q-citizen-grant-type-0">Adult (18 and older)</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-citizen-grant-type" id="q-citizen-grant-type-1" value="minor">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-citizen-grant-type" id="q-citizen-grant-type-1" value="minor">
               <label for="q-citizen-grant-type-1">Minor (under 18)</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-citizen-grant-type" id="q-citizen-grant-type-2" value="caf">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-citizen-grant-type" id="q-citizen-grant-type-2" value="caf">
               <label for="q-citizen-grant-type-2">Canadian Armed Forces member</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-citizen-grant-type" id="q-citizen-grant-type-3" value="adoption">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-citizen-grant-type" id="q-citizen-grant-type-3" value="adoption">
               <label for="q-citizen-grant-type-3">Adoption</label>
-            </li>
-          </ul>
+          </div>
         </fieldset>
 
         
-        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-adult-aor" tabindex="-1">
+        <fieldset class="question hidden" id="q-adult-aor">
           <legend>Have you received your acknowledgement of receipt letter or email?</legend>
           <p class="mrgn-bttm-md">You’ll get this letter or email <strong>after</strong> we receive your application <strong>and</strong> check that it’s complete. It can take some time to get it.</p>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio">
-              <input type="radio" name="q-adult-aor" id="q-adult-aor-0" value="yes">
+                    <div class="gc-chckbxrdio">
+            <input type="radio" name="q-adult-aor" id="q-adult-aor-0" value="yes">
               <label for="q-adult-aor-0">Yes</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-adult-aor" id="q-adult-aor-1" value="no">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-adult-aor" id="q-adult-aor-1" value="no">
               <label for="q-adult-aor-1">No</label>
-            </li>
-          </ul>
+          </div>
         </fieldset>
 
         
-        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-adult-first-time" tabindex="-1">
+        <fieldset class="question hidden" id="q-adult-first-time">
           <legend>Is this your first time checking your citizenship application status?</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio">
-              <input type="radio" name="q-adult-first-time" id="q-adult-first-time-0" value="yes">
+                    <div class="gc-chckbxrdio">
+            <input type="radio" name="q-adult-first-time" id="q-adult-first-time-0" value="yes">
               <label for="q-adult-first-time-0">Yes</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-adult-first-time" id="q-adult-first-time-1" value="no">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-adult-first-time" id="q-adult-first-time-1" value="no">
               <label for="q-adult-first-time-1">No, I already have a citizenship tracker account.</label>
-            </li>
-          </ul>
+          </div>
         </fieldset>
 
         
-        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-minor-aor" tabindex="-1">
+        <fieldset class="question hidden" id="q-minor-aor">
           <legend>Have you received your acknowledgement of receipt letter or email?</legend>
           <p class="mrgn-bttm-md">You’ll get this letter or email <strong>after</strong> we receive your application <strong>and</strong> check that it’s complete. It can take some time to get it.</p>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio">
-              <input type="radio" name="q-minor-aor" id="q-minor-aor-0" value="yes">
+                    <div class="gc-chckbxrdio">
+            <input type="radio" name="q-minor-aor" id="q-minor-aor-0" value="yes">
               <label for="q-minor-aor-0">Yes</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-minor-aor" id="q-minor-aor-1" value="no">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-minor-aor" id="q-minor-aor-1" value="no">
               <label for="q-minor-aor-1">No</label>
-            </li>
-          </ul>
+          </div>
         </fieldset>
 
         
-        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-minor-first-time" tabindex="-1">
+        <fieldset class="question hidden" id="q-minor-first-time">
           <legend>Is this your first time checking the minor’s citizenship application status?</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio">
-              <input type="radio" name="q-minor-first-time" id="q-minor-first-time-0" value="yes">
+                    <div class="gc-chckbxrdio">
+            <input type="radio" name="q-minor-first-time" id="q-minor-first-time-0" value="yes">
               <label for="q-minor-first-time-0">Yes</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-minor-first-time" id="q-minor-first-time-1" value="no">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-minor-first-time" id="q-minor-first-time-1" value="no">
               <label for="q-minor-first-time-1">No, I already have a citizenship tracker account.</label>
-            </li>
-          </ul>
+          </div>
         </fieldset>
 
         
-        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-caf-aor" tabindex="-1">
+        <fieldset class="question hidden" id="q-caf-aor">
           <legend>Have you received your acknowledgement of receipt (AOR) letter or email?</legend>
           <p class="mrgn-bttm-md">You’ll get this letter or email <strong>after</strong> we receive your application <strong>and</strong> check that it’s <strong>complete</strong>. It can take some time before you receive it.</p>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio">
-              <input type="radio" name="q-caf-aor" id="q-caf-aor-0" value="yes">
+                    <div class="gc-chckbxrdio">
+            <input type="radio" name="q-caf-aor" id="q-caf-aor-0" value="yes">
               <label for="q-caf-aor-0">Yes</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-caf-aor" id="q-caf-aor-1" value="no">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-caf-aor" id="q-caf-aor-1" value="no">
               <label for="q-caf-aor-1">No</label>
-            </li>
-          </ul>
+          </div>
         </fieldset>
 
         
-        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-adopt-aor" tabindex="-1">
+        <fieldset class="question hidden" id="q-adopt-aor">
           <legend>Have you received your acknowledgement of receipt (AOR) letter or email?</legend>
           <p class="mrgn-bttm-md">You’ll get this letter or email <strong>after</strong> we receive your application <strong>and</strong> check that it’s <strong>complete</strong>. It can take some time before you receive it.</p>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio">
-              <input type="radio" name="q-adopt-aor" id="q-adopt-aor-0" value="yes">
+                    <div class="gc-chckbxrdio">
+            <input type="radio" name="q-adopt-aor" id="q-adopt-aor-0" value="yes">
               <label for="q-adopt-aor-0">Yes</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-adopt-aor" id="q-adopt-aor-1" value="no">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-adopt-aor" id="q-adopt-aor-1" value="no">
               <label for="q-adopt-aor-1">No</label>
-            </li>
-          </ul>
+          </div>
         </fieldset>
 
         
-        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-proof-how" tabindex="-1">
+        <fieldset class="question hidden" id="q-proof-how">
           <legend>How did you apply for your citizenship certificate?</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio">
-              <input type="radio" name="q-proof-how" id="q-proof-how-0" value="online">
+                    <div class="gc-chckbxrdio">
+            <input type="radio" name="q-proof-how" id="q-proof-how-0" value="online">
               <label for="q-proof-how-0">Online (digital)</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-proof-how" id="q-proof-how-1" value="paper">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-proof-how" id="q-proof-how-1" value="paper">
               <label for="q-proof-how-1">By mail (paper)</label>
-            </li>
-          </ul>
+          </div>
         </fieldset>
 
         
-        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-proof-paper-where" tabindex="-1">
+        <fieldset class="question hidden" id="q-proof-paper-where">
           <legend>Where did you apply from?</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio">
-              <input type="radio" name="q-proof-paper-where" id="q-proof-paper-where-0" value="inside">
+                    <div class="gc-chckbxrdio">
+            <input type="radio" name="q-proof-paper-where" id="q-proof-paper-where-0" value="inside">
               <label for="q-proof-paper-where-0">Canada or the United States</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-proof-paper-where" id="q-proof-paper-where-1" value="outside">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-proof-paper-where" id="q-proof-paper-where-1" value="outside">
               <label for="q-proof-paper-where-1">Outside Canada and the United States</label>
-            </li>
-          </ul>
+          </div>
         </fieldset>
 
         
-        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-proof-inside-aor" tabindex="-1">
+        <fieldset class="question hidden" id="q-proof-inside-aor">
           <legend>Have you received your acknowledgement of receipt (AOR) letter or email?</legend>
           <p class="mrgn-bttm-md">You’ll get your AOR after we receive your application and check that it’s complete. It can take a while before you get it.</p>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio">
-              <input type="radio" name="q-proof-inside-aor" id="q-proof-inside-aor-0" value="yes">
+                    <div class="gc-chckbxrdio">
+            <input type="radio" name="q-proof-inside-aor" id="q-proof-inside-aor-0" value="yes">
               <label for="q-proof-inside-aor-0">Yes</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-proof-inside-aor" id="q-proof-inside-aor-1" value="no">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-proof-inside-aor" id="q-proof-inside-aor-1" value="no">
               <label for="q-proof-inside-aor-1">No</label>
-            </li>
-          </ul>
+          </div>
         </fieldset>
 
         
-        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-proof-outside-email" tabindex="-1">
+        <fieldset class="question hidden" id="q-proof-outside-email">
           <legend>Did you provide your email address in your application?</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio">
-              <input type="radio" name="q-proof-outside-email" id="q-proof-outside-email-0" value="yes">
+                    <div class="gc-chckbxrdio">
+            <input type="radio" name="q-proof-outside-email" id="q-proof-outside-email-0" value="yes">
               <label for="q-proof-outside-email-0">Yes</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-proof-outside-email" id="q-proof-outside-email-1" value="no">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-proof-outside-email" id="q-proof-outside-email-1" value="no">
               <label for="q-proof-outside-email-1">No</label>
-            </li>
-          </ul>
+          </div>
         </fieldset>
 
         
-        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-proof-outside-aor" tabindex="-1">
+        <fieldset class="question hidden" id="q-proof-outside-aor">
           <legend>Have you received your acknowledgement of receipt (AOR) letter or email?</legend>
           <p class="mrgn-bttm-md">You’ll get your AOR after we receive your application and check that it’s complete. It can take a while before you get it.</p>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio">
-              <input type="radio" name="q-proof-outside-aor" id="q-proof-outside-aor-0" value="yes">
+                    <div class="gc-chckbxrdio">
+            <input type="radio" name="q-proof-outside-aor" id="q-proof-outside-aor-0" value="yes">
               <label for="q-proof-outside-aor-0">Yes</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-proof-outside-aor" id="q-proof-outside-aor-1" value="no">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-proof-outside-aor" id="q-proof-outside-aor-1" value="no">
               <label for="q-proof-outside-aor-1">No</label>
-            </li>
-          </ul>
+          </div>
         </fieldset>
 
         
-        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-proof-outside-uci" tabindex="-1">
+        <fieldset class="question hidden" id="q-proof-outside-uci">
           <legend>Do you have your client ID number or your unique client identifier (UCI)?</legend>
           <p class="mrgn-bttm-md">If you didn’t include an email address on your application, you <strong>won’t</strong> automatically get your UCI and the confirmation that we received your application. Contact the office where you mailed your application to get your client ID or UCI.</p>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio">
-              <input type="radio" name="q-proof-outside-uci" id="q-proof-outside-uci-0" value="yes">
+                    <div class="gc-chckbxrdio">
+            <input type="radio" name="q-proof-outside-uci" id="q-proof-outside-uci-0" value="yes">
               <label for="q-proof-outside-uci-0">Yes</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-proof-outside-uci" id="q-proof-outside-uci-1" value="no">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-proof-outside-uci" id="q-proof-outside-uci-1" value="no">
               <label for="q-proof-outside-uci-1">No</label>
-            </li>
-          </ul>
+          </div>
         </fieldset>
 
         
-        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-search-how" tabindex="-1">
+        <fieldset class="question hidden" id="q-search-how">
           <legend>How did you apply for your search of citizenship records?</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio">
-              <input type="radio" name="q-search-how" id="q-search-how-0" value="online">
+                    <div class="gc-chckbxrdio">
+            <input type="radio" name="q-search-how" id="q-search-how-0" value="online">
               <label for="q-search-how-0">Online (digital)</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-search-how" id="q-search-how-1" value="paper">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-search-how" id="q-search-how-1" value="paper">
               <label for="q-search-how-1">By mail (paper)</label>
-            </li>
-          </ul>
+          </div>
         </fieldset>
 
         
-        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-search-where" tabindex="-1">
+        <fieldset class="question hidden" id="q-search-where">
           <legend>Where did you apply from?</legend>
-          <ul class="list-unstyled lst-spcd-2">
-            <li class="radio">
-              <input type="radio" name="q-search-where" id="q-search-where-0" value="inside">
+                    <div class="gc-chckbxrdio">
+            <input type="radio" name="q-search-where" id="q-search-where-0" value="inside">
               <label for="q-search-where-0">Canada or the United States</label>
-            </li>
-            <li class="radio">
-              <input type="radio" name="q-search-where" id="q-search-where-1" value="outside">
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-search-where" id="q-search-where-1" value="outside">
               <label for="q-search-where-1">Outside Canada and the United States</label>
-            </li>
-          </ul>
+          </div>
         </fieldset>
 
-        
-        <div id="wizard-notice" class="alert alert-warning hidden" role="alert">
-          <p><strong>Mockup in progress:</strong> This section is not yet wired in this prototype. Only the <strong>Citizenship</strong> branch is available.</p>
-        </div>
+        <fieldset class="question hidden" id="q-temp-res-type">
+          <legend>Which temporary residence application?</legend>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-temp-res-type" id="q-temp-res-type-0" value="visitor">
+            <label for="q-temp-res-type-0">Visitor visa</label>
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-temp-res-type" id="q-temp-res-type-1" value="study">
+            <label for="q-temp-res-type-1">Study permit</label>
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-temp-res-type" id="q-temp-res-type-2" value="work">
+            <label for="q-temp-res-type-2">Work permit</label>
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-temp-res-type" id="q-temp-res-type-3" value="eta">
+            <label for="q-temp-res-type-3">Electronic travel authorization (eTA)</label>
+          </div>
+        </fieldset>
 
-        
+        <fieldset class="question hidden" id="q-perm-res-type">
+          <legend>Which permanent residence application?</legend>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-perm-res-type" id="q-perm-res-type-0" value="express">
+            <label for="q-perm-res-type-0">Express Entry</label>
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-perm-res-type" id="q-perm-res-type-1" value="spousal">
+            <label for="q-perm-res-type-1">Spouse, partner or dependent child</label>
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-perm-res-type" id="q-perm-res-type-2" value="pgp">
+            <label for="q-perm-res-type-2">Parents and grandparents</label>
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-perm-res-type" id="q-perm-res-type-3" value="refugees">
+            <label for="q-perm-res-type-3">Refugees</label>
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-perm-res-type" id="q-perm-res-type-4" value="other">
+            <label for="q-perm-res-type-4">Other immigration programs</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question hidden" id="q-spousal-where">
+          <legend>Where did you apply from?</legend>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-spousal-where" id="q-spousal-where-0" value="inside">
+            <label for="q-spousal-where-0">In Canada</label>
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-spousal-where" id="q-spousal-where-1" value="outside">
+            <label for="q-spousal-where-1">Outside Canada</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question hidden" id="q-pgp-who">
+          <legend>Are you the sponsor or the person being sponsored?</legend>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-pgp-who" id="q-pgp-who-0" value="sponsor">
+            <label for="q-pgp-who-0">I am the sponsor</label>
+          </div>
+          <div class="gc-chckbxrdio">
+            <input type="radio" name="q-pgp-who" id="q-pgp-who-1" value="sponsored">
+            <label for="q-pgp-who-1">I am the person being sponsored</label>
+          </div>
+        </fieldset>
+
         <div class="btn-navigation mrgn-tp-lg mrgn-bttm-lg">
-          <button id="btn-previous" class="btn btn-default btn-lg hidden" type="button">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Previous question
-          </button>
-          <button id="btn-next" class="btn btn-primary btn-lg" type="button" disabled>
-            Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-          </button>
-          <button id="btn-reset" class="btn btn-default btn-lg hidden" type="button">
-            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Start over
-          </button>
+          <button id="btn-previous" class="btn-nav hidden" type="button">Previous</button>
+          <button id="btn-next" class="btn-nav" type="button" disabled>Next question</button>
+          <button id="btn-reset" class="btn-nav hidden" type="button">Start over</button>
         </div>
 
       </form>
     </div>
-  </div><div class="container">
-  <div class="container">
+  </div>
+</section>
+<div class="container">
       <div class="row">
         <div class="col-xs-12 express-entry rslt hidden">
           <div class="panel panel-default">
@@ -2072,12 +2154,12 @@ const WIZARD_DATA = {
     "q-what": {
       options: [
         { value: "citizenship",       next: "q-citizenship-type" },
-        { value: "temp-res",          notice: true },
-        { value: "perm-res",          notice: true },
-        { value: "pr-card",           notice: true },
-        { value: "passport",          notice: true },
-        { value: "refugee-cert",      notice: true },
-        { value: "verification-amend",notice: true }
+        { value: "temp-res",           next: "q-temp-res-type" },
+        { value: "perm-res",           next: "q-perm-res-type" },
+        { value: "pr-card",            result: "pr" },
+        { value: "passport",           redirect: "https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/check-travel-document-status.html" },
+        { value: "refugee-cert",       result: "refugee_certificate" },
+        { value: "verification-amend", result: "verification_amend" }
       ]
     },
     "q-citizenship-type": {
@@ -2181,10 +2263,39 @@ const WIZARD_DATA = {
         { value: "outside", result: "search-paper-outside" }
       ]
     },
+    "q-temp-res-type": {
+      options: [
+        { value: "visitor", result: "visit" },
+        { value: "study",   result: "study" },
+        { value: "work",    result: "work-permit" },
+        { value: "eta",     result: "eta" }
+      ]
+    },
+    "q-perm-res-type": {
+      options: [
+        { value: "express",  result: "express-entry" },
+        { value: "spousal",  next: "q-spousal-where" },
+        { value: "pgp",      next: "q-pgp-who" },
+        { value: "refugees", result: "refugees" },
+        { value: "other",    result: "other-immigration-programs" }
+      ]
+    },
+    "q-spousal-where": {
+      options: [
+        { value: "inside",  result: "canada-spousal-result" },
+        { value: "outside", result: "outside-spousal-result" }
+      ]
+    },
+    "q-pgp-who": {
+      options: [
+        { value: "sponsor",   result: "pgp-fam-result-1" },
+        { value: "sponsored", result: "pgp-fam-result-2" }
+      ]
+    },
   }
 };
 
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
   var history = [];
   var current = WIZARD_DATA.start;
 
@@ -2233,15 +2344,6 @@ const WIZARD_DATA = {
     var opt = qData.options.find(function(o) { return o.value === selected.value; });
     if (!opt) return;
 
-    var notice = document.getElementById('wizard-notice');
-
-    if (opt.notice) {
-      notice.classList.remove('hidden');
-      notice.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      return; // don't push to history — user can pick a different option
-    }
-
-    notice.classList.add('hidden');
     history.push(current);
 
     if (opt.next) {
@@ -2255,14 +2357,12 @@ const WIZARD_DATA = {
 
   btnPrev.addEventListener('click', function() {
     if (history.length === 0) return;
-    document.getElementById('wizard-notice').classList.add('hidden');
     var prev = history.pop();
     showQuestion(prev, false);
   });
 
   btnReset.addEventListener('click', function() {
     history = [];
-    document.getElementById('wizard-notice').classList.add('hidden');
     document.querySelectorAll('.rslt').forEach(function(r) { r.classList.add('hidden'); });
     showQuestion(WIZARD_DATA.start, true);
   });
@@ -2270,13 +2370,12 @@ const WIZARD_DATA = {
   form.addEventListener('change', function(e) {
     if (e.target.type === 'radio') {
       btnNext.disabled = false;
-      document.getElementById('wizard-notice').classList.add('hidden');
     }
   });
 
   // Init
   showQuestion(WIZARD_DATA.start, true);
-})();
+});
 </script>
 </body>
 </html>
