@@ -77,22 +77,32 @@
 
     .btn-nav {
       display: inline-block;
-      padding: 8px 20px;
-      border: 1px solid #335075;
-      border-radius: 4px;
-      background: #fff;
-      color: #335075;
+      padding: 10px 24px;
+      border: 2px solid #335075;
+      border-radius: 50px;
+      background-color: #335075;
+      color: #fff;
       cursor: pointer;
       margin-right: 10px;
       font-size: 16px;
+      font-weight: 600;
     }
-    .btn-nav:hover {
-      background: #335075;
+    .btn-nav:hover, .btn-nav:active {
+      background-color: #1a2a40;
+      border-color: #1a2a40;
       color: #fff;
     }
     .btn-nav:disabled {
       opacity: 0.5;
       cursor: not-allowed;
+    }
+    #btn-previous, #btn-reset {
+      background-color: #fff;
+      color: #335075;
+    }
+    #btn-previous:hover, #btn-reset:hover {
+      background-color: #335075;
+      color: #fff;
     }
     .question {
       border: none;
@@ -100,9 +110,12 @@
       margin-bottom: 20px;
     }
     .question legend {
+      background-color: #D6E4F5;
+      padding: 15px 20px;
+      border-radius: 15px;
       font-size: 1.3em;
       font-weight: 700;
-      margin-bottom: 5px;
+      margin-bottom: 15px;
       border-bottom: none;
       width: 100%;
       display: block;
