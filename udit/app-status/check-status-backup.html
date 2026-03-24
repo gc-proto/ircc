@@ -37,24 +37,38 @@
 	border: none;
 	margin: 30px 0;
 }
-.tool-container .gc-chckbxrdio {
-	position: relative;
-	padding-left: 40px;
-	min-height: 36px;
-	margin-bottom: 8px;
-}
-.tool-container .gc-chckbxrdio input[type=radio] {
+.gc-chckbxrdio input[type=radio] {
 	position: absolute;
-	opacity: 0;
+	clip: rect(0,0,0,0);
 }
-.tool-container .gc-chckbxrdio input[type=radio]+label::before {
+.gc-chckbxrdio label {
+	display: block;
+	position: relative;
+	padding-left: 57px;
+	cursor: pointer;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 40px;
+	min-height: 36px;
+	margin-bottom: 10px;
+}
+.gc-chckbxrdio label::before {
+	content: "";
+	position: absolute;
+	top: 2px;
+	left: 0;
+	width: 36px;
+	height: 36px;
+	border: 4px solid #fff;
+	border-radius: 50%;
 	background-color: #fff;
-	border: 1px solid #aaa;
+	box-shadow: 0 0 0 1px #999;
 }
-.tool-container .gc-chckbxrdio input[type=radio]:checked+label::before {
+.gc-chckbxrdio input[type=radio]:checked+label::before {
 	background: #444;
-	border-color: #444;
-	box-shadow: inset 0 0 0 3px #fff;
+}
+.gc-chckbxrdio input[type=radio]:focus+label::before {
+	box-shadow: 0 0 0 2px #335075, 0 0 4px 3px #335075;
 }
 .question.hidden {
 	display: none !important;
@@ -83,28 +97,31 @@
 }
 
     .tool-container .btn-nav {
-      border-radius: 25px;
+      border-radius: 25px !important;
       border: solid 2px #335075;
       min-width: 150px;
+      margin-right: -6px;
       background-color: #fff;
       color: #333;
-      padding: 0.58em 1em;
+      padding: 0.58em 1.2em;
       font-size: 1.1em;
+      font-weight: 400;
       cursor: pointer;
-      margin-right: 5px;
       vertical-align: middle;
     }
     .tool-container #btn-next {
-      background-color: #335075;
+      background-color: #335075 !important;
       color: #fff;
     }
     .tool-container #btn-next:hover,
     .tool-container #btn-next:active {
-      background-color: #fff;
+      background-color: #fff !important;
       color: #333;
     }
     .tool-container #btn-previous:hover,
-    .tool-container #btn-reset:hover {
+    .tool-container #btn-previous:active,
+    .tool-container #btn-reset:hover,
+    .tool-container #btn-reset:active {
       background-color: #335075;
       color: #fff;
     }
@@ -112,12 +129,52 @@
       opacity: 0.5;
       cursor: not-allowed;
     }
+    @media screen and (min-width: 506px) {
+      .tool-container #btn-previous {
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+      }
+      .tool-container #btn-next,
+      .tool-container #btn-reset {
+        border-top-right-radius: 25px !important;
+        border-bottom-right-radius: 25px !important;
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+      }
+      .tool-container:has(#btn-previous.hidden) #btn-next {
+        border-radius: 25px !important;
+      }
+    }
+    @media screen and (max-width: 526px) {
+      .tool-container .btn-navigation {
+        display: flex;
+        flex-direction: column;
+      }
+      .tool-container #btn-next {
+        order: 1;
+      }
+      .tool-container #btn-previous {
+        order: 2;
+      }
+      .tool-container #btn-reset {
+        order: 3;
+      }
+      .tool-container .btn-nav {
+        border-radius: 25px !important;
+        width: 100%;
+        margin: 5px auto;
+        display: block;
+      }
+    }
     .question {
       border: none;
       padding: 0;
       margin-bottom: 20px;
-      display: flex;
-      flex-direction: column;
+    }
+    .question legend + .gc-chckbxrdio {
+      margin-top: 15px;
     }
     .tool-container legend,
     .tool-container .legend {
@@ -592,12 +649,13 @@
         <div class="btn-navigation mrgn-tp-lg mrgn-bttm-lg">
           <button id="btn-previous" class="btn-nav hidden" type="button"><span class="glyphicon glyphicon-arrow-left mrgn-rght-md" aria-hidden="true"></span> Previous</button>
           <button id="btn-next" class="btn-nav" type="button" disabled> Next question <span class="glyphicon glyphicon-arrow-right mrgn-lft-md" aria-hidden="true"></span></button>
-          <button id="btn-reset" class="btn-nav hidden" type="button"><span class="fas fa-redo mrgn-rght-md" aria-hidden="true"></span> Start over</button>
+          <button id="btn-reset" class="btn-nav hidden" type="button"><span class="glyphicon glyphicon-repeat mrgn-rght-md" aria-hidden="true"></span> Start over</button>
         </div>
 
       </form>
     </div>
     <div class="row">
+<!-- TESTING: non-citizenship results commented out
 <div class="col-xs-12 express-entry rslt hidden">
           <div class="panel panel-default">
             <h2 id="express-entry" class="mrgn-tp-0">Express Entry</h2>
@@ -661,9 +719,7 @@
             </div>
           </div>
         </div>
-        
-        
-<!--        
+
 <div class="col-xs-12 other-immigration-programs rslt hidden">
           <div class="panel panel-default">
             <h2 id="other-immigration-programs" class="mrgn-tp-0">Other immigration programs</h2>
@@ -1146,6 +1202,7 @@
             </div>
           </div>
         </div>
+-->
 <div class="col-xs-12 with-aor-acc rslt hidden">
           <div class="panel panel-default">
             <h2 class="mrgn-tp-0" id="with-aor-acc">Becoming a Canadian citizen (grant of citizenship)</h2>
@@ -1457,6 +1514,7 @@
           </div>
         </div>
       </div>
+<!-- TESTING: non-citizenship results commented out
 <div class="col-xs-12 work-permit rslt hidden">
         <div class="panel panel-default">
           <h2 class="mrgn-tp-0" id="work-permit">Work permit</h2>
@@ -1545,6 +1603,7 @@
           </div>
         </div>
       </div>
+-->
 <div class="col-xs-12 proof-online-aor rslt hidden">
           <div class="panel panel-default">
             <h2 class="mrgn-tp-0" id="proof-online-aor">Citizenship certificate (proof of citizenship): Submitted online</h2>
@@ -1776,6 +1835,7 @@
             </div>
           </div>
         </div>
+<!-- TESTING: non-citizenship results commented out
 <div class="col-xs-12 refugee_certificate rslt hidden">
           <div class="panel panel-default">
             <h2 class="mrgn-tp-0" id="refugee_certificate">Travel documents for non-Canadians (refugee travel documents and certificates of identity)</h2>
@@ -1820,6 +1880,7 @@
             </div>
           </div>
         </div>
+-->
 <div class="col-xs-12 rslt search-paper-outside hidden">
           <div class="panel panel-default">
             <h2 class="mrgn-tp-0" id="search-paper-outside">Search of citizenship records outside Canada and the United States: Submitted by mail</h2>
@@ -1852,8 +1913,6 @@
             </div>
           </div>
         </div>
-       --> 
-        
     </div>
   </div>
 </div>
@@ -2200,7 +2259,7 @@ const WIZARD_DATA = {
   }
 };
 
-document.addEventListener('DOMContentLoaded', function() {
+(function() {
   var history = [];
   var current = WIZARD_DATA.start;
 
@@ -2220,7 +2279,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     el.focus();
     current = id;
-    btnNext.disabled = true;
+    var hasSelection = el.querySelector('input[type=radio]:checked');
+    btnNext.disabled = !hasSelection;
     btnNext.classList.remove('hidden');
     btnPrev.classList.toggle('hidden', history.length === 0);
     btnReset.classList.add('hidden');
@@ -2280,7 +2340,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Init
   showQuestion(WIZARD_DATA.start, true);
-});
+})();
 </script>
 </body>
 </html>
