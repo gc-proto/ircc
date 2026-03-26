@@ -1,0 +1,738 @@
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Help Centre – Immigration and citizenship – Canada.ca</title>
+    <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/theme.min.css">
+    <style>
+        /* H1 Banner */
+        .hc-banner {
+            background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,0) 100%), #f5f5f5;
+            padding: 19px 0;
+        }
+        .hc-banner h1 {
+            font-size: 41px;
+            line-height: 42px;
+            color: #333;
+            margin-bottom: 9px;
+        }
+        .hc-banner h1::after {
+            content: '';
+            display: block;
+            width: 71px;
+            height: 6px;
+            background-color: #af3c43;
+            margin-top: 12px;
+        }
+        .hc-banner .lead {
+            font-size: 24px;
+            line-height: 33px;
+        }
+
+        /* Search section */
+        .hc-search-section {
+            background-color: rgba(216, 217, 255, 0.51);
+            border-radius: 20px;
+            padding: 24px 50px;
+            margin-bottom: 24px;
+        }
+        .hc-search-section h2 {
+            font-size: 39px;
+            line-height: 40px;
+            margin-bottom: 15px;
+            border: none;
+        }
+        .hc-search-section .input-group .form-control {
+            height: 43px;
+            border-color: #666;
+            border-radius: 5px 0 0 5px;
+        }
+        .hc-search-section .input-group-btn .btn {
+            height: 43px;
+        }
+
+        /* Topic chips */
+        .hc-chips {
+            margin-top: 18px;
+        }
+        .hc-chip {
+            display: inline-block;
+            background: #fff;
+            border: 1px solid #436eee;
+            border-radius: 15px;
+            padding: 10px 15px;
+            margin-right: 18px;
+            margin-bottom: 18px;
+            font-size: 20px;
+            line-height: 33px;
+            color: #333;
+            text-decoration: none;
+        }
+        .hc-chip:hover,
+        .hc-chip:focus {
+            background-color: #f0f0ff;
+            color: #333;
+            text-decoration: underline;
+        }
+
+        /* Topic tabs */
+        .hc-topic-tabs {
+            margin-bottom: 40px;
+        }
+        .hc-tab-list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            background-color: #d8d9ff;
+            border-radius: 48px 48px 0 0;
+            gap: 15px;
+            padding: 15px 20px 70px;
+            position: relative;
+            z-index: 1;
+            margin-bottom: -40px;
+        }
+        .hc-tab-list li {
+            flex: 1;
+        }
+        .hc-tab-list a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 15px 10px;
+            height: 242px;
+            font-size: 27px;
+            line-height: 24px;
+            font-weight: 700;
+            font-family: 'Lato', sans-serif;
+            color: #000;
+            text-decoration: none;
+            position: relative;
+        }
+        .hc-tab-list a:hover,
+        .hc-tab-list a:focus {
+            text-decoration: underline;
+        }
+        .hc-tab-list li.active a {
+            border-bottom: 5px solid #000;
+        }
+        .hc-tab-list .tab-icon {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+        .hc-tab-divider {
+            width: 1px;
+            background-color: #ccc;
+            align-self: stretch;
+            margin: 32px 0 15px;
+            flex: none;
+        }
+        .hc-tab-content {
+            background: #fff;
+            border: 3px solid #335075;
+            border-radius: 26px;
+            box-shadow: 0 4px 4px 2px rgba(0,0,0,0.25);
+            padding-top: 35px;
+            position: relative;
+            z-index: 2;
+        }
+        .hc-tab-panel {
+            display: none;
+        }
+        .hc-tab-panel.active {
+            display: block;
+        }
+        .hc-tab-panel-header {
+            padding: 0 35px 15px;
+        }
+        .hc-tab-panel-header h2 {
+            font-size: 32px;
+            line-height: 36px;
+            font-weight: 700;
+            border: none;
+            margin-bottom: 0;
+        }
+        .hc-tab-panel-header p {
+            font-size: 20px;
+            line-height: 33px;
+            margin-top: 15px;
+        }
+
+        /* Accordion / expand-collapse items */
+        .hc-accordion-item {
+            padding: 15px 35px;
+        }
+        .hc-accordion-item:nth-child(odd) {
+            background-color: rgba(216, 217, 255, 0.51);
+        }
+        .hc-accordion-item details {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+        .hc-accordion-item details summary {
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+            padding: 5px 15px 8px;
+            cursor: pointer;
+            font-size: 20px;
+            line-height: 33px;
+            color: #295376;
+            border-bottom: 1px solid #ddd;
+            list-style: none;
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: 400;
+        }
+        .hc-accordion-item details summary::-webkit-details-marker {
+            display: none;
+        }
+        .hc-accordion-item details summary::before {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid currentColor;
+            margin-top: 12px;
+            flex-shrink: 0;
+            transition: transform 0.2s;
+        }
+        .hc-accordion-item details:not([open]) summary {
+            border-bottom: none;
+        }
+        .hc-accordion-item details:not([open]) summary::before {
+            transform: rotate(-90deg);
+        }
+        .hc-accordion-item details .accordion-body {
+            padding: 8px 15px 15px;
+        }
+        .hc-accordion-item details ul {
+            margin-bottom: 0;
+        }
+        .hc-accordion-item details li {
+            font-size: 20px;
+            line-height: 33px;
+            color: #333;
+        }
+        .hc-accordion-item details li a {
+            color: #333;
+            font-size: 20px;
+            line-height: 33px;
+        }
+
+        /* Page content / helpful resources */
+        .hc-resources {
+            background-color: #f5f5f5;
+            padding: 34px 0;
+        }
+        .hc-resources h2 {
+            font-size: 39px;
+            line-height: 40px;
+            border: none;
+            margin-bottom: 24px;
+        }
+        .hc-resource-card {
+            background: #fff;
+            border: 1px solid #858585;
+            border-radius: 4px;
+            padding: 26px 31px;
+            height: 100%;
+        }
+        .hc-resource-card h3 {
+            font-size: 29px;
+            line-height: 26px;
+            margin-bottom: 24px;
+        }
+        .hc-resource-card h3 a {
+            color: #2b4380;
+        }
+        .hc-resource-card p {
+            font-size: 20px;
+            line-height: 33px;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Sign in button in header */
+        .hc-sign-in {
+            background-color: #26374a;
+            color: #fff;
+            padding: 10px 14px;
+            font-size: 16px;
+            line-height: 28px;
+            border: none;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .hc-sign-in:hover,
+        .hc-sign-in:focus {
+            color: #fff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body vocab="http://schema.org/" typeof="WebPage">
+
+<ul id="wb-tphp">
+    <li class="wb-slc"><a class="wb-sl" href="#wb-cont">Skip to main content</a></li>
+    <li class="wb-slc"><a class="wb-sl" href="#wb-info">Skip to "About government"</a></li>
+</ul>
+
+<header>
+    <div id="wb-bnr" class="container">
+        <div class="row">
+            <section id="wb-lng" class="col-xs-12 text-right mrgn-tp-sm">
+                <h2 class="wb-inv">Language selection</h2>
+                <ul class="list-inline margin-bottom-none">
+                    <li><a lang="fr" href="#">Français</a></li>
+                </ul>
+            </section>
+        </div>
+        <div class="row">
+            <div class="brand col-xs-5 col-md-4">
+                <a href="https://www.canada.ca/en.html">
+                    <img src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg"
+                         alt="Government of Canada / Gouvernement du Canada"
+                         width="360" height="34">
+                </a>
+            </div>
+            <section id="wb-srch" class="col-xs-7 col-md-8 text-right">
+                <h2 class="wb-inv">Search</h2>
+                <form action="https://www.canada.ca/en/sr/srb.html" method="get" role="search" class="form-inline">
+                    <div class="form-group wb-srch-qry">
+                        <label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
+                        <input id="wb-srch-q"
+                               list="wb-srch-q-ac"
+                               class="wb-srch-q form-control"
+                               name="q"
+                               type="search"
+                               value=""
+                               size="27"
+                               maxlength="170"
+                               placeholder="Search Canada.ca">
+                        <datalist id="wb-srch-q-ac"></datalist>
+                    </div>
+                    <div class="form-group submit">
+                        <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub">
+                            <span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <nav class="gcweb-menu" typeof="SiteNavigationElement">
+        <div class="container">
+            <h2 class="wb-inv">Menu</h2>
+            <button type="button" aria-haspopup="true" aria-expanded="false">
+                <span class="wb-inv">Main </span>Menu
+                <span class="expicon glyphicon glyphicon-chevron-down"></span>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<nav id="wb-bc" property="breadcrumb">
+    <h2 class="wb-inv">You are here:</h2>
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="https://www.canada.ca/en.html">Canada.ca</a></li>
+            <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship.html">Immigration and citizenship</a></li>
+        </ol>
+    </div>
+</nav>
+
+<main property="mainContentOfPage" typeof="WebPageElement">
+    <div id="wb-cont">
+
+        <!-- H1 Banner -->
+        <div class="hc-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 col-lg-8">
+                        <h1 property="name">Help Centre</h1>
+                        <p class="lead mrgn-tp-md">You have questions, we have lots of answers. Some may be helpful.</p>
+                    </div>
+                    <div class="col-md-5 col-lg-4 text-right hidden-sm hidden-xs">
+                        <img src="https://www.figma.com/api/mcp/asset/2475335d-2a77-4a8c-a42f-7b421cac3bf1"
+                             alt=""
+                             class="img-responsive"
+                             style="max-height: 219px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mrgn-tp-lg">
+
+            <!-- Search and Top Tasks -->
+            <div class="hc-search-section">
+                <h2>What do you need help with?</h2>
+                <form action="#" method="get" role="search">
+                    <div class="input-group">
+                        <label for="hc-search" class="wb-inv">Search Help Centre</label>
+                        <input id="hc-search"
+                               type="search"
+                               name="q"
+                               class="form-control"
+                               placeholder="">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </span>
+                    </div>
+                </form>
+
+                <div class="hc-chips">
+                    <a href="#" class="hc-chip">What is a UCI?</a>
+                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html"
+                       class="hc-chip">How to check your application status</a>
+                    <a href="#" class="hc-chip">How to prepare a complete application</a>
+                    <a href="#" class="hc-chip">Other top task</a>
+                </div>
+            </div>
+
+            <!-- Topic Tabs -->
+            <div class="hc-topic-tabs">
+
+                <!-- Tab navigation -->
+                <ul class="hc-tab-list" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#application-help"
+                           role="tab"
+                           id="tab-application-help"
+                           aria-controls="application-help"
+                           aria-selected="true">
+                            <img src="https://www.figma.com/api/mcp/asset/c574eb12-44f2-4a59-a1ab-efe9bf6da0a5"
+                                 alt=""
+                                 class="tab-icon">
+                            Application help
+                        </a>
+                    </li>
+                    <li class="hc-tab-divider" role="presentation" aria-hidden="true"></li>
+                    <li role="presentation">
+                        <a href="#account-help"
+                           role="tab"
+                           id="tab-account-help"
+                           aria-controls="account-help"
+                           aria-selected="false">
+                            <img src="https://www.figma.com/api/mcp/asset/8cef9c55-185a-4f0e-9496-6fd3c9a3cd05"
+                                 alt=""
+                                 class="tab-icon">
+                            Account help
+                        </a>
+                    </li>
+                    <li class="hc-tab-divider" role="presentation" aria-hidden="true"></li>
+                    <li role="presentation">
+                        <a href="#programs-help"
+                           role="tab"
+                           id="tab-programs-help"
+                           aria-controls="programs-help"
+                           aria-selected="false">
+                            <img src="https://www.figma.com/api/mcp/asset/21f6788b-a229-4c77-9a8e-40be5ea53fd4"
+                                 alt=""
+                                 class="tab-icon">
+                            Programs or special measures help
+                        </a>
+                    </li>
+                    <li class="hc-tab-divider" role="presentation" aria-hidden="true"></li>
+                    <li role="presentation">
+                        <a href="#something-else-help"
+                           role="tab"
+                           id="tab-something-else-help"
+                           aria-controls="something-else-help"
+                           aria-selected="false">
+                            <img src="https://www.figma.com/api/mcp/asset/3c462fc6-1914-4542-ae13-b69440d16ad2"
+                                 alt=""
+                                 class="tab-icon">
+                            Help with something else
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Tab panels -->
+                <div class="hc-tab-content">
+
+                    <!-- Application Help -->
+                    <div id="application-help"
+                         role="tabpanel"
+                         aria-labelledby="tab-application-help"
+                         class="hc-tab-panel active">
+
+                        <div class="hc-tab-panel-header">
+                            <h2>Application help</h2>
+                            <p>Answers to common application questions.</p>
+                        </div>
+
+                        <div class="hc-accordion">
+
+                            <!-- Item 1 – expanded -->
+                            <div class="hc-accordion-item">
+                                <details open>
+                                    <summary>Application status and processing times</summary>
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>
+                                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html">
+                                                    How to check your application status
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">
+                                                    Check our current processing times
+                                                </a>
+                                            </li>
+                                            <li>HC question 1 that isn't migrated yet?</li>
+                                            <li>Etc. etc. etc.</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </div>
+
+                            <!-- Item 2 – expanded -->
+                            <div class="hc-accordion-item">
+                                <details open>
+                                    <summary>Preparing a complete application</summary>
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>How to prepare a complete application</li>
+                                            <li>How to download and open our PDF forms</li>
+                                            <li>How to use our 2D barcode forms</li>
+                                            <li>How to fill out your forms correctly</li>
+                                            <li>Etc. etc. etc.</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </div>
+
+                            <!-- Item 3 – collapsed -->
+                            <div class="hc-accordion-item">
+                                <details>
+                                    <summary>Submitting an application</summary>
+                                    <div class="accordion-body">
+                                        <!-- Content to be added -->
+                                    </div>
+                                </details>
+                            </div>
+
+                            <!-- Item 4 – collapsed -->
+                            <div class="hc-accordion-item">
+                                <details>
+                                    <summary>Fees and refunds</summary>
+                                    <div class="accordion-body">
+                                        <!-- Content to be added -->
+                                    </div>
+                                </details>
+                            </div>
+
+                            <!-- Item 5 – collapsed -->
+                            <div class="hc-accordion-item">
+                                <details>
+                                    <summary>Updating your contact or application information</summary>
+                                    <div class="accordion-body">
+                                        <!-- Content to be added -->
+                                    </div>
+                                </details>
+                            </div>
+
+                        </div><!-- end .hc-accordion -->
+                    </div><!-- end #application-help -->
+
+                    <!-- Account Help -->
+                    <div id="account-help"
+                         role="tabpanel"
+                         aria-labelledby="tab-account-help"
+                         class="hc-tab-panel">
+                        <div class="hc-tab-panel-header">
+                            <h2>Account help</h2>
+                            <p><!-- Intro text to be added --></p>
+                        </div>
+                    </div>
+
+                    <!-- Programs Help -->
+                    <div id="programs-help"
+                         role="tabpanel"
+                         aria-labelledby="tab-programs-help"
+                         class="hc-tab-panel">
+                        <div class="hc-tab-panel-header">
+                            <h2>Programs or special measures help</h2>
+                            <p><!-- Intro text to be added --></p>
+                        </div>
+                    </div>
+
+                    <!-- Something Else Help -->
+                    <div id="something-else-help"
+                         role="tabpanel"
+                         aria-labelledby="tab-something-else-help"
+                         class="hc-tab-panel">
+                        <div class="hc-tab-panel-header">
+                            <h2>Help with something else</h2>
+                            <p><!-- Intro text to be added --></p>
+                        </div>
+                    </div>
+
+                </div><!-- end .hc-tab-content -->
+            </div><!-- end .hc-topic-tabs -->
+
+        </div><!-- end .container -->
+
+        <!-- Helpful Resources -->
+        <div class="hc-resources">
+            <div class="container">
+                <h2>Helpful resources</h2>
+                <div class="row wb-eqht">
+                    <div class="col-md-4 mrgn-bttm-md">
+                        <div class="hc-resource-card">
+                            <h3>
+                                <a href="https://ircc.canada.ca/english/helpcentre/glossary.asp">
+                                    Definitions
+                                </a>
+                            </h3>
+                            <p>Find definitions to terms often used by Immigration, Refugees and Citizenship Canada in our glossary.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mrgn-bttm-md">
+                        <div class="hc-resource-card">
+                            <h3>
+                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application.html">
+                                    Your application
+                                </a>
+                            </h3>
+                            <p>Application status, processing times, online applications and paper forms, fee payment, medical and police checks.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mrgn-bttm-md">
+                        <div class="hc-resource-card">
+                            <h3>
+                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/come-canada-tool.html">
+                                    Do you want to extend your stay?
+                                </a>
+                            </h3>
+                            <p>Find out how you can apply to extend your stay.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- end #wb-cont -->
+</main>
+
+<footer id="wb-info">
+    <h2 class="wb-inv">About this site</h2>
+
+    <!-- Contextual footer -->
+    <div class="gc-contextual">
+        <div class="container">
+            <nav>
+                <h3>Immigration and citizenship</h3>
+                <ul>
+                    <li><a href="#">Help Centre</a></li>
+                    <li><a href="#">Contact us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main footer -->
+    <div class="gc-main-footer">
+        <div class="container">
+            <nav>
+                <h3>Government of Canada</h3>
+                <ul>
+                    <li><a href="https://www.canada.ca/en/contact.html">All contacts</a></li>
+                    <li><a href="https://www.canada.ca/en/government/dept.html">Departments and agencies</a></li>
+                    <li><a href="https://www.canada.ca/en/government/system.html">About government</a></li>
+                </ul>
+                <h4><span class="wb-inv">Themes and topics</span></h4>
+                <ul>
+                    <li><a href="https://www.canada.ca/en/services/jobs.html">Jobs</a></li>
+                    <li><a href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+                    <li><a href="https://travel.gc.ca/">Travel and tourism</a></li>
+                    <li><a href="https://www.canada.ca/en/services/business.html">Business</a></li>
+                    <li><a href="https://www.canada.ca/en/services/benefits.html">Benefits</a></li>
+                    <li><a href="https://www.canada.ca/en/services/health.html">Health</a></li>
+                    <li><a href="https://www.canada.ca/en/services/taxes.html">Taxes</a></li>
+                    <li><a href="https://www.canada.ca/en/services/environment.html">Environment and natural resources</a></li>
+                    <li><a href="https://www.canada.ca/en/services/defence.html">National security and defence</a></li>
+                    <li><a href="https://www.canada.ca/en/services/culture.html">Culture, history and sport</a></li>
+                    <li><a href="https://www.canada.ca/en/services/policing.html">Policing, justice and emergencies</a></li>
+                    <li><a href="https://www.canada.ca/en/services/transport.html">Transport and infrastructure</a></li>
+                    <li><a href="https://international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
+                    <li><a href="https://www.canada.ca/en/services/finance.html">Money and finance</a></li>
+                    <li><a href="https://www.canada.ca/en/services/science.html">Science and innovation</a></li>
+                    <li><a href="https://www.canada.ca/en/services/indigenous-peoples.html">Indigenous peoples</a></li>
+                    <li><a href="https://www.canada.ca/en/services/veterans.html">Veterans and military</a></li>
+                    <li><a href="https://www.canada.ca/en/services/youth.html">Youth</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Sub-footer -->
+    <div class="gc-sub-footer">
+        <div class="container d-flex align-items-center">
+            <nav>
+                <ul>
+                    <li><a href="https://www.canada.ca/en/social.html">Social media</a></li>
+                    <li><a href="https://www.canada.ca/en/mobile.html">Mobile applications</a></li>
+                    <li><a href="https://www.canada.ca/en/government/about.html">About Canada.ca</a></li>
+                    <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+                    <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
+                </ul>
+            </nav>
+            <div class="wtrmrk align-self-end">
+                <img src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/wmms-blk.svg"
+                     alt="Symbol of the Government of Canada">
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- WET/GCWeb JavaScript -->
+<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/wet-boew.min.js"></script>
+<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
+
+<!-- Tab switching behaviour -->
+<script>
+(function () {
+    var tabs = document.querySelectorAll('.hc-tab-list a[role="tab"]');
+    var panels = document.querySelectorAll('.hc-tab-panel');
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Deactivate all tabs
+            tabs.forEach(function (t) {
+                t.parentElement.classList.remove('active');
+                t.setAttribute('aria-selected', 'false');
+            });
+
+            // Hide all panels
+            panels.forEach(function (p) {
+                p.classList.remove('active');
+            });
+
+            // Activate clicked tab
+            this.parentElement.classList.add('active');
+            this.setAttribute('aria-selected', 'true');
+
+            // Show target panel
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.classList.add('active');
+            }
+        });
+    });
+}());
+</script>
+
+</body>
+</html>
