@@ -425,13 +425,15 @@
             <li class="radio">
               <input type="radio" name="q-temp-res-type" id="q-temp-res-type-3" value="eta">
               <label for="q-temp-res-type-3">Electronic travel authorization (eTA)</label>
-            </li> <li class="radio">
-              <input type="radio" name="q-temp-res-type" id="q-temp-res-type-3" value="eta">
-              <label for="q-temp-res-type-3">Super Visa</label>
-            </li> <li class="radio">
-              <input type="radio" name="q-temp-res-type" id="q-temp-res-type-3" value="eta">
-              <label for="q-temp-res-type-3">Transit Visa</label>
-            </li>  
+            </li>
+            <li class="radio">
+              <input type="radio" name="q-temp-res-type" id="q-temp-res-type-4" value="super-visa">
+              <label for="q-temp-res-type-4">Super visa</label>
+            </li>
+            <li class="radio">
+              <input type="radio" name="q-temp-res-type" id="q-temp-res-type-5" value="transit">
+              <label for="q-temp-res-type-5">Transit visa</label>
+            </li>
           </ul>
         </fieldset>
         <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-perm-res-type">
@@ -927,6 +929,22 @@
                 <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check our current processing times <span class="fas fa-arrow-right"></span></a></p>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 super-visa rslt hidden">
+        <div class="panel panel-default">
+          <h2 class="mrgn-tp-0" id="super-visa">Super visa</h2>
+          <div class="panel-body mrgn-tp-0">
+            <p>Content for super visa application status — placeholder.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 transit-visa rslt hidden">
+        <div class="panel panel-default">
+          <h2 class="mrgn-tp-0" id="transit-visa">Transit visa</h2>
+          <div class="panel-body mrgn-tp-0">
+            <p>Content for transit visa application status — placeholder.</p>
           </div>
         </div>
       </div>
@@ -1992,10 +2010,12 @@ const WIZARD_DATA = {
     },
     "q-temp-res-type": {
       options: [
-        { value: "visitor", result: "visit" },
-        { value: "study",   result: "study" },
-        { value: "work",    result: "work-permit" },
-        { value: "eta",     result: "eta" }
+        { value: "visitor",    result: "visit" },
+        { value: "study",      result: "study" },
+        { value: "work",       result: "work-permit" },
+        { value: "eta",        result: "eta" },
+        { value: "super-visa", result: "super-visa" },
+        { value: "transit",    result: "transit-visa" }
       ]
     },
     "q-perm-res-type": {
