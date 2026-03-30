@@ -4235,7 +4235,7 @@ const WIZARD_DATA = {
     var el = document.querySelector('.' + resultId) || document.getElementById(resultId);
     if (el) {
       el.classList.remove('hidden');
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.querySelector('.btn-navigation').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
