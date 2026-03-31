@@ -3516,7 +3516,7 @@ const WIZARD_DATA = {
     if (clearRadios) {
       el.querySelectorAll('input[type=radio]').forEach(function(r) { r.checked = false; });
     }
-    el.focus();
+    el.focus({ preventScroll: true });
     current = id;
     var hasSelection = el.querySelector('input[type=radio]:checked');
     btnNext.disabled = !hasSelection;
