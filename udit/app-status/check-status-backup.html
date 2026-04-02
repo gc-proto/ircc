@@ -444,20 +444,29 @@
               <label for="q-perm-res-type-0">Express Entry</label>
             </li>
             <li class="radio">
-              <input type="radio" name="q-perm-res-type" id="q-perm-res-type-1" value="spousal">
-              <label for="q-perm-res-type-1">Spouse, partner or dependent child</label>
+              <input type="radio" name="q-perm-res-type" id="q-perm-res-type-1" value="family">
+              <label for="q-perm-res-type-1">Family sponsorship</label>
             </li>
             <li class="radio">
-              <input type="radio" name="q-perm-res-type" id="q-perm-res-type-2" value="pgp">
-              <label for="q-perm-res-type-2">Parents and grandparents</label>
+              <input type="radio" name="q-perm-res-type" id="q-perm-res-type-2" value="refugees">
+              <label for="q-perm-res-type-2">Refugees</label>
             </li>
             <li class="radio">
-              <input type="radio" name="q-perm-res-type" id="q-perm-res-type-3" value="refugees">
-              <label for="q-perm-res-type-3">Refugees</label>
+              <input type="radio" name="q-perm-res-type" id="q-perm-res-type-3" value="other">
+              <label for="q-perm-res-type-3">Other immigration programs</label>
+            </li>
+          </ul>
+        </fieldset>
+        <fieldset class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q-family-type">
+          <legend>Which family sponsorship application?</legend>
+          <ul class="list-unstyled lst-spcd-2">
+            <li class="radio">
+              <input type="radio" name="q-family-type" id="q-family-type-0" value="spousal">
+              <label for="q-family-type-0">Spouse, partner or dependent child</label>
             </li>
             <li class="radio">
-              <input type="radio" name="q-perm-res-type" id="q-perm-res-type-4" value="other">
-              <label for="q-perm-res-type-4">Other immigration programs</label>
+              <input type="radio" name="q-family-type" id="q-family-type-1" value="pgp">
+              <label for="q-family-type-1">Parents and grandparents</label>
             </li>
           </ul>
         </fieldset>
@@ -3363,10 +3372,15 @@ const WIZARD_DATA = {
     "q-perm-res-type": {
       options: [
         { value: "express",  result: "express-entry" },
-        { value: "spousal",  next: "q-spousal-where" },
-        { value: "pgp",      next: "q-pgp-who" },
+        { value: "family",   next: "q-family-type" },
         { value: "refugees", result: "refugees" },
         { value: "other",    result: "other-immigration-programs" }
+      ]
+    },
+    "q-family-type": {
+      options: [
+        { value: "spousal", next: "q-spousal-where" },
+        { value: "pgp",     next: "q-pgp-who" }
       ]
     },
     "q-spousal-where": {
