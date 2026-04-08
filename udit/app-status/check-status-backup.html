@@ -2906,14 +2906,14 @@
 	border: solid 2px var(--gcds-color-blue-650);
 	min-width: 150px;
 	margin-right: -6px;
-	background-color: #fff;
-	color: #333;
+	background-color: var(--gcds-color-blue-650) !important;
+	color: #fff !important;
 }
 .tool-container #btn-next,
 .tool-container #btn-next:disabled {
-	background-color: var(--gcds-color-blue-650);
-	color: #fff;
-	border-color: var(--gcds-color-blue-650);
+	background-color: var(--gcds-color-blue-650) !important;
+	color: #fff !important;
+	border-color: var(--gcds-color-blue-650) !important;
 }
 .tool-container #btn-next:hover,
 .tool-container #btn-next:active {
@@ -2932,6 +2932,12 @@
 .tool-container .btn-nav:disabled {
 	opacity: 0.5;
 	cursor: not-allowed;
+}
+.tool-container #btn-previous {
+	border-right-color: #fff !important;
+}
+.tool-container #btn-reset {
+	border-left-color: #fff !important;
 }
 @media screen and (min-width: 506px) {
 	.tool-container #btn-previous {
