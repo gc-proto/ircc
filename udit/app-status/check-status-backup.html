@@ -20,7 +20,7 @@
 </noscript>
 <link rel="stylesheet" href="https://test.canada.ca/covid-19-guidance/proto/css/alpha-beta-banner.css" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-<link blocking="render" rel="stylesheet" crossorigin="anonymous" integrity="sha384-0CRuUE9X0B5RfCdDx1BDT6Ru1MajB7Ngy0CmoORlBF+ey/W8T75AKwLehkl+QaGR" href="css/gcds.css">
+<link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@1.1.0/dist/gcds/gcds.css" />
 <link rel="stylesheet" href="css/theme.min.css">
 <link rel="apple-touch-icon" sizes="57x57 72x72 114x114 144x144 150x150" class="wb-favicon" href="https://www.canada.ca/etc/designs/canada/wet-boew/assets/favicon-mobile.png">
 <link href="https://www.canada.ca/etc/designs/canada/wet-boew/assets/favicon.ico" rel="icon" type="image/x-icon" class="wb-favicon">
@@ -2858,7 +2858,7 @@
 <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
 <style>
 .tool-container {
-	background-color: #D6E4F5;
+	background-color: var(--gcds-color-blue-50);
 	padding: 30px 40px;
 	border-radius: 40px;
 	border: none;
@@ -2903,7 +2903,7 @@
 
 .tool-container .btn-nav {
 	border-radius: 25px;
-	border: solid 2px #335075;
+	border: solid 2px var(--gcds-color-blue-650);
 	min-width: 150px;
 	margin-right: -6px;
 	background-color: #fff;
@@ -2911,21 +2911,23 @@
 }
 .tool-container #btn-next,
 .tool-container #btn-next:disabled {
-	background-color: #335075;
+	background-color: var(--gcds-color-blue-650);
 	color: #fff;
-	border-color: #335075;
+	border-color: var(--gcds-color-blue-650);
 }
 .tool-container #btn-next:hover,
 .tool-container #btn-next:active {
-	background-color: #fff;
-	color: #333;
+	background-color: var(--gcds-color-blue-750);
+	color: #fff;
+	border-color: var(--gcds-color-blue-750);
 }
 .tool-container #btn-previous:hover,
 .tool-container #btn-previous:active,
 .tool-container #btn-reset:hover,
 .tool-container #btn-reset:active {
-	background-color: #335075;
+	background-color: var(--gcds-color-blue-750);
 	color: #fff;
+	border-color: var(--gcds-color-blue-750);
 }
 .tool-container .btn-nav:disabled {
 	opacity: 0.5;
@@ -2968,8 +2970,8 @@
 	font-size: 24px;
 	font-family: Lato, sans-serif;
 	font-weight: 700;
-	border-bottom: 0.18em solid #335075;
-	border-image: linear-gradient(to right, #335075 51px, transparent 51px);
+	border-bottom: 0.18em solid var(--gcds-color-blue-650);
+	border-image: linear-gradient(to right, var(--gcds-color-blue-650) 51px, transparent 51px);
 	border-image-slice: 1;
 	padding-bottom: 5px;
 	margin-bottom: 15px;
