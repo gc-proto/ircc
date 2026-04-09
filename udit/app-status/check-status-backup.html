@@ -2889,6 +2889,28 @@
 	padding: 20px 30px;
 	background-color: #fff;
 }
+.tool-container details {
+	border: 3px solid #ddd;
+	border-radius: 25px;
+	margin-bottom: 15px;
+}
+.tool-container details:not([open]) > summary {
+	border-radius: 25px;
+	background-color: #fff;
+	color: #333;
+	border: none;
+	padding: 15px 25px;
+}
+.tool-container details[open] {
+	background-color: #fff;
+	border-radius: 25px;
+}
+.tool-container details[open] > summary {
+	padding: 15px 25px;
+	color: #333;
+	background-color: #eee;
+	border-radius: 25px 25px 0 0;
+}
 .account-card {
 	border: 1px solid #ddd;
 	border-radius: 4px;
@@ -2982,7 +3004,7 @@
 	.tool-container #btn-next { order: 2; }
 	.tool-container #btn-reset { order: 3; }
 	.tool-container .btn-nav {
-		border-radius: 40px;
+		border-radius: 25px;
 		width: 100%;
 		margin: 5px auto;
 		display: block;
