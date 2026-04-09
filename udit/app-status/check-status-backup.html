@@ -496,7 +496,7 @@
             </li>
           </ul>
         </fieldset>
-        <div class="btn-navigation mrgn-tp-lg mrgn-bttm-lg">
+        <div class="btn-navigation">
           <button id="btn-previous" class="btn btn-nav btn-lg hidden" type="button"><span class="glyphicon glyphicon-arrow-left mrgn-rght-md" aria-hidden="true"></span> Previous</button>
           <button id="btn-next" class="btn btn-nav btn-lg" type="button" disabled> Next question <span class="glyphicon glyphicon-arrow-right mrgn-lft-md" aria-hidden="true"></span></button>
           <button id="btn-reset" class="btn btn-nav btn-lg hidden" type="button"><span class="glyphicon glyphicon-repeat mrgn-rght-md" aria-hidden="true"></span> Start over</button>
@@ -3202,7 +3202,7 @@ const WIZARD_DATA = {
     var el = document.querySelector('.' + resultId) || document.getElementById(resultId);
     if (el) {
       el.classList.remove('hidden');
-      document.querySelector('.btn-navigation').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.querySelector('.tool-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
