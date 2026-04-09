@@ -2921,9 +2921,15 @@
 	color: #fff !important;
 	border-color: var(--gcds-color-blue-750) !important;
 }
-.tool-container #btn-previous:hover,
+@media (hover: hover) {
+	.tool-container #btn-previous:hover,
+	.tool-container #btn-reset:hover {
+		background-color: var(--gcds-color-blue-650) !important;
+		color: #fff !important;
+		border-color: var(--gcds-color-blue-650) !important;
+	}
+}
 .tool-container #btn-previous:active,
-.tool-container #btn-reset:hover,
 .tool-container #btn-reset:active {
 	background-color: var(--gcds-color-blue-650) !important;
 	color: #fff !important;
@@ -2943,6 +2949,15 @@
 	}
 	.tool-container:has(#btn-previous.hidden) #btn-next {
 		border-radius: 25px;
+	}
+}
+@media screen and (max-width: 767px) {
+	.tool-container {
+		padding: 20px 15px;
+		border-radius: 20px;
+	}
+	.tool-container .fa-info-circle {
+		display: none !important;
 	}
 }
 @media screen and (max-width: 526px) {
@@ -3135,6 +3150,7 @@ const WIZARD_DATA = {
 (function() {
   var history = [];
   var current = WIZARD_DATA.start;
+  var isInitialLoad = true;
 
   var form    = document.getElementById('status-form');
   var btnNext = document.getElementById('btn-next');
@@ -3150,8 +3166,11 @@ const WIZARD_DATA = {
     if (clearRadios) {
       el.querySelectorAll('input[type=radio]').forEach(function(r) { r.checked = false; });
     }
-    el.focus({ preventScroll: true });
-    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    if (!isInitialLoad) {
+      el.focus({ preventScroll: true });
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    isInitialLoad = false;
     current = id;
     var hasSelection = el.querySelector('input[type=radio]:checked');
     btnNext.disabled = !hasSelection;
@@ -3196,11 +3215,13 @@ const WIZARD_DATA = {
 
   btnPrev.addEventListener('click', function() {
     if (history.length === 0) return;
+    btnPrev.blur();
     var prev = history.pop();
     showQuestion(prev, false);
   });
 
   btnReset.addEventListener('click', function() {
+    btnReset.blur();
     history = [];
     document.querySelectorAll('.rslt').forEach(function(r) { r.classList.add('hidden'); });
     showQuestion(WIZARD_DATA.start, true);
