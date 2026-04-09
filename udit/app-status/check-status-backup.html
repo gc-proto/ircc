@@ -496,7 +496,7 @@
             </li>
           </ul>
         </fieldset>
-        <div class="btn-navigation">
+        <div class="btn-navigation mrgn-bttm-md">
           <button id="btn-previous" class="btn btn-nav btn-lg hidden" type="button"><span class="glyphicon glyphicon-arrow-left mrgn-rght-md" aria-hidden="true"></span> Previous</button>
           <button id="btn-next" class="btn btn-nav btn-lg" type="button" disabled> Next question <span class="glyphicon glyphicon-arrow-right mrgn-lft-md" aria-hidden="true"></span></button>
           <button id="btn-reset" class="btn btn-nav btn-lg hidden" type="button"><span class="glyphicon glyphicon-repeat mrgn-rght-md" aria-hidden="true"></span> Start over</button>
@@ -2975,10 +2975,10 @@
 		border-radius: 25px;
 	}
 	.tool-container:has(#btn-next.hidden) #btn-previous {
-		border-radius: 25px;
+		border-radius: 25px 0 0 25px;
 	}
 	.tool-container:has(#btn-next.hidden) #btn-reset {
-		border-radius: 25px;
+		border-radius: 0 25px 25px 0;
 	}
 }
 .tool-container .btn-nav:disabled {
