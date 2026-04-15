@@ -28,6 +28,172 @@
 <link rel="stylesheet" href="/etc/designs/canada/wet-boew/css/noscript.min.css"/>
 </noscript>
 <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/m%C3%A9li-m%C3%A9lo/2024-09-kejimkujik.min.css">
+<style>
+.tool-container {
+	background-color: var(--gcds-color-blue-50);
+	padding: 30px 40px;
+	border-radius: 40px;
+	scroll-margin-top: 90px;
+	border: none;
+	margin: 30px 0;
+	font-size: 20px;
+}
+
+.tool-container .gc-chckbxrdio input[type=radio]+label::before {
+	background-color: #fff;
+}
+.tool-container .gc-chckbxrdio input[type=radio]:checked+label::before {
+	background: #444;
+}
+.tool-container .gc-chckbxrdio label {
+	font-weight: 400;
+}
+.question.hidden {
+	display: none !important;
+}
+.tool-container .panel.panel-default {
+	border-radius: 20px;
+	overflow: hidden;
+	padding: 15px;
+}
+.tool-container .btn-call-to-action {
+	border-radius: 25px;
+}
+.tool-container .well {
+	border-radius: 40px;
+	padding: 20px 30px;
+	background-color: #fff;
+}
+.account-card {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 15px;
+	margin-bottom: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.account-card p.small {
+	flex-basis: 100%;
+	margin: 4px 0 0 2.5em;
+}
+.tool-container .fa-arrow-right {
+	white-space: nowrap;
+}
+.account-card .fas {
+	font-size: 1.5em;
+	color: #2b7da3;
+	margin-right: 15px;
+}
+.tp {
+	background-color: whitesmoke;
+    font-size: 20px;
+}
+
+.tool-container .btn-nav {
+	border-radius: 25px;
+	border: solid 2px var(--gcds-color-blue-650);
+	min-width: 150px;
+	margin-right: -6px;
+	background-color: #fff !important;
+	color: #333 !important;
+}
+.tool-container #btn-next {
+	background-color: var(--gcds-color-blue-650) !important;
+	color: #fff !important;
+	border-color: var(--gcds-color-blue-650) !important;
+}
+.tool-container #btn-next:hover,
+.tool-container #btn-next:active {
+	background-color: var(--gcds-color-blue-750) !important;
+	color: #fff !important;
+	border-color: var(--gcds-color-blue-750) !important;
+}
+@media (hover: hover) {
+	.tool-container #btn-previous:hover,
+	.tool-container #btn-reset:hover {
+		background-color: var(--gcds-color-blue-650) !important;
+		color: #fff !important;
+		border-color: var(--gcds-color-blue-650) !important;
+	}
+}
+.tool-container #btn-previous:active,
+.tool-container #btn-reset:active {
+	background-color: var(--gcds-color-blue-650) !important;
+	color: #fff !important;
+	border-color: var(--gcds-color-blue-650) !important;
+}
+@media screen and (min-width: 527px) {
+	.tool-container #btn-previous {
+		border-radius: 25px 0 0 25px;
+	}
+	.tool-container #btn-next,
+	.tool-container #btn-reset {
+		border-radius: 0 25px 25px 0;
+	}
+	.tool-container:has(#btn-previous.hidden) #btn-next {
+		border-radius: 25px;
+	}
+	.tool-container:has(#btn-next.hidden) #btn-previous {
+		border-radius: 25px 0 0 25px;
+	}
+	.tool-container:has(#btn-next.hidden) #btn-reset {
+		border-radius: 0 25px 25px 0;
+	}
+}
+.tool-container .btn-nav:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+@media screen and (max-width: 767px) {
+	.tool-container {
+		margin: 30px -15px;
+		padding: 20px 20px;
+		border-radius: 0;
+	}
+	.tool-container .panel.panel-default {
+		padding: 10px;
+	}
+	.tool-container .panel .panel.panel-default {
+		margin-left: -10px;
+		margin-right: -10px;
+	}
+	.tool-container .fa-info-circle {
+		display: none !important;
+	}
+}
+@media screen and (max-width: 526px) {
+	.tool-container .btn-navigation {
+		display: flex;
+		flex-direction: column;
+	}
+	.tool-container #btn-next { order: 1; }
+	.tool-container #btn-previous { order: 2; }
+	.tool-container #btn-reset { order: 3; }
+	.tool-container .btn-nav {
+		border-radius: 25px !important;
+		width: 100%;
+		margin: 5px auto;
+		display: block;
+	}
+}
+.question {
+	border: none;
+	padding: 0;
+	margin-bottom: 15px;
+}
+.tool-container legend,
+.tool-container .legend {
+	font-size: 24px;
+	font-family: Lato, sans-serif;
+	font-weight: 700;
+	border-bottom: 0.18em solid var(--gcds-color-blue-650);
+	border-image: linear-gradient(to right, var(--gcds-color-blue-650) 51px, transparent 51px);
+	border-image-slice: 1;
+	padding-bottom: 5px;
+	margin-bottom: 15px;
+}
+</style>
 </head>
 
 <body vocab="http://schema.org/" typeof="WebPage">
@@ -120,13 +286,13 @@
   </nav>
 </header>
 <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="container">
-  <h1 property="name" id="wb-cont" dir="ltr">How to check your application status</h1>
-  <div class="row">
-    <div class="col-md-2 pull-right hidden-xs hidden-sm"> <img src="./img/img.jpg" alt="" class="img-responsive mrgn-tp-0"> </div>
-    <div class="mrgn-lft-md mrgn-rght-md">
+  <div class="row mrgn-tp-md d-flex align-items-center">
+    <div class="col-md-9">
+      <h1 property="name" id="wb-cont" dir="ltr" class="mrgn-tp-0">How to check your application status</h1>
       <p>The way to check the status of your application depends on what you applied for. For some types of applications, it also matters how you applied.</p>
       <p>Answer a few questions to find out how to get your application status.</p>
     </div>
+    <div class="col-md-3 hidden-xs hidden-sm"> <img src="./img/img.jpg" alt="" class="img-responsive mrgn-tp-md mrgn-bttm-md mrgn-lft-md"> </div>
   </div>
 </main>
 <div class="container">
@@ -143,7 +309,7 @@
           <legend>What did you apply for?</legend>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-what" id="q-what-0" value="citizenship">
+              <input type="radio" name="q-what" id="q-what-0" value="citizenship" required>
               <label for="q-what-0">Citizenship</label>
             </li>
             <li class="radio">
@@ -176,7 +342,7 @@
           <legend>Which citizenship application?</legend>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-citizenship-type" id="q-citizenship-type-0" value="grant">
+              <input type="radio" name="q-citizenship-type" id="q-citizenship-type-0" value="grant" required>
               <label for="q-citizenship-type-0">Becoming a Canadian citizen (grant of citizenship)</label>
             </li>
             <li class="radio">
@@ -201,7 +367,7 @@
           <legend>Select the application type:</legend>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-citizen-grant-type" id="q-citizen-grant-type-0" value="adult">
+              <input type="radio" name="q-citizen-grant-type" id="q-citizen-grant-type-0" value="adult" required>
               <label for="q-citizen-grant-type-0">Adult (18 and older)</label>
             </li>
             <li class="radio">
@@ -223,7 +389,7 @@
           <p class="mrgn-bttm-md">You’ll get this letter or email <strong>after</strong> we receive your application <strong>and</strong> check that it’s complete. It can take some time to get it.</p>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-adult-aor" id="q-adult-aor-0" value="yes">
+              <input type="radio" name="q-adult-aor" id="q-adult-aor-0" value="yes" required>
               <label for="q-adult-aor-0">Yes</label>
             </li>
             <li class="radio">
@@ -236,7 +402,7 @@
           <legend>Is this your first time checking your citizenship application status?</legend>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-adult-first-time" id="q-adult-first-time-0" value="yes">
+              <input type="radio" name="q-adult-first-time" id="q-adult-first-time-0" value="yes" required>
               <label for="q-adult-first-time-0">Yes</label>
             </li>
             <li class="radio">
@@ -250,7 +416,7 @@
           <p class="mrgn-bttm-md">You’ll get this letter or email <strong>after</strong> we receive your application <strong>and</strong> check that it’s complete. It can take some time to get it.</p>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-minor-aor" id="q-minor-aor-0" value="yes">
+              <input type="radio" name="q-minor-aor" id="q-minor-aor-0" value="yes" required>
               <label for="q-minor-aor-0">Yes</label>
             </li>
             <li class="radio">
@@ -263,7 +429,7 @@
           <legend>Is this your first time checking the minor’s citizenship application status?</legend>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-minor-first-time" id="q-minor-first-time-0" value="yes">
+              <input type="radio" name="q-minor-first-time" id="q-minor-first-time-0" value="yes" required>
               <label for="q-minor-first-time-0">Yes</label>
             </li>
             <li class="radio">
@@ -277,7 +443,7 @@
           <p class="mrgn-bttm-md">You’ll get this letter or email <strong>after</strong> we receive your application <strong>and</strong> check that it’s <strong>complete</strong>. It can take some time before you receive it.</p>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-caf-aor" id="q-caf-aor-0" value="yes">
+              <input type="radio" name="q-caf-aor" id="q-caf-aor-0" value="yes" required>
               <label for="q-caf-aor-0">Yes</label>
             </li>
             <li class="radio">
@@ -291,7 +457,7 @@
           <p class="mrgn-bttm-md">You’ll get this letter or email <strong>after</strong> we receive your application <strong>and</strong> check that it’s <strong>complete</strong>. It can take some time before you receive it.</p>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-adopt-aor" id="q-adopt-aor-0" value="yes">
+              <input type="radio" name="q-adopt-aor" id="q-adopt-aor-0" value="yes" required>
               <label for="q-adopt-aor-0">Yes</label>
             </li>
             <li class="radio">
@@ -304,7 +470,7 @@
           <legend>How did you apply for your citizenship certificate?</legend>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-proof-how" id="q-proof-how-0" value="online">
+              <input type="radio" name="q-proof-how" id="q-proof-how-0" value="online" required>
               <label for="q-proof-how-0">Online (digital)</label>
             </li>
             <li class="radio">
@@ -317,7 +483,7 @@
           <legend>Where did you apply from?</legend>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-proof-paper-where" id="q-proof-paper-where-0" value="inside">
+              <input type="radio" name="q-proof-paper-where" id="q-proof-paper-where-0" value="inside" required>
               <label for="q-proof-paper-where-0">Canada or the United States</label>
             </li>
             <li class="radio">
@@ -331,7 +497,7 @@
           <p class="mrgn-bttm-md">You’ll get your AOR after we receive your application and check that it’s complete. It can take a while before you get it.</p>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-proof-inside-aor" id="q-proof-inside-aor-0" value="yes">
+              <input type="radio" name="q-proof-inside-aor" id="q-proof-inside-aor-0" value="yes" required>
               <label for="q-proof-inside-aor-0">Yes</label>
             </li>
             <li class="radio">
@@ -344,7 +510,7 @@
           <legend>Did you provide your email address in your application?</legend>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-proof-outside-email" id="q-proof-outside-email-0" value="yes">
+              <input type="radio" name="q-proof-outside-email" id="q-proof-outside-email-0" value="yes" required>
               <label for="q-proof-outside-email-0">Yes</label>
             </li>
             <li class="radio">
@@ -358,7 +524,7 @@
           <p class="mrgn-bttm-md">You’ll get your AOR after we receive your application and check that it’s complete. It can take a while before you get it.</p>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-proof-outside-aor" id="q-proof-outside-aor-0" value="yes">
+              <input type="radio" name="q-proof-outside-aor" id="q-proof-outside-aor-0" value="yes" required>
               <label for="q-proof-outside-aor-0">Yes</label>
             </li>
             <li class="radio">
@@ -372,7 +538,7 @@
           <p class="mrgn-bttm-md">If you didn’t include an email address on your application, you <strong>won’t</strong> automatically get your UCI and the confirmation that we received your application. Contact the office where you mailed your application to get your client ID or UCI.</p>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-proof-outside-uci" id="q-proof-outside-uci-0" value="yes">
+              <input type="radio" name="q-proof-outside-uci" id="q-proof-outside-uci-0" value="yes" required>
               <label for="q-proof-outside-uci-0">Yes</label>
             </li>
             <li class="radio">
@@ -385,7 +551,7 @@
           <legend>How did you apply for your search of citizenship records?</legend>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-search-how" id="q-search-how-0" value="online">
+              <input type="radio" name="q-search-how" id="q-search-how-0" value="online" required>
               <label for="q-search-how-0">Online (digital)</label>
             </li>
             <li class="radio">
@@ -398,7 +564,7 @@
           <legend>Where did you apply from?</legend>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-search-where" id="q-search-where-0" value="inside">
+              <input type="radio" name="q-search-where" id="q-search-where-0" value="inside" required>
               <label for="q-search-where-0">Canada or the United States</label>
             </li>
             <li class="radio">
@@ -411,7 +577,7 @@
           <legend>What kind of temporary residence application?</legend>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-temp-res-type" id="q-temp-res-type-0" value="visitor">
+              <input type="radio" name="q-temp-res-type" id="q-temp-res-type-0" value="visitor" required>
               <label for="q-temp-res-type-0">Visitor visa</label>
             </li>
             <li class="radio">
@@ -440,7 +606,7 @@
           <legend>What kind of permanent residence application?</legend>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-perm-res-type" id="q-perm-res-type-0" value="express">
+              <input type="radio" name="q-perm-res-type" id="q-perm-res-type-0" value="express" required>
               <label for="q-perm-res-type-0">Express Entry</label>
             </li>
             <li class="radio">
@@ -461,7 +627,7 @@
           <legend>What kind of family sponsorship application?</legend>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-family-type" id="q-family-type-0" value="spousal">
+              <input type="radio" name="q-family-type" id="q-family-type-0" value="spousal" required>
               <label for="q-family-type-0">Spouse, partner or dependent child</label>
             </li>
             <li class="radio">
@@ -474,7 +640,7 @@
           <legend>Where did you apply from?</legend>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-spousal-where" id="q-spousal-where-0" value="inside">
+              <input type="radio" name="q-spousal-where" id="q-spousal-where-0" value="inside" required>
               <label for="q-spousal-where-0">In Canada</label>
             </li>
             <li class="radio">
@@ -487,7 +653,7 @@
           <legend>Are you the sponsor or the person being sponsored?</legend>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio">
-              <input type="radio" name="q-pgp-who" id="q-pgp-who-0" value="sponsor">
+              <input type="radio" name="q-pgp-who" id="q-pgp-who-0" value="sponsor" required>
               <label for="q-pgp-who-0">I am the sponsor</label>
             </li>
             <li class="radio">
@@ -498,7 +664,7 @@
         </fieldset>
         <div class="btn-navigation mrgn-bttm-md">
           <button id="btn-previous" class="btn btn-nav btn-lg hidden" type="button"><span class="glyphicon glyphicon-arrow-left mrgn-rght-md" aria-hidden="true"></span> Previous</button>
-          <button id="btn-next" class="btn btn-nav btn-lg" type="button" disabled> Next question <span class="glyphicon glyphicon-arrow-right mrgn-lft-md" aria-hidden="true"></span></button>
+          <button id="btn-next" class="btn btn-nav btn-lg" type="button"> Next question <span class="glyphicon glyphicon-arrow-right mrgn-lft-md" aria-hidden="true"></span></button>
           <button id="btn-reset" class="btn btn-nav btn-lg hidden" type="button"><span class="glyphicon glyphicon-repeat mrgn-rght-md" aria-hidden="true"></span> Start over</button>
         </div>
       </form>
@@ -1138,8 +1304,7 @@
             </div>
             <details>
               <summary><strong>Paper applications</strong></summary>
-              <div class="account-card"> <span class="fas fa-user-circle" aria-hidden="true"></span> <a href="https://services3.cic.gc.ca/ecas/security.do?app=ecas&amp;lang=en">Check the Client application status tool</a>
-                <p class="small mrgn-lft-lg"><span class="label label-info">Updated daily</span></p>
+              <div class="account-card"> <span class="fas fa-user-circle" aria-hidden="true"></span> <a href="https://services3.cic.gc.ca/ecas/security.do?app=ecas&amp;lang=en">Check the Client application status tool</a> <span class="label label-info mrgn-lft-sm">Updated daily</span>
               </div>
               <p>Most people must apply online. The only exceptions are if either:</p>
               <ul>
@@ -1177,8 +1342,7 @@
             </div>
             <details>
               <summary><strong>Paper applications</strong></summary>
-              <div class="account-card"> <span class="fas fa-user-circle" aria-hidden="true"></span> <a href="https://services3.cic.gc.ca/ecas/security.do?app=ecas&amp;lang=en">Check the Client application status tool</a>
-                <p class="small mrgn-lft-lg"><span class="label label-info">Updated daily</span></p>
+              <div class="account-card"> <span class="fas fa-user-circle" aria-hidden="true"></span> <a href="https://services3.cic.gc.ca/ecas/security.do?app=ecas&amp;lang=en">Check the Client application status tool</a> <span class="label label-info mrgn-lft-sm">Updated daily</span>
               </div>
               <p>Most people must apply online. The only exceptions are if either:</p>
               <ul>
@@ -1769,7 +1933,7 @@
           <div class="panel-body mrgn-tp-0"> 
             
             
-            <p class="h2" id="proof-online-no-aor">Wait until you get your AOR</p>
+            <p class="h2">Wait until you get your AOR</p>
             <p>You can only check your application status <strong>after</strong> you get your AOR.</p>
             <p>After you apply online, you immediately get an email that confirms you’ve successfully <strong>submitted</strong> your application. This email is <strong>not</strong> your AOR.</p>
             <div class="well">
@@ -2144,7 +2308,7 @@
     </details>
   </div>
 </section>
-<main property="mainContentOfPage" class="container">
+<div class="container">
   <div class="row row-no-gutters mrgn-tp-xl">
     <div class="col-sm-7 col-lg-6">
       <section class="gc-pg-hlpfl provisional">
@@ -2247,7 +2411,7 @@
       </dd>
     </dl>
   </div>
-</main>
+</div>
 <div>
   <div class="global-footer">
     <footer id="wb-info">
@@ -2317,180 +2481,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script> 
 <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script> 
 <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
-<style>
-.tool-container {
-	background-color: var(--gcds-color-blue-50);
-	padding: 30px 40px;
-	border-radius: 40px;
-	scroll-margin-top: 90px;
-	border: none;
-	margin: 30px 0;
-	font-size: 20px;
-}
-
-.tool-container .gc-chckbxrdio input[type=radio]+label::before {
-	background-color: #fff;
-}
-.tool-container .gc-chckbxrdio input[type=radio]:checked+label::before {
-	background: #444;
-}
-.tool-container .gc-chckbxrdio label {
-	font-weight: 400;
-}
-.question.hidden {
-	display: none !important;
-}
-.tool-container .panel.panel-default {
-	border-radius: 20px;
-	overflow: hidden;
-	padding: 15px;
-}
-.tool-container .btn-call-to-action {
-	border-radius: 25px;
-}
-.tool-container .well {
-	border-radius: 40px;
-	padding: 20px 30px;
-	background-color: #fff;
-}
-.tool-container details {
-	border: 3px solid #ddd;
-	border-radius: 25px;
-	margin-bottom: 15px;
-}
-.tool-container details:not([open]) > summary {
-	border-radius: 25px;
-	background-color: #fff;
-	color: #333;
-	border: none;
-	padding: 15px 25px;
-}
-.tool-container details[open] {
-	background-color: #fff;
-	border-radius: 25px;
-}
-.tool-container details[open] > summary {
-	padding: 15px 25px;
-	color: #333;
-	background-color: #eee;
-	border-radius: 25px 25px 0 0;
-}
-.account-card {
-	border: 1px solid #ddd;
-	border-radius: 4px;
-	padding: 15px;
-	margin-bottom: 10px;
-	display: flex;
-	align-items: center;
-}
-.account-card .fas {
-	font-size: 1.5em;
-	color: #2b7da3;
-	margin-right: 15px;
-}
-.tp {
-	background-color: whitesmoke;
-    font-size: 20px;
-}
-
-.tool-container .btn-nav {
-	border-radius: 25px;
-	border: solid 2px var(--gcds-color-blue-650);
-	min-width: 150px;
-	margin-right: -6px;
-	background-color: #fff !important;
-	color: #333 !important;
-}
-.tool-container #btn-next,
-.tool-container #btn-next:disabled {
-	background-color: var(--gcds-color-blue-650) !important;
-	color: #fff !important;
-	border-color: var(--gcds-color-blue-650) !important;
-}
-.tool-container #btn-next:hover,
-.tool-container #btn-next:active {
-	background-color: var(--gcds-color-blue-750) !important;
-	color: #fff !important;
-	border-color: var(--gcds-color-blue-750) !important;
-}
-@media (hover: hover) {
-	.tool-container #btn-previous:hover,
-	.tool-container #btn-reset:hover {
-		background-color: var(--gcds-color-blue-650) !important;
-		color: #fff !important;
-		border-color: var(--gcds-color-blue-650) !important;
-	}
-}
-.tool-container #btn-previous:active,
-.tool-container #btn-reset:active {
-	background-color: var(--gcds-color-blue-650) !important;
-	color: #fff !important;
-	border-color: var(--gcds-color-blue-650) !important;
-}
-@media screen and (min-width: 527px) {
-	.tool-container #btn-previous {
-		border-radius: 25px 0 0 25px;
-	}
-	.tool-container #btn-next,
-	.tool-container #btn-reset {
-		border-radius: 0 25px 25px 0;
-	}
-	.tool-container:has(#btn-previous.hidden) #btn-next {
-		border-radius: 25px;
-	}
-	.tool-container:has(#btn-next.hidden) #btn-previous {
-		border-radius: 25px 0 0 25px;
-	}
-	.tool-container:has(#btn-next.hidden) #btn-reset {
-		border-radius: 0 25px 25px 0;
-	}
-}
-.tool-container .btn-nav:disabled {
-	opacity: 0.5;
-	cursor: not-allowed;
-}
-@media screen and (max-width: 767px) {
-	.tool-container {
-		margin: 30px -15px;
-		padding: 20px 20px;
-		border-radius: 0;
-	}
-	.tool-container .fa-info-circle {
-		display: none !important;
-	}
-}
-@media screen and (max-width: 526px) {
-	.tool-container .btn-navigation {
-		display: flex;
-		flex-direction: column;
-	}
-	.tool-container #btn-next { order: 1; }
-	.tool-container #btn-previous { order: 2; }
-	.tool-container #btn-reset { order: 3; }
-	.tool-container .btn-nav {
-		border-radius: 25px !important;
-		width: 100%;
-		margin: 5px auto;
-		display: block;
-	}
-}
-.question {
-	border: none;
-	padding: 0;
-	margin-bottom: 15px;
-}
-.tool-container legend,
-.tool-container .legend {
-	font-size: 24px;
-	font-family: Lato, sans-serif;
-	font-weight: 700;
-	border-bottom: 0.18em solid var(--gcds-color-blue-650);
-	border-image: linear-gradient(to right, var(--gcds-color-blue-650) 51px, transparent 51px);
-	border-image-slice: 1;
-	padding-bottom: 5px;
-	margin-bottom: 15px;
-}
-</style>
 <script>
 const WIZARD_DATA = {
   start: "q-what",
@@ -2671,8 +2661,6 @@ const WIZARD_DATA = {
     }
     isInitialLoad = false;
     current = id;
-    var hasSelection = el.querySelector('input[type=radio]:checked');
-    btnNext.disabled = !hasSelection;
     btnNext.classList.remove('hidden');
     btnPrev.classList.toggle('hidden', history.length === 0);
     btnReset.classList.add('hidden');
@@ -2695,7 +2683,12 @@ const WIZARD_DATA = {
   btnNext.addEventListener('click', function() {
     var qEl = document.getElementById(current);
     var selected = qEl.querySelector('input[type=radio]:checked');
-    if (!selected) return;
+
+    if (!selected) {
+      $(form).validate();
+      $(form).valid();
+      return;
+    }
 
     var qData = WIZARD_DATA.questions[current];
     var opt = qData.options.find(function(o) { return o.value === selected.value; });
@@ -2726,11 +2719,6 @@ const WIZARD_DATA = {
     showQuestion(WIZARD_DATA.start, true);
   });
 
-  form.addEventListener('change', function(e) {
-    if (e.target.type === 'radio') {
-      btnNext.disabled = false;
-    }
-  });
 
   // Init
   showQuestion(WIZARD_DATA.start, true);
