@@ -1,0 +1,589 @@
+/* ============================================================
+   Help Centre prototype — custom styles
+   Layered on top of GCWeb theme. Keeps GC header/footer intact.
+   ============================================================ */
+
+:root {
+  --hc-band:           #e8e6f4;   /* lavender band background */
+  --hc-band-soft:      #efedf7;   /* slightly paler lavender */
+  --hc-accent:         #7b2d8e;   /* purple accent (active tab underline) */
+  --hc-ink:            #333333;
+  --hc-ink-muted:      #595959;
+  --hc-border:         #d6d6de;
+  --hc-border-strong:  #8e8ea3;
+  --hc-link:           #284162;
+  --hc-link-hover:     #0535d2;
+  --hc-surface:        #ffffff;
+  --hc-focus:          #0535d2;
+}
+
+/* ============ Hero ============ */
+
+.hc-hero {
+  padding-top: 16px;
+  padding-bottom: 28px;
+}
+
+.hc-lead {
+  font-size: 1.1em;
+  color: var(--hc-ink);
+  margin: 12px 0 0;
+}
+
+.hc-hero-illustration {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.hc-hero-illustration svg {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+}
+
+/* ============ Lavender bands ============ */
+
+.hc-band {
+  background: var(--hc-band);
+  padding: 28px 0;
+}
+
+.hc-band + .hc-band {
+  padding-top: 8px;
+  padding-bottom: 32px;
+}
+
+.hc-band-h2 {
+  margin-top: 0;
+  margin-bottom: 14px;
+  font-size: 1.6em;
+  font-weight: 700;
+}
+
+/* ============ Search form ============ */
+
+.hc-search {
+  display: flex;
+  margin-bottom: 28px;
+  max-width: 100%;
+}
+
+.hc-search input[type="search"] {
+  flex: 1 1 auto;
+  height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--hc-border-strong);
+  border-right: none;
+  background: #fff;
+  font-size: 1em;
+  border-radius: 0;
+  min-width: 0;
+}
+
+.hc-search input[type="search"]:focus {
+  outline: 3px solid var(--hc-focus);
+  outline-offset: -3px;
+  z-index: 1;
+}
+
+.hc-search .btn {
+  border-radius: 0;
+  padding: 8px 24px;
+  height: 44px;
+  border: 1px solid #26374a;
+  background: #26374a;
+  color: #fff;
+  font-weight: 400;
+}
+
+.hc-search .btn:hover,
+.hc-search .btn:focus {
+  background: #1c578a;
+  border-color: #1c578a;
+  color: #fff;
+}
+
+/* ============ Top tasks (pill chips) ============ */
+
+.hc-top-tasks-title {
+  font-size: 1.15em;
+  font-weight: 700;
+  margin: 8px 0 10px;
+}
+
+.hc-top-tasks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hc-top-tasks li { margin: 0; }
+
+.hc-top-tasks a {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #fff;
+  border: 1px solid var(--hc-border);
+  border-radius: 22px;
+  color: var(--hc-link);
+  text-decoration: none;
+  font-size: 0.95em;
+  line-height: 1.3;
+}
+
+.hc-top-tasks a:hover,
+.hc-top-tasks a:focus {
+  background: #f4f3fb;
+  border-color: var(--hc-accent);
+  text-decoration: underline;
+}
+
+/* ============================================================
+   Categories — reset + structure
+   ------------------------------------------------------------
+   Mobile (<768px): vertical accordion (one white box per category).
+   Desktop (≥768px): 4-up row of rounded tab buttons + shared panel.
+   ============================================================ */
+
+.hc-categories { background: transparent; }
+
+/* RESET: don't let mobile-only container styles bleed into desktop */
+.hc-category {
+  margin: 0 0 10px;
+  background: #fff;
+  border: 1px solid var(--hc-border);
+  border-radius: 6px;
+}
+
+.hc-category-header {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: #fff !important;
+  border: 0;
+  padding: 14px 16px 14px 42px;
+  font-size: 1em;
+  font-weight: 700;
+  color: var(--hc-ink);
+  cursor: pointer;
+  position: relative;
+  line-height: 1.3;
+  border-radius: 6px;
+}
+
+.hc-category-header:focus {
+  outline: 3px solid var(--hc-focus);
+  outline-offset: -3px;
+}
+
+.hc-category-caret {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid currentColor;
+  transform: translateY(-50%);
+  transition: transform 0.15s ease-in-out;
+}
+
+.hc-category[data-open="true"] > .hc-category-header .hc-category-caret {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.hc-category-body {
+  background: #fff;
+  padding: 18px 16px;
+  border-top: 1px solid var(--hc-border);
+}
+
+.hc-category-body[hidden] { display: none; }
+
+.hc-category-intro {
+  margin: 0 0 14px;
+  color: var(--hc-ink-muted);
+}
+
+/* ---------- Desktop: folder-tab row ---------- */
+
+@media (min-width: 768px) {
+
+  .hc-categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 12px;
+    row-gap: 0;
+  }
+
+  /* Neutralise mobile box styling — tabs are individual buttons, not boxes */
+  .hc-category {
+    display: contents;
+    margin: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .hc-category-header {
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #fff !important;
+    border: 1px solid var(--hc-border) !important;
+    border-radius: 8px;
+    padding: 18px 14px;
+    min-height: 78px;
+    font-size: 1em;
+    line-height: 1.3;
+    font-weight: 400;
+    color: var(--hc-ink);
+    transition: border-color 0.15s ease;
+  }
+
+  .hc-category-header:hover {
+    border-color: var(--hc-border-strong) !important;
+  }
+
+  .hc-category-header .hc-category-caret { display: none; }
+
+  /* Active tab: bold label with purple underline under the TEXT only */
+  .hc-category[data-open="true"] > .hc-category-header {
+    font-weight: 700;
+    border-color: var(--hc-border-strong) !important;
+  }
+
+  .hc-category[data-open="true"] > .hc-category-header .hc-category-label {
+    display: inline-block;
+    border-bottom: 3px solid var(--hc-accent);
+    padding-bottom: 4px;
+  }
+
+  /* Single shared content panel below the tab row */
+  .hc-category-body {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    background: #fff;
+    border: 1px solid var(--hc-border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 14px;
+  }
+}
+
+/* ============================================================
+   FAQ rows — slightly stylized <details>
+   - Regular weight (not bold)
+   - Triangle has generous spacing from the text
+   - No double-line when the row opens
+   ============================================================ */
+
+.hc-faq-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hc-faq-list > li {
+  border: 1px solid var(--hc-border);
+  border-radius: 6px;
+  margin-bottom: 12px;
+  background: #fff;
+}
+
+.hc-faq-list > li:last-child { margin-bottom: 0; }
+
+.hc-faq-list > li details > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 16px 14px 52px;    /* extra left room for caret + gap */
+  font-weight: 400;                /* not bold */
+  color: var(--hc-ink);
+  position: relative;
+  border-radius: 6px;
+  line-height: 1.4;
+}
+
+.hc-faq-list > li details > summary::-webkit-details-marker { display: none; }
+.hc-faq-list > li details > summary::marker { content: ""; }
+
+.hc-faq-list > li details > summary::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid var(--hc-ink);
+  transform: translateY(-50%);
+  transition: transform 0.15s ease-in-out;
+}
+
+.hc-faq-list > li details[open] > summary::before {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.hc-faq-list > li details > summary:hover {
+  background: #f6f5fb;
+  color: var(--hc-link-hover);
+}
+
+.hc-faq-list > li details > summary:focus {
+  outline: 3px solid var(--hc-focus);
+  outline-offset: -3px;
+}
+
+/* Content area inside an open row — no border, just padding */
+.hc-faq-links {
+  list-style: disc;
+  padding: 4px 16px 14px 68px;
+  margin: 0;
+}
+
+.hc-faq-links li { padding: 3px 0; color: var(--hc-ink); }
+
+.hc-faq-links a {
+  color: var(--hc-link);
+  text-decoration: underline;
+}
+
+.hc-faq-links a:hover,
+.hc-faq-links a:focus {
+  color: var(--hc-link-hover);
+}
+
+/* ============ "You may also be looking for" — proper cards ============ */
+
+.hc-also {
+  background: var(--hc-band-soft);
+  padding: 32px 0;
+}
+
+.hc-also-title {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.hc-also-card {
+  border: 1px solid var(--hc-border);
+  border-radius: 6px;
+  background: #fff;
+  padding: 18px 20px;
+  height: 100%;
+  min-height: 160px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hc-also-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.hc-also-card h3 a {
+  color: var(--hc-link);
+  text-decoration: underline;
+}
+
+.hc-also-card h3 a:hover,
+.hc-also-card h3 a:focus {
+  color: var(--hc-link-hover);
+}
+
+.hc-also-card p {
+  margin: 0;
+  color: var(--hc-ink);
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+/* ============ Small screens polish ============ */
+
+@media (max-width: 767px) {
+  .hc-hero-illustration { display: none; }
+
+  .hc-top-tasks {
+    flex-direction: column;
+  }
+
+  .hc-top-tasks a {
+    display: block;
+    text-align: left;
+    border-radius: 4px;
+  }
+}
+
+/* ============================================================
+   Canada.ca-style footer
+   - Contextual band (dark navy): theme of this page
+   - Main footer (dark navy with parliament silhouette): themes
+   - Sub-footer (white): legal links + wordmark
+   ============================================================ */
+
+#wb-info {
+  margin-top: 0;
+}
+
+/* --- Contextual band --- */
+.gc-contextual-band {
+  background: #26374a;
+  color: #fff;
+  padding: 18px 0 22px;
+}
+
+.gc-contextual-band h2 {
+  color: #fff;
+  font-size: 1.15em;
+  font-weight: 700;
+  margin: 0 0 10px;
+  border: 0;
+  padding: 0;
+}
+
+.gc-contextual-band ul {
+  margin: 0;
+  padding: 0;
+}
+
+.gc-contextual-band a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.gc-contextual-band a:hover,
+.gc-contextual-band a:focus {
+  color: #fff;
+  text-decoration: none;
+}
+
+.gc-contextual-band li {
+  padding: 3px 0;
+}
+
+/* --- Main footer with Parliament silhouette --- */
+.gc-main-footer {
+  background: #26374a;
+  color: #fff;
+  padding: 28px 0 20px;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.gc-main-footer::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  bottom: 0;
+  width: 320px;
+  height: 110px;
+  background-image: url("https://www.canada.ca/etc/designs/canada/wet-boew/assets/landscape.png");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: contain;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.gc-main-footer h2 {
+  color: #fff;
+  font-size: 1.4em;
+  font-weight: 700;
+  margin: 0 0 18px;
+  border: 0;
+  padding: 0;
+}
+
+.gc-main-footer h3 {
+  color: #fff;
+  font-size: 1.05em;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.gc-main-footer h3 a,
+.gc-main-footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.gc-main-footer h3 a {
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+  padding-bottom: 4px;
+  display: inline-block;
+}
+
+.gc-main-footer a:hover,
+.gc-main-footer a:focus {
+  color: #fff;
+  text-decoration: none;
+}
+
+.gc-main-footer ul { margin: 0; padding: 0; }
+.gc-main-footer li { padding: 3px 0; }
+
+.gc-footer-about {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Sub-footer: white bar with legal links + wordmark --- */
+.gc-sub-footer {
+  background: #f8f8f8;
+  padding: 16px 0;
+  border-top: 1px solid #dadada;
+}
+
+.gc-sub-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 20px;
+}
+
+.gc-sub-footer li {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.gc-sub-footer a {
+  color: #284162;
+  text-decoration: underline;
+}
+
+.gc-sub-footer a:hover,
+.gc-sub-footer a:focus {
+  color: #0535d2;
+}
+
+.gc-sub-footer img {
+  max-width: 140px;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  .gc-sub-footer .text-right { text-align: left; margin-top: 12px; }
+  .gc-sub-footer ul { gap: 8px 20px; }
+  .gc-main-footer::after { width: 220px; opacity: 0.25; }
+}
