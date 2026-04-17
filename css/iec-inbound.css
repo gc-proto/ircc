@@ -1,0 +1,31 @@
+:root{
+  --iec-hero-bg: linear-gradient(180deg,#2b2f6f 0%, #4b4fb3 100%);
+  --iec-accent: #f4b844;
+  --iec-contrast: #fff;
+}
+/* Basic layout for the prototype page */
+.iec-prototype{padding:24px 12px 48px;}
+.iec-hero{background:var(--iec-hero-bg);color:var(--iec-contrast);border-radius:6px;padding:40px 20px;margin:18px 0;}
+.hero-inner{max-width:900px;margin:0 auto;text-align:left}
+.hero-title{font-size:2rem;margin:0 0 .35em}
+.hero-lead{font-size:1.1rem;opacity:.95;margin:0 0 1.2em}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-ctas .btn{min-width:220px}
+
+.cta-grid{margin-top:24px;gap:18px}
+.card{background:#fff;border:1px solid #e6e6e6;padding:18px;border-radius:6px;min-height:160px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.card h3{margin-top:0}
+.full-width{display:inline-block;width:100%}
+
+.iec-features{margin-top:28px}
+.note{background:#f7f7f7;padding:12px;border-radius:4px}
+.iec-footer{margin-top:28px;padding-top:12px;border-top:1px solid #eaeaea}
+
+/* Responsive tweaks */
+@media (max-width:767px){
+  .hero-title{font-size:1.5rem}
+  .hero-ctas .btn{width:100%}
+}
+
+/* Accessibility helpers */
+.sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
