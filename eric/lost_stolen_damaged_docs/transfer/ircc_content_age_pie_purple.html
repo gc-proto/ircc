@@ -1,0 +1,70 @@
+
+<h2 class="sr-only">Pie chart showing how outdated the IRCC Help Centre content is, broken into four age groups using a purple colour palette</h2>
+
+<div style="display:flex;flex-wrap:wrap;gap:16px;margin-bottom:12px;padding-top:1rem;">
+  <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text-secondary);">
+    <span style="width:10px;height:10px;border-radius:2px;background:#26215C;"></span>10+ years old (before 2015) — 77 (6.7%)
+  </span>
+  <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text-secondary);">
+    <span style="width:10px;height:10px;border-radius:2px;background:#534AB7;"></span>7–10 years old (2015–2017) — 219 (19.1%)
+  </span>
+  <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text-secondary);">
+    <span style="width:10px;height:10px;border-radius:2px;background:#AFA9EC;"></span>5–7 years old (2018–Apr 2021) — 435 (37.9%)
+  </span>
+  <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text-secondary);">
+    <span style="width:10px;height:10px;border-radius:2px;background:#CECBF6;border:0.5px solid #AFA9EC;"></span>Current (Apr 2021 or later) — 417 (36.3%)
+  </span>
+</div>
+
+<div style="display:flex;gap:32px;flex-wrap:wrap;align-items:center;">
+  <div style="position:relative;width:260px;height:260px;flex-shrink:0;">
+    <canvas id="pieChart" role="img" aria-label="Pie chart: 6.7% of content is 10+ years old, 19.1% is 7–10 years old, 37.9% is 5–7 years old, and 36.3% is current.">Content age: 10+ years 6.7%, 7–10 years 19.1%, 5–7 years 37.9%, current 36.3%.</canvas>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px;flex:1;min-width:180px;">
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px 16px;">
+      <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:4px;">Total pages</div>
+      <div style="font-size:24px;font-weight:500;color:var(--color-text-primary);">1,148</div>
+    </div>
+    <div style="background:#EEEDFE;border-radius:var(--border-radius-md);padding:12px 16px;">
+      <div style="font-size:12px;color:#534AB7;margin-bottom:4px;">Outdated (5+ years)</div>
+      <div style="font-size:24px;font-weight:500;color:#26215C;">731 <span style="font-size:14px;font-weight:400;color:#534AB7;">63.7%</span></div>
+    </div>
+    <div style="background:#EEEDFE;border-radius:var(--border-radius-md);padding:12px 16px;">
+      <div style="font-size:12px;color:#534AB7;margin-bottom:4px;">Current (within 5 years)</div>
+      <div style="font-size:24px;font-weight:500;color:#26215C;">417 <span style="font-size:14px;font-weight:400;color:#534AB7;">36.3%</span></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+new Chart(document.getElementById('pieChart'), {
+  type: 'pie',
+  data: {
+    labels: ['10+ years', '7–10 years', '5–7 years', 'Current'],
+    datasets: [{
+      data: [77, 219, 435, 417],
+      backgroundColor: ['#26215C', '#534AB7', '#AFA9EC', '#CECBF6'],
+      borderColor: ['#26215C', '#534AB7', '#AFA9EC', '#CECBF6'],
+      borderWidth: 2,
+      hoverOffset: 8
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            const pct = ((ctx.parsed / 1148) * 100).toFixed(1);
+            return ' ' + ctx.parsed + ' pages (' + pct + '%)';
+          }
+        }
+      }
+    }
+  }
+});
+</script>
