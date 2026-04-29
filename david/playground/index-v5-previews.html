@@ -2,7 +2,7 @@
 <html class="no-js" lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
-<title>Help Centre — Prototype v6 — Canada.ca</title>
+<title>Help Centre — Prototype — Canada.ca</title>
 <meta content="width=device-width,initial-scale=1" name="viewport">
 <meta name="description" content="Help Centre for Immigration, Refugees and Citizenship Canada applications and services.">
 <link rel="icon" href="https://www.canada.ca/etc/designs/canada/wet-boew/assets/favicon.ico" type="image/x-icon">
@@ -15,7 +15,6 @@
    v2: card-style accordion (no preview questions, expandable subgroups)
    ============================================================ */
 
-/* Browse-by-topic section sits on a plain white background */
 .hc-band-categories {
   background: transparent;
   padding-top: 8px;
@@ -80,14 +79,7 @@
   font-weight: 700;
   font-size: 1.15em;
   line-height: 1.3;
-  margin-bottom: 2px;
-}
-
-.hcv2-cat-count {
-  display: block;
-  font-size: 0.9em;
-  color: var(--hc-ink-muted);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .hcv2-cat-topics {
@@ -96,8 +88,6 @@
   color: var(--hc-ink-muted);
   line-height: 1.5;
 }
-
-.hcv2-cat-topics strong { color: var(--hc-ink); }
 
 .hcv2-cat-caret {
   width: 12px;
@@ -116,39 +106,40 @@
 }
 
 .hcv2-cat-body {
-  padding: 4px 24px 24px 92px;
+  padding: 16px 24px 24px 92px;
   border-top: 1px solid var(--hc-border);
-  background: #fafafd;
+  background: #f4f2fb;
 }
 
 .hcv2-cat-body[hidden] { display: none; }
 
-/* Sub-groups: each is its own expandable, styled to match the bucket cards */
 .hcv2-subgroup {
-  border-bottom: 1px solid var(--hc-border);
+  background: #fff;
+  border: 1px solid var(--hc-border);
+  border-radius: 6px;
+  margin-bottom: 8px;
 }
 
-.hcv2-subgroup:last-child { border-bottom: 0; }
+.hcv2-subgroup:last-child { margin-bottom: 0; }
 
 .hcv2-subgroup-title {
   list-style: none;
   cursor: pointer;
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  align-items: center;
-  column-gap: 14px;
-  padding: 14px 18px;
+  display: block;
+  position: relative;
+  padding: 14px 44px 14px 24px;
   font-weight: 700;
   font-size: 1em;
   color: var(--hc-ink);
   line-height: 1.3;
+  border-radius: 6px;
 }
 
 .hcv2-subgroup-title::-webkit-details-marker { display: none; }
 .hcv2-subgroup-title::marker { content: ""; }
 
 .hcv2-subgroup-title:hover {
-  background: #f4f3fb;
+  background: #f6f5fb;
   color: var(--hc-link-hover);
 }
 
@@ -157,32 +148,28 @@
   outline-offset: -3px;
 }
 
-.hcv2-subgroup-name { flex: 1 1 auto; }
+.hcv2-subgroup-name { }
 
 .hcv2-subgroup-count {
   font-weight: 400;
   color: var(--hc-ink-muted);
-  margin-left: 6px;
-  margin-right: 14px;
   font-size: 0.92em;
 }
 
-.hcv2-subgroup-title::after {
-  content: "";
-  flex: 0 0 auto;
+.hcv2-subgroup-caret {
+  position: absolute;
+  right: 18px;
+  top: 50%;
   width: 10px;
   height: 10px;
   border-right: 2px solid var(--hc-ink);
   border-bottom: 2px solid var(--hc-ink);
-  transform: rotate(45deg);
-  margin-bottom: 4px;
+  transform: translateY(-75%) rotate(45deg);
   transition: transform 0.15s ease-in-out;
 }
 
-.hcv2-subgroup[open] > .hcv2-subgroup-title::after {
-  transform: rotate(-135deg);
-  margin-top: 4px;
-  margin-bottom: 0;
+.hcv2-subgroup[open] > .hcv2-subgroup-title .hcv2-subgroup-caret {
+  transform: translateY(-25%) rotate(-135deg);
 }
 
 .hcv2-subgroup-list {
@@ -200,9 +187,7 @@
   color: var(--hc-ink);
 }
 
-.hcv2-subgroup-list li::marker {
-  color: var(--hc-ink-muted);
-}
+.hcv2-subgroup-list li::marker { color: var(--hc-ink-muted); }
 
 .hcv2-subgroup-list a {
   color: var(--hc-link);
@@ -346,17 +331,16 @@
         <polyline points="9 14 11 16 15 12"/>
     </svg></span>
             <span class="hcv2-cat-text">
-              <span class="hcv2-cat-label">Check status, processing times or update your application</span>
-              <span class="hcv2-cat-count">39 questions</span>
-              <span class="hcv2-cat-topics"><strong>Topics:</strong> Find your reference numbers • Check your application status • Processing times • What happens after you apply • Update your information or fix a mistake</span>
+              <span class="hcv2-cat-label">Check or update your application</span>
+              <span class="hcv2-cat-topics">UCI and application numbers • Check your application status • Processing times • What happens after you apply • Update your information</span>
             </span>
             <span class="hcv2-cat-caret" aria-hidden="true"></span>
           </button>
           <div class="hcv2-cat-body" id="cat-status-body" role="region" hidden>
             <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
-              <span class="hcv2-subgroup-name">Find your reference numbers</span>
-              <span class="hcv2-subgroup-count">(7)</span>
+              <span class="hcv2-subgroup-name">UCI and application numbers</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=013">What is a UCI?</a></li>
@@ -371,7 +355,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Check your application status</span>
-              <span class="hcv2-subgroup-count">(10)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=029">How can I check the status of my application?</a></li>
@@ -389,7 +373,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Processing times</span>
-              <span class="hcv2-subgroup-count">(14)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=031">How long will it take to process my application?</a></li>
@@ -411,7 +395,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">What happens after you apply</span>
-              <span class="hcv2-subgroup-count">(2)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=022">What happens after I send in my application?</a></li>
@@ -420,8 +404,8 @@
           </details>
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
-              <span class="hcv2-subgroup-name">Update your information or fix a mistake</span>
-              <span class="hcv2-subgroup-count">(6)</span>
+              <span class="hcv2-subgroup-name">Update your information</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052">How can I update or ask about an IRCC application in progress?</a></li>
@@ -444,9 +428,8 @@
         <path d="M16.5 14.5l3 3-2 4-2-2 1-5z"/>
     </svg></span>
             <span class="hcv2-cat-text">
-              <span class="hcv2-cat-label">Apply, complete forms or submit documents</span>
-              <span class="hcv2-cat-count">33 questions</span>
-              <span class="hcv2-cat-topics"><strong>Topics:</strong> Prepare a complete application • Fill out IRCC forms • Sign and submit your application • Upload and submit documents • Medical exam • Fees, refunds and receipts</span>
+              <span class="hcv2-cat-label">How to apply</span>
+              <span class="hcv2-cat-topics">Prepare a complete application • Fill out IRCC forms • Sign and submit your application • Upload and submit documents • Medical exam • Fees, refunds and receipts</span>
             </span>
             <span class="hcv2-cat-caret" aria-hidden="true"></span>
           </button>
@@ -454,7 +437,7 @@
             <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Prepare a complete application</span>
-              <span class="hcv2-subgroup-count">(5)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=072">What is a complete application package?</a></li>
@@ -467,7 +450,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Fill out IRCC forms</span>
-              <span class="hcv2-subgroup-count">(10)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=007">How do I fill out an IRCC application?</a></li>
@@ -485,7 +468,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Sign and submit your application</span>
-              <span class="hcv2-subgroup-count">(1)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=740">How do I sign my online application?</a></li>
@@ -494,7 +477,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Upload and submit documents</span>
-              <span class="hcv2-subgroup-count">(9)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1310">You asked me for a new document. How do I submit it?</a></li>
@@ -511,7 +494,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Medical exam</span>
-              <span class="hcv2-subgroup-count">(1)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=033">How can I find a doctor to do my immigration medical exam?</a></li>
@@ -520,7 +503,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Fees, refunds and receipts</span>
-              <span class="hcv2-subgroup-count">(7)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=358">How much does it cost to apply for Canadian citizenship?</a></li>
@@ -541,9 +524,8 @@
         <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
     </svg></span>
             <span class="hcv2-cat-text">
-              <span class="hcv2-cat-label">Sign in, link or fix your account</span>
-              <span class="hcv2-cat-count">10 questions</span>
-              <span class="hcv2-cat-topics"><strong>Topics:</strong> Sign in and account creation • Link your applications • Browser and technical issues</span>
+              <span class="hcv2-cat-label">Account help</span>
+              <span class="hcv2-cat-topics">Sign in and account creation • Link your applications • Browser and technical issues</span>
             </span>
             <span class="hcv2-cat-caret" aria-hidden="true"></span>
           </button>
@@ -551,7 +533,7 @@
             <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Sign in and account creation</span>
-              <span class="hcv2-subgroup-count">(3)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1491">I can&#x27;t sign in to my IRCC secure account. What should I do?</a></li>
@@ -562,7 +544,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Link your applications</span>
-              <span class="hcv2-subgroup-count">(2)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1222">Which applications can I link to an IRCC secure account?</a></li>
@@ -572,7 +554,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Browser and technical issues</span>
-              <span class="hcv2-subgroup-count">(5)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=315">Why do I need to clear my browser cache?</a></li>
@@ -592,9 +574,8 @@
         <path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>
     </svg></span>
             <span class="hcv2-cat-text">
-              <span class="hcv2-cat-label">Visas, permits, citizenship and eligibility</span>
-              <span class="hcv2-cat-count">103 questions</span>
-              <span class="hcv2-cat-topics"><strong>Topics:</strong> Visit Canada • Study in Canada • Work in Canada • Become a permanent resident • Sponsor family • Become a Canadian citizen • Replace, correct or update an immigration document • Other programs • Settle in Canada</span>
+              <span class="hcv2-cat-label">Programs, eligibility and rules</span>
+              <span class="hcv2-cat-topics">Visit Canada • Study in Canada • Work in Canada • Become a permanent resident • Sponsor family • Become a Canadian citizen • Replace or fix a document • Other programs • Settle in Canada</span>
             </span>
             <span class="hcv2-cat-caret" aria-hidden="true"></span>
           </button>
@@ -602,7 +583,7 @@
             <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Visit Canada</span>
-              <span class="hcv2-subgroup-count">(19)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1116">I am an American citizen. What do I need to enter Canada?</a></li>
@@ -629,7 +610,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Study in Canada</span>
-              <span class="hcv2-subgroup-count">(9)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=484">I want to study in Canada for less than 6 months. Do I need a study permit?</a></li>
@@ -646,7 +627,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Work in Canada</span>
-              <span class="hcv2-subgroup-count">(25)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=163">What is a Labour Market Impact Assessment?</a></li>
@@ -679,7 +660,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Become a permanent resident</span>
-              <span class="hcv2-subgroup-count">(12)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=006">How can I determine whether I can apply for permanent residence?</a></li>
@@ -699,7 +680,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Sponsor family</span>
-              <span class="hcv2-subgroup-count">(6)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=346">For my spousal sponsorship application, what is a common-law partner?</a></li>
@@ -713,7 +694,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Become a Canadian citizen</span>
-              <span class="hcv2-subgroup-count">(13)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=355">What are the requirements for becoming a Canadian citizen?</a></li>
@@ -733,8 +714,8 @@
           </details>
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
-              <span class="hcv2-subgroup-name">Replace, correct or update an immigration document</span>
-              <span class="hcv2-subgroup-count">(10)</span>
+              <span class="hcv2-subgroup-name">Replace or fix a document</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=045">How do I replace an immigration document that has been lost, stolen or destroyed?</a></li>
@@ -752,7 +733,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Other programs</span>
-              <span class="hcv2-subgroup-count">(5)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=653">What is the minimum investment that I need to apply through the Start-up Visa Program?</a></li>
@@ -765,7 +746,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Settle in Canada</span>
-              <span class="hcv2-subgroup-count">(4)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=895">How can I enrol in a government-funded language class at no cost to myself?</a></li>
@@ -783,17 +764,16 @@
         <line x1="12" y1="11" x2="12" y2="11.01"/>
     </svg></span>
             <span class="hcv2-cat-text">
-              <span class="hcv2-cat-label">Get help, avoid scams or contact us</span>
-              <span class="hcv2-cat-count">14 questions</span>
-              <span class="hcv2-cat-topics"><strong>Topics:</strong> Application returned, refused or stuck • Avoid scams and verify who is contacting you • Get help or contact IRCC</span>
+              <span class="hcv2-cat-label">When something goes wrong</span>
+              <span class="hcv2-cat-topics">Refused or returned applications • Scams and suspicious contact • Get help or contact IRCC</span>
             </span>
             <span class="hcv2-cat-caret" aria-hidden="true"></span>
           </button>
           <div class="hcv2-cat-body" id="cat-help-body" role="region" hidden>
             <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
-              <span class="hcv2-subgroup-name">Application returned, refused or stuck</span>
-              <span class="hcv2-subgroup-count">(7)</span>
+              <span class="hcv2-subgroup-name">Refused or returned applications</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1492">My application was returned because something was missing. What can I do?</a></li>
@@ -807,8 +787,8 @@
           </details>
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
-              <span class="hcv2-subgroup-name">Avoid scams and verify who is contacting you</span>
-              <span class="hcv2-subgroup-count">(5)</span>
+              <span class="hcv2-subgroup-name">Scams and suspicious contact</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1206">How can I tell if an immigration website is a scam?</a></li>
@@ -821,7 +801,7 @@
           <details class="hcv2-subgroup">
             <summary class="hcv2-subgroup-title">
               <span class="hcv2-subgroup-name">Get help or contact IRCC</span>
-              <span class="hcv2-subgroup-count">(2)</span>
+              <span class="hcv2-subgroup-caret" aria-hidden="true"></span>
             </summary>
             <ul class="hcv2-subgroup-list">
               <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=854">How can I get help with my immigration or citizenship application?</a></li>
