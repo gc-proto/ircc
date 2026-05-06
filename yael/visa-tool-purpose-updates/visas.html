@@ -69,7 +69,7 @@
               </ul>
             </fieldset>
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-canadian_citizen">
-              <legend>Are you a Canadian citizen or permanent resident of Canada?</legend>
+              <legend>Are you a Canadian citizen or a permanent resident of Canada?</legend>
               <ul class="list-unstyled lst-spcd-2">
                 <li class="radio">
                     <input value="unknown" name="canadian_citizen" type="radio" id="canadian_citizen-unknown" required />
@@ -81,7 +81,7 @@
                   </li>
                 <li class="radio">
                     <input value="canadian_cit" name="canadian_citizen" type="radio" id="canadian_citizen-canadian_cit" />
-                    <label for="canadian_citizen-canadian_cit">I’m a Canadian citizen or permanent resident of Canada</label>
+                    <label for="canadian_citizen-canadian_cit">I’m a Canadian citizen or a permanent resident of Canada</label>
                   </li>
               </ul>
             </fieldset>
@@ -99,31 +99,43 @@
               </ul>
             </fieldset>
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-purpose_of_travel">
-              <legend>What do you plan to do?</legend>
+              <legend>What do you plan to do in Canada?</legend>
+              <div class="d-flex align-items-center">
+                <span class="fa-solid fa-circle-info mrgn-rght-lg fa-2x" aria-hidden="true"></span>
+                <div>
+                  <p class="gc-font-2019 mrgn-tp-md">If you have more than one reason for visiting Canada, choose the main reason for your travel.</p>
+                </div>
+              </div>
+              
               <ul class="list-unstyled lst-spcd-2">
                 <li class="radio">
                     <input value="tourist" name="purpose_of_travel" type="radio" id="purpose_of_travel-tourist" required />
-                    <label for="purpose_of_travel-tourist">Visit as a tourist</label>
+                    <label for="purpose_of_travel-tourist">Visit as a tourist or to attend a public event (like FIFA World Cup 26 TM matches)</label>
+                  </li>
+                <li class="radio">
+                    <input value="family" name="purpose_of_travel" type="radio" id="purpose_of_travel-family_friends_personal" />
+                    <label for="purpose_of_travel-family_friends_personal">Visit family for 6 months or less, visit friends, or to attend a personal event (like a celebration)</label>
+                  </li>
+                  <li class="radio">
+                    <input value="family" name="purpose_of_travel" type="radio" id="purpose_of_travel-family" />
+                    <label for="purpose_of_travel-family">Visit family for longer than 6 months</label>
                   </li>
                 <li class="radio">
                     <input value="transit" name="purpose_of_travel" type="radio" id="purpose_of_travel-transit" />
-                    <label for="purpose_of_travel-transit">Travel through Canada to another destination (transit)</label>
+                    <label for="purpose_of_travel-transit">Travel through Canada to another destination (you're transiting)</label>
                   </li>
                 <li class="radio">
                     <input value="business" name="purpose_of_travel" type="radio" id="purpose_of_travel-business" />
-                    <label for="purpose_of_travel-business">Attend a meeting, conference or trade show (you’re coming to Canada on business)</label>
+                    <label for="purpose_of_travel-business">Attend a business meeting, conference or trade show for your job (you’re coming to Canada on business)</label>
                   </li>
-                <li class="radio">
-                    <input value="family" name="purpose_of_travel" type="radio" id="purpose_of_travel-family" />
-                    <label for="purpose_of_travel-family">Visit family</label>
-                  </li>
+                
                 <li class="radio">
                     <input value="study" name="purpose_of_travel" type="radio" id="purpose_of_travel-study" />
-                    <label for="purpose_of_travel-study">Study</label>
+                    <label for="purpose_of_travel-study">Study or return to Canda to continue your studies</label>
                   </li>
                 <li class="radio">
                     <input value="work" name="purpose_of_travel" type="radio" id="purpose_of_travel-work" />
-                    <label for="purpose_of_travel-work">Work</label>
+                    <label for="purpose_of_travel-work">Work or return to Canada to continue working</label>
                   </li>
               </ul>
             </fieldset>
@@ -536,22 +548,17 @@
               </ul>
             </fieldset>
             <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="question-family">
-              <legend>Do you plan to visit your children or grandchildren (who are Canadian citizens or permanent residents of Canada) for longer than 6 months?</legend>
+              <legend>Will you be visiting your child or grandchild and are they a Canadian citizen, a permanent resident of Canada, or a person registered under Canada's Indian Act?</legend>
               <div class="d-flex align-items-center">
                 <span class="fa-solid fa-triangle-exclamation mrgn-rght-lg fa-2x hidden" aria-hidden="true"></span>
                 <div>
-                  <p class="gc-font-2019 mrgn-tp-md hidden">
-                      If you’re visiting children or grandchildren who are
-                      <strong>not</strong>
-                      Canadian citizens or permanent residents of Canada, select “No, I’m visiting other family”.
-                    </p>
+                  <p class="gc-font-2019 mrgn-tp-md">
+                    We have a special visa that lets some people stay in Canada for longer than 6 months to visit their child or grandchild. 
+                    Your child or grandchild must be a Canadian citizen, a permanent resident of Canada, or a person registered under Canada's Indian Act.</p>
+                  <p class="gc-font-2019 mrgn-tp-md">If you're visiting a different family member, you can stay for only 6 months or less.</p>
                 </div>
               </div>
               <ul class="list-unstyled lst-spcd-2">
-                <li class="radio hidden">
-                    <input value="family" name="family" type="radio" id="family-yes-less" required />
-                    <label for="family-yes-less">Yes, and I plan to visit for 6 months or less</label>
-                  </li>
                 <li class="radio">
                     <input value="family_supervisa" name="family" type="radio" id="family-yes-more"/>
                     <label for="family-yes-more">Yes</label>
