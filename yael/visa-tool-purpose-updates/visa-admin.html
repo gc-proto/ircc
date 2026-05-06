@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html class="no-js" dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="utf-8" />
+
+        <!-- CONFIGURATIONS START HERE -->
+        <title>Admin find out tool - Canada.ca</title>
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <script id="pageConstants">
+            let pageConstants = {
+                pageFeedbackTool: true, // true | false; Set to 'true' if adding the Page Feedback tool to bottom of page
+                alternateLanguageURL: "#", // URL; Add the English or French URL link
+                dateModified: "2024-12-12", // YYYY-MM-DD
+                fluidWidth: true, // true | false; Set to 'true' if you will be using full width elements like bands.
+                breadcrumbs: {
+                    //use "title":"url" in order of appearance or leave blank if none, ex.:
+                    "Visit Canada": "https://www.canada.ca/en/immigration-refugees_citizenship/services/visit-canada.html",
+                    // "Visitor visa (temporary resident visa)":"https://www.canada.ca/en/immigration-refugees_citizenship/services/visit-canada/visitor-visa.html"
+                },
+            };
+        </script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" crossorigin="anonymous" />
+        <!-- CONFIGURATIONS END HERE -->
+        <script src="https://test.canada.ca/ircc/templates/js/template.js" type="text/javascript" defer></script>
+
+        <noscript>
+            <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
+        </noscript>
+        <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/méli-mélo/2025-04-nahanni.css" />
+        <link rel="stylesheet" href="css/styles-v9.css" />
+        <style>
+          .results-container:not(.hidden) .result.hidden {
+            display: block!important;
+          }
+        </style>
+    </head>
+
+    <body vocab="http://schema.org/" typeof="WebPage">
+        <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
+            <div class="banner">
+                <div class="container">
+                    <div id="intro" class="row"></div>
+                    <div class="col-md-8">
+                        <h1 property="name" id="wb-cont" dir="ltr">Check if you need a visa or eTA to travel to Canada</h1>
+
+                        <p class="lead mrgn-tp-md">Everyone needs something to travel to Canada: an electronic travel authorization (eTA), a visitor visa, or just a passport.</p>
+                    </div>
+                    <div class="pull-right hidden-xs hidden-sm col-md-4"><img src="banner.png" class="img-responsive" alt="" /></div>
+                </div>
+            </div>
+            <div class="container">
+               
+                <div class="tool-container results mrgn-tp-lg nojs-hide">
+                    <div class="mapping-container hidden">
+                      <div
+                          class="result"
+                          data-wb-urlmapping='{
+                            "result=all": [
+                              {
+                                  "action": "removeClass",
+                                  "class": "hidden",
+                                  "source": ".results-container"
+                                },
+                                {
+                                  "action": "addClass",
+                                  "class": "hidden",
+                                  "source": ".mapping-container"
+                                }
+                            ],
+                            "result":
+                              [
+                                {
+                                  "action": "ajax",
+                                  "url": "results/{qval}.html",
+                                  "match": ".*",
+                                  "default": "error",
+                                  "trigger": true,
+                                  "type": "replace"
+                                },
+                                {
+                                  "action": "addClass",
+                                  "class": "hidden",
+                                  "source": ".results-container"
+                                },
+                                {
+                                  "action": "removeClass",
+                                  "class": "hidden",
+                                  "source": ".mapping-container"
+                                },
+                                {
+                                  "action": "addClass",
+                                  "class": "result",
+                                  "source": ".mapping-container"
+                                }
+                              ]
+                          }'></div>
+                    </div>
+                        <div class="results-container position-relative" data-wb-ajax='{"type": "replace", "url": "visas.html .result", "nocache": "nocache", "trigger": true}'></div>
+                    
+                </div>
+            </div>
+        </main>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
+        <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
+        <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
+        <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/méli-mélo/2025-04-nahanni.js"></script>
+        <script src="https://test.canada.ca/ircc/templates/js/components.js" type="text/javascript" defer></script>
+        <script>
+            /* When the user clicks on the button,
+                toggle between hiding and showing the dropdown content */
+
+            $(document).ajaxStop(function () {
+                console.log("all ajax loaded");                
+                let results = document.querySelectorAll(".result");
+                console.log(results);
+                for (let i = 0; i < results.length; i++) {
+                    results[i].classList.remove("hidden");
+                    param = getparams();
+                    if (param != null || results[i].id.indexOf("wb-auto") >= 0 ) lbltext = param
+                    else lbltext = results[i].id;                  
+                    results[i].insertAdjacentHTML("afterbegin", `<span class="label label-info">${lbltext}</span>`);
+                }
+
+            });
+
+            $(".results-container").on("wb-contentupdated", function (event, data) {
+                this.querySelectorAll("a:has(span.glyphicon-new-window)").forEach((element) => {
+                    element.setAttribute("target", "_blank");
+                });
+            });
+
+            function getparams() {
+                const urlParams = new URLSearchParams(window.location.search);
+                let param = urlParams.get("result");
+                if (param === null || param === "all") return null;
+                else if (param.indexOf("result") > -1 ) return param.replace('result-', '')
+                else return param;
+            }
+        </script>
+    </body>
+</html>
