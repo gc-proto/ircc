@@ -1,8 +1,8 @@
 /* ============================================================
-   HC 3.0: Figma-based Design
+   HC 3.0: Figma-based Design (Namespaced for AEM)
    ============================================================ */
 
-:root {
+.hc3-v3 {
   --hc-blue: #1c578a;
   --hc-border: #d3d8de;
   --hc-bg-gray: #f4f5f7;
@@ -15,16 +15,17 @@
   --hc-active-border: #2b4380;
 }
 
-body {
-  background-color: #ffffff;
+/* Base resets for the component scope */
+.hc3-v3 * {
+  box-sizing: border-box;
 }
 
-.hc-hero-wrapper {
+.hc3-v3 .hc-hero-wrapper {
   background: #ffffff;
   padding: 48px 0 56px;
 }
 
-.hc-hero h1.hc-hero-title {
+.hc3-v3 .hc-hero h1.hc-hero-title {
   font-size: 2.5em;
   color: var(--hc-ink);
   font-weight: 700;
@@ -34,7 +35,7 @@ body {
   padding-bottom: 0;
 }
 
-.hc-hero .hc-lead {
+.hc3-v3 .hc-hero .hc-lead {
   font-size: 1.3em;
   color: var(--hc-ink-muted);
   margin-bottom: 32px;
@@ -43,7 +44,7 @@ body {
 }
 
 /* Search Bar Component */
-.hc-search-form {
+.hc3-v3 .hc-search-form {
   display: flex;
   max-width: 650px;
   position: relative;
@@ -51,7 +52,7 @@ body {
   border-radius: 4px;
 }
 
-.hc-search-input {
+.hc3-v3 .hc-search-input {
   flex-grow: 1;
   padding: 16px 20px;
   font-size: 1.15em;
@@ -62,16 +63,16 @@ body {
   color: var(--hc-ink);
 }
 
-.hc-search-input::placeholder {
+.hc3-v3 .hc-search-input::placeholder {
   color: #767676;
 }
 
-.hc-search-input:focus {
+.hc3-v3 .hc-search-input:focus {
   border-color: var(--hc-active-border);
   box-shadow: 0 0 0 1px var(--hc-active-border) inset;
 }
 
-.hc-search-button {
+.hc3-v3 .hc-search-button {
   background-color: var(--hc-active-border);
   color: #ffffff;
   border: 1px solid var(--hc-active-border);
@@ -84,12 +85,12 @@ body {
   transition: background-color 0.2s ease;
 }
 
-.hc-search-button:hover,
-.hc-search-button:focus {
+.hc3-v3 .hc-search-button:hover,
+.hc3-v3 .hc-search-button:focus {
   background-color: #1a2950;
 }
 
-.hc-search-button svg {
+.hc3-v3 .hc-search-button svg {
   width: 24px;
   height: 24px;
   fill: none;
@@ -98,13 +99,13 @@ body {
 }
 
 /* Categories Band */
-.hc-band-categories {
+.hc3-v3 .hc-band-categories {
   background-color: var(--hc-bg-gray);
   padding: 64px 0 80px;
   border-top: 1px solid var(--hc-border);
 }
 
-.hc-band-h2 {
+.hc3-v3 .hc-band-h2 {
   font-size: 2em;
   font-weight: 700;
   margin-top: 0;
@@ -112,10 +113,10 @@ body {
   color: var(--hc-ink);
 }
 
-/* Category Cards Accordion */
-.hcv3-categories { margin: 0; padding: 0; }
+/* Category Cards Accordion (Native <details>) */
+.hc3-v3 .hcv3-categories { margin: 0; padding: 0; }
 
-.hcv3-cat {
+.hc3-v3 .hcv3-cat {
   background: #ffffff;
   border: 1px solid var(--hc-border);
   border-radius: 8px;
@@ -124,57 +125,50 @@ body {
   position: relative;
   overflow: hidden;
   transition: box-shadow 0.2s ease;
+  display: block;
 }
 
-.hcv3-cat:hover {
+.hc3-v3 .hcv3-cat:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-/* Active left border indicator */
-.hcv3-cat::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 6px;
-  background-color: var(--hc-active-border);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  z-index: 2;
+/* Active left border indicator - using border instead of pseudo-element for stability */
+.hc3-v3 .hcv3-cat[open] {
+  border-left: 6px solid var(--hc-active-border) !important;
 }
 
-.hcv3-cat[data-open="true"]::before {
-  opacity: 1;
-}
-
-.hcv3-cat[data-open="true"] {
-  border-color: var(--hc-border);
-}
-
-.hcv3-cat-header {
-  display: flex;
+.hc3-v3 .hcv3-cat-header {
+  display: flex !important;
   align-items: flex-start;
   width: 100%;
-  background: transparent;
-  border: 0;
-  padding: 24px;
+  background: transparent !important;
+  border: 0 !important;
+  padding: 24px !important;
   text-align: left;
   cursor: pointer;
   font-family: inherit;
   transition: background-color 0.2s ease;
+  list-style: none !important;
+  position: relative;
+  text-decoration: none !important; /* Fix for underlined headers */
 }
 
-.hcv3-cat-header:hover {
-  background: var(--hc-hover-bg);
+/* Aggressive marker and pseudo-element resets for AEM/WET compatibility */
+.hc3-v3 .hcv3-cat-header::-webkit-details-marker { display: none !important; }
+.hc3-v3 .hcv3-cat-header::marker { display: none !important; content: "" !important; }
+.hc3-v3 .hcv3-cat-header::before,
+.hc3-v3 .hcv3-cat-header::after { content: none !important; display: none !important; }
+
+.hc3-v3 .hcv3-cat-header:hover {
+  background: var(--hc-hover-bg) !important;
 }
 
-.hcv3-cat-header:focus {
+.hc3-v3 .hcv3-cat-header:focus {
   outline: 3px solid var(--hc-focus);
   outline-offset: -3px;
 }
 
-.hcv3-cat-icon {
+.hc3-v3 .hcv3-cat-icon {
   margin-right: 24px;
   color: var(--hc-blue);
   flex-shrink: 0;
@@ -185,33 +179,35 @@ body {
   height: 32px;
 }
 
-.hcv3-cat-icon svg { 
+.hc3-v3 .hcv3-cat-icon svg { 
   width: 100%; 
   height: 100%; 
 }
 
-.hcv3-cat-text {
+.hc3-v3 .hcv3-cat-text {
   flex-grow: 1;
   min-width: 0;
 }
 
-.hcv3-cat-label {
+.hc3-v3 .hcv3-cat-label {
   display: block;
   font-weight: 700;
   font-size: 1.25em;
-  color: var(--hc-ink);
+  color: var(--hc-ink) !important;
   margin-bottom: 6px;
   line-height: 1.3;
+  text-decoration: none !important;
 }
 
-.hcv3-cat-topics {
+.hc3-v3 .hcv3-cat-topics {
   display: block;
   font-size: 0.95em;
-  color: var(--hc-ink-muted);
+  color: var(--hc-ink-muted) !important;
   line-height: 1.5;
+  text-decoration: none !important;
 }
 
-.hcv3-cat-caret {
+.hc3-v3 .hcv3-cat-caret {
   margin-left: 24px;
   margin-top: 8px;
   width: 12px;
@@ -223,31 +219,26 @@ body {
   flex-shrink: 0;
 }
 
-.hcv3-cat[data-open="true"] .hcv3-cat-caret {
+.hc3-v3 .hcv3-cat[open] .hcv3-cat-caret {
   transform: rotate(-135deg);
   margin-top: 14px;
 }
 
 /* Inside the expanded card */
-.hcv3-cat-body {
+.hc3-v3 .hcv3-cat-body {
   padding: 0 32px 32px 80px;
   background: #ffffff;
-  display: none;
 }
 
-.hcv3-cat[data-open="true"] .hcv3-cat-body {
-  display: block;
-}
-
-.hcv3-subgroup {
+.hc3-v3 .hcv3-subgroup {
   margin-top: 32px;
 }
 
-.hcv3-subgroup:first-child {
+.hc3-v3 .hcv3-subgroup:first-child {
   margin-top: 8px;
 }
 
-.hcv3-subgroup-title {
+.hc3-v3 .hcv3-subgroup-title {
   font-weight: 700;
   font-size: 1.1em;
   color: var(--hc-ink);
@@ -255,7 +246,7 @@ body {
   margin-bottom: 12px;
 }
 
-.hcv3-subgroup-list {
+.hc3-v3 .hcv3-subgroup-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -263,14 +254,14 @@ body {
   column-gap: 48px;
 }
 
-.hcv3-subgroup-list li {
+.hc3-v3 .hcv3-subgroup-list li {
   margin-bottom: 12px;
   break-inside: avoid;
   position: relative;
   padding-left: 16px;
 }
 
-.hcv3-subgroup-list li::before {
+.hc3-v3 .hcv3-subgroup-list li::before {
   content: "•";
   position: absolute;
   left: 0;
@@ -278,45 +269,45 @@ body {
   color: var(--hc-ink-muted);
 }
 
-.hcv3-subgroup-list a {
+.hc3-v3 .hcv3-subgroup-list a {
   color: var(--hc-link);
   text-decoration: underline;
   font-size: 1em;
   line-height: 1.4;
 }
 
-.hcv3-subgroup-list a:hover,
-.hcv3-subgroup-list a:focus {
+.hc3-v3 .hcv3-subgroup-list a:hover,
+.hc3-v3 .hcv3-subgroup-list a:focus {
   color: var(--hc-link-hover);
 }
 
 /* Also looking for */
-.hc-also {
+.hc3-v3 .hc-also {
   padding: 64px 0;
   background: #ffffff;
 }
 
-.hc-also-title {
+.hc3-v3 .hc-also-title {
   font-size: 1.75em;
   font-weight: 700;
   margin-top: 0;
   margin-bottom: 32px;
 }
 
-.hc-also-card {
+.hc3-v3 .hc-also-card {
   background: var(--hc-bg-gray);
   padding: 32px;
   border-radius: 8px;
   height: 100%;
 }
 
-.hc-also-card h3 {
+.hc3-v3 .hc-also-card h3 {
   font-size: 1.25em;
   margin-top: 0;
   margin-bottom: 12px;
 }
 
-.hc-also-card p {
+.hc3-v3 .hc-also-card p {
   margin: 0;
   color: var(--hc-ink-muted);
   font-size: 1em;
@@ -324,10 +315,10 @@ body {
 }
 
 @media (max-width: 767px) {
-  .hc-hero h1.hc-hero-title { font-size: 2em; }
-  .hcv3-cat-header { padding: 16px; }
-  .hcv3-cat-body { padding: 0 16px 24px 16px; }
-  .hcv3-cat-icon { margin-right: 16px; width: 24px; height: 24px; }
-  .hcv3-subgroup-list { columns: 1; }
-  .hc-also-card { margin-bottom: 24px; }
+  .hc3-v3 .hc-hero h1.hc-hero-title { font-size: 2em; }
+  .hc3-v3 .hcv3-cat-header { padding: 16px; }
+  .hc3-v3 .hcv3-cat-body { padding: 0 16px 24px 16px; }
+  .hc3-v3 .hcv3-cat-icon { margin-right: 16px; width: 24px; height: 24px; }
+  .hc3-v3 .hcv3-subgroup-list { columns: 1; }
+  .hc3-v3 .hc-also-card { margin-bottom: 24px; }
 }

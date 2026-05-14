@@ -1,0 +1,626 @@
+﻿<script> 
+(function injectCSS() {
+    const css = `
+:root {
+  --hc-blue: #1c578a;
+  --hc-border: #d3d8de;
+  --hc-bg-gray: #f4f5f7;
+  --hc-hover-bg: #f9f9fb;
+  --hc-ink: #333333;
+  --hc-ink-muted: #555555;
+  --hc-link: #284162;
+  --hc-link-hover: #0535d2;
+  --hc-focus: #ff9e1b;
+  --hc-active-border: #2b4380;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+.hc-hero-wrapper {
+  background: #ffffff;
+  padding: 48px 0 56px;
+}
+
+.hc-hero h1.hc-hero-title {
+  font-size: 2.5em;
+  color: var(--hc-ink);
+  font-weight: 700;
+  border-bottom: none;
+  margin-top: 0;
+  margin-bottom: 16px;
+  padding-bottom: 0;
+}
+
+.hc-hero .hc-lead {
+  font-size: 1.3em;
+  color: var(--hc-ink-muted);
+  margin-bottom: 32px;
+  max-width: 800px;
+  line-height: 1.5;
+}
+
+.hc-search-form {
+  display: flex;
+  max-width: 650px;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border-radius: 4px;
+}
+
+.hc-search-input {
+  flex-grow: 1;
+  padding: 16px 20px;
+  font-size: 1.15em;
+  border: 1px solid var(--hc-border);
+  border-radius: 4px 0 0 4px;
+  border-right: none;
+  outline: none;
+  color: var(--hc-ink);
+}
+
+.hc-search-input::placeholder {
+  color: #767676;
+}
+
+.hc-search-input:focus {
+  border-color: var(--hc-active-border);
+  box-shadow: 0 0 0 1px var(--hc-active-border) inset;
+}
+
+.hc-search-button {
+  background-color: var(--hc-active-border);
+  color: #ffffff;
+  border: 1px solid var(--hc-active-border);
+  padding: 0 24px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.hc-search-button:hover,
+.hc-search-button:focus {
+  background-color: #1a2950;
+}
+
+.hc-search-button svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+}
+
+.hc-band-categories {
+  background-color: var(--hc-bg-gray);
+  padding: 64px 0 80px;
+  border-top: 1px solid var(--hc-border);
+}
+
+.hc-band-h2 {
+  font-size: 2em;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 32px;
+  color: var(--hc-ink);
+}
+
+.hcv3-categories { margin: 0; padding: 0; }
+
+.hcv3-cat {
+  background: #ffffff;
+  border: 1px solid var(--hc-border);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+  display: block;
+}
+
+.hcv3-cat:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.hcv3-cat::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background-color: var(--hc-active-border);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 2;
+}
+
+.hcv3-cat[open]::before {
+  opacity: 1;
+}
+
+.hcv3-cat[open] {
+  border-color: var(--hc-border);
+}
+
+.hcv3-cat-header {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  padding: 24px;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.2s ease;
+  list-style: none; }
+
+.hcv3-cat-header::-webkit-details-marker {
+  display: none;
+}
+
+.hcv3-cat-header:hover {
+  background: var(--hc-hover-bg);
+}
+
+.hcv3-cat-header:focus {
+  outline: 3px solid var(--hc-focus);
+  outline-offset: -3px;
+}
+
+.hcv3-cat-icon {
+  margin-right: 24px;
+  color: var(--hc-blue);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.hcv3-cat-icon svg { 
+  width: 100%; 
+  height: 100%; 
+}
+
+.hcv3-cat-text {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.hcv3-cat-label {
+  display: block;
+  font-weight: 700;
+  font-size: 1.25em;
+  color: var(--hc-ink);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.hcv3-cat-topics {
+  display: block;
+  font-size: 0.95em;
+  color: var(--hc-ink-muted);
+  line-height: 1.5;
+}
+
+.hcv3-cat-caret {
+  margin-left: 24px;
+  margin-top: 8px;
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid var(--hc-ink);
+  border-bottom: 2px solid var(--hc-ink);
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.hcv3-cat[open] .hcv3-cat-caret {
+  transform: rotate(-135deg);
+  margin-top: 14px;
+}
+
+.hcv3-cat-body {
+  padding: 0 32px 32px 80px;
+  background: #ffffff;
+}
+
+.hcv3-subgroup {
+  margin-top: 32px;
+}
+
+.hcv3-subgroup:first-child {
+  margin-top: 8px;
+}
+
+.hcv3-subgroup-title {
+  font-weight: 700;
+  font-size: 1.1em;
+  color: var(--hc-ink);
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.hcv3-subgroup-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  columns: 2;
+  column-gap: 48px;
+}
+
+.hcv3-subgroup-list li {
+  margin-bottom: 12px;
+  break-inside: avoid;
+  position: relative;
+  padding-left: 16px;
+}
+
+.hcv3-subgroup-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--hc-ink-muted);
+}
+
+.hcv3-subgroup-list a {
+  color: var(--hc-link);
+  text-decoration: underline;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+.hcv3-subgroup-list a:hover,
+.hcv3-subgroup-list a:focus {
+  color: var(--hc-link-hover);
+}
+
+.hc-also {
+  padding: 64px 0;
+  background: #ffffff;
+}
+
+.hc-also-title {
+  font-size: 1.75em;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 32px;
+}
+
+.hc-also-card {
+  background: var(--hc-bg-gray);
+  padding: 32px;
+  border-radius: 8px;
+  height: 100%;
+}
+
+.hc-also-card h3 {
+  font-size: 1.25em;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.hc-also-card p {
+  margin: 0;
+  color: var(--hc-ink-muted);
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+  .hc-hero h1.hc-hero-title { font-size: 2em; }
+  .hcv3-cat-header { padding: 16px; }
+  .hcv3-cat-body { padding: 0 16px 24px 16px; }
+  .hcv3-cat-icon { margin-right: 16px; width: 24px; height: 24px; }
+  .hcv3-subgroup-list { columns: 1; }
+  .hc-also-card { margin-bottom: 24px; }
+}
+
+    `;
+    const style = document.createElement('style');
+    style.textContent = css;
+    document.head.appendChild(style);
+  })();
+
+</script>
+<div class="hc-hero-wrapper">
+    <div class="container hc-hero">
+      <div class="row">
+        <div class="col-md-9">
+          <h1 property="name" id="wb-cont" class="hc-hero-title">IRCC's Help Centre</h1>
+          <p class="hc-lead">Find answers to your questions about applications, your account, and IRCC programs and rules.</p>
+          
+          <form class="hc-search-form" role="search" action="#" method="get" onsubmit="return false;">
+            <label class="wb-inv" for="hc-q">Search the Help Centre</label>
+            <input id="hc-q" class="hc-search-input" type="search" name="q" autocomplete="off" aria-label="Search the Help Centre" placeholder="Search 1,000+ questions">
+            <button type="submit" class="hc-search-button" aria-label="Search">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hc-band hc-band-categories">
+    <div class="container">
+      <h2 class="hc-band-h2">Browse by topic</h2>
+      <div class="hcv3-categories">
+        <details class="hcv3-cat" id="cat-status">
+          <summary class="hcv3-cat-header">
+            <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="14 3 14 9 20 9"/><polyline points="9 14 11 16 15 12"/></svg></span>
+            <span class="hcv3-cat-text">
+              <span class="hcv3-cat-label">1. Check, update or withdraw your application</span>
+              <span class="hcv3-cat-topics">Check application status &bull; Processing times &bull; Update your information &bull; Withdraw application</span>
+            </span>
+            <span class="hcv3-cat-caret" aria-hidden="true"></span>
+          </summary>
+          <div class="hcv3-cat-body">
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">UCI and application numbers</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=013">What is a UCI?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1521">What is an application number?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1612">What is a party ID?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=772">Where can I find my client ID/UCI?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1446">Where is my status in Canada document number?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=830">What is a personal reference code?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1006">Where can I find my Express Entry profile number and/or Job Seeker validation code?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Check your application status</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=029">How can I check the status of my application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=028">How can I check if my application has been received?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1494">When can I check my application status?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1611">What does my status mean in the application status tracker?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=030">Why can't I see my application status in the Client Application Status (CAS) tool?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=306">Why has the status of my immigration application on CAS not changed, even though I sent it a long time ago?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1192">Is there a way for clients to confirm the status of their eTA?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=985">How can I check the status of my medical exam results?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1084">Why am I not receiving any emails from IRCC about my eTA application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1237">I submitted an eTA application, but have not received any emails from IRCC. Can I still travel to Canada?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Processing times</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=031">How long will it take to process my application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=534">What are processing times?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=068">How are processing times calculated?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1474">When does my processing time start?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=032">Why do some application processing times change and others do not?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=170">How long will it take to process my work permit application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=486">How long will it take to process my study permit application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1063">How long will it take to process my eTA application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=058">How long will it take to process my PR card?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=363">How long will I wait between my citizenship test and the ceremony?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=464">How long does the Department have to respond?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=021">How can I get my immigration application processed faster?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=877">How do I know that my application can be processed under CAN+? What supporting documents should I submit?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1085">What do I do if my application for an eTA is not approved right away?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Update your information</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052">How can I update or ask about an IRCC application in progress?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=043">How can I change my address or contact information for my immigration or citizenship application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1005">I already submitted my Express Entry profile. Can I still update it?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1395">How do I update my information after I've submitted my interest to sponsor form?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=861">What do I do if I get a new passport after I apply for International Experience Canada?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1173">What happens if I made a mistake (like an email address or passport number) on my eTA application?</a></li>
+              </ul>
+            </div>
+          </div>
+        </details>
+        <details class="hcv3-cat" id="cat-apply">
+          <summary class="hcv3-cat-header">
+            <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="14 3 14 9 20 9"/><line x1="8" y1="13" x2="14" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/><path d="M16.5 14.5l3 3-2 4-2-2 1-5z"/></svg></span>
+            <span class="hcv3-cat-text">
+              <span class="hcv3-cat-label">2. Prepare your application</span>
+              <span class="hcv3-cat-topics">Prepare a complete application &bull; Fill out IRCC forms &bull; Sign and submit your application &bull; Upload and submit documents &bull; Medical exam &bull; Fees, refunds and receipts</span>
+            </span>
+            <span class="hcv3-cat-caret" aria-hidden="true"></span>
+          </summary>
+          <div class="hcv3-cat-body">
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Prepare a complete application</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=072">What is a complete application package?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=074">How can I avoid delays or refusals in processing my application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1170">I have to submit documents for my eTA application. How can I find out what documents I need to provide?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=018">What language should my supporting documents be in?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1536">What if my birth certificate is different from other documents (or I don't have one)?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Fill out IRCC forms</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=007">How do I fill out an IRCC application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1523">How do I fill out and validate IRCC application forms with 2D barcodes?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=140">How do I download and open a PDF form from IRCC's website?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=138">How can I view a PDF form?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=660">I can't open my application form in PDF format. What can I do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=767">After I click the Validate button on my application form, nothing happens and I don't see the barcodes. Why?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1312">I validated my form, but when I try to upload it to my account I get a validation error. What can I do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=014">What do you mean by surname?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=015">I don't know what dates to put in the history section on my immigration form. What do I do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1266">I want to submit an offer of employment. Where can I find the IMM 5802 form?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Sign and submit your application</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=740">How do I sign my online application?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Upload and submit documents</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1418">How do I upload a document to my IRCC secure account?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1419">I get an error message when I try to upload my document. What should I do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1420">I have multiple documents to upload but there is only one upload button. What do I do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1430">I uploaded the wrong document to my account. How do I change it?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1443">Why can't I see the buttons to submit my documents?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1411">I was asked to provide a police certificate. What do I do if I can't get it before the deadline?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Medical exam</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=986">Do I need a medical exam?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=983">Where can I get an immigration medical exam?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1158">Who cannot get an immigration medical exam?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Fees, refunds and receipts</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=436">How do I pay my fees?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=606">I have a problem paying my fees online. What do I do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=422">Can I get a refund if I cancel my application or it's refused?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1214">How do I get a copy of my receipt?</a></li>
+              </ul>
+            </div>
+          </div>
+        </details>
+        <details class="hcv3-cat" id="cat-account">
+          <summary class="hcv3-cat-header">
+            <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></span>
+            <span class="hcv3-cat-text">
+              <span class="hcv3-cat-label">3. Account help and technical problems</span>
+              <span class="hcv3-cat-topics">Sign in and account creation &bull; Link your applications &bull; Browser and technical issues</span>
+            </span>
+            <span class="hcv3-cat-caret" aria-hidden="true"></span>
+          </summary>
+          <div class="hcv3-cat-body">
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Sign in and account creation</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=826">How do I sign in to my account?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1384">How do I create a new account?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=832">I forgot my GCKey username or password. What do I do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1327">My account was revoked. How do I fix this?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=831">I lost my personal reference code. What do I do?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Link your applications</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1224">How do I link an application to my account?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1225">I linked an application, but I don't see it in my account. Why?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1226">Why can't I link my application to my account?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Browser and technical issues</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=828">Why am I getting a looping or 403 error when I try to sign in to my account?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=144">I'm having trouble with my browser. How can I fix this?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1152">Why is my screen going blank when I try to pay my fees?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Get help or contact IRCC</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=055">How do I contact IRCC?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1496">I tried to contact IRCC but I can't get through. What do I do?</a></li>
+              </ul>
+            </div>
+          </div>
+        </details>
+        <details class="hcv3-cat" id="cat-programs">
+          <summary class="hcv3-cat-header">
+            <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+            <span class="hcv3-cat-text">
+              <span class="hcv3-cat-label">4. Programs, eligibility, and preventing fraud</span>
+              <span class="hcv3-cat-topics">Visit Canada &bull; Study in Canada &bull; Work in Canada &bull; Become a permanent resident &bull; Sponsor family &bull; Become a Canadian citizen &bull; Other programs &bull; Scams and suspicious contact</span>
+            </span>
+            <span class="hcv3-cat-caret" aria-hidden="true"></span>
+          </summary>
+          <div class="hcv3-cat-body">
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Visit Canada</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=416">Do I need a visa or an eTA to visit Canada?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1010">How do I apply for an eTA?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=417">How do I apply for a visitor visa?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Study in Canada</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=480">How do I apply for a study permit?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=495">Can I work while studying in Canada?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Work in Canada</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=152">How do I apply for a work permit?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=163">What is an open work permit?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Become a permanent resident</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=996">What is Express Entry?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1004">How does Express Entry work?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Sponsor family</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1354">How do I sponsor my spouse, partner or child?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1355">How do I sponsor my parents or grandparents?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Become a Canadian citizen</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=355">How do I apply for citizenship?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=360">Do I need to take a citizenship test?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Other programs</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=094">How do I apply for refugee status?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1055">What is the Atlantic Immigration Program?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Scams and suspicious contact</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1189">How can I tell if an email from IRCC is a scam?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1211">I received an email from an immigration agent offering me a job. Is this a scam?</a></li>
+              </ul>
+            </div>
+          </div>
+        </details>
+        <details class="hcv3-cat" id="cat-after">
+          <summary class="hcv3-cat-header">
+            <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="12" cy="14" r="3"></circle><polyline points="12 12 12 14 13.5 15.5"></polyline></svg></span>
+            <span class="hcv3-cat-text">
+              <span class="hcv3-cat-label">5. After you apply: processing and getting a decision</span>
+              <span class="hcv3-cat-topics">What happens after you apply &bull; Refused or returned applications</span>
+            </span>
+            <span class="hcv3-cat-caret" aria-hidden="true"></span>
+          </summary>
+          <div class="hcv3-cat-body">
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">What happens after you apply</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=036">What happens after I apply for a visa?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1164">I submitted my eTA application. What happens next?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Refused or returned applications</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1492">My application was returned because something was missing. What can I do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1485">My application for a visitor visa was refused. Should I apply again?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=023">If my immigration application is refused, do I have to wait before I apply again?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1001">I was found not eligible for Express Entry and I can't change my profile. What do I do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1250">I restore my status as a visitor?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=192">My work permit expired and I did not apply to extend it. Can I stay and keep working in Canada?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1663">How do I get back my seized passport or travel document?</a></li>
+              </ul>
+            </div>
+          </div>
+        </details>
+        <details class="hcv3-cat" id="cat-arriving">
+          <summary class="hcv3-cat-header">
+            <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+            <span class="hcv3-cat-text">
+              <span class="hcv3-cat-label">6. Arriving and staying in Canada</span>
+              <span class="hcv3-cat-topics">Settle in Canada</span>
+            </span>
+            <span class="hcv3-cat-caret" aria-hidden="true"></span>
+          </summary>
+          <div class="hcv3-cat-body">
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Settle in Canada</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=895">How can I enrol in a government-funded language class at no cost to myself?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=894">Who is eligible to take government-funded language classes?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=191">I've maintained my status, but my health insurance card, driver's licence and other government ID documents have expired. How can I renew my ID documents?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=515">What does it mean to have legal status in Canada?</a></li>
+              </ul>
+            </div>
+          </div>
+        </details>
+        <details class="hcv3-cat" id="cat-docs">
+          <summary class="hcv3-cat-header">
+            <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></span>
+            <span class="hcv3-cat-text">
+              <span class="hcv3-cat-label">7. Documents we issue (visas, permits, PR cards, and more)</span>
+              <span class="hcv3-cat-topics">Replace or fix a document</span>
+            </span>
+            <span class="hcv3-cat-caret" aria-hidden="true"></span>
+          </summary>
+          <div class="hcv3-cat-body">
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Replace or fix a document</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=045">How do I replace an immigration document that has been lost, stolen or destroyed?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=041">How do I correct an error on my immigration document?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=047">What should I do if my PR card has been lost, stolen or damaged?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=721">I legally changed my name. How do I update my PR card?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=175">How do I get a copy of a lost, stolen or destroyed work permit?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=048">I've lost my citizenship card / certificate. How do I replace it?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=598">Can I replace my citizenship certificate or card if there's a mistake on it?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=907">I legally changed my name. How do I change the name on my citizenship certificate or card?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1552">How do I update my citizenship certificate or card with my reclaimed Indigenous name?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1650">I got a new passport but I have a valid visa in my old one. Can I use the visa in my old passport?</a></li>
+              </ul>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <div class="hc-also">
+    <div class="container">
+      <h2 class="hc-also-title">You may also be looking for</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="hc-also-card">
+            <h3><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/glossary.html">Definitions</a></h3>
+            <p>Find definitions to terms often used by Immigration, Refugees and Citizenship Canada in our glossary.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="hc-also-card">
+            <h3><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Your application</a></h3>
+            <p>Application status, processing times, online applications and paper forms, fee payment, medical and police checks.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="hc-also-card">
+            <h3><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/come-canada-tool-immigration-express-entry.html">Explore programs</a></h3>
+            <p>Answer a few questions and explore all immigration programs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
