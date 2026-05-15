@@ -290,22 +290,20 @@
 
 .hc3-v3 .hcv3-cat-icon {
   align-items: center;
-  background: var(--hc-card-fill-figma);
-  border-radius: 999px;
   color: var(--hc-blue-figma);
   display: table-cell;
-  height: 40px;
+  height: 32px;
   justify-content: center;
   margin-right: 0;
-  min-width: 40px;
-  vertical-align: top;
-  width: 40px;
+  min-width: 32px;
+  vertical-align: middle;
+  width: 32px;
 }
 
 .hc3-v3 .hcv3-cat-icon svg {
-  height: 20px;
-  margin: 10px;
-  width: 20px;
+  height: 24px;
+  margin: 4px;
+  width: 24px;
 }
 
 .hc3-v3 .hcv3-cat-text {
@@ -345,7 +343,7 @@
 .hc3-v3 .hcv3-cat-caret {
   display: table-cell;
   border: 0;
-  height: 40px;
+  height: 32px;
   position: relative;
   text-align: right;
   transform: none;
@@ -355,18 +353,20 @@
 }
 
 .hc3-v3 .hcv3-cat-caret::before {
-  border-bottom: 2.5px solid #000000;
-  border-right: 2.5px solid #000000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5 10 12.5 15 7.5' stroke='%23284162' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
   content: "";
   display: inline-block;
-  height: 12px;
-  transform: rotate(45deg);
+  height: 18px;
+  transform: rotate(0deg);
   transition: transform 0.2s ease;
-  width: 12px;
+  width: 18px;
 }
 
 .hc3-v3 .hcv3-cat[open] .hcv3-cat-caret::before {
-  transform: rotate(-135deg);
+  transform: rotate(180deg);
 }
 
 .hc3-v3 .hcv3-cat-body {
