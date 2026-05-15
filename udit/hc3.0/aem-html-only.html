@@ -37,6 +37,7 @@
   border: 0;
   box-shadow: none;
   letter-spacing: normal;
+  max-width: none;
   text-transform: none;
 }
 
@@ -52,6 +53,16 @@
   color: var(--hc-link-figma);
 }
 
+.hc3-v3 a,
+.hc3-v3 a:link,
+.hc3-v3 a:visited,
+.hc3-v3 a:hover,
+.hc3-v3 a:focus,
+.hc3-v3 a:active {
+  text-decoration-thickness: from-font;
+  text-underline-offset: 0.08em;
+}
+
 .hc3-v3 input,
 .hc3-v3 button {
   appearance: none;
@@ -64,7 +75,12 @@
   display: block;
 }
 
+.hc3-v3 details > summary:first-of-type {
+  display: table;
+}
+
 .hc3-v3 summary {
+  cursor: pointer;
   list-style: none;
 }
 
@@ -74,6 +90,24 @@
 
 .hc3-v3 svg {
   display: block;
+}
+
+.hc3-v3 .media,
+.hc3-v3 .media-body {
+  overflow: visible;
+  zoom: normal;
+}
+
+.hc3-v3 .media-left,
+.hc3-v3 .media-right,
+.hc3-v3 .media-body {
+  display: table-cell;
+  float: none !important;
+  vertical-align: top;
+}
+
+.hc3-v3 .media-body {
+  width: auto;
 }
 
 .hc3-v3 .container {
@@ -176,6 +210,7 @@
   font-family: "Noto Sans", Arial, sans-serif;
   font-size: 1.125rem;
   min-height: 54px;
+  min-width: 0;
   padding: 14px 18px;
   width: 100%;
 }
@@ -257,7 +292,9 @@
   cursor: pointer;
   display: table;
   font-family: inherit;
+  line-height: normal;
   list-style: none !important;
+  margin: 0;
   padding: 22px 24px 20px;
   position: relative;
   text-align: left;
@@ -337,6 +374,7 @@
   font-family: "Noto Sans", Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.45;
+  margin: 0;
   max-width: 62rem;
 }
 
@@ -407,6 +445,7 @@
 
 .hc3-v3 .hcv3-subgroup-list li {
   break-inside: auto;
+  display: list-item;
   margin-bottom: 15px;
   padding-left: 0;
 }
