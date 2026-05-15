@@ -1,7 +1,7 @@
 <!-- IRCC Help Centre 3.0: AEM Ready Snippet -->
 <!-- Instructions: Paste this entire block into an AEM 'Custom HTML' or 'Text' component. -->
 
-<style>
+<!-- Legacy prototype styles removed in favor of the single active block below.
 .hc3-v3 {
   --hc-blue: #1c578a;
   --hc-border: #d3d8de;
@@ -309,7 +309,7 @@
   .hc3-v3 .hcv3-subgroup-list { columns: 1; }
   .hc3-v3 .hc-also-card { margin-bottom: 24px; }
 }
-</style>
+-->
 
 <style>
 .hc3-v3 {
@@ -325,6 +325,11 @@
   --hc-red-rule-figma: #af3c43;
   --hc-search-button-figma: #26374a;
   --hc-search-button-border-figma: #091c2d;
+}
+
+.hc3-v3,
+.hc3-v3 * {
+  box-sizing: border-box;
 }
 
 .hc3-v3 a {
@@ -358,6 +363,7 @@
 }
 
 .hc3-v3 .hc-hero-wrapper {
+  background: #ffffff;
   padding: 50px 0 34px;
 }
 
@@ -431,10 +437,12 @@
 
 .hc3-v3 .hc-search-button {
   align-self: flex-start;
+  align-items: center;
   background-color: var(--hc-search-button-figma);
   border: 1px solid var(--hc-search-button-border-figma);
   border-radius: 4px;
   color: #ffffff;
+  cursor: pointer;
   display: inline-flex;
   font-family: Lato, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
@@ -468,11 +476,20 @@
   margin-bottom: 24px;
 }
 
+.hc3-v3 .hcv3-categories {
+  margin: 0;
+  padding: 0;
+}
+
 .hc3-v3 .hcv3-cat {
+  background: #ffffff;
   border: 1px solid var(--hc-border-soft-figma);
   border-radius: 20px;
   box-shadow: none;
+  display: block;
   margin-bottom: 24px;
+  overflow: hidden;
+  position: relative;
 }
 
 .hc3-v3 .hcv3-cat[open] {
@@ -481,9 +498,27 @@
 
 .hc3-v3 .hcv3-cat-header {
   align-items: center;
+  background: transparent;
+  border: 0;
   border-bottom: 1px solid var(--hc-border-soft-figma);
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  list-style: none !important;
   padding: 15px;
+  position: relative;
+  text-align: left;
   transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.hc3-v3 .hcv3-cat-header::-webkit-details-marker {
+  display: none !important;
+}
+
+.hc3-v3 .hcv3-cat-header::marker {
+  content: "";
+  display: none !important;
 }
 
 .hc3-v3 .hcv3-cat-header:hover {
@@ -491,10 +526,14 @@
 }
 
 .hc3-v3 .hcv3-cat-icon {
+  align-items: center;
   background: var(--hc-card-fill-figma);
   border-radius: 999px;
   color: var(--hc-blue-figma);
+  display: flex;
+  flex-shrink: 0;
   height: 40px;
+  justify-content: center;
   margin-right: 15px;
   width: 40px;
 }
@@ -504,18 +543,27 @@
   width: 20px;
 }
 
+.hc3-v3 .hcv3-cat-text {
+  flex-grow: 1;
+  min-width: 0;
+}
+
 .hc3-v3 .hcv3-cat-label {
   color: var(--hc-blue-figma);
+  display: block;
   font-family: Lato, "Helvetica Neue", Arial, sans-serif;
   font-size: 1.8125rem;
+  font-weight: 700;
   line-height: 1.15;
   margin-bottom: 8px;
 }
 
 .hc3-v3 .hcv3-cat-topics {
   color: var(--hc-ink-figma);
+  display: block;
   font-family: "Noto Sans", Arial, sans-serif;
   font-size: 1.0625rem;
+  line-height: 1.5;
 }
 
 .hc3-v3 .hcv3-cat-caret {
@@ -662,6 +710,7 @@
   font-family: "Noto Sans", Arial, sans-serif;
   font-size: 1.25rem;
   line-height: 1.65;
+  margin: 0;
 }
 
 @media (max-width: 767px) {
