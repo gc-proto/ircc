@@ -311,37 +311,385 @@
 }
 </style>
 
+<style>
+.hc3-v3 {
+  --hc-blue-figma: #2b4380;
+  --hc-band-figma: #ebf2fa;
+  --hc-card-fill-figma: #eaf4ff;
+  --hc-border-soft-figma: #eeeeee;
+  --hc-border-strong-figma: #acacac;
+  --hc-ink-figma: #333333;
+  --hc-ink-muted-figma: #424242;
+  --hc-link-figma: #284162;
+  --hc-link-hover-figma: #1f497a;
+  --hc-red-rule-figma: #af3c43;
+  --hc-search-button-figma: #26374a;
+  --hc-search-button-border-figma: #091c2d;
+}
+
+.hc3-v3 a {
+  color: var(--hc-link-figma);
+}
+
+.hc3-v3 .hc-hero-wrapper {
+  padding: 50px 0 34px;
+}
+
+.hc3-v3 .hc-hero h1.hc-hero-title {
+  color: var(--hc-ink-figma);
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 1.08;
+  margin: 0 0 12px;
+}
+
+.hc3-v3 .hc-hero-rule {
+  background: var(--hc-red-rule-figma);
+  height: 6px;
+  margin-bottom: 24px;
+  width: 71px;
+}
+
+.hc3-v3 .hc-hero .hc-lead {
+  color: var(--hc-ink-muted-figma);
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin: 0;
+  max-width: 54rem;
+}
+
+.hc3-v3 .hc-search-band {
+  background: var(--hc-band-figma);
+  padding: 24px 0;
+}
+
+.hc3-v3 .hc-search-title {
+  color: var(--hc-ink-figma);
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 2.4375rem;
+  font-weight: 700;
+  line-height: 1.03;
+  margin: 0 0 24px;
+  max-width: 32rem;
+}
+
+.hc3-v3 .hc-search-form {
+  box-shadow: none;
+  display: flex;
+  gap: 12px;
+  max-width: 760px;
+}
+
+.hc3-v3 .hc-search-input {
+  border: 1px solid #666666;
+  border-radius: 5px;
+  color: var(--hc-ink-figma);
+  flex: 1 1 auto;
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-size: 1.125rem;
+  min-height: 54px;
+  padding: 14px 18px;
+}
+
+.hc3-v3 .hc-search-input::placeholder {
+  color: #666666;
+}
+
+.hc3-v3 .hc-search-input:focus {
+  border-color: var(--hc-blue-figma);
+  box-shadow: 0 0 0 2px rgba(43, 67, 128, 0.18);
+}
+
+.hc3-v3 .hc-search-button {
+  background-color: var(--hc-search-button-figma);
+  border: 1px solid var(--hc-search-button-border-figma);
+  border-radius: 4px;
+  color: #ffffff;
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  justify-content: center;
+  min-height: 54px;
+  min-width: 124px;
+  padding: 0 24px;
+}
+
+.hc3-v3 .hc-search-button:hover,
+.hc3-v3 .hc-search-button:focus {
+  background-color: #1f2c3d;
+  border-color: #091c2d;
+}
+
+.hc3-v3 .hc-search-button svg {
+  display: none;
+}
+
+.hc3-v3 .hc-band-categories {
+  background: #ffffff;
+  border-top: none;
+  padding: 50px 0 64px;
+}
+
+.hc3-v3 .hc-band-h2 {
+  color: var(--hc-ink-figma);
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 2.4375rem;
+  line-height: 1.03;
+  margin-bottom: 24px;
+}
+
+.hc3-v3 .hcv3-cat {
+  border: 1px solid var(--hc-border-soft-figma);
+  border-radius: 20px;
+  box-shadow: none;
+  margin-bottom: 24px;
+}
+
+.hc3-v3 .hcv3-cat[open] {
+  border-left: 0 !important;
+}
+
+.hc3-v3 .hcv3-cat-header {
+  align-items: center;
+  border-bottom: 1px solid var(--hc-border-soft-figma);
+  padding: 15px;
+  transition: background-color 0.2s ease;
+}
+
+.hc3-v3 .hcv3-cat-header:hover {
+  background: #fafbfc;
+}
+
+.hc3-v3 .hcv3-cat-icon {
+  background: var(--hc-card-fill-figma);
+  border-radius: 999px;
+  color: var(--hc-blue-figma);
+  height: 40px;
+  margin-right: 15px;
+  width: 40px;
+}
+
+.hc3-v3 .hcv3-cat-icon svg {
+  height: 20px;
+  width: 20px;
+}
+
+.hc3-v3 .hcv3-cat-label {
+  color: var(--hc-blue-figma);
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.8125rem;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.hc3-v3 .hcv3-cat-topics {
+  color: var(--hc-ink-figma);
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-size: 1.0625rem;
+}
+
+.hc3-v3 .hcv3-cat-caret {
+  border-bottom-color: #000000;
+  border-right-color: #000000;
+  margin-left: 15px;
+  margin-top: 0;
+}
+
+.hc3-v3 .hcv3-cat-body {
+  background: var(--hc-card-fill-figma);
+  border-radius: 0 0 20px 20px;
+  padding: 15px;
+}
+
+.hc3-v3 .hcv3-subgroup {
+  background: #ffffff;
+  border: 1px solid var(--hc-border-strong-figma);
+  border-radius: 10px;
+  margin-top: 15px;
+  overflow: hidden;
+}
+
+.hc3-v3 .hcv3-subgroup:first-child {
+  margin-top: 0;
+}
+
+.hc3-v3 .hcv3-subgroup-title {
+  border-bottom: 1px solid #eaebed;
+  color: #000000;
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.375rem;
+  line-height: 1.2;
+  margin: 0;
+  padding: 12px 15px;
+}
+
+.hc3-v3 .hcv3-subgroup-list {
+  columns: 1;
+  list-style: disc;
+  margin: 0;
+  padding: 15px 18px 15px 45px;
+}
+
+.hc3-v3 .hcv3-subgroup-list li {
+  break-inside: auto;
+  margin-bottom: 15px;
+  padding-left: 0;
+}
+
+.hc3-v3 .hcv3-subgroup-list li:last-child {
+  margin-bottom: 0;
+}
+
+.hc3-v3 .hcv3-subgroup-list li::before {
+  content: none;
+}
+
+.hc3-v3 .hcv3-subgroup-list a {
+  color: var(--hc-link-figma);
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.65;
+}
+
+.hc3-v3 .hcv3-subgroup-list a:hover,
+.hc3-v3 .hcv3-subgroup-list a:focus {
+  color: var(--hc-link-hover-figma);
+}
+
+.hc3-v3 .hc-also {
+  background: var(--hc-band-figma);
+  padding: 50px 0;
+}
+
+.hc3-v3 .hc-also-title {
+  color: #000000;
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 2.4375rem;
+  line-height: 1.03;
+  margin-bottom: 24px;
+}
+
+.hc3-v3 .hc-also-grid {
+  display: flex;
+  gap: 24px;
+}
+
+.hc3-v3 .hc-also-card-wrap {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.hc3-v3 .hc-also-card {
+  background: #ffffff;
+  border: 1px solid #8c8c8c;
+  border-radius: 0;
+  min-height: 174px;
+  padding: 36px 24px;
+}
+
+.hc3-v3 .hc-also-card h3 {
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.8125rem;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.hc3-v3 .hc-also-card p {
+  color: var(--hc-ink-figma);
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 767px) {
+  .hc3-v3 .hc-hero-wrapper {
+    padding: 25px 0 20px;
+  }
+
+  .hc3-v3 .hc-hero h1.hc-hero-title {
+    font-size: 2.3125rem;
+    line-height: 1.03;
+  }
+
+  .hc3-v3 .hc-hero .hc-lead {
+    font-size: 1.5rem;
+    line-height: 1.38;
+  }
+
+  .hc3-v3 .hc-search-title,
+  .hc3-v3 .hc-band-h2,
+  .hc3-v3 .hc-also-title {
+    font-size: 2.1875rem;
+    line-height: 1.03;
+  }
+
+  .hc3-v3 .hc-search-form {
+    flex-direction: column;
+  }
+
+  .hc3-v3 .hc-search-button {
+    width: 100%;
+  }
+
+  .hc3-v3 .hcv3-cat-header {
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .hc3-v3 .hcv3-cat-label {
+    font-size: 1.625rem;
+  }
+
+  .hc3-v3 .hcv3-cat-topics {
+    font-size: 1rem;
+  }
+
+  .hc3-v3 .hc-also-grid {
+    flex-direction: column;
+  }
+}
+</style>
+
 <div class="hc3-v3">
   <div class="hc-hero-wrapper">
     <div class="container hc-hero">
       <div class="row">
-        <div class="col-md-9">
-          <h1 property="name" id="wb-cont" class="hc-hero-title">IRCC's Help Centre</h1>
-          <p class="hc-lead">Find answers to your questions about applications, your account, and IRCC programs and rules.</p>
-          
-          <form class="hc-search-form" role="search" action="https://ircc.canada.ca/english/helpcentre/results-en.asp" method="get">
-            <label class="wb-inv" for="hc-q">Search the Help Centre</label>
-            <input id="hc-q" class="hc-search-input" type="search" name="q" autocomplete="off" aria-label="Search the Help Centre" placeholder="Search 1,000+ questions">
-            <button type="submit" class="hc-search-button" aria-label="Search">
-              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            </button>
-          </form>
+        <div class="col-md-10">
+          <h1 property="name" id="wb-cont" class="hc-hero-title">Help Centre</h1>
+          <div class="hc-hero-rule" aria-hidden="true"></div>
+          <p class="hc-lead">You have questions, we have answers. Find help with applications, your account and IRCC programs.</p>
         </div>
       </div>
     </div>
   </div>
+
+  <section class="hc-search-band">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10">
+          <h2 class="hc-search-title">What do you need help with?</h2>
+          <form class="hc-search-form" role="search" action="https://ircc.canada.ca/english/helpcentre/results-en.asp" method="get">
+            <label class="wb-inv" for="hc-q">Search the Help Centre</label>
+            <input id="hc-q" class="hc-search-input" type="search" name="q" autocomplete="off" aria-label="Search the Help Centre" placeholder="Search the Help Centre">
+            <button type="submit" class="hc-search-button">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="hc-band hc-band-categories">
     <div class="container">
       <h2 class="hc-band-h2">Browse by topic</h2>
       <div class="hcv3-categories">
         <!-- Category 1 -->
-        <details class="hcv3-cat" id="cat-status">
+        <details class="hcv3-cat" id="cat-status" open>
           <summary class="hcv3-cat-header">
             <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="14 3 14 9 20 9"/><polyline points="9 14 11 16 15 12"/></svg></span>
             <span class="hcv3-cat-text">
-              <span class="hcv3-cat-label">1. Check, update or withdraw your application</span>
-              <span class="hcv3-cat-topics">Check application status &bull; Processing times &bull; Update your information &bull; Withdraw application</span>
+              <span class="hcv3-cat-label">Check, update or withdraw your application</span>
+              <span class="hcv3-cat-topics">UCI and application numbers &bull; Check your application status &bull; Processing times &bull; Update your information</span>
             </span>
             <span class="hcv3-cat-caret" aria-hidden="true"></span>
           </summary>
@@ -407,11 +755,11 @@
         </details>
 
         <!-- Category 2 -->
-        <details class="hcv3-cat" id="cat-apply">
+        <details class="hcv3-cat" id="cat-apply" open>
           <summary class="hcv3-cat-header">
             <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="14 3 14 9 20 9"/><line x1="8" y1="13" x2="14" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/><path d="M16.5 14.5l3 3-2 4-2-2 1-5z"/></svg></span>
             <span class="hcv3-cat-text">
-              <span class="hcv3-cat-label">2. Prepare your application</span>
+              <span class="hcv3-cat-label">Prepare your application</span>
               <span class="hcv3-cat-topics">Prepare a complete application &bull; Fill out IRCC forms &bull; Sign and submit your application &bull; Upload and submit documents &bull; Medical exam &bull; Fees, refunds and receipts</span>
             </span>
             <span class="hcv3-cat-caret" aria-hidden="true"></span>
@@ -484,12 +832,12 @@
         </details>
 
         <!-- Category 3 -->
-        <details class="hcv3-cat" id="cat-account">
+        <details class="hcv3-cat" id="cat-account" open>
           <summary class="hcv3-cat-header">
             <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></span>
             <span class="hcv3-cat-text">
-              <span class="hcv3-cat-label">3. Account help and technical problems</span>
-              <span class="hcv3-cat-topics">Sign in and account creation &bull; Link your applications &bull; Browser and technical issues</span>
+              <span class="hcv3-cat-label">Account help and technical problems</span>
+              <span class="hcv3-cat-topics">Sign in and account creation &bull; Link application to account &bull; Browser and technical issues</span>
             </span>
             <span class="hcv3-cat-caret" aria-hidden="true"></span>
           </summary>
@@ -530,12 +878,12 @@
         </details>
 
         <!-- Category 4 -->
-        <details class="hcv3-cat" id="cat-programs">
+        <details class="hcv3-cat" id="cat-programs" open>
           <summary class="hcv3-cat-header">
             <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
             <span class="hcv3-cat-text">
-              <span class="hcv3-cat-label">4. Programs, eligibility, and preventing fraud</span>
-              <span class="hcv3-cat-topics">Visit Canada &bull; Study in Canada &bull; Work in Canada &bull; Become a permanent resident &bull; Sponsor family &bull; Become a Canadian citizen &bull; Other programs &bull; Scams and suspicious contact</span>
+              <span class="hcv3-cat-label">Programs, eligibility, and preventing fraud</span>
+              <span class="hcv3-cat-topics">Visit, study or work &bull; Permanent residence &bull; Sponsor family &bull; Citizenship &bull; Other programs &bull; Scams and fraud</span>
             </span>
             <span class="hcv3-cat-caret" aria-hidden="true"></span>
           </summary>
@@ -678,12 +1026,12 @@
         </details>
 
         <!-- Category 5 -->
-        <details class="hcv3-cat" id="cat-after">
+        <details class="hcv3-cat" id="cat-after" open>
           <summary class="hcv3-cat-header">
             <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="12" cy="14" r="3"></circle><polyline points="12 12 12 14 13.5 15.5"></polyline></svg></span>
             <span class="hcv3-cat-text">
-              <span class="hcv3-cat-label">5. After you apply: processing and getting a decision</span>
-              <span class="hcv3-cat-topics">What happens after you apply &bull; Refused or returned applications</span>
+              <span class="hcv3-cat-label">After you apply: processing and getting a decision</span>
+              <span class="hcv3-cat-topics">What happens after you apply &bull; When we refuse or return applications</span>
             </span>
             <span class="hcv3-cat-caret" aria-hidden="true"></span>
           </summary>
@@ -693,36 +1041,35 @@
               <ul class="hcv3-subgroup-list">
                 <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=022">What happens after I send in my application?</a></li>
                 <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1169">Why is my application considered complex or non-routine, and what does that mean for me?</a></li>
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1663">How do I get back my seized passport or travel document?</a></li>
               </ul>
             </div>
             <div class="hcv3-subgroup">
-              <h3 class="hcv3-subgroup-title">Refused or returned applications</h3>
+              <h3 class="hcv3-subgroup-title">When we refuse or return applications</h3>
               <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1220">If you return my application, will I get a refund?</a></li>
                 <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1492">My application was returned because something was missing. What can I do?</a></li>
                 <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1485">My application for a visitor visa was refused. Should I apply again?</a></li>
                 <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=023">If my immigration application is refused, do I have to wait before I apply again?</a></li>
                 <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1001">I was found not eligible for Express Entry and I can't change my profile. What do I do?</a></li>
-                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1250">I stayed in Canada longer than I was supposed to. How do I restore my status as a visitor?</a></li>
-                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=192">My work permit expired and I did not apply to extend it. Can I stay and keep working in Canada?</a></li>
-                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1663">How do I get back my seized passport or travel document?</a></li>
               </ul>
             </div>
           </div>
         </details>
 
         <!-- Category 6 -->
-        <details class="hcv3-cat" id="cat-arriving">
+        <details class="hcv3-cat" id="cat-arriving" open>
           <summary class="hcv3-cat-header">
             <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
             <span class="hcv3-cat-text">
-              <span class="hcv3-cat-label">6. Arriving and staying in Canada</span>
-              <span class="hcv3-cat-topics">Settle in Canada</span>
+              <span class="hcv3-cat-label">Arriving and staying in Canada</span>
+              <span class="hcv3-cat-topics">Settling in Canada &bull; Extend your stay or restore your status &bull; Leaving and returning to Canada</span>
             </span>
             <span class="hcv3-cat-caret" aria-hidden="true"></span>
           </summary>
           <div class="hcv3-cat-body">
             <div class="hcv3-subgroup">
-              <h3 class="hcv3-subgroup-title">Settle in Canada</h3>
+              <h3 class="hcv3-subgroup-title">Settling in Canada</h3>
               <ul class="hcv3-subgroup-list">
                 <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=895">How can I enrol in a government-funded language class at no cost to myself?</a></li>
                 <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=894">Who is eligible to take government-funded language classes?</a></li>
@@ -730,22 +1077,40 @@
                 <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=515">What does it mean to have legal status in Canada?</a></li>
               </ul>
             </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Extend your stay or restore your status</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1250">I stayed in Canada longer than I was supposed to. How do I restore my status as a visitor?</a></li>
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=192">My work permit expired and I did not apply to extend it. Can I stay and keep working in Canada?</a></li>
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=188">I applied for a new work permit. Can I stay in Canada if my work permit expires?</a></li>
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=492">Can I stay in Canada after my study permit expires if I applied for a new permit?</a></li>
+              </ul>
+            </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">Leaving and returning to Canada</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=208">I have a visitor visa. Can I leave Canada and come back?</a></li>
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1287">Can I leave and come back to Canada if I have a work permit?</a></li>
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1308">I've applied to extend my study permit. Can I travel outside Canada and be able to return?</a></li>
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=190">I have applied to extend my work permit. Can I travel outside Canada?</a></li>
+              </ul>
+            </div>
           </div>
         </details>
 
         <!-- Category 7 -->
-        <details class="hcv3-cat" id="cat-docs">
+        <details class="hcv3-cat" id="cat-docs" open>
           <summary class="hcv3-cat-header">
             <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></span>
             <span class="hcv3-cat-text">
-              <span class="hcv3-cat-label">7. Documents we issue (visas, permits, PR cards, and more)</span>
-              <span class="hcv3-cat-topics">Replace or fix a document</span>
+              <span class="hcv3-cat-label">Documents we issue (visas, permits, PR cards, and more)</span>
+              <span class="hcv3-cat-topics">Replace or correct a document we issue &bull; Expired documents</span>
             </span>
             <span class="hcv3-cat-caret" aria-hidden="true"></span>
           </summary>
           <div class="hcv3-cat-body">
             <div class="hcv3-subgroup">
-              <h3 class="hcv3-subgroup-title">Replace or fix a document</h3>
+              <h3 class="hcv3-subgroup-title">Replace or correct a document we issue</h3>
               <ul class="hcv3-subgroup-list">
                 <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=045">How do I replace an immigration document that has been lost, stolen or destroyed?</a></li>
                 <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=041">How do I correct an error on my immigration document?</a></li>
@@ -759,6 +1124,18 @@
                 <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1650">I got a new passport but I have a valid visa in my old one. Can I use the visa in my old passport?</a></li>
               </ul>
             </div>
+            <div class="hcv3-subgroup">
+              <h3 class="hcv3-subgroup-title">If your document has expired</h3>
+              <ul class="hcv3-subgroup-list">
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=065">What happens if my permanent resident card expires while I am outside Canada?</a></li>
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1456">What happens if my PR card expires?</a></li>
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=701">I want to extend my expiring work permit, but I don't have a new LMIA or CAQ yet. What should I do?</a></li>
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=188">I applied for a new work permit. Can I stay in Canada if my work permit expires?</a></li>
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=189">Can I keep working if my permit expires? How do I prove this to my employer?</a></li>
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1505">My work permit expired, but I've maintained my status. Can I keep working under the same conditions of my initial work permit if my Social Insurance Number (SIN) is expired?</a></li>
+                <li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1476">My IEC work permit is expiring. Can I stay in Canada if I apply to extend my stay?</a></li>
+              </ul>
+            </div>
           </div>
         </details>
       </div>
@@ -768,23 +1145,17 @@
   <section class="hc-also">
     <div class="container">
       <h2 class="hc-also-title">You may also be looking for</h2>
-      <div class="row">
-        <div class="col-md-4">
+      <div class="hc-also-grid">
+        <div class="hc-also-card-wrap">
           <div class="hc-also-card">
             <h3><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/glossary.html">Definitions</a></h3>
             <p>Find definitions to terms often used by Immigration, Refugees and Citizenship Canada in our glossary.</p>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="hc-also-card-wrap">
           <div class="hc-also-card">
-            <h3><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Your application</a></h3>
-            <p>Application status, processing times, online applications and paper forms, fee payment, medical and police checks.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="hc-also-card">
-            <h3><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/come-canada-tool-immigration-express-entry.html">Explore programs</a></h3>
-            <p>Answer a few questions and explore all immigration programs.</p>
+            <h3><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/come-canada-tool-immigration-express-entry.html">Explore immigration programs</a></h3>
+            <p>Answer a few questions to find immigration programs you may be interested in.</p>
           </div>
         </div>
       </div>
