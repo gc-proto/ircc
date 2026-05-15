@@ -1,7 +1,7 @@
 <!-- IRCC Help Centre 3.0: AEM Ready Snippet -->
 <!-- Instructions: Paste this entire block into an AEM 'Custom HTML' or 'Text' component. -->
 
-<!-- Legacy prototype styles removed in favor of the single active block below.
+<template hidden data-legacy-styles="removed">
 .hc3-v3 {
   --hc-blue: #1c578a;
   --hc-border: #d3d8de;
@@ -309,7 +309,7 @@
   .hc3-v3 .hcv3-subgroup-list { columns: 1; }
   .hc3-v3 .hc-also-card { margin-bottom: 24px; }
 }
--->
+</template>
 
 <style>
 .hc3-v3 {
@@ -368,12 +368,25 @@
 }
 
 .hc3-v3 .hc-hero h1.hc-hero-title {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
   color: var(--hc-ink-figma);
   font-family: Lato, "Helvetica Neue", Arial, sans-serif;
   font-size: 3.25rem;
   font-weight: 700;
   line-height: 1.08;
   margin: 0 0 12px;
+  outline: 0;
+  padding-bottom: 0 !important;
+  text-decoration: none !important;
+}
+
+.hc3-v3 .hc-hero h1.hc-hero-title::before,
+.hc3-v3 .hc-hero h1.hc-hero-title::after {
+  border: 0 !important;
+  box-shadow: none !important;
+  content: none !important;
+  display: none !important;
 }
 
 .hc3-v3 .hc-hero-rule {
@@ -395,6 +408,7 @@
 .hc3-v3 .hc-search-band {
   background: var(--hc-band-figma);
   padding: 24px 0;
+  width: 100%;
 }
 
 .hc3-v3 .hc-search-title {
@@ -497,15 +511,14 @@
 }
 
 .hc3-v3 .hcv3-cat-header {
-  align-items: center;
+  align-items: flex-start;
   background: transparent;
   border: 0;
-  border-bottom: 1px solid var(--hc-border-soft-figma);
   cursor: pointer;
   display: flex;
   font-family: inherit;
   list-style: none !important;
-  padding: 15px;
+  padding: 22px 24px 20px;
   position: relative;
   text-align: left;
   transition: background-color 0.2s ease;
@@ -523,6 +536,10 @@
 
 .hc3-v3 .hcv3-cat-header:hover {
   background: #fafbfc;
+}
+
+.hc3-v3 .hcv3-cat[open] .hcv3-cat-header {
+  border-bottom: 1px solid var(--hc-border-soft-figma);
 }
 
 .hc3-v3 .hcv3-cat-icon {
@@ -546,24 +563,26 @@
 .hc3-v3 .hcv3-cat-text {
   flex-grow: 1;
   min-width: 0;
+  padding-top: 1px;
 }
 
 .hc3-v3 .hcv3-cat-label {
   color: var(--hc-blue-figma);
   display: block;
   font-family: Lato, "Helvetica Neue", Arial, sans-serif;
-  font-size: 1.8125rem;
+  font-size: 1.625rem;
   font-weight: 700;
-  line-height: 1.15;
-  margin-bottom: 8px;
+  line-height: 1.12;
+  margin-bottom: 10px;
 }
 
 .hc3-v3 .hcv3-cat-topics {
-  color: var(--hc-ink-figma);
+  color: var(--hc-ink-muted-figma);
   display: block;
   font-family: "Noto Sans", Arial, sans-serif;
-  font-size: 1.0625rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.45;
+  max-width: 62rem;
 }
 
 .hc3-v3 .hcv3-cat-caret {
@@ -599,7 +618,7 @@
 .hc3-v3 .hcv3-cat-body {
   background: var(--hc-card-fill-figma);
   border-radius: 0 0 20px 20px;
-  padding: 15px;
+  padding: 18px 15px 15px;
 }
 
 .hc3-v3 .hcv3-subgroup {
@@ -619,9 +638,10 @@
   color: #000000;
   font-family: Lato, "Helvetica Neue", Arial, sans-serif;
   font-size: 1.375rem;
-  line-height: 1.2;
+  font-weight: 700;
+  line-height: 1.18;
   margin: 0;
-  padding: 12px 15px;
+  padding: 14px 15px 13px;
 }
 
 .hc3-v3 .hcv3-subgroup-list {
@@ -649,7 +669,8 @@
   color: var(--hc-link-figma);
   font-family: "Noto Sans", Arial, sans-serif;
   font-size: 1.25rem;
-  line-height: 1.65;
+  line-height: 1.6;
+  text-decoration-skip-ink: none;
 }
 
 .hc3-v3 .hcv3-subgroup-list a:hover,
@@ -748,16 +769,17 @@
   }
 
   .hc3-v3 .hcv3-cat-header {
-    align-items: flex-start;
-    padding: 15px;
+    padding: 18px 15px;
   }
 
   .hc3-v3 .hcv3-cat-label {
     font-size: 1.625rem;
+    line-height: 1.12;
   }
 
   .hc3-v3 .hcv3-cat-topics {
     font-size: 1rem;
+    line-height: 1.45;
   }
 
   .hc3-v3 .hc-also-grid {
@@ -768,6 +790,21 @@
 @media (min-width: 768px) {
   .hc3-v3 .container {
     padding: 0 60px;
+  }
+
+  .hc3-v3 .hcv3-cat-label {
+    font-size: 1.8125rem;
+    line-height: 1.12;
+  }
+
+  .hc3-v3 .hcv3-cat-topics {
+    font-size: 1.0625rem;
+    line-height: 1.47;
+  }
+
+  .hc3-v3 .hcv3-subgroup-title {
+    font-size: 1.6875rem;
+    line-height: 1.18;
   }
 }
 
@@ -783,7 +820,7 @@
     <div class="container hc-hero">
       <div class="row">
         <div class="col-md-10">
-          <h1 property="name" id="wb-cont" class="hc-hero-title">Help Centre</h1>
+          <h1 class="hc-hero-title">Help Centre</h1>
           <div class="hc-hero-rule" aria-hidden="true"></div>
           <p class="hc-lead">You have questions, we have answers. Find help with applications, your account and IRCC programs.</p>
         </div>
