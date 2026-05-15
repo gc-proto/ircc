@@ -252,18 +252,17 @@
 
 .hc3-v3 .hcv3-cat-header {
   appearance: none;
-  align-items: flex-start;
   background: transparent;
   border: 0;
-  column-gap: 15px;
   cursor: pointer;
-  display: flex;
+  display: table;
   font-family: inherit;
   list-style: none !important;
   padding: 22px 24px 20px;
   position: relative;
   text-align: left;
   transition: background-color 0.2s ease;
+  table-layout: fixed;
   width: 100%;
 }
 
@@ -280,6 +279,11 @@
   background: #fafbfc;
 }
 
+.hc3-v3 .hcv3-cat-header.media {
+  margin-top: 0;
+  overflow: visible;
+}
+
 .hc3-v3 .hcv3-cat[open] .hcv3-cat-header {
   border-bottom: 1px solid var(--hc-border-soft-figma);
 }
@@ -289,24 +293,34 @@
   background: var(--hc-card-fill-figma);
   border-radius: 999px;
   color: var(--hc-blue-figma);
-  display: flex;
-  flex-shrink: 0;
+  display: table-cell;
   height: 40px;
   justify-content: center;
   margin-right: 0;
+  min-width: 40px;
+  vertical-align: top;
   width: 40px;
 }
 
 .hc3-v3 .hcv3-cat-icon svg {
   height: 20px;
+  margin: 10px;
   width: 20px;
 }
 
 .hc3-v3 .hcv3-cat-text {
-  flex: 1 1 auto;
-  flex-grow: 1;
-  min-width: 0;
+  display: table-cell;
+  overflow: visible;
+  padding-left: 15px;
+  padding-right: 15px;
   padding-top: 1px;
+  vertical-align: top;
+  width: 100%;
+}
+
+.hc3-v3 .hcv3-cat-text.media-body {
+  overflow: visible;
+  width: auto;
 }
 
 .hc3-v3 .hcv3-cat-label {
@@ -329,18 +343,14 @@
 }
 
 .hc3-v3 .hcv3-cat-caret {
-  align-self: center;
-  align-items: center;
+  display: table-cell;
   border: 0;
-  display: flex;
-  flex: 0 0 46px;
   height: 40px;
-  justify-content: center;
-  margin-left: auto;
-  margin-top: 0;
   position: relative;
+  text-align: right;
   transform: none;
   transition: none;
+  vertical-align: middle;
   width: 46px;
 }
 
@@ -348,7 +358,7 @@
   border-bottom: 2.5px solid #000000;
   border-right: 2.5px solid #000000;
   content: "";
-  display: block;
+  display: inline-block;
   height: 12px;
   transform: rotate(45deg);
   transition: transform 0.2s ease;
@@ -593,13 +603,13 @@
       <div class="hcv3-categories">
         <!-- Category 1 -->
         <details class="hcv3-cat" id="cat-status">
-          <summary class="hcv3-cat-header">
-            <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="14 3 14 9 20 9"/><polyline points="9 14 11 16 15 12"/></svg></span>
-            <span class="hcv3-cat-text">
+          <summary class="hcv3-cat-header media">
+            <span class="hcv3-cat-icon media-left media-middle mrgn-rght-sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="14 3 14 9 20 9"/><polyline points="9 14 11 16 15 12"/></svg></span>
+            <span class="hcv3-cat-text media-body">
               <span class="hcv3-cat-label">Check, update or withdraw your application</span>
               <span class="hcv3-cat-topics">Application status &bull; Processing times &bull; Update information &bull; Submit new documents &bull; Withdraw application</span>
             </span>
-            <span class="hcv3-cat-caret" aria-hidden="true"></span>
+            <span class="hcv3-cat-caret media-right media-middle text-right" aria-hidden="true"></span>
           </summary>
           <div class="hcv3-cat-body">
             <div class="hcv3-subgroup">
@@ -664,13 +674,13 @@
 
         <!-- Category 2 -->
         <details class="hcv3-cat" id="cat-apply">
-          <summary class="hcv3-cat-header">
-            <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="14 3 14 9 20 9"/><line x1="8" y1="13" x2="14" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/><path d="M16.5 14.5l3 3-2 4-2-2 1-5z"/></svg></span>
-            <span class="hcv3-cat-text">
+          <summary class="hcv3-cat-header media">
+            <span class="hcv3-cat-icon media-left media-middle mrgn-rght-sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="14 3 14 9 20 9"/><line x1="8" y1="13" x2="14" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/><path d="M16.5 14.5l3 3-2 4-2-2 1-5z"/></svg></span>
+            <span class="hcv3-cat-text media-body">
               <span class="hcv3-cat-label">Prepare your application</span>
               <span class="hcv3-cat-topics">UCIs and application numbers &bull; Forms and documents &bull; Medical exams &bull; Fees and receipts &bull; Submit application</span>
             </span>
-            <span class="hcv3-cat-caret" aria-hidden="true"></span>
+            <span class="hcv3-cat-caret media-right media-middle text-right" aria-hidden="true"></span>
           </summary>
           <div class="hcv3-cat-body">
             <div class="hcv3-subgroup">
@@ -741,13 +751,13 @@
 
         <!-- Category 3 -->
         <details class="hcv3-cat" id="cat-account">
-          <summary class="hcv3-cat-header">
-            <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></span>
-            <span class="hcv3-cat-text">
+          <summary class="hcv3-cat-header media">
+            <span class="hcv3-cat-icon media-left media-middle mrgn-rght-sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></span>
+            <span class="hcv3-cat-text media-body">
               <span class="hcv3-cat-label">Account help and technical problems</span>
               <span class="hcv3-cat-topics">Sign in and account creation &bull; Link application to account &bull; Browser and technical issues</span>
             </span>
-            <span class="hcv3-cat-caret" aria-hidden="true"></span>
+            <span class="hcv3-cat-caret media-right media-middle text-right" aria-hidden="true"></span>
           </summary>
           <div class="hcv3-cat-body">
             <div class="hcv3-subgroup">
@@ -780,13 +790,13 @@
 
         <!-- Category 4 -->
         <details class="hcv3-cat" id="cat-programs">
-          <summary class="hcv3-cat-header">
-            <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-            <span class="hcv3-cat-text">
+          <summary class="hcv3-cat-header media">
+            <span class="hcv3-cat-icon media-left media-middle mrgn-rght-sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+            <span class="hcv3-cat-text media-body">
               <span class="hcv3-cat-label">Programs, eligibility, and preventing fraud</span>
               <span class="hcv3-cat-topics">Visit, study or work &bull; Permanent residence &bull; PR cards &bull; Sponsor family &bull; Refugees &bull; Citizenship &bull; Scams and fraud</span>
             </span>
-            <span class="hcv3-cat-caret" aria-hidden="true"></span>
+            <span class="hcv3-cat-caret media-right media-middle text-right" aria-hidden="true"></span>
           </summary>
           <div class="hcv3-cat-body">
             <div class="hcv3-subgroup">
@@ -928,13 +938,13 @@
 
         <!-- Category 5 -->
         <details class="hcv3-cat" id="cat-after">
-          <summary class="hcv3-cat-header">
-            <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="12" cy="14" r="3"></circle><polyline points="12 12 12 14 13.5 15.5"></polyline></svg></span>
-            <span class="hcv3-cat-text">
+          <summary class="hcv3-cat-header media">
+            <span class="hcv3-cat-icon media-left media-middle mrgn-rght-sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="12" cy="14" r="3"></circle><polyline points="12 12 12 14 13.5 15.5"></polyline></svg></span>
+            <span class="hcv3-cat-text media-body">
               <span class="hcv3-cat-label">After you apply: processing and getting a decision</span>
               <span class="hcv3-cat-topics">What happens after you apply &bull; When we refuse or return applications</span>
             </span>
-            <span class="hcv3-cat-caret" aria-hidden="true"></span>
+            <span class="hcv3-cat-caret media-right media-middle text-right" aria-hidden="true"></span>
           </summary>
           <div class="hcv3-cat-body">
             <div class="hcv3-subgroup">
@@ -960,13 +970,13 @@
 
         <!-- Category 6 -->
         <details class="hcv3-cat" id="cat-arriving">
-          <summary class="hcv3-cat-header">
-            <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
-            <span class="hcv3-cat-text">
+          <summary class="hcv3-cat-header media">
+            <span class="hcv3-cat-icon media-left media-middle mrgn-rght-sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+            <span class="hcv3-cat-text media-body">
               <span class="hcv3-cat-label">Arriving and staying in Canada</span>
               <span class="hcv3-cat-topics">Settling in Canada &bull; Extend your stay or restore your status &bull; Leaving and returning to Canada</span>
             </span>
-            <span class="hcv3-cat-caret" aria-hidden="true"></span>
+            <span class="hcv3-cat-caret media-right media-middle text-right" aria-hidden="true"></span>
           </summary>
           <div class="hcv3-cat-body">
             <div class="hcv3-subgroup">
@@ -999,13 +1009,13 @@
 
         <!-- Category 7 -->
         <details class="hcv3-cat" id="cat-docs">
-          <summary class="hcv3-cat-header">
-            <span class="hcv3-cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></span>
-            <span class="hcv3-cat-text">
+          <summary class="hcv3-cat-header media">
+            <span class="hcv3-cat-icon media-left media-middle mrgn-rght-sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></span>
+            <span class="hcv3-cat-text media-body">
               <span class="hcv3-cat-label">Documents we issue (visas, permits, PR cards, and more)</span>
               <span class="hcv3-cat-topics">Replace or correct a document we issue &bull; Expired documents</span>
             </span>
-            <span class="hcv3-cat-caret" aria-hidden="true"></span>
+            <span class="hcv3-cat-caret media-right media-middle text-right" aria-hidden="true"></span>
           </summary>
           <div class="hcv3-cat-body">
             <div class="hcv3-subgroup">
