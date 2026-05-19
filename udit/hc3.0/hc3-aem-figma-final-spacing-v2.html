@@ -1,0 +1,1049 @@
+<!-- CSS injection block: place this ABOVE the Help Centre HTML block in AEM. -->
+<script>
+(function injectHelpCentreCSS() {
+  var css = `/* ============================================================
+   HC 3.0 — AEM / Canada.ca HTML-only implementation
+   Figma-aligned version
+
+   Paste this CSS injection block ABOVE the .hc3-v3 HTML block.
+   It is scoped to .hc3-v3 and uses native details/summary accordions.
+   ============================================================ */
+
+.hc3-v3 {
+  --hc-blue: #2b4380;
+  --hc-link: #284162;
+  --hc-ink: #333333;
+  --hc-black: #000000;
+  --hc-white: #ffffff;
+  --hc-band-bg: #ebf2fa;
+  --hc-card-hover: rgba(234, 244, 255, 0.5);
+  --hc-card-expanded-bg: #eaf4ff;
+  --hc-card-border: #eeeeee;
+  --hc-sub-border: #acacac;
+  --hc-sub-header-border: #eaebed;
+  --hc-red-rule: #af3c43;
+  --hc-btn-bg: #26374a;
+  --hc-btn-border: #091c2d;
+  box-sizing: border-box;
+  color: var(--hc-ink);
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.hc3-v3 *,
+.hc3-v3 *::before,
+.hc3-v3 *::after {
+  box-sizing: border-box;
+}
+
+/* WET/GCWeb containment resets */
+.hc3-v3 h1,
+.hc3-v3 h2,
+.hc3-v3 h3,
+.hc3-v3 p,
+.hc3-v3 ul,
+.hc3-v3 li,
+.hc3-v3 form {
+  border: 0;
+  box-shadow: none;
+  letter-spacing: normal;
+  max-width: none;
+  text-transform: none;
+}
+
+.hc3-v3 form {
+  margin: 0;
+}
+
+.hc3-v3 a,
+.hc3-v3 a:link,
+.hc3-v3 a:visited {
+  color: var(--hc-link);
+}
+
+.hc3-v3 input,
+.hc3-v3 button {
+  appearance: none;
+  background-image: none;
+  box-shadow: none;
+  margin: 0;
+}
+
+.hc3-v3 svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.hc3-v3 details,
+.hc3-v3 summary {
+  display: block;
+}
+
+.hc3-v3 summary,
+.hc3-v3 details > summary,
+.hc3-v3 details > summary:first-of-type {
+  cursor: pointer;
+  list-style: none !important;
+  text-decoration: none !important;
+}
+
+.hc3-v3 summary::marker,
+.hc3-v3 summary::-webkit-details-marker {
+  display: none !important;
+  content: "" !important;
+}
+
+.hc3-v3 summary *,
+.hc3-v3 summary *:hover {
+  text-decoration: none !important;
+}
+
+.hc3-v3 summary:focus,
+.hc3-v3 a:focus,
+.hc3-v3 button:focus,
+.hc3-v3 input:focus {
+  outline: 2px solid #0535d2;
+  outline-offset: 2px;
+}
+
+/* Figma / Canada.ca content width guard
+   At a 1440px desktop viewport, a 1170px Canada.ca-style container
+   with 15px side padding places the visible content at ~150px from
+   the page edge, matching the desktop mockup. The !important values
+   protect this component if the AEM page/container is set to fluid width. */
+.hc3-v3 .container {
+  box-sizing: border-box !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 1170px !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  width: 100% !important;
+}
+
+.hc3-v3 .container::before,
+.hc3-v3 .container::after {
+  content: none !important;
+  display: none !important;
+}
+
+.hc3-v3 .row,
+.hc3-v3 .col-md-10 {
+  display: block;
+  float: none;
+  min-height: 0;
+  min-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+}
+
+.hc3-v3 .wb-inv {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Hero / H1 intro */
+.hc3-v3 .hc-hero-wrapper {
+  background: var(--hc-white);
+  padding: 50px 0;
+}
+
+.hc3-v3 .hc-hero .hc-hero-title {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  color: var(--hc-ink);
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 41px;
+  font-weight: 700;
+  line-height: 42px;
+  margin: 0 0 12px;
+  outline: 0;
+  padding-bottom: 0 !important;
+  text-decoration: none !important;
+}
+
+.hc3-v3 .hc-hero .hc-hero-title::before,
+.hc3-v3 .hc-hero .hc-hero-title::after {
+  border: 0 !important;
+  box-shadow: none !important;
+  content: none !important;
+  display: none !important;
+}
+
+.hc3-v3 .hc-hero-rule {
+  background: var(--hc-red-rule);
+  height: 6px;
+  margin-bottom: 17px;
+  width: 71px;
+}
+
+.hc3-v3 .hc-hero .hc-lead {
+  color: #424242;
+  font-size: 24px;
+  line-height: 33px;
+  margin: 0;
+  max-width: none;
+}
+
+/* Search band */
+.hc3-v3 .hc-search-band {
+  background: var(--hc-band-bg);
+  padding: 50px 0;
+  width: 100%;
+}
+
+.hc3-v3 .hc-search-band .col-md-10 {
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.hc3-v3 .hc-search-title {
+  color: var(--hc-black);
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 39px;
+  font-weight: 700;
+  height: 57px;
+  line-height: 40px;
+  margin: 0;
+  max-width: none;
+}
+
+.hc3-v3 .hc-search-form {
+  box-shadow: none;
+  display: flex;
+  gap: 10px;
+  max-width: none;
+  width: 100%;
+}
+
+.hc3-v3 .hc-search-input {
+  background: var(--hc-white);
+  border: 1px solid #666666;
+  border-radius: 5px;
+  color: var(--hc-ink);
+  flex: 1 1 auto;
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-size: 16px;
+  height: 43px;
+  min-height: 43px;
+  min-width: 0;
+  padding: 7px 10px;
+  width: 100%;
+}
+
+.hc3-v3 .hc-search-button {
+  align-items: center;
+  align-self: flex-start;
+  background-color: var(--hc-btn-bg);
+  border: 1px solid var(--hc-btn-border);
+  border-radius: 4px;
+  color: var(--hc-white);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  justify-content: center;
+  line-height: 23px;
+  min-height: 43px;
+  min-width: auto;
+  padding: 9px 13px;
+}
+
+.hc3-v3 .hc-search-button:hover,
+.hc3-v3 .hc-search-button:focus {
+  background-color: #1f2c3d;
+  border-color: var(--hc-btn-border);
+}
+
+/* Browse by topic */
+.hc3-v3 .hc-band-categories {
+  background: var(--hc-white);
+  border-top: 0;
+  padding: 50px 0;
+}
+
+.hc3-v3 .hc-hero-wrapper,
+.hc3-v3 .hc-search-band,
+.hc3-v3 .hc-band-categories,
+.hc3-v3 .hc-also {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100% !important;
+}
+
+.hc3-v3 .hc-band-h2,
+.hc3-v3 .hc-also-title {
+  color: var(--hc-black);
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 39px;
+  font-weight: 700;
+  line-height: 40px;
+  margin: 0;
+}
+
+.hc3-v3 .hc-band-h2 {
+  height: 57px;
+  margin-bottom: 15px;
+}
+
+.hc3-v3 .hcv3-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Top-level doormat cards — mirrors the Figma structure:
+   summary > title row + topic row. */
+.hc3-v3 .hcv3-cat {
+  background: var(--hc-white);
+  border: 1px solid var(--hc-card-border);
+  border-radius: 20px;
+  box-shadow: none;
+  display: block;
+  margin: 0;
+  overflow: hidden;
+}
+
+.hc3-v3 .hcv3-cat[open] {
+  border-left: 1px solid var(--hc-card-border) !important;
+}
+
+.hc3-v3 .hcv3-cat-header {
+  appearance: none;
+  background: var(--hc-white);
+  border: 0;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex !important;
+  flex-direction: column;
+  font-family: inherit;
+  gap: 10px;
+  list-style: none !important;
+  margin: 0;
+  min-height: 106px;
+  padding: 15px;
+  text-align: left;
+  text-decoration: none !important;
+  transition: background-color 0.15s ease;
+  width: 100% !important;
+}
+
+.hc3-v3 .hcv3-cat-header:hover,
+.hc3-v3 .hcv3-cat-header:focus-visible {
+  background: var(--hc-card-hover) !important;
+}
+
+.hc3-v3 .hcv3-cat[open] > .hcv3-cat-header {
+  border-bottom: 1px solid var(--hc-card-border);
+  border-radius: 20px 20px 0 0;
+}
+
+.hc3-v3 .hcv3-cat-row {
+  align-items: center;
+  display: flex;
+  gap: 15px;
+  min-height: 40px;
+  width: 100%;
+}
+
+.hc3-v3 .hcv3-cat-icon {
+  align-items: center;
+  background: var(--hc-card-expanded-bg);
+  border-radius: 35px;
+  color: var(--hc-blue);
+  display: flex;
+  flex: 0 0 40px;
+  height: 40px;
+  justify-content: center;
+  line-height: 0;
+  padding: 10px;
+  width: 40px;
+}
+
+.hc3-v3 .hcv3-cat-header:hover .hcv3-cat-icon,
+.hc3-v3 .hcv3-cat-header:focus-visible .hcv3-cat-icon {
+  background: var(--hc-white);
+}
+
+        .hc3-v3 .hcv3-cat-icon svg,
+        .hc3-v3 .hcv3-cat-icon .fa,
+        .hc3-v3 .hcv3-cat-icon .fas,
+        .hc3-v3 .hcv3-cat-icon .far,
+        .hc3-v3 .hcv3-cat-icon .fab,
+        .hc3-v3 .hcv3-cat-icon i {
+  display: block;
+  font-size: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  width: 20px;
+}
+
+.hc3-v3 .hcv3-cat-label {
+  color: var(--hc-blue);
+  display: block;
+  flex: 1 1 auto;
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 29px;
+  font-weight: 700;
+  line-height: 26px;
+  margin: 0;
+  min-width: 0;
+  text-decoration: none !important;
+}
+
+.hc3-v3 .hcv3-cat-topics-row {
+  display: block;
+  padding-left: 55px;
+  padding-right: 60px;
+  width: 100%;
+}
+
+.hc3-v3 .hcv3-cat-topics {
+  color: var(--hc-ink);
+  display: block;
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 25.5px;
+  margin: 0;
+}
+
+.hc3-v3 .hcv3-cat-caret {
+  align-items: center;
+  display: flex;
+  flex: 0 0 46px;
+  height: 40px;
+  justify-content: center;
+  line-height: 0;
+  margin-left: auto;
+  padding: 10px 15px;
+  width: 46px;
+}
+
+.hc3-v3 .hcv3-cat-caret::before,
+.hc3-v3 .hcv3-subgroup-caret::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6 8 10 12 6' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  content: "";
+  display: block;
+  height: 16px;
+  transform: rotate(-90deg);
+  transition: transform 0.2s ease;
+  width: 16px;
+}
+
+.hc3-v3 .hcv3-cat[open] .hcv3-cat-caret::before,
+.hc3-v3 .hcv3-subgroup[open] .hcv3-subgroup-caret::before {
+  transform: rotate(0deg);
+}
+
+/* Expanded top-level body */
+.hc3-v3 .hcv3-cat-body {
+  background: var(--hc-card-expanded-bg);
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+}
+
+/* Nested sub-topic accordions */
+.hc3-v3 .hcv3-subgroup {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.hc3-v3 .hcv3-subgroup-header {
+  align-items: center;
+  appearance: none;
+  background: var(--hc-white);
+  border: 1px solid var(--hc-sub-border);
+  border-radius: 10px;
+  box-shadow: none;
+  cursor: pointer;
+  display: flex !important;
+  font-family: inherit;
+  gap: 10px;
+  justify-content: space-between;
+  list-style: none !important;
+  margin: 0;
+  min-height: 56px;
+  padding: 10px 15px;
+  text-align: left;
+  text-decoration: none !important;
+  transition: background-color 0.15s ease;
+  width: 100% !important;
+}
+
+.hc3-v3 .hcv3-subgroup-header:hover,
+.hc3-v3 .hcv3-subgroup-header:focus-visible {
+  background: #fcfcfc;
+}
+
+.hc3-v3 .hcv3-subgroup[open] .hcv3-subgroup-header {
+  border-bottom-color: var(--hc-sub-header-border);
+  border-radius: 10px 10px 0 0;
+}
+
+.hc3-v3 .hcv3-subgroup-title {
+  color: var(--hc-black);
+  flex: 1 1 auto;
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 0;
+  min-width: 0;
+}
+
+.hc3-v3 .hcv3-subgroup-caret {
+  align-items: center;
+  display: flex;
+  flex: 0 0 30px;
+  justify-content: center;
+  line-height: 0;
+  width: 30px;
+}
+
+.hc3-v3 .hcv3-subgroup-list {
+  background: var(--hc-white);
+  border: 1px solid var(--hc-sub-border);
+  border-radius: 0 0 10px 10px;
+  border-top: 0;
+  display: block;
+  list-style: disc !important;
+  margin: 0;
+  padding: 15px 15px 15px 45px;
+}
+
+.hc3-v3 .hcv3-subgroup-list li {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  display: list-item;
+  margin: 0 0 15px;
+  padding: 0;
+}
+
+.hc3-v3 .hcv3-subgroup-list li:last-child {
+  margin-bottom: 0;
+}
+
+.hc3-v3 .hcv3-subgroup-list li::before,
+.hc3-v3 .hcv3-subgroup-list a::before {
+  content: none !important;
+}
+
+.hc3-v3 .hcv3-subgroup-list a {
+  color: var(--hc-link);
+  display: inline !important;
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 33px;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.hc3-v3 .hcv3-subgroup-list a:hover,
+.hc3-v3 .hcv3-subgroup-list a:focus {
+  background: transparent;
+  text-decoration: underline;
+}
+
+/* Helpful resources */
+.hc3-v3 .hc-also {
+  background: var(--hc-band-bg);
+  padding: 50px 0;
+}
+
+.hc3-v3 .hc-also-title {
+  margin-bottom: 24px;
+}
+
+.hc3-v3 .hc-also-grid {
+  display: flex;
+  gap: 24px;
+}
+
+.hc3-v3 .hc-also-card-wrap {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.hc3-v3 .hc-also-card {
+  background: var(--hc-white);
+  border: 1px solid #8c8c8c;
+  min-height: 174px;
+  padding: 36px 24px;
+}
+
+.hc3-v3 .hc-also-card h3 {
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 29px;
+  font-weight: 700;
+  line-height: 26px;
+  margin: 0 0 10px;
+}
+
+.hc3-v3 .hc-also-card h3 a {
+  color: #1f497a;
+  text-decoration: none;
+}
+
+.hc3-v3 .hc-also-card h3 a:hover,
+.hc3-v3 .hc-also-card h3 a:focus {
+  text-decoration: underline;
+}
+
+.hc3-v3 .hc-also-card p {
+  color: var(--hc-ink);
+  font-size: 20px;
+  line-height: 33px;
+  margin: 0;
+}
+
+/* Responsive base layout */
+@media (max-width: 767px) {
+  .hc3-v3 .hc-hero-wrapper {
+    padding: 25px 0;
+  }
+
+  .hc3-v3 .hc-hero .hc-hero-title {
+    font-size: 37px;
+    line-height: 39px;
+  }
+
+  .hc3-v3 .hc-hero .hc-lead {
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .hc3-v3 .hc-search-title,
+  .hc3-v3 .hc-band-h2,
+  .hc3-v3 .hc-also-title {
+    font-size: 35px;
+    line-height: 36px;
+  }
+
+  .hc3-v3 .hc-search-title {
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .hc3-v3 .hc-search-form {
+    align-items: stretch;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hc3-v3 .hc-search-input {
+    display: block;
+    width: 100%;
+  }
+
+  .hc3-v3 .hc-search-button {
+    align-self: stretch;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hc3-v3 .hc-also-grid {
+    flex-direction: column;
+  }
+}
+
+/* Final AEM card and nested-expando alignment.
+   This single block neutralizes native/WET summary spacing and applies the
+   Figma measurements for the topic cards and child expandos. */
+.hc3-v3 details.hcv3-cat,
+.hc3-v3 details.hcv3-subgroup {
+  display: block !important;
+  margin: 0 !important;
+  margin-inline-start: 0 !important;
+  padding: 0 !important;
+  padding-inline-start: 0 !important;
+  text-indent: 0 !important;
+  width: 100% !important;
+}
+
+.hc3-v3 details.hcv3-cat > summary.hcv3-cat-header,
+.hc3-v3 details.hcv3-subgroup > summary.hcv3-subgroup-header {
+  appearance: none !important;
+  box-sizing: border-box !important;
+  cursor: pointer !important;
+  list-style: none !important;
+  margin: 0 !important;
+  margin-inline-start: 0 !important;
+  text-align: left !important;
+  text-decoration: none !important;
+  text-indent: 0 !important;
+  width: 100% !important;
+}
+
+.hc3-v3 details.hcv3-cat > summary.hcv3-cat-header::marker,
+.hc3-v3 details.hcv3-cat > summary.hcv3-cat-header::-webkit-details-marker,
+.hc3-v3 details.hcv3-subgroup > summary.hcv3-subgroup-header::marker,
+.hc3-v3 details.hcv3-subgroup > summary.hcv3-subgroup-header::-webkit-details-marker {
+  content: "" !important;
+  display: none !important;
+}
+
+.hc3-v3 .hcv3-categories {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 15px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.hc3-v3 .hcv3-cat {
+  background: var(--hc-white) !important;
+  border: 1px solid var(--hc-card-border) !important;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.hc3-v3 .hcv3-cat:not([open]):hover,
+.hc3-v3 .hcv3-cat:not([open]):focus-within {
+  background: var(--hc-card-hover) !important;
+}
+
+.hc3-v3 .hcv3-cat[open] {
+  background: var(--hc-white) !important;
+  border-left: 1px solid var(--hc-card-border) !important;
+}
+
+.hc3-v3 .hcv3-cat > summary.hcv3-cat-header {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  min-height: 106px !important;
+  padding: 15px !important;
+  padding-inline-end: 15px !important;
+  padding-inline-start: 15px !important;
+}
+
+.hc3-v3 .hcv3-cat[open] > summary.hcv3-cat-header {
+  border-bottom: 1px solid var(--hc-card-border) !important;
+}
+
+.hc3-v3 .hcv3-cat[open] > summary.hcv3-cat-header:hover,
+.hc3-v3 .hcv3-cat[open] > summary.hcv3-cat-header:focus-visible {
+  background: var(--hc-card-hover) !important;
+}
+
+.hc3-v3 .hcv3-cat-row {
+  align-items: center !important;
+  display: flex !important;
+  gap: 15px !important;
+  margin: 0 !important;
+  min-height: 40px !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.hc3-v3 .hcv3-cat-icon {
+  align-items: center !important;
+  background: var(--hc-card-expanded-bg) !important;
+  border-radius: 35px !important;
+  color: var(--hc-blue) !important;
+  display: flex !important;
+  flex: 0 0 40px !important;
+  height: 40px !important;
+  justify-content: center !important;
+  line-height: 0 !important;
+  margin: 0 !important;
+  padding: 10px !important;
+  width: 40px !important;
+}
+
+.hc3-v3 .hcv3-cat:not([open]):hover .hcv3-cat-icon,
+.hc3-v3 .hcv3-cat:not([open]):focus-within .hcv3-cat-icon,
+.hc3-v3 .hcv3-cat[open] > summary.hcv3-cat-header:hover .hcv3-cat-icon,
+.hc3-v3 .hcv3-cat[open] > summary.hcv3-cat-header:focus-visible .hcv3-cat-icon {
+  background: var(--hc-white) !important;
+}
+
+        .hc3-v3 .hcv3-cat-icon svg,
+        .hc3-v3 .hcv3-cat-icon .fa,
+        .hc3-v3 .hcv3-cat-icon .fas,
+        .hc3-v3 .hcv3-cat-icon .far,
+        .hc3-v3 .hcv3-cat-icon .fab,
+        .hc3-v3 .hcv3-cat-icon i {
+  font-size: 20px !important;
+  height: 20px !important;
+  line-height: 20px !important;
+  text-align: center !important;
+  width: 20px !important;
+}
+
+.hc3-v3 .hcv3-cat-label {
+  color: var(--hc-blue) !important;
+  display: block !important;
+  flex: 1 1 auto !important;
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 29px !important;
+  font-weight: 700 !important;
+  line-height: 26px !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+}
+
+.hc3-v3 .hcv3-cat-caret {
+  align-items: center !important;
+  display: flex !important;
+  flex: 0 0 46px !important;
+  height: 40px !important;
+  justify-content: center !important;
+  line-height: 0 !important;
+  margin-left: auto !important;
+  padding: 10px 15px !important;
+  width: 46px !important;
+}
+
+.hc3-v3 .hcv3-cat-topics-row {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 60px 0 55px !important;
+  width: 100% !important;
+}
+
+.hc3-v3 .hcv3-cat-topics {
+  color: var(--hc-ink) !important;
+  display: block !important;
+  font-family: "Noto Sans", Arial, sans-serif !important;
+  font-size: 17px !important;
+  font-weight: 400 !important;
+  line-height: 25.5px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.hc3-v3 .hcv3-cat-body {
+  background: var(--hc-card-expanded-bg) !important;
+  border-radius: 0 0 20px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  margin: 0 !important;
+  padding: 15px !important;
+  width: 100% !important;
+}
+
+.hc3-v3 .hcv3-cat-body > details.hcv3-subgroup,
+.hc3-v3 .hcv3-subgroup {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  display: block !important;
+  margin: 0 !important;
+  margin-inline-start: 0 !important;
+  padding: 0 !important;
+  padding-inline-start: 0 !important;
+  text-indent: 0 !important;
+  width: 100% !important;
+}
+
+.hc3-v3 .hcv3-subgroup > summary.hcv3-subgroup-header {
+  align-items: center !important;
+  background: var(--hc-white) !important;
+  border: 1px solid var(--hc-sub-border) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  display: flex !important;
+  gap: 10px !important;
+  justify-content: space-between !important;
+  margin: 0 !important;
+  min-height: 56px !important;
+  padding: 10px 15px !important;
+  padding-inline-end: 15px !important;
+  padding-inline-start: 15px !important;
+  width: 100% !important;
+}
+
+.hc3-v3 .hcv3-subgroup[open] > summary.hcv3-subgroup-header {
+  border-bottom-color: var(--hc-sub-header-border) !important;
+  border-radius: 10px 10px 0 0 !important;
+}
+
+.hc3-v3 .hcv3-subgroup-title {
+  color: var(--hc-black) !important;
+  flex: 1 1 auto !important;
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  line-height: 24px !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+}
+
+.hc3-v3 .hcv3-subgroup-caret {
+  align-items: center !important;
+  display: flex !important;
+  flex: 0 0 30px !important;
+  justify-content: center !important;
+  line-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 30px !important;
+}
+
+.hc3-v3 .hcv3-subgroup-list {
+  background: var(--hc-white) !important;
+  border: 1px solid var(--hc-sub-border) !important;
+  border-radius: 0 0 10px 10px !important;
+  border-top: 0 !important;
+  display: block !important;
+  list-style: disc !important;
+  margin: 0 !important;
+  padding: 15px 15px 15px 45px !important;
+  width: 100% !important;
+}
+
+@media (max-width: 767px) {
+  .hc3-v3 .hcv3-cat > summary.hcv3-cat-header {
+    min-height: 0 !important;
+    padding: 15px !important;
+    padding-inline-end: 15px !important;
+    padding-inline-start: 15px !important;
+  }
+
+  .hc3-v3 .hcv3-cat-row {
+    align-items: flex-start !important;
+  }
+
+  .hc3-v3 .hcv3-cat-icon {
+    display: none !important;
+  }
+
+  .hc3-v3 .hcv3-cat-label {
+    font-size: 22px !important;
+    line-height: 24px !important;
+  }
+
+  .hc3-v3 .hcv3-cat-topics-row {
+    padding-left: 0 !important;
+    padding-right: 46px !important;
+  }
+
+  .hc3-v3 .hcv3-subgroup-title {
+    font-size: 22px !important;
+    line-height: 24px !important;
+  }
+}
+`;
+  var style = document.createElement('style');
+  style.setAttribute('data-hc3-v3', 'figma-aligned');
+  style.textContent = css;
+  document.head.appendChild(style);
+})();
+</script>
+
+<!-- Help Centre HTML block: place this BELOW the CSS injection block in AEM. -->
+<div class="hc3-v3">
+<div class="hc-hero-wrapper">
+<div class="container hc-hero">
+<div class="row">
+<div class="col-md-10">
+<h1 class="hc-hero-title">IRCC’s Help Centre</h1>
+<div aria-hidden="true" class="hc-hero-rule"></div>
+<p class="hc-lead">Get help with your application, your account, one of our programs, and more.</p>
+</div>
+</div>
+</div>
+</div>
+<section class="hc-search-band">
+<div class="container">
+<div class="row">
+<div class="col-md-10">
+<h2 class="hc-search-title">What do you need help with?</h2>
+<form action="https://ircc.canada.ca/english/helpcentre/results-en.asp" class="hc-search-form" method="get" role="search">
+<label class="wb-inv" for="hc-q">Search the Help Centre</label>
+<input aria-label="Search the Help Centre" autocomplete="off" class="hc-search-input" id="hc-q" name="q" type="search"/>
+<button class="hc-search-button" type="submit">Search</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<section class="hc-band hc-band-categories">
+<div class="container">
+<h2 class="hc-band-h2">Browse by topic</h2>
+<div class="hcv3-categories">
+<details class="hcv3-cat" id="cat-status">
+              <summary class="hcv3-cat-header"><span class="hcv3-cat-row"><span aria-hidden="true" class="hcv3-cat-icon"><span class="fas fa-file-import" aria-hidden="true"></span></span><span class="hcv3-cat-label">Check, update or withdraw your application</span><span aria-hidden="true" class="hcv3-cat-caret"></span></span><span class="hcv3-cat-topics-row"><span class="hcv3-cat-topics">Application status • Processing times • Update information • Submit new documents • Withdraw application</span></span></summary>
+<div class="hcv3-cat-body"><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Check your application status</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=029">How can I check the status of my application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=028">How can I check if my application has been received?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1494">When can I check my application status?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1611">What does my status mean in the application status tracker?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=030">Why can't I see my application status in the Client Application Status (CAS) tool?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=306">Why has the status of my immigration application on CAS not changed, even though I sent it a long time ago?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1192">Is there a way for clients to confirm the status of their eTA?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=985">How can I check the status of my medical exam results?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1084">Why am I not receiving any emails from IRCC about my eTA application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1237">I submitted an eTA application, but have not received any emails from IRCC. Can I still travel to Canada?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Processing times</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=031">How long will it take to process my application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=534">What are processing times?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=068">How are processing times calculated?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1474">When does my processing time start?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=032">Why do some application processing times change and others do not?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=170">How long will it take to process my work permit application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=486">How long will it take to process my study permit application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1063">How long will it take to process my eTA application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=058">How long will it take to process my PR card?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=363">How long will I wait between my citizenship test and the ceremony?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=464">How long does the Department have to respond?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=021">How can I get my immigration application processed faster?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=877">How do I know that my application can be processed under CAN+? What supporting documents should I submit?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1085">What do I do if my application for an eTA is not approved right away?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Update contact or application information</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=052">How can I update or ask about an IRCC application in progress?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=043">How can I change my address or contact information for my immigration or citizenship application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1005">I already submitted my Express Entry profile. Can I still update it?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1395">How do I update my information after I've submitted my interest to sponsor form?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=861">What do I do if I get a new passport after I apply for International Experience Canada?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1173">What happens if I made a mistake (like an email address or passport number) on my eTA application?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Submit new documents we request</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1310">You asked me for a new document. How do I submit it?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1624">How do I upload documents to my IRCC Portal account after I've submitted my application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1159">I need to submit documents in a secure IRCC account for my eTA application. How can I do this?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1137">How do I upload more supporting documents after I have already submitted my online application for permanent residence through Express Entry?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Withdraw application</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=613">If I withdraw my application, will I get a refund?</a></li></ul></details></div>
+</details>
+<details class="hcv3-cat" id="cat-apply">
+              <summary class="hcv3-cat-header"><span class="hcv3-cat-row"><span aria-hidden="true" class="hcv3-cat-icon"><span class="fas fa-envelope-open-text" aria-hidden="true"></span></span><span class="hcv3-cat-label">Prepare your application</span><span aria-hidden="true" class="hcv3-cat-caret"></span></span><span class="hcv3-cat-topics-row"><span class="hcv3-cat-topics">UCIs and application numbers • Forms and documents • Medical exams • Fees and receipts • Submit application</span></span></summary>
+<div class="hcv3-cat-body"><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">UCI and application numbers</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=013">What is a UCI?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1521">What is an application number?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1612">What is a party ID?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=772">Where can I find my client ID/UCI?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1446">Where is my status in Canada document number?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=830">What is a personal reference code?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1006">Where can I find my Express Entry profile number and/or Job Seeker validation code?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Prepare a complete application</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=072">What is a complete application package?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=074">How can I avoid delays or refusals in processing my application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1170">I have to submit documents for my eTA application. How can I find out what documents I need to provide?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=018">What language should my supporting documents be in?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1536">What if my birth certificate is different from other documents (or I don't have one)?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1362">How can I include a dependent child on my application?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Fill out IRCC forms</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=007">How do I fill out an IRCC application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1523">How do I fill out and validate IRCC application forms with 2D barcodes?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=140">How do I download and open a PDF form from IRCC's website?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=138">How can I view a PDF form?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=660">I can't open my application form in PDF format. What can I do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=767">After I click the Validate button on my application form, nothing happens and I don't see the barcodes. Why?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1312">I validated my form, but when I try to upload it to my account I get a validation error. What can I do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=014">What do you mean by surname?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=015">I don't know what dates to put in the history section on my immigration form. What do I do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1266">I want to submit an offer of employment. Where can I find the IMM 5802 form?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Upload and submit documents</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1213">My documents are too large to upload. How do I reduce the file size?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1123">Is there a file size limit for documents I upload to my account?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1124">What file formats can I upload to my account?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1160">I need to add multiple files to my online application, but there is only one field to upload documents. What can I do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=372">What photos do I need to include with my citizenship application?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Medical exams</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=033">How can I find a doctor to do my immigration medical exam?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Sign and submit your application</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=740">How do I sign my online application?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Fees and receipts</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=358">How much does it cost to apply for Canadian citizenship?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1396">What is the Right of Permanent Residence Fee?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1186">What is the employer compliance fee? How do I pay it?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1513">How can I pay for biometrics after I submitted my application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1242">How can I get a copy of my receipt after paying my fees?</a></li></ul></details></div>
+</details>
+<details class="hcv3-cat" id="cat-account">
+              <summary class="hcv3-cat-header"><span class="hcv3-cat-row"><span aria-hidden="true" class="hcv3-cat-icon"><span class="fas fa-user" aria-hidden="true"></span></span><span class="hcv3-cat-label">Account help and technical problems</span><span aria-hidden="true" class="hcv3-cat-caret"></span></span><span class="hcv3-cat-topics-row"><span class="hcv3-cat-topics">Sign in and account creation • Link application to account • Browser and technical issues</span></span></summary>
+<div class="hcv3-cat-body"><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Sign in and account creation</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1491">I can't sign in to my IRCC secure account. What should I do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1614">Why can't I create an account in the application status tracker?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=815">What do I do if I lost my GCKey username or password?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Link your application</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1222">Which applications can I link to an IRCC secure account?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1226">When trying to link my application to my IRCC secure account, it says there are no matches. What's going on?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Browser and technical issues</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=315">Why do I need to clear my browser cache?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=817">What browser should I use to apply online?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=316">How do I upgrade my browser?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=799">What do I do if I have technical problems when applying online?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=816">What do I do if an online application is down?</a></li></ul></details></div>
+</details>
+<details class="hcv3-cat" id="cat-programs">
+              <summary class="hcv3-cat-header"><span class="hcv3-cat-row"><span aria-hidden="true" class="hcv3-cat-icon"><span class="fas fa-globe" aria-hidden="true"></span></span><span class="hcv3-cat-label">Programs, eligibility, and preventing fraud</span><span aria-hidden="true" class="hcv3-cat-caret"></span></span><span class="hcv3-cat-topics-row"><span class="hcv3-cat-topics">Visit, study or work • Permanent residence • PR cards • Sponsor family • Refugees • Citizenship • Scams and fraud</span></span></summary>
+<div class="hcv3-cat-body"><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Visit Canada</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1116">I am an American citizen. What do I need to enter Canada?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1044">I am visiting the U.S. and I want to come to Canada. Do I need an eTA?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1020">Do I need a Canadian visa if I have a United States visa?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=416">Do I need a visa to visit Canada?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=420">Do I need a visa if I'm just travelling through Canada on my way to another country?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1056">How do I apply for an eTA for travel to Canada?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1453">Do I need to apply for both a visitor visa and an eTA?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1058">Do I have to apply for an eTA each time I travel to Canada?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1053">I am a lawful permanent resident of the U.S. (green card holder). Do I need an eTA?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=417">What is the difference between a single-entry and a multiple-entry visa?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1452">What's the difference between a visitor visa and a visitor record?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1016">How long can I stay in Canada as a visitor?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=473">How can I extend my stay as a visitor?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=208">I have a visitor visa. Can I leave Canada and come back?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=421">How do I help a family member or friend apply to visit Canada?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=207">How can I help a family member or friend apply to visit Canada?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1022">I am travelling with my minor child without my spouse. What documents must I present?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=845">What is a port of entry (POE) letter?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=004">How can I come to Canada as a visitor, worker or student?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Study in Canada</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=484">I want to study in Canada for less than 6 months. Do I need a study permit?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=483">Can I apply for a study permit if I'm already in Canada?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=494">As a foreign student, can I return home or travel outside Canada while studying?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=495">I'm an international student in Canada. Can I work while studying?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=503">Can I work as many hours as I want if I'm eligible to work off campus?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1472">I'm an international student. Can I continue to work after I've finished my study program?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1618">Can I have a work permit and study permit at the same time?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Work in Canada</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=163">What is a Labour Market Impact Assessment?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=193">Who needs a Labour Market Impact Assessment?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=176">What is an open work permit?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=177">Who can apply for an open work permit?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1361">How do I apply for an open work permit?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1200">What is a job offer letter?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=508">How do I apply for a post-graduation work permit?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=755">Can I apply for a post-graduation work permit before I get my diploma?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=676">Can I renew my post-graduation work permit?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1181">Can I work while I am waiting to receive my post-graduation work permit?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1309">I'm waiting for my post-graduation work permit. Can I travel outside Canada?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1507">How can I show a potential employer I'm allowed to work while I wait for my post-graduation work permit?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=169">Are there any conditions on my work permit?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1653">Can I hold 2 valid work permits at the same time?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1287">Can I leave and come back to Canada if I have a work permit?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=199">I am in Canada as a worker or student. Can my spouse or common-law partner work in Canada?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=939">What type of insurance do I need for International Experience Canada?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Permanent residence and PR cards</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=006">How can I determine whether I can apply for permanent residence?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=514">I am an international student in Canada. How can I apply to become a permanent resident?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=394">Can I count student work experience toward the Express Entry work requirement?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=343">Which family members can come with me to Canada when I immigrate?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=001">How can I get a permanent resident card?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1468">Can I lose my permanent resident status?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=727">How long must I stay in Canada to keep my permanent resident status?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1466">Can my time abroad count toward my permanent resident status?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1113">I am a new permanent resident in Canada. Can I live somewhere other than the "city of destination" on my Confirmation of Permanent Residence?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=653">What is the minimum investment that I need to apply through the Start-up Visa Program?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=645">How can I qualify for the Start-up Visa Program?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Sponsor family</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=346">For my spousal sponsorship application, what is a common-law partner?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=347">How can my common-law partner and I prove we have been together for 12 months?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1163">I'm sponsoring my spouse or common-law partner. Can they work while their application is being processed?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1445">How much income do I need to sponsor my parents and grandparents?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1526">What's considered social assistance when sponsoring my parents and grandparents?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1355">How long am I financially responsible for the family member or relative I sponsor?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Canadian citizenship</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=355">What are the requirements for becoming a Canadian citizen?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=357">Do I become a Canadian citizen when I marry a Canadian?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=365">I'm a Canadian citizen, but my child was born outside Canada. Are they Canadian?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=356">What is dual citizenship?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=359">I am a citizen of another country. Will I lose that citizenship if I become a Canadian?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1167">I am a Canadian citizen and a citizen of another country. Can I fly to Canada with my non-Canadian passport?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=569">What language level do I need when I apply for citizenship?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=571">What documents can I use to prove that I meet the citizenship language requirement?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=572">What third-party language tests will you accept as proof I have adequate knowledge of English or French when I apply for citizenship?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=573">I graduated from an English- or French-language high school, college or university. What can I use to show that I can communicate in one of the official languages when I apply for citizenship?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=370">Can I count any time I've spent outside of Canada toward the physical presence requirement when applying for citizenship?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=911">Can I leave Canada after I mail my citizenship application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1558">When and how do I apply urgently for a citizenship certificate?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Refugee resettlement</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=098">What kind of support do government-assisted refugees get?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=105">Do government-assisted refugees get more income support and benefits than Canadian pensioners do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=610">I am a refugee and I need to travel outside Canada. What documents do I need to travel?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Scams and fraud</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1206">How can I tell if an immigration website is a scam?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1203">I received a call from an immigration officer. Was it a scam?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1205">I received an email from an immigration officer. Is it a scam?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1233">I have been charged more than CAN$7 my eTA on another website. I think I have been scammed. How can I find out and can I get a refund?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1232">I applied for an eTA on a different website. How do I verify if I have a real eTA?</a></li></ul></details></div>
+</details>
+<details class="hcv3-cat" id="cat-after">
+              <summary class="hcv3-cat-header"><span class="hcv3-cat-row"><span aria-hidden="true" class="hcv3-cat-icon"><span class="far fa-clock" aria-hidden="true"></span></span><span class="hcv3-cat-label">After you apply: processing and getting a decision</span><span aria-hidden="true" class="hcv3-cat-caret"></span></span><span class="hcv3-cat-topics-row"><span class="hcv3-cat-topics">What happens after you apply • When we refuse or return applications</span></span></summary>
+<div class="hcv3-cat-body"><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">What happens after you apply</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=022">What happens after I send in my application?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1169">Why is my application considered complex or non-routine, and what does that mean for me?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1663">How do I get back my seized passport or travel document?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Refused or returned applications</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1220">If you return my application, will I get a refund?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1492">My application was returned because something was missing. What can I do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1485">My application for a visitor visa was refused. Should I apply again?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=023">If my immigration application is refused, do I have to wait before I apply again?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1001">I was found not eligible for Express Entry and I can't change my profile. What do I do?</a></li></ul></details></div>
+</details>
+<details class="hcv3-cat" id="cat-arriving">
+              <summary class="hcv3-cat-header"><span class="hcv3-cat-row"><span aria-hidden="true" class="hcv3-cat-icon"><span class="fab fa-canadian-maple-leaf" aria-hidden="true"></span></span><span class="hcv3-cat-label">Arriving and staying in Canada</span><span aria-hidden="true" class="hcv3-cat-caret"></span></span><span class="hcv3-cat-topics-row"><span class="hcv3-cat-topics">Settling in Canada • Extend your stay or restore your status • Leaving and returning to Canada</span></span></summary>
+<div class="hcv3-cat-body"><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Settle in Canada</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=895">How can I enrol in a government-funded language class at no cost to myself?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=894">Who is eligible to take government-funded language classes?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=191">I've maintained my status, but my health insurance card, driver's licence and other government ID documents have expired. How can I renew my ID documents?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=515">What does it mean to have legal status in Canada?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Extend your stay or restore your status</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1250">I stayed in Canada longer than I was supposed to. How do I restore my status as a visitor?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1410">I got a new passport after coming to Canada but I still have a valid work permit in my old one. What should I do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=185">Can I apply to extend a work permit from inside Canada?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=473">How can I extend my stay as a visitor?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Leaving and returning to Canada</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1308">I've applied to extend my study permit. Can I travel outside Canada and be able to return?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=190">I have applied to extend my work permit. Can I travel outside Canada?</a></li></ul></details></div>
+</details>
+<details class="hcv3-cat" id="cat-docs">
+              <summary class="hcv3-cat-header"><span class="hcv3-cat-row"><span aria-hidden="true" class="hcv3-cat-icon"><span class="fas fa-passport" aria-hidden="true"></span></span><span class="hcv3-cat-label">Documents we issue (visas, permits, PR cards, and more)</span><span aria-hidden="true" class="hcv3-cat-caret"></span></span><span class="hcv3-cat-topics-row"><span class="hcv3-cat-topics">Replace or correct a document we issue • Expired documents</span></span></summary>
+<div class="hcv3-cat-body"><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">Replace or correct a document we issue (visa, permit, PR card, and more)</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=045">How do I replace an immigration document that has been lost, stolen or destroyed?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=041">How do I correct an error on my immigration document?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=047">What should I do if my PR card has been lost, stolen or damaged?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=721">I legally changed my name. How do I update my PR card?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=175">How do I get a copy of a lost, stolen or destroyed work permit?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=048">I've lost my citizenship card / certificate. How do I replace it?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=598">Can I replace my citizenship certificate or card if there's a mistake on it?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=907">I legally changed my name. How do I change the name on my citizenship certificate or card?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1552">How do I update my citizenship certificate or card with my reclaimed Indigenous name?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1650">I got a new passport but I have a valid visa in my old one. Can I use the visa in my old passport?</a></li></ul></details><details class="hcv3-subgroup"><summary class="hcv3-subgroup-header"><span class="hcv3-subgroup-title">If your document has expired</span><span aria-hidden="true" class="hcv3-subgroup-caret"></span></summary><ul class="hcv3-subgroup-list"><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=065">What happens if my permanent resident card expires while I am outside Canada?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1456">What happens if my PR card expires?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=701">I want to extend my expiring work permit, but I don't have a new LMIA or CAQ yet. What should I do?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=188">I applied for a new work permit. Can I stay in Canada if my work permit expires?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=189">Can I keep working if my permit expires? How do I prove this to my employer?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1505">My work permit expired, but I've maintained my status. Can I keep working under the same conditions of my initial work permit if my Social Insurance Number (SIN) is expired?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=492">Can I stay in Canada after my study permit expires if I applied for a new permit?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1476">My IEC work permit is expiring. Can I stay in Canada if I apply to extend my stay?</a></li><li><a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=192">My work permit expired and I did not apply to extend it. Can I stay and keep working in Canada?</a></li></ul></details></div>
+</details>
+</div>
+</div>
+</section>
+<section class="hc-also">
+<div class="container">
+<h2 class="hc-also-title">You may also be looking for</h2>
+<div class="hc-also-grid">
+<div class="hc-also-card-wrap">
+<div class="hc-also-card">
+<h3><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/glossary.html">Definitions</a></h3>
+<p>How we define the terms we use in our programs, policies and communications.</p>
+</div>
+</div>
+<div class="hc-also-card-wrap">
+<div class="hc-also-card">
+<h3><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/come-canada-tool-immigration-express-entry.html">Explore immigration programs</a></h3>
+<p>Answer a few questions to find immigration programs you may be interested in.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
