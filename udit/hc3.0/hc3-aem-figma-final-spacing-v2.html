@@ -625,6 +625,14 @@
 
 /* Responsive base layout */
 @media (max-width: 767px) {
+  .hc3-v3 {
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    max-width: 100vw !important;
+    overflow-x: clip;
+    width: 100vw !important;
+  }
+
   .hc3-v3 .container {
     padding-left: 25px !important;
     padding-right: 25px !important;
@@ -636,7 +644,15 @@
 
   .hc3-v3 .hc-band-categories {
     padding-bottom: 0 !important;
-    padding-top: 0 !important;
+    padding-top: 25px !important;
+  }
+
+  .hc3-v3 .hc-search-band,
+  .hc3-v3 .hc-also {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
   }
 
   .hc3-v3 .hc-hero .hc-hero-title {
