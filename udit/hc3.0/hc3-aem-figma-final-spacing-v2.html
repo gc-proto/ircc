@@ -589,14 +589,18 @@
   background: var(--hc-white);
   border: 1px solid #8c8c8c;
   border-radius: 20px;
+  color: var(--hc-ink) !important;
+  display: block;
   min-height: 174px;
   padding: 36px 24px;
+  text-decoration: none !important;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .hc3-v3 .hc-also-card:hover,
-.hc3-v3 .hc-also-card:focus-within {
+.hc3-v3 .hc-also-card:focus {
   background: #f5f5f5;
+  text-decoration: none !important;
 }
 
 .hc3-v3 .hc-also-card h3 {
@@ -607,11 +611,14 @@
   margin: 0 0 10px;
 }
 
+.hc3-v3 .hc-also-card h3,
 .hc3-v3 .hc-also-card h3 a {
   color: #1f497a;
   text-decoration: none;
 }
 
+.hc3-v3 .hc-also-card:hover h3,
+.hc3-v3 .hc-also-card:focus h3,
 .hc3-v3 .hc-also-card h3 a:hover,
 .hc3-v3 .hc-also-card h3 a:focus {
   text-decoration: underline;
@@ -1445,16 +1452,16 @@
       <h2 class="hc-also-title">You may also be looking for</h2>
       <div class="hc-also-grid">
         <div class="hc-also-card-wrap">
-          <div class="hc-also-card">
-            <h3><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/glossary.html">Definitions</a></h3>
+          <a class="hc-also-card" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/glossary.html">
+            <h3>Definitions</h3>
             <p>How we define the terms we use in our programs, policies and communications.</p>
-          </div>
+          </a>
         </div>
         <div class="hc-also-card-wrap">
-          <div class="hc-also-card">
-            <h3><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/come-canada-tool-immigration-express-entry.html">Explore immigration programs</a></h3>
+          <a class="hc-also-card" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/come-canada-tool-immigration-express-entry.html">
+            <h3>Explore immigration programs</h3>
             <p>Answer a few questions to find immigration programs you may be interested in.</p>
-          </div>
+          </a>
         </div>
       </div>
     </div>
