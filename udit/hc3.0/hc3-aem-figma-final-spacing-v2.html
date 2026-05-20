@@ -1,4 +1,4 @@
-<!-- CSS injection block: place this ABOVE the Help Centre HTML block in AEM. -->
+ 
 <script>
 (function injectHelpCentreCSS() {
   var css = `
@@ -632,15 +632,21 @@
 }
 
 /* Responsive base layout */
-@media (max-width: 767px) {
-  .hc3-v3 {
-    margin-left: calc(50% - 50vw) !important;
-    margin-right: calc(50% - 50vw) !important;
-    max-width: 100vw !important;
-    overflow-x: clip;
-    width: 100vw !important;
+@media (max-width: 991px) {
+  .hc3-v3 .hc-search-band > .container,
+  .hc3-v3 .hc-band-categories > .container,
+  .hc3-v3 .hc-also > .container {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
   }
 
+  .hc3-v3 .hc-search-title {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
   .hc3-v3 .container {
     padding-left: 25px !important;
     padding-right: 25px !important;
@@ -655,19 +661,11 @@
     padding-top: 25px !important;
   }
 
-  .hc3-v3 .hc-search-band,
-  .hc3-v3 .hc-also {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-
   .hc3-v3 .hc-search-band > .container,
   .hc3-v3 .hc-band-categories > .container,
   .hc3-v3 .hc-also > .container {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     max-width: none !important;
     padding-left: 25px !important;
     padding-right: 25px !important;
@@ -702,7 +700,9 @@
 
   .hc3-v3 .hc-search-title {
     height: auto;
+    margin-left: 0 !important;
     margin-bottom: 10px;
+    padding-left: 0 !important;
   }
 
   .hc3-v3 .hc-search-form {
