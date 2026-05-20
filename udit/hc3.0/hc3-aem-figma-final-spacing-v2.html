@@ -276,8 +276,7 @@
 }
 
 .hc3-v3 .hc-hero-wrapper,
-.hc3-v3 .hc-band-categories,
-.hc3-v3 .hc-also {
+.hc3-v3 .hc-band-categories {
   margin-left: 0 !important;
   margin-right: 0 !important;
   width: 100% !important;
@@ -579,7 +578,11 @@
 /* Helpful resources */
 .hc3-v3 .hc-also {
   background: var(--hc-band-bg);
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  max-width: 100vw !important;
   padding: 50px 0;
+  width: 100vw !important;
 }
 
 .hc3-v3 .hc-also-title {
@@ -601,6 +604,12 @@
   border: 1px solid #8c8c8c;
   min-height: 174px;
   padding: 36px 24px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.hc3-v3 .hc-also-card:hover,
+.hc3-v3 .hc-also-card:focus-within {
+  background: rgba(234, 244, 255, 0.5);
 }
 
 .hc3-v3 .hc-also-card h3 {
