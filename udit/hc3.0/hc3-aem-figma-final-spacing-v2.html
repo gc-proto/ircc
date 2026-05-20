@@ -588,6 +588,7 @@
 .hc3-v3 .hc-also-card {
   background: var(--hc-white);
   border: 1px solid #8c8c8c;
+  border-radius: 10px;
   min-height: 174px;
   padding: 36px 24px;
   transition: background-color 0.2s ease, border-color 0.2s ease;
@@ -653,6 +654,15 @@
     margin-right: 0 !important;
     max-width: 100% !important;
     width: 100% !important;
+  }
+
+  .hc3-v3 .hc-search-band .col-md-10 {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .hc3-v3 .hc-also {
+    padding-top: 25px !important;
   }
 
   .hc3-v3 .hc-hero .hc-hero-title {
@@ -915,6 +925,11 @@
 .hc3-v3 .hcv3-subgroup[open] > summary.hcv3-subgroup-header {
   border-bottom-color: var(--hc-sub-header-border) !important;
   border-radius: 10px 10px 0 0 !important;
+}
+
+.hc3-v3 .hcv3-subgroup > summary.hcv3-subgroup-header:hover,
+.hc3-v3 .hcv3-subgroup > summary.hcv3-subgroup-header:focus-visible {
+  background: #f5f5f5 !important;
 }
 
 .hc3-v3 .hcv3-subgroup-title {
