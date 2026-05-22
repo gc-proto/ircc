@@ -793,13 +793,15 @@
   background: transparent !important;
   border: 0 !important;
   border-radius: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 10px !important;
-  min-height: 106px !important;
+  column-gap: 15px !important;
+  display: grid !important;
+  grid-template-columns: 54px minmax(0, 1fr) 46px !important;
+  grid-template-rows: auto auto !important;
+  min-height: 84px !important;
   padding: 15px !important;
   padding-inline-end: 15px !important;
   padding-inline-start: 15px !important;
+  row-gap: 2px !important;
 }
 
 .hc3-v3 .hcv3-cat[open] > summary.hcv3-cat-header {
@@ -813,8 +815,8 @@
 
 .hc3-v3 .hcv3-cat-row {
   align-items: center !important;
-  display: flex !important;
-  gap: 15px !important;
+  display: contents !important;
+  gap: 0 !important;
   margin: 0 !important;
   min-height: 54px !important;
   padding: 0 !important;
@@ -828,11 +830,14 @@
   color: var(--hc-blue) !important;
   display: flex !important;
   flex: 0 0 54px !important;
+  grid-column: 1 !important;
+  grid-row: 1 / span 2 !important;
   height: 54px !important;
   justify-content: center !important;
   line-height: 0 !important;
   margin: 0 !important;
   padding: 13px !important;
+  place-self: center !important;
   width: 54px !important;
 }
 
@@ -863,6 +868,8 @@
   font-family: Lato, "Helvetica Neue", Arial, sans-serif !important;
   font-size: 29px !important;
   font-weight: 700 !important;
+  grid-column: 2 !important;
+  grid-row: 1 !important;
   line-height: 26px !important;
   margin: 0 !important;
   min-width: 0 !important;
@@ -873,18 +880,23 @@
   align-items: center !important;
   display: flex !important;
   flex: 0 0 46px !important;
+  grid-column: 3 !important;
+  grid-row: 1 / span 2 !important;
   height: 40px !important;
   justify-content: center !important;
   line-height: 0 !important;
   margin-left: auto !important;
   padding: 10px 15px !important;
+  place-self: center end !important;
   width: 46px !important;
 }
 
 .hc3-v3 .hcv3-cat-topics-row {
   display: block !important;
+  grid-column: 2 !important;
+  grid-row: 2 !important;
   margin: 0 !important;
-  padding: 0 60px 0 69px !important;
+  padding: 0 !important;
   width: 100% !important;
 }
 
@@ -988,6 +1000,9 @@
 
 @media (max-width: 767px) {
   .hc3-v3 .hcv3-cat > summary.hcv3-cat-header {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
     min-height: 0 !important;
     padding: 15px !important;
     padding-inline-end: 15px !important;
@@ -996,6 +1011,8 @@
 
   .hc3-v3 .hcv3-cat-row {
     align-items: flex-start !important;
+    display: flex !important;
+    gap: 15px !important;
   }
 
   .hc3-v3 .hcv3-cat-icon {
@@ -1004,12 +1021,22 @@
 
   .hc3-v3 .hcv3-cat-label {
     font-size: 22px !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
     line-height: 24px !important;
   }
 
   .hc3-v3 .hcv3-cat-topics-row {
+    grid-column: auto !important;
+    grid-row: auto !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
+  }
+
+  .hc3-v3 .hcv3-cat-caret {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    place-self: auto !important;
   }
 
   .hc3-v3 .hcv3-subgroup-title {
