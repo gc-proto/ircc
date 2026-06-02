@@ -8,20 +8,66 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wet-boew/themes-dist@GCWeb/GCWeb/css/theme.min.css">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wet-boew/themes-dist@GCWeb/wet-boew/css/noscript.min.css"></noscript>
 <style>
-  /* Minimal custom CSS only for what GCWeb has no pattern for */
-  .ime-hero{background:linear-gradient(120deg,#2b8a8f,#1f6b78);color:#fff;border-radius:4px;padding:24px 28px;margin-top:18px;display:flex;gap:20px;align-items:center;}
-  .ime-hero h1{color:#fff;border:0;margin:0 0 10px;}
-  .ime-hero p{margin:0;max-width:760px;}
-  .ime-hero .art{flex:0 0 110px;text-align:center;}
-  .ime-hero .art svg{width:100px;height:100px;}
-  .ime-result-callout{border:2px solid #2b8a8f;background:#eef6f6;border-radius:6px;padding:20px 26px;}
-  .ime-result-callout.need{border-color:#278400;background:#e8f5e0;}
+  /* ===== Styling adapted from the IRCC biometrics tool (need-biometrics) ===== */
+  .banner{background:linear-gradient(90deg,#ebf2fa 37%,#fff 69%);}
+  .banner h1{margin-top:0;}
+
+  .tool-container.results .tool-border{border:none;}
+  .tool-border{border:1px solid #a5b1be;border-radius:20px;margin:30px 0;}
+  .tool-container.results{background-color:#fff;border:1px solid #a5b1be;border-radius:20px;}
+  .tool-container{scroll-margin-top:90px;}
+  .tool-container h2:not(.undrln-0){padding-bottom:5px;}
+  .tool-container .list-unstyled{padding:10px 30px 0;}
+  .tool-container #ime-form fieldset legend{background-color:#ebf2fa !important;padding:20px 15px 20px 30px !important;border-top-left-radius:20px;border-top-right-radius:20px;font-size:1.3em !important;width:100%;}
+  .tool-container fieldset > p,.tool-container fieldset > ul:not(.list-unstyled),.tool-container fieldset > details,.tool-container fieldset > h3,.tool-container fieldset > table,.tool-container fieldset > #add-row,.tool-container fieldset > button{margin-left:30px;margin-right:30px;}
+  .tool-container .alert h2{border:none !important;}
+  .tool-container .gc-chckbxrdio input[type=radio] + label::before{background-color:#fff;}
+  .tool-container .gc-chckbxrdio input[type=radio]:checked + label::before{background:#444;}
+
+  .tool-container .btn-navigation{margin:20px 25px;}
+  .tool-container .btn-nav{border-radius:25px !important;border:solid 1px #a5b1be;min-width:150px;margin-right:-6px;background-color:#fff;}
+  .tool-container #btn-next{background-color:#ebf2fa !important;}
+  .tool-container #btn-next:hover,.tool-container #btn-next:active{background-color:#fff !important;}
+  .tool-container #btn-change{background-color:#ebf2fa;}
+  @media screen and (min-width:506px){
+    .tool-container #btn-previous{border-top-right-radius:0 !important;border-bottom-right-radius:0 !important;border-top-left-radius:25px;border-bottom-left-radius:25px;}
+    .tool-container #btn-next,.tool-container #btn-reset{border-top-right-radius:25px !important;border-bottom-right-radius:25px !important;border-top-left-radius:0 !important;border-bottom-left-radius:0 !important;}
+    .tool-container:has(#btn-previous.hidden) #btn-next,.tool-container.has-btn-previous-hidden #btn-next{border-radius:25px !important;}
+    .tool-container #changeAnswers::before{content:"\25B2";position:absolute;right:100px;top:-25px;color:#ebf2fa;font-size:2em;}
+  }
+  @media screen and (min-width:992px){.tool-container #btn-change{float:right;}}
+  @media screen and (max-width:526px){
+    .tool-container .btn-navigation{display:flex;flex-direction:column;}
+    .tool-container #btn-next{order:1;}.tool-container #btn-previous{order:2;}.tool-container #btn-change{order:3;margin:20px 0;}
+    .tool-container .btn-nav{width:100%;margin:5px auto;display:block;}
+  }
+
+  .tool-container .results-container{margin:30px;}
+  #changeAnswers:has(dl){background-color:#ebf2fa;padding:30px 20px;border-radius:20px;scroll-margin-top:20px;border:none;display:flex;flex-wrap:wrap;position:relative;}
+  #changeAnswers:has(dl) dl{width:100%;margin-bottom:0;}
+
+  .result{scroll-margin:80px;}
+  .result .well{border-radius:20px;border:none;padding:20px 30px;background-color:#f5f5f5;box-shadow:none;}
+  .result .well p:last-of-type{margin-bottom:0;}
+  .result details{border:1px solid #ddd !important;border-radius:25px !important;margin-bottom:15px;margin-top:20px;}
+  .result details > summary{padding:15px 25px;}
+  .result h2:first-child{margin-top:0;border:none;}
   .ime-check{color:#278400;}
+
   .gc-step{display:flex;gap:14px;margin-top:22px;}
   .gc-step .gc-step-num{flex:0 0 38px;height:38px;width:38px;border-radius:50%;background:#26374a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;}
   .gc-step .gc-step-body{flex:1;}
+  .gc-step .gc-step-body h3{margin-top:4px;}
+
+  .legal-disclaimer details{border-radius:25px !important;margin-bottom:15px;border:1px solid #a5b1be;}
+  .legal-disclaimer details > summary{padding:15px 25px;border-radius:25px;}
+  .legal-disclaimer details[open] > summary{background-color:#ebf2fa !important;border-bottom-left-radius:0 !important;border-bottom-right-radius:0 !important;}
+
   .ctbl td,.ctbl th{vertical-align:top;}
-  @media(max-width:600px){.ime-hero{flex-direction:column;text-align:center;}}
+  @media screen and (max-width:767px){
+    .tool-border{margin:30px -15px;border-left:0;border-right:0;border-radius:0;}
+    .tool-container #ime-form fieldset legend{border-top-left-radius:0 !important;border-top-right-radius:0 !important;}
+  }
 </style>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage">
@@ -84,17 +130,18 @@
 
 <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="container">
 
-  <div class="ime-hero">
-    <div>
-      <h1 property="name" id="wb-cont">Find out if you need a medical exam</h1>
-      <p>An immigration medical exam (IME) is a type of medical exam that makes sure you&rsquo;re allowed to enter Canada.</p>
-    </div>
-    <div class="art" aria-hidden="true">
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="rgba(255,255,255,.15)"/><rect x="30" y="28" width="40" height="50" rx="4" fill="#fff"/><rect x="42" y="22" width="16" height="10" rx="2" fill="#fff"/><rect x="44" y="46" width="12" height="4" fill="#2b8a8f"/><rect x="48" y="42" width="4" height="12" fill="#2b8a8f"/><path d="M36 60h28M36 66h20" stroke="#9cc" stroke-width="2"/></svg>
+  <div class="banner">
+    <div class="row d-flex align-items-center">
+      <div class="col-md-9">
+        <h1 property="name" id="wb-cont" class="mrgn-tp-0">Find out if you need a medical exam</h1>
+      </div>
+      <div class="pull-right hidden-xs hidden-sm col-md-3 text-center" aria-hidden="true">
+        <svg viewBox="0 0 120 120" width="120" height="120" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="60" r="56" fill="#ebf2fa"/><rect x="38" y="34" width="44" height="56" rx="5" fill="#fff" stroke="#a5b1be" stroke-width="2"/><rect x="52" y="28" width="16" height="11" rx="2" fill="#fff" stroke="#a5b1be" stroke-width="2"/><rect x="54" y="58" width="12" height="4" fill="#2572b4"/><rect x="58" y="54" width="4" height="12" fill="#2572b4"/><path d="M46 74h28M46 80h20" stroke="#a5b1be" stroke-width="2"/></svg>
+      </div>
     </div>
   </div>
 
-  <p class="mrgn-tp-lg">You may need a medical exam if you want to come to Canada.</p>
+  <p class="mrgn-tp-lg">An immigration medical exam (IME) makes sure you&rsquo;re allowed to enter Canada. You may need one if you want to come to Canada.</p>
   <p>Answer a few questions to find out if:</p>
   <ul>
     <li>you need a medical exam</li>
@@ -103,7 +150,7 @@
   </ul>
 
   <!-- ===== TOOL ===== -->
-  <div class="tool-container mrgn-tp-lg">
+  <div class="tool-container mrgn-tp-lg has-btn-previous-hidden">
     <form id="ime-form" class="gc-font-2019">
       <div class="tool-border">
 
@@ -203,6 +250,7 @@
           </ul>
         </fieldset>
 
+        <input type="hidden" id="questionFlow" name="questionFlow" value="">
         <div class="btn-navigation">
           <button id="btn-previous" class="btn btn-nav btn-lg hidden" type="button"><span class="glyphicon glyphicon-arrow-left mrgn-rght-md" aria-hidden="true"></span>Previous question</button>
           <button id="btn-next" class="btn btn-nav btn-lg" type="button">Next question<span class="glyphicon glyphicon-arrow-right mrgn-lft-md" aria-hidden="true"></span></button>
@@ -212,7 +260,7 @@
 
         <div class="results-container position-relative">
           <div id="changeAnswers" class="mrgn-tp-lg mrgn-bttm-md hidden">
-            <h2 class="mrgn-tp-0 h3">Change your answers</h2>
+            <h2 class="mrgn-tp-0 h3 full-width">Change your answers</h2>
             <dl id="answers-list" class="small mrgn-tp-md dl-horizontal"></dl>
           </div>
           <div class="results-cnt hidden mrgn-tp-md" id="result-container"></div>
@@ -222,11 +270,10 @@
     </form>
   </div>
 
-  <div class="mrgn-tp-md">
-    <details class="alert alert-info" open>
-      <summary><strong>This tool is for information only</strong></summary>
-      <p class="mrgn-tp-md">This tool may not cover all possible cases or your personal situation. An officer may ask for a medical exam even if your result was that you don&rsquo;t need one.</p>
-      <p>If we send you a letter asking you to get a medical exam, you&rsquo;ll need to get one.</p>
+  <div class="legal-disclaimer mrgn-tp-md">
+    <details open>
+      <summary><strong>This tool provides information only</strong></summary>
+      <p class="mrgn-tp-md">This tool may not cover all possible cases or your personal situation. An officer may ask for a medical exam even if your result was that you don&rsquo;t need one. If we send you a letter asking you to get a medical exam, you&rsquo;ll need to get one.</p>
     </details>
   </div>
 
@@ -396,8 +443,8 @@ var SENDRESULTS='<p>You don&rsquo;t need to send us your results. The doctor&rsq
 
 var RESULTS={
  'result-no':{need:false,html:
-   '<h2>It looks like you don’t need a medical exam</h2>'+
-   '<p>If we find there are other reasons why you need a medical exam later in the process, we’ll send you instructions on how to get one after you apply.</p>'},
+   '<div class="well"><h2>It looks like you don’t need a medical exam</h2>'+
+   '<p>If we find there are other reasons why you need a medical exam later in the process, we’ll send you instructions on how to get one after you apply.</p></div>'},
  'result-asylum':{need:true,html:
    '<h2><span class="ime-check">&#9745;</span> You need a medical exam</h2>'+
    '<p>If you’re claiming asylum, you’ll need a medical exam, if you have not had one before.</p>'+
@@ -465,7 +512,7 @@ var RESULTS={
 /* ============ Flow engine ============ */
 (function(){
   var answers={};        // {questionId: value}
-  var answerStack=[];    // ordered list of answered question ids (NOT named "history" -> avoids window.history clash)
+  var answerStack=[];    // ordered answered question ids (NOT "history" -> avoids window.history clash)
   var form=document.getElementById('ime-form');
   var btnNext=document.getElementById('btn-next');
   var btnPrev=document.getElementById('btn-previous');
@@ -475,6 +522,7 @@ var RESULTS={
   var answersList=document.getElementById('answers-list');
   var resultContainer=document.getElementById('result-container');
   var countryRows=document.getElementById('country-rows');
+  var toolContainer=document.querySelector('.tool-container');
 
   function scrollTo(el){ if(el&&el.scrollIntoView){ el.scrollIntoView({behavior:'smooth',block:'nearest'}); } }
   function currentQuestion(){ return document.querySelector('.question:not(.hidden)'); }
@@ -490,6 +538,7 @@ var RESULTS={
   }
 
   function showQuestion(id){
+    toolContainer.classList.remove('results');
     document.querySelectorAll('.question').forEach(function(q){q.classList.add('hidden');});
     resultContainer.classList.add('hidden'); resultContainer.innerHTML='';
     var el=document.getElementById(id); el.classList.remove('hidden'); el.focus(); scrollTo(el);
@@ -503,11 +552,12 @@ var RESULTS={
   function showResult(id){
     document.querySelectorAll('.question').forEach(function(q){q.classList.add('hidden');});
     var r=RESULTS[id];
+    toolContainer.classList.add('results');
     resultContainer.className='results-cnt mrgn-tp-md';
-    resultContainer.innerHTML='<div class="ime-result-callout'+(r.need?' need':'')+'" tabindex="-1">'+r.html+'</div>';
-    if(window.jQuery){ jQuery('.results-cnt details').trigger('wb-init.wb-details'); }
+    resultContainer.innerHTML='<div class="result" tabindex="-1">'+r.html+'</div>';
+    if(window.jQuery){ try{ jQuery('.results-cnt details').trigger('wb-init.wb-details'); }catch(e){} }
     buildAnswersList();
-    var cb=resultContainer.querySelector('.ime-result-callout'); cb.focus(); scrollTo(cb);
+    var cb=resultContainer.querySelector('.result'); cb.focus(); scrollTo(cb);
   }
 
   function buildAnswersList(){
@@ -534,6 +584,7 @@ var RESULTS={
 
   function updateButtons(){
     var onResult=resultContainer.innerHTML!=='' && !resultContainer.classList.contains('hidden');
+    toolContainer.classList.toggle('has-btn-previous-hidden', answerStack.length===0);
     btnPrev.classList.toggle('hidden', answerStack.length===0);
     btnNext.classList.toggle('hidden', onResult);
     btnReset.classList.toggle('hidden', !onResult);
