@@ -16,6 +16,7 @@
   .tool-border{border:1px solid #a5b1be;border-radius:20px;margin:30px 0;}
   .tool-container.results{background-color:#fff;border:1px solid #a5b1be;border-radius:20px;}
   .tool-container{scroll-margin-top:90px;}
+  .tool-container .question:focus,.result:focus,#form-error:focus{outline:none;}
   .tool-container h2:not(.undrln-0){padding-bottom:5px;}
   .tool-container .list-unstyled{padding:10px 30px 0;}
   .tool-container #ime-form fieldset legend{background-color:#ebf2fa !important;padding:20px 15px 20px 30px !important;border-top-left-radius:20px;border-top-right-radius:20px;font-size:1.3em !important;width:100%;}
@@ -46,24 +47,38 @@
   #changeAnswers:has(dl){background-color:#ebf2fa;padding:30px 20px;border-radius:20px;scroll-margin-top:20px;border:none;display:flex;flex-wrap:wrap;position:relative;}
   #changeAnswers:has(dl) dl{width:100%;margin-bottom:0;}
 
-  .result{scroll-margin:80px;}
-  .result .well{border-radius:20px;border:none;padding:20px 30px;background-color:#f5f5f5;box-shadow:none;}
+  .result{scroll-margin:80px;background-color:#ebf2fa;border-radius:20px;padding:30px 35px;}
+  .result .well{border-radius:0;border:none;padding:0;background-color:transparent;box-shadow:none;margin-bottom:0;}
   .result .well p:last-of-type{margin-bottom:0;}
-  .result details{border:1px solid #ddd !important;border-radius:25px !important;margin-bottom:15px;margin-top:20px;}
-  .result details > summary{padding:15px 25px;}
+  .result .well h2{margin-top:0;}
+  .result details{border:none !important;border-radius:0 !important;margin-bottom:15px;margin-top:20px;background:transparent;}
+  .result details > summary{padding:6px 0;}
   .result h2:first-child{margin-top:0;border:none;}
+  .result ol.lst-stps > li h3{margin-top:.2em;}
   .ime-check{color:#278400;}
 
-  .gc-step{display:flex;gap:14px;margin-top:22px;}
-  .gc-step .gc-step-num{flex:0 0 38px;height:38px;width:38px;border-radius:50%;background:#26374a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;}
-  .gc-step .gc-step-body{flex:1;}
-  .gc-step .gc-step-body h3{margin-top:4px;}
+  /* White info panel with "i" icon */
+  .info-panel{background:#fff;border-radius:14px;padding:22px 28px;margin:22px 0;}
+  .info-panel > *:first-child{margin-top:0;}
+  .info-panel > *:last-child{margin-bottom:0;}
+  .info-panel h3{display:flex;align-items:center;gap:10px;}
+  .info-ico{flex:0 0 24px;height:24px;width:24px;border-radius:50%;background:#333;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:700;font-size:.95em;line-height:1;}
+
+  /* Find-a-doctor call to action button */
+  .btn-finddoc,.btn-finddoc:link,.btn-finddoc:visited{background-color:#4e9fb8;border-color:#4e9fb8;color:#1a1a1a;border-radius:30px;padding:12px 30px;font-weight:400;white-space:normal;box-shadow:none;}
+  .btn-finddoc:hover,.btn-finddoc:focus,.btn-finddoc:active{background-color:#3d8aa3;border-color:#3d8aa3;color:#1a1a1a;}
+
+  /* ---- 182-day calculator (card style) ---- */
+  .tb-row{background:#f5f6f7;border:1px solid #ddd;border-radius:8px;padding:15px 20px;margin-bottom:15px;}
+  .tb-row .form-group{margin-bottom:0;}
+  .tb-row .rm-wrap{display:flex;align-items:flex-end;}
+  .tb-row .rm{width:100%;}
+  #tb-live{margin:5px 30px 0;}
 
   .legal-disclaimer details{border-radius:25px !important;margin-bottom:15px;border:1px solid #a5b1be;}
   .legal-disclaimer details > summary{padding:15px 25px;border-radius:25px;}
   .legal-disclaimer details[open] > summary{background-color:#ebf2fa !important;border-bottom-left-radius:0 !important;border-bottom-right-radius:0 !important;}
 
-  .ctbl td,.ctbl th{vertical-align:top;}
   @media screen and (max-width:767px){
     .tool-border{margin:30px -15px;border-left:0;border-right:0;border-radius:0;}
     .tool-container #ime-form fieldset legend{border-top-left-radius:0 !important;border-top-right-radius:0 !important;}
@@ -234,12 +249,10 @@
             <p>Example: 100 days in India, then 20 days in France (resets the count), then 90 days in Pakistan. Your longest stretch in exam-required countries is 100 days.</p>
           </details>
           <h3>Enter each country or territory</h3>
-          <table class="table table-bordered ctbl">
-            <caption class="wb-inv">Countries or territories and time spent</caption>
-            <thead><tr><th style="width:50%">Country or territory</th><th style="width:32%">Time spent (days)</th><th>Action</th></tr></thead>
-            <tbody id="country-rows"></tbody>
-          </table>
-          <button type="button" class="btn btn-default" id="add-row"><span class="glyphicon glyphicon-plus mrgn-rght-sm" aria-hidden="true"></span>Add new row</button>
+          <p class="mrgn-lft-md">If you didn&rsquo;t leave your home country or territory in the last 12 months, enter it, the date a year ago and today&rsquo;s date.</p>
+          <div id="country-rows"></div>
+          <button type="button" class="btn btn-default" id="add-row"><span class="glyphicon glyphicon-plus mrgn-rght-sm" aria-hidden="true"></span>Add country</button>
+          <div id="tb-live" class="mrgn-tp-md" aria-live="polite"></div>
         </fieldset>
 
         <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q_previous_exam" data-name="Have you had an immigration medical exam in the past 5 years?">
@@ -254,8 +267,8 @@
         <div class="btn-navigation">
           <button id="btn-previous" class="btn btn-nav btn-lg hidden" type="button"><span class="glyphicon glyphicon-arrow-left mrgn-rght-md" aria-hidden="true"></span>Previous question</button>
           <button id="btn-next" class="btn btn-nav btn-lg" type="button">Next question<span class="glyphicon glyphicon-arrow-right mrgn-lft-md" aria-hidden="true"></span></button>
-          <button id="btn-reset" class="btn btn-nav btn-lg hidden" type="button"><span class="fas fa-undo mrgn-rght-md" aria-hidden="true"></span>Start over</button>
-          <button id="btn-change" class="btn btn-nav btn-lg hidden" type="button"><span class="fas fa-pencil-alt mrgn-rght-sm" aria-hidden="true"></span>Change your answers</button>
+          <button id="btn-reset" class="btn btn-nav btn-lg hidden" type="button"><span class="glyphicon glyphicon-refresh mrgn-rght-md" aria-hidden="true"></span>Start over</button>
+          <button id="btn-change" class="btn btn-nav btn-lg hidden" type="button"><span class="glyphicon glyphicon-pencil mrgn-rght-sm" aria-hidden="true"></span>Change your answers</button>
         </div>
 
         <div class="results-container position-relative">
@@ -271,7 +284,7 @@
   </div>
 
   <div class="legal-disclaimer mrgn-tp-md">
-    <details open>
+    <details open id="info-disclaimer">
       <summary><strong>This tool provides information only</strong></summary>
       <p class="mrgn-tp-md">This tool may not cover all possible cases or your personal situation. An officer may ask for a medical exam even if your result was that you don&rsquo;t need one. If we send you a letter asking you to get a medical exam, you&rsquo;ll need to get one.</p>
     </details>
@@ -434,9 +447,10 @@ function evaluate(a){
 }
 
 /* ============ Result content (verbatim from "Who Needs an IME") ============ */
-function step(n,title,body){return '<div class="gc-step"><div class="gc-step-num">'+n+'</div><div class="gc-step-body"><h3>'+title+'</h3>'+(body||'')+'</div></div>';}
-var FINDDOC='<p><a href="https://secure.cic.gc.ca/pp-md/pp-list.aspx" target="_blank" rel="noopener">Find a doctor who can do your medical exam<span class="wb-inv"> (opens in a new tab)</span></a></p>';
-var FINDDOC_THEIR='<p><a href="https://secure.cic.gc.ca/pp-md/pp-list.aspx" target="_blank" rel="noopener">Find a doctor who can do their medical exam<span class="wb-inv"> (opens in a new tab)</span></a></p>';
+function steps(){var o='<ol class="lst-stps">';for(var i=0;i<arguments.length;i++){var s=arguments[i];o+='<li><h3>'+s[0]+'</h3>'+(s[1]||'')+'</li>';}return o+'</ol>';}
+function infoPanel(title,body){return '<div class="info-panel"><h3><span class="info-ico" aria-hidden="true">i</span>'+title+'</h3>'+body+'</div>';}
+var FINDDOC='<p><a href="https://secure.cic.gc.ca/pp-md/pp-list.aspx" target="_blank" rel="noopener" class="btn btn-primary btn-finddoc">Find a doctor who can do your medical exam<span class="wb-inv"> (opens in a new tab)</span></a></p>';
+var FINDDOC_THEIR='<p><a href="https://secure.cic.gc.ca/pp-md/pp-list.aspx" target="_blank" rel="noopener" class="btn btn-primary btn-finddoc">Find a doctor who can do their medical exam<span class="wb-inv"> (opens in a new tab)</span></a></p>';
 var DOCS3='<ul><li>an information printout sheet from the panel physician (front and back)</li><li>an IMM 1017B Upfront Medical Report form, or</li><li>the IME number (or the unique medical identifier number) if you have neither of the above documents</li></ul>';
 var FAMILY='<details><summary>Who counts as your family members</summary><ul><li>your spouse or common-law partner</li><li>your dependent children</li><li>any dependent children of your dependent children (your grandchildren)</li></ul></details>';
 var SENDRESULTS='<p>You don&rsquo;t need to send us your results. The doctor&rsquo;s office will:</p><ul><li>send your results directly to us</li><li>give you a document that confirms you had an exam (keep this document as proof)</li></ul>';
@@ -446,38 +460,39 @@ var RESULTS={
    '<div class="well"><h2>It looks like you don’t need a medical exam</h2>'+
    '<p>If we find there are other reasons why you need a medical exam later in the process, we’ll send you instructions on how to get one after you apply.</p></div>'},
  'result-asylum':{need:true,html:
-   '<h2><span class="ime-check">&#9745;</span> You need a medical exam</h2>'+
+   '<h2>You need a medical exam</h2>'+
    '<p>If you’re claiming asylum, you’ll need a medical exam, if you have not had one before.</p>'+
-   '<h3>You should not pay for your medical exam</h3>'+
-   '<p>As an asylum claimant, your medical exam is free if you show your:</p>'+
-   '<ul><li>Acknowledgement of Claim and Notice to Return for Interview letter, or</li><li>your refugee protection identity document (or refugee protection claimant document)</li></ul>'+
-   '<p>We cannot issue refunds for fees collected by third-party physicians. Most clinics do not offer refunds once services have started or the exam has been completed.</p>'+
-   step(1,'Make your asylum claim','')+
-   step(2,'Follow our instructions for your medical exam','<p>We’ll send you instructions on how to get a medical exam (for you and your family). Your own doctor can’t do this exam.</p><div class="alert alert-info"><p>You must get your medical exam within 30 days of getting these instructions.</p></div>'+FINDDOC)+
-   step(3,'Get your results',SENDRESULTS)},
+   infoPanel('You should not pay for your medical exam',
+     '<p>As an asylum claimant, your medical exam is free if you show your:</p>'+
+     '<ul><li>Acknowledgement of Claim and Notice to Return for Interview letter, or</li><li>your refugee protection identity document (or refugee protection claimant document)</li></ul>'+
+     '<p>We cannot issue refunds for fees collected by third-party physicians. Most clinics do not offer refunds once services have started or the exam has been completed.</p>')+
+   steps(['Make your asylum claim',''],
+   ['Follow our instructions for your medical exam','<p>We’ll send you instructions on how to get a medical exam (for you and your family). Your own doctor can’t do this exam.</p><div class="alert alert-info"><p>You must get your medical exam within 30 days of getting these instructions.</p></div>'+FINDDOC],
+   ['Get your results',SENDRESULTS])},
  'result-pr-protected':{need:false,html:
    '<h2>You may not need another medical exam</h2>'+
    '<p>As a protected person, you and your family members may not need another exam, if they are:</p>'+
    '<ul><li>on your application, and</li><li>with you in Canada</li></ul>'+
-   step(1,'Apply for permanent residence','')+
-   step(2,'Wait to hear from us','<p>If we find that you need a medical exam, we’ll send instructions on how to get an exam. Your own doctor can’t do this exam.</p><div class="alert alert-info"><p>You must get your medical exam within 30 days of getting these instructions. Don’t get a medical exam unless you receive these instructions.</p></div>'+FINDDOC)+
-   step(3,'If you had an exam, get your results',SENDRESULTS)+
-   '<h3>What makes you exempt</h3><p>You are exempt if you:</p><ul><li>followed any mandatory medical surveillance we asked you to have, and</li><li>have not left Canada, since your last exam, to spend 6 or more months in a row in a region where you need a medical exam</li></ul>'+
-   '<p>If a family member isn’t included in your application for permanent residence, they don’t need a medical exam.</p>'},
+   steps(['Apply for permanent residence',''],
+   ['Wait to hear from us','<p>If we find that you need a medical exam, we’ll send instructions on how to get an exam. Your own doctor can’t do this exam.</p><div class="alert alert-info"><p>You must get your medical exam within 30 days of getting these instructions. Don’t get a medical exam unless you receive these instructions.</p></div>'+FINDDOC],
+   ['If you had an exam, get your results',SENDRESULTS])+
+   infoPanel('What makes you exempt',
+     '<p>You are exempt if you:</p><ul><li>followed any mandatory medical surveillance we asked you to have, and</li><li>have not left Canada, since your last exam, to spend 6 or more months in a row in a region where you need a medical exam</li></ul>'+
+     '<p>If a family member isn’t included in your application for permanent residence, they don’t need a medical exam.</p>')},
  'result-ee-previous':{need:false,html:
    '<h2>You may not need another medical exam</h2>'+
    '<p>If you, and your family members in Canada, had an immigration medical exam within the past 5 years, you may not need to have another one.</p>'+FAMILY+
    '<p>Your other family members will need to get a medical exam even if they are:</p><ul><li>outside of Canada</li><li>in Canada and didn’t have an immigration medical exam in the past 5 years</li><li>not applying for permanent residence with you</li></ul>'+
    '<p>Send us the results from that exam and we’ll let you know if we can use them or if you’ll need to have another exam.</p>'+
-   step(1,'Wait for your invitation to apply','')+
-   step(2,'Get medical exams for your family members','<p>Your family members who need an exam should get one before you submit your application. This is called an upfront medical exam.</p><p>They should get the exam as close as possible to the date you apply so they don’t expire.</p>'+FINDDOC_THEIR)+
-   step(3,'Apply and send us the results','<p>When you apply, upload 1 of these documents with your application for yourself and each of your family members:</p>'+DOCS3+'<h4>If your family members have had a recent exam</h4>'+SENDRESULTS)},
+   steps(['Wait for your invitation to apply',''],
+   ['Get medical exams for your family members','<p>Your family members who need an exam should get one before you submit your application. This is called an upfront medical exam.</p><p>They should get the exam as close as possible to the date you apply so they don’t expire.</p>'+FINDDOC_THEIR],
+   ['Apply and send us the results','<p>When you apply, upload 1 of these documents with your application for yourself and each of your family members:</p>'+DOCS3+'<h4>If your family members have had a recent exam</h4>'+SENDRESULTS])},
  'result-ee-no-previous':{need:true,html:
-   '<h2><span class="ime-check">&#9745;</span> You and your family members need a medical exam</h2>'+
+   '<h2>You and your family members need a medical exam</h2>'+
    '<p>You and your family members need to have a medical exam, even if they aren’t applying for permanent residence with you.</p>'+FAMILY+
-   step(1,'Wait for your invitation to apply','')+
-   step(2,'Get your medical exams','<p>You and your family members should get one before you submit your application. This is called an upfront medical exam.</p><p>It’s a good idea to get an exam as close as possible to the date you apply so it doesn’t expire.</p><details><summary>Your family members in Canada may not need another exam</summary><p>If you have a family member in Canada who had an immigration medical exam within the past 5 years, they may not need to have another one.</p><p>Send us the results from that exam and we’ll let you know if we can use them or if they’ll need to have another exam.</p></details>'+FINDDOC)+
-   step(3,'Apply and send us the results','<p>When you apply, upload 1 of these documents with your application for yourself and each of your family members:</p>'+DOCS3)},
+   steps(['Wait for your invitation to apply',''],
+   ['Get your medical exams','<p>You and your family members should get one before you submit your application. This is called an upfront medical exam.</p><p>It’s a good idea to get an exam as close as possible to the date you apply so it doesn’t expire.</p><details><summary>Your family members in Canada may not need another exam</summary><p>If you have a family member in Canada who had an immigration medical exam within the past 5 years, they may not need to have another one.</p><p>Send us the results from that exam and we’ll let you know if we can use them or if they’ll need to have another exam.</p></details>'+FINDDOC],
+   ['Apply and send us the results','<p>When you apply, upload 1 of these documents with your application for yourself and each of your family members:</p>'+DOCS3])},
  'result-pr-previous':{need:false,html:
    '<h2>You may not need another medical exam</h2>'+
    '<p>If you, and your family members in Canada, had an immigration medical exam within the past 5 years, you may not need to have another one.</p>'+
@@ -487,14 +502,14 @@ var RESULTS={
    '<p>When you apply for permanent residence, upload 1 of these documents with your application for yourself and each of your family members who had a medical exam in the past 5 years:</p>'+DOCS3+
    '<h3>If your family members had a medical exam in the last 5 years and are in Canada</h3><p>Upload one of the same three documents along with your application for permanent residence.</p>'+
    '<h3>If your family members need a medical exam</h3><p>Your other family members will need to get a medical exam even if they are:</p><ul><li>outside of Canada</li><li>in Canada and didn’t have an immigration medical exam in the past 5 years</li><li>not applying for permanent residence with you</li></ul>'+
-   step(1,'Get medical exams for your family members','<p>We’ll send you instructions on how they can get a medical exam.</p><div class="alert alert-info"><p>Their doctor can’t do this exam. They must get their medical exam within 30 days of getting these instructions.</p></div>'+FINDDOC_THEIR)+
-   step(2,'Get your family member’s exam results',SENDRESULTS)},
+   steps(['Get medical exams for your family members','<p>We’ll send you instructions on how they can get a medical exam.</p><div class="alert alert-info"><p>Their doctor can’t do this exam. They must get their medical exam within 30 days of getting these instructions.</p></div>'+FINDDOC_THEIR],
+   ['Get your family member’s exam results',SENDRESULTS])},
  'result-pr-no-previous':{need:true,html:
-   '<h2><span class="ime-check">&#9745;</span> You and your family members need a medical exam</h2>'+
+   '<h2>You and your family members need a medical exam</h2>'+
    '<p>You and your family members need to have a medical exam, even if they aren’t applying for permanent residence with you.</p>'+FAMILY+
-   step(1,'Apply for permanent residence','')+
-   step(2,'Follow our instructions to get your medical exam','<p>We’ll send you instructions on how to get a medical exam for you and your family. Your own doctor can’t do this exam.</p><div class="alert alert-info"><p>You must get your medical exam within 30 days of getting these instructions.</p></div><details><summary>Your family members in Canada may not need another medical exam</summary><p>If you have a family member in Canada who had an immigration medical exam within the past 5 years, they may not need to have another one.</p><p>When you apply, upload 1 of these documents:</p>'+DOCS3+'<p>We’ll let you know if we can use them or ask your family member to have another exam.</p></details><p><a href="https://secure.cic.gc.ca/pp-md/pp-list.aspx" target="_blank" rel="noopener">Find a panel physician who can do your medical exam<span class="wb-inv"> (opens in a new tab)</span></a></p>')+
-   step(3,'Get your results',SENDRESULTS)},
+   steps(['Apply for permanent residence',''],
+   ['Follow our instructions to get your medical exam','<p>We’ll send you instructions on how to get a medical exam for you and your family. Your own doctor can’t do this exam.</p><div class="alert alert-info"><p>You must get your medical exam within 30 days of getting these instructions.</p></div><details><summary>Your family members in Canada may not need another medical exam</summary><p>If you have a family member in Canada who had an immigration medical exam within the past 5 years, they may not need to have another one.</p><p>When you apply, upload 1 of these documents:</p>'+DOCS3+'<p>We’ll let you know if we can use them or ask your family member to have another exam.</p></details><p><a href="https://secure.cic.gc.ca/pp-md/pp-list.aspx" target="_blank" rel="noopener" class="btn btn-primary btn-finddoc">Find a panel physician who can do your medical exam<span class="wb-inv"> (opens in a new tab)</span></a></p>'],
+   ['Get your results',SENDRESULTS])},
  'result-tr-previous':{need:false,html:
    '<h2>You may not need another medical exam</h2>'+
    '<p>If you had an immigration medical exam within the past 5 years you may not need another medical exam to apply for temporary residence.</p>'+
@@ -503,10 +518,10 @@ var RESULTS={
    '<p>If you don’t see this section, upload the document in the &ldquo;Optional documents&rdquo; slot at the bottom of the checklist.</p>'+
    '<p>We’ll let you know if we can use these results or if you’ll need to have another exam.</p>'},
  'result-tr-no-previous':{need:true,html:
-   '<h2><span class="ime-check">&#9745;</span> You need a medical exam</h2>'+
+   '<h2>You need a medical exam</h2>'+
    '<p>If you are applying for temporary residence, you need a medical exam.</p>'+
-   step(1,'Get your medical exam','<p>You should get one before you submit your application. This is called an upfront medical exam.</p><p>Medical exam results are valid for 6 months.</p>'+FINDDOC)+
-   step(2,'Apply and send us your results','<p>When you apply, upload 1 of these documents to your document checklist in the &ldquo;Proof of medical exam&rdquo; section:</p>'+DOCS3+'<p>If you don’t see this section, upload the document in the &ldquo;Optional documents&rdquo; slot at the bottom of the checklist.</p>')}
+   steps(['Get your medical exam','<p>You should get one before you submit your application. This is called an upfront medical exam.</p><p>Medical exam results are valid for 6 months.</p>'+FINDDOC],
+   ['Apply and send us your results','<p>When you apply, upload 1 of these documents to your document checklist in the &ldquo;Proof of medical exam&rdquo; section:</p>'+DOCS3+'<p>If you don’t see this section, upload the document in the &ldquo;Optional documents&rdquo; slot at the bottom of the checklist.</p>'])}
 };
 
 /* ============ Flow engine ============ */
@@ -608,6 +623,7 @@ var RESULTS={
     clearError();
     answers[q.id]=val;
     if(answerStack[answerStack.length-1]!==q.id) answerStack.push(q.id);
+    var disc=document.getElementById('info-disclaimer'); if(disc){ disc.open=false; }
     advance();
   }
 
@@ -635,36 +651,75 @@ var RESULTS={
     initCountryRows(); showQuestion('q_apply_for'); updateButtons();
   }
 
-  /* ---- q_tb_country sub-tool (182-day logic) ---- */
+  /* ---- q_tb_country sub-tool (182-day logic, date-based) ---- */
+  var tbLive=document.getElementById('tb-live');
   function countryOptions(){
     var o='<option value="">Select a country or territory</option>';
     for(var i=0;i<COUNTRIES.length;i++){ o+='<option value="'+i+'">'+COUNTRIES[i].n+'</option>'; }
     return o;
   }
-  function addRow(){
-    var tr=document.createElement('tr'); tr.className='crow';
-    tr.innerHTML='<td><select class="form-control c-country">'+countryOptions()+'</select></td>'+
-      '<td><input type="number" min="0" step="1" class="form-control c-days" placeholder="Days"></td>'+
-      '<td><button type="button" class="btn btn-default btn-sm rm">Remove</button></td>';
-    tr.querySelector('.rm').addEventListener('click',function(){ if(countryRows.querySelectorAll('.crow').length>1) tr.remove(); });
-    countryRows.appendChild(tr);
+  function rowDays(tr){
+    var from=tr.querySelector('.c-from').value, to=tr.querySelector('.c-to').value;
+    if(!from||!to) return NaN;
+    var d1=new Date(from), d2=new Date(to);
+    if(isNaN(d1)||isNaN(d2)) return NaN;
+    var diff=Math.round((d2-d1)/86400000);
+    return diff;
   }
-  function initCountryRows(){ countryRows.innerHTML=''; addRow(); }
+  function addRow(){
+    var row=document.createElement('div'); row.className='tb-row crow';
+    row.innerHTML='<div class="row">'+
+      '<div class="col-sm-4"><div class="form-group"><label class="small">Country or territory</label><select class="form-control c-country">'+countryOptions()+'</select></div></div>'+
+      '<div class="col-sm-3"><div class="form-group"><label class="small">Date entered</label><input type="date" class="form-control c-from"></div></div>'+
+      '<div class="col-sm-3"><div class="form-group"><label class="small">Date left</label><input type="date" class="form-control c-to"></div></div>'+
+      '<div class="col-sm-2 rm-wrap"><div class="form-group full-width"><button type="button" class="btn btn-danger rm">Remove</button></div></div>'+
+      '</div><div class="c-info small mrgn-tp-sm" aria-live="polite"></div>';
+    row.querySelector('.rm').addEventListener('click',function(){ if(countryRows.querySelectorAll('.crow').length>1){ row.remove(); updateLive(); } });
+    row.querySelectorAll('select,input').forEach(function(el){ el.addEventListener('change',function(){ updateRow(row); updateLive(); }); });
+    countryRows.appendChild(row);
+  }
+  function updateRow(tr){
+    var info=tr.querySelector('.c-info'); if(!info) return;
+    var idx=tr.querySelector('.c-country').value, days=rowDays(tr), msgs=[];
+    var from=tr.querySelector('.c-from').value, to=tr.querySelector('.c-to').value;
+    if(from&&to&&!isNaN(days)&&days<0){ info.innerHTML='<span class="text-danger"><strong>Date left is before date entered.</strong> Check your dates.</span>'; return; }
+    if(!isNaN(days)&&days>=0){ msgs.push('<strong>'+days+' day'+(days===1?'':'s')+'</strong>'); }
+    if(idx!==''){
+      var req=COUNTRIES[parseInt(idx,10)].r===1;
+      msgs.push(req?'<span class="text-danger">exam-required country or territory</span>':'<span class="text-muted">not exam-required</span>');
+    }
+    info.innerHTML=msgs.join(' &mdash; ');
+  }
+  function initCountryRows(){ countryRows.innerHTML=''; addRow(); updateLive(); }
 
-  function computeTbResult(){
+  function tbCompute(){
     var rows=countryRows.querySelectorAll('.crow'); var any=false, local=0, global=0;
     rows.forEach(function(tr){
-      var idx=tr.querySelector('.c-country').value; var days=parseInt(tr.querySelector('.c-days').value,10);
+      var idx=tr.querySelector('.c-country').value; var days=rowDays(tr);
       if(idx===''||isNaN(days)||days<0) return; any=true;
       if(COUNTRIES[parseInt(idx,10)].r===1){ local+=days; if(local>global) global=local; } else { local=0; }
     });
-    if(!any) return null;
-    return global>182?'Yes':'No';
+    return {any:any,max:global};
+  }
+  function computeTbResult(){
+    var c=tbCompute();
+    if(!c.any) return null;
+    return c.max>182?'Yes':'No';
+  }
+  function updateLive(){
+    if(!tbLive) return;
+    var c=tbCompute();
+    if(!c.any){ tbLive.innerHTML=''; return; }
+    if(c.max>182){
+      tbLive.innerHTML='<div class="alert alert-warning mrgn-bttm-0"><p><strong>'+c.max+' days</strong> in a row in exam-required countries or territories. This is <strong>more than 182 days</strong>, so a medical exam is likely required.</p></div>';
+    } else {
+      tbLive.innerHTML='<div class="alert alert-success mrgn-bttm-0"><p><strong>'+c.max+' days</strong> in a row in exam-required countries or territories. This is <strong>182 days or less</strong>.</p></div>';
+    }
   }
   function tbSummary(){
     var rows=countryRows.querySelectorAll('.crow'); var parts=[];
     rows.forEach(function(tr){
-      var idx=tr.querySelector('.c-country').value; var days=parseInt(tr.querySelector('.c-days').value,10);
+      var idx=tr.querySelector('.c-country').value; var days=rowDays(tr);
       if(idx===''||isNaN(days)) return; parts.push(COUNTRIES[parseInt(idx,10)].n+' ('+days+' d)');
     });
     return parts.join(', ');
