@@ -297,9 +297,13 @@
           <legend>Will you be working with agriculture or agri-food?</legend>
           <p class="mrgn-lft-md">Examples include:</p>
           <ul class="mrgn-lft-md">
-            <li>farming</li><li>butchering, meat, or poultry preparation</li><li>food science or preparation</li>
-            <li>planting and harvesting crops</li><li>raising livestock (animals)</li>
-            <li>harvesting fish or shellfish</li><li>other similar work</li>
+            <li>farming</li>
+            <li>butchering, meat, or poultry preparation</li>
+            <li>food science or preparation</li>
+            <li>planting and harvesting crops</li>
+            <li>raising livestock (animals)</li>
+            <li>harvesting fish or shellfish</li>
+            <li>other similar work</li>
           </ul>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio"><input type="radio" name="q_agriculture" value="Yes" id="ag-yes"><label for="ag-yes">Yes</label></li>
@@ -311,9 +315,13 @@
           <legend>Will you be studying or working in a field where public health must be protected?</legend>
           <p class="mrgn-lft-md">Examples include working:</p>
           <ul class="mrgn-lft-md">
-            <li>in the health or medical fields</li><li>in a clinical laboratory</li>
-            <li>in primary or secondary education</li><li>in child care</li><li>in elderly care</li>
-            <li>in personal care or housekeeping</li><li>with people with disabilities</li><li>in other similar jobs</li>
+            <li>in the health or medical fields</li>
+            <li>in a clinical laboratory</li>
+            <li>in primary or secondary education</li>
+            <li>in child care</li>
+            <li>in elderly care</li>
+            <li>in personal care or housekeeping</li>
+            <li>with people with disabilities</li><li>in other similar jobs</li>
           </ul>
           <ul class="list-unstyled lst-spcd-2">
             <li class="radio"><input type="radio" name="q_public_health" value="Yes" id="ph-yes"><label for="ph-yes">Yes</label></li>
@@ -330,12 +338,67 @@
         </fieldset>
 
         <fieldset tabindex="-1" class="chkbxrdio-grp mrgn-bttm-md gc-chckbxrdio question hidden" id="q_tb_country" data-name="Countries or territories in the past 12 months">
-          <legend>Enter each country or territory you&rsquo;ve spent time in over the past 12 months and how long you stayed there for.</legend>
+          <legend>Some people need a medical exam if they spent more than 6 months (in a row) in certain areas.</legend>
+          <p class="mrgn-lft-md">Enter each country or territory you’ve spent time in (lived in or visited) over the past 12 months and how long you stayed there for. </p>
           <p class="mrgn-lft-md">Start with where you were 12 months ago and end with where you are now.</p>
+          <p class="mrgn-lft-md">The system will calculate if you need an exam.</p>
           <details class="mrgn-bttm-md">
             <summary>Examples of how to calculate your time spent</summary>
-            <p>Add a row for each country or territory you stayed in and enter how long you stayed, in days. We add together the days you spent in a row in countries that require an exam. If you visit a country that does not require an exam, the count starts over.</p>
-            <p>Example: 100 days in India, then 20 days in France (resets the count), then 90 days in Pakistan. Your longest stretch in exam-required countries is 100 days.</p>
+            <ul>
+    <li>
+        If:
+        <ul>
+            <li>The current date is January 1, 2026</li>
+            <li>You live in France</li>
+            <li>You visited Germany from April 1, 2025 to April 17, 2025</li>
+            <li>You visited Mexico from September 1, 2025 to October 1, 2025</li>
+        </ul>
+
+<p>You would enter</p>
+
+<table class="provisional gc-table table table-bordered">
+    <thead>
+        <tr>
+            <th>Country or territory</th>
+            <th>From</th>
+            <th>To</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>France</td>
+            <td>January 1, 2025</td>
+            <td>April 1, 2025</td>
+        </tr>
+        <tr>
+            <td>Germany</td>
+            <td>April 1, 2025</td>
+            <td>April 17, 2025</td>
+        </tr>
+        <tr>
+            <td>France</td>
+            <td>April 17, 2025</td>
+            <td>September 1, 2025</td>
+        </tr>
+        <tr>
+            <td>Mexico</td>
+            <td>September 1, 2025</td>
+            <td>October 1, 2025</td>
+        </tr>
+        <tr>
+            <td>France</td>
+            <td>October 1, 2025</td>
+            <td>January 1, 2026</td>
+        </tr>
+    </tbody>
+      </table>
+          </li>
+
+                <li>
+                    If you didn’t leave your home country or territory in the last 12 months,
+                    enter it, the date one year ago and today’s date.
+                </li>
+            </ul>
           </details>
           <h3>Enter each country or territory</h3>
           <p class="mrgn-lft-md">If you didn&rsquo;t leave your home country or territory in the last 12 months, enter it, the date a year ago and today&rsquo;s date.</p>
@@ -702,7 +765,7 @@ var FINDDOC='<p><a href="https://secure.cic.gc.ca/pp-md/pp-list.aspx" target="_b
 var FINDDOC_THEIR='<p><a href="https://secure.cic.gc.ca/pp-md/pp-list.aspx" target="_blank" rel="noopener" class="btn btn-primary btn-finddoc">Find a doctor who can do their medical exam<span class="wb-inv"> (opens in a new tab)</span></a></p>';
 var DOCS3='<ul><li>an information printout sheet from the panel physician (front and back)</li><li>an IMM 1017B Upfront Medical Report form, or</li><li>the IME number (or the unique medical identifier number) if you have neither of the above documents</li></ul>';
 var FAMILY='<details><summary>Who counts as your family members</summary><ul><li>your spouse or common-law partner</li><li>your dependent children</li><li>any dependent children of your dependent children (your grandchildren)</li></ul></details>';
-var SENDRESULTS='<p>You don&rsquo;t need to send us your results. The doctor&rsquo;s office will:</p><ul><li>send your results directly to us</li><li>give you a document that confirms you had an exam (keep this document as proof)</li></ul>';
+var SENDRESULTS='<p><strong>You don&rsquo;t need to send us your results</strong>. The doctor&rsquo;s office will:</p><ul><li>send your results directly to us</li><li>give you a document that confirms you had an exam (keep this document as proof)</li></ul>';
 
 var RESULTS={
  'result-no':{need:false,html:
@@ -712,11 +775,11 @@ var RESULTS={
    '<h2>You need a medical exam</h2>'+
    '<p>If you’re claiming asylum, you’ll need a medical exam, if you have not had one before.</p>'+
    infoPanel('You should not pay for your medical exam',
-     '<p>As an asylum claimant, your medical exam is free if you show your:</p>'+
+     '<p>As an asylum claimant, <strong>your medical exam is free</strong> if you show your:</p>'+
      '<ul><li>Acknowledgement of Claim and Notice to Return for Interview letter, or</li><li>your refugee protection identity document (or refugee protection claimant document)</li></ul>'+
      '<p>We cannot issue refunds for fees collected by third-party physicians. Most clinics do not offer refunds once services have started or the exam has been completed.</p>')+
    steps(['Make your asylum claim',''],
-   ['Follow our instructions for your medical exam','<p>We’ll send you instructions on how to get a medical exam (for you and your family). Your own doctor can’t do this exam.</p><div class="alert alert-info"><p>You must get your medical exam within 30 days of getting these instructions.</p></div>'+FINDDOC],
+   ['Follow our instructions for your medical exam (for you and your family)','<p>Your own doctor can’t do this exam.</p><div class="alert alert-info"><p>You must get your medical exam within 30 days of getting these instructions.</p></div>'+FINDDOC],
    ['Get your results',SENDRESULTS])},
  'result-pr-protected':{need:false,html:
    '<h2>You may not need another medical exam</h2>'+
@@ -919,8 +982,8 @@ var RESULTS={
     var row=document.createElement('div'); row.className='tb-row crow';
     row.innerHTML='<div class="row">'+
       '<div class="col-sm-4"><div class="form-group"><label class="small">Country or territory</label><select class="form-control c-country">'+countryOptions()+'</select></div></div>'+
-      '<div class="col-sm-3"><div class="form-group"><label class="small">Date entered</label><input type="date" class="form-control c-from"></div></div>'+
-      '<div class="col-sm-3"><div class="form-group"><label class="small">Date left</label><input type="date" class="form-control c-to"></div></div>'+
+      '<div class="col-sm-3"><div class="form-group"><label class="small">From:</label><input type="date" class="form-control c-from"></div></div>'+
+      '<div class="col-sm-3"><div class="form-group"><label class="small">To:</label><input type="date" class="form-control c-to"></div></div>'+
       '<div class="col-sm-2 rm-wrap"><div class="form-group full-width"><button type="button" class="btn btn-danger rm">Remove</button></div></div>'+
       '</div><div class="c-info small mrgn-tp-sm" aria-live="polite"></div>';
     row.querySelector('.rm').addEventListener('click',function(){ if(countryRows.querySelectorAll('.crow').length>1){ row.remove(); updateLive(); } });
