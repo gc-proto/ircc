@@ -79,7 +79,7 @@
   .info-panel > *:first-child{margin-top:0;}
   .info-panel > *:last-child{margin-bottom:0;}
   .info-panel h3{display:flex;align-items:center;gap:10px;}
-  .info-ico{flex:0 0 24px;height:24px;width:24px;border-radius:50%;background:#333;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:700;font-size:.95em;line-height:1;}
+  .info-ico{color:#333;font-size:1.15em;line-height:1;}
 
   /* Find-a-doctor call to action button */
   .btn-finddoc,.btn-finddoc:link,.btn-finddoc:visited{border-radius: 40px;
@@ -760,7 +760,7 @@ function evaluate(a){
 
 /* ============ Result content (verbatim from "Who Needs an IME") ============ */
 function steps(){var o='<ol class="lst-stps">';for(var i=0;i<arguments.length;i++){var s=arguments[i];o+='<li><h3>'+s[0]+'</h3>'+(s[1]||'')+'</li>';}return o+'</ol>';}
-function infoPanel(title,body){return '<div class="info-panel"><h3><span class="info-ico" aria-hidden="true">i</span>'+title+'</h3>'+body+'</div>';}
+function infoPanel(title,body){return '<div class="info-panel"><h3><span class="fas fa-info-circle info-ico" aria-hidden="true"></span>'+title+'</h3>'+body+'</div>';}
 var FINDDOC='<p><a href="https://secure.cic.gc.ca/pp-md/pp-list.aspx" target="_blank" rel="noopener" class="btn btn-primary btn-finddoc">Find a doctor who can do your medical exam<span class="wb-inv"> (opens in a new tab)</span></a></p>';
 var FINDDOC_THEIR='<p><a href="https://secure.cic.gc.ca/pp-md/pp-list.aspx" target="_blank" rel="noopener" class="btn btn-primary btn-finddoc">Find a doctor who can do their medical exam<span class="wb-inv"> (opens in a new tab)</span></a></p>';
 var DOCS3='<ul><li>an information printout sheet from the panel physician (front and back)</li><li>an IMM 1017B Upfront Medical Report form, or</li><li>the IME number (or the unique medical identifier number) if you have neither of the above documents</li></ul>';
