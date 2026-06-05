@@ -869,6 +869,7 @@ var RESULTS={
     document.querySelectorAll('.question').forEach(function(q){q.classList.add('hidden');});
     resultContainer.classList.add('hidden'); resultContainer.innerHTML='';
     var el=document.getElementById(id); el.classList.remove('hidden'); el.focus(); scrollTo(el);
+    if(id==='q_tb_country' && !countryRows.querySelector('.crow')){ addRow(oneYearAgo()); updateLive(); }
   }
 
   function readCurrentAnswer(q){
@@ -978,7 +979,24 @@ var RESULTS={
     var diff=Math.round((d2-d1)/86400000);
     return diff;
   }
-  function addRow(){
+  function fmtDate(d){
+    var m=('0'+(d.getMonth()+1)).slice(-2), day=('0'+d.getDate()).slice(-2);
+    return d.getFullYear()+'-'+m+'-'+day;
+  }
+  function oneYearAgo(){
+    var d=new Date(); d.setFullYear(d.getFullYear()-1);
+    return fmtDate(d);
+  }
+  function nextFromDate(){
+    var rows=countryRows.querySelectorAll('.crow');
+    if(!rows.length) return oneYearAgo();
+    var prevTo=rows[rows.length-1].querySelector('.c-to').value;
+    if(!prevTo) return '';
+    var d=new Date(prevTo); if(isNaN(d)) return '';
+    d.setDate(d.getDate()+1);
+    return fmtDate(d);
+  }
+  function addRow(fromDate){
     var row=document.createElement('div'); row.className='tb-row crow';
     row.innerHTML='<div class="row">'+
       '<div class="col-sm-4"><div class="form-group"><label class="small">Country or territory</label><select class="form-control c-country">'+countryOptions()+'</select></div></div>'+
@@ -986,6 +1004,7 @@ var RESULTS={
       '<div class="col-sm-3"><div class="form-group"><label class="small">To:</label><input type="date" class="form-control c-to"></div></div>'+
       '<div class="col-sm-2 rm-wrap"><div class="form-group full-width"><button type="button" class="btn btn-danger rm">Remove</button></div></div>'+
       '</div><div class="c-info small mrgn-tp-sm" aria-live="polite"></div>';
+    if(typeof fromDate==='string'&&fromDate){ row.querySelector('.c-from').value=fromDate; }
     row.querySelector('.rm').addEventListener('click',function(){ if(countryRows.querySelectorAll('.crow').length>1){ row.remove(); updateLive(); } });
     row.querySelectorAll('select,input').forEach(function(el){ el.addEventListener('change',function(){ updateRow(row); updateLive(); }); });
     countryRows.appendChild(row);
@@ -1002,7 +1021,7 @@ var RESULTS={
     }
     info.innerHTML=msgs.join(' &mdash; ');
   }
-  function initCountryRows(){ countryRows.innerHTML=''; addRow(); updateLive(); }
+  function initCountryRows(){ countryRows.innerHTML=''; addRow(oneYearAgo()); updateLive(); }
 
   function tbCompute(){
     var rows=countryRows.querySelectorAll('.crow'); var any=false, local=0, global=0;
@@ -1042,7 +1061,7 @@ var RESULTS={
   btnPrev.addEventListener('click',handlePrev);
   btnReset.addEventListener('click',reset);
   btnChange.addEventListener('click',function(){ changeBlock.classList.toggle('hidden'); });
-  document.getElementById('add-row').addEventListener('click',addRow);
+  document.getElementById('add-row').addEventListener('click',function(){ addRow(nextFromDate()); });
   form.addEventListener('submit',function(e){e.preventDefault();});
 
   document.getElementById('date-mod').textContent=new Date().toISOString().slice(0,10);
