@@ -992,7 +992,9 @@ var RESULTS={
     if(!rows.length) return oneYearAgo();
     var prevTo=rows[rows.length-1].querySelector('.c-to').value;
     if(!prevTo) return '';
-    var d=new Date(prevTo); if(isNaN(d)) return '';
+    var p=prevTo.split('-');
+    if(p.length!==3) return '';
+    var d=new Date(+p[0],+p[1]-1,+p[2]); if(isNaN(d)) return '';
     d.setDate(d.getDate()+1);
     return fmtDate(d);
   }
