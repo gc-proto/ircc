@@ -360,7 +360,7 @@
             <li>You visited Germany from April 1, 2025 to April 17, 2025</li>
             <li>You visited Mexico from September 1, 2025 to October 1, 2025</li>
         </ul>
-
+<br>
 <p>You would enter</p>
 
 <table class="provisional gc-table table table-bordered">
@@ -408,7 +408,6 @@
             </ul>
           </details>
           <h3>Enter each country or territory</h3>
-          <p class="mrgn-lft-md">If you didn&rsquo;t leave your home country or territory in the last 12 months, enter it, the date a year ago and today&rsquo;s date.</p>
           <div id="country-rows"></div>
           <button type="button" class="btn btn-default" id="add-row"><span class="glyphicon glyphicon-plus mrgn-rght-sm" aria-hidden="true"></span>Add country</button>
           <div id="tb-live" class="mrgn-tp-md" aria-live="polite"></div>
@@ -1025,8 +1024,7 @@ var RESULTS={
     if(from&&to&&!isNaN(days)&&days<0){ info.innerHTML='<span class="text-danger"><strong>Date left is before date entered.</strong> Check your dates.</span>'; return; }
     if(!isNaN(days)&&days>=0){ msgs.push('<strong>'+days+' day'+(days===1?'':'s')+'</strong>'); }
     if(idx!==''){
-      var req=COUNTRIES[parseInt(idx,10)].r===1;
-      msgs.push(req?'<span class="text-danger">exam-required country or territory</span>':'<span class="text-muted">not exam-required</span>');
+      var req=COUNTRIES[parseInt(idx,10)].r===1;      
     }
     info.innerHTML=msgs.join(' &mdash; ');
   }
@@ -1050,12 +1048,7 @@ var RESULTS={
     if(!tbLive) return;
     var c=tbCompute();
     if(!c.any){ tbLive.innerHTML=''; return; }
-    if(c.max>182){
-      tbLive.innerHTML='<div class="alert alert-warning mrgn-bttm-0"><p><strong>'+c.max+' days</strong> in a row in exam-required countries or territories. This is <strong>more than 182 days</strong>, so a medical exam is likely required.</p></div>';
-    } else {
-      tbLive.innerHTML='<div class="alert alert-success mrgn-bttm-0"><p><strong>'+c.max+' days</strong> in a row in exam-required countries or territories. This is <strong>182 days or less</strong>.</p></div>';
     }
-  }
   function tbSummary(){
     var rows=countryRows.querySelectorAll('.crow'); var parts=[];
     rows.forEach(function(tr){
