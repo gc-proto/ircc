@@ -782,7 +782,7 @@ var RESULTS={
    '<p>If you’re claiming asylum, you’ll need a medical exam, if you have not had one before.</p>'+
    infoPanel('You should not pay for your medical exam',
      '<p>As an asylum claimant, <strong>your medical exam is free</strong> if you show your:</p>'+
-     '<ul><li>Acknowledgement of Claim and Notice to Return for Interview letter, or</li><li>your refugee protection identity document (or refugee protection claimant document)</li></ul>'+
+     '<ul><li>Acknowledgement of Claim and Notice to Return for Interview letter, or</li><li>refugee protection identity document (or refugee protection claimant document)</li></ul>'+
      '<p>We cannot issue refunds for fees collected by third-party physicians. Most clinics do not offer refunds once services have started or the exam has been completed.</p>')+
    steps(['Make your asylum claim',''],
    ['Follow our instructions for your medical exam (for you and your family)','<p>Your own doctor can’t do this exam.</p><div class="alert alert-info"><p>You must get your medical exam within 30 days of getting these instructions.</p></div>'+FINDDOC],
@@ -800,9 +800,8 @@ var RESULTS={
  'result-ee-previous':{need:false,html:
    '<h2>You may not need another medical exam</h2>'+
    '<p>If you, and your family members in Canada, had an immigration medical exam within the past 5 years, you may not need to have another one.</p>'+
-   '<p>Send us the results from that exam and we’ll let you know if we can use them or if you’ll need to have another exam.</p>'+FAMILY+
-   '<p>Your other family members will need to get a medical exam even if they are:</p><ul><li>outside of Canada</li><li>in Canada and didn’t have an immigration medical exam in the past 5 years</li><li>not applying for permanent residence with you</li></ul>'+
-   '<br>'+
+   '<p>Send us the results from that exam and we’ll let you know if we can use them or if you’ll need to have another exam.</p>'+
+   '<p>Your other family members will need to get a medical exam even if they are:</p><ul><li>outside of Canada</li><li>in Canada and didn’t have an immigration medical exam in the past 5 years</li><li>not applying for permanent residence with you</li></ul>'+FAMILY+
    steps(['Wait for your invitation to apply',''],
    ['Get medical exams for your family members (if needed)','<p>Your family members who need an exam should get one before you submit your application. This is called an upfront medical exam.</p><p>They should get the exam as close as possible to the date you apply so they don’t expire.</p>'+FINDDOC_THEIR],
    ['Apply and send us the results','<p>When you apply, upload 1 of these documents with your application for yourself and each of your family members in Canada who’ve had a medical exam in the past 5 years:</p>'+DOCS3+'<h4>If a family member had an upfront exam</h4><p><strong>You don&rsquo;t need to send us their results</strong>. The doctor&rsquo;s office will:</p><ul><li>send their results directly to us</li><li>give them a document that confirms they had an exam (keep this document as proof)</li></ul>'])},
@@ -815,13 +814,12 @@ var RESULTS={
  'result-pr-previous':{need:false,html:
    '<h2>You may not need another medical exam</h2>'+
    '<p>If you, and your family members in Canada, had an immigration medical exam within the past 5 years, you may not need to have another one.</p>'+
-   '<p>Your other family members will need to have a medical exam.</p>'+FAMILY+
-   '<h3>Apply and send us your previous results</h3>'+
    '<p>Send us the results from that exam and we’ll let you know if we can use them or if you’ll need to have another exam.</p>'+
-   '<p>When you apply for permanent residence, upload 1 of these documents with your application for yourself and each of your family members who had a medical exam in the past 5 years:</p>'+DOCS3+
-   '<h3>If your family members had a medical exam in the last 5 years and are in Canada</h3><p>Upload one of the same three documents along with your application for permanent residence.</p>'+
-   '<h3>If your family members need a medical exam</h3><p>Your other family members will need to get a medical exam even if they are:</p><ul><li>outside of Canada</li><li>in Canada and didn’t have an immigration medical exam in the past 5 years</li><li>not applying for permanent residence with you</li></ul>'+
-   steps(['Get medical exams for your family members','<p>We’ll send you instructions on how they can get a medical exam.</p><div class="alert alert-info"><p>Their doctor can’t do this exam. They must get their medical exam within 30 days of getting these instructions.</p></div>'+FINDDOC_THEIR],
+   '<p>Your other family members will need to get a medical exam even if they are:</p><ul><li>outside of Canada</li><li>in Canada and didn’t have an immigration medical exam in the past 5 years</li><li>not applying for permanent residence with you</li></ul>'+FAMILY+
+   '<h3>Apply and send us your previous results</h3>'+
+   '<p>When you apply for permanent residence, upload 1 of these documents with your application for yourself and each of your family members in Canada who had a medical exam in the past 5 years:</p>'+DOCS3+
+   '<details><summary>If your family members need a medical exam</summary>'+
+   steps(['Get medical exams for your family members','<p>We’ll send your family members instructions on how they can get a medical exam. Their doctor can’t do this exam.</p><div class="alert alert-info"><p>They must get their medical exam within 30 days of getting these instructions.</p></div>'+FINDDOC_THEIR],
    ['Get your family member’s exam results',SENDRESULTS])},
  'result-pr-no-previous':{need:true,html:
    '<h2>You and your family members need a medical exam</h2>'+
