@@ -15,7 +15,7 @@
 // handler attaches immediately (a top-level import would block module start
 // until the ~25 MB model lib downloads, letting the form submit natively).
 
-const CFG = { ALPHA: 0.5, AUTH_W: 0.1, SOURCE_W: 0.15, SNIPPET_MIN: 0.22, SNIPPET_STRONG: 0.45, SNIPPET_MARGIN: 0.05, TOP_K: 10, HF_MODEL: 'Xenova/all-MiniLM-L6-v2' };
+const CFG = { ALPHA: 0.5, AUTH_W: 0.1, SOURCE_W: 0.15, TITLE_W: 0.1, SNIPPET_MIN: 0.22, SNIPPET_STRONG: 0.45, SNIPPET_MARGIN: 0.05, TOP_K: 10, HF_MODEL: 'Xenova/all-MiniLM-L6-v2' };
 
 // ---------- data ----------
 let CHUNKS = [], VEC = null, DIM = 0, NDOC = 0;
@@ -38,11 +38,40 @@ function computeGen() {
   let minD = Infinity, maxD = 0;
   for (const c of CHUNKS) { let d; if (/helpcentre\/answer/i.test(c.url)) d = 6; else { try { d = new URL(c.url).pathname.split('/').filter(Boolean).length; } catch (e) { d = 6; } } c._depth = d; if (d < minD) minD = d; if (d > maxD) maxD = d; }
   for (const c of CHUNKS) c._gen = (maxD === minD) ? 0 : (maxD - c._depth) / (maxD - minD);
+  for (const c of CHUNKS) c._titleSet = new Set(lexTokens(c.pageTitle));
 }
+function titleCov(c, qBase) { if (!qBase.length) return 0; let n = 0; for (const t of qBase) if (c._titleSet.has(t)) n++; return n / qBase.length; }
 
 // ---------- lexical (BM25), mirrors answer-server.js ----------
 const STOP = new Set('a an the of to for in on at and or is are be was were do does how i my your we our it its as that this with from'.split(' '));
 const lexTokens = s => (s || '').toLowerCase().replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(w => w.length > 1 && !STOP.has(w));
+// ---------- domain acronym / synonym expansion (IRCC) ----------
+const EXPAND = [
+  [/\bpr cards?\b/, 'permanent resident card'],
+  [/\bpr\b/, 'permanent resident'],
+  [/\bprtd\b/, 'permanent resident travel document'],
+  [/\bcopr\b/, 'confirmation of permanent residence'],
+  [/\bpgwp\b/, 'post-graduation work permit'],
+  [/\beta\b/, 'electronic travel authorization'],
+  [/\bnoc\b/, 'national occupational classification'],
+  [/\bdli\b/, 'designated learning institution'],
+  [/\bcrs\b/, 'comprehensive ranking system express entry'],
+  [/\bee\b/, 'express entry'],
+  [/\biec\b/, 'international experience canada working holiday'],
+  [/\blmia\b/, 'labour market impact assessment'],
+  [/\bgckey\b/, 'gckey sign in account'],
+  [/\bimm ?5257\b/, 'visitor visa application form'],
+  [/\bircc\b/, 'immigration refugees citizenship canada'],
+  [/\bpnp\b/, 'provincial nominee program'],
+  [/\bsin\b/, 'social insurance number'],
+];
+function expandQuery(q) {
+  const lq = (q || '').toLowerCase();
+  const extra = [];
+  for (const [re, exp] of EXPAND) if (re.test(lq)) extra.push(exp);
+  return extra.length ? q + ' ' + extra.join(' ') : q;
+}
+
 const K1 = 1.5, B = 0.75;
 const TF = [], DL = [], DF = new Map();
 let avgdl = 0;
@@ -88,8 +117,10 @@ const pageOf = u => u.split('#')[0];
 
 // ---------- search (mirrors answer-server.js search()) ----------
 async function clientSearch(query) {
-  const qf = await embed(query);
-  const qTerms = lexTokens(query);
+  const qBaseT = lexTokens(query);
+  const eq = expandQuery(query);
+  const qf = await embed(eq);
+  const qTerms = lexTokens(eq);
   let maxLex = 0; const lex = new Float64Array(NDOC);
   for (let i = 0; i < NDOC; i++) { const l = bm25(qTerms, i); lex[i] = l; if (l > maxLex) maxLex = l; }
   const scored = new Array(NDOC);
@@ -97,7 +128,7 @@ async function clientSearch(query) {
     const sem = cosineInt8(qf, i);
     const lexN = maxLex > 0 ? lex[i] / maxLex : 0;
     const c = CHUNKS[i];
-    scored[i] = { i, combined: CFG.ALPHA * sem + (1 - CFG.ALPHA) * lexN + CFG.AUTH_W * (c._gen || 0) + (c.source === 'Canada.ca' ? CFG.SOURCE_W : 0) };
+    scored[i] = { i, combined: CFG.ALPHA * sem + (1 - CFG.ALPHA) * lexN + CFG.AUTH_W * (c._gen || 0) + (c.source === 'Canada.ca' ? CFG.SOURCE_W : 0) + CFG.TITLE_W * titleCov(c, qBaseT) };
   }
   scored.sort((a, b) => b.combined - a.combined);
 
