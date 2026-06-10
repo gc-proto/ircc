@@ -197,6 +197,18 @@ const statusEl = document.getElementById('hc-status');
 const snippetEl = document.getElementById('hc-snippet');
 const listEl = document.getElementById('hc-list');
 const categories = document.querySelector('.hc-band-categories');
+const CLEAR_LINK = ' <a href="#" id="hc-clear" class="hc-clear" style="margin-left:14px;font-size:.9rem;font-weight:400;white-space:nowrap">\u2715 Clear search</a>';
+
+function clearResults() {
+  resultsBand.hidden = true;
+  statusEl.innerHTML = ''; snippetEl.innerHTML = ''; listEl.innerHTML = '';
+  input.value = '';
+  const u = new URL(window.location); u.searchParams.delete('q'); window.history.replaceState({}, '', u);
+  if (categories) categories.style.display = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  input.focus();
+}
+document.addEventListener('click', e => { const t = e.target.closest && e.target.closest('#hc-clear'); if (t) { e.preventDefault(); clearResults(); } });
 
 function loading(msg) {
   resultsBand.hidden = false;
@@ -216,12 +228,12 @@ async function run(q) {
     if (!ready) { await loadData(); await embed('warm up'); ready = true; loading('Searching “' + q + '”…'); }
     const d = await clientSearch(q);
     if (!d.count) {
-      statusEl.innerHTML = 'No results for “<span class="hc-q">' + esc(q) + '</span>”';
+      statusEl.innerHTML = 'No results for “<span class="hc-q">' + esc(q) + '</span>”' + CLEAR_LINK;
       snippetEl.innerHTML = '<p class="hc-noresults">Try different or more general keywords, or browse by topic below.</p>';
       if (categories) categories.style.display = '';
       return;
     }
-    statusEl.innerHTML = d.count + ' search result' + (d.count === 1 ? '' : 's') + ' for “<span class="hc-q">' + esc(q) + '</span>”';
+    statusEl.innerHTML = d.count + ' search result' + (d.count === 1 ? '' : 's') + ' for “<span class="hc-q">' + esc(q) + '</span>”' + CLEAR_LINK;
     renderSnippet(d.snippet);
     renderList(d.results, d.snippet);
   } catch (e) {
