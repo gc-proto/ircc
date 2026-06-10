@@ -186,7 +186,7 @@ const categories = document.querySelector('.hc-band-categories');
 
 function loading(msg) {
   resultsBand.hidden = false;
-  if (categories) categories.style.display = 'none';
+  /* keep browse-by-topic visible; results push it down */
   statusEl.innerHTML = '';
   snippetEl.innerHTML = '<div class="hc-loading"><span class="hc-spinner" aria-hidden="true"></span>' + esc(msg) + '</div>';
   listEl.innerHTML = '';
