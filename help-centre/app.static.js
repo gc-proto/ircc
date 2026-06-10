@@ -15,7 +15,7 @@
 // handler attaches immediately (a top-level import would block module start
 // until the ~25 MB model lib downloads, letting the form submit natively).
 
-const CFG = { ALPHA: 0.5, AUTH_W: 0.1, SOURCE_W: 0.15, TITLE_W: 0.1, SNIPPET_MIN: 0.22, SNIPPET_STRONG: 0.45, SNIPPET_MARGIN: 0.05, TOP_K: 10, HF_MODEL: 'Xenova/all-MiniLM-L6-v2' };
+const CFG = { ALPHA: 0.5, AUTH_W: 0.1, SOURCE_W: 0.15, TITLE_W: 0.1, SNIPPET_MIN: 0.22, SNIPPET_STRONG: 0.45, SNIPPET_MARGIN: 0.05, TOP_K: 10, HF_MODEL: 'Xenova/gte-small' };
 
 // ---------- data ----------
 let CHUNKS = [], VEC = null, DIM = 0, NDOC = 0;
