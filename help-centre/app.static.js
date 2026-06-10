@@ -11,10 +11,11 @@
  * The page only links out to canada.ca; it never fetches it, so there is no
  * CORS dependency at query time.
  */
-import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@4';
-env.allowLocalModels = false;   // models come from the HF CDN
+// transformers.js is imported lazily inside embed() so the page's submit
+// handler attaches immediately (a top-level import would block module start
+// until the ~25 MB model lib downloads, letting the form submit natively).
 
-const CFG = { ALPHA: 0.5, SNIPPET_MIN: 0.22, SNIPPET_STRONG: 0.45, SNIPPET_MARGIN: 0.05, TOP_K: 10, HF_MODEL: 'Xenova/all-MiniLM-L6-v2' };
+const CFG = { ALPHA: 0.5, AUTH_W: 0.1, SOURCE_W: 0.15, SNIPPET_MIN: 0.22, SNIPPET_STRONG: 0.45, SNIPPET_MARGIN: 0.05, TOP_K: 10, HF_MODEL: 'Xenova/all-MiniLM-L6-v2' };
 
 // ---------- data ----------
 let CHUNKS = [], VEC = null, DIM = 0, NDOC = 0;
@@ -29,6 +30,14 @@ async function loadData() {
   VEC = new Int8Array(buf);
   NDOC = CHUNKS.length;
   buildBM25();
+  computeGen();
+}
+
+// URL-depth generality: shallow hub pages score higher; HC answers are specific
+function computeGen() {
+  let minD = Infinity, maxD = 0;
+  for (const c of CHUNKS) { let d; if (/helpcentre\/answer/i.test(c.url)) d = 6; else { try { d = new URL(c.url).pathname.split('/').filter(Boolean).length; } catch (e) { d = 6; } } c._depth = d; if (d < minD) minD = d; if (d > maxD) maxD = d; }
+  for (const c of CHUNKS) c._gen = (maxD === minD) ? 0 : (maxD - c._depth) / (maxD - minD);
 }
 
 // ---------- lexical (BM25), mirrors answer-server.js ----------
@@ -66,7 +75,11 @@ function cosineInt8(qf, i) {
 // ---------- embedder (transformers.js) ----------
 let extractor = null;
 async function embed(q) {
-  if (!extractor) extractor = await pipeline('feature-extraction', CFG.HF_MODEL);
+  if (!extractor) {
+    const t = await import('https://cdn.jsdelivr.net/npm/@huggingface/transformers@4');
+    t.env.allowLocalModels = false;   // models come from the HF CDN
+    extractor = await t.pipeline('feature-extraction', CFG.HF_MODEL);
+  }
   const o = await extractor(q, { pooling: 'mean', normalize: true });
   return o.data;
 }
@@ -83,7 +96,8 @@ async function clientSearch(query) {
   for (let i = 0; i < NDOC; i++) {
     const sem = cosineInt8(qf, i);
     const lexN = maxLex > 0 ? lex[i] / maxLex : 0;
-    scored[i] = { i, combined: CFG.ALPHA * sem + (1 - CFG.ALPHA) * lexN };
+    const c = CHUNKS[i];
+    scored[i] = { i, combined: CFG.ALPHA * sem + (1 - CFG.ALPHA) * lexN + CFG.AUTH_W * (c._gen || 0) + (c.source === 'Canada.ca' ? CFG.SOURCE_W : 0) };
   }
   scored.sort((a, b) => b.combined - a.combined);
 

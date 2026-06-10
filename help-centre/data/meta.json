@@ -3,9 +3,11 @@
   "hfModel": "Xenova/all-MiniLM-L6-v2",
   "dim": 384,
   "count": 7116,
-  "builtAt": "2026-06-10T13:10:30.586Z",
+  "builtAt": "2026-06-10T14:33:39.615Z",
   "thresholds": {
     "ALPHA": 0.5,
+    "AUTH_W": 0.1,
+    "SOURCE_W": 0.15,
     "SNIPPET_MIN": 0.22,
     "SNIPPET_STRONG": 0.45,
     "SNIPPET_MARGIN": 0.05
