@@ -1,0 +1,631 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two decades of pre-monsoon heat in Rajasthan, 2006–2025 - Canada.ca</title>
+<link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/theme.min.css">
+<noscript><link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/noscript.min.css"></noscript>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<style>
+  /* ---------- Custom heat-dashboard theme (scoped to #heatviz) ---------- */
+  #heatviz { --gc-blue:#284162; --ink:#333; --muted:#5c5c5c; --line:#e3e3e3;
+    --c0:#fff7ec; --c1:#fee0a6; --c2:#fdb863; --c3:#f57c2b; --c4:#d7301f; --c5:#7f0000;
+    --early:#0072B2; --late:#D55E00; max-width:64rem; }
+  #heatviz * { box-sizing:border-box; }
+
+  /* hero */
+  #heatviz .hv-hero { background:linear-gradient(120deg,#7f0000 0%,#d7301f 45%,#f57c2b 100%);
+    color:#fff; padding:2rem 1.6rem; border-radius:6px; margin:0 0 1.5rem; }
+  #heatviz .hv-hero h1 { color:#fff; border:0; margin:0 0 .4rem; font-size:1.9rem; line-height:1.15; }
+  #heatviz .hv-hero p { color:#fff; max-width:46rem; margin:.3rem 0 0; opacity:.95; }
+  #heatviz .hv-kpis { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.4rem; }
+  #heatviz .hv-kpi { background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.3);
+    border-radius:6px; padding:.7rem .9rem; flex:1 1 8.5rem; min-width:8.5rem; }
+  #heatviz .hv-kpi b { display:block; font-size:1.7rem; line-height:1; }
+  #heatviz .hv-kpi span { font-size:.8rem; opacity:.92; }
+
+  /* cards */
+  #heatviz .hv-card { border:1px solid var(--line); border-radius:6px; padding:1.2rem 1.3rem 1.4rem;
+    margin:1.4rem 0; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+  #heatviz .hv-card h2 { margin:0 0 .2rem; font-size:1.3rem; color:var(--gc-blue); }
+  #heatviz .hv-lede { color:var(--muted); margin:.1rem 0 1rem; font-size:.95rem; max-width:50rem; }
+  #heatviz .hv-take { background:#fbf3ea; border-left:4px solid var(--c3); padding:.55rem .8rem;
+    font-size:.9rem; margin:.2rem 0 1rem; border-radius:0 4px 4px 0; }
+
+  /* controls */
+  #heatviz .hv-controls { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:.2rem 0 1rem; }
+  #heatviz .hv-seg { display:inline-flex; border:1px solid var(--gc-blue); border-radius:4px; overflow:hidden; }
+  #heatviz .hv-seg button { border:0; background:#fff; color:var(--gc-blue); padding:.35rem .8rem;
+    font-size:.85rem; cursor:pointer; border-right:1px solid var(--gc-blue); }
+  #heatviz .hv-seg button:last-child { border-right:0; }
+  #heatviz .hv-seg button[aria-pressed="true"] { background:var(--gc-blue); color:#fff; font-weight:700; }
+  #heatviz .hv-seg button:focus-visible { outline:2px solid var(--c4); outline-offset:1px; }
+  #heatviz .hv-slider { display:flex; align-items:center; gap:.6rem; flex:1 1 16rem; }
+  #heatviz .hv-slider input[type=range] { flex:1; accent-color:var(--c4); }
+  #heatviz .hv-play { border:1px solid var(--gc-blue); background:var(--gc-blue); color:#fff;
+    border-radius:4px; padding:.35rem .9rem; cursor:pointer; font-size:.85rem; }
+  #heatviz .hv-play:focus-visible { outline:2px solid var(--c4); outline-offset:2px; }
+  #heatviz .hv-yr { font-variant-numeric:tabular-nums; font-weight:700; color:var(--gc-blue); min-width:5.5rem; }
+
+  /* svg + axes */
+  #heatviz svg { width:100%; height:auto; display:block; overflow:visible; }
+  #heatviz .axis text { font-size:.72rem; fill:var(--muted); }
+  #heatviz .axis path, #heatviz .axis line { stroke:var(--line); }
+  #heatviz .grid line { stroke:#f0f0f0; }
+  #heatviz .cell { stroke:#fff; stroke-width:.3; cursor:pointer; }
+  #heatviz .cell.dim { opacity:.18; }
+  #heatviz .bubble { stroke:#7f0000; stroke-width:1; cursor:pointer; }
+  #heatviz .dlabel { font-size:.7rem; fill:var(--ink); pointer-events:none; }
+  #heatviz .legend-grad text { font-size:.7rem; fill:var(--muted); }
+
+  /* tooltip */
+  #heatviz .hv-tip { position:absolute; z-index:20; pointer-events:none; background:#fff;
+    border:1px solid var(--gc-blue); border-left:4px solid var(--c4); padding:.45rem .65rem;
+    font-size:.8rem; line-height:1.45; color:var(--ink); box-shadow:0 2px 8px rgba(0,0,0,.2);
+    border-radius:3px; max-width:15rem; transform:translate(-50%,-105%); }
+  #heatviz .hv-tip b { color:var(--gc-blue); }
+  #heatviz .hv-stage { position:relative; }
+
+  /* tables */
+  #heatviz details.hv-tbl { margin-top:1rem; }
+  #heatviz details.hv-tbl summary { cursor:pointer; color:var(--gc-blue); font-size:.88rem; }
+  #heatviz .hv-tbl table { font-size:.82rem; margin-top:.6rem; }
+
+  /* reduced motion: kill transitions */
+  #heatviz .anim { transition:none; }
+  @media (prefers-reduced-motion: no-preference) {
+    #heatviz .anim { transition: all .5s ease; }
+  }
+  @media (max-width:480px){ #heatviz .hv-kpi b{font-size:1.4rem;} }
+</style>
+</head>
+<body vocab="http://schema.org/" typeof="WebPage">
+<ul id="wb-tphp">
+  <li class="wb-slc"><a class="wb-sl" href="#wb-cont">Skip to main content</a></li>
+  <li class="wb-slc"><a class="wb-sl" href="#wb-info">Skip to "About this site"</a></li>
+</ul>
+<header>
+  <div id="wb-bnr" class="container">
+    <section id="wb-lng" class="text-right">
+      <h2 class="wb-inv">Language selection</h2>
+      <ul class="list-inline margin-bottom-none">
+        <li><a lang="fr" href="#">Fran&ccedil;ais</a></li>
+      </ul>
+    </section>
+    <div class="row">
+      <div class="brand col-xs-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+        <a href="https://www.canada.ca/en.html" property="url">
+          <img src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg" alt="" property="logo">
+          <span class="wb-inv" property="name"> Government of Canada / <span lang="fr">Gouvernement du Canada</span></span>
+        </a>
+        <meta property="areaServed" typeof="Country" content="Canada">
+      </div>
+      <section id="wb-srch" class="col-lg-8 text-right visible-md visible-lg">
+        <h2>Search</h2>
+        <form action="https://www.canada.ca/en/sr/srb.html" method="get" name="cse-search-box" role="search" class="form-inline">
+          <div class="form-group">
+            <label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
+            <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search Canada.ca">
+          </div>
+          <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button>
+        </form>
+      </section>
+    </div>
+  </div>
+  <nav class="gcweb-menu" typeof="SiteNavigationElement">
+    <div class="container">
+      <h2 class="wb-inv">Menu</h2>
+      <button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
+      <ul role="menu" aria-orientation="vertical" data-ajax-replace="https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-en.html">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/en/services/jobs.html">Jobs and the workplace</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/en/services/environment.html">Environment and natural resources</a></li>
+      </ul>
+    </div>
+  </nav>
+  <nav id="wb-bc" property="breadcrumb">
+    <h2>You are here:</h2>
+    <div class="container">
+      <ol class="breadcrumb" typeof="BreadcrumbList">
+        <li property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" href="https://www.canada.ca/en.html"><span property="name">Canada.ca</span></a><meta property="position" content="1"></li>
+        <li property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" href="#"><span property="name">Environment and natural resources</span></a><meta property="position" content="2"></li>
+        <li property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" href="#"><span property="name">Weather, climate and hazards</span></a><meta property="position" content="3"></li>
+      </ol>
+    </div>
+  </nav>
+</header>
+<main property="mainContentOfPage" resource="#wb-main" class="container" id="heatviz">
+
+  <!-- HERO -->
+  <div class="hv-hero">
+    <h1 property="name" id="wb-cont">Two decades of pre-monsoon heat in Rajasthan</h1>
+    <p>An interactive look at daily climate-model data for nine districts of Rajasthan, India, over the March-to-June hot season from 2006 to 2025 — 21,960 district-days in total. The headline isn't a rising average. It's that extreme-heat days are striking harder, more often, and clustering in the most recent years.</p>
+    <div class="hv-kpis" id="hv-kpis"></div>
+  </div>
+
+  <p class="hv-lede">Source data: daily ERA5-style reanalysis fields (temperature, wind, humidity, soil, radiation) for 9 districts &times; 20 years &times; 122 days per year. A day is flagged as a <strong>heatwave</strong> day in the dataset's <code>HEATWAVE</code> field. All temperatures shown in degrees Celsius (converted from Kelvin).</p>
+
+  <!-- ===== CHART 1: HEATMAP ===== -->
+  <section class="hv-card">
+    <h2>The shape of the hot season, year by year</h2>
+    <p class="hv-lede">Each row is a year; each column is a day from March 1 to June 30. Colour shows the 9-district average. Switch between the average daytime high and the share of districts under heatwave conditions.</p>
+    <div class="hv-take" id="take-heatmap"></div>
+    <div class="hv-controls">
+      <span class="small">Show:</span>
+      <span class="hv-seg" id="seg-heatmap" role="group" aria-label="Heatmap metric">
+        <button data-metric="t" aria-pressed="true">Average daytime high</button>
+        <button data-metric="h" aria-pressed="false">Heatwave intensity</button>
+      </span>
+    </div>
+    <div class="hv-stage">
+      <div class="hv-chart" id="c-heatmap" role="img"
+        aria-label="Heatmap of the 2006 to 2025 hot seasons. Heat builds from March into late May and June every year, and the most intense bands fall in 2010 and 2024.">
+        <svg></svg>
+      </div>
+    </div>
+    <div id="leg-heatmap"></div>
+    <details class="hv-tbl"><summary>Data table: annual summary</summary><div id="tbl-annual"></div></details>
+  </section>
+
+  <!-- ===== CHART 2: ANNUAL TREND ===== -->
+  <section class="hv-card">
+    <h2>Extreme-heat days don't trend — they spike</h2>
+    <p class="hv-lede">Bars show heatwave days per district each year; the line tracks a temperature metric. The average barely moves across 20 years, but heatwave days swing wildly and the biggest spikes (2010, 2024) sit in the record's two halves unequally.</p>
+    <div class="hv-take" id="take-trend"></div>
+    <div class="hv-controls">
+      <span class="small">Line metric:</span>
+      <span class="hv-seg" id="seg-trend" role="group" aria-label="Trend line metric">
+        <button data-metric="meanTmax" aria-pressed="true">Mean daily high</button>
+        <button data-metric="maxTmax" aria-pressed="false">Hottest day</button>
+        <button data-metric="meanTmin" aria-pressed="false">Mean overnight low</button>
+      </span>
+    </div>
+    <div class="hv-stage">
+      <div class="hv-chart" id="c-trend" role="img"
+        aria-label="Combination bar and line chart of heatwave days per district per year with a temperature line. Heatwave days peak near 16 per district in 2010 and 13 in 2024, while average temperature stays roughly flat.">
+        <svg></svg>
+      </div>
+    </div>
+    <details class="hv-tbl"><summary>Data table: annual summary</summary><div id="tbl-annual2"></div></details>
+  </section>
+
+  <!-- ===== CHART 3: MAP ===== -->
+  <section class="hv-card">
+    <h2>Where the heat lands</h2>
+    <p class="hv-lede">Each district is placed by its coordinates. Bubble size and colour show heatwave days. Drag the slider or press play to move through the years and watch the hotspots shift across the desert north-west and the south-east.</p>
+    <div class="hv-take" id="take-map"></div>
+    <div class="hv-controls">
+      <button class="hv-play" id="map-play" aria-label="Play animation through the years">► Play years</button>
+      <div class="hv-slider">
+        <label for="map-year" class="wb-inv">Year</label>
+        <input type="range" id="map-year" min="2006" max="2025" step="1" value="2025">
+        <span class="hv-yr" id="map-yrlabel">2025</span>
+      </div>
+      <span class="hv-seg" id="seg-map" role="group" aria-label="Map year mode">
+        <button data-mode="year" aria-pressed="true">Single year</button>
+        <button data-mode="all" aria-pressed="false">All years total</button>
+      </span>
+    </div>
+    <div class="hv-stage">
+      <div class="hv-chart" id="c-map" role="img"
+        aria-label="Map of nine Rajasthan districts sized by heatwave days. Bikaner and Kota accumulate the most heatwave days over two decades; Jaipur the fewest.">
+        <svg></svg>
+      </div>
+    </div>
+    <div aria-live="polite" class="wb-inv" id="map-live"></div>
+    <details class="hv-tbl"><summary>Data table: district totals, 2006–2025</summary><div id="tbl-dist"></div></details>
+  </section>
+
+  <!-- ===== CHART 4: DISTRIBUTION ===== -->
+  <section class="hv-card">
+    <h2>A flat average hiding a fatter tail</h2>
+    <p class="hv-lede">The distribution of every district-day's daytime high, split into the first decade (2006–2015) and the second (2016–2025). The averages are almost identical — but the second decade carries more of its weight in the extreme-heat tail.</p>
+    <div class="hv-take" id="take-dist"></div>
+    <div class="hv-stage">
+      <div class="hv-chart" id="c-dist" role="img"
+        aria-label="Two overlaid distribution curves of daily high temperatures. The 2006 to 2015 and 2016 to 2025 averages are within a few hundredths of a degree, but the later decade has a slightly heavier tail above 43 degrees.">
+        <svg></svg>
+      </div>
+    </div>
+    <details class="hv-tbl"><summary>Data table: distribution summary</summary><div id="tbl-dist2"></div></details>
+  </section>
+
+  <p class="small" style="color:#777">Built from <code>Rajasthan_Heatwave_2006_2025.csv</code>. Temperatures converted from Kelvin to Celsius. "Heatwave days per district" is the dataset's heatwave-day count divided across the nine districts. Visual design uses custom CSS on the Canada.ca (GCWeb) theme.</p>
+
+  <div class="hv-tip" id="hv-tip" hidden></div>
+
+<script id="heatdata" type="application/json">{"annual":[{"year":2006,"meanTmax":36.74,"maxTmax":45.75,"meanTmin":36.28,"hw":57,"hwpd":6.33},{"year":2007,"meanTmax":36.91,"maxTmax":44.22,"meanTmin":36.45,"hw":20,"hwpd":2.22},{"year":2008,"meanTmax":36.3,"maxTmax":43.48,"meanTmin":35.83,"hw":1,"hwpd":0.11},{"year":2009,"meanTmax":37.57,"maxTmax":45.16,"meanTmin":37.12,"hw":60,"hwpd":6.67},{"year":2010,"meanTmax":39.21,"maxTmax":47.53,"meanTmin":38.75,"hw":145,"hwpd":16.11},{"year":2011,"meanTmax":36.83,"maxTmax":46.6,"meanTmin":36.37,"hw":40,"hwpd":4.44},{"year":2012,"meanTmax":36.52,"maxTmax":44.86,"meanTmin":36.04,"hw":16,"hwpd":1.78},{"year":2013,"meanTmax":36.42,"maxTmax":44.9,"meanTmin":35.97,"hw":40,"hwpd":4.44},{"year":2014,"meanTmax":36.06,"maxTmax":45.67,"meanTmin":35.6,"hw":67,"hwpd":7.44},{"year":2015,"meanTmax":35.94,"maxTmax":45.16,"meanTmin":35.48,"hw":36,"hwpd":4.0},{"year":2016,"meanTmax":37.57,"maxTmax":47.42,"meanTmin":37.1,"hw":82,"hwpd":9.11},{"year":2017,"meanTmax":37.17,"maxTmax":45.75,"meanTmin":36.73,"hw":51,"hwpd":5.67},{"year":2018,"meanTmax":38.02,"maxTmax":45.89,"meanTmin":37.58,"hw":92,"hwpd":10.22},{"year":2019,"meanTmax":36.64,"maxTmax":46.38,"meanTmin":36.21,"hw":88,"hwpd":9.78},{"year":2020,"meanTmax":35.86,"maxTmax":45.27,"meanTmin":35.39,"hw":41,"hwpd":4.56},{"year":2021,"meanTmax":36.54,"maxTmax":44.0,"meanTmin":36.07,"hw":6,"hwpd":0.67},{"year":2022,"meanTmax":38.46,"maxTmax":45.87,"meanTmin":38.01,"hw":66,"hwpd":7.33},{"year":2023,"meanTmax":34.62,"maxTmax":44.42,"meanTmin":34.19,"hw":14,"hwpd":1.56},{"year":2024,"meanTmax":36.84,"maxTmax":47.81,"meanTmin":36.43,"hw":118,"hwpd":13.11},{"year":2025,"meanTmax":37.02,"maxTmax":44.69,"meanTmin":36.58,"hw":58,"hwpd":6.44}],"districts":[{"name":"Barmer","lat":25.75,"lon":71.5,"meanTmax":37.4,"maxTmax":47.65,"hw":82,"byYear":{"2006":{"hw":4,"meanTmax":36.99,"maxTmax":44.11},"2007":{"hw":1,"meanTmax":37.08,"maxTmax":43.61},"2008":{"hw":0,"meanTmax":36.82,"maxTmax":42.34},"2009":{"hw":2,"meanTmax":37.76,"maxTmax":43.78},"2010":{"hw":14,"meanTmax":39.4,"maxTmax":46.09},"2011":{"hw":3,"meanTmax":37.43,"maxTmax":45.26},"2012":{"hw":0,"meanTmax":36.66,"maxTmax":42.21},"2013":{"hw":1,"meanTmax":36.7,"maxTmax":43.76},"2014":{"hw":7,"meanTmax":36.85,"maxTmax":44.41},"2015":{"hw":1,"meanTmax":37.05,"maxTmax":43.77},"2016":{"hw":5,"meanTmax":37.65,"maxTmax":46.87},"2017":{"hw":0,"meanTmax":37.61,"maxTmax":43.18},"2018":{"hw":7,"meanTmax":38.51,"maxTmax":44.34},"2019":{"hw":5,"meanTmax":37.25,"maxTmax":44.65},"2020":{"hw":4,"meanTmax":36.97,"maxTmax":43.93},"2021":{"hw":0,"meanTmax":37.25,"maxTmax":41.57},"2022":{"hw":6,"meanTmax":38.97,"maxTmax":45.03},"2023":{"hw":2,"meanTmax":35.69,"maxTmax":44.02},"2024":{"hw":13,"meanTmax":37.49,"maxTmax":47.65},"2025":{"hw":7,"meanTmax":37.93,"maxTmax":44.16}}},{"name":"Bikaner","lat":28.0,"lon":73.25,"meanTmax":37.35,"maxTmax":47.81,"hw":220,"byYear":{"2006":{"hw":12,"meanTmax":37.24,"maxTmax":45.75},"2007":{"hw":5,"meanTmax":37.3,"maxTmax":43.69},"2008":{"hw":1,"meanTmax":37.06,"maxTmax":43.48},"2009":{"hw":12,"meanTmax":37.99,"maxTmax":44.77},"2010":{"hw":23,"meanTmax":39.49,"maxTmax":46.75},"2011":{"hw":8,"meanTmax":37.49,"maxTmax":46.39},"2012":{"hw":4,"meanTmax":36.94,"maxTmax":44.81},"2013":{"hw":9,"meanTmax":36.82,"maxTmax":44.75},"2014":{"hw":10,"meanTmax":36.28,"maxTmax":45.67},"2015":{"hw":10,"meanTmax":36.03,"maxTmax":44.14},"2016":{"hw":13,"meanTmax":37.9,"maxTmax":47.06},"2017":{"hw":14,"meanTmax":37.82,"maxTmax":45.55},"2018":{"hw":17,"meanTmax":38.51,"maxTmax":45.89},"2019":{"hw":15,"meanTmax":36.86,"maxTmax":46.38},"2020":{"hw":9,"meanTmax":36.25,"maxTmax":45.27},"2021":{"hw":2,"meanTmax":37.2,"maxTmax":44.0},"2022":{"hw":14,"meanTmax":39.23,"maxTmax":45.76},"2023":{"hw":5,"meanTmax":35.21,"maxTmax":44.42},"2024":{"hw":21,"meanTmax":37.41,"maxTmax":47.81},"2025":{"hw":16,"meanTmax":37.98,"maxTmax":44.69}}},{"name":"Churu","lat":28.25,"lon":75.0,"meanTmax":36.63,"maxTmax":46.47,"hw":145,"byYear":{"2006":{"hw":9,"meanTmax":36.53,"maxTmax":45.02},"2007":{"hw":2,"meanTmax":36.67,"maxTmax":43.68},"2008":{"hw":0,"meanTmax":35.75,"maxTmax":43.1},"2009":{"hw":8,"meanTmax":37.39,"maxTmax":44.62},"2010":{"hw":16,"meanTmax":39.07,"maxTmax":46.16},"2011":{"hw":7,"meanTmax":36.76,"maxTmax":45.19},"2012":{"hw":3,"meanTmax":36.56,"maxTmax":44.42},"2013":{"hw":9,"meanTmax":36.41,"maxTmax":44.04},"2014":{"hw":10,"meanTmax":35.84,"maxTmax":45.41},"2015":{"hw":4,"meanTmax":35.15,"maxTmax":44.3},"2016":{"hw":9,"meanTmax":37.64,"maxTmax":46.47},"2017":{"hw":7,"meanTmax":36.91,"maxTmax":44.57},"2018":{"hw":7,"meanTmax":37.75,"maxTmax":44.8},"2019":{"hw":13,"meanTmax":36.18,"maxTmax":46.01},"2020":{"hw":6,"meanTmax":35.53,"maxTmax":44.75},"2021":{"hw":2,"meanTmax":36.47,"maxTmax":43.87},"2022":{"hw":9,"meanTmax":38.56,"maxTmax":45.38},"2023":{"hw":1,"meanTmax":33.95,"maxTmax":43.83},"2024":{"hw":16,"meanTmax":36.96,"maxTmax":46.23},"2025":{"hw":7,"meanTmax":36.62,"maxTmax":44.23}}},{"name":"Jaipur","lat":27.0,"lon":75.75,"meanTmax":36.09,"maxTmax":45.66,"hw":57,"byYear":{"2006":{"hw":1,"meanTmax":35.92,"maxTmax":43.41},"2007":{"hw":0,"meanTmax":36.47,"maxTmax":42.18},"2008":{"hw":0,"meanTmax":35.13,"maxTmax":41.42},"2009":{"hw":1,"meanTmax":37.1,"maxTmax":43.47},"2010":{"hw":8,"meanTmax":38.94,"maxTmax":45.34},"2011":{"hw":1,"meanTmax":35.43,"maxTmax":43.95},"2012":{"hw":1,"meanTmax":36.17,"maxTmax":43.44},"2013":{"hw":2,"meanTmax":36.21,"maxTmax":43.54},"2014":{"hw":3,"meanTmax":35.22,"maxTmax":43.99},"2015":{"hw":0,"meanTmax":34.93,"maxTmax":42.55},"2016":{"hw":9,"meanTmax":37.47,"maxTmax":45.66},"2017":{"hw":1,"meanTmax":36.33,"maxTmax":43.71},"2018":{"hw":7,"meanTmax":37.5,"maxTmax":44.66},"2019":{"hw":9,"meanTmax":36.14,"maxTmax":45.31},"2020":{"hw":2,"meanTmax":34.87,"maxTmax":43.5},"2021":{"hw":0,"meanTmax":35.28,"maxTmax":40.37},"2022":{"hw":4,"meanTmax":37.59,"maxTmax":43.49},"2023":{"hw":0,"meanTmax":33.55,"maxTmax":42.68},"2024":{"hw":8,"meanTmax":36.13,"maxTmax":45.35},"2025":{"hw":0,"meanTmax":35.36,"maxTmax":42.31}}},{"name":"Jaisalmer","lat":27.0,"lon":71.0,"meanTmax":37.26,"maxTmax":47.67,"hw":140,"byYear":{"2006":{"hw":7,"meanTmax":37.05,"maxTmax":44.37},"2007":{"hw":3,"meanTmax":37.08,"maxTmax":43.8},"2008":{"hw":0,"meanTmax":37.19,"maxTmax":42.13},"2009":{"hw":9,"meanTmax":37.73,"maxTmax":44.36},"2010":{"hw":17,"meanTmax":39.21,"maxTmax":47.53},"2011":{"hw":4,"meanTmax":37.23,"maxTmax":46.6},"2012":{"hw":0,"meanTmax":36.55,"maxTmax":42.95},"2013":{"hw":4,"meanTmax":36.47,"maxTmax":44.2},"2014":{"hw":6,"meanTmax":36.32,"maxTmax":45.05},"2015":{"hw":5,"meanTmax":36.4,"maxTmax":44.06},"2016":{"hw":9,"meanTmax":37.45,"maxTmax":47.02},"2017":{"hw":9,"meanTmax":37.77,"maxTmax":44.71},"2018":{"hw":11,"meanTmax":38.32,"maxTmax":44.58},"2019":{"hw":8,"meanTmax":36.69,"maxTmax":45.67},"2020":{"hw":6,"meanTmax":36.54,"maxTmax":44.76},"2021":{"hw":2,"meanTmax":37.26,"maxTmax":43.37},"2022":{"hw":9,"meanTmax":39.12,"maxTmax":45.66},"2023":{"hw":2,"meanTmax":35.39,"maxTmax":43.92},"2024":{"hw":16,"meanTmax":37.17,"maxTmax":47.67},"2025":{"hw":13,"meanTmax":38.27,"maxTmax":44.34}}},{"name":"Jodhpur","lat":26.25,"lon":73.0,"meanTmax":37.04,"maxTmax":46.32,"hw":67,"byYear":{"2006":{"hw":2,"meanTmax":36.68,"maxTmax":44.02},"2007":{"hw":2,"meanTmax":36.8,"maxTmax":43.71},"2008":{"hw":0,"meanTmax":36.32,"maxTmax":42.07},"2009":{"hw":2,"meanTmax":37.67,"maxTmax":43.55},"2010":{"hw":11,"meanTmax":39.28,"maxTmax":45.55},"2011":{"hw":3,"meanTmax":37.02,"maxTmax":45.47},"2012":{"hw":0,"meanTmax":36.47,"maxTmax":42.11},"2013":{"hw":0,"meanTmax":36.43,"maxTmax":42.63},"2014":{"hw":6,"meanTmax":36.39,"maxTmax":44.38},"2015":{"hw":0,"meanTmax":36.6,"maxTmax":42.96},"2016":{"hw":6,"meanTmax":37.52,"maxTmax":46.29},"2017":{"hw":2,"meanTmax":37.23,"maxTmax":43.64},"2018":{"hw":6,"meanTmax":38.28,"maxTmax":44.23},"2019":{"hw":6,"meanTmax":37.21,"maxTmax":44.15},"2020":{"hw":1,"meanTmax":36.53,"maxTmax":43.32},"2021":{"hw":0,"meanTmax":36.72,"maxTmax":41.08},"2022":{"hw":6,"meanTmax":38.47,"maxTmax":44.64},"2023":{"hw":2,"meanTmax":35.06,"maxTmax":43.65},"2024":{"hw":11,"meanTmax":37.12,"maxTmax":46.32},"2025":{"hw":1,"meanTmax":37.0,"maxTmax":43.81}}},{"name":"Kota","lat":25.25,"lon":75.75,"meanTmax":37.81,"maxTmax":47.63,"hw":218,"byYear":{"2006":{"hw":12,"meanTmax":37.77,"maxTmax":45.33},"2007":{"hw":4,"meanTmax":38.23,"maxTmax":43.96},"2008":{"hw":0,"meanTmax":37.05,"maxTmax":42.81},"2009":{"hw":18,"meanTmax":39.21,"maxTmax":45.16},"2010":{"hw":34,"meanTmax":40.74,"maxTmax":47.48},"2011":{"hw":8,"meanTmax":37.78,"maxTmax":45.51},"2012":{"hw":6,"meanTmax":37.88,"maxTmax":44.86},"2013":{"hw":10,"meanTmax":37.29,"maxTmax":44.9},"2014":{"hw":12,"meanTmax":37.27,"maxTmax":45.55},"2015":{"hw":12,"meanTmax":36.87,"maxTmax":45.16},"2016":{"hw":16,"meanTmax":38.77,"maxTmax":47.42},"2017":{"hw":10,"meanTmax":38.24,"maxTmax":45.75},"2018":{"hw":25,"meanTmax":39.29,"maxTmax":45.3},"2019":{"hw":12,"meanTmax":37.53,"maxTmax":45.81},"2020":{"hw":5,"meanTmax":36.13,"maxTmax":44.47},"2021":{"hw":0,"meanTmax":37.28,"maxTmax":41.85},"2022":{"hw":9,"meanTmax":38.75,"maxTmax":45.87},"2023":{"hw":1,"meanTmax":35.34,"maxTmax":43.62},"2024":{"hw":18,"meanTmax":37.8,"maxTmax":47.63},"2025":{"hw":6,"meanTmax":37.0,"maxTmax":44.63}}},{"name":"Nagaur","lat":27.25,"lon":73.75,"meanTmax":36.8,"maxTmax":46.61,"hw":99,"byYear":{"2006":{"hw":4,"meanTmax":36.61,"maxTmax":43.99},"2007":{"hw":1,"meanTmax":36.88,"maxTmax":43.2},"2008":{"hw":0,"meanTmax":36.3,"maxTmax":41.81},"2009":{"hw":6,"meanTmax":37.45,"maxTmax":43.73},"2010":{"hw":13,"meanTmax":39.18,"maxTmax":46.22},"2011":{"hw":4,"meanTmax":36.88,"maxTmax":45.79},"2012":{"hw":1,"meanTmax":36.46,"maxTmax":43.43},"2013":{"hw":1,"meanTmax":36.38,"maxTmax":43.34},"2014":{"hw":7,"meanTmax":35.8,"maxTmax":44.6},"2015":{"hw":0,"meanTmax":35.9,"maxTmax":42.63},"2016":{"hw":9,"meanTmax":37.42,"maxTmax":46.42},"2017":{"hw":5,"meanTmax":37.09,"maxTmax":43.89},"2018":{"hw":10,"meanTmax":38.01,"maxTmax":44.19},"2019":{"hw":11,"meanTmax":36.67,"maxTmax":45.52},"2020":{"hw":4,"meanTmax":35.89,"maxTmax":44.07},"2021":{"hw":0,"meanTmax":36.58,"maxTmax":42.29},"2022":{"hw":7,"meanTmax":38.39,"maxTmax":44.83},"2023":{"hw":1,"meanTmax":34.37,"maxTmax":43.46},"2024":{"hw":12,"meanTmax":36.63,"maxTmax":46.61},"2025":{"hw":3,"meanTmax":37.13,"maxTmax":44.15}}},{"name":"Sri Ganganagar","lat":30.0,"lon":74.0,"meanTmax":35.38,"maxTmax":46.0,"hw":70,"byYear":{"2006":{"hw":6,"meanTmax":35.85,"maxTmax":45.04},"2007":{"hw":2,"meanTmax":35.69,"maxTmax":44.22},"2008":{"hw":0,"meanTmax":35.08,"maxTmax":42.51},"2009":{"hw":2,"meanTmax":35.82,"maxTmax":43.58},"2010":{"hw":9,"meanTmax":37.58,"maxTmax":46.0},"2011":{"hw":2,"meanTmax":35.45,"maxTmax":43.52},"2012":{"hw":1,"meanTmax":34.95,"maxTmax":43.51},"2013":{"hw":4,"meanTmax":35.11,"maxTmax":44.39},"2014":{"hw":6,"meanTmax":34.56,"maxTmax":44.82},"2015":{"hw":4,"meanTmax":34.58,"maxTmax":43.79},"2016":{"hw":6,"meanTmax":36.36,"maxTmax":45.52},"2017":{"hw":3,"meanTmax":35.55,"maxTmax":44.49},"2018":{"hw":2,"meanTmax":36.05,"maxTmax":44.52},"2019":{"hw":9,"meanTmax":35.22,"maxTmax":45.01},"2020":{"hw":4,"meanTmax":34.01,"maxTmax":44.09},"2021":{"hw":0,"meanTmax":34.83,"maxTmax":41.71},"2022":{"hw":2,"meanTmax":37.08,"maxTmax":43.75},"2023":{"hw":0,"meanTmax":32.99,"maxTmax":40.97},"2024":{"hw":3,"meanTmax":34.87,"maxTmax":43.89},"2025":{"hw":5,"meanTmax":35.91,"maxTmax":44.22}}}],"heatmap":{"years":[2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],"dos":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121],"labels":{"0":"Mar 01","1":"Mar 02","2":"Mar 03","3":"Mar 04","4":"Mar 05","5":"Mar 06","6":"Mar 07","7":"Mar 08","8":"Mar 09","9":"Mar 10","10":"Mar 11","11":"Mar 12","12":"Mar 13","13":"Mar 14","14":"Mar 15","15":"Mar 16","16":"Mar 17","17":"Mar 18","18":"Mar 19","19":"Mar 20","20":"Mar 21","21":"Mar 22","22":"Mar 23","23":"Mar 24","24":"Mar 25","25":"Mar 26","26":"Mar 27","27":"Mar 28","28":"Mar 29","29":"Mar 30","30":"Mar 31","31":"Apr 01","32":"Apr 02","33":"Apr 03","34":"Apr 04","35":"Apr 05","36":"Apr 06","37":"Apr 07","38":"Apr 08","39":"Apr 09","40":"Apr 10","41":"Apr 11","42":"Apr 12","43":"Apr 13","44":"Apr 14","45":"Apr 15","46":"Apr 16","47":"Apr 17","48":"Apr 18","49":"Apr 19","50":"Apr 20","51":"Apr 21","52":"Apr 22","53":"Apr 23","54":"Apr 24","55":"Apr 25","56":"Apr 26","57":"Apr 27","58":"Apr 28","59":"Apr 29","60":"Apr 30","61":"May 01","62":"May 02","63":"May 03","64":"May 04","65":"May 05","66":"May 06","67":"May 07","68":"May 08","69":"May 09","70":"May 10","71":"May 11","72":"May 12","73":"May 13","74":"May 14","75":"May 15","76":"May 16","77":"May 17","78":"May 18","79":"May 19","80":"May 20","81":"May 21","82":"May 22","83":"May 23","84":"May 24","85":"May 25","86":"May 26","87":"May 27","88":"May 28","89":"May 29","90":"May 30","91":"May 31","92":"Jun 01","93":"Jun 02","94":"Jun 03","95":"Jun 04","96":"Jun 05","97":"Jun 06","98":"Jun 07","99":"Jun 08","100":"Jun 09","101":"Jun 10","102":"Jun 11","103":"Jun 12","104":"Jun 13","105":"Jun 14","106":"Jun 15","107":"Jun 16","108":"Jun 17","109":"Jun 18","110":"Jun 19","111":"Jun 20","112":"Jun 21","113":"Jun 22","114":"Jun 23","115":"Jun 24","116":"Jun 25","117":"Jun 26","118":"Jun 27","119":"Jun 28","120":"Jun 29","121":"Jun 30"},"cells":[[2006,0,29.2,0.0],[2006,1,30.5,0.0],[2006,2,31.5,0.0],[2006,3,32.0,0.0],[2006,4,31.3,0.0],[2006,5,31.1,0.0],[2006,6,31.4,0.0],[2006,7,31.9,0.0],[2006,8,27.2,0.0],[2006,9,22.5,0.0],[2006,10,24.0,0.0],[2006,11,27.3,0.0],[2006,12,29.0,0.0],[2006,13,25.8,0.0],[2006,14,26.6,0.0],[2006,15,27.8,0.0],[2006,16,28.5,0.0],[2006,17,29.8,0.0],[2006,18,32.3,0.0],[2006,19,33.1,0.0],[2006,20,30.8,0.0],[2006,21,32.3,0.0],[2006,22,33.6,0.0],[2006,23,32.6,0.0],[2006,24,32.1,0.0],[2006,25,29.9,0.0],[2006,26,30.9,0.0],[2006,27,30.8,0.0],[2006,28,31.2,0.0],[2006,29,33.7,0.0],[2006,30,35.6,0.0],[2006,31,35.6,0.0],[2006,32,36.5,0.0],[2006,33,36.4,0.0],[2006,34,36.5,0.0],[2006,35,38.0,0.0],[2006,36,39.3,0.0],[2006,37,39.8,0.0],[2006,38,39.7,0.0],[2006,39,38.9,0.0],[2006,40,35.2,0.0],[2006,41,35.4,0.0],[2006,42,34.2,0.0],[2006,43,35.1,0.0],[2006,44,37.1,0.0],[2006,45,37.0,0.0],[2006,46,36.3,0.0],[2006,47,32.9,0.0],[2006,48,34.9,0.0],[2006,49,36.3,0.0],[2006,50,37.6,0.0],[2006,51,37.0,0.0],[2006,52,38.8,0.0],[2006,53,38.9,0.0],[2006,54,39.5,0.0],[2006,55,40.3,0.0],[2006,56,39.8,0.0],[2006,57,40.0,0.0],[2006,58,40.3,0.0],[2006,59,41.1,0.0],[2006,60,40.2,0.0],[2006,61,40.7,0.0],[2006,62,40.3,0.0],[2006,63,40.7,0.0],[2006,64,42.4,0.333],[2006,65,43.9,0.889],[2006,66,43.5,0.667],[2006,67,42.7,0.444],[2006,68,41.8,0.111],[2006,69,40.5,0.111],[2006,70,42.6,0.222],[2006,71,42.9,0.333],[2006,72,42.4,0.444],[2006,73,42.9,0.444],[2006,74,41.5,0.0],[2006,75,41.1,0.0],[2006,76,41.0,0.0],[2006,77,39.3,0.0],[2006,78,39.9,0.0],[2006,79,39.8,0.0],[2006,80,37.9,0.0],[2006,81,38.4,0.0],[2006,82,37.9,0.0],[2006,83,38.0,0.0],[2006,84,39.4,0.0],[2006,85,40.2,0.0],[2006,86,41.5,0.111],[2006,87,42.0,0.333],[2006,88,43.5,0.556],[2006,89,42.7,0.556],[2006,90,42.2,0.222],[2006,91,42.1,0.111],[2006,92,40.1,0.0],[2006,93,33.2,0.0],[2006,94,35.5,0.0],[2006,95,37.3,0.0],[2006,96,36.7,0.0],[2006,97,38.1,0.0],[2006,98,38.2,0.0],[2006,99,38.9,0.0],[2006,100,40.2,0.0],[2006,101,40.8,0.0],[2006,102,39.7,0.0],[2006,103,38.6,0.0],[2006,104,37.3,0.0],[2006,105,37.6,0.0],[2006,106,38.3,0.0],[2006,107,38.1,0.0],[2006,108,36.6,0.0],[2006,109,38.5,0.0],[2006,110,37.6,0.0],[2006,111,37.7,0.0],[2006,112,39.4,0.0],[2006,113,40.9,0.0],[2006,114,41.9,0.333],[2006,115,41.8,0.111],[2006,116,38.9,0.0],[2006,117,36.2,0.0],[2006,118,36.4,0.0],[2006,119,35.4,0.0],[2006,120,36.4,0.0],[2006,121,34.7,0.0],[2007,0,22.2,0.0],[2007,1,23.1,0.0],[2007,2,25.4,0.0],[2007,3,27.2,0.0],[2007,4,27.4,0.0],[2007,5,27.0,0.0],[2007,6,28.1,0.0],[2007,7,29.9,0.0],[2007,8,30.1,0.0],[2007,9,28.2,0.0],[2007,10,27.7,0.0],[2007,11,23.7,0.0],[2007,12,24.3,0.0],[2007,13,24.3,0.0],[2007,14,25.9,0.0],[2007,15,28.5,0.0],[2007,16,31.4,0.0],[2007,17,33.9,0.0],[2007,18,31.9,0.0],[2007,19,32.0,0.0],[2007,20,30.5,0.0],[2007,21,30.5,0.0],[2007,22,30.3,0.0],[2007,23,31.8,0.0],[2007,24,32.8,0.0],[2007,25,34.1,0.0],[2007,26,35.4,0.0],[2007,27,36.6,0.0],[2007,28,37.6,0.0],[2007,29,38.1,0.0],[2007,30,37.9,0.0],[2007,31,36.4,0.0],[2007,32,33.9,0.0],[2007,33,34.4,0.0],[2007,34,36.3,0.0],[2007,35,37.8,0.0],[2007,36,38.6,0.0],[2007,37,37.4,0.0],[2007,38,37.1,0.0],[2007,39,36.2,0.0],[2007,40,38.7,0.0],[2007,41,39.0,0.0],[2007,42,38.8,0.0],[2007,43,39.0,0.0],[2007,44,39.8,0.0],[2007,45,40.9,0.0],[2007,46,41.4,0.0],[2007,47,41.3,0.0],[2007,48,41.0,0.0],[2007,49,39.9,0.0],[2007,50,39.2,0.0],[2007,51,39.1,0.0],[2007,52,40.4,0.0],[2007,53,39.1,0.0],[2007,54,39.7,0.0],[2007,55,40.8,0.0],[2007,56,41.2,0.0],[2007,57,41.6,0.0],[2007,58,41.2,0.0],[2007,59,41.5,0.0],[2007,60,42.3,0.111],[2007,61,42.6,0.444],[2007,62,42.1,0.0],[2007,63,41.8,0.0],[2007,64,41.2,0.0],[2007,65,41.6,0.0],[2007,66,42.4,0.333],[2007,67,42.5,0.222],[2007,68,41.6,0.0],[2007,69,41.7,0.0],[2007,70,42.3,0.222],[2007,71,41.2,0.111],[2007,72,40.8,0.0],[2007,73,39.9,0.0],[2007,74,40.5,0.0],[2007,75,40.0,0.0],[2007,76,39.5,0.0],[2007,77,39.7,0.0],[2007,78,40.9,0.0],[2007,79,39.8,0.0],[2007,80,39.3,0.0],[2007,81,38.3,0.0],[2007,82,39.0,0.0],[2007,83,39.8,0.0],[2007,84,40.5,0.0],[2007,85,40.0,0.0],[2007,86,39.0,0.0],[2007,87,38.8,0.0],[2007,88,39.1,0.0],[2007,89,37.5,0.0],[2007,90,38.5,0.0],[2007,91,40.0,0.0],[2007,92,41.9,0.0],[2007,93,42.6,0.222],[2007,94,41.3,0.0],[2007,95,37.2,0.0],[2007,96,38.6,0.0],[2007,97,40.0,0.0],[2007,98,40.9,0.0],[2007,99,41.5,0.0],[2007,100,42.1,0.333],[2007,101,41.6,0.222],[2007,102,40.8,0.0],[2007,103,40.0,0.0],[2007,104,40.3,0.0],[2007,105,41.0,0.0],[2007,106,38.5,0.0],[2007,107,38.3,0.0],[2007,108,38.3,0.0],[2007,109,37.1,0.0],[2007,110,36.7,0.0],[2007,111,33.8,0.0],[2007,112,36.3,0.0],[2007,113,37.7,0.0],[2007,114,38.6,0.0],[2007,115,38.9,0.0],[2007,116,35.2,0.0],[2007,117,33.4,0.0],[2007,118,34.8,0.0],[2007,119,32.3,0.0],[2007,120,33.3,0.0],[2007,121,34.9,0.0],[2008,0,33.0,0.0],[2008,1,32.7,0.0],[2008,2,32.7,0.0],[2008,3,33.9,0.0],[2008,4,33.8,0.0],[2008,5,33.6,0.0],[2008,6,32.3,0.0],[2008,7,31.4,0.0],[2008,8,31.5,0.0],[2008,9,32.6,0.0],[2008,10,32.2,0.0],[2008,11,29.4,0.0],[2008,12,29.3,0.0],[2008,13,31.9,0.0],[2008,14,33.6,0.0],[2008,15,35.6,0.0],[2008,16,36.3,0.0],[2008,17,36.4,0.0],[2008,18,35.2,0.0],[2008,19,34.6,0.0],[2008,20,34.9,0.0],[2008,21,35.1,0.0],[2008,22,34.7,0.0],[2008,23,34.6,0.0],[2008,24,35.2,0.0],[2008,25,35.8,0.0],[2008,26,36.6,0.0],[2008,27,37.0,0.0],[2008,28,36.8,0.0],[2008,29,36.6,0.0],[2008,30,35.5,0.0],[2008,31,33.7,0.0],[2008,32,33.3,0.0],[2008,33,29.4,0.0],[2008,34,26.7,0.0],[2008,35,28.4,0.0],[2008,36,29.9,0.0],[2008,37,31.6,0.0],[2008,38,34.6,0.0],[2008,39,36.6,0.0],[2008,40,36.9,0.0],[2008,41,38.1,0.0],[2008,42,37.4,0.0],[2008,43,37.9,0.0],[2008,44,37.7,0.0],[2008,45,36.2,0.0],[2008,46,35.3,0.0],[2008,47,34.3,0.0],[2008,48,35.9,0.0],[2008,49,38.0,0.0],[2008,50,38.3,0.0],[2008,51,38.8,0.0],[2008,52,39.3,0.0],[2008,53,39.0,0.0],[2008,54,39.8,0.0],[2008,55,40.6,0.0],[2008,56,41.2,0.0],[2008,57,40.9,0.0],[2008,58,41.4,0.0],[2008,59,41.1,0.0],[2008,60,40.6,0.0],[2008,61,40.7,0.0],[2008,62,40.7,0.0],[2008,63,41.9,0.111],[2008,64,40.6,0.0],[2008,65,39.7,0.0],[2008,66,39.1,0.0],[2008,67,37.8,0.0],[2008,68,37.8,0.0],[2008,69,36.7,0.0],[2008,70,37.5,0.0],[2008,71,38.6,0.0],[2008,72,39.2,0.0],[2008,73,38.6,0.0],[2008,74,38.4,0.0],[2008,75,39.0,0.0],[2008,76,39.0,0.0],[2008,77,40.7,0.0],[2008,78,39.3,0.0],[2008,79,37.7,0.0],[2008,80,37.6,0.0],[2008,81,36.5,0.0],[2008,82,36.5,0.0],[2008,83,35.1,0.0],[2008,84,36.5,0.0],[2008,85,38.2,0.0],[2008,86,38.0,0.0],[2008,87,39.5,0.0],[2008,88,39.4,0.0],[2008,89,39.1,0.0],[2008,90,38.9,0.0],[2008,91,39.2,0.0],[2008,92,37.2,0.0],[2008,93,37.6,0.0],[2008,94,36.5,0.0],[2008,95,38.1,0.0],[2008,96,38.7,0.0],[2008,97,38.2,0.0],[2008,98,38.6,0.0],[2008,99,37.7,0.0],[2008,100,38.4,0.0],[2008,101,37.3,0.0],[2008,102,35.3,0.0],[2008,103,34.4,0.0],[2008,104,31.0,0.0],[2008,105,33.5,0.0],[2008,106,34.5,0.0],[2008,107,33.1,0.0],[2008,108,34.2,0.0],[2008,109,35.4,0.0],[2008,110,34.3,0.0],[2008,111,35.2,0.0],[2008,112,35.5,0.0],[2008,113,35.8,0.0],[2008,114,36.4,0.0],[2008,115,37.0,0.0],[2008,116,36.5,0.0],[2008,117,37.3,0.0],[2008,118,37.1,0.0],[2008,119,35.5,0.0],[2008,120,36.3,0.0],[2008,121,36.6,0.0],[2009,0,33.6,0.0],[2009,1,33.9,0.0],[2009,2,35.4,0.0],[2009,3,32.5,0.0],[2009,4,31.5,0.0],[2009,5,32.2,0.0],[2009,6,29.9,0.0],[2009,7,29.9,0.0],[2009,8,31.3,0.0],[2009,9,32.0,0.0],[2009,10,31.1,0.0],[2009,11,31.9,0.0],[2009,12,33.6,0.0],[2009,13,33.9,0.0],[2009,14,33.6,0.0],[2009,15,34.1,0.0],[2009,16,33.9,0.0],[2009,17,34.0,0.0],[2009,18,34.5,0.0],[2009,19,33.7,0.0],[2009,20,32.6,0.0],[2009,21,31.7,0.0],[2009,22,32.0,0.0],[2009,23,34.5,0.0],[2009,24,30.8,0.0],[2009,25,32.4,0.0],[2009,26,30.4,0.0],[2009,27,32.4,0.0],[2009,28,31.3,0.0],[2009,29,31.7,0.0],[2009,30,33.5,0.0],[2009,31,35.7,0.0],[2009,32,36.5,0.0],[2009,33,35.4,0.0],[2009,34,35.0,0.0],[2009,35,34.7,0.0],[2009,36,34.6,0.0],[2009,37,34.3,0.0],[2009,38,30.3,0.0],[2009,39,30.5,0.0],[2009,40,31.6,0.0],[2009,41,34.8,0.0],[2009,42,37.1,0.0],[2009,43,38.2,0.0],[2009,44,39.1,0.0],[2009,45,37.2,0.0],[2009,46,36.3,0.0],[2009,47,36.4,0.0],[2009,48,38.5,0.0],[2009,49,41.2,0.0],[2009,50,41.5,0.111],[2009,51,38.3,0.0],[2009,52,37.3,0.0],[2009,53,37.5,0.0],[2009,54,37.3,0.0],[2009,55,37.9,0.0],[2009,56,39.2,0.0],[2009,57,41.6,0.0],[2009,58,43.3,0.778],[2009,59,43.5,0.778],[2009,60,42.3,0.111],[2009,61,41.8,0.111],[2009,62,42.0,0.0],[2009,63,41.4,0.0],[2009,64,38.8,0.0],[2009,65,37.3,0.0],[2009,66,37.8,0.0],[2009,67,39.1,0.0],[2009,68,41.0,0.0],[2009,69,40.8,0.0],[2009,70,40.5,0.111],[2009,71,39.6,0.0],[2009,72,40.0,0.0],[2009,73,42.1,0.222],[2009,74,43.4,0.556],[2009,75,42.8,0.444],[2009,76,42.5,0.333],[2009,77,43.1,0.556],[2009,78,43.1,0.444],[2009,79,42.8,0.444],[2009,80,42.5,0.222],[2009,81,42.8,0.333],[2009,82,43.3,0.444],[2009,83,42.2,0.222],[2009,84,41.8,0.222],[2009,85,41.2,0.0],[2009,86,40.6,0.111],[2009,87,41.5,0.111],[2009,88,41.3,0.0],[2009,89,40.5,0.0],[2009,90,37.9,0.0],[2009,91,38.3,0.0],[2009,92,36.5,0.0],[2009,93,38.0,0.0],[2009,94,39.1,0.0],[2009,95,40.2,0.0],[2009,96,39.6,0.0],[2009,97,40.0,0.0],[2009,98,40.3,0.0],[2009,99,40.8,0.0],[2009,100,41.0,0.0],[2009,101,41.3,0.0],[2009,102,40.5,0.0],[2009,103,40.5,0.0],[2009,104,40.3,0.0],[2009,105,39.6,0.0],[2009,106,37.0,0.0],[2009,107,35.7,0.0],[2009,108,36.7,0.0],[2009,109,38.7,0.0],[2009,110,40.2,0.0],[2009,111,41.2,0.0],[2009,112,41.3,0.0],[2009,113,40.7,0.0],[2009,114,39.4,0.0],[2009,115,39.9,0.0],[2009,116,39.1,0.0],[2009,117,39.1,0.0],[2009,118,40.1,0.0],[2009,119,39.6,0.0],[2009,120,38.0,0.0],[2009,121,38.1,0.0],[2010,0,33.2,0.0],[2010,1,32.8,0.0],[2010,2,32.1,0.0],[2010,3,30.4,0.0],[2010,4,30.3,0.0],[2010,5,29.9,0.0],[2010,6,28.8,0.0],[2010,7,29.2,0.0],[2010,8,30.4,0.0],[2010,9,31.8,0.0],[2010,10,33.0,0.0],[2010,11,34.4,0.0],[2010,12,35.7,0.0],[2010,13,36.0,0.0],[2010,14,36.0,0.0],[2010,15,36.7,0.0],[2010,16,36.7,0.0],[2010,17,36.5,0.0],[2010,18,36.7,0.0],[2010,19,38.8,0.0],[2010,20,39.5,0.0],[2010,21,38.4,0.0],[2010,22,37.9,0.0],[2010,23,37.4,0.0],[2010,24,37.4,0.0],[2010,25,37.2,0.0],[2010,26,37.5,0.0],[2010,27,38.1,0.0],[2010,28,38.4,0.0],[2010,29,37.8,0.0],[2010,30,37.4,0.0],[2010,31,37.5,0.0],[2010,32,36.9,0.0],[2010,33,36.7,0.0],[2010,34,37.9,0.0],[2010,35,38.4,0.0],[2010,36,38.0,0.0],[2010,37,39.1,0.0],[2010,38,40.0,0.0],[2010,39,40.0,0.0],[2010,40,40.1,0.0],[2010,41,39.8,0.0],[2010,42,40.0,0.0],[2010,43,40.8,0.0],[2010,44,41.7,0.0],[2010,45,42.7,0.222],[2010,46,43.3,0.444],[2010,47,43.1,0.333],[2010,48,43.0,0.333],[2010,49,41.5,0.0],[2010,50,40.7,0.0],[2010,51,38.8,0.0],[2010,52,38.8,0.0],[2010,53,39.1,0.0],[2010,54,39.5,0.0],[2010,55,40.6,0.0],[2010,56,40.8,0.0],[2010,57,41.2,0.0],[2010,58,41.4,0.111],[2010,59,41.1,0.0],[2010,60,39.9,0.0],[2010,61,39.7,0.0],[2010,62,40.6,0.0],[2010,63,42.6,0.444],[2010,64,43.3,0.444],[2010,65,41.3,0.111],[2010,66,39.2,0.0],[2010,67,39.5,0.0],[2010,68,39.0,0.0],[2010,69,39.9,0.0],[2010,70,40.6,0.0],[2010,71,41.7,0.0],[2010,72,42.9,0.444],[2010,73,43.7,0.778],[2010,74,42.5,0.333],[2010,75,42.7,0.333],[2010,76,43.2,0.556],[2010,77,43.2,0.556],[2010,78,41.9,0.111],[2010,79,42.4,0.222],[2010,80,43.4,0.556],[2010,81,44.0,0.667],[2010,82,45.6,1.0],[2010,83,45.5,1.0],[2010,84,45.3,1.0],[2010,85,44.4,0.889],[2010,86,43.8,0.667],[2010,87,43.4,0.556],[2010,88,43.0,0.444],[2010,89,41.4,0.111],[2010,90,41.5,0.0],[2010,91,41.9,0.111],[2010,92,41.3,0.0],[2010,93,40.6,0.0],[2010,94,39.2,0.0],[2010,95,39.4,0.0],[2010,96,38.5,0.0],[2010,97,36.4,0.0],[2010,98,28.0,0.0],[2010,99,32.0,0.0],[2010,100,34.7,0.0],[2010,101,37.3,0.0],[2010,102,39.8,0.0],[2010,103,41.5,0.222],[2010,104,42.3,0.222],[2010,105,40.8,0.111],[2010,106,37.1,0.0],[2010,107,37.5,0.0],[2010,108,40.1,0.0],[2010,109,42.0,0.111],[2010,110,43.5,0.667],[2010,111,45.0,1.0],[2010,112,43.7,0.778],[2010,113,41.7,0.111],[2010,114,39.9,0.0],[2010,115,38.8,0.0],[2010,116,38.0,0.0],[2010,117,40.6,0.0],[2010,118,42.1,0.111],[2010,119,41.4,0.0],[2010,120,39.9,0.0],[2010,121,38.3,0.0],[2011,0,24.7,0.0],[2011,1,26.8,0.0],[2011,2,24.9,0.0],[2011,3,26.2,0.0],[2011,4,26.9,0.0],[2011,5,28.3,0.0],[2011,6,29.9,0.0],[2011,7,29.2,0.0],[2011,8,27.7,0.0],[2011,9,28.2,0.0],[2011,10,28.8,0.0],[2011,11,30.9,0.0],[2011,12,33.1,0.0],[2011,13,34.3,0.0],[2011,14,34.7,0.0],[2011,15,35.5,0.0],[2011,16,37.8,0.0],[2011,17,37.2,0.0],[2011,18,35.2,0.0],[2011,19,33.4,0.0],[2011,20,33.0,0.0],[2011,21,33.9,0.0],[2011,22,33.6,0.0],[2011,23,33.5,0.0],[2011,24,34.4,0.0],[2011,25,36.3,0.0],[2011,26,37.5,0.0],[2011,27,37.2,0.0],[2011,28,35.4,0.0],[2011,29,34.4,0.0],[2011,30,33.8,0.0],[2011,31,34.5,0.0],[2011,32,33.8,0.0],[2011,33,32.1,0.0],[2011,34,32.9,0.0],[2011,35,34.1,0.0],[2011,36,34.5,0.0],[2011,37,34.5,0.0],[2011,38,34.2,0.0],[2011,39,35.3,0.0],[2011,40,36.9,0.0],[2011,41,34.2,0.0],[2011,42,33.0,0.0],[2011,43,34.0,0.0],[2011,44,35.4,0.0],[2011,45,36.5,0.0],[2011,46,37.2,0.0],[2011,47,33.9,0.0],[2011,48,34.1,0.0],[2011,49,34.8,0.0],[2011,50,35.3,0.0],[2011,51,36.2,0.0],[2011,52,37.3,0.0],[2011,53,38.3,0.0],[2011,54,39.7,0.0],[2011,55,40.6,0.0],[2011,56,41.2,0.0],[2011,57,40.8,0.0],[2011,58,40.5,0.0],[2011,59,39.3,0.0],[2011,60,39.4,0.0],[2011,61,39.3,0.0],[2011,62,39.8,0.0],[2011,63,39.8,0.0],[2011,64,38.7,0.0],[2011,65,38.4,0.0],[2011,66,37.2,0.0],[2011,67,38.6,0.0],[2011,68,40.9,0.0],[2011,69,41.7,0.0],[2011,70,40.7,0.0],[2011,71,40.7,0.0],[2011,72,41.0,0.0],[2011,73,40.5,0.0],[2011,74,41.1,0.0],[2011,75,41.8,0.0],[2011,76,42.1,0.222],[2011,77,42.1,0.333],[2011,78,42.4,0.444],[2011,79,42.3,0.444],[2011,80,40.9,0.0],[2011,81,39.0,0.0],[2011,82,37.7,0.0],[2011,83,39.1,0.0],[2011,84,40.0,0.0],[2011,85,39.5,0.0],[2011,86,39.3,0.0],[2011,87,39.5,0.0],[2011,88,40.0,0.0],[2011,89,41.2,0.0],[2011,90,41.3,0.0],[2011,91,40.6,0.0],[2011,92,38.1,0.0],[2011,93,37.2,0.0],[2011,94,39.5,0.0],[2011,95,41.2,0.0],[2011,96,43.3,0.778],[2011,97,44.3,0.778],[2011,98,45.2,0.889],[2011,99,43.4,0.556],[2011,100,41.2,0.0],[2011,101,40.0,0.0],[2011,102,40.7,0.0],[2011,103,39.8,0.0],[2011,104,40.3,0.0],[2011,105,41.1,0.0],[2011,106,38.8,0.0],[2011,107,38.2,0.0],[2011,108,38.4,0.0],[2011,109,37.7,0.0],[2011,110,38.4,0.0],[2011,111,37.1,0.0],[2011,112,37.5,0.0],[2011,113,37.9,0.0],[2011,114,35.9,0.0],[2011,115,37.4,0.0],[2011,116,37.5,0.0],[2011,117,35.4,0.0],[2011,118,34.2,0.0],[2011,119,35.8,0.0],[2011,120,34.5,0.0],[2011,121,35.3,0.0],[2012,0,28.4,0.0],[2012,1,28.6,0.0],[2012,2,30.1,0.0],[2012,3,33.2,0.0],[2012,4,30.6,0.0],[2012,5,28.9,0.0],[2012,6,28.3,0.0],[2012,7,25.5,0.0],[2012,8,25.0,0.0],[2012,9,26.8,0.0],[2012,10,28.2,0.0],[2012,11,29.3,0.0],[2012,12,26.2,0.0],[2012,13,28.0,0.0],[2012,14,30.4,0.0],[2012,15,33.1,0.0],[2012,16,33.6,0.0],[2012,17,35.3,0.0],[2012,18,36.6,0.0],[2012,19,30.4,0.0],[2012,20,28.0,0.0],[2012,21,29.3,0.0],[2012,22,32.0,0.0],[2012,23,33.7,0.0],[2012,24,35.2,0.0],[2012,25,35.2,0.0],[2012,26,34.7,0.0],[2012,27,34.7,0.0],[2012,28,34.5,0.0],[2012,29,36.5,0.0],[2012,30,38.4,0.0],[2012,31,38.8,0.0],[2012,32,38.1,0.0],[2012,33,38.0,0.0],[2012,34,37.3,0.0],[2012,35,37.2,0.0],[2012,36,38.4,0.0],[2012,37,37.9,0.0],[2012,38,38.0,0.0],[2012,39,38.3,0.0],[2012,40,38.4,0.0],[2012,41,37.0,0.0],[2012,42,36.0,0.0],[2012,43,35.2,0.0],[2012,44,30.3,0.0],[2012,45,32.0,0.0],[2012,46,35.8,0.0],[2012,47,35.1,0.0],[2012,48,34.7,0.0],[2012,49,35.3,0.0],[2012,50,32.5,0.0],[2012,51,33.6,0.0],[2012,52,34.3,0.0],[2012,53,34.7,0.0],[2012,54,34.1,0.0],[2012,55,34.7,0.0],[2012,56,34.6,0.0],[2012,57,34.3,0.0],[2012,58,36.8,0.0],[2012,59,37.5,0.0],[2012,60,37.1,0.0],[2012,61,36.9,0.0],[2012,62,37.4,0.0],[2012,63,38.5,0.0],[2012,64,38.6,0.0],[2012,65,39.6,0.0],[2012,66,39.7,0.0],[2012,67,39.3,0.0],[2012,68,38.4,0.0],[2012,69,39.6,0.0],[2012,70,40.2,0.0],[2012,71,39.1,0.0],[2012,72,37.8,0.0],[2012,73,37.0,0.0],[2012,74,37.7,0.0],[2012,75,40.3,0.0],[2012,76,40.8,0.0],[2012,77,39.0,0.0],[2012,78,39.1,0.0],[2012,79,39.8,0.0],[2012,80,40.8,0.0],[2012,81,40.3,0.0],[2012,82,40.7,0.0],[2012,83,41.3,0.0],[2012,84,42.0,0.222],[2012,85,41.7,0.111],[2012,86,40.2,0.0],[2012,87,41.0,0.0],[2012,88,42.0,0.0],[2012,89,42.6,0.333],[2012,90,43.2,0.556],[2012,91,42.9,0.444],[2012,92,41.1,0.111],[2012,93,40.2,0.0],[2012,94,39.5,0.0],[2012,95,39.4,0.0],[2012,96,39.1,0.0],[2012,97,37.8,0.0],[2012,98,36.8,0.0],[2012,99,38.0,0.0],[2012,100,39.1,0.0],[2012,101,39.2,0.0],[2012,102,38.4,0.0],[2012,103,39.0,0.0],[2012,104,39.4,0.0],[2012,105,39.9,0.0],[2012,106,40.1,0.0],[2012,107,39.9,0.0],[2012,108,39.6,0.0],[2012,109,39.5,0.0],[2012,110,39.8,0.0],[2012,111,39.7,0.0],[2012,112,39.3,0.0],[2012,113,39.4,0.0],[2012,114,38.9,0.0],[2012,115,38.9,0.0],[2012,116,38.7,0.0],[2012,117,37.8,0.0],[2012,118,37.6,0.0],[2012,119,38.1,0.0],[2012,120,39.0,0.0],[2012,121,40.2,0.0],[2013,0,25.0,0.0],[2013,1,27.8,0.0],[2013,2,29.7,0.0],[2013,3,31.2,0.0],[2013,4,32.0,0.0],[2013,5,31.7,0.0],[2013,6,32.1,0.0],[2013,7,33.6,0.0],[2013,8,34.1,0.0],[2013,9,31.9,0.0],[2013,10,31.3,0.0],[2013,11,32.5,0.0],[2013,12,32.2,0.0],[2013,13,29.6,0.0],[2013,14,30.0,0.0],[2013,15,29.5,0.0],[2013,16,31.1,0.0],[2013,17,32.3,0.0],[2013,18,33.9,0.0],[2013,19,34.3,0.0],[2013,20,33.7,0.0],[2013,21,33.0,0.0],[2013,22,33.2,0.0],[2013,23,31.1,0.0],[2013,24,30.2,0.0],[2013,25,30.3,0.0],[2013,26,31.9,0.0],[2013,27,31.0,0.0],[2013,28,28.9,0.0],[2013,29,30.5,0.0],[2013,30,33.0,0.0],[2013,31,34.9,0.0],[2013,32,34.5,0.0],[2013,33,32.0,0.0],[2013,34,33.3,0.0],[2013,35,34.8,0.0],[2013,36,36.2,0.0],[2013,37,36.3,0.0],[2013,38,35.2,0.0],[2013,39,34.5,0.0],[2013,40,33.6,0.0],[2013,41,34.0,0.0],[2013,42,35.2,0.0],[2013,43,36.2,0.0],[2013,44,36.8,0.0],[2013,45,37.8,0.0],[2013,46,38.7,0.0],[2013,47,37.2,0.0],[2013,48,37.3,0.0],[2013,49,37.1,0.0],[2013,50,36.5,0.0],[2013,51,33.7,0.0],[2013,52,34.0,0.0],[2013,53,34.8,0.0],[2013,54,36.5,0.0],[2013,55,36.9,0.0],[2013,56,36.8,0.0],[2013,57,37.0,0.0],[2013,58,36.3,0.0],[2013,59,36.9,0.0],[2013,60,38.4,0.0],[2013,61,38.3,0.0],[2013,62,37.8,0.0],[2013,63,39.4,0.0],[2013,64,41.3,0.0],[2013,65,40.7,0.0],[2013,66,40.6,0.0],[2013,67,41.0,0.0],[2013,68,40.6,0.0],[2013,69,40.0,0.0],[2013,70,39.0,0.0],[2013,71,36.6,0.0],[2013,72,37.3,0.0],[2013,73,37.9,0.0],[2013,74,39.9,0.0],[2013,75,41.3,0.0],[2013,76,41.9,0.222],[2013,77,42.9,0.333],[2013,78,43.5,0.556],[2013,79,43.1,0.444],[2013,80,43.1,0.444],[2013,81,43.3,0.667],[2013,82,42.3,0.444],[2013,83,42.6,0.444],[2013,84,41.9,0.333],[2013,85,40.5,0.0],[2013,86,39.7,0.0],[2013,87,40.1,0.0],[2013,88,40.3,0.0],[2013,89,40.9,0.0],[2013,90,40.7,0.0],[2013,91,41.6,0.0],[2013,92,41.3,0.0],[2013,93,40.6,0.0],[2013,94,41.3,0.0],[2013,95,42.0,0.0],[2013,96,42.5,0.333],[2013,97,42.5,0.222],[2013,98,41.0,0.0],[2013,99,40.8,0.0],[2013,100,40.1,0.0],[2013,101,38.8,0.0],[2013,102,35.0,0.0],[2013,103,32.4,0.0],[2013,104,33.5,0.0],[2013,105,34.5,0.0],[2013,106,35.1,0.0],[2013,107,33.7,0.0],[2013,108,34.1,0.0],[2013,109,34.2,0.0],[2013,110,36.6,0.0],[2013,111,38.4,0.0],[2013,112,38.9,0.0],[2013,113,38.4,0.0],[2013,114,38.2,0.0],[2013,115,38.7,0.0],[2013,116,38.5,0.0],[2013,117,38.3,0.0],[2013,118,37.7,0.0],[2013,119,37.1,0.0],[2013,120,36.6,0.0],[2013,121,36.9,0.0],[2014,0,22.2,0.0],[2014,1,24.1,0.0],[2014,2,24.9,0.0],[2014,3,25.9,0.0],[2014,4,26.2,0.0],[2014,5,26.4,0.0],[2014,6,27.4,0.0],[2014,7,28.6,0.0],[2014,8,29.4,0.0],[2014,9,30.9,0.0],[2014,10,28.2,0.0],[2014,11,25.9,0.0],[2014,12,26.2,0.0],[2014,13,28.4,0.0],[2014,14,31.4,0.0],[2014,15,33.3,0.0],[2014,16,34.0,0.0],[2014,17,31.1,0.0],[2014,18,30.1,0.0],[2014,19,32.0,0.0],[2014,20,32.5,0.0],[2014,21,32.2,0.0],[2014,22,32.4,0.0],[2014,23,31.0,0.0],[2014,24,30.3,0.0],[2014,25,30.5,0.0],[2014,26,30.8,0.0],[2014,27,30.9,0.0],[2014,28,31.6,0.0],[2014,29,31.5,0.0],[2014,30,32.5,0.0],[2014,31,34.1,0.0],[2014,32,34.5,0.0],[2014,33,33.3,0.0],[2014,34,35.1,0.0],[2014,35,36.7,0.0],[2014,36,36.9,0.0],[2014,37,33.2,0.0],[2014,38,32.6,0.0],[2014,39,34.1,0.0],[2014,40,35.3,0.0],[2014,41,36.7,0.0],[2014,42,37.9,0.0],[2014,43,36.8,0.0],[2014,44,36.5,0.0],[2014,45,37.3,0.0],[2014,46,37.1,0.0],[2014,47,36.7,0.0],[2014,48,32.3,0.0],[2014,49,31.7,0.0],[2014,50,34.3,0.0],[2014,51,34.8,0.0],[2014,52,34.2,0.0],[2014,53,35.3,0.0],[2014,54,37.4,0.0],[2014,55,38.7,0.0],[2014,56,38.5,0.0],[2014,57,39.3,0.0],[2014,58,40.3,0.0],[2014,59,41.4,0.0],[2014,60,41.7,0.0],[2014,61,41.2,0.0],[2014,62,40.9,0.0],[2014,63,38.9,0.0],[2014,64,37.3,0.0],[2014,65,37.2,0.0],[2014,66,38.1,0.0],[2014,67,38.9,0.0],[2014,68,40.1,0.0],[2014,69,38.8,0.0],[2014,70,37.4,0.0],[2014,71,36.1,0.0],[2014,72,35.0,0.0],[2014,73,34.2,0.0],[2014,74,34.2,0.0],[2014,75,34.3,0.0],[2014,76,35.3,0.0],[2014,77,35.8,0.0],[2014,78,36.2,0.0],[2014,79,37.6,0.0],[2014,80,38.1,0.0],[2014,81,39.3,0.0],[2014,82,41.7,0.0],[2014,83,42.0,0.111],[2014,84,40.4,0.0],[2014,85,39.4,0.0],[2014,86,40.5,0.0],[2014,87,41.1,0.0],[2014,88,43.5,0.778],[2014,89,43.5,0.556],[2014,90,41.6,0.111],[2014,91,40.9,0.0],[2014,92,40.1,0.0],[2014,93,41.8,0.111],[2014,94,42.7,0.444],[2014,95,44.1,0.778],[2014,96,44.5,1.0],[2014,97,44.4,1.0],[2014,98,44.6,1.0],[2014,99,43.2,0.556],[2014,100,43.3,0.556],[2014,101,42.5,0.444],[2014,102,41.4,0.0],[2014,103,39.2,0.0],[2014,104,37.6,0.0],[2014,105,37.8,0.0],[2014,106,38.4,0.0],[2014,107,39.6,0.0],[2014,108,39.8,0.0],[2014,109,38.7,0.0],[2014,110,38.8,0.0],[2014,111,39.8,0.0],[2014,112,39.0,0.0],[2014,113,38.3,0.0],[2014,114,37.3,0.0],[2014,115,38.1,0.0],[2014,116,38.0,0.0],[2014,117,37.1,0.0],[2014,118,38.1,0.0],[2014,119,38.7,0.0],[2014,120,38.0,0.0],[2014,121,37.3,0.0],[2015,0,21.2,0.0],[2015,1,19.9,0.0],[2015,2,21.8,0.0],[2015,3,23.8,0.0],[2015,4,25.3,0.0],[2015,5,25.4,0.0],[2015,6,26.0,0.0],[2015,7,25.9,0.0],[2015,8,24.1,0.0],[2015,9,23.7,0.0],[2015,10,27.3,0.0],[2015,11,29.5,0.0],[2015,12,29.6,0.0],[2015,13,26.5,0.0],[2015,14,24.3,0.0],[2015,15,24.8,0.0],[2015,16,25.9,0.0],[2015,17,27.0,0.0],[2015,18,30.1,0.0],[2015,19,32.0,0.0],[2015,20,33.2,0.0],[2015,21,33.8,0.0],[2015,22,35.3,0.0],[2015,23,37.3,0.0],[2015,24,36.8,0.0],[2015,25,36.2,0.0],[2015,26,36.1,0.0],[2015,27,37.4,0.0],[2015,28,34.3,0.0],[2015,29,32.3,0.0],[2015,30,32.6,0.0],[2015,31,35.4,0.0],[2015,32,35.0,0.0],[2015,33,32.2,0.0],[2015,34,28.4,0.0],[2015,35,30.4,0.0],[2015,36,31.8,0.0],[2015,37,30.1,0.0],[2015,38,32.2,0.0],[2015,39,33.3,0.0],[2015,40,35.4,0.0],[2015,41,35.7,0.0],[2015,42,29.8,0.0],[2015,43,31.8,0.0],[2015,44,32.2,0.0],[2015,45,33.7,0.0],[2015,46,35.4,0.0],[2015,47,38.5,0.0],[2015,48,40.4,0.0],[2015,49,41.8,0.222],[2015,50,40.1,0.0],[2015,51,39.0,0.0],[2015,52,39.1,0.0],[2015,53,39.6,0.0],[2015,54,40.5,0.0],[2015,55,41.1,0.0],[2015,56,40.6,0.0],[2015,57,41.4,0.0],[2015,58,40.3,0.0],[2015,59,40.3,0.0],[2015,60,40.9,0.0],[2015,61,38.5,0.0],[2015,62,38.8,0.0],[2015,63,40.3,0.0],[2015,64,40.9,0.0],[2015,65,41.7,0.0],[2015,66,42.0,0.111],[2015,67,41.4,0.111],[2015,68,40.7,0.0],[2015,69,40.3,0.0],[2015,70,39.4,0.0],[2015,71,39.0,0.0],[2015,72,35.9,0.0],[2015,73,36.6,0.0],[2015,74,36.8,0.0],[2015,75,39.4,0.0],[2015,76,41.3,0.222],[2015,77,42.4,0.222],[2015,78,43.0,0.333],[2015,79,42.1,0.111],[2015,80,41.0,0.0],[2015,81,42.4,0.333],[2015,82,42.9,0.444],[2015,83,42.6,0.333],[2015,84,42.7,0.444],[2015,85,42.9,0.444],[2015,86,41.5,0.111],[2015,87,41.3,0.0],[2015,88,40.3,0.111],[2015,89,40.4,0.0],[2015,90,41.4,0.111],[2015,91,41.8,0.0],[2015,92,40.8,0.0],[2015,93,37.6,0.0],[2015,94,35.1,0.0],[2015,95,35.4,0.0],[2015,96,37.9,0.0],[2015,97,39.8,0.0],[2015,98,41.7,0.0],[2015,99,41.8,0.222],[2015,100,36.7,0.0],[2015,101,38.1,0.0],[2015,102,37.6,0.0],[2015,103,38.7,0.0],[2015,104,39.1,0.0],[2015,105,37.2,0.0],[2015,106,35.8,0.0],[2015,107,37.4,0.0],[2015,108,37.8,0.0],[2015,109,39.5,0.0],[2015,110,41.0,0.0],[2015,111,41.0,0.111],[2015,112,39.4,0.0],[2015,113,38.2,0.0],[2015,114,37.3,0.0],[2015,115,35.0,0.0],[2015,116,33.7,0.0],[2015,117,34.7,0.0],[2015,118,36.6,0.0],[2015,119,38.2,0.0],[2015,120,38.6,0.0],[2015,121,36.1,0.0],[2016,0,32.2,0.0],[2016,1,33.8,0.0],[2016,2,33.4,0.0],[2016,3,32.0,0.0],[2016,4,29.6,0.0],[2016,5,27.5,0.0],[2016,6,27.0,0.0],[2016,7,28.0,0.0],[2016,8,30.0,0.0],[2016,9,31.7,0.0],[2016,10,31.7,0.0],[2016,11,29.5,0.0],[2016,12,28.9,0.0],[2016,13,28.8,0.0],[2016,14,30.0,0.0],[2016,15,30.9,0.0],[2016,16,31.6,0.0],[2016,17,31.4,0.0],[2016,18,33.6,0.0],[2016,19,33.6,0.0],[2016,20,32.8,0.0],[2016,21,31.9,0.0],[2016,22,34.8,0.0],[2016,23,36.9,0.0],[2016,24,35.5,0.0],[2016,25,32.3,0.0],[2016,26,32.0,0.0],[2016,27,33.4,0.0],[2016,28,34.9,0.0],[2016,29,36.4,0.0],[2016,30,37.1,0.0],[2016,31,37.4,0.0],[2016,32,38.3,0.0],[2016,33,37.5,0.0],[2016,34,35.4,0.0],[2016,35,35.6,0.0],[2016,36,34.7,0.0],[2016,37,34.0,0.0],[2016,38,35.1,0.0],[2016,39,35.1,0.0],[2016,40,35.4,0.0],[2016,41,34.1,0.0],[2016,42,34.8,0.0],[2016,43,37.7,0.0],[2016,44,39.6,0.0],[2016,45,39.9,0.0],[2016,46,39.4,0.0],[2016,47,38.1,0.0],[2016,48,37.0,0.0],[2016,49,36.4,0.0],[2016,50,37.6,0.0],[2016,51,38.6,0.0],[2016,52,37.9,0.0],[2016,53,37.2,0.0],[2016,54,37.6,0.0],[2016,55,38.3,0.0],[2016,56,39.0,0.0],[2016,57,39.7,0.0],[2016,58,39.9,0.0],[2016,59,40.8,0.0],[2016,60,41.6,0.0],[2016,61,42.3,0.0],[2016,62,41.2,0.0],[2016,63,40.1,0.0],[2016,64,38.7,0.0],[2016,65,36.0,0.0],[2016,66,36.1,0.0],[2016,67,39.1,0.0],[2016,68,41.5,0.0],[2016,69,42.2,0.0],[2016,70,42.0,0.111],[2016,71,40.9,0.0],[2016,72,41.6,0.111],[2016,73,42.4,0.222],[2016,74,42.3,0.0],[2016,75,42.2,0.111],[2016,76,42.7,0.333],[2016,77,44.0,0.778],[2016,78,45.2,1.0],[2016,79,46.2,1.0],[2016,80,45.4,1.0],[2016,81,44.1,0.778],[2016,82,41.9,0.333],[2016,83,41.7,0.0],[2016,84,38.9,0.0],[2016,85,39.8,0.0],[2016,86,39.9,0.0],[2016,87,40.2,0.0],[2016,88,39.5,0.0],[2016,89,39.4,0.0],[2016,90,38.5,0.0],[2016,91,39.3,0.0],[2016,92,40.0,0.0],[2016,93,40.0,0.0],[2016,94,41.4,0.0],[2016,95,43.0,0.222],[2016,96,43.5,0.889],[2016,97,43.8,0.778],[2016,98,43.8,0.667],[2016,99,42.9,0.444],[2016,100,41.1,0.111],[2016,101,41.1,0.0],[2016,102,39.3,0.0],[2016,103,38.7,0.0],[2016,104,38.4,0.0],[2016,105,38.1,0.0],[2016,106,38.1,0.0],[2016,107,39.2,0.0],[2016,108,40.2,0.0],[2016,109,40.5,0.0],[2016,110,40.5,0.111],[2016,111,40.9,0.111],[2016,112,39.5,0.0],[2016,113,38.0,0.0],[2016,114,39.3,0.0],[2016,115,39.3,0.0],[2016,116,38.6,0.0],[2016,117,38.5,0.0],[2016,118,37.5,0.0],[2016,119,33.7,0.0],[2016,120,36.0,0.0],[2016,121,37.2,0.0],[2017,0,29.5,0.0],[2017,1,28.9,0.0],[2017,2,27.7,0.0],[2017,3,27.9,0.0],[2017,4,28.9,0.0],[2017,5,30.1,0.0],[2017,6,30.0,0.0],[2017,7,28.1,0.0],[2017,8,28.1,0.0],[2017,9,26.3,0.0],[2017,10,24.8,0.0],[2017,11,24.9,0.0],[2017,12,26.6,0.0],[2017,13,28.6,0.0],[2017,14,31.1,0.0],[2017,15,30.0,0.0],[2017,16,29.9,0.0],[2017,17,31.6,0.0],[2017,18,30.5,0.0],[2017,19,31.8,0.0],[2017,20,34.4,0.0],[2017,21,35.7,0.0],[2017,22,34.8,0.0],[2017,23,34.8,0.0],[2017,24,35.7,0.0],[2017,25,36.9,0.0],[2017,26,38.9,0.0],[2017,27,39.8,0.0],[2017,28,38.9,0.0],[2017,29,38.5,0.0],[2017,30,38.5,0.0],[2017,31,38.4,0.0],[2017,32,38.6,0.0],[2017,33,39.1,0.0],[2017,34,38.2,0.0],[2017,35,38.6,0.0],[2017,36,33.7,0.0],[2017,37,32.6,0.0],[2017,38,32.9,0.0],[2017,39,33.3,0.0],[2017,40,35.5,0.0],[2017,41,38.6,0.0],[2017,42,40.7,0.0],[2017,43,41.3,0.0],[2017,44,42.0,0.0],[2017,45,42.4,0.111],[2017,46,42.4,0.333],[2017,47,42.6,0.333],[2017,48,41.3,0.0],[2017,49,40.9,0.0],[2017,50,42.2,0.222],[2017,51,41.5,0.111],[2017,52,39.3,0.0],[2017,53,37.4,0.0],[2017,54,36.6,0.0],[2017,55,37.1,0.0],[2017,56,37.7,0.0],[2017,57,38.4,0.0],[2017,58,38.6,0.0],[2017,59,38.7,0.0],[2017,60,38.8,0.0],[2017,61,39.1,0.0],[2017,62,40.5,0.0],[2017,63,40.2,0.0],[2017,64,39.5,0.0],[2017,65,40.6,0.0],[2017,66,42.2,0.222],[2017,67,43.4,0.556],[2017,68,42.7,0.444],[2017,69,42.6,0.222],[2017,70,42.0,0.111],[2017,71,40.6,0.0],[2017,72,41.0,0.0],[2017,73,41.8,0.111],[2017,74,41.9,0.111],[2017,75,41.7,0.0],[2017,76,39.8,0.0],[2017,77,38.6,0.0],[2017,78,40.1,0.0],[2017,79,41.3,0.0],[2017,80,39.3,0.0],[2017,81,38.3,0.0],[2017,82,36.6,0.0],[2017,83,39.4,0.0],[2017,84,41.0,0.0],[2017,85,42.1,0.222],[2017,86,43.9,0.778],[2017,87,43.4,0.556],[2017,88,41.8,0.111],[2017,89,38.8,0.0],[2017,90,39.3,0.0],[2017,91,39.1,0.0],[2017,92,37.9,0.0],[2017,93,40.9,0.111],[2017,94,43.1,0.667],[2017,95,42.5,0.333],[2017,96,41.1,0.0],[2017,97,39.8,0.0],[2017,98,38.1,0.0],[2017,99,36.9,0.0],[2017,100,36.7,0.0],[2017,101,39.1,0.0],[2017,102,38.0,0.0],[2017,103,40.2,0.0],[2017,104,39.7,0.0],[2017,105,39.3,0.0],[2017,106,39.7,0.0],[2017,107,38.5,0.0],[2017,108,37.9,0.0],[2017,109,37.3,0.0],[2017,110,38.0,0.0],[2017,111,36.7,0.0],[2017,112,33.8,0.0],[2017,113,33.4,0.0],[2017,114,34.5,0.0],[2017,115,36.1,0.0],[2017,116,38.5,0.0],[2017,117,40.1,0.0],[2017,118,38.2,0.0],[2017,119,31.1,0.0],[2017,120,32.1,0.0],[2017,121,31.8,0.0],[2018,0,32.7,0.0],[2018,1,32.6,0.0],[2018,2,31.6,0.0],[2018,3,29.4,0.0],[2018,4,29.7,0.0],[2018,5,30.1,0.0],[2018,6,30.8,0.0],[2018,7,32.4,0.0],[2018,8,32.6,0.0],[2018,9,32.8,0.0],[2018,10,33.1,0.0],[2018,11,34.1,0.0],[2018,12,34.6,0.0],[2018,13,32.1,0.0],[2018,14,32.0,0.0],[2018,15,32.1,0.0],[2018,16,32.5,0.0],[2018,17,33.7,0.0],[2018,18,32.6,0.0],[2018,19,32.9,0.0],[2018,20,29.8,0.0],[2018,21,29.8,0.0],[2018,22,31.0,0.0],[2018,23,33.5,0.0],[2018,24,34.6,0.0],[2018,25,36.0,0.0],[2018,26,37.3,0.0],[2018,27,38.2,0.0],[2018,28,38.3,0.0],[2018,29,38.9,0.0],[2018,30,38.6,0.0],[2018,31,37.6,0.0],[2018,32,38.4,0.0],[2018,33,38.5,0.0],[2018,34,38.6,0.0],[2018,35,37.8,0.0],[2018,36,37.4,0.0],[2018,37,37.4,0.0],[2018,38,38.5,0.0],[2018,39,37.8,0.0],[2018,40,37.0,0.0],[2018,41,36.7,0.0],[2018,42,35.6,0.0],[2018,43,36.5,0.0],[2018,44,37.6,0.0],[2018,45,38.7,0.0],[2018,46,38.3,0.0],[2018,47,38.0,0.0],[2018,48,38.3,0.0],[2018,49,38.1,0.0],[2018,50,34.6,0.0],[2018,51,33.8,0.0],[2018,52,34.8,0.0],[2018,53,36.7,0.0],[2018,54,39.1,0.0],[2018,55,41.0,0.0],[2018,56,41.3,0.0],[2018,57,42.4,0.111],[2018,58,42.5,0.111],[2018,59,42.7,0.333],[2018,60,43.1,0.556],[2018,61,42.9,0.444],[2018,62,41.7,0.111],[2018,63,40.5,0.0],[2018,64,40.8,0.0],[2018,65,41.7,0.0],[2018,66,40.4,0.0],[2018,67,38.8,0.0],[2018,68,36.4,0.0],[2018,69,38.5,0.0],[2018,70,41.1,0.0],[2018,71,42.6,0.222],[2018,72,41.9,0.111],[2018,73,40.8,0.0],[2018,74,41.5,0.0],[2018,75,41.6,0.0],[2018,76,40.7,0.0],[2018,77,41.5,0.111],[2018,78,40.1,0.0],[2018,79,40.8,0.0],[2018,80,40.4,0.0],[2018,81,41.7,0.222],[2018,82,42.8,0.444],[2018,83,42.7,0.333],[2018,84,42.2,0.111],[2018,85,42.3,0.111],[2018,86,43.8,0.778],[2018,87,43.8,0.889],[2018,88,43.6,0.778],[2018,89,43.8,0.778],[2018,90,42.3,0.222],[2018,91,43.2,0.556],[2018,92,44.2,0.778],[2018,93,43.6,0.667],[2018,94,43.1,0.444],[2018,95,42.6,0.222],[2018,96,42.6,0.333],[2018,97,41.7,0.111],[2018,98,41.9,0.222],[2018,99,41.2,0.0],[2018,100,39.8,0.0],[2018,101,38.5,0.0],[2018,102,41.0,0.111],[2018,103,40.7,0.0],[2018,104,39.8,0.0],[2018,105,38.7,0.0],[2018,106,38.2,0.0],[2018,107,38.0,0.0],[2018,108,37.6,0.0],[2018,109,36.8,0.0],[2018,110,39.1,0.0],[2018,111,40.1,0.0],[2018,112,40.6,0.0],[2018,113,41.3,0.0],[2018,114,40.4,0.0],[2018,115,39.4,0.0],[2018,116,39.3,0.0],[2018,117,36.0,0.0],[2018,118,32.4,0.0],[2018,119,31.2,0.0],[2018,120,30.7,0.0],[2018,121,32.4,0.0],[2019,0,25.4,0.0],[2019,1,23.7,0.0],[2019,2,23.5,0.0],[2019,3,23.0,0.0],[2019,4,23.9,0.0],[2019,5,26.1,0.0],[2019,6,27.6,0.0],[2019,7,27.8,0.0],[2019,8,26.4,0.0],[2019,9,27.2,0.0],[2019,10,26.8,0.0],[2019,11,25.9,0.0],[2019,12,25.8,0.0],[2019,13,26.3,0.0],[2019,14,26.1,0.0],[2019,15,26.0,0.0],[2019,16,28.1,0.0],[2019,17,29.5,0.0],[2019,18,32.0,0.0],[2019,19,30.4,0.0],[2019,20,30.7,0.0],[2019,21,30.8,0.0],[2019,22,32.3,0.0],[2019,23,32.5,0.0],[2019,24,31.2,0.0],[2019,25,32.0,0.0],[2019,26,34.6,0.0],[2019,27,38.1,0.0],[2019,28,38.5,0.0],[2019,29,37.8,0.0],[2019,30,36.1,0.0],[2019,31,36.2,0.0],[2019,32,37.4,0.0],[2019,33,38.2,0.0],[2019,34,39.8,0.0],[2019,35,40.5,0.0],[2019,36,39.5,0.0],[2019,37,39.2,0.0],[2019,38,38.1,0.0],[2019,39,39.1,0.0],[2019,40,38.7,0.0],[2019,41,39.4,0.0],[2019,42,38.2,0.0],[2019,43,38.1,0.0],[2019,44,38.0,0.0],[2019,45,37.4,0.0],[2019,46,32.2,0.0],[2019,47,27.8,0.0],[2019,48,29.4,0.0],[2019,49,31.3,0.0],[2019,50,34.8,0.0],[2019,51,38.1,0.0],[2019,52,39.7,0.0],[2019,53,41.5,0.0],[2019,54,41.0,0.0],[2019,55,39.9,0.0],[2019,56,40.5,0.0],[2019,57,40.7,0.0],[2019,58,40.9,0.0],[2019,59,41.4,0.0],[2019,60,40.6,0.0],[2019,61,40.0,0.0],[2019,62,39.8,0.0],[2019,63,38.9,0.0],[2019,64,38.9,0.0],[2019,65,40.1,0.0],[2019,66,41.1,0.0],[2019,67,41.4,0.0],[2019,68,40.8,0.0],[2019,69,39.6,0.0],[2019,70,38.1,0.0],[2019,71,38.6,0.0],[2019,72,37.8,0.0],[2019,73,38.5,0.0],[2019,74,37.9,0.0],[2019,75,37.0,0.0],[2019,76,36.2,0.0],[2019,77,34.1,0.0],[2019,78,34.6,0.0],[2019,79,37.9,0.0],[2019,80,38.7,0.0],[2019,81,39.3,0.0],[2019,82,38.7,0.0],[2019,83,39.4,0.0],[2019,84,37.4,0.0],[2019,85,38.7,0.0],[2019,86,40.8,0.0],[2019,87,41.6,0.0],[2019,88,42.1,0.111],[2019,89,43.2,0.444],[2019,90,43.5,0.778],[2019,91,43.4,0.444],[2019,92,44.2,0.889],[2019,93,45.0,1.0],[2019,94,45.1,1.0],[2019,95,43.5,0.556],[2019,96,42.6,0.444],[2019,97,42.9,0.444],[2019,98,43.2,0.556],[2019,99,43.9,0.889],[2019,100,44.9,1.0],[2019,101,44.2,0.667],[2019,102,42.8,0.444],[2019,103,42.7,0.111],[2019,104,37.9,0.0],[2019,105,39.1,0.0],[2019,106,39.4,0.0],[2019,107,36.4,0.0],[2019,108,37.4,0.0],[2019,109,34.1,0.0],[2019,110,34.8,0.0],[2019,111,36.8,0.0],[2019,112,36.4,0.0],[2019,113,39.5,0.0],[2019,114,40.3,0.0],[2019,115,36.2,0.0],[2019,116,37.4,0.0],[2019,117,39.3,0.0],[2019,118,39.2,0.0],[2019,119,39.6,0.0],[2019,120,39.7,0.0],[2019,121,39.7,0.0],[2020,0,27.7,0.0],[2020,1,27.8,0.0],[2020,2,28.4,0.0],[2020,3,29.0,0.0],[2020,4,27.8,0.0],[2020,5,21.3,0.0],[2020,6,23.1,0.0],[2020,7,26.0,0.0],[2020,8,26.6,0.0],[2020,9,27.1,0.0],[2020,10,25.8,0.0],[2020,11,25.7,0.0],[2020,12,24.4,0.0],[2020,13,24.6,0.0],[2020,14,24.8,0.0],[2020,15,26.4,0.0],[2020,16,29.5,0.0],[2020,17,31.3,0.0],[2020,18,32.8,0.0],[2020,19,33.3,0.0],[2020,20,31.9,0.0],[2020,21,32.9,0.0],[2020,22,31.7,0.0],[2020,23,32.0,0.0],[2020,24,32.2,0.0],[2020,25,26.5,0.0],[2020,26,24.3,0.0],[2020,27,27.9,0.0],[2020,28,30.0,0.0],[2020,29,31.7,0.0],[2020,30,33.0,0.0],[2020,31,32.1,0.0],[2020,32,32.1,0.0],[2020,33,32.7,0.0],[2020,34,34.3,0.0],[2020,35,35.2,0.0],[2020,36,36.0,0.0],[2020,37,35.1,0.0],[2020,38,34.0,0.0],[2020,39,35.0,0.0],[2020,40,37.0,0.0],[2020,41,36.8,0.0],[2020,42,37.6,0.0],[2020,43,39.3,0.0],[2020,44,39.2,0.0],[2020,45,38.4,0.0],[2020,46,38.2,0.0],[2020,47,37.5,0.0],[2020,48,36.3,0.0],[2020,49,35.1,0.0],[2020,50,32.6,0.0],[2020,51,34.5,0.0],[2020,52,36.4,0.0],[2020,53,35.6,0.0],[2020,54,36.7,0.0],[2020,55,35.9,0.0],[2020,56,37.8,0.0],[2020,57,37.4,0.0],[2020,58,37.6,0.0],[2020,59,38.7,0.0],[2020,60,39.8,0.0],[2020,61,41.0,0.0],[2020,62,40.4,0.0],[2020,63,39.6,0.0],[2020,64,36.7,0.0],[2020,65,37.2,0.0],[2020,66,38.8,0.0],[2020,67,39.7,0.0],[2020,68,41.2,0.0],[2020,69,41.4,0.0],[2020,70,41.0,0.0],[2020,71,39.9,0.0],[2020,72,38.8,0.0],[2020,73,37.0,0.0],[2020,74,38.6,0.0],[2020,75,38.3,0.0],[2020,76,38.4,0.0],[2020,77,40.2,0.0],[2020,78,39.7,0.0],[2020,79,40.6,0.0],[2020,80,40.4,0.0],[2020,81,42.4,0.333],[2020,82,42.9,0.444],[2020,83,42.6,0.222],[2020,84,42.8,0.222],[2020,85,43.7,0.778],[2020,86,43.7,0.667],[2020,87,43.7,0.778],[2020,88,43.0,0.444],[2020,89,40.1,0.0],[2020,90,36.1,0.0],[2020,91,35.2,0.0],[2020,92,36.6,0.0],[2020,93,36.1,0.0],[2020,94,37.5,0.0],[2020,95,35.8,0.0],[2020,96,35.4,0.0],[2020,97,36.0,0.0],[2020,98,36.6,0.0],[2020,99,37.1,0.0],[2020,100,39.5,0.0],[2020,101,40.6,0.0],[2020,102,39.9,0.0],[2020,103,40.2,0.0],[2020,104,39.4,0.0],[2020,105,40.0,0.0],[2020,106,41.5,0.0],[2020,107,42.9,0.556],[2020,108,42.2,0.111],[2020,109,40.9,0.0],[2020,110,40.7,0.0],[2020,111,39.4,0.0],[2020,112,39.0,0.0],[2020,113,38.5,0.0],[2020,114,39.2,0.0],[2020,115,37.8,0.0],[2020,116,38.3,0.0],[2020,117,38.0,0.0],[2020,118,38.9,0.0],[2020,119,39.3,0.0],[2020,120,39.6,0.0],[2020,121,40.3,0.0],[2021,0,29.8,0.0],[2021,1,29.7,0.0],[2021,2,31.7,0.0],[2021,3,32.9,0.0],[2021,4,32.6,0.0],[2021,5,34.8,0.0],[2021,6,34.2,0.0],[2021,7,33.1,0.0],[2021,8,33.2,0.0],[2021,9,33.1,0.0],[2021,10,33.9,0.0],[2021,11,31.5,0.0],[2021,12,31.1,0.0],[2021,13,32.0,0.0],[2021,14,33.1,0.0],[2021,15,34.2,0.0],[2021,16,34.7,0.0],[2021,17,34.6,0.0],[2021,18,33.2,0.0],[2021,19,33.6,0.0],[2021,20,35.3,0.0],[2021,21,34.0,0.0],[2021,22,32.7,0.0],[2021,23,31.9,0.0],[2021,24,32.0,0.0],[2021,25,33.7,0.0],[2021,26,36.6,0.0],[2021,27,38.4,0.0],[2021,28,39.0,0.0],[2021,29,38.0,0.0],[2021,30,36.1,0.0],[2021,31,36.4,0.0],[2021,32,35.2,0.0],[2021,33,36.1,0.0],[2021,34,38.2,0.0],[2021,35,38.8,0.0],[2021,36,38.3,0.0],[2021,37,34.8,0.0],[2021,38,33.9,0.0],[2021,39,35.4,0.0],[2021,40,36.9,0.0],[2021,41,37.8,0.0],[2021,42,38.9,0.0],[2021,43,39.0,0.0],[2021,44,37.9,0.0],[2021,45,37.1,0.0],[2021,46,35.0,0.0],[2021,47,34.4,0.0],[2021,48,36.9,0.0],[2021,49,37.7,0.0],[2021,50,35.1,0.0],[2021,51,32.0,0.0],[2021,52,36.0,0.0],[2021,53,36.0,0.0],[2021,54,35.2,0.0],[2021,55,37.2,0.0],[2021,56,39.1,0.0],[2021,57,40.6,0.0],[2021,58,40.8,0.0],[2021,59,40.5,0.0],[2021,60,39.6,0.0],[2021,61,39.6,0.0],[2021,62,36.8,0.0],[2021,63,37.7,0.0],[2021,64,38.0,0.0],[2021,65,38.6,0.0],[2021,66,38.7,0.0],[2021,67,37.2,0.0],[2021,68,38.6,0.0],[2021,69,39.9,0.0],[2021,70,39.9,0.0],[2021,71,39.2,0.0],[2021,72,37.5,0.0],[2021,73,36.3,0.0],[2021,74,37.8,0.0],[2021,75,38.3,0.0],[2021,76,39.5,0.0],[2021,77,35.5,0.0],[2021,78,27.3,0.0],[2021,79,26.5,0.0],[2021,80,33.8,0.0],[2021,81,35.7,0.0],[2021,82,36.5,0.0],[2021,83,34.1,0.0],[2021,84,37.4,0.0],[2021,85,39.2,0.0],[2021,86,39.6,0.0],[2021,87,41.2,0.222],[2021,88,41.8,0.333],[2021,89,41.1,0.111],[2021,90,40.1,0.0],[2021,91,39.6,0.0],[2021,92,37.3,0.0],[2021,93,37.4,0.0],[2021,94,37.1,0.0],[2021,95,37.9,0.0],[2021,96,38.5,0.0],[2021,97,38.1,0.0],[2021,98,39.8,0.0],[2021,99,39.7,0.0],[2021,100,39.4,0.0],[2021,101,39.4,0.0],[2021,102,39.2,0.0],[2021,103,38.9,0.0],[2021,104,37.4,0.0],[2021,105,37.7,0.0],[2021,106,38.4,0.0],[2021,107,33.9,0.0],[2021,108,35.7,0.0],[2021,109,36.5,0.0],[2021,110,35.7,0.0],[2021,111,35.9,0.0],[2021,112,36.6,0.0],[2021,113,38.0,0.0],[2021,114,39.0,0.0],[2021,115,39.1,0.0],[2021,116,38.3,0.0],[2021,117,36.8,0.0],[2021,118,38.4,0.0],[2021,119,39.6,0.0],[2021,120,40.4,0.0],[2021,121,39.6,0.0],[2022,0,27.1,0.0],[2022,1,29.0,0.0],[2022,2,26.0,0.0],[2022,3,26.6,0.0],[2022,4,27.6,0.0],[2022,5,29.4,0.0],[2022,6,30.7,0.0],[2022,7,31.1,0.0],[2022,8,30.8,0.0],[2022,9,30.6,0.0],[2022,10,31.6,0.0],[2022,11,33.1,0.0],[2022,12,35.2,0.0],[2022,13,36.7,0.0],[2022,14,37.7,0.0],[2022,15,38.0,0.0],[2022,16,38.4,0.0],[2022,17,37.7,0.0],[2022,18,37.4,0.0],[2022,19,36.3,0.0],[2022,20,36.3,0.0],[2022,21,36.0,0.0],[2022,22,34.9,0.0],[2022,23,35.4,0.0],[2022,24,36.1,0.0],[2022,25,37.1,0.0],[2022,26,38.2,0.0],[2022,27,38.6,0.0],[2022,28,38.8,0.0],[2022,29,39.2,0.0],[2022,30,38.4,0.0],[2022,31,37.6,0.0],[2022,32,39.3,0.0],[2022,33,39.4,0.0],[2022,34,38.6,0.0],[2022,35,39.2,0.0],[2022,36,39.8,0.0],[2022,37,40.7,0.0],[2022,38,41.5,0.0],[2022,39,41.2,0.0],[2022,40,40.9,0.0],[2022,41,40.7,0.0],[2022,42,38.6,0.0],[2022,43,38.2,0.0],[2022,44,39.4,0.0],[2022,45,39.6,0.0],[2022,46,40.1,0.0],[2022,47,40.6,0.0],[2022,48,40.7,0.0],[2022,49,40.3,0.0],[2022,50,39.9,0.0],[2022,51,38.0,0.0],[2022,52,38.0,0.0],[2022,53,38.8,0.0],[2022,54,39.7,0.0],[2022,55,40.4,0.0],[2022,56,40.9,0.0],[2022,57,41.8,0.0],[2022,58,42.3,0.111],[2022,59,41.1,0.0],[2022,60,41.8,0.0],[2022,61,43.2,0.556],[2022,62,41.8,0.0],[2022,63,38.9,0.0],[2022,64,38.8,0.0],[2022,65,39.0,0.0],[2022,66,39.1,0.0],[2022,67,41.1,0.0],[2022,68,42.7,0.444],[2022,69,42.6,0.222],[2022,70,42.7,0.222],[2022,71,43.2,0.667],[2022,72,44.4,0.889],[2022,73,44.6,0.889],[2022,74,44.3,0.889],[2022,75,43.5,0.444],[2022,76,40.6,0.0],[2022,77,40.0,0.0],[2022,78,41.1,0.0],[2022,79,43.5,0.778],[2022,80,43.7,0.667],[2022,81,40.5,0.0],[2022,82,40.2,0.0],[2022,83,38.4,0.111],[2022,84,37.0,0.0],[2022,85,38.2,0.0],[2022,86,39.3,0.0],[2022,87,39.2,0.0],[2022,88,39.4,0.0],[2022,89,40.4,0.0],[2022,90,40.1,0.0],[2022,91,40.6,0.0],[2022,92,41.0,0.0],[2022,93,41.4,0.0],[2022,94,42.2,0.111],[2022,95,41.7,0.0],[2022,96,41.2,0.0],[2022,97,41.0,0.0],[2022,98,41.3,0.0],[2022,99,40.3,0.0],[2022,100,40.4,0.0],[2022,101,40.6,0.0],[2022,102,40.5,0.0],[2022,103,39.3,0.0],[2022,104,38.9,0.0],[2022,105,35.8,0.0],[2022,106,38.2,0.0],[2022,107,38.3,0.0],[2022,108,37.3,0.0],[2022,109,35.3,0.0],[2022,110,33.6,0.0],[2022,111,33.2,0.0],[2022,112,32.8,0.0],[2022,113,34.1,0.0],[2022,114,36.2,0.0],[2022,115,38.0,0.0],[2022,116,40.2,0.0],[2022,117,41.4,0.111],[2022,118,40.3,0.0],[2022,119,40.9,0.222],[2022,120,39.3,0.0],[2022,121,36.6,0.0],[2023,0,31.1,0.0],[2023,1,30.6,0.0],[2023,2,31.3,0.0],[2023,3,31.3,0.0],[2023,4,30.7,0.0],[2023,5,30.9,0.0],[2023,6,30.7,0.0],[2023,7,29.3,0.0],[2023,8,30.1,0.0],[2023,9,31.1,0.0],[2023,10,32.4,0.0],[2023,11,33.3,0.0],[2023,12,33.7,0.0],[2023,13,33.8,0.0],[2023,14,33.5,0.0],[2023,15,31.5,0.0],[2023,16,29.1,0.0],[2023,17,28.0,0.0],[2023,18,27.6,0.0],[2023,19,25.5,0.0],[2023,20,28.3,0.0],[2023,21,28.5,0.0],[2023,22,30.0,0.0],[2023,23,29.3,0.0],[2023,24,29.1,0.0],[2023,25,29.1,0.0],[2023,26,29.9,0.0],[2023,27,32.2,0.0],[2023,28,32.8,0.0],[2023,29,29.7,0.0],[2023,30,27.9,0.0],[2023,31,29.5,0.0],[2023,32,31.7,0.0],[2023,33,32.6,0.0],[2023,34,31.5,0.0],[2023,35,32.9,0.0],[2023,36,32.9,0.0],[2023,37,33.6,0.0],[2023,38,34.1,0.0],[2023,39,35.1,0.0],[2023,40,36.2,0.0],[2023,41,36.5,0.0],[2023,42,36.5,0.0],[2023,43,37.6,0.0],[2023,44,38.4,0.0],[2023,45,38.8,0.0],[2023,46,38.4,0.0],[2023,47,38.2,0.0],[2023,48,38.4,0.0],[2023,49,35.7,0.0],[2023,50,35.3,0.0],[2023,51,35.8,0.0],[2023,52,35.8,0.0],[2023,53,34.2,0.0],[2023,54,33.7,0.0],[2023,55,35.6,0.0],[2023,56,36.1,0.0],[2023,57,36.5,0.0],[2023,58,34.9,0.0],[2023,59,30.3,0.0],[2023,60,29.3,0.0],[2023,61,29.1,0.0],[2023,62,31.1,0.0],[2023,63,32.1,0.0],[2023,64,33.7,0.0],[2023,65,35.2,0.0],[2023,66,37.5,0.0],[2023,67,38.6,0.0],[2023,68,39.1,0.0],[2023,69,38.9,0.0],[2023,70,39.5,0.0],[2023,71,41.1,0.0],[2023,72,42.6,0.444],[2023,73,43.2,0.667],[2023,74,41.3,0.0],[2023,75,40.8,0.0],[2023,76,39.4,0.0],[2023,77,39.3,0.0],[2023,78,36.7,0.0],[2023,79,39.8,0.0],[2023,80,41.7,0.111],[2023,81,42.3,0.222],[2023,82,41.5,0.111],[2023,83,40.2,0.0],[2023,84,37.7,0.0],[2023,85,36.1,0.0],[2023,86,35.5,0.0],[2023,87,35.6,0.0],[2023,88,36.0,0.0],[2023,89,31.0,0.0],[2023,90,32.3,0.0],[2023,91,31.1,0.0],[2023,92,32.3,0.0],[2023,93,34.1,0.0],[2023,94,36.0,0.0],[2023,95,34.9,0.0],[2023,96,36.4,0.0],[2023,97,38.4,0.0],[2023,98,38.1,0.0],[2023,99,39.2,0.0],[2023,100,39.4,0.0],[2023,101,39.6,0.0],[2023,102,39.3,0.0],[2023,103,40.0,0.0],[2023,104,39.5,0.0],[2023,105,38.5,0.0],[2023,106,36.7,0.0],[2023,107,34.7,0.0],[2023,108,31.7,0.0],[2023,109,31.6,0.0],[2023,110,32.8,0.0],[2023,111,34.1,0.0],[2023,112,34.6,0.0],[2023,113,35.1,0.0],[2023,114,35.9,0.0],[2023,115,36.7,0.0],[2023,116,33.5,0.0],[2023,117,33.6,0.0],[2023,118,34.0,0.0],[2023,119,34.5,0.0],[2023,120,34.5,0.0],[2023,121,34.9,0.0],[2024,0,31.3,0.0],[2024,1,25.7,0.0],[2024,2,21.9,0.0],[2024,3,21.7,0.0],[2024,4,22.4,0.0],[2024,5,23.2,0.0],[2024,6,26.2,0.0],[2024,7,26.5,0.0],[2024,8,27.1,0.0],[2024,9,28.7,0.0],[2024,10,30.3,0.0],[2024,11,29.8,0.0],[2024,12,29.0,0.0],[2024,13,29.1,0.0],[2024,14,29.0,0.0],[2024,15,29.6,0.0],[2024,16,30.3,0.0],[2024,17,31.0,0.0],[2024,18,33.0,0.0],[2024,19,32.1,0.0],[2024,20,33.6,0.0],[2024,21,35.1,0.0],[2024,22,35.0,0.0],[2024,23,34.2,0.0],[2024,24,34.6,0.0],[2024,25,36.7,0.0],[2024,26,37.8,0.0],[2024,27,36.4,0.0],[2024,28,35.8,0.0],[2024,29,34.7,0.0],[2024,30,33.5,0.0],[2024,31,32.6,0.0],[2024,32,34.5,0.0],[2024,33,35.1,0.0],[2024,34,35.5,0.0],[2024,35,34.3,0.0],[2024,36,34.7,0.0],[2024,37,35.8,0.0],[2024,38,37.3,0.0],[2024,39,37.8,0.0],[2024,40,37.6,0.0],[2024,41,37.8,0.0],[2024,42,37.4,0.0],[2024,43,34.9,0.0],[2024,44,33.4,0.0],[2024,45,33.8,0.0],[2024,46,34.8,0.0],[2024,47,35.4,0.0],[2024,48,36.5,0.0],[2024,49,36.4,0.0],[2024,50,33.9,0.0],[2024,51,34.7,0.0],[2024,52,35.9,0.0],[2024,53,36.6,0.0],[2024,54,37.4,0.0],[2024,55,38.8,0.0],[2024,56,37.8,0.0],[2024,57,36.1,0.0],[2024,58,37.1,0.0],[2024,59,36.6,0.0],[2024,60,35.7,0.0],[2024,61,33.7,0.0],[2024,62,35.1,0.0],[2024,63,38.2,0.0],[2024,64,38.7,0.0],[2024,65,39.0,0.0],[2024,66,39.9,0.0],[2024,67,41.5,0.0],[2024,68,42.8,0.556],[2024,69,42.4,0.444],[2024,70,42.2,0.333],[2024,71,39.3,0.0],[2024,72,39.6,0.0],[2024,73,40.6,0.0],[2024,74,40.2,0.0],[2024,75,41.1,0.0],[2024,76,42.8,0.333],[2024,77,43.3,0.778],[2024,78,43.7,0.778],[2024,79,43.8,0.889],[2024,80,42.7,0.333],[2024,81,43.5,0.667],[2024,82,44.3,0.778],[2024,83,44.6,0.778],[2024,84,43.9,0.667],[2024,85,44.0,0.778],[2024,86,45.7,0.889],[2024,87,46.2,1.0],[2024,88,45.1,0.889],[2024,89,43.6,0.667],[2024,90,43.5,0.778],[2024,91,42.7,0.444],[2024,92,41.2,0.0],[2024,93,40.8,0.0],[2024,94,42.2,0.222],[2024,95,41.9,0.0],[2024,96,40.5,0.0],[2024,97,39.6,0.0],[2024,98,40.6,0.0],[2024,99,38.7,0.0],[2024,100,40.6,0.0],[2024,101,40.7,0.0],[2024,102,41.2,0.111],[2024,103,40.8,0.0],[2024,104,40.3,0.0],[2024,105,39.8,0.0],[2024,106,39.8,0.0],[2024,107,41.1,0.0],[2024,108,41.2,0.0],[2024,109,40.7,0.0],[2024,110,39.7,0.0],[2024,111,38.6,0.0],[2024,112,36.7,0.0],[2024,113,38.4,0.0],[2024,114,39.5,0.0],[2024,115,39.4,0.0],[2024,116,38.3,0.0],[2024,117,37.6,0.0],[2024,118,34.6,0.0],[2024,119,33.1,0.0],[2024,120,33.1,0.0],[2024,121,34.7,0.0],[2025,0,27.9,0.0],[2025,1,27.5,0.0],[2025,2,30.5,0.0],[2025,3,25.7,0.0],[2025,4,26.2,0.0],[2025,5,30.1,0.0],[2025,6,32.2,0.0],[2025,7,32.1,0.0],[2025,8,34.0,0.0],[2025,9,34.9,0.0],[2025,10,35.0,0.0],[2025,11,34.0,0.0],[2025,12,34.0,0.0],[2025,13,34.0,0.0],[2025,14,30.6,0.0],[2025,15,29.6,0.0],[2025,16,29.9,0.0],[2025,17,31.2,0.0],[2025,18,32.8,0.0],[2025,19,32.8,0.0],[2025,20,32.6,0.0],[2025,21,34.1,0.0],[2025,22,34.7,0.0],[2025,23,36.2,0.0],[2025,24,36.6,0.0],[2025,25,36.0,0.0],[2025,26,34.4,0.0],[2025,27,29.9,0.0],[2025,28,30.1,0.0],[2025,29,32.2,0.0],[2025,30,33.9,0.0],[2025,31,34.7,0.0],[2025,32,36.0,0.0],[2025,33,37.1,0.0],[2025,34,36.8,0.0],[2025,35,36.9,0.0],[2025,36,39.9,0.0],[2025,37,41.0,0.0],[2025,38,41.8,0.222],[2025,39,41.4,0.0],[2025,40,39.8,0.0],[2025,41,37.8,0.0],[2025,42,36.9,0.0],[2025,43,38.1,0.0],[2025,44,38.8,0.0],[2025,45,39.5,0.0],[2025,46,40.5,0.111],[2025,47,41.6,0.111],[2025,48,42.4,0.111],[2025,49,39.3,0.0],[2025,50,39.1,0.0],[2025,51,38.6,0.0],[2025,52,38.9,0.0],[2025,53,39.4,0.0],[2025,54,40.6,0.0],[2025,55,41.0,0.0],[2025,56,40.1,0.0],[2025,57,40.9,0.111],[2025,58,41.4,0.0],[2025,59,41.4,0.111],[2025,60,41.4,0.222],[2025,61,41.6,0.111],[2025,62,38.4,0.0],[2025,63,38.3,0.0],[2025,64,36.0,0.0],[2025,65,32.5,0.0],[2025,66,32.4,0.0],[2025,67,34.1,0.0],[2025,68,35.2,0.0],[2025,69,34.8,0.0],[2025,70,36.9,0.0],[2025,71,39.3,0.0],[2025,72,39.3,0.0],[2025,73,39.8,0.0],[2025,74,40.8,0.0],[2025,75,41.6,0.111],[2025,76,42.0,0.222],[2025,77,41.6,0.0],[2025,78,41.7,0.0],[2025,79,42.3,0.222],[2025,80,42.2,0.111],[2025,81,42.8,0.333],[2025,82,42.2,0.222],[2025,83,42.8,0.444],[2025,84,42.8,0.556],[2025,85,40.0,0.111],[2025,86,39.9,0.111],[2025,87,40.5,0.222],[2025,88,41.5,0.0],[2025,89,40.5,0.0],[2025,90,38.7,0.0],[2025,91,40.0,0.0],[2025,92,37.9,0.0],[2025,93,38.2,0.0],[2025,94,36.1,0.0],[2025,95,36.2,0.0],[2025,96,37.4,0.0],[2025,97,39.6,0.0],[2025,98,41.5,0.111],[2025,99,42.3,0.222],[2025,100,42.7,0.444],[2025,101,42.4,0.444],[2025,102,42.1,0.222],[2025,103,42.5,0.444],[2025,104,43.6,0.667],[2025,105,40.8,0.111],[2025,106,38.0,0.0],[2025,107,34.3,0.0],[2025,108,34.4,0.0],[2025,109,34.9,0.0],[2025,110,35.8,0.0],[2025,111,34.8,0.0],[2025,112,33.5,0.0],[2025,113,35.0,0.0],[2025,114,33.9,0.0],[2025,115,35.8,0.0],[2025,116,35.2,0.0],[2025,117,34.3,0.0],[2025,118,33.3,0.0],[2025,119,32.8,0.0],[2025,120,33.3,0.0],[2025,121,33.1,0.0]]},"dist":{"bins":[26.0,26.5,27.0,27.5,28.0,28.5,29.0,29.5,30.0,30.5,31.0,31.5,32.0,32.5,33.0,33.5,34.0,34.5,35.0,35.5,36.0,36.5,37.0,37.5,38.0,38.5,39.0,39.5,40.0,40.5,41.0,41.5,42.0,42.5,43.0,43.5,44.0,44.5,45.0,45.5,46.0,46.5,47.0,47.5,48.0,48.5,49.0,49.5,50.0],"early":[50,64,68,78,81,111,108,141,153,150,191,194,208,203,267,298,318,310,280,333,335,398,460,554,569,570,591,536,551,483,440,413,341,245,188,156,86,60,36,15,9,4,1,1,0,0,0,0,0],"late":[75,68,74,94,100,112,149,129,152,182,182,196,227,240,276,296,262,274,288,311,324,344,407,469,596,604,599,521,540,506,399,407,333,256,244,156,118,72,38,33,15,5,4,5,0,0,0,0,0],"earlyMean":36.85,"lateMean":36.88,"earlyN":10980,"lateN":10980,"early95":43.0,"late95":43.3},"season":[{"dos":0,"label":"Mar 01","early":0.0,"late":0.0},{"dos":1,"label":"Mar 02","early":0.0,"late":0.0},{"dos":2,"label":"Mar 03","early":0.0,"late":0.0},{"dos":3,"label":"Mar 04","early":0.0,"late":0.0},{"dos":4,"label":"Mar 05","early":0.0,"late":0.0},{"dos":5,"label":"Mar 06","early":0.0,"late":0.0},{"dos":6,"label":"Mar 07","early":0.0,"late":0.0},{"dos":7,"label":"Mar 08","early":0.0,"late":0.0},{"dos":8,"label":"Mar 09","early":0.0,"late":0.0},{"dos":9,"label":"Mar 10","early":0.0,"late":0.0},{"dos":10,"label":"Mar 11","early":0.0,"late":0.0},{"dos":11,"label":"Mar 12","early":0.0,"late":0.0},{"dos":12,"label":"Mar 13","early":0.0,"late":0.0},{"dos":13,"label":"Mar 14","early":0.0,"late":0.0},{"dos":14,"label":"Mar 15","early":0.0,"late":0.0},{"dos":15,"label":"Mar 16","early":0.0,"late":0.0},{"dos":16,"label":"Mar 17","early":0.0,"late":0.0},{"dos":17,"label":"Mar 18","early":0.0,"late":0.0},{"dos":18,"label":"Mar 19","early":0.0,"late":0.0},{"dos":19,"label":"Mar 20","early":0.0,"late":0.0},{"dos":20,"label":"Mar 21","early":0.0,"late":0.0},{"dos":21,"label":"Mar 22","early":0.0,"late":0.0},{"dos":22,"label":"Mar 23","early":0.0,"late":0.0},{"dos":23,"label":"Mar 24","early":0.0,"late":0.0},{"dos":24,"label":"Mar 25","early":0.0,"late":0.0},{"dos":25,"label":"Mar 26","early":0.0,"late":0.0},{"dos":26,"label":"Mar 27","early":0.0,"late":0.0},{"dos":27,"label":"Mar 28","early":0.0,"late":0.0},{"dos":28,"label":"Mar 29","early":0.0,"late":0.0},{"dos":29,"label":"Mar 30","early":0.0,"late":0.0},{"dos":30,"label":"Mar 31","early":0.0,"late":0.0},{"dos":31,"label":"Apr 01","early":0.0,"late":0.0},{"dos":32,"label":"Apr 02","early":0.0,"late":0.0},{"dos":33,"label":"Apr 03","early":0.0,"late":0.0},{"dos":34,"label":"Apr 04","early":0.0,"late":0.0},{"dos":35,"label":"Apr 05","early":0.0,"late":0.0},{"dos":36,"label":"Apr 06","early":0.0,"late":0.0},{"dos":37,"label":"Apr 07","early":0.0,"late":0.0},{"dos":38,"label":"Apr 08","early":0.0,"late":0.022},{"dos":39,"label":"Apr 09","early":0.0,"late":0.0},{"dos":40,"label":"Apr 10","early":0.0,"late":0.0},{"dos":41,"label":"Apr 11","early":0.0,"late":0.0},{"dos":42,"label":"Apr 12","early":0.0,"late":0.0},{"dos":43,"label":"Apr 13","early":0.0,"late":0.0},{"dos":44,"label":"Apr 14","early":0.0,"late":0.0},{"dos":45,"label":"Apr 15","early":0.022,"late":0.011},{"dos":46,"label":"Apr 16","early":0.044,"late":0.044},{"dos":47,"label":"Apr 17","early":0.033,"late":0.044},{"dos":48,"label":"Apr 18","early":0.033,"late":0.011},{"dos":49,"label":"Apr 19","early":0.022,"late":0.0},{"dos":50,"label":"Apr 20","early":0.011,"late":0.022},{"dos":51,"label":"Apr 21","early":0.0,"late":0.011},{"dos":52,"label":"Apr 22","early":0.0,"late":0.0},{"dos":53,"label":"Apr 23","early":0.0,"late":0.0},{"dos":54,"label":"Apr 24","early":0.0,"late":0.0},{"dos":55,"label":"Apr 25","early":0.0,"late":0.0},{"dos":56,"label":"Apr 26","early":0.0,"late":0.0},{"dos":57,"label":"Apr 27","early":0.0,"late":0.022},{"dos":58,"label":"Apr 28","early":0.089,"late":0.022},{"dos":59,"label":"Apr 29","early":0.078,"late":0.044},{"dos":60,"label":"Apr 30","early":0.022,"late":0.078},{"dos":61,"label":"May 01","early":0.056,"late":0.111},{"dos":62,"label":"May 02","early":0.0,"late":0.011},{"dos":63,"label":"May 03","early":0.056,"late":0.0},{"dos":64,"label":"May 04","early":0.078,"late":0.0},{"dos":65,"label":"May 05","early":0.1,"late":0.0},{"dos":66,"label":"May 06","early":0.111,"late":0.022},{"dos":67,"label":"May 07","early":0.078,"late":0.056},{"dos":68,"label":"May 08","early":0.011,"late":0.144},{"dos":69,"label":"May 09","early":0.011,"late":0.089},{"dos":70,"label":"May 10","early":0.056,"late":0.078},{"dos":71,"label":"May 11","early":0.044,"late":0.089},{"dos":72,"label":"May 12","early":0.089,"late":0.156},{"dos":73,"label":"May 13","early":0.144,"late":0.189},{"dos":74,"label":"May 14","early":0.089,"late":0.1},{"dos":75,"label":"May 15","early":0.078,"late":0.067},{"dos":76,"label":"May 16","early":0.156,"late":0.089},{"dos":77,"label":"May 17","early":0.2,"late":0.167},{"dos":78,"label":"May 18","early":0.189,"late":0.178},{"dos":79,"label":"May 19","early":0.167,"late":0.289},{"dos":80,"label":"May 20","early":0.122,"late":0.222},{"dos":81,"label":"May 21","early":0.2,"late":0.256},{"dos":82,"label":"May 22","early":0.233,"late":0.233},{"dos":83,"label":"May 23","early":0.211,"late":0.189},{"dos":84,"label":"May 24","early":0.222,"late":0.156},{"dos":85,"label":"May 25","early":0.144,"late":0.2},{"dos":86,"label":"May 26","early":0.1,"late":0.322},{"dos":87,"label":"May 27","early":0.1,"late":0.367},{"dos":88,"label":"May 28","early":0.189,"late":0.267},{"dos":89,"label":"May 29","early":0.156,"late":0.2},{"dos":90,"label":"May 30","early":0.1,"late":0.178},{"dos":91,"label":"May 31","early":0.067,"late":0.144},{"dos":92,"label":"Jun 01","early":0.011,"late":0.167},{"dos":93,"label":"Jun 02","early":0.033,"late":0.178},{"dos":94,"label":"Jun 03","early":0.044,"late":0.244},{"dos":95,"label":"Jun 04","early":0.078,"late":0.133},{"dos":96,"label":"Jun 05","early":0.211,"late":0.167},{"dos":97,"label":"Jun 06","early":0.2,"late":0.133},{"dos":98,"label":"Jun 07","early":0.189,"late":0.156},{"dos":99,"label":"Jun 08","early":0.133,"late":0.156},{"dos":100,"label":"Jun 09","early":0.089,"late":0.156},{"dos":101,"label":"Jun 10","early":0.067,"late":0.111},{"dos":102,"label":"Jun 11","early":0.0,"late":0.089},{"dos":103,"label":"Jun 12","early":0.022,"late":0.056},{"dos":104,"label":"Jun 13","early":0.022,"late":0.067},{"dos":105,"label":"Jun 14","early":0.011,"late":0.011},{"dos":106,"label":"Jun 15","early":0.0,"late":0.0},{"dos":107,"label":"Jun 16","early":0.0,"late":0.056},{"dos":108,"label":"Jun 17","early":0.0,"late":0.011},{"dos":109,"label":"Jun 18","early":0.011,"late":0.0},{"dos":110,"label":"Jun 19","early":0.067,"late":0.011},{"dos":111,"label":"Jun 20","early":0.111,"late":0.011},{"dos":112,"label":"Jun 21","early":0.078,"late":0.0},{"dos":113,"label":"Jun 22","early":0.011,"late":0.0},{"dos":114,"label":"Jun 23","early":0.033,"late":0.0},{"dos":115,"label":"Jun 24","early":0.011,"late":0.0},{"dos":116,"label":"Jun 25","early":0.0,"late":0.0},{"dos":117,"label":"Jun 26","early":0.0,"late":0.011},{"dos":118,"label":"Jun 27","early":0.011,"late":0.0},{"dos":119,"label":"Jun 28","early":0.0,"late":0.022},{"dos":120,"label":"Jun 29","early":0.0,"late":0.0},{"dos":121,"label":"Jun 30","early":0.0,"late":0.0}]}</script>
+<script>
+(function(){
+  "use strict";
+  const DATA = JSON.parse(document.getElementById('heatdata').textContent);
+  const nf = new Intl.NumberFormat('en-CA');
+  const f1 = new Intl.NumberFormat('en-CA',{minimumFractionDigits:1,maximumFractionDigits:1});
+  const tip = document.getElementById('hv-tip');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function showTip(host, evt, html){
+    tip.innerHTML = html; tip.hidden = false;
+    const hostRect = host.getBoundingClientRect();
+    const x = evt.clientX - hostRect.left, y = evt.clientY - hostRect.top;
+    tip.style.left = x + 'px'; tip.style.top = (y - 6) + 'px';
+  }
+  function hideTip(){ tip.hidden = true; }
+
+  // warm sequential scale (lightness-ordered, prints in greyscale)
+  const heatRamp = ['#fff7ec','#fee0a6','#fdb863','#f57c2b','#d7301f','#7f0000'];
+
+  /* ---------------- KPIs ---------------- */
+  (function(){
+    const a = DATA.annual;
+    const totHw = a.reduce((s,d)=>s+d.hw,0);
+    const hottest = a.reduce((m,d)=>d.maxTmax>m.maxTmax?d:m);
+    const peakHw = a.reduce((m,d)=>d.hw>m.hw?d:m);
+    const topDist = DATA.districts.reduce((m,d)=>d.hw>m.hw?d:m);
+    const kpis = [
+      [nf.format(totHw), 'heatwave district-days, 2006–2025'],
+      [f1.format(hottest.maxTmax)+'°C', 'hottest day on record ('+hottest.year+')'],
+      [peakHw.year, 'worst heat year ('+f1.format(peakHw.hwpd)+' days/district)'],
+      [topDist.name, 'most heatwave days ('+topDist.hw+')']
+    ];
+    document.getElementById('hv-kpis').innerHTML = kpis.map(k=>
+      '<div class="hv-kpi"><b>'+k[0]+'</b><span>'+k[1]+'</span></div>').join('');
+  })();
+
+  /* ---------------- shared table builder ---------------- */
+  function annualTable(elId){
+    const rows = DATA.annual.map(d=>`<tr><th scope="row">${d.year}</th>`+
+      `<td>${f1.format(d.meanTmax)}</td><td>${f1.format(d.maxTmax)}</td>`+
+      `<td>${f1.format(d.meanTmin)}</td><td>${nf.format(d.hw)}</td><td>${f1.format(d.hwpd)}</td></tr>`).join('');
+    document.getElementById(elId).innerHTML =
+      '<table class="table table-bordered table-condensed"><caption class="wb-inv">Annual summary</caption>'+
+      '<thead><tr><th scope="col">Year</th><th scope="col">Mean high (°C)</th><th scope="col">Hottest day (°C)</th>'+
+      '<th scope="col">Mean low (°C)</th><th scope="col">Heatwave days</th><th scope="col">Per district</th></tr></thead>'+
+      '<tbody>'+rows+'</tbody></table>';
+  }
+  annualTable('tbl-annual'); annualTable('tbl-annual2');
+
+  document.getElementById('tbl-dist').innerHTML = (function(){
+    const rows = DATA.districts.slice().sort((a,b)=>b.hw-a.hw).map(d=>
+      `<tr><th scope="row">${d.name}</th><td>${f1.format(d.meanTmax)}</td>`+
+      `<td>${f1.format(d.maxTmax)}</td><td>${nf.format(d.hw)}</td></tr>`).join('');
+    return '<table class="table table-bordered table-condensed"><caption class="wb-inv">District totals</caption>'+
+      '<thead><tr><th scope="col">District</th><th scope="col">Mean high (°C)</th>'+
+      '<th scope="col">Hottest day (°C)</th><th scope="col">Heatwave days (total)</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  })();
+
+  document.getElementById('tbl-dist2').innerHTML = (function(){
+    const d=DATA.dist;
+    return '<table class="table table-bordered table-condensed"><caption class="wb-inv">Distribution summary</caption>'+
+      '<thead><tr><th scope="col">Period</th><th scope="col">Days</th><th scope="col">Mean high (°C)</th>'+
+      '<th scope="col">95th percentile (°C)</th></tr></thead><tbody>'+
+      `<tr><th scope="row">2006–2015</th><td>${nf.format(d.earlyN)}</td><td>${f1.format(d.earlyMean)}</td><td>${f1.format(d.early95)}</td></tr>`+
+      `<tr><th scope="row">2016–2025</th><td>${nf.format(d.lateN)}</td><td>${f1.format(d.lateMean)}</td><td>${f1.format(d.late95)}</td></tr>`+
+      '</tbody></table>';
+  })();
+
+  /* ====================================================================
+     CHART 1 — HEATMAP (year × day-of-season)
+  ==================================================================== */
+  (function(){
+    const host = document.getElementById('c-heatmap');
+    const svg = d3.select(host).select('svg');
+    const years = DATA.heatmap.years, dosList = DATA.heatmap.dos, labels = DATA.heatmap.labels;
+    // index cells: map[year][dos] = {t,h}
+    const map = {};
+    DATA.heatmap.cells.forEach(c=>{ (map[c[0]]=map[c[0]]||{})[c[1]]={t:c[2],h:c[3]}; });
+    let metric = 't';
+    const tExt = [d3.min(DATA.heatmap.cells,c=>c[2]), d3.max(DATA.heatmap.cells,c=>c[2])];
+    const tScale = d3.scaleSequential(d3.interpolateRgbBasis(heatRamp)).domain(tExt);
+    const hScale = d3.scaleSequential(d3.interpolateRgbBasis(['#fff7ec'].concat(heatRamp.slice(1)))).domain([0,1]);
+    const color = ()=> metric==='t'?tScale:hScale;
+
+    // month tick positions (first dos of each month)
+    const monthTicks = [];
+    [['Mar',0],['Apr',31],['May',61],['Jun',92]].forEach(m=>monthTicks.push(m));
+
+    function render(width){
+      const m={top:10,right:14,bottom:24,left:42};
+      const h = Math.max(300, years.length*16+m.top+m.bottom);
+      svg.attr('viewBox',`0 0 ${width} ${h}`).selectAll('*').remove();
+      const x=d3.scaleBand().domain(dosList).range([m.left,width-m.right]);
+      const y=d3.scaleBand().domain(years).range([m.top,h-m.bottom]).padding(0.06);
+      const cw=x.bandwidth(), ch=y.bandwidth();
+      const g=svg.append('g');
+      years.forEach(yr=>{
+        dosList.forEach(d=>{
+          const cell=map[yr] && map[yr][d]; if(!cell) return;
+          g.append('rect').attr('class','cell')
+            .attr('x',x(d)).attr('y',y(yr)).attr('width',cw+0.6).attr('height',ch)
+            .attr('fill',color()(metric==='t'?cell.t:cell.h))
+            .on('mousemove',function(e){
+              showTip(host,e,`<b>${yr} · ${labels[d]}</b><br>Avg daytime high: ${f1.format(cell.t)}°C`+
+                `<br>Districts in heatwave: ${Math.round(cell.h*100)}%`);
+            }).on('mouseleave',hideTip);
+        });
+      });
+      // y axis (years, every 2)
+      const yAxis=svg.append('g').attr('class','axis').attr('transform',`translate(${m.left},0)`)
+        .call(d3.axisLeft(y).tickValues(years.filter((v,i)=>i%2===0)).tickSize(0));
+      yAxis.select('.domain').remove();
+      // x axis months
+      const xg=svg.append('g').attr('class','axis').attr('transform',`translate(0,${h-m.bottom})`);
+      monthTicks.forEach(([lbl,dos])=>{
+        if(x(dos)==null) return;
+        xg.append('text').attr('x',x(dos)).attr('y',16).attr('text-anchor','start').text(lbl);
+        xg.append('line').attr('x1',x(dos)).attr('x2',x(dos)).attr('y1',-4).attr('y2',0).attr('stroke','#bbb');
+      });
+    }
+    new ResizeObserver(es=>render(es[0].contentRect.width)).observe(host);
+
+    // legend
+    function legend(){
+      const el=document.getElementById('leg-heatmap');
+      const stops = metric==='t'
+        ? d3.range(6).map(i=>tExt[0]+(tExt[1]-tExt[0])*i/5)
+        : [0,0.2,0.4,0.6,0.8,1];
+      const sw=stops.map(v=>`<span style="display:inline-block;width:34px;height:12px;background:${color()(v)}"></span>`).join('');
+      const lbls = metric==='t'
+        ? `${f1.format(tExt[0])}°C &nbsp;→&nbsp; ${f1.format(tExt[1])}°C`
+        : '0% → 100% of districts in heatwave';
+      el.innerHTML=`<div class="small" style="margin-top:.5rem">${sw} &nbsp; ${lbls}</div>`;
+    }
+    legend();
+
+    // metric toggle
+    document.querySelectorAll('#seg-heatmap button').forEach(b=>{
+      b.addEventListener('click',()=>{
+        metric=b.dataset.metric;
+        document.querySelectorAll('#seg-heatmap button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+        render(host.clientWidth); legend();
+      });
+    });
+    document.getElementById('take-heatmap').innerHTML =
+      'Read top to bottom and the season ramps from cool March (pale) into scorching late May and June (deep red) every year. Read down a column and 2010 and 2024 stand out as solid hot bands.';
+  })();
+
+  /* ====================================================================
+     CHART 2 — ANNUAL TREND (bars = heatwave days, line = temperature)
+  ==================================================================== */
+  (function(){
+    const host=document.getElementById('c-trend');
+    const svg=d3.select(host).select('svg');
+    const a=DATA.annual; let metric='meanTmax';
+    const mlabel={meanTmax:'Mean daily high',maxTmax:'Hottest day',meanTmin:'Mean overnight low'};
+    function render(width){
+      const m={top:18,right:54,bottom:40,left:46};
+      const h=Math.max(320,Math.round(width*0.46));
+      svg.attr('viewBox',`0 0 ${width} ${h}`).selectAll('*').remove();
+      const x=d3.scaleBand().domain(a.map(d=>d.year)).range([m.left,width-m.right]).padding(0.18);
+      const yL=d3.scaleLinear().domain([0,d3.max(a,d=>d.hwpd)*1.1]).nice().range([h-m.bottom,m.top]);
+      const yR=d3.scaleLinear().domain([d3.min(a,d=>d[metric])-1,d3.max(a,d=>d[metric])+1]).nice().range([h-m.bottom,m.top]);
+      // grid
+      svg.append('g').attr('class','grid').attr('transform',`translate(${m.left},0)`)
+        .call(d3.axisLeft(yL).ticks(5).tickSize(-(width-m.left-m.right)).tickFormat(()=>'')).select('.domain').remove();
+      // bars
+      svg.append('g').selectAll('rect').data(a).join('rect')
+        .attr('x',d=>x(d.year)).attr('width',x.bandwidth())
+        .attr('y',d=>yL(d.hwpd)).attr('height',d=>yL(0)-yL(d.hwpd))
+        .attr('fill',d=>(d.year===2010||d.year===2024)?'#7f0000':'#f3a16b')
+        .attr('class','cell')
+        .on('mousemove',function(e,d){ showTip(host,e,
+          `<b>${d.year}</b><br>Heatwave: ${f1.format(d.hwpd)} days/district<br>${mlabel[metric]}: ${f1.format(d[metric])}°C`); })
+        .on('mouseleave',hideTip);
+      // line
+      const line=d3.line().x(d=>x(d.year)+x.bandwidth()/2).y(d=>yR(d[metric])).curve(d3.curveMonotoneX);
+      svg.append('path').datum(a).attr('fill','none').attr('stroke','#284162').attr('stroke-width',2.5).attr('d',line);
+      svg.append('g').selectAll('circle').data(a).join('circle')
+        .attr('cx',d=>x(d.year)+x.bandwidth()/2).attr('cy',d=>yR(d[metric])).attr('r',3).attr('fill','#284162');
+      // axes
+      const xa=svg.append('g').attr('class','axis').attr('transform',`translate(0,${h-m.bottom})`)
+        .call(d3.axisBottom(x).tickValues(a.map(d=>d.year).filter((v,i)=>i%2===0)));
+      xa.selectAll('text').attr('transform','rotate(-40)').attr('text-anchor','end').attr('dx','-.4em').attr('dy','.3em');
+      svg.append('g').attr('class','axis').attr('transform',`translate(${m.left},0)`).call(d3.axisLeft(yL).ticks(5));
+      svg.append('g').attr('class','axis').attr('transform',`translate(${width-m.right},0)`).call(d3.axisRight(yR).ticks(5).tickFormat(v=>v+'°'));
+      // labels
+      svg.append('text').attr('x',m.left).attr('y',m.top-6).attr('font-size','.72rem').attr('fill','#5c5c5c').text('Heatwave days / district');
+      svg.append('text').attr('x',width-m.right).attr('y',m.top-6).attr('text-anchor','end').attr('font-size','.72rem').attr('fill','#284162').text(mlabel[metric]+' (°C)');
+    }
+    new ResizeObserver(es=>render(es[0].contentRect.width)).observe(host);
+    document.querySelectorAll('#seg-trend button').forEach(b=>{
+      b.addEventListener('click',()=>{ metric=b.dataset.metric;
+        document.querySelectorAll('#seg-trend button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+        render(host.clientWidth); });
+    });
+    document.getElementById('take-trend').innerHTML =
+      'The blue temperature line is nearly flat across 20 years, yet the bars (heatwave days) lurch from almost zero in 2008 and 2021 to towering totals in 2010 and 2024 — extreme heat is about volatility and clustering, not a creeping mean.';
+  })();
+
+  /* ====================================================================
+     CHART 3 — DISTRICT MAP (animated by year)
+  ==================================================================== */
+  (function(){
+    const host=document.getElementById('c-map');
+    const svg=d3.select(host).select('svg');
+    const D=DATA.districts;
+    const lonExt=d3.extent(D,d=>d.lon), latExt=d3.extent(D,d=>d.lat);
+    const years=DATA.heatmap.years;
+    let mode='year', year=2025, timer=null;
+    const maxAll=d3.max(D,d=>d.hw);
+    const maxYr=d3.max(D,d=>d3.max(years,y=>(d.byYear[y]||{}).hw||0));
+    const rScale=d3.scaleSqrt().range([6,42]);
+    const cScale=d3.scaleSequential(d3.interpolateRgbBasis(heatRamp));
+
+    function val(d){ return mode==='all'? d.hw : ((d.byYear[year]||{}).hw||0); }
+    function render(width){
+      const m={top:16,right:16,bottom:16,left:16};
+      const h=Math.max(360,Math.round(width*0.62));
+      svg.attr('viewBox',`0 0 ${width} ${h}`).selectAll('*').remove();
+      const x=d3.scaleLinear().domain([lonExt[0]-0.4,lonExt[1]+0.4]).range([m.left+40,width-m.right-40]);
+      const y=d3.scaleLinear().domain([latExt[0]-0.4,latExt[1]+0.4]).range([h-m.bottom-30,m.top+10]);
+      rScale.domain([0, mode==='all'?maxAll:maxYr]);
+      cScale.domain([0, mode==='all'?maxAll:maxYr]);
+      // faint grid
+      svg.append('text').attr('x',width/2).attr('y',h-4).attr('text-anchor','middle').attr('font-size','.7rem').attr('fill','#999').text('← west   longitude   east →');
+      const g=svg.append('g').attr('class','bubbles');
+      const sel=g.selectAll('g.node').data(D,d=>d.name).join(enter=>{
+        const ng=enter.append('g').attr('class','node');
+        ng.append('circle').attr('class','bubble anim');
+        ng.append('text').attr('class','dlabel').attr('text-anchor','middle');
+        return ng;
+      });
+      sel.attr('transform',d=>`translate(${x(d.lon)},${y(d.lat)})`);
+      sel.select('circle')
+        .attr('r',d=>rScale(val(d))).attr('fill',d=>cScale(val(d)))
+        .on('mousemove',function(e,d){ showTip(host,e,
+          `<b>${d.name}</b><br>${mode==='all'?'2006–2025 total':year}: <b>${val(d)}</b> heatwave days`+
+          `<br>Mean high (all years): ${f1.format(d.meanTmax)}°C`); })
+        .on('mouseleave',hideTip);
+      sel.select('text').attr('y',d=>-rScale(val(d))-4).text(d=>d.name);
+    }
+    new ResizeObserver(es=>render(es[0].contentRect.width)).observe(host);
+
+    const slider=document.getElementById('map-year'), yl=document.getElementById('map-yrlabel'),
+      live=document.getElementById('map-live');
+    function setYear(v){ year=+v; yl.textContent=v; slider.value=v; if(mode==='year'){render(host.clientWidth);
+      live.textContent='Showing heatwave days for '+v;} }
+    slider.addEventListener('input',e=>{ if(mode!=='year'){return;} setYear(e.target.value); });
+
+    const playBtn=document.getElementById('map-play');
+    function stop(){ if(timer){clearInterval(timer);timer=null;playBtn.textContent='► Play years';} }
+    playBtn.addEventListener('click',()=>{
+      if(mode!=='year'){ document.querySelector('#seg-map button[data-mode="year"]').click(); }
+      if(timer){stop();return;}
+      playBtn.textContent='❚❚ Pause';
+      let i=years.indexOf(year);
+      timer=setInterval(()=>{ i=(i+1)%years.length; setYear(years[i]); if(years[i]===years[years.length-1]){} },reduce?1200:850);
+    });
+    document.querySelectorAll('#seg-map button').forEach(b=>{
+      b.addEventListener('click',()=>{ mode=b.dataset.mode; stop();
+        document.querySelectorAll('#seg-map button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+        document.querySelector('.hv-slider').style.opacity = mode==='year'?'1':'.4';
+        slider.disabled = mode!=='year';
+        render(host.clientWidth);
+        live.textContent = mode==='all'?'Showing 2006 to 2025 totals':'Showing heatwave days for '+year; });
+    });
+    document.getElementById('take-map').innerHTML =
+      'Over the full record, the desert north-west (Bikaner, Churu) and the south-eastern city of Kota carry the heaviest heatwave loads, while Jaipur sits relatively sheltered. Press play and watch the big bubbles flare in 2010, 2018 and 2024.';
+  })();
+
+  /* ====================================================================
+     CHART 4 — DISTRIBUTION SHIFT
+  ==================================================================== */
+  (function(){
+    const host=document.getElementById('c-dist');
+    const svg=d3.select(host).select('svg');
+    const d=DATA.dist, bins=d.bins;
+    const early=bins.map((b,i)=>({t:b,v:d.early[i]/d.earlyN})); // density (share)
+    const late=bins.map((b,i)=>({t:b,v:d.late[i]/d.lateN}));
+    function render(width){
+      const m={top:24,right:18,bottom:40,left:20};
+      const h=Math.max(300,Math.round(width*0.46));
+      svg.attr('viewBox',`0 0 ${width} ${h}`).selectAll('*').remove();
+      const x=d3.scaleLinear().domain([bins[0],bins[bins.length-1]+0.5]).range([m.left,width-m.right]);
+      const y=d3.scaleLinear().domain([0,d3.max(early.concat(late),p=>p.v)*1.1]).range([h-m.bottom,m.top]);
+      const area=d3.area().x(p=>x(p.t)).y0(y(0)).y1(p=>y(p.v)).curve(d3.curveBasis);
+      const lineG=d3.line().x(p=>x(p.t)).y(p=>y(p.v)).curve(d3.curveBasis);
+      svg.append('path').datum(early).attr('fill','#0072B2').attr('fill-opacity',.28).attr('d',area);
+      svg.append('path').datum(late).attr('fill','#D55E00').attr('fill-opacity',.28).attr('d',area);
+      svg.append('path').datum(early).attr('fill','none').attr('stroke','#0072B2').attr('stroke-width',2).attr('d',lineG);
+      svg.append('path').datum(late).attr('fill','none').attr('stroke','#D55E00').attr('stroke-width',2).attr('d',lineG);
+      // 95th percentile markers
+      [[d.early95,'#0072B2','2006–2015 95th'],[d.late95,'#D55E00','2016–2025 95th']].forEach((p,i)=>{
+        svg.append('line').attr('x1',x(p[0])).attr('x2',x(p[0])).attr('y1',m.top).attr('y2',h-m.bottom)
+          .attr('stroke',p[1]).attr('stroke-dasharray','4 3').attr('stroke-width',1.5);
+        svg.append('text').attr('x',x(p[0])).attr('y',m.top-6+i*0).attr('text-anchor','middle')
+          .attr('font-size','.66rem').attr('fill',p[1]).text(f1.format(p[0])+'°');
+      });
+      // axis
+      svg.append('g').attr('class','axis').attr('transform',`translate(0,${h-m.bottom})`).call(d3.axisBottom(x).ticks(8).tickFormat(v=>v+'°'));
+      svg.append('text').attr('x',(width)/2).attr('y',h-4).attr('text-anchor','middle').attr('font-size','.72rem').attr('fill','#5c5c5c').text('Daily high temperature (°C)');
+      // legend
+      const lg=svg.append('g').attr('transform',`translate(${m.left+6},${m.top})`);
+      [['2006–2015','#0072B2'],['2016–2025','#D55E00']].forEach((s,i)=>{
+        lg.append('rect').attr('y',i*16).attr('width',12).attr('height',12).attr('fill',s[1]).attr('fill-opacity',.5).attr('stroke',s[1]);
+        lg.append('text').attr('x',17).attr('y',i*16+10).attr('font-size','.78rem').attr('fill','#333').text(s[0]);
+      });
+      // hover band
+      const focus=svg.append('line').attr('y1',m.top).attr('y2',h-m.bottom).attr('stroke','#999').attr('stroke-width',1).style('opacity',0);
+      svg.append('rect').attr('x',m.left).attr('y',m.top).attr('width',width-m.left-m.right).attr('height',h-m.top-m.bottom)
+        .attr('fill','transparent')
+        .on('mousemove',function(e){
+          const mx=d3.pointer(e,this)[0]; const tx=x.invert(mx);
+          const idx=Math.max(0,Math.min(bins.length-1,Math.round((tx-bins[0])/0.5)));
+          focus.attr('x1',x(bins[idx])).attr('x2',x(bins[idx])).style('opacity',1);
+          showTip(host,e,`<b>${f1.format(bins[idx])}–${f1.format(bins[idx]+0.5)}°C</b><br>`+
+            `2006–2015: ${(early[idx].v*100).toFixed(1)}% of days<br>2016–2025: ${(late[idx].v*100).toFixed(1)}% of days`);
+        })
+        .on('mouseleave',()=>{focus.style('opacity',0);hideTip();});
+    }
+    new ResizeObserver(es=>render(es[0].contentRect.width)).observe(host);
+    document.getElementById('take-dist').innerHTML =
+      `Both decades average about ${f1.format(d.earlyMean)}°C, but the second decade's 95th percentile is higher (${f1.format(d.late95)}° vs ${f1.format(d.early95)}°): the most extreme days got hotter even as the typical day didn't.`;
+  })();
+
+})();
+</script>
+</main>
+<footer id="wb-info">
+  <h2 class="wb-inv">About this site</h2>
+  <div class="gc-contextual">
+    <div class="container">
+      <nav>
+        <h3>Rajasthan heat data explorer</h3>
+        <ul class="list-col-xs-1 list-col-sm-2 list-col-md-3">
+          <li><a href="#c-heatmap">Hot-season heatmap</a></li>
+          <li><a href="#c-trend">Extreme-heat day trend</a></li>
+          <li><a href="#c-map">District heat map</a></li>
+          <li><a href="#c-dist">Distribution shift</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="gc-main-footer">
+    <div class="container">
+      <nav>
+        <h3>Government of Canada</h3>
+        <ul class="list-col-xs-1 list-col-sm-2 list-col-md-3">
+          <li><a href="https://www.canada.ca/en/contact.html">All contacts</a></li>
+          <li><a href="https://www.canada.ca/en/government/dept.html">Departments and agencies</a></li>
+          <li><a href="https://www.canada.ca/en/government/system.html">About government</a></li>
+        </ul>
+        <h4 class="wb-inv">Themes and topics</h4>
+        <ul class="list-unstyled colcount-sm-2 colcount-md-3">
+          <li><a href="https://www.canada.ca/en/services/jobs.html">Jobs</a></li>
+          <li><a href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+          <li><a href="https://travel.gc.ca/">Travel and tourism</a></li>
+          <li><a href="https://www.canada.ca/en/services/business.html">Business and industry</a></li>
+          <li><a href="https://www.canada.ca/en/services/benefits.html">Benefits</a></li>
+          <li><a href="https://www.canada.ca/en/services/health.html">Health</a></li>
+          <li><a href="https://www.canada.ca/en/services/environment.html">Environment and natural resources</a></li>
+          <li><a href="https://www.canada.ca/en/services/defence.html">National security and defence</a></li>
+          <li><a href="https://www.canada.ca/en/services/culture.html">Culture, history and sport</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="gc-sub-footer">
+    <div class="container d-flex align-items-center">
+      <nav>
+        <h3 class="wb-inv">Government of Canada Corporate</h3>
+        <ul>
+          <li><a href="https://www.canada.ca/en/social.html">Social media</a></li>
+          <li><a href="https://www.canada.ca/en/mobile.html">Mobile applications</a></li>
+          <li><a href="https://www.canada.ca/en/government/about.html">About Canada.ca</a></li>
+          <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+          <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
+        </ul>
+      </nav>
+      <div class="wtrmrk align-self-end">
+        <img src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/wmms-blk.svg" alt="Symbol of the Government of Canada">
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/wet-boew.min.js"></script>
+<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
+</body>
+</html>

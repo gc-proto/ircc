@@ -1,0 +1,485 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A listening portrait: two decades of Stray Kids on Spotify - Canada.ca</title>
+<link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/theme.min.css">
+<noscript><link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/noscript.min.css"></noscript>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<style>
+  #skz { --gc-blue:#284162; --ink:#2b2b2b; --muted:#5c5c5c; --line:#e3e3e3;
+    --spot:#1DB954; --spotdk:#0b6e4f; max-width:64rem; }
+  #skz * { box-sizing:border-box; }
+
+  #skz .sk-hero { background:linear-gradient(135deg,#191414 0%,#0b6e4f 62%,#1DB954 100%);
+    color:#fff; padding:2.1rem 1.6rem; border-radius:8px; margin:0 0 1.4rem; position:relative; overflow:hidden; }
+  #skz .sk-hero h1 { color:#fff; border:0; margin:0 0 .45rem; font-size:1.95rem; line-height:1.12; }
+  #skz .sk-hero p { color:#fff; max-width:47rem; margin:.3rem 0 0; opacity:.94; }
+  #skz .sk-kpis { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.4rem; }
+  #skz .sk-kpi { background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.28);
+    border-radius:8px; padding:.7rem .95rem; flex:1 1 8rem; min-width:8rem; }
+  #skz .sk-kpi b { display:block; font-size:1.75rem; line-height:1; color:#fff; }
+  #skz .sk-kpi span { font-size:.78rem; opacity:.9; }
+
+  #skz .sk-card { border:1px solid var(--line); border-radius:8px; padding:1.2rem 1.3rem 1.4rem;
+    margin:1.4rem 0; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+  #skz .sk-card h2 { margin:0 0 .2rem; font-size:1.3rem; color:var(--gc-blue); }
+  #skz .sk-lede { color:var(--muted); margin:.1rem 0 1rem; font-size:.95rem; max-width:51rem; }
+  #skz .sk-take { background:#eafaf1; border-left:4px solid var(--spot); padding:.55rem .8rem;
+    font-size:.9rem; margin:.2rem 0 1rem; border-radius:0 4px 4px 0; }
+
+  #skz .sk-controls { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:.2rem 0 1rem; }
+  #skz .sk-seg { display:inline-flex; border:1px solid var(--spotdk); border-radius:4px; overflow:hidden; }
+  #skz .sk-seg button { border:0; background:#fff; color:var(--spotdk); padding:.35rem .8rem;
+    font-size:.85rem; cursor:pointer; border-right:1px solid var(--spotdk); }
+  #skz .sk-seg button:last-child { border-right:0; }
+  #skz .sk-seg button[aria-pressed="true"] { background:var(--spotdk); color:#fff; font-weight:700; }
+  #skz .sk-seg button:focus-visible { outline:2px solid var(--gc-blue); outline-offset:1px; }
+
+  #skz svg { width:100%; height:auto; display:block; overflow:visible; }
+  #skz .axis text { font-size:.72rem; fill:var(--muted); }
+  #skz .axis path, #skz .axis line { stroke:var(--line); }
+  #skz .grid line { stroke:#f0f0f0; }
+  #skz .seg, #skz .node rect, #skz .dot { cursor:pointer; }
+  #skz .tm-label { font-size:.7rem; pointer-events:none; }
+  #skz .legend-item { font-size:.78rem; fill:var(--ink); }
+
+  #skz .sk-tip { position:fixed; z-index:30; pointer-events:none; background:#fff;
+    border:1px solid var(--spotdk); border-left:4px solid var(--spot); padding:.45rem .65rem;
+    font-size:.8rem; line-height:1.45; color:var(--ink); box-shadow:0 2px 8px rgba(0,0,0,.22);
+    border-radius:3px; max-width:16rem; transform:translate(-50%,-105%); }
+  #skz .sk-tip b { color:var(--spotdk); }
+  #skz .sk-stage { position:relative; }
+  #skz .sk-legend { display:flex; flex-wrap:wrap; gap:.4rem 1rem; margin-top:.6rem; font-size:.78rem; }
+  #skz .sk-legend span.sw { display:inline-block; width:12px; height:12px; border-radius:2px; margin-right:.3rem; vertical-align:-1px; }
+
+  #skz details.sk-tbl { margin-top:1rem; }
+  #skz details.sk-tbl summary { cursor:pointer; color:var(--spotdk); font-size:.88rem; }
+  #skz .sk-tbl table { font-size:.82rem; margin-top:.6rem; }
+
+  #skz .anim { transition:none; }
+  @media (prefers-reduced-motion: no-preference){ #skz .anim{ transition:all .5s ease; } }
+  @media (max-width:480px){ #skz .sk-kpi b{font-size:1.4rem;} }
+</style>
+</head>
+<body vocab="http://schema.org/" typeof="WebPage">
+<ul id="wb-tphp">
+  <li class="wb-slc"><a class="wb-sl" href="#wb-cont">Skip to main content</a></li>
+  <li class="wb-slc"><a class="wb-sl" href="#wb-info">Skip to "About this site"</a></li>
+</ul>
+<header>
+  <div id="wb-bnr" class="container">
+    <section id="wb-lng" class="text-right">
+      <h2 class="wb-inv">Language selection</h2>
+      <ul class="list-inline margin-bottom-none"><li><a lang="fr" href="#">Fran&ccedil;ais</a></li></ul>
+    </section>
+    <div class="row">
+      <div class="brand col-xs-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+        <a href="https://www.canada.ca/en.html" property="url">
+          <img src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg" alt="" property="logo">
+          <span class="wb-inv" property="name"> Government of Canada / <span lang="fr">Gouvernement du Canada</span></span>
+        </a>
+        <meta property="areaServed" typeof="Country" content="Canada">
+      </div>
+      <section id="wb-srch" class="col-lg-8 text-right visible-md visible-lg">
+        <h2>Search</h2>
+        <form action="https://www.canada.ca/en/sr/srb.html" method="get" role="search" class="form-inline">
+          <div class="form-group">
+            <label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
+            <input id="wb-srch-q" class="wb-srch-q form-control" name="q" type="search" size="34" maxlength="170" placeholder="Search Canada.ca">
+          </div>
+          <button type="submit" class="btn btn-primary btn-small"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button>
+        </form>
+      </section>
+    </div>
+  </div>
+  <nav class="gcweb-menu" typeof="SiteNavigationElement">
+    <div class="container">
+      <h2 class="wb-inv">Menu</h2>
+      <button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
+      <ul role="menu" aria-orientation="vertical" data-ajax-replace="https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-en.html">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/en/services/culture.html">Culture, history and sport</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/en/services/business.html">Business and industry</a></li>
+      </ul>
+    </div>
+  </nav>
+  <nav id="wb-bc" property="breadcrumb">
+    <h2>You are here:</h2>
+    <div class="container">
+      <ol class="breadcrumb" typeof="BreadcrumbList">
+        <li property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" href="https://www.canada.ca/en.html"><span property="name">Canada.ca</span></a><meta property="position" content="1"></li>
+        <li property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" href="#"><span property="name">Culture, history and sport</span></a><meta property="position" content="2"></li>
+        <li property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" href="#"><span property="name">Data stories</span></a><meta property="position" content="3"></li>
+      </ol>
+    </div>
+  </nav>
+</header>
+
+<main property="mainContentOfPage" resource="#wb-main" class="container" id="skz">
+
+  <div class="sk-hero">
+    <h1 property="name" id="wb-cont">A listening portrait: Stray Kids on Spotify</h1>
+    <p>An interactive read of one fan's play history across the full Stray Kids discography — 309 tracks, 69 releases, from the 2018 debut to early 2026. It's a story of a recent, intense discovery, a clear taste for high-tempo tracks, and a listener who almost never hits skip.</p>
+    <div class="sk-kpis" id="sk-kpis"></div>
+  </div>
+
+  <p class="sk-lede">Each track carries its play count, total listening time, tempo (BPM), and average share of the song actually played. Listening time is converted from milliseconds to hours. "Completion" is the average percentage of each track played before moving on.</p>
+
+  <!-- 1 TIMELINE -->
+  <section class="sk-card">
+    <h2>A discovery that happened all at once</h2>
+    <p class="sk-lede">Plays grouped by each release's year, stacked by release type. The back catalogue (2018–2023) draws a steady trickle; then 2024 and 2025 erupt — the signature of someone who found the group recently and devoured everything at once.</p>
+    <div class="sk-take" id="take-time"></div>
+    <div class="sk-controls">
+      <span class="small">Measure:</span>
+      <span class="sk-seg" id="seg-time" role="group" aria-label="Timeline measure">
+        <button data-m="streams" aria-pressed="true">Streams</button>
+        <button data-m="hours" aria-pressed="false">Hours listened</button>
+      </span>
+    </div>
+    <div class="sk-stage">
+      <div class="sk-chart" id="c-time" role="img"
+        aria-label="Stacked bar chart of plays by release year. Volume is modest from 2018 to 2023, then jumps sharply in 2024 and 2025, dominated by mini albums, studio albums and mixtapes.">
+        <svg></svg>
+      </div>
+    </div>
+    <div class="sk-legend" id="leg-time"></div>
+    <details class="sk-tbl"><summary>Data table: by release year</summary><div id="tbl-year"></div></details>
+  </section>
+
+  <!-- 2 TREEMAP -->
+  <section class="sk-card">
+    <h2>Where the hours went</h2>
+    <p class="sk-lede">Every album sized by the time poured into it and coloured by release type. Together they account for more than a thousand hours of listening. A handful of 2024–2025 releases swallow most of the canvas.</p>
+    <div class="sk-take" id="take-tree"></div>
+    <div class="sk-controls">
+      <span class="small">Size by:</span>
+      <span class="sk-seg" id="seg-tree" role="group" aria-label="Treemap size metric">
+        <button data-m="h" aria-pressed="true">Hours listened</button>
+        <button data-m="s" aria-pressed="false">Streams</button>
+      </span>
+    </div>
+    <div class="sk-stage">
+      <div class="sk-chart" id="c-tree" role="img"
+        aria-label="Treemap of albums sized by hours listened. HOP, KARMA, ATE, GIANT and Hollow are the largest tiles, all released in 2024 or 2025.">
+        <svg></svg>
+      </div>
+    </div>
+    <div class="sk-legend" id="leg-tree"></div>
+    <details class="sk-tbl"><summary>Data table: top albums</summary><div id="tbl-album"></div></details>
+  </section>
+
+  <!-- 3 SCATTER -->
+  <section class="sk-card">
+    <h2>The faster the song, the harder it's played</h2>
+    <p class="sk-lede">Each dot is a track: tempo across the bottom, plays up the side, bubble size is total listening time. The cloud tilts upward — high-tempo tracks (150&ndash;200 BPM) rack up noticeably more plays than the slow ones.</p>
+    <div class="sk-take" id="take-scatter"></div>
+    <div class="sk-controls">
+      <span class="small">Colour by:</span>
+      <span class="sk-seg" id="seg-scatter" role="group" aria-label="Scatter colour">
+        <button data-m="ty" aria-pressed="true">Release type</button>
+        <button data-m="y" aria-pressed="false">Release year</button>
+      </span>
+    </div>
+    <div class="sk-stage">
+      <div class="sk-chart" id="c-scatter" role="img"
+        aria-label="Scatter plot of tempo versus plays for 309 tracks. Plays rise with tempo; a trend line shows tracks above 150 BPM averaging the most plays.">
+        <svg></svg>
+      </div>
+    </div>
+    <div class="sk-legend" id="leg-scatter"></div>
+    <details class="sk-tbl"><summary>Data table: average plays by tempo band</summary><div id="tbl-bpm"></div></details>
+  </section>
+
+  <!-- 4 BEESWARM -->
+  <section class="sk-card">
+    <h2>A listener who doesn't skip</h2>
+    <p class="sk-lede">Each track placed by how much of it gets played on average. Almost everything clusters hard against 100%. The rare tracks drifting left — the ones that get cut short — are the exceptions that prove the devotion.</p>
+    <div class="sk-take" id="take-bee"></div>
+    <div class="sk-controls">
+      <span class="small">Colour by:</span>
+      <span class="sk-seg" id="seg-bee" role="group" aria-label="Beeswarm colour">
+        <button data-m="ty" aria-pressed="true">Release type</button>
+        <button data-m="y" aria-pressed="false">Release year</button>
+      </span>
+    </div>
+    <div class="sk-stage">
+      <div class="sk-chart" id="c-bee" role="img"
+        aria-label="Beeswarm of 309 tracks by average completion. The vast majority sit at or near 100 percent played; a small tail of tracks falls below 70 percent.">
+        <svg></svg>
+      </div>
+    </div>
+    <div class="sk-legend" id="leg-bee"></div>
+    <details class="sk-tbl"><summary>Data table: least-completed tracks</summary><div id="tbl-skip"></div></details>
+  </section>
+
+  <p class="small" style="color:#777">Built from <code>spotify_skz_counts_album.csv</code> (personal Spotify play history for Stray Kids). Listening time converted from milliseconds to hours. Album completion is weighted by play count. This is a personal data story; visual styling uses custom CSS on the Canada.ca (GCWeb) theme.</p>
+
+  <div class="sk-tip" id="sk-tip" hidden></div>
+
+<script id="skzdata" type="application/json">{"tracks":[{"a":"I am NOT","t":"3rd Eye","y":2018,"ty":"Mini Album","bpm":140,"s":32,"h":2.1,"pct":97,"len":243},{"a":"I am NOT","t":"Awaken","y":2018,"ty":"Mini Album","bpm":164,"s":33,"h":1.78,"pct":100,"len":193},{"a":"I am NOT","t":"District 9","y":2018,"ty":"Mini Album","bpm":90,"s":151,"h":8.95,"pct":100,"len":213},{"a":"I am NOT","t":"Grow Up","y":2018,"ty":"Mini Album","bpm":174,"s":23,"h":1.36,"pct":100,"len":213},{"a":"I am NOT","t":"Mirror","y":2018,"ty":"Mini Album","bpm":186,"s":26,"h":1.48,"pct":92,"len":222},{"a":"I am NOT","t":"NOT!","y":2018,"ty":"Mini Album","bpm":170,"s":9,"h":0.21,"pct":100,"len":82},{"a":"I am NOT","t":"ROCK","y":2018,"ty":"Mini Album","bpm":142,"s":33,"h":1.72,"pct":97,"len":193},{"a":"I am WHO","t":"Awkward Silence","y":2018,"ty":"Mini Album","bpm":200,"s":21,"h":1.14,"pct":100,"len":195},{"a":"I am WHO","t":"Insomnia","y":2018,"ty":"Mini Album","bpm":168,"s":33,"h":1.88,"pct":100,"len":206},{"a":"I am WHO","t":"M.I.A.","y":2018,"ty":"Mini Album","bpm":140,"s":21,"h":1.23,"pct":100,"len":211},{"a":"I am WHO","t":"My Pace","y":2018,"ty":"Mini Album","bpm":155,"s":131,"h":6.63,"pct":96,"len":190},{"a":"I am WHO","t":"Question","y":2018,"ty":"Mini Album","bpm":98,"s":24,"h":1.09,"pct":89,"len":184},{"a":"I am WHO","t":"Voices","y":2018,"ty":"Mini Album","bpm":150,"s":70,"h":3.92,"pct":100,"len":202},{"a":"I am WHO","t":"WHO?","y":2018,"ty":"Mini Album","bpm":85,"s":9,"h":0.26,"pct":100,"len":104},{"a":"I am YOU","t":"0325","y":2018,"ty":"Mini Album","bpm":170,"s":32,"h":1.94,"pct":100,"len":218},{"a":"I am YOU","t":"Get Cool","y":2018,"ty":"Mini Album","bpm":152,"s":21,"h":1.14,"pct":100,"len":196},{"a":"I am YOU","t":"Hero's Soup","y":2018,"ty":"Mini Album","bpm":172,"s":9,"h":0.53,"pct":100,"len":212},{"a":"I am YOU","t":"I am YOU","y":2018,"ty":"Mini Album","bpm":145,"s":22,"h":1.26,"pct":100,"len":206},{"a":"I am YOU","t":"My Side","y":2018,"ty":"Mini Album","bpm":166,"s":32,"h":1.93,"pct":100,"len":216},{"a":"I am YOU","t":"N/S","y":2018,"ty":"Mini Album","bpm":130,"s":33,"h":1.99,"pct":97,"len":224},{"a":"I am YOU","t":"YOU.","y":2018,"ty":"Mini Album","bpm":170,"s":9,"h":0.2,"pct":100,"len":78},{"a":"Mixtape","t":"4419","y":2018,"ty":"Mini Album","bpm":86,"s":7,"h":0.38,"pct":100,"len":193},{"a":"Mixtape","t":"BEWARE","y":2018,"ty":"Mini Album","bpm":98,"s":22,"h":1.16,"pct":100,"len":190},{"a":"Mixtape","t":"GLOW","y":2018,"ty":"Mini Album","bpm":90,"s":7,"h":0.4,"pct":100,"len":204},{"a":"Mixtape","t":"Hellevator","y":2018,"ty":"Mini Album","bpm":78,"s":70,"h":4.45,"pct":96,"len":239},{"a":"Mixtape","t":"School Life","y":2018,"ty":"Mini Album","bpm":130,"s":7,"h":0.42,"pct":100,"len":216},{"a":"Mixtape","t":"Spread My Wings","y":2018,"ty":"Mini Album","bpm":140,"s":23,"h":1.28,"pct":100,"len":202},{"a":"Mixtape","t":"YAYAYA","y":2018,"ty":"Mini Album","bpm":132,"s":21,"h":1.18,"pct":100,"len":202},{"a":"Cle - LEVANTER","t":"Astronaut","y":2019,"ty":"Mini Album","bpm":120,"s":20,"h":1.0,"pct":100,"len":180},{"a":"Cle - LEVANTER","t":"Booster","y":2019,"ty":"Mini Album","bpm":150,"s":10,"h":0.55,"pct":90,"len":220},{"a":"Cle - LEVANTER","t":"Double Knot","y":2019,"ty":"Mini Album","bpm":147,"s":20,"h":1.06,"pct":100,"len":191},{"a":"Cle - LEVANTER","t":"Levanter","y":2019,"ty":"Mini Album","bpm":150,"s":21,"h":1.15,"pct":100,"len":197},{"a":"Cle - LEVANTER","t":"STOP","y":2019,"ty":"Mini Album","bpm":128,"s":9,"h":0.47,"pct":100,"len":189},{"a":"Cle - LEVANTER","t":"Sunshine","y":2019,"ty":"Mini Album","bpm":143,"s":9,"h":0.56,"pct":100,"len":222},{"a":"Cle - LEVANTER","t":"You Can STAY","y":2019,"ty":"Mini Album","bpm":95,"s":10,"h":0.58,"pct":100,"len":208},{"a":"Cle 1 - MIROH","t":"19","y":2019,"ty":"Mini Album","bpm":105,"s":21,"h":1.14,"pct":95,"len":206},{"a":"Cle 1 - MIROH","t":"Boxer","y":2019,"ty":"Mini Album","bpm":105,"s":22,"h":1.13,"pct":92,"len":202},{"a":"Cle 1 - MIROH","t":"Chronosaurus","y":2019,"ty":"Mini Album","bpm":100,"s":22,"h":1.2,"pct":98,"len":200},{"a":"Cle 1 - MIROH","t":"Entrance","y":2019,"ty":"Mini Album","bpm":106,"s":9,"h":0.25,"pct":100,"len":98},{"a":"Cle 1 - MIROH","t":"MIROH","y":2019,"ty":"Mini Album","bpm":126,"s":128,"h":7.18,"pct":97,"len":208},{"a":"Cle 1 - MIROH","t":"Maze of Memories","y":2019,"ty":"Mini Album","bpm":129,"s":32,"h":1.56,"pct":100,"len":175},{"a":"Cle 1 - MIROH","t":"Victory Song","y":2019,"ty":"Mini Album","bpm":103,"s":68,"h":3.68,"pct":98,"len":198},{"a":"Cle 2 - Yellow Wood","t":"Mixtape#1","y":2019,"ty":"Mini Album","bpm":100,"s":9,"h":0.63,"pct":100,"len":252},{"a":"Cle 2 - Yellow Wood","t":"Mixtape#2","y":2019,"ty":"Mini Album","bpm":174,"s":9,"h":0.73,"pct":100,"len":291},{"a":"Cle 2 - Yellow Wood","t":"Mixtape#3","y":2019,"ty":"Mini Album","bpm":114,"s":9,"h":0.64,"pct":100,"len":257},{"a":"Cle 2 - Yellow Wood","t":"Mixtape#4","y":2019,"ty":"Mini Album","bpm":98,"s":9,"h":0.58,"pct":100,"len":231},{"a":"Cle 2 - Yellow Wood","t":"Road Not Taken","y":2019,"ty":"Mini Album","bpm":128,"s":10,"h":0.27,"pct":100,"len":95},{"a":"Cle 2 - Yellow Wood","t":"Side Effects","y":2019,"ty":"Mini Album","bpm":97,"s":21,"h":1.11,"pct":98,"len":195},{"a":"Cle 2 - Yellow Wood","t":"TMT","y":2019,"ty":"Mini Album","bpm":132,"s":20,"h":1.16,"pct":100,"len":209},{"a":"Mixtape - Gone Days","t":"Mixtape - Gone Days","y":2019,"ty":"Single","bpm":135,"s":25,"h":1.32,"pct":96,"len":196},{"a":"Extraordinary You Pt.7 (Original Television Soundtrack)","t":"Neverending Story","y":2019,"ty":"Soundtrack","bpm":80,"s":67,"h":4.48,"pct":99,"len":244},{"a":"Extraordinary You Pt.7 (Original Television Soundtrack)","t":"Neverending Story (Inst.)","y":2019,"ty":"Soundtrack","bpm":80,"s":10,"h":0.68,"pct":100,"len":244},{"a":"ALL IN","t":"ALL IN","y":2020,"ty":"Mini Album","bpm":140,"s":20,"h":0.99,"pct":95,"len":187},{"a":"ALL IN","t":"Back Door -Japanese ver.-","y":2020,"ty":"Mini Album","bpm":108,"s":19,"h":1.01,"pct":100,"len":191},{"a":"ALL IN","t":"FAM","y":2020,"ty":"Mini Album","bpm":105,"s":19,"h":1.14,"pct":100,"len":215},{"a":"ALL IN","t":"God's Menu -Japanese ver.-","y":2020,"ty":"Mini Album","bpm":157,"s":19,"h":0.9,"pct":100,"len":170},{"a":"ALL IN","t":"One Day","y":2020,"ty":"Mini Album","bpm":145,"s":19,"h":1.02,"pct":100,"len":193},{"a":"ALL IN","t":"SLUMP -Japanese ver.-","y":2020,"ty":"Mini Album","bpm":160,"s":36,"h":1.28,"pct":94,"len":136},{"a":"ALL IN","t":"TOP -Japanese ver.-","y":2020,"ty":"Mini Album","bpm":98,"s":34,"h":1.78,"pct":100,"len":188},{"a":"IN LIFE","t":"Any","y":2020,"ty":"Repackage","bpm":110,"s":19,"h":0.89,"pct":100,"len":169},{"a":"IN LIFE","t":"B Me","y":2020,"ty":"Repackage","bpm":150,"s":19,"h":1.08,"pct":100,"len":205},{"a":"IN LIFE","t":"Back Door","y":2020,"ty":"Repackage","bpm":108,"s":150,"h":7.75,"pct":98,"len":189},{"a":"IN LIFE","t":"Ex","y":2020,"ty":"Repackage","bpm":90,"s":20,"h":1.19,"pct":99,"len":217},{"a":"IN LIFE","t":"My Universe (Seungmin/I.N)","y":2020,"ty":"Repackage","bpm":92,"s":18,"h":1.02,"pct":100,"len":203},{"a":"IN LIFE","t":"The Tortoise and the Hare","y":2020,"ty":"Repackage","bpm":154,"s":19,"h":1.18,"pct":100,"len":224},{"a":"IN LIFE","t":"We Go (Bang Chan/Changbin/HAN)","y":2020,"ty":"Repackage","bpm":174,"s":18,"h":0.79,"pct":100,"len":157},{"a":"IN LIFE","t":"Wow (Lee Know/Hyunjin/Felix)","y":2020,"ty":"Repackage","bpm":128,"s":18,"h":0.97,"pct":100,"len":193},{"a":"ALL IN (Korean Ver.)","t":"ALL IN (Korean Ver.)","y":2020,"ty":"Single","bpm":140,"s":66,"h":3.38,"pct":100,"len":184},{"a":"Mixtape - On Track","t":"Mixtape - On Track","y":2020,"ty":"Single","bpm":171,"s":32,"h":1.73,"pct":94,"len":208},{"a":"Step Out of Cle (English Ver.)","t":"Double Knot (English Ver.)","y":2020,"ty":"Single","bpm":147,"s":70,"h":3.24,"pct":88,"len":189},{"a":"Step Out of Cle (English Ver.)","t":"Levanter (English Ver.)","y":2020,"ty":"Single","bpm":150,"s":61,"h":3.09,"pct":93,"len":195},{"a":"TOP","t":"SLUMP (English Ver.)","y":2020,"ty":"Single","bpm":160,"s":60,"h":2.25,"pct":100,"len":134},{"a":"TOP","t":"SLUMP (Instrumental)","y":2020,"ty":"Single","bpm":160,"s":15,"h":0.57,"pct":100,"len":136},{"a":"TOP","t":"TOP (English Ver.)","y":2020,"ty":"Single","bpm":98,"s":60,"h":3.09,"pct":100,"len":185},{"a":"TOP","t":"TOP (Instrumental)","y":2020,"ty":"Single","bpm":98,"s":15,"h":0.78,"pct":100,"len":188},{"a":"POP OUT BOY! Part.1","t":"Hello Stranger","y":2020,"ty":"Soundtrack","bpm":100,"s":62,"h":4.06,"pct":99,"len":239},{"a":"POP OUT BOY! Part.1","t":"Hello Stranger (inst.)","y":2020,"ty":"Soundtrack","bpm":100,"s":16,"h":1.07,"pct":100,"len":239},{"a":"GO LIVE","t":"Airplane","y":2020,"ty":"Studio Album","bpm":156,"s":33,"h":1.97,"pct":100,"len":214},{"a":"GO LIVE","t":"Another Day","y":2020,"ty":"Studio Album","bpm":95,"s":37,"h":1.51,"pct":89,"len":166},{"a":"GO LIVE","t":"Blueprint","y":2020,"ty":"Studio Album","bpm":110,"s":33,"h":2.22,"pct":96,"len":251},{"a":"GO LIVE","t":"Easy","y":2020,"ty":"Studio Album","bpm":144,"s":79,"h":3.99,"pct":99,"len":183},{"a":"GO LIVE","t":"GO LIVE","y":2020,"ty":"Studio Album","bpm":154,"s":16,"h":0.49,"pct":100,"len":110},{"a":"GO LIVE","t":"God's Menu","y":2020,"ty":"Studio Album","bpm":157,"s":156,"h":7.1,"pct":98,"len":167},{"a":"GO LIVE","t":"Haven","y":2020,"ty":"Studio Album","bpm":130,"s":39,"h":1.98,"pct":92,"len":199},{"a":"GO LIVE","t":"Pacemaker","y":2020,"ty":"Studio Album","bpm":100,"s":34,"h":1.75,"pct":97,"len":190},{"a":"GO LIVE","t":"Phobia","y":2020,"ty":"Studio Album","bpm":95,"s":32,"h":1.89,"pct":100,"len":213},{"a":"GO LIVE","t":"SLUMP (Tower of God ED)","y":2020,"ty":"Studio Album","bpm":160,"s":16,"h":0.6,"pct":100,"len":134},{"a":"GO LIVE","t":"TA","y":2020,"ty":"Studio Album","bpm":126,"s":76,"h":4.4,"pct":100,"len":208},{"a":"GO LIVE","t":"TOP (Tower of God OP)","y":2020,"ty":"Studio Album","bpm":98,"s":15,"h":0.77,"pct":100,"len":185},{"a":"SKZ2021","t":"Behind The Light","y":2021,"ty":"Compilation","bpm":174,"s":24,"h":1.72,"pct":96,"len":270},{"a":"SKZ2021","t":"Broken Compass","y":2021,"ty":"Compilation","bpm":98,"s":23,"h":1.41,"pct":100,"len":221},{"a":"SKZ2021","t":"For You","y":2021,"ty":"Compilation","bpm":114,"s":23,"h":1.52,"pct":96,"len":249},{"a":"SKZ2021","t":"Hoodie Season","y":2021,"ty":"Compilation","bpm":90,"s":22,"h":1.39,"pct":97,"len":234},{"a":"SKZ2021","t":"Placebo","y":2021,"ty":"Compilation","bpm":100,"s":75,"h":4.63,"pct":95,"len":234},{"a":"SKZ2021","t":"Scars (Korean Ver.)","y":2021,"ty":"Compilation","bpm":160,"s":73,"h":3.93,"pct":97,"len":199},{"a":"Christmas EveL","t":"24 to 25","y":2021,"ty":"Single","bpm":92,"s":22,"h":1.32,"pct":100,"len":216},{"a":"Christmas EveL","t":"Christmas EveL","y":2021,"ty":"Single","bpm":140,"s":70,"h":3.47,"pct":100,"len":178},{"a":"Christmas EveL","t":"DOMINO (English Ver.)","y":2021,"ty":"Single","bpm":160,"s":69,"h":3.7,"pct":97,"len":198},{"a":"Christmas EveL","t":"Winter Falls","y":2021,"ty":"Single","bpm":98,"s":22,"h":1.44,"pct":100,"len":235},{"a":"Going Dumb","t":"Going Dumb (with Stray Kids)","y":2021,"ty":"Single","bpm":122,"s":19,"h":0.89,"pct":100,"len":169},{"a":"Mirror Mirror","t":"Mirror Mirror","y":2021,"ty":"Single","bpm":159,"s":19,"h":1.19,"pct":97,"len":232},{"a":"Mixtape - OH","t":"Mixtape - OH","y":2021,"ty":"Single","bpm":88,"s":39,"h":2.25,"pct":98,"len":212},{"a":"Scars","t":"CALL","y":2021,"ty":"Single","bpm":90,"s":21,"h":0.93,"pct":95,"len":167},{"a":"Scars","t":"Scars","y":2021,"ty":"Single","bpm":160,"s":60,"h":3.07,"pct":92,"len":199},{"a":"Hometown Cha-Cha Pt.7 (Original Television Soundtrack)","t":"Here Always","y":2021,"ty":"Soundtrack","bpm":82,"s":21,"h":1.49,"pct":100,"len":254},{"a":"Hometown Cha-Cha Pt.7 (Original Television Soundtrack)","t":"Here Always - Instrumental","y":2021,"ty":"Soundtrack","bpm":82,"s":20,"h":1.42,"pct":100,"len":254},{"a":"NOEASY","t":"CHEESE","y":2021,"ty":"Studio Album","bpm":90,"s":70,"h":3.53,"pct":99,"len":182},{"a":"NOEASY","t":"DOMINO","y":2021,"ty":"Studio Album","bpm":160,"s":152,"h":8.09,"pct":97,"len":198},{"a":"NOEASY","t":"Gone Away (HAN/Seungmin/I.N)","y":2021,"ty":"Studio Album","bpm":144,"s":22,"h":1.47,"pct":100,"len":241},{"a":"NOEASY","t":"Red Lights (Bang Chan/Hyunjin)","y":2021,"ty":"Studio Album","bpm":128,"s":69,"h":3.64,"pct":100,"len":189},{"a":"NOEASY","t":"SSICK","y":2021,"ty":"Studio Album","bpm":170,"s":24,"h":1.21,"pct":96,"len":190},{"a":"NOEASY","t":"Secret Secret","y":2021,"ty":"Studio Album","bpm":74,"s":23,"h":1.24,"pct":93,"len":209},{"a":"NOEASY","t":"Silent Cry","y":2021,"ty":"Studio Album","bpm":104,"s":70,"h":4.01,"pct":99,"len":209},{"a":"NOEASY","t":"Sorry, I Love You","y":2021,"ty":"Studio Album","bpm":100,"s":22,"h":1.08,"pct":100,"len":177},{"a":"NOEASY","t":"Star Lost","y":2021,"ty":"Studio Album","bpm":128,"s":79,"h":4.38,"pct":93,"len":215},{"a":"NOEASY","t":"Surfin' (Lee Know/Changbin/Felix)","y":2021,"ty":"Studio Album","bpm":105,"s":22,"h":1.12,"pct":96,"len":191},{"a":"NOEASY","t":"The View","y":2021,"ty":"Studio Album","bpm":110,"s":23,"h":1.26,"pct":98,"len":201},{"a":"NOEASY","t":"Thunderous","y":2021,"ty":"Studio Album","bpm":172,"s":163,"h":8.05,"pct":97,"len":183},{"a":"NOEASY","t":"WOLFGANG","y":2021,"ty":"Studio Album","bpm":162,"s":69,"h":3.6,"pct":67,"len":190},{"a":"SKZ-REPLAY","t":"Alien (HAN)","y":2022,"ty":"Compilation","bpm":95,"s":31,"h":1.61,"pct":94,"len":199},{"a":"SKZ-REPLAY","t":"Because (Changbin/Felix)","y":2022,"ty":"Compilation","bpm":90,"s":31,"h":1.71,"pct":100,"len":198},{"a":"SKZ-REPLAY","t":"Close (HAN)","y":2022,"ty":"Compilation","bpm":95,"s":30,"h":1.88,"pct":100,"len":226},{"a":"SKZ-REPLAY","t":"Connected (Bang Chan)","y":2022,"ty":"Compilation","bpm":102,"s":32,"h":1.48,"pct":98,"len":171},{"a":"SKZ-REPLAY","t":"DOODLE (Changbin)","y":2022,"ty":"Compilation","bpm":140,"s":32,"h":1.64,"pct":100,"len":184},{"a":"SKZ-REPLAY","t":"Deep end (Felix)","y":2022,"ty":"Compilation","bpm":114,"s":31,"h":1.79,"pct":100,"len":208},{"a":"SKZ-REPLAY","t":"Drive (Bang Chan/Lee Know)","y":2022,"ty":"Compilation","bpm":90,"s":27,"h":1.2,"pct":98,"len":164},{"a":"SKZ-REPLAY","t":"FAM (Korean Ver.)","y":2022,"ty":"Compilation","bpm":105,"s":35,"h":2.07,"pct":100,"len":213},{"a":"SKZ-REPLAY","t":"HaPpY (HAN)","y":2022,"ty":"Compilation","bpm":170,"s":30,"h":1.68,"pct":96,"len":209},{"a":"SKZ-REPLAY","t":"Hug Me (I.N)","y":2022,"ty":"Compilation","bpm":99,"s":34,"h":1.58,"pct":93,"len":180},{"a":"SKZ-REPLAY","t":"I GOT IT (HAN)","y":2022,"ty":"Compilation","bpm":76,"s":29,"h":1.37,"pct":100,"len":170},{"a":"SKZ-REPLAY","t":"Limbo (Lee Know)","y":2022,"ty":"Compilation","bpm":162,"s":32,"h":1.75,"pct":100,"len":197},{"a":"SKZ-REPLAY","t":"Love Untold (Hyunjin)","y":2022,"ty":"Compilation","bpm":180,"s":32,"h":1.82,"pct":97,"len":210},{"a":"SKZ-REPLAY","t":"LoveSTAY","y":2022,"ty":"Compilation","bpm":160,"s":33,"h":1.73,"pct":95,"len":197},{"a":"SKZ-REPLAY","t":"Maknae On Top (I.N)","y":2022,"ty":"Compilation","bpm":130,"s":33,"h":1.36,"pct":97,"len":153},{"a":"SKZ-REPLAY","t":"Piece of a Puzzle (Changbin/Seungmin)","y":2022,"ty":"Compilation","bpm":138,"s":32,"h":1.5,"pct":97,"len":173},{"a":"SKZ-REPLAY","t":"RUN (HAN)","y":2022,"ty":"Compilation","bpm":120,"s":31,"h":1.54,"pct":100,"len":178},{"a":"SKZ-REPLAY","t":"Stars and Raindrops (Seungmin)","y":2022,"ty":"Compilation","bpm":112,"s":32,"h":2.04,"pct":100,"len":229},{"a":"SKZ-REPLAY","t":"Streetlight (Changbin)","y":2022,"ty":"Compilation","bpm":100,"s":33,"h":1.68,"pct":97,"len":189},{"a":"SKZ-REPLAY","t":"Up All Night (Bang Chan/Changbin/Felix/Seungmin)","y":2022,"ty":"Compilation","bpm":144,"s":28,"h":1.52,"pct":97,"len":201},{"a":"SKZ-REPLAY","t":"Wish You Back (HAN)","y":2022,"ty":"Compilation","bpm":100,"s":30,"h":1.6,"pct":97,"len":198},{"a":"SKZ-REPLAY","t":"ZONE (Bang Chan/Changbin/HAN)","y":2022,"ty":"Compilation","bpm":130,"s":30,"h":1.77,"pct":100,"len":212},{"a":"SKZ-REPLAY","t":"i hate to admit (Bang Chan)","y":2022,"ty":"Compilation","bpm":90,"s":30,"h":1.42,"pct":100,"len":170},{"a":"SKZ-REPLAY","t":"ice.cream (Hyunjin)","y":2022,"ty":"Compilation","bpm":80,"s":26,"h":1.23,"pct":100,"len":170},{"a":"SKZ-REPLAY","t":"miss you (Hyunjin)","y":2022,"ty":"Compilation","bpm":73,"s":29,"h":1.52,"pct":100,"len":188},{"a":"CIRCUS","t":"CIRCUS","y":2022,"ty":"Mini Album","bpm":98,"s":28,"h":1.43,"pct":95,"len":194},{"a":"CIRCUS","t":"Fairytale","y":2022,"ty":"Mini Album","bpm":120,"s":27,"h":1.24,"pct":97,"len":172},{"a":"CIRCUS","t":"MANIAC -Japanese ver.-","y":2022,"ty":"Mini Album","bpm":90,"s":24,"h":1.23,"pct":100,"len":184},{"a":"CIRCUS","t":"Silent Cry -Japanese ver.-","y":2022,"ty":"Mini Album","bpm":104,"s":25,"h":1.42,"pct":97,"len":211},{"a":"CIRCUS","t":"VENOM -Japanese ver.-","y":2022,"ty":"Mini Album","bpm":137,"s":25,"h":1.34,"pct":99,"len":195},{"a":"CIRCUS","t":"Your Eyes","y":2022,"ty":"Mini Album","bpm":130,"s":23,"h":1.25,"pct":100,"len":196},{"a":"MAXIDENT","t":"3RACHA (Bang Chan/Changbin/HAN)","y":2022,"ty":"Mini Album","bpm":142,"s":75,"h":4.34,"pct":100,"len":208},{"a":"MAXIDENT","t":"CASE 143","y":2022,"ty":"Mini Album","bpm":100,"s":82,"h":4.21,"pct":97,"len":191},{"a":"MAXIDENT","t":"CHILL","y":2022,"ty":"Mini Album","bpm":96,"s":28,"h":1.47,"pct":97,"len":195},{"a":"MAXIDENT","t":"CIRCUS (Korean Ver.)","y":2022,"ty":"Mini Album","bpm":98,"s":78,"h":4.16,"pct":99,"len":194},{"a":"MAXIDENT","t":"Can't Stop (Seungmin/I.N)","y":2022,"ty":"Mini Album","bpm":120,"s":28,"h":1.63,"pct":100,"len":209},{"a":"MAXIDENT","t":"Give Me Your TMI","y":2022,"ty":"Mini Album","bpm":98,"s":27,"h":1.49,"pct":100,"len":198},{"a":"MAXIDENT","t":"SUPER BOARD","y":2022,"ty":"Mini Album","bpm":103,"s":87,"h":4.37,"pct":98,"len":185},{"a":"MAXIDENT","t":"TASTE (Lee Know/Hyunjin/Felix)","y":2022,"ty":"Mini Album","bpm":140,"s":30,"h":1.68,"pct":94,"len":216},{"a":"ODDINARY","t":"Charmer","y":2022,"ty":"Mini Album","bpm":91,"s":74,"h":3.87,"pct":100,"len":188},{"a":"ODDINARY","t":"FREEZE","y":2022,"ty":"Mini Album","bpm":160,"s":31,"h":1.46,"pct":96,"len":178},{"a":"ODDINARY","t":"Lonely St.","y":2022,"ty":"Mini Album","bpm":90,"s":144,"h":6.46,"pct":98,"len":164},{"a":"ODDINARY","t":"MANIAC","y":2022,"ty":"Mini Album","bpm":120,"s":136,"h":6.82,"pct":99,"len":182},{"a":"ODDINARY","t":"Muddy Water (Changbin/Hyunjin/HAN/Felix)","y":2022,"ty":"Mini Album","bpm":90,"s":25,"h":1.32,"pct":96,"len":197},{"a":"ODDINARY","t":"VENOM","y":2022,"ty":"Mini Album","bpm":137,"s":79,"h":4.15,"pct":97,"len":194},{"a":"ODDINARY","t":"Waiting For Us (Bang Chan/Lee Know/Seungmin/I.N)","y":2022,"ty":"Mini Album","bpm":88,"s":29,"h":1.66,"pct":94,"len":219},{"a":"JUST BREATHE - feat. 3RACHA of Stray Kids","t":"JUST BREATHE - feat. 3RACHA of Stray Kids","y":2022,"ty":"Single","bpm":113,"s":22,"h":1.37,"pct":98,"len":230},{"a":"Mixtape - Time Out","t":"Mixtape - Time Out","y":2022,"ty":"Single","bpm":160,"s":65,"h":2.98,"pct":94,"len":175},{"a":"Love in Contact Pt.3 (Original Television Soundtrack)","t":"Close to You","y":2022,"ty":"Soundtrack","bpm":70,"s":27,"h":1.69,"pct":99,"len":228},{"a":"Love in Contact Pt.3 (Original Television Soundtrack)","t":"Close to You - Instrumental","y":2022,"ty":"Soundtrack","bpm":140,"s":25,"h":1.59,"pct":100,"len":228},{"a":"Street Man Fighter Original Vol.4 (Crew Songs)","t":"HEYDAY (Prod. Czaer)","y":2022,"ty":"Soundtrack","bpm":138,"s":26,"h":1.05,"pct":100,"len":144},{"a":"ROCK-STAR","t":"BLIND SPOT","y":2023,"ty":"Mini Album","bpm":196,"s":98,"h":5.17,"pct":95,"len":200},{"a":"ROCK-STAR","t":"COMFLEX","y":2023,"ty":"Mini Album","bpm":110,"s":43,"h":2.06,"pct":100,"len":172},{"a":"ROCK-STAR","t":"Cover Me","y":2023,"ty":"Mini Album","bpm":174,"s":107,"h":5.67,"pct":100,"len":191},{"a":"ROCK-STAR","t":"LALALALA","y":2023,"ty":"Mini Album","bpm":126,"s":107,"h":5.25,"pct":97,"len":182},{"a":"ROCK-STAR","t":"LALALALA (Rock Ver.)","y":2023,"ty":"Mini Album","bpm":126,"s":36,"h":1.88,"pct":100,"len":187},{"a":"ROCK-STAR","t":"Leave","y":2023,"ty":"Mini Album","bpm":110,"s":92,"h":5.52,"pct":99,"len":219},{"a":"ROCK-STAR","t":"MEGAVERSE","y":2023,"ty":"Mini Album","bpm":160,"s":154,"h":7.79,"pct":98,"len":185},{"a":"ROCK-STAR","t":"Social Path (Feat. LiSA) (Korean Ver.)","y":2023,"ty":"Mini Album","bpm":172,"s":37,"h":2.03,"pct":100,"len":197},{"a":"All My Life (Remixes)","t":"All My Life (Stray Kids Remix)","y":2023,"ty":"Remix","bpm":143,"s":37,"h":2.18,"pct":98,"len":217},{"a":"Social Path","t":"Butterflies","y":2023,"ty":"Single","bpm":80,"s":36,"h":1.91,"pct":100,"len":190},{"a":"Social Path","t":"Butterflies (Instrumental)","y":2023,"ty":"Single","bpm":160,"s":37,"h":1.88,"pct":97,"len":189},{"a":"Social Path","t":"Social Path","y":2023,"ty":"Single","bpm":172,"s":154,"h":8.23,"pct":97,"len":198},{"a":"Social Path","t":"Social Path (Instrumental)","y":2023,"ty":"Single","bpm":172,"s":36,"h":1.99,"pct":100,"len":198},{"a":"Social Path","t":"Super Bowl -Japanese ver.-","y":2023,"ty":"Single","bpm":80,"s":37,"h":1.85,"pct":97,"len":185},{"a":"5-STAR","t":"Collision","y":2023,"ty":"Studio Album","bpm":150,"s":37,"h":1.61,"pct":100,"len":157},{"a":"5-STAR","t":"DLC","y":2023,"ty":"Studio Album","bpm":110,"s":38,"h":1.96,"pct":100,"len":186},{"a":"5-STAR","t":"FNF","y":2023,"ty":"Studio Album","bpm":127,"s":36,"h":1.72,"pct":100,"len":171},{"a":"5-STAR","t":"GET LIT","y":2023,"ty":"Studio Album","bpm":100,"s":41,"h":1.9,"pct":98,"len":171},{"a":"5-STAR","t":"Hall of Fame","y":2023,"ty":"Studio Album","bpm":160,"s":41,"h":1.9,"pct":98,"len":171},{"a":"5-STAR","t":"ITEM","y":2023,"ty":"Studio Album","bpm":162,"s":81,"h":4.26,"pct":99,"len":191},{"a":"5-STAR","t":"S-Class","y":2023,"ty":"Studio Album","bpm":105,"s":158,"h":8.39,"pct":98,"len":195},{"a":"5-STAR","t":"Super Bowl","y":2023,"ty":"Studio Album","bpm":80,"s":41,"h":2.08,"pct":100,"len":183},{"a":"5-STAR","t":"THE SOUND (Korean Ver.)","y":2023,"ty":"Studio Album","bpm":188,"s":37,"h":1.71,"pct":93,"len":178},{"a":"5-STAR","t":"TOPLINE (Feat. Tiger JK)","y":2023,"ty":"Studio Album","bpm":90,"s":156,"h":8.42,"pct":96,"len":203},{"a":"5-STAR","t":"Youtiful","y":2023,"ty":"Studio Album","bpm":67,"s":37,"h":2.15,"pct":100,"len":209},{"a":"THE SOUND","t":"Battle Ground","y":2023,"ty":"Studio Album","bpm":180,"s":38,"h":2.14,"pct":95,"len":213},{"a":"THE SOUND","t":"CASE 143 -Japanese ver.-","y":2023,"ty":"Studio Album","bpm":100,"s":37,"h":1.87,"pct":94,"len":193},{"a":"THE SOUND","t":"CHILL -Japanese ver.-","y":2023,"ty":"Studio Album","bpm":96,"s":34,"h":1.86,"pct":99,"len":198},{"a":"THE SOUND","t":"DLMLU","y":2023,"ty":"Studio Album","bpm":140,"s":36,"h":1.95,"pct":100,"len":194},{"a":"THE SOUND","t":"Lost Me","y":2023,"ty":"Studio Album","bpm":86,"s":37,"h":1.94,"pct":100,"len":189},{"a":"THE SOUND","t":"Novel","y":2023,"ty":"Studio Album","bpm":105,"s":36,"h":1.89,"pct":100,"len":188},{"a":"THE SOUND","t":"THE SOUND","y":2023,"ty":"Studio Album","bpm":188,"s":38,"h":1.91,"pct":100,"len":180},{"a":"THE SOUND","t":"There","y":2023,"ty":"Studio Album","bpm":80,"s":34,"h":2.0,"pct":98,"len":215},{"a":"THE SOUND","t":"Thunderous -Japanese ver.-","y":2023,"ty":"Studio Album","bpm":172,"s":53,"h":2.69,"pct":99,"len":184},{"a":"ATE","t":"Chk Chk Boom","y":2024,"ty":"Mini Album","bpm":102,"s":419,"h":16.91,"pct":98,"len":148},{"a":"ATE","t":"Chk Chk Boom (Festival Ver.)","y":2024,"ty":"Mini Album","bpm":123,"s":304,"h":12.39,"pct":96,"len":153},{"a":"ATE","t":"I Like It","y":2024,"ty":"Mini Album","bpm":145,"s":350,"h":14.15,"pct":99,"len":148},{"a":"ATE","t":"JJAM","y":2024,"ty":"Mini Album","bpm":170,"s":382,"h":19.2,"pct":98,"len":185},{"a":"ATE","t":"MOUNTAINS","y":2024,"ty":"Mini Album","bpm":180,"s":401,"h":19.67,"pct":95,"len":187},{"a":"ATE","t":"Runners","y":2024,"ty":"Mini Album","bpm":160,"s":286,"h":15.37,"pct":98,"len":196},{"a":"ATE","t":"Stray Kids","y":2024,"ty":"Mini Album","bpm":160,"s":291,"h":15.0,"pct":98,"len":189},{"a":"ATE","t":"twilight","y":2024,"ty":"Mini Album","bpm":65,"s":234,"h":12.2,"pct":98,"len":192},{"a":"GOLD","t":"VAY (Feat. Changbin of Stray Kids)","y":2024,"ty":"Single","bpm":95,"s":43,"h":1.84,"pct":96,"len":161},{"a":"HOP","t":"As we are (Seungmin)","y":2024,"ty":"Mixtape","bpm":144,"s":264,"h":15.36,"pct":98,"len":213},{"a":"HOP","t":"Bounce Back","y":2024,"ty":"Mixtape","bpm":98,"s":275,"h":13.9,"pct":99,"len":183},{"a":"HOP","t":"HALLUCINATION (I.N)","y":2024,"ty":"Mixtape","bpm":166,"s":332,"h":14.95,"pct":99,"len":163},{"a":"HOP","t":"Hold my hand (HAN)","y":2024,"ty":"Mixtape","bpm":160,"s":330,"h":15.93,"pct":97,"len":179},{"a":"HOP","t":"Railway (Bang Chan)","y":2024,"ty":"Mixtape","bpm":118,"s":341,"h":16.14,"pct":98,"len":173},{"a":"HOP","t":"So Good (Hyunjin)","y":2024,"ty":"Mixtape","bpm":94,"s":272,"h":12.62,"pct":99,"len":168},{"a":"HOP","t":"U (Feat. TABLO)","y":2024,"ty":"Mixtape","bpm":81,"s":342,"h":15.25,"pct":99,"len":163},{"a":"HOP","t":"ULTRA (Changbin)","y":2024,"ty":"Mixtape","bpm":180,"s":331,"h":13.28,"pct":98,"len":147},{"a":"HOP","t":"Unfair (Felix)","y":2024,"ty":"Mixtape","bpm":92,"s":57,"h":2.47,"pct":93,"len":168},{"a":"HOP","t":"Walkin On Water","y":2024,"ty":"Mixtape","bpm":190,"s":458,"h":18.49,"pct":98,"len":148},{"a":"HOP","t":"Walkin On Water (HIP Ver.)","y":2024,"ty":"Mixtape","bpm":102,"s":275,"h":12.93,"pct":97,"len":175},{"a":"HOP","t":"Youth (Lee Know)","y":2024,"ty":"Mixtape","bpm":110,"s":278,"h":12.15,"pct":98,"len":160},{"a":"Like Magic","t":"Like Magic","y":2024,"ty":"Promo Single","bpm":170,"s":34,"h":1.55,"pct":100,"len":164},{"a":"Like Magic","t":"Like Magic (Instrumental)","y":2024,"ty":"Promo Single","bpm":170,"s":32,"h":1.42,"pct":98,"len":164},{"a":"Chk Chk Boom (Remixes)","t":"Chk Chk Boom (Deadeye Ver.)","y":2024,"ty":"Remix","bpm":110,"s":41,"h":1.53,"pct":100,"len":134},{"a":"Chk Chk Boom (Remixes)","t":"Chk Chk Boom (Heatwave Ver.)","y":2024,"ty":"Remix","bpm":200,"s":41,"h":1.6,"pct":100,"len":140},{"a":"Chk Chk Boom (Remixes)","t":"Chk Chk Boom (Instrumental)","y":2024,"ty":"Remix","bpm":102,"s":40,"h":1.65,"pct":100,"len":148},{"a":"Lose My Breath (Remixes)","t":"Lose My Breath (Feat. Charlie Puth) (Soft Garage Ver.)","y":2024,"ty":"Remix","bpm":133,"s":43,"h":2.1,"pct":89,"len":197},{"a":"Lose My Breath (Remixes)","t":"Lose My Breath (Stray Kids Ver.)","y":2024,"ty":"Remix","bpm":133,"s":44,"h":1.98,"pct":98,"len":166},{"a":"Walkin On Water (Remixes)","t":"Walkin On Water (Instrumental)","y":2024,"ty":"Remix","bpm":95,"s":44,"h":1.78,"pct":98,"len":148},{"a":"Walkin On Water (Remixes)","t":"Walkin On Water (Sleigh Ver.)","y":2024,"ty":"Remix","bpm":100,"s":44,"h":1.87,"pct":99,"len":155},{"a":"Walkin On Water (Remixes)","t":"Walkin On Water (Sped Up Ver.)","y":2024,"ty":"Remix","bpm":109,"s":42,"h":1.51,"pct":100,"len":129},{"a":"Walkin On Water (Remixes)","t":"Walkin On Water (Sway Ver.)","y":2024,"ty":"Remix","bpm":98,"s":44,"h":1.71,"pct":97,"len":144},{"a":"Lose My Breath (Feat. Charlie Puth)","t":"Lose My Breath (Feat. Charlie Puth)","y":2024,"ty":"Single","bpm":133,"s":39,"h":1.81,"pct":100,"len":166},{"a":"Lose My Breath (Feat. Charlie Puth)","t":"Lose My Breath (Feat. Charlie Puth) (Instrumental)","y":2024,"ty":"Single","bpm":133,"s":41,"h":1.72,"pct":91,"len":166},{"a":"NIGHT (Korean ver.)","t":"Falling Up (from Tower of God- WORKSHOP BATTLE) (Korean ver.)","y":2024,"ty":"Single","bpm":81,"s":38,"h":1.96,"pct":97,"len":190},{"a":"NIGHT (Korean ver.)","t":"NIGHT (from Tower of God- WORKSHOP BATTLE) (Korean ver.)","y":2024,"ty":"Single","bpm":172,"s":40,"h":1.9,"pct":98,"len":174},{"a":"Come Play (from the series Arcane League of Legends)","t":"Come Play (Kordhell Remix) (from the series Arcane League of Legends)","y":2024,"ty":"Soundtrack","bpm":184,"s":40,"h":1.41,"pct":98,"len":130},{"a":"Come Play (from the series Arcane League of Legends)","t":"Come Play (from the series Arcane League of Legends)","y":2024,"ty":"Soundtrack","bpm":95,"s":44,"h":1.93,"pct":98,"len":161},{"a":"I'm the Queen in This Life (Original Soundtrack) Part.2","t":"Phobia","y":2024,"ty":"Soundtrack","bpm":95,"s":38,"h":1.83,"pct":100,"len":173},{"a":"I'm the Queen in This Life (Original Soundtrack) Part.2","t":"Phobia - Inst.","y":2024,"ty":"Soundtrack","bpm":95,"s":37,"h":1.69,"pct":95,"len":173},{"a":"SLASH (From Deadpool and Wolverine)","t":"SLASH (From Deadpool and Wolverine)","y":2024,"ty":"Soundtrack","bpm":160,"s":98,"h":5.04,"pct":97,"len":191},{"a":"The Midnight Studio Pt.5 (Original Soundtrack)","t":"Destiny","y":2024,"ty":"Soundtrack","bpm":67,"s":39,"h":2.65,"pct":97,"len":252},{"a":"The Midnight Studio Pt.5 (Original Soundtrack)","t":"Destiny - Instrumental","y":2024,"ty":"Soundtrack","bpm":134,"s":36,"h":2.52,"pct":100,"len":252},{"a":"Why?","t":"WHY?","y":2024,"ty":"Soundtrack","bpm":129,"s":292,"h":18.03,"pct":97,"len":229},{"a":"GIANT","t":" Ai o Kureta no ni Naze","y":2024,"ty":"Studio Album","bpm":115,"s":241,"h":13.01,"pct":99,"len":195},{"a":"GIANT","t":"Chk Chk Boom -Japanese ver.-","y":2024,"ty":"Studio Album","bpm":102,"s":49,"h":1.98,"pct":97,"len":149},{"a":"GIANT","t":"Christmas Love","y":2024,"ty":"Studio Album","bpm":166,"s":246,"h":12.5,"pct":98,"len":186},{"a":"GIANT","t":"Falling Up","y":2024,"ty":"Studio Album","bpm":162,"s":248,"h":13.05,"pct":98,"len":192},{"a":"GIANT","t":"Falling Up -English ver.-","y":2024,"ty":"Studio Album","bpm":162,"s":294,"h":15.34,"pct":99,"len":190},{"a":"GIANT","t":"GIANT","y":2024,"ty":"Studio Album","bpm":85,"s":339,"h":16.06,"pct":98,"len":174},{"a":"GIANT","t":"NIGHT","y":2024,"ty":"Studio Album","bpm":172,"s":251,"h":12.12,"pct":99,"len":175},{"a":"GIANT","t":"NIGHT -English ver.-","y":2024,"ty":"Studio Album","bpm":172,"s":292,"h":14.22,"pct":100,"len":175},{"a":"GIANT","t":"Saiyan","y":2024,"ty":"Studio Album","bpm":83,"s":244,"h":14.65,"pct":99,"len":219},{"a":"Hollow","t":"Fate","y":2025,"ty":"Mini Album","bpm":184,"s":392,"h":19.33,"pct":86,"len":180},{"a":"Hollow","t":"Hollow","y":2025,"ty":"Mini Album","bpm":106,"s":463,"h":25.2,"pct":94,"len":209},{"a":"Hollow","t":"Never Alone","y":2025,"ty":"Mini Album","bpm":168,"s":414,"h":19.69,"pct":97,"len":177},{"a":"Hollow","t":"Parade","y":2025,"ty":"Mini Album","bpm":180,"s":421,"h":21.36,"pct":98,"len":186},{"a":"Hollow","t":"just a little","y":2025,"ty":"Mini Album","bpm":92,"s":401,"h":26.6,"pct":97,"len":246},{"a":"Hollow","t":"just a little -Spotify Live Version-","y":2025,"ty":"Mini Album","bpm":92,"s":5,"h":0.12,"pct":34,"len":246},{"a":"DO IT","t":"DIVINE","y":2025,"ty":"Mixtape","bpm":99,"s":128,"h":6.23,"pct":94,"len":187},{"a":"DO IT","t":"Do It","y":2025,"ty":"Mixtape","bpm":105,"s":185,"h":7.06,"pct":86,"len":159},{"a":"DO IT","t":"Do It (Festival Version)","y":2025,"ty":"Mixtape","bpm":125,"s":92,"h":3.64,"pct":97,"len":147},{"a":"DO IT","t":"Holiday","y":2025,"ty":"Mixtape","bpm":75,"s":117,"h":5.09,"pct":84,"len":187},{"a":"DO IT","t":"Photobook","y":2025,"ty":"Mixtape","bpm":163,"s":96,"h":4.43,"pct":96,"len":173},{"a":"Mixtape - DominATE","t":"Burnin' Tires (Changbin and I.N)","y":2025,"ty":"Mixtape","bpm":150,"s":435,"h":20.2,"pct":97,"len":173},{"a":"Mixtape - DominATE","t":"CINEMA (Lee Know and Seungmin)","y":2025,"ty":"Mixtape","bpm":144,"s":430,"h":25.86,"pct":98,"len":221},{"a":"Mixtape - DominATE","t":"ESCAPE (Bang Chan and Hyunjin)","y":2025,"ty":"Mixtape","bpm":154,"s":435,"h":22.7,"pct":98,"len":191},{"a":"Mixtape - DominATE","t":"GIANT (Korean Ver.)","y":2025,"ty":"Mixtape","bpm":85,"s":99,"h":4.63,"pct":97,"len":173},{"a":"Mixtape - DominATE","t":"Truman (HAN and Felix)","y":2025,"ty":"Mixtape","bpm":155,"s":454,"h":23.08,"pct":94,"len":195},{"a":"CEREMONY (Celebrate Remixes)","t":"CEREMONY (Festival Version - English Version)","y":2025,"ty":"Remix","bpm":128,"s":41,"h":1.85,"pct":94,"len":172},{"a":"CEREMONY (Celebrate Remixes)","t":"CEREMONY (Hip Hip Version - English Version)","y":2025,"ty":"Remix","bpm":140,"s":47,"h":1.85,"pct":90,"len":157},{"a":"CEREMONY (Celebrate Remixes)","t":"CEREMONY (Hooray Version - English Version)","y":2025,"ty":"Remix","bpm":125,"s":42,"h":2.1,"pct":98,"len":184},{"a":"CEREMONY (Maximum Power Remixes)","t":"CEREMONY (Instrumental)","y":2025,"ty":"Remix","bpm":121,"s":42,"h":1.82,"pct":95,"len":164},{"a":"CEREMONY (Maximum Power Remixes)","t":"CEREMONY (KARMA Version)","y":2025,"ty":"Remix","bpm":138,"s":40,"h":1.85,"pct":98,"len":171},{"a":"CEREMONY (Maximum Power Remixes)","t":"CEREMONY (Slowed Down Version)","y":2025,"ty":"Remix","bpm":108,"s":40,"h":1.95,"pct":96,"len":183},{"a":"CEREMONY (Maximum Power Remixes)","t":"CEREMONY (Sped Up Version)","y":2025,"ty":"Remix","bpm":143,"s":41,"h":1.5,"pct":96,"len":138},{"a":"Do It (Remixes)","t":"Do It (Instrumental)","y":2025,"ty":"Remix","bpm":105,"s":33,"h":1.46,"pct":100,"len":159},{"a":"Do It (Remixes)","t":"Do It (Overdrive Version)","y":2025,"ty":"Remix","bpm":105,"s":35,"h":1.48,"pct":97,"len":157},{"a":"Do It (Remixes)","t":"Do It (Slowed Down)","y":2025,"ty":"Remix","bpm":97,"s":35,"h":1.61,"pct":96,"len":172},{"a":"Do It (Remixes)","t":"Do It (Sped Up)","y":2025,"ty":"Remix","bpm":127,"s":35,"h":1.24,"pct":98,"len":131},{"a":"Do It (Remixes)","t":"Do It (Turbo Version)","y":2025,"ty":"Remix","bpm":111,"s":35,"h":1.42,"pct":97,"len":150},{"a":"In The Dark (with Stray Kids)","t":"In The Dark (with Stray Kids)","y":2025,"ty":"Single","bpm":174,"s":77,"h":3.84,"pct":100,"len":179},{"a":"Genie Make a Wish (Soundtrack from the Netflix Series)","t":"GENIE","y":2025,"ty":"Soundtrack","bpm":135,"s":49,"h":2.84,"pct":98,"len":213},{"a":"ReawakeR (feat. Felix of Stray Kids)","t":"ReawakeR (feat. Felix of Stray Kids)","y":2025,"ty":"Soundtrack","bpm":129,"s":48,"h":2.05,"pct":84,"len":184},{"a":"Resident Playbook Pt.1 (Original Soundtrack)","t":"START!","y":2025,"ty":"Soundtrack","bpm":107,"s":48,"h":2.71,"pct":90,"len":226},{"a":"Resident Playbook Pt.1 (Original Soundtrack)","t":"START! - Instrumental","y":2025,"ty":"Soundtrack","bpm":107,"s":39,"h":2.4,"pct":98,"len":226},{"a":"The potato lab Pt.1 (Original Soundtrack)","t":"My Destiny","y":2025,"ty":"Soundtrack","bpm":110,"s":40,"h":2.5,"pct":98,"len":230},{"a":"The potato lab Pt.1 (Original Soundtrack)","t":"My Destiny - Instrumental","y":2025,"ty":"Soundtrack","bpm":110,"s":40,"h":2.43,"pct":95,"len":230},{"a":"Typhoon Family Pt.3 (Original Soundtrack)","t":"Updraft","y":2025,"ty":"Soundtrack","bpm":130,"s":56,"h":2.83,"pct":100,"len":182},{"a":"Typhoon Family Pt.3 (Original Soundtrack)","t":"Updraft - Instrumental","y":2025,"ty":"Soundtrack","bpm":130,"s":53,"h":2.05,"pct":76,"len":182},{"a":"Would You Marry Me? Pt.1 (Original Soundtrack)","t":"All I Want Is You (Would You Marry Me? - Original Television Soundtrack)","y":2025,"ty":"Soundtrack","bpm":96,"s":56,"h":2.28,"pct":76,"len":192},{"a":"Would You Marry Me? Pt.1 (Original Soundtrack)","t":"All I Want Is You (Would You Marry Me? - Original Television Soundtrack) (Instrumental)","y":2025,"ty":"Soundtrack","bpm":96,"s":41,"h":2.05,"pct":94,"len":192},{"a":"KARMA","t":"0801","y":2025,"ty":"Studio Album","bpm":110,"s":262,"h":14.57,"pct":98,"len":204},{"a":"KARMA","t":"BLEEP","y":2025,"ty":"Studio Album","bpm":97,"s":298,"h":12.77,"pct":92,"len":167},{"a":"KARMA","t":"CEREMONY","y":2025,"ty":"Studio Album","bpm":121,"s":383,"h":16.53,"pct":95,"len":164},{"a":"KARMA","t":"CEREMONY (English Version)","y":2025,"ty":"Studio Album","bpm":121,"s":281,"h":12.34,"pct":96,"len":164},{"a":"KARMA","t":"CEREMONY (Festival Version)","y":2025,"ty":"Studio Album","bpm":128,"s":256,"h":11.54,"pct":94,"len":172},{"a":"KARMA","t":"CREED","y":2025,"ty":"Studio Album","bpm":160,"s":280,"h":12.12,"pct":97,"len":161},{"a":"KARMA","t":"Ghost","y":2025,"ty":"Studio Album","bpm":122,"s":267,"h":10.77,"pct":95,"len":153},{"a":"KARMA","t":"Half Time","y":2025,"ty":"Studio Album","bpm":108,"s":282,"h":12.95,"pct":97,"len":170},{"a":"KARMA","t":"In My Head","y":2025,"ty":"Studio Album","bpm":180,"s":286,"h":13.63,"pct":98,"len":176},{"a":"KARMA","t":"MESS","y":2025,"ty":"Studio Album","bpm":150,"s":278,"h":15.26,"pct":95,"len":209},{"a":"KARMA","t":"Phoenix","y":2025,"ty":"Studio Album","bpm":136,"s":285,"h":13.88,"pct":96,"len":182},{"a":"Endless Sun","t":"Endless Sun","y":2026,"ty":"Promo Single","bpm":128,"s":21,"h":0.92,"pct":100,"len":158},{"a":"STAY","t":"STAY","y":2026,"ty":"Single","bpm":90,"s":25,"h":0.97,"pct":75,"len":186}],"albums":[{"name":"5-STAR","y":2023,"ty":"Studio Album","s":703,"h":36.1,"tracks":11,"pct":97.9},{"name":"ALL IN","y":2020,"ty":"Mini Album","s":166,"h":8.1,"tracks":7,"pct":98.1},{"name":"ALL IN (Korean Ver.)","y":2020,"ty":"Single","s":66,"h":3.4,"tracks":1,"pct":100.0},{"name":"ATE","y":2024,"ty":"Mini Album","s":2667,"h":124.9,"tracks":8,"pct":97.5},{"name":"All My Life (Remixes)","y":2023,"ty":"Remix","s":37,"h":2.2,"tracks":1,"pct":98.0},{"name":"CEREMONY (Celebrate Remixes)","y":2025,"ty":"Remix","s":130,"h":5.8,"tracks":3,"pct":93.8},{"name":"CEREMONY (Maximum Power Remixes)","y":2025,"ty":"Remix","s":163,"h":7.1,"tracks":4,"pct":96.2},{"name":"CIRCUS","y":2022,"ty":"Mini Album","s":152,"h":7.9,"tracks":6,"pct":97.9},{"name":"Chk Chk Boom (Remixes)","y":2024,"ty":"Remix","s":122,"h":4.8,"tracks":3,"pct":100.0},{"name":"Christmas EveL","y":2021,"ty":"Single","s":183,"h":9.9,"tracks":4,"pct":98.9},{"name":"Cle - LEVANTER","y":2019,"ty":"Mini Album","s":99,"h":5.4,"tracks":7,"pct":99.0},{"name":"Cle 1 - MIROH","y":2019,"ty":"Mini Album","s":302,"h":16.1,"tracks":7,"pct":97.2},{"name":"Cle 2 - Yellow Wood","y":2019,"ty":"Mini Album","s":87,"h":5.1,"tracks":7,"pct":99.5},{"name":"Come Play (from the series Arcane League of Legends)","y":2024,"ty":"Soundtrack","s":84,"h":3.3,"tracks":2,"pct":98.0},{"name":"DO IT","y":2025,"ty":"Mixtape","s":618,"h":26.4,"tracks":5,"pct":90.5},{"name":"Do It (Remixes)","y":2025,"ty":"Remix","s":173,"h":7.2,"tracks":5,"pct":97.6},{"name":"Endless Sun","y":2026,"ty":"Promo Single","s":21,"h":0.9,"tracks":1,"pct":100.0},{"name":"Extraordinary You Pt.7 (Original Television Soundtrack)","y":2019,"ty":"Soundtrack","s":77,"h":5.2,"tracks":2,"pct":99.1},{"name":"GIANT","y":2024,"ty":"Studio Album","s":2204,"h":112.9,"tracks":9,"pct":98.7},{"name":"GO LIVE","y":2020,"ty":"Studio Album","s":566,"h":28.7,"tracks":12,"pct":97.6},{"name":"GOLD","y":2024,"ty":"Single","s":43,"h":1.8,"tracks":1,"pct":96.0},{"name":"Genie Make a Wish (Soundtrack from the Netflix Series)","y":2025,"ty":"Soundtrack","s":49,"h":2.8,"tracks":1,"pct":98.0},{"name":"Going Dumb","y":2021,"ty":"Single","s":19,"h":0.9,"tracks":1,"pct":100.0},{"name":"HOP","y":2024,"ty":"Mixtape","s":3555,"h":163.5,"tracks":12,"pct":98.1},{"name":"Hollow","y":2025,"ty":"Mini Album","s":2096,"h":112.3,"tracks":6,"pct":94.3},{"name":"Hometown Cha-Cha Pt.7 (Original Television Soundtrack)","y":2021,"ty":"Soundtrack","s":41,"h":2.9,"tracks":2,"pct":100.0},{"name":"I am NOT","y":2018,"ty":"Mini Album","s":307,"h":17.6,"tracks":7,"pct":98.7},{"name":"I am WHO","y":2018,"ty":"Mini Album","s":309,"h":16.1,"tracks":7,"pct":97.4},{"name":"I am YOU","y":2018,"ty":"Mini Album","s":158,"h":9.0,"tracks":7,"pct":99.4},{"name":"I'm the Queen in This Life (Original Soundtrack) Part.2","y":2024,"ty":"Soundtrack","s":75,"h":3.5,"tracks":2,"pct":97.5},{"name":"IN LIFE","y":2020,"ty":"Repackage","s":281,"h":14.9,"tracks":8,"pct":98.9},{"name":"In The Dark (with Stray Kids)","y":2025,"ty":"Single","s":77,"h":3.8,"tracks":1,"pct":100.0},{"name":"JUST BREATHE - feat. 3RACHA of Stray Kids","y":2022,"ty":"Single","s":22,"h":1.4,"tracks":1,"pct":98.0},{"name":"KARMA","y":2025,"ty":"Studio Album","s":3158,"h":146.4,"tracks":11,"pct":95.7},{"name":"Like Magic","y":2024,"ty":"Promo Single","s":66,"h":3.0,"tracks":2,"pct":99.0},{"name":"Lose My Breath (Feat. Charlie Puth)","y":2024,"ty":"Single","s":80,"h":3.5,"tracks":2,"pct":95.4},{"name":"Lose My Breath (Remixes)","y":2024,"ty":"Remix","s":87,"h":4.1,"tracks":2,"pct":93.6},{"name":"Love in Contact Pt.3 (Original Television Soundtrack)","y":2022,"ty":"Soundtrack","s":52,"h":3.3,"tracks":2,"pct":99.5},{"name":"MAXIDENT","y":2022,"ty":"Mini Album","s":435,"h":23.4,"tracks":8,"pct":98.2},{"name":"Mirror Mirror","y":2021,"ty":"Single","s":19,"h":1.2,"tracks":1,"pct":97.0},{"name":"Mixtape","y":2018,"ty":"Mini Album","s":157,"h":9.3,"tracks":7,"pct":98.2},{"name":"Mixtape - DominATE","y":2025,"ty":"Mixtape","s":1853,"h":96.5,"tracks":5,"pct":96.7},{"name":"Mixtape - Gone Days","y":2019,"ty":"Single","s":25,"h":1.3,"tracks":1,"pct":96.0},{"name":"Mixtape - OH","y":2021,"ty":"Single","s":39,"h":2.3,"tracks":1,"pct":98.0},{"name":"Mixtape - On Track","y":2020,"ty":"Single","s":32,"h":1.7,"tracks":1,"pct":94.0},{"name":"Mixtape - Time Out","y":2022,"ty":"Single","s":65,"h":3.0,"tracks":1,"pct":94.0},{"name":"NIGHT (Korean ver.)","y":2024,"ty":"Single","s":78,"h":3.9,"tracks":2,"pct":97.5},{"name":"NOEASY","y":2021,"ty":"Studio Album","s":808,"h":42.7,"tracks":13,"pct":94.7},{"name":"ODDINARY","y":2022,"ty":"Mini Album","s":518,"h":25.7,"tracks":7,"pct":98.0},{"name":"POP OUT BOY! Part.1","y":2020,"ty":"Soundtrack","s":78,"h":5.1,"tracks":2,"pct":99.2},{"name":"ROCK-STAR","y":2023,"ty":"Mini Album","s":674,"h":35.4,"tracks":8,"pct":98.2},{"name":"ReawakeR (feat. Felix of Stray Kids)","y":2025,"ty":"Soundtrack","s":48,"h":2.1,"tracks":1,"pct":84.0},{"name":"Resident Playbook Pt.1 (Original Soundtrack)","y":2025,"ty":"Soundtrack","s":87,"h":5.1,"tracks":2,"pct":93.6},{"name":"SKZ-REPLAY","y":2022,"ty":"Compilation","s":773,"h":40.5,"tracks":25,"pct":98.2},{"name":"SKZ2021","y":2021,"ty":"Compilation","s":240,"h":14.6,"tracks":6,"pct":96.5},{"name":"SLASH (From Deadpool and Wolverine)","y":2024,"ty":"Soundtrack","s":98,"h":5.0,"tracks":1,"pct":97.0},{"name":"STAY","y":2026,"ty":"Single","s":25,"h":1.0,"tracks":1,"pct":75.0},{"name":"Scars","y":2021,"ty":"Single","s":81,"h":4.0,"tracks":2,"pct":92.8},{"name":"Social Path","y":2023,"ty":"Single","s":300,"h":15.9,"tracks":5,"pct":97.7},{"name":"Step Out of Cle (English Ver.)","y":2020,"ty":"Single","s":131,"h":6.3,"tracks":2,"pct":90.3},{"name":"Street Man Fighter Original Vol.4 (Crew Songs)","y":2022,"ty":"Soundtrack","s":26,"h":1.0,"tracks":1,"pct":100.0},{"name":"THE SOUND","y":2023,"ty":"Studio Album","s":343,"h":18.2,"tracks":9,"pct":98.3},{"name":"TOP","y":2020,"ty":"Single","s":150,"h":6.7,"tracks":4,"pct":100.0},{"name":"The Midnight Studio Pt.5 (Original Soundtrack)","y":2024,"ty":"Soundtrack","s":75,"h":5.2,"tracks":2,"pct":98.4},{"name":"The potato lab Pt.1 (Original Soundtrack)","y":2025,"ty":"Soundtrack","s":80,"h":4.9,"tracks":2,"pct":96.5},{"name":"Typhoon Family Pt.3 (Original Soundtrack)","y":2025,"ty":"Soundtrack","s":109,"h":4.9,"tracks":2,"pct":88.3},{"name":"Walkin On Water (Remixes)","y":2024,"ty":"Remix","s":174,"h":6.9,"tracks":4,"pct":98.5},{"name":"Why?","y":2024,"ty":"Soundtrack","s":292,"h":18.0,"tracks":1,"pct":97.0},{"name":"Would You Marry Me? Pt.1 (Original Soundtrack)","y":2025,"ty":"Soundtrack","s":97,"h":4.3,"tracks":2,"pct":83.6}],"types":["Mini Album","Studio Album","Mixtape","Single","Soundtrack","Compilation","Remix","Repackage","Promo Single"],"byYear":[{"y":2018,"streams":{"Mini Album":931,"Studio Album":0,"Mixtape":0,"Single":0,"Soundtrack":0,"Compilation":0,"Remix":0,"Repackage":0,"Promo Single":0},"hours":{"Mini Album":52.0,"Studio Album":0.0,"Mixtape":0.0,"Single":0.0,"Soundtrack":0.0,"Compilation":0.0,"Remix":0.0,"Repackage":0.0,"Promo Single":0.0},"pct":98.3},{"y":2019,"streams":{"Mini Album":488,"Studio Album":0,"Mixtape":0,"Single":25,"Soundtrack":77,"Compilation":0,"Remix":0,"Repackage":0,"Promo Single":0},"hours":{"Mini Album":26.6,"Studio Album":0.0,"Mixtape":0.0,"Single":1.3,"Soundtrack":5.2,"Compilation":0.0,"Remix":0.0,"Repackage":0.0,"Promo Single":0.0},"pct":98.0},{"y":2020,"streams":{"Mini Album":166,"Studio Album":566,"Mixtape":0,"Single":379,"Soundtrack":78,"Compilation":0,"Remix":0,"Repackage":281,"Promo Single":0},"hours":{"Mini Album":8.1,"Studio Album":28.7,"Mixtape":0.0,"Single":18.1,"Soundtrack":5.1,"Compilation":0.0,"Remix":0.0,"Repackage":14.9,"Promo Single":0.0},"pct":97.6},{"y":2021,"streams":{"Mini Album":0,"Studio Album":808,"Mixtape":0,"Single":341,"Soundtrack":41,"Compilation":240,"Remix":0,"Repackage":0,"Promo Single":0},"hours":{"Mini Album":0.0,"Studio Album":42.7,"Mixtape":0.0,"Single":18.3,"Soundtrack":2.9,"Compilation":14.6,"Remix":0.0,"Repackage":0.0,"Promo Single":0.0},"pct":95.7},{"y":2022,"streams":{"Mini Album":1105,"Studio Album":0,"Mixtape":0,"Single":87,"Soundtrack":78,"Compilation":773,"Remix":0,"Repackage":0,"Promo Single":0},"hours":{"Mini Album":57.0,"Studio Album":0.0,"Mixtape":0.0,"Single":4.4,"Soundtrack":4.3,"Compilation":40.5,"Remix":0.0,"Repackage":0.0,"Promo Single":0.0},"pct":98.0},{"y":2023,"streams":{"Mini Album":674,"Studio Album":1046,"Mixtape":0,"Single":300,"Soundtrack":0,"Compilation":0,"Remix":37,"Repackage":0,"Promo Single":0},"hours":{"Mini Album":35.4,"Studio Album":54.3,"Mixtape":0.0,"Single":15.9,"Soundtrack":0.0,"Compilation":0.0,"Remix":2.2,"Repackage":0.0,"Promo Single":0.0},"pct":98.1},{"y":2024,"streams":{"Mini Album":2667,"Studio Album":2204,"Mixtape":3555,"Single":201,"Soundtrack":624,"Compilation":0,"Remix":383,"Repackage":0,"Promo Single":66},"hours":{"Mini Album":124.9,"Studio Album":112.9,"Mixtape":163.5,"Single":9.2,"Soundtrack":35.1,"Compilation":0.0,"Remix":15.7,"Repackage":0.0,"Promo Single":3.0},"pct":98.0},{"y":2025,"streams":{"Mini Album":2096,"Studio Album":3158,"Mixtape":2471,"Single":77,"Soundtrack":470,"Compilation":0,"Remix":466,"Repackage":0,"Promo Single":0},"hours":{"Mini Album":112.3,"Studio Album":146.4,"Mixtape":122.9,"Single":3.8,"Soundtrack":24.1,"Compilation":0.0,"Remix":20.1,"Repackage":0.0,"Promo Single":0.0},"pct":95.0},{"y":2026,"streams":{"Mini Album":0,"Studio Album":0,"Mixtape":0,"Single":25,"Soundtrack":0,"Compilation":0,"Remix":0,"Repackage":0,"Promo Single":21},"hours":{"Mini Album":0.0,"Studio Album":0.0,"Mixtape":0.0,"Single":1.0,"Soundtrack":0.0,"Compilation":0.0,"Remix":0.0,"Repackage":0.0,"Promo Single":0.9},"pct":86.4}],"totals":{"streams":27005,"hours":1348.0,"tracks":309,"albums":69,"meanpct":97.2,"perfect":118},"bpmbins":[{"lo":60,"hi":90,"mean":67.5,"n":42,"s":2833},{"lo":90,"hi":110,"mean":72.7,"n":92,"s":6685},{"lo":110,"hi":130,"mean":86.4,"n":46,"s":3973},{"lo":130,"hi":150,"mean":74.2,"n":49,"s":3637},{"lo":150,"hi":170,"mean":120.2,"n":49,"s":5892},{"lo":170,"hi":200,"mean":128.5,"n":31,"s":3985}],"bpmcorr":0.179}</script>
+<script>
+(function(){
+  "use strict";
+  const DATA=JSON.parse(document.getElementById('skzdata').textContent);
+  const nf=new Intl.NumberFormat('en-CA');
+  const f1=new Intl.NumberFormat('en-CA',{maximumFractionDigits:1});
+  const tip=document.getElementById('sk-tip');
+  const TC={'Mini Album':'#0072B2','Studio Album':'#D55E00','Mixtape':'#009E73','Single':'#CC79A7',
+    'Soundtrack':'#E69F00','Compilation':'#56B4E9','Remix':'#882255','Repackage':'#117733','Promo Single':'#8a8a8a'};
+  const yearColor=d3.scaleSequential(d3.interpolateViridis).domain([2018,2026]);
+  function showTip(host,e,html){ tip.innerHTML=html; tip.hidden=false;
+    tip.style.left=e.clientX+'px'; tip.style.top=(e.clientY-8)+'px'; }
+  function hideTip(){ tip.hidden=true; }
+  function lum(hex){ const c=d3.rgb(hex); return (0.299*c.r+0.587*c.g+0.114*c.b)/255; }
+
+  /* KPIs */
+  (function(){
+    const t=DATA.totals, top=DATA.albums.reduce((m,a)=>a.s>m.s?a:m);
+    const k=[[nf.format(t.streams),'total plays'],[nf.format(Math.round(t.hours))+' h','time listened'],
+      [t.albums,'releases · '+t.tracks+' tracks'],[t.meanpct+'%','average track completion']];
+    document.getElementById('sk-kpis').innerHTML=k.map(x=>`<div class="sk-kpi"><b>${x[0]}</b><span>${x[1]}</span></div>`).join('');
+  })();
+
+  /* legend helper */
+  function typeLegend(elId){
+    document.getElementById(elId).innerHTML=DATA.types.map(t=>
+      `<span><span class="sw" style="background:${TC[t]}"></span>${t}</span>`).join('');
+  }
+
+  /* tables */
+  document.getElementById('tbl-year').innerHTML=(function(){
+    const rows=DATA.byYear.map(d=>{const s=Object.values(d.streams).reduce((a,b)=>a+b,0);
+      const h=Object.values(d.hours).reduce((a,b)=>a+b,0);
+      return `<tr><th scope="row">${d.y}</th><td>${nf.format(s)}</td><td>${f1.format(h)}</td><td>${d.pct}</td></tr>`;}).join('');
+    return '<table class="table table-bordered table-condensed"><caption class="wb-inv">By release year</caption>'+
+      '<thead><tr><th scope="col">Release year</th><th scope="col">Plays</th><th scope="col">Hours</th><th scope="col">Avg completion %</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  })();
+  document.getElementById('tbl-album').innerHTML=(function(){
+    const rows=DATA.albums.slice().sort((a,b)=>b.s-a.s).slice(0,15).map(a=>
+      `<tr><th scope="row">${a.name}</th><td>${a.y}</td><td>${a.ty}</td><td>${nf.format(a.s)}</td><td>${f1.format(a.h)}</td><td>${a.tracks}</td></tr>`).join('');
+    return '<table class="table table-bordered table-condensed"><caption class="wb-inv">Top albums</caption>'+
+      '<thead><tr><th scope="col">Album</th><th scope="col">Year</th><th scope="col">Type</th><th scope="col">Plays</th><th scope="col">Hours</th><th scope="col">Tracks</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  })();
+  document.getElementById('tbl-bpm').innerHTML=(function(){
+    const rows=DATA.bpmbins.map(b=>`<tr><th scope="row">${b.lo}–${b.hi} BPM</th><td>${b.n}</td><td>${nf.format(b.s)}</td><td>${f1.format(b.mean)}</td></tr>`).join('');
+    return '<table class="table table-bordered table-condensed"><caption class="wb-inv">Plays by tempo band</caption>'+
+      '<thead><tr><th scope="col">Tempo band</th><th scope="col">Tracks</th><th scope="col">Total plays</th><th scope="col">Avg plays/track</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  })();
+  document.getElementById('tbl-skip').innerHTML=(function(){
+    const rows=DATA.tracks.slice().sort((a,b)=>a.pct-b.pct).slice(0,12).map(t=>
+      `<tr><th scope="row">${t.t}</th><td>${t.a}</td><td>${t.pct}%</td><td>${nf.format(t.s)}</td></tr>`).join('');
+    return '<table class="table table-bordered table-condensed"><caption class="wb-inv">Least completed tracks</caption>'+
+      '<thead><tr><th scope="col">Track</th><th scope="col">Album</th><th scope="col">Avg completion</th><th scope="col">Plays</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  })();
+
+  /* ============ 1. TIMELINE (stacked bars) ============ */
+  (function(){
+    const host=document.getElementById('c-time'), svg=d3.select(host).select('svg');
+    const years=DATA.byYear.map(d=>d.y); let measure='streams';
+    typeLegend('leg-time');
+    function render(width){
+      const m={top:14,right:14,bottom:34,left:54}, h=Math.max(320,Math.round(width*0.5));
+      svg.attr('viewBox',`0 0 ${width} ${h}`).selectAll('*').remove();
+      const series=d3.stack().keys(DATA.types).value((d,k)=>d[measure][k])(DATA.byYear);
+      const x=d3.scaleBand().domain(years).range([m.left,width-m.right]).padding(0.2);
+      const yMax=d3.max(DATA.byYear,d=>DATA.types.reduce((s,t)=>s+d[measure][t],0));
+      const y=d3.scaleLinear().domain([0,yMax*1.05]).nice().range([h-m.bottom,m.top]);
+      svg.append('g').attr('class','grid').attr('transform',`translate(${m.left},0)`)
+        .call(d3.axisLeft(y).ticks(5).tickSize(-(width-m.left-m.right)).tickFormat(()=>'')).select('.domain').remove();
+      svg.append('g').selectAll('g').data(series).join('g').attr('fill',d=>TC[d.key])
+        .selectAll('rect').data(d=>d.map(p=>(p.key=d.key,p))).join('rect').attr('class','seg')
+        .attr('x',p=>x(p.data.y)).attr('width',x.bandwidth())
+        .attr('y',p=>y(p[1])).attr('height',p=>Math.max(0,y(p[0])-y(p[1])))
+        .on('mousemove',function(e,p){ const v=p.data[measure][p.key];
+          showTip(host,e,`<b>${p.data.y} · ${p.key}</b><br>${measure==='streams'?nf.format(v)+' plays':f1.format(v)+' h'}`); })
+        .on('mouseleave',hideTip);
+      svg.append('g').attr('class','axis').attr('transform',`translate(0,${h-m.bottom})`).call(d3.axisBottom(x));
+      svg.append('g').attr('class','axis').attr('transform',`translate(${m.left},0)`)
+        .call(d3.axisLeft(y).ticks(5).tickFormat(measure==='streams'?(v=>nf.format(v)):(v=>v+'h')));
+    }
+    new ResizeObserver(es=>render(es[0].contentRect.width)).observe(host);
+    document.querySelectorAll('#seg-time button').forEach(b=>b.addEventListener('click',()=>{
+      measure=b.dataset.m; document.querySelectorAll('#seg-time button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+      render(host.clientWidth); }));
+    const p24=DATA.byYear.find(d=>d.y===2024), s24=DATA.types.reduce((s,t)=>s+p24.streams[t],0);
+    document.getElementById('take-time').innerHTML=`2024 alone accounts for ${nf.format(s24)} plays — more than 2018 through 2023 combined. The taste leans on mini albums, studio albums and mixtapes; singles and soundtracks barely register.`;
+  })();
+
+  /* ============ 2. TREEMAP ============ */
+  (function(){
+    const host=document.getElementById('c-tree'), svg=d3.select(host).select('svg');
+    let metric='h'; typeLegend('leg-tree');
+    function render(width){
+      const h=Math.max(360,Math.round(width*0.62));
+      svg.attr('viewBox',`0 0 ${width} ${h}`).selectAll('*').remove();
+      const root=d3.hierarchy({children:DATA.albums}).sum(d=>d[metric]).sort((a,b)=>b.value-a.value);
+      d3.treemap().size([width,h]).paddingInner(2).round(true)(root);
+      const g=svg.append('g').selectAll('g').data(root.leaves()).join('g').attr('class','node')
+        .attr('transform',d=>`translate(${d.x0},${d.y0})`);
+      g.append('rect').attr('width',d=>d.x1-d.x0).attr('height',d=>d.y1-d.y0)
+        .attr('fill',d=>TC[d.data.ty]).attr('stroke','#fff')
+        .on('mousemove',function(e,d){ showTip(host,e,
+          `<b>${d.data.name}</b> <span style="opacity:.7">(${d.data.y})</span><br>${d.data.ty}<br>`+
+          `${f1.format(d.data.h)} h · ${nf.format(d.data.s)} plays · ${d.data.tracks} tracks`); })
+        .on('mouseleave',hideTip);
+      g.append('text').attr('class','tm-label').attr('x',4).attr('y',14)
+        .attr('fill',d=>lum(TC[d.data.ty])>0.6?'#1a1a1a':'#fff')
+        .each(function(d){ const w=d.x1-d.x0,hh=d.y1-d.y0;
+          if(w<46||hh<22){this.textContent='';return;}
+          const t=d3.select(this); t.text(d.data.name.length>w/6.5?d.data.name.slice(0,Math.floor(w/6.5))+'…':d.data.name);
+          if(hh>34&&w>60) t.append('tspan').attr('x',4).attr('y',28).attr('font-size','.62rem').attr('opacity',.85)
+            .text(metric==='h'?f1.format(d.data.h)+' h':nf.format(d.data.s)+' plays'); });
+    }
+    new ResizeObserver(es=>render(es[0].contentRect.width)).observe(host);
+    document.querySelectorAll('#seg-tree button').forEach(b=>b.addEventListener('click',()=>{
+      metric=b.dataset.m; document.querySelectorAll('#seg-tree button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+      render(host.clientWidth); }));
+    const top3=DATA.albums.slice().sort((a,b)=>b.h-a.h).slice(0,3);
+    document.getElementById('take-tree').innerHTML=`Just three releases — ${top3.map(a=>a.name).join(', ')} — soak up ${f1.format(top3.reduce((s,a)=>s+a.h,0))} hours between them, all from 2024–2025.`;
+  })();
+
+  /* ============ 3. SCATTER (bpm vs streams) ============ */
+  (function(){
+    const host=document.getElementById('c-scatter'), svg=d3.select(host).select('svg');
+    let colorBy='ty';
+    const r=d3.scaleSqrt().domain([0,d3.max(DATA.tracks,d=>d.h)]).range([2.5,15]);
+    function color(d){ return colorBy==='ty'?TC[d.ty]:yearColor(d.y); }
+    function render(width){
+      const m={top:16,right:16,bottom:42,left:52}, h=Math.max(340,Math.round(width*0.52));
+      svg.attr('viewBox',`0 0 ${width} ${h}`).selectAll('*').remove();
+      const x=d3.scaleLinear().domain([60,200]).range([m.left,width-m.right]);
+      const y=d3.scaleLinear().domain([0,d3.max(DATA.tracks,d=>d.s)*1.05]).nice().range([h-m.bottom,m.top]);
+      svg.append('g').attr('class','grid').attr('transform',`translate(${m.left},0)`)
+        .call(d3.axisLeft(y).ticks(5).tickSize(-(width-m.left-m.right)).tickFormat(()=>'')).select('.domain').remove();
+      // trend: mean streams by bpm bin
+      const trend=DATA.bpmbins.map(b=>({x:(b.lo+b.hi)/2,y:b.mean}));
+      svg.append('path').datum(trend).attr('fill','none').attr('stroke','#191414').attr('stroke-width',2.5)
+        .attr('stroke-dasharray','5 4').attr('d',d3.line().x(p=>x(p.x)).y(p=>y(p.y)).curve(d3.curveMonotoneX));
+      svg.append('g').selectAll('circle').data(DATA.tracks).join('circle').attr('class','dot anim')
+        .attr('cx',d=>x(d.bpm)).attr('cy',d=>y(d.s)).attr('r',d=>r(d.h))
+        .attr('fill',color).attr('fill-opacity',.72).attr('stroke',d=>d3.rgb(color(d)).darker(.6)).attr('stroke-width',.6)
+        .on('mousemove',function(e,d){ showTip(host,e,
+          `<b>${d.t}</b><br>${d.a} (${d.y})<br>${d.bpm} BPM · ${nf.format(d.s)} plays · ${f1.format(d.h)} h`); })
+        .on('mouseleave',hideTip);
+      svg.append('g').attr('class','axis').attr('transform',`translate(0,${h-m.bottom})`).call(d3.axisBottom(x).ticks(8).tickFormat(v=>v+''));
+      svg.append('g').attr('class','axis').attr('transform',`translate(${m.left},0)`).call(d3.axisLeft(y).ticks(5));
+      svg.append('text').attr('x',(width)/2).attr('y',h-6).attr('text-anchor','middle').attr('font-size','.74rem').attr('fill','#5c5c5c').text('Tempo (beats per minute)  →  dashed line: average plays per tempo band');
+      svg.append('text').attr('transform','rotate(-90)').attr('x',-(h/2)).attr('y',14).attr('text-anchor','middle').attr('font-size','.74rem').attr('fill','#5c5c5c').text('Plays');
+    }
+    new ResizeObserver(es=>render(es[0].contentRect.width)).observe(host);
+    function legend(){
+      const el=document.getElementById('leg-scatter');
+      if(colorBy==='ty'){ typeLegend('leg-scatter'); }
+      else { const ys=[2018,2020,2022,2024,2026];
+        el.innerHTML=ys.map(y=>`<span><span class="sw" style="background:${yearColor(y)}"></span>${y}</span>`).join(''); }
+    }
+    legend();
+    document.querySelectorAll('#seg-scatter button').forEach(b=>b.addEventListener('click',()=>{
+      colorBy=b.dataset.m; document.querySelectorAll('#seg-scatter button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+      render(host.clientWidth); legend(); }));
+    const slow=DATA.bpmbins[0], fast=DATA.bpmbins[DATA.bpmbins.length-1];
+    document.getElementById('take-scatter').innerHTML=`Tracks at ${fast.lo}–${fast.hi} BPM average ${f1.format(fast.mean)} plays each — nearly double the ${f1.format(slow.mean)} of the slowest band. Correlation between tempo and plays: +${DATA.bpmcorr}.`;
+  })();
+
+  /* ============ 4. BEESWARM (completion) ============ */
+  (function(){
+    const host=document.getElementById('c-bee'), svg=d3.select(host).select('svg');
+    let colorBy='ty';
+    const r=d3.scaleSqrt().domain([0,d3.max(DATA.tracks,d=>d.s)]).range([2.5,9]);
+    function color(d){ return colorBy==='ty'?TC[d.ty]:yearColor(d.y); }
+    const nodes=DATA.tracks.map(d=>Object.assign({},d));
+    function render(width){
+      const m={top:18,right:18,bottom:44,left:18}, h=Math.max(300,Math.round(width*0.42));
+      svg.attr('viewBox',`0 0 ${width} ${h}`).selectAll('*').remove();
+      const x=d3.scaleLinear().domain([d3.min(DATA.tracks,d=>d.pct)-3,101]).range([m.left,width-m.right]);
+      const cy=(m.top+h-m.bottom)/2;
+      const sim=d3.forceSimulation(nodes)
+        .force('x',d3.forceX(d=>x(d.pct)).strength(1))
+        .force('y',d3.forceY(cy).strength(0.05))
+        .force('collide',d3.forceCollide(d=>r(d.s)+0.7))
+        .stop();
+      for(let i=0;i<160;i++) sim.tick();
+      svg.append('g').attr('class','axis').attr('transform',`translate(0,${h-m.bottom})`)
+        .call(d3.axisBottom(x).ticks(7).tickFormat(v=>v+'%'));
+      svg.append('text').attr('x',width/2).attr('y',h-6).attr('text-anchor','middle').attr('font-size','.74rem').attr('fill','#5c5c5c').text('Average share of track played  →  right = played in full');
+      svg.append('g').selectAll('circle').data(nodes).join('circle')
+        .attr('cx',d=>d.x).attr('cy',d=>d.y).attr('r',d=>r(d.s))
+        .attr('fill',color).attr('fill-opacity',.75).attr('stroke',d=>d3.rgb(color(d)).darker(.6)).attr('stroke-width',.5)
+        .on('mousemove',function(e,d){ showTip(host,e,
+          `<b>${d.t}</b><br>${d.a} (${d.y})<br>${d.pct}% played · ${nf.format(d.s)} plays`); })
+        .on('mouseleave',hideTip);
+      // label the few lowest
+      const low=DATA.tracks.slice().sort((a,b)=>a.pct-b.pct).slice(0,3).map(t=>t.t);
+      svg.selectAll('text.lbl').data(nodes.filter(n=>low.includes(n.t))).join('text').attr('class','lbl')
+        .attr('x',d=>d.x).attr('y',d=>d.y-r(d.s)-3).attr('text-anchor','middle').attr('font-size','.62rem').attr('fill','#191414').text(d=>d.t);
+    }
+    new ResizeObserver(es=>render(es[0].contentRect.width)).observe(host);
+    document.querySelectorAll('#seg-bee button').forEach(b=>b.addEventListener('click',()=>{
+      colorBy=b.dataset.m; document.querySelectorAll('#seg-bee button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+      render(host.clientWidth); legend(); }));
+    function legend(){ if(colorBy==='ty') typeLegend('leg-bee');
+      else { const ys=[2018,2020,2022,2024,2026];
+        document.getElementById('leg-bee').innerHTML=ys.map(y=>`<span><span class="sw" style="background:${yearColor(y)}"></span>${y}</span>`).join(''); } }
+    legend();
+    document.getElementById('take-bee').innerHTML=`Across ${DATA.totals.tracks} tracks the average completion is ${DATA.totals.meanpct}%, and ${DATA.totals.perfect} are played start-to-finish every single time. Only a small tail ever gets cut short.`;
+  })();
+
+})();
+</script>
+</main>
+
+<footer id="wb-info">
+  <h2 class="wb-inv">About this site</h2>
+  <div class="gc-contextual"><div class="container"><nav>
+    <h3>Stray Kids listening portrait</h3>
+    <ul class="list-col-xs-1 list-col-sm-2 list-col-md-3">
+      <li><a href="#c-time">Discovery timeline</a></li>
+      <li><a href="#c-tree">Where the hours went</a></li>
+      <li><a href="#c-scatter">Tempo vs plays</a></li>
+      <li><a href="#c-bee">Completion</a></li>
+    </ul>
+  </nav></div></div>
+  <div class="gc-main-footer"><div class="container"><nav>
+    <h3>Government of Canada</h3>
+    <ul class="list-col-xs-1 list-col-sm-2 list-col-md-3">
+      <li><a href="https://www.canada.ca/en/contact.html">All contacts</a></li>
+      <li><a href="https://www.canada.ca/en/government/dept.html">Departments and agencies</a></li>
+      <li><a href="https://www.canada.ca/en/government/system.html">About government</a></li>
+    </ul>
+    <h4 class="wb-inv">Themes and topics</h4>
+    <ul class="list-unstyled colcount-sm-2 colcount-md-3">
+      <li><a href="https://www.canada.ca/en/services/jobs.html">Jobs</a></li>
+      <li><a href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+      <li><a href="https://travel.gc.ca/">Travel and tourism</a></li>
+      <li><a href="https://www.canada.ca/en/services/business.html">Business and industry</a></li>
+      <li><a href="https://www.canada.ca/en/services/benefits.html">Benefits</a></li>
+      <li><a href="https://www.canada.ca/en/services/health.html">Health</a></li>
+      <li><a href="https://www.canada.ca/en/services/culture.html">Culture, history and sport</a></li>
+      <li><a href="https://www.canada.ca/en/services/policing.html">Policing, justice and emergencies</a></li>
+      <li><a href="https://www.canada.ca/en/services/transport.html">Transport and infrastructure</a></li>
+    </ul>
+  </nav></div></div>
+  <div class="gc-sub-footer"><div class="container d-flex align-items-center">
+    <nav><h3 class="wb-inv">Government of Canada Corporate</h3>
+      <ul>
+        <li><a href="https://www.canada.ca/en/social.html">Social media</a></li>
+        <li><a href="https://www.canada.ca/en/mobile.html">Mobile applications</a></li>
+        <li><a href="https://www.canada.ca/en/government/about.html">About Canada.ca</a></li>
+        <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+        <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
+      </ul>
+    </nav>
+    <div class="wtrmrk align-self-end">
+      <img src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/wmms-blk.svg" alt="Symbol of the Government of Canada">
+    </div>
+  </div></div>
+</footer>
+
+<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/wet-boew.min.js"></script>
+<script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
+</body>
+</html>
