@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New student and worker arrivals to Canada – Monthly - Canada.ca</title>
+<!-- GCWeb / WET-BOEW theme (CDN) -->
+<link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/theme.min.css">
+<noscript><link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/noscript.min.css"></noscript>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+</head>
+<body vocab="http://schema.org/" typeof="WebPage">
+<main property="mainContentOfPage" resource="#wb-main" class="container">
+
+  <h1 property="name" id="wb-cont" class="gc-thickline">New student and worker arrivals to Canada – Monthly</h1>
+
+  <p>This page shows the number of new study permit holders and work permit holders who arrived in Canada each month, from December 2023 to April 2026. The stacked bars show the combined monthly total, split between the two streams.</p>
+
+  <!-- ============ CHART BLOCK (data-viz-canada-ca) ============ -->
+  <figure class="gcviz" id="gcviz-gsb" data-mode="stacked">
+    <figcaption class="gcviz-cap"
+      data-en="New study and work permit holder arrivals by month, December 2023 to April 2026"
+      data-fr="Arrivées de nouveaux titulaires de permis d'études et de travail par mois, de décembre 2023 à avril 2026"></figcaption>
+
+    <div class="gcviz-chart" role="img"
+         data-en-label="Stacked bar chart. Monthly arrivals peaked at over 125,000 in December 2023, driven by study permit holders, and trended down overall to roughly 27,000 by April 2026, with recurring late-summer spikes in study permit arrivals each August."
+         data-fr-label="Diagramme à barres empilées. Les arrivées mensuelles ont culminé à plus de 125 000 en décembre 2023, principalement des titulaires de permis d'études, puis ont diminué globalement jusqu'à environ 27 000 en avril 2026, avec des pointes récurrentes de titulaires de permis d'études chaque mois d'août.">
+      <svg aria-hidden="true" focusable="false"></svg>
+      <div class="gcviz-tip" aria-hidden="true" hidden></div>
+    </div>
+    <p class="gcviz-hint mrgn-tp-sm small"
+       data-en="Tip: point at a bar, or tab into the chart and use the arrow keys, to see the figures for each month. Press Escape to dismiss."
+       data-fr="Astuce : pointez une barre, ou accédez au graphique avec la touche de tabulation et utilisez les touches fléchées, pour voir les chiffres de chaque mois. Appuyez sur Échap pour fermer."></p>
+    <div class="gcviz-live wb-inv" aria-live="polite"></div>
+
+    <details class="gcviz-table">
+      <summary data-en="Data table: monthly arrivals by permit stream"
+               data-fr="Tableau de données : arrivées mensuelles par volet de permis"></summary>
+      <table class="table table-bordered table-condensed">
+        <caption class="wb-inv" data-en="New study and worker arrivals to Canada by month"
+                 data-fr="Arrivées de nouveaux étudiants et travailleurs au Canada par mois"></caption>
+        <thead><tr>
+          <th scope="col" data-en="Month" data-fr="Mois"></th>
+          <th scope="col" data-en="Study permit holders" data-fr="Titulaires de permis d'études"></th>
+          <th scope="col" data-en="Work permit holders" data-fr="Titulaires de permis de travail"></th>
+        </tr></thead>
+        <tbody>
+          <tr><th scope="row">Dec-23</th><td data-value="95295"></td><td data-value="30315"></td></tr>
+          <tr><th scope="row">Jan-24</th><td data-value="27560"></td><td data-value="33140"></td></tr>
+          <tr><th scope="row">Feb-24</th><td data-value="9240"></td><td data-value="42910"></td></tr>
+          <tr><th scope="row">Mar-24</th><td data-value="16855"></td><td data-value="63640"></td></tr>
+          <tr><th scope="row">Apr-24</th><td data-value="45780"></td><td data-value="34690"></td></tr>
+          <tr><th scope="row">May-24</th><td data-value="14225"></td><td data-value="34660"></td></tr>
+          <tr><th scope="row">Jun-24</th><td data-value="11280"></td><td data-value="35985"></td></tr>
+          <tr><th scope="row">Jul-24</th><td data-value="17110"></td><td data-value="29565"></td></tr>
+          <tr><th scope="row">Aug-24</th><td data-value="79700"></td><td data-value="26035"></td></tr>
+          <tr><th scope="row">Sep-24</th><td data-value="28880"></td><td data-value="29590"></td></tr>
+          <tr><th scope="row">Oct-24</th><td data-value="6510"></td><td data-value="25215"></td></tr>
+          <tr><th scope="row">Nov-24</th><td data-value="5980"></td><td data-value="21290"></td></tr>
+          <tr><th scope="row">Dec-24</th><td data-value="29820"></td><td data-value="16550"></td></tr>
+          <tr><th scope="row">Jan-25</th><td data-value="11210"></td><td data-value="14870"></td></tr>
+          <tr><th scope="row">Feb-25</th><td data-value="4070"></td><td data-value="14360"></td></tr>
+          <tr><th scope="row">Mar-25</th><td data-value="3810"></td><td data-value="18495"></td></tr>
+          <tr><th scope="row">Apr-25</th><td data-value="8515"></td><td data-value="23580"></td></tr>
+          <tr><th scope="row">May-25</th><td data-value="4535"></td><td data-value="23605"></td></tr>
+          <tr><th scope="row">Jun-25</th><td data-value="4155"></td><td data-value="23940"></td></tr>
+          <tr><th scope="row">Jul-25</th><td data-value="7610"></td><td data-value="18345"></td></tr>
+          <tr><th scope="row">Aug-25</th><td data-value="44940"></td><td data-value="16715"></td></tr>
+          <tr><th scope="row">Sep-25</th><td data-value="11290"></td><td data-value="17390"></td></tr>
+          <tr><th scope="row">Oct-25</th><td data-value="3010"></td><td data-value="14475"></td></tr>
+          <tr><th scope="row">Nov-25</th><td data-value="2465"></td><td data-value="13285"></td></tr>
+          <tr><th scope="row">Dec-25</th><td data-value="9510"></td><td data-value="9690"></td></tr>
+          <tr><th scope="row">Jan-26</th><td data-value="6960"></td><td data-value="11765"></td></tr>
+          <tr><th scope="row">Feb-26</th><td data-value="2135"></td><td data-value="10830"></td></tr>
+          <tr><th scope="row">Mar-26</th><td data-value="2080"></td><td data-value="13865"></td></tr>
+          <tr><th scope="row">Apr-26</th><td data-value="4940"></td><td data-value="21900"></td></tr>
+        </tbody>
+      </table>
+    </details>
+  </figure>
+
+  <style>
+    #gcviz-gsb { margin: 1.5rem 0; max-width: 60rem; }
+    #gcviz-gsb .gcviz-cap { font-weight:700; font-size:1rem; margin-bottom:.5rem; }
+    #gcviz-gsb .gcviz-chart { position: relative; }
+    #gcviz-gsb svg { width:100%; height:auto; display:block; }
+    #gcviz-gsb .axis text { font-size:.7rem; fill:#6F6F6F; }
+    #gcviz-gsb .axis path, #gcviz-gsb .axis line { stroke:#DADADA; }
+    #gcviz-gsb .legend text { font-size:.85rem; fill:#284162; }
+    /* interaction */
+    #gcviz-gsb .gcviz-hit { fill: transparent; cursor: pointer; outline: none; }
+    #gcviz-gsb .gcviz-hit.is-active { fill: #284162; fill-opacity: .08; }
+    #gcviz-gsb .gcviz-hit:focus-visible { outline: 2px solid #284162; outline-offset: 1px; }
+    #gcviz-gsb .gcviz-hit:focus { outline: 2px solid #284162; outline-offset: 1px; } /* fallback */
+    #gcviz-gsb .gcviz-tip {
+      position: absolute; z-index: 10; pointer-events: auto;
+      background: #fff; border: 1px solid #284162; border-left: 4px solid #284162;
+      padding: .4rem .6rem; font-size: .8rem; line-height: 1.4; color: #333;
+      box-shadow: 0 2px 6px rgba(0,0,0,.18); max-width: 14rem;
+      transform: translate(-50%, -100%);
+    }
+    #gcviz-gsb .gcviz-tip .gcviz-tip-cat { font-weight:700; color:#284162; }
+    #gcviz-gsb .gcviz-tip .sw-study::before,
+    #gcviz-gsb .gcviz-tip .sw-work::before {
+      content:""; display:inline-block; width:.6rem; height:.6rem; margin-right:.35rem; vertical-align:baseline;
+    }
+    #gcviz-gsb .gcviz-tip .sw-study::before { background:#284162; }
+    #gcviz-gsb .gcviz-tip .sw-work::before  { background:#D55E00; }
+  </style>
+
+  <script>
+  (function () {
+    const fig = document.getElementById('gcviz-gsb');
+    const lang = (document.documentElement.lang || 'en').startsWith('fr') ? 'fr' : 'en';
+    const nf = new Intl.NumberFormat(lang === 'fr' ? 'fr-CA' : 'en-CA');
+    fig.querySelectorAll('[data-en]').forEach(n => n.textContent = n.getAttribute('data-' + lang));
+    const wrap = fig.querySelector('.gcviz-chart');
+    wrap.setAttribute('aria-label', wrap.getAttribute('data-' + lang + '-label'));
+
+    const headers = [...fig.querySelectorAll('thead th')].slice(1).map(th => th.textContent);
+    const COLORS = ['#284162', '#D55E00']; // GC deep blue (Study), Vermillion (Work)
+    const data = [...fig.querySelectorAll('tbody tr')].map(tr => {
+      const o = { cat: tr.querySelector('th').textContent, vals: [] };
+      tr.querySelectorAll('td').forEach((td, i) => { const v = +td.getAttribute('data-value'); td.textContent = nf.format(v); o.vals[i] = v; });
+      return o;
+    });
+
+    const svg = d3.select(fig).select('svg');
+    const tip = fig.querySelector('.gcviz-tip');
+    const live = fig.querySelector('.gcviz-live');
+    const totalLabel = lang === 'fr' ? 'Total' : 'Total';
+    let hits = [];        // current focusable hit rects, in order
+    let activeIdx = -1;
+
+    function describe(d) {
+      const s = d.vals[0], w = d.vals[1];
+      return { cat: d.cat, s, w, total: s + w };
+    }
+    function showTip(i) {
+      const node = hits[i]; if (!node) return;
+      const d = data[i], v = describe(d);
+      // highlight band
+      hits.forEach(h => h.classList.remove('is-active'));
+      node.classList.add('is-active');
+      tip.innerHTML =
+        `<span class="gcviz-tip-cat">${v.cat}</span><br>` +
+        `<span class="sw-study">${headers[0]}: ${nf.format(v.s)}</span><br>` +
+        `<span class="sw-work">${headers[1]}: ${nf.format(v.w)}</span><br>` +
+        `${totalLabel}: <strong>${nf.format(v.total)}</strong>`;
+      tip.hidden = false;
+      // position above the bar, clamped within the chart wrapper
+      const cx = +node.getAttribute('data-cx');
+      const top = +node.getAttribute('data-top');
+      const wrapW = wrap.clientWidth, svgW = +svg.attr('viewBox').split(' ')[2];
+      const scale = wrapW / svgW;
+      let px = cx * scale, py = top * scale;
+      tip.style.left = Math.max(60, Math.min(wrapW - 60, px)) + 'px';
+      tip.style.top = Math.max(40, py - 8) + 'px';
+      live.textContent = `${v.cat}. ${headers[0]}: ${nf.format(v.s)}. ${headers[1]}: ${nf.format(v.w)}. ${totalLabel}: ${nf.format(v.total)}.`;
+      activeIdx = i;
+    }
+    function hideTip() {
+      tip.hidden = true;
+      hits.forEach(h => h.classList.remove('is-active'));
+      activeIdx = -1;
+    }
+
+    function render(width) {
+      hideTip();
+      const height = Math.max(340, Math.round(width * 0.5));
+      const m = { top: 40, right: 16, bottom: 70, left: 64 };
+      svg.attr('viewBox', `0 0 ${width} ${height}`).selectAll('*').remove();
+      const x = d3.scaleBand().domain(data.map(d => d.cat)).range([m.left, width - m.right]).padding(0.2);
+      const yMax = d3.max(data, d => d3.sum(d.vals));
+      const y = d3.scaleLinear().domain([0, yMax]).nice().range([height - m.bottom, m.top]);
+
+      // x axis — rotate labels so all 29 months are readable
+      const xAxis = svg.append('g').attr('class', 'axis').attr('transform', `translate(0,${height - m.bottom})`).call(d3.axisBottom(x));
+      xAxis.selectAll('text')
+        .attr('transform', 'rotate(-45)')
+        .attr('text-anchor', 'end')
+        .attr('dx', '-0.4em').attr('dy', '0.3em');
+
+      svg.append('g').attr('class', 'axis').attr('transform', `translate(${m.left},0)`).call(d3.axisLeft(y).ticks(6).tickFormat(v => nf.format(v)));
+
+      data.forEach(d => {
+        const g = svg.append('g').attr('transform', `translate(${x(d.cat)},0)`);
+        let acc = 0;
+        d.vals.forEach((v, i) => {
+          g.append('rect').attr('x', 0).attr('width', x.bandwidth())
+            .attr('y', y(acc + v)).attr('height', y(acc) - y(acc + v))
+            .attr('fill', COLORS[i]).attr('stroke', '#fff').attr('stroke-width', 1);
+          acc += v;
+        });
+      });
+
+      // legend — direct text, top-left
+      const lg = svg.append('g').attr('class', 'legend');
+      headers.forEach((h, i) => {
+        const gx = lg.append('g').attr('transform', `translate(${m.left + i * 210},14)`);
+        gx.append('rect').attr('width', 12).attr('height', 12).attr('fill', COLORS[i]).attr('stroke', '#333').attr('stroke-width', .5);
+        gx.append('text').attr('x', 16).attr('y', 11).text(h);
+      });
+
+      // interaction layer — one full-height focusable hit area per month
+      const hitG = svg.append('g').attr('class', 'gcviz-hits');
+      hits = data.map((d, i) => {
+        const total = d3.sum(d.vals);
+        const rect = hitG.append('rect')
+          .attr('class', 'gcviz-hit')
+          .attr('x', x(d.cat)).attr('width', x.bandwidth())
+          .attr('y', m.top).attr('height', (height - m.bottom) - m.top)
+          .attr('tabindex', 0)
+          .attr('role', 'button')
+          .attr('aria-label', `${d.cat}, ${headers[0]} ${nf.format(d.vals[0])}, ${headers[1]} ${nf.format(d.vals[1])}, ${totalLabel} ${nf.format(total)}`)
+          .attr('data-cx', x(d.cat) + x.bandwidth() / 2)
+          .attr('data-top', y(total))
+          .node();
+        rect.addEventListener('mouseenter', () => showTip(i));
+        rect.addEventListener('mousemove', () => showTip(i));
+        rect.addEventListener('mouseleave', () => hideTip());
+        rect.addEventListener('focus', () => showTip(i));
+        rect.addEventListener('blur', () => hideTip());
+        return rect;
+      });
+    }
+
+    // keyboard: arrows move between months, Esc dismisses
+    wrap.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { hideTip(); if (document.activeElement) document.activeElement.blur(); return; }
+      if (activeIdx < 0) return;
+      let next = activeIdx;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowUp') next = Math.min(hits.length - 1, activeIdx + 1);
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') next = Math.max(0, activeIdx - 1);
+      else if (e.key === 'Home') next = 0;
+      else if (e.key === 'End') next = hits.length - 1;
+      else return;
+      e.preventDefault();
+      hits[next].focus();
+    });
+
+    new ResizeObserver(es => render(es[0].contentRect.width)).observe(wrap);
+  })();
+  </script>
+  <!-- ============ END CHART BLOCK ============ -->
+
+  <p>Open the data table above the chart to read the exact monthly figures. Figures are rounded to the nearest 5.</p>
+
+</main>
+</body>
+</html>
