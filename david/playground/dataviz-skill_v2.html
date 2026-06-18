@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8" />
+  <title>D3 Bar Chart – Temporary Residents in Canada</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- D3 v7 CDN (replace with a local copy if needed) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js" integrity="sha512-0mQ4nJcVwR4xB8n3r8t7u1D6gB2H9l3kQZ8bKcA7T+g9m2Jfdy2S7z5z7oZ3U3v2H0b2a2yqg3mJ9i0pYxw5xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; }
+    .chart-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .axis text { font-size: 12px; }
+    .bar { fill: #1a73e8; }
+    .bar:hover { fill: #1558ad; }
+    .axis path, .axis line { stroke: #888; shape-rendering: crispEdges; }
+    .y-grid line { stroke: #e6e6e6; }
+    .tooltip {
+      position: absolute; pointer-events: none; background: #111; color: #fff;
+      padding: 6px 8px; border-radius: 4px; font-size: 12px; opacity: 0;
+    }
+    .source-note { font-size: 11px; color: #555; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <div class="chart-title">Temporary residents in Canada by year</div>
+  <svg id="chart" width="760" height="420" role="img" aria-label="Bar chart of temporary residents in Canada by year"></svg>
+  <div class="source-note">Note: Figures below are placeholders for demonstration. Replace with authoritative data before use.</div>
+
+  <div id="tooltip" class="tooltip" aria-hidden="true"></div>
+
+  <script>
+    // Replace with authoritative, up-to-date figures
+    // count values are example placeholders
+    const data = [
+      { year: 2019, count: 2300000 },
+      { year: 2020, count: 2100000 },
+      { year: 2021, count: 2500000 },
+      { year: 2022, count: 3000000 },
+      { year: 2023, count: 3200000 }
+    ];
+
+    const svg = d3.select("#chart");
+    const width = +svg.attr("width");
+    const height = +svg.attr("height");
+
+    const margin = { top: 20, right: 24, bottom: 48, left: 72 };
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+
+    const g = svg.append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // Scales
+    const x = d3.scaleBand()
+      .domain(data.map(d => d.year))
+      .range([0, innerWidth])
+      .padding(0.2);
+
+    const y = d3.scaleLinear()
+      .domain([0, d3.max(data, d => d.count)]).nice()
+      .range([innerHeight, 0]);
+
+    // Gridlines
+    const yAxisGrid = d3.axisLeft(y)
+      .tickSize(-innerWidth)
+      .tickFormat("")
+      .ticks(5);
+    g.append("g")
+      .attr("class", "y-grid")
+      .call(yAxisGrid)
+      .selectAll(".domain").remove();
+
+    // Axes
+    const xAxis = d3.axisBottom(x).tickFormat(d3.format("d")); // show full year
+    const yAxis = d3.axisLeft(y).ticks(6).tickFormat(d => d3.format(".2s")(d).replace("G","B"));
+
+    g.append("g")
+      .attr("class", "axis")
+      .attr("transform", `translate(0,${innerHeight})`)
+      .call(xAxis);
+
+    g.append("g")
+      .attr("class", "axis")
+      .call(yAxis)
+      .append("text")
+      .attr("fill", "#000")
+      .attr("x", -48)
+      .attr("y", -10)
+      .attr("text-anchor", "start")
+      .attr("font-size", 12)
+      .text("Number of temporary residents");
+
+    // Bars
+    const tooltip = d3.select("#tooltip");
+
+    g.selectAll(".bar")
+      .data(data, d => d.year)
+      .enter()
+      .append("rect")
+      .attr("class", "bar")
+      .attr("x", d => x(d.year))
+      .attr("y", d => y(d.count))
+      .attr("width", x.bandwidth())
+      .attr("height", d => innerHeight - y(d.count))
+      .on("mousemove", function (event, d) {
+        const [mx, my] = d3.pointer(event, document.body);
+        tooltip
+          .style("left", (mx + 12) + "px")
+          .style("top", (my + 12) + "px")
+          .style("opacity", 0.95)
+          .attr("aria-hidden", "false")
+          .html(`<strong>${d.year}</strong><br/>${d3.format(",")(d.count)} temporary residents`);
+      })
+      .on("mouseout", function () {
+        tooltip.style("opacity", 0).attr("aria-hidden", "true");
+      });
+
+    // Responsive resize (optional)
+    // To use: remove fixed width/height attributes on <svg> and call resize() on window resize
+    // Keeping fixed-size here for simplicity.
+  </script>
+</body>
+</html>
