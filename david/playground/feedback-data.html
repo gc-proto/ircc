@@ -1,0 +1,914 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What 18,000 people told IRCC — Page feedback analysis</title>
+<meta name="description" content="In-depth analysis of 18,022 user feedback comments left on IRCC pages on Canada.ca, May 21 – June 19, 2026.">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<style>
+:root{
+  --blue:#284162; --blue-2:#26374a; --link:#2b6cb0; --sky:#0072B2; --sky-l:#7fd1ff;
+  --vermillion:#D55E00; --green:#117733; --wine:#882255; --amber:#E69F00; --red:#af3c43;
+  --ink:#15212e; --muted:#5a6573; --line:#e6ebf0;
+  --bg:#ffffff; --bg-soft:#f5f7fa; --bg-deep:#0b1626; --bg-deep2:#0f1f33;
+  --r:16px; --shadow:0 6px 28px rgba(20,40,70,.08); --shadow-lg:0 24px 60px rgba(11,22,38,.22);
+  --max:1180px; --sans:"Inter",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3{line-height:1.14;letter-spacing:-.02em;margin:0}
+a{color:var(--link)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:800;color:var(--vermillion);margin:0 0 12px}
+
+/* ---- HERO ---- */
+.hero{position:relative;overflow:hidden;color:#fff;background:
+   radial-gradient(1200px 560px at 82% -12%,rgba(0,114,178,.38),transparent 60%),
+   radial-gradient(900px 540px at -5% 118%,rgba(213,94,0,.22),transparent 55%),
+   linear-gradient(155deg,#0a1424 0%,#15293f 52%,#22384f 100%)}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(900px 380px at 50% 120%,rgba(127,209,255,.12),transparent 70%);z-index:1}
+.hero .wrap{padding:84px 24px 70px;position:relative;z-index:3}
+.hero .eyebrow{color:var(--sky-l)}
+.hero h1{font-size:clamp(2.1rem,5vw,3.7rem);font-weight:900;margin:.05em 0 .4em;max-width:19ch;letter-spacing:-.03em}
+.hero .lede{font-size:clamp(1.08rem,2vw,1.42rem);max-width:62ch;color:#d9e6f3;font-weight:400}
+.hero .meta-row{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:34px;font-size:.92rem;color:#a9bdd4}
+.hero .meta-row b{color:#fff;font-weight:700}
+.spark{position:absolute;inset:0;z-index:2;opacity:.55}
+
+/* KPI strip */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);background:linear-gradient(180deg,var(--bg-deep),var(--bg-deep2));color:#fff}
+.kpis .k{padding:30px 24px;border-left:1px solid rgba(255,255,255,.07);position:relative}
+.kpis .k:first-child{border-left:0}
+.kpis .num{font-size:clamp(1.9rem,3.6vw,2.8rem);font-weight:900;letter-spacing:-.03em;line-height:1;background:linear-gradient(90deg,#fff,#bfe0f5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kpis .num small{font-size:.9rem;font-weight:800;-webkit-text-fill-color:var(--sky-l);margin-left:3px}
+.kpis .lbl{font-size:.83rem;color:#9fb3c8;margin-top:8px}
+@media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}}
+
+/* sticky nav */
+nav.toc{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(12px) saturate(1.4);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:4px;overflow-x:auto;padding:11px 24px;scrollbar-width:none}
+nav.toc .wrap::-webkit-scrollbar{display:none}
+nav.toc a{flex:0 0 auto;font-size:.82rem;font-weight:700;color:var(--blue);text-decoration:none;padding:8px 14px;border-radius:999px;white-space:nowrap;transition:.15s}
+nav.toc a:hover{background:var(--bg-soft)}
+nav.toc a.active{background:var(--blue);color:#fff}
+
+section{padding:72px 0;border-bottom:1px solid var(--line)}
+section.tint{background:var(--bg-soft)}
+section h2{font-size:clamp(1.55rem,3.2vw,2.25rem);margin:0 0 .22em;font-weight:800;color:var(--blue-2)}
+section .sub{color:var(--muted);max-width:70ch;margin:0 0 34px;font-size:1.04rem}
+
+/* verdict cards */
+.verdicts{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:860px){.verdicts{grid-template-columns:1fr}}
+.vcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.vcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.vcard::before{content:"";position:absolute;top:0;left:0;width:100%;height:5px;background:var(--accent,var(--vermillion))}
+.vcard .vn{font-size:.74rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent,var(--vermillion))}
+.vcard h3{font-size:1.24rem;margin:.55em 0 .45em}
+.vcard .big{font-size:2.7rem;font-weight:900;color:var(--blue-2);letter-spacing:-.03em;line-height:1}
+.vcard p{color:var(--muted);font-size:.96rem;margin:.6em 0 0}
+
+/* grid + cards */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.grid2.lean{grid-template-columns:1.3fr .9fr}
+@media(max-width:880px){.grid2,.grid2.lean{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:var(--shadow)}
+.card h3{margin:0 0 4px;font-size:1.14rem;color:var(--blue-2)}
+.card .cap{font-size:.85rem;color:var(--muted);margin:0 0 18px}
+figure{margin:0}
+.chartbox{position:relative;width:100%}
+.chartbox.tall{height:390px}.chartbox.med{height:320px}
+
+/* signal chips */
+.signals{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:860px){.signals{grid-template-columns:repeat(2,1fr)}}
+.sig{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow);transition:transform .25s}
+.sig:hover{transform:translateY(-3px)}
+.sig .n{font-size:2.2rem;font-weight:900;letter-spacing:-.03em;line-height:1}
+.sig .t{font-weight:700;margin:.5em 0 .2em;font-size:1rem}
+.sig .d{font-size:.86rem;color:var(--muted)}
+.sig.b1 .n{color:var(--vermillion)}.sig.b2 .n{color:var(--sky)}.sig.b3 .n{color:var(--green)}.sig.b4 .n{color:var(--wine)}
+
+/* quotes */
+.qfilter{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:24px}
+.qfilter button{font-family:var(--sans);font-size:.82rem;font-weight:700;border:1px solid var(--line);background:#fff;color:var(--blue);padding:8px 15px;border-radius:999px;cursor:pointer;transition:all .15s}
+.qfilter button:hover{border-color:var(--blue)}
+.qfilter button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.quotes{columns:3 260px;column-gap:20px}
+.q{break-inside:avoid;margin:0 0 20px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent,var(--sky));border-radius:12px;padding:18px 20px;box-shadow:var(--shadow)}
+.q p{margin:0 0 10px;font-size:.98rem;color:var(--ink);font-style:italic}
+.q .tag{font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent,var(--sky))}
+
+/* deep dive table */
+table.dd{width:100%;border-collapse:collapse;font-size:.92rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+table.dd th,table.dd td{padding:13px 15px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+table.dd th{background:var(--blue);color:#fff;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+table.dd td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+table.dd tr:last-child td{border-bottom:0}
+table.dd tbody tr{transition:background .15s}
+table.dd tbody tr:hover{background:var(--bg-soft)}
+table.dd .minibar{height:8px;border-radius:4px;display:block;margin-bottom:3px}
+table.dd a{font-weight:700;color:var(--link)}
+.linknote{font-size:.78rem;color:var(--muted);margin:10px 0 0}
+
+/* recs */
+.recs{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+@media(max-width:780px){.recs{grid-template-columns:1fr}}
+.rec{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 26px 78px;box-shadow:var(--shadow);position:relative}
+.rec .pill{position:absolute;left:22px;top:26px;width:38px;height:38px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:1.05rem}
+.rec.p1 .pill{background:var(--red)}.rec.p2 .pill{background:var(--vermillion)}.rec.p3 .pill{background:var(--amber)}.rec.p4 .pill{background:var(--green)}
+.rec h3{margin:0 0 6px;font-size:1.1rem}
+.rec .pr{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rec p{margin:.5em 0 0;color:var(--muted);font-size:.94rem}
+
+details.tbl{margin-top:16px;font-size:.85rem}
+details.tbl summary{cursor:pointer;color:var(--link);font-weight:700}
+details.tbl table{width:100%;border-collapse:collapse;margin-top:12px}
+details.tbl th,details.tbl td{border:1px solid var(--line);padding:6px 10px;text-align:left}
+details.tbl td.num{text-align:right}
+
+.callout{background:linear-gradient(140deg,#22384f,#0b1626);color:#fff;border-radius:var(--r);padding:32px 34px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+.callout::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(127,209,255,.25),transparent 70%)}
+.callout .big{font-size:clamp(2.4rem,6vw,4rem);font-weight:900;line-height:1;color:var(--sky-l);letter-spacing:-.03em;position:relative}
+.callout p{margin:.5em 0 0;color:#cdddee;font-size:1.05rem;max-width:46ch;position:relative}
+
+footer{background:linear-gradient(180deg,var(--bg-deep2),var(--bg-deep));color:#9fb3c8;padding:48px 0;font-size:.86rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between}
+footer b{color:#fff}
+.note{font-size:.82rem;color:var(--muted);margin-top:20px}
+@media (prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <canvas class="spark" id="spark" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <p class="eyebrow">IRCC · Page feedback intelligence · May–June 2026</p>
+    <h1>18,022 people stopped to tell us something was wrong.</h1>
+    <p class="lede">Most of them weren't leaving feedback. They were asking for help — typing questions into a box that never answers. This is what one month of friction on IRCC's Canada.ca pages actually looks like.</p>
+    <div class="meta-row">
+      <span><b>18,022</b> comments</span>
+      <span><b>30</b> days · May 21 – Jun 19, 2026</span>
+      <span><b>72% EN</b> / 28% FR</span>
+      <span><b>~601</b> comments / day</span>
+    </div>
+  </div>
+</header>
+
+<div class="kpis">
+  <div class="k"><div class="num" data-count="18022">0</div><div class="lbl">Total feedback comments</div></div>
+  <div class="k"><div class="num" data-count="60.5">0<small>%</small></div><div class="lbl">land on ~a dozen pages</div></div>
+  <div class="k"><div class="num" data-count="3228">0</div><div class="lbl">"where is the form / link?"</div></div>
+  <div class="k"><div class="num" data-count="596">0</div><div class="lbl">comments in other languages</div></div>
+</div>
+
+<nav class="toc"><div class="wrap">
+  <a href="#verdict">The verdict</a>
+  <a href="#volume">Volume</a>
+  <a href="#hotspots">Page hotspots</a>
+  <a href="#pain">Pain points</a>
+  <a href="#overtime">Over time</a>
+  <a href="#helpdesk">Help-desk problem</a>
+  <a href="#timing">Timing</a>
+  <a href="#voices">Voices</a>
+  <a href="#deepdive">Deep dive</a>
+  <a href="#actions">What to do</a>
+</div></nav>
+
+<!-- VERDICT -->
+<section id="verdict">
+  <div class="wrap">
+    <p class="eyebrow">The bottom line</p>
+    <h2>The feedback widget has become IRCC's largest unanswered help desk.</h2>
+    <p class="sub">Read a few hundred comments and a pattern is impossible to miss: people aren't critiquing pages, they're stuck mid-task and reaching for the nearest text box. The dominant failure isn't tone or typos — it's <strong>wayfinding</strong>. Visitors arrive with clear intent ("apply for an eTA," "check my status," "find the form") and can't see the door. Three findings carry the story.</p>
+    <div class="verdicts">
+      <div class="vcard reveal" style="--accent:var(--vermillion)">
+        <span class="vn">Finding 01 · Findability</span>
+        <h3>People can't find the form or the front door.</h3>
+        <div class="big">3,228</div>
+        <p>comments are some version of "where is the form?" or "where do I apply / what's the link?" — about <b>18% of everything</b>. The site's core job, routing intent to the right application, is breaking at the moment of intent.</p>
+      </div>
+      <div class="vcard reveal" style="--accent:var(--sky)">
+        <span class="vn">Finding 02 · Concentration</span>
+        <h3>The pain is concentrated, not scattered.</h3>
+        <div class="big">60.5%</div>
+        <p>of all feedback lands on roughly <b>a dozen pages</b> — almost all of them transactional gateways: check status, find forms, sign in. Feedback here isn't curiosity; it's a <b>blocked transaction</b>.</p>
+      </div>
+      <div class="vcard reveal" style="--accent:var(--wine)">
+        <span class="vn">Finding 03 · Wrong channel</span>
+        <h3>The box is being used as search & support.</h3>
+        <div class="big">1 in 10</div>
+        <p>comments end in a question mark and <b>1,498</b> shout in ALL CAPS. People expect a reply. They're treating a one-way feedback field like a chatbot — and hearing silence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOLUME -->
+<section id="volume" class="tint">
+  <div class="wrap">
+    <p class="eyebrow">How much, and when</p>
+    <h2>A steady drumbeat — roughly 600 frustrated visitors a day</h2>
+    <p class="sub">Volume never lets up. Weekdays run hot (Thursday is the worst day), weekends cool by a third, and the English-to-French ratio holds steady at about 2.5 : 1. The June 19 dip is just a partial collection day. There is no "quiet period" to wait for — this is the baseline.</p>
+    <div class="grid2 lean">
+      <div class="card reveal">
+        <h3>Daily feedback volume, by language</h3>
+        <p class="cap">Stacked daily counts, English + French. Peak: 793 comments on June 9.</p>
+        <figure><div class="chartbox tall"><canvas id="cDaily"></canvas></div></figure>
+      </div>
+      <div class="card reveal">
+        <h3>By day of week</h3>
+        <p class="cap">Thursdays generate 93% more feedback than Sundays.</p>
+        <figure><div class="chartbox tall"><canvas id="cDow"></canvas></div></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOTSPOTS -->
+<section id="hotspots">
+  <div class="wrap">
+    <p class="eyebrow">Where it hurts</p>
+    <h2>A handful of pages absorb most of the complaints</h2>
+    <p class="sub">English and French versions merged to their true page; the ten largest are shown. Together with their smaller variants these page groups hold 60.5% of all feedback. The leaders are the transactional spine of IRCC's online service: checking status, finding forms, and signing in. When these pages generate feedback, a person is almost always blocked from finishing something they came to do.</p>
+    <div class="grid2 lean">
+      <div class="card reveal">
+        <h3>Top pages by feedback volume (EN + FR)</h3>
+        <p class="cap">Three pages alone — status, forms, sign-in — account for 5,882 comments.</p>
+        <figure><div class="chartbox tall"><canvas id="cPages"></canvas></div></figure>
+        <details class="tbl"><summary>Data table (with page links)</summary><div id="tblPages"></div></details>
+      </div>
+      <div class="card reveal" style="display:flex;flex-direction:column;gap:20px;justify-content:center">
+        <div class="callout">
+          <div class="big">5,882</div>
+          <p>comments on the three core transactional pages — <b>Check status</b>, <b>Find forms</b>, and <b>Sign in</b>. That's a third of everything, on three URLs.</p>
+        </div>
+        <p style="color:var(--muted);font-size:.95rem;margin:0">The status tracker draws the most heat of any page (2,280 comments). Many reference outages directly — <em>"The application status tracker has been unavailable for a long time"</em> — meaning some of this volume is a service availability problem, not just a content one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section id="pain" class="tint">
+  <div class="wrap">
+    <p class="eyebrow">What they're struggling with</p>
+    <h2>The shape of the friction</h2>
+    <p class="sub">Every comment was scanned for the needs and obstacles people describe (a comment can touch more than one). Visiting Canada dominates the topic mix, but the cross-cutting story underneath is logistics: finding a form, tracking an application, getting into an account. People mostly aren't asking <em>whether</em> they qualify — they're asking <em>how</em> and <em>where</em>.</p>
+    <div class="grid2 lean">
+      <div class="card reveal">
+        <h3>Feedback by need / obstacle</h3>
+        <p class="cap">Share of all comments matching each theme. Orange = a blocker; blue = a task.</p>
+        <figure><div class="chartbox tall"><canvas id="cPain"></canvas></div></figure>
+        <details class="tbl"><summary>Data table</summary><div id="tblPain"></div></details>
+      </div>
+      <div class="card reveal">
+        <h3>Topic mix by program area</h3>
+        <p class="cap">Page theme each comment was left on.</p>
+        <figure><div class="chartbox tall"><canvas id="cThemes"></canvas></div></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVER TIME -->
+<section id="overtime">
+  <div class="wrap">
+    <p class="eyebrow">Feedback over time</p>
+    <h2>The friction doesn't fluctuate — it recurs</h2>
+    <p class="sub">Tracking each theme's share of feedback across the four full weeks reveals the most important finding of all: <strong>the mix barely moves.</strong> eTA/visa sits near 18–20% every single week; form-finding hovers around 12%; status near 8%. These flat lines aren't boring — they're the diagnosis. This isn't a spike from a bad release or a seasonal blip you can wait out. The same problems resurface every week because they're <strong>baked into the page architecture</strong>. Until the pages change, the complaints won't.</p>
+    <div class="grid2 lean">
+      <div class="card reveal">
+        <h3>Each theme's weekly share of feedback</h3>
+        <p class="cap">Full weeks only (May 21 – Jun 17). Flat = structural. The top six themes' shares moved less than 2 points week to week.</p>
+        <figure><div class="chartbox tall"><canvas id="cTime"></canvas></div></figure>
+        <details class="tbl"><summary>Data table</summary><div id="tblTime"></div></details>
+      </div>
+      <div class="card reveal" style="display:flex;flex-direction:column;gap:20px;justify-content:center">
+        <div class="callout">
+          <div class="big">&lt; 2 pts</div>
+          <p>Week-to-week movement in every top theme's share. The problem set is essentially constant.</p>
+        </div>
+        <p style="color:var(--muted);font-size:.95rem;margin:0">The two small exceptions both make sense. <b>eTA/visa</b> feedback climbed about 13% in volume in the week of <b>June 4–10</b> — the leading edge of the summer-travel ramp. And <b>sign-in</b> complaints eased gently (6.7% → 5.6%), the only theme trending down. Everything else is a flat line.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HELP DESK -->
+<section id="helpdesk" class="tint">
+  <div class="wrap">
+    <p class="eyebrow">The channel mismatch</p>
+    <h2>People think they're talking to someone</h2>
+    <p class="sub">The strongest behavioural signal in this dataset isn't a topic — it's a misunderstanding. The feedback box is one-way, but visitors use it as a search bar, a help line, and a place to plead their case. They write questions, they write in their own language, they write in capitals to be heard. Each of these is a design signal.</p>
+    <div class="signals">
+      <div class="sig b1 reveal"><div class="n" data-count="1900">0</div><div class="t">Questions asked</div><div class="d">10.5% of comments end in "?" — direct requests for an answer that never comes.</div></div>
+      <div class="sig b2 reveal"><div class="n" data-count="596">0</div><div class="t">Other languages</div><div class="d">Arabic, Persian, Ukrainian, Spanish, Chinese & more — a global audience hitting an EN/FR-only wall.</div></div>
+      <div class="sig b3 reveal"><div class="n" data-count="3720">0</div><div class="t">Search-style fragments</div><div class="d">20.6% are 1–3 words ("renewal form", "work permit") — typed like a search query, not feedback.</div></div>
+      <div class="sig b4 reveal"><div class="n" data-count="1498">0</div><div class="t">Written in ALL CAPS</div><div class="d">8.3% shout — a proxy for frustration and for users who can't find what they need.</div></div>
+    </div>
+    <p class="note">Why it matters: a meaningful slice of this volume could be deflected upstream. Search-style fragments suggest on-page search or a visible "Apply / Sign in / Check status" action would have ended the visit successfully. Non-Latin comments suggest the audience is more international than an EN/FR site assumes — and that machine-translation or clearer global signposting is worth testing.</p>
+  </div>
+</section>
+
+<!-- TIMING -->
+<section id="timing">
+  <div class="wrap">
+    <p class="eyebrow">When the friction happens</p>
+    <h2>Peak frustration is mid-afternoon, Ottawa time</h2>
+    <p class="sub">Feedback clusters between 14:00 and 19:00 UTC — late morning to mid-afternoon across Canadian time zones — overlapping business hours and call-centre demand. Device mix tells its own story: nearly a fifth of comments come from phones, where long forms and PDF downloads punish hardest.</p>
+    <div class="grid2">
+      <div class="card reveal">
+        <h3>Feedback by hour (UTC)</h3>
+        <p class="cap">A clean single peak around 18:00 UTC.</p>
+        <figure><div class="chartbox med"><canvas id="cHour"></canvas></div></figure>
+      </div>
+      <div class="card reveal">
+        <h3>Device type</h3>
+        <p class="cap">21.5% mobile — where IRCC's PDF-heavy flows are weakest.</p>
+        <figure><div class="chartbox med"><canvas id="cDev"></canvas></div></figure>
+        <p class="note" style="margin-top:10px">*Linux share is unusually high, typical of privacy browsers and data-centre/VPN traffic; treat as desktop-class.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICES -->
+<section id="voices" class="tint">
+  <div class="wrap">
+    <p class="eyebrow">In their own words</p>
+    <h2>The voices behind the numbers</h2>
+    <p class="sub">Representative, lightly-trimmed comments (personal details were already redacted at export). Filter by theme. These are the moments a chart can't capture — the confusion, the waiting, the people one click away from giving up.</p>
+    <div class="qfilter" id="qfilter"></div>
+    <div class="quotes" id="quotes"></div>
+  </div>
+</section>
+
+<!-- DEEP DIVE -->
+<section id="deepdive">
+  <div class="wrap">
+    <p class="eyebrow">For the working team</p>
+    <h2>Page-level deep dive</h2>
+    <p class="sub">The diagnostic table: the ten highest-volume page groups, and where to point a content and UX team first. Each page name links to the live English page on Canada.ca. Volume is the proxy for impact — each comment is one person who paused mid-task to complain.</p>
+    <table class="dd" id="ddTable"><thead><tr>
+      <th>Rank</th><th>Page (EN + FR merged)</th><th style="text-align:right">Comments</th><th>Share of top 10</th><th>What's going wrong</th>
+    </tr></thead><tbody></tbody></table>
+    <p class="linknote">Links open the English version of each page on canada.ca in a new tab.</p>
+  </div>
+</section>
+
+<!-- ACTIONS -->
+<section id="actions" class="tint">
+  <div class="wrap">
+    <p class="eyebrow">What to do about it</p>
+    <h2>Four moves, in priority order</h2>
+    <p class="sub">The data points to fixes that are concrete and mostly cheap relative to their reach. Sequenced by impact-over-effort.</p>
+    <div class="recs">
+      <div class="rec p1 reveal"><span class="pill">1</span><span class="pr">Priority · Now</span>
+        <h3>Put the action above the fold on the top pages</h3>
+        <p>On Check status, Find forms and Sign in, make the primary action (Start / Sign in / Check status / Download the form) the most prominent, unmissable element. ~3,200 "where is it?" comments are a direct measurement of buttons people couldn't see.</p></div>
+      <div class="rec p2 reveal"><span class="pill">2</span><span class="pr">Priority · Now</span>
+        <h3>Fix or front the status tracker</h3>
+        <p>The status page is the single largest complaint source and comments cite outages. Confirm uptime, and when it's down show a plain-language status banner and an alternative — instead of letting 2,280 people hit a wall and reach for the feedback box.</p></div>
+      <div class="rec p3 reveal"><span class="pill">3</span><span class="pr">Priority · Next</span>
+        <h3>Turn the feedback box into a deflection point</h3>
+        <p>One in five comments is a search fragment and one in ten is a question. Add on-page search or surface "Top tasks" / suggested links right where the box lives, so a question becomes a click instead of a dead end.</p></div>
+      <div class="rec p4 reveal"><span class="pill">4</span><span class="pr">Priority · Test</span>
+        <h3>Design for a global, mobile, multilingual audience</h3>
+        <p>596 comments in other languages and 21.5% on mobile say the real audience is broader than EN/FR desktop. Test clearer international signposting, machine-translation hints, and mobile-first form/PDF flows.</p></div>
+    </div>
+    <p class="note">Method: 18,022 comments exported from the Canada.ca page-feedback tool, IRCC pages only, 2026-05-21 to 2026-06-19. Themes assigned by keyword matching across English and French (comments can match more than one). Pages canonicalized by merging EN/FR equivalents; over-time analysis uses the four full weeks only. Quotes are verbatim except for trimming; PII was redacted at source. Counts are exact; percentages rounded.</p>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <div><b>IRCC page feedback analysis</b><br>May 21 – June 19, 2026 · 18,022 comments · Prepared for a Canada.ca test environment</div>
+  <div>Interactive report · Charts: Chart.js · Table-first, accessible by design.</div>
+</div></footer>
+
+<script id="DATA" type="application/json">
+{
+ "meta": {
+  "total": 18022,
+  "days": 30,
+  "start": "2026-05-21",
+  "end": "2026-06-19",
+  "en": 12947,
+  "fr": 5075,
+  "avg_per_day": 601,
+  "peak_day": "2026-06-09",
+  "peak_val": 793,
+  "mean_words": 11.3,
+  "median_chars": 42
+ },
+ "buckets": {
+  "eTA / visa to visit": 3355,
+  "Find a form or document": 2148,
+  "Application status / tracking": 1506,
+  "Passport": 1581,
+  "Sign-in / account access": 1076,
+  "Where is the link / how to apply": 1080,
+  "Work permit / employment": 1038,
+  "Sponsorship / family": 915,
+  "Eligibility questions": 763,
+  "Fees / payment": 523,
+  "Technical error / broken": 662,
+  "Study permit": 410,
+  "Biometrics": 330,
+  "Refugee / asylum": 256
+ },
+ "quotes": {
+  "eTA / visa to visit": [
+   "Je souhaite remplir mon AVE",
+   "I want to apply for eta visa I am Irish",
+   "Cual es el tiempo de procesamiento de la visa de transito",
+   "I apply for a eTa but I didn't receive a confirmation email"
+  ],
+  "Find a form or document": [
+   "ON LINE PASSPORT RENEWAL FORMS",
+   "it wont let me sign the form, i click it in adobe acrobat and nothing happens",
+   "formulaire de demande de permis d` ÉTUDES",
+   "I am looking for the application formular"
+  ],
+  "Application status / tracking": [
+   "tracking applications status",
+   "Attente autorisation apres paiement",
+   "Applied for citizenship last September 2025 not receiving aor yet? What to do?",
+   "Almost a year and a half from when I received AOR. Wrote emails and no one ever answers. What’s the problem"
+  ],
+  "Passport": [
+   "Obtenir un nouveau passport",
+   "Apply passport outside canada, where can we pay online if the one paying is in Canada( daughter in law)",
+   "I'm travelling as a Swiss Person, I can't choose Switzerland in the form for regular passport, what should I do?",
+   "Passport forms for expired Canadian passport"
+  ],
+  "Sign-in / account access": [
+   "i want to create an account",
+   "I cannot sign in to my account to pay for for my replacement resident cart",
+   "how to get an ircc account",
+   "I want to login into my application"
+  ],
+  "Where is the link / how to apply": [
+   "Bonjour, quel est le lien pour effectuer une demande d'AVE ?",
+   "i dont know where to apply for my post graduate",
+   "comment faire pour vérifier l'état d'une demande?",
+   "The link to the tracker does not work. Server is down."
+  ],
+  "Work permit / employment": [
+   "Je cherche le cite pour m'inscrire pour avoir un permis de travail au Canada",
+   "I’m looking for work permit documents",
+   "comment renouveler le permis de travail",
+   "i need the application form to apply for a job in Canada"
+  ],
+  "Sponsorship / family": [
+   "Enfant non déclaré de mon epoux6 pendant le procedure puis je les parrainer ? Étant en conjoint de fait on ignorait cette possibilite",
+   "J'aimerais savoir le montant de la preuve des fonds pour une mère et 4 enfants",
+   "Is there provision for express entry for parents for the 5 years visa?",
+   "I want to know if i decide to apply for myself only and exclude my family, would that be accepted"
+  ],
+  "Eligibility questions": [
+   "Can I have a paper application mailed to me? I don’t have a printer",
+   "How can I check if my application has been received and its status?",
+   "FOR eligibility points I CAN MAKE TO LANGUAGES TO GET MORE PIONTS OR NO",
+   "where can I submit signed consent form"
+  ],
+  "Fees / payment": [
+   "Where to create a profile for the canada express entry with no payments to be made",
+   "How do I pay my passport fee online",
+   "I did not receive an email confirmation. I only received an email receipt for my payment which I sent along with my application. thank you",
+   "i want to pay for travel document"
+  ],
+  "Technical error / broken": [
+   "can't send out the form 5710 to renew my work permit",
+   "Hello, I have been trying to download the Form IMMo104e and it has been showing no error on my adobe, all other forms work.",
+   "My request says \"pending\" cannot pay, cannot do anything",
+   "I can't find form PPTC 001"
+  ],
+  "Study permit": [
+   "J'aimerais avoir le prix pour soumettre une demande de visa étudiant",
+   "When an international student apply for PGWP do the spouse of the application eligible for an extension?",
+   "Est ce qu'on peut être résidents permanents au Canada tout en étudiant",
+   "I want to come to Canada to study as an international student on scholarship"
+  ],
+  "Biometrics": [
+   "unable to make payment for the biometric",
+   "Fingerprints RCMP or local police",
+   "I wanna submit my receipt of my biometrics",
+   "I got my biometric lettre. I can’t book an appointment??"
+  ],
+  "Refugee / asylum": [
+   "I am Noman from largest Refugee camp in Bangladesh. Looking for an opportunity to resettlement to Canada. Facing many difficulties here.",
+   "wanted to withdraw refugee claim",
+   "Bonjour, Je souhaite mettre à jour mon adresse pour ma demande d’asile.",
+   "Pour les demandeurs d'asile qui transit pas d'autres pays. Est-ce qu'il seront acceptez en sol canadien meme dans se contexte?"
+  ]
+ },
+ "pages": {
+  "Check application status": 2280,
+  "Find application forms & guides": 2027,
+  "Sign in to IRCC account": 1575,
+  "Visit Canada (landing)": 1107,
+  "Immigration & citizenship (landing)": 889,
+  "eTA: important reminders": 811,
+  "eTA (main page)": 731,
+  "Apply for a visitor visa": 337,
+  "Find a passport form": 335,
+  "Register for IRCC account": 189
+ },
+ "themes": {
+  "application": 7174,
+  "visit-canada": 2977,
+  "canadian-passports": 2350,
+  "immigrate-canada": 1238,
+  "immigration-citizenship": 894,
+  "work-canada": 858,
+  "study-canada": 546,
+  "canadian-citizenship": 494,
+  "other": 416,
+  "refugees": 289
+ },
+ "daily": {
+  "2026-05-21": 683,
+  "2026-05-22": 617,
+  "2026-05-23": 444,
+  "2026-05-24": 419,
+  "2026-05-25": 619,
+  "2026-05-26": 708,
+  "2026-05-27": 691,
+  "2026-05-28": 686,
+  "2026-05-29": 592,
+  "2026-05-30": 366,
+  "2026-05-31": 435,
+  "2026-06-01": 673,
+  "2026-06-02": 751,
+  "2026-06-03": 679,
+  "2026-06-04": 684,
+  "2026-06-05": 635,
+  "2026-06-06": 458,
+  "2026-06-07": 449,
+  "2026-06-08": 734,
+  "2026-06-09": 793,
+  "2026-06-10": 791,
+  "2026-06-11": 642,
+  "2026-06-12": 656,
+  "2026-06-13": 482,
+  "2026-06-14": 428,
+  "2026-06-15": 746,
+  "2026-06-16": 636,
+  "2026-06-17": 684,
+  "2026-06-18": 644,
+  "2026-06-19": 197
+ },
+ "daily_en": {
+  "2026-05-21": 490,
+  "2026-05-22": 467,
+  "2026-05-23": 326,
+  "2026-05-24": 276,
+  "2026-05-25": 442,
+  "2026-05-26": 524,
+  "2026-05-27": 497,
+  "2026-05-28": 499,
+  "2026-05-29": 420,
+  "2026-05-30": 258,
+  "2026-05-31": 291,
+  "2026-06-01": 487,
+  "2026-06-02": 547,
+  "2026-06-03": 493,
+  "2026-06-04": 499,
+  "2026-06-05": 437,
+  "2026-06-06": 323,
+  "2026-06-07": 307,
+  "2026-06-08": 504,
+  "2026-06-09": 565,
+  "2026-06-10": 583,
+  "2026-06-11": 468,
+  "2026-06-12": 497,
+  "2026-06-13": 348,
+  "2026-06-14": 291,
+  "2026-06-15": 522,
+  "2026-06-16": 468,
+  "2026-06-17": 516,
+  "2026-06-18": 453,
+  "2026-06-19": 149
+ },
+ "daily_fr": {
+  "2026-05-21": 193,
+  "2026-05-22": 150,
+  "2026-05-23": 118,
+  "2026-05-24": 143,
+  "2026-05-25": 177,
+  "2026-05-26": 184,
+  "2026-05-27": 194,
+  "2026-05-28": 187,
+  "2026-05-29": 172,
+  "2026-05-30": 108,
+  "2026-05-31": 144,
+  "2026-06-01": 186,
+  "2026-06-02": 204,
+  "2026-06-03": 186,
+  "2026-06-04": 185,
+  "2026-06-05": 198,
+  "2026-06-06": 135,
+  "2026-06-07": 142,
+  "2026-06-08": 230,
+  "2026-06-09": 228,
+  "2026-06-10": 208,
+  "2026-06-11": 174,
+  "2026-06-12": 159,
+  "2026-06-13": 134,
+  "2026-06-14": 137,
+  "2026-06-15": 224,
+  "2026-06-16": 168,
+  "2026-06-17": 168,
+  "2026-06-18": 191,
+  "2026-06-19": 48
+ },
+ "hourly": {
+  "0": 624,
+  "1": 576,
+  "2": 560,
+  "3": 402,
+  "4": 425,
+  "5": 359,
+  "6": 362,
+  "7": 461,
+  "8": 562,
+  "9": 584,
+  "10": 640,
+  "11": 658,
+  "12": 804,
+  "13": 950,
+  "14": 1091,
+  "15": 1140,
+  "16": 1142,
+  "17": 1151,
+  "18": 1166,
+  "19": 1029,
+  "20": 967,
+  "21": 895,
+  "22": 769,
+  "23": 705
+ },
+ "dow": {
+  "Monday": 2772,
+  "Tuesday": 2888,
+  "Wednesday": 2845,
+  "Thursday": 3339,
+  "Friday": 2697,
+  "Saturday": 1750,
+  "Sunday": 1731
+ },
+ "device": {
+  "Windows": 6795,
+  "Linux/Android*": 5412,
+  "iPhone": 3705,
+  "Mac": 1826,
+  "Other": 142,
+  "iPad": 142
+ },
+ "signals": {
+  "nonlatin": 596,
+  "caps": 1498,
+  "qmark": 1900,
+  "short": 3720,
+  "mobile": 3877,
+  "mobile_pct": 21.5
+ }
+}
+</script>
+<script id="URLS" type="application/json">
+{
+ "Apply for a visitor visa": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html",
+ "Sign in to IRCC account": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-accounts.html",
+ "Visit Canada (landing)": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html",
+ "Check application status": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html",
+ "Immigration & citizenship (landing)": "https://www.canada.ca/en/services/immigration-citizenship.html",
+ "Find a passport form": "https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/forms.html",
+ "eTA: important reminders": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/important-reminders-apply-eta.html",
+ "Find application forms & guides": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides.html",
+ "eTA (main page)": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html",
+ "Register for IRCC account": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/register.html"
+}
+</script>
+<script id="TIME" type="application/json">
+{
+ "labels": [
+  "May 21–27",
+  "May 28–Jun 3",
+  "Jun 4–10",
+  "Jun 11–17"
+ ],
+ "weekTotals": [
+  4181,
+  4182,
+  4544,
+  4274
+ ],
+ "share": {
+  "eTA / visa to visit": [
+   18.7,
+   17.7,
+   19.6,
+   18.3
+  ],
+  "Find a form or document": [
+   11.1,
+   12.5,
+   11.9,
+   11.7
+  ],
+  "Application status / tracking": [
+   8.2,
+   8.1,
+   8.6,
+   8.4
+  ],
+  "Passport": [
+   8.6,
+   9.0,
+   8.8,
+   8.7
+  ],
+  "Sign-in / account access": [
+   6.7,
+   6.2,
+   5.7,
+   5.6
+  ],
+  "Work permit / employment": [
+   5.5,
+   5.5,
+   5.9,
+   5.8
+  ]
+ },
+ "abs": {
+  "eTA / visa to visit": [
+   783,
+   739,
+   889,
+   784
+  ],
+  "Find a form or document": [
+   465,
+   523,
+   539,
+   501
+  ],
+  "Application status / tracking": [
+   343,
+   340,
+   393,
+   358
+  ],
+  "Passport": [
+   361,
+   377,
+   401,
+   370
+  ],
+  "Sign-in / account access": [
+   279,
+   259,
+   258,
+   240
+  ],
+  "Work permit / employment": [
+   228,
+   230,
+   269,
+   246
+  ]
+ }
+}
+</script>
+<script>
+const D = JSON.parse(document.getElementById('DATA').textContent);
+const URLS = JSON.parse(document.getElementById('URLS').textContent);
+const T = JSON.parse(document.getElementById('TIME').textContent);
+const PAL = ['#284162','#D55E00','#117733','#882255','#0072B2','#E69F00','#af3c43','#6F6F6F'];
+const fmt=n=>n.toLocaleString('en-CA');
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+// counters
+function animate(el){const target=parseFloat(el.dataset.count);const dec=(target%1!==0)?1:0;const dur=1100,t0=performance.now();
+  function step(t){const p=Math.min((t-t0)/dur,1);const e=1-Math.pow(1-p,3);
+    el.childNodes[0].nodeValue=(target*e).toLocaleString('en-CA',{minimumFractionDigits:dec,maximumFractionDigits:dec});
+    if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){if(e.target.dataset.count)animate(e.target);e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.3});
+document.querySelectorAll('[data-count]').forEach(el=>io.observe(el));
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// scrollspy
+const navlinks=[...document.querySelectorAll('nav.toc a')];
+const spy=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  navlinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));}});},{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
+
+// hero sparkline
+(function(){const c=document.getElementById('spark');if(!c)return;const ctx=c.getContext('2d');const vals=Object.values(D.daily);
+  function draw(){const w=c.width=c.offsetWidth,h=c.height=c.offsetHeight,mx=Math.max(...vals),mn=Math.min(...vals);ctx.clearRect(0,0,w,h);
+    ctx.beginPath();vals.forEach((v,i)=>{const x=i/(vals.length-1)*w,y=h-((v-mn)/(mx-mn))*h*.7-h*.12;i?ctx.lineTo(x,y):ctx.moveTo(x,y);});
+    ctx.lineTo(w,h);ctx.lineTo(0,h);ctx.closePath();const g=ctx.createLinearGradient(0,0,0,h);g.addColorStop(0,'rgba(127,209,255,.32)');g.addColorStop(1,'rgba(127,209,255,0)');ctx.fillStyle=g;ctx.fill();
+    ctx.beginPath();vals.forEach((v,i)=>{const x=i/(vals.length-1)*w,y=h-((v-mn)/(mx-mn))*h*.7-h*.12;i?ctx.lineTo(x,y):ctx.moveTo(x,y);});ctx.strokeStyle='rgba(127,209,255,.6)';ctx.lineWidth=2;ctx.stroke();}
+  draw();window.addEventListener('resize',draw);})();
+
+function tableFrom(id,head,rows,linkMap){
+  let h='<table><thead><tr><th>'+head[0]+'</th><th>'+head[1]+'</th></tr></thead><tbody>';
+  rows.forEach(r=>{const label=(linkMap&&linkMap[r[0]])?'<a href="'+linkMap[r[0]]+'" target="_blank" rel="noopener">'+esc(r[0])+'</a>':esc(r[0]);
+    h+='<tr><td>'+label+'</td><td class="num">'+fmt(r[1])+'</td></tr>';});
+  document.getElementById(id).innerHTML=h+'</tbody></table>';}
+
+function whenReady(fn){if(window.Chart){fn();}else{window.addEventListener('load',()=>{if(window.Chart)fn();});}}
+whenReady(function(){
+Chart.defaults.font.family=getComputedStyle(document.body).fontFamily;Chart.defaults.font.size=12;Chart.defaults.color='#5a6573';
+const noMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;const anim=noMotion?false:{duration:800};
+
+const days=Object.keys(D.daily);
+const lbl=days.map(d=>new Date(d+'T00:00').toLocaleDateString('en-CA',{month:'short',day:'numeric'}));
+new Chart(cDaily,{type:'bar',data:{labels:lbl,datasets:[
+  {label:'English',data:Object.values(D.daily_en),backgroundColor:'#284162',stack:'s',borderRadius:2},
+  {label:'French',data:Object.values(D.daily_fr),backgroundColor:'#D55E00',stack:'s',borderRadius:2}]},
+  options:{animation:anim,responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},
+    tooltip:{callbacks:{footer:i=>'Total: '+fmt(i.reduce((a,b)=>a+b.parsed.y,0))}}},
+    scales:{x:{stacked:true,grid:{display:false},ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:10}},y:{stacked:true,grid:{color:'#eef1f4'},title:{display:true,text:'Comments'}}}}});
+
+new Chart(cDow,{type:'bar',data:{labels:Object.keys(D.dow),datasets:[{data:Object.values(D.dow),
+  backgroundColor:Object.keys(D.dow).map(d=>['Saturday','Sunday'].includes(d)?'#9fb3c8':'#284162'),borderRadius:5}]},
+  options:{animation:anim,responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.parsed.x)+' comments'}}},scales:{x:{grid:{color:'#eef1f4'}},y:{grid:{display:false}}}}});
+
+const pg=Object.entries(D.pages);
+new Chart(cPages,{type:'bar',data:{labels:pg.map(p=>p[0]),datasets:[{data:pg.map(p=>p[1]),backgroundColor:pg.map((p,i)=>i<3?'#D55E00':'#284162'),borderRadius:5}]},
+  options:{animation:anim,responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.parsed.x)+' comments'}}},scales:{x:{grid:{color:'#eef1f4'}},y:{grid:{display:false},ticks:{font:{size:11}}}}}});
+tableFrom('tblPages',['Page','Comments'],pg,URLS);
+
+const blockers=['Find a form or document','Where is the link / how to apply','Sign-in / account access','Technical error / broken','Application status / tracking'];
+const pain=Object.entries(D.buckets).sort((a,b)=>b[1]-a[1]);
+new Chart(cPain,{type:'bar',data:{labels:pain.map(p=>p[0]),datasets:[{data:pain.map(p=>p[1]),backgroundColor:pain.map(p=>blockers.includes(p[0])?'#D55E00':'#284162'),borderRadius:5}]},
+  options:{animation:anim,responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.parsed.x)+' comments ('+(c.parsed.x/D.meta.total*100).toFixed(1)+'%)'}}},scales:{x:{grid:{color:'#eef1f4'}},y:{grid:{display:false},ticks:{font:{size:11}}}}}});
+tableFrom('tblPain',['Theme','Comments'],pain);
+
+const th=Object.entries(D.themes);
+new Chart(cThemes,{type:'doughnut',data:{labels:th.map(t=>t[0]),datasets:[{data:th.map(t=>t[1]),backgroundColor:PAL.concat(['#3a6ea5','#c98b00']),borderColor:'#fff',borderWidth:2}]},
+  options:{animation:anim,responsive:true,maintainAspectRatio:false,cutout:'58%',plugins:{legend:{position:'right',labels:{boxWidth:12,font:{size:11}}},tooltip:{callbacks:{label:c=>c.label+': '+fmt(c.parsed)}}}}});
+
+const tk=Object.keys(T.share);
+new Chart(cTime,{type:'line',data:{labels:T.labels,datasets:tk.map((k,i)=>({label:k,data:T.share[k],borderColor:PAL[i],backgroundColor:PAL[i],tension:.3,borderWidth:2.5,pointRadius:3,pointHoverRadius:6}))},
+  options:{animation:anim,responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.y+'%'}}},
+    scales:{x:{grid:{display:false}},y:{beginAtZero:true,grid:{color:'#eef1f4'},title:{display:true,text:'% of that week’s feedback'},ticks:{callback:v=>v+'%'}}}}});
+let tt='<table><thead><tr><th>Theme</th>'+T.labels.map(l=>'<th>'+l+'</th>').join('')+'</tr></thead><tbody>';
+tk.forEach(k=>{tt+='<tr><td>'+k+'</td>'+T.share[k].map(v=>'<td class="num">'+v+'%</td>').join('')+'</tr>';});
+document.getElementById('tblTime').innerHTML=tt+'</tbody></table>';
+
+const hrs=Object.keys(D.hourly).map(h=>h.padStart(2,'0')+':00');
+new Chart(cHour,{type:'line',data:{labels:hrs,datasets:[{data:Object.values(D.hourly),borderColor:'#0072B2',backgroundColor:'rgba(0,114,178,.14)',fill:true,tension:.4,pointRadius:0,borderWidth:2.5}]},
+  options:{animation:anim,responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.parsed.y)+' comments'}}},scales:{x:{grid:{display:false},ticks:{maxTicksLimit:8}},y:{grid:{color:'#eef1f4'},beginAtZero:true}}}});
+
+const dv=Object.entries(D.device);
+new Chart(cDev,{type:'bar',data:{labels:dv.map(d=>d[0]),datasets:[{data:dv.map(d=>d[1]),backgroundColor:['#284162','#6F6F6F','#0072B2','#117733','#bfc8d2','#882255'],borderRadius:5}]},
+  options:{animation:anim,responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.parsed.y)+' comments'}}},scales:{x:{grid:{display:false}},y:{grid:{color:'#eef1f4'}}}}});
+});
+
+// quotes
+const qcolors={};Object.keys(D.quotes).forEach((k,i)=>qcolors[k]=PAL[i%PAL.length]);
+const flat=[];Object.entries(D.quotes).forEach(([k,arr])=>arr.forEach(q=>flat.push({k,q})));
+const fEl=document.getElementById('qfilter'),qEl=document.getElementById('quotes');
+['All',...Object.keys(D.quotes)].forEach(t=>{const b=document.createElement('button');b.textContent=t;if(t==='All')b.classList.add('on');
+  b.onclick=()=>{[...fEl.children].forEach(c=>c.classList.remove('on'));b.classList.add('on');renderQ(t);};fEl.appendChild(b);});
+function renderQ(f){qEl.innerHTML='';flat.filter(x=>f==='All'||x.k===f).forEach(x=>{const d=document.createElement('div');d.className='q';d.style.setProperty('--accent',qcolors[x.k]);
+  d.innerHTML='<p>“'+esc(x.q)+'”</p><span class="tag">'+x.k+'</span>';qEl.appendChild(d);});}
+renderQ('All');
+
+// deep dive table (English links)
+const ddBody=document.querySelector('#ddTable tbody');
+const diag={'Check application status':'Tracker outages + no UCI/AOR help; people can\'t log in to see status.',
+'Find application forms & guides':'Forms hard to locate; broken PDF links; "where is the form" is the top phrase.',
+'Sign in to IRCC account':'Account vs. portal confusion; create-account and login paths unclear.',
+'Visit Canada (landing)':'Landing page doesn\'t route to "apply" fast enough; eTA vs visa confusion.',
+'Immigration & citizenship (landing)':'Top-level hub sends people in circles; too many doors.',
+'eTA: important reminders':'Users want to apply, not read reminders; missing/buried apply link.',
+'eTA (main page)':'"Où est le lien pour faire ma demande d\'AVE?" — apply CTA not obvious.',
+'Apply for a visitor visa':'Start-of-application link unclear; eligibility vs apply mixed.',
+'Find a passport form':'Renewal/abroad form selection confusing; fee questions.',
+'Register for IRCC account':'Registration steps and prerequisites unclear.'};
+const ddRows=Object.entries(D.pages);const ddTot=ddRows.reduce((a,b)=>a+b[1],0);
+ddRows.forEach(([page,n],i)=>{const tr=document.createElement('tr');const pct=n/ddTot*100;
+  const name=URLS[page]?'<a href="'+URLS[page]+'" target="_blank" rel="noopener">'+esc(page)+'</a>':esc(page);
+  tr.innerHTML='<td class="num">'+(i+1)+'</td><td>'+name+'</td><td class="num">'+fmt(n)+'</td>'+
+    '<td><span class="minibar" style="width:'+(pct*2.2)+'%;background:'+(i<3?'#D55E00':'#284162')+'"></span>'+pct.toFixed(1)+'%</td>'+
+    '<td>'+diag[page]+'</td>';ddBody.appendChild(tr);});
+</script>
+</body>
+</html>
