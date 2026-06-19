@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>App status feedback — trend over time (IRCC)</title>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<style>
+:root{
+  --blue:#284162;--blue-2:#26374a;--sky:#0072B2;--sky-l:#7fd1ff;--vermillion:#D55E00;
+  --green:#117733;--red:#af3c43;--ink:#15212e;--muted:#5a6573;--line:#e6ebf0;
+  --bg:#fff;--bg-soft:#f5f7fa;--bg-deep:#0b1626;--bg-deep2:#0f1f33;
+  --r:16px;--shadow:0 6px 28px rgba(20,40,70,.08);--shadow-lg:0 24px 60px rgba(11,22,38,.22);
+  --max:1060px;--sans:"Inter",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{line-height:1.14;letter-spacing:-.02em;margin:0}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:800;color:var(--vermillion);margin:0 0 12px}
+
+.hero{position:relative;overflow:hidden;color:#fff;background:
+  radial-gradient(1100px 520px at 84% -14%,rgba(0,114,178,.4),transparent 60%),
+  radial-gradient(820px 480px at -6% 120%,rgba(213,94,0,.22),transparent 55%),
+  linear-gradient(155deg,#0a1424,#15293f 54%,#22384f)}
+.hero .wrap{padding:66px 24px 56px;position:relative;z-index:2}
+.hero .eyebrow{color:var(--sky-l)}
+.hero h1{font-size:clamp(1.9rem,4.6vw,3rem);font-weight:900;max-width:21ch;margin:.05em 0 .35em;letter-spacing:-.03em}
+.hero .lede{font-size:clamp(1.05rem,1.9vw,1.3rem);max-width:62ch;color:#d9e6f3}
+.hero .lede b{color:#fff}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);background:linear-gradient(180deg,var(--bg-deep),var(--bg-deep2));color:#fff}
+.kpis .k{padding:26px 22px;border-left:1px solid rgba(255,255,255,.07)}
+.kpis .k:first-child{border-left:0}
+.kpis .num{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:900;letter-spacing:-.03em;line-height:1;background:linear-gradient(90deg,#fff,#bfe0f5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kpis .num.up{background:linear-gradient(90deg,#ffd9a8,#ff9d4d);-webkit-background-clip:text;background-clip:text}
+.kpis .lbl{font-size:.82rem;color:#9fb3c8;margin-top:7px}
+@media(max-width:720px){.kpis{grid-template-columns:repeat(2,1fr)}}
+
+section{padding:56px 0}
+section.tint{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+h2{font-size:clamp(1.4rem,3vw,2rem);color:var(--blue-2);margin:0 0 .2em}
+.sub{color:var(--muted);max-width:74ch;margin:0 0 28px;font-size:1.03rem}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:var(--shadow)}
+.card h3{font-size:1.12rem;color:var(--blue-2);margin:0 0 4px}
+.card .cap{font-size:.85rem;color:var(--muted);margin:0 0 18px}
+.chartbox{position:relative;width:100%}
+.tall{height:420px}.med{height:320px}
+.grid2{display:grid;grid-template-columns:1.5fr 1fr;gap:26px;align-items:stretch;margin-top:24px}
+@media(max-width:860px){.grid2{grid-template-columns:1fr}}
+.callout{background:linear-gradient(140deg,#22384f,#0b1626);color:#fff;border-radius:var(--r);padding:30px;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;justify-content:center}
+.callout.alert{background:linear-gradient(140deg,#7a2a30,#3a1417)}
+.callout .big{font-size:clamp(2.4rem,6vw,3.4rem);font-weight:900;color:var(--sky-l);line-height:1;letter-spacing:-.03em}
+.callout.alert .big{color:#ff9d8a}
+.callout p{color:#cdddee;margin:.5em 0 0;font-size:1rem}
+.callout.alert p{color:#f0d6d2}
+.takeaway{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-left:5px solid var(--vermillion);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow);margin-top:20px}
+.takeaway .d{font-size:.97rem;color:var(--ink)}
+.takeaway b{color:var(--blue-2)}
+details.tbl{margin-top:16px;font-size:.85rem}
+details.tbl summary{cursor:pointer;color:var(--sky);font-weight:700}
+details.tbl table{width:100%;border-collapse:collapse;margin-top:10px}
+details.tbl th,details.tbl td{border:1px solid var(--line);padding:5px 9px;text-align:left}
+details.tbl td.num{text-align:right}
+/* qualitative */
+.bacols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:24px}
+@media(max-width:820px){.bacols{grid-template-columns:1fr}}
+.bacol{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow)}
+.bacol.before{border-top:5px solid #6b7d92}
+.bacol.after{border-top:5px solid var(--red)}
+.bacol .hd{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+.bacol .hd h3{font-size:1.12rem;color:var(--blue-2)}
+.bacol .hd .chip{font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.bacol.before .chip{background:#eef1f4;color:#56657a}
+.bacol.after .chip{background:#fbeaea;color:var(--red)}
+.bacol .lead{font-size:.9rem;color:var(--muted);margin:0 0 16px}
+.qq{margin:0 0 12px;padding:13px 15px;border-radius:10px;background:var(--bg-soft);border-left:3px solid #c3cdd8;font-size:.93rem;font-style:italic;color:var(--ink)}
+.bacol.after .qq{border-left-color:var(--red);background:#fdf6f6}
+.shift{margin-top:8px}
+.shiftrow{padding:11px 0;border-bottom:1px solid var(--line)}
+.shiftrow:last-child{border-bottom:0}
+.shiftrow .lab{font-size:.9rem;font-weight:600;display:flex;justify-content:space-between;gap:10px;margin-bottom:5px}
+.shiftrow .lab .nums{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:700;white-space:nowrap}
+.shiftrow.hot .lab{color:var(--red)}
+.track{position:relative;height:12px;background:#eef1f4;border-radius:6px;overflow:hidden}
+.track .bf{position:absolute;left:0;top:0;height:100%;background:#9fb0c2;border-radius:6px}
+.track .af{position:absolute;left:0;top:0;height:100%;background:var(--vermillion);border-radius:6px;opacity:.92}
+.shiftrow.hot .track .af{background:var(--red)}
+.leg{display:flex;gap:18px;font-size:.8rem;color:var(--muted);margin:14px 0 0;align-items:center}
+.leg i{display:inline-block;width:13px;height:13px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+footer{background:linear-gradient(180deg,var(--bg-deep2),var(--bg-deep));color:#9fb3c8;padding:36px 0;font-size:.84rem}
+footer b{color:#fff}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">IRCC · Application-status feedback · Apr 1 – Jun 19, 2026</p>
+  <h1>Status complaints rose after May 20 — because the tracker broke.</h1>
+  <p class="lede">Across <b>1,709</b> status-related comments, the daily rate is <b>about 14% higher</b> after May 20. But the real story is in the words: <b>80%</b> of that increase is people reporting the status tracker is <b>down</b> — citing "503 Service Unavailable" and outages lasting "weeks."</p>
+</div></header>
+
+<div class="kpis">
+  <div class="k"><div class="num" id="k1">0</div><div class="lbl">status comments (Apr 1–Jun 19)</div></div>
+  <div class="k"><div class="num" id="k2">0</div><div class="lbl">per day before May 20</div></div>
+  <div class="k"><div class="num up" id="k3">0</div><div class="lbl">per day since May 20</div></div>
+  <div class="k"><div class="num up" id="k4">0</div><div class="lbl">change in daily rate</div></div>
+</div>
+
+<section><div class="wrap">
+  <p class="eyebrow">The graph you asked for</p>
+  <h2>Daily status feedback, with a 7-day trend line</h2>
+  <p class="sub">Each bar is one day's count of status-related comments. The dark line is the 7-day rolling average, which strips out the weekday/weekend noise so the underlying trend is visible. The dashed marker is <b>May 20</b>. The trend line sits clearly higher to the right of it.</p>
+  <div class="card">
+    <h3>Application-status comments per day</h3>
+    <p class="cap">Bars = daily count · Line = 7-day rolling average · Dashed = May 20</p>
+    <figure style="margin:0"><div class="chartbox tall"><canvas id="cDaily"></canvas></div></figure>
+  </div>
+  <div class="takeaway">
+    <div class="d"><b>How to read it:</b> the rolling-average line averages ~20/day through April and early May, then lifts into the low-to-mid 20s from late May onward, cresting in early June. The bars are spiky (status complaints run higher on weekdays), which is exactly why the smoothed line matters for answering "is it trending up?"</div>
+  </div>
+</div></section>
+
+<section class="tint"><div class="wrap">
+  <p class="eyebrow">Before vs. after, the simple view</p>
+  <h2>Weekly totals make the climb unmistakable</h2>
+  <p class="sub">Collapsing to whole weeks removes the daily jitter entirely. April weeks cluster around 130; from mid-May the weeks step up to the 160s and a peak of 177. The final bar is a partial week (ends June 19), so its lower total is a collection artifact, not a drop.</p>
+  <div class="grid2">
+    <div class="card">
+      <h3>Status comments per week</h3>
+      <p class="cap">Weeks starting Monday. Orange = weeks on/after May 18.</p>
+      <figure style="margin:0"><div class="chartbox med"><canvas id="cWeekly"></canvas></div></figure>
+      <details class="tbl"><summary>Data table</summary><div id="tblWk"></div></details>
+    </div>
+    <div class="callout">
+      <div class="big">+25%</div>
+      <p>Average weekly volume in mid-May→early-June (~162/week) versus the April baseline (~130/week). The peak week of June 1 hit <b>177</b> comments.</p>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">What changed in the comments</p>
+  <h2>The extra volume isn't more questions — it's an outage</h2>
+  <p class="sub">Reading the comments before and after May 20 shows the rise isn't simply "more of the same." The <em>kind</em> of comment changed. Before, people mostly asked how to use the tracker or where to find their number. After, they report the tracker itself is broken — citing "503 Service Unavailable" errors and saying it's been down "for weeks." That single shift accounts for the overwhelming majority of the increase.</p>
+  <div class="grid2">
+    <div class="card">
+      <h3>"Tracker is down / error" — share of status comments per week</h3>
+      <p class="cap">The outage theme is near-zero through April, then jumps from the week of May 18.</p>
+      <figure style="margin:0"><div class="chartbox med"><canvas id="cBroken"></canvas></div></figure>
+    </div>
+    <div class="callout alert">
+      <div class="big">80%</div>
+      <p>of the post-May-20 increase is explained by <b>"the tracker is broken"</b> comments alone. Mentions of error <b>503</b> went from <b>3 → 30</b>; outage comments tripled (<b>25 → 86</b>), and "down for weeks" appears <b>32</b> times after.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:24px">
+    <h3>Sub-themes within status feedback: before vs. after May 20</h3>
+    <p class="cap">Share of each period's comments mentioning the theme. One theme explodes; the rest barely move.</p>
+    <div class="shift" id="shift"></div>
+    <div class="leg"><span><i style="background:#9fb0c2"></i>Before May 20</span><span><i style="background:#D55E00"></i>After May 20</span></div>
+  </div>
+
+  <div class="bacols">
+    <div class="bacol before">
+      <div class="hd"><h3>Before May 20</h3><span class="chip">Mostly how-to &amp; access</span></div>
+      <p class="lead">Navigation and literacy questions: how to create an account, where to enter a receipt or UCI number, how long things take. The tool works; people just need help using it.</p>
+      <div id="qBefore"></div>
+    </div>
+    <div class="bacol after">
+      <div class="hd"><h3>After May 20</h3><span class="chip">Mostly "it's broken"</span></div>
+      <p class="lead">Failure reports, not questions. The tracker returns errors or won't load at all — repeatedly named as "503 Service Unavailable" and described as down for days or weeks.</p>
+      <div id="qAfter"></div>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <div class="d"><b>Why this matters:</b> a volume rise from <em>questions</em> would point to a content or wayfinding fix. A rise from <em>outage reports</em> points to a service-reliability incident that began around May 20 and was still generating complaints in mid-June. The feedback box is, in effect, acting as an outage monitor — and it has been flashing red for a month.</div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <b>IRCC application-status feedback trend</b> · Source: status_feedback.csv (1,709 comments, Apr 1 – Jun 19, 2026, 100% status-related) · Daily counts exact; rolling average over 7 days; theme shares via bilingual keyword matching; percentages rounded.
+</div></footer>
+
+<script id="DATA" type="application/json">
+{"days": ["2026-04-01", "2026-04-02", "2026-04-03", "2026-04-04", "2026-04-05", "2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-11", "2026-04-12", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18", "2026-04-19", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-25", "2026-04-26", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-01", "2026-05-02", "2026-05-03", "2026-05-04", "2026-05-05", "2026-05-06", "2026-05-07", "2026-05-08", "2026-05-09", "2026-05-10", "2026-05-11", "2026-05-12", "2026-05-13", "2026-05-14", "2026-05-15", "2026-05-16", "2026-05-17", "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-23", "2026-05-24", "2026-05-25", "2026-05-26", "2026-05-27", "2026-05-28", "2026-05-29", "2026-05-30", "2026-05-31", "2026-06-01", "2026-06-02", "2026-06-03", "2026-06-04", "2026-06-05", "2026-06-06", "2026-06-07", "2026-06-08", "2026-06-09", "2026-06-10", "2026-06-11", "2026-06-12", "2026-06-13", "2026-06-14", "2026-06-15", "2026-06-16", "2026-06-17", "2026-06-18", "2026-06-19"], "daily": [21, 19, 12, 13, 16, 15, 21, 28, 18, 19, 13, 14, 17, 22, 26, 30, 22, 12, 11, 24, 26, 29, 26, 14, 12, 13, 36, 16, 24, 23, 17, 17, 15, 14, 38, 23, 29, 16, 11, 9, 33, 31, 22, 23, 33, 5, 11, 21, 33, 27, 24, 18, 12, 10, 26, 27, 27, 38, 18, 13, 11, 24, 36, 23, 37, 24, 17, 16, 24, 35, 25, 27, 27, 15, 13, 23, 33, 25, 29, 12], "roll": [null, null, null, null, null, null, 16.71, 17.71, 17.57, 18.57, 18.57, 18.29, 18.57, 18.71, 18.43, 20.14, 20.57, 20.43, 20.0, 21.0, 21.57, 22.0, 21.43, 20.29, 20.29, 20.57, 22.29, 20.86, 20.14, 19.71, 20.14, 20.86, 21.14, 18.0, 21.14, 21.0, 21.86, 21.71, 20.86, 20.0, 22.71, 21.71, 21.57, 20.71, 23.14, 22.29, 22.57, 20.86, 21.14, 21.86, 22.0, 19.86, 20.86, 20.71, 21.43, 20.57, 20.57, 22.57, 22.57, 22.71, 22.86, 22.57, 23.86, 23.29, 23.14, 24.0, 24.57, 25.29, 25.29, 25.14, 25.43, 24.0, 24.43, 24.14, 23.71, 23.57, 23.29, 23.29, 23.57, 21.43], "weeks": ["2026-03-30", "2026-04-06", "2026-04-13", "2026-04-20", "2026-04-27", "2026-05-04", "2026-05-11", "2026-05-18", "2026-05-25", "2026-06-01", "2026-06-08", "2026-06-15"], "weekly": [81, 128, 140, 144, 148, 140, 158, 145, 160, 177, 166, 122], "stats": {"total": 1709, "preRate": 20.3, "postRate": 23.1, "pct": 14, "aprBaseline": 20.3, "lateRate": 23.1, "peakWeek": "Jun 01", "peakWeekVal": 177, "aprWeekAvg": 130, "mayJunWeekAvg": 162}}
+</script>
+<script id="QUAL" type="application/json">
+{"weeks": ["2026-03-30", "2026-04-06", "2026-04-13", "2026-04-20", "2026-04-27", "2026-05-04", "2026-05-11", "2026-05-18", "2026-05-25", "2026-06-01", "2026-06-08", "2026-06-15"], "brokenShare": [3.7, 2.3, 1.4, 2.8, 0.0, 2.1, 3.2, 11.7, 14.4, 13.0, 9.6, 9.8], "stats": {"explained": 80, "b503": 3, "a503": 30, "brokenBefore": 25, "brokenAfter": 86, "weeksMentions": 32}, "subthemes": [{"k": "Tracker broken / down / 503 error", "b": 2.1, "a": 10.6}, {"k": "No UCI / application number", "b": 5.7, "a": 4.1}, {"k": "Need to reach a human", "b": 8.6, "a": 7.4}, {"k": "Passport status", "b": 9.6, "a": 8.4}, {"k": "Waiting too long / delays", "b": 5.4, "a": 5.7}, {"k": "Account vs. tracker confusion", "b": 4.4, "a": 4.7}, {"k": "Can't sign in / locked out", "b": 3.2, "a": 3.2}], "quotes": {"before_general": ["Where do I mail the Verification of Status form", "How to create an account to check application status?", "How can I check status on my application for renewal?", "i have a receipt number how do i find status", "I am requesting for how to get a permanent citizenship status"], "after_broken": ["The website to create an account to check the status has been down for weeks. It keeps showing the Service Unavailable (503)", "when i was checking application status i faced a technical error", "Server was down. Unable to check status of passport renewal", "Application status tracker is down since one month why", "Application status tracker error 503", "I wanna check my application status but when I touch the link, it shows up as the website is not available.", "I applied through economic immigration, how do I check my status since the IRCC PR tracker is down"]}}
+</script>
+<script>
+const D=JSON.parse(document.getElementById('DATA').textContent);
+const Q=JSON.parse(document.getElementById('QUAL').textContent);
+const S=D.stats;const fmt=n=>n.toLocaleString('en-CA');
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+function count(id,target,dur,suffix){const el=document.getElementById(id);const dec=target%1!==0?1:0;const t0=performance.now();
+  (function s(t){const p=Math.min((t-t0)/dur,1),e=1-Math.pow(1-p,3);el.textContent=(target*e).toLocaleString('en-CA',{minimumFractionDigits:dec,maximumFractionDigits:dec})+(suffix||'');if(p<1)requestAnimationFrame(s);})(t0);}
+count('k1',S.total,1100,'');count('k2',S.preRate,1100,'/d');count('k3',S.postRate,1100,'/d');document.getElementById('k4').textContent='+'+S.pct+'%';
+
+// theme-shift bars
+(function(){const max=Math.max(...Q.subthemes.map(t=>Math.max(t.b,t.a)));
+  document.getElementById('shift').innerHTML=Q.subthemes.map(t=>{const hot=(t.a-t.b)>=4;
+    return '<div class="shiftrow'+(hot?' hot':'')+'"><div class="lab"><span>'+esc(t.k)+'</span><span class="nums">'+t.b+'% → '+t.a+'%</span></div>'+
+    '<div class="track"><div class="bf" style="width:'+(t.b/max*100)+'%"></div><div class="af" style="width:'+(t.a/max*100)+'%"></div></div></div>';}).join('');})();
+// quotes
+document.getElementById('qBefore').innerHTML=Q.quotes.before_general.map(q=>'<div class="qq">“'+esc(q)+'”</div>').join('');
+document.getElementById('qAfter').innerHTML=Q.quotes.after_broken.slice(0,6).map(q=>'<div class="qq">“'+esc(q)+'”</div>').join('');
+
+const cutIdx=D.days.indexOf('2026-05-20');
+function whenReady(fn){if(window.Chart)fn();else window.addEventListener('load',()=>window.Chart&&fn());}
+whenReady(function(){
+Chart.defaults.font.family=getComputedStyle(document.body).fontFamily;Chart.defaults.color='#5a6573';
+const noMo=matchMedia('(prefers-reduced-motion: reduce)').matches;const anim=noMo?false:{duration:800};
+const lbl=D.days.map(d=>new Date(d+'T00:00').toLocaleDateString('en-CA',{month:'short',day:'numeric'}));
+
+const marker={id:'mk',afterDraw(c){if(cutIdx<0)return;const x=c.scales.x.getPixelForValue(cutIdx);const t=c.chartArea.top,b=c.chartArea.bottom;
+  const g=c.ctx;g.save();g.strokeStyle='#af3c43';g.lineWidth=2;g.setLineDash([6,5]);g.beginPath();g.moveTo(x,t);g.lineTo(x,b);g.stroke();
+  g.setLineDash([]);g.fillStyle='#af3c43';g.font='700 12px '+getComputedStyle(document.body).fontFamily;g.fillText('May 20',x+6,t+14);g.restore();}};
+
+new Chart(cDaily,{type:'bar',data:{labels:lbl,datasets:[
+  {type:'bar',label:'Daily comments',data:D.daily,backgroundColor:D.days.map((d,i)=>i<cutIdx?'#b9c6d4':'#e0a47a'),borderRadius:2,order:2},
+  {type:'line',label:'7-day average',data:D.roll,borderColor:'#284162',backgroundColor:'#284162',borderWidth:3,pointRadius:0,tension:.35,order:1}]},
+  options:{animation:anim,responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{position:'top'},tooltip:{callbacks:{label:c=>c.dataset.type==='line'?'7-day avg: '+(c.parsed.y==null?'—':c.parsed.y.toFixed(1)):fmt(c.parsed.y)+' comments'}}},
+    scales:{x:{grid:{display:false},ticks:{maxTicksLimit:12,maxRotation:0}},y:{beginAtZero:true,grid:{color:'#eef1f4'},title:{display:true,text:'Comments per day'}}}},plugins:[marker]});
+
+const wlab=D.weeks.map(d=>new Date(d+'T00:00').toLocaleDateString('en-CA',{month:'short',day:'numeric'}));
+new Chart(cWeekly,{type:'bar',data:{labels:wlab,datasets:[{data:D.weekly,
+  backgroundColor:D.weeks.map(d=>d>='2026-05-18'?'#D55E00':'#284162'),borderRadius:5}]},
+  options:{animation:anim,responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
+    tooltip:{callbacks:{title:i=>'Week of '+i[0].label,label:c=>fmt(c.parsed.y)+' comments'}}},
+    scales:{x:{grid:{display:false},ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:12}},y:{beginAtZero:true,grid:{color:'#eef1f4'},title:{display:true,text:'Comments per week'}}}}});
+
+let t='<table><thead><tr><th>Week of</th><th>Comments</th></tr></thead><tbody>';
+D.weeks.forEach((w,i)=>{t+='<tr><td>'+wlab[i]+'</td><td class="num">'+D.weekly[i]+'</td></tr>';});
+document.getElementById('tblWk').innerHTML=t+'</tbody></table>';
+
+const blab=Q.weeks.map(d=>new Date(d+'T00:00').toLocaleDateString('en-CA',{month:'short',day:'numeric'}));
+new Chart(cBroken,{type:'bar',data:{labels:blab,datasets:[{data:Q.brokenShare,
+  backgroundColor:Q.weeks.map(d=>d>='2026-05-18'?'#af3c43':'#b9c6d4'),borderRadius:5}]},
+  options:{animation:anim,responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
+    tooltip:{callbacks:{title:i=>'Week of '+i[0].label,label:c=>c.parsed.y+'% of comments'}}},
+    scales:{x:{grid:{display:false},ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:12}},y:{beginAtZero:true,grid:{color:'#eef1f4'},title:{display:true,text:'% mentioning "down / error"'},ticks:{callback:v=>v+'%'}}}}});
+});
+</script>
+</body>
+</html>
