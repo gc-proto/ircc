@@ -167,17 +167,6 @@ details.raw summary{cursor:pointer;font-size:13px;color:var(--gc-link);font-weig
       <div class="card"><figure><figcaption>Where visits come from</figcaption><div class="cap-sub">Top referrers in the period</div><div class="chart-box short"><canvas id="refChart"></canvas></div></figure><div class="subtle-divider"></div><div id="engStats"></div></div>
     </div>
   </section>
-  <section class="section" id="demandSection">
-    <div class="section-head"><h2>What's driving demand</h2><span class="tag">Content spotlight</span><p class="desc">Beyond the everyday tasks, these are the news releases, notices, special-measures pages and campaigns pulling the most attention in the period — the topical pressure behind the traffic.</p></div>
-    <div class="grid g-2" style="margin-bottom:18px">
-      <div class="card"><figure><figcaption>Most-read news releases</figcaption><div class="cap-sub">Visits in the period</div><div class="chart-box short"><canvas id="demandNews"></canvas></div></figure></div>
-      <div class="card"><figure><figcaption>Crisis &amp; special-measures pages</figcaption><div class="cap-sub">Visits to immigration-response content</div><div class="chart-box short"><canvas id="demandSpecial"></canvas></div></figure></div>
-    </div>
-    <div class="grid g-2">
-      <div class="card"><figure><figcaption>Top campaign landing pages</figcaption><div class="cap-sub">Marketing-driven entry points</div><div class="chart-box short"><canvas id="demandCamp"></canvas></div></figure></div>
-      <div class="card"><figcaption>Where the immigration theme page sends people</figcaption><div class="cap-sub">Activity-map clicks from the main "Immigration and citizenship" page</div><table id="themeDestTbl"><tbody></tbody></table><div class="subtle-divider"></div><div id="noticeNote" class="muted" style="font-size:13px"></div></div>
-    </div>
-  </section>
   <section class="section" id="pftSection">
     <div class="section-head"><h2>Page-feedback signals</h2><span class="tag">Per 1,000 visits</span><p class="desc"><b>Comments/1k</b> = how often people left written feedback. <b>"No clicks"/1k</b> = visits where the page's "Did you find what you were looking for?" widget got a negative/no-result signal. Normalized per 1,000 visits so lines of business are directly comparable regardless of size. Higher = more friction.</p></div>
     <div class="grid g-2">
@@ -383,33 +372,6 @@ function renderTraffic(){
   }
 }
 
-/* ============ DEMAND DRIVERS ============ */
-function hbar(id,labels,vals,color){
-  destroy(id);
-  charts[id]=new Chart(document.getElementById(id),{type:'bar',
-    data:{labels,datasets:[{data:vals,backgroundColor:color,borderRadius:4}]},
-    options:{indexAxis:'y',maintainAspectRatio:false,
-      plugins:{tooltip:{callbacks:{label:c=>fmt.format(c.parsed.x)+' visits'}}},
-      scales:{x:{ticks:{callback:v=>abbr(v)},grid:{color:'#eef0f2'}},y:{ticks:{font:{size:11},callback:function(v){let s=this.getLabelForValue(v);return s.length>30?s.slice(0,29)+'…':s;}}}}}
-  });
-}
-function renderDemand(){
-  const clip=(s,n)=>s.length>n?s.slice(0,n-1)+'…':s;
-  const news=MT.news_releases.slice(0,5);
-  hbar('demandNews',news.map(n=>clip(n.title,42)),news.map(n=>n.visits),'#284162');
-  const sp=MT.special_measures.slice(0,5);
-  hbar('demandSpecial',sp.map(s=>clip(s.title,42)),sp.map(s=>s.visits),'#882255');
-  const cp=MT.campaigns.slice(0,5);
-  hbar('demandCamp',cp.map(c=>c.label),cp.map(c=>c.visits),'#117733');
-  const td=MT.theme_dest.filter(t=>t.n>=100);
-  const maxd=Math.max(...td.map(t=>t.n),1);
-  document.getElementById('themeDestTbl').querySelector('tbody').innerHTML=
-    '<tr><th>Destination</th><th style="text-align:right">Clicks</th></tr>'+
-    td.map(t=>`<tr><td>${t.dest}</td><td style="text-align:right" class="bar-cell"><span class="mini" style="width:${t.n/maxd*60}px"></span><b>${fmt.format(t.n)}</b></td></tr>`).join('');
-  const wn=MT.web_notices[0];
-  document.getElementById('noticeNote').innerHTML=`<b>Refugees &amp; asylum</b> is the single biggest pull from the immigration landing page — more than twice the clicks of <b>Settling in Canada</b>. The most-viewed web notice is "<b>${wn.title}</b>" (${abbr(wn.visits)} visits).`;
-}
-
 /* ============ PAGE FEEDBACK ============ */
 function renderPFT(){
   const avg=IRCC().pft_sum.comments_per_1k;
@@ -424,7 +386,6 @@ function renderPFT(){
       scales:{x:{title:{display:true,text:'Comments per 1,000 visits'},grid:{color:'#eef0f2'}},y:{ticks:{font:{size:11.5}}}}},
     plugins:[vLine(avg,'#af3c43','IRCC avg '+avg.toFixed(2))]
   });
-  // trend
   const L = state.scope==='lob'? state.lob : AGG;
   const pft=MT.lob_metrics[L].pft;
   document.getElementById('pftTrendCap').textContent='Feedback rate over time — '+(state.scope==='lob'?L:'all IRCC');
@@ -438,7 +399,6 @@ function renderPFT(){
       plugins:{legend:{display:true,position:'bottom',labels:{boxWidth:12,usePointStyle:true}}},
       scales:{y:{beginAtZero:true,title:{display:true,text:'per 1,000 visits'}}}}
   });
-  // note: highest-friction LOB
   const top=rows[0], note=document.getElementById('pftNote');
   if(state.scope==='lob'){
     const rk=rows.findIndex(r=>r.L===state.lob)+1;
@@ -482,8 +442,7 @@ function renderTSS(){
       scales:{x:{min:0,max:100,title:{display:true,text:'%'},grid:{color:'#eef0f2'}},y:{ticks:{font:{size:11.5},autoSkip:false}}}},
     plugins:[vLine(80,'#af3c43','80% target')]
   });
-  // dept ranking
-  const big3=MT.tss_big3, gcAvg=0.7166;
+  const big3=MT.tss_big3, gcAvg=0.716;
   destroy('dept');
   charts.dept=new Chart(document.getElementById('deptChart'),{type:'bar',
     data:{labels:big3.map(d=>d.dept).concat(['GC avg']),
@@ -502,7 +461,7 @@ function renderVOC(){
   let fb, label;
   if(state.scope==='overall'){ fb=fbForLob(null); label='all IRCC pages'; }
   else if(state.scope==='lob'){ fb=fbForLob(state.lob); label=state.lob; }
-  else { // task -> find LOB containing task
+  else {
     const L=Object.keys(TASKMAP).find(k=>TASKMAP[k].includes(state.task));
     fb=fbForLob(L); label=L?('the '+L+' line of business'):'all IRCC pages';
   }
@@ -512,12 +471,10 @@ function renderVOC(){
     ['vocTrend','lang','dev'].forEach(destroy); return; }
   vc.textContent = fmt.format(fb.count)+' comments';
   document.getElementById('themeCap').textContent='Top problem themes — '+label;
-  // theme bars
   const themes=Object.entries(fb.themes).filter(([k])=>k!=='Other / uncategorized').slice(0,8);
   const max=Math.max(...themes.map(t=>t[1]),1);
   document.getElementById('themeBars').innerHTML=themes.map(([k,v])=>`
     <div class="theme-row"><div class="tl">${k}</div><div class="tb"><span style="width:${v/max*100}%"></span></div><div class="tv">${fmt.format(v)}</div></div>`).join('');
-  // trend (overall weekly, or scale not available per-LOB -> use overall for context with note)
   const wl=FB.weekly_lang;
   destroy('vocTrend');
   charts.vocTrend=new Chart(document.getElementById('vocTrendChart'),{type:'bar',
@@ -527,7 +484,6 @@ function renderVOC(){
     options:{maintainAspectRatio:false,plugins:{legend:{display:true,position:'bottom',labels:{boxWidth:12,usePointStyle:true}},tooltip:{mode:'index'}},
       scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,title:{display:true,text:'comments / week (all IRCC)'}}}}
   });
-  // language donut (scope-aware if per_lob has lang)
   let langData=[FB.lang.en,FB.lang.fr];
   if(fb.perlobName && FB.per_lob[fb.perlobName] && FB.per_lob[fb.perlobName].lang) langData=[FB.per_lob[fb.perlobName].lang.en,FB.per_lob[fb.perlobName].lang.fr];
   destroy('lang');
@@ -535,24 +491,20 @@ function renderVOC(){
     data:{labels:['English','French'],datasets:[{data:langData,backgroundColor:['#284162','#d55e00'],borderWidth:2,borderColor:'#fff'}]},
     options:{maintainAspectRatio:false,cutout:'60%',plugins:{legend:{display:true,position:'bottom',labels:{boxWidth:10,font:{size:11}}},tooltip:{callbacks:{label:c=>`${c.label}: ${fmt.format(c.parsed)} (${(c.parsed/(langData[0]+langData[1])*100).toFixed(0)}%)`}}}}
   });
-  // device donut (overall)
   const dev=Object.entries(FB.device).filter(([k])=>k!=='Unknown').slice(0,5);
   destroy('dev');
   charts.dev=new Chart(document.getElementById('devChart'),{type:'doughnut',
     data:{labels:dev.map(d=>d[0]),datasets:[{data:dev.map(d=>d[1]),backgroundColor:PAL,borderWidth:2,borderColor:'#fff'}]},
     options:{maintainAspectRatio:false,cutout:'60%',plugins:{legend:{display:true,position:'bottom',labels:{boxWidth:10,font:{size:11}}}}}
   });
-  // top pages
   const tp=(fb.top||[]).slice(0,8); const maxP=Math.max(...tp.map(p=>p.n),1);
   document.getElementById('topPagesTbl').querySelector('tbody').innerHTML=
     '<tr><th>Page</th><th style="text-align:right">Comments</th></tr>'+
     tp.map(p=>`<tr><td>${p.title}</td><td style="text-align:right" class="bar-cell"><span class="mini" style="width:${p.n/maxP*60}px"></span><b>${fmt.format(p.n)}</b></td></tr>`).join('');
-  // quotes
   let quotes = fb.quotes || sampleOverallQuotes();
   document.getElementById('quotesBox').innerHTML = (quotes||[]).slice(0,6).map(q=>`<div class="quote">"${esc(q)}"</div>`).join('') || '<p class="muted">No representative comments available.</p>';
 }
 function sampleOverallQuotes(){
-  // pull a spread of quotes across LOBs for the overall view
   const out=[]; const lobs=Object.values(FB.per_lob);
   for(let i=0;i<lobs.length && out.length<6;i++){ if(lobs[i].quotes&&lobs[i].quotes.length) out.push(lobs[i].quotes[0]); }
   return out;
@@ -566,10 +518,9 @@ function renderLoop(){
 
 /* ============ SCOPE WIRING ============ */
 function setScopeVisibility(){
-  const hideForTask=['trafficSection','pftSection','demandSection'];
+  const hideForTask=['trafficSection','pftSection'];
   hideForTask.forEach(id=>document.getElementById(id).classList.toggle('hide',state.scope==='task'));
   document.getElementById('loopSection').classList.toggle('hide',state.scope!=='overall');
-  document.getElementById('demandSection').classList.toggle('hide',state.scope!=='overall');
   document.getElementById('lobSel').classList.toggle('show',state.scope==='lob');
   document.getElementById('taskSel').classList.toggle('show',state.scope==='task');
   const names={overall:'Overall IRCC web',lob:state.lob,task:state.task};
@@ -579,7 +530,6 @@ function renderAll(){
   setScopeVisibility();
   renderKPI(); renderInsights();
   if(state.scope!=='task'){ renderTraffic(); renderPFT(); }
-  if(state.scope==='overall') renderDemand();
   renderTSS(); renderVOC();
   if(state.scope==='overall') renderLoop();
 }
