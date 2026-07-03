@@ -37,20 +37,24 @@
     .vv-main   { flex: 1 1 auto; min-width: 0; }
     .vv-side   { flex: 0 0 262px; }
 
-    /* ---- Progress bar under the title ---- */
-    .vv-progress-wrap { margin: 0 0 1.5rem; }
-    .vv-progress-track {
-        height: 8px; background: var(--vv-line); border-radius: 4px; overflow: hidden;
-    }
-    .vv-progress-fill {
-        height: 100%; width: 0%; background: var(--vv-active);
-        transition: width .25s ease;
-    }
-    .vv-progress-label { font-size: .82em; color: #5c5c5c; margin-top: .35rem; }
-
     /* ---- Sticky stepper (the "subway" reimagined) ---- */
     .vv-stepper { position: sticky; top: 1rem; }
-    .vv-stepper h2 { margin: 0 0 .75rem; font-size: 1.05em; color: var(--vv-accent); }
+    .vv-stepper-head { display: flex; align-items: center; }
+    .vv-stepper-head h2 { margin: 0; font-size: 1.05em; color: var(--vv-accent); }
+
+    /* live progress bar that lives INSIDE the sticky stepper (so it follows) */
+    .vv-mini-progress { height: 6px; background: var(--vv-line); border-radius: 4px; overflow: hidden; margin: .6rem 0 .35rem; }
+    .vv-mini-fill { height: 100%; width: 0%; background: var(--vv-active); transition: width .25s ease; }
+    .vv-mini-label { font-size: .8em; color: #5c5c5c; margin: 0 0 .9rem; }
+
+    /* mobile-only toggle button (hidden on desktop) */
+    .vv-stepper-toggle {
+        display: none; align-items: center; justify-content: space-between; gap: .5rem;
+        width: 100%; background: none; border: none; padding: 0; cursor: pointer;
+        font-weight: 600; color: var(--vv-accent); font-size: 1em; text-align: left; line-height: 1.3;
+    }
+    .vv-toggle-caret { flex: 0 0 auto; transition: transform .2s ease; font-size: .8em; }
+    .vv-stepper.is-open .vv-toggle-caret { transform: rotate(180deg); }
     .vv-stepper ol { list-style: none; margin: 0; padding: 0; position: relative; }
     /* vertical connector line */
     .vv-stepper ol::before {
@@ -149,17 +153,42 @@
     /* ---- Country picker result box ---- */
     .vv-country-note { margin-top: 1rem; }
 
-    /* ---- Responsive: collapse the stepper to top on small screens ---- */
+    /* ============================================================
+       MOBILE: app-style sticky progress header with a jump menu
+       ============================================================ */
     @media (max-width: 991px) {
         .vv-layout { display: block; }
-        .vv-side { width: 100%; margin-bottom: 1.5rem; }
-        .vv-stepper { position: static; }
-        .vv-stepper ol { display: flex; flex-wrap: wrap; gap: .4rem; }
-        .vv-stepper ol::before { display: none; }
-        .vv-step { flex: 1 1 auto; }
-        .vv-step > a { flex-direction: column; align-items: center; text-align: center; padding: .5rem; border: 1px solid var(--vv-line); }
-        .vv-step-num { font-size: .68em; }
-        .vv-step-title { font-size: .82em; }
+
+        /* the side column becomes a slim bar pinned to the top of the screen */
+        .vv-side {
+            position: sticky; top: 0; z-index: 200; width: 100%; margin: 0 0 1.5rem;
+            background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.14);
+            border-bottom: 3px solid var(--vv-accent);
+        }
+        .vv-stepper { position: static; padding: .65rem 1rem .75rem; }
+
+        /* hide the desktop heading + the "Step x of 5" text line (the button shows both) */
+        .vv-stepper-head h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); margin: -1px; padding: 0; border: 0; }
+        .vv-mini-label { display: none; }
+
+        /* show the tap-to-expand control */
+        .vv-stepper-toggle { display: flex; }
+        .vv-mini-progress { margin: .55rem 0 0; }
+
+        /* the step list drops down as an overlay panel under the bar */
+        #vv-steplist {
+            position: absolute; left: 0; right: 0; top: 100%;
+            background: #fff; border-top: 1px solid var(--vv-line);
+            box-shadow: 0 10px 22px rgba(0,0,0,.18);
+            max-height: 68vh; overflow-y: auto; padding: .4rem .6rem;
+            display: none;
+        }
+        .vv-stepper.is-open #vv-steplist { display: block; }
+        #vv-steplist::before { display: none; }               /* drop the vertical connector line */
+        .vv-step > a { padding: .8rem .5rem; }
+
+        /* section rules a touch tighter on small screens */
+        .vv-section + .vv-section { padding-top: 1.5rem; }
     }
     </style>
 </head>
@@ -253,8 +282,16 @@
             <!-- ===================== STICKY STEPPER ===================== -->
             <div class="vv-side">
                 <nav class="vv-stepper" id="vv-steps" aria-label="Visitor visa journey steps">
-                    <h2>Your journey</h2>
-                    <ol>
+                    <div class="vv-stepper-head">
+                        <h2>Your journey</h2>
+                        <button type="button" class="vv-stepper-toggle" id="vv-stepper-toggle" aria-expanded="false" aria-controls="vv-steplist">
+                            <span class="vv-toggle-label" id="vv-toggle-label">Step 1 of 5 &middot; Who needs a visa</span>
+                            <span class="vv-toggle-caret" aria-hidden="true">&#9660;</span>
+                        </button>
+                    </div>
+                    <div class="vv-mini-progress" aria-hidden="true"><div class="vv-mini-fill" id="vv-progress"></div></div>
+                    <p class="vv-mini-label"><span id="vv-progress-text">Step 1 of 5</span></p>
+                    <ol id="vv-steplist">
                         <li class="vv-step" data-target="stage-1"><a href="#stage-1"><span class="vv-dot"><span class="vv-n">1</span></span><span class="vv-step-label"><span class="vv-step-num">Step 1</span><span class="vv-step-title">Who needs a visa</span></span></a></li>
                         <li class="vv-step" data-target="stage-2"><a href="#stage-2"><span class="vv-dot"><span class="vv-n">2</span></span><span class="vv-step-label"><span class="vv-step-num">Step 2</span><span class="vv-step-title">Who can apply</span></span></a></li>
                         <li class="vv-step" data-target="stage-3"><a href="#stage-3"><span class="vv-dot"><span class="vv-n">3</span></span><span class="vv-step-label"><span class="vv-step-num">Step 3</span><span class="vv-step-title">How to apply</span></span></a></li>
@@ -266,11 +303,6 @@
 
             <!-- ===================== MAIN CONTENT ===================== -->
             <div class="vv-main">
-                <div class="vv-progress-wrap" aria-hidden="true">
-                    <div class="vv-progress-track"><div class="vv-progress-fill" id="vv-progress"></div></div>
-                    <div class="vv-progress-label"><span id="vv-progress-text">Step 1 of 5</span></div>
-                </div>
-
                 <!-- Intro / at-a-glance -->
                 <section class="well brdr-rds-0" aria-label="At a glance">
                     <div class="row">
@@ -759,8 +791,12 @@
            ============================================================ */
         var steps    = $$(".vv-step");
         var sections = steps.map(function (s) { return document.getElementById(s.dataset.target); });
+        var titles   = steps.map(function (s) { return $(".vv-step-title", s).textContent; });
         var fill     = $("#vv-progress");
         var progText = $("#vv-progress-text");
+        var toggleLbl= $("#vv-toggle-label");
+        var stepper  = $("#vv-steps");
+        var toggleBtn= $("#vv-stepper-toggle");
         var current  = -1;
 
         function setActive(idx) {
@@ -771,8 +807,21 @@
                 step.classList.toggle("is-done", i < idx);
             });
             fill.style.width = ((idx + 1) / steps.length * 100) + "%";
-            progText.textContent = "Step " + (idx + 1) + " of " + steps.length;
+            var label = "Step " + (idx + 1) + " of " + steps.length;
+            progText.textContent = label;
+            toggleLbl.textContent = label + " · " + titles[idx];
         }
+
+        /* ---- mobile jump-menu toggle ---- */
+        function closeMenu() { stepper.classList.remove("is-open"); toggleBtn.setAttribute("aria-expanded", "false"); }
+        toggleBtn.addEventListener("click", function () {
+            var open = stepper.classList.toggle("is-open");
+            this.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+        document.addEventListener("click", function (e) {
+            if (stepper.classList.contains("is-open") && !stepper.contains(e.target)) closeMenu();
+        });
+        window.addEventListener("resize", function () { if (window.innerWidth > 991) closeMenu(); });
 
         function onScroll() {
             var probe = window.scrollY + window.innerHeight * 0.32;
@@ -789,7 +838,8 @@
         $$('.vv-stepper a[href^="#"]').forEach(function (a) {
             a.addEventListener("click", function (e) {
                 var t = document.getElementById(this.getAttribute("href").slice(1));
-                if (t) { e.preventDefault(); t.scrollIntoView({ behavior: "smooth", block: "start" });
+                if (t) { e.preventDefault(); closeMenu();
+                         t.scrollIntoView({ behavior: "smooth", block: "start" });
                          t.setAttribute("tabindex", "-1"); t.focus({ preventScroll: true }); }
             });
         });
@@ -937,15 +987,36 @@
            ============================================================ */
         var MODALS = {
             "travel-doc": { title: "Travel documents", html:
-                "<p><strong>Documents we accept:</strong></p><ul><li>passports (regular, official or diplomatic) from most countries (see exceptions below)</li><li>alien passport for stateless persons</li><li>US Permit to Re-Enter (Form I-327)</li><li>US Refugee Travel Document (Form I-571)</li><li>other refugee travel documents for non-citizens</li></ul><p><strong>Documents we don’t accept:</strong></p><ul><li>any passport issued by Somalia</li><li>non-machine-readable passports issued by the Czech Republic</li><li>temporary passports issued by the Republic of South Africa</li><li>provisional passports issued by Venezuela</li></ul>" },
+                "<p><strong>Documents we accept:</strong></p>" +
+                "<ul><li>passports (regular, official or diplomatic) from most countries (see exceptions below)</li>" +
+                "<li>alien passport for stateless persons</li><li>US Permit to Re-Enter (Form I-327)</li>" +
+                "<li>US Refugee Travel Document (Form I-571)</li><li>other refugee travel documents for non-citizens</li></ul>" +
+                "<p><strong>Documents we don’t accept:</strong></p>" +
+                "<ul><li>any passport issued by Somalia</li><li>non-machine-readable passports issued by the Czech Republic</li>" +
+                "<li>temporary passports issued by the Republic of South Africa</li><li>provisional passports issued by Venezuela</li></ul>" },
             "credit": { title: "Credit cards and prepaid cards", html:
-                "<p>We accept the following credit and prepaid cards:</p><ul><li>Visa®</li><li>MasterCard®</li><li>American Express®</li><li>JCB®</li><li>UnionPay® (for online applications only; debit cards not accepted)</li></ul><p>If you use a prepaid credit card, keep it for <strong>at least</strong> 18 months after you pay to make refunds easier.</p><p>We also accept all Visa Debit cards. The card you use doesn’t have to be in your name.</p>" },
+                "<p>We accept the following credit and prepaid cards:</p>" +
+                "<ul><li>Visa®</li><li>MasterCard®</li><li>American Express®</li><li>JCB®</li>" +
+                "<li>UnionPay® (for online applications only; debit cards not accepted)</li></ul>" +
+                "<p>If you use a prepaid credit card, keep it for <strong>at least</strong> 18 months after you pay to make refunds easier.</p>" +
+                "<p>We also accept all Visa Debit cards. The card you use doesn’t have to be in your name.</p>" },
             "debit": { title: "Debit cards", html:
-                "<p>It must:</p><ul><li>be from a Canadian bank using <a href=\"https://www.interac.ca/en/payments/personal/pay-with-interac-debit/#online\" rel=\"external noopener\">INTERAC® Online</a></li><li>be registered for online banking through your bank’s website</li></ul><p>We also accept all Debit MasterCard® and Visa® Debit cards. The card you use doesn’t have to be in your name.</p>" },
+                "<p>It must:</p><ul>" +
+                "<li>be from a Canadian bank using <a href=\"https://www.interac.ca/en/payments/personal/pay-with-interac-debit/#online\" rel=\"external noopener\">INTERAC® Online</a></li>" +
+                "<li>be registered for online banking through your bank’s website</li></ul>" +
+                "<p>We also accept all Debit MasterCard® and Visa® Debit cards. The card you use doesn’t have to be in your name.</p>" },
             "entry": { title: "Basic entry requirements", html:
-                "<p>To visit Canada, you will need to meet some basic requirements, such as:</p><ul><li>have a valid travel document, such as a passport</li><li>be in good health</li><li>have no criminal or immigration-related convictions</li><li>convince an immigration officer that you have ties that will take you back to your home country</li><li>convince an immigration officer that you will leave Canada at the end of your visit</li><li>have enough money for your stay</li></ul><h4>Inadmissibility</h4><p>Some people are inadmissible &mdash; not allowed to come to Canada &mdash; including for involvement in criminal activity, human rights violations or organized crime, or for security, health or financial reasons. <a href=\"https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/inadmissibility.html\">Find out more</a>.</p>" },
+                "<p>To visit Canada, you will need to meet some basic requirements, such as:</p><ul>" +
+                "<li>have a valid travel document, such as a passport</li><li>be in good health</li>" +
+                "<li>have no criminal or immigration-related convictions</li>" +
+                "<li>convince an immigration officer that you have ties that will take you back to your home country</li>" +
+                "<li>convince an immigration officer that you will leave Canada at the end of your visit</li>" +
+                "<li>have enough money for your stay</li></ul><h4>Inadmissibility</h4>" +
+                "<p>Some people are inadmissible &mdash; not allowed to come to Canada &mdash; including for involvement in criminal activity, human rights violations or organized crime, or for security, health or financial reasons. <a href=\"https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/inadmissibility.html\">Find out more</a>.</p>" },
             "stay": { title: "How long you can stay", html:
-                "<p>Most visitors can stay for up to 6 months in Canada.</p><p>At the port of entry, the border services officer may allow you to stay for less or more than 6 months. If so, they’ll put the date you need to leave by in your passport, and may give you a visitor record.</p><p>If you don’t get a stamp, you can stay for 6 months from the day you entered Canada or until your passport expires, whichever comes first.</p>" }
+                "<p>Most visitors can stay for up to 6 months in Canada.</p>" +
+                "<p>At the port of entry, the border services officer may allow you to stay for less or more than 6 months. If so, they’ll put the date you need to leave by in your passport, and may give you a visitor record.</p>" +
+                "<p>If you don’t get a stamp, you can stay for 6 months from the day you entered Canada or until your passport expires, whichever comes first.</p>" }
         };
 
         var overlay   = $("#vv-modal-overlay");
