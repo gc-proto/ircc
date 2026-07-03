@@ -1,0 +1,1135 @@
+<!doctype html>
+<html class="no-js" dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head prefix="og: http://ogp.me/ns#">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Apply for a visitor visa (temporary resident visa) – Canada.ca</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="description" content="The complete visitor visa journey on one page, with sub-steps: who needs a visa, who can apply, how to apply, after you apply, and preparing for your arrival in Canada." />
+    <meta name="keywords" content="visitor visa Canada, temporary resident visa, apply visitor visa, tourist visa Canada" />
+    <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css" />
+    <noscript>
+        <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
+    </noscript>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+
+    <style>
+    /* ============================================================
+       Single-page visitor-visa journey — custom layer on GCWeb
+       (this build adds nested SUB-STEPS under "How to apply")
+       ============================================================ */
+
+    :root {
+        --vv-accent: #26374a;      /* GC dark blue */
+        --vv-link: #284162;
+        --vv-active: #2b8cc4;      /* active step blue */
+        --vv-done: #278400;        /* completed green */
+        --vv-line: #cfd6dc;
+        --vv-bg-soft: #f5f6f7;
+    }
+
+    /* ---- Overall two-column layout ----
+       NOTE: align-items must be stretch (not flex-start) so the side
+       column grows to the full height of the main content. Otherwise the
+       sticky stepper has no room to travel and appears not to stick. */
+    .vv-layout { display: flex; gap: 2.5rem; align-items: stretch; }
+    .vv-main   { flex: 1 1 auto; min-width: 0; }
+    .vv-side   { flex: 0 0 262px; }
+
+    /* ---- Sticky stepper (the "subway" reimagined) ---- */
+    .vv-stepper { position: sticky; top: 1rem; }
+    .vv-stepper-head { display: flex; align-items: center; }
+    .vv-stepper-head h2 { margin: 0; font-size: 1.05em; color: var(--vv-accent); }
+
+    /* live progress bar that lives INSIDE the sticky stepper (so it follows) */
+    .vv-mini-progress { height: 6px; background: var(--vv-line); border-radius: 4px; overflow: hidden; margin: .6rem 0 .35rem; }
+    .vv-mini-fill { height: 100%; width: 0%; background: var(--vv-active); transition: width .25s ease; }
+    .vv-mini-label { font-size: .8em; color: #5c5c5c; margin: 0 0 .9rem; }
+
+    /* mobile-only toggle button (hidden on desktop) */
+    .vv-stepper-toggle {
+        display: none; align-items: center; justify-content: space-between; gap: .5rem;
+        width: 100%; background: none; border: none; padding: 0; cursor: pointer;
+        font-weight: 600; color: var(--vv-accent); font-size: 1em; text-align: left; line-height: 1.3;
+    }
+    .vv-toggle-caret { flex: 0 0 auto; transition: transform .2s ease; font-size: .8em; }
+    .vv-stepper.is-open .vv-toggle-caret { transform: rotate(180deg); }
+    .vv-stepper ol { list-style: none; margin: 0; padding: 0; position: relative; }
+    /* vertical connector line */
+    .vv-stepper ol::before {
+        content: ""; position: absolute; left: 13px; top: 14px; bottom: 14px;
+        width: 2px; background: var(--vv-line);
+    }
+    .vv-step { position: relative; margin: 0; }
+    .vv-step > a {
+        display: flex; align-items: flex-start; gap: .7rem;
+        padding: .55rem .5rem .55rem 0; text-decoration: none; color: var(--vv-link);
+        border-radius: 4px; line-height: 1.3;
+    }
+    .vv-step > a:hover, .vv-step > a:focus { background: var(--vv-bg-soft); text-decoration: underline; }
+    .vv-dot {
+        flex: 0 0 28px; height: 28px; width: 28px; border-radius: 50%;
+        background: #fff; border: 2px solid var(--vv-line); color: #5c5c5c;
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 700; font-size: .85em; z-index: 1; transition: all .2s ease;
+    }
+    .vv-step-label { padding-top: .18rem; }
+    .vv-step-num { display: block; font-size: .72em; text-transform: uppercase; letter-spacing: .04em; color: #6f6f6f; }
+    .vv-step-title { font-weight: 600; }
+
+    /* states driven by JS */
+    .vv-step.is-active > a { background: #eaf3f9; }
+    .vv-step.is-active .vv-dot { border-color: var(--vv-active); background: var(--vv-active); color: #fff; }
+    .vv-step.is-active .vv-step-title { color: var(--vv-accent); }
+    .vv-step.is-done .vv-dot { border-color: var(--vv-done); background: var(--vv-done); color: #fff; }
+    .vv-step.is-done .vv-dot::before { content: "\2713"; }
+    .vv-step.is-done .vv-dot .vv-n { display: none; }
+
+    /* ---- SUB-STEPS (nested under a step) ---- */
+    .vv-substeps {
+        list-style: none; margin: .1rem 0 .35rem; padding: 0 0 0 2.4rem;
+        position: relative; overflow: hidden;
+        max-height: 0; opacity: 0; transition: max-height .28s ease, opacity .2s ease;
+    }
+    /* expand only when the parent step is active */
+    .vv-step.is-active .vv-substeps { max-height: 260px; opacity: 1; }
+    /* thin connector aligned with the sub-dots */
+    .vv-substeps::before {
+        content: ""; position: absolute; left: calc(2.4rem + .4rem + 4px); top: .35rem; bottom: .35rem;
+        width: 2px; background: var(--vv-line);
+    }
+    .vv-substep { position: relative; margin: 0; }
+    .vv-substep > a {
+        display: flex; align-items: center; gap: .55rem; padding: .35rem .4rem;
+        text-decoration: none; color: var(--vv-link); font-size: .9em; border-radius: 4px; line-height: 1.25;
+    }
+    .vv-substep > a:hover, .vv-substep > a:focus { background: var(--vv-bg-soft); text-decoration: underline; }
+    .vv-subdot {
+        flex: 0 0 12px; height: 12px; width: 12px; border-radius: 50%; z-index: 1;
+        background: #fff; border: 2px solid var(--vv-line); transition: all .2s ease;
+    }
+    .vv-substep.is-active > a { background: #eaf3f9; color: var(--vv-accent); font-weight: 600; }
+    .vv-substep.is-active .vv-subdot { border-color: var(--vv-active); background: var(--vv-active); }
+    .vv-substep.is-done .vv-subdot { border-color: var(--vv-done); background: var(--vv-done); }
+
+    /* ---- Section styling ---- */
+    .vv-section { scroll-margin-top: 1rem; padding-top: .5rem; }
+    .vv-section + .vv-section { margin-top: 1.5rem; border-top: 4px solid var(--vv-accent); padding-top: 2rem; }
+    .vv-section > h2.vv-stage-h {
+        color: var(--vv-accent); margin-top: 0;
+    }
+    .vv-substep-section { scroll-margin-top: 1rem; padding-top: .25rem; }
+    .vv-substep-section > h3 { color: var(--vv-accent); }
+    .vv-eyebrow {
+        display: inline-block; font-size: .78em; font-weight: 700; text-transform: uppercase;
+        letter-spacing: .05em; color: #fff; background: var(--vv-active);
+        padding: .15rem .6rem; border-radius: 3px; margin-bottom: .6rem;
+    }
+    .vv-hint { color: #5c5c5c; font-style: italic; }
+
+    /* ---- "Back to top" pill ---- */
+    .vv-top {
+        position: fixed; right: 1.2rem; bottom: 1.2rem; z-index: 30;
+        background: var(--vv-accent); color: #fff; border: none; border-radius: 30px;
+        padding: .6rem 1rem; font-size: .9em; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.25);
+        opacity: 0; pointer-events: none; transition: opacity .25s ease;
+    }
+    .vv-top.is-visible { opacity: 1; pointer-events: auto; }
+    .vv-top:hover, .vv-top:focus { background: #1c2938; }
+
+    /* ---- Wizard (purpose of visit) ---- */
+    .vv-wizard fieldset { border: 0; margin: 0; padding: 0; }
+    .vv-wizard legend { font-weight: 700; font-size: 1.05em; margin-bottom: .6rem; }
+    .vv-choice {
+        display: flex; align-items: center; gap: .6rem;
+        border: 1px solid #ccc; border-radius: 5px; padding: .7rem .9rem; margin-bottom: .5rem;
+        cursor: pointer; background: #fff; transition: border-color .15s, background .15s;
+    }
+    .vv-choice:hover { border-color: var(--vv-active); background: #f4f9fc; }
+    .vv-choice input { margin: 0; transform: scale(1.15); }
+    .vv-choice.is-checked { border-color: var(--vv-active); background: #eaf3f9; box-shadow: inset 0 0 0 1px var(--vv-active); }
+    .vv-subq { margin: .25rem 0 1rem 1.6rem; padding-left: 1rem; border-left: 3px solid var(--vv-line); }
+    .vv-result-head {
+        background: #eaf3f9; border-left: 5px solid var(--vv-active);
+        padding: 1rem 1.25rem; border-radius: 0 5px 5px 0; margin: 1.5rem 0;
+    }
+    .vv-result-head h3 { margin: 0; color: var(--vv-accent); }
+    .vv-reset { margin-left: .5rem; }
+
+    .vv-hidden { display: none !important; }
+
+    /* ---- Simple modal (replaces wb-lbx lightboxes) ---- */
+    .vv-modal-overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 1000;
+        display: none; align-items: center; justify-content: center; padding: 1rem;
+    }
+    .vv-modal-overlay.is-open { display: flex; }
+    .vv-modal {
+        background: #fff; max-width: 640px; width: 100%; max-height: 86vh; overflow: auto;
+        border-radius: 6px; box-shadow: 0 10px 40px rgba(0,0,0,.3);
+    }
+    .vv-modal-header {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 1rem 1.25rem; border-bottom: 1px solid #e0e0e0;
+    }
+    .vv-modal-header h2 { margin: 0; font-size: 1.25em; color: var(--vv-accent); }
+    .vv-modal-body { padding: 1.25rem; }
+    .vv-modal-close {
+        background: none; border: none; font-size: 1.6rem; line-height: 1; cursor: pointer; color: #333; padding: 0 .3rem;
+    }
+    .vv-modal-close:hover { color: #000; }
+
+    /* ---- Country picker result box ---- */
+    .vv-country-note { margin-top: 1rem; }
+
+    /* ============================================================
+       MOBILE: app-style sticky progress header with a jump menu
+       ============================================================ */
+    @media (max-width: 991px) {
+        .vv-layout { display: block; }
+
+        /* the side column becomes a slim bar pinned to the top of the screen */
+        .vv-side {
+            position: sticky; top: 0; z-index: 200; width: 100%; margin: 0 0 1.5rem;
+            background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.14);
+            border-bottom: 3px solid var(--vv-accent);
+        }
+        .vv-stepper { position: static; padding: .65rem 1rem .75rem; }
+
+        /* hide the desktop heading + the "Step x of 5" text line (the button shows both) */
+        .vv-stepper-head h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); margin: -1px; padding: 0; border: 0; }
+        .vv-mini-label { display: none; }
+
+        /* show the tap-to-expand control */
+        .vv-stepper-toggle { display: flex; }
+        .vv-mini-progress { margin: .55rem 0 0; }
+
+        /* the step list drops down as an overlay panel under the bar */
+        #vv-steplist {
+            position: absolute; left: 0; right: 0; top: 100%;
+            background: #fff; border-top: 1px solid var(--vv-line);
+            box-shadow: 0 10px 22px rgba(0,0,0,.18);
+            max-height: 68vh; overflow-y: auto; padding: .4rem .6rem;
+            display: none;
+        }
+        .vv-stepper.is-open #vv-steplist { display: block; }
+        #vv-steplist::before { display: none; }               /* drop the vertical connector line */
+        .vv-step > a { padding: .8rem .5rem; }
+
+        /* section rules a touch tighter on small screens */
+        .vv-section + .vv-section { padding-top: 1.5rem; }
+    }
+    </style>
+</head>
+
+<body vocab="http://schema.org/" typeof="WebPage">
+    <nav>
+        <ul id="wb-tphp">
+            <li class="wb-slc"><a class="wb-sl" href="#wb-cont">Skip to main content</a></li>
+            <li class="wb-slc"><a class="wb-sl" href="#vv-steps">Skip to journey steps</a></li>
+            <li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">Skip to &#34;About government&#34;</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div id="wb-bnr" class="container">
+            <div class="row">
+                <section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
+                    <h2 class="wb-inv">Language selection</h2>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-inline mrgn-bttm-0">
+                                <li>
+                                    <a lang="fr" href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/visiter-canada/visa-visiteur.html">
+                                        <span class="hidden-xs">Fran&ccedil;ais</span>
+                                        <abbr title="Fran&ccedil;ais" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+                    <a href="https://www.canada.ca/en.html" property="url">
+                        <img src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg" alt="Government of Canada" property="logo">
+                    </a>
+                    <meta property="name" content="Government of Canada" />
+                    <meta property="areaServed" typeof="Country" content="Canada" />
+                    <link property="logo" href="https://www.canada.ca/etc/designs/canada/wet-boew/assets/wmms-blk.svg" />
+                </div>
+                <section id="wb-srch" class="col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-12 col-sm-5 col-md-4">
+                    <h2>Search</h2>
+                    <form action="https://www.canada.ca/en/sr/srb.html" method="get" name="cse-search-box" role="search">
+                        <div class="form-group wb-srch-qry">
+                            <label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
+                            <input name="cdn" value="canada" type="hidden" />
+                            <input name="st" value="s" type="hidden" />
+                            <input name="num" value="10" type="hidden" />
+                            <input name="langs" value="en" type="hidden" />
+                            <input name="st1rt" value="1" type="hidden" />
+                            <input name="s5bm3ts21rch" value="x" type="hidden" />
+                            <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search Canada.ca" />
+                            <input type="hidden" name="_charset_" value="UTF-8" />
+                            <datalist id="wb-srch-q-ac"></datalist>
+                        </div>
+                        <div class="form-group submit">
+                            <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+
+        <nav class="gcweb-v2 gcweb-menu" typeof="SiteNavigationElement">
+            <div class="container">
+                <h2 class="wb-inv">Menu</h2>
+                <button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
+                <ul role="menu" aria-orientation="vertical" data-ajax-replace="https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-en.html">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <nav id="wb-bc" property="breadcrumb">
+            <h2 class="wb-inv">You are here:</h2>
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="https://www.canada.ca/en.html">Canada.ca</a></li>
+                    <li><a href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html">Visit Canada</a></li>
+                </ol>
+            </div>
+        </nav>
+    </header>
+
+    <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="container">
+        <!-- CONTENT STARTS HERE -->
+        <h1 property="name" id="wb-cont">Apply for a visitor visa</h1>
+        <p class="mrgn-bttm-md">Everything you need to get a visitor visa (temporary resident visa) for Canada, on one page. Follow the five stages below &mdash; the tracker on the side keeps your place, and expands into sub-steps when a stage has them.</p>
+
+        <div class="vv-layout">
+            <!-- ===================== STICKY STEPPER ===================== -->
+            <div class="vv-side">
+                <nav class="vv-stepper" id="vv-steps" aria-label="Visitor visa journey steps">
+                    <div class="vv-stepper-head">
+                        <h2>Your journey</h2>
+                        <button type="button" class="vv-stepper-toggle" id="vv-stepper-toggle" aria-expanded="false" aria-controls="vv-steplist">
+                            <span class="vv-toggle-label" id="vv-toggle-label">Step 1 of 5 &middot; Who needs a visa</span>
+                            <span class="vv-toggle-caret" aria-hidden="true">&#9660;</span>
+                        </button>
+                    </div>
+                    <div class="vv-mini-progress" aria-hidden="true"><div class="vv-mini-fill" id="vv-progress"></div></div>
+                    <p class="vv-mini-label"><span id="vv-progress-text">Step 1 of 5</span></p>
+                    <ol id="vv-steplist">
+                        <li class="vv-step" data-target="stage-1"><a href="#stage-1"><span class="vv-dot"><span class="vv-n">1</span></span><span class="vv-step-label"><span class="vv-step-num">Step 1</span><span class="vv-step-title">Who needs a visa</span></span></a></li>
+                        <li class="vv-step" data-target="stage-2"><a href="#stage-2"><span class="vv-dot"><span class="vv-n">2</span></span><span class="vv-step-label"><span class="vv-step-num">Step 2</span><span class="vv-step-title">Who can apply</span></span></a></li>
+                        <li class="vv-step" data-target="stage-3">
+                            <a href="#stage-3"><span class="vv-dot"><span class="vv-n">3</span></span><span class="vv-step-label"><span class="vv-step-num">Step 3</span><span class="vv-step-title">How to apply</span></span></a>
+                            <ul class="vv-substeps" aria-label="How to apply sub-steps">
+                                <li class="vv-substep" data-target="stage-3a"><a href="#stage-3a"><span class="vv-subdot" aria-hidden="true"></span><span class="vv-substep-title">Gather your documents</span></a></li>
+                                <li class="vv-substep" data-target="stage-3b"><a href="#stage-3b"><span class="vv-subdot" aria-hidden="true"></span><span class="vv-substep-title">Tell us your purpose</span></a></li>
+                                <li class="vv-substep" data-target="stage-3c"><a href="#stage-3c"><span class="vv-subdot" aria-hidden="true"></span><span class="vv-substep-title">Your personalized steps</span></a></li>
+                            </ul>
+                        </li>
+                        <li class="vv-step" data-target="stage-4"><a href="#stage-4"><span class="vv-dot"><span class="vv-n">4</span></span><span class="vv-step-label"><span class="vv-step-num">Step 4</span><span class="vv-step-title">After you apply</span></span></a></li>
+                        <li class="vv-step" data-target="stage-5"><a href="#stage-5"><span class="vv-dot"><span class="vv-n">5</span></span><span class="vv-step-label"><span class="vv-step-num">Step 5</span><span class="vv-step-title">Prepare for arrival</span></span></a></li>
+                    </ol>
+                </nav>
+            </div>
+
+            <!-- ===================== MAIN CONTENT ===================== -->
+            <div class="vv-main">
+                <!-- Intro / at-a-glance -->
+                <section class="well brdr-rds-0" aria-label="At a glance">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2 class="mrgn-tp-0 h3"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Processing times</h2>
+                            <p class="mrgn-bttm-0">Varies by country. <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Check processing times</a>.</p>
+                            <p>You may need to <a href="https://ircc.canada.ca/english/visit/biometrics.asp">give biometrics</a>; that time is extra.</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <h2 class="mrgn-tp-0 h3"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> Fees</h2>
+                            <p class="mrgn-bttm-0">Starting from <strong>$CAN&nbsp;100</strong> (processing). Biometrics from $CAN&nbsp;85.</p>
+                        </div>
+                    </div>
+                    <p class="mrgn-tp-md mrgn-bttm-0">A visitor visa (temporary resident visa) is an official document we put in your passport showing that you meet the requirements to travel to Canada.</p>
+                </section>
+
+                <div class="alert alert-info">
+                    <p><strong>Some citizens of Indonesia and Malaysia are now eligible to apply for an eTA</strong></p>
+                    <p>As of May&nbsp;26, 2026, citizens of Indonesia and Malaysia who <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/eligibility/eta-x.html">meet certain requirements</a> may be eligible to apply for an eTA instead of a visitor visa, to travel to Canada by air. If you already have a <strong>valid</strong> visitor visa, you can use it until it expires. <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/check-visa-eta.html">Find out what you need to travel to Canada</a>.</p>
+                </div>
+
+                <!-- =================================================== -->
+                <!-- STAGE 1 : WHO NEEDS A VISITOR VISA                  -->
+                <!-- =================================================== -->
+                <section class="vv-section" id="stage-1" aria-labelledby="stage-1-h">
+                    <span class="vv-eyebrow">Step 1 of 5</span>
+                    <h2 class="vv-stage-h" id="stage-1-h">Who needs a visitor visa</h2>
+
+                    <h3>Most travellers need a visitor visa</h3>
+                    <p>Most travellers need a visitor visa to travel to Canada. You may also need one if you&rsquo;re <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/transit/transit-visa/who-needs-transit-visa.html">transiting through a Canadian airport</a> on your way to your final destination.</p>
+                    <p>A visa officer has discretion to issue you a single-entry or multiple-entry visa, and to decide how long it will be valid for. Generally, a visitor visa may be valid for up to a maximum of 10 years, or until the expiry of either your passport or biometrics, whichever comes first.</p>
+
+                    <h3>How long you can stay</h3>
+                    <p>Most visitors can stay for up to 6 months in Canada.</p>
+                    <p>At the port of entry, the border services officer may allow you to stay for less or more than 6 months. If so, they&rsquo;ll put the date you need to leave by in your passport. They might also give you a document called a <a href="http://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1452&amp;top=16">visitor record</a>, which shows the date you need to leave by.</p>
+                    <p>If you don&rsquo;t get a stamp in your passport, you can stay for 6 months from the day you entered Canada, or until your biometrics or passport expires, whichever comes first. Super visa holders who enter Canada after June&nbsp;22, 2023 can stay for 5 years. If you need a stamp, you can ask a border services officer for one.</p>
+
+                    <h3>Make sure you need a visitor visa before you apply</h3>
+                    <p>You may need a visitor visa <strong>or</strong> an Electronic Travel Authorization (eTA). The entry document you need depends on:</p>
+                    <ul>
+                        <li>the type of travel document you plan to travel with</li>
+                        <li>the country that issued your travel document</li>
+                        <li>your nationality</li>
+                        <li>how you&rsquo;ll travel to Canada for this trip</li>
+                    </ul>
+                    <p><a class="btn btn-primary" href="https://ircc.canada.ca/english/visit/visas.asp">Find out if you need a visitor visa</a></p>
+                </section>
+
+                <!-- =================================================== -->
+                <!-- STAGE 2 : WHO CAN APPLY                             -->
+                <!-- =================================================== -->
+                <section class="vv-section" id="stage-2" aria-labelledby="stage-2-h">
+                    <span class="vv-eyebrow">Step 2 of 5</span>
+                    <h2 class="vv-stage-h" id="stage-2-h">Who can apply</h2>
+
+                    <div class="alert alert-danger">
+                        <p><strong>Foreign nationals living in the Democratic Republic of the Congo, South Sudan and Uganda can&rsquo;t travel to Canada as of May&nbsp;27, 2026.</strong></p>
+                        <p><strong><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/special-measures/ebola-2026.html">Find out more about these measures</a></strong></p>
+                    </div>
+
+                    <h3>Who can get a visa</h3>
+                    <p>You must meet some basic requirements to get a visitor visa. You must:</p>
+                    <ul>
+                        <li>have a <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/passport-travel-document.html">valid travel document</a>, like a passport</li>
+                        <li>be in good health</li>
+                        <li>have no criminal or immigration-related convictions</li>
+                        <li>convince an immigration officer that you have ties&mdash;such as a job, home, financial assets or family&mdash;that will take you back to your home country</li>
+                        <li>convince an immigration officer that you will leave Canada at the end of your visit</li>
+                        <li>have enough money for your stay
+                            <ul><li>The amount depends on how long you stay and whether you stay in a hotel, or with friends or relatives.</li></ul>
+                        </li>
+                    </ul>
+                    <p>You may also need a <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/medical-police/medical-exams.html">medical exam</a> and a <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/letter-invitation.html">letter of invitation</a> from someone who lives in Canada.</p>
+
+                    <h3>Some people are not allowed to enter Canada</h3>
+                    <p>Some people are inadmissible to Canada, which means they are not allowed to enter the country. You can be inadmissible for several reasons, including being involved in:</p>
+                    <ul>
+                        <li>criminal activity</li>
+                        <li>human rights violations</li>
+                        <li>organized crime</li>
+                    </ul>
+                    <p>You can also be inadmissible for security, health or financial reasons. <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/inadmissibility.html">Find out more about inadmissibility</a>.</p>
+
+                    <h3>Minor children travelling to Canada</h3>
+                    <p>Make sure you know what to do if your <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/minor-children-travelling-canada.html">minor children</a> (children under the age of 18) will be travelling with you, with someone else, or alone.</p>
+                </section>
+
+                <!-- =================================================== -->
+                <!-- STAGE 3 : HOW TO APPLY  (has SUB-STEPS 3a/3b/3c)    -->
+                <!-- =================================================== -->
+                <section class="vv-section" id="stage-3" aria-labelledby="stage-3-h">
+                    <span class="vv-eyebrow">Step 3 of 5</span>
+                    <h2 class="vv-stage-h" id="stage-3-h">How to apply</h2>
+                    <p>The reason you&rsquo;re travelling to Canada determines the way you apply and the documents you need to submit. This step has three sub-steps &mdash; work through them in order.</p>
+
+                    <!-- ---------- SUB-STEP 3a ---------- -->
+                    <div class="vv-substep-section" id="stage-3a" aria-labelledby="stage-3a-h">
+                        <h3 id="stage-3a-h">Step&nbsp;3a &mdash; Gather your required documents</h3>
+                        <p>All applicants need to include:</p>
+                        <ul>
+                            <li>a digital copy of your valid (not expired) <a href="#" class="vv-lbx" data-modal="travel-doc">passport or travel document</a>
+                                <ul><li>It should be valid for <strong>at least 6 months</strong> from the date you plan to travel. If you need to renew it, do so <strong>before</strong> you apply.</li></ul>
+                                <details>
+                                    <summary><strong>Details to include</strong></summary>
+                                    <ul><li>A clear, colour copy of the valid passport or travel document you&rsquo;ll travel with.</li></ul>
+                                    <p class="mrgn-tp-md">If you have a passport, provide a copy of the page showing your birth date and country of origin, plus any pages with stamps, visas or markings.</p>
+                                    <p>If you have a travel document, it must be government-issued and include your name, date of birth, document number, citizenship or residence status, photo and expiry date (if applicable).</p>
+                                </details>
+                            </li>
+                            <li>a letter that authorizes a minor child to travel to Canada (if applicable)
+                                <ul><li>You may need <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/minor-children-travelling-canada.html">other documents</a>, depending on whether the minor child travels alone or not.</li></ul>
+                            </li>
+                        </ul>
+                        <p>When you apply online, you&rsquo;ll get a personalized document checklist in the portal. Provide all documents listed on it.</p>
+
+                        <h4>Check if your local visa office requires additional documents</h4>
+                        <p>Your visa office may require additional documents. Tell us where you&rsquo;re applying from to get the requirements for your country or territory.</p>
+                        <div class="form-group" style="max-width:420px;">
+                            <label for="vv-country"><strong>Where are you applying from?</strong></label>
+                            <select id="vv-country" class="form-control">
+                                <option value="">Select country or territory</option>
+                            </select>
+                        </div>
+                        <div id="vv-country-note" class="alert alert-info vv-country-note vv-hidden" role="status"></div>
+                    </div>
+
+                    <!-- ---------- SUB-STEP 3b ---------- -->
+                    <div class="vv-substep-section" id="stage-3b" aria-labelledby="stage-3b-h">
+                        <h3 id="stage-3b-h">Step&nbsp;3b &mdash; Tell us the purpose of your visit</h3>
+                        <p>Your answer tailors the documents and instructions shown in Step&nbsp;3c.</p>
+
+                        <div class="well vv-wizard" id="vv-wizard">
+                            <form onsubmit="return false;">
+                                <fieldset>
+                                    <legend>Why are you applying for a visitor visa?</legend>
+                                    <label class="vv-choice"><input type="radio" name="vv-purpose" value="fifa"> To attend a FIFA World Cup 2026&trade; match</label>
+                                    <label class="vv-choice"><input type="radio" name="vv-purpose" value="tourist"> To visit as a tourist</label>
+                                    <label class="vv-choice"><input type="radio" name="vv-purpose" value="business"> To visit for business</label>
+                                    <label class="vv-choice"><input type="radio" name="vv-purpose" value="spouse"> To visit your spouse or partner who has sponsored you for permanent residence</label>
+                                    <label class="vv-choice"><input type="radio" name="vv-purpose" value="family"> For a family visit</label>
+                                    <label class="vv-choice"><input type="radio" name="vv-purpose" value="compassionate"> For compassionate reasons</label>
+                                    <label class="vv-choice"><input type="radio" name="vv-purpose" value="marine"> To join a vessel as a marine crew member (a &ldquo;seafarer&rdquo;)</label>
+                                    <label class="vv-choice"><input type="radio" name="vv-purpose" value="none"> None of the above</label>
+                                </fieldset>
+
+                                <!-- Sub-question: family member's status -->
+                                <div class="vv-subq vv-hidden" id="vv-subq-family">
+                                    <p><strong>What is your family member&rsquo;s status in Canada?</strong></p>
+                                    <label class="vv-choice"><input type="radio" name="vv-family-status" value="citizen"> Canadian citizen</label>
+                                    <label class="vv-choice"><input type="radio" name="vv-family-status" value="indian-act"> Person registered under Canada&rsquo;s Indian Act</label>
+                                    <label class="vv-choice"><input type="radio" name="vv-family-status" value="pr"> Canadian permanent resident</label>
+                                    <label class="vv-choice"><input type="radio" name="vv-family-status" value="temp"> Temporary resident in Canada</label>
+                                </div>
+
+                                <!-- Sub-question: super visa duration -->
+                                <div class="vv-subq vv-hidden" id="vv-subq-super">
+                                    <p><strong>Do you plan to visit your children or grandchildren for more than 6 months?</strong></p>
+                                    <label class="vv-choice"><input type="radio" name="vv-super" value="yes"> Yes</label>
+                                    <label class="vv-choice"><input type="radio" name="vv-super" value="no"> No</label>
+                                </div>
+
+                                <p><button type="button" class="btn btn-default btn-sm vv-reset vv-hidden" id="vv-wizard-reset">Start over</button></p>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- ---------- SUB-STEP 3c ---------- -->
+                    <div class="vv-substep-section" id="stage-3c" aria-labelledby="stage-3c-h">
+                        <h3 id="stage-3c-h">Step&nbsp;3c &mdash; Follow your personalized steps</h3>
+                        <p class="vv-hint" id="vv-results-hint">Answer the question in Step&nbsp;3b and your tailored steps &mdash; the extra documents you need, your fees, how to submit, and biometrics &mdash; will appear here.</p>
+
+                        <!-- ===== RESULTS ===== -->
+                        <div id="vv-results" class="vv-hidden" role="region" aria-live="polite" aria-label="Your application instructions">
+
+                            <!-- Super visa: terminal, no steps -->
+                            <div class="vv-result vv-hidden" id="res-supervisa">
+                                <div class="vv-result-head"><h3>You may be eligible to apply for a Super Visa</h3></div>
+                                <p>A super visa lets you visit your children or grandchildren for 5 years at a time. It provides multiple entries for a period of up to 10 years.</p>
+                                <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/parent-grandparent-super-visa.html" class="btn btn-primary">Find out how to apply for a Super Visa</a></p>
+                            </div>
+
+                            <!-- Situation headers (only one shows) -->
+                            <div class="vv-result-head">
+                                <div class="vv-sit vv-hidden" id="sit-business"><h3>You&rsquo;re coming to Canada to visit for business</h3></div>
+                                <div class="vv-sit vv-hidden" id="sit-compassionate"><h3>You&rsquo;re coming to Canada for compassionate reasons</h3></div>
+                                <div class="vv-sit vv-hidden" id="sit-family"><h3>You&rsquo;re coming to Canada to visit your family</h3></div>
+                                <div class="vv-sit vv-hidden" id="sit-fifa"><h3>You&rsquo;re coming to Canada to attend a FIFA World Cup 2026&trade; match</h3></div>
+                                <div class="vv-sit vv-hidden" id="sit-visitor"><h3>You&rsquo;re coming to Canada as a visitor</h3></div>
+                                <div class="vv-sit vv-hidden" id="sit-marine"><h3>You&rsquo;re coming to Canada to join a vessel as a marine crew member</h3></div>
+                                <div class="vv-sit vv-hidden" id="sit-spouse"><h3>You&rsquo;re coming to Canada to visit your spouse or partner who has sponsored you for permanent residence</h3></div>
+                                <div class="vv-sit vv-hidden" id="sit-tourist"><h3>You&rsquo;re coming to Canada to visit as a tourist</h3></div>
+                            </div>
+
+                            <div id="vv-steps-result">
+                            <ol class="lst-stps">
+                                <li>
+                                    <h3>Gather the rest of the documents you might need</h3>
+                                    <div class="cond comp vv-hidden"><p>You must include a <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/letter-invitation.html">letter from a person or business inviting you to Canada</a>. It can confirm that your purpose for visiting is valid.</p></div>
+                                    <div class="cond family-spouse vv-hidden"><p>You must show proof of your relationship with the person or family member inviting you to Canada.</p></div>
+                                    <div class="cond comp-fam-spouse vv-hidden">
+                                        <p>This can include a copy of:</p>
+                                        <ul class="mrgn-bttm-md">
+                                            <li>a marriage certificate</li>
+                                            <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5409.html">Statutory Declaration of Common-Law Union (IMM&nbsp;5409) form</a></li>
+                                            <li>a birth certificate</li>
+                                            <li>an official document naming you as a parent</li>
+                                        </ul>
+                                    </div>
+                                    <div class="cond marine-docs vv-hidden">
+                                        <p>You must submit the following documents with your visa application:</p>
+                                        <ul>
+                                            <li>digital copy of Seaman&rsquo;s Book</li>
+                                            <li>digital copy of a signed <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/letter-invitation.html">Letter of Invitation</a> from a ship or port agent in Canada</li>
+                                            <li>digital copy of an Introduction Letter from a recruiter, shipping agency or vessel owner</li>
+                                            <li>digital copy of the employment contract</li>
+                                        </ul>
+                                    </div>
+                                    <p>Your document checklist may include supporting documents such as:</p>
+                                    <ul>
+                                        <li class="cond vis-form vv-hidden"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5645.html">Family Information (IMM&nbsp;5645) form</a></li>
+                                        <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html" target="_blank" rel="noopener">Use of a representative (IMM&nbsp;5476)</a> <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span> (if using an authorized representative)</li>
+                                        <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5475.html" target="_blank" rel="noopener">Authority to Release Personal Information to a Designated Individual (IMM&nbsp;5475) form</a> <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="wb-inv">(opens in a new tab)</span></li>
+                                    </ul>
+                                    <details class="mrgn-tp-md">
+                                        <summary>Recommended documents</summary>
+                                        <dl class="dl-horizontal">
+                                            <dt>Travel history</dt>
+                                            <dd>
+                                                <p>If you&rsquo;ve travelled to Canada or other countries, this can show you&rsquo;ve been able to get a visa before. Proof includes copies of previous visas in your passport.</p>
+                                                <details><summary>Details to include</summary><p>Include a clear copy of 1 or more of the following:</p><ul><li>your previous passports and/or visas (used within the last 10 years)</li><li>entry and exit stamps</li><li>study and/or work permits</li><li>expired or valid visas</li></ul></details>
+                                            </dd>
+                                            <dt>Itinerary</dt>
+                                            <dd>
+                                                <p>Documents that show how long you plan to stay and what you&rsquo;ll do in Canada.</p>
+                                                <details><summary>Details to include</summary><p>Include copies of any of the following:</p><ul><li>flight details</li><li>proof of accommodation</li><li>registration for an event</li></ul></details>
+                                            </dd>
+                                            <dt>Bank account statement</dt>
+                                            <dd>
+                                                <p>This can help us understand if you have enough money to support yourself during your stay.</p>
+                                                <details><summary>Details to include</summary><p><strong>Bank name and contact</strong> &mdash; so we can contact your bank with questions.</p><p><strong>Proof it is your account</strong> &mdash; your name and address on the statement.</p><p><strong>Account details</strong> &mdash; at least 6 months of details, including balances.</p></details>
+                                            </dd>
+                                            <dt class="cond emp-inf vv-hidden">Employer information</dt>
+                                            <dd class="cond emp-inf vv-hidden">
+                                                <p>A letter from your employer can confirm you have a stable job and will return to it.</p>
+                                                <details><summary>Details to include</summary><p>On official letterhead, dated no earlier than 3 months before you apply, including: confirmation you have a job, your full name and date of birth, start date, a brief job description, current salary, your manager&rsquo;s contact information, employer name and address, and the signature of your employer.</p></details>
+                                            </dd>
+                                            <dt class="cond loi vv-hidden">Letter of invitation</dt>
+                                            <dd class="cond loi vv-hidden">
+                                                <p>A letter from a business or company in Canada confirming that your purpose for visiting is valid.</p>
+                                                <details><summary>Details to include</summary><p>A copy of the letter, written to you from the business or company. Consult the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/business/bring-business-guests/letter-invitation.html">details to include in the letter</a>.</p></details>
+                                            </dd>
+                                        </dl>
+                                    </details>
+                                </li>
+                                <li>
+                                    <h3>Pay your fees</h3>
+                                    <p>We&rsquo;ll ask you to pay at the end of your application. You&rsquo;ll need a valid <a href="#" class="vv-lbx" data-modal="credit">credit</a> or <a href="#" class="vv-lbx" data-modal="debit">debit</a> card. In most cases, <a href="https://ircc.canada.ca/english/information/fees/fees.asp">your fees</a> include processing and biometrics fees. Some applicants <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/fee-exemptions.html">may be exempt</a>.</p>
+                                    <h4>Total fees</h4>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead><tr class="active"><th scope="col">Type of fee</th><th scope="col">Amount</th><th scope="col">Who pays</th></tr></thead>
+                                            <tbody>
+                                                <tr><td>Visitor visa processing fee</td><td>Individual: $100<br>Family (5+ people): $500</td><td>All applicants</td></tr>
+                                                <tr><td>Biometrics fee</td><td>Individual: $85<br>Family: up to $170 (<a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/biometrics.html">if eligible</a>)</td><td><a href="https://ircc.canada.ca/english/visit/biometrics.asp">Check if you need biometrics</a></td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3>Submit your application</h3>
+                                    <!-- apply mode A: single online portal (FIFA) -->
+                                    <div class="apply apply-online vv-hidden">
+                                        <h4>IRCC Portal</h4>
+                                        <p>You can use the IRCC Portal to apply for a visitor visa.</p>
+                                        <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html" class="btn btn-call-to-action">Go to the IRCC Portal</a></p>
+                                    </div>
+                                    <!-- apply mode B: two-option portal panel (most situations) -->
+                                    <div class="apply apply-portal-cxp vv-hidden mrgn-bttm-lg">
+                                        <div class="well well-sm brdr-rds-0">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h4 class="text-muted">IRCC Portal <span class="wb-inv">: Option 1 of 2</span></h4>
+                                                    <p>You can use the IRCC Portal to apply for a visitor visa.</p>
+                                                    <p><a class="btn btn-primary btn-block" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/portal-application-process.html">Go to IRCC Portal</a></p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h4 class="text-muted">IRCC Portal &ndash; New version <span class="wb-inv">: Option 2 of 2</span></h4>
+                                                    <p>You may be able to use the new version if you:</p>
+                                                    <ul><li>are 18 or older</li><li>are applying alone</li><li>have never applied with us before</li><li>are not using a representative</li></ul>
+                                                    <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/online-account.html" class="btn btn-primary btn-block">Try the new version</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- apply mode C: IRCC secure account (none of the above) -->
+                                    <div class="apply apply-secure vv-hidden">
+                                        <p>To apply online, you need a scanner or camera to create electronic copies of your documents, and a valid <a href="#" class="vv-lbx" data-modal="credit">credit</a> or <a href="#" class="vv-lbx" data-modal="debit">debit</a> card.</p>
+                                        <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5256-applying-visitor-visa-temporary-resident-visa.html">Read the instruction guide</a> <strong>before</strong> you complete your application. Online applicants can ignore steps 3 and 4 of the guide.</p>
+                                        <p><strong>If you&rsquo;re applying for the first time</strong>, you must pay the biometrics fee <strong>when you submit</strong> (unless exempt), or you may experience delays.</p>
+                                        <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/account.html" class="btn btn-call-to-action">Sign in to your IRCC secure account</a></p>
+                                    </div>
+                                    <!-- conditional: spousal fast-track -->
+                                    <div class="cond spouse-spnsr vv-hidden">
+                                        <h4>Faster visitor visa processing for spousal applicants</h4>
+                                        <p>If you&rsquo;re being sponsored for permanent residence by your spouse or partner, you could benefit from faster processing. You may be eligible if you submitted an <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/apply.html">application to be sponsored</a> and received an acknowledgement of receipt (AOR). When your sponsor receives the AOR, you can apply for a visitor visa and, if eligible, it will <strong>automatically</strong> get faster processing. You must still meet <strong>all</strong> the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eligibility.html">eligibility requirements</a>.</p>
+                                    </div>
+                                    <details class="apply-paper vv-hidden">
+                                        <summary>Applying on paper for specific situations</summary>
+                                        <p>You must apply online. However, you can <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa/paper-application.html">apply on paper</a> if either you <strong>can&rsquo;t</strong> apply online (including for reasons of a disability), <strong>or</strong> you&rsquo;re travelling with an identity or travel document issued to a refugee, a stateless person or a non-citizen.</p>
+                                    </details>
+                                </li>
+                                <li>
+                                    <h3>Give your biometrics after you apply (if applicable)</h3>
+                                    <p>Wait for your biometrics instruction letter, then book your biometrics collection appointment as soon as possible to avoid delays. <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/biometrics/how-to-give.html">Give your biometrics</a>.</p>
+                                    <details>
+                                        <summary><strong>Reasons why you might need to give biometrics again</strong></summary>
+                                        <ul>
+                                            <li>Your biometrics will expire soon (we can&rsquo;t issue a visa valid longer than your biometrics).</li>
+                                            <li>You applied for permanent residence and your application was refused.</li>
+                                            <li>You gave only partial biometrics (fingerprints or photo).</li>
+                                        </ul>
+                                        <p>Giving biometrics again <strong>doesn&rsquo;t</strong> automatically extend your visa to 10 years. A visa can be issued for <strong>up to</strong> 10 years or until your passport or biometrics expire, whichever comes first.</p>
+                                    </details>
+                                </li>
+                            </ol>
+                            </div><!-- /#vv-steps-result -->
+                        </div><!-- /#vv-results -->
+                    </div><!-- /#stage-3c -->
+                </section>
+
+                <!-- =================================================== -->
+                <!-- STAGE 4 : AFTER YOU APPLY                           -->
+                <!-- =================================================== -->
+                <section class="vv-section" id="stage-4" aria-labelledby="stage-4-h">
+                    <span class="vv-eyebrow">Step 4 of 5</span>
+                    <h2 class="vv-stage-h" id="stage-4-h">After you apply</h2>
+
+                    <h3>Your fingerprints and photo (biometrics)</h3>
+                    <p>Book your biometrics collection appointment as soon as you can to avoid processing delays. <a href="https://www.canada.ca/en/immigration-refugees-citizenship/campaigns/biometrics/how-to-give-biometrics.html">Find out how to give biometrics</a>.</p>
+
+                    <h3>Processing your visitor visa application</h3>
+                    <p>We&rsquo;ll check your application to make sure you have all the documents you need. If it&rsquo;s incomplete, your application may be refused. We may also ask you to:</p>
+                    <ul>
+                        <li>go to an interview with our officials in your country</li>
+                        <li>send more information</li>
+                        <li>get a <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/medical-police/medical-exams.html">medical exam</a></li>
+                        <li>get a <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/medical-police/police-certificates.html">police certificate</a></li>
+                    </ul>
+                    <p>We process most applications in a few weeks or less. <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html">Processing times</a> depend on the visa office and any extra steps.</p>
+
+                    <h3>Check your application status</h3>
+                    <p>The way to check depends on how you applied. Find out <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html">how to check your application status</a>.</p>
+
+                    <h3>If we approve your application</h3>
+                    <details>
+                        <summary>If you applied online</summary>
+                        <p>You&rsquo;ll get a letter in your IRCC account with instructions to submit your passport. <strong>You can&rsquo;t travel to Canada until we put the visa in the passport you submit.</strong> Submit the same passport you provided in your application &mdash; a newer passport may delay processing and won&rsquo;t mean a longer visa validity.</p>
+                    </details>
+                    <details>
+                        <summary>If you applied on paper</summary>
+                        <p>When your application is approved, any original documents, including your passport with the visa inside, will be returned to you.</p>
+                    </details>
+
+                    <h3>If we refuse your application</h3>
+                    <details>
+                        <summary>If you applied online</summary>
+                        <p>You&rsquo;ll get our decision in your IRCC account, explaining why we refused your application.</p>
+                    </details>
+                    <details>
+                        <summary>If you applied on paper</summary>
+                        <p>An explanation of why your application was refused will be sent to you, along with any original documents, including your passport.</p>
+                    </details>
+                </section>
+
+                <!-- =================================================== -->
+                <!-- STAGE 5 : PREPARE FOR YOUR ARRIVAL                  -->
+                <!-- =================================================== -->
+                <section class="vv-section" id="stage-5" aria-labelledby="stage-5-h">
+                    <span class="vv-eyebrow">Step 5 of 5</span>
+                    <h2 class="vv-stage-h" id="stage-5-h">Prepare for your arrival</h2>
+
+                    <h3>Documents you need before you travel to Canada</h3>
+                    <p>In some situations, you&rsquo;ll need to bring documents with you when you travel to Canada.</p>
+                    <h4>You have a child under the age of 18 (a minor child)</h4>
+                    <p>In Canada, a child under 18 is a minor. You may need to show a letter that authorizes the minor child to travel to Canada, and other documents such as adoption papers or a custody decree. <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/minor-children-travelling-canada.html">Find out more</a>.</p>
+                    <h4>You were invited to come to Canada</h4>
+                    <p>If you got a letter from a person or company that invited you to Canada, bring it. A border services officer may ask to see it. <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/letter-invitation.html">Find out more about letters of invitation</a>.</p>
+
+                    <h3>Your arrival in Canada</h3>
+                    <p>A valid visa and travel document don&rsquo;t guarantee that you can enter Canada. When you arrive, we&rsquo;ll check your identity to make sure you&rsquo;re the same person who was approved to travel.</p>
+                    <ul>
+                        <li><strong>At one of 4 major Canadian airports</strong> &mdash; your fingerprints are checked automatically at a <a href="https://www.cbsa-asfc.gc.ca/services/border-tech-frontiere/pik-bip-eng.html">primary inspection kiosk</a>.</li>
+                        <li><strong>At a land port of entry</strong> &mdash; your fingerprints may be checked if we refer you to a <a href="http://www.cbsa-asfc.gc.ca/publications/pub/bsf5146-eng.html">secondary inspection</a>.</li>
+                    </ul>
+
+                    <h3>When you enter Canada</h3>
+                    <p>If you pass the identity check, health assessment, and meet the <a href="#" class="vv-lbx" data-modal="entry">entry requirements</a>, the border services officer may stamp your passport or tell you how long you can stay. You&rsquo;re <a href="#" class="vv-lbx" data-modal="stay">normally allowed to stay</a> for up to 6 months.</p>
+                    <p>You won&rsquo;t be allowed into Canada if you give false or incomplete information. The officer must be convinced that you&rsquo;re eligible for entry and that you&rsquo;ll leave Canada at the end of your approved stay.</p>
+
+                    <div class="panel well">
+                        <div class="panel-body">
+                            <h3 class="mrgn-tp-sm">Top questions about visiting Canada</h3>
+                            <ul>
+                                <li><a href="http://www.cic.gc.ca/english/helpcentre/answer.asp?qnum=1016&amp;top=16">How long can I stay in Canada as a visitor?</a></li>
+                                <li><a href="http://www.cic.gc.ca/english/helpcentre/answer.asp?qnum=417&amp;top=16">What is the difference between a single and a multiple entry visa?</a></li>
+                                <li><a href="http://www.cic.gc.ca/english/helpcentre/answer.asp?qnum=421&amp;top=16">How do I help a family member or friend apply to visit Canada?</a></li>
+                            </ul>
+                            <p><a class="btn btn-primary" href="http://www.cic.gc.ca/english/helpcentre/results-by-topic.asp?top=16">See all questions about this topic</a></p>
+                        </div>
+                    </div>
+                </section>
+
+            </div><!-- /.vv-main -->
+        </div><!-- /.vv-layout -->
+
+        <section class="pagedetails">
+            <h2 class="wb-inv">Page details</h2>
+            <gcds-date-modified>2026-06-19</gcds-date-modified>
+        </section>
+        <!-- CONTENT ENDS HERE -->
+    </main>
+
+    <button type="button" class="vv-top" id="vv-top" aria-label="Back to top">&uarr; Top</button>
+
+    <!-- Reusable modal shell -->
+    <div class="vv-modal-overlay" id="vv-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="vv-modal-title">
+        <div class="vv-modal">
+            <div class="vv-modal-header">
+                <h2 id="vv-modal-title">Details</h2>
+                <button type="button" class="vv-modal-close" id="vv-modal-close" aria-label="Close">&times;</button>
+            </div>
+            <div class="vv-modal-body" id="vv-modal-body"></div>
+        </div>
+    </div>
+
+    <div class="global-footer">
+        <footer id="wb-info">
+            <h2 class="wb-inv">About this site</h2>
+            <div class="gc-contextual">
+                <div class="container">
+                    <nav>
+                        <h3>Immigration and citizenship</h3>
+                        <ul class="list-col-xs-1 list-col-sm-2 list-col-md-3">
+                            <li><a href="https://ircc.canada.ca/english/helpcentre/index-featured-can.asp">Help Centre</a></li>
+                            <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc.html">Contact us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="gc-main-footer">
+                <div class="container">
+                    <nav>
+                        <h3>Government of Canada</h3>
+                        <ul class="list-unstyled colcount-sm-2 colcount-md-3">
+                            <li><a href="https://www.canada.ca/en/contact.html">All contacts</a></li>
+                            <li><a href="https://www.canada.ca/en/government/dept.html">Departments and agencies</a></li>
+                            <li><a href="https://www.canada.ca/en/government/system.html">About government</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="gc-sub-footer">
+                <div class="container d-flex align-items-center">
+                    <nav>
+                        <h3 class="wb-inv">Government of Canada Corporate</h3>
+                        <ul>
+                            <li><a href="https://www.canada.ca/en/social.html">Social media</a></li>
+                            <li><a href="https://www.canada.ca/en/mobile.html">Mobile applications</a></li>
+                            <li><a href="https://www.canada.ca/en/government/about.html">About Canada.ca</a></li>
+                            <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+                            <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
+                        </ul>
+                    </nav>
+                    <div class="wtrmrk align-self-end">
+                        <img src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
+    <script>
+    (function () {
+        "use strict";
+        document.documentElement.classList.remove("no-js");
+
+        /* ---------- helpers ---------- */
+        var $  = function (s, c) { return (c || document).querySelector(s); };
+        var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+        function show(el) { if (el) el.classList.remove("vv-hidden"); }
+        function hide(el) { if (el) el.classList.add("vv-hidden"); }
+
+        /* ============================================================
+           1. SCROLLSPY + PROGRESS  (supports nested sub-steps)
+           ============================================================ */
+        var mainSteps  = $$(".vv-step");
+        var mainTitles = mainSteps.map(function (s) { return $(".vv-step-title", s).textContent; });
+
+        // Build a flat, in-document-order list of scroll targets. A step with
+        // sub-steps contributes one entry per sub-step; a plain step contributes
+        // one entry for itself. Each entry records its parent step + sub index.
+        var flat = [];
+        mainSteps.forEach(function (stepEl, mi) {
+            var subItems = $$(".vv-substep", stepEl);
+            if (subItems.length) {
+                subItems.forEach(function (subEl, si) {
+                    flat.push({
+                        sec: document.getElementById(subEl.dataset.target),
+                        main: mi, sub: si, navMain: stepEl, navSub: subEl,
+                        subTitle: $(".vv-substep-title", subEl).textContent
+                    });
+                });
+            } else {
+                flat.push({
+                    sec: document.getElementById(stepEl.dataset.target),
+                    main: mi, sub: null, navMain: stepEl, navSub: null, subTitle: null
+                });
+            }
+        });
+
+        var fill      = $("#vv-progress");
+        var progText  = $("#vv-progress-text");
+        var toggleLbl = $("#vv-toggle-label");
+        var stepper   = $("#vv-steps");
+        var toggleBtn = $("#vv-stepper-toggle");
+        var currentFlat = -1;
+
+        function setActive(fi) {
+            if (fi === currentFlat) return;
+            currentFlat = fi;
+            var act = flat[fi];
+
+            // top-level step states
+            mainSteps.forEach(function (s, i) {
+                s.classList.toggle("is-active", i === act.main);
+                s.classList.toggle("is-done", i < act.main);
+            });
+            // sub-step states (done if we've scrolled past them within their step)
+            flat.forEach(function (f, i) {
+                if (!f.navSub) return;
+                f.navSub.classList.toggle("is-active", i === fi);
+                f.navSub.classList.toggle("is-done", i < fi && f.main <= act.main);
+            });
+
+            // progress runs across the flattened sequence (sub-steps count)
+            fill.style.width = ((fi + 1) / flat.length * 100) + "%";
+            var label = "Step " + (act.main + 1) + " of " + mainSteps.length;
+            progText.textContent = label;
+            toggleLbl.textContent = label + " · " + (act.sub !== null ? act.subTitle : mainTitles[act.main]);
+        }
+
+        /* ---- mobile jump-menu toggle ---- */
+        function closeMenu() { stepper.classList.remove("is-open"); toggleBtn.setAttribute("aria-expanded", "false"); }
+        toggleBtn.addEventListener("click", function () {
+            var open = stepper.classList.toggle("is-open");
+            this.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+        document.addEventListener("click", function (e) {
+            if (stepper.classList.contains("is-open") && !stepper.contains(e.target)) closeMenu();
+        });
+        window.addEventListener("resize", function () { if (window.innerWidth > 991) closeMenu(); });
+
+        function onScroll() {
+            var probe = window.scrollY + window.innerHeight * 0.32;
+            var fi = 0;
+            for (var i = 0; i < flat.length; i++) {
+                if (flat[i].sec && flat[i].sec.offsetTop <= probe) fi = i;
+            }
+            setActive(fi);
+            topBtn.classList.toggle("is-visible", window.scrollY > 600);
+        }
+
+        /* smooth-scroll for step + sub-step links */
+        $$('.vv-stepper a[href^="#"]').forEach(function (a) {
+            a.addEventListener("click", function (e) {
+                var t = document.getElementById(this.getAttribute("href").slice(1));
+                if (t) { e.preventDefault(); closeMenu();
+                         t.scrollIntoView({ behavior: "smooth", block: "start" });
+                         t.setAttribute("tabindex", "-1"); t.focus({ preventScroll: true }); }
+            });
+        });
+
+        var topBtn = $("#vv-top");
+        topBtn.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+
+        /* ============================================================
+           2. PURPOSE-OF-VISIT WIZARD  (drives sub-step 3c)
+           ============================================================ */
+        var OUTCOMES = {
+            fifa:         { sit: "sit-fifa",          apply: "apply-online",     conds: [] },
+            tourist:      { sit: "sit-tourist",       apply: "apply-portal-cxp", conds: [] },
+            business:     { sit: "sit-business",      apply: "apply-portal-cxp", conds: ["emp-inf", "loi"] },
+            spouse:       { sit: "sit-spouse",        apply: "apply-portal-cxp", conds: ["family-spouse", "comp-fam-spouse", "spouse-spnsr"] },
+            family:       { sit: "sit-family",        apply: "apply-portal-cxp", conds: ["family-spouse", "comp-fam-spouse"] },
+            compassionate:{ sit: "sit-compassionate", apply: "apply-portal-cxp", conds: ["comp", "comp-fam-spouse"] },
+            marine:       { sit: "sit-marine",        apply: "apply-portal-cxp", conds: ["marine-docs"] },
+            none:         { sit: "sit-visitor",       apply: "apply-secure",     conds: ["vis-form"] }
+        };
+
+        var results     = $("#vv-results");
+        var resultsHint = $("#vv-results-hint");
+        var stepsWrap   = $("#vv-steps-result");
+        var superBlock  = $("#res-supervisa");
+        var subFamily   = $("#vv-subq-family");
+        var subSuper    = $("#vv-subq-super");
+        var resetBtn    = $("#vv-wizard-reset");
+
+        function revealResults() { show(results); hide(resultsHint); }
+        function concealResults() { hide(results); show(resultsHint); }
+
+        function clearResults() {
+            $$(".vv-sit").forEach(hide);
+            $$(".cond").forEach(hide);
+            $$(".apply").forEach(hide);
+            hide(superBlock);
+            show(stepsWrap);
+        }
+
+        function applyOutcome(key) {
+            clearResults();
+            var o = OUTCOMES[key];
+            if (!o) return;
+            show(document.getElementById(o.sit));
+            show($("." + o.apply));
+            var paper = $(".apply-paper");
+            if (key === "marine" || key === "fifa") { hide(paper); } else { show(paper); }
+            o.conds.forEach(function (c) { $$("." + c).forEach(show); });
+            revealResults();
+        }
+
+        function showSuperVisa() {
+            clearResults();
+            hide(stepsWrap);           // super visa is terminal — no application steps
+            show(superBlock);
+            revealResults();
+        }
+
+        function checkedStyling(groupName) {
+            $$('input[name="' + groupName + '"]').forEach(function (inp) {
+                inp.closest(".vv-choice").classList.toggle("is-checked", inp.checked);
+            });
+        }
+
+        // main purpose radios
+        $$('input[name="vv-purpose"]').forEach(function (inp) {
+            inp.addEventListener("change", function () {
+                checkedStyling("vv-purpose");
+                hide(subFamily); hide(subSuper);
+                $$('input[name="vv-family-status"]').forEach(function (r) { r.checked = false; });
+                $$('input[name="vv-super"]').forEach(function (r) { r.checked = false; });
+                checkedStyling("vv-family-status"); checkedStyling("vv-super");
+                show(resetBtn);
+
+                var v = this.value;
+                if (v === "family") {
+                    concealResults();
+                    show(subFamily);
+                    subFamily.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                } else {
+                    applyOutcome(v);
+                    results.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            });
+        });
+
+        // family member status
+        $$('input[name="vv-family-status"]').forEach(function (inp) {
+            inp.addEventListener("change", function () {
+                checkedStyling("vv-family-status");
+                hide(subSuper);
+                $$('input[name="vv-super"]').forEach(function (r) { r.checked = false; });
+                checkedStyling("vv-super");
+                if (this.value === "temp") {
+                    applyOutcome("family");
+                    results.scrollIntoView({ behavior: "smooth", block: "start" });
+                } else {
+                    concealResults();
+                    show(subSuper);
+                    subSuper.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                }
+            });
+        });
+
+        // super visa duration
+        $$('input[name="vv-super"]').forEach(function (inp) {
+            inp.addEventListener("change", function () {
+                checkedStyling("vv-super");
+                if (this.value === "yes") { showSuperVisa(); }
+                else { applyOutcome("family"); }
+                (this.value === "yes" ? superBlock : results).scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+        });
+
+        resetBtn.addEventListener("click", function () {
+            $$('#vv-wizard input[type="radio"]').forEach(function (r) { r.checked = false; });
+            checkedStyling("vv-purpose"); checkedStyling("vv-family-status"); checkedStyling("vv-super");
+            hide(subFamily); hide(subSuper); concealResults(); hide(this);
+            $("#vv-wizard").scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+
+        /* ============================================================
+           3. COUNTRY PICKER
+           ============================================================ */
+        var COUNTRIES = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua and Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bonaire","Bosnia and Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burma (Myanmar)","Burundi","Cabo Verde","Cambodia","Cameroon","Cayman Islands","Central African Republic","Chad","Chile","China (People’s Republic of)","Colombia","Comoros Island","Congo","Costa Rica","Côte d’Ivoire","Croatia","Cuba","Cyprus","Curacao","Czech Republic","Democratic Republic of the Congo","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macao","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman","Pakistan","Palau","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Turks and Caicos Islands","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"];
+        var sel = $("#vv-country");
+        COUNTRIES.forEach(function (c) {
+            var o = document.createElement("option"); o.value = c; o.textContent = c; sel.appendChild(o);
+        });
+        var cNote = $("#vv-country-note");
+        sel.addEventListener("change", function () {
+            if (!this.value) { hide(cNote); return; }
+            cNote.innerHTML = "Visa office requirements for <strong>" + this.value +
+                "</strong> are listed on Canada.ca. <a href=\"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/parent-grandparent-super-visa/forms-documents/list.html\">See the documents your visa office requires</a> and match them to your country.";
+            show(cNote);
+        });
+
+        /* ============================================================
+           4. MODALS  (replace wb-lbx lightboxes)
+           ============================================================ */
+        var MODALS = {
+            "travel-doc": { title: "Travel documents", html:
+                "<p><strong>Documents we accept:</strong></p>" +
+                "<ul><li>passports (regular, official or diplomatic) from most countries (see exceptions below)</li>" +
+                "<li>alien passport for stateless persons</li><li>US Permit to Re-Enter (Form I-327)</li>" +
+                "<li>US Refugee Travel Document (Form I-571)</li><li>other refugee travel documents for non-citizens</li></ul>" +
+                "<p><strong>Documents we don’t accept:</strong></p>" +
+                "<ul><li>any passport issued by Somalia</li><li>non-machine-readable passports issued by the Czech Republic</li>" +
+                "<li>temporary passports issued by the Republic of South Africa</li><li>provisional passports issued by Venezuela</li></ul>" },
+            "credit": { title: "Credit cards and prepaid cards", html:
+                "<p>We accept the following credit and prepaid cards:</p>" +
+                "<ul><li>Visa®</li><li>MasterCard®</li><li>American Express®</li><li>JCB®</li>" +
+                "<li>UnionPay® (for online applications only; debit cards not accepted)</li></ul>" +
+                "<p>If you use a prepaid credit card, keep it for <strong>at least</strong> 18 months after you pay to make refunds easier.</p>" +
+                "<p>We also accept all Visa Debit cards. The card you use doesn’t have to be in your name.</p>" },
+            "debit": { title: "Debit cards", html:
+                "<p>It must:</p><ul>" +
+                "<li>be from a Canadian bank using <a href=\"https://www.interac.ca/en/payments/personal/pay-with-interac-debit/#online\" rel=\"external noopener\">INTERAC® Online</a></li>" +
+                "<li>be registered for online banking through your bank’s website</li></ul>" +
+                "<p>We also accept all Debit MasterCard® and Visa® Debit cards. The card you use doesn’t have to be in your name.</p>" },
+            "entry": { title: "Basic entry requirements", html:
+                "<p>To visit Canada, you will need to meet some basic requirements, such as:</p><ul>" +
+                "<li>have a valid travel document, such as a passport</li><li>be in good health</li>" +
+                "<li>have no criminal or immigration-related convictions</li>" +
+                "<li>convince an immigration officer that you have ties that will take you back to your home country</li>" +
+                "<li>convince an immigration officer that you will leave Canada at the end of your visit</li>" +
+                "<li>have enough money for your stay</li></ul><h4>Inadmissibility</h4>" +
+                "<p>Some people are inadmissible &mdash; not allowed to come to Canada &mdash; including for involvement in criminal activity, human rights violations or organized crime, or for security, health or financial reasons. <a href=\"https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/inadmissibility.html\">Find out more</a>.</p>" },
+            "stay": { title: "How long you can stay", html:
+                "<p>Most visitors can stay for up to 6 months in Canada.</p>" +
+                "<p>At the port of entry, the border services officer may allow you to stay for less or more than 6 months. If so, they’ll put the date you need to leave by in your passport, and may give you a visitor record.</p>" +
+                "<p>If you don’t get a stamp, you can stay for 6 months from the day you entered Canada or until your passport expires, whichever comes first.</p>" }
+        };
+
+        var overlay   = $("#vv-modal-overlay");
+        var modalTitle= $("#vv-modal-title");
+        var modalBody = $("#vv-modal-body");
+        var lastFocus = null;
+
+        function openModal(key) {
+            var m = MODALS[key]; if (!m) return;
+            modalTitle.textContent = m.title;
+            modalBody.innerHTML = m.html;
+            lastFocus = document.activeElement;
+            overlay.classList.add("is-open");
+            $("#vv-modal-close").focus();
+            document.addEventListener("keydown", escClose);
+        }
+        function closeModal() {
+            overlay.classList.remove("is-open");
+            document.removeEventListener("keydown", escClose);
+            if (lastFocus) lastFocus.focus();
+        }
+        function escClose(e) { if (e.key === "Escape") closeModal(); }
+
+        $$(".vv-lbx").forEach(function (a) {
+            a.addEventListener("click", function (e) { e.preventDefault(); openModal(this.dataset.modal); });
+        });
+        $("#vv-modal-close").addEventListener("click", closeModal);
+        overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
+
+        /* init */
+        onScroll();
+    })();
+    </script>
+</body>
+</html>
