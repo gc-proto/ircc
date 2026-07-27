@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explore immigration programs - Canada.ca</title>
+<link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css">
+<noscript><link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css"></noscript>
+<style>
+:root{
+  --blue:#26374a;--blue2:#2b4a63;--link:#284162;--green:#218838;
+  --amber:#b8860b;--amber-bg:#fbf3d9;--green-bg:#e6f2e6;--line:#e4e8ec;
+  --ink:#2a2e33;--muted:#6b7885;--soft:#f4f6f8;--radius:10px;
+  --shadow:0 1px 3px rgba(20,40,60,.07),0 1px 2px rgba(20,40,60,.04);
+}
+.hidden{display:none!important}
+.card-panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:20px}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+.card-head h2{font-size:20px;margin:0;color:var(--ink)}
+.count-pill{min-width:26px;height:26px;padding:0 8px;border-radius:13px;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center}
+.selections{display:flex;flex-wrap:wrap;gap:8px;align-items:center;min-height:34px}
+.sel-empty{font-size:13.5px;color:var(--muted);font-style:italic}
+.sel-chip{display:inline-flex;align-items:center;gap:7px;background:#eef6ef;border:1px solid #cfe6d1;border-radius:999px;padding:5px 8px 5px 12px;font-size:13px}
+.sel-chip b{color:var(--ink)}
+.sel-chip .x{cursor:pointer;border:none;background:#d9e6da;color:#2c5c33;border-radius:50%;width:18px;height:18px;font-size:12px;line-height:1;display:inline-flex;align-items:center;justify-content:center}
+.sel-chip .x:hover{background:var(--green);color:#fff}
+.reset-link{margin-left:auto;font-size:12.5px;background:none;border:none;color:var(--link);cursor:pointer}
+.facet{padding:14px 0;border-bottom:1px solid var(--line)}
+.facet:last-child{border-bottom:none}
+.facet-q{font-size:14.5px;font-weight:600;color:var(--ink);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.facet-q .num{width:22px;height:22px;border-radius:50%;background:var(--soft);border:1px solid var(--line);font-size:11px;font-weight:700;color:var(--muted);display:inline-flex;align-items:center;justify-content:center}
+.pill-row{display:flex;flex-wrap:wrap;gap:8px}
+.pill{border:1.5px solid #c3d2df;background:#fff;color:var(--blue);border-radius:999px;padding:7px 16px;font-size:13.5px;font-weight:600;cursor:pointer;transition:all .15s ease}
+.pill:hover{background:var(--blue);border-color:var(--blue);color:#fff;transform:translateY(-1px)}
+.pill.selected{background:var(--blue);border-color:var(--blue);color:#fff}
+.facet.suggested .facet-q .num{background:#eaf2fb;border-color:#7ea9d6;color:var(--blue)}
+.hint{font-size:13px;color:var(--muted);margin:2px 0 0}
+.match-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.match-tag.eligible{background:var(--green-bg);color:var(--green)}
+.match-tag.potential{background:var(--amber-bg);color:var(--amber)}
+.lm-row{border:1px solid var(--line);border-radius:8px;margin-bottom:10px;background:#fff;overflow:hidden}
+.lm-row.expanded{box-shadow:var(--shadow)}
+.lm-row.eligible{border-left:4px solid var(--green)}
+.lm-row.potential{border-left:4px solid var(--amber)}
+.lm-summary{display:block;width:100%;text-align:left;cursor:pointer;background:none;border:none;padding:12px 14px;font-family:inherit}
+.lm-summary:hover{background:#fafbfc}
+.lm-head{display:flex;align-items:center;gap:8px}
+.lm-title{font-weight:700;font-size:15px;color:var(--ink);line-height:1.3;flex:1}
+.lm-chev{font-size:20px;color:#a6b1bd;transition:transform .2s ease;line-height:1}
+.lm-row.expanded .lm-chev{transform:rotate(90deg)}
+.lm-barwrap{display:flex;align-items:center;gap:10px;margin-top:9px}
+.lm-bar{flex:1;height:7px;background:#edf0f3;border-radius:999px;overflow:hidden}
+.lm-bar>span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--blue2),var(--blue));transition:width .45s ease}
+.lm-row.potential .lm-bar>span{background:linear-gradient(90deg,#d3a53a,var(--amber))}
+.lm-conf{font-size:12px;font-weight:700;color:var(--muted);min-width:34px;text-align:right}
+.lm-detail{display:none;padding:0 14px 14px}
+.lm-row.expanded .lm-detail{display:block}
+.lm-desc{font-size:13px;color:#555;margin:0 0 8px}
+.lm-reasons{list-style:none;padding:0;margin:0 0 8px}
+.lm-reasons li{font-size:12.5px;padding:2px 0;color:#3a4650}
+.lm-reasons li::before{content:"\2713";color:var(--green);font-weight:700;margin-right:6px}
+.lm-missing{font-size:12.5px;color:var(--muted);margin-bottom:8px}
+.lm-missing b{color:#566}
+.lm-link{font-size:13px;font-weight:700}
+.go-wrap{margin-top:14px}
+.go-link{display:inline-block;font-size:14px;font-weight:700}
+.go-link .glyphicon{font-size:11px;margin-left:5px}
+.matches-sticky{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}
+/* eligibility section (nested collapsible) */
+.elig{margin-top:12px}
+.elig-toggle{display:flex;align-items:center;gap:8px;width:100%;background:#f5f8fb;border:1px solid var(--line);border-radius:6px;padding:9px 12px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;color:var(--ink)}
+.elig-toggle:hover{background:#eaf1f8}
+.elig-toggle .chev{margin-left:auto;font-size:18px;color:#9aa5b1;transition:transform .2s ease;line-height:1}
+.elig.open .elig-toggle .chev{transform:rotate(90deg)}
+.elig-badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;padding:2px 9px;border-radius:999px}
+.elig-badge.likely{background:var(--green-bg);color:#1c6b2b}
+.elig-badge.unlikely{background:#fde8e8;color:#a12a2a}
+.elig-badge.onhold{background:#eef4fb;color:var(--blue)}
+.elig-badge.unstarted{background:#eceff2;color:var(--muted)}
+.elig-body{display:none;padding:12px 4px 2px}
+.elig.open .elig-body{display:block}
+.verdict{font-size:13px;font-weight:700;border-radius:6px;padding:8px 10px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.verdict.likely{background:var(--green-bg);color:#1c6b2b}
+.verdict.unlikely{background:#fde8e8;color:#a12a2a}
+.verdict.onhold{background:#eef4fb;color:var(--blue)}
+.verdict.unstarted{background:var(--soft);color:var(--muted)}
+.crit{padding:8px 0;border-bottom:1px dashed var(--line)}
+.crit:last-child{border-bottom:none}
+.crit-q{display:flex;gap:8px;font-size:13px;color:#3a4650;margin-bottom:6px}
+.crit-ic{flex:0 0 16px;font-weight:700;text-align:center}
+.crit-ic.pass{color:var(--green)}.crit-ic.fail{color:#c0392b}.crit-ic.unk{color:#c2c9d0}
+.crit-opts{display:flex;gap:6px;margin-left:24px}
+.opt{border:1px solid #c3d2df;background:#fff;color:var(--blue);border-radius:999px;padding:3px 12px;font-size:12px;font-weight:600;cursor:pointer}
+.opt:hover{background:#eef4fb}
+.opt.sel-yes{background:var(--green);border-color:var(--green);color:#fff}
+.opt.sel-no{background:#c0392b;border-color:#c0392b;color:#fff}
+.opt.sel-unsure{background:#8792a0;border-color:#8792a0;color:#fff}
+.elig-note{font-size:11.5px;color:var(--muted);margin-top:10px;font-style:italic}
+details.note{margin-top:20px;background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 16px;font-size:13.5px}
+details.note summary{cursor:pointer;font-weight:700}
+</style>
+</head>
+<body vocab="http://schema.org/" typeof="WebPage">
+<ul id="wb-tphp"><li class="wb-slc"><a class="wb-sl" href="#wb-cont">Skip to main content</a></li></ul>
+<header>
+  <div id="wb-bnr" class="container">
+    <div class="row">
+      <section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
+        <h2 class="wb-inv">Language selection</h2>
+        <ul class="list-inline mrgn-bttm-0"><li><a lang="fr" hreflang="fr" href="#">Français</a></li></ul>
+      </section>
+      <div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+        <a href="https://www.canada.ca/en.html" property="url">
+          <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo">
+          <span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span></a>
+        <meta property="name" content="Government of Canada">
+      </div>
+      <section id="wb-srch" class="col-lg-8 text-right">
+        <h2>Search</h2>
+        <form action="#" method="get" role="search" class="form-inline">
+          <div class="form-group wb-srch-qry">
+            <label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
+            <input id="wb-srch-q" class="wb-srch-q form-control" name="q" type="search" size="34" maxlength="170" placeholder="Search Canada.ca">
+            <button type="submit" id="wb-srch-sub" class="btn btn-primary"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+  <hr>
+  <nav id="wb-bc" property="breadcrumb">
+    <h2 class="wb-inv">You are here:</h2>
+    <div class="container"><ol class="breadcrumb">
+      <li><a href="#">Canada.ca</a></li><li><a href="#">Immigration and citizenship</a></li>
+      <li>Explore immigration programs</li>
+    </ol></div>
+  </nav>
+</header>
+
+<main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="container">
+  <h1 property="name" id="wb-cont" class="gc-thickline">Explore immigration programs</h1>
+  <p class="mrgn-tp-md">Choose the options that describe you to narrow the programs, then expand any
+  program to answer its specific eligibility questions and see how you measure up.</p>
+
+  <section class="card-panel">
+    <div class="card-head"><h2>Your selections</h2><button class="reset-link" id="reset">Start over</button></div>
+    <div id="selections" class="selections"></div>
+  </section>
+
+  <div class="row">
+    <div class="col-md-6">
+      <section class="card-panel">
+        <div class="card-head"><h2>Tell us about yourself</h2></div>
+        <p class="hint" id="facetHint">Start by choosing what you'd like to do in Canada.</p>
+        <div id="facets"></div>
+      </section>
+    </div>
+    <div class="col-md-6">
+      <section class="card-panel matches-sticky">
+        <div class="card-head"><h2>Matches</h2><span class="count-pill" id="count">0</span></div>
+        <p class="hint" id="matchHint">Select an option to see matching programs, then expand one to check eligibility.</p>
+        <div id="matches"></div>
+      </section>
+    </div>
+  </div>
+
+  <details class="note mrgn-tp-lg">
+    <summary>How this works &amp; disclaimer</summary>
+    <p>This is a static prototype: no server, no AI. Your pill selections narrow the programs against a
+    fixed rule set in your browser. Expanding a program reveals illustrative eligibility criteria you can
+    answer yes / no / not sure; the verdict is a simple check of those answers. The criteria are
+    best-guess summaries of Canada.ca program pages for demonstration only — they are not an official
+    eligibility assessment. An officer decides eligibility under the Immigration and Refugee Protection Act.</p>
+  </details>
+</main>
+
+<footer id="wb-info">
+  <h2 class="wb-inv">About this site</h2>
+  <div class="gc-sub-footer"><div class="d-flex align-items-center container">
+    <nav><h3 class="wb-inv">Government of Canada Corporate</h3>
+      <ul><li><a href="#">Terms and conditions</a></li><li><a href="#">Privacy</a></li></ul></nav>
+    <div class="wtrmrk align-self-end">
+      <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada">
+    </div>
+  </div></div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
+<script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
+<script>
+const PROGRAMS = [{"id": "express-entry", "title": "Express Entry", "description": "For skilled workers with various kinds of work experience", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/works.html", "required": {"goal": "work", "temporary_or_permanent": "permanent", "work_type": "skilled"}, "preferred": ["occupation", "english", "french", "education"]}, {"id": "r2", "title": "Atlantic Immigration Program", "description": "For skilled workers and international graduates to work and live in an Atlantic province", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/atlantic-immigration.html", "required": {"goal": "work", "temporary_or_permanent": "permanent", "work_type": "skilled"}, "preferred": ["job_offer", "english", "french", "education", "province"]}, {"id": "provincial-nominee", "title": "Provincial Nominee Program", "description": "For workers nominated by a province or territory to support their economy", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html", "required": {"goal": "work", "temporary_or_permanent": "permanent", "work_type": "skilled"}, "preferred": ["province", "occupation", "english", "french", "education"]}, {"id": "r12", "title": "Quebec entrepreneurs and investors", "description": "For entrepreneurs and investors who want to work in Quebec", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/application-permanent-residence-quebec-selected-business-class-applicants-investors-entrepreneurs.html", "required": {"goal": "work", "temporary_or_permanent": "permanent", "work_type": "business", "province": "quebec"}, "preferred": []}, {"id": "r13", "title": "Quebec selected skilled workers", "description": "For Quebec Selection Certificate holders who want to work as a skilled worker in Quebec", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/quebec-skilled-workers.html", "required": {"goal": "work", "temporary_or_permanent": "permanent", "work_type": "skilled", "province": "quebec"}, "preferred": ["french", "occupation", "education"]}, {"id": "francophone-community-immigration-pilot", "title": "Francophone Community Immigration Pilot", "description": "For skilled French-speaking workers to live and work in certain smaller Francophone minority communities", "url": "http://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/franco-immigration/eligibility.html", "required": {"goal": "work", "temporary_or_permanent": "permanent", "work_type": "skilled", "french": true}, "preferred": ["job_offer", "occupation", "education"]}, {"id": "rural-community-immigration-pilot", "title": "Rural Community Immigration Pilot", "description": "For skilled workers to live and work in certain smaller communities", "url": "http://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/rural-immigration/eligibility/proof-funds.html", "required": {"goal": "work", "temporary_or_permanent": "permanent", "work_type": "skilled"}, "preferred": ["job_offer", "english", "french", "education"]}, {"id": "home-care-worker-immigration-pilot", "title": "Home Care Worker Immigration pilots", "description": "For skilled workers who want to work in home child care or home support", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/caregivers/home-care-worker-immigration-pilots/child-care-home-support/eligibility.html", "required": {"goal": "work", "temporary_or_permanent": "permanent", "work_type": "skilled"}, "preferred": ["job_offer", "occupation", "english", "french", "education"]}, {"id": "tr-pr-hong-kong", "title": "Permanent residence pathway for Hong Kong residents", "description": "For Hong Kong residents in Canada", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/hong-kong-residents-permanent-residence.html", "required": {"goal": "work", "temporary_or_permanent": "permanent", "country": "hong_kong"}, "preferred": ["english", "french", "education"]}, {"id": "w1", "title": "Work permit", "description": "To work temporarily in Canada", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/need-permit.html", "required": {"goal": "work", "temporary_or_permanent": "temporary"}, "preferred": ["job_offer"]}, {"id": "w3", "title": "International Mobility Program Plus", "description": "For Quebec Selection Certificate (QSC) holders outside Quebec who want an open work permit", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/quebec-skilled-workers/international-mobility-program-plus-csq.html", "required": {"goal": "work", "temporary_or_permanent": "temporary", "province": "quebec"}, "preferred": []}, {"id": "study-permit", "title": "Study permit", "description": "To study in Canada", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool.html", "required": {"goal": "study"}, "preferred": ["education"]}, {"id": "f1a", "title": "Sponsor your spouse or partner", "description": "To sponsor your spouse or partner to come live in Canada", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/eligibility.html", "required": {"goal": "family", "family_action": "bring", "family_relationship": "spouse"}, "preferred": ["canadian_status"]}, {"id": "f1b", "title": "Sponsor your child", "description": "To sponsor your dependant child to come live in Canada", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html", "required": {"goal": "family", "family_action": "bring", "family_relationship": "child"}, "preferred": ["canadian_status"]}, {"id": "f2", "title": "Sponsor your parents or grandparents", "description": "To sponsor your parents or grandparents to come live in Canada", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/sponsor-parents-grandparents.html", "required": {"goal": "family", "family_action": "bring", "family_relationship": "parent_grandparent"}, "preferred": ["canadian_status"]}, {"id": "f3", "title": "Sponsor your adopted child", "description": "To sponsor a child adopted from another country to come live with you in Canada as a permanent resident", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/canadians/adopt-child-abroad/processes/choose-process/immigration.html", "required": {"goal": "family", "family_action": "bring", "family_relationship": "adopted_child"}, "preferred": ["canadian_status"]}, {"id": "citizenship-adopted-child", "title": "Get Canadian citizenship for your adopted child (adult or minor)", "description": "For an adopted person born in another country to become a Canadian citizen", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/canadians/adopt-child-abroad/processes/choose-process/citizenship/before.html", "required": {"goal": "family", "family_action": "bring", "family_relationship": "adopted_child"}, "preferred": ["canadian_status"]}, {"id": "f4", "title": "Sponsor your other relatives", "description": "To sponsor an eligible relative to come live in Canada", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/other-relatives.html", "required": {"goal": "family", "family_action": "bring", "family_relationship": "other"}, "preferred": ["canadian_status"]}, {"id": "f9a", "title": "Be sponsored as a spouse, partner", "description": "To come live in Canada", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/who-you-can-sponsor.html", "required": {"goal": "family", "family_action": "join", "family_relationship": "spouse"}, "preferred": []}, {"id": "f9b", "title": "Be sponsored as a child", "description": "To come live in Canada", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html", "required": {"goal": "family", "family_action": "join", "family_relationship": "child"}, "preferred": []}, {"id": "f10", "title": "Be sponsored as a parent or grandparent", "description": "To come live in Canada", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/sponsor-parents-grandparents.html", "required": {"goal": "family", "family_action": "join", "family_relationship": "parent_grandparent"}, "preferred": []}, {"id": "f11", "title": "Be sponsored as a relative", "description": "To come live in Canada", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/other-relatives.html", "required": {"goal": "family", "family_action": "join", "family_relationship": "other"}, "preferred": []}, {"id": "sv1", "title": "Parent and grandparent super visa", "description": "To visit children or grandchildren for up to 5 years at a time", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/parent-grandparent-super-visa/about.html", "required": {"goal": ["visit", "family"], "family_relationship": "parent_grandparent"}, "preferred": ["family_action"]}, {"id": "international-experience-canada", "title": "International Experience Canada", "description": "For youth between 18 and 35 who want to work and travel in Canada", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/about.html", "required": {"goal": ["work", "visit"], "temporary_or_permanent": "temporary", "age": "18-35"}, "preferred": ["country"]}, {"id": "v1", "title": "Visit Canada", "description": "To visit as a tourist, family or on business, or to transit through Canada", "url": "https://www.cic.gc.ca/english/visit/visas.asp", "required": {"goal": "visit"}, "preferred": []}, {"id": "post-graduation-work-permit", "title": "Post-graduation work permit (PGWP)", "description": "For recent college or university graduates who want to work and live in Canada temporarily", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html", "required": {"goal": "work", "temporary_or_permanent": "temporary"}, "preferred": ["english", "french", "education", "canadian_status"]}];
+const OPTIONS  = {"goal": {"prompt": "What would you like to do in Canada?", "options": [["Work", "work"], ["Study", "study"], ["Visit", "visit"], ["Reunite with family", "family"]]}, "temporary_or_permanent": {"prompt": "Stay permanently or temporarily?", "options": [["Permanently", "permanent"], ["Temporarily", "temporary"]]}, "work_type": {"prompt": "What kind of work?", "options": [["Skilled work or a trade", "skilled"], ["Start or invest in a business", "business"]]}, "age": {"prompt": "How old are you?", "options": [["Under 18", "under_18"], ["18 to 35", "18-35"], ["Over 35", "over_35"]]}, "province": {"prompt": "A specific province or region?", "options": [["Quebec", "quebec"], ["Atlantic Canada", "atlantic"], ["No preference", "other"]]}, "french": {"prompt": "Can you communicate in French?", "options": [["Yes", true], ["No", false]]}, "english": {"prompt": "Can you communicate in English?", "options": [["Yes", true], ["No", false]]}, "education": {"prompt": "Highest level of education?", "options": [["Post-secondary", "post_secondary"], ["Secondary", "secondary"], ["None", "none"]]}, "job_offer": {"prompt": "Do you have a Canadian job offer?", "options": [["Yes", true], ["No", false]]}, "family_action": {"prompt": "Bring family, or join family in Canada?", "options": [["Bring family to Canada", "bring"], ["Join family in Canada", "join"]]}, "family_relationship": {"prompt": "Which family member?", "options": [["Spouse or partner", "spouse"], ["Child", "child"], ["Parent or grandparent", "parent_grandparent"], ["Adopted child", "adopted_child"], ["Other relative", "other"]]}, "canadian_status": {"prompt": "Your current status in Canada?", "options": [["Citizen", "citizen"], ["Permanent resident", "permanent_resident"], ["Temporary resident", "temporary_resident"], ["None", "none"]]}, "country": {"prompt": "Are you a Hong Kong resident?", "options": [["Yes, Hong Kong", "hong_kong"], ["Another country", "other"]]}};
+const LABELS   = {"goal": "Goal", "temporary_or_permanent": "Status", "work_type": "Work type", "age": "Age", "province": "Province", "french": "French", "english": "English", "education": "Education", "job_offer": "Job offer", "family_action": "Family", "family_relationship": "Relationship", "canadian_status": "Status in Canada", "country": "Country", "occupation": "Occupation"};
+const CRITERIA = {"express-entry": [{"id": "skilled_exp", "q": "Do you have at least 1 year of skilled work experience (TEER 0, 1, 2 or 3) in the last 10 years?", "fail": "no"}, {"id": "language", "q": "Can you score Canadian Language Benchmark (CLB) 7 or higher in English or French?", "fail": "no"}, {"id": "education", "q": "Do you have a secondary or post-secondary credential (with an ECA if earned outside Canada)?", "fail": "no"}, {"id": "funds", "q": "Do you have enough settlement funds, or a valid job offer / authorization to work in Canada?", "fail": "no"}], "provincial-nominee": [{"id": "nomination", "q": "Have you been — or could you be — nominated by a province or territory?", "fail": "no"}, {"id": "stream", "q": "Do you meet a specific PNP stream's work and education requirements?", "fail": "no"}, {"id": "intent", "q": "Do you intend to live in that province or territory?", "fail": "no"}], "r2": [{"id": "job_offer", "q": "Do you have a job offer from a designated employer in an Atlantic province?", "fail": "no"}, {"id": "experience", "q": "Do you have at least 1 year of related work experience (or did you study in an Atlantic province)?", "fail": "no"}, {"id": "language", "q": "Can you reach CLB / NCLC 5 in English or French?", "fail": "no"}, {"id": "education", "q": "Do you have a secondary or post-secondary credential?", "fail": "no"}], "rural-community-immigration-pilot": [{"id": "job_offer", "q": "Do you have a job offer from a designated employer in a participating rural community?", "fail": "no"}, {"id": "experience", "q": "Do you have 1 year of related work experience in the last 3 years (or are an eligible graduate)?", "fail": "no"}, {"id": "language", "q": "Can you meet the language requirement (about CLB 4–6 depending on the job)?", "fail": "no"}, {"id": "education", "q": "Do you have a secondary school credential or higher?", "fail": "no"}], "francophone-community-immigration-pilot": [{"id": "job_offer", "q": "Do you have a job offer from a designated employer in a Francophone minority community?", "fail": "no"}, {"id": "french", "q": "Can you demonstrate French at about NCLC 5 or higher?", "fail": "no"}, {"id": "experience", "q": "Do you have 1 year of related work experience in the last 3 years (or are an eligible graduate)?", "fail": "no"}, {"id": "education", "q": "Do you have a secondary school credential or higher?", "fail": "no"}], "home-care-worker-immigration-pilot": [{"id": "job_offer", "q": "Do you have a job offer in home child care or home support?", "fail": "no"}, {"id": "experience", "q": "Do you have recent relevant caregiver experience or training?", "fail": "no"}, {"id": "language", "q": "Can you reach CLB 4 in English or French?", "fail": "no"}, {"id": "education", "q": "Do you have the equivalent of a Canadian high-school diploma?", "fail": "no"}], "r13": [{"id": "csq", "q": "Do you hold — or can you obtain — a Québec Selection Certificate (CSQ)?", "fail": "no"}, {"id": "grid", "q": "Do you meet Québec's selection factors (training, work experience, and ideally French)?", "fail": "no"}], "r12": [{"id": "net_worth", "q": "Do you have the required business assets / net worth for a Québec business program?", "fail": "no"}, {"id": "experience", "q": "Do you have business management or ownership experience?", "fail": "no"}, {"id": "csq", "q": "Are you applying through Québec's business immigration (CSQ) pathway?", "fail": "no"}], "tr-pr-hong-kong": [{"id": "passport", "q": "Do you hold a valid Hong Kong SAR, BN(O) or other eligible passport?", "fail": "no"}, {"id": "status", "q": "Are you in Canada with valid temporary resident status?", "fail": "no"}, {"id": "edu_exp", "q": "Do you have qualifying work experience or education in Canada?", "fail": "no"}, {"id": "language", "q": "Can you meet the language requirement (about CLB 5)?", "fail": "no"}], "w1": [{"id": "offer", "q": "Do you have a job offer (LMIA or LMIA-exempt), or qualify for an open work permit?", "fail": "no"}, {"id": "funds", "q": "Can you support yourself (and any family) during your stay?", "fail": "no"}, {"id": "leave", "q": "Will you leave Canada at the end of your authorized stay?", "fail": "no"}, {"id": "admissible", "q": "Are you admissible (no serious criminality or health inadmissibility)?", "fail": "no"}], "w3": [{"id": "csq", "q": "Do you hold a valid Québec Selection Certificate (CSQ)?", "fail": "no"}, {"id": "outside", "q": "Do you currently live outside Québec?", "fail": "no"}, {"id": "invite", "q": "Do you have a letter of invitation from the province of Québec?", "fail": "no"}], "post-graduation-work-permit": [{"id": "grad", "q": "Did you graduate from an eligible Designated Learning Institution (DLI)?", "fail": "no"}, {"id": "length", "q": "Was your study program at least 8 months long?", "fail": "no"}, {"id": "field_lang", "q": "Does your program / field meet current PGWP eligibility (and language, if required)?", "fail": "no"}, {"id": "apply", "q": "Are you applying within 180 days of your final marks, with valid status?", "fail": "no"}], "international-experience-canada": [{"id": "country", "q": "Are you a citizen of a country with a youth mobility agreement (or using a recognized organization)?", "fail": "no"}, {"id": "age", "q": "Are you within the age limit (usually 18–35, sometimes 18–30 or 29)?", "fail": "no"}, {"id": "funds", "q": "Do you have about CAD $2,500 to support yourself on arrival?", "fail": "no"}, {"id": "insurance", "q": "Will you have health insurance for the length of your stay?", "fail": "no"}], "study-permit": [{"id": "loa", "q": "Do you have a letter of acceptance from a Designated Learning Institution (DLI)?", "fail": "no"}, {"id": "pal", "q": "Do you have a Provincial/Territorial Attestation Letter (PAL/TAL), or are you exempt?", "fail": "no"}, {"id": "funds", "q": "Can you prove funds for tuition and living costs?", "fail": "no"}, {"id": "leave", "q": "Will you leave Canada at the end of your studies?", "fail": "no"}], "v1": [{"id": "passport", "q": "Do you have a valid passport or travel document?", "fail": "no"}, {"id": "funds", "q": "Do you have enough money for your visit?", "fail": "no"}, {"id": "ties", "q": "Do you have ties (job, home, family) that show you'll return home?", "fail": "no"}, {"id": "admissible", "q": "Are you admissible (no criminality or health inadmissibility)?", "fail": "no"}], "sv1": [{"id": "relationship", "q": "Are you the parent or grandparent of a Canadian citizen or permanent resident?", "fail": "no"}, {"id": "invite_income", "q": "Do you have an invitation letter and financial support meeting the income threshold (LICO)?", "fail": "no"}, {"id": "insurance", "q": "Do you have valid medical insurance (at least 1 year of coverage)?", "fail": "no"}, {"id": "exam", "q": "Are you willing to complete an immigration medical exam?", "fail": "no"}], "f1a": [{"id": "age_status", "q": "Are you at least 18 and a Canadian citizen, permanent resident, or registered under the Indian Act?", "fail": "no"}, {"id": "genuine", "q": "Is your marriage or common-law / conjugal relationship genuine (not mainly for immigration)?", "fail": "no"}, {"id": "support", "q": "Can you meet your spouse or partner's basic needs (a 3-year undertaking)?", "fail": "no"}, {"id": "not_barred", "q": "Are you free of sponsorship bars (e.g. no default, not on social assistance except for a disability)?", "fail": "no"}], "f1b": [{"id": "age_status", "q": "Are you at least 18 and a Canadian citizen, permanent resident, or registered under the Indian Act?", "fail": "no"}, {"id": "dependent", "q": "Is the child a dependent child (under 22 and without a spouse, or dependent due to a condition)?", "fail": "no"}, {"id": "support", "q": "Can you provide for the child's basic needs?", "fail": "no"}, {"id": "not_barred", "q": "Are you free of sponsorship bars?", "fail": "no"}], "f2": [{"id": "age_status", "q": "Are you at least 18 and a citizen or permanent resident living in Canada?", "fail": "no"}, {"id": "invited", "q": "Were you invited to apply (interest-to-sponsor intake) for parents and grandparents?", "fail": "no"}, {"id": "income", "q": "Do you meet the minimum necessary income (MNI) for the last 3 tax years?", "fail": "no"}, {"id": "undertaking", "q": "Can you sign a 20-year undertaking to financially support them?", "fail": "no"}], "f3": [{"id": "age_status", "q": "Are you at least 18 and a Canadian citizen or permanent resident?", "fail": "no"}, {"id": "adoption_legal", "q": "Is the adoption genuine and completed under the laws of the province / country?", "fail": "no"}, {"id": "best_interest", "q": "Does the adoption create a real parent-child relationship in the child's best interests?", "fail": "no"}, {"id": "not_for_status", "q": "Is the adoption not mainly to gain immigration status?", "fail": "no"}], "citizenship-adopted-child": [{"id": "citizen", "q": "Are you a Canadian citizen?", "fail": "no"}, {"id": "adoption_legal", "q": "Is the adoption genuine and completed (or being completed) under the applicable laws?", "fail": "no"}, {"id": "not_pr", "q": "Are you seeking citizenship directly (not sponsoring the child as a permanent resident)?", "fail": "no"}], "f4": [{"id": "age_status", "q": "Are you at least 18 and a citizen or permanent resident living in Canada?", "fail": "no"}, {"id": "lonely", "q": "Do you have no close relative you could sponsor instead and none already in Canada (the 'lonely Canadian' rule)?", "fail": "no"}, {"id": "eligible_relative", "q": "Is the relative eligible (e.g. an orphaned sibling, niece, nephew or grandchild under 18)?", "fail": "no"}, {"id": "support", "q": "Can you financially support them?", "fail": "no"}], "f9a": [{"id": "has_sponsor", "q": "Do you have a sponsor in Canada who is your spouse, common-law or conjugal partner?", "fail": "no"}, {"id": "genuine", "q": "Is your relationship genuine and continuing?", "fail": "no"}, {"id": "admissible", "q": "Are you admissible (medical, criminality, no misrepresentation)?", "fail": "no"}], "f9b": [{"id": "has_sponsor", "q": "Is your parent (a Canadian citizen or permanent resident) sponsoring you?", "fail": "no"}, {"id": "dependent", "q": "Do you qualify as a dependent child?", "fail": "no"}, {"id": "admissible", "q": "Are you admissible (including the immigration medical exam)?", "fail": "no"}], "f10": [{"id": "has_sponsor", "q": "Do you have a child or grandchild in Canada sponsoring you?", "fail": "no"}, {"id": "relationship", "q": "Are you related to your sponsor by blood or adoption?", "fail": "no"}, {"id": "admissible", "q": "Are you admissible (including the immigration medical exam)?", "fail": "no"}], "f11": [{"id": "has_sponsor", "q": "Do you have an eligible relative in Canada able to sponsor you?", "fail": "no"}, {"id": "category", "q": "Do you fit an eligible category (e.g. orphaned sibling, niece, nephew or grandchild under 18)?", "fail": "no"}, {"id": "admissible", "q": "Are you admissible (medical, criminality, no misrepresentation)?", "fail": "no"}]};
+
+let profile = {};                 // pill selections {fact: value}
+let elig = {};                    // eligibility answers {progId: {critId: "yes"|"no"|"unsure"}}
+let expanded = new Set();         // which program cards are open
+let eligOpen = new Set();         // which "Check your eligibility" sections are open
+let autoOpened = false;
+
+/* ---- rule engine ---- */
+function match(constraint, value){
+  if(value===undefined||value===null) return null;
+  if(Array.isArray(constraint)) return constraint.map(c=>String(c).toLowerCase()).includes(String(value).toLowerCase());
+  if(typeof constraint==="boolean") return Boolean(value)===constraint;
+  return String(value).toLowerCase()===String(constraint).toLowerCase();
+}
+function evalProgram(p){
+  const req=p.required||{}, pref=p.preferred||[];
+  let sat=[], missReq=[], reasons=[], contra=false;
+  for(const f in req){
+    const r=match(req[f], profile[f]);
+    if(r===true){ sat.push(f); reasons.push(reasonFor(f, profile[f])); }
+    else if(r===false){ contra=true; } else { missReq.push(f); }
+  }
+  const knownPref = pref.filter(f=>profile[f]!==undefined && profile[f]!==null);
+  const status = contra ? "excluded" : (missReq.length ? "potential" : "eligible");
+  const reqTotal = Object.keys(req).length||1, prefTotal = pref.length||1;
+  let score = 100*(0.70*(sat.length/reqTotal) + 0.30*(knownPref.length/prefTotal));
+  if(status==="potential") score=Math.min(score,65);
+  if(status==="eligible")  score=Math.max(score,60);
+  return {id:p.id,title:p.title,description:p.description,url:p.url,status:status,
+          confidence:Math.round(score),reasons:reasons,
+          missing:[...missReq,...pref.filter(f=>!knownPref.includes(f))].map(pretty)};
+}
+function evaluate(){
+  const rank={eligible:0,potential:1};
+  return PROGRAMS.map(evalProgram).filter(r=>r.status!=="excluded")
+    .sort((a,b)=> rank[a.status]-rank[b.status] || b.confidence-a.confidence);
+}
+function relevantFacts(){
+  if(profile["goal"]===undefined) return ["goal"];
+  const cands = PROGRAMS.map(p=>({p,e:evalProgram(p)})).filter(x=>x.e.status!=="excluded");
+  const counts={};
+  cands.forEach(({p})=>{ [...Object.keys(p.required||{}), ...(p.preferred||[])].forEach(f=>{
+    if(OPTIONS[f] && profile[f]===undefined) counts[f]=(counts[f]||0)+1; }); });
+  return Object.keys(counts).sort((a,b)=>counts[b]-counts[a]);
+}
+
+/* ---- eligibility verdict ---- */
+function eligState(id){
+  const crit=CRITERIA[id]||[]; if(!crit.length) return null;
+  const ans=elig[id]||{};
+  let fails=0, answered=0;
+  crit.forEach(c=>{ const a=ans[c.id]; if(a&&a!=="unsure"){ answered++; if(a===(c.fail||"no")) fails++; } });
+  let verdict = fails>0 ? "unlikely" : (answered===crit.length ? "likely" : (answered>0 ? "onhold" : "unstarted"));
+  return {crit, ans, fails, answered, total:crit.length, verdict};
+}
+const VERDICT_TEXT={
+  likely:"&#10003; You appear to meet the key criteria",
+  unlikely:"&#33; You may not meet one or more key criteria",
+  onhold:"Answering… ",
+  unstarted:"Answer these to check your eligibility"
+};
+const VERDICT_BADGE={likely:"Likely eligible",unlikely:"May not qualify",onhold:"In progress",unstarted:"Not checked"};
+
+/* ---- helpers ---- */
+function pretty(f){ return LABELS[f]||f; }
+function valueLabel(f,val){ const o=(OPTIONS[f]&&OPTIONS[f].options||[]).find(([l,v])=>String(v)===String(val)); return o?o[0]:String(val); }
+function reasonFor(f,val){
+  const phrases={goal:{work:"Wants to work",study:"Wants to study",visit:"Wants to visit",family:"Family reunification"},
+    temporary_or_permanent:{permanent:"Permanent immigration",temporary:"Temporary stay"},
+    work_type:{skilled:"Skilled occupation",business:"Business / investment"}};
+  if(phrases[f]&&phrases[f][String(val).toLowerCase()]) return phrases[f][String(val).toLowerCase()];
+  if(f==="french"&&val) return "Speaks French";
+  if(f==="english"&&val) return "Speaks English";
+  if(f==="province") return "Interested in "+valueLabel(f,val);
+  if(f==="age") return "Age "+valueLabel(f,val);
+  if(f==="country") return "From "+valueLabel(f,val);
+  if(f==="family_relationship") return "Relationship: "+valueLabel(f,val);
+  if(f==="family_action") return val==="bring"?"Bringing family":"Joining family";
+  return pretty(f)+": "+valueLabel(f,val);
+}
+
+/* ---- state setters ---- */
+function setFact(f,v){ profile[f]=v; render(); }
+function clearFact(f){ delete profile[f]; render(); }
+function setElig(prog,crit,val){
+  elig[prog]=elig[prog]||{};
+  if(elig[prog][crit]===val) delete elig[prog][crit]; else elig[prog][crit]=val;
+  render();
+}
+
+/* ---- render ---- */
+const $=id=>document.getElementById(id);
+function render(){ renderSelections(); renderFacets(); renderMatches(); }
+
+function renderSelections(){
+  const el=$("selections"); el.innerHTML="";
+  const keys=Object.keys(profile);
+  if(!keys.length){ el.innerHTML='<span class="sel-empty">No selections yet — choose an option to begin.</span>'; return; }
+  keys.forEach(f=>{
+    const chip=document.createElement("span"); chip.className="sel-chip";
+    chip.innerHTML=`<span>${pretty(f)}: <b>${valueLabel(f,profile[f])}</b></span>`;
+    const x=document.createElement("button"); x.className="x"; x.textContent="×"; x.title="Remove";
+    x.onclick=()=>clearFact(f); chip.appendChild(x); el.appendChild(chip);
+  });
+}
+function renderFacets(){
+  const el=$("facets"); el.innerHTML="";
+  const facts=relevantFacts();
+  $("facetHint").classList.toggle("hidden", Object.keys(profile).length>0);
+  const suggested=facts[0];
+  facts.forEach((f,i)=>{
+    const cfg=OPTIONS[f]; if(!cfg) return;
+    const g=document.createElement("div"); g.className="facet"+(f===suggested?" suggested":"");
+    g.innerHTML=`<div class="facet-q"><span class="num">${i+1}</span> ${cfg.prompt}</div>`;
+    const row=document.createElement("div"); row.className="pill-row";
+    cfg.options.forEach(([label,val])=>{
+      const b=document.createElement("button"); b.className="pill"; b.textContent=label;
+      if(String(profile[f])===String(val)) b.classList.add("selected");
+      b.onclick=()=> (String(profile[f])===String(val)) ? clearFact(f) : setFact(f,val);
+      row.appendChild(b);
+    });
+    g.appendChild(row); el.appendChild(g);
+  });
+  if(!facts.length) el.innerHTML='<p class="hint">You’ve answered everything relevant to your matches. Remove a selection above to explore other paths.</p>';
+}
+function eligHtml(id){
+  const st=eligState(id);
+  if(!st) return "";
+  const open=eligOpen.has(id);
+  let vtext=VERDICT_TEXT[st.verdict];
+  if(st.verdict==="onhold") vtext=`On track — ${st.answered}/${st.total} answered`;
+  let rows="";
+  st.crit.forEach(c=>{
+    const a=st.ans[c.id];
+    let ic="unk", sym="○";
+    if(a&&a!=="unsure"){ if(a===(c.fail||"no")){ic="fail";sym="✕";} else {ic="pass";sym="✓";} }
+    const mk=(v,lbl)=>`<button type="button" class="opt ${a===v?("sel-"+v):""}" data-prog="${id}" data-crit="${c.id}" data-val="${v}">${lbl}</button>`;
+    rows+=`<div class="crit"><div class="crit-q"><span class="crit-ic ${ic}">${sym}</span><span>${c.q}</span></div>
+      <div class="crit-opts">${mk("yes","Yes")}${mk("no","No")}${mk("unsure","Not sure")}</div></div>`;
+  });
+  return `<div class="elig ${open?"open":""}">
+    <button type="button" class="elig-toggle" data-elig="${id}">
+      <span>Check your eligibility</span>
+      <span class="elig-badge ${st.verdict}">${VERDICT_BADGE[st.verdict]}</span>
+      <span class="chev">&#8250;</span>
+    </button>
+    <div class="elig-body">
+      <div class="verdict ${st.verdict}">${vtext}</div>${rows}
+      <p class="elig-note">Illustrative criteria for this prototype — confirm details on Canada.ca.</p>
+    </div>
+  </div>`;
+}
+function renderMatches(){
+  const results=evaluate();
+  $("count").textContent=results.filter(r=>r.status==="eligible").length;
+  const el=$("matches"), hint=$("matchHint");
+  if(!Object.keys(profile).length){ el.innerHTML=""; hint.classList.remove("hidden"); return; }
+  hint.classList.add("hidden"); el.innerHTML="";
+  if(!autoOpened && results.length){ expanded.add(results[0].id); autoOpened=true; }
+  const label={eligible:"Match",potential:"Possible match"};
+  results.slice(0,8).forEach(r=>{
+    const open=expanded.has(r.id);
+    const reasons=(r.reasons||[]).map(x=>`<li>${x}</li>`).join("");
+    const miss=r.missing.length?`<div class="lm-missing"><b>${r.status==="potential"?"Still need":"Would strengthen"}:</b> ${r.missing.join(", ")}</div>`:"";
+    const link=r.url?`<div class="go-wrap"><a class="go-link" href="${r.url}" target="_blank" rel="noopener">Go to ${r.title}<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></div>`:"";
+    const row=document.createElement("div"); row.className="lm-row "+r.status+(open?" expanded":""); row.dataset.id=r.id;
+    row.innerHTML=`<button type="button" class="lm-summary">
+        <div class="lm-head"><span class="lm-title">${r.title}</span>
+          <span class="match-tag ${r.status}">${label[r.status]}</span><span class="lm-chev">&#8250;</span></div>
+        <div class="lm-barwrap"><div class="lm-bar"><span style="width:${r.confidence}%"></span></div>
+          <span class="lm-conf">${r.confidence}%</span></div>
+      </button>
+      <div class="lm-detail"><p class="lm-desc">${r.description}</p>
+        ${reasons?`<ul class="lm-reasons">${reasons}</ul>`:""}${miss}
+        ${eligHtml(r.id)}${link}</div>`;
+    el.appendChild(row);
+  });
+  if(results.length>8){ const m=document.createElement("p"); m.className="hint";
+    m.textContent=`+ ${results.length-8} more programs. Add a selection to narrow the list.`; el.appendChild(m); }
+}
+
+/* one delegated listener on the persistent #matches container */
+$("matches").addEventListener("click",e=>{
+  const opt=e.target.closest(".opt");
+  if(opt){ setElig(opt.dataset.prog, opt.dataset.crit, opt.dataset.val); return; }
+  const tog=e.target.closest(".elig-toggle");
+  if(tog){ const id=tog.dataset.elig;
+    if(eligOpen.has(id)) eligOpen.delete(id); else eligOpen.add(id);
+    tog.closest(".elig").classList.toggle("open"); return; }
+  const sum=e.target.closest(".lm-summary");
+  if(sum){ const row=sum.closest(".lm-row"); const id=row.dataset.id;
+    if(expanded.has(id)) expanded.delete(id); else expanded.add(id);
+    row.classList.toggle("expanded"); }
+});
+
+$("reset").onclick=()=>{ profile={}; elig={}; expanded=new Set(); eligOpen=new Set(); autoOpened=false; render(); };
+render();
+</script>
+</body>
+</html>
