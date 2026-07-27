@@ -1,0 +1,804 @@
+<!doctype html>
+<html class="no-js" dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head prefix="og: http://ogp.me/ns#">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Apply for a permanent resident travel document (PRTD) – Canada.ca</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="description" content="If you’re outside Canada without a valid PR card, you need to apply for a permanent resident travel document to return to Canada. The complete PRTD journey on one page: about the process, who can apply, how to apply, and after you apply." />
+    <meta name="keywords" content="travel document, permanent residents, pr card, lost, stolen, damaged, outside Canada" />
+    <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css" />
+    <noscript>
+        <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
+    </noscript>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+
+    <style>
+    /* ============================================================
+       Single-page permanent-resident-travel-document journey
+       — custom layer on GCWeb, modeled on the visitor-visa build
+       ============================================================ */
+
+    :root {
+        --pr-accent: #26374a;      /* GC dark blue */
+        --pr-link: #284162;
+        --pr-active: #2b8cc4;      /* active step blue */
+        --pr-done: #278400;        /* completed green */
+        --pr-line: #cfd6dc;
+        --pr-bg-soft: #f5f6f7;
+    }
+
+    /* ---- Overall two-column layout ----
+       align-items: stretch so the side column grows to full height and the
+       sticky stepper has room to travel. */
+    .pr-layout { display: flex; gap: 2.5rem; align-items: stretch; }
+    .pr-main   { flex: 1 1 auto; min-width: 0; }
+    .pr-side   { flex: 0 0 262px; }
+
+    /* ---- Sticky stepper ---- */
+    .pr-stepper { position: sticky; top: 1rem; }
+    .pr-stepper-head { display: flex; align-items: center; }
+    .pr-stepper-head h2 { margin: 0; font-size: 1.05em; color: var(--pr-accent); }
+
+    /* live progress bar inside the sticky stepper (so it follows) */
+    .pr-mini-progress { height: 6px; background: var(--pr-line); border-radius: 4px; overflow: hidden; margin: .6rem 0 .35rem; }
+    .pr-mini-fill { height: 100%; width: 0%; background: var(--pr-active); transition: width .25s ease; }
+    .pr-mini-label { font-size: .8em; color: #5c5c5c; margin: 0 0 .9rem; }
+
+    /* mobile-only toggle button (hidden on desktop) */
+    .pr-stepper-toggle {
+        display: none; align-items: center; justify-content: space-between; gap: .5rem;
+        width: 100%; background: none; border: none; padding: 0; cursor: pointer;
+        font-weight: 600; color: var(--pr-accent); font-size: 1em; text-align: left; line-height: 1.3;
+    }
+    .pr-toggle-caret { flex: 0 0 auto; transition: transform .2s ease; font-size: .8em; }
+    .pr-stepper.is-open .pr-toggle-caret { transform: rotate(180deg); }
+    .pr-stepper ol { list-style: none; margin: 0; padding: 0; position: relative; }
+    /* vertical connector line */
+    .pr-stepper ol::before {
+        content: ""; position: absolute; left: 13px; top: 14px; bottom: 14px;
+        width: 2px; background: var(--pr-line);
+    }
+    .pr-step { position: relative; margin: 0; }
+    .pr-step > a {
+        display: flex; align-items: flex-start; gap: .7rem;
+        padding: .55rem .5rem .55rem 0; text-decoration: none; color: var(--pr-link);
+        border-radius: 4px; line-height: 1.3;
+    }
+    .pr-step > a:hover, .pr-step > a:focus { background: var(--pr-bg-soft); text-decoration: underline; }
+    .pr-dot {
+        flex: 0 0 28px; height: 28px; width: 28px; border-radius: 50%;
+        background: #fff; border: 2px solid var(--pr-line); color: #5c5c5c;
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 700; font-size: .85em; z-index: 1; transition: all .2s ease;
+    }
+    .pr-step-label { padding-top: .18rem; }
+    .pr-step-num { display: block; font-size: .72em; text-transform: uppercase; letter-spacing: .04em; color: #6f6f6f; }
+    .pr-step-title { font-weight: 600; }
+
+    /* states driven by JS */
+    .pr-step.is-active > a { background: #eaf3f9; }
+    .pr-step.is-active .pr-dot { border-color: var(--pr-active); background: var(--pr-active); color: #fff; }
+    .pr-step.is-active .pr-step-title { color: var(--pr-accent); }
+    .pr-step.is-done .pr-dot { border-color: var(--pr-done); background: var(--pr-done); color: #fff; }
+    .pr-step.is-done .pr-dot::before { content: "\2713"; }
+    .pr-step.is-done .pr-dot .pr-n { display: none; }
+
+    /* ---- SUB-STEPS (nested under a step) ---- */
+    .pr-substeps {
+        list-style: none; margin: .1rem 0 .35rem; padding: 0 0 0 2.4rem;
+        position: relative; overflow: hidden;
+        max-height: 0; opacity: 0; transition: max-height .28s ease, opacity .2s ease;
+    }
+    /* expand only when the parent step is active */
+    .pr-step.is-active .pr-substeps { max-height: 260px; opacity: 1; }
+    /* thin connector aligned with the sub-dots */
+    .pr-substeps::before {
+        content: ""; position: absolute; left: calc(2.4rem + .4rem + 4px); top: .35rem; bottom: .35rem;
+        width: 2px; background: var(--pr-line);
+    }
+    .pr-substep { position: relative; margin: 0; }
+    .pr-substep > a {
+        display: flex; align-items: center; gap: .55rem; padding: .35rem .4rem;
+        text-decoration: none; color: var(--pr-link); font-size: .9em; border-radius: 4px; line-height: 1.25;
+    }
+    .pr-substep > a:hover, .pr-substep > a:focus { background: var(--pr-bg-soft); text-decoration: underline; }
+    .pr-subdot {
+        flex: 0 0 12px; height: 12px; width: 12px; border-radius: 50%; z-index: 1;
+        background: #fff; border: 2px solid var(--pr-line); transition: all .2s ease;
+    }
+    .pr-substep.is-active > a { background: #eaf3f9; color: var(--pr-accent); font-weight: 600; }
+    .pr-substep.is-active .pr-subdot { border-color: var(--pr-active); background: var(--pr-active); }
+    .pr-substep.is-done .pr-subdot { border-color: var(--pr-done); background: var(--pr-done); }
+
+    /* ---- Section styling ---- */
+    .pr-section { scroll-margin-top: 1rem; padding-top: .5rem; }
+    .pr-section + .pr-section { margin-top: 1.5rem; border-top: 4px solid var(--pr-accent); padding-top: 2rem; }
+    .pr-section > h2.pr-stage-h { color: var(--pr-accent); margin-top: 0; }
+    .pr-substep-section { scroll-margin-top: 1rem; padding-top: .25rem; }
+    .pr-substep-section > h3 { color: var(--pr-accent); }
+    .pr-eyebrow {
+        display: inline-block; font-size: .78em; font-weight: 700; text-transform: uppercase;
+        letter-spacing: .05em; color: #fff; background: var(--pr-active);
+        padding: .15rem .6rem; border-radius: 3px; margin-bottom: .6rem;
+    }
+
+    /* ---- "Back to top" pill ---- */
+    .pr-top {
+        position: fixed; right: 1.2rem; bottom: 1.2rem; z-index: 30;
+        background: var(--pr-accent); color: #fff; border: none; border-radius: 30px;
+        padding: .6rem 1rem; font-size: .9em; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.25);
+        opacity: 0; pointer-events: none; transition: opacity .25s ease;
+    }
+    .pr-top.is-visible { opacity: 1; pointer-events: auto; }
+    .pr-top:hover, .pr-top:focus { background: #1c2938; }
+
+    /* ---- Simple modal (replaces wb-lbx lightbox) ---- */
+    .pr-modal-overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 1000;
+        display: none; align-items: center; justify-content: center; padding: 1rem;
+    }
+    .pr-modal-overlay.is-open { display: flex; }
+    .pr-modal {
+        background: #fff; max-width: 640px; width: 100%; max-height: 86vh; overflow: auto;
+        border-radius: 6px; box-shadow: 0 10px 40px rgba(0,0,0,.3);
+    }
+    .pr-modal-header {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 1rem 1.25rem; border-bottom: 1px solid #e0e0e0;
+    }
+    .pr-modal-header h2 { margin: 0; font-size: 1.25em; color: var(--pr-accent); }
+    .pr-modal-body { padding: 1.25rem; }
+    .pr-modal-close {
+        background: none; border: none; font-size: 1.6rem; line-height: 1; cursor: pointer; color: #333; padding: 0 .3rem;
+    }
+    .pr-modal-close:hover { color: #000; }
+
+    /* ============================================================
+       MOBILE: app-style sticky progress header with a jump menu
+       ============================================================ */
+    @media (max-width: 991px) {
+        .pr-layout { display: block; }
+
+        .pr-side {
+            position: sticky; top: 0; z-index: 200; width: 100%; margin: 0 0 1.5rem;
+            background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.14);
+            border-bottom: 3px solid var(--pr-accent);
+        }
+        .pr-stepper { position: static; padding: .65rem 1rem .75rem; }
+
+        /* hide desktop heading + the "Step x of 4" line (the button shows both) */
+        .pr-stepper-head h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); margin: -1px; padding: 0; border: 0; }
+        .pr-mini-label { display: none; }
+
+        .pr-stepper-toggle { display: flex; }
+        .pr-mini-progress { margin: .55rem 0 0; }
+
+        #pr-steplist {
+            position: absolute; left: 0; right: 0; top: 100%;
+            background: #fff; border-top: 1px solid var(--pr-line);
+            box-shadow: 0 10px 22px rgba(0,0,0,.18);
+            max-height: 68vh; overflow-y: auto; padding: .4rem .6rem;
+            display: none;
+        }
+        .pr-stepper.is-open #pr-steplist { display: block; }
+        #pr-steplist::before { display: none; }
+        .pr-step > a { padding: .8rem .5rem; }
+
+        .pr-section + .pr-section { padding-top: 1.5rem; }
+    }
+    </style>
+</head>
+
+<body vocab="http://schema.org/" typeof="WebPage">
+    <nav>
+        <ul id="wb-tphp">
+            <li class="wb-slc"><a class="wb-sl" href="#wb-cont">Skip to main content</a></li>
+            <li class="wb-slc"><a class="wb-sl" href="#pr-steps">Skip to journey steps</a></li>
+            <li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">Skip to &#34;About government&#34;</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div id="wb-bnr" class="container">
+            <div class="row">
+                <section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
+                    <h2 class="wb-inv">Language selection</h2>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-inline mrgn-bttm-0">
+                                <li>
+                                    <a lang="fr" href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/residents-permanents/titre-voyage.html">
+                                        <span class="hidden-xs">Fran&ccedil;ais</span>
+                                        <abbr title="Fran&ccedil;ais" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+                    <a href="https://www.canada.ca/en.html" property="url">
+                        <img src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg" alt="Government of Canada" property="logo">
+                    </a>
+                    <meta property="name" content="Government of Canada" />
+                    <meta property="areaServed" typeof="Country" content="Canada" />
+                    <link property="logo" href="https://www.canada.ca/etc/designs/canada/wet-boew/assets/wmms-blk.svg" />
+                </div>
+                <section id="wb-srch" class="col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-12 col-sm-5 col-md-4">
+                    <h2>Search</h2>
+                    <form action="https://www.canada.ca/en/sr/srb.html" method="get" name="cse-search-box" role="search">
+                        <div class="form-group wb-srch-qry">
+                            <label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
+                            <input name="cdn" value="canada" type="hidden" />
+                            <input name="st" value="s" type="hidden" />
+                            <input name="num" value="10" type="hidden" />
+                            <input name="langs" value="en" type="hidden" />
+                            <input name="st1rt" value="1" type="hidden" />
+                            <input name="s5bm3ts21rch" value="x" type="hidden" />
+                            <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search Canada.ca" />
+                            <input type="hidden" name="_charset_" value="UTF-8" />
+                            <datalist id="wb-srch-q-ac"></datalist>
+                        </div>
+                        <div class="form-group submit">
+                            <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+
+        <nav class="gcweb-v2 gcweb-menu" typeof="SiteNavigationElement">
+            <div class="container">
+                <h2 class="wb-inv">Menu</h2>
+                <button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
+                <ul role="menu" aria-orientation="vertical" data-ajax-replace="https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-en.html">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <nav id="wb-bc" property="breadcrumb">
+            <h2 class="wb-inv">You are here:</h2>
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="https://www.canada.ca/en.html">Canada.ca</a></li>
+                    <li><a href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents.html">Permanent resident cards and status</a></li>
+                </ol>
+            </div>
+        </nav>
+    </header>
+
+    <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="container">
+        <!-- CONTENT STARTS HERE -->
+        <h1 property="name" id="wb-cont">Permanent resident travel document</h1>
+        <p class="mrgn-bttm-md">Everything you need to apply for a permanent resident travel document (PRTD) to return to Canada, on one page. Follow the four steps below &mdash; the tracker on the side keeps your place as you scroll.</p>
+
+        <div class="pr-layout">
+            <!-- ===================== STICKY STEPPER ===================== -->
+            <div class="pr-side">
+                <nav class="pr-stepper" id="pr-steps" aria-label="Permanent resident travel document steps">
+                    <div class="pr-stepper-head">
+                        <h2>Your journey</h2>
+                        <button type="button" class="pr-stepper-toggle" id="pr-stepper-toggle" aria-expanded="false" aria-controls="pr-steplist">
+                            <span class="pr-toggle-label" id="pr-toggle-label">Step 1 of 4 &middot; About the process</span>
+                            <span class="pr-toggle-caret" aria-hidden="true">&#9660;</span>
+                        </button>
+                    </div>
+                    <div class="pr-mini-progress" aria-hidden="true"><div class="pr-mini-fill" id="pr-progress"></div></div>
+                    <p class="pr-mini-label"><span id="pr-progress-text">Step 1 of 4</span></p>
+                    <ol id="pr-steplist">
+                        <li class="pr-step" data-target="stage-1"><a href="#stage-1"><span class="pr-dot"><span class="pr-n">1</span></span><span class="pr-step-label"><span class="pr-step-num">Step 1</span><span class="pr-step-title">About the process</span></span></a></li>
+                        <li class="pr-step" data-target="stage-2"><a href="#stage-2"><span class="pr-dot"><span class="pr-n">2</span></span><span class="pr-step-label"><span class="pr-step-num">Step 2</span><span class="pr-step-title">Who can apply</span></span></a></li>
+                        <li class="pr-step" data-target="stage-3">
+                            <a href="#stage-3"><span class="pr-dot"><span class="pr-n">3</span></span><span class="pr-step-label"><span class="pr-step-num">Step 3</span><span class="pr-step-title">How to apply</span></span></a>
+                            <ul class="pr-substeps" aria-label="How to apply sub-steps">
+                                <li class="pr-substep" data-target="stage-3a"><a href="#stage-3a"><span class="pr-subdot" aria-hidden="true"></span><span class="pr-substep-title">Get the application package</span></a></li>
+                                <li class="pr-substep" data-target="stage-3b"><a href="#stage-3b"><span class="pr-subdot" aria-hidden="true"></span><span class="pr-substep-title">Pay your fees online</span></a></li>
+                                <li class="pr-substep" data-target="stage-3c"><a href="#stage-3c"><span class="pr-subdot" aria-hidden="true"></span><span class="pr-substep-title">Submit your application</span></a></li>
+                            </ul>
+                        </li>
+                        <li class="pr-step" data-target="stage-4"><a href="#stage-4"><span class="pr-dot"><span class="pr-n">4</span></span><span class="pr-step-label"><span class="pr-step-num">Step 4</span><span class="pr-step-title">After you apply</span></span></a></li>
+                    </ol>
+                </nav>
+            </div>
+
+            <!-- ===================== MAIN CONTENT ===================== -->
+            <div class="pr-main">
+                <!-- Intro / at-a-glance -->
+                <section class="well brdr-rds-0" aria-label="At a glance">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2 class="mrgn-tp-0 h3"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> Fees</h2>
+                            <p class="mrgn-bttm-0">Permanent resident travel document: <strong>$CAN&nbsp;50</strong>.</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <h2 class="mrgn-tp-0 h3"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Processing time</h2>
+                            <p class="mrgn-bttm-0">Varies. <a href="#" class="pr-lbx" data-modal="processing-times">What affects processing times?</a></p>
+                        </div>
+                    </div>
+                    <p class="mrgn-tp-md mrgn-bttm-0">If you&rsquo;re outside Canada without a valid PR card, a permanent resident travel document (PRTD) lets you return to Canada by commercial vehicle (airplane, bus, boat or train).</p>
+                </section>
+
+                <!-- =================================================== -->
+                <!-- STAGE 1 : ABOUT THE PROCESS  (about.html)           -->
+                <!-- =================================================== -->
+                <section class="pr-section" id="stage-1" aria-labelledby="stage-1-h">
+                    <span class="pr-eyebrow">Step 1 of 4</span>
+                    <h2 class="pr-stage-h" id="stage-1-h">About the process</h2>
+
+                            <p><strong>If you&rsquo;re outside Canada without a valid PR card</strong>, you need to apply for a permanent resident travel document (PRTD). For example, if your PR card expires or is lost, stolen or damaged while you&rsquo;re outside Canada, you need a PRTD to enter Canada by commercial vehicle (airplane, bus, boat or train).</p>
+
+                            <p>A PRTD is normally only valid for one single entry. You should <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents/card/apply.html">apply for a new PR card</a> as soon as you return to Canada.</p>
+                        
+                            <p>All PRTD applications are processed on a <strong>priority basis</strong>. If we require further information, a letter will be sent to you.</p>
+
+                            <div class="alert alert-warning">
+                                <h3>Giving up permanent resident status</h3>
+
+                                <p>If you want to give up (renounce) your permanent resident status and want to come to Canada <strong>as a visitor only, don&rsquo;t apply for a PRTD</strong>. You should apply to <a href="https://ircc.canada.ca/english/information/applications/guides/5781ETOC.asp">voluntarily give up (renounce) your permanent resident status</a>.</p>
+                            </div>
+                </section>
+
+                <!-- =================================================== -->
+                <!-- STAGE 2 : WHO CAN APPLY  (eligibility.html)         -->
+                <!-- =================================================== -->
+                <section class="pr-section" id="stage-2" aria-labelledby="stage-2-h">
+                    <span class="pr-eyebrow">Step 2 of 4</span>
+                    <h2 class="pr-stage-h" id="stage-2-h">Who can apply</h2>
+
+                    <h3>Eligibility</h3>
+                    <p>You can apply for a permanent resident travel document if you</p>
+                    <ul>
+                        <li>have <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents/status.html">permanent resident status in Canada</a></li>
+                        <li>do not have a valid <abbr title="permanent resident">PR</abbr> card showing your PR status,</li>
+                        <li>are <strong>outside Canada</strong></li>
+                        <li>will return to Canada by airplane, boat, train or bus.</li>
+                    </ul>
+                </section>
+
+                <!-- =================================================== -->
+                <!-- STAGE 3 : HOW TO APPLY  (apply.html)                -->
+                <!-- =================================================== -->
+                <section class="pr-section" id="stage-3" aria-labelledby="stage-3-h">
+                    <span class="pr-eyebrow">Step 3 of 4</span>
+                    <h2 class="pr-stage-h" id="stage-3-h">How to apply</h2>
+
+                    <div class="alert alert-info">
+                        <p>You can now apply online for a permanent resident travel document.</p>
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <h3>If you need a permanent resident travel document urgently</h3>
+                        <p>You may apply urgently for a PRTD for reasons such as serious illness, or a lost or stolen PR card.</p>
+                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents/card/urgent.html">Find out how to apply urgently for a PRTD.</a>
+                    </div>
+                    <p>To apply for a PRTD</p>
+                    <ul>
+                        <li>you must submit a complete application for <strong>each</strong> person in your family who needs one</li>
+                        <li>each application must show that the person meets the requirements to remain a permanent resident
+                            <ul>
+                                <li>For example, you can&rsquo;t have a removal order to leave Canada.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="well">
+                        <p>If your application is missing information or documents, we&rsquo;ll return it to you.</p>
+                    </div>
+
+                    <p>Follow the steps below to submit your application:</p>
+
+                    <!-- ---------- SUB-STEP 3a ---------- -->
+                    <div class="pr-substep-section" id="stage-3a" aria-labelledby="stage-3a-h">
+                        <h3 id="stage-3a-h">Step&nbsp;3a &mdash; Get the application package</h3>
+                        <p>The application package includes the instruction guide and all the forms you need to fill out.</p>
+
+                        <ol class="lst-lwr-alph">
+                        <li>
+                            <h4>Read the instruction guide</h4>
+                            <p>Our <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5529-applying-permanent-resident-travel-document.html" target="_blank" rel="noopener">instruction guide [IMM&nbsp;5529]<span class="wb-inv"> (opens in a new tab)</span></a>
+                                <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span> has detailed information on how to prepare, complete and submit your application.</p>
+                        </li>
+                        <li>
+                            <h4>Prepare your forms and documents</h4>
+                            <p>You need to provide all of the documents in the document checklist and complete the application form.</p>
+                            <div class="btn-group mrgn-bttm-md">
+                                <button type="button" class="btn btn-default wb-toggle" data-toggle='{"selector": "details", "type": "on"}'>Open all</button>
+                                <button type="button" class="btn btn-default wb-toggle" data-toggle='{"selector": "details", "type": "off"}'>Close all</button>
+                            </div>
+
+                            <details class="print-open">
+                                <summary class="wb-toggle" data-toggle='{"print":"on"}'>Prepare all the documents in the checklist</summary>
+                                <p>Review the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5644.html" target="_blank" rel="noopener">document checklist (IMM&nbsp;5644)<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</p>
+                                <ul>
+                                    <li>Use the checklist to make sure you include <strong>all</strong> the forms and documents you need.</li>
+                                    <li>Include the checklist in your application.</li>
+                                </ul>
+                            </details>
+
+                            <details class="print-open">
+                                <summary class="wb-toggle" data-toggle='{"print":"on"}'>Fill out the application form</summary>
+                                <p>If you apply online, fill out the application for a permanent resident travel document (IMM&nbsp;5444) form <strong>in</strong> the <a href="https://prson-srpel.apps.cic.gc.ca/en/login">permanent residence portal</a>.</p>
+
+                                <details>
+                                    <summary>If you can&rsquo;t apply online</summary>
+                                    <p>You can apply on paper if you can&rsquo;t apply online and require accommodations, including for accessibility reasons.</p>
+                                    <p>To apply on paper, download and fill out <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5444.html" target="_blank" rel="noopener">IMM&nbsp;5444<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</p>
+                                    <p>Make sure you click the &ldquo;Validate&rdquo; button at the top of the form before printing and signing it.</p>
+                                </details>
+                            </details>
+
+                            <details class="print-open">
+                                <summary class="wb-toggle" data-toggle='{"print":"on"}'>If you have a representative or designated individual</summary>
+                                <p>If you want to appoint someone to do business with us on your behalf (optional), you can use either a</p>
+                                <ul>
+                                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigration-citizenship-representative/learn-about-representatives.html">representative</a> or</li>
+                                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigration-citizenship-representative/application-access.html">designated individual</a></li>
+                                </ul>
+                                <p><strong>Download and complete 1 of these forms</strong> based on who&rsquo;s helping you:</p>
+                                <ul>
+                                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html" target="_blank" rel="noopener">Use of a representative (IMM&nbsp;5476)<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></li>
+                                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5475.html" target="_blank" rel="noopener">Authority to release personal information to a designated individual (IMM&nbsp;5475)<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></li>
+                                </ul>
+                                <p>Make sure</p>
+                                <ul>
+                                    <li>you sign it digitally <strong>or</strong> by hand</li>
+                                    <li>your representative or designated individual also signs it</li>
+                                    <li>you include it with your application</li>
+                                </ul>
+                            </details>
+                            <details class="print-open">
+                                <summary class="wb-toggle" data-toggle='{"print":"on"}'>If you&rsquo;re applying from China and have a Chinese passport</summary>
+                                <p>You <strong>must</strong> include an &ldquo;Inquiry of Exit &amp; Entry Record&rdquo; from China.</p>
+                                <ul>
+                                    <li>It must show a record of your entry to and exit from China for 5 years before the date of your application.</li>
+                                    <li>You can get the document from the local Public Security Bureau.</li>
+                                    <li>Make sure you translate the document to English or French.</li>
+                                </ul>
+                            </details>
+                        </li>
+                        </ol>
+                    </div><!-- /#stage-3a -->
+
+                    <!-- ---------- SUB-STEP 3b ---------- -->
+                    <div class="pr-substep-section" id="stage-3b" aria-labelledby="stage-3b-h">
+                        <h3 id="stage-3b-h">Step&nbsp;3b &mdash; Pay your fees online</h3>
+                        <p>You need to pay the <strong>$50</strong> fee when you apply.</p>
+                        <ul>
+                            <li>Make sure you <strong>include your receipt</strong> (proof of payment) with your application.</li>
+                            <li>We can&rsquo;t refund the fee once we start processing your application.</li>
+                        </ul>
+                        <p><a class="btn btn-default" href="https://ircc.canada.ca/english/information/fees/pay.asp">Pay your fees online</a></p>
+                    </div><!-- /#stage-3b -->
+
+                    <!-- ---------- SUB-STEP 3c ---------- -->
+                    <div class="pr-substep-section" id="stage-3c" aria-labelledby="stage-3c-h">
+                        <h3 id="stage-3c-h">Step&nbsp;3c &mdash; Submit your application and supporting documents</h3>
+                        <h4>If you apply online</h4>
+                        <p>When applying online, submit your application and all supporting documents through the <a href="https://prson-srpel.apps.cic.gc.ca/en/login">permanent residence portal</a>.</p>
+
+                        <details>
+                            <summary>
+                                <span class="h6">If you apply on paper</span>
+                            </summary>
+                            <p>You may be able to apply on paper if your nearest visa application centre (VAC) accepts paper applications by mail or in person.</p>
+                            <p><strong>Before you apply</strong>, <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/offices/find-visa-application-centre.html">contact your nearest VAC</a>.</p>
+                        </details>
+                    </div><!-- /#stage-3c -->
+                </section>
+
+                <!-- =================================================== -->
+                <!-- STAGE 4 : AFTER YOU APPLY  (after-next-steps.html)  -->
+                <!-- =================================================== -->
+                <section class="pr-section" id="stage-4" aria-labelledby="stage-4-h">
+                    <span class="pr-eyebrow">Step 4 of 4</span>
+                    <h2 class="pr-stage-h" id="stage-4-h">After you apply</h2>
+
+                    <h3>In this section</h3>
+                    <ul>
+                        <li><a href="#toc1">How we process your application</a></li>
+                        <li><a href="#toc2">Keep your information up to date</a></li>
+                        <li><a href="#toc3">Using a representative</a></li>
+                        <li><a href="#toc4">If we ask you for documents</a></li>
+                        <li><a href="#toc5">How to check your application status</a></li>
+                    </ul>
+
+                    <h3 id="toc1">How we process your application</h3>
+                    <p>After you send your application, we&rsquo;ll</p>
+                    <ul>
+                        <li>check that it&rsquo;s <a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=072&amp;top=3">complete</a></li>
+                        <li>assess it to confirm
+                            <ul>
+                                <li>you met your residency obligations</li>
+                                <li>you&rsquo;re still a permanent resident of Canada</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>In some cases, we&rsquo;ll ask you to attend an interview to get more information.</p>
+                    <p><strong>If we approve your application</strong>, we will</p>
+                    <ul>
+                        <li>email you with instructions on how and where to submit your valid passport or travel document</li>
+                        <li>return your passport to you with your permanent resident travel document</li>
+                    </ul>
+                    <p><strong>If we refuse your application</strong>, follow the instructions on the refusal letter.</p>
+
+                    <h3 id="toc2">Keep your information up to date</h3>
+                    <p>If you move or change your address, phone number or any other contact information after you apply, tell us&nbsp;using our <a href="https://secure.cic.gc.ca/ClientContact/en/Application/Form/70">web form</a>.</p>
+
+                    <h3 id="toc3">Using a representative</h3>
+                    <p>You don&rsquo;t need a representative to help you with your PRTD application. Using a representative is a personal choice.</p>
+                    <p>Find out more about&nbsp;<a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigration-citizenship-representative.html">using a representative</a>.</p>
+
+                    <h3 id="toc4">If we ask you for documents</h3>
+                    <p>We may ask you to submit more documents. If we do, submit them to us online.</p>
+                    <ol>
+                        <li>Go to our <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/web-form2.html">web form</a>.</li>
+                        <li>Click on <strong>Update or ask about your application</strong>.</li>
+                        <li>Under <strong>Add a document to your application</strong>, click the <strong>Continue to form</strong> button.</li>
+                        <li>Make sure you fill in these required fields correctly:
+                            <ul>
+                                <li><strong>What is your application number?</strong>
+                                    <ul>
+                                        <li>You can find your application number at the top of the letter we sent you.</li>
+                                    </ul>
+                                </li>
+                                <li>Under <strong>What did you apply for?</strong>, choose <strong>Permanent Resident Travel Document</strong>.</li>
+                                <li>Under <strong>What application did you submit?</strong>, choose <strong>Urgent</strong>.</li>
+                            </ul>
+                        </li>
+                        <li>Under <strong>Upload your document(s)</strong>, choose the documents you want to send to us.</li>
+                        <li>Follow the steps to submit your web form.</li>
+                    </ol>
+
+                    <h3 id="toc5">How to check your application status</h3>
+                    <p>If you have a question about your application, check our <a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=065">Help Centre</a> first. <br>
+                        If you can&rsquo;t find an answer:</p>
+                    <ol>
+                        <li>Go to our <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/web-form2.html">web form</a>.</li>
+                        <li>Click on <strong>Update or ask about your application</strong>.</li>
+                        <li>On <strong>Check your application status</strong>, click the <strong>See details</strong> button to continue to the form.</li>
+                        <li>Make sure you fill in these required fields correctly:
+                            <ul>
+                                <li><strong>What is your application number?</strong>
+                                    <ul>
+                                        <li>You can find your application number at the top of the letter we sent you.</li>
+                                    </ul>
+                                </li>
+                                <li>Under <strong>What did you apply for?</strong>, choose <strong>Permanent Resident Travel Document</strong></li>
+                                <li>Under <strong>What application did you submit?</strong>, choose <strong>Urgent</strong>.</li>
+                            </ul>
+                        </li>
+                        <li>Follow the steps to submit your web form.</li>
+                    </ol>
+                </section>
+
+            </div><!-- /.pr-main -->
+        </div><!-- /.pr-layout -->
+
+        <section class="pagedetails">
+            <h2 class="wb-inv">Page details</h2>
+            <gcds-date-modified>2025-08-21</gcds-date-modified>
+        </section>
+        <!-- CONTENT ENDS HERE -->
+    </main>
+
+    <button type="button" class="pr-top" id="pr-top" aria-label="Back to top">&uarr; Top</button>
+
+    <!-- Reusable modal shell -->
+    <div class="pr-modal-overlay" id="pr-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="pr-modal-title">
+        <div class="pr-modal">
+            <div class="pr-modal-header">
+                <h2 id="pr-modal-title">Details</h2>
+                <button type="button" class="pr-modal-close" id="pr-modal-close" aria-label="Close">&times;</button>
+            </div>
+            <div class="pr-modal-body" id="pr-modal-body"></div>
+        </div>
+    </div>
+
+    <div class="global-footer">
+        <footer id="wb-info">
+            <h2 class="wb-inv">About this site</h2>
+            <div class="gc-contextual">
+                <div class="container">
+                    <nav>
+                        <h3>Immigration and citizenship</h3>
+                        <ul class="list-col-xs-1 list-col-sm-2 list-col-md-3">
+                            <li><a href="https://ircc.canada.ca/english/helpcentre/index-featured-can.asp">Help Centre</a></li>
+                            <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc.html">Contact us</a></li>
+                            <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html">Check your application status</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="gc-main-footer">
+                <div class="container">
+                    <nav>
+                        <h3>Government of Canada</h3>
+                        <ul class="list-unstyled colcount-sm-2 colcount-md-3">
+                            <li><a href="https://www.canada.ca/en/contact.html">All contacts</a></li>
+                            <li><a href="https://www.canada.ca/en/government/dept.html">Departments and agencies</a></li>
+                            <li><a href="https://www.canada.ca/en/government/system.html">About government</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="gc-sub-footer">
+                <div class="container d-flex align-items-center">
+                    <nav>
+                        <h3 class="wb-inv">Government of Canada Corporate</h3>
+                        <ul>
+                            <li><a href="https://www.canada.ca/en/social.html">Social media</a></li>
+                            <li><a href="https://www.canada.ca/en/mobile.html">Mobile applications</a></li>
+                            <li><a href="https://www.canada.ca/en/government/about.html">About Canada.ca</a></li>
+                            <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+                            <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
+                        </ul>
+                    </nav>
+                    <div class="wtrmrk align-self-end">
+                        <img src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
+    <script>
+    (function () {
+        "use strict";
+        document.documentElement.classList.remove("no-js");
+
+        /* ---------- helpers ---------- */
+        var $  = function (s, c) { return (c || document).querySelector(s); };
+        var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+        /* ============================================================
+           1. SCROLLSPY + PROGRESS  (supports nested sub-steps)
+           ============================================================ */
+        var mainSteps  = $$(".pr-step");
+        var mainTitles = mainSteps.map(function (s) { return $(".pr-step-title", s).textContent; });
+
+        // Build a flat, in-document-order list of scroll targets. A step with
+        // sub-steps contributes one entry per sub-step; a plain step contributes
+        // one entry for itself.
+        var flat = [];
+        mainSteps.forEach(function (stepEl, mi) {
+            var subItems = $$(".pr-substep", stepEl);
+            if (subItems.length) {
+                subItems.forEach(function (subEl, si) {
+                    flat.push({
+                        sec: document.getElementById(subEl.dataset.target),
+                        main: mi, sub: si, navMain: stepEl, navSub: subEl,
+                        subTitle: $(".pr-substep-title", subEl).textContent
+                    });
+                });
+            } else {
+                flat.push({
+                    sec: document.getElementById(stepEl.dataset.target),
+                    main: mi, sub: null, navMain: stepEl, navSub: null, subTitle: null
+                });
+            }
+        });
+
+        var fill      = $("#pr-progress");
+        var progText  = $("#pr-progress-text");
+        var toggleLbl = $("#pr-toggle-label");
+        var stepper   = $("#pr-steps");
+        var toggleBtn = $("#pr-stepper-toggle");
+        var currentFlat = -1;
+
+        function setActive(fi) {
+            if (fi === currentFlat) return;
+            currentFlat = fi;
+            var act = flat[fi];
+
+            // top-level step states
+            mainSteps.forEach(function (s, i) {
+                s.classList.toggle("is-active", i === act.main);
+                s.classList.toggle("is-done", i < act.main);
+            });
+            // sub-step states (done once we've scrolled past them within their step)
+            flat.forEach(function (f, i) {
+                if (!f.navSub) return;
+                f.navSub.classList.toggle("is-active", i === fi);
+                f.navSub.classList.toggle("is-done", i < fi && f.main <= act.main);
+            });
+
+            // progress runs across the flattened sequence (sub-steps count)
+            fill.style.width = ((fi + 1) / flat.length * 100) + "%";
+            var label = "Step " + (act.main + 1) + " of " + mainSteps.length;
+            progText.textContent = label;
+            toggleLbl.textContent = label + " · " + (act.sub !== null ? act.subTitle : mainTitles[act.main]);
+        }
+
+        /* ---- mobile jump-menu toggle ---- */
+        function closeMenu() { stepper.classList.remove("is-open"); toggleBtn.setAttribute("aria-expanded", "false"); }
+        toggleBtn.addEventListener("click", function () {
+            var open = stepper.classList.toggle("is-open");
+            this.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+        document.addEventListener("click", function (e) {
+            if (stepper.classList.contains("is-open") && !stepper.contains(e.target)) closeMenu();
+        });
+        window.addEventListener("resize", function () { if (window.innerWidth > 991) closeMenu(); });
+
+        var topBtn = $("#pr-top");
+
+        function onScroll() {
+            var probe = window.scrollY + window.innerHeight * 0.32;
+            var fi = 0;
+            for (var i = 0; i < flat.length; i++) {
+                if (flat[i].sec && flat[i].sec.offsetTop <= probe) fi = i;
+            }
+            setActive(fi);
+            topBtn.classList.toggle("is-visible", window.scrollY > 600);
+        }
+
+        /* smooth-scroll for step + sub-step links */
+        $$('.pr-stepper a[href^="#"]').forEach(function (a) {
+            a.addEventListener("click", function (e) {
+                var t = document.getElementById(this.getAttribute("href").slice(1));
+                if (t) { e.preventDefault(); closeMenu();
+                         t.scrollIntoView({ behavior: "smooth", block: "start" });
+                         t.setAttribute("tabindex", "-1"); t.focus({ preventScroll: true }); }
+            });
+        });
+
+        topBtn.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+
+        /* ============================================================
+           2. MODAL  (replaces the wb-lbx "Processing times" lightbox)
+           ============================================================ */
+        var MODALS = {
+            "processing-times": { title: "Processing times", html:
+                "<p>Processing times will vary based on:</p>" +
+                "<ul><li>Type of application submitted;</li>" +
+                "<li>Volume of applications received;</li>" +
+                "<li>How easily we can verify information;</li>" +
+                "<li>How well and how quickly you respond to any requests or concerns;</li>" +
+                "<li>Whether the application is complete.</li></ul>" +
+                "<p>Many more people want to immigrate to Canada than the Government of Canada can bring in each year under our annual immigration plan. Applications received after the maximum has been met may have to wait longer to be processed.</p>" +
+                "<p>Learn more about how <a href=\"http://ircc.canada.ca/english/helpcentre/results-by-topic.asp?st=3.2\">Citizenship and Immigration Canada calculates processing times</a>.</p>" }
+        };
+
+        var overlay   = $("#pr-modal-overlay");
+        var modalTitle= $("#pr-modal-title");
+        var modalBody = $("#pr-modal-body");
+        var lastFocus = null;
+
+        function openModal(key) {
+            var m = MODALS[key]; if (!m) return;
+            modalTitle.textContent = m.title;
+            modalBody.innerHTML = m.html;
+            lastFocus = document.activeElement;
+            overlay.classList.add("is-open");
+            $("#pr-modal-close").focus();
+            document.addEventListener("keydown", escClose);
+        }
+        function closeModal() {
+            overlay.classList.remove("is-open");
+            document.removeEventListener("keydown", escClose);
+            if (lastFocus) lastFocus.focus();
+        }
+        function escClose(e) { if (e.key === "Escape") closeModal(); }
+
+        $$(".pr-lbx").forEach(function (a) {
+            a.addEventListener("click", function (e) { e.preventDefault(); openModal(this.dataset.modal); });
+        });
+        $("#pr-modal-close").addEventListener("click", closeModal);
+        overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
+
+        /* init */
+        onScroll();
+    })();
+    </script>
+</body>
+</html>
