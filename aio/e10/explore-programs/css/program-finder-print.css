@@ -1,0 +1,43 @@
+/*Program finder CSS for printing results*/
+@media print {
+  .blue-checkmark {
+    list-style-type: disc !important;
+    padding-left: 35px !important; }
+    .blue-checkmark > li {
+      background: none;
+      padding-left: 5px !important; }
+
+  .alert-bounding-box {
+    border: none !important; }
+
+  #toolWrapper, .pf-container, .cnt-selections, .result {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none;
+    overflow: visible;
+    border-radius: none; }
+
+  #wb-cont {
+    color: #000 !important; }
+
+  .navigation-buttons, .utility-btns {
+    display: none; }
+
+  summary {
+    background-color: none !important;
+    color: #000 !important; }
+    summary > h2 {
+      width: 100%;
+      height: -webkit-max-content;
+      height: -moz-max-content;
+      height: max-content;
+      margin-bottom: 0; }
+      summary > h2 > span .badge-promo:before {
+        content: '\a';
+        white-space: pre; }
+      summary > h2 > span .badge-promo {
+        display: block;
+        float: none !important;
+        clear: both !important; }
+      summary > h2 > .marker::after {
+        display: none; } }
