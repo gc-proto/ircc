@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build:explore-programs": "node scripts/build-explore-programs-html.mjs"
+  },
   "dependencies": {
     "airtable-node": "^0.1.20",
     "d3": "^7.8.5",
