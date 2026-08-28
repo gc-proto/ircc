@@ -137,84 +137,86 @@
         <aside class="pr-side" aria-label="Journey navigation sidebar">
           <nav class="pr-stepper" id="pr-stepper-nav" aria-label="Permanent resident travel document steps">
 
-            <div class="pr-stepper-head">
-              <h2 class="pr-stepper-title h4">Your journey</h2>
-              <button type="button" class="pr-stepper-toggle" id="pr-stepper-toggle" aria-expanded="false" aria-controls="pr-steplist">
-                <span class="pr-toggle-label" id="pr-toggle-label">Step 1 of 4 &middot; About the process</span>
-                <span class="pr-toggle-caret glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-              </button>
-            </div>
+            <button type="button" class="pr-stepper-toggle" id="pr-stepper-toggle" aria-expanded="false" aria-controls="pr-steplist">
+              <span class="pr-toggle-label" id="pr-toggle-label">About the process</span>
+              <span class="pr-toggle-caret glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+            </button>
 
-            <div class="pr-mini-progress" aria-hidden="true">
-              <div class="pr-mini-fill" id="pr-progress" style="width: 16.66%;"></div>
-            </div>
-            <p class="pr-mini-label small"><span id="pr-progress-text">Step 1 of 4</span></p>
+            <ol class="pr-stepper-list" id="pr-steplist">
 
-            <div id="pr-mobile-nav-drawer">
-              <ol class="pr-stepper-list" id="pr-steplist">
-
-                <li class="pr-step is-active" data-target="stage-1">
-                  <a href="#stage-1" class="pr-step-link">
-                    <span class="pr-dot"><span class="pr-n pr-step-num">1</span></span>
-                    <span class="pr-step-label">
-                      <span class="pr-step-num">Step 1</span>
-                      <span class="pr-step-title">About the process</span>
-                    </span>
+              <li class="pr-step is-active" data-target="stage-1">
+                <div class="pr-step-row">
+                  <span class="pr-circle" aria-hidden="true"></span>
+                  <button type="button" class="pr-step-btn" aria-expanded="true" aria-controls="pr-step-body-1">
+                    <span class="pr-step-title">About the process</span>
+                    <span class="glyphicon glyphicon-chevron-up pr-chev" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="pr-step-body" id="pr-step-body-1">
+                  <a href="#stage-1" class="pr-sub-card is-active">
+                    <span class="pr-sub-arrow" aria-hidden="true">&#8594;</span>
+                    About the process
                   </a>
-                </li>
+                </div>
+              </li>
 
-                <li class="pr-step" data-target="stage-2">
-                  <a href="#stage-2" class="pr-step-link">
-                    <span class="pr-dot"><span class="pr-n pr-step-num">2</span></span>
-                    <span class="pr-step-label">
-                      <span class="pr-step-num">Step 2</span>
-                      <span class="pr-step-title">Who can apply</span>
-                    </span>
+              <li class="pr-step" data-target="stage-2">
+                <div class="pr-step-row">
+                  <span class="pr-circle" aria-hidden="true"></span>
+                  <button type="button" class="pr-step-btn" aria-expanded="false" aria-controls="pr-step-body-2">
+                    <span class="pr-step-title">Who can apply</span>
+                    <span class="glyphicon glyphicon-chevron-down pr-chev" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="pr-step-body" id="pr-step-body-2" hidden>
+                  <a href="#stage-2" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true">&#8594;</span>
+                    Who can apply
                   </a>
-                </li>
+                </div>
+              </li>
 
-                <li class="pr-step" data-target="stage-3">
-                  <a href="#stage-3" class="pr-step-link">
-                    <span class="pr-dot"><span class="pr-n pr-step-num">3</span></span>
-                    <span class="pr-step-label">
-                      <span class="pr-step-num">Step 3</span>
-                      <span class="pr-step-title">How to apply</span>
-                    </span>
+              <li class="pr-step" data-target="stage-3">
+                <div class="pr-step-row">
+                  <span class="pr-circle" aria-hidden="true"></span>
+                  <button type="button" class="pr-step-btn" aria-expanded="false" aria-controls="pr-step-body-3">
+                    <span class="pr-step-title">How to apply</span>
+                    <span class="glyphicon glyphicon-chevron-down pr-chev" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="pr-step-body" id="pr-step-body-3" hidden>
+                  <a href="#stage-3a" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true">&#8594;</span>
+                    Get the application package
                   </a>
-                  <ul class="pr-substeps" aria-label="How to apply sub-steps">
-                    <li class="pr-substep" data-target="stage-3a">
-                      <a href="#stage-3a" class="pr-substep-link">
-                        <span class="pr-subdot" aria-hidden="true"></span>
-                        <span class="pr-substep-title">3a. Get the application package</span>
-                      </a>
-                    </li>
-                    <li class="pr-substep" data-target="stage-3b">
-                      <a href="#stage-3b" class="pr-substep-link">
-                        <span class="pr-subdot" aria-hidden="true"></span>
-                        <span class="pr-substep-title">3b. Pay your fees online</span>
-                      </a>
-                    </li>
-                    <li class="pr-substep" data-target="stage-3c">
-                      <a href="#stage-3c" class="pr-substep-link">
-                        <span class="pr-subdot" aria-hidden="true"></span>
-                        <span class="pr-substep-title">3c. Submit your application</span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class="pr-step" data-target="stage-4">
-                  <a href="#stage-4" class="pr-step-link">
-                    <span class="pr-dot"><span class="pr-n pr-step-num">4</span></span>
-                    <span class="pr-step-label">
-                      <span class="pr-step-num">Step 4</span>
-                      <span class="pr-step-title">After you apply</span>
-                    </span>
+                  <a href="#stage-3b" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true">&#8594;</span>
+                    Pay your fees online
                   </a>
-                </li>
+                  <a href="#stage-3c" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true">&#8594;</span>
+                    Submit your application
+                  </a>
+                </div>
+              </li>
 
-              </ol>
-            </div>
+              <li class="pr-step" data-target="stage-4">
+                <div class="pr-step-row">
+                  <span class="pr-circle" aria-hidden="true"></span>
+                  <button type="button" class="pr-step-btn" aria-expanded="false" aria-controls="pr-step-body-4">
+                    <span class="pr-step-title">After you apply</span>
+                    <span class="glyphicon glyphicon-chevron-down pr-chev" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="pr-step-body" id="pr-step-body-4" hidden>
+                  <a href="#stage-4" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true">&#8594;</span>
+                    After you apply
+                  </a>
+                </div>
+              </li>
+
+            </ol>
           </nav>
         </aside>
 
