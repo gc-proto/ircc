@@ -3,48 +3,57 @@
 
   document.documentElement.classList.remove("no-js");
 
-  var mainSteps = Array.prototype.slice.call(document.querySelectorAll(".pr-step"));
-  var mainTitles = mainSteps.map(function (stepEl) {
-    var titleEl = stepEl.querySelector(".pr-step-title");
-    return titleEl ? titleEl.textContent.trim() : "";
-  });
+  var stepItems = Array.prototype.slice.call(document.querySelectorAll(".pr-step"));
+
+  function getDocTop(el) {
+    var top = 0;
+    while (el) { top += el.offsetTop; el = el.offsetParent; }
+    return top;
+  }
 
   var flat = [];
-  mainSteps.forEach(function (stepEl, mi) {
-    var subItems = Array.prototype.slice.call(stepEl.querySelectorAll(".pr-substep"));
-    if (subItems.length > 0) {
-      subItems.forEach(function (subEl, si) {
-        var targetId = subEl.dataset.target || "";
-        var subTitleEl = subEl.querySelector(".pr-substep-title");
+  stepItems.forEach(function (stepEl, mi) {
+    var mainId = stepEl.dataset.target || "";
+    var subCards = Array.prototype.slice.call(stepEl.querySelectorAll(".pr-sub-card"));
+    var stepBtn = stepEl.querySelector(".pr-step-btn");
+    var stepBody = stepEl.querySelector(".pr-step-body");
+    var chev = stepEl.querySelector(".pr-chev");
+
+    if (subCards.length > 0) {
+      subCards.forEach(function (card, si) {
+        var href = card.getAttribute("href") || "";
+        var id = href.replace(/^#/, "");
         flat.push({
-          id: targetId,
-          sec: document.getElementById(targetId),
+          id: id,
+          sec: document.getElementById(id),
           main: mi,
           sub: si,
           navMain: stepEl,
-          navSub: subEl,
-          subTitle: subTitleEl ? subTitleEl.textContent.trim() : ""
+          navBtn: stepBtn,
+          navBody: stepBody,
+          navChev: chev,
+          navCard: card
         });
       });
     } else {
-      var stepTargetId = stepEl.dataset.target || "";
       flat.push({
-        id: stepTargetId,
-        sec: document.getElementById(stepTargetId),
+        id: mainId,
+        sec: document.getElementById(mainId),
         main: mi,
         sub: null,
         navMain: stepEl,
-        navSub: null,
-        subTitle: null
+        navBtn: stepBtn,
+        navBody: stepBody,
+        navChev: chev,
+        navCard: null
       });
     }
   });
 
-  var fill = document.getElementById("pr-progress");
-  var progText = document.getElementById("pr-progress-text");
   var toggleLbl = document.getElementById("pr-toggle-label");
-  var stepper = document.getElementById("pr-stepper-nav") || document.querySelector(".pr-stepper");
+  var stepper = document.querySelector(".pr-stepper");
   var toggleBtn = document.getElementById("pr-stepper-toggle");
+  var allSubCards = Array.prototype.slice.call(document.querySelectorAll(".pr-sub-card"));
   var currentFlat = -1;
 
   function setActive(fi) {
@@ -55,28 +64,38 @@
     var act = flat[fi];
     if (!act) return;
 
-    mainSteps.forEach(function (s, i) {
-      s.classList.toggle("is-active", i === act.main);
-      s.classList.toggle("is-done", i < act.main);
+    stepItems.forEach(function (s, i) {
+      var isActive = (i === act.main);
+      var isDone = (i < act.main);
+      s.classList.toggle("is-active", isActive);
+      s.classList.toggle("is-done", isDone);
+
+      var btn = s.querySelector(".pr-step-btn");
+      var body = s.querySelector(".pr-step-body");
+      var chev = s.querySelector(".pr-chev");
+
+      if (btn) btn.setAttribute("aria-expanded", isActive ? "true" : "false");
+
+      if (body) {
+        if (isActive) {
+          body.removeAttribute("hidden");
+        } else {
+          body.setAttribute("hidden", "");
+        }
+      }
+
+      if (chev) {
+        chev.classList.toggle("glyphicon-chevron-up", isActive);
+        chev.classList.toggle("glyphicon-chevron-down", !isActive);
+      }
     });
 
-    flat.forEach(function (f, i) {
-      if (!f.navSub) return;
-      var isSubDone = (i < fi && f.main <= act.main);
-      f.navSub.classList.toggle("is-active", i === fi);
-      f.navSub.classList.toggle("is-done", isSubDone);
-    });
+    allSubCards.forEach(function (card) { card.classList.remove("is-active"); });
+    if (act.navCard) act.navCard.classList.add("is-active");
 
-    if (fill) {
-      var pct = ((fi + 1) / flat.length * 100);
-      fill.style.width = pct + "%";
-    }
-
-    var label = "Step " + (act.main + 1) + " of " + mainSteps.length;
-    if (progText) progText.textContent = label;
-    if (toggleLbl) {
-      var title = (act.sub !== null ? act.subTitle : mainTitles[act.main]);
-      toggleLbl.textContent = label + " \u00b7 " + title;
+    if (toggleLbl && act.navMain) {
+      var titleEl = act.navMain.querySelector(".pr-step-title");
+      if (titleEl) toggleLbl.textContent = titleEl.textContent.trim();
     }
   }
 
@@ -103,41 +122,54 @@
     });
   }
 
+  stepItems.forEach(function (stepEl) {
+    var btn = stepEl.querySelector(".pr-step-btn");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var body = stepEl.querySelector(".pr-step-body");
+      var chev = stepEl.querySelector(".pr-chev");
+      var isExpanded = this.getAttribute("aria-expanded") === "true";
+      var nowOpen = !isExpanded;
+
+      this.setAttribute("aria-expanded", nowOpen ? "true" : "false");
+      if (body) {
+        if (nowOpen) { body.removeAttribute("hidden"); } else { body.setAttribute("hidden", ""); }
+      }
+      if (chev) {
+        chev.classList.toggle("glyphicon-chevron-up", nowOpen);
+        chev.classList.toggle("glyphicon-chevron-down", !nowOpen);
+      }
+    });
+  });
+
   var topBtn = document.getElementById("pr-top");
   if (topBtn) {
     topBtn.addEventListener("click", function () {
       window.scrollTo({ top: 0, behavior: "smooth" });
-      var mainHeading = document.getElementById("wb-cont");
-      if (mainHeading) {
-        mainHeading.setAttribute("tabindex", "-1");
-        mainHeading.focus({ preventScroll: true });
-      }
+      var h = document.getElementById("wb-cont");
+      if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
     });
   }
 
   function onScroll() {
-    var probe = window.scrollY + window.innerHeight * 0.32;
+    var probe = window.scrollY + Math.round(window.innerHeight * 0.28);
     var fi = 0;
 
     for (var i = 0; i < flat.length; i++) {
-      if (flat[i].sec && flat[i].sec.offsetTop <= probe) fi = i;
+      if (flat[i].sec && getDocTop(flat[i].sec) <= probe) fi = i;
     }
 
-    if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 30)) {
+    if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 40)) {
       fi = flat.length - 1;
     }
 
     setActive(fi);
 
-    if (topBtn) {
-      topBtn.classList.toggle("is-visible", window.scrollY > 600);
-    }
+    if (topBtn) topBtn.classList.toggle("is-visible", window.scrollY > 600);
   }
 
-  var stepperLinks = Array.prototype.slice.call(
-    document.querySelectorAll('.pr-stepper a[href^="#"], .pr-step-link, .pr-substep-link')
-  );
-  stepperLinks.forEach(function (a) {
+  var subCardLinks = Array.prototype.slice.call(document.querySelectorAll(".pr-sub-card"));
+  subCardLinks.forEach(function (a) {
     a.addEventListener("click", function (e) {
       var href = this.getAttribute("href");
       if (!href || href === "#") return;
@@ -148,6 +180,8 @@
         target.scrollIntoView({ behavior: "smooth", block: "start" });
         target.setAttribute("tabindex", "-1");
         target.focus({ preventScroll: true });
+        currentFlat = -1;
+        setTimeout(onScroll, 400);
       }
     });
   });
@@ -156,88 +190,57 @@
   window.addEventListener("resize", onScroll);
 
   var overlay = document.getElementById("processing-times-modal");
-  var modalTitle = document.getElementById("pr-modal-title");
-  var modalBody = document.getElementById("pr-modal-body");
   var modalCloseBtn = document.getElementById("pr-modal-close");
   var lastFocus = null;
 
   function trapFocus(e) {
-    if (e.key === "Escape") {
-      closeModal();
-      return;
-    }
-    if (e.key === "Tab") {
-      var focusables = overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-      if (!focusables.length) return;
-      var first = focusables[0];
-      var last = focusables[focusables.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
+    if (e.key === "Escape") { closeModal(); return; }
+    if (e.key === "Tab" && overlay) {
+      var els = overlay.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
+      if (!els.length) return;
+      var first = els[0], last = els[els.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
   }
 
-  function openModal(key) {
+  function openModal() {
     lastFocus = document.activeElement;
     document.body.style.overflow = "hidden";
-    if (overlay) {
-      overlay.classList.add("is-open");
-      overlay.setAttribute("aria-hidden", "false");
-    }
+    if (overlay) { overlay.classList.add("is-open"); overlay.setAttribute("aria-hidden", "false"); }
     if (modalCloseBtn) modalCloseBtn.focus();
     document.addEventListener("keydown", trapFocus);
   }
 
   function closeModal() {
-    if (overlay) {
-      overlay.classList.remove("is-open");
-      overlay.setAttribute("aria-hidden", "true");
-    }
+    if (overlay) { overlay.classList.remove("is-open"); overlay.setAttribute("aria-hidden", "true"); }
     document.body.style.overflow = "";
     document.removeEventListener("keydown", trapFocus);
     if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
   }
 
-  var modalTriggers = Array.prototype.slice.call(
-    document.querySelectorAll('.pr-lbx, [data-modal="processing-times"]')
-  );
-  modalTriggers.forEach(function (trigger) {
-    trigger.addEventListener("click", function (e) {
-      e.preventDefault();
-      openModal(this.dataset.modal || "processing-times");
-    });
+  Array.prototype.slice.call(document.querySelectorAll('.pr-lbx,[data-modal="processing-times"]')).forEach(function (t) {
+    t.addEventListener("click", function (e) { e.preventDefault(); openModal(); });
   });
 
-  if (modalCloseBtn) {
-    modalCloseBtn.addEventListener("click", closeModal);
-  }
-
-  if (overlay) {
-    overlay.addEventListener("click", function (e) {
-      if (e.target === overlay) closeModal();
-    });
-  }
+  if (modalCloseBtn) modalCloseBtn.addEventListener("click", closeModal);
+  if (overlay) overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
 
   var openAllBtn = document.getElementById("pr-btn-open-all");
   var closeAllBtn = document.getElementById("pr-btn-close-all");
 
   if (openAllBtn && closeAllBtn) {
     openAllBtn.addEventListener("click", function () {
-      Array.prototype.slice.call(document.querySelectorAll("#stage-3a details")).forEach(function (d) {
-        d.setAttribute("open", "");
-      });
+      Array.prototype.slice.call(document.querySelectorAll("#stage-3a details")).forEach(function (d) { d.setAttribute("open", ""); });
     });
-
     closeAllBtn.addEventListener("click", function () {
-      Array.prototype.slice.call(document.querySelectorAll("#stage-3a details")).forEach(function (d) {
-        d.removeAttribute("open");
-      });
+      Array.prototype.slice.call(document.querySelectorAll("#stage-3a details")).forEach(function (d) { d.removeAttribute("open"); });
     });
   }
 
-  onScroll();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", onScroll);
+  } else {
+    onScroll();
+  }
 })();
