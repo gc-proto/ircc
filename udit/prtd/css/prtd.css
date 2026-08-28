@@ -52,15 +52,11 @@
   content: "";
   position: absolute;
   left: 9px;
-  top: 22px;
-  bottom: 0;
+  top: 18px;
+  bottom: -18px;
   width: 2px;
-  background: #c8cdd2;
-  z-index: 0;
-}
-
-.pr-step.is-done::after {
   background: #26374a;
+  z-index: 0;
 }
 
 .pr-step-row {
@@ -77,16 +73,10 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid #b0b8c1;
+  border: 2.5px solid #26374a;
   background: #ffffff;
   position: relative;
   z-index: 2;
-  transition: border-color 0.2s ease;
-}
-
-.pr-step.is-active .pr-circle,
-.pr-step.is-done .pr-circle {
-  border-color: #26374a;
 }
 
 .pr-step.is-active .pr-circle::after {
