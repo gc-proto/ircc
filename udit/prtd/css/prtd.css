@@ -163,7 +163,7 @@
   margin-bottom: 6px;
   text-decoration: none;
   color: #26374a;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 15px;
   line-height: 1.35;
   transition: background-color 0.15s ease;
@@ -180,6 +180,12 @@
   color: #26374a;
 }
 
+.pr-sub-card:hover .pr-sub-arrow,
+.pr-sub-card:focus .pr-sub-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 .pr-sub-card:focus-visible {
   outline: 2px solid #0535d2;
   outline-offset: 2px;
@@ -187,12 +193,16 @@
 
 .pr-sub-card.is-active {
   background: #dce6f7;
+  font-weight: 700;
 }
 
 .pr-sub-arrow {
   flex-shrink: 0;
   font-size: 15px;
   line-height: 1.35;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 .pr-main {
@@ -209,12 +219,6 @@
 
 .pr-section:last-of-type {
   border-bottom: none;
-}
-
-.pr-substep-section {
-  scroll-margin-top: 100px;
-  padding-top: 16px;
-  margin-top: 16px;
 }
 
 .pr-eyebrow {
@@ -510,8 +514,7 @@ button[aria-expanded="true"] .pr-toggle-caret {
     padding: 12px 0;
   }
 
-  .pr-section,
-  .pr-substep-section {
+  .pr-section {
     scroll-margin-top: 120px;
   }
 
@@ -538,4 +541,235 @@ button[aria-expanded="true"] .pr-toggle-caret {
 
   .pr-layout { display: block !important; }
   .pr-main { width: 100% !important; }
+}
+
+/* ==========================================================================
+   Figma: "Left nav- h2a collapsing sections proto" (node 629-46615)
+   ========================================================================== */
+
+/* --- Header sign-in ------------------------------------------------------ */
+
+.pr-signin-li {
+  margin-left: 12px;
+}
+
+.pr-signin {
+  font-size: 14px;
+  font-weight: 700;
+  color: #284162;
+  white-space: nowrap;
+}
+
+.pr-signin .glyphicon {
+  font-size: 12px;
+  margin-right: 4px;
+}
+
+/* --- Page title: "Apply:" kicker over the service name ------------------- */
+
+.pr-h1 {
+  margin-bottom: 0;
+}
+
+.pr-h1-kicker {
+  display: block;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
+.pr-h1-name {
+  display: block;
+}
+
+/* --- At-a-glance band ---------------------------------------------------- */
+
+.pr-glance-band {
+  background-color: #ebf2fc;
+  padding: 36px 0 44px;
+  margin-top: 28px;
+}
+
+.pr-glance-card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  padding: 28px 32px;
+}
+
+.pr-glance-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px 28px;
+}
+
+.pr-glance-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 12px;
+  row-gap: 4px;
+  align-items: start;
+}
+
+.pr-glance-icon {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 20px;
+  line-height: 1.3;
+  color: #26374a;
+}
+
+.pr-glance-label {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #333333;
+}
+
+.pr-glance-value {
+  grid-column: 2;
+  grid-row: 2;
+  font-size: 17px;
+  line-height: 1.4;
+  color: #333333;
+}
+
+.pr-glance-foot {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e4e7eb;
+}
+
+.pr-glance-foot-h {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 10px;
+  line-height: 1.35;
+}
+
+.pr-glance-conditions {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.pr-glance-conditions li {
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.pr-glance-conditions li:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Sub-sections that sit inside a step (no divider rule) --------------- */
+
+.pr-subsection {
+  scroll-margin-top: 100px;
+  padding-bottom: 24px;
+  margin-bottom: 8px;
+}
+
+/* --- Buttons ------------------------------------------------------------- */
+
+.pr-supertask {
+  display: inline-block;
+  background-color: #318000;
+  border: 1px solid #318000;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.3;
+  padding: 14px 24px;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.pr-supertask:hover,
+.pr-supertask:focus {
+  background-color: #245c00;
+  border-color: #245c00;
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.pr-supertask:focus-visible {
+  outline: 2px solid #0535d2;
+  outline-offset: 2px;
+}
+
+.pr-btn-secondary {
+  font-weight: 600;
+}
+
+.pr-btn-secondary:hover,
+.pr-btn-secondary:focus {
+  border-color: #284162;
+  color: #0535d2;
+}
+
+/* --- Responsive ---------------------------------------------------------- */
+
+@media (max-width: 991px) {
+  .pr-glance-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pr-glance-band {
+    padding: 24px 0 32px;
+  }
+
+  .pr-glance-card {
+    padding: 22px 20px;
+  }
+
+  .pr-h1-kicker {
+    font-size: 20px;
+  }
+
+  .pr-subsection {
+    scroll-margin-top: 120px;
+  }
+}
+
+@media (max-width: 575px) {
+  .pr-glance-list {
+    grid-template-columns: 1fr;
+  }
+
+  .pr-glance-label {
+    font-size: 18px;
+  }
+
+  .pr-supertask {
+    display: block;
+    text-align: center;
+    font-size: 17px;
+  }
+}
+
+/* --- Print --------------------------------------------------------------- */
+
+@media print {
+  .pr-glance-band {
+    background-color: transparent !important;
+    padding: 0 !important;
+  }
+
+  .pr-glance-card {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    padding: 12px !important;
+  }
+
+  .pr-signin-li {
+    display: none !important;
+  }
 }
