@@ -189,55 +189,6 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
 
-  var overlay = document.getElementById("processing-times-modal");
-  var modalCloseBtn = document.getElementById("pr-modal-close");
-  var lastFocus = null;
-
-  function trapFocus(e) {
-    if (e.key === "Escape") { closeModal(); return; }
-    if (e.key === "Tab" && overlay) {
-      var els = overlay.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
-      if (!els.length) return;
-      var first = els[0], last = els[els.length - 1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-    }
-  }
-
-  function openModal() {
-    lastFocus = document.activeElement;
-    document.body.style.overflow = "hidden";
-    if (overlay) { overlay.classList.add("is-open"); overlay.setAttribute("aria-hidden", "false"); }
-    if (modalCloseBtn) modalCloseBtn.focus();
-    document.addEventListener("keydown", trapFocus);
-  }
-
-  function closeModal() {
-    if (overlay) { overlay.classList.remove("is-open"); overlay.setAttribute("aria-hidden", "true"); }
-    document.body.style.overflow = "";
-    document.removeEventListener("keydown", trapFocus);
-    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
-  }
-
-  Array.prototype.slice.call(document.querySelectorAll('.pr-lbx,[data-modal="processing-times"]')).forEach(function (t) {
-    t.addEventListener("click", function (e) { e.preventDefault(); openModal(); });
-  });
-
-  if (modalCloseBtn) modalCloseBtn.addEventListener("click", closeModal);
-  if (overlay) overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
-
-  var openAllBtn = document.getElementById("pr-btn-open-all");
-  var closeAllBtn = document.getElementById("pr-btn-close-all");
-
-  if (openAllBtn && closeAllBtn) {
-    openAllBtn.addEventListener("click", function () {
-      Array.prototype.slice.call(document.querySelectorAll("#stage-3a details")).forEach(function (d) { d.setAttribute("open", ""); });
-    });
-    closeAllBtn.addEventListener("click", function () {
-      Array.prototype.slice.call(document.querySelectorAll("#stage-3a details")).forEach(function (d) { d.removeAttribute("open"); });
-    });
-  }
-
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", onScroll);
   } else {
