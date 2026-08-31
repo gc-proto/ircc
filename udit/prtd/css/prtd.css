@@ -283,24 +283,29 @@
 .wb-accordion details,
 .pr-layout details,
 details.print-open {
-  border: 1px solid #d3d5d7;
-  border-radius: 4px;
+  border: 1px solid #d3d5d7 !important;
+  border-radius: 4px !important;
   margin-top: 8px;
   margin-bottom: 12px;
-  background-color: #ffffff;
+  background-color: #ffffff !important;
   overflow: hidden;
-  box-shadow: none;
+  box-shadow: none !important;
 }
 
 .wb-accordion details summary,
-.pr-layout details summary {
+.pr-layout details summary,
+details.print-open summary,
+details summary {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
   position: relative;
   cursor: pointer;
   color: #284162;
   font-size: 16px;
   font-weight: 600;
   padding: 11px 14px 11px 30px;
-  outline: none;
   user-select: none;
   background-color: #ffffff;
   transition: background-color 0.15s ease, color 0.15s ease;
@@ -309,18 +314,21 @@ details.print-open {
 }
 
 .wb-accordion details summary::-webkit-details-marker,
-.pr-layout details summary::-webkit-details-marker {
+.pr-layout details summary::-webkit-details-marker,
+details summary::-webkit-details-marker {
   display: none !important;
 }
 
 .wb-accordion details summary::marker,
-.pr-layout details summary::marker {
+.pr-layout details summary::marker,
+details summary::marker {
   display: none !important;
   font-size: 0 !important;
 }
 
 .wb-accordion details summary::before,
-.pr-layout details summary::before {
+.pr-layout details summary::before,
+details summary::before {
   content: "▶";
   position: absolute;
   left: 12px;
@@ -333,7 +341,8 @@ details.print-open {
 }
 
 .wb-accordion details[open] summary::before,
-.pr-layout details[open] summary::before {
+.pr-layout details[open] summary::before,
+details[open] summary::before {
   content: "▼";
   font-size: 10px;
 }
@@ -341,7 +350,9 @@ details.print-open {
 .wb-accordion details summary:hover,
 .wb-accordion details summary:focus,
 .pr-layout details summary:hover,
-.pr-layout details summary:focus {
+.pr-layout details summary:focus,
+details summary:hover,
+details summary:focus {
   color: #0535d2;
   background-color: #f8f9fa;
   text-decoration: underline;
@@ -350,23 +361,31 @@ details.print-open {
 .wb-accordion details summary:hover::before,
 .wb-accordion details summary:focus::before,
 .pr-layout details summary:hover::before,
-.pr-layout details summary:focus::before {
+.pr-layout details summary:focus::before,
+details summary:hover::before,
+details summary:focus::before {
   color: #0535d2;
 }
 
 .wb-accordion details summary:focus-visible,
-.pr-layout details summary:focus-visible {
-  outline: 2px solid #0535d2;
+.pr-layout details summary:focus-visible,
+details summary:focus-visible {
+  outline: 2px solid #0535d2 !important;
   outline-offset: -2px;
 }
 
 .wb-accordion details[open] summary,
-.pr-layout details[open] summary {
-  border-bottom: 1px solid #e5e5e5;
+.pr-layout details[open] summary,
+details[open] summary {
+  border-bottom: 1px solid #e5e5e5 !important;
 }
 
 .wb-accordion details > div,
-.pr-layout details > div {
+.pr-layout details > div,
+details > div {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
   padding: 16px 16px 14px 16px;
   background-color: #ffffff;
   font-size: 16px;
