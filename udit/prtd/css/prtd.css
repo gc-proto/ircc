@@ -180,49 +180,61 @@
   gap: 8px;
   background: transparent;
   border-radius: 8px;
-  padding: 10px 14px;
-  margin-bottom: 6px;
+  padding: 8px 12px;
+  margin-bottom: 4px;
   text-decoration: none;
   color: #26374a;
   font-weight: 400;
   font-size: 15px;
   line-height: 1.35;
-  transition: background-color 0.15s ease;
+  transition: color 0.15s ease, background-color 0.15s ease;
 }
 
 .pr-sub-card:last-child { margin-bottom: 0; }
 
+.pr-sub-arrow {
+  flex-shrink: 0;
+  font-size: 15px;
+  line-height: 1.35;
+  color: #26374a;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+/* Hover state: transparent background, visible arrow, blue text */
 .pr-sub-card:hover,
 .pr-sub-card:focus {
-  background: #eef2fa;
+  background: transparent;
   text-decoration: none;
-  color: #26374a;
+  color: #0535d2;
 }
 
 .pr-sub-card:hover .pr-sub-arrow,
-.pr-sub-card:focus .pr-sub-arrow,
+.pr-sub-card:focus .pr-sub-arrow {
+  opacity: 1;
+  color: #26374a;
+  transform: translateX(0);
+}
+
+/* Selected state: light blue background, visible arrow, bold text */
+.pr-sub-card.is-active,
+.pr-sub-card.is-active:hover,
+.pr-sub-card.is-active:focus {
+  background: #eef2fa;
+  color: #26374a;
+  font-weight: 700;
+}
+
 .pr-sub-card.is-active .pr-sub-arrow {
   opacity: 1;
+  color: #26374a;
   transform: translateX(0);
 }
 
 .pr-sub-card:focus-visible {
   outline: 2px solid #0535d2;
   outline-offset: 2px;
-}
-
-.pr-sub-card.is-active {
-  background: #dce6f7;
-  font-weight: 700;
-}
-
-.pr-sub-arrow {
-  flex-shrink: 0;
-  font-size: 15px;
-  line-height: 1.35;
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 /* ==========================================================================
