@@ -282,83 +282,42 @@
 
 .pr-layout details,
 details.print-open {
-  border: 1px solid #d8dce2;
-  border-radius: 6px;
-  margin-bottom: 12px;
-  background-color: #ffffff;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  overflow: hidden;
-}
-
-.pr-layout details:hover,
-details.print-open:hover {
-  border-color: #b0b8c4;
-}
-
-.pr-layout details[open],
-details[open].print-open {
-  border-color: #284162;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin-top: 14px;
+  margin-bottom: 18px;
+  border: none;
+  background: transparent;
+  box-shadow: none;
 }
 
 .pr-layout details summary {
   cursor: pointer;
-  color: #0535d2;
-  font-size: 17px;
-  font-weight: 600;
-  padding: 13px 18px;
+  color: #284162;
+  font-size: 19px;
+  font-weight: 700;
+  padding: 4px 0;
   outline: none;
   user-select: none;
-  background-color: #f8fafc;
-  transition: color 0.15s ease, background-color 0.15s ease;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.pr-layout details summary::-webkit-details-marker {
-  display: none !important;
-}
-
-.pr-layout details summary::before {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-right: 2.5px solid #0535d2;
-  border-bottom: 2.5px solid #0535d2;
-  transform: rotate(-45deg);
-  transition: transform 0.2s ease;
-  flex-shrink: 0;
-  margin-right: 2px;
-}
-
-.pr-layout details[open] summary::before {
-  transform: rotate(45deg);
+  display: list-item;
+  transition: color 0.15s ease;
 }
 
 .pr-layout details summary:hover,
 .pr-layout details summary:focus {
-  color: #03238a;
-  background-color: #eef3f9;
+  color: #0535d2;
   text-decoration: underline;
 }
 
 .pr-layout details summary:focus-visible {
   outline: 2px solid #0535d2;
-  outline-offset: -2px;
-}
-
-.pr-layout details[open] summary {
-  border-bottom: 1px solid #e5e8ec;
-  background-color: #f0f4f9;
-  color: #26374a;
+  outline-offset: 3px;
 }
 
 .pr-layout details > div {
-  padding: 16px 20px 20px 20px;
-  background-color: #ffffff;
+  padding: 10px 0 4px 18px;
+  margin-top: 6px;
+  margin-bottom: 12px;
+  border-left: 3px solid #d8dce2;
+  background: transparent;
 }
 
 .pr-top {
