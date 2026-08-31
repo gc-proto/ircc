@@ -71,17 +71,6 @@
   z-index: 0;
 }
 
-.pr-step:last-child .pr-step-body::before {
-  content: "";
-  position: absolute;
-  left: 9px;
-  top: -18px;
-  bottom: 20px;
-  width: 2px;
-  background: #26374a;
-  z-index: 0;
-}
-
 .pr-step-row {
   display: flex;
   align-items: center;

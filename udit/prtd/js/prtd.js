@@ -69,25 +69,6 @@
       var isDone = (i < act.main);
       s.classList.toggle("is-active", isActive);
       s.classList.toggle("is-done", isDone);
-
-      var btn = s.querySelector(".pr-step-btn");
-      var body = s.querySelector(".pr-step-body");
-      var chev = s.querySelector(".pr-chev");
-
-      if (btn) btn.setAttribute("aria-expanded", isActive ? "true" : "false");
-
-      if (body) {
-        if (isActive) {
-          body.removeAttribute("hidden");
-        } else {
-          body.setAttribute("hidden", "");
-        }
-      }
-
-      if (chev) {
-        chev.classList.toggle("glyphicon-chevron-up", isActive);
-        chev.classList.toggle("glyphicon-chevron-down", !isActive);
-      }
     });
 
     allSubCards.forEach(function (card) { card.classList.remove("is-active"); });
