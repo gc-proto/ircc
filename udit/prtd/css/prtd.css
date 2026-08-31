@@ -524,7 +524,10 @@ button[aria-expanded="true"] .pr-toggle-caret {
 
 /* --- Page title: "Apply:" kicker over the service name ------------------- */
 
+h1#wb-cont.pr-h1,
 .pr-h1 {
+  border-bottom: none !important;
+  padding-bottom: 0;
   margin-bottom: 0;
 }
 
