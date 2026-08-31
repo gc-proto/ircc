@@ -609,22 +609,8 @@ h1#wb-cont.pr-h1,
   color: #26374a;
 }
 
-.pr-glance-band .well ul.list-unstyled li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 14px;
-  line-height: 1.45;
-}
-
-.pr-glance-band .well ul.list-unstyled li:last-child {
-  margin-bottom: 0;
-}
-
-.pr-glance-band .pr-check-icon {
-  margin-top: 3px;
-  flex-shrink: 0;
-  font-size: 16px;
+.pr-glance-band .well ul.list-unstyled li:not(:last-child) {
+  margin-bottom: 16px;
 }
 
 /* ==========================================================================
@@ -635,7 +621,6 @@ h1#wb-cont.pr-h1,
   .pr-layout {
     flex-direction: column;
     gap: 0;
-    margin-top: 16px;
   }
 
   .pr-side {
@@ -649,7 +634,6 @@ h1#wb-cont.pr-h1,
     padding: 8px 0;
     max-height: none;
     overflow-y: visible;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   }
 
   .pr-stepper-toggle { display: flex; }
@@ -660,12 +644,11 @@ h1#wb-cont.pr-h1,
     display: block;
     max-height: 60vh;
     overflow-y: auto;
-    padding: 12px 8px 12px 0;
-    scrollbar-width: thin;
+    padding: 12px 0;
   }
 
   .pr-section,
-  .pr-subsection { scroll-margin-top: 80px; }
+  .pr-subsection { scroll-margin-top: 120px; }
 
   .pr-top {
     bottom: 16px;
@@ -674,7 +657,7 @@ h1#wb-cont.pr-h1,
     font-size: 13px;
   }
 
-  .pr-glance-band { padding: 20px 0 28px; }
+  .pr-glance-band { padding: 24px 0 32px; }
 
   .pr-glance-boxes {
     grid-template-columns: repeat(2, 1fr);
@@ -685,72 +668,16 @@ h1#wb-cont.pr-h1,
     padding: 20px;
   }
 
-  .pr-h1 {
-    font-size: 28px;
-    margin-top: 16px;
-  }
-
-  .pr-h1::after {
-    width: 46px;
-    height: 4px;
-    margin-top: 8px;
-  }
+  .pr-h1 { font-size: 26px; }
 }
 
 @media (max-width: 600px) {
-  .pr-glance-band {
-    padding: 16px 0 24px;
-    margin-top: 16px;
-  }
-
   .pr-glance-boxes {
     grid-template-columns: 1fr;
-    gap: 10px;
-    margin-bottom: 16px;
   }
 
   .pr-glance-card {
-    padding: 16px 14px;
-    border-radius: 8px;
-  }
-
-  .pr-glance-box {
-    padding: 12px 14px;
-  }
-
-  .pr-glance-hr {
-    margin: 16px 0 14px;
-  }
-
-  .pr-glance-intro {
-    font-size: 15px;
-    margin-bottom: 12px;
-  }
-
-  .pr-h1 {
-    font-size: 23px;
-    line-height: 1.3;
-  }
-
-  .pr-h1::after {
-    width: 40px;
-    height: 4px;
-    margin-top: 8px;
-  }
-
-  .btn-call-to-action,
-  .pr-main .btn {
-    white-space: normal;
-    word-break: break-word;
-  }
-
-  .pr-step-btn {
-    font-size: 15px;
-  }
-
-  .pr-sub-card {
-    font-size: 14px;
-    padding: 8px 10px;
+    padding: 16px;
   }
 }
 
