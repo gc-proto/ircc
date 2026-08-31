@@ -1,22 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>LibreCrawl Audit Dashboard</title>
+<title>LibreCrawl Audit Dashboard — Executive & Technical Reporting</title>
 <style>
   :root {
     --bg: #0d1117;
     --card: #161b22;
+    --card-hover: #1c2128;
     --border: #30363d;
+    --border-light: #21262d;
     --fg: #e6edf3;
     --muted: #8b949e;
     --accent: #58a6ff;
+    --accent-bg: rgba(88, 166, 255, 0.12);
+    --accent-hover: #79c0ff;
     --green: #3fb950;
+    --green-bg: rgba(63, 185, 80, 0.15);
     --yellow: #d29922;
+    --yellow-bg: rgba(210, 153, 34, 0.15);
     --red: #f85149;
+    --red-bg: rgba(248, 81, 73, 0.15);
     --purple: #bc8cff;
+    --purple-bg: rgba(188, 140, 255, 0.15);
+    --table-header: #161b22;
+    --table-hover: rgba(56, 139, 253, 0.08);
+    --table-stripe: rgba(255, 255, 255, 0.015);
+    --drawer-bg: #161b22;
+    --drawer-backdrop: rgba(0, 0, 0, 0.7);
+    --callout-bg: rgba(88, 166, 255, 0.06);
+    --callout-border: rgba(88, 166, 255, 0.3);
+    --tag-bg: #21262d;
+    --badge-bg: #30363d;
+    --chart-bar-bg: #21262d;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
+
+  [data-theme="light"] {
+    --bg: #f6f8fa;
+    --card: #ffffff;
+    --card-hover: #f3f4f6;
+    --border: #d0d7de;
+    --border-light: #eaeef2;
+    --fg: #1f2328;
+    --muted: #59636e;
+    --accent: #0969da;
+    --accent-bg: rgba(9, 105, 218, 0.1);
+    --accent-hover: #0550ae;
+    --green: #1a7f37;
+    --green-bg: rgba(26, 127, 55, 0.12);
+    --yellow: #9a6700;
+    --yellow-bg: rgba(154, 103, 0, 0.12);
+    --red: #cf222e;
+    --red-bg: rgba(207, 34, 46, 0.12);
+    --purple: #8250df;
+    --purple-bg: rgba(130, 80, 223, 0.12);
+    --table-header: #f6f8fa;
+    --table-hover: rgba(9, 105, 218, 0.06);
+    --table-stripe: rgba(0, 0, 0, 0.02);
+    --drawer-bg: #ffffff;
+    --drawer-backdrop: rgba(0, 0, 0, 0.45);
+    --callout-bg: rgba(9, 105, 218, 0.05);
+    --callout-border: rgba(9, 105, 218, 0.25);
+    --tag-bg: #eaeef2;
+    --badge-bg: #e1e4e8;
+    --chart-bar-bg: #e1e4e8;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
   * { box-sizing: border-box; }
   body {
     margin: 0;
@@ -24,31 +76,136 @@
     background: var(--bg);
     color: var(--fg);
     line-height: 1.45;
+    transition: background-color .2s, color .2s;
   }
+
   header {
-    padding: 24px 20px 12px;
+    padding: 18px 24px;
     border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: var(--card);
   }
-  header h1 { margin: 0 0 6px; font-size: 22px; }
-  header p { margin: 0; color: var(--muted); font-size: 13px; }
-  main { max-width: 1100px; margin: 0 auto; padding: 20px; }
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .header-brand h1 {
+    margin: 0 0 4px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .header-brand p { margin: 0; color: var(--muted); font-size: 13px; }
+  .header-tools { display: flex; gap: 10px; align-items: center; }
+
+  main { max-width: 1200px; margin: 0 auto; padding: 24px 20px; }
+
+  /* Buttons & Inputs */
+  .btn {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--fg);
+    border-radius: 6px;
+    padding: 7px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all .15s ease-in-out;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--card-hover); }
+  .btn-primary { background: var(--accent); color: #ffffff !important; border-color: var(--accent); }
+  .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: #ffffff; }
+  .btn-sm { padding: 4px 8px; font-size: 12px; }
+  .btn[disabled] { opacity: .45; cursor: not-allowed; }
+  .btn[disabled]:hover { border-color: var(--border); color: var(--fg); background: var(--card); }
+
+  /* Toolbar & Breadcrumbs */
+  .toolbar { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; justify-content: space-between; }
+  .crumbs { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+  .linkbtn { background: none; border: 0; color: var(--accent); cursor: pointer; font-size: 13px; padding: 0; font-family: inherit; text-decoration: underline; }
+  .detailhead { display: flex; gap: 14px; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; margin-bottom: 6px; }
+  .detailhead h2 { margin: 0; font-size: 22px; font-weight: 700; }
+  .navbtns { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* Overview Cards Grid */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px; }
   .card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 16px;
+    padding: 18px;
     cursor: pointer;
-    transition: border-color .15s, transform .15s;
+    transition: border-color .15s, transform .15s, box-shadow .15s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .card.active { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
-  .card h2 { margin: 0 0 4px; font-size: 16px; }
-  .card .seed { color: var(--muted); font-size: 12px; word-break: break-all; margin-bottom: 10px; }
-  .stat-row { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; padding: 2px 0; }
-  .stat-row span:last-child { font-variant-numeric: tabular-nums; }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+  .card h2 { margin: 0 0 4px; font-size: 17px; font-weight: 600; color: var(--fg); }
+  .card .seed { color: var(--muted); font-size: 12px; word-break: break-all; margin-bottom: 12px; }
+  
+  /* Circular Score Indicator */
+  .health-gauge-mini {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .gauge-circle {
+    position: relative;
+    width: 48px;
+    height: 48px;
+  }
+  .gauge-circle svg {
+    width: 48px;
+    height: 48px;
+    transform: rotate(-90deg);
+  }
+  .gauge-circle circle {
+    fill: none;
+    stroke-width: 4;
+  }
+  .gauge-bg { stroke: var(--border-light); }
+  .gauge-val {
+    stroke-linecap: round;
+    transition: stroke-dashoffset .4s ease;
+  }
+  .gauge-num {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .gauge-label { font-size: 10px; color: var(--muted); margin-top: 2px; font-weight: 600; text-transform: uppercase; }
+
+  .stat-row { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; padding: 3px 0; color: var(--fg); }
+  .stat-row span:last-child { font-variant-numeric: tabular-nums; font-weight: 500; }
+  .stat-row .sublabel { color: var(--muted); }
+  
+  .card-takeaways {
+    background: var(--callout-bg);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 8px 10px;
+    margin: 12px 0 6px;
+    font-size: 12px;
+    color: var(--fg);
+  }
+  .card-takeaways p { margin: 2px 0; }
+
   .bars { margin-top: 10px; }
-  .bar { height: 10px; border-radius: 5px; background: var(--border); overflow: hidden; display: flex; margin-bottom: 6px; }
+  .bar { height: 8px; border-radius: 4px; background: var(--border-light); overflow: hidden; display: flex; margin-bottom: 6px; }
   .bar > i { display: block; height: 100%; }
   .bar > i.s2 { background: var(--green); }
   .bar > i.s3 { background: var(--yellow); }
@@ -56,62 +213,537 @@
   .bar > i.s5 { background: #ff7b72; }
   .bar > i.se { background: var(--purple); }
   .bar > i.s0 { background: var(--muted); }
-  .btn, .filters input, .filters select {
-    background: var(--card); border: 1px solid var(--border); color: var(--fg);
-    border-radius: 8px; padding: 8px 10px; font-size: 13px; font-family: inherit;
-  }
-  .btn { cursor: pointer; }
-  .btn:hover { border-color: var(--accent); color: var(--accent); }
-  .btn[disabled] { opacity: .45; cursor: not-allowed; }
-  .btn[disabled]:hover { border-color: var(--border); color: var(--fg); }
-  .filters { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 14px 0 8px; }
-  .filters input[type=search] { flex: 1; min-width: 220px; }
-  .chk { font-size: 12px; color: var(--muted); display: inline-flex; align-items: center; gap: 5px; }
-  .toolbar { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
+
+  /* Legend */
   .legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
-  .legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .legend span { display: inline-flex; align-items: center; gap: 5px; cursor: default; }
   .legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
-  .crumbs { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
-  .linkbtn { background: none; border: 0; color: var(--accent); cursor: pointer; font-size: 13px; padding: 0; font-family: inherit; text-decoration: underline; }
-  .detailhead { display: flex; gap: 14px; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; }
-  .detailhead h2 { margin: 0; font-size: 20px; }
-  .navbtns { display: flex; gap: 8px; flex-wrap: wrap; }
-  .sectionh { margin: 26px 0 0; font-size: 16px; }
-  .hgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin: 10px 0 0; }
-  .hcard { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
-  .hcard .n { font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
-  .hcard .l { font-size: 12px; color: var(--muted); }
+
+  /* Executive Takeaway Box (Detail Page) */
+  .exec-callout {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 16px 0 20px;
+    box-shadow: var(--shadow);
+  }
+  .exec-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .exec-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--fg);
+  }
+  .exec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+  }
+  .exec-item {
+    background: var(--callout-bg);
+    border: 1px solid var(--callout-border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+  .exec-item-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .exec-item p { margin: 0; color: var(--fg); font-size: 12.5px; line-height: 1.4; }
+
+  /* Health & Metrics Section */
+  .health-wrapper {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 860px) {
+    .health-wrapper { grid-template-columns: 1fr; }
+  }
+
+  .health-score-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .score-gauge-lg {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin-bottom: 10px;
+  }
+  .score-gauge-lg svg {
+    width: 110px;
+    height: 110px;
+    transform: rotate(-90deg);
+  }
+  .score-gauge-lg circle {
+    fill: none;
+    stroke-width: 8;
+  }
+  .score-gauge-lg .gauge-num {
+    font-size: 26px;
+    font-weight: 800;
+  }
+  .score-grade {
+    font-size: 14px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-top: 4px;
+    display: inline-block;
+  }
+  .grade-good { background: var(--green-bg); color: var(--green); }
+  .grade-fair { background: var(--yellow-bg); color: var(--yellow); }
+  .grade-poor { background: var(--red-bg); color: var(--red); }
+
+  .hgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
+  .hcard {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hcard .n { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.2; }
+  .hcard .l { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
   .hcard.bad .n { color: var(--red); }
   .hcard.warn .n { color: var(--yellow); }
   .hcard.ok .n { color: var(--green); }
-  .hnote { color: var(--muted); font-size: 12px; margin: 10px 0 0; }
-  #compare table { margin-bottom: 18px; }
-  #compare th:first-child, #compare td:first-child { text-align: left; }
-  #compare th, #compare td { text-align: right; }
-  .sortind { color: var(--accent); font-size: 10px; }
+  .hcard.accent .n { color: var(--accent); }
+
+  /* Visual Analytics Section */
+  .sectionh { margin: 24px 0 12px; font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .chart-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .chart-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: var(--fg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .chart-sub { font-size: 11px; color: var(--muted); font-weight: normal; }
+
+  /* Funnel & Bar Charts */
+  .chart-row {
+    margin-bottom: 8px;
+    border-radius: 6px;
+    padding: 4px 6px;
+    transition: background .12s, outline .12s;
+  }
+  .chart-row:hover { background: var(--table-hover); }
+  .chart-row.active {
+    background: var(--accent-bg);
+    outline: 1px solid var(--accent);
+  }
+  .chart-row-info { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 3px; }
+  .chart-bar-wrap {
+    height: 14px;
+    background: var(--chart-bar-bg);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    cursor: pointer;
+    position: relative;
+  }
+  .chart-bar-fill { height: 100%; border-radius: 4px; transition: width .3s ease; }
+  .chart-row:hover .chart-bar-fill { filter: brightness(1.15); }
+  
+  /* Domain Rollup List */
+  .domain-list { max-height: 220px; overflow-y: auto; padding-right: 4px; }
+  .domain-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background .12s, border-color .12s;
+    border: 1px solid transparent;
+  }
+  .domain-item:hover { background: var(--table-hover); }
+  .domain-item.active {
+    background: var(--accent-bg);
+    border-color: var(--accent);
+  }
+  .domain-name { font-weight: 500; word-break: break-all; color: var(--accent); }
+  .domain-count-badge {
+    background: var(--badge-bg);
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Active Filter Indicator */
+  .active-filter-banner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-bg);
+    border: 1px solid var(--accent);
+    color: var(--fg);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    margin: 10px 0;
+  }
+  .active-filter-banner button {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: auto;
+  }
+
+  /* Triage Presets Bar */
+  .triage-wrap {
+    margin: 20px 0 12px;
+  }
+  .triage-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    margin-bottom: 8px;
+  }
+  .triage-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .triage-btn {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--fg);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all .15s ease;
+  }
+  .triage-btn:hover {
+    border-color: var(--accent);
+    background: var(--card-hover);
+  }
+  .triage-btn.active {
+    background: var(--accent);
+    color: #ffffff !important;
+    border-color: var(--accent);
+    box-shadow: 0 2px 8px rgba(88, 166, 255, 0.3);
+  }
+  .triage-btn .count-badge {
+    background: var(--badge-bg);
+    color: var(--fg);
+    padding: 1px 7px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .triage-btn.active .count-badge {
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+  }
+
+  /* Filters */
+  .filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 12px 0 10px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+  }
+  .filters input, .filters select {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--fg);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-family: inherit;
+  }
+  .filters input[type=search] { flex: 1; min-width: 220px; }
+  .chk { font-size: 12.5px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
+  .chk input { cursor: pointer; }
+
+  /* Table styling */
+  .tablewrap {
+    max-height: 65vh;
+    overflow: auto;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--card);
+  }
+  table { width: 100%; min-width: 780px; border-collapse: collapse; font-size: 12.5px; text-align: left; }
+  th, td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th {
+    position: sticky;
+    top: 0;
+    background: var(--table-header);
+    cursor: pointer;
+    user-select: none;
+    font-weight: 600;
+    color: var(--fg);
+    z-index: 1;
+  }
+  th:hover { color: var(--accent); }
+  tbody tr { cursor: pointer; transition: background .1s; }
+  tbody tr:nth-child(even) { background: var(--table-stripe); }
+  tbody tr:hover { background: var(--table-hover) !important; }
+  tbody tr:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  td.url { word-break: break-all; max-width: 380px; }
+  .sortind { color: var(--accent); font-size: 11px; margin-left: 3px; }
   .sword { color: var(--muted); font-size: 11px; margin-left: 5px; white-space: nowrap; }
-  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
-  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
-  th { position: sticky; top: 0; background: var(--card); cursor: pointer; user-select: none; }
-  tbody tr:hover { background: rgba(56,139,253,.08); }
-  td.url { word-break: break-all; max-width: 420px; }
-  .pill { display: inline-block; padding: 1px 7px; border-radius: 999px; font-size: 12px; font-weight: 600; }
-  .s2 { background: rgba(63,185,80,.15); color: var(--green); }
-  .s3 { background: rgba(210,153,34,.15); color: var(--yellow); }
-  .s4 { background: rgba(248,81,73,.15); color: var(--red); }
-  .s5 { background: rgba(248,81,73,.22); color: var(--red); }
-  .se { background: rgba(188,140,255,.15); color: var(--purple); }
-  .s0 { background: rgba(139,148,158,.22); color: var(--muted); }
-  .hidden { display: none; }
-  .meta { color: var(--muted); font-size: 12px; margin: 6px 0 14px; }
-  .tablewrap { max-height: 70vh; overflow: auto; border: 1px solid var(--border); border-radius: 10px; }
-  a { color: var(--accent); }
-  .count { font-variant-numeric: tabular-nums; }
-  .loading { color: var(--muted); padding: 20px; }
-  #issues { margin-top: 22px; }
+
+  /* Pagination Bar */
+  .pagination-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 12.5px;
+  }
+  .pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .pagination-size {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+  }
+  .pagination-size select {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--fg);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+  .pg-current {
+    font-weight: 600;
+    padding: 0 6px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Status Pills */
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11.5px; font-weight: 600; text-align: center; }
+  .s2 { background: var(--green-bg); color: var(--green); }
+  .s3 { background: var(--yellow-bg); color: var(--yellow); }
+  .s4 { background: var(--red-bg); color: var(--red); }
+  .s5 { background: var(--red-bg); color: var(--red); }
+  .se { background: var(--purple-bg); color: var(--purple); }
+  .s0 { background: var(--badge-bg); color: var(--muted); }
+
+  /* Side Drawer Modal */
+  .drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: var(--drawer-backdrop);
+    z-index: 900;
+    backdrop-filter: blur(2px);
+    transition: opacity .2s ease;
+  }
+  .drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 540px;
+    max-width: 90vw;
+    background: var(--drawer-bg);
+    border-left: 1px solid var(--border);
+    box-shadow: -8px 0 24px rgba(0, 0, 0, 0.4);
+    z-index: 950;
+    display: flex;
+    flex-direction: column;
+    transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(0);
+    overflow: hidden;
+  }
+  .drawer.hidden-right {
+    transform: translateX(100%);
+  }
+  .drawer-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--card);
+  }
+  .drawer-title-wrap { flex: 1; min-width: 0; }
+  .drawer-url {
+    margin: 6px 0 0;
+    font-size: 14px;
+    font-weight: 600;
+    word-break: break-all;
+    line-height: 1.35;
+    color: var(--fg);
+  }
+  .drawer-actions { display: flex; gap: 6px; align-items: center; }
+  .drawer-content {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+  }
+  .drawer-flags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+  .drawer-flag-pill {
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .drawer-section {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+  .drawer-section h4 {
+    margin: 0 0 10px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--muted);
+  }
+  .drawer-grid {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 8px 12px;
+    font-size: 12.5px;
+    margin: 0;
+  }
+  .drawer-grid dt { color: var(--muted); font-weight: 500; }
+  .drawer-grid dd { margin: 0; word-break: break-word; font-weight: 500; }
+  .drawer-stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .drawer-mini-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px;
+    text-align: center;
+  }
+  .drawer-mini-card .val { font-size: 18px; font-weight: 700; }
+  .drawer-mini-card .lbl { font-size: 11px; color: var(--muted); }
+
+  /* Issues list */
+  #issues { margin-top: 24px; }
   #issues table td:first-child { font-weight: 600; }
-  footer { color: var(--muted); font-size: 12px; padding: 20px; text-align: center; }
+
+  /* Utility */
+  .hidden { display: none !important; }
+  .meta { color: var(--muted); font-size: 12px; margin: 6px 0 12px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .count { font-variant-numeric: tabular-nums; }
+  .loading { color: var(--muted); padding: 24px; text-align: center; font-size: 14px; }
+  footer { color: var(--muted); font-size: 12px; padding: 28px 20px; text-align: center; border-top: 1px solid var(--border); margin-top: 40px; }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  @media (max-width: 600px) {
+    main { padding: 16px 12px; }
+    header { padding: 14px 16px; }
+    .drawer { width: 100vw; max-width: 100vw; }
+    .drawer-grid { grid-template-columns: 105px 1fr; }
+    .pagination-bar { justify-content: center; }
+  }
+
+  /* Print / PDF Styles */
+  @media print {
+    body { background: #ffffff !important; color: #000000 !important; font-size: 11pt; }
+    .header-tools, footer, .toolbar, .navbtns, .filters, .triage-wrap, .pagination-bar, .drawer, .drawer-backdrop, #crumbHome, #crumbNow, .btn, .active-filter-banner {
+      display: none !important;
+    }
+    header { border-bottom: 2px solid #000000 !important; background: #ffffff !important; padding: 12px 0 !important; margin-bottom: 16px !important; }
+    main { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+    .card, .chart-card, .exec-callout, .health-score-card, .hcard, .tablewrap {
+      border: 1px solid #cccccc !important;
+      background: #ffffff !important;
+      color: #000000 !important;
+      box-shadow: none !important;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .tablewrap { max-height: none !important; overflow: visible !important; }
+    a { color: #000000 !important; text-decoration: none !important; }
+    .score-gauge-lg svg, .gauge-circle svg { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .pill, .count-badge, .badge-bg, .bar > i, .chart-bar-fill { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; animation: none !important; }
     .card:hover { transform: none; }
@@ -119,101 +751,369 @@
 </style>
 </head>
 <body>
+
 <header>
-  <h1>LibreCrawl Audit Dashboard</h1>
-  <p id="subtitle">Loading…</p>
+  <div class="header-brand">
+    <h1>
+      <span>🔍</span> LibreCrawl Executive &amp; Technical Audit
+    </h1>
+    <p id="subtitle">Loading crawl repositories…</p>
+  </div>
+  <div class="header-tools">
+    <button class="btn" id="themeToggle" type="button" aria-label="Toggle light or dark theme" title="Switch Theme">
+      <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+    </button>
+    <button class="btn" id="printBtn" type="button" aria-label="Print or export PDF" title="Print executive view">
+      <span>🖨️</span> Print / PDF
+    </button>
+  </div>
 </header>
+
 <main>
+  <!-- OVERVIEW SECTION -->
   <section id="overviewWrap">
     <div class="toolbar">
-      <button class="btn" id="compareToggle" type="button" aria-expanded="false" aria-controls="compare">Compare all crawls</button>
+      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        <button class="btn" id="compareToggle" type="button" aria-expanded="false" aria-controls="compare">
+          📊 Compare all crawls
+        </button>
+      </div>
       <div class="legend" id="legend"></div>
     </div>
+
     <div id="compare" class="hidden"></div>
-    <section id="overview" class="cards"></section>
+    <section id="overview" class="cards" aria-label="Crawl list overview"></section>
   </section>
 
+  <!-- DETAIL DRILL-DOWN SECTION -->
   <section id="detail" class="hidden">
     <nav class="crumbs" aria-label="Breadcrumb">
-      <button class="linkbtn" id="crumbHome" type="button">Home</button>
+      <button class="linkbtn" id="crumbHome" type="button">← All Crawls</button>
       <span aria-hidden="true">›</span>
-      <span id="crumbNow" aria-current="page"></span>
+      <span id="crumbNow" aria-current="page" style="font-weight:600; color:var(--fg);"></span>
     </nav>
+
     <div class="detailhead">
-      <h2 id="detailTitle"></h2>
+      <div>
+        <h2 id="detailTitle"></h2>
+        <p class="meta" id="detailMeta" style="margin:4px 0 0;"></p>
+      </div>
       <div class="navbtns">
-        <button class="btn" id="prevCrawl" type="button">‹ Previous crawl</button>
-        <button class="btn" id="nextCrawl" type="button">Next crawl ›</button>
-        <button class="btn" id="back" type="button">All crawls</button>
+        <button class="btn btn-sm" id="prevCrawl" type="button">‹ Previous</button>
+        <button class="btn btn-sm" id="nextCrawl" type="button">Next ›</button>
+        <button class="btn btn-sm" id="back" type="button">All Crawls</button>
       </div>
     </div>
-    <p class="meta" id="detailMeta"></p>
 
-    <section id="health" aria-labelledby="healthH"></section>
+    <!-- R1: Executive Takeaways Callout -->
+    <section id="execCallout" class="exec-callout" aria-labelledby="execH"></section>
+
+    <!-- R1: Health Score & High Level Grid -->
+    <div class="health-wrapper">
+      <div id="healthScoreBox" class="health-score-card"></div>
+      <div id="healthGrid" class="hgrid"></div>
+    </div>
+
+    <!-- R3: Visual Analytics & Architecture Insights -->
+    <h3 class="sectionh"><span>📈</span> Visual Analytics &amp; Architecture Insights</h3>
+    <div class="analytics-grid">
+      <!-- Status Distribution -->
+      <div class="chart-card">
+        <div class="chart-title">
+          <span>Status Code Distribution</span>
+          <span class="chart-sub">Response ratio</span>
+        </div>
+        <div id="statusChart"></div>
+      </div>
+
+      <!-- Link Depth Funnel -->
+      <div class="chart-card">
+        <div class="chart-title">
+          <span>Link Depth Funnel</span>
+          <span class="chart-sub">Levels from seed</span>
+        </div>
+        <div id="depthChart"></div>
+      </div>
+
+      <!-- Issues by Category -->
+      <div class="chart-card">
+        <div class="chart-title">
+          <span>Issues by Category</span>
+          <span class="chart-sub">Click category to filter</span>
+        </div>
+        <div id="issueCategoryChart"></div>
+      </div>
+
+      <!-- Outbound External Domains Rollup -->
+      <div class="chart-card">
+        <div class="chart-title">
+          <span>Top External Destination Domains</span>
+          <span class="chart-sub">Click domain to inspect</span>
+        </div>
+        <div id="domainRollup" class="domain-list"></div>
+      </div>
+    </div>
+
+    <!-- Issues Table -->
     <div id="issues"></div>
 
-    <h3 class="sectionh">Every page we found</h3>
+    <!-- R2: Page Explorer & Actionable Triage Tabs -->
+    <h3 class="sectionh" style="margin-top:28px;"><span>📑</span> Page Explorer &amp; URL Inspection</h3>
+    <div class="triage-wrap">
+      <div class="triage-label">Quick Action Triage Presets</div>
+      <div class="triage-tabs" id="triageTabs" role="tablist" aria-label="Triage Presets">
+        <button class="triage-btn active" data-preset="all" type="button" role="tab" aria-selected="true">
+          <span>All Pages</span> <span class="count-badge" id="cntAll">0</span>
+        </button>
+        <button class="triage-btn" data-preset="broken" type="button" role="tab" aria-selected="false">
+          <span>🚨 Broken &amp; Server Errors</span> <span class="count-badge" id="cntBroken">0</span>
+        </button>
+        <button class="triage-btn" data-preset="slow" type="button" role="tab" aria-selected="false">
+          <span>🐢 Slow Pages (&gt;1s)</span> <span class="count-badge" id="cntSlow">0</span>
+        </button>
+        <button class="triage-btn" data-preset="js" type="button" role="tab" aria-selected="false">
+          <span>⚡ JS-Dependent</span> <span class="count-badge" id="cntJs">0</span>
+        </button>
+        <button class="triage-btn" data-preset="thin" type="button" role="tab" aria-selected="false">
+          <span>📝 Thin / Missing Content</span> <span class="count-badge" id="cntThin">0</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="activeFilterNotice" class="active-filter-banner hidden"></div>
+
     <div class="filters">
-      <input type="search" id="q" placeholder="Search by web address or page title…" aria-label="Search by web address or page title" />
-      <select id="statusFilter" aria-label="Filter by result">
-        <option value="">All results</option>
+      <input type="search" id="q" placeholder="Search by URL, path, or page title…" aria-label="Search by URL or page title" />
+      <select id="statusFilter" aria-label="Filter by HTTP result">
+        <option value="">All status codes</option>
         <option value="2xx">Working (2xx)</option>
         <option value="3xx">Redirected (3xx)</option>
         <option value="4xx">Broken (4xx)</option>
         <option value="5xx">Server error (5xx)</option>
         <option value="error">Crawl error</option>
-        <option value="none">No response</option>
+        <option value="none">No response (0)</option>
       </select>
-      <select id="internalFilter" aria-label="Filter by internal or external">
-        <option value="">Internal + external</option>
+      <select id="internalFilter" aria-label="Filter by internal or external scope">
+        <option value="">All Scopes (Internal + External)</option>
         <option value="1">Internal only</option>
         <option value="0">External only</option>
       </select>
-      <label class="chk"><input type="checkbox" id="jsOnly" /> JavaScript-dependent only</label>
-      <button class="btn" id="exportCsv" type="button" title="Download every matching row, including rows beyond the 600 shown">Export CSV</button>
+      <label class="chk"><input type="checkbox" id="jsOnly" /> JS-rendered only</label>
+      <button class="btn btn-primary" id="exportCsv" type="button" title="Download matching rows as CSV">
+        <span>📥</span> Export CSV
+      </button>
     </div>
+
     <p class="meta" id="matchCount" aria-live="polite"></p>
+
     <div class="tablewrap">
-      <table id="pageTable">
+      <table id="pageTable" aria-label="Crawled URLs table">
         <thead>
           <tr>
-            <th data-k="url" tabindex="0" aria-sort="ascending" title="The web address of the page">Web address <span class="sortind"></span></th>
-            <th data-k="status_code" tabindex="0" aria-sort="none" title="What the server returned when we asked for this page">Result <span class="sortind"></span></th>
-            <th data-k="depth" tabindex="0" aria-sort="none" title="How many clicks from the start page">Link level <span class="sortind"></span></th>
-            <th data-k="title" tabindex="0" aria-sort="none" title="The page title shown in browser tabs and search results">Page title <span class="sortind"></span></th>
-            <th data-k="word_count" tabindex="0" aria-sort="none" title="Number of words of visible text">Words <span class="sortind"></span></th>
-            <th data-k="response_time" tabindex="0" aria-sort="none" title="How long the page took to respond, in milliseconds. Only recorded for JavaScript-dependent pages.">Load time (ms) <span class="sortind"></span></th>
-            <th data-k="internal_links" tabindex="0" aria-sort="none" title="Links from this page to the same site">Internal links <span class="sortind"></span></th>
-            <th data-k="external_links" tabindex="0" aria-sort="none" title="Links from this page to other sites">External links <span class="sortind"></span></th>
-            <th data-k="javascript_rendered" tabindex="0" aria-sort="none" title="Page needs JavaScript to show its content">JavaScript-dependent <span class="sortind"></span></th>
+            <th data-k="url" tabindex="0" aria-sort="ascending" title="Click to sort by URL">Web Address <span class="sortind"></span></th>
+            <th data-k="status_code" tabindex="0" aria-sort="none" title="Click to sort by Status Code">Result <span class="sortind"></span></th>
+            <th data-k="depth" tabindex="0" aria-sort="none" title="Click to sort by Crawl Depth">Depth <span class="sortind"></span></th>
+            <th data-k="title" tabindex="0" aria-sort="none" title="Click to sort by Page Title">Page Title <span class="sortind"></span></th>
+            <th data-k="word_count" tabindex="0" aria-sort="none" title="Click to sort by Word Count">Words <span class="sortind"></span></th>
+            <th data-k="response_time" tabindex="0" aria-sort="none" title="Click to sort by Load Time (ms)">Load Time (ms) <span class="sortind"></span></th>
+            <th data-k="internal_links" tabindex="0" aria-sort="none" title="Click to sort by Internal Links">In Links <span class="sortind"></span></th>
+            <th data-k="external_links" tabindex="0" aria-sort="none" title="Click to sort by External Links">Out Links <span class="sortind"></span></th>
+            <th data-k="javascript_rendered" tabindex="0" aria-sort="none" title="Click to sort by JS dependency">JS <span class="sortind"></span></th>
           </tr>
         </thead>
         <tbody id="pageBody"></tbody>
       </table>
     </div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination-bar" id="paginationBar">
+      <div class="pagination-info" id="paginationInfo">Showing 0 pages</div>
+      <div class="pagination-controls">
+        <button class="btn btn-sm" id="pgFirst" type="button" title="First page">⏮ First</button>
+        <button class="btn btn-sm" id="pgPrev" type="button" title="Previous page">◀ Prev</button>
+        <span class="pg-current" id="pgCurrent">Page 1 of 1</span>
+        <button class="btn btn-sm" id="pgNext" type="button" title="Next page">Next ▶</button>
+        <button class="btn btn-sm" id="pgLast" type="button" title="Last page">Last ⏭</button>
+      </div>
+      <div class="pagination-size">
+        <label for="pageSizeSelect">Rows per page:</label>
+        <select id="pageSizeSelect" aria-label="Rows per page">
+          <option value="100">100</option>
+          <option value="250" selected>250</option>
+          <option value="500">500</option>
+          <option value="all">All</option>
+        </select>
+      </div>
+    </div>
   </section>
 </main>
-<footer>Generated from LibreCrawl on TrueNAS · <span id="gen"></span></footer>
+
+<!-- R4: Interactive URL Detail Inspection Side Drawer -->
+<div id="drawerBackdrop" class="drawer-backdrop hidden" aria-hidden="true"></div>
+<aside id="urlDrawer" class="drawer hidden-right hidden" role="dialog" aria-modal="true" aria-labelledby="drawerUrlTitle">
+  <div class="drawer-header">
+    <div class="drawer-title-wrap">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span id="drawerStatusBadge" class="pill"></span>
+        <span id="drawerScopeBadge" class="pill s0"></span>
+      </div>
+      <h3 id="drawerUrlTitle" class="drawer-url"></h3>
+    </div>
+    <div class="drawer-actions">
+      <button class="btn btn-sm" id="drawerCopyBtn" type="button" title="Copy URL to clipboard">📋 Copy</button>
+      <a class="btn btn-sm" id="drawerOpenLink" target="_blank" rel="noopener" title="Open URL in new tab">↗ Open</a>
+      <button class="btn btn-sm" id="drawerCloseBtn" type="button" aria-label="Close drawer">✕</button>
+    </div>
+  </div>
+
+  <div class="drawer-content" id="drawerContent">
+    <div class="drawer-flags" id="drawerFlags"></div>
+
+    <div class="drawer-section">
+      <h4>Page Metadata</h4>
+      <dl class="drawer-grid" id="drawerGrid"></dl>
+    </div>
+
+    <div class="drawer-section">
+      <h4>Link Architecture</h4>
+      <div class="drawer-stat-row">
+        <div class="drawer-mini-card">
+          <div class="val" id="drawerInLinks" style="color:var(--accent);">0</div>
+          <div class="lbl">Internal Links</div>
+        </div>
+        <div class="drawer-mini-card">
+          <div class="val" id="drawerOutLinks" style="color:var(--purple);">0</div>
+          <div class="lbl">External Links</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer-section" id="drawerTechnicalSection">
+      <h4>Technical &amp; Response Details</h4>
+      <dl class="drawer-grid" id="drawerTechGrid"></dl>
+    </div>
+  </div>
+</aside>
+
+<footer>
+  LibreCrawl Static Audit Dashboard · Generated <span id="gen"></span> · Pure Vanilla Web / Zero-Build
+</footer>
 
 <script>
-const state = { crawls: [], issues: [], pages: [], active: null, sortKey: "url", sortAsc: true, q: "", status: "", internal: "", jsOnly: false, compare: false };
-const MAX_ROWS = 600;
+const state = {
+  crawls: [],
+  issues: [],
+  pages: [],
+  active: null,
+  triage: "all",
+  sortKey: "url",
+  sortAsc: true,
+  q: "",
+  status: "",
+  internal: "",
+  jsOnly: false,
+  compare: false,
+  selectedCategory: null,
+  selectedDepth: null,
+  selectedDomain: null,
+  theme: "dark",
+  currentPage: 1,
+  pageSize: 250
+};
+
+let currentFilteredRows = [];
+let lastFocusedElement = null;
 
 function el(id) { return document.getElementById(id); }
 
-// HTML-escape untrusted strings before innerHTML insertion (crawl data may contain markup).
 function esc(s) {
   return String(s == null ? "" : s)
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
-// Only allow http(s) links in href; everything else becomes a non-navigable anchor.
+
 function safeHref(url) {
   const u = String(url || "");
   return (/^https?:\/\//i.test(u)) ? u : "#";
 }
-function fmtMs(v) { return (v == null || v === 0) ? "" : Math.round(v).toLocaleString(); }
+
+function fmtMs(v) { return (v == null || v === 0) ? "—" : Math.round(v).toLocaleString(); }
 function fmtInt(v) { return (Number(v) || 0).toLocaleString(); }
+
+function parseDomain(url) {
+  try {
+    const u = new URL(url);
+    return (u.hostname && u.hostname.toLowerCase()) || "unknown";
+  } catch (e) {
+    return "unknown";
+  }
+}
+
+/* --- Classification Predicates --- */
+function is2xx(p) { return p.status_code != null && p.status_code >= 200 && p.status_code < 300; }
+function is3xx(p) { return p.status_code != null && p.status_code >= 300 && p.status_code < 400; }
+function is4xx(p) { return p.status_code != null && p.status_code >= 400 && p.status_code < 500; }
+function is5xx(p) { return p.status_code != null && p.status_code >= 500 && p.status_code < 600; }
+function isCrawlError(p) { return Boolean(p.error_type); }
+function isNoResponse(p) { return !p.error_type && (p.status_code == null || p.status_code === 0); }
+function isBroken(p) {
+  return p.status_code == null || p.status_code === 0 || p.status_code >= 400 || Boolean(p.error_type);
+}
+function isSlow(p) { return (Number(p.response_time) || 0) > 1000; }
+function isJs(p) { return Boolean(p.javascript_rendered); }
+function isThin(p) {
+  return p.word_count == null || p.word_count < 100 || !p.title || p.title.trim() === "";
+}
+
+function pageStats(pages) {
+  const s = {
+    total: pages.length,
+    ok: 0,
+    redirect: 0,
+    broken: 0,
+    server: 0,
+    errors: 0,
+    noresp: 0,
+    brokenTotal: 0,
+    js: 0,
+    internal: 0,
+    external: 0,
+    slow: 0,
+    thin: 0
+  };
+  for (const p of pages) {
+    if (is2xx(p)) s.ok++;
+    else if (is3xx(p)) s.redirect++;
+    else if (is4xx(p)) s.broken++;
+    else if (is5xx(p)) s.server++;
+    else if (isCrawlError(p)) s.errors++;
+    else if (isNoResponse(p)) s.noresp++;
+
+    if (isBroken(p)) s.brokenTotal++;
+    if (isJs(p)) s.js++;
+    if (p.is_internal) s.internal++; else s.external++;
+    if (isSlow(p)) s.slow++;
+    if (isThin(p)) s.thin++;
+  }
+  return s;
+}
+
+function calcHealthScore(c) {
+  const g = c.status_groups || {};
+  const total = Number(c.rows) || 1;
+  const ok = Number(g["2xx"]) || 0;
+  const redirects = Number(g["3xx"]) || 0;
+  const healthy = ok + redirects;
+  const score = Math.round((healthy / total) * 100);
+  return Math.max(0, Math.min(100, score));
+}
+
+function getHealthGrade(score) {
+  if (score >= 95) return { grade: "Optimal (A+)", cls: "grade-good", color: "var(--green)" };
+  if (score >= 90) return { grade: "Healthy (A)", cls: "grade-good", color: "var(--green)" };
+  if (score >= 75) return { grade: "Fair (B)", cls: "grade-fair", color: "var(--yellow)" };
+  return { grade: "Needs Action (C)", cls: "grade-poor", color: "var(--red)" };
+}
 
 function statusClass(code, err) {
   if (err) return "se";
@@ -224,43 +1124,84 @@ function statusClass(code, err) {
   if (code >= 200) return "s2";
   return "s0";
 }
+
 function statusLabel(p) {
   if (p.error_type) return p.error_type;
-  return (p.status_code == null || p.status_code === 0) ? "—" : p.status_code;
+  return (p.status_code == null || p.status_code === 0) ? "No resp (0)" : p.status_code;
 }
+
 function resultWord(p) {
   if (p.error_type) return "Crawl error";
   const c = p.status_code;
   if (c == null || c === 0) return "No response";
   if (c >= 500) return "Server error";
-  if (c >= 400) return "Broken";
+  if (c >= 400) return "Broken link";
   if (c >= 300) return "Redirected";
   if (c >= 200) return "Working";
   return "Unknown";
 }
+
 function statusWord(p) {
   const w = resultWord(p);
   return w === "Working" ? "" : w;
 }
 
-function pageStats(pages) {
-  const s = { total: pages.length, ok: 0, redirect: 0, broken: 0, server: 0, noresp: 0, errors: 0, js: 0, internal: 0, external: 0 };
-  for (const p of pages) {
-    const c = p.status_code;
-    if (p.error_type) s.errors++;
-    if (c == null || c === 0) s.noresp++;
-    else if (c >= 500) s.server++;
-    else if (c >= 400) s.broken++;
-    else if (c >= 300) s.redirect++;
-    else if (c >= 200) s.ok++;
-    if (p.javascript_rendered) s.js++;
-    if (p.is_internal) s.internal++; else s.external++;
+/* =========================================================
+   THEME MANAGEMENT (Safe localStorage & System Preference)
+   ========================================================= */
+function safeGetStorage(key) {
+  try {
+    return window.localStorage ? window.localStorage.getItem(key) : null;
+  } catch (e) {
+    return null;
   }
-  return s;
 }
 
+function safeSetStorage(key, val) {
+  try {
+    if (window.localStorage) window.localStorage.setItem(key, val);
+  } catch (e) {}
+}
+
+function initTheme() {
+  const saved = safeGetStorage("librecrawl-theme");
+  if (saved === "light" || saved === "dark") {
+    setTheme(saved);
+  } else {
+    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setTheme(prefersDark ? "dark" : "light");
+  }
+}
+
+function setTheme(theme) {
+  state.theme = theme;
+  document.documentElement.setAttribute("data-theme", theme);
+  safeSetStorage("librecrawl-theme", theme);
+  const icon = el("themeIcon");
+  const lbl = el("themeLabel");
+  if (theme === "dark") {
+    icon.textContent = "☀️";
+    lbl.textContent = "Light";
+  } else {
+    icon.textContent = "🌙";
+    lbl.textContent = "Dark";
+  }
+}
+
+el("themeToggle").addEventListener("click", () => {
+  setTheme(state.theme === "dark" ? "light" : "dark");
+});
+
+el("printBtn").addEventListener("click", () => {
+  window.print();
+});
+
+/* =========================================================
+   DATA LOADING & SUMMARY OVERVIEW
+   ========================================================= */
 async function loadSummary() {
   const res = await fetch("data/summary.json", { cache: "no-store" });
+  if (!res.ok) throw new Error("HTTP " + res.status);
   const data = await res.json();
   state.crawls = data.crawls || [];
   state.issues = data.issues || [];
@@ -276,25 +1217,79 @@ function renderCards() {
     const g = c.status_groups || {};
     const n = k => Number(g[k]) || 0;
     const total = c.rows || 1;
+    const score = calcHealthScore(c);
+    const grade = getHealthGrade(score);
+    const brokenCount = n("4xx") + n("5xx") + n("error") + n("other");
+    const jsPct = Math.round((n("js_rendered") || Number(c.js_rendered) || 0) / total * 100);
+
     const seg = (v, cls, lbl) => v <= 0 ? "" : `<i class="${cls}" style="width:${(v/total*100).toFixed(2)}%" title="${esc(lbl)}: ${v.toLocaleString()}"></i>`;
+    
+    const crawlIssues = (state.issues || []).filter(i => i.crawl_id === c.id)
+      .sort((a, b) => (Number(b.count) || 0) - (Number(a.count) || 0));
+    const topIssue = crawlIssues.length ? `${crawlIssues[0].category} (${fmtInt(crawlIssues[0].count)} ${crawlIssues[0].issue_type}s)` : "None recorded";
+
+    const radius = 18;
+    const circumference = 2 * Math.PI * radius;
+    const offset = circumference - (score / 100) * circumference;
+
     const card = document.createElement("div");
     card.className = "card";
     card.setAttribute("role", "button");
     card.setAttribute("tabindex", "0");
     card.setAttribute("aria-label", `View audit detail for ${c.label}`);
     card.innerHTML = `
-      <h2>${esc(c.label)}</h2>
-      <div class="seed" title="The page the crawler started from">${esc(c.seed)}</div>
-      <div class="stat-row"><span title="Total pages and files reached by the crawler">Pages crawled</span><span>${(Number(c.rows) || 0).toLocaleString()}</span></div>
-      <div class="stat-row"><span title="How many clicks deep from the start page the crawler went">Link levels</span><span>${Number(c.max_depth) || 0}</span></div>
-      <div class="stat-row"><span title="Pages on this site vs. pages on other sites">Internal / External links</span><span>${(Number(c.internal) || 0).toLocaleString()} / ${(Number(c.external) || 0).toLocaleString()}</span></div>
-      <div class="stat-row"><span title="Pages that need JavaScript to show their content">JavaScript-dependent</span><span>${(Number(c.js_rendered) || 0).toLocaleString()}</span></div>
-      <div class="bars">
-        <div class="bar">${seg(n("2xx"), "s2", "Working")}${seg(n("3xx"), "s3", "Redirected")}${seg(n("4xx"), "s4", "Broken")}${seg(n("5xx"), "s5", "Server error")}${seg(n("error"), "se", "Crawl error")}${seg(n("other"), "s0", "No response")}</div>
+      <div>
+        <div class="card-top">
+          <div>
+            <h2>${esc(c.label)}</h2>
+            <div class="seed" title="Seed URL">${esc(c.seed)}</div>
+          </div>
+          <div class="health-gauge-mini">
+            <div class="gauge-circle">
+              <svg viewBox="0 0 48 48">
+                <circle class="gauge-bg" cx="24" cy="24" r="${radius}"></circle>
+                <circle class="gauge-val" cx="24" cy="24" r="${radius}" stroke="${grade.color}" stroke-dasharray="${circumference}" stroke-dashoffset="${offset}"></circle>
+              </svg>
+              <div class="gauge-num" style="color:${grade.color}">${score}%</div>
+            </div>
+            <div class="gauge-label">${grade.grade.split(" ")[0]}</div>
+          </div>
+        </div>
+
+        <div class="card-takeaways">
+          <p><strong>Takeaway:</strong> ${brokenCount > 0 ? `🚨 <strong>${brokenCount.toLocaleString()}</strong> broken/unresolved links.` : "✅ No broken links."} ⚡ <strong>${jsPct}%</strong> JS dependency.</p>
+          <p><span class="sublabel">Hotspot:</span> ${esc(topIssue)}</p>
+        </div>
+
+        <div class="stat-row">
+          <span class="sublabel">Pages Crawled</span>
+          <span>${fmtInt(c.rows)}</span>
+        </div>
+        <div class="stat-row">
+          <span class="sublabel">Crawl Depth / Scope</span>
+          <span>Depth ${Number(c.max_depth) || 0} · ${fmtInt(c.internal)} in / ${fmtInt(c.external)} out</span>
+        </div>
+        <div class="stat-row">
+          <span class="sublabel">JavaScript Dependent</span>
+          <span>${fmtInt(c.js_rendered)} pages</span>
+        </div>
+
+        <div class="bars">
+          <div class="bar">
+            ${seg(n("2xx"), "s2", "Working")}
+            ${seg(n("3xx"), "s3", "Redirected")}
+            ${seg(n("4xx"), "s4", "Broken")}
+            ${seg(n("5xx"), "s5", "Server error")}
+            ${seg(n("error"), "se", "Crawl error")}
+            ${seg(n("other"), "s0", "No response")}
+          </div>
+        </div>
+        <div class="stat-row" style="font-size:12px;">
+          <span style="color:var(--green)">${n("2xx").toLocaleString()} working (2xx)</span>
+          <span style="color:var(--red)">${(n("4xx") + n("5xx")).toLocaleString()} 4xx/5xx errors</span>
+        </div>
       </div>
-      <div class="stat-row"><span style="color:var(--green)">${n("2xx").toLocaleString()} working</span>
-        <span style="color:var(--red)">${n("4xx").toLocaleString()} broken · ${n("5xx").toLocaleString()} server error</span></div>
-      <div class="meta" style="margin:8px 0 0">${esc(c.started_at)} → ${esc(c.completed_at)}</div>
+      <div class="meta" style="margin:10px 0 0; font-size:11.5px;">${esc(c.started_at)} → ${esc(c.completed_at)}</div>
     `;
     const open = () => openCrawl(c.id);
     card.addEventListener("click", open);
@@ -318,29 +1313,38 @@ function renderLegend() {
   el("legend").innerHTML = LEGEND.map(([cls, lbl]) =>
     `<span><i class="${cls}" style="background:${legendColor(cls)}"></i>${esc(lbl)}</span>`).join("");
 }
+
 function legendColor(cls) {
-  return { s2: "var(--green)", s3: "var(--yellow)", s4: "var(--red)", s5: "#ff7b72", se: "var(--purple)", s0: "var(--muted)" }[cls] || "var(--border)";
+  return {
+    s2: "var(--green)",
+    s3: "var(--yellow)",
+    s4: "var(--red)",
+    s5: "#ff7b72",
+    se: "var(--purple)",
+    s0: "var(--muted)"
+  }[cls] || "var(--border)";
 }
 
 function renderCompare() {
   const box = el("compare");
   if (!state.compare) { box.classList.add("hidden"); box.innerHTML = ""; return; }
   const rowsDef = [
+    ["Health Score", c => `${calcHealthScore(c)}% (${getHealthGrade(calcHealthScore(c)).grade})`, "Overall URL response and crawl health score"],
     ["Pages crawled", c => fmtInt(c.rows), "Total pages and files reached by the crawler"],
-    ["Working", c => fmtInt((c.status_groups || {})["2xx"]), "Pages that loaded normally"],
+    ["Working (2xx)", c => fmtInt((c.status_groups || {})["2xx"]), "Pages that loaded normally"],
     ["Broken links (4xx)", c => fmtInt((c.status_groups || {})["4xx"]), "Pages that could not be found"],
     ["Server errors (5xx)", c => fmtInt((c.status_groups || {})["5xx"]), "Pages where the server failed"],
-    ["No response", c => fmtInt((c.status_groups || {})["other"]), "The crawler got no usable reply"],
-    ["JavaScript-dependent", c => fmtInt(c.js_rendered), "Pages that need JavaScript to show content"],
+    ["No response / Other", c => fmtInt((c.status_groups || {})["other"]), "The crawler got no usable reply"],
+    ["JavaScript-dependent", c => `${fmtInt(c.js_rendered)} (${Math.round((c.js_rendered || 0) / (c.rows || 1) * 100)}%)`, "Pages that need JavaScript to show content"],
     ["Internal links", c => fmtInt(c.internal), "Pages on the same site"],
     ["External links", c => fmtInt(c.external), "Pages on other sites"],
-    ["Link levels", c => fmtInt(c.max_depth), "How many clicks deep the crawler went"]
+    ["Link levels (Depth)", c => fmtInt(c.max_depth), "How many clicks deep the crawler went"]
   ];
-  let html = `<h3 class="sectionh" style="margin-top:0">Side-by-side comparison</h3><div class="tablewrap"><table><thead><tr><th>Measure</th>`;
-  for (const c of state.crawls) html += `<th>${esc(c.label)}</th>`;
+  let html = `<h3 class="sectionh" style="margin-top:0"><span>📊</span> Side-by-Side Crawl Comparison</h3><div class="tablewrap"><table><thead><tr><th>Measure</th>`;
+  for (const c of state.crawls) html += `<th style="cursor:pointer;" onclick="openCrawl(${c.id})" title="Click to view details for ${esc(c.label)}" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCrawl(${c.id});}">${esc(c.label)} ↗</th>`;
   html += `</tr></thead><tbody>`;
   for (const [label, fn, tip] of rowsDef) {
-    html += `<tr><td title="${esc(tip)}">${esc(label)}</td>`;
+    html += `<tr><td title="${esc(tip)}"><strong>${esc(label)}</strong></td>`;
     for (const c of state.crawls) html += `<td class="count">${fn(c)}</td>`;
     html += `</tr>`;
   }
@@ -349,44 +1353,53 @@ function renderCompare() {
   box.classList.remove("hidden");
 }
 
-function renderHealth(c) {
-  const s = pageStats(state.pages);
-  const box = el("health");
-  const cell = (n, label, tip, cls) =>
-    `<div class="hcard ${cls || ""}"><div class="n">${fmtInt(n)}</div><div class="l" title="${esc(tip)}">${esc(label)}</div></div>`;
-  box.innerHTML = `
-    <h3 class="sectionh" id="healthH" style="margin-top:22px">Health summary</h3>
-    <div class="hgrid">
-      ${cell(s.total, "Pages crawled", "Every page and file the crawler reached from the start page")}
-      ${cell(s.ok, "Loaded normally", "Pages that returned successfully", "ok")}
-      ${cell(s.broken, "Broken links", "Pages that could not be found (404 and similar)", s.broken ? "bad" : "")}
-      ${cell(s.server, "Server errors", "The site's server failed while answering", s.server ? "bad" : "")}
-      ${cell(s.noresp, "No response", "The crawler got no usable reply at all", s.noresp ? "warn" : "")}
-      ${cell(s.errors, "Crawl errors", "Timeouts, connection failures and certificate problems", s.errors ? "warn" : "")}
-      ${cell(s.js, "JavaScript-dependent", "These pages need JavaScript to show their content, which can affect search engines and assistive technology")}
-      ${cell(s.internal, "Internal", "Addresses on the same site as the start page")}
-      ${cell(s.external, "External", "Addresses pointing to other sites")}
-    </div>
-    <p class="hnote">Started ${esc(c.started_at)} · finished ${esc(c.completed_at)} · reached ${fmtInt(c.max_depth)} link levels deep from <a href="${esc(safeHref(c.seed))}" target="_blank" rel="noopener">the start page</a>.</p>
-  `;
-}
-
+/* =========================================================
+   DETAIL VIEW RENDERING (R1, R2, R3, R4)
+   ========================================================= */
 async function openCrawl(id) {
   const c = state.crawls.find(x => x.id === id);
   if (!c) return;
   state.active = id;
   state.pages = [];
+  state.triage = "all";
+  state.q = "";
+  state.status = "";
+  state.internal = "";
+  state.jsOnly = false;
+  state.selectedCategory = null;
+  state.selectedDepth = null;
+  state.selectedDomain = null;
+  state.currentPage = 1;
+
+  el("q").value = "";
+  el("statusFilter").value = "";
+  el("internalFilter").value = "";
+  el("jsOnly").checked = false;
+  if (el("pageSizeSelect")) el("pageSizeSelect").value = state.pageSize;
+
   el("crumbNow").textContent = c.label;
   el("detailTitle").textContent = c.label;
-  el("detailMeta").innerHTML = `${fmtInt(c.rows)} pages crawled · ${fmtInt(c.internal)} internal / ${fmtInt(c.external)} external · ${fmtInt(c.js_rendered)} JavaScript-dependent`;
+  el("detailMeta").innerHTML = `Seed: <a href="${esc(safeHref(c.seed))}" target="_blank" rel="noopener">${esc(c.seed)}</a> · ${fmtInt(c.rows)} total URLs · Crawled ${esc(c.started_at)} to ${esc(c.completed_at)}`;
+  
   el("overviewWrap").classList.add("hidden");
   el("detail").classList.remove("hidden");
   updateCrawlNav();
-  el("health").innerHTML = "";
+  
+  el("execCallout").innerHTML = `<div class="loading">Loading executive takeaways…</div>`;
+  el("healthScoreBox").innerHTML = "";
+  el("healthGrid").innerHTML = "";
+  el("statusChart").innerHTML = "";
+  el("depthChart").innerHTML = "";
+  el("issueCategoryChart").innerHTML = "";
+  el("domainRollup").innerHTML = "";
   el("issues").innerHTML = "";
   el("matchCount").textContent = "";
-  el("pageBody").innerHTML = `<tr><td colspan="9" class="loading">Loading ${fmtInt(c.rows)} pages…</td></tr>`;
+  el("pageBody").innerHTML = `<tr><td colspan="9" class="loading">Loading ${fmtInt(c.rows)} records from data/pages-${esc(id)}.json…</td></tr>`;
+  
+  updateTriageTabsUI();
+
   window.scrollTo(0, 0);
+
   try {
     const res = await fetch(`data/pages-${id}.json`, { cache: "no-store" });
     if (!res.ok) throw new Error("HTTP " + res.status);
@@ -395,11 +1408,15 @@ async function openCrawl(id) {
     state.pages = Array.isArray(pages) ? pages : [];
   } catch (e) {
     if (state.active !== id) return;
-    el("pageBody").innerHTML = `<tr><td colspan="9" class="loading">Could not load data/pages-${esc(id)}.json. If you opened this file directly, serve the folder over HTTP instead.</td></tr>`;
+    el("pageBody").innerHTML = `<tr><td colspan="9" class="loading">Could not load data/pages-${esc(id)}.json. Please ensure this is served via a local web server (e.g. <code>python3 -m http.server 8080</code>).</td></tr>`;
     return;
   }
-  renderHealth(c);
+
+  renderExecutiveTakeaways(c);
+  renderHealthAndMetrics(c);
+  renderVisualAnalytics(c);
   renderIssues(id);
+  updateTriageCounts();
   renderTable();
 }
 
@@ -412,102 +1429,632 @@ function updateCrawlNav() {
   next.title = next.disabled ? "This is the last crawl" : "Go to " + state.crawls[i + 1].label;
 }
 
+function updateTriageTabsUI() {
+  document.querySelectorAll(".triage-btn").forEach(btn => {
+    const isTarget = btn.dataset.preset === state.triage;
+    btn.classList.toggle("active", isTarget);
+    btn.setAttribute("aria-selected", String(isTarget));
+  });
+}
+
+/* --- R1: Executive Takeaways Callout --- */
+function renderExecutiveTakeaways(c) {
+  const s = pageStats(state.pages);
+  const score = Math.round(((s.ok + s.redirect) / (s.total || 1)) * 100);
+  const grade = getHealthGrade(score);
+  const jsPct = ((s.js / (s.total || 1)) * 100).toFixed(1);
+  const brokenCount = s.brokenTotal;
+
+  const issues = (state.issues || []).filter(i => i.crawl_id === c.id);
+  const errorsOnly = issues.filter(i => i.issue_type === "error").sort((a, b) => b.count - a.count);
+  const warningsOnly = issues.filter(i => i.issue_type === "warning").sort((a, b) => b.count - a.count);
+  const topError = errorsOnly.length ? `${errorsOnly[0].category} (${fmtInt(errorsOnly[0].count)} errors)` : "None";
+  const topWarning = warningsOnly.length ? `${warningsOnly[0].category} (${fmtInt(warningsOnly[0].count)} warnings)` : "None";
+
+  const domainSet = new Set();
+  state.pages.forEach(p => { if (p.url) domainSet.add(parseDomain(p.url)); });
+
+  const box = el("execCallout");
+  box.innerHTML = `
+    <div class="exec-header">
+      <h3 class="exec-title"><span>🎯</span> Executive Summary &amp; Recommended Action Items</h3>
+      <span class="score-grade ${grade.cls}">Overall Health: ${score}% · ${grade.grade}</span>
+    </div>
+    <div class="exec-grid">
+      <div class="exec-item">
+        <div class="exec-item-title" style="color:var(--red);">
+          <span>🚨</span> Broken &amp; Unresolved Links (${fmtInt(brokenCount)})
+        </div>
+        <p><strong>${fmtInt(s.broken)} broken (4xx)</strong> and <strong>${fmtInt(s.server)} server errors (5xx)</strong> detected. High priority: update or remove obsolete URLs to prevent broken navigation and link equity loss.</p>
+      </div>
+
+      <div class="exec-item">
+        <div class="exec-item-title" style="color:var(--yellow);">
+          <span>⚡</span> JavaScript Dependency (${jsPct}%)
+        </div>
+        <p><strong>${fmtInt(s.js)} of ${fmtInt(s.total)} pages</strong> require client-side JavaScript rendering to display content. Verify dynamic SSR/prerendering for non-JS bots and accessibility readers.</p>
+      </div>
+
+      <div class="exec-item">
+        <div class="exec-item-title" style="color:var(--accent);">
+          <span>⚠️</span> Technical &amp; SEO Hotspots
+        </div>
+        <p>Top error category: <strong>${esc(topError)}</strong>. Top warning category: <strong>${esc(topWarning)}</strong>. Review structured metadata and canonical tags.</p>
+      </div>
+
+      <div class="exec-item">
+        <div class="exec-item-title" style="color:var(--purple);">
+          <span>🌐</span> Architecture &amp; External Reach
+        </div>
+        <p>Crawl reached <strong>${fmtInt(c.max_depth)} levels deep</strong> across <strong>${fmtInt(s.internal)} internal</strong> and <strong>${fmtInt(s.external)} external</strong> endpoints across <strong>${fmtInt(domainSet.size)} destination hosts</strong>.</p>
+      </div>
+    </div>
+  `;
+}
+
+/* --- R1: Health Score Card & Metrics Grid --- */
+function renderHealthAndMetrics(c) {
+  const s = pageStats(state.pages);
+  const score = Math.round(((s.ok + s.redirect) / (s.total || 1)) * 100);
+  const grade = getHealthGrade(score);
+
+  const radius = 46;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (score / 100) * circumference;
+
+  el("healthScoreBox").innerHTML = `
+    <div class="score-gauge-lg">
+      <svg viewBox="0 0 110 110">
+        <circle class="gauge-bg" cx="55" cy="55" r="${radius}"></circle>
+        <circle class="gauge-val" cx="55" cy="55" r="${radius}" stroke="${grade.color}" stroke-dasharray="${circumference}" stroke-dashoffset="${offset}"></circle>
+      </svg>
+      <div class="gauge-num" style="color:${grade.color}">${score}%</div>
+    </div>
+    <div style="font-weight:700; font-size:15px;">Crawl Health Score</div>
+    <div class="score-grade ${grade.cls}">${grade.grade}</div>
+    <div style="font-size:11.5px; color:var(--muted); margin-top:6px;">
+      ${fmtInt(s.ok + s.redirect)} of ${fmtInt(s.total)} URLs successful
+    </div>
+  `;
+
+  const cell = (n, label, tip, cls, filterAction) =>
+    `<div class="hcard ${cls || ""}" ${filterAction ? `style="cursor:pointer;" title="Click to filter: ${esc(tip)}"` : `title="${esc(tip)}"`} ${filterAction ? `onclick="${filterAction}"` : ""}>
+      <div class="n">${fmtInt(n)}</div>
+      <div class="l">${esc(label)}</div>
+    </div>`;
+
+  el("healthGrid").innerHTML = `
+    ${cell(s.total, "Total Crawled", "Every page and resource discovered", "accent", "applyPreset('all')")}
+    ${cell(s.ok, "Working (2xx)", "Pages that loaded with HTTP 200/2xx", "ok", "filterStatus('2xx')")}
+    ${cell(s.broken, "Broken (4xx)", "Pages not found or forbidden (404/403)", s.broken ? "bad" : "", "filterStatus('4xx')")}
+    ${cell(s.server, "Server Errors (5xx)", "Host or server response failures", s.server ? "bad" : "", "filterStatus('5xx')")}
+    ${cell(s.noresp, "No Response (0)", "Endpoints that yielded no HTTP response", s.noresp ? "warn" : "", "filterStatus('none')")}
+    ${cell(s.errors, "Crawl Errors", "Network timeouts or connection drops", s.errors ? "warn" : "", "filterStatus('error')")}
+    ${cell(s.js, "JS-Dependent", "Pages requiring JavaScript execution", "warn", "applyPreset('js')")}
+    ${cell(s.slow, "Slow (>1,000ms)", "Pages taking over 1 second to load", s.slow ? "warn" : "", "applyPreset('slow')")}
+    ${cell(s.thin, "Thin / Blank Title", "Pages with < 100 words or missing title", s.thin ? "warn" : "", "applyPreset('thin')")}
+    ${cell(s.internal, "Internal Nodes", "Pages belonging to the root domain", "", "filterScope('1')")}
+    ${cell(s.external, "External Links", "Destination links pointing outside the seed domain", "", "filterScope('0')")}
+    ${cell(c.max_depth, "Max Crawl Depth", "Maximum click depth reached from seed", "")}
+  `;
+}
+
+/* =========================================================
+   R3: VISUAL ANALYTICS (Pure SVG / CSS Charts)
+   ========================================================= */
+function renderVisualAnalytics(c) {
+  renderStatusDonut();
+  renderDepthFunnel();
+  renderIssueCategoryChart(c.id);
+  renderDomainRollup();
+}
+
+function renderStatusDonut() {
+  const s = pageStats(state.pages);
+  const total = s.total || 1;
+  const groups = [
+    { label: "Working (2xx)", count: s.ok, color: "var(--green)", status: "2xx" },
+    { label: "Redirects (3xx)", count: s.redirect, color: "var(--yellow)", status: "3xx" },
+    { label: "Broken Links (4xx)", count: s.broken, color: "var(--red)", status: "4xx" },
+    { label: "Server Errors (5xx)", count: s.server, color: "#ff7b72", status: "5xx" },
+    { label: "Crawl Errors", count: s.errors, color: "var(--purple)", status: "error" },
+    { label: "No Response (0)", count: s.noresp, color: "var(--muted)", status: "none" }
+  ].filter(g => g.count > 0 || g.status === "2xx" || g.status === "4xx");
+
+  let html = `<div style="display:flex; flex-direction:column; gap:4px;">`;
+  for (const g of groups) {
+    const pct = ((g.count / total) * 100).toFixed(1);
+    const isActive = state.status === g.status;
+    html += `
+      <div class="chart-row ${isActive ? 'active' : ''}" onclick="filterStatus('${g.status}')" style="cursor:pointer;" title="Click to filter by ${esc(g.label)}">
+        <div class="chart-row-info">
+          <span style="display:flex; align-items:center; gap:6px;">
+            <i style="width:10px; height:10px; border-radius:2px; background:${g.color}; display:inline-block;"></i>
+            <strong>${esc(g.label)}</strong>
+          </span>
+          <span class="count">${fmtInt(g.count)} (${pct}%)</span>
+        </div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-fill" style="width:${pct}%; background:${g.color};"></div>
+        </div>
+      </div>
+    `;
+  }
+  html += `</div>`;
+  el("statusChart").innerHTML = html;
+}
+
+function renderDepthFunnel() {
+  const depthCounts = {};
+  for (const p of state.pages) {
+    const d = p.depth == null ? 0 : p.depth;
+    depthCounts[d] = (depthCounts[d] || 0) + 1;
+  }
+  const total = state.pages.length || 1;
+  const depths = Object.keys(depthCounts).map(Number).sort((a, b) => a - b);
+
+  let html = `<div style="display:flex; flex-direction:column; gap:4px;">`;
+  for (const d of depths) {
+    const count = depthCounts[d];
+    const pct = ((count / total) * 100).toFixed(1);
+    const label = d === 0 ? "Level 0 (Seed Root)" : `Level ${d} (${d} click${d > 1 ? "s" : ""})`;
+    const isActive = state.selectedDepth === d;
+    html += `
+      <div class="chart-row ${isActive ? 'active' : ''}" onclick="filterDepth(${d})" style="cursor:pointer;" title="Click to filter by Link Depth ${d}">
+        <div class="chart-row-info">
+          <span><strong>${esc(label)}</strong></span>
+          <span class="count">${fmtInt(count)} URLs (${pct}%)</span>
+        </div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar-fill" style="width:${pct}%; background:var(--accent);"></div>
+        </div>
+      </div>
+    `;
+  }
+  html += `</div>`;
+  el("depthChart").innerHTML = html;
+}
+
+function renderIssueCategoryChart(crawlId) {
+  const issues = (state.issues || []).filter(i => i.crawl_id === crawlId);
+  if (!issues.length) {
+    el("issueCategoryChart").innerHTML = `<p class="meta">No issue breakdown recorded for this crawl.</p>`;
+    return;
+  }
+
+  const categories = {};
+  for (const item of issues) {
+    const cat = item.category || "General";
+    if (!categories[cat]) categories[cat] = { errors: 0, warnings: 0, total: 0 };
+    const cnt = Number(item.count) || 0;
+    if (item.issue_type === "error") categories[cat].errors += cnt;
+    else categories[cat].warnings += cnt;
+    categories[cat].total += cnt;
+  }
+
+  const sortedCats = Object.keys(categories)
+    .sort((a, b) => categories[b].total - categories[a].total)
+    .slice(0, 7);
+
+  const maxCount = Math.max(...sortedCats.map(c => categories[c].total), 1);
+
+  let html = `<div style="display:flex; flex-direction:column; gap:4px;">`;
+  for (const cat of sortedCats) {
+    const data = categories[cat];
+    const totalPct = ((data.total / maxCount) * 100).toFixed(1);
+    const errPct = data.total > 0 ? (data.errors / data.total) * 100 : 0;
+    const warnPct = 100 - errPct;
+    const isActive = state.selectedCategory === cat;
+
+    html += `
+      <div class="chart-row ${isActive ? 'active' : ''}" data-cat="${esc(cat)}" onclick="filterIssueCategory(this.dataset.cat)" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();filterIssueCategory(this.dataset.cat);}" style="cursor:pointer;" title="Click to filter findings: ${esc(cat)}">
+        <div class="chart-row-info">
+          <span><strong>${esc(cat)}</strong></span>
+          <span class="count" style="font-size:11.5px;">
+            ${data.errors ? `<span style="color:var(--red); font-weight:600;">${fmtInt(data.errors)} err</span> · ` : ""}
+            <span style="color:var(--yellow); font-weight:600;">${fmtInt(data.warnings)} warn</span>
+          </span>
+        </div>
+        <div class="chart-bar-wrap" style="width:100%;">
+          <div style="width:${totalPct}%; height:100%; display:flex; border-radius:4px; overflow:hidden;">
+            ${data.errors > 0 ? `<i style="width:${errPct}%; height:100%; background:var(--red); display:block;" title="${fmtInt(data.errors)} errors"></i>` : ""}
+            ${data.warnings > 0 ? `<i style="width:${warnPct}%; height:100%; background:var(--yellow); display:block;" title="${fmtInt(data.warnings)} warnings"></i>` : ""}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  html += `</div>`;
+  el("issueCategoryChart").innerHTML = html;
+}
+
+function renderDomainRollup() {
+  const domainCounts = {};
+  let totalExternal = 0;
+  for (const p of state.pages) {
+    if (!p.is_internal && p.url) {
+      totalExternal++;
+      const domain = parseDomain(p.url);
+      domainCounts[domain] = (domainCounts[domain] || 0) + 1;
+    }
+  }
+
+  const sortedDomains = Object.keys(domainCounts)
+    .sort((a, b) => domainCounts[b] - domainCounts[a])
+    .slice(0, 15);
+
+  if (!sortedDomains.length) {
+    el("domainRollup").innerHTML = `<p class="meta">No external outbound domains recorded.</p>`;
+    return;
+  }
+
+  let html = "";
+  for (const d of sortedDomains) {
+    const count = domainCounts[d];
+    const pct = ((count / (totalExternal || 1)) * 100).toFixed(1);
+    const isActive = state.selectedDomain === d;
+    html += `
+      <div class="domain-item ${isActive ? 'active' : ''}" data-domain="${esc(d)}" onclick="filterDomain(this.dataset.domain)" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();filterDomain(this.dataset.domain);}" title="Click to filter table for ${esc(d)}">
+        <span class="domain-name">${esc(d)}</span>
+        <span class="domain-count-badge">${fmtInt(count)} <span style="font-weight:normal; color:var(--muted);">(${pct}%)</span></span>
+      </div>
+    `;
+  }
+  el("domainRollup").innerHTML = html;
+}
+
+/* =========================================================
+   ISSUES TABLE
+   ========================================================= */
 const SEVERITY = {
-  error: { label: "Must fix", cls: "s4" },
-  warning: { label: "Should review", cls: "s3" },
-  notice: { label: "For information", cls: "s0" },
-  info: { label: "For information", cls: "s0" }
+  error: { label: "Must fix (Error)", cls: "s4" },
+  warning: { label: "Should review (Warning)", cls: "s3" },
+  notice: { label: "Information", cls: "s0" },
+  info: { label: "Information", cls: "s0" }
 };
+
 const CATEGORY_HELP = {
   "Duplication": "The same text, title or description appears on more than one page",
-  "Social": "Missing or incomplete preview information for social media sharing",
-  "SEO": "Titles, descriptions and headings that affect how pages appear in search results",
-  "Structured Data": "Machine-readable page markup that is missing or malformed",
-  "Accessibility": "Barriers for people using screen readers or keyboard navigation",
-  "Technical": "Server, redirect and markup problems",
-  "Content": "Thin, empty or low-quality page content",
-  "Performance": "Slow pages or oversized assets",
-  "Mobile": "Problems when viewed on a phone or tablet",
-  "Indexability": "Settings that stop search engines from listing the page"
+  "Social": "Missing or incomplete OpenGraph/Twitter preview metadata for social media sharing",
+  "SEO": "Titles, meta descriptions, and headings that impact search indexability and ranking",
+  "Structured Data": "Machine-readable schema.org markup that is missing, incomplete or malformed",
+  "Accessibility": "Barriers for people using screen readers, high contrast, or keyboard navigation",
+  "Technical": "Server response codes, redirect chains, MIME type and protocol issues",
+  "Content": "Thin, empty or low-quality page content and missing copy",
+  "Performance": "High response latency, slow server times, or oversized assets",
+  "Mobile": "Viewport configuration and responsive styling issues on mobile devices",
+  "Indexability": "Robots directives or canonical tags preventing search engines from indexing"
 };
 
 function renderIssues(id) {
   const box = el("issues");
-  const rows = (state.issues || []).filter(i => i.crawl_id === id)
+  let rows = (state.issues || []).filter(i => i.crawl_id === id)
     .slice().sort((a, b) => (Number(b.count) || 0) - (Number(a.count) || 0));
   if (!rows.length) { box.innerHTML = ""; return; }
+
+  if (state.selectedCategory) {
+    rows = rows.filter(r => r.category === state.selectedCategory);
+  }
+
   const totals = rows.reduce((acc, r) => {
     const k = String(r.issue_type || "").toLowerCase();
     acc[k] = (acc[k] || 0) + (Number(r.count) || 0);
     return acc;
   }, {});
+
   const heads = Object.keys(totals).map(k =>
     `${fmtInt(totals[k])} ${esc((SEVERITY[k] || { label: k }).label.toLowerCase())}`).join(" · ");
-  let html = `<h3 class="sectionh">What needs attention</h3>
-    <p class="meta">${heads} — grouped by theme. Counts are individual findings, so one page can appear in several rows.</p>
-    <div class="tablewrap"><table><thead><tr><th>Theme</th><th>Severity</th><th>Findings</th></tr></thead><tbody>`;
+
+  let html = `
+    <h3 class="sectionh">
+      <span>⚠️</span> Technical &amp; SEO Audit Findings Breakdown
+      ${state.selectedCategory ? `<button class="btn btn-sm" onclick="clearIssueCategoryFilter()" style="margin-left:10px;">Clear Category Filter (${esc(state.selectedCategory)})</button>` : ""}
+    </h3>
+    <p class="meta">${heads} — grouped by theme. Counts reflect individual findings across all scanned URLs.</p>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Audit Category / Theme</th>
+            <th>Severity</th>
+            <th>Total Findings</th>
+            <th>Description &amp; Action</th>
+          </tr>
+        </thead>
+        <tbody>`;
+
   for (const r of rows) {
     const sev = SEVERITY[String(r.issue_type || "").toLowerCase()] || { label: r.issue_type || "Unknown", cls: "s0" };
-    const help = CATEGORY_HELP[r.category] || "";
-    html += `<tr><td title="${esc(help)}">${esc(r.category)}</td>` +
-      `<td><span class="pill ${sev.cls}">${esc(sev.label)}</span></td>` +
-      `<td class="count">${fmtInt(r.count)}</td></tr>`;
+    const help = CATEGORY_HELP[r.category] || "Technical audit finding";
+    const isSelected = state.selectedCategory === r.category;
+    html += `
+      <tr data-cat="${esc(r.category)}" onclick="filterIssueCategory(this.dataset.cat)" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();filterIssueCategory(this.dataset.cat);}" style="cursor:pointer; ${isSelected ? 'background:var(--accent-bg);' : ''}" title="Click to filter by ${esc(r.category)}">
+        <td><strong>${esc(r.category)}</strong></td>
+        <td><span class="pill ${sev.cls}">${esc(sev.label)}</span></td>
+        <td class="count"><strong>${fmtInt(r.count)}</strong></td>
+        <td style="color:var(--muted);">${esc(help)}</td>
+      </tr>`;
   }
   html += `</tbody></table></div>`;
   box.innerHTML = html;
 }
 
+/* =========================================================
+   R2: ACTIONABLE TRIAGE PRESETS & FILTERING
+   ========================================================= */
+function updateTriageCounts() {
+  const s = pageStats(state.pages);
+  el("cntAll").textContent = fmtInt(s.total);
+  el("cntBroken").textContent = fmtInt(s.brokenTotal);
+  el("cntSlow").textContent = fmtInt(s.slow);
+  el("cntJs").textContent = fmtInt(s.js);
+  el("cntThin").textContent = fmtInt(s.thin);
+}
+
+function applyPreset(preset) {
+  state.triage = preset;
+  state.status = "";
+  el("statusFilter").value = "";
+  state.selectedDepth = null;
+  state.selectedDomain = null;
+  state.selectedCategory = null;
+  state.currentPage = 1;
+  updateTriageTabsUI();
+  renderVisualAnalytics(state.crawls.find(x => x.id === state.active) || {});
+  renderIssues(state.active);
+  renderTable();
+}
+
+document.querySelectorAll(".triage-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    applyPreset(btn.dataset.preset);
+  });
+});
+
+function filterStatus(code) {
+  state.currentPage = 1;
+  if (state.status === code) {
+    state.status = "";
+    el("statusFilter").value = "";
+  } else {
+    state.status = code;
+    el("statusFilter").value = code;
+    state.triage = "all";
+    updateTriageTabsUI();
+  }
+  renderStatusDonut();
+  renderTable();
+  el("pageTable").scrollIntoView({ behavior: "smooth" });
+}
+
+function filterScope(scope) {
+  state.currentPage = 1;
+  el("internalFilter").value = scope;
+  state.internal = scope;
+  renderTable();
+  el("pageTable").scrollIntoView({ behavior: "smooth" });
+}
+
+function filterDepth(d) {
+  state.currentPage = 1;
+  state.selectedDepth = state.selectedDepth === d ? null : d;
+  renderDepthFunnel();
+  renderTable();
+  el("pageTable").scrollIntoView({ behavior: "smooth" });
+}
+
+function filterDomain(domain) {
+  state.currentPage = 1;
+  state.selectedDomain = state.selectedDomain === domain ? null : domain;
+  renderDomainRollup();
+  renderTable();
+  el("pageTable").scrollIntoView({ behavior: "smooth" });
+}
+
+function filterIssueCategory(cat) {
+  state.currentPage = 1;
+  state.selectedCategory = state.selectedCategory === cat ? null : cat;
+  renderIssues(state.active);
+  renderIssueCategoryChart(state.active);
+  renderTable();
+}
+
+function clearIssueCategoryFilter() {
+  state.currentPage = 1;
+  state.selectedCategory = null;
+  renderIssues(state.active);
+  renderIssueCategoryChart(state.active);
+  renderTable();
+}
+
+function clearAllActiveFilters() {
+  state.triage = "all";
+  state.q = "";
+  el("q").value = "";
+  state.status = "";
+  el("statusFilter").value = "";
+  state.internal = "";
+  el("internalFilter").value = "";
+  state.jsOnly = false;
+  el("jsOnly").checked = false;
+  state.selectedCategory = null;
+  state.selectedDepth = null;
+  state.selectedDomain = null;
+  state.currentPage = 1;
+  updateTriageTabsUI();
+  renderVisualAnalytics(state.crawls.find(x => x.id === state.active) || {});
+  renderIssues(state.active);
+  renderTable();
+}
+
 function applyFilters() {
   let rows = state.pages;
-  const q = state.q.toLowerCase();
-  if (q) rows = rows.filter(p => (p.url || "").toLowerCase().includes(q) || (p.title || "").toLowerCase().includes(q));
-  if (state.status === "error") rows = rows.filter(p => p.error_type);
-  else if (state.status === "none") rows = rows.filter(p => p.status_code == null || p.status_code === 0);
-  else if (state.status) {
-    const lo = { "2xx": 200, "3xx": 300, "4xx": 400, "5xx": 500 }[state.status];
-    const hi = lo + 100;
-    rows = rows.filter(p => p.status_code != null && p.status_code >= lo && p.status_code < hi);
+
+  // 0. Issue Category Filter
+  if (state.selectedCategory) {
+    const cat = state.selectedCategory;
+    if (cat === "Technical") {
+      rows = rows.filter(p => isBroken(p) || isCrawlError(p));
+    } else if (cat === "Performance") {
+      rows = rows.filter(isSlow);
+    } else if (cat === "Content") {
+      rows = rows.filter(isThin);
+    } else if (cat === "SEO") {
+      rows = rows.filter(p => !p.title || !p.title.trim() || !p.h1 || !p.h1.trim() || isBroken(p));
+    } else if (cat === "Accessibility") {
+      rows = rows.filter(p => !p.title || !p.title.trim() || !p.h1 || !p.h1.trim());
+    } else if (cat === "Indexability") {
+      rows = rows.filter(p => !is2xx(p));
+    } else if (cat === "Structured Data" || cat === "Social" || cat === "Duplication" || cat === "Mobile") {
+      rows = rows.filter(p => p.is_internal || (p.title && p.title.trim()));
+    }
   }
-  if (state.internal !== "") rows = rows.filter(p => Boolean(p.is_internal) === (state.internal === "1"));
-  if (state.jsOnly) rows = rows.filter(p => p.javascript_rendered);
-  const k = state.sortKey, asc = state.sortAsc;
+
+  // 1. Triage Presets
+  if (state.triage === "broken") {
+    rows = rows.filter(isBroken);
+  } else if (state.triage === "slow") {
+    rows = rows.filter(isSlow);
+  } else if (state.triage === "js") {
+    rows = rows.filter(isJs);
+  } else if (state.triage === "thin") {
+    rows = rows.filter(isThin);
+  }
+
+  // 2. Text Search (URL, Title, H1)
+  const q = state.q.trim().toLowerCase();
+  if (q) {
+    rows = rows.filter(p =>
+      (p.url || "").toLowerCase().includes(q) ||
+      (p.title || "").toLowerCase().includes(q) ||
+      (p.h1 || "").toLowerCase().includes(q)
+    );
+  }
+
+  // 3. Status Filter
+  if (state.status === "error") {
+    rows = rows.filter(isCrawlError);
+  } else if (state.status === "none") {
+    rows = rows.filter(isNoResponse);
+  } else if (state.status === "2xx") {
+    rows = rows.filter(is2xx);
+  } else if (state.status === "3xx") {
+    rows = rows.filter(is3xx);
+  } else if (state.status === "4xx") {
+    rows = rows.filter(is4xx);
+  } else if (state.status === "5xx") {
+    rows = rows.filter(is5xx);
+  }
+
+  // 4. Scope Filter
+  if (state.internal !== "") {
+    rows = rows.filter(p => Boolean(p.is_internal) === (state.internal === "1"));
+  }
+
+  // 5. JS Only Checkbox
+  if (state.jsOnly) {
+    rows = rows.filter(isJs);
+  }
+
+  // 6. Depth Filter
+  if (state.selectedDepth != null) {
+    rows = rows.filter(p => (p.depth == null ? 0 : p.depth) === state.selectedDepth);
+  }
+
+  // 7. Domain Rollup Filter
+  if (state.selectedDomain) {
+    rows = rows.filter(p => !p.is_internal && parseDomain(p.url) === state.selectedDomain);
+  }
+
+  // 8. Sorting
+  const k = state.sortKey;
+  const asc = state.sortAsc;
   rows = rows.slice().sort((a, b) => {
     let av = a[k], bv = b[k];
-    if (k === "url" || k === "title") { av = (av || "").toString(); bv = (bv || "").toString(); return asc ? av.localeCompare(bv) : bv.localeCompare(av); }
-    av = av == null ? -1 : av; bv = bv == null ? -1 : bv;
+    if (k === "url" || k === "title") {
+      av = (av || "").toString();
+      bv = (bv || "").toString();
+      return asc ? av.localeCompare(bv) : bv.localeCompare(av);
+    }
+    av = av == null ? -1 : av;
+    bv = bv == null ? -1 : bv;
     return asc ? av - bv : bv - av;
   });
+
   return rows;
 }
 
+function updateActiveFilterBanner() {
+  const notice = el("activeFilterNotice");
+  const filters = [];
+  if (state.selectedCategory) filters.push(`Issue Category: <strong>${esc(state.selectedCategory)}</strong>`);
+  if (state.selectedDepth != null) filters.push(`Link Depth: <strong>Level ${state.selectedDepth}</strong>`);
+  if (state.selectedDomain) filters.push(`Destination Domain: <strong>${esc(state.selectedDomain)}</strong>`);
+
+  if (filters.length) {
+    notice.innerHTML = `
+      <span>🎯 Filter Active: ${filters.join(" · ")}</span>
+      <button type="button" onclick="clearAllActiveFilters()" title="Reset extra filters">✕ Clear Filters</button>
+    `;
+    notice.classList.remove("hidden");
+  } else {
+    notice.classList.add("hidden");
+    notice.innerHTML = "";
+  }
+}
+
 function renderTable() {
-  const rows = applyFilters();
-  const shown = Math.min(rows.length, MAX_ROWS);
+  updateActiveFilterBanner();
+  currentFilteredRows = applyFilters();
+  const rows = currentFilteredRows;
+  const total = rows.length;
+  let pageSize = state.pageSize === "all" ? total : Number(state.pageSize);
+  if (pageSize <= 0) pageSize = 250;
+  const totalPages = Math.max(1, Math.ceil(total / pageSize));
+  if (state.currentPage > totalPages) state.currentPage = totalPages;
+  if (state.currentPage < 1) state.currentPage = 1;
+
+  const startIdx = total === 0 ? 0 : (state.currentPage - 1) * pageSize;
+  const endIdx = state.pageSize === "all" ? total : Math.min(startIdx + pageSize, total);
   const out = [];
-  for (let i = 0; i < shown; i++) {
+
+  for (let i = startIdx; i < endIdx; i++) {
     const p = rows[i];
     const word = statusWord(p);
     out.push(
-      "<tr>" +
-      `<td class="url"><a href="${esc(safeHref(p.url))}" target="_blank" rel="noopener">${esc(p.url)}</a></td>` +
+      `<tr tabindex="0" role="button" aria-label="Inspect URL details for ${esc(p.url)}" onclick="openUrlDrawer(${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openUrlDrawer(${i});}" title="Click row to view complete URL inspection and metadata">` +
+      `<td class="url"><a href="${esc(safeHref(p.url))}" target="_blank" rel="noopener" onclick="event.stopPropagation();">${esc(p.url)}</a></td>` +
       `<td><span class="pill ${statusClass(p.status_code, p.error_type)}">${esc(statusLabel(p))}</span>` +
-      (word ? `<span class="sword">${esc(word)}</span>` : "") + "</td>" +
-      `<td>${p.depth == null ? "" : esc(p.depth)}</td>` +
-      `<td>${esc(String(p.title == null ? "" : p.title).slice(0, 120))}</td>` +
-      `<td class="count">${p.word_count == null ? "" : fmtInt(p.word_count)}</td>` +
+      (word ? `<span class="sword">${esc(word)}</span>` : "") + `</td>` +
+      `<td>${p.depth == null ? "—" : esc(p.depth)}</td>` +
+      `<td>${esc(String(p.title == null ? "" : p.title).slice(0, 100))}</td>` +
+      `<td class="count">${p.word_count == null ? "—" : fmtInt(p.word_count)}</td>` +
       `<td class="count">${fmtMs(p.response_time)}</td>` +
-      `<td class="count">${p.internal_links == null ? "" : fmtInt(p.internal_links)}</td>` +
-      `<td class="count">${p.external_links == null ? "" : fmtInt(p.external_links)}</td>` +
-      `<td>${p.javascript_rendered ? "Yes" : ""}</td>` +
-      "</tr>"
+      `<td class="count">${p.internal_links == null ? "—" : fmtInt(p.internal_links)}</td>` +
+      `<td class="count">${p.external_links == null ? "—" : fmtInt(p.external_links)}</td>` +
+      `<td>${p.javascript_rendered ? '<span style="color:var(--yellow); font-weight:600;">Yes ⚡</span>' : '<span style="color:var(--muted);">No</span>'}</td>` +
+      `</tr>`
     );
   }
-  if (!rows.length) out.push(`<tr><td colspan="9" class="loading">No pages match these filters.</td></tr>`);
-  else if (rows.length > MAX_ROWS) out.push(`<tr><td colspan="9" class="loading">Showing the first ${fmtInt(MAX_ROWS)} of ${fmtInt(rows.length)} matches. Narrow the filters, or use Export CSV to get all ${fmtInt(rows.length)}.</td></tr>`);
+
+  if (!rows.length) {
+    out.push(`<tr><td colspan="9" class="loading">No pages match the active triage preset or search criteria.</td></tr>`);
+  }
+
   el("pageBody").innerHTML = out.join("");
-  el("matchCount").textContent = rows.length
-    ? `Showing ${fmtInt(shown)} of ${fmtInt(rows.length)} matching pages (${fmtInt(state.pages.length)} crawled in total).`
-    : `No matches out of ${fmtInt(state.pages.length)} pages crawled.`;
+
+  // Update pagination info & controls
+  const infoText = total > 0
+    ? `Showing ${fmtInt(startIdx + 1)}–${fmtInt(endIdx)} of ${fmtInt(total)} matching pages (${fmtInt(state.pages.length)} total crawled)`
+    : `No matches found out of ${fmtInt(state.pages.length)} total crawled pages`;
+  el("matchCount").textContent = infoText + (total > 0 ? ". Click any row to inspect complete metadata." : ".");
+  el("paginationInfo").textContent = total > 0 ? `Showing ${fmtInt(startIdx + 1)}–${fmtInt(endIdx)} of ${fmtInt(total)}` : `0 pages`;
+  el("pgCurrent").textContent = `Page ${state.currentPage} of ${totalPages}`;
+  el("pgFirst").disabled = state.currentPage <= 1 || total === 0;
+  el("pgPrev").disabled = state.currentPage <= 1 || total === 0;
+  el("pgNext").disabled = state.currentPage >= totalPages || total === 0;
+  el("pgLast").disabled = state.currentPage >= totalPages || total === 0;
+
   updateSortIndicators();
 }
 
@@ -520,9 +2067,151 @@ function updateSortIndicators() {
   });
 }
 
+/* =========================================================
+   R4: INTERACTIVE URL DETAIL INSPECTION DRAWER
+   ========================================================= */
+function openUrlDrawer(rowIndex) {
+  const p = currentFilteredRows[rowIndex];
+  if (!p) return;
+
+  lastFocusedElement = document.activeElement;
+  const drawer = el("urlDrawer");
+  const backdrop = el("drawerBackdrop");
+
+  el("drawerUrlTitle").textContent = p.url;
+  el("drawerOpenLink").href = safeHref(p.url);
+
+  // Status & Scope Badges
+  const badge = el("drawerStatusBadge");
+  badge.className = `pill ${statusClass(p.status_code, p.error_type)}`;
+  badge.textContent = `${statusLabel(p)} ${resultWord(p)}`;
+
+  const scopeBadge = el("drawerScopeBadge");
+  scopeBadge.className = `pill ${p.is_internal ? "s2" : "s0"}`;
+  scopeBadge.textContent = p.is_internal ? "Internal Node" : "External Link";
+
+  // Action / Audit Flags
+  const flags = [];
+  if (p.status_code >= 400 && p.status_code < 500) flags.push(`<span class="drawer-flag-pill s4">🚨 Broken Link (${p.status_code})</span>`);
+  if (p.status_code >= 500) flags.push(`<span class="drawer-flag-pill s5">💥 Server Error (${p.status_code})</span>`);
+  if (p.error_type) flags.push(`<span class="drawer-flag-pill se">⚠️ ${esc(p.error_type)}</span>`);
+  if (p.javascript_rendered) flags.push(`<span class="drawer-flag-pill s3">⚡ JavaScript Dependent</span>`);
+  if (isSlow(p)) flags.push(`<span class="drawer-flag-pill s3">🐢 High Latency (${fmtMs(p.response_time)} ms)</span>`);
+  if (p.word_count == null || p.word_count < 100) flags.push(`<span class="drawer-flag-pill s0">📝 Thin Content (${p.word_count == null ? "0" : fmtInt(p.word_count)} words)</span>`);
+  if (!p.title || p.title.trim() === "") flags.push(`<span class="drawer-flag-pill s4">🏷️ Missing Title</span>`);
+  if (!p.h1 || p.h1.trim() === "") flags.push(`<span class="drawer-flag-pill s0">ℹ️ Missing H1</span>`);
+
+  el("drawerFlags").innerHTML = flags.join("");
+
+  // Metadata Grid
+  el("drawerGrid").innerHTML = `
+    <dt>Page Title</dt><dd>${p.title ? esc(p.title) : '<em style="color:var(--muted);">None / Empty</em>'}</dd>
+    <dt>H1 Heading</dt><dd>${p.h1 ? esc(p.h1) : '<em style="color:var(--muted);">None / Empty</em>'}</dd>
+    <dt>Link Depth</dt><dd>Level ${p.depth == null ? "—" : esc(p.depth)}</dd>
+    <dt>Word Count</dt><dd>${p.word_count == null ? "—" : `${fmtInt(p.word_count)} words`}</dd>
+    <dt>Content Type</dt><dd>${esc(p.content_type || "text/html")}</dd>
+    <dt>Destination Host</dt><dd>${esc(parseDomain(p.url))}</dd>
+  `;
+
+  // Links row
+  el("drawerInLinks").textContent = p.internal_links == null ? "0" : fmtInt(p.internal_links);
+  el("drawerOutLinks").textContent = p.external_links == null ? "0" : fmtInt(p.external_links);
+
+  // Technical Details Grid
+  el("drawerTechGrid").innerHTML = `
+    <dt>HTTP Status</dt><dd>${esc(statusLabel(p))} (${esc(resultWord(p))})</dd>
+    <dt>Crawl Error</dt><dd>${p.error_type ? esc(p.error_type) : '<span style="color:var(--green)">None</span>'}</dd>
+    <dt>Response Time</dt><dd>${(p.response_time != null && p.response_time > 0) ? `${fmtMs(p.response_time)} ms` : "—"}</dd>
+    <dt>JS Rendered</dt><dd>${p.javascript_rendered ? '<span style="color:var(--yellow); font-weight:600;">Yes (Executed with headless browser)</span>' : 'No (Raw HTTP fetch)'}</dd>
+    <dt>Scope</dt><dd>${p.is_internal ? "Internal (Same origin seed)" : "External (Outbound domain)"}</dd>
+  `;
+
+  // Copy button
+  el("drawerCopyBtn").onclick = () => {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(p.url).then(() => {
+        el("drawerCopyBtn").textContent = "✓ Copied!";
+        setTimeout(() => { el("drawerCopyBtn").textContent = "📋 Copy"; }, 1500);
+      }).catch(() => fallbackCopy(p.url));
+    } else {
+      fallbackCopy(p.url);
+    }
+  };
+
+  backdrop.classList.remove("hidden");
+  drawer.classList.remove("hidden");
+  requestAnimationFrame(() => {
+    drawer.classList.remove("hidden-right");
+    el("drawerCloseBtn").focus();
+  });
+}
+
+function fallbackCopy(text) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed";
+  ta.style.opacity = "0";
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    document.execCommand("copy");
+    el("drawerCopyBtn").textContent = "✓ Copied!";
+    setTimeout(() => { el("drawerCopyBtn").textContent = "📋 Copy"; }, 1500);
+  } catch (e) {}
+  document.body.removeChild(ta);
+}
+
+function closeUrlDrawer() {
+  const drawer = el("urlDrawer");
+  const backdrop = el("drawerBackdrop");
+  drawer.classList.add("hidden-right");
+  setTimeout(() => {
+    drawer.classList.add("hidden");
+    backdrop.classList.add("hidden");
+    if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+      lastFocusedElement.focus();
+    }
+  }, 220);
+}
+
+el("drawerCloseBtn").addEventListener("click", closeUrlDrawer);
+el("drawerBackdrop").addEventListener("click", closeUrlDrawer);
+
+// Trap focus within drawer when open
+el("urlDrawer").addEventListener("keydown", e => {
+  if (e.key === "Tab") {
+    const focusable = el("urlDrawer").querySelectorAll('button:not([disabled]), a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+});
+
+window.addEventListener("keydown", e => {
+  if (e.key === "Escape") {
+    const drawer = el("urlDrawer");
+    if (!drawer.classList.contains("hidden")) {
+      closeUrlDrawer();
+    }
+  }
+});
+
+/* =========================================================
+   CSV EXPORT
+   ========================================================= */
 function csvCell(v) {
-  let s = v == null ? "" : String(v);
-  if (/^[=+\-@\t\r]/.test(s)) s = "'" + s;
+  if (v == null) return "";
+  let s = String(v);
+  if (typeof v !== "number" && !/^-?\d+(\.\d+)?$/.test(s) && /^[=+\-@\t\r]/.test(s)) {
+    s = "'" + s;
+  }
   return /[",\r\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
 }
 
@@ -530,7 +2219,21 @@ function exportCsv() {
   const rows = applyFilters();
   if (!rows.length) return;
   const c = state.crawls.find(x => x.id === state.active);
-  const head = ["Web address", "Status code", "Result", "Crawl error", "Link level", "Page title", "Words", "Load time (ms)", "Internal links", "External links", "JavaScript-dependent", "Scope"];
+  const head = [
+    "Web address",
+    "Status code",
+    "Result",
+    "Crawl error",
+    "Link level",
+    "Page title",
+    "H1",
+    "Words",
+    "Load time (ms)",
+    "Internal links",
+    "External links",
+    "JavaScript-dependent",
+    "Scope"
+  ];
   const lines = [head.map(csvCell).join(",")];
   for (const p of rows) {
     lines.push([
@@ -540,6 +2243,7 @@ function exportCsv() {
       p.error_type || "",
       p.depth == null ? "" : p.depth,
       p.title == null ? "" : p.title,
+      p.h1 == null ? "" : p.h1,
       p.word_count == null ? "" : p.word_count,
       (p.response_time == null || p.response_time === 0) ? "" : Math.round(p.response_time),
       p.internal_links == null ? "" : p.internal_links,
@@ -560,8 +2264,13 @@ function exportCsv() {
   URL.revokeObjectURL(url);
 }
 
+/* =========================================================
+   NAVIGATION & EVENT LISTENERS
+   ========================================================= */
 function back() {
-  state.active = null; state.pages = [];
+  state.active = null;
+  state.pages = [];
+  closeUrlDrawer();
   el("detail").classList.add("hidden");
   el("overviewWrap").classList.remove("hidden");
   window.scrollTo(0, 0);
@@ -578,10 +2287,11 @@ el("crumbHome").addEventListener("click", back);
 el("prevCrawl").addEventListener("click", () => stepCrawl(-1));
 el("nextCrawl").addEventListener("click", () => stepCrawl(1));
 el("exportCsv").addEventListener("click", exportCsv);
+
 el("compareToggle").addEventListener("click", () => {
   state.compare = !state.compare;
   el("compareToggle").setAttribute("aria-expanded", String(state.compare));
-  el("compareToggle").textContent = state.compare ? "Hide comparison" : "Compare all crawls";
+  el("compareToggle").textContent = state.compare ? "Hide comparison" : "📊 Compare all crawls";
   renderCompare();
 });
 
@@ -589,16 +2299,76 @@ let qTimer = null;
 el("q").addEventListener("input", e => {
   const v = e.target.value;
   clearTimeout(qTimer);
-  qTimer = setTimeout(() => { state.q = v; renderTable(); }, 200);
+  qTimer = setTimeout(() => {
+    state.q = v;
+    state.currentPage = 1;
+    renderTable();
+  }, 150);
 });
-el("statusFilter").addEventListener("change", e => { state.status = e.target.value; renderTable(); });
-el("internalFilter").addEventListener("change", e => { state.internal = e.target.value; renderTable(); });
-el("jsOnly").addEventListener("change", e => { state.jsOnly = e.target.checked; renderTable(); });
+el("q").addEventListener("keydown", e => {
+  if (e.key === "Enter") {
+    clearTimeout(qTimer);
+    state.q = e.target.value;
+    state.currentPage = 1;
+    renderTable();
+  }
+});
+
+el("statusFilter").addEventListener("change", e => {
+  state.status = e.target.value;
+  state.currentPage = 1;
+  renderStatusDonut();
+  renderTable();
+});
+
+el("internalFilter").addEventListener("change", e => {
+  state.internal = e.target.value;
+  state.currentPage = 1;
+  renderTable();
+});
+
+el("jsOnly").addEventListener("change", e => {
+  state.jsOnly = e.target.checked;
+  state.currentPage = 1;
+  renderTable();
+});
+
+// Pagination button listeners
+el("pgFirst").addEventListener("click", () => {
+  if (state.currentPage !== 1) {
+    state.currentPage = 1;
+    renderTable();
+    el("pageTable").scrollIntoView({ behavior: "smooth" });
+  }
+});
+el("pgPrev").addEventListener("click", () => {
+  if (state.currentPage > 1) {
+    state.currentPage--;
+    renderTable();
+    el("pageTable").scrollIntoView({ behavior: "smooth" });
+  }
+});
+el("pgNext").addEventListener("click", () => {
+  state.currentPage++;
+  renderTable();
+  el("pageTable").scrollIntoView({ behavior: "smooth" });
+});
+el("pgLast").addEventListener("click", () => {
+  state.currentPage = 999999;
+  renderTable();
+  el("pageTable").scrollIntoView({ behavior: "smooth" });
+});
+el("pageSizeSelect").addEventListener("change", e => {
+  state.pageSize = e.target.value;
+  state.currentPage = 1;
+  renderTable();
+});
 
 document.querySelectorAll("#pageTable th").forEach(th => {
   const sort = () => {
     const k = th.dataset.k;
     if (state.sortKey === k) state.sortAsc = !state.sortAsc; else { state.sortKey = k; state.sortAsc = true; }
+    state.currentPage = 1;
     renderTable();
   };
   th.addEventListener("click", sort);
@@ -607,12 +2377,16 @@ document.querySelectorAll("#pageTable th").forEach(th => {
   });
 });
 
+/* =========================================================
+   INITIALIZATION
+   ========================================================= */
 (async function init() {
+  initTheme();
   renderLegend();
   try {
     await loadSummary();
   } catch (e) {
-    el("subtitle").textContent = "Could not load audit data. If you opened this file directly, serve the folder over HTTP instead.";
+    el("subtitle").textContent = "Could not load audit data. Please serve this folder via HTTP (e.g. python3 -m http.server 8080).";
   }
 })();
 </script>

@@ -140,40 +140,52 @@
 
     <div class="pr-glance-band">
       <div class="container">
-        <div class="pr-glance-card">
+        <div class="well">
           <h2 class="wb-inv">At a glance</h2>
 
-          <ul class="pr-glance-list">
-            <li class="pr-glance-item">
-              <span class="pr-glance-icon far fa-clock" aria-hidden="true"></span>
-              <span class="pr-glance-label">Processing times</span>
-              <span class="pr-glance-value">Varies by country</span>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+              <p class="h4 mrgn-tp-0">
+                <span class="far fa-clock mrgn-rght-sm" aria-hidden="true"></span>Processing times
+              </p>
+              <p>Varies by country</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+              <p class="h4 mrgn-tp-0">
+                <span class="fas fa-dollar-sign mrgn-rght-sm" aria-hidden="true"></span>Fees
+              </p>
+              <p>$CAN&nbsp;50</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+              <p class="h4 mrgn-tp-0">
+                <span class="fas fa-plane-arrival mrgn-rght-sm" aria-hidden="true"></span>Valid for
+              </p>
+              <p>Single (one-time) entry to Canada</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+              <p class="h4 mrgn-tp-0">
+                <span class="fas fa-arrow-circle-down mrgn-rght-sm" aria-hidden="true"></span>How you apply
+              </p>
+              <p class="mrgn-bttm-0">Online (in most cases)</p>
+            </div>
+          </div>
+
+          <hr>
+          <h2 class="h4 mrgn-bttm-sm">A permanent resident travel document (PRTD) could be for you if:</h2>
+          <ul class="list-unstyled mrgn-bttm-0">
+            <li class="mrgn-bttm-sm">
+              <span class="fas fa-check-circle text-success mrgn-rght-sm" aria-hidden="true"></span>
+              you&rsquo;re a permanent resident of Canada outside of Canada <strong>and</strong>
             </li>
-            <li class="pr-glance-item">
-              <span class="pr-glance-icon fas fa-dollar-sign" aria-hidden="true"></span>
-              <span class="pr-glance-label">Fees</span>
-              <span class="pr-glance-value">$CAN&nbsp;50</span>
+            <li class="mrgn-bttm-sm">
+              <span class="fas fa-check-circle text-success mrgn-rght-sm" aria-hidden="true"></span>
+              you don&rsquo;t have your valid permanent resident (PR) card <strong>and</strong>
             </li>
-            <li class="pr-glance-item">
-              <span class="pr-glance-icon fas fa-plane-arrival" aria-hidden="true"></span>
-              <span class="pr-glance-label">Valid for</span>
-              <span class="pr-glance-value">Single (one-time) entry to Canada</span>
-            </li>
-            <li class="pr-glance-item">
-              <span class="pr-glance-icon fas fa-laptop" aria-hidden="true"></span>
-              <span class="pr-glance-label">How you apply</span>
-              <span class="pr-glance-value">Online (in most cases)</span>
+            <li>
+              <span class="fas fa-check-circle text-success mrgn-rght-sm" aria-hidden="true"></span>
+              you&rsquo;re travelling back to Canada by commercial vehicle (plane, bus, boat or train)
             </li>
           </ul>
-
-          <div class="pr-glance-foot">
-            <h2 class="pr-glance-foot-h">A permanent resident travel document (PRTD) could be for you if&nbsp;:</h2>
-            <ul class="pr-glance-conditions">
-              <li>you&rsquo;re a permanent resident of Canada outside of Canada and</li>
-              <li>you don&rsquo;t have your valid permanent resident (PR) card and</li>
-              <li>you&rsquo;re travelling back to Canada by commercial vehicle (plane, bus, boat or train)</li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>
@@ -244,7 +256,7 @@
                 <div class="pr-step-body" id="pr-step-body-3" hidden>
                   <a href="#how-we-process" class="pr-sub-card">
                     <span class="pr-sub-arrow" aria-hidden="true">&#8594;</span>
-                    How we process your application
+                    How we process your PRTD application
                   </a>
                   <a href="#keep-info" class="pr-sub-card">
                     <span class="pr-sub-arrow" aria-hidden="true">&#8594;</span>
@@ -252,11 +264,11 @@
                   </a>
                   <a href="#check-status" class="pr-sub-card">
                     <span class="pr-sub-arrow" aria-hidden="true">&#8594;</span>
-                    Check your application status
+                    How to check your application status
                   </a>
                   <a href="#new-pr-card" class="pr-sub-card">
                     <span class="pr-sub-arrow" aria-hidden="true">&#8594;</span>
-                    Apply for a new PR card
+                    Apply for a new permanent resident (PR) card
                   </a>
                 </div>
               </li>
@@ -267,205 +279,208 @@
 
         <div class="pr-main">
 
-          <section class="pr-section" id="who-can-apply" aria-labelledby="who-can-apply-h">
-            <span class="pr-eyebrow">Before you apply</span>
-            <h2 class="pr-stage-h" id="who-can-apply-h">Who can apply for a PRTD</h2>
+          <!-- Stage 1: Before you apply -->
+          <div class="pr-stage">
+            <section class="pr-section" id="who-can-apply" aria-labelledby="who-can-apply-h">
+              <span class="pr-eyebrow">Before you apply</span>
+              <h2 class="pr-stage-h" id="who-can-apply-h">Who can apply for a PRTD</h2>
 
-            <p>You can apply for a permanent resident travel document if you:</p>
-            <ul>
-              <li>have <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents/status.html">permanent resident status in Canada</a></li>
-              <li>do not have a valid <abbr title="permanent resident">PR</abbr> card showing your PR status (it expired, got lost, or was stolen or damaged while you were outside Canada)</li>
-              <li>are outside Canada</li>
-              <li>will return to Canada by airplane, boat, train or bus</li>
-            </ul>
+              <p>You can apply for a permanent resident travel document if you:</p>
+              <ul>
+                <li>have <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents/status.html">permanent resident status in Canada</a></li>
+                <li>do not have a valid <abbr title="permanent resident">PR</abbr> card showing your PR status (it expired, got lost, or was stolen or damaged while you were outside Canada)</li>
+                <li>are outside Canada</li>
+                <li>will return to Canada by airplane, boat, train or bus</li>
+              </ul>
 
-            <h3>If you want to give up your permanent resident status</h3>
-            <p>Don&rsquo;t apply for a PRTD if you want to give up (renounce) your permanent resident status and come to Canada as a visitor only. You should apply to give up your status.</p>
-            <p><a href="https://ircc.canada.ca/english/information/applications/guides/5781ETOC.asp">Voluntarily give up (renounce) your permanent resident status</a></p>
+              <h3>If you want to give up your permanent resident status</h3>
+              <p>Don&rsquo;t apply for a PRTD if you want to give up (renounce) your permanent resident status and come to Canada as a visitor only. You should apply to give up your status.</p>
+              <p><a href="https://ircc.canada.ca/english/information/applications/guides/5781ETOC.asp">Voluntarily give up (renounce) your permanent resident status</a></p>
 
-            <div class="alert alert-warning">
-              <h3 class="h4">If you need a permanent resident travel document urgently</h3>
-              <p>You may apply urgently for a PRTD for reasons such as serious illness, or a lost or stolen PR card.</p>
-              <p class="mrgn-bttm-0"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents/card/urgent.html">Find out how to apply urgently for a PRTD.</a></p>
-            </div>
-          </section>
+              <div class="alert alert-warning">
+                <h3 class="h4">If you need a permanent resident travel document urgently</h3>
+                <p>You may apply urgently for a PRTD for reasons such as serious illness, or a lost or stolen PR card.</p>
+                <p class="mrgn-bttm-0"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents/card/urgent.html">Find out how to apply urgently for a PRTD.</a></p>
+              </div>
+            </section>
+          </div>
 
-          <section class="pr-section" id="get-forms" aria-labelledby="get-forms-h">
-            <span class="pr-eyebrow">How to apply</span>
-            <h2 class="pr-stage-h" id="get-forms-h">Get your forms and documents ready</h2>
+          <!-- Stage 2: How to apply -->
+          <div class="pr-stage">
+            <section class="pr-section" id="get-forms" aria-labelledby="get-forms-h">
+              <span class="pr-eyebrow">How to apply</span>
+              <h2 class="pr-stage-h" id="get-forms-h">Get your forms and documents ready</h2>
 
-            <p>The application package includes the instruction guide and all the forms you need to fill out.</p>
+              <p>The application package includes the instruction guide and all the forms you need to fill out.</p>
 
-            <div class="alert alert-warning">
-              <h3 class="h4">If you need a permanent resident travel document urgently</h3>
-              <p>You may apply urgently for a PRTD for reasons such as serious illness, or a lost or stolen PR card.</p>
-              <p class="mrgn-bttm-0"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents/card/urgent.html">Find out how to apply urgently for a PRTD.</a></p>
-            </div>
+              <h3>Read the instruction guide</h3>
+              <p>Our <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5529-applying-permanent-resident-travel-document.html" target="_blank" rel="noopener">instruction guide [IMM&nbsp;5529]<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span> has detailed information on how to prepare, complete and submit your application.</p>
 
-            <h3>Read the instruction guide</h3>
-            <p>Our <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5529-applying-permanent-resident-travel-document.html" target="_blank" rel="noopener">instruction guide [IMM&nbsp;5529]<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span> has detailed information on how to prepare, complete and submit your application.</p>
+              <h3>Review the document checklist</h3>
+              <ul>
+                <li>Download the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5644.html" target="_blank" rel="noopener">document checklist (IMM&nbsp;5644)<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</li>
+                <li>Use the checklist to make sure you include <strong>all</strong> the forms and documents you need.</li>
+                <li>Include the checklist when you submit your application.</li>
+              </ul>
 
-            <h3>Review the document checklist</h3>
-            <ul>
-              <li>Download the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5644.html" target="_blank" rel="noopener">document checklist (IMM&nbsp;5644)<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</li>
-              <li>Use the checklist to make sure you include <strong>all</strong> the forms and documents you need.</li>
-              <li>Include the checklist when you submit your application.</li>
-            </ul>
+              <h3>Fill out the forms</h3>
+              <p>You&rsquo;ll fill out the application form (IMM&nbsp;5444) in the <a href="https://prson-srpel.apps.cic.gc.ca/en/login" target="_blank" rel="noopener">Permanent Residence (PR) Portal<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</p>
 
-            <h3>Fill out the forms</h3>
-            <p>You&rsquo;ll fill out the application form (IMM&nbsp;5444) in the <a href="https://prson-srpel.apps.cic.gc.ca/en/login" target="_blank" rel="noopener">Permanent Residence (PR) Portal<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</p>
+              <div class="wb-accordion pr-checklist-items">
+                <details class="print-open mrgn-bttm-sm">
+                  <summary>If you can&rsquo;t apply online</summary>
+                  <div class="mrgn-tp-sm">
+                    <p>You can apply on paper if you can&rsquo;t apply online and require accommodations, including for accessibility reasons.</p>
+                    <p>To apply on paper, download and fill out <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5444.html" target="_blank" rel="noopener">IMM&nbsp;5444<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</p>
+                    <p class="mrgn-bttm-0">Make sure you click the &ldquo;Validate&rdquo; button at the top of the form before printing and signing it.</p>
+                  </div>
+                </details>
 
-            <div class="pr-checklist-items">
-              <details class="print-open mrgn-bttm-sm">
+                <details class="print-open mrgn-bttm-sm">
+                  <summary>If you have a representative or designated individual</summary>
+                  <div class="mrgn-tp-sm">
+                    <p>If you want to appoint someone to do business with us on your behalf (optional), you can use either a:</p>
+                    <ul>
+                      <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigration-citizenship-representative/learn-about-representatives.html">representative</a> or</li>
+                      <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigration-citizenship-representative/application-access.html">designated individual</a></li>
+                    </ul>
+                    <p><strong>Download and complete 1 of these forms</strong> based on who&rsquo;s helping you:</p>
+                    <ul>
+                      <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html" target="_blank" rel="noopener">Use of a representative (IMM&nbsp;5476)<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></li>
+                      <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5475.html" target="_blank" rel="noopener">Authority to release personal information to a designated individual (IMM&nbsp;5475)<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></li>
+                    </ul>
+                    <p>Make sure:</p>
+                    <ul class="mrgn-bttm-0">
+                      <li>you sign it digitally <strong>or</strong> by hand</li>
+                      <li>your representative or designated individual also signs it</li>
+                      <li>you include it with your application</li>
+                    </ul>
+                  </div>
+                </details>
+
+                <details class="print-open mrgn-bttm-sm">
+                  <summary>If you&rsquo;re applying from China and have a Chinese passport</summary>
+                  <div class="mrgn-tp-sm">
+                    <p>You <strong>must</strong> include an &ldquo;Inquiry of Exit &amp; Entry Record&rdquo; from China.</p>
+                    <ul class="mrgn-bttm-0">
+                      <li>It must show a record of your entry to and exit from China for 5 years before the date of your application.</li>
+                      <li>You can get the document from the local Public Security Bureau.</li>
+                      <li>Make sure you translate the document to English or French.</li>
+                    </ul>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <section class="pr-subsection" id="pay-fees" aria-labelledby="pay-fees-h">
+              <h2 class="pr-stage-h" id="pay-fees-h">Pay your fees online</h2>
+              <p>You need to pay the <strong>$50</strong> fee when you apply.</p>
+              <ul>
+                <li>Make sure you <strong>include your receipt</strong> (proof of payment) with your application.</li>
+                <li>We can&rsquo;t refund the fee once we start processing your application.</li>
+              </ul>
+              <p class="mrgn-tp-md mrgn-bttm-0"><a class="btn btn-default" href="https://ircc.canada.ca/english/information/fees/pay.asp" target="_blank" rel="noopener">Pay your fees online<span class="wb-inv"> (opens in a new tab)</span> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></a></p>
+            </section>
+
+            <section class="pr-subsection" id="submit-application" aria-labelledby="submit-application-h">
+              <h2 class="pr-stage-h" id="submit-application-h">Submit your application and supporting documents</h2>
+
+              <p>You will submit your application and all supporting documents through the <a href="https://prson-srpel.apps.cic.gc.ca/en/login" target="_blank" rel="noopener">permanent residence portal<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</p>
+              <p>You must complete an application for <strong>each</strong> person in your family who needs a PRTD.</p>
+              <p>Each application must show that the person meets the requirements to remain a permanent resident. For example: you can&rsquo;t have a removal order to leave Canada.</p>
+
+              <div class="alert alert-info">
+                <p class="mrgn-bttm-0">If your application is missing information or documents, we&rsquo;ll return it to you.</p>
+              </div>
+
+              <p class="mrgn-tp-md"><a class="btn btn-call-to-action" href="https://prson-srpel.apps.cic.gc.ca/en/login" target="_blank" rel="noopener">Apply in the permanent residence portal<span class="wb-inv"> (opens in a new tab)</span> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></a></p>
+
+              <details class="print-open mrgn-tp-md mrgn-bttm-sm">
                 <summary>If you can&rsquo;t apply online</summary>
                 <div class="mrgn-tp-sm">
-                  <p>You can apply on paper if you can&rsquo;t apply online and require accommodations, including for accessibility reasons.</p>
-                  <p>To apply on paper, download and fill out <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5444.html" target="_blank" rel="noopener">IMM&nbsp;5444<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</p>
-                  <p class="mrgn-bttm-0">Make sure you click the &ldquo;Validate&rdquo; button at the top of the form before printing and signing it.</p>
+                  <p>You may be able to apply on paper if your nearest visa application centre (VAC) accepts paper applications by mail or in person.</p>
+                  <p class="mrgn-bttm-0"><strong>Before you apply</strong>, <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/offices/find-visa-application-centre.html" target="_blank" rel="noopener">contact your nearest VAC<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</p>
                 </div>
               </details>
+            </section>
+          </div>
 
-              <details class="print-open mrgn-bttm-sm">
-                <summary>If you have a representative or designated individual</summary>
-                <div class="mrgn-tp-sm">
-                  <p>If you want to appoint someone to do business with us on your behalf (optional), you can use either a:</p>
+          <!-- Stage 3: After you apply -->
+          <div class="pr-stage">
+            <section class="pr-section" id="how-we-process" aria-labelledby="how-we-process-h">
+              <span class="pr-eyebrow">After you apply</span>
+              <h2 class="pr-stage-h" id="how-we-process-h">How we process your PRTD application</h2>
+
+              <p>All PRTD applications are processed on a <strong>priority basis</strong>. If we require further information, a letter will be sent to you.</p>
+              <p>After you send your application, we&rsquo;ll:</p>
+              <ul>
+                <li>check that it&rsquo;s <a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=072&amp;top=3">complete</a></li>
+                <li>assess it to confirm
                   <ul>
-                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigration-citizenship-representative/learn-about-representatives.html">representative</a> or</li>
-                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigration-citizenship-representative/application-access.html">designated individual</a></li>
+                    <li>you met your residency obligations</li>
+                    <li>you&rsquo;re still a permanent resident of Canada</li>
                   </ul>
-                  <p><strong>Download and complete 1 of these forms</strong> based on who&rsquo;s helping you:</p>
+                </li>
+              </ul>
+              <p>In some cases, we&rsquo;ll ask you to attend an interview to get more information.</p>
+              <p><strong>If we approve your application</strong>, we will:</p>
+              <ul>
+                <li>email you with instructions on how and where to submit your valid passport or travel document</li>
+                <li>return your passport to you with your permanent resident travel document</li>
+              </ul>
+              <p><strong>If we refuse your application</strong>, follow the instructions on the refusal letter.</p>
+
+              <h3>If we ask you for documents</h3>
+              <p>We may ask you to submit more documents. If we do, submit them to us online.</p>
+              <ol>
+                <li>Use our <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/web-form2.html" target="_blank" rel="noopener">web form to add a document<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span> to your application.</li>
+                <li>Fill in these required fields correctly:
                   <ul>
-                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html" target="_blank" rel="noopener">Use of a representative (IMM&nbsp;5476)<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></li>
-                    <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5475.html" target="_blank" rel="noopener">Authority to release personal information to a designated individual (IMM&nbsp;5475)<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></li>
+                    <li>Under <strong>What is your application number?</strong> enter the application number at the top of the letter we sent you.</li>
+                    <li>Under <strong>What did you apply for?</strong>, choose <strong>Permanent Resident Travel Document</strong>.</li>
+                    <li>Under <strong>What application did you submit?</strong>, choose <strong>Urgent</strong>.</li>
                   </ul>
-                  <p>Make sure:</p>
-                  <ul class="mrgn-bttm-0">
-                    <li>you sign it digitally <strong>or</strong> by hand</li>
-                    <li>your representative or designated individual also signs it</li>
-                    <li>you include it with your application</li>
+                </li>
+                <li>Under <strong>Upload your document(s)</strong>, choose the documents you want to send to us.</li>
+                <li>Follow the steps to submit your web form.</li>
+              </ol>
+            </section>
+
+            <section class="pr-subsection" id="keep-info" aria-labelledby="keep-info-h">
+              <h2 class="pr-stage-h" id="keep-info-h">Keep your information up to date</h2>
+              <p>You must tell us if you move or change your address, phone number or any other contact information after you apply.</p>
+              <p class="mrgn-bttm-0"><a href="https://secure.cic.gc.ca/ClientContact/en/Application/Form/70" target="_blank" rel="noopener">Update your contact information<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></p>
+            </section>
+
+            <section class="pr-subsection" id="check-status" aria-labelledby="check-status-h">
+              <h2 class="pr-stage-h" id="check-status-h">How to check your application status</h2>
+              <p>You must contact us to check the status of your application.</p>
+              <ol>
+                <li>Go to our web form.</li>
+                <li>Click on <strong>Update or ask about your application</strong>.</li>
+                <li>On <strong>Check your application status</strong>, click the <strong>See details</strong> button to continue to the form.</li>
+                <li>Make sure you fill in these required fields correctly:
+                  <ul>
+                    <li><strong>What is your application number?</strong>
+                      <ul>
+                        <li>You can find your application number at the top of the letter we sent you.</li>
+                      </ul>
+                    </li>
+                    <li>Under <strong>What did you apply for?</strong>, choose <strong>Permanent Resident Travel Document</strong></li>
+                    <li>Under <strong>What application did you submit?</strong>, choose <strong>Urgent</strong>.</li>
                   </ul>
-                </div>
-              </details>
+                </li>
+                <li>Follow the steps to submit your web form.</li>
+              </ol>
+              <p class="mrgn-tp-md mrgn-bttm-0"><a class="btn btn-default" href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/web-form2.html" target="_blank" rel="noopener">Go to the web form<span class="wb-inv"> (opens in a new tab)</span> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></a></p>
+            </section>
 
-              <details class="print-open mrgn-bttm-sm">
-                <summary>If you&rsquo;re applying from China and have a Chinese passport</summary>
-                <div class="mrgn-tp-sm">
-                  <p>You <strong>must</strong> include an &ldquo;Inquiry of Exit &amp; Entry Record&rdquo; from China.</p>
-                  <ul class="mrgn-bttm-0">
-                    <li>It must show a record of your entry to and exit from China for 5 years before the date of your application.</li>
-                    <li>You can get the document from the local Public Security Bureau.</li>
-                    <li>Make sure you translate the document to English or French.</li>
-                  </ul>
-                </div>
-              </details>
-            </div>
-          </section>
-
-          <section class="pr-subsection" id="pay-fees" aria-labelledby="pay-fees-h">
-            <h2 class="pr-stage-h" id="pay-fees-h">Pay your fees online</h2>
-            <p>You need to pay the <strong>$50</strong> fee when you apply.</p>
-            <ul>
-              <li>Make sure you <strong>include your receipt</strong> (proof of payment) with your application.</li>
-              <li>We can&rsquo;t refund the fee once we start processing your application.</li>
-            </ul>
-            <p class="mrgn-tp-md mrgn-bttm-0"><a class="btn btn-default pr-btn-secondary" href="https://ircc.canada.ca/english/information/fees/pay.asp" target="_blank" rel="noopener">Pay your fees online<span class="wb-inv"> (opens in a new tab)</span></a></p>
-          </section>
-
-          <section class="pr-subsection" id="submit-application" aria-labelledby="submit-application-h">
-            <h2 class="pr-stage-h" id="submit-application-h">Submit your application and supporting documents</h2>
-
-            <p>You will submit your application and all supporting documents through the <a href="https://prson-srpel.apps.cic.gc.ca/en/login" target="_blank" rel="noopener">permanent residence portal<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</p>
-            <p>You must complete an application for <strong>each</strong> person in your family who needs a PRTD.</p>
-            <p>Each application must show that the person meets the requirements to remain a permanent resident. For example: you can&rsquo;t have a removal order to leave Canada.</p>
-
-            <div class="alert alert-info">
-              <p class="mrgn-bttm-0">If your application is missing information or documents, we&rsquo;ll return it to you.</p>
-            </div>
-
-            <p class="mrgn-tp-md"><a class="pr-supertask" href="https://prson-srpel.apps.cic.gc.ca/en/login" target="_blank" rel="noopener">Apply in the permanent residence portal<span class="wb-inv"> (opens in a new tab)</span></a></p>
-
-            <details class="print-open mrgn-tp-md mrgn-bttm-sm">
-              <summary>If you can&rsquo;t apply online</summary>
-              <div class="mrgn-tp-sm">
-                <p>You may be able to apply on paper if your nearest visa application centre (VAC) accepts paper applications by mail or in person.</p>
-                <p class="mrgn-bttm-0"><strong>Before you apply</strong>, <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/offices/find-visa-application-centre.html" target="_blank" rel="noopener">contact your nearest VAC<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</p>
-              </div>
-            </details>
-          </section>
-
-          <section class="pr-section" id="how-we-process" aria-labelledby="how-we-process-h">
-            <span class="pr-eyebrow">After you apply</span>
-            <h2 class="pr-stage-h" id="how-we-process-h">How we process your PRTD application</h2>
-
-            <p>All PRTD applications are processed on a <strong>priority basis</strong>. If we require further information, a letter will be sent to you.</p>
-            <p>After you send your application, we&rsquo;ll:</p>
-            <ul>
-              <li>check that it&rsquo;s <a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=072&amp;top=3">complete</a></li>
-              <li>assess it to confirm
-                <ul>
-                  <li>you met your residency obligations</li>
-                  <li>you&rsquo;re still a permanent resident of Canada</li>
-                </ul>
-              </li>
-            </ul>
-            <p>In some cases, we&rsquo;ll ask you to attend an interview to get more information.</p>
-            <p><strong>If we approve your application</strong>, we will:</p>
-            <ul>
-              <li>email you with instructions on how and where to submit your valid passport or travel document</li>
-              <li>return your passport to you with your permanent resident travel document</li>
-            </ul>
-            <p><strong>If we refuse your application</strong>, follow the instructions on the refusal letter.</p>
-
-            <h3>If we ask you for documents</h3>
-            <p>We may ask you to submit more documents. If we do, submit them to us online.</p>
-            <ol>
-              <li>Use our <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/web-form2.html" target="_blank" rel="noopener">web form to add a document<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span> to your application.</li>
-              <li>Fill in these required fields correctly:
-                <ul>
-                  <li>Under <strong>What is your application number?</strong> enter the application number at the top of the letter we sent you.</li>
-                  <li>Under <strong>What did you apply for?</strong>, choose <strong>Permanent Resident Travel Document</strong>.</li>
-                  <li>Under <strong>What application did you submit?</strong>, choose <strong>Urgent</strong>.</li>
-                </ul>
-              </li>
-              <li>Under <strong>Upload your document(s)</strong>, choose the documents you want to send to us.</li>
-              <li>Follow the steps to submit your web form.</li>
-            </ol>
-          </section>
-
-          <section class="pr-subsection" id="keep-info" aria-labelledby="keep-info-h">
-            <h2 class="pr-stage-h" id="keep-info-h">Keep your information up to date</h2>
-            <p>You must tell us if you move or change your address, phone number or any other contact information after you apply.</p>
-            <p class="mrgn-bttm-0"><a href="https://secure.cic.gc.ca/ClientContact/en/Application/Form/70" target="_blank" rel="noopener">Update your contact information<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></p>
-          </section>
-
-          <section class="pr-subsection" id="check-status" aria-labelledby="check-status-h">
-            <h2 class="pr-stage-h" id="check-status-h">How to check your application status</h2>
-            <p>You must contact us to check the status of your application.</p>
-            <ol>
-              <li>Go to our web form.</li>
-              <li>Click on <strong>Update or ask about your application</strong>.</li>
-              <li>On <strong>Check your application status</strong>, click the <strong>See details</strong> button to continue to the form.</li>
-              <li>Make sure you fill in these required fields correctly:
-                <ul>
-                  <li><strong>What is your application number?</strong>
-                    <ul>
-                      <li>You can find your application number at the top of the letter we sent you.</li>
-                    </ul>
-                  </li>
-                  <li>Under <strong>What did you apply for?</strong>, choose <strong>Permanent Resident Travel Document</strong></li>
-                  <li>Under <strong>What application did you submit?</strong>, choose <strong>Urgent</strong>.</li>
-                </ul>
-              </li>
-              <li>Follow the steps to submit your web form.</li>
-            </ol>
-            <p class="mrgn-tp-md mrgn-bttm-0"><a class="btn btn-default pr-btn-secondary" href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/web-form2.html" target="_blank" rel="noopener">Go to the web form<span class="wb-inv"> (opens in a new tab)</span></a></p>
-          </section>
-
-          <section class="pr-subsection" id="new-pr-card" aria-labelledby="new-pr-card-h">
-            <h2 class="pr-stage-h" id="new-pr-card-h">Apply for a new permanent resident (PR) card</h2>
-            <p>A PRTD is normally only valid for <strong>one single entry</strong>. You should apply for a new PR card as soon as you return to Canada.</p>
-            <p class="mrgn-tp-md mrgn-bttm-0"><a class="btn btn-default pr-btn-secondary" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents/card/apply.html">Apply for a new PR card</a></p>
-          </section>
+            <section class="pr-subsection" id="new-pr-card" aria-labelledby="new-pr-card-h">
+              <h2 class="pr-stage-h" id="new-pr-card-h">Apply for a new permanent resident (PR) card</h2>
+              <p>A PRTD is normally only valid for <strong>one single entry</strong>. You should apply for a new PR card as soon as you return to Canada.</p>
+              <p class="mrgn-tp-md mrgn-bttm-0"><a class="btn btn-default" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents/card/apply.html">Apply for a new PR card</a></p>
+            </section>
+          </div>
 
         </div>
       </div>

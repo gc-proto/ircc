@@ -125,7 +125,22 @@
   stepItems.forEach(function (stepEl) {
     var btn = stepEl.querySelector(".pr-step-btn");
     if (!btn) return;
-    btn.addEventListener("click", function () {
+    btn.addEventListener("click", function (e) {
+      var targetId = stepEl.dataset.target;
+      if (targetId) {
+        var target = document.getElementById(targetId);
+        if (target) {
+          e.preventDefault();
+          closeMenu();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          target.setAttribute("tabindex", "-1");
+          target.focus({ preventScroll: true });
+          currentFlat = -1;
+          setTimeout(onScroll, 400);
+          return;
+        }
+      }
+
       var body = stepEl.querySelector(".pr-step-body");
       var chev = stepEl.querySelector(".pr-chev");
       var isExpanded = this.getAttribute("aria-expanded") === "true";

@@ -2,8 +2,11 @@
   --pr-navy: #26374a;
   --pr-blue: #284162;
   --pr-accent: #0535d2;
-  --pr-circle-size: 20px;
 }
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
 
 .pr-layout {
   display: flex;
@@ -31,6 +34,15 @@
   z-index: 10;
 }
 
+.pr-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* ==========================================================================
+   Stepper nav (sidebar)
+   ========================================================================== */
+
 .pr-stepper {
   background: transparent;
   border: none;
@@ -54,6 +66,17 @@
   left: 9px;
   top: 18px;
   bottom: -18px;
+  width: 2px;
+  background: #26374a;
+  z-index: 0;
+}
+
+.pr-step:last-child .pr-step-body::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: -18px;
+  bottom: 20px;
   width: 2px;
   background: #26374a;
   z-index: 0;
@@ -118,21 +141,10 @@
   flex: 1 1 auto;
 }
 
-.pr-step.is-active .pr-step-btn {
-  color: #26374a;
-}
-
-.pr-step.is-active .pr-step-title {
-  font-weight: 700;
-}
-
-.pr-step.is-done .pr-step-btn {
-  color: #555555;
-}
-
-.pr-step.is-done .pr-step-title {
-  font-weight: 600;
-}
+.pr-step.is-active .pr-step-btn  { color: #26374a; }
+.pr-step.is-active .pr-step-title { font-weight: 700; }
+.pr-step.is-done   .pr-step-btn  { color: #555555; }
+.pr-step.is-done   .pr-step-title { font-weight: 600; }
 
 .pr-chev {
   font-size: 11px;
@@ -141,9 +153,7 @@
   transition: color 0.2s ease;
 }
 
-.pr-step.is-active .pr-chev {
-  color: #26374a;
-}
+.pr-step.is-active .pr-chev { color: #26374a; }
 
 .pr-step-body {
   padding-left: 32px;
@@ -169,9 +179,7 @@
   transition: background-color 0.15s ease;
 }
 
-.pr-sub-card:last-child {
-  margin-bottom: 0;
-}
+.pr-sub-card:last-child { margin-bottom: 0; }
 
 .pr-sub-card:hover,
 .pr-sub-card:focus {
@@ -181,7 +189,8 @@
 }
 
 .pr-sub-card:hover .pr-sub-arrow,
-.pr-sub-card:focus .pr-sub-arrow {
+.pr-sub-card:focus .pr-sub-arrow,
+.pr-sub-card.is-active .pr-sub-arrow {
   opacity: 1;
   transform: translateX(0);
 }
@@ -205,20 +214,27 @@
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-.pr-main {
-  flex: 1 1 auto;
-  min-width: 0;
-}
+/* ==========================================================================
+   Main content sections
+   ========================================================================== */
 
-.pr-section {
-  scroll-margin-top: 100px;
-  padding-bottom: 24px;
-  margin-bottom: 24px;
+.pr-stage {
   border-bottom: 1px solid #eeeeee;
+  padding-bottom: 28px;
+  margin-bottom: 28px;
 }
 
-.pr-section:last-of-type {
+.pr-stage:last-child {
   border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.pr-section,
+.pr-subsection {
+  scroll-margin-top: 100px;
+  padding-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .pr-eyebrow {
@@ -237,172 +253,114 @@
   color: #26374a;
 }
 
-.pr-btn-toggle-all {
-  font-size: 14px;
-  font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 4px;
-  background-color: #eaebed;
-  border: 1px solid #cccccc;
-  color: #284162;
-  cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-}
+/* ==========================================================================
+   Details / accordion overrides
+   ========================================================================== */
 
-.pr-btn-toggle-all:hover {
-  background-color: #dcdee1;
-  border-color: #284162;
-  color: #0535d2;
-}
-
-.pr-btn-toggle-all:focus-visible {
-  outline: 2px solid #0535d2;
-  outline-offset: 2px;
-}
-
+.wb-accordion details,
 .pr-layout details,
 details.print-open {
-  border: 1px solid #d3d5d7;
-  border-left: 4px solid #335075;
-  border-radius: 4px;
+  border: 1px solid #d3d5d7 !important;
+  border-radius: 4px !important;
+  margin-top: 8px;
   margin-bottom: 12px;
-  background-color: #fafbfc;
+  background-color: #ffffff !important;
+  overflow: hidden;
+  box-shadow: none !important;
 }
 
-.pr-layout details[open],
-details[open].print-open {
-  border-color: #284162;
-  border-left-color: #284162;
-  background-color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-}
-
-.pr-layout details summary {
+.wb-accordion details summary,
+.pr-layout details summary,
+details.print-open summary,
+details summary {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  position: relative;
   cursor: pointer;
-  color: #0535d2;
-  font-size: 17px;
+  color: #284162;
+  font-size: 16px;
   font-weight: 600;
-  padding: 12px 16px;
-  outline: none;
+  padding: 11px 14px 11px 30px;
   user-select: none;
-  transition: color 0.15s ease, background-color 0.15s ease;
+  background-color: #ffffff;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  list-style: none;
+  display: block;
 }
 
+.wb-accordion details summary::-webkit-details-marker,
+.pr-layout details summary::-webkit-details-marker,
+details summary::-webkit-details-marker { display: none !important; }
+
+.wb-accordion details summary::marker,
+.pr-layout details summary::marker,
+details summary::marker { display: none !important; font-size: 0 !important; }
+
+.wb-accordion details summary::before,
+.pr-layout details summary::before,
+details summary::before {
+  content: "▶";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: #284162;
+  line-height: 1;
+  transition: color 0.15s ease;
+}
+
+.wb-accordion details[open] summary::before,
+.pr-layout details[open] summary::before,
+details[open] summary::before { content: "▼"; font-size: 10px; }
+
+.wb-accordion details summary:hover,
+.wb-accordion details summary:focus,
 .pr-layout details summary:hover,
-.pr-layout details summary:focus {
+.pr-layout details summary:focus,
+details summary:hover,
+details summary:focus {
   color: #0535d2;
-  background-color: #f0f4f8;
+  background-color: #f8f9fa;
   text-decoration: underline;
 }
 
-.pr-layout details summary:focus-visible {
-  outline: 2px solid #0535d2;
+.wb-accordion details summary:hover::before,
+.wb-accordion details summary:focus::before,
+.pr-layout details summary:hover::before,
+.pr-layout details summary:focus::before,
+details summary:hover::before,
+details summary:focus::before { color: #0535d2; }
+
+.wb-accordion details summary:focus-visible,
+.pr-layout details summary:focus-visible,
+details summary:focus-visible {
+  outline: 2px solid #0535d2 !important;
   outline-offset: -2px;
-  background-color: #f0f4f8;
 }
 
-.pr-layout details > div {
-  padding: 0 16px 16px 16px;
-}
+.wb-accordion details[open] summary,
+.pr-layout details[open] summary,
+details[open] summary { border-bottom: 1px solid #e5e5e5 !important; }
 
-.pr-modal-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  z-index: 1050;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  opacity: 0;
-  transition: opacity 0.25s ease-in-out;
-}
-
-.pr-modal-overlay.is-open {
-  display: flex;
-  opacity: 1;
-}
-
-.pr-modal {
-  background: #ffffff;
-  width: 100%;
-  max-width: 580px;
-  max-height: calc(100vh - 40px);
-  display: flex;
-  flex-direction: column;
-  border-radius: 6px;
-  border: 1px solid #d0d0d0;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  overflow: hidden;
-  animation: prModalIn 0.25s ease-out;
-}
-
-@keyframes prModalIn {
-  from { transform: translateY(-16px) scale(0.98); opacity: 0.8; }
-  to   { transform: translateY(0) scale(1); opacity: 1; }
-}
-
-.pr-modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.pr-modal-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #26374a;
-  margin: 0;
-  line-height: 1.3;
-}
-
-.pr-modal-close {
-  background: transparent;
-  border: none;
-  font-size: 28px;
-  line-height: 1;
-  color: #555555;
-  cursor: pointer;
-  padding: 4px;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  transition: color 0.15s ease, background-color 0.15s ease;
-}
-
-.pr-modal-close:hover,
-.pr-modal-close:focus {
-  color: #000000;
-  background-color: #e9ecef;
-  outline: 2px solid #0535d2;
-  outline-offset: 2px;
-}
-
-.pr-modal-body {
-  padding: 20px;
-  overflow-y: auto;
+.wb-accordion details > div,
+.pr-layout details > div,
+details > div {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 16px 16px 14px 16px;
+  background-color: #ffffff;
   font-size: 16px;
-  line-height: 1.55;
+  line-height: 1.5;
   color: #333333;
-  max-height: calc(85vh - 120px);
 }
 
-.pr-modal-body p { margin-top: 0; margin-bottom: 12px; }
-.pr-modal-body ul { padding-left: 24px; margin-bottom: 16px; }
-.pr-modal-body li { margin-bottom: 6px; }
+/* ==========================================================================
+   Back to top button
+   ========================================================================== */
 
 .pr-top {
   display: none;
@@ -446,6 +404,10 @@ details[open].print-open {
 
 .pr-top .glyphicon { font-size: 12px; }
 
+/* ==========================================================================
+   Mobile collapsible nav toggle
+   ========================================================================== */
+
 .pr-stepper-toggle {
   display: none;
   width: 100%;
@@ -476,9 +438,70 @@ details[open].print-open {
 }
 
 .pr-stepper.is-open .pr-toggle-caret,
-button[aria-expanded="true"] .pr-toggle-caret {
-  transform: rotate(180deg);
+button[aria-expanded="true"] .pr-toggle-caret { transform: rotate(180deg); }
+
+/* ==========================================================================
+   Header sign-in (prototype)
+   ========================================================================== */
+
+.pr-signin-li { margin-left: 12px; }
+
+.pr-signin {
+  font-size: 14px;
+  font-weight: 700;
+  color: #284162;
+  white-space: nowrap;
 }
+
+.pr-signin .glyphicon {
+  font-size: 12px;
+  margin-right: 4px;
+}
+
+/* ==========================================================================
+   Page title: "Apply:" kicker
+   ========================================================================== */
+
+h1#wb-cont.pr-h1,
+.pr-h1 {
+  border-bottom: none !important;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.pr-h1-kicker {
+  display: block;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 2px;
+  color: #333333;
+}
+
+.pr-h1-name { display: block; }
+
+.pr-h1::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 6px;
+  background-color: #af3c43;
+  margin-top: 12px;
+}
+
+/* ==========================================================================
+   At-a-glance band (background only — layout handled by WET col-* grid)
+   ========================================================================== */
+
+.pr-glance-band {
+  background-color: #ebf2fc;
+  padding: 36px 0 44px;
+  margin-top: 28px;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
 
 @media (max-width: 991px) {
   .pr-layout {
@@ -499,13 +522,9 @@ button[aria-expanded="true"] .pr-toggle-caret {
     overflow-y: visible;
   }
 
-  .pr-stepper-toggle {
-    display: flex;
-  }
+  .pr-stepper-toggle { display: flex; }
 
-  #pr-steplist {
-    display: none;
-  }
+  #pr-steplist { display: none; }
 
   .pr-stepper.is-open #pr-steplist {
     display: block;
@@ -514,9 +533,8 @@ button[aria-expanded="true"] .pr-toggle-caret {
     padding: 12px 0;
   }
 
-  .pr-section {
-    scroll-margin-top: 120px;
-  }
+  .pr-section,
+  .pr-subsection { scroll-margin-top: 120px; }
 
   .pr-top {
     bottom: 16px;
@@ -524,12 +542,21 @@ button[aria-expanded="true"] .pr-toggle-caret {
     padding: 8px 14px;
     font-size: 13px;
   }
+
+  .pr-glance-band { padding: 24px 0 32px; }
+
+  .pr-h1-kicker { font-size: 20px; }
 }
 
+/* ==========================================================================
+   Print
+   ========================================================================== */
+
 @media print {
-  .pr-side { display: none !important; }
-  .pr-top { display: none !important; }
-  .pr-modal-overlay { display: none !important; }
+  .pr-side       { display: none !important; }
+  .pr-top        { display: none !important; }
+  .pr-signin-li  { display: none !important; }
+
   .btn-group.mrgn-bttm-md { display: none !important; }
 
   .pr-layout details,
@@ -539,237 +566,11 @@ button[aria-expanded="true"] .pr-toggle-caret {
     break-inside: avoid;
   }
 
-  .pr-layout { display: block !important; }
-  .pr-main { width: 100% !important; }
-}
+  .pr-layout  { display: block !important; }
+  .pr-main    { width: 100% !important; }
 
-/* ==========================================================================
-   Figma: "Left nav- h2a collapsing sections proto" (node 629-46615)
-   ========================================================================== */
-
-/* --- Header sign-in ------------------------------------------------------ */
-
-.pr-signin-li {
-  margin-left: 12px;
-}
-
-.pr-signin {
-  font-size: 14px;
-  font-weight: 700;
-  color: #284162;
-  white-space: nowrap;
-}
-
-.pr-signin .glyphicon {
-  font-size: 12px;
-  margin-right: 4px;
-}
-
-/* --- Page title: "Apply:" kicker over the service name ------------------- */
-
-.pr-h1 {
-  margin-bottom: 0;
-}
-
-.pr-h1-kicker {
-  display: block;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 1.2;
-  margin-bottom: 2px;
-}
-
-.pr-h1-name {
-  display: block;
-}
-
-/* --- At-a-glance band ---------------------------------------------------- */
-
-.pr-glance-band {
-  background-color: #ebf2fc;
-  padding: 36px 0 44px;
-  margin-top: 28px;
-}
-
-.pr-glance-card {
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-  padding: 28px 32px;
-}
-
-.pr-glance-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px 28px;
-}
-
-.pr-glance-item {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 12px;
-  row-gap: 4px;
-  align-items: start;
-}
-
-.pr-glance-icon {
-  grid-column: 1;
-  grid-row: 1;
-  font-size: 20px;
-  line-height: 1.3;
-  color: #26374a;
-}
-
-.pr-glance-label {
-  grid-column: 2;
-  grid-row: 1;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.25;
-  color: #333333;
-}
-
-.pr-glance-value {
-  grid-column: 2;
-  grid-row: 2;
-  font-size: 17px;
-  line-height: 1.4;
-  color: #333333;
-}
-
-.pr-glance-foot {
-  margin-top: 24px;
-  padding-top: 20px;
-  border-top: 1px solid #e4e7eb;
-}
-
-.pr-glance-foot-h {
-  font-size: 18px;
-  font-weight: 700;
-  color: #333333;
-  margin: 0 0 10px;
-  line-height: 1.35;
-}
-
-.pr-glance-conditions {
-  margin: 0;
-  padding-left: 22px;
-}
-
-.pr-glance-conditions li {
-  margin-bottom: 4px;
-  line-height: 1.5;
-}
-
-.pr-glance-conditions li:last-child {
-  margin-bottom: 0;
-}
-
-/* --- Sub-sections that sit inside a step (no divider rule) --------------- */
-
-.pr-subsection {
-  scroll-margin-top: 100px;
-  padding-bottom: 24px;
-  margin-bottom: 8px;
-}
-
-/* --- Buttons ------------------------------------------------------------- */
-
-.pr-supertask {
-  display: inline-block;
-  background-color: #318000;
-  border: 1px solid #318000;
-  border-radius: 4px;
-  color: #ffffff;
-  font-size: 19px;
-  font-weight: 700;
-  line-height: 1.3;
-  padding: 14px 24px;
-  text-decoration: none;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
-}
-
-.pr-supertask:hover,
-.pr-supertask:focus {
-  background-color: #245c00;
-  border-color: #245c00;
-  color: #ffffff;
-  text-decoration: underline;
-}
-
-.pr-supertask:focus-visible {
-  outline: 2px solid #0535d2;
-  outline-offset: 2px;
-}
-
-.pr-btn-secondary {
-  font-weight: 600;
-}
-
-.pr-btn-secondary:hover,
-.pr-btn-secondary:focus {
-  border-color: #284162;
-  color: #0535d2;
-}
-
-/* --- Responsive ---------------------------------------------------------- */
-
-@media (max-width: 991px) {
-  .pr-glance-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .pr-glance-band {
-    padding: 24px 0 32px;
-  }
-
-  .pr-glance-card {
-    padding: 22px 20px;
-  }
-
-  .pr-h1-kicker {
-    font-size: 20px;
-  }
-
-  .pr-subsection {
-    scroll-margin-top: 120px;
-  }
-}
-
-@media (max-width: 575px) {
-  .pr-glance-list {
-    grid-template-columns: 1fr;
-  }
-
-  .pr-glance-label {
-    font-size: 18px;
-  }
-
-  .pr-supertask {
-    display: block;
-    text-align: center;
-    font-size: 17px;
-  }
-}
-
-/* --- Print --------------------------------------------------------------- */
-
-@media print {
   .pr-glance-band {
     background-color: transparent !important;
     padding: 0 !important;
-  }
-
-  .pr-glance-card {
-    box-shadow: none !important;
-    border: 1px solid #ccc !important;
-    padding: 12px !important;
-  }
-
-  .pr-signin-li {
-    display: none !important;
   }
 }
