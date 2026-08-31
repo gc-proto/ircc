@@ -748,6 +748,21 @@
     * { transition: none !important; animation: none !important; }
     .card:hover { transform: none; }
   }
+
+  /* ── 404 Reconciliation Panel ─────────────────────────── */
+  .reaudit-panel { margin: 0 0 24px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+  .reaudit-panel > .sectionh { margin: 0 0 4px; }
+  .reaudit-note { color: var(--muted); font-size: 12px; margin: 4px 0 14px; line-height: 1.6; }
+  .reaudit-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 10px; }
+  .reaudit-mini { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+  .reaudit-mini h4 { font-size: 13px; margin: 0 0 8px; font-weight: 600; }
+  .reaudit-details details { border-top: 1px solid var(--border); padding: 8px 0; }
+  .reaudit-details summary { cursor: pointer; font-weight: 600; font-size: 13px; user-select: none; }
+  .reaudit-details summary:hover { color: var(--accent); }
+  .reaudit-details ul { margin: 8px 0 0; padding-left: 18px; font-size: 12px; }
+  .reaudit-details li { padding: 2px 0; word-break: break-all; }
+  .reaudit-takeaway { font-size: 12.5px; color: var(--muted); margin: 10px 0 6px; padding: 10px 12px; background: var(--accent-bg); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; }
+  .reaudit-takeaway strong { color: var(--fg); }
 </style>
 </head>
 <body>
@@ -782,6 +797,8 @@
     </div>
 
     <div id="compare" class="hidden"></div>
+    <!-- 404 Reconciliation Panel (loaded async from data/404_reaudit.json) -->
+    <section id="reauditPanel" class="reaudit-panel hidden" aria-label="404 reconciliation panel"></section>
     <section id="overview" class="cards" aria-label="Crawl list overview"></section>
   </section>
 
@@ -1208,6 +1225,77 @@ async function loadSummary() {
   el("subtitle").textContent = data.source + " · generated " + data.generated_at;
   el("gen").textContent = data.generated_at;
   renderCards();
+}
+
+/* ──────────────────────────────────────────────────────────
+   404 RECONCILIATION PANEL
+   Loads data/404_reaudit.json (produced by re-verifying every
+   unique 404 URL from the crawl against the live site).
+   ────────────────────────────────────────────────────────── */
+async function loadReaudit() {
+  const box = el("reauditPanel");
+  try {
+    const res = await fetch("data/404_reaudit.json", { cache: "no-store" });
+    if (!res.ok) { box.classList.add("hidden"); return; }
+    const d = await res.json();
+    const s = d.summary || {};
+    const dead       = d.genuinely_dead            || [];
+    const false200   = d.false_404_actually_200    || [];
+    const artifacts  = d.crawl_artifacts           || [];
+    const total      = s.total_404_entries_in_crawl || 0;
+    const unique     = s.unique_real_404_tested     || 0;
+    const artCount   = s.crawl_artifact_urls_excluded || 0;
+    const dups       = total - unique - artCount;
+
+    const stat = (label, n, color) =>
+      `<div class="stat-row"><span>${label}</span><span style="color:${color};font-variant-numeric:tabular-nums">${Number(n).toLocaleString()}</span></div>`;
+
+    box.innerHTML = `
+      <h3 class="sectionh"><span>🔗</span> 404 Reconciliation — Crawl vs. Reality</h3>
+      <p class="reaudit-note">${esc(s.notes || "")}</p>
+      <div class="reaudit-stats-grid">
+        <div class="reaudit-mini">
+          <h4>Crawl 4xx Log</h4>
+          ${stat("Total entries",              total,    "var(--fg)")}
+          ${stat("Duplicate rows",             dups,     "var(--muted)")}
+          ${stat("Unique real URLs tested",    unique,   "var(--fg)")}
+          ${stat("Crawl artifacts excluded",   artCount, "var(--muted)")}
+        </div>
+        <div class="reaudit-mini">
+          <h4>Verified Outcome</h4>
+          ${stat("Genuinely dead",             s.genuinely_dead_404   || 0, "var(--red)")}
+          ${stat("False 404 (loads 200)",      s.false_404_actually_200 || 0, "var(--green)")}
+          ${stat("Unresolved",                 s.unresolved_err       || 0, "var(--muted)")}
+        </div>
+        <div class="reaudit-mini">
+          <h4>Verification Method</h4>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6">${esc(s.method || "—")}</div>
+        </div>
+      </div>
+      <p class="reaudit-takeaway">
+        <strong>Takeaway:</strong> The "Broken (4xx)" counts in each crawl card bundle genuine dead links,
+        bot-blocked 403s, false 404s, and crawl artifacts.
+        Real confirmed dead links: <strong>${s.genuinely_dead_404 || 0} URLs</strong> of ${total} logged entries.
+      </p>
+      <div class="reaudit-details">
+        <details>
+          <summary>Genuinely dead (${dead.length})</summary>
+          <ul>${dead.map(u => `<li><a href="${safeHref(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join("")}</ul>
+        </details>
+        <details>
+          <summary>False 404s — actually return 200 (${false200.length})</summary>
+          <ul>${false200.map(u => `<li><a href="${safeHref(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join("")}</ul>
+        </details>
+        <details>
+          <summary>Crawl artifacts — template/malformed tokens (${artifacts.length})</summary>
+          <ul>${artifacts.map(u => `<li>${esc(u)}</li>`).join("")}</ul>
+        </details>
+      </div>
+    `;
+    box.classList.remove("hidden");
+  } catch (e) {
+    box.classList.add("hidden");
+  }
 }
 
 function renderCards() {
@@ -2385,6 +2473,7 @@ document.querySelectorAll("#pageTable th").forEach(th => {
   renderLegend();
   try {
     await loadSummary();
+    loadReaudit(); // fire-and-forget; panel hides itself if file is absent
   } catch (e) {
     el("subtitle").textContent = "Could not load audit data. Please serve this folder via HTTP (e.g. python3 -m http.server 8080).";
   }
