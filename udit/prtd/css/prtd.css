@@ -59,6 +59,17 @@
   z-index: 0;
 }
 
+.pr-step:last-child .pr-step-body::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: -18px;
+  bottom: 20px;
+  width: 2px;
+  background: #26374a;
+  z-index: 0;
+}
+
 .pr-step-row {
   display: flex;
   align-items: center;
@@ -181,7 +192,8 @@
 }
 
 .pr-sub-card:hover .pr-sub-arrow,
-.pr-sub-card:focus .pr-sub-arrow {
+.pr-sub-card:focus .pr-sub-arrow,
+.pr-sub-card.is-active .pr-sub-arrow {
   opacity: 1;
   transform: translateX(0);
 }
@@ -210,15 +222,23 @@
   min-width: 0;
 }
 
-.pr-section {
-  scroll-margin-top: 100px;
-  padding-bottom: 24px;
-  margin-bottom: 24px;
+.pr-stage {
   border-bottom: 1px solid #eeeeee;
+  padding-bottom: 28px;
+  margin-bottom: 28px;
 }
 
-.pr-section:last-of-type {
+.pr-stage:last-child {
   border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.pr-section,
+.pr-subsection {
+  scroll-margin-top: 100px;
+  padding-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .pr-eyebrow {
@@ -267,6 +287,7 @@ details.print-open {
   border-radius: 4px;
   margin-bottom: 12px;
   background-color: #fafbfc;
+  overflow: hidden;
 }
 
 .pr-layout details[open],
@@ -304,105 +325,6 @@ details[open].print-open {
 .pr-layout details > div {
   padding: 0 16px 16px 16px;
 }
-
-.pr-modal-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  z-index: 1050;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  opacity: 0;
-  transition: opacity 0.25s ease-in-out;
-}
-
-.pr-modal-overlay.is-open {
-  display: flex;
-  opacity: 1;
-}
-
-.pr-modal {
-  background: #ffffff;
-  width: 100%;
-  max-width: 580px;
-  max-height: calc(100vh - 40px);
-  display: flex;
-  flex-direction: column;
-  border-radius: 6px;
-  border: 1px solid #d0d0d0;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  overflow: hidden;
-  animation: prModalIn 0.25s ease-out;
-}
-
-@keyframes prModalIn {
-  from { transform: translateY(-16px) scale(0.98); opacity: 0.8; }
-  to   { transform: translateY(0) scale(1); opacity: 1; }
-}
-
-.pr-modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.pr-modal-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #26374a;
-  margin: 0;
-  line-height: 1.3;
-}
-
-.pr-modal-close {
-  background: transparent;
-  border: none;
-  font-size: 28px;
-  line-height: 1;
-  color: #555555;
-  cursor: pointer;
-  padding: 4px;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  transition: color 0.15s ease, background-color 0.15s ease;
-}
-
-.pr-modal-close:hover,
-.pr-modal-close:focus {
-  color: #000000;
-  background-color: #e9ecef;
-  outline: 2px solid #0535d2;
-  outline-offset: 2px;
-}
-
-.pr-modal-body {
-  padding: 20px;
-  overflow-y: auto;
-  font-size: 16px;
-  line-height: 1.55;
-  color: #333333;
-  max-height: calc(85vh - 120px);
-}
-
-.pr-modal-body p { margin-top: 0; margin-bottom: 12px; }
-.pr-modal-body ul { padding-left: 24px; margin-bottom: 16px; }
-.pr-modal-body li { margin-bottom: 6px; }
 
 .pr-top {
   display: none;
@@ -514,7 +436,8 @@ button[aria-expanded="true"] .pr-toggle-caret {
     padding: 12px 0;
   }
 
-  .pr-section {
+  .pr-section,
+  .pr-subsection {
     scroll-margin-top: 120px;
   }
 
@@ -529,7 +452,6 @@ button[aria-expanded="true"] .pr-toggle-caret {
 @media print {
   .pr-side { display: none !important; }
   .pr-top { display: none !important; }
-  .pr-modal-overlay { display: none !important; }
   .btn-group.mrgn-bttm-md { display: none !important; }
 
   .pr-layout details,
@@ -668,14 +590,6 @@ button[aria-expanded="true"] .pr-toggle-caret {
   margin-bottom: 0;
 }
 
-/* --- Sub-sections that sit inside a step (no divider rule) --------------- */
-
-.pr-subsection {
-  scroll-margin-top: 100px;
-  padding-bottom: 24px;
-  margin-bottom: 8px;
-}
-
 /* --- Buttons ------------------------------------------------------------- */
 
 .pr-supertask {
@@ -732,10 +646,6 @@ button[aria-expanded="true"] .pr-toggle-caret {
 
   .pr-h1-kicker {
     font-size: 20px;
-  }
-
-  .pr-subsection {
-    scroll-margin-top: 120px;
   }
 }
 
