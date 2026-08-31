@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LibreCrawl Audit Dashboard</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --fg: #e6edf3;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --yellow: #d29922;
+    --red: #f85149;
+    --purple: #bc8cff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.45;
+  }
+  header {
+    padding: 24px 20px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  header h1 { margin: 0 0 6px; font-size: 22px; }
+  header p { margin: 0; color: var(--muted); font-size: 13px; }
+  main { max-width: 1100px; margin: 0 auto; padding: 20px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    cursor: pointer;
+    transition: border-color .15s, transform .15s;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card.active { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .card h2 { margin: 0 0 4px; font-size: 16px; }
+  .card .seed { color: var(--muted); font-size: 12px; word-break: break-all; margin-bottom: 10px; }
+  .stat-row { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; padding: 2px 0; }
+  .stat-row span:last-child { font-variant-numeric: tabular-nums; }
+  .bars { margin-top: 10px; }
+  .bar { height: 10px; border-radius: 5px; background: var(--border); overflow: hidden; display: flex; margin-bottom: 6px; }
+  .bar > i { display: block; height: 100%; }
+  .bar > i.s2 { background: var(--green); }
+  .bar > i.s3 { background: var(--yellow); }
+  .bar > i.s4 { background: var(--red); }
+  .bar > i.s5 { background: #ff7b72; }
+  .bar > i.se { background: var(--purple); }
+  .bar > i.s0 { background: var(--muted); }
+  .btn, .filters input, .filters select {
+    background: var(--card); border: 1px solid var(--border); color: var(--fg);
+    border-radius: 8px; padding: 8px 10px; font-size: 13px; font-family: inherit;
+  }
+  .btn { cursor: pointer; }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn[disabled] { opacity: .45; cursor: not-allowed; }
+  .btn[disabled]:hover { border-color: var(--border); color: var(--fg); }
+  .filters { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 14px 0 8px; }
+  .filters input[type=search] { flex: 1; min-width: 220px; }
+  .chk { font-size: 12px; color: var(--muted); display: inline-flex; align-items: center; gap: 5px; }
+  .toolbar { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
+  .legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+  .legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+  .crumbs { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+  .linkbtn { background: none; border: 0; color: var(--accent); cursor: pointer; font-size: 13px; padding: 0; font-family: inherit; text-decoration: underline; }
+  .detailhead { display: flex; gap: 14px; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; }
+  .detailhead h2 { margin: 0; font-size: 20px; }
+  .navbtns { display: flex; gap: 8px; flex-wrap: wrap; }
+  .sectionh { margin: 26px 0 0; font-size: 16px; }
+  .hgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin: 10px 0 0; }
+  .hcard { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+  .hcard .n { font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .hcard .l { font-size: 12px; color: var(--muted); }
+  .hcard.bad .n { color: var(--red); }
+  .hcard.warn .n { color: var(--yellow); }
+  .hcard.ok .n { color: var(--green); }
+  .hnote { color: var(--muted); font-size: 12px; margin: 10px 0 0; }
+  #compare table { margin-bottom: 18px; }
+  #compare th:first-child, #compare td:first-child { text-align: left; }
+  #compare th, #compare td { text-align: right; }
+  .sortind { color: var(--accent); font-size: 10px; }
+  .sword { color: var(--muted); font-size: 11px; margin-left: 5px; white-space: nowrap; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { position: sticky; top: 0; background: var(--card); cursor: pointer; user-select: none; }
+  tbody tr:hover { background: rgba(56,139,253,.08); }
+  td.url { word-break: break-all; max-width: 420px; }
+  .pill { display: inline-block; padding: 1px 7px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+  .s2 { background: rgba(63,185,80,.15); color: var(--green); }
+  .s3 { background: rgba(210,153,34,.15); color: var(--yellow); }
+  .s4 { background: rgba(248,81,73,.15); color: var(--red); }
+  .s5 { background: rgba(248,81,73,.22); color: var(--red); }
+  .se { background: rgba(188,140,255,.15); color: var(--purple); }
+  .s0 { background: rgba(139,148,158,.22); color: var(--muted); }
+  .hidden { display: none; }
+  .meta { color: var(--muted); font-size: 12px; margin: 6px 0 14px; }
+  .tablewrap { max-height: 70vh; overflow: auto; border: 1px solid var(--border); border-radius: 10px; }
+  a { color: var(--accent); }
+  .count { font-variant-numeric: tabular-nums; }
+  .loading { color: var(--muted); padding: 20px; }
+  #issues { margin-top: 22px; }
+  #issues table td:first-child { font-weight: 600; }
+  footer { color: var(--muted); font-size: 12px; padding: 20px; text-align: center; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+    .card:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>LibreCrawl Audit Dashboard</h1>
+  <p id="subtitle">Loading…</p>
+</header>
+<main>
+  <section id="overviewWrap">
+    <div class="toolbar">
+      <button class="btn" id="compareToggle" type="button" aria-expanded="false" aria-controls="compare">Compare all crawls</button>
+      <div class="legend" id="legend"></div>
+    </div>
+    <div id="compare" class="hidden"></div>
+    <section id="overview" class="cards"></section>
+  </section>
+
+  <section id="detail" class="hidden">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <button class="linkbtn" id="crumbHome" type="button">Home</button>
+      <span aria-hidden="true">›</span>
+      <span id="crumbNow" aria-current="page"></span>
+    </nav>
+    <div class="detailhead">
+      <h2 id="detailTitle"></h2>
+      <div class="navbtns">
+        <button class="btn" id="prevCrawl" type="button">‹ Previous crawl</button>
+        <button class="btn" id="nextCrawl" type="button">Next crawl ›</button>
+        <button class="btn" id="back" type="button">All crawls</button>
+      </div>
+    </div>
+    <p class="meta" id="detailMeta"></p>
+
+    <section id="health" aria-labelledby="healthH"></section>
+    <div id="issues"></div>
+
+    <h3 class="sectionh">Every page we found</h3>
+    <div class="filters">
+      <input type="search" id="q" placeholder="Search by web address or page title…" aria-label="Search by web address or page title" />
+      <select id="statusFilter" aria-label="Filter by result">
+        <option value="">All results</option>
+        <option value="2xx">Working (2xx)</option>
+        <option value="3xx">Redirected (3xx)</option>
+        <option value="4xx">Broken (4xx)</option>
+        <option value="5xx">Server error (5xx)</option>
+        <option value="error">Crawl error</option>
+        <option value="none">No response</option>
+      </select>
+      <select id="internalFilter" aria-label="Filter by internal or external">
+        <option value="">Internal + external</option>
+        <option value="1">Internal only</option>
+        <option value="0">External only</option>
+      </select>
+      <label class="chk"><input type="checkbox" id="jsOnly" /> JavaScript-dependent only</label>
+      <button class="btn" id="exportCsv" type="button" title="Download every matching row, including rows beyond the 600 shown">Export CSV</button>
+    </div>
+    <p class="meta" id="matchCount" aria-live="polite"></p>
+    <div class="tablewrap">
+      <table id="pageTable">
+        <thead>
+          <tr>
+            <th data-k="url" tabindex="0" aria-sort="ascending" title="The web address of the page">Web address <span class="sortind"></span></th>
+            <th data-k="status_code" tabindex="0" aria-sort="none" title="What the server returned when we asked for this page">Result <span class="sortind"></span></th>
+            <th data-k="depth" tabindex="0" aria-sort="none" title="How many clicks from the start page">Link level <span class="sortind"></span></th>
+            <th data-k="title" tabindex="0" aria-sort="none" title="The page title shown in browser tabs and search results">Page title <span class="sortind"></span></th>
+            <th data-k="word_count" tabindex="0" aria-sort="none" title="Number of words of visible text">Words <span class="sortind"></span></th>
+            <th data-k="response_time" tabindex="0" aria-sort="none" title="How long the page took to respond, in milliseconds. Only recorded for JavaScript-dependent pages.">Load time (ms) <span class="sortind"></span></th>
+            <th data-k="internal_links" tabindex="0" aria-sort="none" title="Links from this page to the same site">Internal links <span class="sortind"></span></th>
+            <th data-k="external_links" tabindex="0" aria-sort="none" title="Links from this page to other sites">External links <span class="sortind"></span></th>
+            <th data-k="javascript_rendered" tabindex="0" aria-sort="none" title="Page needs JavaScript to show its content">JavaScript-dependent <span class="sortind"></span></th>
+          </tr>
+        </thead>
+        <tbody id="pageBody"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+<footer>Generated from LibreCrawl on TrueNAS · <span id="gen"></span></footer>
+
+<script>
+const state = { crawls: [], issues: [], pages: [], active: null, sortKey: "url", sortAsc: true, q: "", status: "", internal: "", jsOnly: false, compare: false };
+const MAX_ROWS = 600;
+
+function el(id) { return document.getElementById(id); }
+
+// HTML-escape untrusted strings before innerHTML insertion (crawl data may contain markup).
+function esc(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+// Only allow http(s) links in href; everything else becomes a non-navigable anchor.
+function safeHref(url) {
+  const u = String(url || "");
+  return (/^https?:\/\//i.test(u)) ? u : "#";
+}
+function fmtMs(v) { return (v == null || v === 0) ? "" : Math.round(v).toLocaleString(); }
+function fmtInt(v) { return (Number(v) || 0).toLocaleString(); }
+
+function statusClass(code, err) {
+  if (err) return "se";
+  if (code == null || code === 0) return "s0";
+  if (code >= 500) return "s5";
+  if (code >= 400) return "s4";
+  if (code >= 300) return "s3";
+  if (code >= 200) return "s2";
+  return "s0";
+}
+function statusLabel(p) {
+  if (p.error_type) return p.error_type;
+  return (p.status_code == null || p.status_code === 0) ? "—" : p.status_code;
+}
+function resultWord(p) {
+  if (p.error_type) return "Crawl error";
+  const c = p.status_code;
+  if (c == null || c === 0) return "No response";
+  if (c >= 500) return "Server error";
+  if (c >= 400) return "Broken";
+  if (c >= 300) return "Redirected";
+  if (c >= 200) return "Working";
+  return "Unknown";
+}
+function statusWord(p) {
+  const w = resultWord(p);
+  return w === "Working" ? "" : w;
+}
+
+function pageStats(pages) {
+  const s = { total: pages.length, ok: 0, redirect: 0, broken: 0, server: 0, noresp: 0, errors: 0, js: 0, internal: 0, external: 0 };
+  for (const p of pages) {
+    const c = p.status_code;
+    if (p.error_type) s.errors++;
+    if (c == null || c === 0) s.noresp++;
+    else if (c >= 500) s.server++;
+    else if (c >= 400) s.broken++;
+    else if (c >= 300) s.redirect++;
+    else if (c >= 200) s.ok++;
+    if (p.javascript_rendered) s.js++;
+    if (p.is_internal) s.internal++; else s.external++;
+  }
+  return s;
+}
+
+async function loadSummary() {
+  const res = await fetch("data/summary.json", { cache: "no-store" });
+  const data = await res.json();
+  state.crawls = data.crawls || [];
+  state.issues = data.issues || [];
+  el("subtitle").textContent = data.source + " · generated " + data.generated_at;
+  el("gen").textContent = data.generated_at;
+  renderCards();
+}
+
+function renderCards() {
+  const wrap = el("overview");
+  wrap.innerHTML = "";
+  for (const c of state.crawls) {
+    const g = c.status_groups || {};
+    const n = k => Number(g[k]) || 0;
+    const total = c.rows || 1;
+    const seg = (v, cls, lbl) => v <= 0 ? "" : `<i class="${cls}" style="width:${(v/total*100).toFixed(2)}%" title="${esc(lbl)}: ${v.toLocaleString()}"></i>`;
+    const card = document.createElement("div");
+    card.className = "card";
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("aria-label", `View audit detail for ${c.label}`);
+    card.innerHTML = `
+      <h2>${esc(c.label)}</h2>
+      <div class="seed" title="The page the crawler started from">${esc(c.seed)}</div>
+      <div class="stat-row"><span title="Total pages and files reached by the crawler">Pages crawled</span><span>${(Number(c.rows) || 0).toLocaleString()}</span></div>
+      <div class="stat-row"><span title="How many clicks deep from the start page the crawler went">Link levels</span><span>${Number(c.max_depth) || 0}</span></div>
+      <div class="stat-row"><span title="Pages on this site vs. pages on other sites">Internal / External links</span><span>${(Number(c.internal) || 0).toLocaleString()} / ${(Number(c.external) || 0).toLocaleString()}</span></div>
+      <div class="stat-row"><span title="Pages that need JavaScript to show their content">JavaScript-dependent</span><span>${(Number(c.js_rendered) || 0).toLocaleString()}</span></div>
+      <div class="bars">
+        <div class="bar">${seg(n("2xx"), "s2", "Working")}${seg(n("3xx"), "s3", "Redirected")}${seg(n("4xx"), "s4", "Broken")}${seg(n("5xx"), "s5", "Server error")}${seg(n("error"), "se", "Crawl error")}${seg(n("other"), "s0", "No response")}</div>
+      </div>
+      <div class="stat-row"><span style="color:var(--green)">${n("2xx").toLocaleString()} working</span>
+        <span style="color:var(--red)">${n("4xx").toLocaleString()} broken · ${n("5xx").toLocaleString()} server error</span></div>
+      <div class="meta" style="margin:8px 0 0">${esc(c.started_at)} → ${esc(c.completed_at)}</div>
+    `;
+    const open = () => openCrawl(c.id);
+    card.addEventListener("click", open);
+    card.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); open(); }
+    });
+    wrap.appendChild(card);
+  }
+}
+
+const LEGEND = [
+  ["s2", "Working (2xx)"],
+  ["s3", "Redirected (3xx)"],
+  ["s4", "Broken (4xx)"],
+  ["s5", "Server error (5xx)"],
+  ["se", "Crawl error"],
+  ["s0", "No response"]
+];
+
+function renderLegend() {
+  el("legend").innerHTML = LEGEND.map(([cls, lbl]) =>
+    `<span><i class="${cls}" style="background:${legendColor(cls)}"></i>${esc(lbl)}</span>`).join("");
+}
+function legendColor(cls) {
+  return { s2: "var(--green)", s3: "var(--yellow)", s4: "var(--red)", s5: "#ff7b72", se: "var(--purple)", s0: "var(--muted)" }[cls] || "var(--border)";
+}
+
+function renderCompare() {
+  const box = el("compare");
+  if (!state.compare) { box.classList.add("hidden"); box.innerHTML = ""; return; }
+  const rowsDef = [
+    ["Pages crawled", c => fmtInt(c.rows), "Total pages and files reached by the crawler"],
+    ["Working", c => fmtInt((c.status_groups || {})["2xx"]), "Pages that loaded normally"],
+    ["Broken links (4xx)", c => fmtInt((c.status_groups || {})["4xx"]), "Pages that could not be found"],
+    ["Server errors (5xx)", c => fmtInt((c.status_groups || {})["5xx"]), "Pages where the server failed"],
+    ["No response", c => fmtInt((c.status_groups || {})["other"]), "The crawler got no usable reply"],
+    ["JavaScript-dependent", c => fmtInt(c.js_rendered), "Pages that need JavaScript to show content"],
+    ["Internal links", c => fmtInt(c.internal), "Pages on the same site"],
+    ["External links", c => fmtInt(c.external), "Pages on other sites"],
+    ["Link levels", c => fmtInt(c.max_depth), "How many clicks deep the crawler went"]
+  ];
+  let html = `<h3 class="sectionh" style="margin-top:0">Side-by-side comparison</h3><div class="tablewrap"><table><thead><tr><th>Measure</th>`;
+  for (const c of state.crawls) html += `<th>${esc(c.label)}</th>`;
+  html += `</tr></thead><tbody>`;
+  for (const [label, fn, tip] of rowsDef) {
+    html += `<tr><td title="${esc(tip)}">${esc(label)}</td>`;
+    for (const c of state.crawls) html += `<td class="count">${fn(c)}</td>`;
+    html += `</tr>`;
+  }
+  html += `</tbody></table></div>`;
+  box.innerHTML = html;
+  box.classList.remove("hidden");
+}
+
+function renderHealth(c) {
+  const s = pageStats(state.pages);
+  const box = el("health");
+  const cell = (n, label, tip, cls) =>
+    `<div class="hcard ${cls || ""}"><div class="n">${fmtInt(n)}</div><div class="l" title="${esc(tip)}">${esc(label)}</div></div>`;
+  box.innerHTML = `
+    <h3 class="sectionh" id="healthH" style="margin-top:22px">Health summary</h3>
+    <div class="hgrid">
+      ${cell(s.total, "Pages crawled", "Every page and file the crawler reached from the start page")}
+      ${cell(s.ok, "Loaded normally", "Pages that returned successfully", "ok")}
+      ${cell(s.broken, "Broken links", "Pages that could not be found (404 and similar)", s.broken ? "bad" : "")}
+      ${cell(s.server, "Server errors", "The site's server failed while answering", s.server ? "bad" : "")}
+      ${cell(s.noresp, "No response", "The crawler got no usable reply at all", s.noresp ? "warn" : "")}
+      ${cell(s.errors, "Crawl errors", "Timeouts, connection failures and certificate problems", s.errors ? "warn" : "")}
+      ${cell(s.js, "JavaScript-dependent", "These pages need JavaScript to show their content, which can affect search engines and assistive technology")}
+      ${cell(s.internal, "Internal", "Addresses on the same site as the start page")}
+      ${cell(s.external, "External", "Addresses pointing to other sites")}
+    </div>
+    <p class="hnote">Started ${esc(c.started_at)} · finished ${esc(c.completed_at)} · reached ${fmtInt(c.max_depth)} link levels deep from <a href="${esc(safeHref(c.seed))}" target="_blank" rel="noopener">the start page</a>.</p>
+  `;
+}
+
+async function openCrawl(id) {
+  const c = state.crawls.find(x => x.id === id);
+  if (!c) return;
+  state.active = id;
+  state.pages = [];
+  el("crumbNow").textContent = c.label;
+  el("detailTitle").textContent = c.label;
+  el("detailMeta").innerHTML = `${fmtInt(c.rows)} pages crawled · ${fmtInt(c.internal)} internal / ${fmtInt(c.external)} external · ${fmtInt(c.js_rendered)} JavaScript-dependent`;
+  el("overviewWrap").classList.add("hidden");
+  el("detail").classList.remove("hidden");
+  updateCrawlNav();
+  el("health").innerHTML = "";
+  el("issues").innerHTML = "";
+  el("matchCount").textContent = "";
+  el("pageBody").innerHTML = `<tr><td colspan="9" class="loading">Loading ${fmtInt(c.rows)} pages…</td></tr>`;
+  window.scrollTo(0, 0);
+  try {
+    const res = await fetch(`data/pages-${id}.json`, { cache: "no-store" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const pages = await res.json();
+    if (state.active !== id) return;
+    state.pages = Array.isArray(pages) ? pages : [];
+  } catch (e) {
+    if (state.active !== id) return;
+    el("pageBody").innerHTML = `<tr><td colspan="9" class="loading">Could not load data/pages-${esc(id)}.json. If you opened this file directly, serve the folder over HTTP instead.</td></tr>`;
+    return;
+  }
+  renderHealth(c);
+  renderIssues(id);
+  renderTable();
+}
+
+function updateCrawlNav() {
+  const i = state.crawls.findIndex(x => x.id === state.active);
+  const prev = el("prevCrawl"), next = el("nextCrawl");
+  prev.disabled = i <= 0;
+  next.disabled = i < 0 || i >= state.crawls.length - 1;
+  prev.title = prev.disabled ? "This is the first crawl" : "Go to " + state.crawls[i - 1].label;
+  next.title = next.disabled ? "This is the last crawl" : "Go to " + state.crawls[i + 1].label;
+}
+
+const SEVERITY = {
+  error: { label: "Must fix", cls: "s4" },
+  warning: { label: "Should review", cls: "s3" },
+  notice: { label: "For information", cls: "s0" },
+  info: { label: "For information", cls: "s0" }
+};
+const CATEGORY_HELP = {
+  "Duplication": "The same text, title or description appears on more than one page",
+  "Social": "Missing or incomplete preview information for social media sharing",
+  "SEO": "Titles, descriptions and headings that affect how pages appear in search results",
+  "Structured Data": "Machine-readable page markup that is missing or malformed",
+  "Accessibility": "Barriers for people using screen readers or keyboard navigation",
+  "Technical": "Server, redirect and markup problems",
+  "Content": "Thin, empty or low-quality page content",
+  "Performance": "Slow pages or oversized assets",
+  "Mobile": "Problems when viewed on a phone or tablet",
+  "Indexability": "Settings that stop search engines from listing the page"
+};
+
+function renderIssues(id) {
+  const box = el("issues");
+  const rows = (state.issues || []).filter(i => i.crawl_id === id)
+    .slice().sort((a, b) => (Number(b.count) || 0) - (Number(a.count) || 0));
+  if (!rows.length) { box.innerHTML = ""; return; }
+  const totals = rows.reduce((acc, r) => {
+    const k = String(r.issue_type || "").toLowerCase();
+    acc[k] = (acc[k] || 0) + (Number(r.count) || 0);
+    return acc;
+  }, {});
+  const heads = Object.keys(totals).map(k =>
+    `${fmtInt(totals[k])} ${esc((SEVERITY[k] || { label: k }).label.toLowerCase())}`).join(" · ");
+  let html = `<h3 class="sectionh">What needs attention</h3>
+    <p class="meta">${heads} — grouped by theme. Counts are individual findings, so one page can appear in several rows.</p>
+    <div class="tablewrap"><table><thead><tr><th>Theme</th><th>Severity</th><th>Findings</th></tr></thead><tbody>`;
+  for (const r of rows) {
+    const sev = SEVERITY[String(r.issue_type || "").toLowerCase()] || { label: r.issue_type || "Unknown", cls: "s0" };
+    const help = CATEGORY_HELP[r.category] || "";
+    html += `<tr><td title="${esc(help)}">${esc(r.category)}</td>` +
+      `<td><span class="pill ${sev.cls}">${esc(sev.label)}</span></td>` +
+      `<td class="count">${fmtInt(r.count)}</td></tr>`;
+  }
+  html += `</tbody></table></div>`;
+  box.innerHTML = html;
+}
+
+function applyFilters() {
+  let rows = state.pages;
+  const q = state.q.toLowerCase();
+  if (q) rows = rows.filter(p => (p.url || "").toLowerCase().includes(q) || (p.title || "").toLowerCase().includes(q));
+  if (state.status === "error") rows = rows.filter(p => p.error_type);
+  else if (state.status === "none") rows = rows.filter(p => p.status_code == null || p.status_code === 0);
+  else if (state.status) {
+    const lo = { "2xx": 200, "3xx": 300, "4xx": 400, "5xx": 500 }[state.status];
+    const hi = lo + 100;
+    rows = rows.filter(p => p.status_code != null && p.status_code >= lo && p.status_code < hi);
+  }
+  if (state.internal !== "") rows = rows.filter(p => Boolean(p.is_internal) === (state.internal === "1"));
+  if (state.jsOnly) rows = rows.filter(p => p.javascript_rendered);
+  const k = state.sortKey, asc = state.sortAsc;
+  rows = rows.slice().sort((a, b) => {
+    let av = a[k], bv = b[k];
+    if (k === "url" || k === "title") { av = (av || "").toString(); bv = (bv || "").toString(); return asc ? av.localeCompare(bv) : bv.localeCompare(av); }
+    av = av == null ? -1 : av; bv = bv == null ? -1 : bv;
+    return asc ? av - bv : bv - av;
+  });
+  return rows;
+}
+
+function renderTable() {
+  const rows = applyFilters();
+  const shown = Math.min(rows.length, MAX_ROWS);
+  const out = [];
+  for (let i = 0; i < shown; i++) {
+    const p = rows[i];
+    const word = statusWord(p);
+    out.push(
+      "<tr>" +
+      `<td class="url"><a href="${esc(safeHref(p.url))}" target="_blank" rel="noopener">${esc(p.url)}</a></td>` +
+      `<td><span class="pill ${statusClass(p.status_code, p.error_type)}">${esc(statusLabel(p))}</span>` +
+      (word ? `<span class="sword">${esc(word)}</span>` : "") + "</td>" +
+      `<td>${p.depth == null ? "" : esc(p.depth)}</td>` +
+      `<td>${esc(String(p.title == null ? "" : p.title).slice(0, 120))}</td>` +
+      `<td class="count">${p.word_count == null ? "" : fmtInt(p.word_count)}</td>` +
+      `<td class="count">${fmtMs(p.response_time)}</td>` +
+      `<td class="count">${p.internal_links == null ? "" : fmtInt(p.internal_links)}</td>` +
+      `<td class="count">${p.external_links == null ? "" : fmtInt(p.external_links)}</td>` +
+      `<td>${p.javascript_rendered ? "Yes" : ""}</td>` +
+      "</tr>"
+    );
+  }
+  if (!rows.length) out.push(`<tr><td colspan="9" class="loading">No pages match these filters.</td></tr>`);
+  else if (rows.length > MAX_ROWS) out.push(`<tr><td colspan="9" class="loading">Showing the first ${fmtInt(MAX_ROWS)} of ${fmtInt(rows.length)} matches. Narrow the filters, or use Export CSV to get all ${fmtInt(rows.length)}.</td></tr>`);
+  el("pageBody").innerHTML = out.join("");
+  el("matchCount").textContent = rows.length
+    ? `Showing ${fmtInt(shown)} of ${fmtInt(rows.length)} matching pages (${fmtInt(state.pages.length)} crawled in total).`
+    : `No matches out of ${fmtInt(state.pages.length)} pages crawled.`;
+  updateSortIndicators();
+}
+
+function updateSortIndicators() {
+  document.querySelectorAll("#pageTable th").forEach(th => {
+    const active = th.dataset.k === state.sortKey;
+    th.setAttribute("aria-sort", active ? (state.sortAsc ? "ascending" : "descending") : "none");
+    const ind = th.querySelector(".sortind");
+    if (ind) ind.textContent = active ? (state.sortAsc ? "▲" : "▼") : "";
+  });
+}
+
+function csvCell(v) {
+  let s = v == null ? "" : String(v);
+  if (/^[=+\-@\t\r]/.test(s)) s = "'" + s;
+  return /[",\r\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+}
+
+function exportCsv() {
+  const rows = applyFilters();
+  if (!rows.length) return;
+  const c = state.crawls.find(x => x.id === state.active);
+  const head = ["Web address", "Status code", "Result", "Crawl error", "Link level", "Page title", "Words", "Load time (ms)", "Internal links", "External links", "JavaScript-dependent", "Scope"];
+  const lines = [head.map(csvCell).join(",")];
+  for (const p of rows) {
+    lines.push([
+      p.url,
+      (p.status_code == null || p.status_code === 0) ? "" : p.status_code,
+      resultWord(p),
+      p.error_type || "",
+      p.depth == null ? "" : p.depth,
+      p.title == null ? "" : p.title,
+      p.word_count == null ? "" : p.word_count,
+      (p.response_time == null || p.response_time === 0) ? "" : Math.round(p.response_time),
+      p.internal_links == null ? "" : p.internal_links,
+      p.external_links == null ? "" : p.external_links,
+      p.javascript_rendered ? "Yes" : "No",
+      p.is_internal ? "Internal" : "External"
+    ].map(csvCell).join(","));
+  }
+  const blob = new Blob(["\uFEFF" + lines.join("\r\n")], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  const slug = String((c && c.label) || "crawl").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  a.href = url;
+  a.download = `librecrawl-${slug || "crawl"}-${rows.length}-rows.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function back() {
+  state.active = null; state.pages = [];
+  el("detail").classList.add("hidden");
+  el("overviewWrap").classList.remove("hidden");
+  window.scrollTo(0, 0);
+}
+
+function stepCrawl(delta) {
+  const i = state.crawls.findIndex(x => x.id === state.active);
+  const next = state.crawls[i + delta];
+  if (i >= 0 && next) openCrawl(next.id);
+}
+
+el("back").addEventListener("click", back);
+el("crumbHome").addEventListener("click", back);
+el("prevCrawl").addEventListener("click", () => stepCrawl(-1));
+el("nextCrawl").addEventListener("click", () => stepCrawl(1));
+el("exportCsv").addEventListener("click", exportCsv);
+el("compareToggle").addEventListener("click", () => {
+  state.compare = !state.compare;
+  el("compareToggle").setAttribute("aria-expanded", String(state.compare));
+  el("compareToggle").textContent = state.compare ? "Hide comparison" : "Compare all crawls";
+  renderCompare();
+});
+
+let qTimer = null;
+el("q").addEventListener("input", e => {
+  const v = e.target.value;
+  clearTimeout(qTimer);
+  qTimer = setTimeout(() => { state.q = v; renderTable(); }, 200);
+});
+el("statusFilter").addEventListener("change", e => { state.status = e.target.value; renderTable(); });
+el("internalFilter").addEventListener("change", e => { state.internal = e.target.value; renderTable(); });
+el("jsOnly").addEventListener("change", e => { state.jsOnly = e.target.checked; renderTable(); });
+
+document.querySelectorAll("#pageTable th").forEach(th => {
+  const sort = () => {
+    const k = th.dataset.k;
+    if (state.sortKey === k) state.sortAsc = !state.sortAsc; else { state.sortKey = k; state.sortAsc = true; }
+    renderTable();
+  };
+  th.addEventListener("click", sort);
+  th.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); sort(); }
+  });
+});
+
+(async function init() {
+  renderLegend();
+  try {
+    await loadSummary();
+  } catch (e) {
+    el("subtitle").textContent = "Could not load audit data. If you opened this file directly, serve the folder over HTTP instead.";
+  }
+})();
+</script>
+</body>
+</html>
