@@ -282,42 +282,88 @@
 
 .pr-layout details,
 details.print-open {
-  margin-top: 14px;
-  margin-bottom: 18px;
-  border: none;
-  background: transparent;
+  border: 1px solid #d3d5d7;
+  border-radius: 4px;
+  margin-top: 10px;
+  margin-bottom: 12px;
+  background-color: #ffffff;
+  overflow: hidden;
   box-shadow: none;
 }
 
 .pr-layout details summary {
   cursor: pointer;
   color: #284162;
-  font-size: 19px;
-  font-weight: 700;
-  padding: 4px 0;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 14px;
   outline: none;
   user-select: none;
-  display: list-item;
-  transition: color 0.15s ease;
+  background-color: #ffffff;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pr-layout details summary::-webkit-details-marker {
+  display: none !important;
+}
+
+/* Solid blue triangle indicator */
+.pr-layout details summary::before {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid #284162;
+  flex-shrink: 0;
+  margin-right: 2px;
+}
+
+.pr-layout details[open] summary::before {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid #284162;
+  border-bottom: none;
+  margin-right: 2px;
 }
 
 .pr-layout details summary:hover,
 .pr-layout details summary:focus {
   color: #0535d2;
+  background-color: #f8f9fa;
   text-decoration: underline;
+}
+
+.pr-layout details summary:hover::before,
+.pr-layout details summary:focus::before {
+  border-left-color: #0535d2;
+}
+
+.pr-layout details[open] summary:hover::before,
+.pr-layout details[open] summary:focus::before {
+  border-top-color: #0535d2;
 }
 
 .pr-layout details summary:focus-visible {
   outline: 2px solid #0535d2;
-  outline-offset: 3px;
+  outline-offset: -2px;
+}
+
+.pr-layout details[open] summary {
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .pr-layout details > div {
-  padding: 10px 0 4px 18px;
-  margin-top: 6px;
-  margin-bottom: 12px;
-  border-left: 3px solid #d8dce2;
-  background: transparent;
+  padding: 16px 16px 14px 16px;
+  background-color: #ffffff;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333333;
 }
 
 .pr-top {
