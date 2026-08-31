@@ -294,14 +294,48 @@ details.print-open {
 
 .wb-accordion details summary,
 .pr-layout details summary {
+  position: relative;
+  cursor: pointer;
   color: #284162;
   font-size: 16px;
   font-weight: 600;
-  padding: 10px 14px;
-  cursor: pointer;
-  background-color: #ffffff;
+  padding: 11px 14px 11px 30px;
+  outline: none;
   user-select: none;
+  background-color: #ffffff;
   transition: background-color 0.15s ease, color 0.15s ease;
+  list-style: none;
+  display: block;
+}
+
+.wb-accordion details summary::-webkit-details-marker,
+.pr-layout details summary::-webkit-details-marker {
+  display: none !important;
+}
+
+.wb-accordion details summary::marker,
+.pr-layout details summary::marker {
+  display: none !important;
+  font-size: 0 !important;
+}
+
+.wb-accordion details summary::before,
+.pr-layout details summary::before {
+  content: "▶";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: #284162;
+  line-height: 1;
+  transition: color 0.15s ease;
+}
+
+.wb-accordion details[open] summary::before,
+.pr-layout details[open] summary::before {
+  content: "▼";
+  font-size: 10px;
 }
 
 .wb-accordion details summary:hover,
@@ -311,6 +345,13 @@ details.print-open {
   color: #0535d2;
   background-color: #f8f9fa;
   text-decoration: underline;
+}
+
+.wb-accordion details summary:hover::before,
+.wb-accordion details summary:focus::before,
+.pr-layout details summary:hover::before,
+.pr-layout details summary:focus::before {
+  color: #0535d2;
 }
 
 .wb-accordion details summary:focus-visible,
