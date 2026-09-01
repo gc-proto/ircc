@@ -137,7 +137,7 @@
 .pr-circle {
   flex: 0 0 28px;
   width: 28px;
-  height: 26px;
+  height: 28px;
   border-radius: 50%;
   border: 3px solid #26374a;
   background: #ffffff;
@@ -223,7 +223,7 @@
   gap: 12px;
   background: transparent;
   border-radius: 9px;
-  padding: 0;
+  padding: 8px 12px;
   margin-bottom: 20px;
   text-decoration: none;
   color: #6f6f6f;
@@ -270,7 +270,7 @@
   background: #ebf2fa;
   color: #333333;
   font-weight: 700;
-  padding: 12px;
+  padding: 8px 12px;
 }
 
 .pr-sub-card.is-active .pr-sub-arrow {
@@ -279,6 +279,7 @@
   transform: translateX(0);
 }
 
+.pr-sub-card .pr-sub-arrow img,
 .pr-sub-card.is-active .pr-sub-arrow img {
   display: block;
   width: 13px;
@@ -439,7 +440,9 @@ details[open] summary::before { content: none !important; }
   transition: transform 0.15s ease;
 }
 
-.pr-layout details:not([open]) .pr-accordion-icon {
+.wb-accordion details:not([open]) .pr-accordion-icon,
+.pr-layout details:not([open]) .pr-accordion-icon,
+details:not([open]) .pr-accordion-icon {
   transform: rotate(-90deg);
 }
 
@@ -630,52 +633,66 @@ h1#wb-cont.pr-h1,
 
 .pr-glance-band {
   background-color: #ebf2fc;
-  padding: 32px 0 40px;
+  padding: 50px 0;
   margin-top: 24px;
 }
 
 .pr-glance-band .well,
 .pr-glance-card {
   background-color: #ffffff;
-  border: 1px solid #d8dce2;
-  border-radius: 12px;
-  padding: 24px 28px;
+  border: 1px solid #dcdee1;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 0;
   box-shadow: none;
 }
 
 .pr-glance-boxes {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 17px;
 }
 
 .pr-glance-box {
   background-color: #ffffff;
-  border: 1px solid #d4d8dd;
-  border-radius: 8px;
-  padding: 14px 16px;
+  border: 1px solid #e3e3e3;
+  border-radius: 15px;
+  padding: 12px;
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 17px;
+  min-height: 134px;
   height: 100%;
 }
 
 .pr-glance-icon {
-  font-size: 1.375rem; /* 22px — GCDS h5 icon */
-  line-height: 1.1;
-  color: #000000;
-  flex-shrink: 0;
-  margin-top: 0.125rem;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  object-fit: contain;
+  margin-top: 0;
+}
+
+.pr-glance-icon-processing {
+  width: 37px;
+  height: 38px;
+  flex-basis: 37px;
+}
+
+.pr-glance-icon-valid {
+  width: 34px;
+  height: 27px;
+}
+
+.pr-glance-icon-apply {
+  width: 34px;
+  height: 34px;
 }
 
 .pr-glance-icon-dollar {
-  font-size: 1.375rem;
-  font-weight: 700;
-  font-family: inherit;
-  color: #000000;
-  line-height: 1;
-  flex-shrink: 0;
-  margin-top: 0.0625rem;
+  width: 34px;
+  height: 35px;
+  flex-basis: 34px;
 }
 
 .pr-glance-content {
@@ -684,122 +701,183 @@ h1#wb-cont.pr-h1,
 }
 
 .pr-glance-title {
-  font-size: 1.125rem; /* 18px — GCDS text-small bold, Figma ~17-18px */
+  display: block;
+  font-size: 24px;
+  line-height: 33px;
   font-weight: 700;
-  color: #26374a;
+  color: #424242;
   margin: 0;
-  line-height: 1.25;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.25rem;
 }
 
 .pr-glance-help {
-  font-size: 0.875rem; /* 14px */
-  color: #284162;
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+  margin-left: 4px;
   cursor: pointer;
   vertical-align: middle;
 }
 
 .pr-glance-desc {
-  font-size: 1rem; /* 16px — GCDS text */
-  color: #333333;
-  margin: 0.5rem 0 0;
-  line-height: 1.35;
+  font-size: 20px;
+  line-height: 33px;
+  color: #424242;
+  margin: 0;
 }
 
 .pr-glance-hr {
+  display: block;
+  width: 996px;
+  max-width: 100%;
+  margin: 29px auto 27px;
   border: 0;
-  border-top: 1px solid #e0e0e0;
-  margin: 1.375rem 1rem 1.25rem;
-  /* Inset divider per Figma 973:31166 — uses margin not width hack (AEM container padding) */
-  width: auto;
-  max-width: none;
+  border-top: 1px solid #d3d5d7;
+  opacity: 1;
 }
 
 .pr-glance-intro {
-  font-size: 1.125rem; /* 18px — was 19px, Figma ~17-18px */
-  color: #26374a;
+  font-size: 20px;
+  line-height: 33px;
+  color: #424242;
   margin-top: 0;
-  margin-bottom: 0.875rem;
-  line-height: 1.4;
-  max-width: none; /* single line per Figma 973:31166 — no 65ch wrap */
+  margin-bottom: 14px;
+  max-width: none;
 }
 
-.pr-glance-band .pr-check-icon,
-.pr-check-icon {
-  color: #26374a;
+.pr-glance-band .well ul.list-unstyled li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 20px;
+  line-height: 33px;
 }
 
 .pr-glance-band .well ul.list-unstyled li:not(:last-child) {
   margin-bottom: 16px;
 }
 
+.pr-glance-band .pr-check-icon,
+.pr-check-icon {
+  width: 27px;
+  height: 27px;
+  flex: 0 0 27px;
+  object-fit: contain;
+  color: #26374a;
+}
+
+/* ==========================================================================
+   Alerts (FDS)
+   ========================================================================== */
+
+.pr-fds-alert {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #ffffff !important;
+  padding: 0 !important;
+  color: #333333;
+}
+
+.pr-fds-alert::before {
+  content: none !important;
+  display: none !important;
+}
+
+.pr-fds-alert > .pr-alert-mark {
+  align-self: stretch;
+  position: relative;
+  flex: 0 0 26px;
+  width: 26px;
+  min-height: 74px;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.pr-fds-alert .pr-alert-icon {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  z-index: 1;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  margin: 0;
+}
+
+.pr-fds-alert .pr-alert-rule-top,
+.pr-fds-alert .pr-alert-rule-bottom {
+  position: absolute;
+  left: 10px;
+  width: 6px;
+  background: #ee7100;
+  transform: translateX(-50%);
+}
+
+.pr-fds-alert .pr-alert-rule-top {
+  top: 0;
+  height: 15px;
+}
+
+.pr-fds-alert .pr-alert-rule-bottom {
+  top: 47px;
+  bottom: 0;
+}
+
+.pr-fds-alert.alert-warning .pr-alert-rule-top,
+.pr-fds-alert.alert-warning .pr-alert-rule-bottom {
+  background: #ee7100;
+}
+
+.pr-fds-alert.alert-info .pr-alert-rule-top,
+.pr-fds-alert.alert-info .pr-alert-rule-bottom {
+  background: #269abc;
+}
+
+.pr-fds-alert > div:not(.pr-alert-mark),
+.pr-fds-alert > p {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 !important;
+  border-left: 0;
+  padding: 15px 0 25px;
+}
+
+.pr-fds-alert h3,
+.pr-fds-alert p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Page feedback
+   ========================================================================== */
+
+.pr-feedback-col {
+  width: 462px !important;
+  flex: 0 0 462px;
+}
+
+.pr-reference-share {
+  display: none !important;
+}
+
+.pr-feedback-col .gc-pg-hlpfl .well {
+  min-height: 72px;
+  padding: 12px 20px;
+}
+
 /* ==========================================================================
    Responsive
    ========================================================================== */
-
-/* Figma parity overrides */
-.pr-glance-band { padding: 50px 0; }
-.pr-glance-band .well,
-.pr-glance-card { border-color: #dcdee1; border-radius: 20px; padding: 30px; margin-bottom: 0; }
-.pr-glance-boxes { gap: 17px; }
-.pr-glance-box { border-color: #e3e3e3; border-radius: 15px; padding: 12px; gap: 17px; min-height: 134px; }
-.pr-glance-icon { width: 34px; height: 34px; flex: 0 0 34px; object-fit: contain; margin-top: 0; }
-.pr-glance-icon-processing { width: 37px; height: 38px; flex-basis: 37px; }
-.pr-glance-icon-valid { width: 34px; height: 27px; }
-.pr-glance-icon-apply { width: 34px; height: 34px; }
-.pr-glance-icon-dollar { width: 34px; height: 35px; flex-basis: 34px; }
-.pr-glance-title { display: block; font-size: 24px; line-height: 33px; color: #424242; }
-.pr-glance-help { width: 17px; height: 17px; object-fit: contain; margin-left: 4px; }
-.pr-glance-desc,
-.pr-glance-intro { font-size: 20px; line-height: 33px; color: #424242; }
-.pr-glance-desc { margin-top: 0; }
-.pr-glance-intro { margin-bottom: 14px; }
-.pr-glance-hr {
-  display: block !important;
-  width: 996px;
-  max-width: 100%;
-  margin: 29px auto 27px;
-  border-top: 1px solid #d3d5d7 !important;
-  opacity: 1;
-}
-.pr-glance-band .well ul.list-unstyled li { display: flex; align-items: center; gap: 14px; font-size: 20px; line-height: 33px; }
-.pr-glance-band .pr-check-icon,
-.pr-check-icon { width: 27px; height: 27px; flex: 0 0 27px; object-fit: contain; }
-
-.pr-layout details summary,
-.wb-accordion details summary,
-details.print-open summary,
-details summary { display: flex; align-items: flex-start; gap: 13px; color: #295376; font-size: 20px; font-weight: 400; line-height: 33px; padding: 5px 15px 8px; }
-.pr-layout details summary::before,
-.wb-accordion details summary::before,
-details summary::before { content: none !important; display: none !important; }
-.pr-accordion-icon { width: 16px; height: 16px; flex: 0 0 16px; object-fit: contain; margin-top: 8px; }
-.pr-layout details:not([open]) .pr-accordion-icon { transform: rotate(-90deg); }
-.pr-layout details > div,
-.wb-accordion details > div,
-details > div { padding: 8px 15px 15px; font-size: 20px; line-height: 33px; }
-
-.pr-fds-alert { display: flex; align-items: center; gap: 20px; margin: 0; border: 0 !important; border-radius: 0 !important; background: #ffffff !important; padding: 0 !important; color: #333333; }
-.pr-fds-alert::before { content: none !important; display: none !important; }
-.pr-fds-alert > .pr-alert-mark { align-self: stretch; position: relative; flex: 0 0 26px; width: 26px; min-height: 74px; margin: 0 !important; padding: 0 !important; border: 0 !important; }
-.pr-fds-alert .pr-alert-icon { position: absolute; top: 18px; left: 0; z-index: 1; width: 26px; height: 26px; object-fit: contain; margin: 0; }
-.pr-fds-alert .pr-alert-rule-top,
-.pr-fds-alert .pr-alert-rule-bottom { position: absolute; left: 10px; width: 6px; background: #ee7100; transform: translateX(-50%); }
-.pr-fds-alert .pr-alert-rule-top { top: 0; height: 15px; }
-.pr-fds-alert .pr-alert-rule-bottom { top: 47px; bottom: 0; }
-.pr-fds-alert.alert-info .pr-alert-rule-top,
-.pr-fds-alert.alert-info .pr-alert-rule-bottom { background: #269abc; }
-.pr-fds-alert > div:not(.pr-alert-mark),
-.pr-fds-alert > p { display: flex; flex: 1 1 auto; min-width: 0; flex-direction: column; align-items: flex-start; justify-content: center; gap: 12px; margin: 0 !important; border-left: 0; padding: 15px 0 25px; }
-.pr-fds-alert h3,
-.pr-fds-alert p { margin-top: 0; margin-bottom: 0; }
-
-.pr-feedback-col { width: 462px !important; flex: 0 0 462px; }
-.pr-reference-share { display: none !important; }
-.pr-feedback-col .gc-pg-hlpfl .well { min-height: 72px; padding: 12px 20px; }
 
 @media (min-width: 992px) {
   /* Match the exported Figma frame's page rhythm and shell offsets. */
@@ -825,27 +903,21 @@ details > div { padding: 8px 15px 15px; font-size: 20px; line-height: 33px; }
   .container > .pr-layout + .row.row-no-gutters.mrgn-tp-xl { margin-top: 40px; }
   .pagedetails { padding-top: 18px; padding-bottom: 22px; }
 
-  /* Keep the three Canada.ca footer bands at the dimensions used by the reference export. */
+  /* Flexible Canada.ca footer bands with min-height (no hardcoded height or overflow:hidden for WCAG 200% scaling). */
   #wb-info .gc-contextual {
-    height: 113px;
     min-height: 113px;
-    overflow: hidden;
   }
   #wb-info .gc-contextual nav { padding-top: 33px; }
   #wb-info .gc-contextual h3 { margin-bottom: 10px; }
   #wb-info .gc-contextual li { margin-bottom: 0; }
 
   #wb-info .gc-main-footer {
-    height: 370px;
     min-height: 370px;
-    overflow: hidden;
   }
   #wb-info .gc-main-footer li { margin-bottom: 8px; }
 
   #wb-info .gc-sub-footer {
-    height: 96px;
     min-height: 96px;
-    overflow: hidden;
     padding-top: 24px;
     padding-bottom: 32px;
   }
