@@ -23,11 +23,7 @@
   <noscript>
     <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css">
   </noscript>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" href="css/prtd.css">
-  <!-- GC Design System -->
-  <link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@latest/dist/gcds/gcds.css">
-  <script type="module" src="https://cdn.design-system.canada.ca/@gcds-core/components@latest/dist/gcds/gcds.esm.js"></script>
 </head>
 
 <body vocab="http://schema.org/" typeof="WebPage">
@@ -145,18 +141,18 @@
 
           <div class="pr-glance-boxes">
             <div class="pr-glance-box">
-              <div class="pr-glance-icon far fa-clock" aria-hidden="true"></div>
+              <span class="pr-glance-icon glyphicon glyphicon-time" aria-hidden="true"></span>
               <div class="pr-glance-content">
                 <div class="pr-glance-title">
                   <span>Processing times</span>
-                  <span class="fas fa-question-circle pr-glance-help" aria-hidden="true" title="Processing times vary"></span>
+                  <span class="glyphicon glyphicon-question-sign pr-glance-help" aria-hidden="true" title="Processing times vary"></span>
                 </div>
                 <p class="pr-glance-desc">Varies</p>
               </div>
             </div>
 
             <div class="pr-glance-box">
-              <div class="pr-glance-icon pr-glance-icon-dollar" aria-hidden="true">$</div>
+              <span class="pr-glance-icon pr-glance-icon-dollar glyphicon glyphicon-usd" aria-hidden="true"></span>
               <div class="pr-glance-content">
                 <div class="pr-glance-title">Fees</div>
                 <p class="pr-glance-desc">$CAN 50</p>
@@ -164,7 +160,7 @@
             </div>
 
             <div class="pr-glance-box">
-              <div class="pr-glance-icon fas fa-plane-arrival" aria-hidden="true"></div>
+              <span class="pr-glance-icon glyphicon glyphicon-plane" aria-hidden="true"></span>
               <div class="pr-glance-content">
                 <div class="pr-glance-title">Valid for</div>
                 <p class="pr-glance-desc">Single (one-time) entry to Canada</p>
@@ -172,7 +168,7 @@
             </div>
 
             <div class="pr-glance-box">
-              <div class="pr-glance-icon fas fa-arrow-circle-down" aria-hidden="true"></div>
+              <span class="pr-glance-icon glyphicon glyphicon-download" aria-hidden="true"></span>
               <div class="pr-glance-content">
                 <div class="pr-glance-title">How you apply</div>
                 <p class="pr-glance-desc">Online (in most cases)</p>
@@ -180,15 +176,15 @@
             </div>
           </div>
 
-          <hr class="pr-glance-hr">
+          <hr class="pr-glance-hr" role="presentation" aria-hidden="true">
           <p class="pr-glance-intro"><strong>If you&rsquo;re a permanent resident of Canada, you need a permanent resident travel document (PRTD) if:</strong></p>
           <ul class="list-unstyled mrgn-bttm-0">
             <li>
-              <span class="fas fa-check-circle pr-check-icon mrgn-rght-sm" aria-hidden="true"></span>
+              <span class="glyphicon glyphicon-ok-sign pr-check-icon mrgn-rght-sm" aria-hidden="true"></span>
               you&rsquo;re <strong>outside</strong> Canada <strong>without</strong> a valid permanent resident card (PR card), and
             </li>
             <li>
-              <span class="fas fa-check-circle pr-check-icon mrgn-rght-sm" aria-hidden="true"></span>
+              <span class="glyphicon glyphicon-ok-sign pr-check-icon mrgn-rght-sm" aria-hidden="true"></span>
               you&rsquo;re returning to Canada by commercial vehicle (airplane, bus boat or train)
             </li>
           </ul>
@@ -201,7 +197,7 @@
     <div class="pr-layout">
       <div class="pr-layout-inner">
 
-        <aside class="pr-side" aria-label="Journey navigation sidebar">
+        <div class="pr-side">
           <nav class="pr-stepper" id="pr-stepper-nav" aria-label="Permanent resident travel document steps">
 
             <button type="button" class="pr-stepper-toggle" id="pr-stepper-toggle" aria-expanded="false" aria-controls="pr-steplist">
@@ -220,7 +216,7 @@
                   </button>
                 </div>
                 <div class="pr-step-body" id="pr-step-body-1">
-                  <a href="#who-can-apply" class="pr-sub-card is-active">
+                  <a href="#who-can-apply" class="pr-sub-card is-active" aria-current="page">
                     <span class="pr-sub-arrow" aria-hidden="true">&#8594;</span>
                     Who can apply for a PRTD
                   </a>
@@ -281,14 +277,14 @@
 
             </ol>
           </nav>
-        </aside>
+        </div>
 
         <div class="pr-main">
 
           <!-- Stage 1: Before you apply -->
           <div class="pr-stage">
             <section class="pr-section" id="who-can-apply" aria-labelledby="who-can-apply-h">
-              <h2 class="pr-eyebrow" id="before-you-apply-h">Before you apply</h2>
+              <p class="pr-eyebrow h4 mrgn-bttm-sm" id="before-you-apply-h">Before you apply</p>
               <h2 class="pr-stage-h h3" id="who-can-apply-h">Who can apply for a PRTD</h2>
 
               <p>You can apply for a permanent resident travel document if you:</p>
@@ -314,7 +310,7 @@
           <!-- Stage 2: How to apply -->
           <div class="pr-stage">
             <section class="pr-section" id="get-forms" aria-labelledby="get-forms-h">
-              <h2 class="pr-eyebrow" id="how-to-apply-h">How to apply</h2>
+              <p class="pr-eyebrow h4 mrgn-bttm-sm" id="how-to-apply-h">How to apply</p>
               <h2 class="pr-stage-h h3" id="get-forms-h">Get your forms and documents ready</h2>
 
               <p>The application package includes the instruction guide and all the forms you need to fill out.</p>
@@ -379,20 +375,17 @@
             </section>
 
             <section class="pr-subsection" id="pay-fees" aria-labelledby="pay-fees-h">
-              <h2 class="pr-stage-h h4" id="pay-fees-h">Pay your fees online</h2>
+              <h3 class="pr-stage-h h4" id="pay-fees-h">Pay your fees online</h3>
               <p>You need to pay the <strong>$50</strong> fee when you apply.</p>
               <ul>
                 <li>Make sure you <strong>include your receipt</strong> (proof of payment) with your application.</li>
                 <li>We can&rsquo;t refund the fee once we start processing your application.</li>
               </ul>
-              <p class="mrgn-tp-md mrgn-bttm-0">
-                <gcds-button type="link" href="https://ircc.canada.ca/english/information/fees/pay.asp" target="_blank">Pay your fees online</gcds-button>
-                <noscript><a class="btn btn-default" href="https://ircc.canada.ca/english/information/fees/pay.asp" target="_blank" rel="noopener">Pay your fees online<span class="wb-inv"> (opens in a new tab)</span> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></a></noscript>
-              </p>
+              <p class="mrgn-tp-md mrgn-bttm-0"><a class="btn btn-primary" href="https://ircc.canada.ca/english/information/fees/pay.asp" target="_blank" rel="noopener">Pay your fees online<span class="wb-inv"> (opens in a new tab)</span> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></a></p>
             </section>
 
             <section class="pr-subsection" id="submit-application" aria-labelledby="submit-application-h">
-              <h2 class="pr-stage-h" id="submit-application-h">Submit your application and supporting documents</h2>
+              <h3 class="pr-stage-h h4" id="submit-application-h">Submit your application and supporting documents</h3>
 
               <p>You will submit your application and all supporting documents through the <a href="https://prson-srpel.apps.cic.gc.ca/en/login" target="_blank" rel="noopener">permanent residence portal<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</p>
               <p>You must complete an application for <strong>each</strong> person in your family who needs a PRTD.</p>
@@ -417,7 +410,7 @@
           <!-- Stage 3: After you apply -->
           <div class="pr-stage">
             <section class="pr-section" id="how-we-process" aria-labelledby="how-we-process-h">
-              <h2 class="pr-eyebrow" id="after-you-apply-h">After you apply</h2>
+              <p class="pr-eyebrow h4 mrgn-bttm-sm" id="after-you-apply-h">After you apply</p>
               <h2 class="pr-stage-h h3" id="how-we-process-h">How we process your PRTD application</h2>
 
               <p>All PRTD applications are processed on a <strong>priority basis</strong>. If we require further information, a letter will be sent to you.</p>
@@ -456,13 +449,13 @@
             </section>
 
             <section class="pr-subsection" id="keep-info" aria-labelledby="keep-info-h">
-              <h2 class="pr-stage-h" id="keep-info-h">Keep your information up to date</h2>
+              <h3 class="pr-stage-h h4" id="keep-info-h">Keep your information up to date</h3>
               <p>You must tell us if you move or change your address, phone number or any other contact information after you apply.</p>
               <p class="mrgn-bttm-0"><a href="https://secure.cic.gc.ca/ClientContact/en/Application/Form/70" target="_blank" rel="noopener">Update your contact information<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></p>
             </section>
 
             <section class="pr-subsection" id="check-status" aria-labelledby="check-status-h">
-              <h2 class="pr-stage-h" id="check-status-h">How to check your application status</h2>
+              <h3 class="pr-stage-h h4" id="check-status-h">How to check your application status</h3>
               <p>You must contact us to check the status of your application.</p>
               <ol>
                 <li>Go to our web form.</li>
@@ -485,7 +478,7 @@
             </section>
 
             <section class="pr-subsection" id="new-pr-card" aria-labelledby="new-pr-card-h">
-              <h2 class="pr-stage-h" id="new-pr-card-h">Apply for a new permanent resident (PR) card</h2>
+              <h3 class="pr-stage-h h4" id="new-pr-card-h">Apply for a new permanent resident (PR) card</h3>
               <p>A PRTD is normally only valid for <strong>one single entry</strong>. You should apply for a new PR card as soon as you return to Canada.</p>
               <p class="mrgn-tp-md mrgn-bttm-0"><a class="btn btn-default" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents/card/apply.html">Apply for a new PR card</a></p>
             </section>
@@ -570,7 +563,7 @@
               </div>
             </form>
             <div class="gc-pg-hlpfl-thnk hide">
-              <p class="h6 mrgn-tp-sm mrgn-bttm-sm"><span class="far fa-check-circle text-success mrgn-rght-sm" aria-hidden="true"></span> Thank you for your feedback</p>
+              <p class="h6 mrgn-tp-sm mrgn-bttm-sm"><span class="glyphicon glyphicon-ok-sign text-success mrgn-rght-sm" aria-hidden="true"></span> Thank you for your feedback</p>
             </div>
           </div>
         </section>
