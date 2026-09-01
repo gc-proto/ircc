@@ -796,12 +796,19 @@ details summary::before { content: none !important; display: none !important; }
 .wb-accordion details > div,
 details > div { padding: 8px 15px 15px; font-size: 20px; line-height: 33px; }
 
-.pr-fds-alert { display: flex; align-items: flex-start; gap: 20px; border: 0 !important; border-radius: 0 !important; background: #ffffff !important; padding: 0 !important; color: #333333; }
-.pr-fds-alert .pr-alert-icon { width: 26px; height: 26px; flex: 0 0 26px; object-fit: contain; margin-top: 18px; }
-.pr-fds-alert > div,
-.pr-fds-alert > p { flex: 1 1 auto; border-left: 6px solid #ee7100; padding: 15px 0 25px 20px; }
-.pr-fds-alert.alert-info > p { border-left-color: #269abc; }
-.pr-fds-alert h3 { margin-top: 0; }
+.pr-fds-alert { display: flex; align-items: center; gap: 20px; margin: 0; border: 0 !important; border-radius: 0 !important; background: #ffffff !important; padding: 0 !important; color: #333333; }
+.pr-fds-alert > .pr-alert-mark { align-self: stretch; position: relative; flex: 0 0 26px; width: 26px; min-height: 74px; margin: 0 !important; padding: 0 !important; border: 0 !important; }
+.pr-fds-alert .pr-alert-icon { position: absolute; top: 18px; left: 0; z-index: 1; width: 26px; height: 26px; object-fit: contain; margin: 0; }
+.pr-fds-alert .pr-alert-rule-top,
+.pr-fds-alert .pr-alert-rule-bottom { position: absolute; left: 10px; width: 6px; background: #ee7100; transform: translateX(-50%); }
+.pr-fds-alert .pr-alert-rule-top { top: 0; height: 15px; }
+.pr-fds-alert .pr-alert-rule-bottom { top: 47px; bottom: 0; }
+.pr-fds-alert.alert-info .pr-alert-rule-top,
+.pr-fds-alert.alert-info .pr-alert-rule-bottom { background: #269abc; }
+.pr-fds-alert > div:not(.pr-alert-mark),
+.pr-fds-alert > p { display: flex; flex: 1 1 auto; min-width: 0; flex-direction: column; align-items: flex-start; justify-content: center; gap: 12px; margin: 0 !important; border-left: 0; padding: 15px 0 25px; }
+.pr-fds-alert h3,
+.pr-fds-alert p { margin-top: 0; margin-bottom: 0; }
 
 .pr-feedback-col { width: 462px !important; flex: 0 0 462px; }
 .pr-reference-share { display: none !important; }
