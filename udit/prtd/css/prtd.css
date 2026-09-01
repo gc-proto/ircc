@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 3rem; /* 48px token */
+  gap: 75px; /* Figma left rail to content gap */
   position: relative;
   width: 100%;
   margin-top: 1.5rem;
@@ -24,9 +24,9 @@
 }
 
 .pr-side {
-  flex: 0 0 285px;
-  width: 285px;
-  max-width: 285px;
+  flex: 0 0 244px;
+  width: 244px;
+  max-width: 244px;
   position: sticky;
   top: 20px;
   max-height: calc(100vh - 40px);
@@ -57,7 +57,8 @@
 }
 
 .pr-main {
-  flex: 1 1 auto;
+  flex: 0 0 830px;
+  width: 830px;
   min-width: 0;
 }
 
@@ -85,8 +86,8 @@
 .pr-step:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: 9px;
-  top: 18px;
+  left: 13px;
+  top: 23px;
   bottom: -18px;
   width: 2px;
   background: #26374a;
@@ -103,11 +104,11 @@
 }
 
 .pr-circle {
-  flex: 0 0 20px;
-  width: 20px;
-  height: 20px;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 26px;
   border-radius: 50%;
-  border: 2.5px solid #26374a;
+  border: 3px solid #26374a;
   background: #ffffff;
   position: relative;
   z-index: 2;
@@ -133,14 +134,14 @@
   gap: 8px;
   background: transparent;
   border: none;
-  padding: 0.5rem 0;
+  padding: 0;
   font-family: inherit;
-  font-size: 1rem;
-  color: #595959; /* was #767676 4.54:1 borderline, now #595959 7:1 */
+  font-size: 20px;
+  color: #6f6f6f;
   cursor: pointer;
   text-align: left;
-  line-height: 1.3;
-  min-height: 2.75rem; /* 44px WCAG 2.5.8 */
+  line-height: 28px;
+  min-height: 28px;
 }
 
 .pr-step-btn:focus {
@@ -163,24 +164,24 @@
   flex: 1 1 auto;
 }
 
-.pr-step.is-active .pr-step-btn  { color: #26374a; }
+.pr-step.is-active .pr-step-btn  { color: #333333; }
 .pr-step.is-active .pr-step-title { font-weight: 700; }
-.pr-step.is-done   .pr-step-btn  { color: #555555; }
+.pr-step.is-done   .pr-step-btn  { color: #6f6f6f; }
 .pr-step.is-done   .pr-step-title { font-weight: 600; }
 
-.pr-chev {
-  font-size: 11px;
-  color: #767676;
-  flex-shrink: 0;
-  transition: color 0.2s ease;
+.pr-step-chevron {
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
+  object-fit: contain;
 }
 
-.pr-step.is-active .pr-chev { color: #26374a; }
+.pr-step.is-active .pr-step-chevron { content: url("../assets/figma/nav-chevron-active.svg"); }
 
 .pr-step-body {
-  padding-left: 32px;
-  padding-top: 4px;
-  padding-bottom: 6px;
+  padding-left: 49px;
+  padding-top: 20px;
+  padding-bottom: 15px;
   position: relative;
   z-index: 1;
 }
@@ -188,17 +189,17 @@
 .pr-sub-card {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 12px;
   background: transparent;
-  border-radius: 8px;
-  padding: 0.75rem;
-  margin-bottom: 4px;
+  border-radius: 9px;
+  padding: 0;
+  margin-bottom: 20px;
   text-decoration: none;
-  color: #26374a;
+  color: #6f6f6f;
   font-weight: 400;
-  font-size: 0.9375rem; /* 15px */
-  line-height: 1.35;
-  min-height: 2.75rem; /* 44px target */
+  font-size: 20px;
+  line-height: 28px;
+  min-height: 28px;
   transition: color 0.15s ease, background-color 0.15s ease;
 }
 
@@ -206,8 +207,10 @@
 
 .pr-sub-arrow {
   flex-shrink: 0;
-  font-size: 15px;
-  line-height: 1.35;
+  width: 13px;
+  height: 20px;
+  font-size: 0;
+  line-height: 1;
   color: #26374a;
   opacity: 0;
   transform: translateX(-4px);
@@ -233,15 +236,23 @@
 .pr-sub-card.is-active,
 .pr-sub-card.is-active:hover,
 .pr-sub-card.is-active:focus {
-  background: #eef2fa;
-  color: #26374a;
+  background: #ebf2fa;
+  color: #333333;
   font-weight: 700;
+  padding: 12px;
 }
 
 .pr-sub-card.is-active .pr-sub-arrow {
   opacity: 1;
   color: #26374a;
   transform: translateX(0);
+}
+
+.pr-sub-card.is-active .pr-sub-arrow img {
+  display: block;
+  width: 13px;
+  height: 12px;
+  margin-top: 8px;
 }
 
 .pr-sub-card:focus {
@@ -284,27 +295,43 @@
 /* AEM-ready: eyebrow is <p class="pr-eyebrow h4"> — inherits WET h4 (1.1875rem) but keeps token fallback */
 .pr-eyebrow {
   display: block;
-  font-size: 1.0625rem; /* 17px token — visually h5, Figma ~16-17px muted */
-  font-weight: 700;
-  color: #595959; /* GCDS --gcds-text-secondary, was #555 */
-  margin-bottom: 0.375rem;
-  line-height: 1.3;
+  font-family: "Lato", "Noto Sans", sans-serif;
+  font-size: 27px;
+  font-weight: 400;
+  color: #555555;
+  margin-bottom: 0;
+  line-height: 24px;
   letter-spacing: 0;
 }
 
 .pr-eyebrow.h4,
 p.pr-eyebrow {
-  font-size: 1.0625rem;
-  line-height: 1.3;
+  font-size: 27px;
+  line-height: 24px;
 }
 
 .pr-stage-h {
+  font-family: "Lato", "Noto Sans", sans-serif;
   margin-top: 0;
-  margin-bottom: 1rem;
-  color: #26374a;
-  font-size: 1.75rem; /* 28px = GCDS h3 29px / WET h3 22px — tokenized */
-  line-height: 1.25;
+  margin-bottom: 12px;
+  color: #424242;
+  font-size: 39px;
+  line-height: 40px;
   font-weight: 700;
+}
+
+.pr-main p,
+.pr-main li {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 20px;
+  line-height: 33px;
+}
+
+.pr-main h3:not(.pr-stage-h) {
+  font-family: "Lato", "Noto Sans", sans-serif;
+  font-size: 29px;
+  line-height: 26px;
+  color: #333333;
 }
 
 /* Stacked heading pair: eyebrow (visually h4) + main (visually h3) with tight gap per Figma single-page design 973:31166 */
@@ -339,15 +366,18 @@ details summary {
   margin: 0 !important;
   position: relative;
   cursor: pointer;
-  color: #284162;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 11px 14px 11px 30px;
+  color: #295376;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 33px;
+  padding: 5px 15px 8px;
   user-select: none;
   background-color: #ffffff !important;
   transition: background-color 0.15s ease, color 0.15s ease;
   list-style: none;
-  display: block;
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
 }
 
 .wb-accordion details summary::-webkit-details-marker,
@@ -361,20 +391,26 @@ details summary::marker { display: none !important; font-size: 0 !important; }
 .wb-accordion details summary::before,
 .pr-layout details summary::before,
 details summary::before {
-  content: "▶";
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 10px;
-  color: #284162;
-  line-height: 1;
-  transition: color 0.15s ease;
+  content: none !important;
+  display: none !important;
 }
 
 .wb-accordion details[open] summary::before,
 .pr-layout details[open] summary::before,
-details[open] summary::before { content: "▼"; font-size: 10px; }
+details[open] summary::before { content: none !important; }
+
+.pr-accordion-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  object-fit: contain;
+  margin-top: 8px;
+  transition: transform 0.15s ease;
+}
+
+.pr-layout details:not([open]) .pr-accordion-icon {
+  transform: rotate(-90deg);
+}
 
 .wb-accordion details summary:hover,
 .wb-accordion details summary:focus,
@@ -424,10 +460,10 @@ details > div {
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
-  padding: 16px 16px 14px 16px;
+  padding: 8px 15px 15px;
   background-color: #ffffff;
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 20px;
+  line-height: 33px;
   color: #333333;
 }
 
@@ -673,10 +709,69 @@ h1#wb-cont.pr-h1,
    Responsive
    ========================================================================== */
 
+/* Figma parity overrides */
+.pr-glance-band { padding: 50px 0; }
+.pr-glance-band .well,
+.pr-glance-card { border-color: #dcdee1; border-radius: 20px; padding: 30px; margin-bottom: 0; }
+.pr-glance-boxes { gap: 17px; }
+.pr-glance-box { border-color: #e3e3e3; border-radius: 15px; padding: 12px; gap: 17px; min-height: 95px; }
+.pr-glance-icon { width: 34px; height: 34px; flex: 0 0 34px; object-fit: contain; margin-top: 0; }
+.pr-glance-icon-processing { width: 37px; height: 38px; flex-basis: 37px; }
+.pr-glance-icon-valid { width: 34px; height: 27px; }
+.pr-glance-icon-apply { width: 34px; height: 34px; }
+.pr-glance-icon-dollar { width: 34px; height: 35px; flex-basis: 34px; }
+.pr-glance-title { font-size: 24px; line-height: 33px; color: #424242; }
+.pr-glance-help { width: 17px; height: 17px; object-fit: contain; }
+.pr-glance-desc,
+.pr-glance-intro { font-size: 20px; line-height: 33px; color: #424242; }
+.pr-glance-desc { margin-top: 0; }
+.pr-glance-intro { margin-bottom: 14px; }
+.pr-glance-hr { width: 996px; max-width: 100%; margin: 0 auto 14px; }
+.pr-glance-band .well ul.list-unstyled li { display: flex; align-items: center; gap: 14px; font-size: 20px; line-height: 33px; }
+.pr-glance-band .pr-check-icon,
+.pr-check-icon { width: 27px; height: 27px; flex: 0 0 27px; object-fit: contain; }
+
+.pr-layout details summary,
+.wb-accordion details summary,
+details.print-open summary,
+details summary { display: flex; align-items: flex-start; gap: 13px; color: #295376; font-size: 20px; font-weight: 400; line-height: 33px; padding: 5px 15px 8px; }
+.pr-layout details summary::before,
+.wb-accordion details summary::before,
+details summary::before { content: none !important; display: none !important; }
+.pr-accordion-icon { width: 16px; height: 16px; flex: 0 0 16px; object-fit: contain; margin-top: 8px; }
+.pr-layout details:not([open]) .pr-accordion-icon { transform: rotate(-90deg); }
+.pr-layout details > div,
+.wb-accordion details > div,
+details > div { padding: 8px 15px 15px; font-size: 20px; line-height: 33px; }
+
+.pr-fds-alert { display: flex; align-items: flex-start; gap: 20px; border: 0 !important; border-radius: 0 !important; background: #ffffff !important; padding: 0 !important; color: #333333; }
+.pr-fds-alert .pr-alert-icon { width: 26px; height: 26px; flex: 0 0 26px; object-fit: contain; margin-top: 18px; }
+.pr-fds-alert > div,
+.pr-fds-alert > p { flex: 1 1 auto; border-left: 6px solid #ee7100; padding: 15px 0 25px 20px; }
+.pr-fds-alert.alert-info > p { border-left-color: #269abc; }
+.pr-fds-alert h3 { margin-top: 0; }
+
+.pr-feedback-col { width: 462px !important; flex: 0 0 462px; }
+.pr-reference-share { display: none !important; }
+.pr-feedback-col .gc-pg-hlpfl .well { min-height: 72px; padding: 12px 20px; }
+#wb-info .gc-contextual { min-height: 113px; }
+#wb-info .gc-main-footer { min-height: 370px; }
+#wb-info .gc-sub-footer { min-height: 96px; }
+
 @media (max-width: 991px) {
   .pr-layout {
     flex-direction: column;
     gap: 0;
+  }
+
+  .pr-main {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .pr-feedback-col {
+    width: 100% !important;
+    flex: 1 1 auto;
   }
 
   .pr-side {
@@ -727,11 +822,14 @@ h1#wb-cont.pr-h1,
   .pr-h1 { font-size: 1.625rem; } /* 26px */
   .pr-eyebrow,
   p.pr-eyebrow,
-  h2.pr-eyebrow { font-size: 1rem; } /* 16px */
-  .pr-stage-h { font-size: 1.5rem; } /* 24px */
-  .pr-glance-title { font-size: 1.0625rem; } /* 17px */
-  .pr-glance-desc { font-size: 0.9375rem; } /* 15px */
-  .pr-glance-intro { font-size: 1.0625rem; } /* keep 65ch for readability */
+  h2.pr-eyebrow { font-size: 20px; line-height: 28px; }
+  .pr-stage-h { font-size: 29px; line-height: 33px; }
+  .pr-main h3:not(.pr-stage-h) { font-size: 24px; line-height: 30px; }
+  .pr-main p,
+  .pr-main li,
+  .pr-glance-desc,
+  .pr-glance-intro { font-size: 18px; line-height: 30px; }
+  .pr-glance-title { font-size: 20px; line-height: 28px; }
 }
 
 @media (max-width: 600px) {

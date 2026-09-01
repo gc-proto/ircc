@@ -17,7 +17,7 @@
     var subCards = Array.prototype.slice.call(stepEl.querySelectorAll(".pr-sub-card"));
     var stepBtn = stepEl.querySelector(".pr-step-btn");
     var stepBody = stepEl.querySelector(".pr-step-body");
-    var chev = stepEl.querySelector(".pr-chev");
+    var chev = stepEl.querySelector(".pr-step-chevron");
 
     if (subCards.length > 0) {
       subCards.forEach(function (card, si) {
@@ -123,7 +123,7 @@
       }
 
       var body = stepEl.querySelector(".pr-step-body");
-      var chev = stepEl.querySelector(".pr-chev");
+      var chev = stepEl.querySelector(".pr-step-chevron");
       var isExpanded = this.getAttribute("aria-expanded") === "true";
       var nowOpen = !isExpanded;
 
@@ -132,8 +132,9 @@
         if (nowOpen) { body.removeAttribute("hidden"); } else { body.setAttribute("hidden", ""); }
       }
       if (chev) {
-        chev.classList.toggle("glyphicon-chevron-up", nowOpen);
-        chev.classList.toggle("glyphicon-chevron-down", !nowOpen);
+        chev.src = nowOpen
+          ? "assets/figma/nav-chevron-active.svg"
+          : "assets/figma/nav-chevron.svg";
       }
     });
   });
