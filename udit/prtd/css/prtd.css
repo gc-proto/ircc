@@ -94,6 +94,18 @@
   z-index: 0;
 }
 
+/* The Figma rail continues beside the final substeps instead of ending at the last step circle. */
+.pr-step:last-child::after {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 23px;
+  bottom: 0;
+  width: 2px;
+  background: #26374a;
+  z-index: 0;
+}
+
 .pr-step-row {
   display: flex;
   align-items: center;
@@ -577,19 +589,19 @@ h1#wb-cont.pr-h1,
   padding-bottom: 0;
   margin-top: 20px;
   margin-bottom: 0;
-  font-size: 34px;
+  font-size: 40px;
   font-weight: 700;
   color: #26374a;
-  line-height: 1.25;
+  line-height: 48px;
 }
 
 .pr-h1::after {
   content: "";
   display: block;
-  width: 52px;
-  height: 5px;
+  width: 70px;
+  height: 6px;
   background-color: #af3c43;
-  margin-top: 10px;
+  margin-top: 12px;
   border-radius: 1px;
 }
 
@@ -714,19 +726,26 @@ h1#wb-cont.pr-h1,
 .pr-glance-band .well,
 .pr-glance-card { border-color: #dcdee1; border-radius: 20px; padding: 30px; margin-bottom: 0; }
 .pr-glance-boxes { gap: 17px; }
-.pr-glance-box { border-color: #e3e3e3; border-radius: 15px; padding: 12px; gap: 17px; min-height: 95px; }
+.pr-glance-box { border-color: #e3e3e3; border-radius: 15px; padding: 12px; gap: 17px; min-height: 134px; }
 .pr-glance-icon { width: 34px; height: 34px; flex: 0 0 34px; object-fit: contain; margin-top: 0; }
 .pr-glance-icon-processing { width: 37px; height: 38px; flex-basis: 37px; }
 .pr-glance-icon-valid { width: 34px; height: 27px; }
 .pr-glance-icon-apply { width: 34px; height: 34px; }
 .pr-glance-icon-dollar { width: 34px; height: 35px; flex-basis: 34px; }
-.pr-glance-title { font-size: 24px; line-height: 33px; color: #424242; }
-.pr-glance-help { width: 17px; height: 17px; object-fit: contain; }
+.pr-glance-title { display: block; font-size: 24px; line-height: 33px; color: #424242; }
+.pr-glance-help { width: 17px; height: 17px; object-fit: contain; margin-left: 4px; }
 .pr-glance-desc,
 .pr-glance-intro { font-size: 20px; line-height: 33px; color: #424242; }
 .pr-glance-desc { margin-top: 0; }
 .pr-glance-intro { margin-bottom: 14px; }
-.pr-glance-hr { width: 996px; max-width: 100%; margin: 0 auto 14px; }
+.pr-glance-hr {
+  display: block !important;
+  width: 996px;
+  max-width: 100%;
+  margin: 29px auto 27px;
+  border-top: 1px solid #d3d5d7 !important;
+  opacity: 1;
+}
 .pr-glance-band .well ul.list-unstyled li { display: flex; align-items: center; gap: 14px; font-size: 20px; line-height: 33px; }
 .pr-glance-band .pr-check-icon,
 .pr-check-icon { width: 27px; height: 27px; flex: 0 0 27px; object-fit: contain; }
