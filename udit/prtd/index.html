@@ -25,6 +25,9 @@
   </noscript>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" href="css/prtd.css">
+  <!-- GC Design System -->
+  <link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@latest/dist/gcds/gcds.css">
+  <script type="module" src="https://cdn.design-system.canada.ca/@gcds-core/components@latest/dist/gcds/gcds.esm.js"></script>
 </head>
 
 <body vocab="http://schema.org/" typeof="WebPage">
@@ -285,8 +288,8 @@
           <!-- Stage 1: Before you apply -->
           <div class="pr-stage">
             <section class="pr-section" id="who-can-apply" aria-labelledby="who-can-apply-h">
-              <span class="pr-eyebrow">Before you apply</span>
-              <h2 class="pr-stage-h" id="who-can-apply-h">Who can apply for a PRTD</h2>
+              <h2 class="pr-eyebrow" id="before-you-apply-h">Before you apply</h2>
+              <h2 class="pr-stage-h h3" id="who-can-apply-h">Who can apply for a PRTD</h2>
 
               <p>You can apply for a permanent resident travel document if you:</p>
               <ul>
@@ -311,8 +314,8 @@
           <!-- Stage 2: How to apply -->
           <div class="pr-stage">
             <section class="pr-section" id="get-forms" aria-labelledby="get-forms-h">
-              <span class="pr-eyebrow">How to apply</span>
-              <h2 class="pr-stage-h" id="get-forms-h">Get your forms and documents ready</h2>
+              <h2 class="pr-eyebrow" id="how-to-apply-h">How to apply</h2>
+              <h2 class="pr-stage-h h3" id="get-forms-h">Get your forms and documents ready</h2>
 
               <p>The application package includes the instruction guide and all the forms you need to fill out.</p>
 
@@ -376,13 +379,16 @@
             </section>
 
             <section class="pr-subsection" id="pay-fees" aria-labelledby="pay-fees-h">
-              <h2 class="pr-stage-h" id="pay-fees-h">Pay your fees online</h2>
+              <h2 class="pr-stage-h h4" id="pay-fees-h">Pay your fees online</h2>
               <p>You need to pay the <strong>$50</strong> fee when you apply.</p>
               <ul>
                 <li>Make sure you <strong>include your receipt</strong> (proof of payment) with your application.</li>
                 <li>We can&rsquo;t refund the fee once we start processing your application.</li>
               </ul>
-              <p class="mrgn-tp-md mrgn-bttm-0"><a class="btn btn-default" href="https://ircc.canada.ca/english/information/fees/pay.asp" target="_blank" rel="noopener">Pay your fees online<span class="wb-inv"> (opens in a new tab)</span> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></a></p>
+              <p class="mrgn-tp-md mrgn-bttm-0">
+                <gcds-button type="link" href="https://ircc.canada.ca/english/information/fees/pay.asp" target="_blank">Pay your fees online</gcds-button>
+                <noscript><a class="btn btn-default" href="https://ircc.canada.ca/english/information/fees/pay.asp" target="_blank" rel="noopener">Pay your fees online<span class="wb-inv"> (opens in a new tab)</span> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></a></noscript>
+              </p>
             </section>
 
             <section class="pr-subsection" id="submit-application" aria-labelledby="submit-application-h">
@@ -411,8 +417,8 @@
           <!-- Stage 3: After you apply -->
           <div class="pr-stage">
             <section class="pr-section" id="how-we-process" aria-labelledby="how-we-process-h">
-              <span class="pr-eyebrow">After you apply</span>
-              <h2 class="pr-stage-h" id="how-we-process-h">How we process your PRTD application</h2>
+              <h2 class="pr-eyebrow" id="after-you-apply-h">After you apply</h2>
+              <h2 class="pr-stage-h h3" id="how-we-process-h">How we process your PRTD application</h2>
 
               <p>All PRTD applications are processed on a <strong>priority basis</strong>. If we require further information, a letter will be sent to you.</p>
               <p>After you send your application, we&rsquo;ll:</p>
