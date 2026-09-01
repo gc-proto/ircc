@@ -795,8 +795,8 @@ details > div { padding: 8px 15px 15px; font-size: 20px; line-height: 33px; }
   }
   .pr-feedback-col .gc-pg-hlpfl-btn > .row > .col-sm-7 { margin-top: 0; }
   .pr-feedback-col + .pr-reference-share { display: none !important; }
-  .pagedetails { padding-top: 18px; padding-bottom: 17px; }
-  .pagedetails .row.mrgn-tp-xl { margin-top: 40px; }
+  .container > .pr-layout + .row.row-no-gutters.mrgn-tp-xl { margin-top: 40px; }
+  .pagedetails { padding-top: 18px; padding-bottom: 22px; }
 
   /* Keep the three Canada.ca footer bands at the dimensions used by the reference export. */
   #wb-info .gc-contextual {
