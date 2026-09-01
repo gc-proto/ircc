@@ -262,16 +262,34 @@
 
 .pr-eyebrow {
   display: block;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 700;
   color: #555555;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  line-height: 1.3;
+  letter-spacing: 0;
+  /* Semantically h2, visually h4 for stacked heading pair — retains h2 outline while matching Figma h4 visual */
+}
+
+.pr-eyebrow.h4,
+h2.pr-eyebrow {
+  font-size: 17px;
+  line-height: 1.3;
 }
 
 .pr-stage-h {
-  margin-top: 2px;
+  margin-top: 0;
   margin-bottom: 16px;
   color: #26374a;
+  font-size: 28px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+/* Stacked heading pair: eyebrow (visually h4) + main (visually h3) with tight gap per Figma single-page design 973:31166 */
+.pr-section .pr-eyebrow + .pr-stage-h,
+.pr-subsection .pr-eyebrow + .pr-stage-h {
+  margin-top: 0;
 }
 
 /* ==========================================================================
@@ -542,7 +560,7 @@ h1#wb-cont.pr-h1,
 }
 
 .pr-glance-icon {
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1.1;
   color: #000000;
   flex-shrink: 0;
@@ -550,7 +568,7 @@ h1#wb-cont.pr-h1,
 }
 
 .pr-glance-icon-dollar {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   font-family: inherit;
   color: #000000;
@@ -565,7 +583,7 @@ h1#wb-cont.pr-h1,
 }
 
 .pr-glance-title {
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 700;
   color: #26374a;
   margin: 0;
@@ -577,14 +595,14 @@ h1#wb-cont.pr-h1,
 }
 
 .pr-glance-help {
-  font-size: 13px;
+  font-size: 14px;
   color: #284162;
   cursor: pointer;
   vertical-align: middle;
 }
 
 .pr-glance-desc {
-  font-size: 14px;
+  font-size: 16px;
   color: #333333;
   margin: 8px 0 0;
   line-height: 1.35;
@@ -593,15 +611,20 @@ h1#wb-cont.pr-h1,
 .pr-glance-hr {
   border: 0;
   border-top: 1px solid #e0e0e0;
-  margin: 22px 0 20px;
+  margin: 22px auto 20px;
+  /* Figma single-page-design 973:31166 — divider is inset, not edge-to-edge */
+  width: 88%;
+  max-width: none;
 }
 
 .pr-glance-intro {
-  font-size: 16px;
+  font-size: 19px;
   color: #26374a;
   margin-top: 0;
   margin-bottom: 14px;
   line-height: 1.4;
+  /* Figma intro line wraps shorter — constrain measure for 65ch readability and visual match */
+  max-width: 62ch;
 }
 
 .pr-glance-band .pr-check-icon,
@@ -669,6 +692,12 @@ h1#wb-cont.pr-h1,
   }
 
   .pr-h1 { font-size: 26px; }
+  .pr-eyebrow,
+  h2.pr-eyebrow { font-size: 16px; }
+  .pr-stage-h { font-size: 24px; }
+  .pr-glance-title { font-size: 17px; }
+  .pr-glance-desc { font-size: 15px; }
+  .pr-glance-intro { font-size: 17px; max-width: none; }
 }
 
 @media (max-width: 600px) {
