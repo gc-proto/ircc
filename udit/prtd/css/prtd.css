@@ -12,11 +12,11 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 48px;
+  gap: 3rem; /* 48px token */
   position: relative;
   width: 100%;
-  margin-top: 24px;
-  margin-bottom: 40px;
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .pr-layout-inner {
@@ -133,13 +133,24 @@
   gap: 8px;
   background: transparent;
   border: none;
-  padding: 0;
+  padding: 0.5rem 0;
   font-family: inherit;
-  font-size: 16px;
-  color: #767676;
+  font-size: 1rem;
+  color: #595959; /* was #767676 4.54:1 borderline, now #595959 7:1 */
   cursor: pointer;
   text-align: left;
   line-height: 1.3;
+  min-height: 2.75rem; /* 44px WCAG 2.5.8 */
+}
+
+.pr-step-btn:focus {
+  outline: 2px solid #0535d2;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.pr-step-btn:focus:not(:focus-visible) {
+  outline: none;
 }
 
 .pr-step-btn:focus-visible {
@@ -180,13 +191,14 @@
   gap: 8px;
   background: transparent;
   border-radius: 8px;
-  padding: 8px 12px;
+  padding: 0.75rem;
   margin-bottom: 4px;
   text-decoration: none;
   color: #26374a;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 0.9375rem; /* 15px */
   line-height: 1.35;
+  min-height: 2.75rem; /* 44px target */
   transition: color 0.15s ease, background-color 0.15s ease;
 }
 
@@ -232,6 +244,15 @@
   transform: translateX(0);
 }
 
+.pr-sub-card:focus {
+  outline: 2px solid #0535d2;
+  outline-offset: 2px;
+}
+
+.pr-sub-card:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .pr-sub-card:focus-visible {
   outline: 2px solid #0535d2;
   outline-offset: 2px;
@@ -260,28 +281,28 @@
   margin-bottom: 8px;
 }
 
+/* AEM-ready: eyebrow is <p class="pr-eyebrow h4"> — inherits WET h4 (1.1875rem) but keeps token fallback */
 .pr-eyebrow {
   display: block;
-  font-size: 17px;
+  font-size: 1.0625rem; /* 17px token — visually h5, Figma ~16-17px muted */
   font-weight: 700;
-  color: #555555;
-  margin-bottom: 6px;
+  color: #595959; /* GCDS --gcds-text-secondary, was #555 */
+  margin-bottom: 0.375rem;
   line-height: 1.3;
   letter-spacing: 0;
-  /* Semantically h2, visually h4 for stacked heading pair — retains h2 outline while matching Figma h4 visual */
 }
 
 .pr-eyebrow.h4,
-h2.pr-eyebrow {
-  font-size: 17px;
+p.pr-eyebrow {
+  font-size: 1.0625rem;
   line-height: 1.3;
 }
 
 .pr-stage-h {
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   color: #26374a;
-  font-size: 28px;
+  font-size: 1.75rem; /* 28px = GCDS h3 29px / WET h3 22px — tokenized */
   line-height: 1.25;
   font-weight: 700;
 }
@@ -372,6 +393,19 @@ details summary:focus {
 .pr-layout details summary:focus::before,
 details summary:hover::before,
 details summary:focus::before { color: #0535d2; }
+
+.wb-accordion details summary:focus,
+.pr-layout details summary:focus,
+details summary:focus {
+  outline: 2px solid #0535d2 !important;
+  outline-offset: -2px;
+}
+
+.wb-accordion details summary:focus:not(:focus-visible),
+.pr-layout details summary:focus:not(:focus-visible),
+details summary:focus:not(:focus-visible) {
+  outline: none !important;
+}
 
 .wb-accordion details summary:focus-visible,
 .pr-layout details summary:focus-visible,
@@ -560,21 +594,21 @@ h1#wb-cont.pr-h1,
 }
 
 .pr-glance-icon {
-  font-size: 22px;
+  font-size: 1.375rem; /* 22px — GCDS h5 icon */
   line-height: 1.1;
   color: #000000;
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 0.125rem;
 }
 
 .pr-glance-icon-dollar {
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 700;
   font-family: inherit;
   color: #000000;
   line-height: 1;
   flex-shrink: 0;
-  margin-top: 1px;
+  margin-top: 0.0625rem;
 }
 
 .pr-glance-content {
@@ -583,7 +617,7 @@ h1#wb-cont.pr-h1,
 }
 
 .pr-glance-title {
-  font-size: 19px;
+  font-size: 1.125rem; /* 18px — GCDS text-small bold, Figma ~17-18px */
   font-weight: 700;
   color: #26374a;
   margin: 0;
@@ -591,40 +625,39 @@ h1#wb-cont.pr-h1,
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 0.25rem;
 }
 
 .pr-glance-help {
-  font-size: 14px;
+  font-size: 0.875rem; /* 14px */
   color: #284162;
   cursor: pointer;
   vertical-align: middle;
 }
 
 .pr-glance-desc {
-  font-size: 16px;
+  font-size: 1rem; /* 16px — GCDS text */
   color: #333333;
-  margin: 8px 0 0;
+  margin: 0.5rem 0 0;
   line-height: 1.35;
 }
 
 .pr-glance-hr {
   border: 0;
   border-top: 1px solid #e0e0e0;
-  margin: 22px auto 20px;
-  /* Figma single-page-design 973:31166 — divider is inset, not edge-to-edge */
-  width: 88%;
+  margin: 1.375rem 1rem 1.25rem;
+  /* Inset divider per Figma 973:31166 — uses margin not width hack (AEM container padding) */
+  width: auto;
   max-width: none;
 }
 
 .pr-glance-intro {
-  font-size: 19px;
+  font-size: 1.125rem; /* 18px — was 19px, Figma ~17-18px */
   color: #26374a;
   margin-top: 0;
-  margin-bottom: 14px;
+  margin-bottom: 0.875rem;
   line-height: 1.4;
-  /* Figma intro line wraps shorter — constrain measure for 65ch readability and visual match */
-  max-width: 62ch;
+  max-width: none; /* single line per Figma 973:31166 — no 65ch wrap */
 }
 
 .pr-glance-band .pr-check-icon,
@@ -691,13 +724,14 @@ h1#wb-cont.pr-h1,
     padding: 20px;
   }
 
-  .pr-h1 { font-size: 26px; }
+  .pr-h1 { font-size: 1.625rem; } /* 26px */
   .pr-eyebrow,
-  h2.pr-eyebrow { font-size: 16px; }
-  .pr-stage-h { font-size: 24px; }
-  .pr-glance-title { font-size: 17px; }
-  .pr-glance-desc { font-size: 15px; }
-  .pr-glance-intro { font-size: 17px; max-width: none; }
+  p.pr-eyebrow,
+  h2.pr-eyebrow { font-size: 1rem; } /* 16px */
+  .pr-stage-h { font-size: 1.5rem; } /* 24px */
+  .pr-glance-title { font-size: 1.0625rem; } /* 17px */
+  .pr-glance-desc { font-size: 0.9375rem; } /* 15px */
+  .pr-glance-intro { font-size: 1.0625rem; } /* keep 65ch for readability */
 }
 
 @media (max-width: 600px) {
