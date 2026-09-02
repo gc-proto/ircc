@@ -355,60 +355,33 @@ p.pr-eyebrow {
   margin-top: 0;
 }
 
-.wb-accordion details,
-.pr-layout details,
-details.print-open {
-  border: 1px solid #dddddd !important;
-  border-radius: 4px !important;
-  margin-top: 8px;
-  margin-bottom: 12px;
-  background-color: #ffffff !important;
+.pr-main details {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: none;
+  margin: 8px 0 12px;
   overflow: hidden;
-  box-shadow: none !important;
 }
 
-.wb-accordion details summary,
-.pr-layout details summary,
-details.print-open summary,
-details summary {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  margin: 0 !important;
-  position: relative;
-  cursor: pointer;
+.pr-main details summary {
+  align-items: flex-start;
+  background: #fff;
+  border: 0;
   color: #295376;
+  cursor: pointer;
+  display: flex;
   font-size: 20px;
   font-weight: 400;
-  line-height: 33px;
-  padding: 5px 15px 8px;
-  user-select: none;
-  background-color: #ffffff !important;
-  transition: background-color 0.15s ease, color 0.15s ease;
-  list-style: none;
-  display: flex;
-  align-items: center;
   gap: 13px;
+  line-height: 33px;
+  list-style: none;
+  margin: 0;
+  padding: 5px 15px 8px;
 }
 
-.wb-accordion details summary::-webkit-details-marker,
-.pr-layout details summary::-webkit-details-marker,
-details summary::-webkit-details-marker { display: none !important; }
-
-.wb-accordion details summary::marker,
-.pr-layout details summary::marker,
-details summary::marker { display: none !important; font-size: 0 !important; }
-
-.wb-accordion details summary::before,
-.pr-layout details summary::before,
-details summary::before {
-  content: none !important;
-  display: none !important;
-}
-
-.wb-accordion details[open] summary::before,
-.pr-layout details[open] summary::before,
-details[open] summary::before { content: none !important; }
+.pr-main details summary::-webkit-details-marker { display: none; }
+.pr-main details summary::marker { content: ""; font-size: 0; }
 
 .pr-accordion-icon {
   width: 16px;
@@ -427,24 +400,11 @@ details[open] summary::before { content: none !important; }
   margin-top: 8px;
 }
 
-.wb-accordion details:not([open]) .pr-accordion-icon,
-.pr-layout details:not([open]) .pr-accordion-icon,
-details:not([open]) .pr-accordion-icon {
+.pr-main details:not([open]) .pr-accordion-icon {
   transform: rotate(-90deg);
 }
 
-.wb-accordion details summary:focus,
-.pr-layout details summary:focus,
-details summary:focus {
-  outline: 2px solid #0535d2 !important;
-  outline-offset: -2px;
-}
-
-.wb-accordion details summary:focus:not(:focus-visible),
-.pr-layout details summary:focus:not(:focus-visible),
-details summary:focus:not(:focus-visible) {
-  outline: none !important;
-}
+.pr-main details summary:focus-visible { outline: 2px solid #0535d2; outline-offset: -2px; }
 
 .pr-main a:not(.btn):not(.pr-sub-card) {
   color: #284162;
@@ -459,46 +419,32 @@ details summary:focus:not(:focus-visible) {
 }
 
 .pr-main .btn-default {
-  background-color: #ffffff !important;
-  color: #284162 !important;
-  border: 2px solid #284162 !important;
-  border-radius: 6px !important;
-  font-size: 20px;
-  font-weight: 600;
-  padding: 8px 18px;
-  text-decoration: none !important;
+  border: 1px solid #284162;
+  border-radius: 4px;
+  box-shadow: none;
+  color: #284162;
   display: inline-block;
-  box-shadow: none !important;
-  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  font-family: Lato, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23px;
+  padding: 8px 12px;
+  text-decoration: none;
 }
 
 .pr-main .btn-default:hover,
 .pr-main .btn-default:focus {
-  background-color: #284162 !important;
-  color: #ffffff !important;
-  border-color: #284162 !important;
-  text-decoration: underline !important;
+  background-color: #26374a;
+  color: #fff;
+  text-decoration: underline;
   outline: 2px solid #0535d2;
   outline-offset: 2px;
 }
+.pr-main details[open] summary { border-bottom: 1px solid #ddd; }
 
-.wb-accordion details summary:focus-visible,
-.pr-layout details summary:focus-visible,
-details summary:focus-visible {
-  outline: 2px solid #0535d2 !important;
-  outline-offset: -2px;
-}
-
-.wb-accordion details[open] summary,
-.pr-layout details[open] summary,
-details[open] summary { border-bottom: 1px solid #dddddd !important; }
-
-.wb-accordion details > div,
-.pr-layout details > div,
-details > div {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
+.pr-main details > div {
+  border: 0;
+  box-shadow: none;
   padding: 8px 15px 15px;
   background-color: #ffffff;
   font-size: 20px;
@@ -506,10 +452,8 @@ details > div {
   color: #333333;
 }
 
-.wb-accordion details > div.mrgn-tp-sm,
-.pr-layout details > div.mrgn-tp-sm,
-details > div.mrgn-tp-sm {
-  margin-top: 0 !important;
+.pr-main details > div.mrgn-tp-sm {
+  margin-top: 0;
 }
 
 .pr-top {
