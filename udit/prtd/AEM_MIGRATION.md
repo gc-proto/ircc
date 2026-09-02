@@ -1,0 +1,112 @@
+# PRTD AEM Migration & Standards Compliance Guide
+
+## Overview
+
+`index.html` is a static visual prototype demonstrating the Permanent Resident Travel Document (PRTD) single-page stepper experience. The prototype includes the full Canada.ca header, menu, breadcrumb, page feedback widget, date modified, and footer to facilitate standalone inspection.
+
+In Adobe Experience Manager (AEM), **the global shell is provided by the WET/GCWeb Page Template**. Only the page-specific content between the designated authorable comments is inserted into an AEM **Generic HTML Component** (or decomposed into Core Components).
+
+---
+
+## 1. Authorable Payload Boundaries
+
+In `index.html`, the authorable payload is explicitly marked:
+
+* **Payload Start:** `<!-- AEM AUTHORABLE CONTENT START -->` (Line 111)
+  * Starts with the `<div class="container">` wrapping the page `h1`.
+* **Payload End:** `<!-- AEM AUTHORABLE CONTENT END -->` (Line 374)
+  * Ends immediately after the `<div class="container">` wrapping the `.pr-layout` stepper and stages.
+
+### Shell Elements Handled by AEM Page Template:
+* Header, Skip Links, Language Toggle (`#wb-lng`), Sign-in link
+* Main Menu (`#wb-sm`) & Breadcrumbs (`#wb-bc`)
+* Page Feedback Widget (`.gc-pg-hlpfl`) & Share widget (`.wb-share`)
+* Date Modified (`#wb-dtmd`)
+* Global Footer (`#wb-info`, `.gc-main-footer`, `.gc-sub-footer`, `.wtrmrk`)
+
+---
+
+## 2. Canada.ca & GCWeb Standards Compliance
+
+The prototype adheres strictly to official WET-BOEW and GCWeb standards:
+
+| Component | Standard Compliance Implementation |
+|---|---|
+| **Container Width** | Wrapped in standard `.container` (1170px desktop / 970px medium / 750px tablet / 100% fluid mobile). Zero horizontal overflow. |
+| **Grid & Rail Spacing** | `.pr-side` width is `260px` with a `40px` layout gap (`260px + 40px + 840px = 1140px` usable width). |
+| **Body Typography** | Standard GCWeb `16px` base (`line-height: 1.5`), inheriting from `theme.min.css`. No inflated overrides. |
+| **Headings Scale** | `H1` = `2.375rem` (38px desktop / 34px mobile) with 72px red accent bar (`.pr-h1::after`).<br>`H2` (`.pr-stage-h`) = `1.75rem` (28px).<br>`H3` = `1.375rem` (22px).<br>`Eyebrow` (`.pr-eyebrow`) = `1rem` (16px uppercase kicker). |
+| **Contextual Alerts** | Standard WET semantic alerts: `<section class="alert alert-warning">` and `<section class="alert alert-info">`. Fully accessible, native borders and iconography. |
+| **Collapsible Content** | Standard HTML `<details class="print-open"><summary>` with native Canada.ca disclosure markers. Collapsed by default on screen, printable via `print-open`. |
+| **Top of Page Links** | Completely removed per design decision, keeping content stages clean and unencumbered. |
+
+---
+
+## 3. AEM Deployment Methods
+
+### Option A: AEM Client Library (`clientlib`) Configuration
+If your team has deployment access to create an AEM clientlib:
+1. Create a client library folder under `/apps/ircc/clientlibs/clientlib-prtd`:
+   * **categories**: `[ircc.prtd]`
+   * **dependencies**: `[wet-boew, gcweb]`
+2. Package:
+   * `css/prtd.css`
+   * `js/prtd.js`
+
+### Option B: Media Player Component (`mwsmediaplayer`) Injection (Standard Authoring Workflow)
+In Government of Canada / IRCC AEM (Managed Web Services), standard authoring components (RTE, Generic HTML) aggressively sanitize `<style>` and `<script>` tags through AntiSamy XSS filters. 
+
+To bypass this without a code deployment cycle, IRCC authoring teams standardly use the **Media Player component (`mwsmediaplayer section`)**:
+
+```html
+<div class="mwsmediaplayer section">
+  <style>
+    /* Paste contents of css/prtd.css here */
+  </style>
+
+  <script>
+    /* Paste contents of js/prtd.js here */
+  </script>
+</div>
+```
+
+#### Essential Rules When Using Media Player Injection:
+1. **AEM Touch UI Safety Guard**:
+   `js/prtd.js` starts with:
+   ```javascript
+   if (window.Granite && window.Granite.author) {
+     return;
+   }
+   ```
+   This prevents the scrollspy listeners and DOM queries from interfering with AEM Touch UI authoring dialogs and drag-and-drop handles.
+2. **DOM Readiness**:
+   The script in `js/prtd.js` self-executes or listens to `DOMContentLoaded` / `window.onload` to ensure the HTML payload is fully rendered before binding stepper events.
+3. **DAM Asset URL Remapping**:
+   Because `css/prtd.css` and `index.html` use relative paths (e.g. `assets/figma/nav-chevron.svg`), when pasting into AEM, replace those relative paths with the absolute AEM DAM paths (e.g., `/content/dam/ircc/icons/prtd/nav-chevron.svg`).
+
+---
+
+## 4. Digital Asset Management (DAM) Mapping
+
+All icons currently stored under `assets/figma/` must be imported into the AEM DAM:
+
+| Local Prototype Path | Recommended AEM DAM Destination Path |
+|---|---|
+| `assets/figma/processing.svg` | `/content/dam/ircc/icons/prtd/processing.svg` |
+| `assets/figma/fees.svg` | `/content/dam/ircc/icons/prtd/fees.svg` |
+| `assets/figma/valid-for.svg` | `/content/dam/ircc/icons/prtd/valid-for.svg` |
+| `assets/figma/how-apply.svg` | `/content/dam/ircc/icons/prtd/how-apply.svg` |
+| `assets/figma/check.svg` | `/content/dam/ircc/icons/prtd/check.svg` |
+| `assets/figma/help.svg` | `/content/dam/ircc/icons/prtd/help.svg` |
+| `assets/figma/nav-chevron.svg` | `/content/dam/ircc/icons/prtd/nav-chevron.svg` |
+| `assets/figma/nav-chevron-active.svg`| `/content/dam/ircc/icons/prtd/nav-chevron-active.svg` |
+| `assets/figma/nav-arrow.svg` | `/content/dam/ircc/icons/prtd/nav-arrow.svg` |
+| `assets/figma/nav-terminal.svg` | `/content/dam/ircc/icons/prtd/nav-terminal.svg` |
+
+---
+
+## 5. Bilingual Content (French Equivalents)
+
+* In AEM, create the corresponding French page under `/content/ircc/fr/...` using the French WET page template.
+* Translate all labels, step names, alt text, and aria-labels.
+* Replace the language toggle link with the bi-directional AEM language switcher component.

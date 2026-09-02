@@ -108,7 +108,11 @@
   </nav>
 </header>
 <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
-  <!-- AEM AUTHORABLE CONTENT START -->
+  <!-- =========================================================================
+       AEM AUTHORABLE CONTENT START
+       This container and inner content map directly to the AEM Generic HTML component.
+       Exclude global header, navigation, and breadcrumbs (provided by AEM Page Template).
+       ========================================================================= -->
   <div class="container">
     <h1 property="name" id="wb-cont" class="pr-h1">Apply for a permanent resident travel document (PRTD)</h1>
   </div>
@@ -117,25 +121,32 @@
       <div class="well pr-glance-card">
         <h2 class="wb-inv">At a glance</h2>
         <div class="pr-glance-boxes">
-          <div class="pr-glance-box"> <img class="pr-glance-icon pr-glance-icon-processing" src="assets/figma/processing.svg" alt="" aria-hidden="true">
+          <div class="pr-glance-box">
+            <svg class="pr-glance-icon" width="32" height="32" viewBox="0 0 37 38" fill="none" aria-hidden="true"><path d="M30.525 19C30.525 25.8222 25.1427 31.35 18.5 31.35C11.8573 31.35 6.475 25.8222 6.475 19C6.475 12.1778 11.8573 6.65 18.5 6.65C25.1427 6.65 30.525 12.1778 30.525 19ZM3.7 19C3.7 27.3956 10.3253 34.2 18.5 34.2C26.6747 34.2 33.3 27.3956 33.3 19C33.3 10.6044 26.6747 3.8 18.5 3.8C10.3253 3.8 3.7 10.6044 3.7 19ZM17.1125 10.925V19C17.1125 19.475 17.3438 19.9203 17.7311 20.1875L23.2811 23.9875C23.917 24.4269 24.7784 24.2487 25.2063 23.5897C25.6341 22.9306 25.4606 22.0519 24.8189 21.6125L19.8875 18.24V10.925C19.8875 10.1353 19.2689 9.5 18.5 9.5C17.7311 9.5 17.1125 10.1353 17.1125 10.925Z" fill="#26374A"/></svg>
             <div class="pr-glance-content">
-              <div class="pr-glance-title"> <span>Processing times</span> <img class="pr-glance-help" src="assets/figma/help.svg" alt="" aria-hidden="true" title="Processing times vary"> </div>
+              <div class="pr-glance-title">
+                <span>Processing times</span>
+                <svg class="pr-glance-help" width="16" height="16" viewBox="0 0 16.4688 16.4688" fill="none" aria-hidden="true" title="Processing times vary"><path d="M16.4688 8.23438C16.4688 12.7831 12.7818 16.4688 8.23438 16.4688C3.68697 16.4688 0 12.7831 0 8.23438C0 3.6883 3.68697 0 8.23438 0C12.7818 0 16.4688 3.6883 16.4688 8.23438ZM8.45534 2.72266C6.64587 2.72266 5.4918 3.4849 4.58555 4.83962C4.46814 5.01513 4.50742 5.25184 4.6757 5.37944L5.82781 6.25301C6.00063 6.38406 6.24687 6.35289 6.38114 6.18255C6.97428 5.43024 7.38099 4.99398 8.28378 4.99398C8.96209 4.99398 9.8011 5.43054 9.8011 6.08829C9.8011 6.58554 9.39061 6.84091 8.72087 7.2164C7.9398 7.65425 6.90625 8.19921 6.90625 9.5625V9.69531C6.90625 9.91535 7.08465 10.0938 7.30469 10.0938H9.16406C9.3841 10.0938 9.5625 9.91535 9.5625 9.69531V9.65105C9.5625 8.70603 12.3245 8.66668 12.3245 6.10938C12.3245 4.18353 10.3269 2.72266 8.45534 2.72266ZM8.23438 10.957C7.39218 10.957 6.70703 11.6422 6.70703 12.4844C6.70703 13.3265 7.39218 14.0117 8.23438 14.0117C9.07657 14.0117 9.76172 13.3265 9.76172 12.4844C9.76172 11.6422 9.07657 10.957 8.23438 10.957Z" fill="#335075"/></svg>
+              </div>
               <p class="pr-glance-desc">Varies</p>
             </div>
           </div>
-          <div class="pr-glance-box"> <img class="pr-glance-icon pr-glance-icon-dollar" src="assets/figma/fees.svg" alt="" aria-hidden="true">
+          <div class="pr-glance-box">
+            <svg class="pr-glance-icon" width="32" height="32" viewBox="0 0 34 35" fill="none" aria-hidden="true"><path d="M15.725 4.8125C15.725 4.08516 16.2934 3.5 17 3.5C17.7066 3.5 18.275 4.08516 18.275 4.8125V7H21.25C22.1903 7 22.95 7.78203 22.95 8.75C22.95 9.71797 22.1903 10.5 21.25 10.5H15.1459C13.8231 10.5 12.75 11.6047 12.75 12.9664C12.75 14.1969 13.6266 15.2359 14.8059 15.4109L19.6722 16.1273C22.5303 16.5484 24.65 19.0641 24.65 22.0336C24.65 25.3312 22.0522 28 18.8541 28H18.275V30.1875C18.275 30.9148 17.7066 31.5 17 31.5C16.2934 31.5 15.725 30.9148 15.725 30.1875V28H11.9C10.9597 28 10.2 27.218 10.2 26.25C10.2 25.282 10.9597 24.5 11.9 24.5H18.8541C20.1769 24.5 21.25 23.3953 21.25 22.0336C21.25 20.8031 20.3734 19.7641 19.1941 19.5891L14.3278 18.8727C11.4697 18.457 9.35 15.9359 9.35 12.9664C9.35 9.67422 11.9478 7 15.1459 7H15.725V4.8125Z" fill="#26374A"/></svg>
             <div class="pr-glance-content">
               <div class="pr-glance-title">Fees</div>
               <p class="pr-glance-desc">$CAN 50</p>
             </div>
           </div>
-          <div class="pr-glance-box"> <img class="pr-glance-icon pr-glance-icon-valid" src="assets/figma/valid-for.svg" alt="" aria-hidden="true">
+          <div class="pr-glance-box">
+            <svg class="pr-glance-icon" width="32" height="32" viewBox="0 0 34 27" fill="none" aria-hidden="true"><path d="M33.15 23.625H0.85C0.380375 23.625 0 24.0026 0 24.4688V26.1563C0 26.6224 0.380375 27 0.85 27H33.15C33.6196 27 34 26.6224 34 26.1563V24.4688C34 24.0026 33.6196 23.625 33.15 23.625ZM2.38053 10.8454L7.09484 15.0641C7.48166 15.4108 7.94516 15.6624 8.44794 15.7987L23.7267 19.9304C25.1334 20.3106 26.6252 20.3903 28.0298 20.0021C29.606 19.566 30.3376 18.8837 30.54 18.119C30.7434 17.3544 30.4481 16.3941 29.2984 15.2207C28.2742 14.1755 26.9423 13.4916 25.5356 13.1113L20.3554 11.7107L15.0237 1.59363C14.9435 1.28725 14.7077 1.04783 14.4043 0.965566L10.9464 0.0305859C10.3854 -0.121289 9.83609 0.311133 9.84619 0.897539L12.3919 9.55705L6.96256 8.08893L5.49684 4.50932C5.39431 4.25145 5.17756 4.05738 4.91141 3.98566L2.80075 3.41455C2.25144 3.26584 1.71009 3.67822 1.7 4.25197L1.71222 9.61928C1.72231 10.0891 2.03256 10.5337 2.38053 10.8454Z" fill="#26374A"/></svg>
             <div class="pr-glance-content">
               <div class="pr-glance-title">Valid for</div>
               <p class="pr-glance-desc">Single (one-time) entry to Canada</p>
             </div>
           </div>
-          <div class="pr-glance-box"> <img class="pr-glance-icon pr-glance-icon-apply" src="assets/figma/how-apply.svg" alt="" aria-hidden="true">
+          <div class="pr-glance-box">
+            <svg class="pr-glance-icon" width="32" height="32" viewBox="0 0 34 34" fill="none" aria-hidden="true"><path d="M33.4688 17C33.4688 26.0977 26.0977 33.4688 17 33.4688C7.90234 33.4688 0.53125 26.0977 0.53125 17C0.53125 7.90234 7.90234 0.53125 17 0.53125C26.0977 0.53125 33.4688 7.90234 33.4688 17ZM23.9328 15.0809L19.125 20.0945V7.96875C19.125 7.08555 18.4145 6.375 17.5312 6.375H16.4688C15.5855 6.375 14.875 7.08555 14.875 7.96875V20.0945L10.0672 15.0809C9.44961 14.4367 8.42031 14.4234 7.78945 15.0543L7.06563 15.7848C6.44141 16.409 6.44141 17.4184 7.06563 18.0359L15.8711 26.848C16.4953 27.4723 17.5047 27.4723 18.1223 26.848L26.9344 18.0359C27.5586 17.4117 27.5586 16.4023 26.9344 15.7848L26.2105 15.0543C25.5797 14.4234 24.5504 14.4367 23.9328 15.0809Z" fill="#26374A"/></svg>
             <div class="pr-glance-content">
               <div class="pr-glance-title">How you apply</div>
               <p class="pr-glance-desc">Online (in most cases)</p>
@@ -145,8 +156,14 @@
         <hr class="pr-glance-hr" role="presentation" aria-hidden="true">
         <p class="pr-glance-intro"><strong>If you&rsquo;re a permanent resident of Canada, you need a permanent resident travel document (PRTD) if:</strong></p>
         <ul class="list-unstyled mrgn-bttm-0">
-          <li> <img class="pr-check-icon mrgn-rght-sm" src="assets/figma/check.svg" alt="" aria-hidden="true"> <span>you&rsquo;re <strong>outside</strong> Canada <strong>without</strong> a valid permanent resident card (PR card), and</span> </li>
-          <li> <img class="pr-check-icon mrgn-rght-sm" src="assets/figma/check.svg" alt="" aria-hidden="true"> <span>you&rsquo;re returning to Canada by commercial vehicle (airplane, bus boat or train)</span> </li>
+          <li>
+            <svg class="pr-check-icon mrgn-rght-sm" width="22" height="22" viewBox="0 0 27 27" fill="none" aria-hidden="true"><path d="M26.5781 13.5C26.5781 20.7229 20.7229 26.5781 13.5 26.5781C6.27713 26.5781 0.421875 20.7229 0.421875 13.5C0.421875 6.27713 6.27713 0.421875 13.5 0.421875C20.7229 0.421875 26.5781 6.27713 26.5781 13.5ZM11.9873 20.4248L21.6904 10.7216C22.0199 10.3922 22.0199 9.8579 21.6904 9.52842L20.4972 8.3352C20.1677 8.00566 19.6334 8.00566 19.3039 8.3352L11.3906 16.2484L7.69611 12.5539C7.36662 12.2244 6.83237 12.2244 6.50283 12.5539L5.30961 13.7471C4.98013 14.0766 4.98013 14.6108 5.30961 14.9403L10.794 20.4247C11.1235 20.7542 11.6577 20.7542 11.9873 20.4248Z" fill="#26374A"/></svg>
+            <span>you&rsquo;re <strong>outside</strong> Canada <strong>without</strong> a valid permanent resident card (PR card), and</span>
+          </li>
+          <li>
+            <svg class="pr-check-icon mrgn-rght-sm" width="22" height="22" viewBox="0 0 27 27" fill="none" aria-hidden="true"><path d="M26.5781 13.5C26.5781 20.7229 20.7229 26.5781 13.5 26.5781C6.27713 26.5781 0.421875 20.7229 0.421875 13.5C0.421875 6.27713 6.27713 0.421875 13.5 0.421875C20.7229 0.421875 26.5781 6.27713 26.5781 13.5ZM11.9873 20.4248L21.6904 10.7216C22.0199 10.3922 22.0199 9.8579 21.6904 9.52842L20.4972 8.3352C20.1677 8.00566 19.6334 8.00566 19.3039 8.3352L11.3906 16.2484L7.69611 12.5539C7.36662 12.2244 6.83237 12.2244 6.50283 12.5539L5.30961 13.7471C4.98013 14.0766 4.98013 14.6108 5.30961 14.9403L10.794 20.4247C11.1235 20.7542 11.6577 20.7542 11.9873 20.4248Z" fill="#26374A"/></svg>
+            <span>you&rsquo;re returning to Canada by commercial vehicle (airplane, bus boat or train)</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -156,26 +173,75 @@
       <div class="pr-layout-inner">
         <div class="pr-side">
           <nav class="pr-stepper" id="pr-stepper-nav" aria-label="Permanent resident travel document steps">
-            <button type="button" class="pr-stepper-toggle" id="pr-stepper-toggle" aria-expanded="false" aria-controls="pr-steplist"> <span class="pr-toggle-label" id="pr-toggle-label">Before you apply</span> <span class="pr-toggle-caret glyphicon glyphicon-chevron-down" aria-hidden="true"></span> </button>
+            <button type="button" class="pr-stepper-toggle" id="pr-stepper-toggle" aria-expanded="false" aria-controls="pr-steplist"> <span class="pr-toggle-info"> <span class="pr-toggle-parent" id="pr-toggle-parent">Before you apply</span> <span class="pr-toggle-label" id="pr-toggle-label">Who can apply</span> </span> <span class="pr-toggle-caret glyphicon glyphicon-chevron-down" aria-hidden="true"></span> </button>
             <ol class="pr-stepper-list" id="pr-steplist">
               <li class="pr-step is-active" data-target="who-can-apply">
                 <div class="pr-step-row"> <span class="pr-circle" aria-hidden="true"></span>
-                  <button type="button" class="pr-step-btn"> <span class="pr-step-title">Before you apply</span> <img class="pr-step-chevron" src="assets/figma/nav-chevron-active.svg" alt="" aria-hidden="true"> </button>
+                  <button type="button" class="pr-step-btn" aria-expanded="true" aria-controls="pr-step-body-1">
+                    <span class="pr-step-title">Before you apply</span>
+                    <svg class="pr-step-chevron" width="18" height="18" viewBox="0 0 21 21" fill="none" aria-hidden="true"><path d="M9.69313 6.32953C10.1394 5.89016 10.8642 5.89016 11.3104 6.32953L18.1653 13.0782C18.6116 13.5176 18.6116 14.2311 18.1653 14.6705C17.719 15.1098 16.9943 15.1098 16.548 14.6705L10.5 8.71617L4.45202 14.667C4.00575 15.1063 3.28099 15.1063 2.83471 14.667C2.38843 14.2276 2.38843 13.5141 2.83471 13.0747L9.68956 6.32601L9.69313 6.32953Z" fill="currentColor"/></svg>
+                  </button>
                 </div>
-                <div class="pr-step-body" id="pr-step-body-1"> <a href="#who-can-apply" class="pr-sub-card is-active" aria-current="page"> <span class="pr-sub-arrow" aria-hidden="true"><img src="assets/figma/nav-arrow.svg" alt="" aria-hidden="true"></span> Who can apply </a> </div>
+                <div class="pr-step-body" id="pr-step-body-1">
+                  <a href="#who-can-apply" class="pr-sub-card is-active" aria-current="page">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    Who can apply
+                  </a>
+                </div>
               </li>
               <li class="pr-step" data-target="get-forms">
                 <div class="pr-step-row"> <span class="pr-circle" aria-hidden="true"></span>
-                  <button type="button" class="pr-step-btn"> <span class="pr-step-title">How to apply</span> <img class="pr-step-chevron" src="assets/figma/nav-chevron.svg" alt="" aria-hidden="true"> </button>
+                  <button type="button" class="pr-step-btn" aria-expanded="true" aria-controls="pr-step-body-2">
+                    <span class="pr-step-title">How to apply</span>
+                    <svg class="pr-step-chevron" width="18" height="18" viewBox="0 0 21 21" fill="none" aria-hidden="true"><path d="M9.69313 6.32953C10.1394 5.89016 10.8642 5.89016 11.3104 6.32953L18.1653 13.0782C18.6116 13.5176 18.6116 14.2311 18.1653 14.6705C17.719 15.1098 16.9943 15.1098 16.548 14.6705L10.5 8.71617L4.45202 14.667C4.00575 15.1063 3.28099 15.1063 2.83471 14.667C2.38843 14.2276 2.38843 13.5141 2.83471 13.0747L9.68956 6.32601L9.69313 6.32953Z" fill="currentColor"/></svg>
+                  </button>
                 </div>
-                <div class="pr-step-body" id="pr-step-body-2"> <a href="#get-forms" class="pr-sub-card"> <span class="pr-sub-arrow" aria-hidden="true"><img src="assets/figma/nav-arrow.svg" alt="" aria-hidden="true"></span> Get your forms and documents ready </a> <a href="#pay-fees" class="pr-sub-card"> <span class="pr-sub-arrow" aria-hidden="true"><img src="assets/figma/nav-arrow.svg" alt="" aria-hidden="true"></span> Pay your fees </a> <a href="#submit-application" class="pr-sub-card"> <span class="pr-sub-arrow" aria-hidden="true"><img src="assets/figma/nav-arrow.svg" alt="" aria-hidden="true"></span> Submit your application </a> </div>
+                <div class="pr-step-body" id="pr-step-body-2">
+                  <a href="#get-forms" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    Get your forms and documents ready
+                  </a>
+                  <a href="#pay-fees" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    Pay your fees
+                  </a>
+                  <a href="#submit-application" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    Submit your application
+                  </a>
+                </div>
               </li>
               <li class="pr-step" data-target="how-we-process">
                 <div class="pr-step-row"> <span class="pr-circle" aria-hidden="true"></span>
-                  <button type="button" class="pr-step-btn"> <span class="pr-step-title">After you apply</span> <img class="pr-step-chevron" src="assets/figma/nav-chevron.svg" alt="" aria-hidden="true"> </button>
+                  <button type="button" class="pr-step-btn" aria-expanded="true" aria-controls="pr-step-body-3">
+                    <span class="pr-step-title">After you apply</span>
+                    <svg class="pr-step-chevron" width="18" height="18" viewBox="0 0 21 21" fill="none" aria-hidden="true"><path d="M9.69313 6.32953C10.1394 5.89016 10.8642 5.89016 11.3104 6.32953L18.1653 13.0782C18.6116 13.5176 18.6116 14.2311 18.1653 14.6705C17.719 15.1098 16.9943 15.1098 16.548 14.6705L10.5 8.71617L4.45202 14.667C4.00575 15.1063 3.28099 15.1063 2.83471 14.667C2.38843 14.2276 2.38843 13.5141 2.83471 13.0747L9.68956 6.32601L9.69313 6.32953Z" fill="currentColor"/></svg>
+                  </button>
                 </div>
-                <div class="pr-step-body" id="pr-step-body-3"> <a href="#how-we-process" class="pr-sub-card"> <span class="pr-sub-arrow" aria-hidden="true"><img src="assets/figma/nav-arrow.svg" alt="" aria-hidden="true"></span> How we process your application </a> <a href="#keep-info" class="pr-sub-card"> <span class="pr-sub-arrow" aria-hidden="true"><img src="assets/figma/nav-arrow.svg" alt="" aria-hidden="true"></span> Keep your information up to date </a> <a href="#check-status" class="pr-sub-card"> <span class="pr-sub-arrow" aria-hidden="true"><img src="assets/figma/nav-arrow.svg" alt="" aria-hidden="true"></span> Check your application status </a> <a href="#new-pr-card" class="pr-sub-card"> <span class="pr-sub-arrow" aria-hidden="true"><img src="assets/figma/nav-arrow.svg" alt="" aria-hidden="true"></span> Apply for a new PR card </a> </div>
-                <span class="pr-step-terminal" aria-hidden="true"><img src="assets/figma/nav-terminal.svg" alt=""></span> </li>
+                <div class="pr-step-body" id="pr-step-body-3">
+                  <a href="#how-we-process" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    How we process your application
+                  </a>
+                  <a href="#ask-documents" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    If we ask you for documents
+                  </a>
+                  <a href="#keep-info" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    Keep your information up to date
+                  </a>
+                  <a href="#check-status" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    Check your application status
+                  </a>
+                  <a href="#new-pr-card" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    Apply for a new PR card
+                  </a>
+                </div>
+                <span class="pr-step-terminal" aria-hidden="true"></span>
+              </li>
             </ol>
           </nav>
         </div>
@@ -201,14 +267,11 @@
               <p class="pr-eyebrow h4 mrgn-bttm-sm" id="how-to-apply-h">How to apply</p>
               <h2 class="pr-stage-h h3" id="get-forms-h">Get your forms and documents ready</h2>
               <p>The application package includes the instruction guide and all the forms you need to fill out.</p>
-              <div class="alert alert-warning pr-fds-alert">
-                <div class="pr-alert-mark" aria-hidden="true"> <span class="pr-alert-rule-top"></span> <img class="pr-alert-icon" src="assets/figma/alert-warning.svg" alt=""> <span class="pr-alert-rule-bottom"></span> </div>
-                <div>
-                  <h3 class="h4">If you need a permanent resident travel document urgently</h3>
-                  <p>You may apply urgently for a PRTD for reasons such as serious illness, or a lost or stolen PR card.</p>
-                  <p class="mrgn-bttm-0"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents/card/urgent.html">Find out how to apply urgently for a PRTD</a></p>
-                </div>
-              </div>
+              <section class="alert alert-warning">
+                <h3 class="h4">If you need a permanent resident travel document urgently</h3>
+                <p>You may apply urgently for a PRTD for reasons such as serious illness, or a lost or stolen PR card.</p>
+                <p class="mrgn-bttm-0"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents/card/urgent.html">Find out how to apply urgently for a PRTD</a></p>
+              </section>
               <h3>Read the instruction guide</h3>
               <p>Our <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5529-applying-permanent-resident-travel-document.html" target="_blank" rel="noopener">instruction guide [IMM&nbsp;5529]<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span> has detailed information on how to prepare, complete and submit your application.</p>
               <h3>Review the document checklist</h3>
@@ -218,7 +281,7 @@
               <h3>Fill out the application form</h3>
               <p>If you apply online, fill out the application for a permanent resident travel document (IMM&nbsp;5444) form <strong>in</strong> the <a href="https://prson-srpel.apps.cic.gc.ca/en/login" target="_blank" rel="noopener">permanent residence portal<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</p>
 
-                <details class="print-open mrgn-bttm-sm" open>
+                <details class="print-open mrgn-bttm-sm">
                   <summary>If you can&rsquo;t fill out the form online</summary>
                   <div class="mrgn-tp-sm">
                     <p>You can fill out the IMM&nbsp;5444 form on paper if you can&rsquo;t apply online and require accommodations, including for accessibility reasons.</p>
@@ -226,7 +289,7 @@
                     <p class="mrgn-bttm-0">Make sure you click the &ldquo;Validate&rdquo; button at the top of the form before printing and signing it.</p>
                   </div>
                 </details>
-                <details class="print-open mrgn-bttm-sm" open>
+                <details class="print-open mrgn-bttm-sm">
                   <summary>If you have a representative or designated individual</summary>
                   <div class="mrgn-tp-sm">
                     <p>You don&rsquo;t need a representative to help you with your PRTD application. Using a representative is a personal choice. If you want to appoint someone to do business with us on your behalf (optional), you can use either a:</p>
@@ -247,7 +310,7 @@
                     </ul>
                   </div>
                 </details>
-                <details class="print-open mrgn-bttm-sm" open>
+                <details class="print-open mrgn-bttm-sm">
                   <summary>If you&rsquo;re applying from China and have a Chinese passport</summary>
                   <div class="mrgn-tp-sm">
                     <p>You <strong>must</strong> include an &ldquo;Inquiry of Exit &amp; Entry Record&rdquo; from China.</p>
@@ -277,12 +340,11 @@
                 <li>Each application must show that the person meets the requirements to remain a permanent resident.</li>
                 <li>For example, you can&rsquo;t have a removal order to leave Canada.</li>
               </ul>
-              <div class="alert alert-info pr-fds-alert">
-                <div class="pr-alert-mark" aria-hidden="true"> <span class="pr-alert-rule-top"></span> <img class="pr-alert-icon" src="assets/figma/alert-info.svg" alt=""> <span class="pr-alert-rule-bottom"></span> </div>
+              <div class="alert alert-info">
                 <p class="mrgn-bttm-0">If your application is missing information or documents, we&rsquo;ll return it to you.</p>
               </div>
               <p class="mrgn-tp-md"><a class="btn btn-call-to-action" href="https://prson-srpel.apps.cic.gc.ca/en/login" target="_blank" rel="noopener">Apply in the permanent residence portal<span class="wb-inv"> (opens in a new tab)</span> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></a></p>
-              <details class="print-open mrgn-tp-md mrgn-bttm-sm" open>
+              <details class="print-open mrgn-tp-md mrgn-bttm-sm">
                 <summary>If you can&rsquo;t apply online</summary>
                 <div class="mrgn-tp-sm">
                   <p>You may be able to apply on paper if your nearest visa application centre (VAC) accepts paper applications by mail or in person.</p>
@@ -313,7 +375,9 @@
                 <li>return your passport to you with your permanent resident travel document</li>
               </ul>
               <p><strong>If we refuse your application</strong>, follow the instructions on the refusal letter.</p>
-              <h3>If we ask you for documents</h3>
+            </section>
+            <section class="pr-subsection" id="ask-documents" aria-labelledby="ask-documents-h">
+              <h2 class="pr-stage-h h3" id="ask-documents-h">If we ask you for documents</h2>
               <p>We may ask you to submit more documents. If we do, submit them to us online.</p>
               <ol>
                 <li>Use our <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/web-form2.html" target="_blank" rel="noopener">web form to add a document<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span> to your application.</li>
@@ -329,15 +393,12 @@
               </ol>
             </section>
             <section class="pr-subsection" id="keep-info" aria-labelledby="keep-info-h">
-                <div class="alert alert-info pr-fds-alert">
-                  <div class="pr-alert-mark" aria-hidden="true"> <span class="pr-alert-rule-top"></span> <img class="pr-alert-icon" src="assets/figma/alert-info.svg" alt=""> <span class="pr-alert-rule-bottom"></span> </div>
-                  <div>
-                    <h3 class="pr-stage-h h4" id="keep-info-h">Keep your information up to date</h3>
-                    <p>You must tell us if you move or change your address, phone number or any other contact information after you apply.</p>
-                    <p class="mrgn-bttm-0"><a href="https://secure.cic.gc.ca/ClientContact/en/Application/Form/70" target="_blank" rel="noopener">Update your contact information<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></p>
-                  </div>
-                </div>
+              <section class="alert alert-info">
+                <h3 class="h4" id="keep-info-h">Keep your information up to date</h3>
+                <p>You must tell us if you move or change your address, phone number or any other contact information after you apply.</p>
+                <p class="mrgn-bttm-0"><a href="https://secure.cic.gc.ca/ClientContact/en/Application/Form/70" target="_blank" rel="noopener">Update your contact information<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></p>
               </section>
+            </section>
             <section class="pr-subsection" id="check-status" aria-labelledby="check-status-h">
               <h3 class="pr-stage-h h4" id="check-status-h">How to check your application status</h3>
               <p>You must contact us to check the status of your application.</p>
@@ -369,6 +430,11 @@
         </div>
       </div>
     </div>
+    <!-- =========================================================================
+         AEM AUTHORABLE CONTENT END
+         The following components (page feedback, date modified, footer) are rendered
+         by the AEM WET/GCWeb Page Template and should not be included in the Generic HTML payload.
+         ========================================================================= -->
     <div class="row row-no-gutters mrgn-tp-xl">
       <div class="col-sm-7 col-lg-6">
         <section class="gc-pg-hlpfl provisional" aria-label="Page feedback">

@@ -1,6 +1,11 @@
 (function () {
   "use strict";
 
+  // Prevent script from interfering with AEM Touch UI authoring mode
+  if (window.Granite && window.Granite.author) {
+    return;
+  }
+
   document.documentElement.classList.remove("no-js");
 
   var stepItems = Array.prototype.slice.call(document.querySelectorAll(".pr-step"));
@@ -50,11 +55,33 @@
     }
   });
 
+  var toggleParent = document.getElementById("pr-toggle-parent");
   var toggleLbl = document.getElementById("pr-toggle-label");
   var stepper = document.querySelector(".pr-stepper");
+  var side = document.querySelector(".pr-side");
   var toggleBtn = document.getElementById("pr-stepper-toggle");
   var allSubCards = Array.prototype.slice.call(document.querySelectorAll(".pr-sub-card"));
   var currentFlat = -1;
+  var userSideScrollTimeout = null;
+  var isUserScrollingSide = false;
+
+  if (side) {
+    side.addEventListener("wheel", function () {
+      isUserScrollingSide = true;
+      clearTimeout(userSideScrollTimeout);
+      userSideScrollTimeout = setTimeout(function () {
+        isUserScrollingSide = false;
+      }, 1500);
+    }, { passive: true });
+
+    side.addEventListener("touchstart", function () {
+      isUserScrollingSide = true;
+      clearTimeout(userSideScrollTimeout);
+      userSideScrollTimeout = setTimeout(function () {
+        isUserScrollingSide = false;
+      }, 1500);
+    }, { passive: true });
+  }
 
   function setActive(fi) {
     if (fi < 0) fi = 0;
@@ -70,7 +97,7 @@
       s.classList.toggle("is-active", isActive);
       s.classList.toggle("is-done", isDone);
       var chev = s.querySelector(".pr-step-chevron");
-      if (chev) {
+      if (chev && chev.tagName && chev.tagName.toLowerCase() === "img") {
         chev.src = isActive
           ? "assets/figma/nav-chevron-active.svg"
           : "assets/figma/nav-chevron.svg";
@@ -86,9 +113,17 @@
       act.navCard.setAttribute("aria-current", "page");
     }
 
-    if (toggleLbl && act.navMain) {
+    if (act.navMain) {
       var titleEl = act.navMain.querySelector(".pr-step-title");
-      if (titleEl) toggleLbl.textContent = titleEl.textContent.trim();
+      var stageName = titleEl ? titleEl.textContent.trim() : "";
+      var subName = act.navCard ? act.navCard.textContent.trim() : stageName;
+
+      if (toggleParent) {
+        toggleParent.textContent = stageName;
+      }
+      if (toggleLbl) {
+        toggleLbl.textContent = subName;
+      }
     }
   }
 
@@ -124,13 +159,34 @@
 
   stepItems.forEach(function (stepEl, mi) {
     var btn = stepEl.querySelector(".pr-step-btn");
-    if (!btn) return;
+    var body = stepEl.querySelector(".pr-step-body");
+    if (!btn || !body) return;
+
     btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      var isExpanded = this.getAttribute("aria-expanded") === "true";
       var targetId = stepEl.dataset.target;
+      var clickedChevron = e.target.closest(".pr-step-chevron");
+
+      if (clickedChevron || (stepEl.classList.contains("is-active") && isExpanded)) {
+        var nowOpen = !isExpanded;
+        this.setAttribute("aria-expanded", nowOpen ? "true" : "false");
+        if (nowOpen) {
+          body.removeAttribute("hidden");
+        } else {
+          body.setAttribute("hidden", "");
+        }
+        return;
+      }
+
+      if (!isExpanded) {
+        this.setAttribute("aria-expanded", "true");
+        body.removeAttribute("hidden");
+      }
+
       if (targetId) {
         var target = document.getElementById(targetId);
         if (target) {
-          e.preventDefault();
           closeMenu();
           target.scrollIntoView({ behavior: "smooth", block: "start" });
           target.setAttribute("tabindex", "-1");
@@ -148,19 +204,47 @@
     });
   });
 
-  var topBtn = document.getElementById("pr-top");
-  if (topBtn) {
-    topBtn.addEventListener("click", function () {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      var h = document.getElementById("wb-cont");
-      if (h) {
-        h.setAttribute("tabindex", "-1");
-        h.focus({ preventScroll: true });
+  function syncSideNav(act) {
+    if (!side || window.innerWidth < 992 || isUserScrollingSide) return;
+
+    var maxScroll = side.scrollHeight - side.clientHeight;
+    if (maxScroll <= 0) return;
+
+    var targetScroll = 0;
+    var layout = document.querySelector(".pr-layout");
+
+    if (layout) {
+      var layoutRect = layout.getBoundingClientRect();
+      var travel = layoutRect.height - window.innerHeight;
+      if (travel > 0) {
+        var progress = (20 - layoutRect.top) / travel;
+        progress = Math.max(0, Math.min(1, progress));
+        targetScroll = progress * maxScroll;
       }
-      currentFlat = -1;
-      setActive(0);
-      setTimeout(onScroll, 400);
-    });
+    }
+
+    if (act) {
+      var activeEl = act.navCard || act.navMain;
+      if (activeEl) {
+        var elTop = activeEl.offsetTop;
+        var elBottom = elTop + activeEl.offsetHeight + 24;
+        if (elBottom > targetScroll + side.clientHeight) {
+          targetScroll = elBottom - side.clientHeight;
+        }
+        if (elTop - 24 < targetScroll) {
+          targetScroll = elTop - 24;
+        }
+      }
+    }
+
+    if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 50)) {
+      targetScroll = maxScroll;
+    } else if (window.scrollY <= 150) {
+      targetScroll = 0;
+    }
+
+    targetScroll = Math.max(0, Math.min(maxScroll, targetScroll));
+    side.scrollTop = targetScroll;
   }
 
   function onScroll() {
@@ -176,8 +260,7 @@
     }
 
     setActive(fi);
-
-    if (topBtn) topBtn.classList.toggle("is-visible", window.scrollY > 400);
+    syncSideNav(flat[fi]);
   }
 
   var subCardLinks = Array.prototype.slice.call(document.querySelectorAll(".pr-sub-card"));
