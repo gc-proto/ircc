@@ -20,9 +20,9 @@
 }
 
 .pr-side {
-  flex: 0 0 244px;
-  width: 244px;
-  max-width: 244px;
+  flex: 0 0 350px;
+  width: 350px;
+  max-width: 350px;
   position: sticky;
   top: 20px;
   max-height: calc(100vh - 40px);
@@ -364,47 +364,20 @@ p.pr-eyebrow {
   overflow: hidden;
 }
 
-.pr-main details summary {
-  align-items: flex-start;
-  background: #fff;
-  border: 0;
-  color: #295376;
-  cursor: pointer;
-  display: flex;
-  font-size: 20px;
-  font-weight: 400;
-  gap: 13px;
-  line-height: 33px;
-  list-style: none;
-  margin: 0;
-  padding: 5px 15px 8px;
-}
 
-.pr-main details summary::-webkit-details-marker { display: none; }
+
+
 .pr-main details summary::marker { content: ""; font-size: 0; }
 
-.pr-accordion-icon {
-  width: 16px;
-  height: 16px;
-  flex: 0 0 16px;
-  object-fit: contain;
-  margin-top: 0;
-  transition: transform 0.15s ease;
-}
 
-#get-forms details summary {
-  align-items: flex-start;
-}
 
-#get-forms .pr-accordion-icon {
-  margin-top: 8px;
-}
 
-.pr-main details:not([open]) .pr-accordion-icon {
-  transform: rotate(-90deg);
-}
 
-.pr-main details summary:focus-visible { outline: 2px solid #0535d2; outline-offset: -2px; }
+#get-forms 
+
+.pr-main details:not([open]) 
+
+
 
 .pr-main a:not(.btn):not(.pr-sub-card) {
   color: #284162;
@@ -724,20 +697,16 @@ h1#wb-cont.pr-h1,
 .pr-fds-alert .pr-alert-icon {
   position: absolute;
   top: 18px;
-  left: 0;
-  z-index: 1;
-  width: 26px;
-  height: 26px;
-  object-fit: contain;
+  left: 50%;
+  transform: translateX(-50%);
   margin: 0;
 }
 
 .pr-fds-alert .pr-alert-rule-top,
 .pr-fds-alert .pr-alert-rule-bottom {
   position: absolute;
-  left: 10px;
+  left: 50%;
   width: 6px;
-  background: #ee7100;
   transform: translateX(-50%);
 }
 
@@ -783,15 +752,8 @@ h1#wb-cont.pr-h1,
 
 @media (min-width: 992px) {
   .pr-layout { margin-top: 39px; }
-  .pr-stage:not(:last-child) {
-    padding-bottom: 56px;
-    margin-bottom: 56px;
-  }
-  .pr-section,
-  .pr-subsection {
-    padding-bottom: 62px;
-    margin-bottom: 24px;
-  }
+  .pr-stage:not(:last-child) { padding-bottom: 24px; margin-bottom: 24px; }
+  .pr-section, .pr-subsection { padding-bottom: 24px; margin-bottom: 16px; }
 
   .pr-subsection#submit-application {
     padding-bottom: 0;
@@ -1015,14 +977,7 @@ h1#wb-cont.pr-h1,
   }
 
   .wb-accordion details summary,
-  .pr-layout details summary,
-  details.print-open summary,
-  details summary {
-    min-height: 44px;
-    padding: 10px 14px;
-    font-size: 17px;
-    line-height: 24px;
-  }
+  
 
   .wb-accordion details > div,
   .pr-layout details > div,
@@ -1114,4 +1069,20 @@ h1#wb-cont.pr-h1,
     background-color: transparent !important;
     padding: 0 !important;
   }
+}
+
+.pr-main .btn-default {
+  background-color: transparent;
+  border: 1px solid #284162;
+  border-radius: 4px;
+  box-shadow: none;
+  color: #284162;
+  display: inline-block;
+  text-decoration: none;
+}
+.pr-main .btn-default:hover,
+.pr-main .btn-default:focus {
+  background-color: #eaebed;
+  color: #284162;
+  text-decoration: underline;
 }
