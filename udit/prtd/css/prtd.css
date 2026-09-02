@@ -381,7 +381,7 @@ details summary {
   font-size: 20px;
   font-weight: 400;
   line-height: 33px;
-  padding: 8px 16px;
+  padding: 5px 15px 8px;
   user-select: none;
   background-color: #ffffff !important;
   transition: background-color 0.15s ease, color 0.15s ease;
@@ -417,6 +417,14 @@ details[open] summary::before { content: none !important; }
   object-fit: contain;
   margin-top: 0;
   transition: transform 0.15s ease;
+}
+
+#get-forms details summary {
+  align-items: flex-start;
+}
+
+#get-forms .pr-accordion-icon {
+  margin-top: 8px;
 }
 
 .wb-accordion details:not([open]) .pr-accordion-icon,
