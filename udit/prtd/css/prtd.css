@@ -403,14 +403,14 @@ details summary {
   font-size: 20px;
   font-weight: 400;
   line-height: 33px;
-  padding: 5px 15px 8px;
+  padding: 8px 16px;
   user-select: none;
   background-color: #ffffff !important;
   transition: background-color 0.15s ease, color 0.15s ease;
   list-style: none;
   display: flex;
-  align-items: flex-start;
-  gap: 13px;
+  align-items: center;
+  gap: 12px;
 }
 
 .wb-accordion details summary::-webkit-details-marker,
@@ -433,11 +433,11 @@ details summary::before {
 details[open] summary::before { content: none !important; }
 
 .pr-accordion-icon {
-  width: 16px;
-  height: 16px;
-  flex: 0 0 16px;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
   object-fit: contain;
-  margin-top: 8px;
+  margin-top: 0;
   transition: transform 0.15s ease;
 }
 
@@ -476,6 +476,47 @@ details summary:focus {
 .pr-layout details summary:focus:not(:focus-visible),
 details summary:focus:not(:focus-visible) {
   outline: none !important;
+}
+
+/* ==========================================================================
+   Links & Buttons (Figma & Canada.ca design fidelity)
+   ========================================================================== */
+
+.pr-main a:not(.btn):not(.pr-sub-card) {
+  color: #284162;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.pr-main a:not(.btn):not(.pr-sub-card):hover,
+.pr-main a:not(.btn):not(.pr-sub-card):focus {
+  color: #0535d2;
+  text-decoration: underline;
+}
+
+/* Figma Secondary Outline Button ("Pay your fees online", "Apply for a new PR card", etc.) */
+.pr-main .btn-default {
+  background-color: #ffffff !important;
+  color: #284162 !important;
+  border: 2px solid #284162 !important;
+  border-radius: 6px !important;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 8px 18px;
+  text-decoration: none !important;
+  display: inline-block;
+  box-shadow: none !important;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.pr-main .btn-default:hover,
+.pr-main .btn-default:focus {
+  background-color: #284162 !important;
+  color: #ffffff !important;
+  border-color: #284162 !important;
+  text-decoration: underline !important;
+  outline: 2px solid #0535d2;
+  outline-offset: 2px;
 }
 
 .wb-accordion details summary:focus-visible,
