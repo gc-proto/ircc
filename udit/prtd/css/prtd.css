@@ -358,7 +358,7 @@ p.pr-eyebrow {
 .wb-accordion details,
 .pr-layout details,
 details.print-open {
-  border: 1px solid #d3d5d7 !important;
+  border: 1px solid #dddddd !important;
   border-radius: 4px !important;
   margin-top: 8px;
   margin-bottom: 12px;
@@ -388,7 +388,7 @@ details summary {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 13px;
 }
 
 .wb-accordion details summary::-webkit-details-marker,
@@ -411,9 +411,9 @@ details summary::before {
 details[open] summary::before { content: none !important; }
 
 .pr-accordion-icon {
-  width: 14px;
-  height: 14px;
-  flex: 0 0 14px;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
   object-fit: contain;
   margin-top: 0;
   transition: transform 0.15s ease;
@@ -424,24 +424,6 @@ details[open] summary::before { content: none !important; }
 details:not([open]) .pr-accordion-icon {
   transform: rotate(-90deg);
 }
-
-.wb-accordion details summary:hover,
-.wb-accordion details summary:focus,
-.pr-layout details summary:hover,
-.pr-layout details summary:focus,
-details summary:hover,
-details summary:focus {
-  color: #0535d2;
-  background-color: #f8f9fa;
-  text-decoration: underline;
-}
-
-.wb-accordion details summary:hover::before,
-.wb-accordion details summary:focus::before,
-.pr-layout details summary:hover::before,
-.pr-layout details summary:focus::before,
-details summary:hover::before,
-details summary:focus::before { color: #0535d2; }
 
 .wb-accordion details summary:focus,
 .pr-layout details summary:focus,
@@ -501,7 +483,7 @@ details summary:focus-visible {
 
 .wb-accordion details[open] summary,
 .pr-layout details[open] summary,
-details[open] summary { border-bottom: 1px solid #e5e5e5 !important; }
+details[open] summary { border-bottom: 1px solid #dddddd !important; }
 
 .wb-accordion details > div,
 .pr-layout details > div,
@@ -892,6 +874,15 @@ h1#wb-cont.pr-h1,
   .pr-subsection {
     padding-bottom: 62px;
     margin-bottom: 24px;
+  }
+
+  .pr-subsection#submit-application {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .pr-subsection#submit-application > details.print-open {
+    margin-top: 25px !important;
   }
 
   .pr-feedback-col .gc-pg-hlpfl-btn h2 {
