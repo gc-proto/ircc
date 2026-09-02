@@ -4,15 +4,11 @@
   --pr-accent: #0535d2;
 }
 
-/* ==========================================================================
-   Layout
-   ========================================================================== */
-
 .pr-layout {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 75px; /* Figma left rail to content gap */
+  gap: 75px;
   position: relative;
   width: 100%;
   margin-top: 1.5rem;
@@ -63,10 +59,6 @@
   min-width: 0;
 }
 
-/* ==========================================================================
-   Stepper nav (sidebar)
-   ========================================================================== */
-
 .pr-stepper {
   background: transparent;
   border: none;
@@ -95,7 +87,6 @@
   z-index: 0;
 }
 
-/* The Figma rail continues beside the final substeps instead of ending at the last step circle. */
 .pr-step:last-child::after {
   content: "";
   position: absolute;
@@ -107,7 +98,6 @@
   z-index: 0;
 }
 
-/* Explicit Figma terminal marker at the end of the final progress rail. */
 .pr-step-terminal {
   display: block;
   position: relative;
@@ -249,7 +239,6 @@
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-/* Hover state: transparent background, visible arrow, blue text */
 .pr-sub-card:hover,
 .pr-sub-card:focus {
   background: transparent;
@@ -264,7 +253,6 @@
   transform: translateX(0);
 }
 
-/* Selected state: light blue background, visible arrow, bold text */
 .pr-sub-card.is-active,
 .pr-sub-card.is-active:hover,
 .pr-sub-card.is-active:focus {
@@ -302,10 +290,6 @@
   outline-offset: 2px;
 }
 
-/* ==========================================================================
-   Main content sections
-   ========================================================================== */
-
 .pr-stage {
   border-bottom: 1px solid #eeeeee;
   padding-bottom: 28px;
@@ -325,7 +309,6 @@
   margin-bottom: 8px;
 }
 
-/* AEM-ready: eyebrow is <p class="pr-eyebrow h4"> — inherits WET h4 (1.1875rem) but keeps token fallback */
 .pr-eyebrow {
   display: block;
   font-family: "Lato", "Noto Sans", sans-serif;
@@ -367,15 +350,10 @@ p.pr-eyebrow {
   color: #333333;
 }
 
-/* Stacked heading pair: eyebrow (visually h4) + main (visually h3) with tight gap per Figma single-page design 973:31166 */
 .pr-section .pr-eyebrow + .pr-stage-h,
 .pr-subsection .pr-eyebrow + .pr-stage-h {
   margin-top: 0;
 }
-
-/* ==========================================================================
-   Details / accordion overrides
-   ========================================================================== */
 
 .wb-accordion details,
 .pr-layout details,
@@ -478,10 +456,6 @@ details summary:focus:not(:focus-visible) {
   outline: none !important;
 }
 
-/* ==========================================================================
-   Links & Buttons (Figma & Canada.ca design fidelity)
-   ========================================================================== */
-
 .pr-main a:not(.btn):not(.pr-sub-card) {
   color: #284162;
   text-decoration: underline;
@@ -494,7 +468,6 @@ details summary:focus:not(:focus-visible) {
   text-decoration: underline;
 }
 
-/* Figma Secondary Outline Button ("Pay your fees online", "Apply for a new PR card", etc.) */
 .pr-main .btn-default {
   background-color: #ffffff !important;
   color: #284162 !important;
@@ -543,9 +516,11 @@ details > div {
   color: #333333;
 }
 
-/* ==========================================================================
-   Back to top button
-   ========================================================================== */
+.wb-accordion details > div.mrgn-tp-sm,
+.pr-layout details > div.mrgn-tp-sm,
+details > div.mrgn-tp-sm {
+  margin-top: 0 !important;
+}
 
 .pr-top {
   display: none;
@@ -588,10 +563,6 @@ details > div {
 }
 
 .pr-top .glyphicon { font-size: 12px; }
-
-/* ==========================================================================
-   Mobile collapsible nav toggle
-   ========================================================================== */
 
 .pr-stepper-toggle {
   display: none;
@@ -639,10 +610,6 @@ details > div {
 .pr-stepper.is-open .pr-toggle-caret,
 button[aria-expanded="true"] .pr-toggle-caret { transform: rotate(180deg); }
 
-/* ==========================================================================
-   Header sign-in (prototype)
-   ========================================================================== */
-
 .pr-signin-li { margin-left: 12px; }
 
 .pr-signin {
@@ -657,20 +624,16 @@ button[aria-expanded="true"] .pr-toggle-caret { transform: rotate(180deg); }
   margin-right: 4px;
 }
 
-/* ==========================================================================
-   Page title
-   ========================================================================== */
-
 h1#wb-cont.pr-h1,
 .pr-h1 {
   border-bottom: none !important;
   padding-bottom: 0;
-  margin-top: 20px;
+  margin-top: 16px;
   margin-bottom: 0;
-  font-size: 40px;
+  font-size: 41px;
   font-weight: 700;
-  color: #26374a;
-  line-height: 48px;
+  color: #333333;
+  line-height: 42px;
 }
 
 .pr-h1::after {
@@ -683,14 +646,10 @@ h1#wb-cont.pr-h1,
   border-radius: 1px;
 }
 
-/* ==========================================================================
-   At-a-glance band
-   ========================================================================== */
-
 .pr-glance-band {
   background-color: #ebf2fc;
   padding: 50px 0;
-  margin-top: 24px;
+  margin-top: 39px;
 }
 
 .pr-glance-band .well,
@@ -821,10 +780,6 @@ h1#wb-cont.pr-h1,
   color: #26374a;
 }
 
-/* ==========================================================================
-   Alerts (FDS)
-   ========================================================================== */
-
 .pr-fds-alert {
   display: flex;
   align-items: center;
@@ -913,10 +868,6 @@ h1#wb-cont.pr-h1,
   margin-bottom: 0;
 }
 
-/* ==========================================================================
-   Page feedback
-   ========================================================================== */
-
 .pr-feedback-col {
   width: 462px !important;
   flex: 0 0 462px;
@@ -931,13 +882,8 @@ h1#wb-cont.pr-h1,
   padding: 12px 20px;
 }
 
-/* ==========================================================================
-   Responsive
-   ========================================================================== */
-
 @media (min-width: 992px) {
-  /* Match the exported Figma frame's page rhythm and shell offsets. */
-  .pr-layout { margin-top: 44px; }
+  .pr-layout { margin-top: 39px; }
   .pr-stage:not(:last-child) {
     padding-bottom: 56px;
     margin-bottom: 56px;
@@ -948,7 +894,6 @@ h1#wb-cont.pr-h1,
     margin-bottom: 24px;
   }
 
-  /* The compact feedback card in the design is a two-line prompt beside its buttons. */
   .pr-feedback-col .gc-pg-hlpfl-btn h2 {
     margin: 0;
     font-size: 16px;
@@ -959,7 +904,6 @@ h1#wb-cont.pr-h1,
   .container > .pr-layout + .row.row-no-gutters.mrgn-tp-xl { margin-top: 40px; }
   .pagedetails { padding-top: 18px; padding-bottom: 22px; }
 
-  /* Flexible Canada.ca footer bands with min-height (no hardcoded height or overflow:hidden for WCAG 200% scaling). */
   #wb-info .gc-contextual {
     min-height: 113px;
   }
@@ -988,7 +932,14 @@ h1#wb-cont.pr-h1,
 
 @media (min-width: 1200px) {
   .pr-layout {
+    width: 1149px;
+    max-width: calc(100vw - 30px);
     gap: 75px;
+  }
+
+  .pr-main {
+    flex: 0 1 830px;
+    width: 830px;
   }
 }
 
@@ -1044,6 +995,7 @@ h1#wb-cont.pr-h1,
   }
 
   .pr-glance-band { padding: 24px 0 32px; }
+  .pr-glance-band { margin-top: 24px; }
 
   .pr-glance-boxes {
     grid-template-columns: repeat(2, 1fr);
@@ -1054,31 +1006,14 @@ h1#wb-cont.pr-h1,
     padding: 20px;
   }
 
-  h1#wb-cont.pr-h1,
-  .pr-h1 {
-    font-size: 1.625rem;
-  }
-  .pr-eyebrow,
-  .pr-eyebrow.h4,
-  p.pr-eyebrow,
-  h2.pr-eyebrow {
-    font-size: 20px;
-    line-height: 28px;
-  }
-  .pr-stage-h { font-size: 29px; line-height: 33px; }
-  .pr-main h3:not(.pr-stage-h) { font-size: 24px; line-height: 30px; }
-  .pr-main p,
-  .pr-main li,
-  .pr-glance-desc,
-  .pr-glance-intro { font-size: 18px; line-height: 30px; }
-  .pr-glance-title { font-size: 20px; line-height: 28px; }
 }
 
 @media (max-width: 600px) {
-  /* At-a-glance 1-column stacked layout & card padding adjustments */
   .pr-glance-band {
     padding: 20px 0 28px;
   }
+
+  .pr-signin-li { margin-left: 0; }
 
   .pr-glance-card {
     padding: 16px;
@@ -1105,57 +1040,56 @@ h1#wb-cont.pr-h1,
     gap: 10px;
   }
 
-  /* Compact header, branding & mobile typography */
   h1#wb-cont.pr-h1,
   .pr-h1 {
-    font-size: 26px;
-    line-height: 32px;
+    font-size: 37px;
+    line-height: 44px;
     margin-top: 16px;
   }
 
   .pr-h1::after {
-    width: 50px;
-    height: 5px;
-    margin-top: 8px;
+    width: 71px;
+    height: 6px;
+    margin-top: 12px;
   }
 
   .pr-eyebrow,
   .pr-eyebrow.h4,
   p.pr-eyebrow,
   h2.pr-eyebrow {
-    font-size: 17px;
-    line-height: 22px;
+    font-size: 22px;
+    line-height: 28px;
     margin-bottom: 2px;
   }
 
   .pr-stage-h {
-    font-size: 22px;
-    line-height: 28px;
-    margin-bottom: 8px;
+    font-size: 35px;
+    line-height: 40px;
+    margin-bottom: 10px;
   }
 
   .pr-main h3:not(.pr-stage-h) {
-    font-size: 19px;
-    line-height: 25px;
+    font-size: 26px;
+    line-height: 31px;
     margin-top: 18px;
     margin-bottom: 8px;
   }
 
   .pr-main p,
   .pr-main li {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 18px;
+    line-height: 30px;
   }
 
   .pr-glance-title {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 24px;
+    line-height: 33px;
   }
 
   .pr-glance-desc,
   .pr-glance-intro {
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 18px;
+    line-height: 30px;
   }
 
   .pr-fds-alert {
@@ -1163,16 +1097,15 @@ h1#wb-cont.pr-h1,
   }
 
   .pr-fds-alert h3 {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 22px;
+    line-height: 28px;
   }
 
   .pr-fds-alert p {
-    font-size: 15px;
-    line-height: 23px;
+    font-size: 18px;
+    line-height: 30px;
   }
 
-  /* Touch target compliance (minimum 44x44px touch targets) */
   .pr-stepper-toggle {
     min-height: 48px;
     padding: 12px 16px;
@@ -1275,7 +1208,6 @@ h1#wb-cont.pr-h1,
     padding-left: 28px;
   }
 
-  /* Responsive layout adjustments & overflow containment */
   .pr-main {
     min-width: 0;
     word-break: break-word;
@@ -1294,10 +1226,6 @@ h1#wb-cont.pr-h1,
     scroll-margin-top: 100px;
   }
 }
-
-/* ==========================================================================
-   Print
-   ========================================================================== */
 
 @media print {
   .pr-side       { display: none !important; }
