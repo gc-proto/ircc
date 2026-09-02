@@ -1,0 +1,1545 @@
+<!-- =========================================================================
+     PERMANENT RESIDENT TRAVEL DOCUMENT (PRTD) - SINGLE PAGE STEPPER
+     AEM DROP-IN PAYLOAD (MWS MEDIA PLAYER COMPONENT)
+     
+     Instructions:
+     1. In AEM, add an "mwsmediaplayer" (Multimedia / Media Player) component
+        or Generic HTML component to the page.
+     2. Copy this ENTIRE file and paste it into the component embed / code field.
+     3. Save and publish.
+     
+     Features:
+     - 100% self-contained: all CSS, JS, and SVG vector icons are inlined.
+     - Zero external file dependencies or broken paths.
+     - AEM Touch UI safe (disabled automatically in /editor.html authoring mode).
+     - Fully responsive with synchronized mobile & desktop navigation.
+     ========================================================================= -->
+<div class="mwsmediaplayer section">
+
+<style>
+:root {
+  --pr-navy: #26374a;
+  --pr-blue: #284162;
+  --pr-accent: #0535d2;
+}
+
+.pr-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+  position: relative;
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.pr-layout-inner {
+  display: contents;
+}
+
+.pr-side {
+  flex: 0 0 260px;
+  width: 260px;
+  max-width: 260px;
+  position: sticky;
+  top: 20px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  z-index: 10;
+  padding-right: 18px;
+  padding-top: 4px;
+  padding-bottom: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: #c8c8c8 transparent;
+}
+
+.pr-side::-webkit-scrollbar {
+  width: 6px;
+}
+
+.pr-side::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pr-side::-webkit-scrollbar-thumb {
+  background: #c8c8c8;
+  border-radius: 4px;
+}
+
+.pr-side::-webkit-scrollbar-thumb:hover {
+  background: #999999;
+}
+
+.pr-main {
+  flex: 1 1 auto;
+  max-width: 830px;
+  width: auto;
+  min-width: 0;
+}
+
+.pr-stepper {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.pr-stepper-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pr-step {
+  position: relative;
+}
+
+.pr-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 18px;
+  bottom: -18px;
+  width: 2px;
+  background: #26374a;
+  z-index: 0;
+}
+
+.pr-step:last-child {
+  padding-bottom: 24px;
+}
+
+.pr-step:last-child::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 18px;
+  bottom: 6px;
+  width: 2px;
+  background: #26374a;
+  z-index: 0;
+}
+
+.pr-step-terminal {
+  display: block;
+  position: absolute;
+  bottom: 6px;
+  left: 4px;
+  width: 12px;
+  height: 2px;
+  background-color: #26374a;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.pr-step-terminal img {
+  display: none;
+}
+
+.pr-step-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.pr-circle {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2.5px solid #26374a;
+  background: #ffffff;
+  position: relative;
+  z-index: 2;
+}
+
+.pr-step.is-active .pr-circle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #26374a;
+}
+
+.pr-step-btn {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 16px;
+  color: #6f6f6f;
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.3;
+  min-height: auto;
+}
+
+.pr-step-btn:focus {
+  outline: 2px solid #0535d2;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.pr-step-btn:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.pr-step-btn:focus-visible {
+  outline: 2px solid #0535d2;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.pr-step-title {
+  flex: 1 1 auto;
+}
+
+.pr-step.is-active .pr-step-btn  { color: #26374a; }
+.pr-step.is-active .pr-step-title { font-weight: 700; }
+.pr-step.is-done   .pr-step-btn  { color: #6f6f6f; }
+.pr-step.is-done   .pr-step-title { font-weight: 600; }
+
+.pr-step-chevron {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  color: #6f6f6f;
+  transition: transform 0.25s ease, color 0.2s ease;
+  cursor: pointer;
+}
+
+.pr-step-btn[aria-expanded="false"] .pr-step-chevron {
+  transform: rotate(180deg);
+}
+
+.pr-step.is-active .pr-step-chevron {
+  color: #26374a;
+}
+
+.pr-step-body {
+  padding-left: 32px;
+  padding-top: 4px;
+  padding-bottom: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.pr-step-body[hidden] {
+  display: none !important;
+}
+
+html.no-js .pr-step-body[hidden] {
+  display: block !important;
+}
+
+.pr-sub-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: transparent;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  text-decoration: none;
+  color: #6f6f6f;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.35;
+  min-height: auto;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.pr-sub-card:last-child { margin-bottom: 0; }
+
+.pr-sub-arrow {
+  flex-shrink: 0;
+  width: 13px;
+  height: auto;
+  font-size: 0;
+  line-height: 1;
+  color: #26374a;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.pr-sub-card:hover,
+.pr-sub-card:focus {
+  background: transparent;
+  text-decoration: none;
+  color: #0535d2;
+}
+
+.pr-sub-card:hover .pr-sub-arrow,
+.pr-sub-card:focus .pr-sub-arrow {
+  opacity: 1;
+  color: #26374a;
+  transform: translateX(0);
+}
+
+.pr-sub-card.is-active,
+.pr-sub-card.is-active:hover,
+.pr-sub-card.is-active:focus {
+  background: #ebf2fa;
+  color: #26374a;
+  font-weight: 700;
+  padding: 8px 12px;
+}
+
+.pr-sub-card.is-active .pr-sub-arrow {
+  opacity: 1;
+  color: #26374a;
+  transform: translateX(0);
+}
+
+.pr-sub-card .pr-sub-arrow img,
+.pr-sub-card.is-active .pr-sub-arrow img {
+  display: block;
+  width: 13px;
+  height: 12px;
+  margin-top: 4px;
+}
+
+.pr-sub-card:focus {
+  outline: 2px solid #0535d2;
+  outline-offset: 2px;
+}
+
+.pr-sub-card:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.pr-sub-card:focus-visible {
+  outline: 2px solid #0535d2;
+  outline-offset: 2px;
+}
+
+.pr-stage {
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+}
+
+.pr-stage:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.pr-section,
+.pr-subsection {
+  scroll-margin-top: 100px;
+  padding-bottom: 16px;
+  margin-bottom: 8px;
+}
+
+.pr-eyebrow {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #595959;
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.pr-eyebrow.h4,
+p.pr-eyebrow {
+  font-size: 1rem;
+  line-height: 1.3;
+  text-transform: none;
+}
+
+.pr-stage-h {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #26374a;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.pr-main h3:not(.pr-stage-h) {
+  font-size: 1.375rem;
+  line-height: 1.3;
+  color: #333333;
+}
+
+.pr-section .pr-eyebrow + .pr-stage-h,
+.pr-subsection .pr-eyebrow + .pr-stage-h {
+  margin-top: 0;
+}
+
+
+
+
+
+
+
+.pr-main a:not(.btn):not(.pr-sub-card) {
+  color: #284162;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.pr-main a:not(.btn):not(.pr-sub-card):hover,
+.pr-main a:not(.btn):not(.pr-sub-card):focus {
+  color: #0535d2;
+  text-decoration: underline;
+}
+
+
+
+.pr-stepper-toggle {
+  display: none;
+  width: 100%;
+  padding: 10px 14px;
+  background-color: #ffffff;
+  border: 1px solid #d3d5d7;
+  border-radius: 4px;
+  text-align: left;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: 8px;
+}
+
+.pr-toggle-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.pr-toggle-parent {
+  font-size: 12px;
+  font-weight: 600;
+  color: #595959;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pr-toggle-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #284162;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pr-stepper-toggle:hover {
+  background-color: #f5f8fa;
+  border-color: #284162;
+}
+
+.pr-stepper-toggle:focus {
+  outline: 2px solid #0535d2;
+  outline-offset: 2px;
+}
+
+.pr-stepper-toggle:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.pr-stepper-toggle:focus-visible {
+  outline: 2px solid #0535d2;
+  outline-offset: 2px;
+}
+
+.pr-toggle-caret {
+  font-size: 13px;
+  color: #555555;
+  transition: transform 0.25s ease;
+}
+
+.pr-stepper.is-open .pr-toggle-caret,
+button[aria-expanded="true"] .pr-toggle-caret { transform: rotate(180deg); }
+
+h1#wb-cont.pr-h1,
+.pr-h1 {
+  border-bottom: none !important;
+  padding-bottom: 0;
+  margin-top: 16px;
+  margin-bottom: 0;
+  font-size: 2.375rem;
+  font-weight: 700;
+  color: #333333;
+  line-height: 1.25;
+}
+
+.pr-h1::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 6px;
+  background-color: #af3c43;
+  margin-top: 12px;
+  border-radius: 1px;
+}
+
+.pr-glance-band {
+  background-color: #ebf2fc;
+  padding: 36px 0 40px;
+  margin-top: 28px;
+}
+
+.pr-glance-band .well,
+.pr-glance-card {
+  background-color: #ffffff;
+  border: 1px solid #dcdee1;
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin-bottom: 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.pr-glance-boxes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.pr-glance-box {
+  background-color: #ffffff;
+  border: 1px solid #e3e3e3;
+  border-radius: 15px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  min-height: auto;
+  height: 100%;
+}
+
+.pr-glance-icon {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  object-fit: contain;
+  margin-top: 2px;
+}
+
+.pr-glance-icon-processing {
+  width: 32px;
+  height: 32px;
+}
+
+.pr-glance-icon-valid {
+  width: 32px;
+  height: 28px;
+}
+
+.pr-glance-icon-apply {
+  width: 32px;
+  height: 32px;
+}
+
+.pr-glance-icon-dollar {
+  width: 32px;
+  height: 32px;
+}
+
+.pr-glance-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.pr-glance-title {
+  display: block;
+  font-size: 1.125rem;
+  line-height: 1.3;
+  font-weight: 700;
+  color: #26374a;
+  margin: 0 0 4px;
+}
+
+.pr-glance-help {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  margin-left: 4px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.pr-glance-desc {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #333333;
+  margin: 0;
+}
+
+.pr-glance-hr {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 24px auto;
+  border: 0;
+  border-top: 1px solid #d3d5d7;
+  opacity: 1;
+}
+
+.pr-glance-intro {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #333333;
+  margin-top: 0;
+  margin-bottom: 12px;
+  max-width: none;
+}
+
+.pr-glance-band .well ul.list-unstyled li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.pr-glance-band .well ul.list-unstyled li:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.pr-glance-band .pr-check-icon,
+.pr-check-icon {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  object-fit: contain;
+  color: #26374a;
+}
+
+@media (min-width: 992px) {
+  .pr-layout { margin-top: 39px; }
+  .pr-stage:not(:last-child) { padding-bottom: 24px; margin-bottom: 24px; }
+  .pr-section, .pr-subsection { padding-bottom: 24px; margin-bottom: 16px; }
+
+  .pr-subsection#submit-application {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .pr-subsection#submit-application > details.print-open {
+    margin-top: 25px !important;
+  }
+
+  .container > .pr-layout + .row.row-no-gutters.mrgn-tp-xl { margin-top: 40px; }
+  }
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .pr-layout {
+    gap: 32px;
+    gap: clamp(24px, 3.5vw, 40px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .pr-layout {
+    gap: 40px;
+  }
+
+  .pr-main {
+    flex: 1 1 auto;
+    width: auto;
+  }
+}
+
+@media (max-width: 991px) {
+  .pr-layout {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .pr-main {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .pr-side {
+    flex: 0 0 auto;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    max-width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #d3d5d7;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    padding: 8px 0;
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .pr-stepper-toggle { display: flex; }
+
+  #pr-steplist { display: none; }
+
+  .pr-stepper.is-open #pr-steplist {
+    display: block;
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 12px 0;
+  }
+
+  .pr-section,
+  .pr-subsection { scroll-margin-top: 120px; }
+
+
+
+  .pr-glance-band { padding: 24px 0 32px; }
+  .pr-glance-band { margin-top: 24px; }
+
+  .pr-glance-boxes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .pr-glance-card {
+    padding: 20px;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .pr-glance-band {
+    padding: 20px 0 28px;
+  }
+
+  .pr-glance-card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .pr-glance-boxes {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .pr-glance-box {
+    min-height: auto;
+    padding: 12px 14px;
+    border-radius: 12px;
+    gap: 14px;
+  }
+
+  .pr-glance-hr {
+    margin: 20px auto;
+  }
+
+  .pr-glance-band .well ul.list-unstyled li {
+    gap: 10px;
+  }
+
+  h1#wb-cont.pr-h1,
+  .pr-h1 {
+    font-size: 2.125rem;
+    line-height: 1.25;
+    margin-top: 16px;
+  }
+
+  .pr-h1::after {
+    width: 72px;
+    height: 6px;
+    margin-top: 12px;
+  }
+
+  .pr-eyebrow,
+  .pr-eyebrow.h4,
+  p.pr-eyebrow,
+  h2.pr-eyebrow {
+    font-size: 0.9375rem;
+    line-height: 1.3;
+    margin-bottom: 2px;
+  }
+
+  .pr-stage-h {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  .pr-main h3:not(.pr-stage-h) {
+    font-size: 1.25rem;
+    line-height: 1.3;
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
+
+  .pr-glance-title {
+    font-size: 1.0625rem;
+    line-height: 1.3;
+  }
+
+  .pr-glance-desc,
+  .pr-glance-intro {
+    font-size: 0.9375rem;
+    line-height: 1.4;
+  }
+
+  .pr-stepper-toggle {
+    min-height: 48px;
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+
+  .pr-step-row {
+    min-height: 44px;
+    padding: 8px 0;
+  }
+
+  .pr-step-btn {
+    min-height: 44px;
+    padding: 6px 0;
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .pr-sub-card {
+    min-height: 44px;
+    padding: 8px 12px;
+    margin-bottom: 4px;
+    font-size: 15px;
+    line-height: 1.35;
+    align-items: center;
+  }
+
+  .pr-sub-card.is-active,
+  .pr-sub-card.is-active:hover,
+  .pr-sub-card.is-active:focus {
+    padding: 8px 12px;
+  }
+
+
+
+
+
+  
+
+  
+
+  .gc-pg-hlpfl-btn button,
+  .gc-pg-hlpfl-no button {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 8px 16px;
+  }
+
+  .gc-pg-hlpfl-no .radio label {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding-left: 28px;
+  }
+
+  .pr-main {
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .pr-stage:not(:last-child) {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+  }
+
+  .pr-section,
+  .pr-subsection {
+    padding-bottom: 16px;
+    margin-bottom: 8px;
+    scroll-margin-top: 100px;
+  }
+}
+
+@media print {
+  .pr-side       { display: none !important; }
+  .btn-group.mrgn-bttm-md { display: none !important; }
+
+  .pr-layout details,
+  details.print-open {
+    display: block !important;
+    border: 1px solid #ccc !important;
+    break-inside: avoid;
+  }
+
+  .pr-layout  { display: block !important; }
+  .pr-main    { width: 100% !important; }
+
+  .pr-glance-band {
+    background-color: transparent !important;
+    padding: 0 !important;
+  }
+}
+
+
+
+
+.pr-main .btn-default {
+  background-color: transparent;
+  border: 1px solid #284162;
+  color: #284162;
+}
+.pr-main .btn-default:hover,
+.pr-main .btn-default:focus {
+  background-color: #ebf2fa;
+  color: #284162;
+  text-decoration: underline;
+  outline: 2px solid #0535d2;
+  outline-offset: 2px;
+}
+
+</style>
+
+  <div class="container">
+    <h1 property="name" id="wb-cont" class="pr-h1">Apply for a permanent resident travel document (PRTD)</h1>
+  </div>
+  <div class="pr-glance-band">
+    <div class="container">
+      <div class="well pr-glance-card">
+        <h2 class="wb-inv">At a glance</h2>
+        <div class="pr-glance-boxes">
+          <div class="pr-glance-box">
+            <svg class="pr-glance-icon" width="32" height="32" viewBox="0 0 37 38" fill="none" aria-hidden="true"><path d="M30.525 19C30.525 25.8222 25.1427 31.35 18.5 31.35C11.8573 31.35 6.475 25.8222 6.475 19C6.475 12.1778 11.8573 6.65 18.5 6.65C25.1427 6.65 30.525 12.1778 30.525 19ZM3.7 19C3.7 27.3956 10.3253 34.2 18.5 34.2C26.6747 34.2 33.3 27.3956 33.3 19C33.3 10.6044 26.6747 3.8 18.5 3.8C10.3253 3.8 3.7 10.6044 3.7 19ZM17.1125 10.925V19C17.1125 19.475 17.3438 19.9203 17.7311 20.1875L23.2811 23.9875C23.917 24.4269 24.7784 24.2487 25.2063 23.5897C25.6341 22.9306 25.4606 22.0519 24.8189 21.6125L19.8875 18.24V10.925C19.8875 10.1353 19.2689 9.5 18.5 9.5C17.7311 9.5 17.1125 10.1353 17.1125 10.925Z" fill="#26374A"/></svg>
+            <div class="pr-glance-content">
+              <div class="pr-glance-title">
+                <span>Processing times</span>
+                <svg class="pr-glance-help" width="16" height="16" viewBox="0 0 16.4688 16.4688" fill="none" aria-hidden="true" title="Processing times vary"><path d="M16.4688 8.23438C16.4688 12.7831 12.7818 16.4688 8.23438 16.4688C3.68697 16.4688 0 12.7831 0 8.23438C0 3.6883 3.68697 0 8.23438 0C12.7818 0 16.4688 3.6883 16.4688 8.23438ZM8.45534 2.72266C6.64587 2.72266 5.4918 3.4849 4.58555 4.83962C4.46814 5.01513 4.50742 5.25184 4.6757 5.37944L5.82781 6.25301C6.00063 6.38406 6.24687 6.35289 6.38114 6.18255C6.97428 5.43024 7.38099 4.99398 8.28378 4.99398C8.96209 4.99398 9.8011 5.43054 9.8011 6.08829C9.8011 6.58554 9.39061 6.84091 8.72087 7.2164C7.9398 7.65425 6.90625 8.19921 6.90625 9.5625V9.69531C6.90625 9.91535 7.08465 10.0938 7.30469 10.0938H9.16406C9.3841 10.0938 9.5625 9.91535 9.5625 9.69531V9.65105C9.5625 8.70603 12.3245 8.66668 12.3245 6.10938C12.3245 4.18353 10.3269 2.72266 8.45534 2.72266ZM8.23438 10.957C7.39218 10.957 6.70703 11.6422 6.70703 12.4844C6.70703 13.3265 7.39218 14.0117 8.23438 14.0117C9.07657 14.0117 9.76172 13.3265 9.76172 12.4844C9.76172 11.6422 9.07657 10.957 8.23438 10.957Z" fill="#335075"/></svg>
+              </div>
+              <p class="pr-glance-desc">Varies</p>
+            </div>
+          </div>
+          <div class="pr-glance-box">
+            <svg class="pr-glance-icon" width="32" height="32" viewBox="0 0 34 35" fill="none" aria-hidden="true"><path d="M15.725 4.8125C15.725 4.08516 16.2934 3.5 17 3.5C17.7066 3.5 18.275 4.08516 18.275 4.8125V7H21.25C22.1903 7 22.95 7.78203 22.95 8.75C22.95 9.71797 22.1903 10.5 21.25 10.5H15.1459C13.8231 10.5 12.75 11.6047 12.75 12.9664C12.75 14.1969 13.6266 15.2359 14.8059 15.4109L19.6722 16.1273C22.5303 16.5484 24.65 19.0641 24.65 22.0336C24.65 25.3312 22.0522 28 18.8541 28H18.275V30.1875C18.275 30.9148 17.7066 31.5 17 31.5C16.2934 31.5 15.725 30.9148 15.725 30.1875V28H11.9C10.9597 28 10.2 27.218 10.2 26.25C10.2 25.282 10.9597 24.5 11.9 24.5H18.8541C20.1769 24.5 21.25 23.3953 21.25 22.0336C21.25 20.8031 20.3734 19.7641 19.1941 19.5891L14.3278 18.8727C11.4697 18.457 9.35 15.9359 9.35 12.9664C9.35 9.67422 11.9478 7 15.1459 7H15.725V4.8125Z" fill="#26374A"/></svg>
+            <div class="pr-glance-content">
+              <div class="pr-glance-title">Fees</div>
+              <p class="pr-glance-desc">$CAN 50</p>
+            </div>
+          </div>
+          <div class="pr-glance-box">
+            <svg class="pr-glance-icon" width="32" height="32" viewBox="0 0 34 27" fill="none" aria-hidden="true"><path d="M33.15 23.625H0.85C0.380375 23.625 0 24.0026 0 24.4688V26.1563C0 26.6224 0.380375 27 0.85 27H33.15C33.6196 27 34 26.6224 34 26.1563V24.4688C34 24.0026 33.6196 23.625 33.15 23.625ZM2.38053 10.8454L7.09484 15.0641C7.48166 15.4108 7.94516 15.6624 8.44794 15.7987L23.7267 19.9304C25.1334 20.3106 26.6252 20.3903 28.0298 20.0021C29.606 19.566 30.3376 18.8837 30.54 18.119C30.7434 17.3544 30.4481 16.3941 29.2984 15.2207C28.2742 14.1755 26.9423 13.4916 25.5356 13.1113L20.3554 11.7107L15.0237 1.59363C14.9435 1.28725 14.7077 1.04783 14.4043 0.965566L10.9464 0.0305859C10.3854 -0.121289 9.83609 0.311133 9.84619 0.897539L12.3919 9.55705L6.96256 8.08893L5.49684 4.50932C5.39431 4.25145 5.17756 4.05738 4.91141 3.98566L2.80075 3.41455C2.25144 3.26584 1.71009 3.67822 1.7 4.25197L1.71222 9.61928C1.72231 10.0891 2.03256 10.5337 2.38053 10.8454Z" fill="#26374A"/></svg>
+            <div class="pr-glance-content">
+              <div class="pr-glance-title">Valid for</div>
+              <p class="pr-glance-desc">Single (one-time) entry to Canada</p>
+            </div>
+          </div>
+          <div class="pr-glance-box">
+            <svg class="pr-glance-icon" width="32" height="32" viewBox="0 0 34 34" fill="none" aria-hidden="true"><path d="M33.4688 17C33.4688 26.0977 26.0977 33.4688 17 33.4688C7.90234 33.4688 0.53125 26.0977 0.53125 17C0.53125 7.90234 7.90234 0.53125 17 0.53125C26.0977 0.53125 33.4688 7.90234 33.4688 17ZM23.9328 15.0809L19.125 20.0945V7.96875C19.125 7.08555 18.4145 6.375 17.5312 6.375H16.4688C15.5855 6.375 14.875 7.08555 14.875 7.96875V20.0945L10.0672 15.0809C9.44961 14.4367 8.42031 14.4234 7.78945 15.0543L7.06563 15.7848C6.44141 16.409 6.44141 17.4184 7.06563 18.0359L15.8711 26.848C16.4953 27.4723 17.5047 27.4723 18.1223 26.848L26.9344 18.0359C27.5586 17.4117 27.5586 16.4023 26.9344 15.7848L26.2105 15.0543C25.5797 14.4234 24.5504 14.4367 23.9328 15.0809Z" fill="#26374A"/></svg>
+            <div class="pr-glance-content">
+              <div class="pr-glance-title">How you apply</div>
+              <p class="pr-glance-desc">Online (in most cases)</p>
+            </div>
+          </div>
+        </div>
+        <hr class="pr-glance-hr" role="presentation" aria-hidden="true">
+        <p class="pr-glance-intro"><strong>If you&rsquo;re a permanent resident of Canada, you need a permanent resident travel document (PRTD) if:</strong></p>
+        <ul class="list-unstyled mrgn-bttm-0">
+          <li>
+            <svg class="pr-check-icon mrgn-rght-sm" width="22" height="22" viewBox="0 0 27 27" fill="none" aria-hidden="true"><path d="M26.5781 13.5C26.5781 20.7229 20.7229 26.5781 13.5 26.5781C6.27713 26.5781 0.421875 20.7229 0.421875 13.5C0.421875 6.27713 6.27713 0.421875 13.5 0.421875C20.7229 0.421875 26.5781 6.27713 26.5781 13.5ZM11.9873 20.4248L21.6904 10.7216C22.0199 10.3922 22.0199 9.8579 21.6904 9.52842L20.4972 8.3352C20.1677 8.00566 19.6334 8.00566 19.3039 8.3352L11.3906 16.2484L7.69611 12.5539C7.36662 12.2244 6.83237 12.2244 6.50283 12.5539L5.30961 13.7471C4.98013 14.0766 4.98013 14.6108 5.30961 14.9403L10.794 20.4247C11.1235 20.7542 11.6577 20.7542 11.9873 20.4248Z" fill="#26374A"/></svg>
+            <span>you&rsquo;re <strong>outside</strong> Canada <strong>without</strong> a valid permanent resident card (PR card), and</span>
+          </li>
+          <li>
+            <svg class="pr-check-icon mrgn-rght-sm" width="22" height="22" viewBox="0 0 27 27" fill="none" aria-hidden="true"><path d="M26.5781 13.5C26.5781 20.7229 20.7229 26.5781 13.5 26.5781C6.27713 26.5781 0.421875 20.7229 0.421875 13.5C0.421875 6.27713 6.27713 0.421875 13.5 0.421875C20.7229 0.421875 26.5781 6.27713 26.5781 13.5ZM11.9873 20.4248L21.6904 10.7216C22.0199 10.3922 22.0199 9.8579 21.6904 9.52842L20.4972 8.3352C20.1677 8.00566 19.6334 8.00566 19.3039 8.3352L11.3906 16.2484L7.69611 12.5539C7.36662 12.2244 6.83237 12.2244 6.50283 12.5539L5.30961 13.7471C4.98013 14.0766 4.98013 14.6108 5.30961 14.9403L10.794 20.4247C11.1235 20.7542 11.6577 20.7542 11.9873 20.4248Z" fill="#26374A"/></svg>
+            <span>you&rsquo;re returning to Canada by commercial vehicle (airplane, bus boat or train)</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="pr-layout">
+      <div class="pr-layout-inner">
+        <div class="pr-side">
+          <nav class="pr-stepper" id="pr-stepper-nav" aria-label="Permanent resident travel document steps">
+            <button type="button" class="pr-stepper-toggle" id="pr-stepper-toggle" aria-expanded="false" aria-controls="pr-steplist"> <span class="pr-toggle-info"> <span class="pr-toggle-parent" id="pr-toggle-parent">Before you apply</span> <span class="pr-toggle-label" id="pr-toggle-label">Who can apply</span> </span> <span class="pr-toggle-caret glyphicon glyphicon-chevron-down" aria-hidden="true"></span> </button>
+            <ol class="pr-stepper-list" id="pr-steplist">
+              <li class="pr-step is-active" data-target="who-can-apply">
+                <div class="pr-step-row"> <span class="pr-circle" aria-hidden="true"></span>
+                  <button type="button" class="pr-step-btn" aria-expanded="true" aria-controls="pr-step-body-1">
+                    <span class="pr-step-title">Before you apply</span>
+                    <svg class="pr-step-chevron" width="18" height="18" viewBox="0 0 21 21" fill="none" aria-hidden="true"><path d="M9.69313 6.32953C10.1394 5.89016 10.8642 5.89016 11.3104 6.32953L18.1653 13.0782C18.6116 13.5176 18.6116 14.2311 18.1653 14.6705C17.719 15.1098 16.9943 15.1098 16.548 14.6705L10.5 8.71617L4.45202 14.667C4.00575 15.1063 3.28099 15.1063 2.83471 14.667C2.38843 14.2276 2.38843 13.5141 2.83471 13.0747L9.68956 6.32601L9.69313 6.32953Z" fill="currentColor"/></svg>
+                  </button>
+                </div>
+                <div class="pr-step-body" id="pr-step-body-1">
+                  <a href="#who-can-apply" class="pr-sub-card is-active" aria-current="page">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    Who can apply
+                  </a>
+                </div>
+              </li>
+              <li class="pr-step" data-target="get-forms">
+                <div class="pr-step-row"> <span class="pr-circle" aria-hidden="true"></span>
+                  <button type="button" class="pr-step-btn" aria-expanded="true" aria-controls="pr-step-body-2">
+                    <span class="pr-step-title">How to apply</span>
+                    <svg class="pr-step-chevron" width="18" height="18" viewBox="0 0 21 21" fill="none" aria-hidden="true"><path d="M9.69313 6.32953C10.1394 5.89016 10.8642 5.89016 11.3104 6.32953L18.1653 13.0782C18.6116 13.5176 18.6116 14.2311 18.1653 14.6705C17.719 15.1098 16.9943 15.1098 16.548 14.6705L10.5 8.71617L4.45202 14.667C4.00575 15.1063 3.28099 15.1063 2.83471 14.667C2.38843 14.2276 2.38843 13.5141 2.83471 13.0747L9.68956 6.32601L9.69313 6.32953Z" fill="currentColor"/></svg>
+                  </button>
+                </div>
+                <div class="pr-step-body" id="pr-step-body-2">
+                  <a href="#get-forms" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    Get your forms and documents ready
+                  </a>
+                  <a href="#pay-fees" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    Pay your fees
+                  </a>
+                  <a href="#submit-application" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    Submit your application
+                  </a>
+                </div>
+              </li>
+              <li class="pr-step" data-target="how-we-process">
+                <div class="pr-step-row"> <span class="pr-circle" aria-hidden="true"></span>
+                  <button type="button" class="pr-step-btn" aria-expanded="true" aria-controls="pr-step-body-3">
+                    <span class="pr-step-title">After you apply</span>
+                    <svg class="pr-step-chevron" width="18" height="18" viewBox="0 0 21 21" fill="none" aria-hidden="true"><path d="M9.69313 6.32953C10.1394 5.89016 10.8642 5.89016 11.3104 6.32953L18.1653 13.0782C18.6116 13.5176 18.6116 14.2311 18.1653 14.6705C17.719 15.1098 16.9943 15.1098 16.548 14.6705L10.5 8.71617L4.45202 14.667C4.00575 15.1063 3.28099 15.1063 2.83471 14.667C2.38843 14.2276 2.38843 13.5141 2.83471 13.0747L9.68956 6.32601L9.69313 6.32953Z" fill="currentColor"/></svg>
+                  </button>
+                </div>
+                <div class="pr-step-body" id="pr-step-body-3">
+                  <a href="#how-we-process" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    How we process your application
+                  </a>
+                  <a href="#ask-documents" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    If we ask you for documents
+                  </a>
+                  <a href="#keep-info" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    Keep your information up to date
+                  </a>
+                  <a href="#check-status" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    Check your application status
+                  </a>
+                  <a href="#new-pr-card" class="pr-sub-card">
+                    <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
+                    Apply for a new PR card
+                  </a>
+                </div>
+                <span class="pr-step-terminal" aria-hidden="true"></span>
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <div class="pr-main">
+          <div class="pr-stage">
+            <section class="pr-section" id="who-can-apply" aria-labelledby="who-can-apply-h">
+              <p class="pr-eyebrow h4 mrgn-bttm-sm" id="before-you-apply-h">Before you apply</p>
+              <h2 class="pr-stage-h h3" id="who-can-apply-h">Who can apply for a PRTD</h2>
+              <p>You can apply for a permanent resident travel document if you:</p>
+              <ul>
+                <li>have <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents/status.html">permanent resident status in Canada</a></li>
+                <li>do not have a valid PR card showing your PR status (it expired, got lost, or was stolen or damaged while you were outside Canada)</li>
+                <li><strong>are outside Canada</strong></li>
+                <li>will return to Canada by airplane, boat, train or bus</li>
+              </ul>
+              <h3>If you want to give up your permanent resident status</h3>
+              <p>If you want to give up (renounce) your permanent resident status and want to come to Canada <strong>as a visitor only, don&rsquo;t apply for a PRTD.</strong></p>
+              <p class="mrgn-bttm-0">You should apply to <a href="https://ircc.canada.ca/english/information/applications/guides/5781ETOC.asp">voluntarily give up (renounce) your permanent resident status</a>.</p>
+            </section>
+          </div>
+          <div class="pr-stage">
+            <section class="pr-section" id="get-forms" aria-labelledby="get-forms-h">
+              <p class="pr-eyebrow h4 mrgn-bttm-sm" id="how-to-apply-h">How to apply</p>
+              <h2 class="pr-stage-h h3" id="get-forms-h">Get your forms and documents ready</h2>
+              <p>The application package includes the instruction guide and all the forms you need to fill out.</p>
+              <section class="alert alert-warning">
+                <h3 class="h4">If you need a permanent resident travel document urgently</h3>
+                <p>You may apply urgently for a PRTD for reasons such as serious illness, or a lost or stolen PR card.</p>
+                <p class="mrgn-bttm-0"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents/card/urgent.html">Find out how to apply urgently for a PRTD</a></p>
+              </section>
+              <h3>Read the instruction guide</h3>
+              <p>Our <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5529-applying-permanent-resident-travel-document.html" target="_blank" rel="noopener">instruction guide [IMM&nbsp;5529]<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span> has detailed information on how to prepare, complete and submit your application.</p>
+              <h3>Review the document checklist</h3>
+              <p>You need to provide all of the documents in the document checklist and complete the application form.</p>
+              <p>Use the checklist to make sure you include <strong>all</strong> the forms and documents you need.</p>
+              <p><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5644.html" target="_blank" rel="noopener">Review the document checklist (IMM&nbsp;5644)<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></p>
+              <h3>Fill out the application form</h3>
+              <p>If you apply online, fill out the application for a permanent resident travel document (IMM&nbsp;5444) form <strong>in</strong> the <a href="https://prson-srpel.apps.cic.gc.ca/en/login" target="_blank" rel="noopener">permanent residence portal<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</p>
+
+                <details class="print-open mrgn-bttm-sm">
+                  <summary>If you can&rsquo;t fill out the form online</summary>
+                  <div class="mrgn-tp-sm">
+                    <p>You can fill out the IMM&nbsp;5444 form on paper if you can&rsquo;t apply online and require accommodations, including for accessibility reasons.</p>
+                    <p>To apply on paper, download and fill out <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5444.html" target="_blank" rel="noopener">IMM&nbsp;5444<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</p>
+                    <p class="mrgn-bttm-0">Make sure you click the &ldquo;Validate&rdquo; button at the top of the form before printing and signing it.</p>
+                  </div>
+                </details>
+                <details class="print-open mrgn-bttm-sm">
+                  <summary>If you have a representative or designated individual</summary>
+                  <div class="mrgn-tp-sm">
+                    <p>You don&rsquo;t need a representative to help you with your PRTD application. Using a representative is a personal choice. If you want to appoint someone to do business with us on your behalf (optional), you can use either a:</p>
+                    <ul>
+                      <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigration-citizenship-representative/learn-about-representatives.html">representative</a> or</li>
+                      <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigration-citizenship-representative/application-access.html">designated individual</a></li>
+                    </ul>
+                    <p><strong>Download and complete 1 of these forms</strong> based on who&rsquo;s helping you:</p>
+                    <ul>
+                      <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5476.html" target="_blank" rel="noopener">Use of a representative (IMM&nbsp;5476)<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></li>
+                      <li><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/imm5475.html" target="_blank" rel="noopener">Authority to release personal information to a designated individual (IMM&nbsp;5475)<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></li>
+                    </ul>
+                    <p>Make sure:</p>
+                    <ul class="mrgn-bttm-0">
+                      <li>you sign it digitally <strong>or</strong> by hand</li>
+                      <li>your representative or designated individual also signs it</li>
+                      <li>you include it with your application</li>
+                    </ul>
+                  </div>
+                </details>
+                <details class="print-open mrgn-bttm-sm">
+                  <summary>If you&rsquo;re applying from China and have a Chinese passport</summary>
+                  <div class="mrgn-tp-sm">
+                    <p>You <strong>must</strong> include an &ldquo;Inquiry of Exit &amp; Entry Record&rdquo; from China.</p>
+                    <ul class="mrgn-bttm-0">
+                      <li>It must show a record of your entry to and exit from China for 5 years before the date of your application.</li>
+                      <li>You can get the document from the local Public Security Bureau.</li>
+                      <li>Make sure you translate the document to English or French.</li>
+                    </ul>
+                  </div>
+                </details>
+          
+            </section>
+            <section class="pr-subsection" id="pay-fees" aria-labelledby="pay-fees-h">
+              <h3 class="pr-stage-h h4" id="pay-fees-h">Pay your fees online</h3>
+              <p>You need to pay the <strong>$50</strong> fee when you apply.</p>
+              <ul>
+                <li>Make sure you <strong>include your receipt</strong> (proof of payment) with your application.</li>
+                <li>We can&rsquo;t refund the fee once we start processing your application.</li>
+              </ul>
+              <p class="mrgn-tp-md mrgn-bttm-0"><a class="btn btn-default" href="https://ircc.canada.ca/english/information/fees/pay.asp" target="_blank" rel="noopener">Pay your fees online<span class="wb-inv"> (opens in a new tab)</span></a></p>
+            </section>
+            <section class="pr-subsection" id="submit-application" aria-labelledby="submit-application-h">
+              <h3 class="pr-stage-h h4" id="submit-application-h">Submit your application and supporting documents</h3>
+              <p>You will submit your application and all supporting documents through the <a href="https://prson-srpel.apps.cic.gc.ca/en/login" target="_blank" rel="noopener">permanent residence portal<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</p>
+              <p>You must complete an application for <strong>each</strong> person in your family who needs a PRTD.</p>
+              <ul>
+                <li>Each application must show that the person meets the requirements to remain a permanent resident.</li>
+                <li>For example, you can&rsquo;t have a removal order to leave Canada.</li>
+              </ul>
+              <div class="alert alert-info">
+                <p class="mrgn-bttm-0">If your application is missing information or documents, we&rsquo;ll return it to you.</p>
+              </div>
+              <p class="mrgn-tp-md"><a class="btn btn-call-to-action" href="https://prson-srpel.apps.cic.gc.ca/en/login" target="_blank" rel="noopener">Apply in the permanent residence portal<span class="wb-inv"> (opens in a new tab)</span> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></a></p>
+              <details class="print-open mrgn-tp-md mrgn-bttm-sm">
+                <summary>If you can&rsquo;t apply online</summary>
+                <div class="mrgn-tp-sm">
+                  <p>You may be able to apply on paper if your nearest visa application centre (VAC) accepts paper applications by mail or in person.</p>
+                  <p class="mrgn-bttm-0"><strong>Before you apply</strong>, <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/offices/find-visa-application-centre.html" target="_blank" rel="noopener">contact your nearest VAC<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span>.</p>
+                </div>
+              </details>
+            </section>
+          </div>
+          <div class="pr-stage">
+            <section class="pr-section" id="how-we-process" aria-labelledby="how-we-process-h">
+              <p class="pr-eyebrow h4 mrgn-bttm-sm" id="after-you-apply-h">After you apply</p>
+              <h2 class="pr-stage-h h3" id="how-we-process-h">How we process your PRTD application</h2>
+              <p>All PRTD applications are processed on a <strong>priority basis</strong>. If we require further information, a letter will be sent to you.</p>
+              <p>After you send your application, we&rsquo;ll:</p>
+              <ul>
+                <li>check that it&rsquo;s <a href="https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=072&amp;top=3">complete</a></li>
+                <li>assess it to confirm
+                  <ul>
+                    <li>you met your residency obligations</li>
+                    <li>you&rsquo;re still a permanent resident of Canada</li>
+                  </ul>
+                </li>
+              </ul>
+              <p>In some cases, we&rsquo;ll ask you to attend an interview to get more information.</p>
+              <p><strong>If we approve your application</strong>, we will:</p>
+              <ul>
+                <li>email you with instructions on how and where to submit your valid passport or travel document</li>
+                <li>return your passport to you with your permanent resident travel document</li>
+              </ul>
+              <p><strong>If we refuse your application</strong>, follow the instructions on the refusal letter.</p>
+            </section>
+            <section class="pr-subsection" id="ask-documents" aria-labelledby="ask-documents-h">
+              <h2 class="pr-stage-h h3" id="ask-documents-h">If we ask you for documents</h2>
+              <p>We may ask you to submit more documents. If we do, submit them to us online.</p>
+              <ol>
+                <li>Use our <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/web-form2.html" target="_blank" rel="noopener">web form to add a document<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span> to your application.</li>
+                <li>Fill in these required fields correctly:
+                  <ul>
+                    <li>Under <strong>What is your application number?</strong> enter the application number at the top of the letter we sent you.</li>
+                    <li>Under <strong>What did you apply for?</strong>, choose <strong>Permanent Resident Travel Document</strong>.</li>
+                    <li>Under <strong>What application did you submit?</strong>, choose <strong>Urgent</strong>.</li>
+                  </ul>
+                </li>
+                <li>Under <strong>Upload your document(s)</strong>, choose the documents you want to send to us.</li>
+                <li>Follow the steps to submit your web form.</li>
+              </ol>
+            </section>
+            <section class="pr-subsection" id="keep-info" aria-labelledby="keep-info-h">
+              <section class="alert alert-info">
+                <h3 class="h4" id="keep-info-h">Keep your information up to date</h3>
+                <p>You must tell us if you move or change your address, phone number or any other contact information after you apply.</p>
+                <p class="mrgn-bttm-0"><a href="https://secure.cic.gc.ca/ClientContact/en/Application/Form/70" target="_blank" rel="noopener">Update your contact information<span class="wb-inv"> (opens in a new tab)</span></a> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></p>
+              </section>
+            </section>
+            <section class="pr-subsection" id="check-status" aria-labelledby="check-status-h">
+              <h3 class="pr-stage-h h4" id="check-status-h">How to check your application status</h3>
+              <p>You must contact us to check the status of your application.</p>
+              <ol>
+                <li>Go to our web form.</li>
+                <li>Click on <strong>Update or ask about your application</strong>.</li>
+                <li>On <strong>Check your application status</strong>, click the <strong>See details</strong> button to continue to the form.</li>
+                <li>Make sure you fill in these required fields correctly:
+                  <ul>
+                    <li><strong>What is your application number?</strong>
+                      <ul>
+                        <li>You can find your application number at the top of the letter we sent you.</li>
+                      </ul>
+                    </li>
+                    <li>Under <strong>What did you apply for?</strong>, choose <strong>Permanent Resident Travel Document</strong></li>
+                    <li>Under <strong>What application did you submit?</strong>, choose <strong>Urgent</strong>.</li>
+                  </ul>
+                </li>
+                <li>Follow the steps to submit your web form.</li>
+              </ol>
+              <p class="mrgn-tp-md mrgn-bttm-0"><a class="btn btn-default" href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/web-form2.html" target="_blank" rel="noopener">Go to the web form<span class="wb-inv"> (opens in a new tab)</span> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></a></p>
+            </section>
+            <section class="pr-subsection" id="new-pr-card" aria-labelledby="new-pr-card-h">
+              <h3 class="pr-stage-h h4" id="new-pr-card-h">Apply for a new permanent resident (PR) card</h3>
+              <p>A PRTD is normally only valid for <strong>one single entry</strong>. You should apply for a new PR card as soon as you return to Canada.</p>
+              <p class="mrgn-tp-md mrgn-bttm-0"><a class="btn btn-default" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents/card/apply.html">Apply for a new PR card</a></p>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<script>
+(function () {
+  "use strict";
+
+  // Prevent script from interfering with AEM Touch UI authoring mode
+  if (window.Granite && window.Granite.author) {
+    return;
+  }
+
+  document.documentElement.classList.remove("no-js");
+
+  var stepItems = Array.prototype.slice.call(document.querySelectorAll(".pr-step"));
+
+  function getDocTop(el) {
+    var top = 0;
+    while (el) { top += el.offsetTop; el = el.offsetParent; }
+    return top;
+  }
+
+  var flat = [];
+  stepItems.forEach(function (stepEl, mi) {
+    var mainId = stepEl.dataset.target || "";
+    var subCards = Array.prototype.slice.call(stepEl.querySelectorAll(".pr-sub-card"));
+    var stepBtn = stepEl.querySelector(".pr-step-btn");
+    var stepBody = stepEl.querySelector(".pr-step-body");
+    var chev = stepEl.querySelector(".pr-step-chevron");
+
+    if (subCards.length > 0) {
+      subCards.forEach(function (card, si) {
+        var href = card.getAttribute("href") || "";
+        var id = href.replace(/^#/, "");
+        flat.push({
+          id: id,
+          sec: document.getElementById(id),
+          main: mi,
+          sub: si,
+          navMain: stepEl,
+          navBtn: stepBtn,
+          navBody: stepBody,
+          navChev: chev,
+          navCard: card
+        });
+      });
+    } else {
+      flat.push({
+        id: mainId,
+        sec: document.getElementById(mainId),
+        main: mi,
+        sub: null,
+        navMain: stepEl,
+        navBtn: stepBtn,
+        navBody: stepBody,
+        navChev: chev,
+        navCard: null
+      });
+    }
+  });
+
+  var toggleParent = document.getElementById("pr-toggle-parent");
+  var toggleLbl = document.getElementById("pr-toggle-label");
+  var stepper = document.querySelector(".pr-stepper");
+  var side = document.querySelector(".pr-side");
+  var toggleBtn = document.getElementById("pr-stepper-toggle");
+  var allSubCards = Array.prototype.slice.call(document.querySelectorAll(".pr-sub-card"));
+  var currentFlat = -1;
+  var userSideScrollTimeout = null;
+  var isUserScrollingSide = false;
+
+  if (side) {
+    side.addEventListener("wheel", function () {
+      isUserScrollingSide = true;
+      clearTimeout(userSideScrollTimeout);
+      userSideScrollTimeout = setTimeout(function () {
+        isUserScrollingSide = false;
+      }, 1500);
+    }, { passive: true });
+
+    side.addEventListener("touchstart", function () {
+      isUserScrollingSide = true;
+      clearTimeout(userSideScrollTimeout);
+      userSideScrollTimeout = setTimeout(function () {
+        isUserScrollingSide = false;
+      }, 1500);
+    }, { passive: true });
+  }
+
+  function setActive(fi) {
+    if (fi < 0) fi = 0;
+    if (fi >= flat.length) fi = flat.length - 1;
+    if (fi === currentFlat) return;
+    currentFlat = fi;
+    var act = flat[fi];
+    if (!act) return;
+
+    stepItems.forEach(function (s, i) {
+      var isActive = (i === act.main);
+      var isDone = (i < act.main);
+      s.classList.toggle("is-active", isActive);
+      s.classList.toggle("is-done", isDone);
+      var chev = s.querySelector(".pr-step-chevron");
+      if (chev && chev.tagName && chev.tagName.toLowerCase() === "img") {
+        chev.src = isActive
+          ? "assets/figma/nav-chevron-active.svg"
+          : "assets/figma/nav-chevron.svg";
+      }
+    });
+
+    allSubCards.forEach(function (card) {
+      card.classList.remove("is-active");
+      card.removeAttribute("aria-current");
+    });
+    if (act.navCard) {
+      act.navCard.classList.add("is-active");
+      act.navCard.setAttribute("aria-current", "page");
+    }
+
+    if (act.navMain) {
+      var titleEl = act.navMain.querySelector(".pr-step-title");
+      var stageName = titleEl ? titleEl.textContent.trim() : "";
+      var subName = act.navCard ? act.navCard.textContent.trim() : stageName;
+
+      if (toggleParent) {
+        toggleParent.textContent = stageName;
+      }
+      if (toggleLbl) {
+        toggleLbl.textContent = subName;
+      }
+    }
+  }
+
+  function closeMenu() {
+    if (!stepper || !toggleBtn) return;
+    stepper.classList.remove("is-open");
+    toggleBtn.setAttribute("aria-expanded", "false");
+  }
+
+  if (toggleBtn && stepper) {
+    toggleBtn.addEventListener("click", function () {
+      var open = stepper.classList.toggle("is-open");
+      this.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (stepper.classList.contains("is-open") && !stepper.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if ((e.key === "Escape" || e.keyCode === 27) && stepper.classList.contains("is-open")) {
+        closeMenu();
+        toggleBtn.focus();
+      }
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 991) closeMenu();
+    });
+  }
+
+  stepItems.forEach(function (stepEl, mi) {
+    var btn = stepEl.querySelector(".pr-step-btn");
+    var body = stepEl.querySelector(".pr-step-body");
+    if (!btn || !body) return;
+
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      var isExpanded = this.getAttribute("aria-expanded") === "true";
+      var targetId = stepEl.dataset.target;
+      var clickedChevron = e.target.closest(".pr-step-chevron");
+
+      if (clickedChevron || (stepEl.classList.contains("is-active") && isExpanded)) {
+        var nowOpen = !isExpanded;
+        this.setAttribute("aria-expanded", nowOpen ? "true" : "false");
+        if (nowOpen) {
+          body.removeAttribute("hidden");
+        } else {
+          body.setAttribute("hidden", "");
+        }
+        return;
+      }
+
+      if (!isExpanded) {
+        this.setAttribute("aria-expanded", "true");
+        body.removeAttribute("hidden");
+      }
+
+      if (targetId) {
+        var target = document.getElementById(targetId);
+        if (target) {
+          closeMenu();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          target.setAttribute("tabindex", "-1");
+          target.focus({ preventScroll: true });
+          for (var i = 0; i < flat.length; i++) {
+            if (flat[i].id === targetId || flat[i].main === mi) {
+              setActive(i);
+              break;
+            }
+          }
+          currentFlat = -1;
+          setTimeout(onScroll, 400);
+        }
+      }
+    });
+  });
+
+  function syncSideNav(act) {
+    if (!side || window.innerWidth < 992 || isUserScrollingSide) return;
+
+    var maxScroll = side.scrollHeight - side.clientHeight;
+    if (maxScroll <= 0) return;
+
+    var targetScroll = 0;
+    var layout = document.querySelector(".pr-layout");
+
+    if (layout) {
+      var layoutRect = layout.getBoundingClientRect();
+      var travel = layoutRect.height - window.innerHeight;
+      if (travel > 0) {
+        var progress = (20 - layoutRect.top) / travel;
+        progress = Math.max(0, Math.min(1, progress));
+        targetScroll = progress * maxScroll;
+      }
+    }
+
+    if (act) {
+      var activeEl = act.navCard || act.navMain;
+      if (activeEl) {
+        var elTop = activeEl.offsetTop;
+        var elBottom = elTop + activeEl.offsetHeight + 24;
+        if (elBottom > targetScroll + side.clientHeight) {
+          targetScroll = elBottom - side.clientHeight;
+        }
+        if (elTop - 24 < targetScroll) {
+          targetScroll = elTop - 24;
+        }
+      }
+    }
+
+    if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 50)) {
+      targetScroll = maxScroll;
+    } else if (window.scrollY <= 150) {
+      targetScroll = 0;
+    }
+
+    targetScroll = Math.max(0, Math.min(maxScroll, targetScroll));
+    side.scrollTop = targetScroll;
+  }
+
+  function onScroll() {
+    var probe = window.scrollY + Math.round(window.innerHeight * 0.28);
+    var fi = 0;
+
+    for (var i = 0; i < flat.length; i++) {
+      if (flat[i].sec && getDocTop(flat[i].sec) <= probe) fi = i;
+    }
+
+    if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 40)) {
+      fi = flat.length - 1;
+    }
+
+    setActive(fi);
+    syncSideNav(flat[fi]);
+  }
+
+  var subCardLinks = Array.prototype.slice.call(document.querySelectorAll(".pr-sub-card"));
+  subCardLinks.forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var href = this.getAttribute("href");
+      if (!href || href === "#") return;
+      var targetId = href.slice(1);
+      var target = document.getElementById(targetId);
+      if (target) {
+        e.preventDefault();
+        closeMenu();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        target.setAttribute("tabindex", "-1");
+        target.focus({ preventScroll: true });
+        for (var i = 0; i < flat.length; i++) {
+          if (flat[i].id === targetId) {
+            setActive(i);
+            break;
+          }
+        }
+        currentFlat = -1;
+        setTimeout(onScroll, 400);
+      }
+    });
+  });
+
+  var ticking = false;
+  function requestTick() {
+    if (!ticking) {
+      window.requestAnimationFrame(function () {
+        onScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener("scroll", requestTick, { passive: true });
+  window.addEventListener("resize", requestTick);
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", onScroll);
+  } else {
+    onScroll();
+  }
+})();
+
+</script>
+
+</div>
