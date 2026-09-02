@@ -69,10 +69,22 @@
       var isDone = (i < act.main);
       s.classList.toggle("is-active", isActive);
       s.classList.toggle("is-done", isDone);
+      var chev = s.querySelector(".pr-step-chevron");
+      if (chev) {
+        chev.src = isActive
+          ? "assets/figma/nav-chevron-active.svg"
+          : "assets/figma/nav-chevron.svg";
+      }
     });
 
-    allSubCards.forEach(function (card) { card.classList.remove("is-active"); });
-    if (act.navCard) act.navCard.classList.add("is-active");
+    allSubCards.forEach(function (card) {
+      card.classList.remove("is-active");
+      card.removeAttribute("aria-current");
+    });
+    if (act.navCard) {
+      act.navCard.classList.add("is-active");
+      act.navCard.setAttribute("aria-current", "page");
+    }
 
     if (toggleLbl && act.navMain) {
       var titleEl = act.navMain.querySelector(".pr-step-title");
@@ -98,12 +110,19 @@
       }
     });
 
+    document.addEventListener("keydown", function (e) {
+      if ((e.key === "Escape" || e.keyCode === 27) && stepper.classList.contains("is-open")) {
+        closeMenu();
+        toggleBtn.focus();
+      }
+    });
+
     window.addEventListener("resize", function () {
       if (window.innerWidth > 991) closeMenu();
     });
   }
 
-  stepItems.forEach(function (stepEl) {
+  stepItems.forEach(function (stepEl, mi) {
     var btn = stepEl.querySelector(".pr-step-btn");
     if (!btn) return;
     btn.addEventListener("click", function (e) {
@@ -116,25 +135,15 @@
           target.scrollIntoView({ behavior: "smooth", block: "start" });
           target.setAttribute("tabindex", "-1");
           target.focus({ preventScroll: true });
+          for (var i = 0; i < flat.length; i++) {
+            if (flat[i].id === targetId || flat[i].main === mi) {
+              setActive(i);
+              break;
+            }
+          }
           currentFlat = -1;
           setTimeout(onScroll, 400);
-          return;
         }
-      }
-
-      var body = stepEl.querySelector(".pr-step-body");
-      var chev = stepEl.querySelector(".pr-step-chevron");
-      var isExpanded = this.getAttribute("aria-expanded") === "true";
-      var nowOpen = !isExpanded;
-
-      this.setAttribute("aria-expanded", nowOpen ? "true" : "false");
-      if (body) {
-        if (nowOpen) { body.removeAttribute("hidden"); } else { body.setAttribute("hidden", ""); }
-      }
-      if (chev) {
-        chev.src = nowOpen
-          ? "assets/figma/nav-chevron-active.svg"
-          : "assets/figma/nav-chevron.svg";
       }
     });
   });
@@ -144,7 +153,13 @@
     topBtn.addEventListener("click", function () {
       window.scrollTo({ top: 0, behavior: "smooth" });
       var h = document.getElementById("wb-cont");
-      if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
+      if (h) {
+        h.setAttribute("tabindex", "-1");
+        h.focus({ preventScroll: true });
+      }
+      currentFlat = -1;
+      setActive(0);
+      setTimeout(onScroll, 400);
     });
   }
 
@@ -162,7 +177,7 @@
 
     setActive(fi);
 
-    if (topBtn) topBtn.classList.toggle("is-visible", window.scrollY > 600);
+    if (topBtn) topBtn.classList.toggle("is-visible", window.scrollY > 400);
   }
 
   var subCardLinks = Array.prototype.slice.call(document.querySelectorAll(".pr-sub-card"));
@@ -170,21 +185,39 @@
     a.addEventListener("click", function (e) {
       var href = this.getAttribute("href");
       if (!href || href === "#") return;
-      var target = document.getElementById(href.slice(1));
+      var targetId = href.slice(1);
+      var target = document.getElementById(targetId);
       if (target) {
         e.preventDefault();
         closeMenu();
         target.scrollIntoView({ behavior: "smooth", block: "start" });
         target.setAttribute("tabindex", "-1");
         target.focus({ preventScroll: true });
+        for (var i = 0; i < flat.length; i++) {
+          if (flat[i].id === targetId) {
+            setActive(i);
+            break;
+          }
+        }
         currentFlat = -1;
         setTimeout(onScroll, 400);
       }
     });
   });
 
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", onScroll);
+  var ticking = false;
+  function requestTick() {
+    if (!ticking) {
+      window.requestAnimationFrame(function () {
+        onScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener("scroll", requestTick, { passive: true });
+  window.addEventListener("resize", requestTick);
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", onScroll);

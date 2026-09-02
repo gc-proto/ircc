@@ -57,8 +57,9 @@
 }
 
 .pr-main {
-  flex: 0 0 830px;
-  width: 830px;
+  flex: 1 1 auto;
+  max-width: 830px;
+  width: auto;
   min-width: 0;
 }
 
@@ -574,6 +575,20 @@ details > div {
   border-color: #284162;
 }
 
+.pr-stepper-toggle:focus {
+  outline: 2px solid #0535d2;
+  outline-offset: 2px;
+}
+
+.pr-stepper-toggle:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.pr-stepper-toggle:focus-visible {
+  outline: 2px solid #0535d2;
+  outline-offset: 2px;
+}
+
 .pr-toggle-caret {
   font-size: 13px;
   color: #555555;
@@ -923,6 +938,19 @@ h1#wb-cont.pr-h1,
   }
 }
 
+@media (min-width: 992px) and (max-width: 1199px) {
+  .pr-layout {
+    gap: 32px;
+    gap: clamp(24px, 3.5vw, 40px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .pr-layout {
+    gap: 75px;
+  }
+}
+
 @media (max-width: 991px) {
   .pr-layout {
     flex-direction: column;
@@ -940,6 +968,7 @@ h1#wb-cont.pr-h1,
   }
 
   .pr-side {
+    flex: 0 0 auto;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -984,10 +1013,17 @@ h1#wb-cont.pr-h1,
     padding: 20px;
   }
 
-  .pr-h1 { font-size: 1.625rem; } /* 26px */
+  h1#wb-cont.pr-h1,
+  .pr-h1 {
+    font-size: 1.625rem;
+  }
   .pr-eyebrow,
+  .pr-eyebrow.h4,
   p.pr-eyebrow,
-  h2.pr-eyebrow { font-size: 20px; line-height: 28px; }
+  h2.pr-eyebrow {
+    font-size: 20px;
+    line-height: 28px;
+  }
   .pr-stage-h { font-size: 29px; line-height: 33px; }
   .pr-main h3:not(.pr-stage-h) { font-size: 24px; line-height: 30px; }
   .pr-main p,
@@ -998,12 +1034,223 @@ h1#wb-cont.pr-h1,
 }
 
 @media (max-width: 600px) {
-  .pr-glance-boxes {
-    grid-template-columns: 1fr;
+  /* At-a-glance 1-column stacked layout & card padding adjustments */
+  .pr-glance-band {
+    padding: 20px 0 28px;
   }
 
   .pr-glance-card {
     padding: 16px;
+    border-radius: 16px;
+  }
+
+  .pr-glance-boxes {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .pr-glance-box {
+    min-height: auto;
+    padding: 12px 14px;
+    border-radius: 12px;
+    gap: 14px;
+  }
+
+  .pr-glance-hr {
+    margin: 20px auto;
+  }
+
+  .pr-glance-band .well ul.list-unstyled li {
+    gap: 10px;
+  }
+
+  /* Compact header, branding & mobile typography */
+  h1#wb-cont.pr-h1,
+  .pr-h1 {
+    font-size: 26px;
+    line-height: 32px;
+    margin-top: 16px;
+  }
+
+  .pr-h1::after {
+    width: 50px;
+    height: 5px;
+    margin-top: 8px;
+  }
+
+  .pr-eyebrow,
+  .pr-eyebrow.h4,
+  p.pr-eyebrow,
+  h2.pr-eyebrow {
+    font-size: 17px;
+    line-height: 22px;
+    margin-bottom: 2px;
+  }
+
+  .pr-stage-h {
+    font-size: 22px;
+    line-height: 28px;
+    margin-bottom: 8px;
+  }
+
+  .pr-main h3:not(.pr-stage-h) {
+    font-size: 19px;
+    line-height: 25px;
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
+
+  .pr-main p,
+  .pr-main li {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .pr-glance-title {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .pr-glance-desc,
+  .pr-glance-intro {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .pr-fds-alert {
+    gap: 14px;
+  }
+
+  .pr-fds-alert h3 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .pr-fds-alert p {
+    font-size: 15px;
+    line-height: 23px;
+  }
+
+  /* Touch target compliance (minimum 44x44px touch targets) */
+  .pr-stepper-toggle {
+    min-height: 48px;
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+
+  .pr-step-row {
+    min-height: 44px;
+    padding: 8px 0;
+  }
+
+  .pr-step-btn {
+    min-height: 44px;
+    padding: 6px 0;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .pr-sub-card {
+    min-height: 44px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 24px;
+    align-items: center;
+  }
+
+  .pr-sub-card.is-active,
+  .pr-sub-card.is-active:hover,
+  .pr-sub-card.is-active:focus {
+    padding: 10px 12px;
+  }
+
+  .wb-accordion details summary,
+  .pr-layout details summary,
+  details.print-open summary,
+  details summary {
+    min-height: 44px;
+    padding: 10px 14px;
+    font-size: 17px;
+    line-height: 24px;
+  }
+
+  .wb-accordion details > div,
+  .pr-layout details > div,
+  details > div {
+    padding: 10px 14px 14px;
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .pr-top {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 10px 16px;
+    bottom: 16px;
+    right: 16px;
+    font-size: 14px;
+  }
+
+  .pr-main .btn,
+  .btn-call-to-action,
+  .btn-primary,
+  .btn-default {
+    min-height: 44px;
+    padding: 10px 18px;
+    font-size: 16px;
+    line-height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .btn-call-to-action {
+    width: 100%;
+    text-align: center;
+  }
+
+  .pr-signin,
+  #wb-lng a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .gc-pg-hlpfl-btn button,
+  .gc-pg-hlpfl-no button {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 8px 16px;
+  }
+
+  .gc-pg-hlpfl-no .radio label {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding-left: 28px;
+  }
+
+  /* Responsive layout adjustments & overflow containment */
+  .pr-main {
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .pr-stage:not(:last-child) {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+  }
+
+  .pr-section,
+  .pr-subsection {
+    padding-bottom: 16px;
+    margin-bottom: 8px;
+    scroll-margin-top: 100px;
   }
 }
 
