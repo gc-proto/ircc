@@ -1,7 +1,6 @@
 (function () {
   "use strict";
 
-  // Prevent script from interfering with AEM Touch UI authoring mode
   if (window.Granite && window.Granite.author) {
     return;
   }
@@ -83,6 +82,27 @@
     }, { passive: true });
   }
 
+  var announcer = document.getElementById("pr-step-announcer");
+  function announceStep(message) {
+    if (!announcer) {
+      announcer = document.getElementById("pr-step-announcer");
+    }
+    if (!announcer) return;
+    announcer.textContent = "";
+    setTimeout(function () {
+      announcer.textContent = message;
+    }, 50);
+  }
+
+  function scrollTargetIntoView(target) {
+    var prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    target.scrollIntoView({
+      behavior: prefersReduced ? "auto" : "smooth",
+      block: "start"
+    });
+  }
+
+
   function setActive(fi) {
     if (fi < 0) fi = 0;
     if (fi >= flat.length) fi = flat.length - 1;
@@ -137,6 +157,7 @@
     toggleBtn.addEventListener("click", function () {
       var open = stepper.classList.toggle("is-open");
       this.setAttribute("aria-expanded", open ? "true" : "false");
+      announceStep(open ? "Step navigation menu opened" : "Step navigation menu closed");
     });
 
     document.addEventListener("click", function (e) {
@@ -176,6 +197,9 @@
         } else {
           body.setAttribute("hidden", "");
         }
+        var titleEl = stepEl.querySelector(".pr-step-title");
+        var stageName = titleEl ? titleEl.textContent.trim() : "";
+        announceStep(stageName + (nowOpen ? " sub-steps expanded" : " sub-steps collapsed"));
         return;
       }
 
@@ -188,7 +212,7 @@
         var target = document.getElementById(targetId);
         if (target) {
           closeMenu();
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          scrollTargetIntoView(target);
           target.setAttribute("tabindex", "-1");
           target.focus({ preventScroll: true });
           for (var i = 0; i < flat.length; i++) {
@@ -199,6 +223,9 @@
           }
           currentFlat = -1;
           setTimeout(onScroll, 400);
+          var titleEl = stepEl.querySelector(".pr-step-title");
+          var stageName = titleEl ? titleEl.textContent.trim() : "";
+          announceStep("Navigated to " + stageName);
         }
       }
     });
@@ -273,7 +300,7 @@
       if (target) {
         e.preventDefault();
         closeMenu();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        scrollTargetIntoView(target);
         target.setAttribute("tabindex", "-1");
         target.focus({ preventScroll: true });
         for (var i = 0; i < flat.length; i++) {
@@ -284,6 +311,11 @@
         }
         currentFlat = -1;
         setTimeout(onScroll, 400);
+        var subCardText = this.textContent.trim();
+        var parentStep = this.closest(".pr-step");
+        var parentTitle = parentStep ? parentStep.querySelector(".pr-step-title") : null;
+        var parentName = parentTitle ? parentTitle.textContent.trim() : "";
+        announceStep("Navigated to " + (parentName ? parentName + ", " : "") + subCardText);
       }
     });
   });
