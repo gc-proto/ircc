@@ -1044,12 +1044,13 @@ h2.pr-eyebrow,
     toggleBtn.setAttribute("aria-expanded", "false");
   }
 
+  var lastScrollY = window.scrollY;
   var manualToggleScrollY = null;
   if (toggleBtn && stepper) {
     toggleBtn.addEventListener("click", function () {
       var open = stepper.classList.toggle("is-open");
       this.setAttribute("aria-expanded", open ? "true" : "false");
-      manualToggleScrollY = open ? window.scrollY : null;
+      manualToggleScrollY = window.scrollY;
     });
 
     document.addEventListener("click", function (e) {
@@ -1120,14 +1121,16 @@ h2.pr-eyebrow,
   });
 
   function onScroll() {
-    var probe = window.scrollY + Math.round(window.innerHeight * 0.28);
+    var currentScrollY = window.scrollY;
+    var scrollDelta = currentScrollY - lastScrollY;
+    var probe = currentScrollY + Math.round(window.innerHeight * 0.28);
     var fi = 0;
 
     for (var i = 0; i < flat.length; i++) {
       if (flat[i].sec && getDocTop(flat[i].sec) <= probe) fi = i;
     }
 
-    if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 40)) {
+    if ((window.innerHeight + currentScrollY) >= (document.documentElement.scrollHeight - 40)) {
       fi = flat.length - 1;
     }
 
@@ -1137,20 +1140,20 @@ h2.pr-eyebrow,
       var firstSec = flat.length > 0 ? flat[0].sec : null;
       var collapseThreshold = firstSec ? (getDocTop(firstSec) - 140) : 600;
 
-      if (window.scrollY >= collapseThreshold) {
-        if (manualToggleScrollY !== null) {
-          if (Math.abs(window.scrollY - manualToggleScrollY) > 30) {
-            manualToggleScrollY = null;
-            closeMenu();
-          }
-        } else {
-          closeMenu();
-        }
+      if (manualToggleScrollY !== null && Math.abs(currentScrollY - manualToggleScrollY) < 15) {
       } else {
         manualToggleScrollY = null;
-        openMenu();
+        if (currentScrollY <= 60) {
+          openMenu();
+        } else if (scrollDelta < -6) {
+          openMenu();
+        } else if (scrollDelta > 6 && currentScrollY >= collapseThreshold) {
+          closeMenu();
+        }
       }
     }
+
+    lastScrollY = currentScrollY;
   }
 
   var subCardLinks = Array.prototype.slice.call(document.querySelectorAll(".pr-sub-card"));
