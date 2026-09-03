@@ -1378,21 +1378,21 @@ h2.pr-eyebrow,
       if (window.innerWidth > 991) {
         closeMenu();
         if (side) side.classList.remove("is-sticky");
-        var activeStep = document.querySelector(".pr-step.is-active");
-        if (activeStep) {
-          var actBody = activeStep.querySelector(".pr-step-body");
-          var actBtn = activeStep.querySelector(".pr-step-btn");
-          if (actBody) actBody.removeAttribute("hidden");
-          if (actBtn) actBtn.setAttribute("aria-expanded", "true");
-        }
-      } else {
+        // On desktop, all options should be open by default
         stepItems.forEach(function (stepEl) {
           var btn = stepEl.querySelector(".pr-step-btn");
           var body = stepEl.querySelector(".pr-step-body");
-          if (btn && body && !body.classList.contains("is-expanded")) {
-            btn.setAttribute("aria-expanded", "false");
+          if (btn) btn.setAttribute("aria-expanded", "true");
+          if (body) {
+            body.removeAttribute("hidden");
+            body.classList.remove("is-expanded");
           }
+          stepEl.classList.remove("is-expanded");
         });
+      } else {
+        if (!side || !side.classList.contains("is-sticky") || !stepper.classList.contains("is-open")) {
+          collapseAllMobileSteps();
+        }
       }
     });
   }
@@ -1412,7 +1412,25 @@ h2.pr-eyebrow,
     }
   }
 
-  collapseAllMobileSteps();
+  function initStepperState() {
+    if (window.innerWidth >= 992) {
+      // On desktop, all options should be open by default
+      stepItems.forEach(function (stepEl) {
+        var btn = stepEl.querySelector(".pr-step-btn");
+        var body = stepEl.querySelector(".pr-step-body");
+        if (btn) btn.setAttribute("aria-expanded", "true");
+        if (body) {
+          body.removeAttribute("hidden");
+          body.classList.remove("is-expanded");
+        }
+        stepEl.classList.remove("is-expanded");
+      });
+    } else {
+      collapseAllMobileSteps();
+    }
+  }
+
+  initStepperState();
 
   stepItems.forEach(function (stepEl, mi) {
     var btn = stepEl.querySelector(".pr-step-btn");
