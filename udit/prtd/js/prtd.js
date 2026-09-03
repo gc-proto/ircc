@@ -499,7 +499,6 @@
 
   window.addEventListener("scroll", requestTick, { passive: true });
   window.addEventListener("resize", requestTick);
-  window.__prtdOnScroll = onScroll;
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", onScroll);
