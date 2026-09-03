@@ -10,19 +10,22 @@ In Adobe Experience Manager (AEM), **the global shell is provided by the WET/GCW
 
 ## 1. Authorable Payload Boundaries
 
-In `index.html`, the authorable payload is explicitly marked:
+In `index.html`, the authorable payload is explicitly demarcated with helpful developer comments:
 
-* **Payload Start:** `<!-- AEM AUTHORABLE CONTENT START -->` (Line 111)
-  * Starts with the `<div class="container">` wrapping the page `h1`.
-* **Payload End:** `<!-- AEM AUTHORABLE CONTENT END -->` (Line 374)
-  * Ends immediately after the `<div class="container">` wrapping the `.pr-layout` stepper and stages.
+* **Payload Start:** `<!-- >>> AEM AUTHORABLE CONTENT STARTS HERE <<< -->`
+  * Starts immediately before the `<div class="container">` wrapping the page `h1`.
+* **Payload End:** `<!-- >>> AEM AUTHORABLE CONTENT ENDS HERE <<< -->`
+  * Marks the closing `</div>` of the container wrapping the `.pr-layout` stepper and stages.
 
-### Shell Elements Handled by AEM Page Template:
-* Header, Skip Links, Language Toggle (`#wb-lng`), Sign-in link
-* Main Menu (`#wb-sm`) & Breadcrumbs (`#wb-bc`)
+### Shell Elements Handled by AEM Page Template (Do Not Copy):
+* `<head>` tags, metadata, and standard GCWeb stylesheets
+* Skip Links (`#wb-tphp`)
+* Header, Language Toggle (`#wb-lng`), Canada Wordmark, and Search (`#wb-srch`)
+* Main Menu (`#wb-sm` / `.gcweb-menu`) & Breadcrumbs (`#wb-bc`)
 * Page Feedback Widget (`.gc-pg-hlpfl`) & Share widget (`.wb-share`)
 * Date Modified (`#wb-dtmd`)
 * Global Footer (`#wb-info`, `.gc-main-footer`, `.gc-sub-footer`, `.wtrmrk`)
+* Global WET scripts (jQuery, `wet-boew.min.js`, `theme.min.js`)
 
 ---
 
@@ -35,10 +38,14 @@ The prototype adheres strictly to official WET-BOEW and GCWeb standards:
 | **Container Width** | Wrapped in standard `.container` (1170px desktop / 970px medium / 750px tablet / 100% fluid mobile). Zero horizontal overflow. |
 | **Grid & Rail Spacing** | `.pr-side` width is `260px` with a `40px` layout gap (`260px + 40px + 840px = 1140px` usable width). |
 | **Body Typography** | Standard GCWeb `16px` base (`line-height: 1.5`), inheriting from `theme.min.css`. No inflated overrides. |
-| **Headings Scale** | `H1` = `2.375rem` (38px desktop / 34px mobile) with 72px red accent bar (`.pr-h1::after`).<br>`H2` (`.pr-stage-h`) = `1.75rem` (28px).<br>`H3` = `1.375rem` (22px).<br>`Eyebrow` (`.pr-eyebrow`) = `1rem` (16px uppercase kicker). |
+| **Headings Scale** | Sized natively by AEM / GCWeb (`theme.min.css`). No custom font-size overrides.<br>`H1` = 38px desktop / 34px mobile with native 72px red accent bar (`border-image` from GCWeb).<br>`H2 Eyebrow` (`.pr-eyebrow.h4`) = semantic stage landmark.<br>`H3 Stage Headings` (`.pr-stage-h`) = 24px native GCWeb subsection heading.<br>`H4 Subheadings` = 18px native GCWeb heading.<br>**Zero skipped heading levels** for strict WCAG AA / screen reader compliance. |
+| **Color Architecture** | Standard Canada.ca hex codes (`#26374a`, `#284162`, `#0535d2`, `#af3c43`) used directly without unnecessary `:root` indirection layers, fully compatible with AEM clientlibs and browser DevTools. |
 | **Contextual Alerts** | Standard WET semantic alerts: `<section class="alert alert-warning">` and `<section class="alert alert-info">`. Fully accessible, native borders and iconography. |
 | **Collapsible Content** | Standard HTML `<details class="print-open"><summary>` with native Canada.ca disclosure markers. Collapsed by default on screen, printable via `print-open`. |
 | **Top of Page Links** | Completely removed per design decision, keeping content stages clean and unencumbered. |
+| **Reduced Motion** | Respects `prefers-reduced-motion: reduce`: transitions disabled and instant scrolling enforced via CSS and JS. |
+| **High Contrast Mode** | Full `forced-colors: active` support: stepper circles, connecting vertical lines, active sub-cards, and focus indicators adapt to system palette (`Highlight`, `CanvasText`). |
+| **ARIA Live Region** | Integrated polite announcer (`#pr-step-announcer` with WET `.wb-inv` class) providing screen reader feedback on step navigation and mobile menu state without interrupting passive reading. |
 
 ---
 

@@ -116,12 +116,7 @@
       var isDone = (i < act.main);
       s.classList.toggle("is-active", isActive);
       s.classList.toggle("is-done", isDone);
-      var chev = s.querySelector(".pr-step-chevron");
-      if (chev && chev.tagName && chev.tagName.toLowerCase() === "img") {
-        chev.src = isActive
-          ? "assets/figma/nav-chevron-active.svg"
-          : "assets/figma/nav-chevron.svg";
-      }
+
     });
 
     allSubCards.forEach(function (card) {

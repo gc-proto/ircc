@@ -1,28 +1,127 @@
-:root {
-  --pr-navy: #26374a;
-  --pr-blue: #284162;
-  --pr-accent: #0535d2;
+/* ==========================================================================
+   PRTD (Permanent Resident Travel Document) - Custom Component Stylesheet
+   Architecture: Accessible (WCAG 2.1 AA), Minimal Custom Layer on WET-BOEW / GCWeb
+   Notes:
+   - Base typography, heading scales, alerts, buttons, and grid are handled
+     natively by Canada.ca GCWeb (theme.min.css) in both GitHub & AEM environments.
+   - This stylesheet defines ONLY the custom components not present in GCWeb/AEM.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. "AT A GLANCE" SUMMARY COMPONENT
+   -------------------------------------------------------------------------- */
+.pr-glance-band {
+  background-color: #ebf2fc;
+  padding: 36px 0 40px;
+  margin-top: 28px;
 }
 
+.pr-glance-card {
+  background-color: #ffffff;
+  border: 1px solid #dcdee1;
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin-bottom: 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.pr-glance-boxes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.pr-glance-box {
+  background-color: #ffffff;
+  border: 1px solid #e3e3e3;
+  border-radius: 15px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  height: 100%;
+}
+
+.pr-glance-icon {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  margin-top: 2px;
+}
+
+.pr-glance-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.pr-glance-title {
+  display: block;
+  font-size: 1.125rem;
+  line-height: 1.3;
+  font-weight: 700;
+  color: #26374a;
+  margin: 0 0 4px;
+}
+
+.pr-glance-help {
+  width: 16px;
+  height: 16px;
+  margin-left: 4px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.pr-glance-desc {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.pr-glance-hr {
+  display: block;
+  width: 100%;
+  margin: 24px 0;
+  border: 0;
+  border-top: 1px solid #d3d5d7;
+}
+
+.pr-glance-intro {
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.pr-glance-band .well ul.list-unstyled li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pr-glance-band .well ul.list-unstyled li:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.pr-check-icon {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  color: #26374a;
+}
+
+/* --------------------------------------------------------------------------
+   2. TWO-COLUMN RESPONSIVE LAYOUT & STICKY RAIL
+   -------------------------------------------------------------------------- */
 .pr-layout {
   display: flex;
-  flex-direction: row;
   align-items: flex-start;
   gap: 40px;
-  position: relative;
-  width: 100%;
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
-}
-
-.pr-layout-inner {
-  display: contents;
 }
 
 .pr-side {
   flex: 0 0 260px;
   width: 260px;
-  max-width: 260px;
   position: sticky;
   top: 20px;
   max-height: calc(100vh - 40px);
@@ -39,10 +138,6 @@
   width: 6px;
 }
 
-.pr-side::-webkit-scrollbar-track {
-  background: transparent;
-}
-
 .pr-side::-webkit-scrollbar-thumb {
   background: #c8c8c8;
   border-radius: 4px;
@@ -55,14 +150,15 @@
 .pr-main {
   flex: 1 1 auto;
   max-width: 830px;
-  width: auto;
   min-width: 0;
 }
 
+/* --------------------------------------------------------------------------
+   3. STEPPER NAVIGATION COMPONENT
+   -------------------------------------------------------------------------- */
 .pr-stepper {
   background: transparent;
   border: none;
-  box-shadow: none;
   padding: 0;
 }
 
@@ -76,6 +172,7 @@
   position: relative;
 }
 
+/* Vertical Timeline Connecting Line */
 .pr-step:not(:last-child)::after {
   content: "";
   position: absolute;
@@ -112,10 +209,6 @@
   background-color: #26374a;
   z-index: 2;
   pointer-events: none;
-}
-
-.pr-step-terminal img {
-  display: none;
 }
 
 .pr-step-row {
@@ -165,17 +258,6 @@
   cursor: pointer;
   text-align: left;
   line-height: 1.3;
-  min-height: auto;
-}
-
-.pr-step-btn:focus {
-  outline: 2px solid #0535d2;
-  outline-offset: 3px;
-  border-radius: 3px;
-}
-
-.pr-step-btn:focus:not(:focus-visible) {
-  outline: none;
 }
 
 .pr-step-btn:focus-visible {
@@ -188,9 +270,9 @@
   flex: 1 1 auto;
 }
 
-.pr-step.is-active .pr-step-btn  { color: #26374a; }
+.pr-step.is-active .pr-step-btn   { color: #26374a; }
 .pr-step.is-active .pr-step-title { font-weight: 700; }
-.pr-step.is-done   .pr-step-btn  { color: #6f6f6f; }
+.pr-step.is-done   .pr-step-btn   { color: #6f6f6f; }
 .pr-step.is-done   .pr-step-title { font-weight: 600; }
 
 .pr-step-chevron {
@@ -236,21 +318,19 @@ html.no-js .pr-step-body[hidden] {
   margin-bottom: 4px;
   text-decoration: none;
   color: #6f6f6f;
-  font-weight: 400;
   font-size: 15px;
   line-height: 1.35;
-  min-height: auto;
   transition: color 0.15s ease, background-color 0.15s ease;
 }
 
-.pr-sub-card:last-child { margin-bottom: 0; }
+.pr-sub-card:last-child {
+  margin-bottom: 0;
+}
 
 .pr-sub-arrow {
   flex-shrink: 0;
   width: 13px;
   height: auto;
-  font-size: 0;
-  line-height: 1;
   color: #26374a;
   opacity: 0;
   transform: translateX(-4px);
@@ -277,7 +357,6 @@ html.no-js .pr-step-body[hidden] {
   background: #ebf2fa;
   color: #26374a;
   font-weight: 700;
-  padding: 8px 12px;
 }
 
 .pr-sub-card.is-active .pr-sub-arrow {
@@ -286,105 +365,12 @@ html.no-js .pr-step-body[hidden] {
   transform: translateX(0);
 }
 
-.pr-sub-card .pr-sub-arrow img,
-.pr-sub-card.is-active .pr-sub-arrow img {
-  display: block;
-  width: 13px;
-  height: 12px;
-  margin-top: 4px;
-}
-
-.pr-sub-card:focus {
-  outline: 2px solid #0535d2;
-  outline-offset: 2px;
-}
-
-.pr-sub-card:focus:not(:focus-visible) {
-  outline: none;
-}
-
 .pr-sub-card:focus-visible {
   outline: 2px solid #0535d2;
   outline-offset: 2px;
 }
 
-.pr-stage {
-  border-bottom: 1px solid #eeeeee;
-  padding-bottom: 28px;
-  margin-bottom: 28px;
-}
-
-.pr-stage:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-.pr-section,
-.pr-subsection {
-  scroll-margin-top: 100px;
-  padding-bottom: 16px;
-  margin-bottom: 8px;
-}
-
-.pr-eyebrow {
-  display: block;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #595959;
-  margin-bottom: 0.25rem;
-  line-height: 1.3;
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-.pr-eyebrow.h4,
-p.pr-eyebrow {
-  font-size: 1rem;
-  line-height: 1.3;
-  text-transform: none;
-}
-
-.pr-stage-h {
-  margin-top: 0;
-  margin-bottom: 12px;
-  color: #26374a;
-  font-size: 1.75rem;
-  line-height: 1.25;
-  font-weight: 700;
-}
-
-.pr-main h3:not(.pr-stage-h) {
-  font-size: 1.375rem;
-  line-height: 1.3;
-  color: #333333;
-}
-
-.pr-section .pr-eyebrow + .pr-stage-h,
-.pr-subsection .pr-eyebrow + .pr-stage-h {
-  margin-top: 0;
-}
-
-
-
-
-
-
-
-.pr-main a:not(.btn):not(.pr-sub-card) {
-  color: #284162;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.pr-main a:not(.btn):not(.pr-sub-card):hover,
-.pr-main a:not(.btn):not(.pr-sub-card):focus {
-  color: #0535d2;
-  text-decoration: underline;
-}
-
-
-
+/* Mobile Stepper Toggle (Sticky Top Bar on Screens < 992px) */
 .pr-stepper-toggle {
   display: none;
   width: 100%;
@@ -433,15 +419,6 @@ p.pr-eyebrow {
   border-color: #284162;
 }
 
-.pr-stepper-toggle:focus {
-  outline: 2px solid #0535d2;
-  outline-offset: 2px;
-}
-
-.pr-stepper-toggle:focus:not(:focus-visible) {
-  outline: none;
-}
-
 .pr-stepper-toggle:focus-visible {
   outline: 2px solid #0535d2;
   outline-offset: 2px;
@@ -454,198 +431,95 @@ p.pr-eyebrow {
 }
 
 .pr-stepper.is-open .pr-toggle-caret,
-button[aria-expanded="true"] .pr-toggle-caret { transform: rotate(180deg); }
+button[aria-expanded="true"] .pr-toggle-caret {
+  transform: rotate(180deg);
+}
 
-h1#wb-cont.pr-h1,
-.pr-h1 {
-  border-bottom: none !important;
+/* --------------------------------------------------------------------------
+   4. CONTENT STAGES & HEADING INTEGRATION
+   -------------------------------------------------------------------------- */
+.pr-stage {
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+}
+
+.pr-stage:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
   padding-bottom: 0;
-  margin-top: 16px;
-  margin-bottom: 0;
-  font-size: 2.375rem;
-  font-weight: 700;
-  color: #333333;
-  line-height: 1.25;
 }
 
-.pr-h1::after {
-  content: "";
-  display: block;
-  width: 72px;
-  height: 6px;
-  background-color: #af3c43;
-  margin-top: 12px;
-  border-radius: 1px;
-}
-
-.pr-glance-band {
-  background-color: #ebf2fc;
-  padding: 36px 0 40px;
-  margin-top: 28px;
-}
-
-.pr-glance-band .well,
-.pr-glance-card {
-  background-color: #ffffff;
-  border: 1px solid #dcdee1;
-  border-radius: 20px;
-  padding: 28px 32px;
-  margin-bottom: 0;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-}
-
-.pr-glance-boxes {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-
-.pr-glance-box {
-  background-color: #ffffff;
-  border: 1px solid #e3e3e3;
-  border-radius: 15px;
-  padding: 14px 16px;
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  min-height: auto;
-  height: 100%;
-}
-
-.pr-glance-icon {
-  width: 32px;
-  height: 32px;
-  flex: 0 0 32px;
-  object-fit: contain;
-  margin-top: 2px;
-}
-
-.pr-glance-icon-processing {
-  width: 32px;
-  height: 32px;
-}
-
-.pr-glance-icon-valid {
-  width: 32px;
-  height: 28px;
-}
-
-.pr-glance-icon-apply {
-  width: 32px;
-  height: 32px;
-}
-
-.pr-glance-icon-dollar {
-  width: 32px;
-  height: 32px;
-}
-
-.pr-glance-content {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.pr-glance-title {
-  display: block;
-  font-size: 1.125rem;
-  line-height: 1.3;
-  font-weight: 700;
-  color: #26374a;
-  margin: 0 0 4px;
-}
-
-.pr-glance-help {
-  width: 16px;
-  height: 16px;
-  object-fit: contain;
-  margin-left: 4px;
-  cursor: pointer;
-  vertical-align: middle;
-}
-
-.pr-glance-desc {
-  font-size: 1rem;
-  line-height: 1.4;
-  color: #333333;
-  margin: 0;
-}
-
-.pr-glance-hr {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  margin: 24px auto;
-  border: 0;
-  border-top: 1px solid #d3d5d7;
-  opacity: 1;
-}
-
-.pr-glance-intro {
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.5;
-  color: #333333;
-  margin-top: 0;
-  margin-bottom: 12px;
-  max-width: none;
-}
-
-.pr-glance-band .well ul.list-unstyled li {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.pr-glance-band .well ul.list-unstyled li:not(:last-child) {
+.pr-section,
+.pr-subsection {
+  scroll-margin-top: 100px;
+  padding-bottom: 16px;
   margin-bottom: 8px;
 }
 
-.pr-glance-band .pr-check-icon,
-.pr-check-icon {
-  width: 22px;
-  height: 22px;
-  flex: 0 0 22px;
-  object-fit: contain;
+/* Eyebrow Headings: H2 landmark with kicker style */
+.pr-eyebrow,
+h2.pr-eyebrow,
+.pr-eyebrow.h4 {
+  display: block;
+  color: #595959;
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+  text-transform: none;
+}
+
+/* Stage Section Headings */
+.pr-stage-h {
+  margin-top: 0;
+  margin-bottom: 12px;
   color: #26374a;
 }
 
+.pr-section .pr-eyebrow + .pr-stage-h,
+.pr-subsection .pr-eyebrow + .pr-stage-h {
+  margin-top: 0;
+}
+
+/* Outline action buttons */
+.pr-main .btn-default {
+  background-color: transparent;
+  border: 1px solid #284162;
+  color: #284162;
+}
+
+.pr-main .btn-default:hover,
+.pr-main .btn-default:focus {
+  background-color: #ebf2fa;
+  color: #284162;
+  text-decoration: underline;
+  outline: 2px solid #0535d2;
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   5. RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+
+/* Desktop (992px and up) */
 @media (min-width: 992px) {
-  .pr-layout { margin-top: 39px; }
-  .pr-stage:not(:last-child) { padding-bottom: 24px; margin-bottom: 24px; }
-  .pr-section, .pr-subsection { padding-bottom: 24px; margin-bottom: 16px; }
-
-  .pr-subsection#submit-application {
-    padding-bottom: 0;
-    margin-bottom: 0;
-  }
-
-  .pr-subsection#submit-application > details.print-open {
-    margin-top: 25px !important;
-  }
-
-  .container > .pr-layout + .row.row-no-gutters.mrgn-tp-xl { margin-top: 40px; }
-  }
-
-@media (min-width: 992px) and (max-width: 1199px) {
   .pr-layout {
-    gap: 32px;
-    gap: clamp(24px, 3.5vw, 40px);
+    margin-top: 39px;
+  }
+
+  .pr-stage:not(:last-child) {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+  }
+
+  .pr-section,
+  .pr-subsection {
+    padding-bottom: 24px;
+    margin-bottom: 16px;
   }
 }
 
-@media (min-width: 1200px) {
-  .pr-layout {
-    gap: 40px;
-  }
-
-  .pr-main {
-    flex: 1 1 auto;
-    width: auto;
-  }
-}
-
+/* Tablet & Mobile (991px and down) */
 @media (max-width: 991px) {
   .pr-layout {
     flex-direction: column;
@@ -653,12 +527,10 @@ h1#wb-cont.pr-h1,
   }
 
   .pr-main {
-    flex: 1 1 auto;
     width: 100%;
   }
 
   .pr-side {
-    flex: 0 0 auto;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -672,9 +544,13 @@ h1#wb-cont.pr-h1,
     overflow-y: visible;
   }
 
-  .pr-stepper-toggle { display: flex; }
+  .pr-stepper-toggle {
+    display: flex;
+  }
 
-  #pr-steplist { display: none; }
+  #pr-steplist {
+    display: none;
+  }
 
   .pr-stepper.is-open #pr-steplist {
     display: block;
@@ -684,12 +560,14 @@ h1#wb-cont.pr-h1,
   }
 
   .pr-section,
-  .pr-subsection { scroll-margin-top: 120px; }
+  .pr-subsection {
+    scroll-margin-top: 120px;
+  }
 
-
-
-  .pr-glance-band { padding: 24px 0 32px; }
-  .pr-glance-band { margin-top: 24px; }
+  .pr-glance-band {
+    padding: 24px 0 32px;
+    margin-top: 24px;
+  }
 
   .pr-glance-boxes {
     grid-template-columns: repeat(2, 1fr);
@@ -699,9 +577,9 @@ h1#wb-cont.pr-h1,
   .pr-glance-card {
     padding: 20px;
   }
-
 }
 
+/* Small Mobile (600px and down) */
 @media (max-width: 600px) {
   .pr-glance-band {
     padding: 20px 0 28px;
@@ -718,7 +596,6 @@ h1#wb-cont.pr-h1,
   }
 
   .pr-glance-box {
-    min-height: auto;
     padding: 12px 14px;
     border-radius: 12px;
     gap: 14px;
@@ -732,56 +609,10 @@ h1#wb-cont.pr-h1,
     gap: 10px;
   }
 
-  h1#wb-cont.pr-h1,
-  .pr-h1 {
-    font-size: 2.125rem;
-    line-height: 1.25;
-    margin-top: 16px;
-  }
-
-  .pr-h1::after {
-    width: 72px;
-    height: 6px;
-    margin-top: 12px;
-  }
-
-  .pr-eyebrow,
-  .pr-eyebrow.h4,
-  p.pr-eyebrow,
-  h2.pr-eyebrow {
-    font-size: 0.9375rem;
-    line-height: 1.3;
-    margin-bottom: 2px;
-  }
-
-  .pr-stage-h {
-    font-size: 1.5rem;
-    line-height: 1.3;
-    margin-bottom: 10px;
-  }
-
-  .pr-main h3:not(.pr-stage-h) {
-    font-size: 1.25rem;
-    line-height: 1.3;
-    margin-top: 18px;
-    margin-bottom: 8px;
-  }
-
-  .pr-glance-title {
-    font-size: 1.0625rem;
-    line-height: 1.3;
-  }
-
-  .pr-glance-desc,
-  .pr-glance-intro {
-    font-size: 0.9375rem;
-    line-height: 1.4;
-  }
-
+  /* 44px minimum touch targets */
   .pr-stepper-toggle {
     min-height: 48px;
     padding: 12px 16px;
-    font-size: 15px;
   }
 
   .pr-step-row {
@@ -792,101 +623,41 @@ h1#wb-cont.pr-h1,
   .pr-step-btn {
     min-height: 44px;
     padding: 6px 0;
-    font-size: 16px;
-    line-height: 1.3;
   }
 
   .pr-sub-card {
     min-height: 44px;
     padding: 8px 12px;
-    margin-bottom: 4px;
-    font-size: 15px;
-    line-height: 1.35;
     align-items: center;
-  }
-
-  .pr-sub-card.is-active,
-  .pr-sub-card.is-active:hover,
-  .pr-sub-card.is-active:focus {
-    padding: 8px 12px;
-  }
-
-
-
-
-
-  
-
-  
-
-  .gc-pg-hlpfl-btn button,
-  .gc-pg-hlpfl-no button {
-    min-height: 44px;
-    min-width: 44px;
-    padding: 8px 16px;
-  }
-
-  .gc-pg-hlpfl-no .radio label {
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    padding-left: 28px;
   }
 
   .pr-main {
-    min-width: 0;
     word-break: break-word;
     overflow-wrap: break-word;
   }
-
-  .pr-stage:not(:last-child) {
-    padding-bottom: 24px;
-    margin-bottom: 24px;
-  }
-
-  .pr-section,
-  .pr-subsection {
-    padding-bottom: 16px;
-    margin-bottom: 8px;
-    scroll-margin-top: 100px;
-  }
 }
 
-@media print {
-  .pr-side       { display: none !important; }
-  .btn-group.mrgn-bttm-md { display: none !important; }
+/* --------------------------------------------------------------------------
+   6. ACCESSIBILITY & PRINT STYLES
+   -------------------------------------------------------------------------- */
 
-  .pr-layout details,
-  details.print-open {
-    display: block !important;
-    border: 1px solid #ccc !important;
-    break-inside: avoid;
+@media print {
+  .pr-side {
+    display: none !important;
   }
 
-  .pr-layout  { display: block !important; }
-  .pr-main    { width: 100% !important; }
+  .pr-layout {
+    display: block !important;
+  }
+
+  .pr-main {
+    width: 100% !important;
+  }
 
   .pr-glance-band {
     background-color: transparent !important;
     padding: 0 !important;
   }
-}
-
-
-
-
-.pr-main .btn-default {
-  background-color: transparent;
-  border: 1px solid #284162;
-  color: #284162;
-}
-.pr-main .btn-default:hover,
-.pr-main .btn-default:focus {
-  background-color: #ebf2fa;
-  color: #284162;
-  text-decoration: underline;
-  outline: 2px solid #0535d2;
-  outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -897,7 +668,6 @@ h1#wb-cont.pr-h1,
 
   .pr-step-chevron,
   .pr-sub-card,
-  .pr-card-arrow,
   .pr-sub-arrow,
   .pr-toggle-caret {
     transition: none !important;
@@ -939,7 +709,6 @@ h1#wb-cont.pr-h1,
   }
 
   .pr-step-chevron,
-  .pr-card-arrow,
   .pr-sub-arrow svg,
   .pr-glance-icon path,
   .pr-glance-help path,
@@ -947,4 +716,3 @@ h1#wb-cont.pr-h1,
     fill: currentColor !important;
   }
 }
-
