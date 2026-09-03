@@ -7,7 +7,7 @@
 .pr-glance-card {
   background-color: #ffffff;
   border: 1px solid #dcdee1;
-  border-radius: 4px;
+  border-radius: 20px;
   padding: 28px 32px;
   margin-bottom: 0;
 }
@@ -21,7 +21,7 @@
 .pr-glance-box {
   background-color: #ffffff;
   border: 1px solid #e3e3e3;
-  border-radius: 4px;
+  border-radius: 15px;
   padding: 14px 16px;
   display: flex;
   align-items: flex-start;
@@ -276,7 +276,7 @@ html.no-js .pr-step-body[hidden] {
   align-items: flex-start;
   gap: 8px;
   background: transparent;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 8px 12px;
   margin-bottom: 4px;
   text-decoration: none;
@@ -528,6 +528,7 @@ h2.pr-eyebrow,
 
   .pr-glance-card {
     padding: 16px;
+    border-radius: 16px;
   }
 
   .pr-glance-boxes {
@@ -537,6 +538,7 @@ h2.pr-eyebrow,
 
   .pr-glance-box {
     padding: 12px 14px;
+    border-radius: 12px;
     gap: 14px;
   }
 
