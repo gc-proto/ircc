@@ -10,9 +10,8 @@
   var stepItems = Array.prototype.slice.call(document.querySelectorAll(".pr-step"));
 
   function getDocTop(el) {
-    var top = 0;
-    while (el) { top += el.offsetTop; el = el.offsetParent; }
-    return top;
+    if (!el) return 0;
+    return el.getBoundingClientRect().top + window.scrollY;
   }
 
   var flat = [];
@@ -132,6 +131,32 @@
       if (toggleLbl) {
         toggleLbl.textContent = subName;
       }
+    }
+
+    if (window.innerWidth >= 992) {
+      var activeNavEl = act.navCard || act.navMain;
+      scrollActiveNavIntoView(activeNavEl);
+    }
+  }
+
+  function scrollActiveNavIntoView(activeEl) {
+    if (!activeEl || window.innerWidth < 992 || !side) return;
+    var sideRect = side.getBoundingClientRect();
+    var elRect = activeEl.getBoundingClientRect();
+
+    var offsetTop = elRect.top - sideRect.top;
+    var offsetBottom = elRect.bottom - sideRect.bottom;
+
+    if (offsetTop < 20) {
+      side.scrollBy({
+        top: offsetTop - 20,
+        behavior: "smooth"
+      });
+    } else if (offsetBottom > -20) {
+      side.scrollBy({
+        top: offsetBottom + 20,
+        behavior: "smooth"
+      });
     }
   }
 
@@ -340,15 +365,23 @@
   });
 
   function onScroll() {
-    var probe = window.scrollY + Math.round(window.innerHeight * 0.28);
+    var isAtBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 50);
     var fi = 0;
 
-    for (var i = 0; i < flat.length; i++) {
-      if (flat[i].sec && getDocTop(flat[i].sec) <= probe) fi = i;
-    }
-
-    if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 40)) {
+    if (isAtBottom) {
       fi = flat.length - 1;
+    } else {
+      var probeOffset = (window.innerWidth < 992) ? 120 : 100;
+      for (var i = flat.length - 1; i >= 0; i--) {
+        var sec = flat[i].sec;
+        if (sec) {
+          var top = sec.getBoundingClientRect().top;
+          if (top <= probeOffset) {
+            fi = i;
+            break;
+          }
+        }
+      }
     }
 
     setActive(fi);
@@ -415,8 +448,6 @@
             break;
           }
         }
-        currentFlat = -1;
-        setTimeout(onScroll, 400);
       }
     });
   });
@@ -434,6 +465,7 @@
 
   window.addEventListener("scroll", requestTick, { passive: true });
   window.addEventListener("resize", requestTick);
+  window.__prtdOnScroll = onScroll;
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", onScroll);
