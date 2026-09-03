@@ -488,44 +488,9 @@ h2.pr-eyebrow,
     width: 100%;
   }
 
-  .pr-subway-header {
-    display: none;
-  }
-
-  .pr-side:not(.is-sticky) .pr-stepper {
-    box-sizing: border-box;
-    width: 100%;
-    position: relative;
-    border: 3px solid #26374a;
-    border-radius: 8px;
-    margin: 32px 0 28px 0;
-    padding: 16px 16px 16px 26px;
-    background: #ffffff;
-  }
-
-  .pr-side:not(.is-sticky) .pr-subway-header {
-    display: block;
-    position: absolute;
-    top: -14px;
-    left: -6px;
-    background: #ffffff;
-    padding: 0 14px 8px 0;
-    max-width: calc(100% - 36px);
-    z-index: 3;
-  }
-
-  .pr-side:not(.is-sticky) .pr-subway-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: #26374a;
-    line-height: 1.3;
-    display: block;
-  }
-
-  .pr-subway-header::after {
-    display: none !important;
-  }
-
+  /* ==========================================================================
+     Current New Nav on Mobile (<992px)
+     ========================================================================== */
   .pr-side {
     box-sizing: border-box;
     position: relative;
@@ -535,99 +500,189 @@ h2.pr-eyebrow,
     height: auto;
     background: transparent;
     border: none;
-    padding: 0 0 24px;
+    padding: 0;
+    margin: 24px 0 28px 0;
     max-height: none;
     overflow-y: visible;
   }
 
+  /* Sticky Navigation Bar with Drop Shadow and zero space before the bottom line */
   .pr-side.is-sticky {
     position: sticky;
     top: 0;
     z-index: 1000;
     background: #ffffff;
-    border: none;
-    border-bottom: 1px solid #d3d5d7;
-    padding: 8px 0;
-    margin-bottom: 0;
+    border-bottom: 1px solid #d8dde3;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Clean modern drop shadow */
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .pr-side:not(.is-sticky) .pr-stepper {
+    background: #ffffff;
+    border: 1px solid #d8dde3;
+    border-radius: 12px;
+    padding: 20px 18px 16px 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
   }
 
   .pr-side.is-sticky .pr-stepper {
     position: relative;
+    background: transparent;
     border: none;
     border-radius: 0;
-    margin: 0;
     padding: 0;
-    background: transparent;
+    margin: 0;
+    box-shadow: none;
   }
 
-  .pr-stepper-toggle {
-    display: none;
+  .pr-side:not(.is-sticky) .pr-subway-header {
+    display: block !important;
+    position: relative;
+    border-bottom: 2px solid #26374a;
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+  }
+
+  .pr-side.is-sticky .pr-subway-header {
+    display: none !important;
+  }
+
+  .pr-subway-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #26374a;
+    margin: 0;
+  }
+
+  .pr-side:not(.is-sticky) .pr-stepper-toggle {
+    display: none !important;
   }
 
   .pr-side.is-sticky .pr-stepper-toggle {
-    display: flex;
+    display: flex !important;
+    width: 100%;
+    padding: 8px 15px !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    margin-bottom: 0 !important;
+    min-height: 44px;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  #pr-steplist {
-    display: block;
+  .pr-side.is-sticky .pr-stepper-toggle:hover {
+    background-color: transparent !important;
   }
 
-  .pr-side:not(.is-sticky) #pr-steplist {
-    clear: both;
-    margin: 0;
-    padding: 4px 0 0 0;
-    list-style: none;
-    border: none;
+  .pr-side:not(.is-sticky) .pr-stepper-list {
+    display: block !important;
   }
 
-  .pr-side.is-sticky #pr-steplist {
+  .pr-side.is-sticky .pr-stepper-list {
     display: none;
   }
 
+  .pr-side.is-sticky .pr-stepper.is-open .pr-stepper-list,
   .pr-side.is-sticky .pr-stepper.is-open #pr-steplist {
-    display: block;
+    display: block !important;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
     background: #ffffff;
-    border-bottom: 2px solid #26374a;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    max-height: 60vh;
+    border-bottom: 3px solid #26374a;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22), 0 6px 14px rgba(0, 0, 0, 0.12);
+    max-height: 65vh;
     overflow-y: auto;
-    padding: 12px 16px;
+    padding: 6px 15px 12px 15px !important;
     z-index: 1001;
   }
 
-  .pr-side.is-sticky .pr-stepper.is-open .pr-step.is-active .pr-step-body,
-  .pr-side.is-sticky .pr-stepper.is-open .pr-step.is-expanded .pr-step-body,
-  .pr-side.is-sticky .pr-stepper.is-open .pr-step-body.is-expanded {
-    display: block !important;
+  /* Compact tightened whitespace inside sticky expanded dropdown */
+  .pr-side.is-sticky .pr-stepper.is-open .pr-step-row {
+    min-height: 38px !important;
+    padding: 4px 0 !important;
   }
 
-  .pr-side:not(.is-sticky) .pr-step-terminal {
-    display: none;
+  .pr-side.is-sticky .pr-stepper.is-open .pr-step-btn {
+    min-height: 38px !important;
+    font-size: 15px !important;
   }
 
-  .pr-side:not(.is-sticky) .pr-step {
-    padding-bottom: 0;
+  .pr-side.is-sticky .pr-stepper.is-open .pr-sub-card {
+    min-height: 34px !important;
+    padding: 5px 10px !important;
+    margin-bottom: 2px !important;
+    font-size: 14px !important;
+  }
+
+  .pr-side.is-sticky .pr-stepper.is-open .pr-step-body {
+    padding-top: 2px !important;
+    padding-bottom: 4px !important;
+  }
+
+  .pr-stepper-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .pr-step {
     position: relative;
+    padding-bottom: 6px;
   }
 
-  .pr-side:not(.is-sticky) .pr-step::after {
-    display: none !important;
+  .pr-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 22px;
+    bottom: -6px;
+    width: 2px;
+    background: #26374a;
+    z-index: 0;
   }
 
-  .pr-side:not(.is-sticky) .pr-step-row {
-    padding: 10px 0;
-    min-height: 44px;
+  .pr-step:last-child {
+    padding-bottom: 4px;
+  }
+
+  .pr-step:last-child::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 22px;
+    bottom: 10px;
+    width: 2px;
+    background: #26374a;
+    z-index: 0;
+  }
+
+  .pr-step-terminal {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    left: 4px;
+    width: 12px;
+    height: 2px;
+    background-color: #26374a;
+    z-index: 2;
+  }
+
+  .pr-step-row {
     display: flex;
     align-items: center;
+    gap: 12px;
+    padding: 8px 0;
     position: relative;
     z-index: 1;
+    min-height: 44px;
   }
 
-  .pr-side:not(.is-sticky) .pr-circle {
+  .pr-circle {
     flex: 0 0 20px;
     width: 20px;
     height: 20px;
@@ -636,148 +691,113 @@ h2.pr-eyebrow,
     background: #ffffff;
     position: relative;
     z-index: 2;
-    margin-left: -36px;
-    margin-right: 16px;
+    margin: 0;
   }
 
-  .pr-side:not(.is-sticky) .pr-step.is-active .pr-circle {
+  .pr-step.is-active .pr-circle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
     background: #26374a;
-    border-color: #26374a;
   }
 
-  .pr-side:not(.is-sticky) .pr-step.is-active .pr-circle::after {
-    display: none;
-  }
-
-  .pr-side:not(.is-sticky) .pr-step-btn {
-    font-size: 16px;
-    color: #4a5568;
-    text-decoration: none;
-    cursor: pointer;
+  .pr-step-btn {
     flex: 1 1 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
-    line-height: 1.35;
     background: transparent;
     border: none;
     padding: 0;
-  }
-
-  .pr-side:not(.is-sticky) .pr-step-btn:hover,
-  .pr-side:not(.is-sticky) .pr-step-btn:focus {
-    color: #0535d2;
-    text-decoration: none;
-  }
-
-  .pr-side:not(.is-sticky) .pr-step.is-active .pr-step-btn {
-    color: #26374a;
+    font-size: 16px;
     font-weight: 700;
-    text-decoration: none;
-  }
-
-  .pr-side:not(.is-sticky) .pr-step-title {
-    color: inherit;
-    font-weight: inherit;
-    text-decoration: inherit;
-  }
-
-  .pr-side:not(.is-sticky) .pr-step-chevron {
-    display: inline-flex !important;
-    width: 24px;
-    height: 24px;
-    flex: 0 0 24px;
-    color: #6f6f6f;
+    color: #26374a;
     cursor: pointer;
-    margin-left: auto;
-    padding: 3px;
+    text-align: left;
+    line-height: 1.35;
+  }
+
+  .pr-step-chevron {
+    display: inline-flex !important;
+    width: 18px;
+    height: 18px;
+    color: #6f6f6f;
+    flex-shrink: 0;
     transition: transform 0.2s ease;
   }
 
-  .pr-side:not(.is-sticky) .pr-step.is-active .pr-step-chevron {
-    color: #26374a;
-  }
-
-  .pr-side:not(.is-sticky) .pr-step-btn[aria-expanded="false"] .pr-step-chevron {
+  .pr-step-btn[aria-expanded="false"] .pr-step-chevron {
     transform: rotate(180deg);
   }
 
-  .pr-side:not(.is-sticky) .pr-step-btn[aria-expanded="true"] .pr-step-chevron {
+  .pr-step-btn[aria-expanded="true"] .pr-step-chevron {
     transform: rotate(0deg);
   }
 
-  .pr-side:not(.is-sticky) .pr-step-body {
-    display: none !important;
-    padding-left: 0;
+  .pr-step-body {
+    display: block !important;
+    padding-left: 20px;
     padding-top: 4px;
     padding-bottom: 8px;
     position: relative;
     z-index: 1;
   }
 
-  .pr-side:not(.is-sticky) .pr-step-body.is-expanded,
-  .pr-side:not(.is-sticky) .pr-step.is-expanded .pr-step-body {
-    display: block !important;
-  }
-
-  .pr-side:not(.is-sticky) .pr-sub-card {
+  .pr-sub-card {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     background: transparent;
     border-radius: 8px;
-    padding: 8px 12px;
-    margin-bottom: 3px;
-    min-height: 38px;
-    color: #555555;
+    padding: 9px 12px;
+    margin-bottom: 4px;
+    min-height: 42px;
+    color: #4a5568;
     font-size: 15px;
     line-height: 1.35;
     text-decoration: none;
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
   }
 
-  .pr-side:not(.is-sticky) .pr-sub-card:hover,
-  .pr-side:not(.is-sticky) .pr-sub-card:focus {
+  .pr-sub-card:hover,
+  .pr-sub-card:focus {
     background: rgba(235, 242, 250, 0.6);
-    text-decoration: none;
     color: #0535d2;
+    text-decoration: none;
   }
 
-  .pr-side:not(.is-sticky) .pr-sub-arrow {
-    display: inline-flex;
-    flex-shrink: 0;
-    width: 13px;
-    height: auto;
-    color: #26374a;
-    opacity: 0;
-  }
-
-  .pr-side:not(.is-sticky) .pr-sub-card:hover .pr-sub-arrow,
-  .pr-side:not(.is-sticky) .pr-sub-card:focus .pr-sub-arrow {
-    opacity: 1;
-  }
-
-  .pr-side:not(.is-sticky) .pr-sub-card::before {
-    display: none;
-  }
-
-  .pr-side:not(.is-sticky) .pr-sub-card.is-active,
-  .pr-side:not(.is-sticky) .pr-sub-card.is-active:hover,
-  .pr-side:not(.is-sticky) .pr-sub-card.is-active:focus {
+  .pr-sub-card.is-active {
     background: #ebf2fa;
     color: #26374a;
     font-weight: 700;
-    text-decoration: none;
+    border-color: #d0e1f9;
   }
 
-  .pr-side:not(.is-sticky) .pr-sub-card.is-active .pr-sub-arrow {
-    opacity: 1;
+  .pr-sub-arrow {
+    display: inline-flex !important;
+    flex-shrink: 0;
+    width: 13px;
+    height: 12px;
     color: #26374a;
+  }
+
+  .pr-sub-card:not(.is-active) .pr-sub-arrow {
+    opacity: 0.35;
+  }
+
+  .pr-sub-card.is-active .pr-sub-arrow {
+    opacity: 1;
   }
 
   .pr-section,
   .pr-subsection {
-    scroll-margin-top: 120px;
+    scroll-margin-top: 100px;
   }
 
   .pr-glance-band {
@@ -870,6 +890,7 @@ h2.pr-eyebrow,
     padding: 0 !important;
   }
 }
+
 </style>
 </div>
 
@@ -939,12 +960,12 @@ h2.pr-eyebrow,
             <ol class="pr-stepper-list" id="pr-steplist">
               <li class="pr-step is-active" data-target="who-can-apply">
                 <div class="pr-step-row"> <span class="pr-circle" aria-hidden="true"></span>
-                  <button type="button" class="pr-step-btn" aria-expanded="false" aria-controls="pr-step-body-1">
+                  <button type="button" class="pr-step-btn" aria-expanded="true" aria-controls="pr-step-body-1">
                     <span class="pr-step-title">Before you apply</span>
                     <svg class="pr-step-chevron" width="18" height="18" viewBox="0 0 21 21" fill="none" aria-hidden="true"><path d="M9.69313 6.32953C10.1394 5.89016 10.8642 5.89016 11.3104 6.32953L18.1653 13.0782C18.6116 13.5176 18.6116 14.2311 18.1653 14.6705C17.719 15.1098 16.9943 15.1098 16.548 14.6705L10.5 8.71617L4.45202 14.667C4.00575 15.1063 3.28099 15.1063 2.83471 14.667C2.38843 14.2276 2.38843 13.5141 2.83471 13.0747L9.68956 6.32601L9.69313 6.32953Z" fill="currentColor"/></svg>
                   </button>
                 </div>
-                <div class="pr-step-body" id="pr-step-body-1" hidden>
+                <div class="pr-step-body" id="pr-step-body-1">
                   <a href="#who-can-apply" class="pr-sub-card is-active" aria-current="page">
                     <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
                     Who can apply
@@ -953,12 +974,12 @@ h2.pr-eyebrow,
               </li>
               <li class="pr-step" data-target="get-forms">
                 <div class="pr-step-row"> <span class="pr-circle" aria-hidden="true"></span>
-                  <button type="button" class="pr-step-btn" aria-expanded="false" aria-controls="pr-step-body-2">
+                  <button type="button" class="pr-step-btn" aria-expanded="true" aria-controls="pr-step-body-2">
                     <span class="pr-step-title">How to apply</span>
                     <svg class="pr-step-chevron" width="18" height="18" viewBox="0 0 21 21" fill="none" aria-hidden="true"><path d="M9.69313 6.32953C10.1394 5.89016 10.8642 5.89016 11.3104 6.32953L18.1653 13.0782C18.6116 13.5176 18.6116 14.2311 18.1653 14.6705C17.719 15.1098 16.9943 15.1098 16.548 14.6705L10.5 8.71617L4.45202 14.667C4.00575 15.1063 3.28099 15.1063 2.83471 14.667C2.38843 14.2276 2.38843 13.5141 2.83471 13.0747L9.68956 6.32601L9.69313 6.32953Z" fill="currentColor"/></svg>
                   </button>
                 </div>
-                <div class="pr-step-body" id="pr-step-body-2" hidden>
+                <div class="pr-step-body" id="pr-step-body-2">
                   <a href="#get-forms" class="pr-sub-card">
                     <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
                     Get your forms and documents ready
@@ -975,12 +996,12 @@ h2.pr-eyebrow,
               </li>
               <li class="pr-step" data-target="how-we-process">
                 <div class="pr-step-row"> <span class="pr-circle" aria-hidden="true"></span>
-                  <button type="button" class="pr-step-btn" aria-expanded="false" aria-controls="pr-step-body-3">
+                  <button type="button" class="pr-step-btn" aria-expanded="true" aria-controls="pr-step-body-3">
                     <span class="pr-step-title">After you apply</span>
                     <svg class="pr-step-chevron" width="18" height="18" viewBox="0 0 21 21" fill="none" aria-hidden="true"><path d="M9.69313 6.32953C10.1394 5.89016 10.8642 5.89016 11.3104 6.32953L18.1653 13.0782C18.6116 13.5176 18.6116 14.2311 18.1653 14.6705C17.719 15.1098 16.9943 15.1098 16.548 14.6705L10.5 8.71617L4.45202 14.667C4.00575 15.1063 3.28099 15.1063 2.83471 14.667C2.38843 14.2276 2.38843 13.5141 2.83471 13.0747L9.68956 6.32601L9.69313 6.32953Z" fill="currentColor"/></svg>
                   </button>
                 </div>
-                <div class="pr-step-body" id="pr-step-body-3" hidden>
+                <div class="pr-step-body" id="pr-step-body-3">
                   <a href="#how-we-process" class="pr-sub-card">
                     <span class="pr-sub-arrow" aria-hidden="true"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" aria-hidden="true"><path d="M5.52728 0.803755L6.17141 0.193726C6.44415 -0.0645752 6.88517 -0.0645752 7.15501 0.193726L12.7954 5.53286C13.0682 5.79116 13.0682 6.20884 12.7954 6.46439L7.15501 11.8063C6.88227 12.0646 6.44125 12.0646 6.17141 11.8063L5.52728 11.1962C5.25165 10.9352 5.25745 10.5093 5.53889 10.2537L9.03515 7.09915H0.696351C0.310456 7.09915 0 6.80513 0 6.43966V5.56034C0 5.19487 0.310456 4.90085 0.696351 4.90085H9.03515L5.53889 1.74628C5.25455 1.49073 5.24874 1.0648 5.52728 0.803755Z" fill="currentColor"/></svg></span>
                     How we process your application
@@ -1190,6 +1211,85 @@ h2.pr-eyebrow,
             </section>
           </div>
         </div>
+      </div>
+    <div class="row row-no-gutters mrgn-tp-xl">
+      <div class="col-sm-7 col-lg-6">
+        <section class="gc-pg-hlpfl provisional" aria-label="Page feedback">
+          <div class="well mrgn-bttm-0">
+            <form id="gc-pg-hlpfl-frm" action="https://apps.canada.ca/x-notify/eml/send" method="post" autocomplete="off">
+              <input type="hidden" name="pageTitle" value="Permanent resident travel document (PRTD)">
+              <input type="hidden" name="submissionPage" value="immigration-refugees-citizenship/services/permanent-residents/prtd.html">
+              <input type="hidden" name="tid" value="tbs-wasthishelpfulen">
+              <input type="hidden" name="auke" value="NTQxNzE1OTA3NTgwMDYyOTQ=">
+              <div class="gc-pg-hlpfl-btn">
+                <div class="row row-no-gutters">
+                  <div class="col-xs-12 col-sm-7 mrgn-tp-sm">
+                    <h2 class="mrgn-tp-sm h5">Did you find what you were looking for?</h2>
+                  </div>
+                  <div class="col-xs-8 col-sm-5 text-right">
+                    <button data-wb5-click="postback@#gc-pg-hlpfl-frm@" type="submit" name="helpful" value="Yes" class="btn btn-primary" data-wb-doaction="[
+                      {&quot;action&quot;:&quot;removeClass&quot;,&quot;source&quot;:&quot;.gc-pg-hlpfl-thnk&quot;,&quot;class&quot;:&quot;hide&quot;},
+                      {&quot;action&quot;:&quot;addClass&quot;,&quot;source&quot;:&quot;#gc-pg-hlpfl-frm&quot;,&quot;class&quot;:&quot;hide&quot;}
+                    ]" data-gc-analytics-wtph>Yes</button>
+                    <button type="button" class="btn btn-primary mrgn-lft-sm nojs-hide" data-wb-doaction="[
+                      {&quot;action&quot;:&quot;ajax&quot;,&quot;url&quot;:&quot;https://www.canada.ca/content/dam/canada/mws-swg/nohelpful.html&quot;,&quot;container&quot;:&quot;.gc-pg-hlpfl-yes&quot;},
+                      {&quot;action&quot;:&quot;removeClass&quot;,&quot;source&quot;:&quot;.gc-pg-hlpfl-no&quot;,&quot;class&quot;:&quot;nojs-show&quot;},
+                      {&quot;action&quot;:&quot;addClass&quot;,&quot;source&quot;:&quot;.gc-pg-hlpfl-btn&quot;,&quot;class&quot;:&quot;hide&quot;}
+                    ]" data-gc-analytics-wtph-no>No</button>
+                  </div>
+                </div>
+              </div>
+              <p class="h3 hidden nojs-show">If not, tell us why:</p>
+              <div class="gc-pg-hlpfl-no nojs-show">
+                <fieldset>
+                  <legend class="h4 mrgn-tp-0 mrgn-bttm-md">What was wrong?</legend>
+                  <div class="radio">
+                    <label for="problem1">
+                      <input name="problem" id="problem1" type="radio" value="The answer I need is missing" data-gc-analytics-wtph-value="The answer I need is missing-La réponse dont j'ai besoin n'est pas là" data-gc-analytics-collect="notPrivate">
+                      The answer I need is missing </label>
+                  </div>
+                  <div class="radio">
+                    <label for="problem2">
+                      <input name="problem" id="problem2" type="radio" value="The information isn't clear" data-gc-analytics-wtph-value="The information isn't clear-L'information n'est pas claire" data-gc-analytics-collect="notPrivate">
+                      The information isn't clear </label>
+                  </div>
+                  <div class="radio">
+                    <label for="problem3">
+                      <input name="problem" id="problem3" type="radio" value="I'm not in the right place" data-gc-analytics-wtph-value="I'm not in the right place-Je ne suis pas au bon endroit" data-gc-analytics-collect="notPrivate">
+                      I'm not in the right place </label>
+                  </div>
+                  <div class="radio">
+                    <label for="problem4">
+                      <input name="problem" id="problem4" type="radio" value="Something is broken or incorrect" data-gc-analytics-wtph-value="Something is broken or incorrect-Quelque chose est brisé ou incorrect" data-gc-analytics-collect="notPrivate">
+                      Something is broken or incorrect </label>
+                  </div>
+                  <div class="radio">
+                    <label for="problem5">
+                      <input name="problem" id="problem5" type="radio" value="Other reason" data-gc-analytics-wtph-value="Other reason-Autre raison" data-gc-analytics-collect="notPrivate">
+                      Other reason </label>
+                  </div>
+                </fieldset>
+                <label for="problem6" class="mrgn-bttm-0">Please provide more details</label>
+                <p class="small"><strong>(Don't include any personal information)</strong><br>
+                  <span class="small">Maximum 300 characters</span></p>
+                <textarea id="problem6" name="details" class="full-width" maxlength="300"></textarea>
+                <button data-wb5-click="postback@#gc-pg-hlpfl-frm@" type="submit" name="helpful" value="No" class="btn btn-primary mrgn-tp-md mrgn-bttm-sm" data-wb-doaction="[
+                  {&quot;action&quot;:&quot;removeClass&quot;,&quot;source&quot;:&quot;.gc-pg-hlpfl-thnk&quot;,&quot;class&quot;:&quot;hide&quot;},
+                  {&quot;action&quot;:&quot;addClass&quot;,&quot;source&quot;:&quot;#gc-pg-hlpfl-frm&quot;,&quot;class&quot;:&quot;hide&quot;}
+                ]" data-gc-analytics-wtph-submit>Submit</button>
+              </div>
+              <div class="gc-pg-hlpfl-yes">
+                <input type="hidden" name="helpful" value="Yes">
+              </div>
+            </form>
+            <div class="gc-pg-hlpfl-thnk hide">
+              <p class="h6 mrgn-tp-sm mrgn-bttm-sm"><span class="glyphicon glyphicon-ok-sign text-success mrgn-rght-sm" aria-hidden="true"></span> Thank you for your feedback</p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="col-sm-3 col-sm-offset-1 col-lg-offset-3">
+        <div class="wb-share" data-wb-share="{&quot;pnlId&quot;:&quot;pnlShrPg&quot;, &quot;lnkClass&quot;: &quot;btn btn-default btn-block mrgn-tp-md&quot;}"></div>
       </div>
     </div>
 
@@ -1456,56 +1556,23 @@ h2.pr-eyebrow,
       if (window.innerWidth > 991) {
         closeMenu();
         if (side) side.classList.remove("is-sticky");
-        // On desktop, all options should be open by default
-        stepItems.forEach(function (stepEl) {
-          var btn = stepEl.querySelector(".pr-step-btn");
-          var body = stepEl.querySelector(".pr-step-body");
-          if (btn) btn.setAttribute("aria-expanded", "true");
-          if (body) {
-            body.removeAttribute("hidden");
-            body.classList.remove("is-expanded");
-          }
-          stepEl.classList.remove("is-expanded");
-        });
-      } else {
-        if (!side || !side.classList.contains("is-sticky") || !stepper.classList.contains("is-open")) {
-          collapseAllMobileSteps();
-        }
+        initStepperState();
       }
     });
   }
 
-  function collapseAllMobileSteps() {
-    if (window.innerWidth < 992) {
-      stepItems.forEach(function (stepEl) {
-        var btn = stepEl.querySelector(".pr-step-btn");
-        var body = stepEl.querySelector(".pr-step-body");
-        if (btn) btn.setAttribute("aria-expanded", "false");
-        if (body) {
-          body.setAttribute("hidden", "");
-          body.classList.remove("is-expanded");
-        }
-        stepEl.classList.remove("is-expanded");
-      });
-    }
-  }
-
   function initStepperState() {
-    if (window.innerWidth >= 992) {
-      // On desktop, all options should be open by default
-      stepItems.forEach(function (stepEl) {
-        var btn = stepEl.querySelector(".pr-step-btn");
-        var body = stepEl.querySelector(".pr-step-body");
-        if (btn) btn.setAttribute("aria-expanded", "true");
-        if (body) {
-          body.removeAttribute("hidden");
-          body.classList.remove("is-expanded");
-        }
-        stepEl.classList.remove("is-expanded");
-      });
-    } else {
-      collapseAllMobileSteps();
-    }
+    // Both desktop and mobile: all steps and sub-steps are open by default in authentic GCWeb Subway
+    stepItems.forEach(function (stepEl) {
+      var btn = stepEl.querySelector(".pr-step-btn");
+      var body = stepEl.querySelector(".pr-step-body");
+      if (btn) btn.setAttribute("aria-expanded", "true");
+      if (body) {
+        body.removeAttribute("hidden");
+        body.classList.remove("is-expanded");
+      }
+      stepEl.classList.remove("is-expanded");
+    });
   }
 
   initStepperState();
@@ -1517,28 +1584,27 @@ h2.pr-eyebrow,
 
     btn.addEventListener("click", function (e) {
       e.preventDefault();
-      var isExpanded = this.getAttribute("aria-expanded") === "true" || body.classList.contains("is-expanded");
       var targetId = stepEl.dataset.target;
-      var clickedChevron = e.target.closest(".pr-step-chevron");
 
-      // On mobile, clicking anywhere on the step button (text or chevron) expands/collapses
-      if (window.innerWidth < 992 || clickedChevron) {
-        var nowOpen = !isExpanded;
-        this.setAttribute("aria-expanded", nowOpen ? "true" : "false");
-        if (nowOpen) {
-          body.removeAttribute("hidden");
-          body.classList.add("is-expanded");
-          stepEl.classList.add("is-expanded");
-        } else {
-          body.setAttribute("hidden", "");
-          body.classList.remove("is-expanded");
-          stepEl.classList.remove("is-expanded");
-        }
-        if (window.innerWidth >= 992) {
-          manualDesktopCollapseScrollY = !nowOpen ? window.scrollY : null;
+      // On mobile, tapping the step row jumps to that step's target section
+      if (window.innerWidth < 992) {
+        var target = document.getElementById(targetId);
+        if (target) {
+          scrollTargetIntoView(target);
+          target.setAttribute("tabindex", "-1");
+          target.focus({ preventScroll: true });
+          for (var i = 0; i < flat.length; i++) {
+            if (flat[i].id === targetId) {
+              setActive(i);
+              break;
+            }
+          }
         }
         return;
       }
+
+      var isExpanded = this.getAttribute("aria-expanded") === "true";
+      var clickedChevron = e.target.closest(".pr-step-chevron");
 
       if (stepEl.classList.contains("is-active") && isExpanded) {
         var nowOpen = !isExpanded;
@@ -1643,17 +1709,8 @@ h2.pr-eyebrow,
 
       if (window.scrollY >= collapseThreshold) {
         if (side) side.classList.add("is-sticky");
-        if (manualToggleScrollY !== null) {
-          if (Math.abs(window.scrollY - manualToggleScrollY) > 30) {
-            manualToggleScrollY = null;
-            closeMenu();
-          }
-        } else {
-          closeMenu();
-        }
       } else {
         if (side) side.classList.remove("is-sticky");
-        manualToggleScrollY = null;
         closeMenu();
       }
     }
@@ -1679,7 +1736,6 @@ h2.pr-eyebrow,
             break;
           }
         }
-        }
       }
     });
   });
@@ -1704,6 +1760,7 @@ h2.pr-eyebrow,
     onScroll();
   }
 })();
+
 </script>
 
 </div>
