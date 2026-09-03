@@ -498,6 +498,7 @@ h2.pr-eyebrow,
     margin: 32px 0 28px 0;
     padding: 16px 16px 16px 26px;
     background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 
   .pr-side:not(.is-sticky) .pr-subway-header {
@@ -543,9 +544,10 @@ h2.pr-eyebrow,
     z-index: 1000;
     background: #ffffff;
     border: none;
-    border-bottom: 1px solid #d3d5d7;
-    padding: 8px 0;
+    border-bottom: 1px solid #d8dde3;
+    padding: 0;
     margin-bottom: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 
   .pr-side.is-sticky .pr-stepper {
@@ -563,6 +565,19 @@ h2.pr-eyebrow,
 
   .pr-side.is-sticky .pr-stepper-toggle {
     display: flex;
+    width: 100%;
+    padding: 8px 15px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+    min-height: 44px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .pr-side.is-sticky .pr-stepper-toggle:hover {
+    background-color: transparent;
   }
 
   #pr-steplist {
@@ -581,19 +596,43 @@ h2.pr-eyebrow,
     display: none;
   }
 
-  .pr-side.is-sticky .pr-stepper.is-open #pr-steplist {
-    display: block;
+  .pr-side.is-sticky .pr-stepper.is-open #pr-steplist,
+  .pr-side.is-sticky .pr-stepper.is-open .pr-stepper-list {
+    display: block !important;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
     background: #ffffff;
-    border-bottom: 2px solid #26374a;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    max-height: 60vh;
+    border-bottom: 3px solid #26374a;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22), 0 6px 14px rgba(0, 0, 0, 0.12);
+    max-height: 65vh;
     overflow-y: auto;
-    padding: 12px 16px;
+    padding: 6px 15px 12px 15px !important;
     z-index: 1001;
+  }
+
+  /* Compact tightened whitespace inside sticky expanded dropdown */
+  .pr-side.is-sticky .pr-stepper.is-open .pr-step-row {
+    min-height: 38px !important;
+    padding: 4px 0 !important;
+  }
+
+  .pr-side.is-sticky .pr-stepper.is-open .pr-step-btn {
+    min-height: 38px !important;
+    font-size: 15px !important;
+  }
+
+  .pr-side.is-sticky .pr-stepper.is-open .pr-sub-card {
+    min-height: 34px !important;
+    padding: 5px 10px !important;
+    margin-bottom: 2px !important;
+    font-size: 14px !important;
+  }
+
+  .pr-side.is-sticky .pr-stepper.is-open .pr-step-body {
+    padding-top: 2px !important;
+    padding-bottom: 4px !important;
   }
 
   .pr-side.is-sticky .pr-stepper.is-open .pr-step.is-active .pr-step-body,
