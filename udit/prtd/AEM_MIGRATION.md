@@ -41,7 +41,6 @@ The prototype adheres strictly to official WET-BOEW and GCWeb standards:
 | **Contextual Alerts** | Standard WET semantic alerts: `<section class="alert alert-warning">` and `<section class="alert alert-info">`. Fully accessible, native borders and iconography. |
 | **Collapsible Content** | Standard HTML `<details class="print-open"><summary>` with native Canada.ca disclosure markers. Collapsed by default on screen, printable via `print-open`. |
 | **Top of Page Links** | Completely removed per design decision, keeping content stages clean and unencumbered. |
-| **ARIA Live Region** | Integrated polite announcer (`#pr-step-announcer` with WET `.wb-inv` class) providing screen reader feedback on step navigation and mobile menu state without interrupting passive reading. |
 
 ---
 
@@ -64,11 +63,11 @@ To bypass this without a code deployment cycle, IRCC authoring teams standardly 
 ```html
 <div class="mwsmediaplayer section">
   <style>
-    /* Paste contents of css/prtd.css here */
+    [Insert css/prtd.css content]
   </style>
 
   <script>
-    /* Paste contents of js/prtd.js here */
+    [Insert js/prtd.js content]
   </script>
 </div>
 ```

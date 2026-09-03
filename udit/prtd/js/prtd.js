@@ -61,38 +61,6 @@
   var toggleBtn = document.getElementById("pr-stepper-toggle");
   var allSubCards = Array.prototype.slice.call(document.querySelectorAll(".pr-sub-card"));
   var currentFlat = -1;
-  var userSideScrollTimeout = null;
-  var isUserScrollingSide = false;
-
-  if (side) {
-    side.addEventListener("wheel", function () {
-      isUserScrollingSide = true;
-      clearTimeout(userSideScrollTimeout);
-      userSideScrollTimeout = setTimeout(function () {
-        isUserScrollingSide = false;
-      }, 1500);
-    }, { passive: true });
-
-    side.addEventListener("touchstart", function () {
-      isUserScrollingSide = true;
-      clearTimeout(userSideScrollTimeout);
-      userSideScrollTimeout = setTimeout(function () {
-        isUserScrollingSide = false;
-      }, 1500);
-    }, { passive: true });
-  }
-
-  var announcer = document.getElementById("pr-step-announcer");
-  function announceStep(message) {
-    if (!announcer) {
-      announcer = document.getElementById("pr-step-announcer");
-    }
-    if (!announcer) return;
-    announcer.textContent = "";
-    setTimeout(function () {
-      announcer.textContent = message;
-    }, 50);
-  }
 
   function scrollTargetIntoView(target) {
     target.scrollIntoView({
@@ -141,28 +109,37 @@
     }
   }
 
+  function openMenu() {
+    if (!stepper || !toggleBtn) return;
+    stepper.classList.add("is-open");
+    toggleBtn.setAttribute("aria-expanded", "true");
+  }
+
   function closeMenu() {
     if (!stepper || !toggleBtn) return;
     stepper.classList.remove("is-open");
     toggleBtn.setAttribute("aria-expanded", "false");
   }
 
+  var manualToggleScrollY = null;
   if (toggleBtn && stepper) {
     toggleBtn.addEventListener("click", function () {
       var open = stepper.classList.toggle("is-open");
       this.setAttribute("aria-expanded", open ? "true" : "false");
-      announceStep(open ? "Step navigation menu opened" : "Step navigation menu closed");
+      manualToggleScrollY = open ? window.scrollY : null;
     });
 
     document.addEventListener("click", function (e) {
       if (stepper.classList.contains("is-open") && !stepper.contains(e.target)) {
         closeMenu();
+        manualToggleScrollY = null;
       }
     });
 
     document.addEventListener("keydown", function (e) {
       if ((e.key === "Escape" || e.keyCode === 27) && stepper.classList.contains("is-open")) {
         closeMenu();
+        manualToggleScrollY = null;
         toggleBtn.focus();
       }
     });
@@ -191,9 +168,6 @@
         } else {
           body.setAttribute("hidden", "");
         }
-        var titleEl = stepEl.querySelector(".pr-step-title");
-        var stageName = titleEl ? titleEl.textContent.trim() : "";
-        announceStep(stageName + (nowOpen ? " sub-steps expanded" : " sub-steps collapsed"));
         return;
       }
 
@@ -217,56 +191,10 @@
           }
           currentFlat = -1;
           setTimeout(onScroll, 400);
-          var titleEl = stepEl.querySelector(".pr-step-title");
-          var stageName = titleEl ? titleEl.textContent.trim() : "";
-          announceStep("Navigated to " + stageName);
         }
       }
     });
   });
-
-  function syncSideNav(act) {
-    if (!side || window.innerWidth < 992 || isUserScrollingSide) return;
-
-    var maxScroll = side.scrollHeight - side.clientHeight;
-    if (maxScroll <= 0) return;
-
-    var targetScroll = 0;
-    var layout = document.querySelector(".pr-layout");
-
-    if (layout) {
-      var layoutRect = layout.getBoundingClientRect();
-      var travel = layoutRect.height - window.innerHeight;
-      if (travel > 0) {
-        var progress = (20 - layoutRect.top) / travel;
-        progress = Math.max(0, Math.min(1, progress));
-        targetScroll = progress * maxScroll;
-      }
-    }
-
-    if (act) {
-      var activeEl = act.navCard || act.navMain;
-      if (activeEl) {
-        var elTop = activeEl.offsetTop;
-        var elBottom = elTop + activeEl.offsetHeight + 24;
-        if (elBottom > targetScroll + side.clientHeight) {
-          targetScroll = elBottom - side.clientHeight;
-        }
-        if (elTop - 24 < targetScroll) {
-          targetScroll = elTop - 24;
-        }
-      }
-    }
-
-    if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 50)) {
-      targetScroll = maxScroll;
-    } else if (window.scrollY <= 150) {
-      targetScroll = 0;
-    }
-
-    targetScroll = Math.max(0, Math.min(maxScroll, targetScroll));
-    side.scrollTop = targetScroll;
-  }
 
   function onScroll() {
     var probe = window.scrollY + Math.round(window.innerHeight * 0.28);
@@ -281,7 +209,25 @@
     }
 
     setActive(fi);
-    syncSideNav(flat[fi]);
+
+    if (window.innerWidth < 992 && stepper && toggleBtn) {
+      var firstSec = flat.length > 0 ? flat[0].sec : null;
+      var collapseThreshold = firstSec ? (getDocTop(firstSec) - 140) : 600;
+
+      if (window.scrollY >= collapseThreshold) {
+        if (manualToggleScrollY !== null) {
+          if (Math.abs(window.scrollY - manualToggleScrollY) > 30) {
+            manualToggleScrollY = null;
+            closeMenu();
+          }
+        } else {
+          closeMenu();
+        }
+      } else {
+        manualToggleScrollY = null;
+        openMenu();
+      }
+    }
   }
 
   var subCardLinks = Array.prototype.slice.call(document.querySelectorAll(".pr-sub-card"));
@@ -305,11 +251,6 @@
         }
         currentFlat = -1;
         setTimeout(onScroll, 400);
-        var subCardText = this.textContent.trim();
-        var parentStep = this.closest(".pr-step");
-        var parentTitle = parentStep ? parentStep.querySelector(".pr-step-title") : null;
-        var parentName = parentTitle ? parentTitle.textContent.trim() : "";
-        announceStep("Navigated to " + (parentName ? parentName + ", " : "") + subCardText);
       }
     });
   });

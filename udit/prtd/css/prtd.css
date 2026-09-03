@@ -7,10 +7,9 @@
 .pr-glance-card {
   background-color: #ffffff;
   border: 1px solid #dcdee1;
-  border-radius: 20px;
+  border-radius: 4px;
   padding: 28px 32px;
   margin-bottom: 0;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 .pr-glance-boxes {
@@ -22,7 +21,7 @@
 .pr-glance-box {
   background-color: #ffffff;
   border: 1px solid #e3e3e3;
-  border-radius: 15px;
+  border-radius: 4px;
   padding: 14px 16px;
   display: flex;
   align-items: flex-start;
@@ -114,21 +113,6 @@
   padding-right: 18px;
   padding-top: 4px;
   padding-bottom: 12px;
-  scrollbar-width: thin;
-  scrollbar-color: #c8c8c8 transparent;
-}
-
-.pr-side::-webkit-scrollbar {
-  width: 6px;
-}
-
-.pr-side::-webkit-scrollbar-thumb {
-  background: #c8c8c8;
-  border-radius: 4px;
-}
-
-.pr-side::-webkit-scrollbar-thumb:hover {
-  background: #999999;
 }
 
 .pr-main {
@@ -260,7 +244,6 @@
   height: 18px;
   flex: 0 0 18px;
   color: #6f6f6f;
-  transition: transform 0.25s ease, color 0.2s ease;
   cursor: pointer;
 }
 
@@ -293,14 +276,13 @@ html.no-js .pr-step-body[hidden] {
   align-items: flex-start;
   gap: 8px;
   background: transparent;
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 8px 12px;
   margin-bottom: 4px;
   text-decoration: none;
   color: #6f6f6f;
   font-size: 15px;
   line-height: 1.35;
-  transition: color 0.15s ease, background-color 0.15s ease;
 }
 
 .pr-sub-card:last-child {
@@ -313,8 +295,6 @@ html.no-js .pr-step-body[hidden] {
   height: auto;
   color: #26374a;
   opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 .pr-sub-card:hover,
@@ -328,7 +308,6 @@ html.no-js .pr-step-body[hidden] {
 .pr-sub-card:focus .pr-sub-arrow {
   opacity: 1;
   color: #26374a;
-  transform: translateX(0);
 }
 
 .pr-sub-card.is-active,
@@ -342,7 +321,6 @@ html.no-js .pr-step-body[hidden] {
 .pr-sub-card.is-active .pr-sub-arrow {
   opacity: 1;
   color: #26374a;
-  transform: translateX(0);
 }
 
 .pr-sub-card:focus-visible {
@@ -361,7 +339,6 @@ html.no-js .pr-step-body[hidden] {
   cursor: pointer;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   margin-bottom: 8px;
 }
 
@@ -406,7 +383,6 @@ html.no-js .pr-step-body[hidden] {
 .pr-toggle-caret {
   font-size: 13px;
   color: #555555;
-  transition: transform 0.25s ease;
 }
 
 .pr-stepper.is-open .pr-toggle-caret,
@@ -505,7 +481,6 @@ h2.pr-eyebrow,
     max-width: 100%;
     background: #ffffff;
     border-bottom: 1px solid #d3d5d7;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     padding: 8px 0;
     max-height: none;
     overflow-y: visible;
@@ -553,7 +528,6 @@ h2.pr-eyebrow,
 
   .pr-glance-card {
     padding: 16px;
-    border-radius: 16px;
   }
 
   .pr-glance-boxes {
@@ -563,7 +537,6 @@ h2.pr-eyebrow,
 
   .pr-glance-box {
     padding: 12px 14px;
-    border-radius: 12px;
     gap: 14px;
   }
 
