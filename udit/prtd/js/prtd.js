@@ -63,9 +63,20 @@
   var currentFlat = -1;
 
   function scrollTargetIntoView(target) {
-    target.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
+    if (!target) return;
+    closeMenu();
+
+    var offset = 30;
+    if (window.innerWidth < 992) {
+      offset = 100;
+    }
+
+    var targetTop = target.getBoundingClientRect().top + window.scrollY - offset;
+    if (targetTop < 0) targetTop = 0;
+
+    window.scrollTo({
+      top: targetTop,
+      behavior: "smooth"
     });
   }
 
