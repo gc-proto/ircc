@@ -164,9 +164,41 @@
       if (window.innerWidth > 991) {
         closeMenu();
         if (side) side.classList.remove("is-sticky");
+        var activeStep = document.querySelector(".pr-step.is-active");
+        if (activeStep) {
+          var actBody = activeStep.querySelector(".pr-step-body");
+          var actBtn = activeStep.querySelector(".pr-step-btn");
+          if (actBody) actBody.removeAttribute("hidden");
+          if (actBtn) actBtn.setAttribute("aria-expanded", "true");
+        }
+      } else {
+        stepItems.forEach(function (stepEl) {
+          var btn = stepEl.querySelector(".pr-step-btn");
+          var body = stepEl.querySelector(".pr-step-body");
+          if (btn && body && !body.classList.contains("is-expanded")) {
+            btn.setAttribute("aria-expanded", "false");
+          }
+        });
       }
     });
   }
+
+  function collapseAllMobileSteps() {
+    if (window.innerWidth < 992) {
+      stepItems.forEach(function (stepEl) {
+        var btn = stepEl.querySelector(".pr-step-btn");
+        var body = stepEl.querySelector(".pr-step-body");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+        if (body) {
+          body.setAttribute("hidden", "");
+          body.classList.remove("is-expanded");
+        }
+        stepEl.classList.remove("is-expanded");
+      });
+    }
+  }
+
+  collapseAllMobileSteps();
 
   stepItems.forEach(function (stepEl, mi) {
     var btn = stepEl.querySelector(".pr-step-btn");
@@ -175,9 +207,27 @@
 
     btn.addEventListener("click", function (e) {
       e.preventDefault();
-      var isExpanded = this.getAttribute("aria-expanded") === "true";
+      var isExpanded = this.getAttribute("aria-expanded") === "true" || body.classList.contains("is-expanded");
       var targetId = stepEl.dataset.target;
       var clickedChevron = e.target.closest(".pr-step-chevron");
+
+      if (clickedChevron) {
+        var nowOpen = !isExpanded;
+        this.setAttribute("aria-expanded", nowOpen ? "true" : "false");
+        if (nowOpen) {
+          body.removeAttribute("hidden");
+          body.classList.add("is-expanded");
+          stepEl.classList.add("is-expanded");
+        } else {
+          body.setAttribute("hidden", "");
+          body.classList.remove("is-expanded");
+          stepEl.classList.remove("is-expanded");
+        }
+        if (window.innerWidth >= 992) {
+          manualDesktopCollapseScrollY = !nowOpen ? window.scrollY : null;
+        }
+        return;
+      }
 
       if (window.innerWidth < 992 && side && !side.classList.contains("is-sticky")) {
         if (targetId) {
@@ -191,7 +241,7 @@
         return;
       }
 
-      if (clickedChevron || (stepEl.classList.contains("is-active") && isExpanded)) {
+      if (stepEl.classList.contains("is-active") && isExpanded) {
         var nowOpen = !isExpanded;
         this.setAttribute("aria-expanded", nowOpen ? "true" : "false");
         if (nowOpen) {
