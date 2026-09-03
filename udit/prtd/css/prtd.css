@@ -580,6 +580,12 @@ h2.pr-eyebrow,
     border: none;
   }
 
+  .pr-side.is-sticky .pr-stepper.is-open .pr-step.is-active .pr-step-body,
+  .pr-side.is-sticky .pr-stepper.is-open .pr-step.is-expanded .pr-step-body,
+  .pr-side.is-sticky .pr-stepper.is-open .pr-step-body.is-expanded {
+    display: block !important;
+  }
+
   .pr-side:not(.is-sticky) .pr-step-terminal {
     display: none;
   }
