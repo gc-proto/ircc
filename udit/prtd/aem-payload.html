@@ -1331,27 +1331,53 @@ h2.pr-eyebrow,
     }
 
     if (window.innerWidth >= 992) {
-      var activeNavEl = act.navCard || act.navMain;
-      scrollActiveNavIntoView(activeNavEl);
+      scrollActiveNavIntoView(act.navCard, act.navMain, act.main);
     }
   }
 
-  function scrollActiveNavIntoView(activeEl) {
-    if (!activeEl || window.innerWidth < 992 || !side) return;
+  function scrollActiveNavIntoView(activeCard, activeStepEl, actMain) {
+    if (window.innerWidth < 992 || !side) return;
+
+    if (actMain < 2 && side.clientHeight >= 300) {
+      if (side.scrollTop > 0) {
+        side.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      }
+      return;
+    }
+
+    if (actMain === 0) {
+      if (side.scrollTop > 0) {
+        side.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      }
+      return;
+    }
+
     var sideRect = side.getBoundingClientRect();
-    var elRect = activeEl.getBoundingClientRect();
+    var cardRect = activeCard ? activeCard.getBoundingClientRect() : null;
+    var stepRect = activeStepEl ? activeStepEl.getBoundingClientRect() : cardRect;
 
-    var offsetTop = elRect.top - sideRect.top;
-    var offsetBottom = elRect.bottom - sideRect.bottom;
+    if (!cardRect) return;
 
-    if (offsetTop < 20) {
+    var bottomOverflow = cardRect.bottom - (sideRect.bottom - 24);
+    if (bottomOverflow > 0) {
       side.scrollBy({
-        top: offsetTop - 20,
+        top: bottomOverflow,
         behavior: "smooth"
       });
-    } else if (offsetBottom > -20) {
+      return;
+    }
+
+    var topBoundary = stepRect ? stepRect.top : cardRect.top;
+    var topOverflow = (sideRect.top + 24) - topBoundary;
+    if (topOverflow > 0) {
       side.scrollBy({
-        top: offsetBottom + 20,
+        top: -topOverflow,
         behavior: "smooth"
       });
     }
@@ -1584,6 +1610,14 @@ h2.pr-eyebrow,
     setActive(fi);
 
     if (window.innerWidth >= 992) {
+      if (side && side.scrollTop > 0) {
+        var firstSecEl = flat.length > 0 ? flat[0].sec : null;
+        var firstSecTop = firstSecEl ? getDocTop(firstSecEl) : 800;
+        if (window.scrollY < firstSecTop - 50) {
+          side.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+
       var actMain = flat[fi] ? flat[fi].main : 0;
       var activeStep = stepItems[actMain];
       if (activeStep) {
