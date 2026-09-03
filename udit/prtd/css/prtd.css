@@ -888,3 +888,63 @@ h1#wb-cont.pr-h1,
   outline: 2px solid #0535d2;
   outline-offset: 2px;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto !important;
+  }
+
+  .pr-step-chevron,
+  .pr-sub-card,
+  .pr-card-arrow,
+  .pr-sub-arrow,
+  .pr-toggle-caret {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .pr-circle {
+    border: 2.5px solid CanvasText;
+  }
+
+  .pr-step.is-active .pr-circle {
+    border-color: Highlight;
+  }
+
+  .pr-step.is-active .pr-circle::after {
+    background-color: Highlight;
+    forced-color-adjust: none;
+  }
+
+  .pr-step:not(:last-child)::after {
+    background-color: CanvasText;
+    forced-color-adjust: none;
+  }
+
+  .pr-sub-card.is-active {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+
+  .pr-sub-card:focus-visible,
+  .pr-step-btn:focus-visible,
+  .pr-stepper-toggle:focus-visible,
+  .pr-main .btn-default:focus-visible,
+  .pr-main .btn-primary:focus-visible {
+    outline: 2px solid Highlight !important;
+    outline-offset: 2px !important;
+  }
+
+  .pr-step-chevron,
+  .pr-card-arrow,
+  .pr-sub-arrow svg,
+  .pr-glance-icon path,
+  .pr-glance-help path,
+  .pr-check-icon path {
+    fill: currentColor !important;
+  }
+}
+
