@@ -273,7 +273,8 @@
       var targetId = stepEl.dataset.target;
       var clickedChevron = e.target.closest(".pr-step-chevron");
 
-      if (clickedChevron) {
+      // On mobile, clicking anywhere on the step button (text or chevron) expands/collapses
+      if (window.innerWidth < 992 || clickedChevron) {
         var nowOpen = !isExpanded;
         this.setAttribute("aria-expanded", nowOpen ? "true" : "false");
         if (nowOpen) {
@@ -287,18 +288,6 @@
         }
         if (window.innerWidth >= 992) {
           manualDesktopCollapseScrollY = !nowOpen ? window.scrollY : null;
-        }
-        return;
-      }
-
-      if (window.innerWidth < 992 && side && !side.classList.contains("is-sticky")) {
-        if (targetId) {
-          var inPageTarget = document.getElementById(targetId);
-          if (inPageTarget) {
-            scrollTargetIntoView(inPageTarget);
-            inPageTarget.setAttribute("tabindex", "-1");
-            inPageTarget.focus({ preventScroll: true });
-          }
         }
         return;
       }
@@ -341,6 +330,13 @@
         }
       }
     });
+
+    var circle = stepEl.querySelector(".pr-circle");
+    if (circle) {
+      circle.addEventListener("click", function () {
+        btn.click();
+      });
+    }
   });
 
   function onScroll() {
