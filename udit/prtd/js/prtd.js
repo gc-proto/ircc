@@ -84,6 +84,21 @@
       s.classList.toggle("is-active", isActive);
       s.classList.toggle("is-done", isDone);
 
+      if (isActive && window.innerWidth >= 992) {
+        var shouldAutoOpen = (manualDesktopCollapseScrollY === null) ||
+                             (Math.abs(window.scrollY - manualDesktopCollapseScrollY) > 20);
+        if (shouldAutoOpen) {
+          manualDesktopCollapseScrollY = null;
+          var body = s.querySelector(".pr-step-body");
+          var btn = s.querySelector(".pr-step-btn");
+          if (body && body.hasAttribute("hidden")) {
+            body.removeAttribute("hidden");
+          }
+          if (btn && btn.getAttribute("aria-expanded") !== "true") {
+            btn.setAttribute("aria-expanded", "true");
+          }
+        }
+      }
     });
 
     allSubCards.forEach(function (card) {
@@ -121,13 +136,13 @@
     toggleBtn.setAttribute("aria-expanded", "false");
   }
 
-  var lastScrollY = window.scrollY;
   var manualToggleScrollY = null;
+  var manualDesktopCollapseScrollY = null;
   if (toggleBtn && stepper) {
     toggleBtn.addEventListener("click", function () {
       var open = stepper.classList.toggle("is-open");
       this.setAttribute("aria-expanded", open ? "true" : "false");
-      manualToggleScrollY = window.scrollY;
+      manualToggleScrollY = open ? window.scrollY : null;
     });
 
     document.addEventListener("click", function (e) {
@@ -146,7 +161,10 @@
     });
 
     window.addEventListener("resize", function () {
-      if (window.innerWidth > 991) closeMenu();
+      if (window.innerWidth > 991) {
+        closeMenu();
+        if (side) side.classList.remove("is-sticky");
+      }
     });
   }
 
@@ -169,6 +187,9 @@
         } else {
           body.setAttribute("hidden", "");
         }
+        if (window.innerWidth >= 992) {
+          manualDesktopCollapseScrollY = !nowOpen ? window.scrollY : null;
+        }
         return;
       }
 
@@ -180,6 +201,7 @@
       if (targetId) {
         var target = document.getElementById(targetId);
         if (target) {
+          manualDesktopCollapseScrollY = null;
           closeMenu();
           scrollTargetIntoView(target);
           target.setAttribute("tabindex", "-1");
@@ -198,39 +220,59 @@
   });
 
   function onScroll() {
-    var currentScrollY = window.scrollY;
-    var scrollDelta = currentScrollY - lastScrollY;
-    var probe = currentScrollY + Math.round(window.innerHeight * 0.28);
+    var probe = window.scrollY + Math.round(window.innerHeight * 0.28);
     var fi = 0;
 
     for (var i = 0; i < flat.length; i++) {
       if (flat[i].sec && getDocTop(flat[i].sec) <= probe) fi = i;
     }
 
-    if ((window.innerHeight + currentScrollY) >= (document.documentElement.scrollHeight - 40)) {
+    if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 40)) {
       fi = flat.length - 1;
     }
 
     setActive(fi);
 
-    if (window.innerWidth < 992 && stepper && toggleBtn) {
-      var firstSec = flat.length > 0 ? flat[0].sec : null;
-      var collapseThreshold = firstSec ? (getDocTop(firstSec) - 140) : 600;
-
-      if (manualToggleScrollY !== null && Math.abs(currentScrollY - manualToggleScrollY) < 15) {
-      } else {
-        manualToggleScrollY = null;
-        if (currentScrollY <= 60) {
-          openMenu();
-        } else if (scrollDelta < -6) {
-          openMenu();
-        } else if (scrollDelta > 6 && currentScrollY >= collapseThreshold) {
-          closeMenu();
+    if (window.innerWidth >= 992) {
+      var actMain = flat[fi] ? flat[fi].main : 0;
+      var activeStep = stepItems[actMain];
+      if (activeStep) {
+        var shouldAutoOpen = (manualDesktopCollapseScrollY === null) ||
+                             (Math.abs(window.scrollY - manualDesktopCollapseScrollY) > 20);
+        if (shouldAutoOpen) {
+          manualDesktopCollapseScrollY = null;
+          var actBody = activeStep.querySelector(".pr-step-body");
+          var actBtn = activeStep.querySelector(".pr-step-btn");
+          if (actBody && actBody.hasAttribute("hidden")) {
+            actBody.removeAttribute("hidden");
+          }
+          if (actBtn && actBtn.getAttribute("aria-expanded") !== "true") {
+            actBtn.setAttribute("aria-expanded", "true");
+          }
         }
       }
     }
 
-    lastScrollY = currentScrollY;
+    if (window.innerWidth < 992 && stepper && toggleBtn) {
+      var firstSec = flat.length > 0 ? flat[0].sec : null;
+      var collapseThreshold = firstSec ? (getDocTop(firstSec) - 140) : 600;
+
+      if (window.scrollY >= collapseThreshold) {
+        if (side) side.classList.add("is-sticky");
+        if (manualToggleScrollY !== null) {
+          if (Math.abs(window.scrollY - manualToggleScrollY) > 30) {
+            manualToggleScrollY = null;
+            closeMenu();
+          }
+        } else {
+          closeMenu();
+        }
+      } else {
+        if (side) side.classList.remove("is-sticky");
+        manualToggleScrollY = null;
+        closeMenu();
+      }
+    }
   }
 
   var subCardLinks = Array.prototype.slice.call(document.querySelectorAll(".pr-sub-card"));
@@ -242,6 +284,7 @@
       var target = document.getElementById(targetId);
       if (target) {
         e.preventDefault();
+        manualDesktopCollapseScrollY = null;
         closeMenu();
         scrollTargetIntoView(target);
         target.setAttribute("tabindex", "-1");

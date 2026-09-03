@@ -465,7 +465,7 @@ h2.pr-eyebrow,
 
 @media (max-width: 991px) {
   .pr-layout {
-    flex-direction: column;
+    display: block;
     gap: 0;
   }
 
@@ -474,27 +474,43 @@ h2.pr-eyebrow,
   }
 
   .pr-side {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    position: relative;
     width: 100%;
     max-width: 100%;
-    background: #ffffff;
-    border-bottom: 1px solid #d3d5d7;
-    padding: 8px 0;
+    flex: none;
+    height: auto;
+    background: transparent;
+    padding: 0 0 24px;
     max-height: none;
     overflow-y: visible;
   }
 
+  .pr-side.is-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #ffffff;
+    border-bottom: 1px solid #d3d5d7;
+    padding: 8px 0;
+  }
+
   .pr-stepper-toggle {
+    display: none;
+  }
+
+  .pr-side.is-sticky .pr-stepper-toggle {
     display: flex;
   }
 
   #pr-steplist {
+    display: block;
+  }
+
+  .pr-side.is-sticky #pr-steplist {
     display: none;
   }
 
-  .pr-stepper.is-open #pr-steplist {
+  .pr-side.is-sticky .pr-stepper.is-open #pr-steplist {
     display: block;
     max-height: 60vh;
     overflow-y: auto;
