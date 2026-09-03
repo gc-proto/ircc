@@ -179,6 +179,18 @@
       var targetId = stepEl.dataset.target;
       var clickedChevron = e.target.closest(".pr-step-chevron");
 
+      if (window.innerWidth < 992 && side && !side.classList.contains("is-sticky")) {
+        if (targetId) {
+          var inPageTarget = document.getElementById(targetId);
+          if (inPageTarget) {
+            scrollTargetIntoView(inPageTarget);
+            inPageTarget.setAttribute("tabindex", "-1");
+            inPageTarget.focus({ preventScroll: true });
+          }
+        }
+        return;
+      }
+
       if (clickedChevron || (stepEl.classList.contains("is-active") && isExpanded)) {
         var nowOpen = !isExpanded;
         this.setAttribute("aria-expanded", nowOpen ? "true" : "false");
