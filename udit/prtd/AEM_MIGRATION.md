@@ -10,12 +10,10 @@ In Adobe Experience Manager (AEM), **the global shell is provided by the WET/GCW
 
 ## 1. Authorable Payload Boundaries
 
-In `index.html`, the authorable payload is explicitly demarcated with helpful developer comments:
+In `index.html`, the authorable payload boundaries:
 
-* **Payload Start:** `<!-- >>> AEM AUTHORABLE CONTENT STARTS HERE <<< -->`
-  * Starts immediately before the `<div class="container">` wrapping the page `h1`.
-* **Payload End:** `<!-- >>> AEM AUTHORABLE CONTENT ENDS HERE <<< -->`
-  * Marks the closing `</div>` of the container wrapping the `.pr-layout` stepper and stages.
+* **Payload Start:** Starts immediately with the `<div class="container">` wrapping the page `h1` (`#wb-cont`).
+* **Payload End:** Ends at the closing `</div>` of the container wrapping the `.pr-layout` stepper and stages.
 
 ### Shell Elements Handled by AEM Page Template (Do Not Copy):
 * `<head>` tags, metadata, and standard GCWeb stylesheets
@@ -43,8 +41,6 @@ The prototype adheres strictly to official WET-BOEW and GCWeb standards:
 | **Contextual Alerts** | Standard WET semantic alerts: `<section class="alert alert-warning">` and `<section class="alert alert-info">`. Fully accessible, native borders and iconography. |
 | **Collapsible Content** | Standard HTML `<details class="print-open"><summary>` with native Canada.ca disclosure markers. Collapsed by default on screen, printable via `print-open`. |
 | **Top of Page Links** | Completely removed per design decision, keeping content stages clean and unencumbered. |
-| **Reduced Motion** | Respects `prefers-reduced-motion: reduce`: transitions disabled and instant scrolling enforced via CSS and JS. |
-| **High Contrast Mode** | Full `forced-colors: active` support: stepper circles, connecting vertical lines, active sub-cards, and focus indicators adapt to system palette (`Highlight`, `CanvasText`). |
 | **ARIA Live Region** | Integrated polite announcer (`#pr-step-announcer` with WET `.wb-inv` class) providing screen reader feedback on step navigation and mobile menu state without interrupting passive reading. |
 
 ---

@@ -95,9 +95,8 @@
   }
 
   function scrollTargetIntoView(target) {
-    var prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     target.scrollIntoView({
-      behavior: prefersReduced ? "auto" : "smooth",
+      behavior: "smooth",
       block: "start"
     });
   }

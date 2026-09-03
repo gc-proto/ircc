@@ -1,19 +1,6 @@
 <div class="mwsmediaplayer section">
 
 <style>
-/* ==========================================================================
-   PRTD (Permanent Resident Travel Document) - Custom Component Stylesheet
-   Architecture: Accessible (WCAG 2.1 AA), Minimal Custom Layer on WET-BOEW / GCWeb
-   Notes:
-   - Base typography, heading scales, alerts, buttons, and grid are handled
-     natively by Canada.ca GCWeb (theme.min.css) in both GitHub & AEM environments.
-   - This stylesheet defines ONLY the custom components not present in GCWeb/AEM.
-   ========================================================================== */
-
-
-/* --------------------------------------------------------------------------
-   1. "AT A GLANCE" SUMMARY COMPONENT
-   -------------------------------------------------------------------------- */
 .pr-glance-band {
   background-color: #ebf2fc;
   padding: 36px 0 40px;
@@ -111,9 +98,6 @@
   color: #26374a;
 }
 
-/* --------------------------------------------------------------------------
-   2. TWO-COLUMN RESPONSIVE LAYOUT & STICKY RAIL
-   -------------------------------------------------------------------------- */
 .pr-layout {
   display: flex;
   align-items: flex-start;
@@ -156,9 +140,6 @@
   min-width: 0;
 }
 
-/* --------------------------------------------------------------------------
-   3. STEPPER NAVIGATION COMPONENT
-   -------------------------------------------------------------------------- */
 .pr-stepper {
   background: transparent;
   border: none;
@@ -175,7 +156,6 @@
   position: relative;
 }
 
-/* Vertical Timeline Connecting Line */
 .pr-step:not(:last-child)::after {
   content: "";
   position: absolute;
@@ -373,7 +353,6 @@ html.no-js .pr-step-body[hidden] {
   outline-offset: 2px;
 }
 
-/* Mobile Stepper Toggle (Sticky Top Bar on Screens < 992px) */
 .pr-stepper-toggle {
   display: none;
   width: 100%;
@@ -438,9 +417,6 @@ button[aria-expanded="true"] .pr-toggle-caret {
   transform: rotate(180deg);
 }
 
-/* --------------------------------------------------------------------------
-   4. CONTENT STAGES & HEADING INTEGRATION
-   -------------------------------------------------------------------------- */
 .pr-stage {
   border-bottom: 1px solid #eeeeee;
   padding-bottom: 28px;
@@ -460,7 +436,6 @@ button[aria-expanded="true"] .pr-toggle-caret {
   margin-bottom: 8px;
 }
 
-/* Eyebrow Headings: H2 landmark with kicker style */
 .pr-eyebrow,
 h2.pr-eyebrow,
 .pr-eyebrow.h4 {
@@ -472,7 +447,6 @@ h2.pr-eyebrow,
   text-transform: none;
 }
 
-/* Stage Section Headings */
 .pr-stage-h {
   margin-top: 0;
   margin-bottom: 12px;
@@ -484,7 +458,6 @@ h2.pr-eyebrow,
   margin-top: 0;
 }
 
-/* Outline action buttons */
 .pr-main .btn-default {
   background-color: transparent;
   border: 1px solid #284162;
@@ -500,11 +473,6 @@ h2.pr-eyebrow,
   outline-offset: 2px;
 }
 
-/* --------------------------------------------------------------------------
-   5. RESPONSIVE BREAKPOINTS
-   -------------------------------------------------------------------------- */
-
-/* Desktop (992px and up) */
 @media (min-width: 992px) {
   .pr-layout {
     margin-top: 39px;
@@ -522,7 +490,6 @@ h2.pr-eyebrow,
   }
 }
 
-/* Tablet & Mobile (991px and down) */
 @media (max-width: 991px) {
   .pr-layout {
     flex-direction: column;
@@ -582,7 +549,6 @@ h2.pr-eyebrow,
   }
 }
 
-/* Small Mobile (600px and down) */
 @media (max-width: 600px) {
   .pr-glance-band {
     padding: 20px 0 28px;
@@ -612,7 +578,7 @@ h2.pr-eyebrow,
     gap: 10px;
   }
 
-  /* 44px minimum touch targets */
+  
   .pr-stepper-toggle {
     min-height: 48px;
     padding: 12px 16px;
@@ -640,10 +606,6 @@ h2.pr-eyebrow,
   }
 }
 
-/* --------------------------------------------------------------------------
-   6. ACCESSIBILITY & PRINT STYLES
-   -------------------------------------------------------------------------- */
-
 @media print {
   .pr-side {
     display: none !important;
@@ -660,63 +622,6 @@ h2.pr-eyebrow,
   .pr-glance-band {
     background-color: transparent !important;
     padding: 0 !important;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html,
-  body {
-    scroll-behavior: auto !important;
-  }
-
-  .pr-step-chevron,
-  .pr-sub-card,
-  .pr-sub-arrow,
-  .pr-toggle-caret {
-    transition: none !important;
-    transform: none !important;
-  }
-}
-
-@media (forced-colors: active) {
-  .pr-circle {
-    border: 2.5px solid CanvasText;
-  }
-
-  .pr-step.is-active .pr-circle {
-    border-color: Highlight;
-  }
-
-  .pr-step.is-active .pr-circle::after {
-    background-color: Highlight;
-    forced-color-adjust: none;
-  }
-
-  .pr-step:not(:last-child)::after {
-    background-color: CanvasText;
-    forced-color-adjust: none;
-  }
-
-  .pr-sub-card.is-active {
-    outline: 2px solid Highlight;
-    outline-offset: -2px;
-  }
-
-  .pr-sub-card:focus-visible,
-  .pr-step-btn:focus-visible,
-  .pr-stepper-toggle:focus-visible,
-  .pr-main .btn-default:focus-visible,
-  .pr-main .btn-primary:focus-visible {
-    outline: 2px solid Highlight !important;
-    outline-offset: 2px !important;
-  }
-
-  .pr-step-chevron,
-  .pr-sub-arrow svg,
-  .pr-glance-icon path,
-  .pr-glance-help path,
-  .pr-check-icon path {
-    fill: currentColor !important;
   }
 }
 </style>
@@ -1138,9 +1043,8 @@ h2.pr-eyebrow,
   }
 
   function scrollTargetIntoView(target) {
-    var prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     target.scrollIntoView({
-      behavior: prefersReduced ? "auto" : "smooth",
+      behavior: "smooth",
       block: "start"
     });
   }
