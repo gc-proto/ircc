@@ -408,17 +408,17 @@ html.no-js .pr-step-body[hidden] {
 }
 
 .pr-toggle-parent {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: #595959;
-  line-height: 1.2;
+  line-height: 1.25;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .pr-toggle-label {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   color: #284162;
   line-height: 1.3;
@@ -438,7 +438,7 @@ html.no-js .pr-step-body[hidden] {
 }
 
 .pr-toggle-caret {
-  font-size: 13px;
+  font-size: 16px;
   color: #555555;
 }
 
@@ -457,6 +457,12 @@ button[aria-expanded="true"] .pr-toggle-caret {
   border-bottom: none;
   margin-bottom: 0;
   padding-bottom: 0;
+}
+
+.pr-stage > .pr-section:last-child,
+.pr-stage > .pr-subsection:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .pr-section,
@@ -528,14 +534,20 @@ h2.pr-eyebrow,
   }
 
   .pr-stage:not(:last-child) {
-    padding-bottom: 24px;
-    margin-bottom: 24px;
+    padding-bottom: 28px;
+    margin-bottom: 28px;
   }
 
   .pr-section,
   .pr-subsection {
     padding-bottom: 24px;
     margin-bottom: 16px;
+  }
+
+  .pr-stage > .pr-section:last-child,
+  .pr-stage > .pr-subsection:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -549,9 +561,45 @@ h2.pr-eyebrow,
     width: 100%;
   }
 
-  /* ==========================================================================
-     Current New Nav on Mobile (<992px)
-     ========================================================================== */
+  .pr-subway-header {
+    display: none;
+  }
+
+  .pr-side:not(.is-sticky) .pr-stepper {
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    border: 3px solid #26374a;
+    border-radius: 8px;
+    margin: 32px 0 28px 0;
+    padding: 20px 20px 20px 32px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .pr-side:not(.is-sticky) .pr-subway-header {
+    display: block;
+    position: absolute;
+    top: -14px;
+    left: -6px;
+    background: #ffffff;
+    padding: 0 14px 8px 0;
+    max-width: calc(100% - 36px);
+    z-index: 3;
+  }
+
+  .pr-side:not(.is-sticky) .pr-subway-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #26374a;
+    line-height: 1.3;
+    display: block;
+  }
+
+  .pr-subway-header::after {
+    display: none !important;
+  }
+
   .pr-side {
     box-sizing: border-box;
     position: relative;
@@ -561,93 +609,71 @@ h2.pr-eyebrow,
     height: auto;
     background: transparent;
     border: none;
-    padding: 0;
-    margin: 24px 0 28px 0;
+    padding: 0 0 24px;
     max-height: none;
     overflow-y: visible;
   }
 
-  /* Sticky Navigation Bar with Drop Shadow and zero space before the bottom line */
   .pr-side.is-sticky {
     position: sticky;
     top: 0;
     z-index: 1000;
     background: #ffffff;
-    border-bottom: 1px solid #d8dde3;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Clean modern drop shadow */
+    border: none;
+    border-bottom: 1px solid #d0d5dc;
     padding: 0;
-    margin: 0;
-    width: 100%;
-  }
-
-  .pr-side:not(.is-sticky) .pr-stepper {
-    background: #ffffff;
-    border: 1px solid #d8dde3;
-    border-radius: 12px;
-    padding: 20px 18px 16px 20px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    margin-bottom: 0;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   }
 
   .pr-side.is-sticky .pr-stepper {
     position: relative;
-    background: transparent;
     border: none;
     border-radius: 0;
+    margin: 0;
     padding: 0;
-    margin: 0;
-    box-shadow: none;
+    background: transparent;
   }
 
-  .pr-side:not(.is-sticky) .pr-subway-header {
-    display: block !important;
-    position: relative;
-    border-bottom: 2px solid #26374a;
-    padding-bottom: 10px;
-    margin-bottom: 14px;
-  }
-
-  .pr-side.is-sticky .pr-subway-header {
-    display: none !important;
-  }
-
-  .pr-subway-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: #26374a;
-    margin: 0;
-  }
-
-  .pr-side:not(.is-sticky) .pr-stepper-toggle {
-    display: none !important;
+  .pr-stepper-toggle {
+    display: none;
   }
 
   .pr-side.is-sticky .pr-stepper-toggle {
-    display: flex !important;
+    display: flex;
     width: 100%;
-    padding: 8px 15px !important;
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    margin-bottom: 0 !important;
-    min-height: 44px;
+    padding: 12px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+    min-height: 52px;
     align-items: center;
     justify-content: space-between;
   }
 
   .pr-side.is-sticky .pr-stepper-toggle:hover {
-    background-color: transparent !important;
+    background-color: transparent;
   }
 
-  .pr-side:not(.is-sticky) .pr-stepper-list {
-    display: block !important;
+  #pr-steplist {
+    display: block;
   }
 
-  .pr-side.is-sticky .pr-stepper-list {
+  .pr-side:not(.is-sticky) #pr-steplist {
+    clear: both;
+    margin: 0;
+    padding: 4px 0 0 0;
+    list-style: none;
+    border: none;
+  }
+
+  .pr-side.is-sticky #pr-steplist {
     display: none;
   }
 
-  .pr-side.is-sticky .pr-stepper.is-open .pr-stepper-list,
-  .pr-side.is-sticky .pr-stepper.is-open #pr-steplist {
+  .pr-side.is-sticky .pr-stepper.is-open #pr-steplist,
+  .pr-side.is-sticky .pr-stepper.is-open .pr-stepper-list {
     display: block !important;
     position: absolute;
     top: 100%;
@@ -669,15 +695,16 @@ h2.pr-eyebrow,
   }
 
   .pr-side.is-sticky .pr-stepper.is-open .pr-step-btn {
-    min-height: 40px !important;
-    font-size: 17px !important;
+    min-height: 44px !important;
+    font-size: 18px !important;
   }
 
   .pr-side.is-sticky .pr-stepper.is-open .pr-sub-card {
-    min-height: 36px !important;
-    padding: 6px 12px !important;
+    min-height: 42px !important;
+    padding: 8px 14px !important;
     margin-bottom: 3px !important;
-    font-size: 16px !important;
+    font-size: 17px !important;
+    line-height: 1.4 !important;
   }
 
   .pr-side.is-sticky .pr-stepper.is-open .pr-step-body {
@@ -685,65 +712,35 @@ h2.pr-eyebrow,
     padding-bottom: 4px !important;
   }
 
-  .pr-stepper-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .pr-side.is-sticky .pr-stepper.is-open .pr-step.is-active .pr-step-body,
+  .pr-side.is-sticky .pr-stepper.is-open .pr-step.is-expanded .pr-step-body,
+  .pr-side.is-sticky .pr-stepper.is-open .pr-step-body.is-expanded {
+    display: block !important;
   }
 
-  .pr-step {
+  .pr-side:not(.is-sticky) .pr-step-terminal {
+    display: none;
+  }
+
+  .pr-side:not(.is-sticky) .pr-step {
+    padding-bottom: 0;
     position: relative;
-    padding-bottom: 6px;
   }
 
-  .pr-step:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    left: 9px;
-    top: 22px;
-    bottom: -6px;
-    width: 2px;
-    background: #26374a;
-    z-index: 0;
+  .pr-side:not(.is-sticky) .pr-step::after {
+    display: none !important;
   }
 
-  .pr-step:last-child {
-    padding-bottom: 4px;
-  }
-
-  .pr-step:last-child::after {
-    content: "";
-    position: absolute;
-    left: 9px;
-    top: 22px;
-    bottom: 10px;
-    width: 2px;
-    background: #26374a;
-    z-index: 0;
-  }
-
-  .pr-step-terminal {
-    display: block;
-    position: absolute;
-    bottom: 10px;
-    left: 4px;
-    width: 12px;
-    height: 2px;
-    background-color: #26374a;
-    z-index: 2;
-  }
-
-  .pr-step-row {
+  .pr-side:not(.is-sticky) .pr-step-row {
+    padding: 10px 0;
+    min-height: 48px;
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 8px 0;
     position: relative;
     z-index: 1;
-    min-height: 44px;
   }
 
-  .pr-circle {
+  .pr-side:not(.is-sticky) .pr-circle {
     flex: 0 0 20px;
     width: 20px;
     height: 20px;
@@ -752,113 +749,148 @@ h2.pr-eyebrow,
     background: #ffffff;
     position: relative;
     z-index: 2;
-    margin: 0;
+    margin-left: -38px;
+    margin-right: 16px;
   }
 
-  .pr-step.is-active .pr-circle::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
+  .pr-side:not(.is-sticky) .pr-step.is-active .pr-circle {
     background: #26374a;
+    border-color: #26374a;
   }
 
-  .pr-step-btn {
+  .pr-side:not(.is-sticky) .pr-step.is-active .pr-circle::after {
+    display: none;
+  }
+
+  .pr-side:not(.is-sticky) .pr-step-btn {
+    font-size: 18px;
+    color: #4a5568;
+    text-decoration: none;
+    cursor: pointer;
     flex: 1 1 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 8px;
+    line-height: 1.35;
     background: transparent;
     border: none;
     padding: 0;
-    font-size: 16px;
-    font-weight: 700;
-    color: #26374a;
-    cursor: pointer;
-    text-align: left;
-    line-height: 1.35;
   }
 
-  .pr-step-chevron {
+  .pr-side:not(.is-sticky) .pr-step-btn:hover,
+  .pr-side:not(.is-sticky) .pr-step-btn:focus {
+    color: #0535d2;
+    text-decoration: none;
+  }
+
+  .pr-side:not(.is-sticky) .pr-step.is-active .pr-step-btn {
+    color: #26374a;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .pr-side:not(.is-sticky) .pr-step-title {
+    color: inherit;
+    font-weight: inherit;
+    text-decoration: inherit;
+  }
+
+  .pr-side:not(.is-sticky) .pr-step-chevron {
     display: inline-flex !important;
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
     color: #6f6f6f;
-    flex-shrink: 0;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 3px;
     transition: transform 0.2s ease;
   }
 
-  .pr-step-btn[aria-expanded="false"] .pr-step-chevron {
+  .pr-side:not(.is-sticky) .pr-step.is-active .pr-step-chevron {
+    color: #26374a;
+  }
+
+  .pr-side:not(.is-sticky) .pr-step-btn[aria-expanded="false"] .pr-step-chevron {
     transform: rotate(180deg);
   }
 
-  .pr-step-btn[aria-expanded="true"] .pr-step-chevron {
+  .pr-side:not(.is-sticky) .pr-step-btn[aria-expanded="true"] .pr-step-chevron {
     transform: rotate(0deg);
   }
 
-  .pr-step-body {
-    display: block !important;
-    padding-left: 20px;
+  .pr-side:not(.is-sticky) .pr-step-body {
+    display: none !important;
+    padding-left: 0;
     padding-top: 4px;
     padding-bottom: 8px;
     position: relative;
     z-index: 1;
   }
 
-  .pr-sub-card {
+  .pr-side:not(.is-sticky) .pr-step-body.is-expanded,
+  .pr-side:not(.is-sticky) .pr-step.is-expanded .pr-step-body {
+    display: block !important;
+  }
+
+  .pr-side:not(.is-sticky) .pr-sub-card {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     background: transparent;
     border-radius: 8px;
-    padding: 9px 12px;
-    margin-bottom: 4px;
+    padding: 8px 12px;
+    margin-bottom: 3px;
     min-height: 42px;
-    color: #4a5568;
-    font-size: 15px;
-    line-height: 1.35;
+    color: #555555;
+    font-size: 17px;
+    line-height: 1.4;
     text-decoration: none;
-    border: 1px solid transparent;
-    transition: all 0.15s ease;
   }
 
-  .pr-sub-card:hover,
-  .pr-sub-card:focus {
+  .pr-side:not(.is-sticky) .pr-sub-card:hover,
+  .pr-side:not(.is-sticky) .pr-sub-card:focus {
     background: rgba(235, 242, 250, 0.6);
-    color: #0535d2;
     text-decoration: none;
+    color: #0535d2;
   }
 
-  .pr-sub-card.is-active {
+  .pr-side:not(.is-sticky) .pr-sub-arrow {
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 14px;
+    height: auto;
+    color: #26374a;
+    opacity: 0;
+  }
+
+  .pr-side:not(.is-sticky) .pr-sub-card:hover .pr-sub-arrow,
+  .pr-side:not(.is-sticky) .pr-sub-card:focus .pr-sub-arrow {
+    opacity: 1;
+  }
+
+  .pr-side:not(.is-sticky) .pr-sub-card::before {
+    display: none;
+  }
+
+  .pr-side:not(.is-sticky) .pr-sub-card.is-active,
+  .pr-side:not(.is-sticky) .pr-sub-card.is-active:hover,
+  .pr-side:not(.is-sticky) .pr-sub-card.is-active:focus {
     background: #ebf2fa;
     color: #26374a;
     font-weight: 700;
-    border-color: #d0e1f9;
+    text-decoration: none;
   }
 
-  .pr-sub-arrow {
-    display: inline-flex !important;
-    flex-shrink: 0;
-    width: 13px;
-    height: 12px;
-    color: #26374a;
-  }
-
-  .pr-sub-card:not(.is-active) .pr-sub-arrow {
-    opacity: 0.35;
-  }
-
-  .pr-sub-card.is-active .pr-sub-arrow {
+  .pr-side:not(.is-sticky) .pr-sub-card.is-active .pr-sub-arrow {
     opacity: 1;
+    color: #26374a;
   }
 
   .pr-section,
   .pr-subsection {
-    scroll-margin-top: 100px;
+    scroll-margin-top: 120px;
   }
 
   .pr-glance-band {
@@ -907,23 +939,24 @@ h2.pr-eyebrow,
 
   
   .pr-stepper-toggle {
-    min-height: 48px;
+    min-height: 52px;
     padding: 12px 16px;
   }
 
   .pr-step-row {
-    min-height: 44px;
+    min-height: 48px;
     padding: 8px 0;
   }
 
   .pr-step-btn {
-    min-height: 44px;
+    min-height: 48px;
     padding: 6px 0;
   }
 
   .pr-sub-card {
-    min-height: 44px;
+    min-height: 42px;
     padding: 8px 12px;
+    font-size: 17px;
     align-items: center;
   }
 
@@ -956,6 +989,8 @@ h2.pr-eyebrow,
   }
 }
 
+
+
 @media print {
   .pr-side {
     display: none !important;
@@ -974,6 +1009,7 @@ h2.pr-eyebrow,
     padding: 0 !important;
   }
 }
+
 </style>
 </div>
 
@@ -1209,7 +1245,7 @@ h2.pr-eyebrow,
                 <p class="mrgn-bttm-0">If your application is missing information or documents, we&rsquo;ll return it to you.</p>
               </div>
               <p class="mrgn-tp-md mrgn-bttm-sm"><a class="btn btn-call-to-action" href="https://prson-srpel.apps.cic.gc.ca/en/login" target="_blank" rel="noopener">Apply in the permanent residence portal<span class="wb-inv"> (opens in a new tab)</span> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></a></p>
-              <details class="print-open mrgn-tp-sm mrgn-bttm-sm">
+              <details class="print-open mrgn-tp-sm mrgn-bttm-0">
                 <summary>If you can&rsquo;t apply online</summary>
                 <div class="mrgn-tp-sm">
                   <p>You may be able to apply on paper if your nearest visa application centre (VAC) accepts paper applications by mail or in person.</p>
