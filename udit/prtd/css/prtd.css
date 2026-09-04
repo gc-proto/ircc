@@ -456,6 +456,12 @@ button[aria-expanded="true"] .pr-toggle-caret {
   padding-bottom: 0;
 }
 
+.pr-stage > .pr-section:last-child,
+.pr-stage > .pr-subsection:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
 .pr-section,
 .pr-subsection {
   scroll-margin-top: 110px;
@@ -525,14 +531,20 @@ h2.pr-eyebrow,
   }
 
   .pr-stage:not(:last-child) {
-    padding-bottom: 24px;
-    margin-bottom: 24px;
+    padding-bottom: 28px;
+    margin-bottom: 28px;
   }
 
   .pr-section,
   .pr-subsection {
     padding-bottom: 24px;
     margin-bottom: 16px;
+  }
+
+  .pr-stage > .pr-section:last-child,
+  .pr-stage > .pr-subsection:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
 }
 
