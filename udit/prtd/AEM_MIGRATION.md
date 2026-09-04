@@ -36,10 +36,11 @@ The prototype adheres strictly to official WET-BOEW and GCWeb standards:
 | **Container Width** | Wrapped in standard `.container` (1170px desktop / 970px medium / 750px tablet / 100% fluid mobile). Zero horizontal overflow. |
 | **Grid & Rail Spacing** | `.pr-side` width is `260px` with a `40px` layout gap (`260px + 40px + 840px = 1140px` usable width). |
 | **Body Typography** | Standard GCWeb `16px` base (`line-height: 1.5`), inheriting from `theme.min.css`. No inflated overrides. |
-| **Headings Scale** | Sized natively by AEM / GCWeb (`theme.min.css`). No custom font-size overrides.<br>`H1` = 38px desktop / 34px mobile with native 72px red accent bar (`border-image` from GCWeb).<br>`H2 Eyebrow` (`.pr-eyebrow.h4`) = semantic stage landmark.<br>`H3 Stage Headings` (`.pr-stage-h`) = 24px native GCWeb subsection heading.<br>`H4 Subheadings` = 18px native GCWeb heading.<br>**Zero skipped heading levels** for strict WCAG AA / screen reader compliance. |
+| **Headings Scale** | Sized natively by AEM / GCWeb (`theme.min.css`). No custom font-size overrides.<br>`H1` = 38px desktop / 34px mobile with native 72px red accent bar (`border-image` from GCWeb).<br>`H2 Eyebrow` (`.pr-eyebrow.h3`) = semantic stage landmark sized visually as H3.<br>`H3 Stage Headings` (`.pr-stage-h.h2`) = semantic H3 subsections sized visually as regular H2 (2.1875rem / 35px desktop, 1.625rem / 26px mobile).<br>`H4 Subheadings` = 18px native GCWeb heading.<br>**Zero skipped heading levels** for strict WCAG AA / screen reader compliance. |
 | **Color Architecture** | Standard Canada.ca hex codes (`#26374a`, `#284162`, `#0535d2`, `#af3c43`) used directly without unnecessary `:root` indirection layers, fully compatible with AEM clientlibs and browser DevTools. |
 | **Contextual Alerts** | Standard WET semantic alerts: `<section class="alert alert-warning">` and `<section class="alert alert-info">`. Fully accessible, native borders and iconography. |
 | **Collapsible Content** | Standard HTML `<details class="print-open"><summary>` with native Canada.ca disclosure markers. Collapsed by default on screen, printable via `print-open`. |
+| **Lightbox / Modals** | Standard WET-BOEW `wb-lbx` overlay (`#pr-processing-modal`). Fully accessible, native Magnific Popup behavior, keyboard dismiss (Esc), and zero custom modal CSS. |
 | **Top of Page Links** | Completely removed per design decision, keeping content stages clean and unencumbered. |
 
 ---

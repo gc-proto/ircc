@@ -42,7 +42,10 @@
 }
 
 .pr-glance-title {
-  display: block;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 4px;
   font-size: 1.125rem;
   line-height: 1.3;
   font-weight: 700;
@@ -50,12 +53,51 @@
   margin: 0 0 4px;
 }
 
+.pr-glance-title-group {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+button.pr-glance-help,
 .pr-glance-help {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 16px;
   height: 16px;
-  margin-left: 4px;
+  min-width: 16px;
+  min-height: 16px;
+  padding: 0;
+  margin: 0 0 0 4px;
+  background: transparent;
+  border: none;
   cursor: pointer;
   vertical-align: middle;
+  border-radius: 50%;
+  line-height: 1;
+  text-decoration: none;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+button.pr-glance-help:hover,
+.pr-glance-help:hover {
+  opacity: 0.8;
+  transform: scale(1.12);
+}
+
+button.pr-glance-help:focus,
+.pr-glance-help:focus {
+  outline: 2px solid #0535d2;
+  outline-offset: 2px;
+}
+
+button.pr-glance-help svg,
+.pr-glance-help svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
 }
 
 .pr-glance-desc {
@@ -423,6 +465,7 @@ button[aria-expanded="true"] .pr-toggle-caret {
 
 .pr-eyebrow,
 h2.pr-eyebrow,
+.pr-eyebrow.h3,
 .pr-eyebrow.h4 {
   display: block;
   color: #595959;
@@ -438,8 +481,26 @@ h2.pr-eyebrow,
   color: #26374a;
 }
 
+.pr-stage-h.h2 {
+  font-size: 2.1875rem;
+  line-height: 1.25;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: #26374a;
+}
+
+@media (max-width: 767px) {
+  .pr-stage-h.h2 {
+    font-size: 1.625rem;
+    line-height: 1.25;
+  }
+}
+
 .pr-section .pr-eyebrow + .pr-stage-h,
-.pr-subsection .pr-eyebrow + .pr-stage-h {
+.pr-subsection .pr-eyebrow + .pr-stage-h,
+.pr-section .pr-eyebrow + .pr-stage-h.h2,
+.pr-subsection .pr-eyebrow + .pr-stage-h.h2 {
   margin-top: 0;
 }
 
@@ -887,6 +948,31 @@ h2.pr-eyebrow,
     overflow-wrap: break-word;
   }
 }
+
+@media (min-width: 992px) {
+  .pr-glance-title {
+    white-space: nowrap;
+    flex-wrap: nowrap;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .pr-glance-card {
+    padding: 24px 20px;
+  }
+  .pr-glance-boxes {
+    gap: 12px;
+  }
+  .pr-glance-box {
+    padding: 12px 10px;
+    gap: 10px;
+  }
+  .pr-glance-title {
+    font-size: 1.05rem;
+  }
+}
+
+
 
 @media print {
   .pr-side {

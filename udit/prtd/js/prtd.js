@@ -500,6 +500,20 @@
   window.addEventListener("scroll", requestTick, { passive: true });
   window.addEventListener("resize", requestTick);
 
+  // Processing times in-modal jump link handler
+  document.addEventListener("click", function (e) {
+    var link = e.target.closest && e.target.closest(".pr-modal-link-process");
+    if (!link) return;
+    var target = document.getElementById("how-we-process");
+    if (target) {
+      setTimeout(function () {
+        scrollTargetIntoView(target);
+        target.setAttribute("tabindex", "-1");
+        target.focus({ preventScroll: true });
+      }, 350);
+    }
+  });
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", onScroll);
   } else {
