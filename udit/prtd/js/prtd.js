@@ -213,6 +213,7 @@
   function openMenu() {
     if (!stepper || !toggleBtn) return;
     stepper.classList.add("is-open");
+    if (side) side.classList.add("is-open");
     toggleBtn.setAttribute("aria-expanded", "true");
     ensureActiveStepExpandedInSticky();
   }
@@ -220,6 +221,7 @@
   function closeMenu() {
     if (!stepper || !toggleBtn) return;
     stepper.classList.remove("is-open");
+    if (side) side.classList.remove("is-open");
     toggleBtn.setAttribute("aria-expanded", "false");
     if (window.innerWidth < 992) {
       collapseAllMobileSteps();
@@ -231,6 +233,7 @@
   if (toggleBtn && stepper) {
     toggleBtn.addEventListener("click", function () {
       var open = stepper.classList.toggle("is-open");
+      if (side) side.classList.toggle("is-open", open);
       this.setAttribute("aria-expanded", open ? "true" : "false");
       manualToggleScrollY = open ? window.scrollY : null;
       if (open) {
@@ -455,7 +458,10 @@
           closeMenu();
         }
       } else {
-        if (side) side.classList.remove("is-sticky");
+        if (side) {
+          side.classList.remove("is-sticky");
+          side.classList.remove("is-open");
+        }
         manualToggleScrollY = null;
         closeMenu();
       }

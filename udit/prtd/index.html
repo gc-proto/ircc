@@ -21,6 +21,9 @@
 <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css">
 </noscript>
 <link rel="stylesheet" href="css/prtd.css">
+<!-- GC Design System Components -->
+<link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@latest/dist/gcds/gcds.css">
+<script type="module" src="https://cdn.design-system.canada.ca/@gcds-core/components@latest/dist/gcds/gcds.esm.js"></script>
 </head>
 
 <body vocab="http://schema.org/" typeof="WebPage">
@@ -337,7 +340,9 @@
               <div class="alert alert-info">
                 <p class="mrgn-bttm-0">If your application is missing information or documents, we&rsquo;ll return it to you.</p>
               </div>
-              <p class="mrgn-tp-md mrgn-bttm-sm"><a class="btn btn-call-to-action" href="https://prson-srpel.apps.cic.gc.ca/en/login" target="_blank" rel="noopener">Apply in the permanent residence portal<span class="wb-inv"> (opens in a new tab)</span> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></a></p>
+              <p class="mrgn-tp-md mrgn-bttm-sm">
+                <gcds-button type="link" href="https://prson-srpel.apps.cic.gc.ca/en/login" target="_blank" rel="noopener" button-role="start">Apply in the permanent residence portal</gcds-button>
+              </p>
               <details class="print-open mrgn-tp-sm mrgn-bttm-0">
                 <summary>If you can&rsquo;t apply online</summary>
                 <div class="mrgn-tp-sm">
