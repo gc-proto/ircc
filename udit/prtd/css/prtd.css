@@ -321,6 +321,7 @@ html.no-js .pr-step-body[hidden] {
 }
 
 .pr-sub-card {
+  position: relative;
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -339,6 +340,10 @@ html.no-js .pr-step-body[hidden] {
 }
 
 .pr-sub-arrow {
+  /* Place the arrow in the gutter without adding an indent to the label. */
+  position: absolute;
+  left: -9px;
+  top: 8px;
   flex-shrink: 0;
   width: 13px;
   height: auto;
