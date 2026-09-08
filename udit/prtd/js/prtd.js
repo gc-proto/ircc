@@ -176,26 +176,16 @@
   }
 
   function ensureActiveStepExpandedInSticky() {
-    var actIndex = (currentFlat >= 0 && currentFlat < flat.length && flat[currentFlat])
-      ? flat[currentFlat].main
-      : 0;
-
-    stepItems.forEach(function (s, i) {
+    // Expand all steps so the user can jump to any section from the sticky nav.
+    stepItems.forEach(function (s) {
       var body = s.querySelector(".pr-step-body");
       var btn = s.querySelector(".pr-step-btn");
       if (!body || !btn) return;
 
-      if (i === actIndex) {
-        body.removeAttribute("hidden");
-        body.classList.add("is-expanded");
-        s.classList.add("is-expanded");
-        btn.setAttribute("aria-expanded", "true");
-      } else {
-        body.setAttribute("hidden", "");
-        body.classList.remove("is-expanded");
-        s.classList.remove("is-expanded");
-        btn.setAttribute("aria-expanded", "false");
-      }
+      body.removeAttribute("hidden");
+      body.classList.add("is-expanded");
+      s.classList.add("is-expanded");
+      btn.setAttribute("aria-expanded", "true");
     });
   }
 
