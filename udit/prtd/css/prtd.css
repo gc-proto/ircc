@@ -59,7 +59,6 @@
   white-space: nowrap;
 }
 
-button.pr-glance-help,
 .pr-glance-help {
   display: inline-flex;
   align-items: center;
@@ -80,19 +79,16 @@ button.pr-glance-help,
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
-button.pr-glance-help:hover,
 .pr-glance-help:hover {
   opacity: 0.8;
   transform: scale(1.12);
 }
 
-button.pr-glance-help:focus,
 .pr-glance-help:focus {
   outline: 2px solid #0535d2;
   outline-offset: 2px;
 }
 
-button.pr-glance-help svg,
 .pr-glance-help svg {
   display: block;
   width: 16px;
@@ -298,7 +294,6 @@ button.pr-glance-help svg,
   height: 18px;
   flex: 0 0 18px;
   color: #6f6f6f;
-  cursor: pointer;
 }
 
 .pr-step-btn[aria-expanded="false"] .pr-step-chevron {
@@ -471,8 +466,7 @@ button[aria-expanded="true"] .pr-toggle-caret {
 
 .pr-eyebrow,
 h2.pr-eyebrow,
-.pr-eyebrow.h3,
-.pr-eyebrow.h4 {
+.pr-eyebrow.h3 {
   display: block;
   color: #595959;
   margin-top: 0;
@@ -638,8 +632,7 @@ h2.pr-eyebrow,
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   }
 
-  .pr-side.is-sticky.is-open,
-  .pr-side.is-sticky:has(.pr-stepper.is-open) {
+  .pr-side.is-sticky.is-open {
     border-bottom: none !important;
     box-shadow: none !important;
   }
@@ -696,8 +689,7 @@ h2.pr-eyebrow,
     display: none;
   }
 
-  .pr-side.is-sticky .pr-stepper.is-open #pr-steplist,
-  .pr-side.is-sticky .pr-stepper.is-open .pr-stepper-list {
+  .pr-side.is-sticky .pr-stepper.is-open #pr-steplist {
     display: block !important;
     position: absolute;
     top: 100%;
@@ -752,15 +744,9 @@ h2.pr-eyebrow,
     position: relative;
   }
 
-  .pr-side:not(.is-sticky) .pr-step::after,
-  .pr-side:not(.is-sticky) .pr-step:not(:last-child)::after,
-  .pr-side:not(.is-sticky) .pr-step:last-child::after {
+  .pr-side:not(.is-sticky) .pr-step::after {
     display: none !important;
     content: none !important;
-  }
-
-  .pr-side:not(.is-sticky) .pr-step:last-child {
-    padding-bottom: 0;
   }
 
   .pr-side:not(.is-sticky) .pr-step-row {
@@ -900,10 +886,6 @@ h2.pr-eyebrow,
   .pr-side:not(.is-sticky) .pr-sub-card:hover .pr-sub-arrow,
   .pr-side:not(.is-sticky) .pr-sub-card:focus .pr-sub-arrow {
     opacity: 1;
-  }
-
-  .pr-side:not(.is-sticky) .pr-sub-card::before {
-    display: none;
   }
 
   .pr-side:not(.is-sticky) .pr-sub-card.is-active,

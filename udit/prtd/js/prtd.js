@@ -18,37 +18,26 @@
   stepItems.forEach(function (stepEl, mi) {
     var mainId = stepEl.dataset.target || "";
     var subCards = Array.prototype.slice.call(stepEl.querySelectorAll(".pr-sub-card"));
-    var stepBtn = stepEl.querySelector(".pr-step-btn");
-    var stepBody = stepEl.querySelector(".pr-step-body");
-    var chev = stepEl.querySelector(".pr-step-chevron");
 
     if (subCards.length > 0) {
-      subCards.forEach(function (card, si) {
+      subCards.forEach(function (card) {
         var href = card.getAttribute("href") || "";
         var id = href.replace(/^#/, "");
         flat.push({
           id: id,
           sec: document.getElementById(id),
           main: mi,
-          sub: si,
           navMain: stepEl,
-          navBtn: stepBtn,
-          navBody: stepBody,
-          navChev: chev,
           navCard: card
         });
       });
     } else {
       flat.push({
-        id: mainId,
-        sec: document.getElementById(mainId),
-        main: mi,
-        sub: null,
-        navMain: stepEl,
-        navBtn: stepBtn,
-        navBody: stepBody,
-        navChev: chev,
-        navCard: null
+          id: mainId,
+          sec: document.getElementById(mainId),
+          main: mi,
+          navMain: stepEl,
+          navCard: null
       });
     }
   });
@@ -262,17 +251,7 @@
       if (window.innerWidth > 991) {
         closeMenu();
         if (side) side.classList.remove("is-sticky");
-        // On desktop, all options should be open by default
-        stepItems.forEach(function (stepEl) {
-          var btn = stepEl.querySelector(".pr-step-btn");
-          var body = stepEl.querySelector(".pr-step-body");
-          if (btn) btn.setAttribute("aria-expanded", "true");
-          if (body) {
-            body.removeAttribute("hidden");
-            body.classList.remove("is-expanded");
-          }
-          stepEl.classList.remove("is-expanded");
-        });
+        initStepperState();
       } else {
         if (!side || !side.classList.contains("is-sticky") || !stepper.classList.contains("is-open")) {
           collapseAllMobileSteps();
@@ -385,12 +364,6 @@
       }
     });
 
-    var circle = stepEl.querySelector(".pr-circle");
-    if (circle) {
-      circle.addEventListener("click", function () {
-        btn.click();
-      });
-    }
   });
 
   function onScroll() {
