@@ -1,5 +1,9 @@
 <div class="mwsmediaplayer section">
 
+<!-- GC Design System Components -->
+<link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@latest/dist/gcds/gcds.css">
+<script type="module" src="https://cdn.design-system.canada.ca/@gcds-core/components@latest/dist/gcds/gcds.esm.js"></script>
+
 <style>
 .pr-glance-band {
   background-color: #ebf2fc;
@@ -477,9 +481,12 @@ h2.pr-eyebrow,
 .pr-eyebrow.h3,
 .pr-eyebrow.h4 {
   display: block;
+  width: fit-content;
   color: #595959;
   margin-top: 0;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0;
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid #d8dde3;
   line-height: 1.3;
   text-transform: none;
 }
@@ -510,7 +517,7 @@ h2.pr-eyebrow,
 .pr-subsection .pr-eyebrow + .pr-stage-h,
 .pr-section .pr-eyebrow + .pr-stage-h.h2,
 .pr-subsection .pr-eyebrow + .pr-stage-h.h2 {
-  margin-top: 0;
+  margin-top: 0.75rem;
 }
 
 .pr-main .btn-default {
@@ -571,10 +578,18 @@ h2.pr-eyebrow,
     position: relative;
     border: 3px solid #26374a;
     border-radius: 8px;
-    margin: 32px 0 28px 0;
-    padding: 20px 20px 20px 32px;
+    margin: 32px 0 24px 0;
+    padding: 16px 16px 22px 26px;
     background: #ffffff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .pr-side:not(.is-sticky)::after {
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #d8dde3;
+    margin: 0 0 32px 0;
   }
 
   .pr-side:not(.is-sticky) .pr-subway-header {
@@ -586,13 +601,16 @@ h2.pr-eyebrow,
     padding: 0 14px 8px 0;
     max-width: calc(100% - 36px);
     z-index: 3;
+    border-bottom: none;
   }
 
-  .pr-side:not(.is-sticky) .pr-subway-title {
+  .pr-side:not(.is-sticky) .pr-subway-title,
+  .pr-subway-title {
     font-size: 20px;
     font-weight: 700;
     color: #26374a;
     line-height: 1.3;
+    margin: 0;
     display: block;
   }
 
@@ -623,7 +641,17 @@ h2.pr-eyebrow,
     border-bottom: 1px solid #d0d5dc;
     padding: 0;
     margin-bottom: 0;
+    margin-left: -15px;
+    margin-right: -15px;
+    width: auto;
+    max-width: none;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  }
+
+  .pr-side.is-sticky.is-open,
+  .pr-side.is-sticky:has(.pr-stepper.is-open) {
+    border-bottom: none !important;
+    box-shadow: none !important;
   }
 
   .pr-side.is-sticky .pr-stepper {
@@ -650,6 +678,12 @@ h2.pr-eyebrow,
     min-height: 52px;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .pr-side.is-sticky .pr-stepper.is-open .pr-stepper-toggle {
+    border-bottom: none !important;
+    background: #ffffff !important;
+    padding-bottom: 8px !important;
   }
 
   .pr-side.is-sticky .pr-stepper-toggle:hover {
@@ -680,11 +714,12 @@ h2.pr-eyebrow,
     left: 0;
     right: 0;
     background: #ffffff;
+    border-top: none !important;
     border-bottom: 3px solid #26374a;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22), 0 6px 14px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18), 0 6px 14px rgba(0, 0, 0, 0.1);
     max-height: 65vh;
     overflow-y: auto;
-    padding: 6px 15px 12px 15px !important;
+    padding: 0 15px 12px 15px !important;
     z-index: 1001;
   }
 
@@ -719,7 +754,7 @@ h2.pr-eyebrow,
   }
 
   .pr-side:not(.is-sticky) .pr-step-terminal {
-    display: none;
+    display: none !important;
   }
 
   .pr-side:not(.is-sticky) .pr-step {
@@ -727,13 +762,20 @@ h2.pr-eyebrow,
     position: relative;
   }
 
-  .pr-side:not(.is-sticky) .pr-step::after {
+  .pr-side:not(.is-sticky) .pr-step::after,
+  .pr-side:not(.is-sticky) .pr-step:not(:last-child)::after,
+  .pr-side:not(.is-sticky) .pr-step:last-child::after {
     display: none !important;
+    content: none !important;
+  }
+
+  .pr-side:not(.is-sticky) .pr-step:last-child {
+    padding-bottom: 0;
   }
 
   .pr-side:not(.is-sticky) .pr-step-row {
-    padding: 10px 0;
-    min-height: 48px;
+    padding: 8px 0;
+    min-height: 44px;
     display: flex;
     align-items: center;
     position: relative;
@@ -749,7 +791,7 @@ h2.pr-eyebrow,
     background: #ffffff;
     position: relative;
     z-index: 2;
-    margin-left: -38px;
+    margin-left: -36px;
     margin-right: 16px;
   }
 
@@ -759,7 +801,7 @@ h2.pr-eyebrow,
   }
 
   .pr-side:not(.is-sticky) .pr-step.is-active .pr-circle::after {
-    display: none;
+    display: none !important;
   }
 
   .pr-side:not(.is-sticky) .pr-step-btn {
@@ -945,12 +987,12 @@ h2.pr-eyebrow,
 
   .pr-step-row {
     min-height: 48px;
-    padding: 8px 0;
+    padding: 2px 0;
   }
 
   .pr-step-btn {
-    min-height: 48px;
-    padding: 6px 0;
+    min-height: 44px;
+    padding: 2px 0;
   }
 
   .pr-sub-card {
@@ -1244,7 +1286,9 @@ h2.pr-eyebrow,
               <div class="alert alert-info">
                 <p class="mrgn-bttm-0">If your application is missing information or documents, we&rsquo;ll return it to you.</p>
               </div>
-              <p class="mrgn-tp-md mrgn-bttm-sm"><a class="btn btn-call-to-action" href="https://prson-srpel.apps.cic.gc.ca/en/login" target="_blank" rel="noopener">Apply in the permanent residence portal<span class="wb-inv"> (opens in a new tab)</span> <span aria-hidden="true" class="glyphicon glyphicon-new-window"></span></a></p>
+              <p class="mrgn-tp-md mrgn-bttm-sm">
+                <gcds-button type="link" href="https://prson-srpel.apps.cic.gc.ca/en/login" target="_blank" rel="noopener" button-role="start">Apply in the permanent residence portal</gcds-button>
+              </p>
               <details class="print-open mrgn-tp-sm mrgn-bttm-0">
                 <summary>If you can&rsquo;t apply online</summary>
                 <div class="mrgn-tp-sm">
@@ -1658,6 +1702,7 @@ h2.pr-eyebrow,
   function openMenu() {
     if (!stepper || !toggleBtn) return;
     stepper.classList.add("is-open");
+    if (side) side.classList.add("is-open");
     toggleBtn.setAttribute("aria-expanded", "true");
     ensureActiveStepExpandedInSticky();
   }
@@ -1665,6 +1710,7 @@ h2.pr-eyebrow,
   function closeMenu() {
     if (!stepper || !toggleBtn) return;
     stepper.classList.remove("is-open");
+    if (side) side.classList.remove("is-open");
     toggleBtn.setAttribute("aria-expanded", "false");
     if (window.innerWidth < 992) {
       collapseAllMobileSteps();
@@ -1676,6 +1722,7 @@ h2.pr-eyebrow,
   if (toggleBtn && stepper) {
     toggleBtn.addEventListener("click", function () {
       var open = stepper.classList.toggle("is-open");
+      if (side) side.classList.toggle("is-open", open);
       this.setAttribute("aria-expanded", open ? "true" : "false");
       manualToggleScrollY = open ? window.scrollY : null;
       if (open) {
@@ -1704,23 +1751,56 @@ h2.pr-eyebrow,
       if (window.innerWidth > 991) {
         closeMenu();
         if (side) side.classList.remove("is-sticky");
-        initStepperState();
+        // On desktop, all options should be open by default
+        stepItems.forEach(function (stepEl) {
+          var btn = stepEl.querySelector(".pr-step-btn");
+          var body = stepEl.querySelector(".pr-step-body");
+          if (btn) btn.setAttribute("aria-expanded", "true");
+          if (body) {
+            body.removeAttribute("hidden");
+            body.classList.remove("is-expanded");
+          }
+          stepEl.classList.remove("is-expanded");
+        });
+      } else {
+        if (!side || !side.classList.contains("is-sticky") || !stepper.classList.contains("is-open")) {
+          collapseAllMobileSteps();
+        }
       }
     });
   }
 
+  function collapseAllMobileSteps() {
+    if (window.innerWidth < 992) {
+      stepItems.forEach(function (stepEl) {
+        var btn = stepEl.querySelector(".pr-step-btn");
+        var body = stepEl.querySelector(".pr-step-body");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+        if (body) {
+          body.setAttribute("hidden", "");
+          body.classList.remove("is-expanded");
+        }
+        stepEl.classList.remove("is-expanded");
+      });
+    }
+  }
+
   function initStepperState() {
-    // Both desktop and mobile: all steps and sub-steps are open by default in authentic GCWeb Subway
-    stepItems.forEach(function (stepEl) {
-      var btn = stepEl.querySelector(".pr-step-btn");
-      var body = stepEl.querySelector(".pr-step-body");
-      if (btn) btn.setAttribute("aria-expanded", "true");
-      if (body) {
-        body.removeAttribute("hidden");
-        body.classList.remove("is-expanded");
-      }
-      stepEl.classList.remove("is-expanded");
-    });
+    if (window.innerWidth >= 992) {
+      // On desktop, all options should be open by default
+      stepItems.forEach(function (stepEl) {
+        var btn = stepEl.querySelector(".pr-step-btn");
+        var body = stepEl.querySelector(".pr-step-body");
+        if (btn) btn.setAttribute("aria-expanded", "true");
+        if (body) {
+          body.removeAttribute("hidden");
+          body.classList.remove("is-expanded");
+        }
+        stepEl.classList.remove("is-expanded");
+      });
+    } else {
+      collapseAllMobileSteps();
+    }
   }
 
   initStepperState();
@@ -1732,27 +1812,28 @@ h2.pr-eyebrow,
 
     btn.addEventListener("click", function (e) {
       e.preventDefault();
+      var isExpanded = this.getAttribute("aria-expanded") === "true" || body.classList.contains("is-expanded");
       var targetId = stepEl.dataset.target;
+      var clickedChevron = e.target.closest(".pr-step-chevron");
 
-      // On mobile, tapping the step row jumps to that step's target section
-      if (window.innerWidth < 992) {
-        var target = document.getElementById(targetId);
-        if (target) {
-          scrollTargetIntoView(target);
-          target.setAttribute("tabindex", "-1");
-          target.focus({ preventScroll: true });
-          for (var i = 0; i < flat.length; i++) {
-            if (flat[i].id === targetId) {
-              setActive(i);
-              break;
-            }
-          }
+      // On mobile, clicking anywhere on the step button (text or chevron) expands/collapses
+      if (window.innerWidth < 992 || clickedChevron) {
+        var nowOpen = !isExpanded;
+        this.setAttribute("aria-expanded", nowOpen ? "true" : "false");
+        if (nowOpen) {
+          body.removeAttribute("hidden");
+          body.classList.add("is-expanded");
+          stepEl.classList.add("is-expanded");
+        } else {
+          body.setAttribute("hidden", "");
+          body.classList.remove("is-expanded");
+          stepEl.classList.remove("is-expanded");
+        }
+        if (window.innerWidth >= 992) {
+          manualDesktopCollapseScrollY = !nowOpen ? window.scrollY : null;
         }
         return;
       }
-
-      var isExpanded = this.getAttribute("aria-expanded") === "true";
-      var clickedChevron = e.target.closest(".pr-step-chevron");
 
       if (stepEl.classList.contains("is-active") && isExpanded) {
         var nowOpen = !isExpanded;
@@ -1857,8 +1938,20 @@ h2.pr-eyebrow,
 
       if (window.scrollY >= collapseThreshold) {
         if (side) side.classList.add("is-sticky");
+        if (manualToggleScrollY !== null) {
+          if (Math.abs(window.scrollY - manualToggleScrollY) > 30) {
+            manualToggleScrollY = null;
+            closeMenu();
+          }
+        } else {
+          closeMenu();
+        }
       } else {
-        if (side) side.classList.remove("is-sticky");
+        if (side) {
+          side.classList.remove("is-sticky");
+          side.classList.remove("is-open");
+        }
+        manualToggleScrollY = null;
         closeMenu();
       }
     }
