@@ -2,6 +2,8 @@
 
 ## Overview
 
+`aem-payload.html` is intentionally a comments-only preparation checklist, not a deployable copy. During development, edit only `index.html`, `css/prtd.css`, and `js/prtd.js`. Assemble an AEM payload from those latest sources when deployment is requested; do not maintain parallel inline copies.
+
 `index.html` is a static visual prototype demonstrating the Permanent Resident Travel Document (PRTD) single-page stepper experience. The prototype includes the full Canada.ca header, menu, breadcrumb, page feedback widget, date modified, and footer to facilitate standalone inspection.
 
 In Adobe Experience Manager (AEM), **the global shell is provided by the WET/GCWeb Page Template**. Only the page-specific content between the designated authorable comments is inserted into an AEM **Generic HTML Component** (or decomposed into Core Components).
