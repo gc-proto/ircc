@@ -41,6 +41,8 @@ The prototype adheres strictly to official WET-BOEW and GCWeb standards:
 | **Contextual Alerts** | Standard WET semantic alerts: `<section class="alert alert-warning">` and `<section class="alert alert-info">`. Fully accessible, native borders and iconography. |
 | **Collapsible Content** | Standard HTML `<details class="print-open"><summary>` with native Canada.ca disclosure markers. Collapsed by default on screen, printable via `print-open`. |
 | **Lightbox / Modals** | Standard WET-BOEW `wb-lbx` overlay (`#pr-processing-modal`). Fully accessible, native Magnific Popup behavior, keyboard dismiss (Esc), and zero custom modal CSS. |
+| **Call-to-action (CTA) Button** | Government of Canada Design System (`<gcds-button>` with `button-role="start"` and `type="link"`). Fully accessible, shadow DOM encapsulated, native external link icon, and official Canada.ca green CTA styling. |
+| **Mobile Stepper & Sticky Navigation** | Responsive two-mode navigation: (1) In-page 3px continuous wrap-around navy border box with native legend heading, and (2) Sticky collapsed header bar that expands into a single, seamless dropdown sheet with unified elevation shadow, no dividing seams or fragmented panels. |
 | **Top of Page Links** | Completely removed per design decision, keeping content stages clean and unencumbered. |
 
 ---
@@ -63,6 +65,10 @@ To bypass this without a code deployment cycle, IRCC authoring teams standardly 
 
 ```html
 <div class="mwsmediaplayer section">
+  <!-- GC Design System Components -->
+  <link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@latest/dist/gcds/gcds.css">
+  <script type="module" src="https://cdn.design-system.canada.ca/@gcds-core/components@latest/dist/gcds/gcds.esm.js"></script>
+
   <style>
     [Insert css/prtd.css content]
   </style>
