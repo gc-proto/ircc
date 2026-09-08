@@ -468,7 +468,7 @@ button[aria-expanded="true"] .pr-toggle-caret {
 h2.pr-eyebrow,
 .pr-eyebrow.h3 {
   display: block;
-  color: #24568f;
+  color: var(--gcds-color-blue-650, #24568f);
   margin-top: 0;
   margin-bottom: 0.25rem;
   line-height: 1.3;
