@@ -729,9 +729,8 @@ h2.pr-eyebrow,
     padding-bottom: 4px !important;
   }
 
-  .pr-side.is-sticky .pr-stepper.is-open .pr-step.is-active .pr-step-body,
-  .pr-side.is-sticky .pr-stepper.is-open .pr-step.is-expanded .pr-step-body,
-  .pr-side.is-sticky .pr-stepper.is-open .pr-step-body.is-expanded {
+  /* Selection does not imply expansion: respect the button's hidden state. */
+  .pr-side.is-sticky .pr-stepper.is-open .pr-step-body:not([hidden]) {
     display: block !important;
   }
 
