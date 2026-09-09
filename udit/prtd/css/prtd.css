@@ -637,10 +637,6 @@ h2.pr-eyebrow,
     box-shadow: none !important;
   }
 
-  .pr-side.is-sticky.is-open ~ .pr-main {
-    filter: blur(2px);
-  }
-
   .pr-side.is-sticky .pr-stepper {
     position: relative;
     border: none;
@@ -704,7 +700,7 @@ h2.pr-eyebrow,
     right: 0;
     background: var(--gcds-bg-white, #ffffff);
     border-top: none !important;
-    border-bottom: none;
+    border-bottom: 2px solid var(--gcds-color-blue-muted, #26374a);
     border-radius: 0 0 10px 10px;
     box-shadow: 0 10px 16px rgba(0, 0, 0, 0.2);
     /* Keep the panel shadow below it; the toggle owns the top separator shadow. */
