@@ -82,22 +82,6 @@
       var isDone = (i < act.main);
       s.classList.toggle("is-active", isActive);
       s.classList.toggle("is-done", isDone);
-
-      if (isActive && window.innerWidth >= 992) {
-        var shouldAutoOpen = (manualDesktopCollapseScrollY === null) ||
-                             (Math.abs(window.scrollY - manualDesktopCollapseScrollY) > 20);
-        if (shouldAutoOpen) {
-          manualDesktopCollapseScrollY = null;
-          var body = s.querySelector(".pr-step-body");
-          var btn = s.querySelector(".pr-step-btn");
-          if (body && body.hasAttribute("hidden")) {
-            body.removeAttribute("hidden");
-          }
-          if (btn && btn.getAttribute("aria-expanded") !== "true") {
-            btn.setAttribute("aria-expanded", "true");
-          }
-        }
-      }
     });
 
     allSubCards.forEach(function (card) {
@@ -208,7 +192,6 @@
   }
 
   var manualToggleScrollY = null;
-  var manualDesktopCollapseScrollY = null;
   if (toggleBtn && stepper) {
     toggleBtn.addEventListener("click", function () {
       var open = stepper.classList.toggle("is-open");
@@ -292,12 +275,11 @@
 
     btn.addEventListener("click", function (e) {
       e.preventDefault();
-      var isExpanded = this.getAttribute("aria-expanded") === "true" || body.classList.contains("is-expanded");
       var targetId = stepEl.dataset.target;
-      var clickedChevron = e.target.closest(".pr-step-chevron");
 
-      // On mobile, clicking anywhere on the step button (text or chevron) expands/collapses
-      if (window.innerWidth < 992 || clickedChevron) {
+      // On desktop the steps are always expanded; clicking a step jumps to its section.
+      if (window.innerWidth < 992) {
+        var isExpanded = this.getAttribute("aria-expanded") === "true" || body.classList.contains("is-expanded");
         var nowOpen = !isExpanded;
         this.setAttribute("aria-expanded", nowOpen ? "true" : "false");
         if (nowOpen) {
@@ -309,35 +291,12 @@
           body.classList.remove("is-expanded");
           stepEl.classList.remove("is-expanded");
         }
-        if (window.innerWidth >= 992) {
-          manualDesktopCollapseScrollY = !nowOpen ? window.scrollY : null;
-        }
         return;
-      }
-
-      if (stepEl.classList.contains("is-active") && isExpanded) {
-        var nowOpen = !isExpanded;
-        this.setAttribute("aria-expanded", nowOpen ? "true" : "false");
-        if (nowOpen) {
-          body.removeAttribute("hidden");
-        } else {
-          body.setAttribute("hidden", "");
-        }
-        if (window.innerWidth >= 992) {
-          manualDesktopCollapseScrollY = !nowOpen ? window.scrollY : null;
-        }
-        return;
-      }
-
-      if (!isExpanded) {
-        this.setAttribute("aria-expanded", "true");
-        body.removeAttribute("hidden");
       }
 
       if (targetId) {
         var target = document.getElementById(targetId);
         if (target) {
-          manualDesktopCollapseScrollY = null;
           closeMenu();
           scrollTargetIntoView(target);
           target.setAttribute("tabindex", "-1");
@@ -386,24 +345,6 @@
           side.scrollTo({ top: 0, behavior: "smooth" });
         }
       }
-
-      var actMain = flat[fi] ? flat[fi].main : 0;
-      var activeStep = stepItems[actMain];
-      if (activeStep) {
-        var shouldAutoOpen = (manualDesktopCollapseScrollY === null) ||
-                             (Math.abs(window.scrollY - manualDesktopCollapseScrollY) > 20);
-        if (shouldAutoOpen) {
-          manualDesktopCollapseScrollY = null;
-          var actBody = activeStep.querySelector(".pr-step-body");
-          var actBtn = activeStep.querySelector(".pr-step-btn");
-          if (actBody && actBody.hasAttribute("hidden")) {
-            actBody.removeAttribute("hidden");
-          }
-          if (actBtn && actBtn.getAttribute("aria-expanded") !== "true") {
-            actBtn.setAttribute("aria-expanded", "true");
-          }
-        }
-      }
     }
 
     if (window.innerWidth < 992 && stepper && toggleBtn) {
@@ -440,7 +381,6 @@
       var target = document.getElementById(targetId);
       if (target) {
         e.preventDefault();
-        manualDesktopCollapseScrollY = null;
         closeMenu();
         scrollTargetIntoView(target);
         target.setAttribute("tabindex", "-1");

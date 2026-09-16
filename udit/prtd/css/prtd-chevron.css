@@ -298,24 +298,29 @@
 .pr-step.is-done   .pr-step-title { font-weight: 700; }
 
 .pr-step-chevron {
-  width: 18px;
-  height: 18px;
-  flex: 0 0 18px;
-  color: #6f6f6f;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  color: #595959;
 }
 
-.pr-step-chevron .pr-plus-v {
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: transform 0.2s ease;
-}
-
-.pr-step-btn[aria-expanded="true"] .pr-step-chevron .pr-plus-v {
-  transform: scaleY(0);
+.pr-step-btn[aria-expanded="true"] .pr-step-chevron {
+  transform: rotate(90deg);
 }
 
 .pr-step.is-active .pr-step-chevron {
   color: var(--gcds-color-blue-muted, #26374a);
+}
+
+.pr-step-btn:hover .pr-step-chevron,
+.pr-step-btn:focus-visible .pr-step-chevron {
+  color: #0535d2;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pr-step-chevron {
+    transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1), color 150ms ease;
+  }
 }
 
 .pr-step-body {
@@ -444,13 +449,22 @@ html.no-js .pr-step-body[hidden] {
 }
 
 .pr-toggle-caret {
-  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 20px;
   color: #555555;
 }
 
 .pr-stepper.is-open .pr-toggle-caret,
 .pr-stepper-toggle[aria-expanded="true"] .pr-toggle-caret {
   transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pr-toggle-caret {
+    transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
 }
 
 .pr-stage {
@@ -811,13 +825,13 @@ h2.pr-eyebrow,
 
   .pr-side:not(.is-sticky) .pr-step-chevron {
     display: inline-flex !important;
-    width: 24px;
-    height: 24px;
-    flex: 0 0 24px;
-    color: #6f6f6f;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    color: #595959;
     cursor: pointer;
-    margin-left: auto;
-    padding: 3px;
+    margin: -12px -8px -12px auto;
+    padding: 12px;
   }
 
   .pr-side:not(.is-sticky) .pr-step.is-active .pr-step-chevron {
@@ -1126,10 +1140,6 @@ h2.pr-eyebrow,
 
   .pr-step-row {
     gap: 0;
-  }
-
-  .pr-step-chevron {
-    display: none;
   }
 
   .pr-step-body {
