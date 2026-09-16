@@ -918,11 +918,26 @@ h2.pr-eyebrow,
   }
 
   .pr-glance-card {
+    display: flex;
+    flex-direction: column;
     padding: 16px;
     border-radius: 16px;
   }
 
+  .pr-glance-hr {
+    order: 0;
+  }
+
+  .pr-glance-intro {
+    order: 1;
+  }
+
+  .pr-glance-card > ul {
+    order: 2;
+  }
+
   .pr-glance-boxes {
+    order: 3;
     grid-template-columns: 1fr;
     gap: 12px;
   }
