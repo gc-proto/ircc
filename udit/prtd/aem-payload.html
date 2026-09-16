@@ -23,8 +23,11 @@ WHEN AN AEM PAYLOAD IS REQUESTED
    if using the approved Media Player injection workflow. Put page JavaScript
    after the content it initializes, and retain the AEM authoring guard.
 5. Include the GCDS dependencies used by index.html if the template does not
-   already provide them. Let the template provide jQuery and WET/GCWeb.
-6. Remap any local asset URLs to their AEM DAM locations where needed.
+   already provide them. Confirm the template provides the same version-pinned
+   Font Awesome 5.15.4 stylesheet used by Canada.ca; include the stylesheet
+   once at the template or client-library level if it does not. Let the template
+   provide jQuery and WET/GCWeb.
+6. Remap any remaining local asset URLs to their AEM DAM locations where needed.
 7. Validate the assembled result in AEM: desktop/mobile layout, stepper
    expand/collapse, navigation focus, disclosures, modal, and duplicate IDs.
 

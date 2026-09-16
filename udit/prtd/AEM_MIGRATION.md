@@ -59,11 +59,14 @@ If your team has deployment access to create an AEM clientlib:
 2. Package:
    * `css/prtd.css`
    * `js/prtd.js`
+3. Confirm the AEM page template includes the same Font Awesome 5.15.4 stylesheet currently used by Canada.ca. If it does not, include the version-pinned stylesheet link from `index.html` once at the template or client-library level.
 
 ### Option B: Media Player Component (`mwsmediaplayer`) Injection (Standard Authoring Workflow)
 In Government of Canada / IRCC AEM (Managed Web Services), standard authoring components (RTE, Generic HTML) aggressively sanitize `<style>` and `<script>` tags through AntiSamy XSS filters. 
 
 To bypass this without a code deployment cycle, IRCC authoring teams standardly use the **Media Player component (`mwsmediaplayer section`)**:
+
+The page's Font Awesome icons require Font Awesome 5.15.4. Prefer the stylesheet already supplied by the Canada.ca/AEM page template; do not duplicate it inside the authored component.
 
 ```html
 <div class="mwsmediaplayer section">
@@ -98,6 +101,8 @@ To bypass this without a code deployment cycle, IRCC authoring teams standardly 
 ---
 
 ## 4. Digital Asset Management (DAM) Mapping
+
+The three at-a-glance metric icons use Font Awesome 5 and do not require individual DAM SVG files.
 
 All icons currently stored under `assets/figma/` must be imported into the AEM DAM:
 
