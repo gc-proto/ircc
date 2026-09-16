@@ -12,22 +12,10 @@
   margin-bottom: 0;
 }
 
-.pr-glance-grid {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.pr-glance-grid > [class*="col-"] {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.pr-glance-col {
-  margin-bottom: 16px;
-}
-
-.pr-glance-col--last {
-  margin-bottom: 0;
+.pr-glance-boxes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 
 .pr-glance-box {
@@ -913,14 +901,14 @@ h2.pr-eyebrow,
     margin-top: 24px;
   }
 
+  .pr-glance-boxes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
   .pr-glance-card {
     padding: 20px;
   }
-
-  .pr-glance-grid .pr-glance-text {
-    margin-bottom: 16px;
-  }
-
 }
 
 @media (max-width: 600px) {
@@ -929,8 +917,28 @@ h2.pr-eyebrow,
   }
 
   .pr-glance-card {
+    display: flex;
+    flex-direction: column;
     padding: 16px;
     border-radius: 16px;
+  }
+
+  .pr-glance-hr {
+    order: 0;
+  }
+
+  .pr-glance-intro {
+    order: 1;
+  }
+
+  .pr-glance-card > ul {
+    order: 2;
+  }
+
+  .pr-glance-boxes {
+    order: 3;
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .pr-glance-box {
@@ -1001,46 +1009,37 @@ h2.pr-eyebrow,
   }
 
   .pr-glance-card {
+    display: grid;
+    grid-template-columns: minmax(0, 504px) minmax(0, 543px);
+    column-gap: 30px;
+    row-gap: 14px;
+    align-items: start;
     padding: 30px;
   }
 
-  .pr-glance-grid {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .pr-glance-grid .pr-glance-text {
-    padding-right: 30px;
-  }
-
-  .pr-glance-grid .pr-glance-col {
-    display: flex;
-    padding-right: 25px;
-    margin-bottom: 25px;
-  }
-
-  .pr-glance-grid .pr-glance-col--fees {
-    padding-right: 0;
-  }
-
-  .pr-glance-grid .pr-glance-col--fees .pr-glance-box {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .pr-glance-grid .pr-glance-col--last {
+  .pr-glance-intro {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
     margin-bottom: 0;
-  }
-
-  .pr-glance-grid .pr-glance-intro {
-    margin-bottom: 24px;
     font-size: 20px;
     line-height: 33px;
   }
 
-  .pr-glance-grid .pr-glance-text ul {
+  .pr-glance-card > ul {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
     font-size: 20px;
     line-height: 33px;
+  }
+
+  .pr-glance-boxes {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    grid-template-columns: minmax(0, 323px) minmax(0, 195px);
+    gap: 25px;
+    align-content: start;
   }
 
   .pr-glance-box {
@@ -1139,7 +1138,14 @@ h2.pr-eyebrow,
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .pr-glance-card {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 24px;
     padding: 24px 20px;
+  }
+
+  .pr-glance-boxes {
+    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+    gap: 12px;
   }
 
   .pr-glance-box {
@@ -1149,18 +1155,6 @@ h2.pr-eyebrow,
 
   .pr-glance-title {
     font-size: 1.05rem;
-  }
-
-  .pr-glance-grid .pr-glance-col--fees .pr-glance-box {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .pr-glance-grid .pr-glance-col--fees .pr-glance-icon {
-    width: 44px;
-    flex-basis: 44px;
-    height: 44px;
-    font-size: 44px;
   }
 }
 
