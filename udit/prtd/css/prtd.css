@@ -123,7 +123,7 @@
 
 .pr-glance-band .well ul.list-unstyled li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
 }
 
@@ -135,6 +135,7 @@
   width: 22px;
   height: 22px;
   flex: 0 0 22px;
+  margin-top: 0.3em;
   color: var(--gcds-color-blue-muted, #26374a);
 }
 
@@ -1037,35 +1038,27 @@ h2.pr-eyebrow,
     border-radius: 12px;
   }
 
-  .pr-glance-box:nth-child(3) {
-    grid-column: 1;
-    width: 309.5px;
-    max-width: 100%;
-  }
-
   .pr-glance-content {
     order: 1;
   }
 
   .pr-glance-icon {
     order: 2;
-    flex: 0 0 auto;
+    width: 58px;
+    flex: 0 0 58px;
     margin: 0 0 0 auto;
     font-size: 60px;
   }
 
   .pr-glance-icon--clock {
-    width: 58px;
     height: 60px;
   }
 
   .pr-glance-icon--traffic {
-    width: 45px;
     height: 60px;
   }
 
   .pr-glance-icon--dollar {
-    width: 33px;
     height: 60px;
   }
 
