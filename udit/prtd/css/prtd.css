@@ -304,8 +304,14 @@
   color: #6f6f6f;
 }
 
-.pr-step-btn[aria-expanded="false"] .pr-step-chevron {
-  transform: rotate(180deg);
+.pr-step-chevron .pr-plus-v {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.pr-step-btn[aria-expanded="true"] .pr-step-chevron .pr-plus-v {
+  transform: scaleY(0);
 }
 
 .pr-step.is-active .pr-step-chevron {
@@ -812,19 +818,10 @@ h2.pr-eyebrow,
     cursor: pointer;
     margin-left: auto;
     padding: 3px;
-    transition: transform 0.2s ease;
   }
 
   .pr-side:not(.is-sticky) .pr-step.is-active .pr-step-chevron {
     color: var(--gcds-color-blue-muted, #26374a);
-  }
-
-  .pr-side:not(.is-sticky) .pr-step-btn[aria-expanded="false"] .pr-step-chevron {
-    transform: rotate(180deg);
-  }
-
-  .pr-side:not(.is-sticky) .pr-step-btn[aria-expanded="true"] .pr-step-chevron {
-    transform: rotate(0deg);
   }
 
   .pr-side:not(.is-sticky) .pr-step-body {
