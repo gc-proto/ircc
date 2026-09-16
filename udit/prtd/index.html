@@ -117,28 +117,34 @@
     <div class="container">
       <div class="well pr-glance-card">
         <h2 class="wb-inv">At a glance</h2>
-        <div class="pr-glance-boxes">
-          <div class="pr-glance-box">
-            <span class="pr-glance-icon pr-glance-icon--clock far fa-clock" aria-hidden="true"></span>
-            <div class="pr-glance-content">
-              <div class="pr-glance-title">
-                <span>Processing</span> <span class="pr-glance-title-group">times<a href="#pr-processing-modal" aria-controls="pr-processing-modal" class="wb-lbx pr-glance-help" role="button" title="Why processing times vary (click for details)"><span class="wb-inv">Why processing times vary</span><svg width="16" height="16" viewBox="0 0 16.4688 16.4688" fill="none" aria-hidden="true" focusable="false"><path d="M16.4688 8.23438C16.4688 12.7831 12.7818 16.4688 8.23438 16.4688C3.68697 16.4688 0 12.7831 0 8.23438C0 3.6883 3.68697 0 8.23438 0C12.7818 0 16.4688 3.6883 16.4688 8.23438ZM8.45534 2.72266C6.64587 2.72266 5.4918 3.4849 4.58555 4.83962C4.46814 5.01513 4.50742 5.25184 4.6757 5.37944L5.82781 6.25301C6.00063 6.38406 6.24687 6.35289 6.38114 6.18255C6.97428 5.43024 7.38099 4.99398 8.28378 4.99398C8.96209 4.99398 9.8011 5.43054 9.8011 6.08829C9.8011 6.58554 9.39061 6.84091 8.72087 7.2164C7.9398 7.65425 6.90625 8.19921 6.90625 9.5625V9.69531C6.90625 9.91535 7.08465 10.0938 7.30469 10.0938H9.16406C9.3841 10.0938 9.5625 9.91535 9.5625 9.69531V9.65105C9.5625 8.70603 12.3245 8.66668 12.3245 6.10938C12.3245 4.18353 10.3269 2.72266 8.45534 2.72266ZM8.23438 10.957C7.39218 10.957 6.70703 11.6422 6.70703 12.4844C6.70703 13.3265 7.39218 14.0117 8.23438 14.0117C9.07657 14.0117 9.76172 13.3265 9.76172 12.4844C9.76172 11.6422 9.07657 10.957 8.23438 10.957Z" fill="#335075"/></svg></a></span>
+        <div class="row pr-glance-boxes">
+          <div class="col-md-6 pr-glance-col">
+            <div class="pr-glance-box">
+              <span class="pr-glance-icon pr-glance-icon--clock far fa-clock" aria-hidden="true"></span>
+              <div class="pr-glance-content">
+                <div class="pr-glance-title">
+                  <span>Processing</span> <span class="pr-glance-title-group">times<a href="#pr-processing-modal" aria-controls="pr-processing-modal" class="wb-lbx pr-glance-help" role="button" title="Why processing times vary (click for details)"><span class="wb-inv">Why processing times vary</span><svg width="16" height="16" viewBox="0 0 16.4688 16.4688" fill="none" aria-hidden="true" focusable="false"><path d="M16.4688 8.23438C16.4688 12.7831 12.7818 16.4688 8.23438 16.4688C3.68697 16.4688 0 12.7831 0 8.23438C0 3.6883 3.68697 0 8.23438 0C12.7818 0 16.4688 3.6883 16.4688 8.23438ZM8.45534 2.72266C6.64587 2.72266 5.4918 3.4849 4.58555 4.83962C4.46814 5.01513 4.50742 5.25184 4.6757 5.37944L5.82781 6.25301C6.00063 6.38406 6.24687 6.35289 6.38114 6.18255C6.97428 5.43024 7.38099 4.99398 8.28378 4.99398C8.96209 4.99398 9.8011 5.43054 9.8011 6.08829C9.8011 6.58554 9.39061 6.84091 8.72087 7.2164C7.9398 7.65425 6.90625 8.19921 6.90625 9.5625V9.69531C6.90625 9.91535 7.08465 10.0938 7.30469 10.0938H9.16406C9.3841 10.0938 9.5625 9.91535 9.5625 9.69531V9.65105C9.5625 8.70603 12.3245 8.66668 12.3245 6.10938C12.3245 4.18353 10.3269 2.72266 8.45534 2.72266ZM8.23438 10.957C7.39218 10.957 6.70703 11.6422 6.70703 12.4844C6.70703 13.3265 7.39218 14.0117 8.23438 14.0117C9.07657 14.0117 9.76172 13.3265 9.76172 12.4844C9.76172 11.6422 9.07657 10.957 8.23438 10.957Z" fill="#335075"/></svg></a></span>
+                </div>
+                <p class="pr-glance-desc">Varies</p>
               </div>
-              <p class="pr-glance-desc">Varies</p>
             </div>
           </div>
-          <div class="pr-glance-box">
-            <span class="pr-glance-icon pr-glance-icon--dollar fas fa-dollar-sign" aria-hidden="true"></span>
-            <div class="pr-glance-content">
-              <div class="pr-glance-title">Fees</div>
-              <p class="pr-glance-desc">$CAN 50</p>
+          <div class="col-md-3 pr-glance-col">
+            <div class="pr-glance-box">
+              <span class="pr-glance-icon pr-glance-icon--dollar fas fa-dollar-sign" aria-hidden="true"></span>
+              <div class="pr-glance-content">
+                <div class="pr-glance-title">Fees</div>
+                <p class="pr-glance-desc">$50</p>
+              </div>
             </div>
           </div>
-          <div class="pr-glance-box">
-            <span class="pr-glance-icon pr-glance-icon--check far fa-check-square" aria-hidden="true"></span>
-            <div class="pr-glance-content">
-              <div class="pr-glance-title">Valid for</div>
-              <p class="pr-glance-desc">Single (one<br>time) entry</p>
+          <div class="col-md-3 pr-glance-col">
+            <div class="pr-glance-box">
+              <span class="pr-glance-icon pr-glance-icon--check far fa-check-square" aria-hidden="true"></span>
+              <div class="pr-glance-content">
+                <div class="pr-glance-title">Valid for</div>
+                <p class="pr-glance-desc">Single (one time) entry</p>
+              </div>
             </div>
           </div>
         </div>
@@ -445,7 +451,7 @@
           </ul>
           <p>Many more people want to immigrate to Canada than the Government of Canada can bring in each year under our annual immigration plan. Applications received after the maximum has been met may have to wait longer to be processed.</p>
           <p class="mrgn-tp-md mrgn-bttm-0">
-            <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html" target="_blank" rel="noopener">Learn more about how we calculate processing times.</a>
+            <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html" target="_blank" rel="noopener">Learn more about how we calculate processing times</a>.
           </p>
         </div>
       </section>

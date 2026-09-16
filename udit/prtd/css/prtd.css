@@ -13,9 +13,11 @@
 }
 
 .pr-glance-boxes {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  margin-bottom: 0;
+}
+
+.pr-glance-col {
+  margin-bottom: 16px;
 }
 
 .pr-glance-box {
@@ -290,12 +292,13 @@
 
 .pr-step-title {
   flex: 1 1 auto;
+  font-weight: 700;
 }
 
 .pr-step.is-active .pr-step-btn   { color: var(--gcds-color-blue-muted, #26374a); }
 .pr-step.is-active .pr-step-title { font-weight: 700; }
 .pr-step.is-done   .pr-step-btn   { color: #6f6f6f; }
-.pr-step.is-done   .pr-step-title { font-weight: 600; }
+.pr-step.is-done   .pr-step-title { font-weight: 700; }
 
 .pr-step-chevron {
   width: 18px;
@@ -800,7 +803,7 @@ h2.pr-eyebrow,
 
   .pr-side:not(.is-sticky) .pr-step-title {
     color: inherit;
-    font-weight: inherit;
+    font-weight: 700;
     text-decoration: inherit;
   }
 
@@ -897,19 +900,6 @@ h2.pr-eyebrow,
     scroll-margin-top: 120px;
   }
 
-  .pr-glance-band {
-    padding: 24px 0 32px;
-    margin-top: 24px;
-  }
-
-  .pr-glance-boxes {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-
-  .pr-glance-card {
-    padding: 20px;
-  }
 }
 
 @media (max-width: 600px) {
@@ -938,8 +928,6 @@ h2.pr-eyebrow,
 
   .pr-glance-boxes {
     order: 3;
-    grid-template-columns: 1fr;
-    gap: 12px;
   }
 
   .pr-glance-box {
@@ -1036,10 +1024,6 @@ h2.pr-eyebrow,
   }
 
   .pr-glance-boxes {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    grid-template-columns: minmax(0, 323px) minmax(0, 195px);
-    gap: 25px;
     align-content: start;
   }
 
