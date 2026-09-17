@@ -2,7 +2,7 @@
 
 ## Overview
 
-`aem-payload.html` is intentionally a comments-only preparation checklist, not a deployable copy. During development, edit only `index.html`, `css/prtd.css`, and `js/prtd.js`. Assemble an AEM payload from those latest sources when deployment is requested; do not maintain parallel inline copies.
+`aem-payload.html` contains the fully assembled, production-ready AEM payload. During ongoing development, maintain the source files `index.html`, `css/prtd.css`, and `js/prtd.js`.
 
 `index.html` is a static visual prototype demonstrating the Permanent Resident Travel Document (PRTD) single-page stepper experience. The prototype includes the full Canada.ca header, menu, breadcrumb, page feedback widget, date modified, and footer to facilitate standalone inspection.
 
@@ -95,29 +95,15 @@ The page's Font Awesome icons require Font Awesome 5.15.4. Prefer the stylesheet
    This prevents the scrollspy listeners and DOM queries from interfering with AEM Touch UI authoring dialogs and drag-and-drop handles.
 2. **DOM Readiness**:
    The script in `js/prtd.js` self-executes or listens to `DOMContentLoaded` / `window.onload` to ensure the HTML payload is fully rendered before binding stepper events.
-3. **DAM Asset URL Remapping**:
-   Because `css/prtd.css` and `index.html` use relative paths (e.g. `assets/figma/nav-chevron.svg`), when pasting into AEM, replace those relative paths with the absolute AEM DAM paths (e.g., `/content/dam/ircc/icons/prtd/nav-chevron.svg`).
+3. **DAM Asset URL Remapping (Not Required)**:
+   All icons in `aem-payload.html` use Canada.ca's native Font Awesome 5 icons (`fa-check-circle`, `fa-question-circle`, `fa-clock`, `fa-dollar-sign`, `fa-check-square`, `fa-plus`, `fa-arrow-right`). No external SVG asset uploads to the AEM DAM are needed.
 
 ---
 
-## 4. Digital Asset Management (DAM) Mapping
+## 4. Digital Asset Management (DAM) Status
 
-The three at-a-glance metric icons use Font Awesome 5 and do not require individual DAM SVG files.
-
-All icons currently stored under `assets/figma/` must be imported into the AEM DAM:
-
-| Local Prototype Path | Recommended AEM DAM Destination Path |
-|---|---|
-| `assets/figma/processing.svg` | `/content/dam/ircc/icons/prtd/processing.svg` |
-| `assets/figma/fees.svg` | `/content/dam/ircc/icons/prtd/fees.svg` |
-| `assets/figma/valid-for.svg` | `/content/dam/ircc/icons/prtd/valid-for.svg` |
-| `assets/figma/how-apply.svg` | `/content/dam/ircc/icons/prtd/how-apply.svg` |
-| `assets/figma/check.svg` | `/content/dam/ircc/icons/prtd/check.svg` |
-| `assets/figma/help.svg` | `/content/dam/ircc/icons/prtd/help.svg` |
-| `assets/figma/nav-chevron.svg` | `/content/dam/ircc/icons/prtd/nav-chevron.svg` |
-| `assets/figma/nav-chevron-active.svg`| `/content/dam/ircc/icons/prtd/nav-chevron-active.svg` |
-| `assets/figma/nav-arrow.svg` | `/content/dam/ircc/icons/prtd/nav-arrow.svg` |
-| `assets/figma/nav-terminal.svg` | `/content/dam/ircc/icons/prtd/nav-terminal.svg` |
+* **Status:** Zero DAM uploads required.
+* **Explanation:** In the production AEM payload (`aem-payload.html`), all SVGs have been converted to native Font Awesome 5 icons already loaded by Canada.ca WET-BOEW. No image files or SVGs need to be imported into the AEM DAM.
 
 ---
 
