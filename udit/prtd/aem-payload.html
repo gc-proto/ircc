@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@latest/dist/gcds/gcds.css">
 <div class="container">
   <h1 property="name" id="wb-cont">Apply for a permanent resident travel document (PRTD)</h1>
 </div>
@@ -441,7 +442,7 @@
 .pr-glance-desc {
   margin: 0;
   line-height: 1.4;
-  color: #24568f !important;
+  color: var(--gcds-color-blue-650, #24568f);
   font-weight: 700;
 }
 
@@ -590,14 +591,8 @@
   color: #6f6f6f;
 }
 
-.pr-step-chevron .pr-plus-v {
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: transform 0.2s ease;
-}
-
-.pr-step-btn[aria-expanded="true"] .pr-step-chevron .pr-plus-v {
-  transform: scaleY(0);
+.pr-step-btn[aria-expanded="true"] .pr-step-chevron::before {
+  content: "\f068";
 }
 
 .pr-step.is-active .pr-step-chevron {
