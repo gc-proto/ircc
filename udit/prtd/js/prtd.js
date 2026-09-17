@@ -54,9 +54,13 @@
     if (!target) return;
     closeMenu();
 
+    if (window.innerWidth < 992 && side) {
+      side.classList.add("is-sticky");
+    }
+
     var offset = 30;
     if (window.innerWidth < 992) {
-      offset = 100;
+      offset = 60;
     }
 
     var targetTop = target.getBoundingClientRect().top + window.scrollY - offset;
@@ -349,7 +353,7 @@
 
     if (window.innerWidth < 992 && stepper && toggleBtn) {
       var firstSec = flat.length > 0 ? flat[0].sec : null;
-      var collapseThreshold = firstSec ? (getDocTop(firstSec) - 140) : 600;
+      var collapseThreshold = firstSec ? (getDocTop(firstSec) - 60) : 600;
 
       if (window.scrollY >= collapseThreshold) {
         if (side) side.classList.add("is-sticky");
