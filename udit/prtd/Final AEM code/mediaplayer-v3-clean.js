@@ -21,7 +21,6 @@
   border: 1px solid #dcdee1;
   border-radius: 20px;
   padding: 28px 32px;
-  /* margin-bottom: 0; */
 }
 
 .pr-glance-boxes {
@@ -32,7 +31,6 @@
 
 .pr-glance-box {
   background-color: #ebf2fc;
-  /* border: 0; */
   border-radius: 15px;
   padding: 14px 16px;
   display: flex;
@@ -64,7 +62,6 @@
   align-items: center;
   flex-wrap: wrap;
   column-gap: 4px;
-  /* font-size: 1.125rem; */
   line-height: 1.3;
   font-weight: 700;
   color: #424242;
@@ -79,38 +76,15 @@
 
 .pr-glance-desc {
   margin: 0;
-  /* line-height: 1.4; */
   color: var(--gcds-color-blue-650, #24568f);
   font-weight: 700;
 }
-
-/*
-.pr-glance-hr {
-  margin: 24px 0;
-  border: 0;
-  border-top: 1px solid #d3d5d7;
-}
-*/
-
-/*
-.pr-glance-intro {
-  font-weight: 700;
-  margin-top: 0;
-  margin-bottom: 12px;
-}
-*/
 
 .pr-glance-band .well ul.list-unstyled li {
   display: flex;
   align-items: flex-start;
   gap: 12px;
 }
-
-/*
-.pr-glance-band .well ul.list-unstyled li:not(:last-child) {
-  margin-bottom: 8px;
-}
-*/
 
 .pr-check-icon {
   width: 22px;
@@ -950,16 +924,11 @@ h2.pr-eyebrow,
 
   .pr-glance-title {
     color: #424242;
-    /* font-size: 20px; */
     line-height: 28px;
     margin-bottom: 10px;
-    /* white-space: nowrap; */
-    /* flex-wrap: nowrap; */
   }
 
   .pr-glance-desc {
-    /* color: #24568f !important; */
-    /* font-family: Lato, sans-serif; */
     font-size: 29px;
     font-weight: 700;
     line-height: 1.15;
@@ -1013,9 +982,6 @@ h2.pr-eyebrow,
     gap: 10px;
   }
 
-  .pr-glance-title {
-    /* font-size: 1.05rem; */
-  }
 }
 
 @media print {
@@ -1114,8 +1080,7 @@ h2.pr-eyebrow,
     if (targetTop < 0) targetTop = 0;
 
     window.scrollTo({
-      top: targetTop,
-      // behavior: "smooth"
+      top: targetTop
     });
   }
 
@@ -1167,8 +1132,7 @@ function setActive(fi) {
     if (actMain < 2 && side.clientHeight >= 300) {
       if (side.scrollTop > 0) {
         side.scrollTo({
-          top: 0,
-          // behavior: "smooth"
+          top: 0
         });
       }
       return;
@@ -1177,8 +1141,7 @@ function setActive(fi) {
     if (actMain === 0) {
       if (side.scrollTop > 0) {
         side.scrollTo({
-          top: 0,
-          // behavior: "smooth"
+          top: 0
         });
       }
       return;
@@ -1193,8 +1156,7 @@ function setActive(fi) {
     var bottomOverflow = cardRect.bottom - (sideRect.bottom - 24);
     if (bottomOverflow > 0) {
       side.scrollBy({
-        top: bottomOverflow,
-        // behavior: "smooth"
+        top: bottomOverflow
       });
       return;
     }
@@ -1203,8 +1165,7 @@ function setActive(fi) {
     var topOverflow = (sideRect.top + 24) - topBoundary;
     if (topOverflow > 0) {
       side.scrollBy({
-        top: -topOverflow,
-        // behavior: "smooth"
+        top: -topOverflow
       });
     }
   }
@@ -1383,7 +1344,7 @@ function setActive(fi) {
         var firstSecEl = flat.length > 0 ? flat[0].sec : null;
         var firstSecTop = firstSecEl ? getDocTop(firstSecEl) : 800;
         if (window.scrollY < firstSecTop - 50) {
-          side.scrollTo({ top: 0 /*, behavior: "smooth" */ });
+          side.scrollTo({ top: 0 });
         }
       }
     }
