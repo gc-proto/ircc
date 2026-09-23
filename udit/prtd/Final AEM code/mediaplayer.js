@@ -1,9 +1,8 @@
- 
-      <link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@latest/dist/gcds/gcds.css">
-      <script type="module" src="https://cdn.design-system.canada.ca/@gcds-core/components@latest/dist/gcds/gcds.esm.js"></script>
+ <link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@latest/dist/gcds/gcds.css">
+<script type="module" src="https://cdn.design-system.canada.ca/@gcds-core/components@latest/dist/gcds/gcds.esm.js"></script>
 
   
-                <script> 
+             <script> 
                 (function injectCSS() {
                 const css = `
 
@@ -258,7 +257,7 @@
 }
 
 .journey-step-btn[aria-expanded="true"] .journey-step-chevron::before {
-  content: "\f068";
+  content: "\\f068";
 }
 
 .journey-step.is-active .journey-step-chevron {
