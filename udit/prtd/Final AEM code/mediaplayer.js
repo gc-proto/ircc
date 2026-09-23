@@ -968,7 +968,6 @@ h2.journey-eyebrow,
     height: 60px;
   }
 
-  .journey-glance-icon--traffic,
   .journey-glance-icon--check {
     height: 60px;
   }
