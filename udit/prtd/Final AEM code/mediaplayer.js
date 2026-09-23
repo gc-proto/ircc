@@ -11,13 +11,13 @@
 
 
  
-.pr-glance-band {
+.journey-glance-band {
   background-color: #ebf2fc;
   padding: 36px 0 40px;
   margin-top: 28px;
 }
 
-.pr-glance-card {
+.journey-glance-card {
   background-color: var(--gcds-bg-white, #ffffff);
   border: 1px solid #dcdee1;
   border-radius: 20px;
@@ -25,13 +25,13 @@
   margin-bottom: 0;
 }
 
-.pr-glance-boxes {
+.journey-glance-boxes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 
-.pr-glance-box {
+.journey-glance-box {
   background-color: #ebf2fc;
   border: 0;
   border-radius: 15px;
@@ -42,7 +42,7 @@
   height: 100%;
 }
 
-.pr-glance-icon {
+.journey-glance-icon {
   width: 32px;
   height: 32px;
   flex: 0 0 32px;
@@ -55,12 +55,12 @@
   line-height: 1;
 }
 
-.pr-glance-content {
+.journey-glance-content {
   flex: 1 1 auto;
   min-width: 0;
 }
 
-.pr-glance-title {
+.journey-glance-title {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -72,13 +72,13 @@
   margin: 0 0 4px;
 }
 
-.pr-glance-title-group {
+.journey-glance-title-group {
   display: inline-flex;
   align-items: center;
   white-space: nowrap;
 }
 
-.pr-glance-help {
+.journey-glance-help {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -98,26 +98,26 @@
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
-.pr-glance-help:hover {
+.journey-glance-help:hover {
   opacity: 0.8;
   transform: scale(1.12);
 }
 
-.pr-glance-help:focus {
+.journey-glance-help:focus {
   outline: 2px solid #0535d2;
   outline-offset: 2px;
 }
 
-.pr-glance-help .fa-question-circle { display: inline-block; font-size: 16px; line-height: 1; color: #335075; vertical-align: middle; }
+.journey-glance-help .fa-question-circle { display: inline-block; font-size: 16px; line-height: 1; color: #335075; vertical-align: middle; }
 
-.pr-glance-desc {
+.journey-glance-desc {
   margin: 0;
   line-height: 1.4;
   color: var(--gcds-color-blue-650, #24568f);
   font-weight: 700;
 }
 
-.pr-glance-hr {
+.journey-glance-hr {
   display: block;
   width: 100%;
   margin: 24px 0;
@@ -125,23 +125,23 @@
   border-top: 1px solid #d3d5d7;
 }
 
-.pr-glance-intro {
+.journey-glance-intro {
   font-weight: 700;
   margin-top: 0;
   margin-bottom: 12px;
 }
 
-.pr-glance-band .well ul.list-unstyled li {
+.journey-glance-band .well ul.list-unstyled li {
   display: flex;
   align-items: flex-start;
   gap: 12px;
 }
 
-.pr-glance-band .well ul.list-unstyled li:not(:last-child) {
+.journey-glance-band .well ul.list-unstyled li:not(:last-child) {
   margin-bottom: 8px;
 }
 
-.pr-check-icon {
+.journey-check-icon {
   width: 22px;
   height: 22px;
   flex: 0 0 22px;
@@ -149,7 +149,7 @@
   color: var(--gcds-color-blue-muted, #26374a);
 }
 
-.pr-layout {
+.journey-layout {
   display: flex;
   align-items: flex-start;
   gap: 40px;
@@ -158,7 +158,7 @@
   margin-bottom: 2.5rem;
 }
 
-.pr-side {
+.journey-side {
   flex: 0 0 260px;
   width: 260px;
   position: sticky;
@@ -171,44 +171,44 @@
   padding-bottom: 12px;
 }
 
-.pr-main {
+.journey-main {
   flex: 1 1 auto;
   max-width: 830px;
   min-width: 0;
 }
 
-.pr-subway-header {
+.journey-subway-header {
   margin-bottom: 16px;
 }
 
-.pr-subway-title {
+.journey-subway-title {
   font-weight: 700;
   color: var(--gcds-color-blue-muted, #26374a);
   margin: 0;
   line-height: 1.3;
 }
 
-.pr-stepper {
+.journey-stepper {
   background: transparent;
   border: none;
   padding: 0;
 }
 
-.pr-stepper-list {
+.journey-stepper-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.pr-step {
+.journey-step {
   position: relative;
 }
 
-.pr-step:last-child {
+.journey-step:last-child {
   padding-bottom: 24px;
 }
 
-.pr-step-row {
+.journey-step-row {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -217,7 +217,7 @@
   z-index: 1;
 }
 
-.pr-step-btn {
+.journey-step-btn {
   flex: 1 1 auto;
   display: flex;
   align-items: center;
@@ -234,38 +234,38 @@
   line-height: 1.3;
 }
 
-.pr-step-btn:focus-visible {
+.journey-step-btn:focus-visible {
   outline: 2px solid #0535d2;
   outline-offset: 3px;
   border-radius: 3px;
 }
 
-.pr-step-title {
+.journey-step-title {
   flex: 1 1 auto;
   font-weight: 700;
 }
 
-.pr-step.is-active .pr-step-btn   { color: var(--gcds-color-blue-muted, #26374a); }
-.pr-step.is-active .pr-step-title { font-weight: 700; }
-.pr-step.is-done   .pr-step-btn   { color: #6f6f6f; }
-.pr-step.is-done   .pr-step-title { font-weight: 700; }
+.journey-step.is-active .journey-step-btn   { color: var(--gcds-color-blue-muted, #26374a); }
+.journey-step.is-active .journey-step-title { font-weight: 700; }
+.journey-step.is-done   .journey-step-btn   { color: #6f6f6f; }
+.journey-step.is-done   .journey-step-title { font-weight: 700; }
 
-.pr-step-chevron {
+.journey-step-chevron {
   width: 18px;
   height: 18px;
   flex: 0 0 18px;
   color: #6f6f6f;
 }
 
-.pr-step-btn[aria-expanded="true"] .pr-step-chevron::before {
+.journey-step-btn[aria-expanded="true"] .journey-step-chevron::before {
   content: "\f068";
 }
 
-.pr-step.is-active .pr-step-chevron {
+.journey-step.is-active .journey-step-chevron {
   color: var(--gcds-color-blue-muted, #26374a);
 }
 
-.pr-step-body {
+.journey-step-body {
   padding-left: 0;
   padding-top: 4px;
   padding-bottom: 6px;
@@ -273,15 +273,15 @@
   z-index: 1;
 }
 
-.pr-step-body[hidden] {
+.journey-step-body[hidden] {
   display: none !important;
 }
 
-html.no-js .pr-step-body[hidden] {
+html.no-js .journey-step-body[hidden] {
   display: block !important;
 }
 
-.pr-sub-card {
+.journey-sub-card {
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -295,11 +295,11 @@ html.no-js .pr-step-body[hidden] {
   line-height: 1.35;
 }
 
-.pr-sub-card:last-child {
+.journey-sub-card:last-child {
   margin-bottom: 0;
 }
 
-.pr-sub-arrow {
+.journey-sub-arrow {
   flex-shrink: 0;
   width: 13px;
   height: auto;
@@ -308,38 +308,38 @@ html.no-js .pr-step-body[hidden] {
   margin-top: 4px;
 }
 
-.pr-sub-card:hover,
-.pr-sub-card:focus {
+.journey-sub-card:hover,
+.journey-sub-card:focus {
   background: transparent;
   text-decoration: none;
   color: #0535d2;
 }
 
-.pr-sub-card:hover .pr-sub-arrow,
-.pr-sub-card:focus .pr-sub-arrow {
+.journey-sub-card:hover .journey-sub-arrow,
+.journey-sub-card:focus .journey-sub-arrow {
   opacity: 1;
   color: var(--gcds-color-blue-muted, #26374a);
 }
 
-.pr-sub-card.is-active,
-.pr-sub-card.is-active:hover,
-.pr-sub-card.is-active:focus {
+.journey-sub-card.is-active,
+.journey-sub-card.is-active:hover,
+.journey-sub-card.is-active:focus {
   background: var(--gcds-color-blue-50, #ebf2fa);
   color: var(--gcds-color-blue-muted, #26374a);
   font-weight: 700;
 }
 
-.pr-sub-card.is-active .pr-sub-arrow {
+.journey-sub-card.is-active .journey-sub-arrow {
   opacity: 1;
   color: var(--gcds-color-blue-muted, #26374a);
 }
 
-.pr-sub-card:focus-visible {
+.journey-sub-card:focus-visible {
   outline: 2px solid #0535d2;
   outline-offset: 2px;
 }
 
-.pr-stepper-toggle {
+.journey-stepper-toggle {
   display: none;
   width: 100%;
   padding: 10px 14px;
@@ -353,7 +353,7 @@ html.no-js .pr-step-body[hidden] {
   margin-bottom: 8px;
 }
 
-.pr-toggle-info {
+.journey-toggle-info {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -361,7 +361,7 @@ html.no-js .pr-step-body[hidden] {
   overflow: hidden;
 }
 
-.pr-toggle-parent {
+.journey-toggle-parent {
   font-size: 14px;
   font-weight: 600;
   color: var(--gcds-text-secondary, #595959);
@@ -371,7 +371,7 @@ html.no-js .pr-step-body[hidden] {
   text-overflow: ellipsis;
 }
 
-.pr-toggle-label {
+.journey-toggle-label {
   font-size: 18px;
   font-weight: 700;
   color: var(--gcds-color-blue-muted, #26374a);
@@ -381,54 +381,54 @@ html.no-js .pr-step-body[hidden] {
   text-overflow: ellipsis;
 }
 
-.pr-stepper-toggle:hover {
+.journey-stepper-toggle:hover {
   background-color: #f5f8fa;
   border-color: #284162;
 }
 
-.pr-stepper-toggle:focus-visible {
+.journey-stepper-toggle:focus-visible {
   outline: 2px solid #0535d2;
   outline-offset: 2px;
 }
 
-.pr-toggle-caret {
+.journey-toggle-caret {
   font-size: 16px;
   color: #6f6f6f;
 }
 
-.pr-stepper.is-open .pr-toggle-caret,
-.pr-stepper-toggle[aria-expanded="true"] .pr-toggle-caret {
+.journey-stepper.is-open .journey-toggle-caret,
+.journey-stepper-toggle[aria-expanded="true"] .journey-toggle-caret {
   transform: rotate(180deg);
 }
 
-.pr-stage {
+.journey-stage {
   border-bottom: 1px solid #bbbfc5;
   padding-bottom: 28px;
   margin-bottom: 28px;
 }
 
-.pr-stage:last-child {
+.journey-stage:last-child {
   border-bottom: none;
   margin-bottom: 0;
   padding-bottom: 0;
 }
 
-.pr-stage > .pr-section:last-child,
-.pr-stage > .pr-subsection:last-child {
+.journey-stage > .journey-section:last-child,
+.journey-stage > .journey-subsection:last-child {
   padding-bottom: 0;
   margin-bottom: 0;
 }
 
-.pr-section,
-.pr-subsection {
+.journey-section,
+.journey-subsection {
   scroll-margin-top: 110px;
   padding-bottom: 16px;
   margin-bottom: 8px;
 }
 
-.pr-eyebrow,
-h2.pr-eyebrow,
-.pr-eyebrow.h3 {
+.journey-eyebrow,
+h2.journey-eyebrow,
+.journey-eyebrow.h3 {
   display: block;
   color: #24568f !important;
   margin-top: 0;
@@ -437,13 +437,13 @@ h2.pr-eyebrow,
   text-transform: none;
 }
 
-.pr-stage-h {
+.journey-stage-h {
   margin-top: 0;
   margin-bottom: 12px;
   color: var(--gcds-color-blue-muted, #26374a);
 }
 
-.pr-stage-h.h2 {
+.journey-stage-h.h2 {
   font-size: 2.1875rem;
   line-height: 1.25;
   font-weight: 700;
@@ -453,27 +453,27 @@ h2.pr-eyebrow,
 }
 
 @media (max-width: 767px) {
-  .pr-stage-h.h2 {
+  .journey-stage-h.h2 {
     font-size: 1.625rem;
     line-height: 1.25;
   }
 }
 
-.pr-section .pr-eyebrow + .pr-stage-h,
-.pr-subsection .pr-eyebrow + .pr-stage-h,
-.pr-section .pr-eyebrow + .pr-stage-h.h2,
-.pr-subsection .pr-eyebrow + .pr-stage-h.h2 {
+.journey-section .journey-eyebrow + .journey-stage-h,
+.journey-subsection .journey-eyebrow + .journey-stage-h,
+.journey-section .journey-eyebrow + .journey-stage-h.h2,
+.journey-subsection .journey-eyebrow + .journey-stage-h.h2 {
   margin-top: 0;
 }
 
-.pr-main .btn-default {
+.journey-main .btn-default {
   background-color: transparent;
   border: 1px solid #284162;
   color: #284162;
 }
 
-.pr-main .btn-default:hover,
-.pr-main .btn-default:focus {
+.journey-main .btn-default:hover,
+.journey-main .btn-default:focus {
   background-color: var(--gcds-color-blue-50, #ebf2fa);
   color: #284162;
   text-decoration: underline;
@@ -482,20 +482,20 @@ h2.pr-eyebrow,
 }
 
 @media (max-width: 991px) {
-  .pr-layout {
+  .journey-layout {
     display: block;
     gap: 0;
   }
 
-  .pr-main {
+  .journey-main {
     width: 100%;
   }
 
-  .pr-subway-header {
+  .journey-subway-header {
     display: none;
   }
 
-  .pr-side:not(.is-sticky) .pr-stepper {
+  .journey-side:not(.is-sticky) .journey-stepper {
     box-sizing: border-box;
     width: 100%;
     position: relative;
@@ -507,7 +507,7 @@ h2.pr-eyebrow,
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 
-  .pr-side:not(.is-sticky)::after {
+  .journey-side:not(.is-sticky)::after {
     content: "";
     display: block;
     width: 100%;
@@ -515,7 +515,7 @@ h2.pr-eyebrow,
     margin: 0 0 32px 0;
   }
 
-  .pr-side:not(.is-sticky) .pr-subway-header {
+  .journey-side:not(.is-sticky) .journey-subway-header {
     display: block;
     position: absolute;
     top: -14px;
@@ -527,8 +527,8 @@ h2.pr-eyebrow,
     border-bottom: none;
   }
 
-  .pr-side:not(.is-sticky) .pr-subway-title,
-  .pr-subway-title {
+  .journey-side:not(.is-sticky) .journey-subway-title,
+  .journey-subway-title {
     font-weight: 700;
     color: var(--gcds-color-blue-muted, #26374a);
     line-height: 1.3;
@@ -536,11 +536,11 @@ h2.pr-eyebrow,
     display: block;
   }
 
-  .pr-subway-header::after {
+  .journey-subway-header::after {
     display: none !important;
   }
 
-  .pr-side {
+  .journey-side {
     box-sizing: border-box;
     position: relative;
     width: 100%;
@@ -554,7 +554,7 @@ h2.pr-eyebrow,
     overflow-y: visible;
   }
 
-  .pr-side.is-sticky {
+  .journey-side.is-sticky {
     position: fixed;
     top: 0;
     left: 0;
@@ -570,12 +570,12 @@ h2.pr-eyebrow,
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   }
 
-  .pr-side.is-sticky.is-open {
+  .journey-side.is-sticky.is-open {
     border-bottom: none !important;
     box-shadow: none !important;
   }
 
-  .pr-side.is-sticky .pr-stepper {
+  .journey-side.is-sticky .journey-stepper {
     position: relative;
     border: none;
     border-radius: 0;
@@ -584,11 +584,11 @@ h2.pr-eyebrow,
     background: transparent;
   }
 
-  .pr-stepper-toggle {
+  .journey-stepper-toggle {
     display: none;
   }
 
-  .pr-side.is-sticky .pr-stepper-toggle {
+  .journey-side.is-sticky .journey-stepper-toggle {
     display: flex;
     width: 100%;
     padding: 12px 16px;
@@ -601,7 +601,7 @@ h2.pr-eyebrow,
     justify-content: space-between;
   }
 
-  .pr-side.is-sticky .pr-stepper.is-open .pr-stepper-toggle {
+  .journey-side.is-sticky .journey-stepper.is-open .journey-stepper-toggle {
     position: relative;
     z-index: 1002;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
@@ -610,15 +610,15 @@ h2.pr-eyebrow,
     padding-bottom: 8px !important;
   }
 
-  .pr-side.is-sticky .pr-stepper-toggle:hover {
+  .journey-side.is-sticky .journey-stepper-toggle:hover {
     background-color: transparent;
   }
 
-  #pr-steplist {
+  #journey-steplist {
     display: block;
   }
 
-  .pr-side:not(.is-sticky) #pr-steplist {
+  .journey-side:not(.is-sticky) #journey-steplist {
     clear: both;
     margin: 0;
     padding: 4px 0 0 0;
@@ -626,11 +626,11 @@ h2.pr-eyebrow,
     border: none;
   }
 
-  .pr-side.is-sticky #pr-steplist {
+  .journey-side.is-sticky #journey-steplist {
     display: none;
   }
 
-  .pr-side.is-sticky .pr-stepper.is-open #pr-steplist {
+  .journey-side.is-sticky .journey-stepper.is-open #journey-steplist {
     display: block !important;
     position: absolute;
     top: 100%;
@@ -649,17 +649,17 @@ h2.pr-eyebrow,
     z-index: 1001;
   }
 
-.pr-side.is-sticky .pr-stepper.is-open .pr-step-row {
+.journey-side.is-sticky .journey-stepper.is-open .journey-step-row {
     min-height: 40px !important;
     padding: 5px 0 !important;
   }
 
-  .pr-side.is-sticky .pr-stepper.is-open .pr-step-btn {
+  .journey-side.is-sticky .journey-stepper.is-open .journey-step-btn {
     min-height: 44px !important;
     font-size: 18px !important;
   }
 
-  .pr-side.is-sticky .pr-stepper.is-open .pr-sub-card {
+  .journey-side.is-sticky .journey-stepper.is-open .journey-sub-card {
     min-height: 42px !important;
     padding: 8px 12px !important;
     margin-bottom: 3px !important;
@@ -667,22 +667,22 @@ h2.pr-eyebrow,
     line-height: 1.4 !important;
   }
 
-  .pr-side.is-sticky .pr-stepper.is-open .pr-step-body {
+  .journey-side.is-sticky .journey-stepper.is-open .journey-step-body {
     padding-left: 0 !important;
     padding-top: 2px !important;
     padding-bottom: 4px !important;
   }
 
-.pr-side.is-sticky .pr-stepper.is-open .pr-step-body:not([hidden]) {
+.journey-side.is-sticky .journey-stepper.is-open .journey-step-body:not([hidden]) {
     display: block !important;
   }
 
-  .pr-side:not(.is-sticky) .pr-step {
+  .journey-side:not(.is-sticky) .journey-step {
     padding-bottom: 0;
     position: relative;
   }
 
-  .pr-side:not(.is-sticky) .pr-step-row {
+  .journey-side:not(.is-sticky) .journey-step-row {
     padding: 8px 0;
     min-height: 44px;
     display: flex;
@@ -691,7 +691,7 @@ h2.pr-eyebrow,
     z-index: 1;
   }
 
-  .pr-side:not(.is-sticky) .pr-step-btn {
+  .journey-side:not(.is-sticky) .journey-step-btn {
     font-size: 18px;
     color: #6f6f6f;
     text-decoration: none;
@@ -707,25 +707,25 @@ h2.pr-eyebrow,
     padding: 0;
   }
 
-  .pr-side:not(.is-sticky) .pr-step-btn:hover,
-  .pr-side:not(.is-sticky) .pr-step-btn:focus {
+  .journey-side:not(.is-sticky) .journey-step-btn:hover,
+  .journey-side:not(.is-sticky) .journey-step-btn:focus {
     color: #0535d2;
     text-decoration: none;
   }
 
-  .pr-side:not(.is-sticky) .pr-step.is-active .pr-step-btn {
+  .journey-side:not(.is-sticky) .journey-step.is-active .journey-step-btn {
     color: var(--gcds-color-blue-muted, #26374a);
     font-weight: 700;
     text-decoration: none;
   }
 
-  .pr-side:not(.is-sticky) .pr-step-title {
+  .journey-side:not(.is-sticky) .journey-step-title {
     color: inherit;
     font-weight: 700;
     text-decoration: inherit;
   }
 
-  .pr-side:not(.is-sticky) .pr-step-chevron {
+  .journey-side:not(.is-sticky) .journey-step-chevron {
     display: inline-flex !important;
     width: 24px;
     height: 24px;
@@ -736,11 +736,11 @@ h2.pr-eyebrow,
     padding: 3px;
   }
 
-  .pr-side:not(.is-sticky) .pr-step.is-active .pr-step-chevron {
+  .journey-side:not(.is-sticky) .journey-step.is-active .journey-step-chevron {
     color: var(--gcds-color-blue-muted, #26374a);
   }
 
-  .pr-side:not(.is-sticky) .pr-step-body {
+  .journey-side:not(.is-sticky) .journey-step-body {
     display: none !important;
     padding-left: 0;
     padding-top: 4px;
@@ -749,12 +749,12 @@ h2.pr-eyebrow,
     z-index: 1;
   }
 
-  .pr-side:not(.is-sticky) .pr-step-body.is-expanded,
-  .pr-side:not(.is-sticky) .pr-step.is-expanded .pr-step-body {
+  .journey-side:not(.is-sticky) .journey-step-body.is-expanded,
+  .journey-side:not(.is-sticky) .journey-step.is-expanded .journey-step-body {
     display: block !important;
   }
 
-  .pr-side:not(.is-sticky) .pr-sub-card {
+  .journey-side:not(.is-sticky) .journey-sub-card {
     display: flex;
     align-items: flex-start;
     gap: 8px;
@@ -769,14 +769,14 @@ h2.pr-eyebrow,
     text-decoration: none;
   }
 
-  .pr-side:not(.is-sticky) .pr-sub-card:hover,
-  .pr-side:not(.is-sticky) .pr-sub-card:focus {
+  .journey-side:not(.is-sticky) .journey-sub-card:hover,
+  .journey-side:not(.is-sticky) .journey-sub-card:focus {
     background: transparent;
     text-decoration: none;
     color: #0535d2;
   }
 
-  .pr-side:not(.is-sticky) .pr-sub-arrow {
+  .journey-side:not(.is-sticky) .journey-sub-arrow {
     display: inline-flex;
     flex-shrink: 0;
     width: 14px;
@@ -786,130 +786,130 @@ h2.pr-eyebrow,
     margin-top: 4px;
   }
 
-  .pr-side:not(.is-sticky) .pr-sub-card:hover .pr-sub-arrow,
-  .pr-side:not(.is-sticky) .pr-sub-card:focus .pr-sub-arrow {
+  .journey-side:not(.is-sticky) .journey-sub-card:hover .journey-sub-arrow,
+  .journey-side:not(.is-sticky) .journey-sub-card:focus .journey-sub-arrow {
     opacity: 1;
   }
 
-  .pr-side:not(.is-sticky) .pr-sub-card.is-active,
-  .pr-side:not(.is-sticky) .pr-sub-card.is-active:hover,
-  .pr-side:not(.is-sticky) .pr-sub-card.is-active:focus {
+  .journey-side:not(.is-sticky) .journey-sub-card.is-active,
+  .journey-side:not(.is-sticky) .journey-sub-card.is-active:hover,
+  .journey-side:not(.is-sticky) .journey-sub-card.is-active:focus {
     background: var(--gcds-color-blue-50, #ebf2fa);
     color: var(--gcds-color-blue-muted, #26374a);
     font-weight: 700;
     text-decoration: none;
   }
 
-  .pr-side:not(.is-sticky) .pr-sub-card.is-active .pr-sub-arrow {
+  .journey-side:not(.is-sticky) .journey-sub-card.is-active .journey-sub-arrow {
     opacity: 1;
     color: var(--gcds-color-blue-muted, #26374a);
   }
 
-  .pr-section,
-  .pr-subsection {
+  .journey-section,
+  .journey-subsection {
     scroll-margin-top: 60px;
   }
 
-  .pr-glance-band {
+  .journey-glance-band {
     padding: 24px 0 32px;
     margin-top: 24px;
   }
 
-  .pr-glance-boxes {
+  .journey-glance-boxes {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 
-  .pr-glance-card {
+  .journey-glance-card {
     padding: 20px;
   }
 }
 
 @media (max-width: 600px) {
-  .pr-glance-band {
+  .journey-glance-band {
     padding: 20px 0 28px;
   }
 
-  .pr-glance-card {
+  .journey-glance-card {
     display: flex;
     flex-direction: column;
     padding: 16px;
     border-radius: 16px;
   }
 
-  .pr-glance-boxes {
+  .journey-glance-boxes {
     grid-template-columns: 1fr;
     gap: 12px;
   }
 
-  .pr-glance-box {
+  .journey-glance-box {
     padding: 12px 14px;
     border-radius: 12px;
     gap: 14px;
   }
 
-  .pr-glance-hr {
+  .journey-glance-hr {
     margin: 20px auto;
   }
 
-  .pr-glance-band .well ul.list-unstyled li {
+  .journey-glance-band .well ul.list-unstyled li {
     gap: 10px;
   }
 
-  .pr-stepper-toggle {
+  .journey-stepper-toggle {
     min-height: 52px;
     padding: 12px 16px;
   }
 
-  .pr-step-row {
+  .journey-step-row {
     min-height: 48px;
     padding: 2px 0;
   }
 
-  .pr-step-btn {
+  .journey-step-btn {
     min-height: 44px;
     padding: 2px 0;
   }
 
-  .pr-sub-card {
+  .journey-sub-card {
     min-height: 42px;
     padding: 8px 12px;
     font-size: 17px;
     align-items: flex-start;
   }
 
-  .pr-main {
+  .journey-main {
     overflow-wrap: break-word;
   }
 }
 
 @media (min-width: 992px) {
-  .pr-layout {
+  .journey-layout {
     margin-top: 39px;
   }
 
-  .pr-stage:not(:last-child) {
+  .journey-stage:not(:last-child) {
     padding-bottom: 28px;
     margin-bottom: 28px;
   }
 
-  .pr-section,
-  .pr-subsection {
+  .journey-section,
+  .journey-subsection {
     padding-bottom: 24px;
     margin-bottom: 16px;
   }
 
-  .pr-stage > .pr-section:last-child,
-  .pr-stage > .pr-subsection:last-child {
+  .journey-stage > .journey-section:last-child,
+  .journey-stage > .journey-subsection:last-child {
     padding-bottom: 0;
     margin-bottom: 0;
   }
 
-  .pr-glance-band {
+  .journey-glance-band {
     padding: 50px 0;
   }
 
-  .pr-glance-card {
+  .journey-glance-card {
     display: grid;
     grid-template-columns: minmax(0, 504px) minmax(0, 543px);
     column-gap: 30px;
@@ -918,7 +918,7 @@ h2.pr-eyebrow,
     padding: 30px;
   }
 
-  .pr-glance-intro {
+  .journey-glance-intro {
     grid-column: 1;
     grid-row: 1;
     align-self: start;
@@ -927,7 +927,7 @@ h2.pr-eyebrow,
     line-height: 33px;
   }
 
-  .pr-glance-card > ul {
+  .journey-glance-card > ul {
     grid-column: 1;
     grid-row: 2;
     align-self: start;
@@ -935,7 +935,7 @@ h2.pr-eyebrow,
     line-height: 33px;
   }
 
-  .pr-glance-boxes {
+  .journey-glance-boxes {
     grid-column: 2;
     grid-row: 1 / span 2;
     grid-template-columns: minmax(0, 323px) minmax(0, 195px);
@@ -943,7 +943,7 @@ h2.pr-eyebrow,
     align-content: start;
   }
 
-  .pr-glance-box {
+  .journey-glance-box {
     min-height: 104px;
     padding: 20px;
     align-items: center;
@@ -953,11 +953,11 @@ h2.pr-eyebrow,
     border-radius: 12px;
   }
 
-  .pr-glance-content {
+  .journey-glance-content {
     order: 1;
   }
 
-  .pr-glance-icon {
+  .journey-glance-icon {
     order: 2;
     width: 58px;
     flex: 0 0 58px;
@@ -965,20 +965,20 @@ h2.pr-eyebrow,
     font-size: 60px;
   }
 
-  .pr-glance-icon--clock {
+  .journey-glance-icon--clock {
     height: 60px;
   }
 
-  .pr-glance-icon--traffic,
-  .pr-glance-icon--check {
+  .journey-glance-icon--traffic,
+  .journey-glance-icon--check {
     height: 60px;
   }
 
-  .pr-glance-icon--dollar {
+  .journey-glance-icon--dollar {
     height: 60px;
   }
 
-  .pr-glance-title {
+  .journey-glance-title {
     color: #424242;
     font-size: 20px;
     line-height: 28px;
@@ -987,7 +987,7 @@ h2.pr-eyebrow,
     flex-wrap: nowrap;
   }
 
-  .pr-glance-desc {
+  .journey-glance-desc {
     color: #24568f !important;
     font-family: Lato, sans-serif;
     font-size: 29px;
@@ -995,11 +995,11 @@ h2.pr-eyebrow,
     line-height: 1.15;
   }
 
-  .pr-glance-hr {
+  .journey-glance-hr {
     display: none;
   }
 
-  .pr-layout::before {
+  .journey-layout::before {
     content: "";
     position: absolute;
     top: 0;
@@ -1009,59 +1009,70 @@ h2.pr-eyebrow,
     pointer-events: none;
   }
 
-  .pr-step:last-child {
+  .journey-step:last-child {
     padding-bottom: 0;
   }
 
-  .pr-step-row {
+  .journey-step-row {
     gap: 0;
   }
 
-  .pr-step-chevron {
+  .journey-step-chevron {
     display: none;
   }
 
-  .pr-step-body {
+  .journey-step-body {
     padding-left: 0;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  .pr-glance-card {
+  .journey-glance-card {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     column-gap: 24px;
     padding: 24px 20px;
   }
 
-  .pr-glance-boxes {
+  .journey-glance-boxes {
     grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
     gap: 12px;
   }
 
-  .pr-glance-box {
+  .journey-glance-box {
     padding: 12px 10px;
     gap: 10px;
   }
 
-  .pr-glance-title {
+  .journey-glance-title {
     font-size: 1.05rem;
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html,
+  .journey-side {
+    scroll-behavior: auto;
+  }
+
+  .journey-glance-help {
+    transition: none;
+  }
+}
+
 @media print {
-  .pr-side {
+  .journey-side {
     display: none !important;
   }
 
-  .pr-layout {
+  .journey-layout {
     display: block !important;
   }
 
-  .pr-main {
+  .journey-main {
     width: 100% !important;
   }
 
-  .pr-glance-band {
+  .journey-glance-band {
     background-color: transparent !important;
     padding: 0 !important;
   }
@@ -1084,7 +1095,7 @@ h2.pr-eyebrow,
 
   document.documentElement.classList.remove("no-js");
 
-  var stepItems = Array.prototype.slice.call(document.querySelectorAll(".pr-step"));
+  var stepItems = Array.prototype.slice.call(document.querySelectorAll(".journey-step"));
 
   function getDocTop(el) {
     if (!el) return 0;
@@ -1094,7 +1105,7 @@ h2.pr-eyebrow,
   var flat = [];
   stepItems.forEach(function (stepEl, mi) {
     var mainId = stepEl.dataset.target || "";
-    var subCards = Array.prototype.slice.call(stepEl.querySelectorAll(".pr-sub-card"));
+    var subCards = Array.prototype.slice.call(stepEl.querySelectorAll(".journey-sub-card"));
 
     if (subCards.length > 0) {
       subCards.forEach(function (card) {
@@ -1119,13 +1130,21 @@ h2.pr-eyebrow,
     }
   });
 
-  var toggleParent = document.getElementById("pr-toggle-parent");
-  var toggleLbl = document.getElementById("pr-toggle-label");
-  var stepper = document.querySelector(".pr-stepper");
-  var side = document.querySelector(".pr-side");
-  var toggleBtn = document.getElementById("pr-stepper-toggle");
-  var allSubCards = Array.prototype.slice.call(document.querySelectorAll(".pr-sub-card"));
+  var toggleParent = document.getElementById("journey-toggle-parent");
+  var toggleLbl = document.getElementById("journey-toggle-label");
+  var stepper = document.querySelector(".journey-stepper");
+  var side = document.querySelector(".journey-side");
+  var toggleBtn = document.getElementById("journey-stepper-toggle");
+  var allSubCards = Array.prototype.slice.call(document.querySelectorAll(".journey-sub-card"));
   var currentFlat = -1;
+
+  var reducedMotionQuery = window.matchMedia
+    ? window.matchMedia("(prefers-reduced-motion: reduce)")
+    : null;
+
+  function getScrollBehavior() {
+    return reducedMotionQuery && reducedMotionQuery.matches ? "auto" : "smooth";
+  }
 
   function scrollTargetIntoView(target) {
     if (!target) return;
@@ -1145,7 +1164,7 @@ h2.pr-eyebrow,
 
     window.scrollTo({
       top: targetTop,
-      behavior: "smooth"
+      behavior: getScrollBehavior()
     });
   }
 
@@ -1174,7 +1193,7 @@ function setActive(fi) {
     }
 
     if (act.navMain) {
-      var titleEl = act.navMain.querySelector(".pr-step-title");
+      var titleEl = act.navMain.querySelector(".journey-step-title");
       var stageName = titleEl ? titleEl.textContent.trim() : "";
       var subName = act.navCard ? act.navCard.textContent.trim() : stageName;
 
@@ -1198,7 +1217,7 @@ function setActive(fi) {
       if (side.scrollTop > 0) {
         side.scrollTo({
           top: 0,
-          behavior: "smooth"
+          behavior: getScrollBehavior()
         });
       }
       return;
@@ -1208,7 +1227,7 @@ function setActive(fi) {
       if (side.scrollTop > 0) {
         side.scrollTo({
           top: 0,
-          behavior: "smooth"
+          behavior: getScrollBehavior()
         });
       }
       return;
@@ -1224,7 +1243,7 @@ function setActive(fi) {
     if (bottomOverflow > 0) {
       side.scrollBy({
         top: bottomOverflow,
-        behavior: "smooth"
+        behavior: getScrollBehavior()
       });
       return;
     }
@@ -1234,7 +1253,7 @@ function setActive(fi) {
     if (topOverflow > 0) {
       side.scrollBy({
         top: -topOverflow,
-        behavior: "smooth"
+        behavior: getScrollBehavior()
       });
     }
   }
@@ -1242,8 +1261,8 @@ function setActive(fi) {
   function ensureActiveStepExpandedInSticky() {
 
     stepItems.forEach(function (s) {
-      var body = s.querySelector(".pr-step-body");
-      var btn = s.querySelector(".pr-step-btn");
+      var body = s.querySelector(".journey-step-body");
+      var btn = s.querySelector(".journey-step-btn");
       if (!body || !btn) return;
 
       body.removeAttribute("hidden");
@@ -1308,8 +1327,8 @@ function setActive(fi) {
   function collapseAllMobileSteps() {
     if (window.innerWidth < 992) {
       stepItems.forEach(function (stepEl) {
-        var btn = stepEl.querySelector(".pr-step-btn");
-        var body = stepEl.querySelector(".pr-step-body");
+        var btn = stepEl.querySelector(".journey-step-btn");
+        var body = stepEl.querySelector(".journey-step-body");
         if (btn) btn.setAttribute("aria-expanded", "false");
         if (body) {
           body.setAttribute("hidden", "");
@@ -1324,8 +1343,8 @@ function setActive(fi) {
     if (window.innerWidth >= 992) {
 
       stepItems.forEach(function (stepEl) {
-        var btn = stepEl.querySelector(".pr-step-btn");
-        var body = stepEl.querySelector(".pr-step-body");
+        var btn = stepEl.querySelector(".journey-step-btn");
+        var body = stepEl.querySelector(".journey-step-body");
         if (btn) btn.setAttribute("aria-expanded", "true");
         if (body) {
           body.removeAttribute("hidden");
@@ -1341,8 +1360,8 @@ function setActive(fi) {
   initStepperState();
 
   stepItems.forEach(function (stepEl, mi) {
-    var btn = stepEl.querySelector(".pr-step-btn");
-    var body = stepEl.querySelector(".pr-step-body");
+    var btn = stepEl.querySelector(".journey-step-btn");
+    var body = stepEl.querySelector(".journey-step-body");
     if (!btn || !body) return;
 
     btn.addEventListener("click", function (e) {
@@ -1413,7 +1432,7 @@ function setActive(fi) {
         var firstSecEl = flat.length > 0 ? flat[0].sec : null;
         var firstSecTop = firstSecEl ? getDocTop(firstSecEl) : 800;
         if (window.scrollY < firstSecTop - 50) {
-          side.scrollTo({ top: 0, behavior: "smooth" });
+          side.scrollTo({ top: 0, behavior: getScrollBehavior() });
         }
       }
     }
@@ -1443,7 +1462,7 @@ function setActive(fi) {
     }
   }
 
-  var subCardLinks = Array.prototype.slice.call(document.querySelectorAll(".pr-sub-card"));
+  var subCardLinks = Array.prototype.slice.call(document.querySelectorAll(".journey-sub-card"));
   subCardLinks.forEach(function (a) {
     a.addEventListener("click", function (e) {
       var href = this.getAttribute("href");
