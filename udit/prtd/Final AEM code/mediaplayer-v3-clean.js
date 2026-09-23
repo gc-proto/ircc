@@ -21,6 +21,7 @@
   border: 1px solid #dcdee1;
   border-radius: 20px;
   padding: 28px 32px;
+  margin-bottom: 0;
 }
 
 .pr-glance-boxes {
@@ -62,6 +63,7 @@
   align-items: center;
   flex-wrap: wrap;
   column-gap: 4px;
+  font-size: 1.125rem;
   line-height: 1.3;
   font-weight: 700;
   color: #424242;
@@ -80,10 +82,22 @@
   font-weight: 700;
 }
 
+.pr-glance-hr {
+  display: block;
+  width: 100%;
+  margin: 24px 0;
+  border: 0;
+  border-top: 1px solid #d3d5d7;
+}
+
 .pr-glance-band .well ul.list-unstyled li {
   display: flex;
   align-items: flex-start;
   gap: 12px;
+}
+
+.pr-glance-band .well ul.list-unstyled li:not(:last-child) {
+  margin-bottom: 8px;
 }
 
 .pr-check-icon {
@@ -924,8 +938,11 @@ h2.pr-eyebrow,
 
   .pr-glance-title {
     color: #424242;
+    font-size: 20px;
     line-height: 28px;
     margin-bottom: 10px;
+    white-space: nowrap;
+    flex-wrap: nowrap;
   }
 
   .pr-glance-desc {
@@ -982,6 +999,9 @@ h2.pr-eyebrow,
     gap: 10px;
   }
 
+  .pr-glance-title {
+    font-size: 1.05rem;
+  }
 }
 
 @media print {
