@@ -217,11 +217,6 @@
   z-index: 1;
 }
 
-.pr-circle,
-.pr-step-terminal {
-  display: none;
-}
-
 .pr-step-btn {
   flex: 1 1 auto;
   display: flex;
