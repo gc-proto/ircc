@@ -256,10 +256,6 @@
   color: #6f6f6f;
 }
 
-.journey-step-btn[aria-expanded="true"] .journey-step-chevron::before {
-  content: "\\f068";
-}
-
 .journey-step.is-active .journey-step-chevron {
   color: var(--gcds-color-blue-muted, #26374a);
 }
@@ -1256,6 +1252,17 @@ function setActive(fi) {
     }
   }
 
+  function setStepExpanded(btn, expanded) {
+    if (!btn) return;
+    btn.setAttribute("aria-expanded", expanded ? "true" : "false");
+
+    var chevron = btn.querySelector(".journey-step-chevron");
+    if (chevron) {
+      chevron.classList.toggle("fa-plus", !expanded);
+      chevron.classList.toggle("fa-minus", expanded);
+    }
+  }
+
   function ensureActiveStepExpandedInSticky() {
 
     stepItems.forEach(function (s) {
@@ -1266,7 +1273,7 @@ function setActive(fi) {
       body.removeAttribute("hidden");
       body.classList.add("is-expanded");
       s.classList.add("is-expanded");
-      btn.setAttribute("aria-expanded", "true");
+      setStepExpanded(btn, true);
     });
   }
 
@@ -1327,7 +1334,7 @@ function setActive(fi) {
       stepItems.forEach(function (stepEl) {
         var btn = stepEl.querySelector(".journey-step-btn");
         var body = stepEl.querySelector(".journey-step-body");
-        if (btn) btn.setAttribute("aria-expanded", "false");
+        if (btn) setStepExpanded(btn, false);
         if (body) {
           body.setAttribute("hidden", "");
           body.classList.remove("is-expanded");
@@ -1343,7 +1350,7 @@ function setActive(fi) {
       stepItems.forEach(function (stepEl) {
         var btn = stepEl.querySelector(".journey-step-btn");
         var body = stepEl.querySelector(".journey-step-body");
-        if (btn) btn.setAttribute("aria-expanded", "true");
+        if (btn) setStepExpanded(btn, true);
         if (body) {
           body.removeAttribute("hidden");
           body.classList.remove("is-expanded");
@@ -1369,7 +1376,7 @@ function setActive(fi) {
       if (window.innerWidth < 992) {
         var isExpanded = this.getAttribute("aria-expanded") === "true" || body.classList.contains("is-expanded");
         var nowOpen = !isExpanded;
-        this.setAttribute("aria-expanded", nowOpen ? "true" : "false");
+        setStepExpanded(this, nowOpen);
         if (nowOpen) {
           body.removeAttribute("hidden");
           body.classList.add("is-expanded");
