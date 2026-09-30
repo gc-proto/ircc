@@ -1,0 +1,1133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body>
+<title>So Long, WURD</title>
+<script>
+(function(){var r=document.documentElement;r.classList.add("js");
+var l=null;try{l=localStorage.getItem("wurd-lang");}catch(e){}
+if(l!=="fr"&&l!=="en"){l=/^fr\b/i.test(navigator.language||"")?"fr":"en";}
+r.setAttribute("lang",l);
+try{var t=localStorage.getItem("wurd-theme");if(t==="dark"||t==="light")r.setAttribute("data-theme",t);}catch(e){}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Gochi+Hand&family=DM+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  --board:#F4F4F6; --dot:#D3D0DB;
+  --ink:#1B1624; --ink-2:#4B4657; --ink-3:#625C6F;
+  --stage:#FFFFFF; --kind-ink:#463F52; --year-ink:#6A23B1; --figma-text:#0A6CB8;
+  --stack-1:#FFD84D; --stack-2:#FF9E9E; --stack-3:#8CC6FF; --stack-4:#86D9A0;
+  --line:#BAB5C4;
+  --purple:#6A23B1; --purple-soft:#ECE2F8;
+  --tear:#3F8FD6;
+  --paper-ink:#1B1624;
+  --blue:#CFE6FF; --pink:#FFD2D2; --green:#CDEFD6; --yellow:#FFEFA0; --paper:#FFFFFF;
+  --smile-blue:#2E6AA8; --check-green:#2C7447;
+  --shadow:0 1px 1px rgba(27,22,36,.07), 0 10px 20px -10px rgba(27,22,36,.32);
+  --shadow-lift:0 2px 2px rgba(27,22,36,.08), 0 18px 28px -12px rgba(27,22,36,.38);
+  --paper-filter:none;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --board:#14111A; --dot:#2B2635;
+    --ink:#EEEAF4; --ink-2:#BDB6C9; --ink-3:#9D95AB;
+    --stage:#1D1926; --year-ink:#F4EEFF; --figma-text:#4DB5FF;
+    --stack-1:#B48BF2; --stack-2:#8A5CE0; --stack-3:#6A3FC0; --stack-4:#4A2A90;
+    --line:#4A4356;
+    --purple:#B48BF2; --purple-soft:#291E3A;
+    --tear:#7CBAF0;
+    --shadow:0 1px 1px rgba(0,0,0,.45), 0 12px 24px -10px rgba(0,0,0,.8);
+    --shadow-lift:0 2px 2px rgba(0,0,0,.5), 0 20px 30px -12px rgba(0,0,0,.85);
+    --paper-filter:brightness(.9) saturate(.92);
+  }
+}
+:root[data-theme="dark"]{
+  --board:#14111A; --dot:#2B2635;
+  --ink:#EEEAF4; --ink-2:#BDB6C9; --ink-3:#9D95AB;
+    --stage:#1D1926; --year-ink:#F4EEFF; --figma-text:#4DB5FF;
+    --stack-1:#B48BF2; --stack-2:#8A5CE0; --stack-3:#6A3FC0; --stack-4:#4A2A90;
+  --line:#4A4356;
+  --purple:#B48BF2; --purple-soft:#291E3A;
+  --tear:#7CBAF0;
+  --shadow:0 1px 1px rgba(0,0,0,.45), 0 12px 24px -10px rgba(0,0,0,.8);
+  --shadow-lift:0 2px 2px rgba(0,0,0,.5), 0 20px 30px -12px rgba(0,0,0,.85);
+  --paper-filter:brightness(.9) saturate(.92);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; color:var(--ink);
+  background-color:var(--board);
+  background-image:radial-gradient(var(--dot) 1.1px, transparent 1.5px);
+  background-size:22px 22px;
+  font-family:"Lexend",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-weight:400; font-size:18px; line-height:1.6;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+.hand{font-family:"Gochi Hand","Comic Sans MS",cursive;font-weight:400}
+.mono{font-family:"DM Mono",ui-monospace,Menlo,monospace}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px;min-width:0}
+.wrap > *{max-width:100%}
+section{position:relative;padding:110px 0}
+/* Figma-style frame names: the # frame icon, the frame name, and on hover
+   the blue selection box with handles and a size badge */
+.frame-label{
+  display:inline-flex;align-items:center;gap:6px;margin:0 0 16px;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:14px;font-weight:500;
+  color:var(--ink-3);letter-spacing:0;transition:color .15s;
+}
+.frame-label svg{width:13px;height:13px;flex:none}
+.frame-label svg path{fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round}
+.frame{position:relative}
+.fsel{position:absolute;inset:-14px -14px -14px -14px;pointer-events:none;opacity:0;transition:opacity .12s;z-index:5}
+.fsel::before{content:"";position:absolute;inset:0;border:1.5px solid #0D99FF}
+.fsel i{position:absolute;width:9px;height:9px;background:#FFFFFF;border:1.5px solid #0D99FF}
+.fsel i:nth-child(1){left:-4px;top:-4px}.fsel i:nth-child(2){right:-4px;top:-4px}
+.fsel i:nth-child(3){left:-4px;bottom:-4px}.fsel i:nth-child(4){right:-4px;bottom:-4px}
+.fsel .dims{position:absolute;left:50%;bottom:-30px;transform:translateX(-50%);background:#0A6CB8;color:#FFFFFF;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:12px;font-weight:500;padding:3px 7px;border-radius:3px;white-space:nowrap}
+@media (hover:hover) and (pointer:fine){
+  .frame:hover > .fsel{opacity:1}
+  .frame:hover > .frame-label{color:var(--figma-text)}
+}
+h2{font-weight:700;font-size:clamp(32px,5vw,54px);line-height:1.05;letter-spacing:-.025em;margin:0 0 18px;text-wrap:balance}
+.lede{font-size:clamp(19px,2.2vw,22px);color:var(--ink-2);max-width:42ch;margin:0 0 34px;text-wrap:pretty;font-weight:300}
+.lede strong{color:var(--ink);font-weight:500}
+
+/* ---------- reveal ---------- */
+.rv{transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .rv:not(.in){opacity:0;transform:translateY(22px)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- the mark ---------- */
+.mark path.m{fill:none;stroke:var(--purple);stroke-width:32;stroke-linejoin:miter;stroke-linecap:butt}
+
+/* ---------- HERO ---------- */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:60px 0 40px}
+.lockup{display:flex;align-items:center;justify-content:center;gap:clamp(10px,3vw,34px);flex-wrap:nowrap;margin:0 auto 26px;max-width:100%}
+.lockup .word{font-weight:700;font-size:clamp(28px,8.4vw,108px);letter-spacing:.01em;line-height:1;color:var(--ink);opacity:0}
+.lockup .word.l{transform:translateX(-30px)}
+.lockup .word.r{transform:translateX(30px)}
+.lockup .mark{width:clamp(64px,17vw,210px);height:auto;flex:none}
+.hero .mark path.m{stroke-dasharray:1000;stroke-dashoffset:1000}
+.hero.go .mark path.m{animation:draw 2.1s cubic-bezier(.55,.05,.35,1) .25s forwards}
+.hero.go .word{animation:slideIn .9s cubic-bezier(.2,.8,.2,1) 1.9s forwards}
+.hero.go .word.r{animation-delay:2.05s}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes slideIn{to{opacity:1;transform:none}}
+.names{text-align:center;color:var(--ink-2);font-size:16px;line-height:1.55;margin:0 0 54px;opacity:0}
+.hero.go .names{animation:fade 1s ease 2.6s forwards}
+@keyframes fade{to{opacity:1}}
+.hero-title{
+  text-align:center;font-weight:700;font-size:clamp(34px,6vw,76px);line-height:1.02;
+  letter-spacing:-.03em;margin:0 auto 18px;max-width:14ch;text-wrap:balance;opacity:0;
+}
+.hero.go .hero-title{animation:rise 1s cubic-bezier(.2,.8,.2,1) 3s forwards}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero-sub{text-align:center;color:var(--ink-2);font-size:clamp(19px,2.2vw,22px);margin:0 auto;max-width:34ch;opacity:0}
+.hero.go .hero-sub{animation:rise 1s cubic-bezier(.2,.8,.2,1) 3.25s forwards}
+.board-note{
+  display:block;width:max-content;max-width:88vw;margin:26px auto 0;
+  font-size:clamp(19px,2.3vw,24px);color:var(--purple);transform:rotate(-2.5deg);opacity:0;text-align:center;
+}
+.board-note small{display:block;font-family:"DM Mono",monospace;font-size:13px;color:var(--ink-3);transform:rotate(2.5deg);margin-top:8px}
+.hero.go .board-note{animation:fade 1s ease 3.7s forwards}
+.cue{margin:56px auto 0;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--ink-3);font-size:14px;opacity:0}
+.hero.go .cue{animation:fade 1s ease 4.3s forwards}
+.cue i{width:22px;height:22px;background:var(--yellow);box-shadow:var(--shadow);display:block;filter:var(--paper-filter);animation:bob 2.2s ease-in-out 5}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(8px) rotate(4deg)}}
+
+/* ---------- STICKY ---------- */
+.sticky{
+  position:relative;width:162px;min-height:132px;padding:15px 15px 26px;
+  font-weight:500;font-size:15.5px;line-height:1.32;color:var(--paper-ink);
+  box-shadow:var(--shadow);filter:var(--paper-filter);
+  transform:rotate(var(--r,0deg));
+  transition:transform .62s cubic-bezier(.2,1.35,.4,1) var(--d,0s), opacity .25s ease var(--d,0s), box-shadow .3s;
+  cursor:default;
+}
+.js .sticky:not(.in){opacity:0;transform:translateY(-16px) scale(1.18) rotate(calc(var(--r,0deg) + 7deg))}
+.sticky.in{opacity:1;transform:rotate(var(--r,0deg))}
+.sticky.in:hover{transform:rotate(0deg) translateY(-4px) scale(1.04);box-shadow:var(--shadow-lift);transition-delay:0s}
+.s-blue{background:var(--blue)} .s-pink{background:var(--pink)} .s-green{background:var(--green)}
+.s-yellow{background:var(--yellow)} .s-paper{background:var(--paper)}
+.s-team{background:var(--paper);border-top:4px solid #6A23B1}
+.sticky .kind{display:block;font-family:"DM Mono",monospace;font-weight:500;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--kind-ink);margin-bottom:7px}
+
+/* smile on hellos */
+.smile{position:absolute;right:10px;bottom:8px;width:30px;height:14px;overflow:visible}
+.smile path{fill:none;stroke:var(--smile-blue);stroke-width:2.6;stroke-linecap:round;stroke-dasharray:100}
+.js .sticky:not(.in) .smile path{stroke-dashoffset:100;opacity:0}
+.sticky.in .smile path{transition:stroke-dashoffset .7s ease calc(var(--d,0s) + .55s), opacity .01s linear calc(var(--d,0s) + .55s);stroke-dashoffset:0;opacity:1}
+/* check on shipped */
+.check{position:absolute;right:10px;bottom:8px;width:18px;height:14px;overflow:visible}
+.check path{fill:none;stroke:var(--check-green);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:100}
+.js .sticky:not(.in) .check path{stroke-dashoffset:100;opacity:0}
+.sticky.in .check path{transition:stroke-dashoffset .5s ease calc(var(--d,0s) + .55s), opacity .01s linear calc(var(--d,0s) + .55s);stroke-dashoffset:0;opacity:1}
+/* tear on goodbyes */
+.tear{position:absolute;left:50%;bottom:-10px;width:12px;height:17px;margin-left:-6px;opacity:0;pointer-events:none;overflow:visible}
+.tear path{fill:var(--tear)}
+.sticky.in .tear{animation:tear 2.6s cubic-bezier(.5,0,.8,.6) calc(var(--d,0s) + .7s) 1 both}
+.sticky.cry .tear{animation:tear 2.2s cubic-bezier(.5,0,.8,.6) 0s 1 both}
+@keyframes tear{
+  0%{opacity:0;transform:translateY(-4px) scale(.2)}
+  18%{opacity:1;transform:translateY(0) scale(1)}
+  45%{opacity:1;transform:translateY(5px) scale(1,1.08)}
+  100%{opacity:0;transform:translateY(78px) scale(.85)}
+}
+/* welcome back tag */
+.back-tag{
+  position:absolute;right:-20px;top:-26px;font-family:"Gochi Hand",cursive;font-size:20px;
+  color:var(--purple);transform:rotate(9deg) scale(.4);opacity:0;white-space:nowrap;pointer-events:none;
+  transition:transform .5s cubic-bezier(.3,1.7,.5,1) calc(var(--d,0s) + .9s), opacity .3s calc(var(--d,0s) + .9s);
+  filter:none;
+}
+.sticky.in .back-tag{opacity:1;transform:rotate(9deg) scale(1)}
+.mini-mark{position:absolute;right:10px;bottom:9px;width:30px;height:auto}
+.mini-mark path.m{stroke:#6A23B1}
+
+/* ---------- NUMBERS ---------- */
+.nums{display:flex;flex-wrap:wrap;gap:26px 22px;justify-content:center;margin:10px 0 40px}
+.nums .sticky{width:180px;min-height:156px;padding:18px 16px}
+.nums .big{display:block;font-weight:800;font-size:54px;line-height:1;letter-spacing:-.03em;margin-bottom:10px;font-variant-numeric:tabular-nums}
+.nums .lbl{font-weight:500;font-size:17px;line-height:1.3;display:block}
+.nums-note{text-align:center;max-width:46ch;margin:0 auto;color:var(--ink-2);font-size:clamp(19px,2.2vw,22px)}
+.nums-note .hand{color:var(--purple);font-size:1.25em}
+
+/* ---------- TIMELINE ---------- */
+.legend{display:flex;flex-wrap:wrap;gap:12px 24px;margin:0 0 50px;font-size:16px;color:var(--ink-2);list-style:none;padding:0}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:18px;height:18px;display:inline-block;box-shadow:var(--shadow);filter:var(--paper-filter)}
+.tl{position:relative}
+.tl::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;margin-left:-1px;background:var(--line)}
+.yr{position:relative;text-align:center;margin:40px 0 34px;z-index:1;font-size:inherit;font-weight:inherit}
+/* the year: a solid numeral with the four sticky colours stacked behind it,
+   fanning out as it scrolls into view */
+.yr .num{
+  display:inline-block;margin:0;font-weight:800;font-size:clamp(84px,14vw,176px);line-height:.92;letter-spacing:-.045em;
+  color:var(--year-ink);padding:.12em .45em .18em .35em;
+  background:radial-gradient(closest-side, var(--board) 72%, transparent);
+  text-shadow:
+    .03em .03em 0 var(--board),
+    .055em .055em 0 var(--stack-1),
+    .09em .09em 0 var(--stack-2),
+    .125em .125em 0 var(--stack-3),
+    .16em .16em 0 var(--stack-4);
+  transition:text-shadow 1s cubic-bezier(.2,.8,.2,1) .15s;
+}
+.js .yr:not(.in) .num{text-shadow:0 0 0 var(--board),0 0 0 var(--stack-1),0 0 0 var(--stack-2),0 0 0 var(--stack-3),0 0 0 var(--stack-4)}
+.yr .tally{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;font-family:"DM Mono",monospace;font-size:14px;font-weight:400;color:var(--ink-2);margin:14px auto 0;background:var(--board);width:max-content;max-width:100%;padding:3px 12px}
+.yr .tally span{display:inline-flex;align-items:center;gap:7px}
+.yr .tally i{width:11px;height:11px;display:inline-block;filter:var(--paper-filter)}
+.row{display:grid;grid-template-columns:1fr 150px 1fr;align-items:start;margin:0 0 44px;position:relative;z-index:1}
+.row .people,.row .made{display:flex;flex-wrap:wrap;gap:18px 16px;align-content:flex-start}
+.row .people{justify-content:flex-end}
+.row .made{justify-content:flex-start}
+.marker{display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:6px}
+.marker .dot{width:26px;height:26px;border-radius:50%;border:2px solid var(--ink-2);background:var(--board);transition:transform .5s cubic-bezier(.3,1.6,.5,1), background .5s}
+.marker.in .dot{transform:scale(1.12)}
+.marker .when{font-family:"DM Mono",monospace;font-size:14px;color:var(--ink-2);background:var(--board);padding:1px 6px;text-align:center;line-height:1.35}
+.end{display:flex;flex-direction:column;align-items:center;gap:22px;position:relative;z-index:1;overflow-x:clip;padding-top:0;margin-top:-44px}
+.ring-wrap{position:relative;width:132px;height:132px;margin:84px 0 84px}
+.ring-wrap::before{content:"";position:absolute;left:50%;bottom:100%;width:2px;height:120px;margin-left:-1px;background:var(--line)}
+.end .ring{position:relative;z-index:2;width:132px;height:132px;border-radius:50%;border:2px solid var(--ink);background:var(--board);display:grid;place-items:center;font-weight:600;font-size:26px;letter-spacing:.04em}
+.end p{max-width:30ch;text-align:center;color:var(--ink-2);margin:0;font-size:21px}
+.end p.everyone{color:var(--purple);font-size:25px;max-width:none}
+main{overflow-x:clip}
+.cursors{position:absolute;left:50%;top:50%;width:0;height:0}
+.cur{position:absolute;left:0;top:0;display:flex;align-items:flex-start;gap:0;
+  transform:translate(calc(var(--x) + var(--ox,0px)),var(--y));transition:transform 1.5s cubic-bezier(.2,.85,.25,1) var(--d), opacity .5s ease var(--d)}
+.js .end:not(.in) .cur{transform:translate(calc(var(--fx) + var(--ox,0px)),var(--fy));opacity:0}
+/* on narrow screens, left-side cursors point the other way so labels stay on the board */
+.cur.flip{--ox:calc(18px - 100%);flex-direction:row-reverse}
+.cur.flip svg{transform:scaleX(-1)}
+.cur.flip span{margin:14px -2px 0 0;border-radius:10px 3px 10px 10px}
+.cur svg{width:18px;height:22px;flex:none;filter:drop-shadow(0 1px 1px rgba(0,0,0,.25))}
+.cur svg path{fill:var(--c);stroke:#FFFFFF;stroke-width:1.3;stroke-linejoin:round}
+.cur span{margin:14px 0 0 -2px;background:var(--c);color:var(--ct);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:13px;font-weight:600;padding:3px 8px;border-radius:3px 10px 10px 10px;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+@media (max-width:820px){
+  .tl::before{left:21px}
+  .row{grid-template-columns:44px 1fr;gap:0 14px}
+  .row .marker{grid-row:1 / span 2;grid-column:1;align-items:flex-start}
+  .row .marker .when{position:absolute;left:52px;top:4px;padding:0}
+  .row .people,.row .made{grid-column:2;justify-content:flex-start;padding-top:30px}
+  .row .made{padding-top:18px}
+  .row .people:empty,.row .made:empty{display:none}
+  .row .people:empty + .marker + .made{padding-top:30px}
+  .yr{text-align:left;padding-left:40px}
+  .yr .tally{margin-left:8px;justify-content:flex-start;width:auto;max-width:calc(100% - 20px)}
+  .yr .num{padding-left:.12em}
+  .end{align-items:center}
+  .ring-wrap{margin:84px 0 80px}
+}
+@media (max-width:640px){
+  .ring-wrap,.end .ring{width:104px;height:104px}
+  .end .ring{font-size:22px}
+  .ring-wrap{margin:176px 0 170px}
+  .ring-wrap::before{display:none}
+  .row .sticky{width:calc(50% - 8px);min-height:124px}
+  .row .people,.row .made{gap:16px}
+}
+
+/* ---------- THE MARK, READ THREE WAYS ---------- */
+.reading{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:center}
+@media (max-width:820px){.reading{grid-template-columns:minmax(0,1fr)}}
+.stage{position:relative;background:var(--stage);border-radius:4px;box-shadow:var(--shadow);padding:24px 16px 18px}
+.stage svg{display:block;width:100%;height:auto}
+.stage .m{transition:opacity .6s ease}
+.stage[data-mode="diamond"] .base, .stage[data-mode="w"] .base{opacity:.16}
+.ov{opacity:0;transition:opacity .6s ease}
+.stage[data-mode="diamond"] .ov-diamond,
+.stage[data-mode="loop"] .ov-loop,
+.stage[data-mode="w"] .ov-w{opacity:1}
+.dd{fill:none;stroke:var(--purple);stroke-width:32;stroke-linejoin:miter}
+.wpath{fill:none;stroke:var(--purple);stroke-width:32;stroke-linejoin:miter;stroke-linecap:butt}
+.lab{font-family:"Lexend",sans-serif;font-size:22px;font-weight:600;fill:var(--ink)}
+.lab.sm{font-size:19px;font-weight:400;fill:var(--ink-2)}
+.lab.hand{font-family:"Gochi Hand",cursive;font-size:30px;font-weight:400;fill:var(--purple)}
+html[lang="fr"] .stage .dlab{font-size:16px}
+html[lang="fr"] .stage .loop-lab{font-size:19px}
+@media (max-width:640px){.stage .lab{display:none}}
+.guide{fill:none;stroke:var(--ink-3);stroke-width:1.5;stroke-dasharray:4 5}
+.traveller{fill:var(--yellow);stroke:var(--ink);stroke-width:3}
+.trail{fill:none;stroke:var(--ink-3);stroke-width:2;stroke-dasharray:3 6;opacity:.6}
+.loop-lab{transition:fill .3s, font-weight .3s}
+.loop-lab.on{fill:var(--purple)}
+.modes{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 0;justify-content:center}
+.modes button{
+  appearance:none;font:inherit;font-weight:500;font-size:16px;cursor:pointer;min-height:44px;
+  padding:10px 18px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--ink-2);
+}
+.modes .pause{border-style:dashed;display:inline-flex;align-items:center;gap:8px}
+.modes .pause svg{width:14px;height:14px;fill:currentColor}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:18px 0 0}
+.chips li{font-size:16px;padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);color:var(--ink-2);transition:background .3s,color .3s,border-color .3s}
+.chips li.on{background:var(--purple);border-color:var(--purple);color:var(--board)}
+.modes button[aria-pressed="true"]{background:var(--purple);border-color:var(--purple);color:var(--board)}
+.modes button:focus-visible{outline:2px solid var(--purple);outline-offset:2px}
+.readings-text .one{display:none}
+.readings-text .one.on{display:block;animation:rise .6s ease}
+.readings-text h3{font-weight:700;font-size:30px;letter-spacing:-.015em;margin:0 0 12px}
+.readings-text p{color:var(--ink-2);margin:0 0 14px;max-width:44ch;font-size:19px}
+.readings-text p strong{color:var(--ink);font-weight:500}
+.quote-sm{border-left:3px solid var(--purple);padding:2px 0 2px 16px;color:var(--ink);font-weight:400;margin:22px 0 0;max-width:44ch}
+
+/* ---------- WHO WE WERE ---------- */
+.tags{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 30px}
+.tags .sticky{width:auto;min-height:0;padding:13px 18px;font-size:18px}
+
+/* ---------- FINAL MILE ---------- */
+.mile{position:relative;margin:24px 0 40px;padding:26px 0 10px}
+.track{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) 30px minmax(0,1fr);gap:0;align-items:end;min-height:190px}
+.lane{position:relative;border-top:2px dashed var(--line);padding-top:12px;text-align:center;font-family:"DM Mono",monospace;font-size:14px;color:var(--ink-2);height:100%}
+.lane span{display:block;margin-top:6px}
+.lane span.ln{margin-top:0}
+.wall{position:relative;height:100%;background:repeating-linear-gradient(-45deg,var(--line) 0 6px,transparent 6px 12px);opacity:.9}
+.lane.live{border-top-style:solid;border-top-color:var(--ink)}
+.flyers{position:absolute;left:0;right:0;top:100px;height:110px;pointer-events:none}
+.flyer{position:absolute;width:58px;height:52px;box-shadow:var(--shadow);filter:var(--paper-filter);left:2%;opacity:0}
+.mile.in .flyer{animation:fly 2.8s cubic-bezier(.2,.7,.25,1) var(--d) forwards}
+@keyframes fly{
+  0%{opacity:0;left:2%;transform:translateY(0) rotate(0)}
+  12%{opacity:1}
+  100%{opacity:1;left:var(--x);transform:translateY(var(--y)) rotate(var(--rot))}
+}
+.blockers{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 0}
+.blockers{list-style:none;padding:0}
+.blockers li{font-size:16px;color:var(--ink-2);border:1.5px solid var(--line);padding:7px 14px;border-radius:999px}
+.hindsight{margin:46px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media (max-width:820px){.hindsight{grid-template-columns:minmax(0,1fr)}}
+.hindsight .sticky{width:auto;min-height:0;padding:18px 18px 22px;font-size:17px;font-weight:400}
+.hindsight .sticky b{display:block;font-weight:700;font-size:19px;margin-bottom:6px}
+@media (max-width:640px){
+  .track{grid-template-columns:repeat(3,minmax(0,1fr)) 18px minmax(0,1fr);min-height:170px}
+  .lane{font-size:12px}
+  .flyer{width:40px;height:36px}
+}
+
+/* ---------- TAKING WITH YOU ---------- */
+.carry{display:flex;flex-wrap:wrap;gap:18px 14px;margin:6px 0 60px}
+.carry .sticky{width:auto;min-height:0;padding:15px 20px;font-size:19px;font-weight:500}
+.bigquote{font-weight:700;font-size:clamp(34px,5.6vw,68px);line-height:1.08;letter-spacing:-.03em;margin:0;max-width:18ch;text-wrap:balance}
+.bigquote .w{display:inline-block;transition:opacity .5s ease, transform .6s cubic-bezier(.2,.8,.2,1)}
+.js .bigquote:not(.in) .w{opacity:0;transform:translateY(.4em)}
+.bigquote .w.hl{color:var(--purple)}
+.attrib{margin:22px 0 0;font-family:"DM Mono",monospace;font-size:15px;color:var(--ink-2)}
+
+/* ---------- MORPH ---------- */
+.morph-wrap{text-align:center}
+.morph-wrap > .frame-label,.close .frame-label{display:flex;width:max-content}
+.morph{
+  display:inline-flex;align-items:flex-end;justify-content:center;
+  font-weight:800;font-size:clamp(88px,19vw,230px);line-height:1;letter-spacing:-.02em;
+  color:var(--purple);margin:10px 0 0;position:relative;height:1.1em;
+}
+.slot{display:inline-block;transition:max-width .75s cubic-bezier(.6,0,.2,1)}
+.slot.out{max-width:var(--w)}
+.slot .ch{display:inline-block;transform-origin:50% 90%}
+.slot.in{max-width:0}
+.slot.in .ch{opacity:0;transform:translateY(-1.1em) rotate(-8deg)}
+.morph .drop{position:absolute;width:.1em;height:.14em;opacity:0;bottom:.3em}
+.morph .drop path{fill:var(--tear)}
+.morph.go .slot.out .ch{transform:translate(var(--tx),1.8em) rotate(var(--rot));opacity:0;transition:transform 1s cubic-bezier(.55,0,.9,.45) var(--dl), opacity .6s ease-in calc(var(--dl) + .5s)}
+.morph.go .slot.out{max-width:0;transition-delay:.85s}
+.morph.go .slot.in{max-width:var(--w);transition-delay:1.05s}
+.morph.go .slot.in .ch{opacity:1;transform:none;transition:transform .75s cubic-bezier(.3,1.65,.5,1) calc(1.45s + var(--dl)), opacity .2s ease calc(1.45s + var(--dl))}
+.morph.go .drop.d1{animation:dropfall 1.6s ease-in .15s both}
+.morph.go .drop.d2{animation:dropfall 1.6s ease-in .4s both}
+@keyframes dropfall{0%{opacity:0;transform:translateY(0) scale(.3)}15%{opacity:1;transform:scale(1)}100%{opacity:0;transform:translateY(1.4em)}}
+.morph-smile{display:block;width:clamp(180px,34vw,420px);height:auto;margin:0 auto;overflow:visible}
+.morph-smile path{fill:none;stroke:var(--purple);stroke-width:7;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;opacity:0}
+.morph-wrap.go .morph-smile path{transition:stroke-dashoffset 1s ease 2.3s, opacity .01s linear 2.3s;stroke-dashoffset:0;opacity:1}
+.morph-caption{max-width:40ch;margin:28px auto 0;color:var(--ink-2);font-size:clamp(19px,2.2vw,22px);transition:opacity 1s ease 2.8s}
+.js .morph-wrap:not(.go) .morph-caption{opacity:0;transition:none}
+.rm-only{display:none;font-family:"DM Mono",monospace;font-size:15px;color:var(--ink-2);margin:6px 0 0}
+.morph-caption strong{color:var(--ink);font-weight:500}
+.morph-caption .hand{color:var(--purple);font-size:1.2em}
+.replay{margin-top:26px;appearance:none;font:inherit;font-size:16px;font-weight:500;color:var(--ink-2);background:transparent;border:1.5px solid var(--line);border-radius:999px;padding:10px 20px;min-height:44px;cursor:pointer}
+.replay:hover{color:var(--purple);border-color:var(--purple)}
+.replay:focus-visible{outline:2px solid var(--purple);outline-offset:2px}
+
+/* ---------- RAD ---------- */
+.evolve{display:grid;grid-template-columns:minmax(0,1fr) 60px minmax(0,1fr);align-items:center;gap:10px;margin:0 0 70px}
+.evolve .sticky{width:100%;min-height:0;padding:22px 22px 26px;font-size:clamp(17px,2vw,21px);font-weight:500;line-height:1.35}
+.evolve .arrow{text-align:center;font-size:36px;color:var(--purple)}
+@media (max-width:760px){.evolve{grid-template-columns:minmax(0,1fr)}.evolve .arrow{transform:rotate(90deg)}}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+@media (max-width:760px){.cols{grid-template-columns:minmax(0,1fr)}}
+.cols h3{font-weight:600;font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:0 0 18px}
+.pile{display:flex;flex-wrap:wrap;gap:18px 14px}
+.pile .sticky{width:auto;max-width:300px;min-height:0;padding:16px 18px 22px;font-size:17px}
+.strike{position:absolute;left:7%;width:86%;top:calc(50% - 7px);height:14px;overflow:visible;pointer-events:none}
+.strike path{fill:none;stroke:#C0392B;stroke-width:3.2;stroke-linecap:round;stroke-dasharray:100}
+.js .sticky:not(.in) .strike path{stroke-dashoffset:100;opacity:0}
+.sticky.in .strike path{transition:stroke-dashoffset .55s ease calc(var(--d,0s) + .9s), opacity .01s linear calc(var(--d,0s) + .9s);stroke-dashoffset:0;opacity:1}
+.wow{margin:90px auto 0;text-align:center}
+.wow blockquote{margin:0 auto;font-weight:700;font-size:clamp(30px,4.8vw,58px);line-height:1.1;letter-spacing:-.025em;max-width:20ch;text-wrap:balance}
+.wow blockquote .q{color:var(--purple)}
+.wow .attrib{text-align:center}
+.pair{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin:40px 0 0}
+.pair .sticky{width:auto;min-height:0;padding:15px 20px 20px;font-size:18px}
+
+/* ---------- CLOSE ---------- */
+.close{text-align:center;padding-bottom:140px}
+.slot-logo{
+  width:230px;min-height:200px;margin:0 auto;border:2.5px dashed var(--line);border-radius:3px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px;
+  color:var(--ink-2);font-weight:500;font-size:17px;transform:rotate(-1.5deg);
+}
+.slot-logo .hand{color:var(--purple);font-size:25px;line-height:1.15}
+.slot-note{max-width:40ch;margin:26px auto 0;color:var(--ink-2);font-size:19px}
+.slot-note .hand{color:var(--purple);font-size:1.2em}
+.next{margin:90px auto 0;display:flex;align-items:center;justify-content:center;gap:0;max-width:560px}
+.next .seg{flex:1;height:2px;background:var(--line)}
+.next .seg.fade{background:linear-gradient(90deg,var(--line),transparent)}
+.next .c{width:26px;height:26px;border-radius:50%;border:2px solid var(--ink-3);background:var(--board);flex:none}
+.next .c.start{width:120px;height:120px;border-color:var(--purple);border-width:3px;display:grid;place-items:center;font-weight:700;color:var(--purple);font-size:20px;letter-spacing:.05em}
+.next-labels{display:flex;justify-content:center;gap:120px;margin-top:12px;font-family:"DM Mono",monospace;font-size:14px;color:var(--ink-2)}
+.signoff{margin:80px auto 0;font-size:clamp(20px,2.4vw,26px);font-weight:400;max-width:30ch}
+.signoff .hand{display:block;color:var(--purple);font-size:1.5em;margin-top:14px;transform:rotate(-2deg)}
+.foot-mark{width:54px;height:auto;margin:40px auto 0;display:block;opacity:.8}
+
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.toolbar{position:fixed;top:14px;right:14px;z-index:60;display:flex;gap:8px}
+.theme-toggle{
+  display:inline-flex;align-items:center;gap:8px;
+  min-height:44px;padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);
+  background:var(--stage);color:var(--ink);font:inherit;font-size:16px;font-weight:500;cursor:pointer;box-shadow:var(--shadow);
+}
+.theme-toggle:hover{border-color:var(--purple);color:var(--purple)}
+.theme-toggle svg{width:19px;height:19px;flex:none}
+.theme-toggle svg path,.theme-toggle svg circle{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+button:focus-visible,.theme-toggle:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
+.lang-toggle .lt-short{display:none}
+@media (max-width:520px){.theme-toggle .tt-label{display:none}.theme-toggle{padding:9px 12px}
+  .lang-toggle .lt-long{display:none}.lang-toggle .lt-short{display:inline}}
+
+@media (prefers-reduced-motion: reduce){
+  .rm-only{display:block}
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001s!important;animation-delay:0s!important;transition-duration:.001s!important;transition-delay:0s!important}
+  .cue i{animation:none}
+}
+</style>
+
+<div class="toolbar">
+  <button class="theme-toggle lang-toggle" id="langToggle" type="button" lang="fr" aria-label="Français">
+    <span class="lt-long" id="ltLong" aria-hidden="true">Français</span><span class="lt-short" id="ltShort" aria-hidden="true">FR</span>
+  </button>
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">
+    <svg viewBox="0 0 24 24" aria-hidden="true" id="ttIcon"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
+    <span class="tt-label" id="ttLabel">Dark</span>
+  </button>
+</div>
+<main id="main">
+<!-- =================== HERO =================== -->
+<section class="hero go" id="hero">
+  <div class="wrap">
+    <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span data-fr="bonjour">hello</span></span>
+    <h1 class="lockup">
+      <span class="word l" data-fr="CREW">WURD</span>
+      <svg class="mark" viewBox="-226 -126 452 252" aria-hidden="true"><path class="m" pathLength="1000" d="M-33.9,-33.9 L-100,-100 L-200,0 L-100,100 L100,-100 L200,0 L100,100 L33.9,33.9"/></svg>
+      <span class="word r" lang="fr" data-fr="WURD">CREW</span><span class="sr-only" data-fr="&nbsp;: un adieu">: a farewell</span>
+    </h1>
+    <p class="names" data-fr='Conception et Recherche en Expérience utilisateur Web<br><span lang="en">Web UX Research &amp; Design</span>'>Web UX Research &amp; Design<br><span lang="fr">Conception et Recherche en Expérience utilisateur Web</span></p>
+    <p class="hero-title" data-fr="Trois ans et demi.">Three and a half years.</p>
+    <p class="hero-sub" data-fr="D’avril 2023 à septembre 2026. Jetons un coup d’œil à ce qu’on a fait.">April 2023 to September 2026. Let’s take a quick look at what we did.</p>
+    <span class="board-note hand" data-fr="pas nécessairement une liste exhaustive — n’hésitez pas à ajouter des choses<small>— tiré de notre propre tableau</small>">not necessarily an exhaustive list — feel free to add things<small>— from our own timeline board</small></span>
+    <div class="cue" aria-hidden="true"><i></i><span data-fr="défiler">scroll</span></div>
+  </div>
+</section>
+
+<!-- =================== NUMBERS =================== -->
+<section id="numbers" style="padding-top:40px">
+  <div class="wrap">
+    <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span data-fr="en chiffres">by the numbers</span></span>
+    <h2 class="rv" data-fr="On compte les post-it">Counting the stickies</h2>
+    <p class="lede rv" data-fr="Tout ce qui suit vient directement du tableau qu’on a fait ensemble. Bleu pour les arrivées, rose pour les départs, vert pour ce qu’on a livré.">Everything below comes straight off the board we made together. Blue for hellos, pink for goodbyes, green for the things we shipped.</p>
+    <div class="nums" id="nums"></div>
+    <p class="nums-note rv" id="numsNote"></p>
+  </div>
+</section>
+
+<!-- =================== TIMELINE =================== -->
+<section id="timeline" style="padding-top:60px">
+  <div class="wrap">
+    <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span data-fr="le tableau">the board</span></span>
+    <h2 class="rv" data-fr="Ce qu’on a fait">What we did</h2>
+    <ul class="legend rv">
+      <li><span><i style="background:var(--blue)" aria-hidden="true"></i><span data-fr="bonjour">hello</span></span></li>
+      <li><span><i style="background:var(--pink)" aria-hidden="true"></i><span data-fr="au revoir">goodbye</span></span></li>
+      <li><span><i style="background:var(--green)" aria-hidden="true"></i><span data-fr="livré">shipped</span></span></li>
+      <li class="hand" style="color:var(--purple);font-size:21px" data-fr="survolez ou touchez un rose si vous voulez pleurer encore">hover or tap a pink one if you want to cry again</li>
+    </ul>
+    <div class="tl" id="tl"></div>
+    <div class="end rv" id="end">
+      <div class="ring-wrap">
+        <div class="cursors" id="cursors" aria-hidden="true"></div>
+        <div class="ring" data-fr="FIN">END</div>
+      </div>
+      <p class="hand everyone" data-fr="tout le monde sur le tableau, une dernière fois">everyone back on the board, one last time</p>
+      <p data-fr="Tout projet pilote en a une. Les bons laissent quelque chose derrière eux.">Every pilot has one. The good ones leave something behind.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== THE MARK =================== -->
+<section id="mark">
+  <div class="wrap">
+    <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span data-fr="le logo">the mark</span></span>
+    <h2 class="rv" data-fr="Le logo était la méthode depuis le début">The logo was the method all along</h2>
+    <p class="lede rv" data-fr="Ça n’a jamais été une seule chose. Lisez-le de trois façons et il décrit notre façon de travailler.">It was never one thing. Read it three ways and it describes how we worked.</p>
+
+    <div class="reading">
+      <div class="rv">
+        <div class="stage" id="stage" data-mode="diamond">
+          <svg viewBox="-330 -190 660 400" role="img" aria-label="The WURD mark, which reads as a double diamond, an infinity loop, and a W." data-fr-label="Le logo de CREW, qui se lit comme un double diamant, une boucle infinie et un W.">
+            <!-- base mark -->
+            <g class="base m"><path class="m" style="fill:none;stroke:var(--purple);stroke-width:32;stroke-linejoin:miter" d="M-33.9,-33.9 L-100,-100 L-200,0 L-100,100 L100,-100 L200,0 L100,100 L33.9,33.9"/></g>
+
+            <!-- reading 1: double diamond -->
+            <g class="ov ov-diamond">
+              <path class="dd" d="M-200,0 L-100,-100 L0,0 L-100,100 Z"/>
+              <path class="dd" d="M0,0 L100,-100 L200,0 L100,100 Z"/>
+              <text class="lab dlab" x="-150" y="-142" text-anchor="middle" data-fr="Découvrir">Discover</text>
+              <text class="lab dlab" x="-50" y="-142" text-anchor="middle" data-fr="Définir">Define</text>
+              <text class="lab dlab" x="50" y="-142" text-anchor="middle" data-fr="Développer">Develop</text>
+              <text class="lab dlab" x="150" y="-142" text-anchor="middle" data-fr="Livrer">Deliver</text>
+              <line class="guide" x1="-100" y1="-160" x2="-100" y2="-128"/>
+              <line class="guide" x1="0" y1="-160" x2="0" y2="-128"/>
+              <line class="guide" x1="100" y1="-160" x2="100" y2="-128"/>
+              <text class="lab sm" x="-100" y="160" text-anchor="middle" data-fr="le problème">the problem</text>
+              <text class="lab sm" x="100" y="160" text-anchor="middle" data-fr="la solution">the solution</text>
+              <text class="lab hand" x="-100" y="190" text-anchor="middle">R</text>
+              <text class="lab hand" x="100" y="190" text-anchor="middle">D</text>
+            </g>
+
+            <!-- reading 2: infinity -->
+            <g class="ov ov-loop">
+              <path id="eight" class="trail" d="M0,0 L-100,-100 L-200,0 L-100,100 L0,0 L100,-100 L200,0 L100,100 Z"/>
+              <text class="lab loop-lab" data-i="0" x="-100" y="-132" text-anchor="middle" data-fr="comprendre">understand</text>
+              <text class="lab loop-lab" data-i="1" x="-232" y="7" text-anchor="end" data-fr="essayer">try</text>
+              <text class="lab loop-lab" data-i="2" x="-100" y="146" text-anchor="middle" data-fr="tester">test</text>
+              <text class="lab loop-lab" data-i="3" x="100" y="-132" text-anchor="middle" data-fr="apprendre">learn</text>
+              <text class="lab loop-lab" data-i="4" x="226" y="7" text-anchor="start" data-fr="améliorer">improve</text>
+              <text class="lab loop-lab" data-i="5" x="100" y="146" text-anchor="middle" data-fr="…encore">…again</text>
+              <circle class="traveller" id="traveller" r="15" cx="0" cy="0"/>
+            </g>
+
+            <!-- reading 3: W -->
+            <g class="ov ov-w">
+              <path class="wpath" d="M-200,0 L-100,100 L0,0"/>
+              <path class="wpath" d="M33.9,33.9 L100,100 L200,0"/>
+              <text class="lab hand" x="0" y="160" text-anchor="middle" style="font-size:30px" data-fr="un W, en quelque sorte">W, kind of</text>
+            </g>
+          </svg>
+          <div class="modes" role="group" aria-label="Choose a reading" data-fr-label="Choisir une lecture">
+            <button type="button" data-mode="diamond" aria-pressed="true" data-fr="Double diamant">Double diamond</button>
+            <button type="button" data-mode="loop" aria-pressed="false" data-fr="Infini">Infinity</button>
+            <button type="button" data-mode="w" aria-pressed="false">W</button>
+            <button type="button" class="pause" id="pauseBtn" aria-pressed="false" aria-label="Pause the animation">
+              <svg viewBox="0 0 14 14" aria-hidden="true" id="pauseIcon"><rect x="2" y="1" width="3.5" height="12"/><rect x="8.5" y="1" width="3.5" height="12"/></svg><span id="pauseLabel">Pause</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="readings-text rv" id="readingsText" aria-live="off">
+        <div class="one on" data-mode="diamond">
+          <h3 data-fr="Un double diamant">A double diamond</h3>
+          <p data-fr="Explorer le problème, le cerner, explorer les solutions, les cerner à nouveau. <strong>Découvrir, définir, développer, livrer.</strong>">Go wide on the problem, narrow it down, go wide on solutions, narrow again. <strong>Discover, define, develop, deliver.</strong></p>
+          <p data-fr="Le premier diamant, c’est le problème. Le second, c’est la solution. Gardez ça en tête — ça compte à la fin de cette page.">The first diamond is the problem. The second is the solution. Hold that thought — it matters at the end of this page.</p>
+        </div>
+        <div class="one" data-mode="loop">
+          <h3 data-fr="Une boucle infinie">An infinity loop</h3>
+          <p data-fr="La livraison n’a jamais été la ligne d’arrivée. C’était le début de la ronde suivante.">Delivery was never the finish line. It was the start of the next round.</p>
+          <p class="quote-sm" data-fr="Comprendre le problème, essayer quelque chose, le tester, apprendre des vrais utilisateurs et des données, et rendre la prochaine version meilleure.">Understand the problem, try something, test it, learn from real users and data, and make the next version better.</p>
+          <p style="font-family:'DM Mono',monospace;font-size:14px;color:var(--ink-2);margin-top:10px" data-fr="— comment on décrivait notre propre façon de travailler, dans la rétro">— how we described our own way of working, in the retro</p>
+          <ol class="chips" id="loopChips" aria-label="The loop" data-fr-label="La boucle">
+            <li data-i="0" data-fr="comprendre">understand</li><li data-i="1" data-fr="essayer">try</li><li data-i="2" data-fr="tester">test</li><li data-i="3" data-fr="apprendre">learn</li><li data-i="4" data-fr="améliorer">improve</li><li data-i="5" data-fr="…encore">…again</li>
+          </ol>
+        </div>
+        <div class="one" data-mode="w">
+          <h3 data-fr="Un W, en quelque sorte">A W, kind of</h3>
+          <p data-fr="Suivez le bord du bas. Plissez un peu les yeux. Le voilà.">Trace the bottom edge. Squint a little. There it is.</p>
+          <p data-fr="Le W — celui de WURD comme celui de CREW — est la seule partie du nom qui ne continue pas. <strong>Il reste quand même dans le logo.</strong>">The W is the only part of the name that doesn’t carry forward. <strong>It stays in the mark anyway.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== WHO WE WERE =================== -->
+<section id="who">
+  <div class="wrap">
+    <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span data-fr="ce qui a fonctionné">what made it work</span></span>
+    <h2 class="rv" data-fr="Ça n’a jamais été la méthodologie">It was never the methodology</h2>
+    <p class="lede rv" data-fr="La rétro était claire là-dessus. Notre plus grande force n’était ni une méthode ni un livrable. C’était <strong>les gens, la culture et la liberté d’expérimenter</strong>, et la façon dont les trois se nourrissaient.">The retro was clear about this. Our greatest strength wasn’t a method or a deliverable. It was <strong>the people, the culture, and the freedom to experiment</strong>, and the way those three fed each other.</p>
+    <div class="tags" id="tags"></div>
+    <p class="lede rv" style="max-width:52ch" data-fr="On partageait ce qu’on savait, on remettait les idées en question sans que ce soit personnel, on apprenait les uns des autres, et on passait vite de l’idée au prototype aux données probantes. Et on a surtout résisté à l’idée que la première réponse devait être la bonne.">People shared what they knew, challenged ideas without making it personal, learned from each other, and got from an idea to a prototype to evidence fast. And we mostly resisted the expectation that the first answer had to be the right one.</p>
+  </div>
+</section>
+
+<!-- =================== FINAL MILE =================== -->
+<section id="mile">
+  <div class="wrap">
+    <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span data-fr="la partie honnête">the honest part</span></span>
+    <h2 class="rv" data-fr="Le dernier kilomètre">The final mile</h2>
+    <p class="lede rv" data-fr="On était souvent meilleurs pour trouver la réponse que pour lui faire franchir <strong>le dernier kilomètre</strong>, jusqu’entre les mains des gens. C’est la partie qui pique encore un peu.">We were often better at getting to the answer than at getting the answer <strong>through the final mile</strong> and into people’s hands. That’s the part that still stings a little.</p>
+    <div class="mile rv" id="mileBox">
+      <div class="track" aria-hidden="true">
+        <div class="lane"><span class="ln" data-fr="recherche">research</span><span data-fr="rapide">fast</span></div>
+        <div class="lane"><span class="ln" data-fr="design">design</span><span data-fr="rapide">fast</span></div>
+        <div class="lane"><span class="ln" data-fr="preuves">evidence</span><span data-fr="rapide">fast</span></div>
+        <div class="wall"></div>
+        <div class="lane live"><span class="ln" data-fr="en ligne">live</span><span data-fr="…un jour">…eventually</span></div>
+      </div>
+      <div class="flyers" id="flyers" aria-hidden="true"></div>
+    </div>
+    <p class="rv" id="gotInWay" style="color:var(--ink-2);font-size:18px;margin:0 0 10px" data-fr="Ce qui nous a freinés :">What got in the way:</p>
+    <ul class="blockers rv" aria-labelledby="gotInWay">
+      <li data-fr="responsabilités ambiguës">ambiguous ownership</li><li data-fr="échéanciers flous">loose timelines</li><li data-fr="processus d’approbation">approval processes</li><li data-fr="pouvoir limité">limited authority</li><li data-fr="appétit inégal pour l’itération">uneven appetite for iteration</li>
+    </ul>
+    <div class="hindsight" id="hindsight"></div>
+  </div>
+</section>
+
+<!-- =================== CARRY =================== -->
+<section id="carry">
+  <div class="wrap">
+    <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span data-fr="ce que vous emportez">what you’re taking with you</span></span>
+    <h2 class="rv" data-fr="L’héritage, ce n’est pas seulement les produits">The legacy isn’t only the products</h2>
+    <p class="lede rv" data-fr="Chacun repart avec de nouvelles compétences, plus de confiance et des relations qui vont survivre à n’importe quel organigramme. Et une façon de travailler :">Everyone leaves with new skills, more confidence, and relationships that will outlast any org chart. And a way of working:</p>
+    <div class="carry" id="carryPile"></div>
+    <p class="bigquote" id="bigquote">Listen deeply, use evidence, speak honestly, stay humble, and work together.</p>
+    <p class="attrib rv" data-fr="— l’équipe, dans ses propres mots">— the team, in its own words</p>
+  </div>
+</section>
+
+<!-- =================== MORPH =================== -->
+<section id="morph-sec">
+  <div class="wrap morph-wrap" id="morphWrap" style="text-align:center">
+    <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span data-fr="la suite">what happens next</span></span>
+    <h2 class="rv" data-fr="Une lettre reste">Two letters stay</h2>
+    <div class="morph" id="morph" role="img" aria-label=""></div>
+    <p class="rm-only" id="morphRm"></p>
+    <svg class="morph-smile" viewBox="0 0 200 40" aria-hidden="true"><path pathLength="100" d="M10 8 Q100 60 190 8"/></svg>
+    <p class="morph-caption" data-fr="En anglais, deux lettres restaient. En français, les comptes sont moins ronds : seul le R survit. Mais le A veut enfin dire quelque chose — <strong>Recherche, Analytique et Design</strong>.<br><br>Le W quitte le nom, dans les deux langues. <span class=&quot;hand&quot;>Il reste dans le logo.</span><br><br>Et en anglais, un <em lang=&quot;en&quot;>crew</em>, c’est un équipage. Ce qu’on a toujours été.">
+      <strong>Research and Design</strong> were in the name from the start. They’re also the two diamonds in the mark — the problem, and the solution.<br><br>
+      The W leaves the name. <span class="hand">It stays in the logo.</span><br><br>
+      And in French we were CREW — which was always the more accurate name.
+    </p>
+    <button class="replay" id="replay" type="button" data-fr="Rejouer">Play it again</button>
+  </div>
+</section>
+
+<!-- =================== RAD =================== -->
+<section id="rad">
+  <div class="wrap">
+    <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span>RAD</span></span>
+    <h2 class="rv" data-fr="Même boucle, plus grand cercle">Same loop, bigger circle</h2>
+    <p class="lede rv" data-fr="Quand la future équipe s’est réunie pour imaginer RAD, elle voulait presque tout ce que la rétro valorisait. Et elle a ajouté une chose.">When the future team sat down to imagine RAD, they wanted almost everything the retro valued. And they added one thing.</p>
+    <div class="evolve" id="evolve"></div>
+
+    <div class="cols">
+      <div>
+        <h3 class="rv" data-fr="Ce que RAD veut être">What RAD wants to be</h3>
+        <div class="pile" id="wantPile"></div>
+      </div>
+      <div>
+        <h3 class="rv" data-fr="Ce que RAD refuse de devenir">What RAD refuses to become</h3>
+        <div class="pile" id="notPile"></div>
+      </div>
+    </div>
+
+    <div class="wow rv">
+      <blockquote data-fr="La raison pour laquelle les gens me disent <span class=&quot;q&quot;>« Wow, le site est pas mal beau ces temps-ci, hein? »</span>">The reason people tell me <span class="q">“Wow, the site is looking good these days, eh?”</span></blockquote>
+      <p class="attrib" data-fr="— une des ambitions déclarées de RAD, et notre préférée">— one of RAD’s stated ambitions, and our favourite</p>
+      <div class="pair" id="pair"></div>
+      <p class="hand" style="color:var(--purple);font-size:21px;margin:14px 0 0" data-fr="même souhait — entendu de l’extérieur">same wish — just heard from the outside</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CLOSE =================== -->
+<section class="close" id="close">
+  <div class="wrap">
+    <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span data-fr="à suivre">to be continued</span></span>
+    <div class="slot-logo rv">
+      <span data-fr="le logo de RAD ici">RAD logo goes here</span>
+      <span class="hand" data-fr="n’hésitez pas à<br>ajouter des choses">feel free to<br>add things</span>
+    </div>
+    <p class="slot-note rv" data-fr="RAD n’a pas encore de logo. Mais les deux diamants ont toujours été le R et le D… <span class=&quot;hand&quot;>je dis ça comme ça.</span>">RAD doesn’t have a logo yet. Though the two diamonds were always R and D… <span class="hand">just saying.</span></p>
+
+    <div class="rv">
+      <div class="next" aria-hidden="true">
+        <div class="seg"></div><div class="c"></div><div class="seg"></div>
+        <div class="c start" data-fr="DÉBUT">START</div>
+        <div class="seg fade"></div>
+      </div>
+      <div class="next-labels" aria-hidden="true"><span data-fr="septembre 2026">September 2026</span><span data-fr="octobre 2026">October 2026</span></div>
+    </div>
+
+    <p class="signoff rv" data-fr="Merci pour trois ans et demi remarquables.<span class=&quot;hand&quot;>On se revoit sur le prochain tableau. — David</span>">Thank you for three and a half remarkable years.<span class="hand">See you on the next board. — David</span></p>
+    <svg class="mark foot-mark rv" viewBox="-226 -126 452 252" aria-hidden="true"><path class="m" d="M-33.9,-33.9 L-100,-100 L-200,0 L-100,100 L100,-100 L200,0 L100,100 L33.9,33.9"/></svg>
+  </div>
+</section>
+
+</main>
+
+<script>
+"use strict";
+/* ====================================================================
+   THE BOARD — edit here.
+   Read off the WURD timeline board. Seasons rather than months, because
+   the board places stickies between its markers, not on them.
+   k: hello | bye | back (welcome back) | team (team event)
+   n: first name. en/fr: only needed when the sticky doesn't say the usual
+      "joins / leaves / rejoins" line.
+   made: [English, French]
+   ==================================================================== */
+const TIMELINE = [
+  {y:2023, s:"winter", people:[{n:"Karine",k:"hello",en:"Karine is Team Tier 1 (TT1)",fr:"Karine est l’équipe Tier 1 (TT1)"}], made:[]},
+  {y:2023, s:"spring", people:[{n:"David",k:"hello",en:"David joins TT1",fr:"David se joint à TT1"},{k:"team",en:"TT1 becomes WURD",fr:"TT1 devient CREW"},{n:"Yael",k:"hello"}], made:[]},
+  {y:2023, s:"summer", people:[{n:"Eric",k:"hello"},{n:"Catalina",k:"hello"}], made:[["Processing times tool results","Résultats de l’outil des délais de traitement"]]},
+  {y:2023, s:"fall",   people:[{n:"Marianne",k:"hello"},{n:"Ramanpreet",k:"hello"},{n:"Ini",k:"hello"}], made:[]},
+  {y:2024, s:"winter", people:[{n:"Ramanpreet",k:"bye"}], made:[["Program Finder","Outil de recherche de programmes"]]},
+  {y:2024, s:"summer", people:[{n:"Eric",k:"bye"},{n:"Catalina",k:"bye"}], made:[["Account wizard","Assistant de compte"],["CXP-TRV","CXP-TRV"]]},
+  {y:2024, s:"fall",   people:[{n:"Ramanpreet",k:"back"},{n:"Jackie",k:"hello"}], made:[["Express Entry redesign","Refonte d’Entrée express"],["CXP-PPT","CXP-PPT"]]},
+  {y:2025, s:"winter", people:[], made:[["AI Answers (start)","Réponses IA (début)"]]},
+  {y:2025, s:"spring", people:[], made:[["First app launch (NASCAR) 😆","Premier lancement de l’appli (NASCAR) 😆"],["New topic template (Work and Study)","Nouveau gabarit de sujet (Travail et études)"],["Settlement new design","Nouveau design Établissement"]]},
+  {y:2025, s:"summer", people:[{n:"Karine",k:"bye"},{n:"Ramanpreet",k:"bye"},{n:"Eric",k:"back"}], made:[]},
+  {y:2025, s:"fall",   people:[{n:"Jackie",k:"bye"},{n:"Marianne",k:"bye"},{n:"Ini",k:"bye"},{n:"Roxanne",k:"hello"},{n:"Udit",k:"hello"},{n:"Colin",k:"hello"}], made:[["Theme and ILP redesign","Refonte du thème et de l’ILP"]]},
+  {y:2026, s:"winter", people:[], made:[["Visa tool","Outil visa"]]},
+  {y:2026, s:"spring", people:[{n:"Colin",k:"bye"}], made:[["Your app — phase 1","Votre demande — phase 1"]]},
+  {y:2026, s:"summer", people:[{n:"Ini",k:"back"},{n:"Eric",k:"bye"}], made:[["Your app — phase 2","Votre demande — phase 2"],["Check your app status","Vérifier l’état de votre demande"]]},
+];
+const SEASON = {winter:["Winter","Hiver"], spring:["Spring","Printemps"], summer:["Summer","Été"], fall:["Fall","Automne"]};
+const LINE = {
+  hello:[n=>`${n} joins WURD`,   n=>`${n} se joint à CREW`],
+  bye:  [n=>`${n} leaves WURD`,  n=>`${n} quitte CREW`],
+  back: [n=>`${n} rejoins WURD`, n=>`${n} revient à CREW`]
+};
+
+/* ---------- language ---------- */
+const root = document.documentElement;
+let L = root.getAttribute("lang")==="fr" ? "fr" : "en";
+const UI = {
+  en:{title:"So Long, WURD", dark:"Dark", light:"Light", toDark:"Switch to dark mode", toLight:"Switch to light mode",
+      pause:"Pause", play:"Play", pauseA:"Pause the animation", playA:"Resume the animation", other:"Français", otherShort:"FR", otherLang:"fr"},
+  fr:{title:"Au revoir, CREW", dark:"Sombre", light:"Clair", toDark:"Passer au mode sombre", toLight:"Passer au mode clair",
+      pause:"Pause", play:"Lecture", pauseA:"Mettre l’animation en pause", playA:"Reprendre l’animation", other:"English", otherShort:"EN", otherLang:"en"}
+};
+
+/* ---------- helpers ---------- */
+const $ = (s,el=document)=>el.querySelector(s);
+const esc = s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+/* a bilingual fragment: swaps with the language toggle, keeps its animation state */
+const t2 = (en, fr)=>`<span data-en="${esc(en)}" data-fr="${esc(fr===undefined?en:fr)}">${L==="fr"&&fr!==undefined?fr:en}</span>`;
+let seq = 0;
+const rot = ()=>{ seq++; return (((seq*37)%11)-5)*0.62; };
+const REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const MARK_D = "M-33.9,-33.9 L-100,-100 L-200,0 L-100,100 L100,-100 L200,0 L100,100 L33.9,33.9";
+
+const SMILE = '<svg class="smile" viewBox="0 0 30 14" aria-hidden="true"><path pathLength="100" d="M2 2 Q15 16 28 2"/></svg>';
+const CHECK = '<svg class="check" viewBox="0 0 18 14" aria-hidden="true"><path pathLength="100" d="M2 7 L7 12 L16 2"/></svg>';
+const TEAR  = '<svg class="tear" viewBox="0 0 20 28" aria-hidden="true"><path d="M10 1C10 1 2 12 2 18a8 8 0 0 0 16 0C18 12 10 1 10 1Z"/></svg>';
+const STRIKE= '<svg class="strike" viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M2 9 Q30 2 55 8 T98 5"/></svg>';
+const MINI  = `<svg class="mark mini-mark" viewBox="-226 -126 452 252" aria-hidden="true"><path class="m" d="${MARK_D}"/></svg>`;
+const KIND = {hello:["hello","bonjour"], bye:["goodbye","au revoir"], back:["welcome back","bon retour"], team:["team","équipe"], made:["shipped","livré"]};
+
+function sticky(html, cls, extra, delay, kind){
+  const r = rot().toFixed(2);
+  return `<div class="sticky ${cls}" style="--r:${r}deg;--d:${delay||0}s">${kind?`<span class="kind">${t2(kind[0],kind[1])}</span>`:''}${html}${extra||''}</div>`;
+}
+function personText(p){
+  if(p.en) return t2(p.en, p.fr);
+  return t2(LINE[p.k][0](p.n), LINE[p.k][1](p.n));
+}
+function personSticky(p, i){
+  const d = (i*0.09).toFixed(2), txt = personText(p);
+  if(p.k==="bye")  return sticky(txt,"s-pink",TEAR,d,KIND.bye).replace('class="sticky','class="sticky cryable');
+  if(p.k==="back") return sticky(txt,"s-blue",SMILE+`<span class="back-tag">${t2("welcome back!","bon retour!")}</span>`,d,KIND.back);
+  if(p.k==="team") return sticky(txt,"s-team",MINI,d,KIND.team);
+  return sticky(txt,"s-blue",SMILE,d,KIND.hello);
+}
+
+/* ---------- counts, derived from the board ---------- */
+const all = TIMELINE.flatMap(r=>r.people);
+const NAMES = [...new Set(all.filter(p=>p.n).map(p=>p.n))];
+const C = {
+  hello: all.filter(p=>p.k==="hello").length,
+  bye:   all.filter(p=>p.k==="bye").length,
+  back:  all.filter(p=>p.k==="back").length,
+  made:  TIMELINE.reduce((n,r)=>n+r.made.length,0),
+  people: NAMES.length
+};
+
+/* ---------- numbers ---------- */
+$("#nums").innerHTML = [
+  ["s-yellow", "3½",     "years", "ans"],
+  ["s-blue",   C.people, "people on the board", "personnes sur le tableau"],
+  ["s-green",  C.made,   "things we shipped", "choses livrées"],
+  ["s-pink",   C.bye,    "goodbyes", "départs"],
+  ["s-blue",   C.back,   "came back", "retours"]
+].map(([c,n,en,fr],i)=>{
+  const extra = c==="s-pink" ? TEAR : (en==="came back" ? SMILE : "");
+  return `<div class="sticky ${c}${c==='s-pink'?' cryable':''}" style="--r:${rot().toFixed(2)}deg;--d:${(i*.12).toFixed(2)}s"><span class="sr-only">${t2(n+" "+en, n+" "+fr)}</span><span class="big" data-n="${n}" aria-hidden="true">${n}</span><span class="lbl" aria-hidden="true">${t2(en,fr)}</span>${extra}</div>`;
+}).join("");
+$("#numsNote").innerHTML = t2(
+  `${C.back===1?"One person":C.back+" people"} left and came back. Of everything on this board, <span class="hand">that might be the number that says the most.</span>`,
+  `${C.back===1?"Une personne est partie, puis revenue":C.back+" personnes sont parties, puis revenues"}. De tout ce tableau, <span class="hand">c’est peut-être le chiffre qui en dit le plus.</span>`);
+
+/* ---------- timeline ---------- */
+(function buildTimeline(){
+  const TW = {hello:["hello","hellos","arrivée","arrivées"], back:["welcome back","welcome backs","retour","retours"],
+              bye:["goodbye","goodbyes","départ","départs"], made:["shipped","shipped","livraison","livraisons"]};
+  const COL = {hello:"var(--blue)", back:"var(--blue)", bye:"var(--pink)", made:"var(--green)"};
+  let html="", lastY=null;
+  TIMELINE.forEach(row=>{
+    if(row.y!==lastY){
+      const yr = TIMELINE.filter(r=>r.y===row.y);
+      const ppl = yr.flatMap(r=>r.people);
+      const t = [
+        ["hello",ppl.filter(p=>p.k==="hello").length],
+        ["back",ppl.filter(p=>p.k==="back").length],
+        ["bye",ppl.filter(p=>p.k==="bye").length],
+        ["made",yr.reduce((n,r)=>n+r.made.length,0)]
+      ].filter(x=>x[1]>0).map(([k,n])=>{
+        const w = TW[k], pl = n>1 ? 1 : 0;
+        return `<span><i style="background:${COL[k]}" aria-hidden="true"></i>${t2(n+" "+w[pl], n+" "+w[2+pl])}<span class="sr-only">,</span></span>`;
+      }).join("");
+      html += `<div class="yr rv"><h3 class="num">${row.y}</h3><p class="tally">${t}</p></div>`;
+      lastY=row.y;
+    }
+    const people = row.people.map(personSticky).join("");
+    const made = row.made.map((m,i)=>sticky(t2(m[0],m[1]),"s-green",CHECK,((row.people.length+i)*0.09).toFixed(2),KIND.made)).join("");
+    html += `<div class="row">
+      <div class="people">${people}</div>
+      <div class="marker"><span class="dot"></span><span class="when">${t2(SEASON[row.s][0],SEASON[row.s][1])}<br>${row.y}</span></div>
+      <div class="made">${made}</div>
+    </div>`;
+  });
+  $("#tl").innerHTML = html;
+})();
+
+/* ---------- everyone back on the board ---------- */
+(function cursors(){
+  // Figma multiplayer cursor colours; label text is whichever of white or ink passes contrast better
+  const pal=["#0D99FF","#9747FF","#F24822","#FFCD29","#14AE5C","#FF24BD","#E8590C","#0FA958","#6A4CE0","#FF7262","#1ABCFE","#8A3FE8"];
+  const lum=h=>{const c=[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)/255).map(v=>v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4));return .2126*c[0]+.7152*c[1]+.0722*c[2];};
+  const ratio=(a,b)=>{const x=lum(a),y=lum(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05);};
+  const fg=c=>ratio(c,"#FFFFFF")>=ratio(c,"#1B1624")?"#FFFFFF":"#1B1624";
+  const narrow = window.innerWidth < 640;
+  const rx = narrow ? 64 : 205, ry = narrow ? 152 : 118;
+  $("#cursors").innerHTML = NAMES.map((n,i)=>{
+    const a = -Math.PI/2 + i/NAMES.length*Math.PI*2 + .18;
+    const flip = narrow && Math.cos(a) < -.05;
+    const x = Math.cos(a)*rx + (flip ? 9 : -9), y = Math.sin(a)*ry - 11;
+    const fx = Math.cos(a)*rx*3.2, fy = Math.sin(a)*ry*3.2;
+    const c = pal[i%pal.length], ct = fg(c);
+    return `<div class="cur${flip?' flip':''}" style="--x:${x.toFixed(0)}px;--y:${y.toFixed(0)}px;--fx:${fx.toFixed(0)}px;--fy:${fy.toFixed(0)}px;--c:${c};--ct:${ct};--d:${(i*.11).toFixed(2)}s">`+
+      `<svg viewBox="0 0 18 22"><path d="M2 2 L2 18 L6.4 13.8 L9.6 20.4 L12.4 19.2 L9.3 12.8 L15.2 12.8 Z"/></svg><span>${esc(n)}</span></div>`;
+  }).join("");
+})();
+
+/* ---------- who we were ---------- */
+$("#tags").innerHTML = [["research","recherche"],["design","design"],["content","contenu"],["analytics","analytique"],["code","code"],["show & share","montrer et partager"],["design critiques","critiques de design"]]
+  .map(([en,fr],i)=>`<div class="sticky ${i<5?'s-paper':'s-yellow'}" style="--r:${rot().toFixed(2)}deg;--d:${(i*.08).toFixed(2)}s">${t2(en,fr)}</div>`).join("");
+
+/* ---------- final mile ---------- */
+(function flyers(){
+  const cols=["var(--blue)","var(--green)","var(--yellow)","var(--pink)","var(--blue)","var(--green)","var(--yellow)"];
+  const out=[];
+  for(let i=0;i<7;i++){
+    // six pile up against the wall; one makes it through
+    const through = i===3;
+    const stack = i%3, row = Math.floor(i/3);
+    const x = through ? "calc(86% - 20px)" : `calc(75% - 86px - ${stack*16}px)`;
+    const y = through ? 10 : (row*26 - 16 + stack*5);
+    out.push(`<div class="flyer" style="background:${cols[i]};--d:${(i*.3).toFixed(2)}s;--x:${x};--y:${y}px;--rot:${((i*53)%17)-8}deg"></div>`);
+  }
+  $("#flyers").innerHTML = out.join("");
+})();
+$("#hindsight").innerHTML = [
+  ["Stronger implementation relationships","— earlier, and on purpose.", "Des liens plus solides avec la mise en œuvre","— plus tôt, et volontairement."],
+  ["Reusable tools and processes","— so the next team starts further along.", "Des outils et des processus réutilisables","— pour que la prochaine équipe parte de plus loin."],
+  ["Clearer authority over our work","— so a good answer has somewhere to go.", "Une autorité plus claire sur notre travail","— pour qu’une bonne réponse ait quelque part où aller."]
+].map((h,i)=>`<div class="sticky s-yellow" style="--r:${rot().toFixed(2)}deg;--d:${(i*.12).toFixed(2)}s"><span class="kind">${t2("in hindsight","avec du recul")}</span><b>${t2(h[0],h[2])}</b>${t2(h[1],h[3])}</div>`).join("");
+
+/* ---------- carry ---------- */
+$("#carryPile").innerHTML = [["collaborate","collaborer"],["stay curious","rester curieux"],["understand the “why”","comprendre le « pourquoi »"],["ask for help","demander de l’aide"],["experiment","expérimenter"],["use evidence","s’appuyer sur les données"],["keep making things better","continuer d’améliorer les choses"]]
+  .map(([en,fr],i)=>`<div class="sticky s-yellow" style="--r:${rot().toFixed(2)}deg;--d:${(i*.1).toFixed(2)}s">${t2(en,fr)}</div>`).join("");
+const QUOTE = {
+  en:{text:"Listen deeply, use evidence, speak honestly, stay humble, and work together.", hl:["deeply,","evidence,","honestly,","humble,","together."]},
+  fr:{text:"Écouter vraiment, s’appuyer sur les données, parler franchement, rester humble et travailler ensemble.", hl:["vraiment,","données,","franchement,","humble","ensemble."]}
+};
+function splitQuote(){
+  const q=$("#bigquote"), Q=QUOTE[L], hl=new Set(Q.hl);
+  q.innerHTML = Q.text.split(/\s+/).map((w,i)=>`<span class="w${hl.has(w)?' hl':''}" style="transition-delay:${(i*.11).toFixed(2)}s">${w}</span>`).join(" ");
+}
+splitQuote();
+
+/* ---------- RAD ---------- */
+$("#evolve").innerHTML =
+  `<div class="sticky s-paper" style="--r:-1.2deg;--d:0s"><span class="kind">${t2("WURD","CREW")}</span>${t2("We were good at doing the work together.","On était bons pour faire le travail ensemble.")}</div>
+   <div class="arrow hand" aria-hidden="true">→</div>
+   <div class="sticky s-yellow" style="--r:1.1deg;--d:.25s"><span class="kind">RAD</span>${t2("How do we make other teams better at doing the work too?","Comment aider les autres équipes à mieux faire le travail, elles aussi?")}</div>`;
+$("#wantPile").innerHTML = [
+  ["A trusted and authoritative source of quality UX advice and work","Une source fiable et reconnue de conseils et de travail UX de qualité"],
+  ["A source of inspiration and support across web","Une source d’inspiration et de soutien pour tout le Web"],
+  ["A solution-oriented team people feel confident working with","Une équipe axée sur les solutions, avec qui on travaille en confiance"],
+  ["Research and design ingrained in WebOps and WUX","La recherche et le design ancrés dans WebOps et les équipes WUX"]
+].map(([en,fr],i)=>`<div class="sticky s-green" style="--r:${rot().toFixed(2)}deg;--d:${(i*.1).toFixed(2)}s">${t2(en,fr)}${CHECK}</div>`).join("");
+$("#notPile").innerHTML = [
+  ["A generator of reports nobody reads","Un générateur de rapports que personne ne lit"],
+  ["Information everyone loves and nobody follows through on","De l’information que tout le monde adore et que personne n’applique"],
+  ["Razzle dazzle central (exclusively)","La centrale du tape-à-l’œil (exclusivement)"],
+  ["An innovation-killing bureaucracy","Une bureaucratie qui tue l’innovation"]
+].map(([en,fr],i)=>`<div class="sticky s-pink" style="--r:${rot().toFixed(2)}deg;--d:${(i*.1).toFixed(2)}s">${t2(en,fr)}${STRIKE}</div>`).join("");
+$("#pair").innerHTML =
+  `<div class="sticky s-paper" style="--r:-1.5deg;--d:.1s"><span class="kind">${t2("the WURD retro, in five words","la rétro de CREW, en cinq mots")}</span>${t2("The website is getting better.","Le site Web devient meilleur.")}</div>`;
+
+/* ---------- static text: remember the English that's already in the page ---------- */
+document.querySelectorAll("[data-fr]").forEach(el=>{ if(el.dataset.en===undefined) el.dataset.en = el.innerHTML; });
+document.querySelectorAll("[data-fr-label]").forEach(el=>{ el.dataset.enLabel = el.getAttribute("aria-label"); });
+
+/* ---------- reveal on scroll ---------- */
+function reveal(el){ el.classList.add("in"); }
+const targets = document.querySelectorAll(".rv, .sticky, .marker, .bigquote, #mileBox");
+if(REDUCED || !("IntersectionObserver" in window)){
+  targets.forEach(reveal);
+}else{
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ reveal(e.target); io.unobserve(e.target); } });
+  },{threshold:.18, rootMargin:"0px 0px -6% 0px"});
+  targets.forEach(t=>io.observe(t));
+}
+
+/* hover a goodbye to cry again */
+const cry = e=>{
+  const s = e.target.closest && e.target.closest(".cryable.in");
+  if(!s || s.dataset.crying) return;
+  s.dataset.crying="1"; s.classList.remove("cry"); void s.offsetWidth; s.classList.add("cry");
+  setTimeout(()=>{ delete s.dataset.crying; }, 2300);
+};
+document.addEventListener("mouseover", cry);
+document.addEventListener("click", cry);
+
+/* ---------- counters ---------- */
+(function counters(){
+  const nums=[...document.querySelectorAll(".big[data-n]")].filter(n=>!isNaN(+n.dataset.n));
+  const run = el=>{
+    const n=+el.dataset.n, t0=performance.now(), dur=1300;
+    if(REDUCED){ el.textContent=n; return; }
+    const step=t=>{ const p=Math.min(1,(t-t0)/dur); el.textContent=Math.round(n*(1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+  if(REDUCED || !("IntersectionObserver" in window)){ return; }
+  nums.forEach(n=>{ n.textContent = 0; });
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ setTimeout(()=>run(e.target),350); io.unobserve(e.target);} }),{threshold:.5});
+  nums.forEach(n=>io.observe(n));
+})();
+
+/* ---------- Figma frames ---------- */
+document.querySelectorAll(".frame-label").forEach(lbl=>{
+  const frame = lbl.parentElement;
+  frame.classList.add("frame");
+  const sel = document.createElement("div");
+  sel.className="fsel"; sel.setAttribute("aria-hidden","true");
+  sel.innerHTML='<i></i><i></i><i></i><i></i><span class="dims"></span>';
+  frame.appendChild(sel);
+  frame.addEventListener("mouseenter",()=>{ sel.querySelector(".dims").textContent = `${Math.round(frame.offsetWidth)} × ${Math.round(frame.offsetHeight)}`; });
+});
+
+/* ---------- theme toggle ---------- */
+const renderTheme = (function theme(){
+  const btn=$("#themeToggle"), label=$("#ttLabel"), icon=$("#ttIcon");
+  const mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  const effective = ()=> root.getAttribute("data-theme") || (mq && mq.matches ? "dark" : "light");
+  const MOON='<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>';
+  const SUN='<circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/>';
+  function render(){
+    const dark = effective()==="dark", u=UI[L];
+    label.textContent = dark ? u.light : u.dark;
+    btn.setAttribute("aria-label", dark ? u.toLight : u.toDark);
+    icon.innerHTML = dark ? SUN : MOON;
+  }
+  btn.addEventListener("click",()=>{
+    const next = effective()==="dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try{ localStorage.setItem("wurd-theme", next); }catch(e){}
+    render();
+  });
+  if(mq && mq.addEventListener) mq.addEventListener("change", render);
+  render();
+  return render;
+})();
+
+/* ---------- hero ---------- */
+requestAnimationFrame(()=>$("#hero").classList.add("go"));
+
+/* ---------- the mark, three readings ---------- */
+let renderPause = ()=>{};
+(function readings(){
+  const stage=$("#stage"), btns=[...stage.querySelectorAll(".modes button[data-mode]")];
+  const texts=[...document.querySelectorAll(".readings-text .one")];
+  const order=["diamond","loop","w"];
+  let auto=true, idx=0, timer=null, raf=null, visible=false;
+  const eight=$("#eight"), trav=$("#traveller"), labs=[...stage.querySelectorAll(".loop-lab"), ...document.querySelectorAll("#loopChips li")];
+  const live=$("#readingsText"), pauseBtn=$("#pauseBtn"), pauseLabel=$("#pauseLabel"), pauseIcon=$("#pauseIcon");
+  let paused=false;
+  const L8 = eight.getTotalLength();
+  const verts=[[-100,-100],[-200,0],[-100,100],[100,-100],[200,0],[100,100]];
+  function set(mode){
+    stage.dataset.mode=mode;
+    btns.forEach(b=>b.setAttribute("aria-pressed", b.dataset.mode===mode?"true":"false"));
+    texts.forEach(t=>t.classList.toggle("on", t.dataset.mode===mode));
+    idx=order.indexOf(mode);
+    if(mode==="loop") startLoop(); else stopLoop();
+  }
+  function startLoop(){
+    if(raf || !visible || paused) return;
+    if(REDUCED){ labs.forEach(l=>l.classList.add("on")); return; }
+    const t0=performance.now(), period=7000;
+    const tick=t=>{
+      const f=((t-t0)%period)/period, pt=eight.getPointAtLength(f*L8);
+      trav.setAttribute("cx",pt.x); trav.setAttribute("cy",pt.y);
+      let best=-1,bd=1e9; verts.forEach((v,i)=>{const d=Math.hypot(v[0]-pt.x,v[1]-pt.y); if(d<bd){bd=d;best=i;}});
+      labs.forEach(l=>l.classList.toggle("on", +l.dataset.i===best && bd<60));
+      raf=requestAnimationFrame(tick);
+    };
+    raf=requestAnimationFrame(tick);
+  }
+  function stopLoop(){ if(raf){cancelAnimationFrame(raf); raf=null;} }
+  function cycle(){ if(!auto || paused) return; set(order[(idx+1)%order.length]); }
+  btns.forEach(b=>b.addEventListener("click",()=>{ auto=false; clearInterval(timer); timer=null; live.setAttribute("aria-live","polite"); set(b.dataset.mode); }));
+  renderPause = function(){
+    const u=UI[L];
+    pauseBtn.setAttribute("aria-pressed", paused?"true":"false");
+    pauseBtn.setAttribute("aria-label", paused?u.playA:u.pauseA);
+    pauseLabel.textContent = paused ? u.play : u.pause;
+    pauseIcon.innerHTML = paused ? '<path d="M3 1 L13 7 L3 13 Z"/>' : '<rect x="2" y="1" width="3.5" height="12"/><rect x="8.5" y="1" width="3.5" height="12"/>';
+  };
+  function setPaused(v){
+    paused=v; renderPause();
+    if(v){ stopLoop(); clearInterval(timer); timer=null; }
+    else { if(stage.dataset.mode==="loop") startLoop(); if(auto && visible && !timer) timer=setInterval(cycle,6500); }
+  }
+  pauseBtn.addEventListener("click",()=>setPaused(!paused));
+  if(REDUCED){ pauseBtn.hidden=true; }
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(es=>es.forEach(e=>{
+      visible=e.isIntersecting;
+      if(visible){ if(stage.dataset.mode==="loop") startLoop(); if(auto && !timer && !REDUCED && !paused) timer=setInterval(cycle,6500); }
+      else { stopLoop(); clearInterval(timer); timer=null; }
+    }),{threshold:.3}).observe(stage);
+  }else{ visible=true; }
+  set("diamond");
+})();
+
+/* ---------- WURD -> RAD, CREW -> RAD ----------
+   out: falls away · stay: stays · in: arrives */
+const MORPH = {
+  en:{letters:[["W","out",1.4],["U","out",1.05],["R","stay"],["A","in",1.05],["D","stay"]], drops:[.3,1.35],
+      aria:"The letters W U R D. The W and the U fall away, and an A arrives between R and D: RAD.", rm:"W U R D → R A D"},
+  fr:{letters:[["C","out",.95],["R","stay"],["E","out",.9],["W","out",1.4],["A","in",1.05],["D","in",1]], drops:[.25,2.3],
+      aria:"Les lettres C R E W. Le C, le E et le W tombent, puis un A et un D arrivent après le R : RAD.", rm:"C R E W → R A D"}
+};
+const morph = (function(){
+  const wrap=$("#morphWrap"), m=$("#morph");
+  const DROP='<svg class="drop" viewBox="0 0 20 28" aria-hidden="true"><path d="M10 1C10 1 2 12 2 18a8 8 0 0 0 16 0C18 12 10 1 10 1Z"/></svg>';
+  function build(){
+    const M=MORPH[L]; let o=0, n=0;
+    m.innerHTML = M.letters.map(([ch,role,w])=>{
+      let st = w ? `--w:${w}em;` : "";
+      if(role==="out"){ st += `--dl:${(o*.18).toFixed(2)}s;--tx:${o%2?".1em":"-.15em"};--rot:${o%2?24:-32}deg;`; o++; }
+      if(role==="in"){ st += `--dl:${(n*.22).toFixed(2)}s;`; n++; }
+      return `<span class="slot ${role}" style="${st}"><span class="ch">${ch}</span></span>`;
+    }).join("") + M.drops.map((x,i)=>DROP.replace('class="drop"',`class="drop d${i+1}" style="left:${x}em"`)).join("");
+    m.setAttribute("aria-label", M.aria);
+    $("#morphRm").textContent = M.rm;
+  }
+  const play=()=>{ wrap.classList.remove("go"); m.classList.remove("go"); void m.offsetWidth; wrap.classList.add("go"); m.classList.add("go"); };
+  build();
+  if(REDUCED || !("IntersectionObserver" in window)){ play(); }
+  else{
+    const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ setTimeout(play,500); io.disconnect(); } }),{threshold:.55});
+    io.observe(m);
+  }
+  $("#replay").addEventListener("click",play);
+  return {rebuild(){ const played=wrap.classList.contains("go"); build(); if(played) play(); }};
+})();
+
+/* ---------- language toggle ---------- */
+function setLang(l, save){
+  L = l;
+  root.setAttribute("lang", l);
+  document.title = UI[l].title;
+  document.querySelectorAll("[data-fr]").forEach(el=>{ el.innerHTML = el.dataset[l]; });
+  document.querySelectorAll("[data-fr-label]").forEach(el=>{ el.setAttribute("aria-label", l==="fr" ? el.dataset.frLabel : el.dataset.enLabel); });
+  // the lockup: English puts WURD first, French puts CREW first
+  $(".lockup .word.l").removeAttribute("lang");
+  $(".lockup .word.r").setAttribute("lang", l==="fr" ? "en" : "fr");
+  const bq=$("#bigquote"); splitQuote();
+  const tg=$("#langToggle"), u=UI[l];
+  tg.setAttribute("lang", u.otherLang); tg.setAttribute("aria-label", u.other);
+  $("#ltLong").textContent = u.other; $("#ltShort").textContent = u.otherShort;
+  renderTheme(); renderPause(); morph.rebuild();
+  if(save){ try{ localStorage.setItem("wurd-lang", l); }catch(e){} }
+}
+$("#langToggle").addEventListener("click",()=>setLang(L==="fr"?"en":"fr", true));
+setLang(L, false);
+</script>
+
+</body>
+</html>
