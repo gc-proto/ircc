@@ -27,7 +27,8 @@ try{var t=localStorage.getItem("wurd-theme");if(t==="dark"||t==="light")r.setAtt
   --purple:#6A23B1; --purple-soft:#ECE2F8;
   --tear:#3F8FD6;
   --paper-ink:#1B1624;
-  --blue:#CFE6FF; --pink:#FFD2D2; --green:#CDEFD6; --yellow:#FFEFA0; --paper:#FFFFFF;
+  --blue:#CFE6FF; --pink:#FFD2D2; --green:#CDEFD6; --yellow:#FFEFA0; --paper:#FFFFFF; --lilac:#E4D5F7;
+  --hl-r:#D9C2F5; --hl-d:#B5E6C3; --hl-a:#B8D9FF;
   --smile-blue:#2E6AA8; --check-green:#2C7447;
   --shadow:0 1px 1px rgba(27,22,36,.07), 0 10px 20px -10px rgba(27,22,36,.32);
   --shadow-lift:0 2px 2px rgba(27,22,36,.08), 0 18px 28px -12px rgba(27,22,36,.38);
@@ -39,6 +40,7 @@ try{var t=localStorage.getItem("wurd-theme");if(t==="dark"||t==="light")r.setAtt
     --ink:#EEEAF4; --ink-2:#BDB6C9; --ink-3:#9D95AB;
     --stage:#1D1926; --year-ink:#F4EEFF; --figma-text:#4DB5FF;
     --stack-1:#B48BF2; --stack-2:#8A5CE0; --stack-3:#6A3FC0; --stack-4:#4A2A90;
+    --hl-r:#6B4A99; --hl-d:#3D7A52; --hl-a:#3A6A9E;
     --line:#4A4356;
     --purple:#B48BF2; --purple-soft:#291E3A;
     --tear:#7CBAF0;
@@ -52,6 +54,7 @@ try{var t=localStorage.getItem("wurd-theme");if(t==="dark"||t==="light")r.setAtt
   --ink:#EEEAF4; --ink-2:#BDB6C9; --ink-3:#9D95AB;
     --stage:#1D1926; --year-ink:#F4EEFF; --figma-text:#4DB5FF;
     --stack-1:#B48BF2; --stack-2:#8A5CE0; --stack-3:#6A3FC0; --stack-4:#4A2A90;
+    --hl-r:#6B4A99; --hl-d:#3D7A52; --hl-a:#3A6A9E;
   --line:#4A4356;
   --purple:#B48BF2; --purple-soft:#291E3A;
   --tear:#7CBAF0;
@@ -143,6 +146,21 @@ h2{font-weight:700;font-size:clamp(32px,5vw,54px);line-height:1.05;letter-spacin
 .hero.go .cue{animation:fade 1s ease 4.3s forwards}
 .cue i{width:22px;height:22px;background:var(--yellow);box-shadow:var(--shadow);display:block;filter:var(--paper-filter);animation:bob 2.2s ease-in-out 5}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(8px) rotate(4deg)}}
+
+/* ---------- MANDATE ---------- */
+.mandate{position:relative;max-width:820px;margin:10px auto 0;background:var(--stage);box-shadow:var(--shadow);padding:44px clamp(22px,5vw,56px) 40px;transform:rotate(-.6deg)}
+.mandate .tape{position:absolute;top:-14px;left:50%;width:130px;height:30px;margin-left:-65px;background:var(--yellow);opacity:.85;transform:rotate(2deg);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.mandate .kind{display:block;font-family:"DM Mono",monospace;font-weight:500;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+.mandate-text{margin:0;font-weight:600;font-size:clamp(26px,3.9vw,42px);line-height:1.25;letter-spacing:-.02em;text-wrap:balance}
+.mandate-text mark{color:inherit;background-color:transparent;background-repeat:no-repeat;background-position:0 88%;background-size:100% .34em;padding:0 .04em;
+  transition:background-size .9s cubic-bezier(.3,.8,.3,1)}
+.mandate-text .hl-r{background-image:linear-gradient(var(--hl-r),var(--hl-r))}
+.mandate-text .hl-d{background-image:linear-gradient(var(--hl-d),var(--hl-d))}
+.mandate-text .hl-a{background-image:linear-gradient(var(--hl-a),var(--hl-a))}
+.js .mandate:not(.in) mark{background-size:0% .34em}
+.mandate.in .hl-r{transition-delay:.5s} .mandate.in .hl-d{transition-delay:.9s} .mandate.in .hl-a{transition-delay:1.3s}
+.mandate-note{display:block;text-align:right;color:var(--purple);font-size:21px;margin-top:14px;transform:rotate(-2deg)}
+.carry-on{margin:80px auto 0;max-width:36ch;color:var(--ink-2);font-size:clamp(19px,2.2vw,22px)}
 
 /* ---------- STICKY ---------- */
 .sticky{
@@ -295,7 +313,20 @@ main{overflow-x:clip}
 .lab.hand{font-family:"Gochi Hand",cursive;font-size:30px;font-weight:400;fill:var(--purple)}
 html[lang="fr"] .stage .dlab{font-size:16px}
 html[lang="fr"] .stage .loop-lab{font-size:19px}
-@media (max-width:640px){.stage .lab{display:none}}
+@media (max-width:640px){
+  .stage .loop-lab{display:none}
+  .stage .guides{display:none}
+  .stage .lab{font-size:31px}
+  html[lang="fr"] .stage .dlab{font-size:28px}
+  .stage .lab.sm{font-size:27px}
+  .stage .lab.hand{font-size:42px}
+}
+.stage .stage-chips{display:none;justify-content:center;margin:6px 0 0}
+/* the chips sit in the empty band under the drawing, so the card keeps its height between readings */
+@media (max-width:640px){ .stage[data-mode="loop"] .stage-chips{display:flex;position:relative;margin:-25% 0 0;min-height:25%} }
+.stage .stage-chips li{font-size:15px;padding:4px 11px}
+.stage .stage-chips{gap:6px}
+@media (max-width:400px){ .stage .stage-chips li{font-size:14px;padding:3px 9px} }
 .guide{fill:none;stroke:var(--ink-3);stroke-width:1.5;stroke-dasharray:4 5}
 .traveller{fill:var(--yellow);stroke:var(--ink);stroke-width:3}
 .trail{fill:none;stroke:var(--ink-3);stroke-width:2;stroke-dasharray:3 6;opacity:.6}
@@ -396,6 +427,55 @@ html[lang="fr"] .stage .loop-lab{font-size:19px}
 .replay:hover{color:var(--purple);border-color:var(--purple)}
 .replay:focus-visible{outline:2px solid var(--purple);outline-offset:2px}
 
+/* ---------- THE SPINNER ---------- */
+.spin-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:44px;align-items:center;margin:10px 0 0}
+@media (max-width:820px){.spin-grid{grid-template-columns:minmax(0,1fr);gap:20px}}
+.spin-stage{position:relative;max-width:500px;width:100%;margin:0 auto}
+.spin-stage svg{display:block;width:100%;height:auto;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.spin-stage svg.dragging{cursor:grabbing}
+.spin-hint{position:absolute;right:2%;top:-4px;color:var(--purple);font-size:22px;transform:rotate(6deg);pointer-events:none}
+@media (max-width:640px){
+  .spin-hint{top:auto;bottom:6%;right:0;font-size:20px;transform:rotate(-5deg)}
+  .spin-grid{gap:8px}
+  .spin-side .modes{gap:7px}
+  .spin-side .modes button{font-size:15px;padding:8px 13px}
+  #spell{gap:8px;margin-top:40px;flex-wrap:nowrap}
+  .spell .ltile{width:calc((100% - 16px) / 3);min-width:0;padding:12px 9px 14px;hyphens:auto;overflow-wrap:anywhere}
+  .spell .ltile .big{font-size:46px}
+  .spell .ltile b{font-size:clamp(11.5px,3.6vw,15px);overflow-wrap:normal}
+  .spell .ltile small{font-size:12px;overflow-wrap:normal}
+}
+.arm{stroke:var(--line);stroke-width:58;stroke-linecap:round}
+.hub{fill:var(--stage);stroke:var(--line);stroke-width:6}
+.hub-mark path{fill:none;stroke:#6A23B1;stroke-width:34;stroke-linejoin:miter}
+.pole .disc{stroke:transparent;stroke-width:6;filter:var(--paper-filter);transform-box:fill-box;transform-origin:center;
+  transition:transform .45s cubic-bezier(.3,1.5,.5,1),stroke .3s}
+.pole-r .disc{fill:var(--lilac)} .pole-d .disc{fill:var(--green)} .pole-a .disc{fill:var(--blue)}
+.pole.on .disc,.pole.lit .disc{stroke:#6A23B1;transform:scale(1.07)}
+.pole text{fill:#1B1624;font-family:"Lexend",sans-serif;font-weight:600;font-size:23px;text-anchor:middle}
+.pole text.amp{font-weight:400}
+.pole .letter{fill:#6A23B1;font-weight:800;font-size:40px;transform-box:fill-box;transform-origin:center;
+  transition:opacity .35s ease, transform .5s cubic-bezier(.3,1.7,.5,1)}
+.js .spin-svg:not(.lettered) .letter{opacity:0;transform:scale(.3)}
+.arrows path{fill:none;stroke:var(--ink-3);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.arrows{transition:opacity .4s ease}
+.arrows.off{opacity:0}
+.spin-side .modes{justify-content:flex-start;margin:0 0 22px}
+.pole-text .one{display:none}
+.pole-text .one.on{display:block;animation:rise .5s ease}
+.pole-text h3{font-weight:700;font-size:28px;letter-spacing:-.015em;margin:0 0 10px}
+.pole-text p{color:var(--ink-2);margin:0;max-width:40ch;font-size:19px}
+.spell{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:56px 0 0;list-style:none;padding:0}
+.ltile{width:170px;padding:16px 16px 18px;box-shadow:var(--shadow);filter:var(--paper-filter);color:#1B1624;text-align:left;
+  transform:rotate(var(--r));transition:opacity .4s ease var(--d), transform .6s cubic-bezier(.3,1.5,.5,1) var(--d)}
+.js .spell:not(.go) .ltile{opacity:0;transform:translateY(-18px) scale(1.15) rotate(calc(var(--r) + 6deg))}
+.ltile .big{display:block;font-weight:800;font-size:64px;line-height:1;color:#6A23B1;letter-spacing:-.02em}
+.ltile b{display:block;font-weight:700;font-size:19px;margin-top:8px}
+.ltile small{display:block;font-family:"DM Mono",monospace;font-size:13px;color:#463F52;margin-top:4px;line-height:1.35}
+.spell-note{text-align:center;max-width:42ch;margin:30px auto 0;color:var(--ink-2);font-size:clamp(19px,2.2vw,22px)}
+.spell-note strong{color:var(--ink);font-weight:700}
+.spell-note .hand{color:var(--purple);font-size:1.2em}
+
 /* ---------- RAD ---------- */
 .evolve{display:grid;grid-template-columns:minmax(0,1fr) 60px minmax(0,1fr);align-items:center;gap:10px;margin:0 0 70px}
 .evolve .sticky{width:100%;min-height:0;padding:22px 22px 26px;font-size:clamp(17px,2vw,21px);font-weight:500;line-height:1.35}
@@ -433,12 +513,14 @@ html[lang="fr"] .stage .loop-lab{font-size:19px}
 .next .c{width:26px;height:26px;border-radius:50%;border:2px solid var(--ink-3);background:var(--board);flex:none}
 .next .c.start{width:120px;height:120px;border-color:var(--purple);border-width:3px;display:grid;place-items:center;font-weight:700;color:var(--purple);font-size:20px;letter-spacing:.05em}
 .next-labels{display:flex;justify-content:center;gap:120px;margin-top:12px;font-family:"DM Mono",monospace;font-size:14px;color:var(--ink-2)}
-.signoff{margin:80px auto 0;font-size:clamp(20px,2.4vw,26px);font-weight:400;max-width:30ch}
+.signoff{margin:40px auto 0;font-size:clamp(20px,2.4vw,26px);font-weight:400;max-width:30ch}
 .signoff .hand{display:block;color:var(--purple);font-size:1.5em;margin-top:14px;transform:rotate(-2deg)}
 .foot-mark{width:54px;height:auto;margin:40px auto 0;display:block;opacity:.8}
 
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.toolbar{position:fixed;top:14px;right:14px;z-index:60;display:flex;gap:8px}
+.toolbar{position:fixed;top:14px;right:14px;z-index:60;display:flex;gap:8px;transition:transform .3s ease, opacity .3s ease}
+.toolbar.tb-hide{transform:translateY(-140%);opacity:0}
+.toolbar.tb-hide:focus-within{transform:none;opacity:1}
 .theme-toggle{
   display:inline-flex;align-items:center;gap:8px;
   min-height:44px;padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);
@@ -481,18 +563,31 @@ button:focus-visible,.theme-toggle:focus-visible{outline:3px solid var(--purple)
     </h1>
     <p class="names" data-fr='Conception et Recherche en Expérience utilisateur Web<br><span lang="en">Web UX Research &amp; Design</span>'>Web UX Research &amp; Design<br><span lang="fr">Conception et Recherche en Expérience utilisateur Web</span></p>
     <p class="hero-title" data-fr="Trois ans et demi.">Three and a half years.</p>
-    <p class="hero-sub" data-fr="D’avril 2023 à septembre 2026. Jetons un coup d’œil à ce qu’on a fait.">April 2023 to September 2026. Let’s take a quick look at what we did.</p>
-    <span class="board-note hand" data-fr="pas nécessairement une liste exhaustive — n’hésitez pas à ajouter des choses<small>— tiré de notre propre tableau</small>">not necessarily an exhaustive list — feel free to add things<small>— from our own timeline board</small></span>
+    <p class="hero-sub" data-fr="D’avril 2023 à septembre 2026. Ce qu’on a fait, ce qu’on a appris, et où tout ça s’en va.">April 2023 to September 2026. What we made, what we learned, and where it goes next.</p>
     <div class="cue" aria-hidden="true"><i></i><span data-fr="défiler">scroll</span></div>
   </div>
 </section>
 
+<!-- =================== MANDATE =================== -->
+<section id="mandate" style="padding-top:30px;padding-bottom:40px">
+  <div class="wrap">
+    <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span data-fr="le mandat">the brief</span></span>
+    <h2 class="rv" data-fr="Notre raison d’être">Why we existed</h2>
+    <div class="mandate rv" id="mandateCard">
+      <span class="tape" aria-hidden="true"></span>
+      <span class="kind" data-fr="notre mandat">our mandate</span>
+      <p class="mandate-text" data-fr="Améliorer la présence Web d’IRCC par la <mark class=&quot;hl-r&quot;>recherche</mark> et le <mark class=&quot;hl-d&quot;>design</mark>, dans une optique d’<mark class=&quot;hl-a&quot;>amélioration continue</mark>.">Improve IRCC’s web presence through <mark class="hl-r">research</mark> and <mark class="hl-d">design</mark>, with a <mark class="hl-a">continuous improvement</mark> lens.</p>
+    </div>
+    <p class="nums-note rv" style="margin-top:34px" data-fr="Ça tient sur un post-it. Pour être à la hauteur, il a fallu trois ans et demi, douze personnes et beaucoup de tableaux blancs.">It fits on one sticky. Living up to it took three and a half years, twelve people and a lot of whiteboards.</p>
+  </div>
+</section>
+
 <!-- =================== NUMBERS =================== -->
-<section id="numbers" style="padding-top:40px">
+<section id="numbers" style="padding-top:70px">
   <div class="wrap">
     <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span data-fr="en chiffres">by the numbers</span></span>
     <h2 class="rv" data-fr="On compte les post-it">Counting the stickies</h2>
-    <p class="lede rv" data-fr="Tout ce qui suit vient directement du tableau qu’on a fait ensemble. Bleu pour les arrivées, rose pour les départs, vert pour ce qu’on a livré.">Everything below comes straight off the board we made together. Blue for hellos, pink for goodbyes, green for the things we shipped.</p>
+    <p class="lede rv" data-fr="Tout ce qui suit vient directement du tableau Figjam de rétroaction qu’on a fait ensemble. Bleu pour les arrivées, rose pour les départs, vert pour ce qu’on a livré.">Everything below comes straight off the Figjam retro board we made together. Blue for hellos, pink for goodbyes, green for the things we shipped.</p>
     <div class="nums" id="nums"></div>
     <p class="nums-note rv" id="numsNote"></p>
   </div>
@@ -502,7 +597,7 @@ button:focus-visible,.theme-toggle:focus-visible{outline:3px solid var(--purple)
 <section id="timeline" style="padding-top:60px">
   <div class="wrap">
     <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span data-fr="le tableau">the board</span></span>
-    <h2 class="rv" data-fr="Ce qu’on a fait">What we did</h2>
+    <h2 class="rv" data-fr="Trois ans et demi, un post-it à la fois">Three and a half years, one sticky at a time</h2>
     <ul class="legend rv">
       <li><span><i style="background:var(--blue)" aria-hidden="true"></i><span data-fr="bonjour">hello</span></span></li>
       <li><span><i style="background:var(--pink)" aria-hidden="true"></i><span data-fr="au revoir">goodbye</span></span></li>
@@ -516,7 +611,7 @@ button:focus-visible,.theme-toggle:focus-visible{outline:3px solid var(--purple)
         <div class="ring" data-fr="FIN">END</div>
       </div>
       <p class="hand everyone" data-fr="tout le monde sur le tableau, une dernière fois">everyone back on the board, one last time</p>
-      <p data-fr="Tout projet pilote en a une. Les bons laissent quelque chose derrière eux.">Every pilot has one. The good ones leave something behind.</p>
+      <p data-fr="Tout projet pilote a une fin. Les meilleurs laissent quelque chose derrière eux.">Every pilot ends. The good ones leave something behind.</p>
     </div>
   </div>
 </section>
@@ -543,13 +638,13 @@ button:focus-visible,.theme-toggle:focus-visible{outline:3px solid var(--purple)
               <text class="lab dlab" x="-50" y="-142" text-anchor="middle" data-fr="Définir">Define</text>
               <text class="lab dlab" x="50" y="-142" text-anchor="middle" data-fr="Développer">Develop</text>
               <text class="lab dlab" x="150" y="-142" text-anchor="middle" data-fr="Livrer">Deliver</text>
-              <line class="guide" x1="-100" y1="-160" x2="-100" y2="-128"/>
+              <g class="guides"><line class="guide" x1="-100" y1="-160" x2="-100" y2="-128"/>
               <line class="guide" x1="0" y1="-160" x2="0" y2="-128"/>
-              <line class="guide" x1="100" y1="-160" x2="100" y2="-128"/>
-              <text class="lab sm" x="-100" y="160" text-anchor="middle" data-fr="le problème">the problem</text>
-              <text class="lab sm" x="100" y="160" text-anchor="middle" data-fr="la solution">the solution</text>
-              <text class="lab hand" x="-100" y="190" text-anchor="middle">R</text>
-              <text class="lab hand" x="100" y="190" text-anchor="middle">D</text>
+              <line class="guide" x1="100" y1="-160" x2="100" y2="-128"/></g>
+              <text class="lab sm pl" x="-100" y="160" text-anchor="middle" data-fr="le problème">the problem</text>
+              <text class="lab sm pl" x="100" y="160" text-anchor="middle" data-fr="la solution">the solution</text>
+              <text class="lab hand rd" x="-100" y="190" text-anchor="middle">R</text>
+              <text class="lab hand rd" x="100" y="190" text-anchor="middle">D</text>
             </g>
 
             <!-- reading 2: infinity -->
@@ -571,6 +666,9 @@ button:focus-visible,.theme-toggle:focus-visible{outline:3px solid var(--purple)
               <text class="lab hand" x="0" y="160" text-anchor="middle" style="font-size:30px" data-fr="un W, en quelque sorte">W, kind of</text>
             </g>
           </svg>
+          <ol class="chips stage-chips" aria-hidden="true">
+            <li data-i="0" data-fr="comprendre">understand</li><li data-i="1" data-fr="essayer">try</li><li data-i="2" data-fr="tester">test</li><li data-i="3" data-fr="apprendre">learn</li><li data-i="4" data-fr="améliorer">improve</li><li data-i="5" data-fr="…encore">…again</li>
+          </ol>
           <div class="modes" role="group" aria-label="Choose a reading" data-fr-label="Choisir une lecture">
             <button type="button" data-mode="diamond" aria-pressed="true" data-fr="Double diamant">Double diamond</button>
             <button type="button" data-mode="loop" aria-pressed="false" data-fr="Infini">Infinity</button>
@@ -585,7 +683,7 @@ button:focus-visible,.theme-toggle:focus-visible{outline:3px solid var(--purple)
         <div class="one on" data-mode="diamond">
           <h3 data-fr="Un double diamant">A double diamond</h3>
           <p data-fr="Explorer le problème, le cerner, explorer les solutions, les cerner à nouveau. <strong>Découvrir, définir, développer, livrer.</strong>">Go wide on the problem, narrow it down, go wide on solutions, narrow again. <strong>Discover, define, develop, deliver.</strong></p>
-          <p data-fr="Le premier diamant, c’est le problème. Le second, c’est la solution. Gardez ça en tête — ça compte à la fin de cette page.">The first diamond is the problem. The second is the solution. Hold that thought — it matters at the end of this page.</p>
+          <p data-fr="Le premier diamant, c’est le problème. Le second, c’est la solution.">The first diamond is the problem. The second is the solution.</p>
         </div>
         <div class="one" data-mode="loop">
           <h3 data-fr="Une boucle infinie">An infinity loop</h3>
@@ -599,7 +697,7 @@ button:focus-visible,.theme-toggle:focus-visible{outline:3px solid var(--purple)
         <div class="one" data-mode="w">
           <h3 data-fr="Un W, en quelque sorte">A W, kind of</h3>
           <p data-fr="Suivez le bord du bas. Plissez un peu les yeux. Le voilà.">Trace the bottom edge. Squint a little. There it is.</p>
-          <p data-fr="Le W — celui de WURD comme celui de CREW — est la seule partie du nom qui ne continue pas. <strong>Il reste quand même dans le logo.</strong>">The W is the only part of the name that doesn’t carry forward. <strong>It stays in the mark anyway.</strong></p>
+          <p data-fr="W pour Web, bien sûr.">W for Web, of course.</p>
         </div>
       </div>
     </div>
@@ -610,10 +708,10 @@ button:focus-visible,.theme-toggle:focus-visible{outline:3px solid var(--purple)
 <section id="who">
   <div class="wrap">
     <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span data-fr="ce qui a fonctionné">what made it work</span></span>
-    <h2 class="rv" data-fr="Ça n’a jamais été la méthodologie">It was never the methodology</h2>
-    <p class="lede rv" data-fr="La rétro était claire là-dessus. Notre plus grande force n’était ni une méthode ni un livrable. C’était <strong>les gens, la culture et la liberté d’expérimenter</strong>, et la façon dont les trois se nourrissaient.">The retro was clear about this. Our greatest strength wasn’t a method or a deliverable. It was <strong>the people, the culture, and the freedom to experiment</strong>, and the way those three fed each other.</p>
+    <h2 class="rv" data-fr="Ça n’a jamais été seuleent la méthodologie">It was never only the methodology</h2>
+    <p class="lede rv" data-fr="Notre plus grande force n’était ni une méthode ni un livrable. C’était <strong>les gens, la culture et la liberté d’expérimenter</strong>, et la façon dont les trois se nourrissaient.">Our greatest strength wasn’t a method or a deliverable. It was <strong>the people, the culture, and the freedom to experiment</strong>, and the way those three fed each other.</p>
     <div class="tags" id="tags"></div>
-    <p class="lede rv" style="max-width:52ch" data-fr="On partageait ce qu’on savait, on remettait les idées en question sans que ce soit personnel, on apprenait les uns des autres, et on passait vite de l’idée au prototype aux données probantes. Et on a surtout résisté à l’idée que la première réponse devait être la bonne.">People shared what they knew, challenged ideas without making it personal, learned from each other, and got from an idea to a prototype to evidence fast. And we mostly resisted the expectation that the first answer had to be the right one.</p>
+    <p class="lede rv" style="max-width:52ch" data-fr="On partageait ce qu’on savait, on remettait les idées en question sans que ce soit personnel, on apprenait les uns des autres, et on passait vite de l’idée au prototype aux données probantes. <strong>Et on était une démonstration : la preuve qu’une petite équipe, à qui on fait confiance, peut changer la façon dont un ministère conçoit pour le Web.</strong>">People shared what they knew, challenged ideas without making it personal, learned from each other, and got from an idea to a prototype to evidence fast. <strong>And we were a working example: proof that a small, trusted team can change how a department builds for the web.</strong></p>
   </div>
 </section>
 
@@ -622,7 +720,7 @@ button:focus-visible,.theme-toggle:focus-visible{outline:3px solid var(--purple)
   <div class="wrap">
     <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span data-fr="la partie honnête">the honest part</span></span>
     <h2 class="rv" data-fr="Le dernier kilomètre">The final mile</h2>
-    <p class="lede rv" data-fr="On était souvent meilleurs pour trouver la réponse que pour lui faire franchir <strong>le dernier kilomètre</strong>, jusqu’entre les mains des gens. C’est la partie qui pique encore un peu.">We were often better at getting to the answer than at getting the answer <strong>through the final mile</strong> and into people’s hands. That’s the part that still stings a little.</p>
+    <p class="lede rv" data-fr="On était souvent meilleurs pour trouver la réponse que pour lui faire franchir <strong>le dernier kilomètre</strong>, jusqu’entre les mains des gens.">We were often better at getting to the answer than at getting the answer <strong>through the final mile</strong> and into people’s hands. </p>
     <div class="mile rv" id="mileBox">
       <div class="track" aria-hidden="true">
         <div class="lane"><span class="ln" data-fr="recherche">research</span><span data-fr="rapide">fast</span></div>
@@ -635,7 +733,7 @@ button:focus-visible,.theme-toggle:focus-visible{outline:3px solid var(--purple)
     </div>
     <p class="rv" id="gotInWay" style="color:var(--ink-2);font-size:18px;margin:0 0 10px" data-fr="Ce qui nous a freinés :">What got in the way:</p>
     <ul class="blockers rv" aria-labelledby="gotInWay">
-      <li data-fr="responsabilités ambiguës">ambiguous ownership</li><li data-fr="échéanciers flous">loose timelines</li><li data-fr="processus d’approbation">approval processes</li><li data-fr="pouvoir limité">limited authority</li><li data-fr="appétit inégal pour l’itération">uneven appetite for iteration</li>
+      <li data-fr="responsabilités ambiguës">ambiguous ownership</li><li data-fr="échéanciers flous">loose timelines</li><li data-fr="processus d’approbation">approval processes</li><li data-fr="pouvoir limité">limited authority</li>
     </ul>
     <div class="hindsight" id="hindsight"></div>
   </div>
@@ -661,12 +759,85 @@ button:focus-visible,.theme-toggle:focus-visible{outline:3px solid var(--purple)
     <div class="morph" id="morph" role="img" aria-label=""></div>
     <p class="rm-only" id="morphRm"></p>
     <svg class="morph-smile" viewBox="0 0 200 40" aria-hidden="true"><path pathLength="100" d="M10 8 Q100 60 190 8"/></svg>
-    <p class="morph-caption" data-fr="En anglais, deux lettres restaient. En français, les comptes sont moins ronds : seul le R survit. Mais le A veut enfin dire quelque chose — <strong>Recherche, Analytique et Design</strong>.<br><br>Le W quitte le nom, dans les deux langues. <span class=&quot;hand&quot;>Il reste dans le logo.</span><br><br>Et en anglais, un <em lang=&quot;en&quot;>crew</em>, c’est un équipage. Ce qu’on a toujours été.">
+    <p class="morph-caption" data-fr="En anglais, deux lettres restaient. En français, les comptes sont moins ronds : seul le R survit. Mais le A veut enfin dire quelque chose — <strong>Recherche, Analytique et Design</strong>.<br><br><br>Et en anglais, un <em lang=&quot;en&quot;>crew</em>, c’est un équipage. Ce qu’on a toujours été.<br><br>">
       <strong>Research and Design</strong> were in the name from the start. They’re also the two diamonds in the mark — the problem, and the solution.<br><br>
-      The W leaves the name. <span class="hand">It stays in the logo.</span><br><br>
-      And in French we were CREW — which was always the more accurate name.
+      And in French we were CREW — which was always the more accurate name.<br><br>
     </p>
     <button class="replay" id="replay" type="button" data-fr="Rejouer">Play it again</button>
+  </div>
+</section>
+
+<!-- =================== THE SPINNER =================== -->
+<section id="spinner">
+  <div class="wrap">
+    <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span data-fr="la toupie">the spinner</span></span>
+    <h2 class="rv" data-fr="On avait dessiné RAD avant qu’il ait un nom">We drew RAD before it had a name</h2>
+    <p class="lede rv" style="max-width:50ch" data-fr="En cours de route, on avait simplifié le double diamant en trois pôles, imaginés comme une toupie à main. Pas de début, pas de ligne d’arrivée : on déplace le focus d’un pôle à l’autre, dans un sens comme dans l’autre, aussi longtemps que le travail le demande.">Somewhere along the way we simplified the double diamond into three poles, and pictured them like a fidget spinner. No start, no finish line: you shift the focus from one pole to another, in either direction, for as long as the work needs it.</p>
+
+    <div class="spin-grid">
+      <div class="spin-stage rv">
+        <svg class="spin-svg" id="spinSvg" viewBox="-258 -258 516 516" role="img" aria-label="A three-pole spinner: research and explore, design and test, measure and monitor, connected in a loop." data-fr-label="Une toupie à trois pôles : recherche et exploration, design et test, mesure et suivi, reliés en boucle.">
+          <g class="arrows" id="arrCw"></g>
+          <g class="arrows off" id="arrCcw"></g>
+          <g id="spinBody">
+            <line class="arm" x1="0" y1="0" x2="-129.9" y2="-75"/><line class="arm" x1="0" y1="0" x2="129.9" y2="-75"/><line class="arm" x1="0" y1="0" x2="0" y2="150"/>
+            <circle class="hub" r="46"/>
+            <g class="hub-mark" transform="scale(.15)"><path d="M-33.9,-33.9 L-100,-100 L-200,0 L-100,100 L100,-100 L200,0 L100,100 L33.9,33.9"/></g>
+            <g class="pole pole-r" data-k="r" transform="translate(-129.9,-75)"><g class="upright">
+              <circle class="disc" r="92"/>
+              <text class="letter" y="-34">R</text>
+              <text y="2" data-fr="Recherche">Research</text><text class="amp" y="28" data-fr="et">&amp;</text><text y="54" data-fr="exploration">explore</text>
+            </g></g>
+            <g class="pole pole-d" data-k="d" transform="translate(129.9,-75)"><g class="upright">
+              <circle class="disc" r="92"/>
+              <text class="letter" y="-34">D</text>
+              <text y="2">Design</text><text class="amp" y="28" data-fr="et">&amp;</text><text y="54">test</text>
+            </g></g>
+            <g class="pole pole-a" data-k="a" transform="translate(0,150)"><g class="upright">
+              <circle class="disc" r="92"/>
+              <text class="letter" y="-34">A</text>
+              <text y="2" data-fr="Mesure">Measure</text><text class="amp" y="28" data-fr="et">&amp;</text><text y="54" data-fr="suivi">monitor</text>
+            </g></g>
+          </g>
+        </svg>
+        <span class="spin-hint hand" aria-hidden="true" data-fr="faites-la tourner">give it a flick</span>
+      </div>
+
+      <div class="spin-side rv">
+        <div class="modes" role="group" aria-label="Focus on a pole" data-fr-label="Mettre le focus sur un pôle">
+          <button type="button" data-pole="r" aria-pressed="false" data-fr="Recherche et exploration">Research &amp; explore</button>
+          <button type="button" data-pole="d" aria-pressed="false" data-fr="Design et test">Design &amp; test</button>
+          <button type="button" data-pole="a" aria-pressed="false" data-fr="Mesure et suivi">Measure &amp; monitor</button>
+          <button type="button" class="pause" id="spinBtn" data-fr="Faire tourner">Spin it</button>
+          <button type="button" class="pause" id="spellBtn" data-fr="Lire à rebours">Read it backwards</button>
+        </div>
+        <div class="pole-text" id="poleText" aria-live="off">
+          <div class="one on" data-k="">
+            <h3 data-fr="Pas de mauvais sens">No wrong direction</h3>
+            <p data-fr="Choisissez un pôle, ou faites tourner la toupie. Le travail se déplace là où il y a quelque chose à apprendre.">Pick a pole, or give the spinner a flick. The work moves to wherever there’s something to learn.</p>
+          </div>
+          <div class="one" data-k="r">
+            <h3 data-fr="Recherche et exploration">Research &amp; explore</h3>
+            <p data-fr="Comprendre les gens, leurs tâches et le problème avant de construire quoi que ce soit. Ratisser large, et ne pas tomber amoureux de la première réponse.">Understand people, their tasks and the problem before anything gets built. Go wide, and don’t fall in love with the first answer.</p>
+          </div>
+          <div class="one" data-k="d">
+            <h3 data-fr="Design et test">Design &amp; test</h3>
+            <p data-fr="Prototyper, mettre ça devant de vraies personnes, corriger ce qui accroche, et tester encore.">Prototype, put it in front of real people, fix what they trip on, and test again.</p>
+          </div>
+          <div class="one" data-k="a">
+            <h3 data-fr="Mesure et suivi">Measure &amp; monitor</h3>
+            <p data-fr="Une fois en ligne, regarder ce qui se passe vraiment — et laisser les données dire où regarder ensuite.">Once it’s live, watch what actually happens — and let the data tell you where to look next.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ol class="spell" id="spell" aria-label="R A D">
+      <li class="ltile" style="background:var(--lilac);--r:-2deg;--d:0s"><span class="big">R</span><b data-fr="Recherche">Research</b><small data-fr="recherche et exploration">research &amp; explore</small></li>
+      <li class="ltile" style="background:var(--blue);--r:1.5deg;--d:.7s"><span class="big">A</span><b data-fr="Analytique">Analytics</b><small data-fr="mesure et suivi">measure &amp; monitor</small></li>
+      <li class="ltile" style="background:var(--green);--r:-1deg;--d:1.4s"><span class="big">D</span><b>Design</b><small data-fr="design et test">design &amp; test</small></li>
+    </ol>
+    <p class="spell-note rv" data-fr="Faites-la tourner dans l’autre sens : elle épelle <strong>RAD</strong>. La méthode n’a pas changé. <span class=&quot;hand&quot;>Elle a juste trouvé son nom.</span>">Spin it the other way and it spells <strong>RAD</strong>. The method didn’t change. <span class="hand">It just got a name.</span></p>
   </div>
 </section>
 
@@ -675,7 +846,7 @@ button:focus-visible,.theme-toggle:focus-visible{outline:3px solid var(--purple)
   <div class="wrap">
     <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span>RAD</span></span>
     <h2 class="rv" data-fr="Même boucle, plus grand cercle">Same loop, bigger circle</h2>
-    <p class="lede rv" data-fr="Quand la future équipe s’est réunie pour imaginer RAD, elle voulait presque tout ce que la rétro valorisait. Et elle a ajouté une chose.">When the future team sat down to imagine RAD, they wanted almost everything the retro valued. And they added one thing.</p>
+    <p class="lede rv" style="max-width:48ch" data-fr="CREW était un projet pilote. RAD est une fonction : la recherche, l’analytique et le design comme partie établie de WebOps, aux côtés de Publication et d’Entreprise.">WURD was a pilot. RAD is a function: research, analytics and design as a standing part of Web Operations, alongside Publishing and Enterprise. </p>
     <div class="evolve" id="evolve"></div>
 
     <div class="cols">
@@ -684,16 +855,15 @@ button:focus-visible,.theme-toggle:focus-visible{outline:3px solid var(--purple)
         <div class="pile" id="wantPile"></div>
       </div>
       <div>
-        <h3 class="rv" data-fr="Ce que RAD refuse de devenir">What RAD refuses to become</h3>
+        <h3 class="rv" data-fr="Ce que RAD ne veut pas devenir">What RAD doesn't want to become</h3>
         <div class="pile" id="notPile"></div>
       </div>
     </div>
 
     <div class="wow rv">
-      <blockquote data-fr="La raison pour laquelle les gens me disent <span class=&quot;q&quot;>« Wow, le site est pas mal beau ces temps-ci, hein? »</span>">The reason people tell me <span class="q">“Wow, the site is looking good these days, eh?”</span></blockquote>
+      <blockquote data-fr="La raison pour laquelle les gens nous disent <span class=&quot;q&quot;>« Wow, le site est pas mal beau ces temps-ci, hein? »</span>">The reason people tell us <span class="q">“Wow, the site is looking good these days, eh?”</span></blockquote>
       <p class="attrib" data-fr="— une des ambitions déclarées de RAD, et notre préférée">— one of RAD’s stated ambitions, and our favourite</p>
       <div class="pair" id="pair"></div>
-      <p class="hand" style="color:var(--purple);font-size:21px;margin:14px 0 0" data-fr="même souhait — entendu de l’extérieur">same wish — just heard from the outside</p>
     </div>
   </div>
 </section>
@@ -702,9 +872,10 @@ button:focus-visible,.theme-toggle:focus-visible{outline:3px solid var(--purple)
 <section class="close" id="close">
   <div class="wrap">
     <span class="frame-label"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 1v12M9.5 1v12M1 4.5h12M1 9.5h12"/></svg><span data-fr="à suivre">to be continued</span></span>
+    <h2 class="rv" style="margin-bottom:40px" data-fr="Ce qui continue">What lives on</h2>
     <div class="slot-logo rv">
       <span data-fr="le logo de RAD ici">RAD logo goes here</span>
-      <span class="hand" data-fr="n’hésitez pas à<br>ajouter des choses">feel free to<br>add things</span>
+      <span class="hand" data-fr="n’hésitez pas à<br>imager l'avenir">feel free to<br>imagine what the future looks like</span>
     </div>
     <p class="slot-note rv" data-fr="RAD n’a pas encore de logo. Mais les deux diamants ont toujours été le R et le D… <span class=&quot;hand&quot;>je dis ça comme ça.</span>">RAD doesn’t have a logo yet. Though the two diamonds were always R and D… <span class="hand">just saying.</span></p>
 
@@ -717,6 +888,7 @@ button:focus-visible,.theme-toggle:focus-visible{outline:3px solid var(--purple)
       <div class="next-labels" aria-hidden="true"><span data-fr="septembre 2026">September 2026</span><span data-fr="octobre 2026">October 2026</span></div>
     </div>
 
+    <p class="carry-on rv" data-fr="CREW s’arrête ici. Pas la façon de travailler : elle continue avec les gens qui la portent, dans les équipes avec qui on a travaillé, et maintenant, dans RAD.">WURD ends here. The way of working doesn’t: it lives on in the people who carry it, in the teams we worked alongside, and now in RAD.</p>
     <p class="signoff rv" data-fr="Merci pour trois ans et demi remarquables.<span class=&quot;hand&quot;>On se revoit sur le prochain tableau. — David</span>">Thank you for three and a half remarkable years.<span class="hand">See you on the next board. — David</span></p>
     <svg class="mark foot-mark rv" viewBox="-226 -126 452 252" aria-hidden="true"><path class="m" d="M-33.9,-33.9 L-100,-100 L-200,0 L-100,100 L100,-100 L200,0 L100,100 L33.9,33.9"/></svg>
   </div>
@@ -738,18 +910,18 @@ button:focus-visible,.theme-toggle:focus-visible{outline:3px solid var(--purple)
 const TIMELINE = [
   {y:2023, s:"winter", people:[{n:"Karine",k:"hello",en:"Karine is Team Tier 1 (TT1)",fr:"Karine est l’équipe Tier 1 (TT1)"}], made:[]},
   {y:2023, s:"spring", people:[{n:"David",k:"hello",en:"David joins TT1",fr:"David se joint à TT1"},{k:"team",en:"TT1 becomes WURD",fr:"TT1 devient CREW"},{n:"Yael",k:"hello"}], made:[]},
-  {y:2023, s:"summer", people:[{n:"Eric",k:"hello"},{n:"Catalina",k:"hello"}], made:[["Processing times tool results","Résultats de l’outil des délais de traitement"]]},
+  {y:2023, s:"summer", people:[{n:"Eric",k:"hello"},{n:"Catalina",k:"hello"}], made:[["Revamped processing times tool results","Résultats de l’outil des délais de traitement améliorés"]]},
   {y:2023, s:"fall",   people:[{n:"Marianne",k:"hello"},{n:"Ramanpreet",k:"hello"},{n:"Ini",k:"hello"}], made:[]},
   {y:2024, s:"winter", people:[{n:"Ramanpreet",k:"bye"}], made:[["Program Finder","Outil de recherche de programmes"]]},
-  {y:2024, s:"summer", people:[{n:"Eric",k:"bye"},{n:"Catalina",k:"bye"}], made:[["Account wizard","Assistant de compte"],["CXP-TRV","CXP-TRV"]]},
-  {y:2024, s:"fall",   people:[{n:"Ramanpreet",k:"back"},{n:"Jackie",k:"hello"}], made:[["Express Entry redesign","Refonte d’Entrée express"],["CXP-PPT","CXP-PPT"]]},
-  {y:2025, s:"winter", people:[], made:[["AI Answers (start)","Réponses IA (début)"]]},
-  {y:2025, s:"spring", people:[], made:[["First app launch (NASCAR) 😆","Premier lancement de l’appli (NASCAR) 😆"],["New topic template (Work and Study)","Nouveau gabarit de sujet (Travail et études)"],["Settlement new design","Nouveau design Établissement"]]},
+  {y:2024, s:"summer", people:[{n:"Eric",k:"bye"},{n:"Catalina",k:"bye"}], made:[["Account wizard","Assistant de compte"],["Linking to new account for visas","Lien vers le nouveau compte pour les visas"]]},
+  {y:2024, s:"fall",   people:[{n:"Ramanpreet",k:"back"},{n:"Jackie",k:"hello"}], made:[["Express Entry redesign","Refonte d’Entrée express"],["Integrating online passport renewal content","Intégration du contenu pour le renouvellement en ligne des passeports"]]},
+  {y:2025, s:"winter", people:[], made:[["Becoming an AI Answers partner","Devenus un partenaire dans Réponses IA"]]},
+  {y:2025, s:"spring", people:[], made:[["New your application landing page","Nouvelle page d'acceuil Votre demande"],["New topic template (Work and Study)","Nouveau gabarit de sujet (Travail et études)"],["Settlement ccontent new design","Nouveau design pour le contenu lié à l'établissement"]]},
   {y:2025, s:"summer", people:[{n:"Karine",k:"bye"},{n:"Ramanpreet",k:"bye"},{n:"Eric",k:"back"}], made:[]},
-  {y:2025, s:"fall",   people:[{n:"Jackie",k:"bye"},{n:"Marianne",k:"bye"},{n:"Ini",k:"bye"},{n:"Roxanne",k:"hello"},{n:"Udit",k:"hello"},{n:"Colin",k:"hello"}], made:[["Theme and ILP redesign","Refonte du thème et de l’ILP"]]},
-  {y:2026, s:"winter", people:[], made:[["Visa tool","Outil visa"]]},
+  {y:2025, s:"fall",   people:[{n:"Jackie",k:"bye"},{n:"Marianne",k:"bye"},{n:"Ini",k:"bye"},{n:"Roxanne",k:"hello"},{n:"Udit",k:"hello"},{n:"Colin",k:"hello"}], made:[["Theme and Institutional landing page redesign","Refonte du thème et du profil institutionel"]]},
+  {y:2026, s:"winter", people:[], made:[["Full rebuild of the Visa tool","Refonte complète de l'outil visa"]]},
   {y:2026, s:"spring", people:[{n:"Colin",k:"bye"}], made:[["Your app — phase 1","Votre demande — phase 1"]]},
-  {y:2026, s:"summer", people:[{n:"Ini",k:"back"},{n:"Eric",k:"bye"}], made:[["Your app — phase 2","Votre demande — phase 2"],["Check your app status","Vérifier l’état de votre demande"]]},
+  {y:2026, s:"summer", people:[{n:"Ini",k:"back"},{n:"Eric",k:"bye"}], made:[["Your app — phase 2","Votre demande — phase 2"],["Revamp of the Check your app status wizard","Refonte de l'assistant Vérifier l’état de votre demande"]]},
 ];
 const SEASON = {winter:["Winter","Hiver"], spring:["Spring","Printemps"], summer:["Summer","Été"], fall:["Fall","Automne"]};
 const LINE = {
@@ -816,7 +988,7 @@ const C = {
 $("#nums").innerHTML = [
   ["s-yellow", "3½",     "years", "ans"],
   ["s-blue",   C.people, "people on the board", "personnes sur le tableau"],
-  ["s-green",  C.made,   "things we shipped", "choses livrées"],
+  ["s-green",  C.made,   "big things we shipped", "projets majeurs livrés"],
   ["s-pink",   C.bye,    "goodbyes", "départs"],
   ["s-blue",   C.back,   "came back", "retours"]
 ].map(([c,n,en,fr],i)=>{
@@ -899,9 +1071,9 @@ $("#tags").innerHTML = [["research","recherche"],["design","design"],["content",
   $("#flyers").innerHTML = out.join("");
 })();
 $("#hindsight").innerHTML = [
-  ["Stronger implementation relationships","— earlier, and on purpose.", "Des liens plus solides avec la mise en œuvre","— plus tôt, et volontairement."],
+  ["Stronger implementation relationships","— earlier, and on purpose.", "Des liens plus solides avec la mise en œuvre","— plus tôt, et avec un but en tête."],
   ["Reusable tools and processes","— so the next team starts further along.", "Des outils et des processus réutilisables","— pour que la prochaine équipe parte de plus loin."],
-  ["Clearer authority over our work","— so a good answer has somewhere to go.", "Une autorité plus claire sur notre travail","— pour qu’une bonne réponse ait quelque part où aller."]
+  ["Clearer authority and ownership","— so a good answer has somewhere to go.", "Des responsibiltés plus claires","— pour qu’une bonne réponse ait quelque part où aller."]
 ].map((h,i)=>`<div class="sticky s-yellow" style="--r:${rot().toFixed(2)}deg;--d:${(i*.12).toFixed(2)}s"><span class="kind">${t2("in hindsight","avec du recul")}</span><b>${t2(h[0],h[2])}</b>${t2(h[1],h[3])}</div>`).join("");
 
 /* ---------- carry ---------- */
@@ -926,7 +1098,7 @@ $("#wantPile").innerHTML = [
   ["A trusted and authoritative source of quality UX advice and work","Une source fiable et reconnue de conseils et de travail UX de qualité"],
   ["A source of inspiration and support across web","Une source d’inspiration et de soutien pour tout le Web"],
   ["A solution-oriented team people feel confident working with","Une équipe axée sur les solutions, avec qui on travaille en confiance"],
-  ["Research and design ingrained in WebOps and WUX","La recherche et le design ancrés dans WebOps et les équipes WUX"]
+  ["Research and design ingrained in WebOps and the Web UX teams","La recherche et le design ancrés dans WebOps et les équipes Web UX"]
 ].map(([en,fr],i)=>`<div class="sticky s-green" style="--r:${rot().toFixed(2)}deg;--d:${(i*.1).toFixed(2)}s">${t2(en,fr)}${CHECK}</div>`).join("");
 $("#notPile").innerHTML = [
   ["A generator of reports nobody reads","Un générateur de rapports que personne ne lit"],
@@ -1016,6 +1188,23 @@ const renderTheme = (function theme(){
 /* ---------- hero ---------- */
 requestAnimationFrame(()=>$("#hero").classList.add("go"));
 
+/* ---------- the mark: phone layout ---------- */
+(function markLayout(){
+  const svg=$("#stage svg"), dl=[...svg.querySelectorAll(".dlab")], pl=[...svg.querySelectorAll(".pl")], rd=[...svg.querySelectorAll(".rd")];
+  const W=svg.querySelector(".ov-w .lab");
+  function lay(){
+    const narrow = window.innerWidth<=640;
+    svg.setAttribute("viewBox", narrow ? "-262 -196 524 462" : "-330 -190 660 400");
+    // desktop: four labels in a row above. phone: staggered above / below so they can be bigger
+    const pos = narrow ? [[-150,-142],[-50,166],[50,-142],[150,166]] : [[-150,-142],[-50,-142],[50,-142],[150,-142]];
+    dl.forEach((t,i)=>{ t.setAttribute("x",pos[i][0]); t.setAttribute("y",pos[i][1]); });
+    pl.forEach(t=>t.setAttribute("y", narrow ? 214 : 160));
+    rd.forEach(t=>t.setAttribute("y", narrow ? 256 : 190));
+    W.setAttribute("y", narrow ? 172 : 160);
+  }
+  lay(); window.addEventListener("resize", lay);
+})();
+
 /* ---------- the mark, three readings ---------- */
 let renderPause = ()=>{};
 (function readings(){
@@ -1023,7 +1212,7 @@ let renderPause = ()=>{};
   const texts=[...document.querySelectorAll(".readings-text .one")];
   const order=["diamond","loop","w"];
   let auto=true, idx=0, timer=null, raf=null, visible=false;
-  const eight=$("#eight"), trav=$("#traveller"), labs=[...stage.querySelectorAll(".loop-lab"), ...document.querySelectorAll("#loopChips li")];
+  const eight=$("#eight"), trav=$("#traveller"), labs=[...stage.querySelectorAll(".loop-lab, .stage-chips li"), ...document.querySelectorAll("#loopChips li")];
   const live=$("#readingsText"), pauseBtn=$("#pauseBtn"), pauseLabel=$("#pauseLabel"), pauseIcon=$("#pauseIcon");
   let paused=false;
   const L8 = eight.getTotalLength();
@@ -1106,6 +1295,134 @@ const morph = (function(){
   }
   $("#replay").addEventListener("click",play);
   return {rebuild(){ const played=wrap.classList.contains("go"); build(); if(played) play(); }};
+})();
+
+/* ---------- the spinner: Research & explore / Design & test / Measure & monitor ----------
+   Clockwise is how the work flows (R -> D -> A). Counter-clockwise spells RAD. */
+(function spinner(){
+  const svg=$("#spinSvg"), bodyG=$("#spinBody"), ups=[...svg.querySelectorAll(".upright")];
+  const poles=[...svg.querySelectorAll(".pole")], btns=[...document.querySelectorAll(".spin-side button[data-pole]")];
+  const texts=[...document.querySelectorAll("#poleText .one")], live=$("#poleText"), spell=$("#spell");
+  const arrCw=$("#arrCw"), arrCcw=$("#arrCcw");
+  const HOME={r:-150, d:-30, a:90};            // where each pole sits at rest
+  const TOP={r:60, d:-60, a:180};              // rotation that brings each pole to the top
+  let th=0, raf=null, spelled=false;
+  const norm=x=>((x%360)+540)%360-180;
+  // arrows between the poles, in the gaps
+  const R0=214, P=a=>[R0*Math.cos(a*Math.PI/180), R0*Math.sin(a*Math.PI/180)];
+  function arrow(a1,a2){
+    const [x1,y1]=P(a1), [x2,y2]=P(a2), sweep=a2>a1?1:0;
+    const dir=sweep?1:-1, t=a2*Math.PI/180, tx=-Math.sin(t)*dir, ty=Math.cos(t)*dir;
+    const head=(s)=>{ const c=Math.cos(s), n=Math.sin(s); return [x2-(tx*c-ty*n)*17, y2-(tx*n+ty*c)*17]; };
+    const [hx1,hy1]=head(.5), [hx2,hy2]=head(-.5);
+    return `<path d="M${x1.toFixed(1)},${y1.toFixed(1)} A${R0},${R0} 0 0 ${sweep} ${x2.toFixed(1)},${y2.toFixed(1)} M${hx1.toFixed(1)},${hy1.toFixed(1)} L${x2.toFixed(1)},${y2.toFixed(1)} L${hx2.toFixed(1)},${hy2.toFixed(1)}"/>`;
+  }
+  arrCw.innerHTML  = arrow(-122,-58)+arrow(-2,62)+arrow(118,182);
+  arrCcw.innerHTML = arrow(182,118)+arrow(62,-2)+arrow(-58,-122);
+
+  function apply(){
+    bodyG.setAttribute("transform",`rotate(${th.toFixed(2)})`);
+    ups.forEach(u=>u.setAttribute("transform",`rotate(${(-th).toFixed(2)})`));
+    const home=Math.abs(norm(th))<2;
+    arrCw.classList.toggle("off", !home || spelled);
+    arrCcw.classList.toggle("off", !home || !spelled);
+  }
+  function tween(to, dur, ease, done){
+    cancelAnimationFrame(raf);
+    if(REDUCED){ th=to; apply(); done&&done(); return; }
+    const from=th, t0=performance.now(); dur=Math.max(1,dur);
+    const step=t=>{ const p=Math.min(1,(t-t0)/dur); th=from+(to-from)*ease(p); apply(); if(p<1) raf=requestAnimationFrame(step); else { raf=null; done&&done(); } };
+    raf=requestAnimationFrame(step);
+  }
+  const outCubic=p=>1-Math.pow(1-p,3), outQuint=p=>1-Math.pow(1-p,5), inOut=p=>p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;
+  function talk(){ live.setAttribute("aria-live","polite"); }
+  function setFocus(k){
+    poles.forEach(p=>p.classList.toggle("on", p.dataset.k===k));
+    btns.forEach(b=>b.setAttribute("aria-pressed", b.dataset.pole===k?"true":"false"));
+    texts.forEach(t=>t.classList.toggle("on", t.dataset.k===(k||"")));
+  }
+  function unspell(){ spelled=false; poles.forEach(p=>p.classList.remove("lit")); }
+  const nearest=(x,base)=>base+360*Math.round((x-base)/360);
+  function focusPole(k, dur){ unspell(); const to=nearest(th, TOP[k]); tween(to, dur||Math.max(500, Math.abs(to-th)*6), outCubic, ()=>setFocus(k)); }
+  function nearestTop(x){ let best=null; for(const k in TOP){ const c=nearest(x,TOP[k]); if(!best||Math.abs(c-x)<Math.abs(best[1]-x)) best=[k,c]; } return best; }
+  function spinIt(){
+    unspell(); setFocus(null);
+    const keys=Object.keys(TOP), k=keys[Math.floor(Math.random()*3)];
+    const to=nearest(th+1080, TOP[k]) + (Math.random()<.5?0:360);
+    tween(to, 2600, outQuint, ()=>setFocus(k));
+  }
+  function spellIt(auto){
+    setFocus(null); spelled=false;
+    const to=nearest(th,0);
+    tween(to, auto?0:Math.max(500,Math.abs(to-th)*5), inOut, ()=>{
+      th=0; spelled=true; apply();
+      svg.classList.add("lettered");
+      spell.classList.remove("go"); void spell.offsetWidth; spell.classList.add("go");
+      ["r","a","d"].forEach((k,i)=>setTimeout(()=>{ if(spelled) svg.querySelector(".pole-"+k).classList.add("lit"); }, REDUCED?0:i*700));
+    });
+  }
+  btns.forEach(b=>b.addEventListener("click",()=>{ talk(); svg.classList.add("lettered"); focusPole(b.dataset.pole); }));
+  $("#spinBtn").addEventListener("click",()=>{ talk(); svg.classList.add("lettered"); spinIt(); });
+  $("#spellBtn").addEventListener("click",()=>{ talk(); spellIt(false); });
+
+  // drag / flick. On touch, vertical swipes still scroll the page (touch-action: pan-y);
+  // only a deliberate sideways drag takes over the spinner.
+  let drag=null;
+  const ang=e=>{ const r=svg.getBoundingClientRect(); return Math.atan2(e.clientY-(r.top+r.height/2), e.clientX-(r.left+r.width/2))*180/Math.PI; };
+  svg.addEventListener("pointerdown",e=>{
+    drag={a:ang(e), t:performance.now(), v:0, x:e.clientX, y:e.clientY, live:e.pointerType==="mouse", id:e.pointerId};
+    if(drag.live) grab();
+  });
+  function grab(){
+    cancelAnimationFrame(raf); raf=null; unspell(); setFocus(null);
+    svg.classList.add("lettered"); svg.classList.add("dragging");
+    try{ svg.setPointerCapture(drag.id); }catch(_){}
+  }
+  svg.addEventListener("pointermove",e=>{
+    if(!drag) return;
+    if(!drag.live){
+      const dx=Math.abs(e.clientX-drag.x), dy=Math.abs(e.clientY-drag.y);
+      if(dx<10 || dx<dy) return;
+      drag.live=true; drag.a=ang(e); drag.t=performance.now(); grab(); return;
+    }
+    const a=ang(e), now=performance.now(), d=norm(a-drag.a), dt=Math.max(1,now-drag.t);
+    th+=d; drag.v=.6*drag.v+.4*(d/dt); drag.a=a; drag.t=now; apply();
+  });
+  const release=()=>{
+    if(!drag) return;
+    const was=drag; drag=null;
+    if(!was.live) return;                 // a tap or a scroll: leave the spinner alone
+    svg.classList.remove("dragging");
+    const [k,to]=nearestTop(th + was.v*650);
+    tween(to, Math.min(2600, 500+Math.abs(to-th)*4), outCubic, ()=>setFocus(k));
+  };
+  svg.addEventListener("pointerup",release); svg.addEventListener("pointercancel",release);
+
+  // the R-A-D stickies show up when they scroll into view, whatever the spinner is doing
+  if("IntersectionObserver" in window && !REDUCED){
+    const so=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ spell.classList.add("go"); so.disconnect(); } }),{threshold:.3});
+    so.observe(spell);
+  }
+
+  // first time it scrolls into view: one fast spin, it settles, the letters appear, and it spells RAD
+  apply();
+  if(REDUCED || !("IntersectionObserver" in window)){ spellIt(true); return; }
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting) return; io.disconnect();
+    th=-760; apply();
+    tween(0, 2400, outQuint, ()=>setTimeout(()=>spellIt(true), 250));
+  }),{threshold:.45});
+  io.observe(svg);
+})();
+
+/* ---------- toolbar: hide on scroll down (phones), back on scroll up ---------- */
+(function(){
+  const tb=$(".toolbar"); let last=window.scrollY;
+  window.addEventListener("scroll",()=>{
+    const y=window.scrollY;
+    if(window.innerWidth<=640 && Math.abs(y-last)>6){ tb.classList.toggle("tb-hide", y>last && y>140); last=y; }
+    else if(window.innerWidth>640){ tb.classList.remove("tb-hide"); last=y; }
+  },{passive:true});
 })();
 
 /* ---------- language toggle ---------- */
