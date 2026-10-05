@@ -1,0 +1,1119 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body>
+<title>WebOps Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;500;600;700;800;900&family=Overpass+Mono:wght@400;600;700&display=swap">
+<style>
+/* Concept: a transit authority guide. Routes are lines, stages are stations, the loop's three poles are fare zones,
+   launch is the main interchange, triage is the journey planner, the rhythm is a departures board. */
+:root{
+  --paper:#F5F6F8; --card:#FFFFFF; --ink:#0D1117; --muted:#525A6A; --rule:#D3D8E0; --soft:#E9ECF1;
+  --z0:#ECEEF2; --zr:#EFE6FB; --zd:#E1F3E8; --zm:#E1EBFA; --zf:#EEEBE3;
+  --express:#0A8443; --urgent:#D3203A; --standard:#1C5BC0; --direct:#5F6878; --evidence:#0C8786; --advice:#B0168F; --newpattern:#6A3CC0; --rethink:#D96500; --loop:#F2B705; --loop-edge:#0D1117;
+  --ro-owner:#9A5F00; --ro-prog:#5B6474; --ro-tri:#1E2530; --ro-mgr:#3C4B66; --ro-rad:#6F35C8; --ro-ent:#0A62A0; --ro-pub:#0A7A52;
+  --board:#121519; --board-2:#1C2026; --amber:#FFB21A; --amber-dim:#9C7420; --signal-go:#2BD46A;
+  --f-sans:"Overpass",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"Overpass Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0D1015; --card:#161A21; --ink:#E9ECF1; --muted:#9BA3B3; --rule:#2B313C; --soft:#1E232C;
+    --z0:#171B22; --zr:#221B33; --zd:#14271D; --zm:#152238; --zf:#211F1A;
+    --express:#2FBF6E; --urgent:#F0546A; --standard:#5A93F0; --direct:#9AA3B3; --evidence:#2FC0BE; --advice:#E15CC4; --newpattern:#A47EF0; --rethink:#F4923A; --loop:#F2B705; --loop-edge:#0D1015;
+    --board:#07090C; --board-2:#12161B; --ro-tri:#4A5568; --ro-mgr:#55657F; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0D1015; --card:#161A21; --ink:#E9ECF1; --muted:#9BA3B3; --rule:#2B313C; --soft:#1E232C;
+  --z0:#171B22; --zr:#221B33; --zd:#14271D; --zm:#152238; --zf:#211F1A;
+  --express:#2FBF6E; --urgent:#F0546A; --standard:#5A93F0; --direct:#9AA3B3; --evidence:#2FC0BE; --advice:#E15CC4; --newpattern:#A47EF0; --rethink:#F4923A; --loop:#F2B705; --loop-edge:#0D1015;
+  --board:#07090C; --board-2:#12161B; --ro-tri:#4A5568; --ro-mgr:#55657F; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-sans);font-size:16px;line-height:1.5}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.wrap{max-width:1320px;margin:0 auto;padding-inline:20px}
+.mono{font-family:var(--f-mono)}
+.muted{color:var(--muted)}
+
+/* ---------- header ---------- */
+.stripe{display:flex;height:8px}
+.stripe i{flex:1}
+header.top{background:var(--ink);color:var(--paper)}
+header.top .wrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:22px;align-items:center;padding-block:30px 28px}
+.logo{width:96px;height:96px}
+.logo circle.p{stroke:var(--paper);stroke-width:5}
+.top h1{margin:0;font-weight:900;font-size:clamp(34px,5.4vw,64px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase}
+.top p{margin:10px 0 0;max-width:70ch;font-size:17px;opacity:.85}
+@media (max-width:600px){header.top .wrap{grid-template-columns:minmax(0,1fr)} .logo{width:70px;height:70px}}
+nav.bar{position:sticky;top:0;z-index:30;background:var(--card);border-bottom:2px solid var(--ink)}
+nav.bar ul{list-style:none;margin:0 auto;padding:0 20px;max-width:1320px;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.bar a{display:flex;align-items:center;gap:7px;padding:12px 10px;color:var(--ink);text-decoration:none;font-weight:700;font-size:13.5px;text-transform:uppercase;letter-spacing:.03em;white-space:nowrap;border-bottom:4px solid transparent}
+nav.bar a:hover{border-bottom-color:var(--ink)}
+nav.bar a b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:var(--card);font-size:12px}
+
+section{padding-block:46px 10px;scroll-margin-top:52px}
+.sh{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+.sh .num{font-weight:900;font-size:15px;width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--card);display:grid;place-items:center;flex:none}
+h2{margin:0;font-weight:900;font-size:clamp(28px,3.6vw,42px);line-height:1;text-transform:uppercase;letter-spacing:-.01em}
+.lede{max-width:74ch;color:var(--muted);margin:6px 0 20px;font-size:16.5px}
+h3{margin:0 0 6px;font-weight:800;font-size:19px;line-height:1.2}
+.card{background:var(--card);border:2px solid var(--ink);border-radius:4px}
+
+/* ---------- journey planner ---------- */
+.planner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:980px){.planner{grid-template-columns:minmax(0,1fr)}}
+.form{padding:6px 20px 18px}
+fieldset{border:0;border-top:1px solid var(--rule);margin:0;padding:14px 0 4px;min-width:0}
+fieldset:first-of-type{border-top:0}
+legend{float:left;width:100%;padding:0;font-weight:800;font-size:15.5px;margin-bottom:2px}
+legend small{display:block;font-family:var(--f-mono);font-weight:400;font-size:11.5px;color:var(--muted);letter-spacing:.02em;margin-top:2px}
+.hint{clear:both;font-size:13.5px;color:var(--muted);margin:0 0 4px}
+.seg{clear:both;display:flex;flex-wrap:wrap;gap:6px;padding-top:6px}
+.seg label{position:relative;cursor:pointer}
+.seg input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.seg span{display:inline-flex;align-items:center;min-height:38px;padding:6px 12px;border:2px solid var(--rule);border-radius:999px;font-size:14.5px;line-height:1.25;font-weight:600;background:var(--card)}
+.seg label:hover span{border-color:var(--ink)}
+.seg input:checked + span{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.seg input:focus-visible + span{outline:3px solid var(--ink);outline-offset:2px}
+.seg.checks input:checked + span::before{content:"\2713\00a0"}
+.score-grid{clear:both;display:grid;grid-template-columns:110px minmax(0,1fr);gap:8px 12px;align-items:center;padding-top:8px}
+.score-grid > b{font-size:14px}
+.score-grid .seg{padding-top:0}
+.score-grid .seg span{min-height:34px;padding:4px 10px;font-size:13.5px}
+.lock{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.pgroup{clear:both;border:2px dashed var(--rule);border-radius:4px;padding:2px 12px 12px;margin-top:12px}
+.pgroup > p{margin:10px 0 0;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+
+/* ticket */
+.ticket{position:sticky;top:64px;overflow:hidden}
+@media (max-width:980px){.ticket{position:static}}
+.t-head{background:var(--lc,var(--ink));color:#fff;padding:14px 18px 12px;display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.t-head .k{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.9}
+.t-head h3{font-size:30px;font-weight:900;text-transform:uppercase;margin:2px 0 0;line-height:1;color:#fff}
+.t-head .sub{font-size:14px;opacity:.95;margin-top:4px}
+.prio{flex:none;text-align:center;background:#fff;color:#0D1117;border-radius:4px;padding:6px 10px 4px;min-width:66px}
+.prio b{display:block;font-size:30px;font-weight:900;line-height:1}
+.prio span{font-family:var(--f-mono);font-size:10.5px}
+.t-body{padding:14px 18px 16px}
+.t-route{display:flex;align-items:center;gap:10px;font-weight:800;font-size:15px;margin-bottom:10px;flex-wrap:wrap}
+.t-route i{height:6px;flex:1;min-width:30px;background:var(--lc);border-radius:3px}
+.stops{list-style:none;margin:0 0 12px;padding:0;position:relative}
+.stops li{position:relative;padding:3px 0 9px 28px;font-size:14.5px;line-height:1.35}
+.stops li::before{content:"";position:absolute;left:8px;top:6px;bottom:-6px;width:5px;background:var(--lc)}
+.stops li:last-child::before{display:none}
+.stops li::after{content:"";position:absolute;left:3px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--card);border:3px solid var(--lc)}
+.stops li.launch::after{width:15px;height:15px;left:1px;top:2px;border-color:var(--ink);background:var(--loop)}
+.stops b{font-weight:800}
+.stops .who{display:block;font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.auto{display:inline-block;font-family:var(--f-mono);font-size:10.5px;font-weight:700;background:var(--loop);color:#111;border-radius:3px;padding:0 5px;margin-left:4px;vertical-align:1px}
+.stub{border-top:2px dashed var(--rule);margin-top:6px;padding-top:10px;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:6px 12px}
+.stub div{font-size:13.5px}
+.stub div span{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.stub-h{font-family:var(--f-mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin:12px 0 0}
+.t-note{margin:10px 0 0;font-size:14px;padding:8px 10px;background:var(--soft);border-radius:4px}
+.t-cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.btn{appearance:none;border:2px solid var(--ink);background:var(--card);border-radius:999px;padding:6px 14px;font-weight:700;font-size:14px;cursor:pointer;min-height:38px}
+.btn.solid{background:var(--ink);color:var(--card)}
+.btn:hover{transform:translateY(-1px)}
+.presets{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px;align-items:center}
+.presets > span{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-right:4px}
+.presets button{appearance:none;border:2px solid var(--rule);background:var(--card);border-radius:999px;padding:4px 11px 4px 6px;font-size:13.5px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;min-height:34px}
+.presets button i{width:16px;height:16px;border-radius:50%;border:4px solid var(--c);background:var(--card)}
+.presets button:hover{border-color:var(--ink)}
+
+/* ---------- network map ---------- */
+.map-card{padding:0;overflow:hidden}
+.legend{display:flex;flex-wrap:wrap;gap:6px;padding:12px 14px;border-bottom:2px solid var(--ink)}
+.legend button{appearance:none;display:inline-flex;align-items:center;gap:7px;border:2px solid transparent;background:transparent;border-radius:999px;padding:4px 10px 4px 4px;cursor:pointer;font-weight:800;font-size:13.5px;text-transform:uppercase;letter-spacing:.02em}
+.legend button i{width:28px;height:8px;border-radius:4px;background:var(--c)}
+.legend button[aria-pressed="true"]{border-color:var(--ink);background:var(--soft)}
+.legend button:hover{border-color:var(--rule)}
+.map-scroll{overflow-x:auto;overscroll-behavior-x:contain}
+#net{display:block;width:100%;min-width:1060px;height:auto}
+#net text{font-family:var(--f-sans);fill:var(--ink)}
+.zone rect{stroke:none}
+.zl{font-family:var(--f-mono)!important;font-size:11px;letter-spacing:.12em;font-weight:700;fill:var(--muted)!important}
+.stn-name{font-weight:800;font-size:14px}
+.stn-sub{font-size:11.5px;fill:var(--muted)!important}
+.guide{stroke:var(--rule);stroke-width:1.5;stroke-dasharray:3 4}
+.stn{cursor:pointer}
+.stn:hover .stn-name,.stn.sel .stn-name{text-decoration:underline}
+.stn .hit{fill:transparent}
+.lane{fill:none;stroke-width:7;stroke-linecap:round;transition:opacity .25s,stroke-width .25s}
+.stop{fill:var(--card);stroke-width:3.2;transition:opacity .25s}
+.term{stroke-width:4}
+.lname{font-weight:800;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;transition:opacity .25s}
+.lineg{cursor:pointer}
+#net.focus .lineg:not(.on){opacity:.14}
+#net.focus .lineg.on .lane{stroke-width:9}
+.launchbar{fill:var(--ink)}
+.launchtxt{font-weight:900;font-size:13px;letter-spacing:.12em;fill:var(--card)!important}
+.loop-edge{fill:none;stroke:var(--loop-edge);stroke-width:12;stroke-linecap:round}
+.loop{fill:none;stroke:var(--loop);stroke-width:7;stroke-linecap:round}
+.loop-stop{fill:var(--card);stroke:var(--loop-edge);stroke-width:3}
+.loop-lab{font-weight:800;font-size:13px}
+.loop-sub{font-size:11.5px;fill:var(--muted)!important}
+.chev{fill:var(--loop-edge)}
+.autoMark rect{fill:var(--loop);stroke:var(--loop-edge);stroke-width:1.5}
+.autoMark text{font-family:var(--f-mono)!important;font-size:10px;font-weight:700;fill:#111!important}
+#net.focus .loopg{opacity:.35}
+#net.focus.loopsel .loopg{opacity:1}
+.info{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border-top:2px solid var(--ink)}
+@media (max-width:820px){.info{grid-template-columns:minmax(0,1fr)}}
+.info > div{padding:14px 18px;min-width:0}
+.info > div + div{border-left:2px solid var(--ink)}
+@media (max-width:820px){.info > div + div{border-left:0;border-top:2px solid var(--ink)}}
+.info .k{font-family:var(--f-mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin:0 0 4px}
+.info p{margin:0 0 8px;font-size:14.5px}
+.info ul{margin:0;padding-left:18px;font-size:14.5px}
+.scroll-hint{display:none;font-size:13px;color:var(--muted);padding:8px 14px 0}
+@media (max-width:1100px){.scroll-hint{display:block}}
+
+/* ---------- departures board ---------- */
+.board{background:var(--board);color:var(--amber);border-radius:6px;padding:16px 16px 10px;box-shadow:inset 0 0 0 2px #000,0 10px 30px -18px rgba(0,0,0,.6)}
+.board-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.board-top b{font-family:var(--f-mono);font-size:20px;letter-spacing:.14em;color:var(--amber)}
+.clock{font-family:var(--f-mono);font-size:15px;color:var(--amber);background:var(--board-2);padding:4px 10px;border-radius:3px}
+.bscroll{overflow-x:auto}
+table.dep{width:100%;border-collapse:separate;border-spacing:0 4px;min-width:860px;font-family:var(--f-mono)}
+.dep th{text-align:left;font-size:11px;letter-spacing:.14em;color:var(--amber-dim);font-weight:600;padding:2px 10px}
+.dep td{background:var(--board-2);padding:9px 10px;font-size:14.5px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:var(--amber)}
+.dep td:first-child{border-radius:3px 0 0 3px;color:#fff}
+.dep td:last-child{border-radius:0 3px 3px 0}
+.dep tr.grp td{background:transparent;color:var(--amber-dim);font-size:11px;letter-spacing:.2em;padding:10px 10px 0}
+.dep .svc{color:#FFD27A;font-weight:700}
+.dep .am{display:inline-block;padding:1px 7px;border-radius:2px;font-size:11.5px;font-weight:700}
+.am.AUTO{background:var(--signal-go);color:#062312}
+.am.SEMI{background:var(--amber);color:#1a1200}
+.am.MANUAL{background:#444C57;color:#E6E9EE}
+.dep .feeds{color:#9fb1c6}
+.board-foot{font-family:var(--f-mono);font-size:11.5px;color:var(--amber-dim);letter-spacing:.06em;padding:6px 2px 2px}
+.instr{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px}
+.gauge{padding:14px 16px}
+.gauge .k{font-family:var(--f-mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.gauge h3{margin:4px 0 4px;font-size:17px}
+.gauge p{margin:0;font-size:14px;color:var(--muted)}
+.gauge .src{display:block;margin-top:8px;font-family:var(--f-mono);font-size:11.5px;color:var(--ink)}
+.gauge.out{border-top:8px solid var(--standard)}
+.gauge.ops{border-top:8px solid var(--direct)}
+
+/* ---------- signals ---------- */
+.signals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:860px){.signals{grid-template-columns:minmax(0,1fr)}}
+.sig{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;padding:12px 14px;align-items:start;transition:box-shadow .2s}
+.lamp{width:30px;background:var(--board);border-radius:15px;padding:5px 0;display:grid;gap:4px;justify-items:center}
+.lamp i{width:16px;height:16px;border-radius:50%;background:#2a2f37}
+.sig.go .lamp i:nth-child(3){background:var(--signal-go);box-shadow:0 0 8px var(--signal-go)}
+.sig:not(.go) .lamp i:nth-child(2){background:#5a4a1e}
+.sig .when{font-family:var(--f-mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.sig .then{font-weight:700;font-size:15.5px;line-height:1.35;margin:2px 0 4px}
+.sig .set{font-size:13px;color:var(--muted)}
+.sig.go{box-shadow:0 0 0 3px var(--loop)}
+.sig .applies{display:none}
+.sig.go .applies{display:inline-block}
+
+/* ---------- crew ---------- */
+.role{display:inline-flex;align-items:center;font-family:var(--f-sans);font-weight:800;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:var(--rc);border-radius:3px;padding:2px 7px 1px;line-height:1.4;white-space:nowrap}
+.r-owner{--rc:var(--ro-owner)} .r-prog{--rc:var(--ro-prog)} .r-tri{--rc:var(--ro-tri)} .r-mgr{--rc:var(--ro-mgr)} .r-rad{--rc:var(--ro-rad)} .r-ent{--rc:var(--ro-ent)} .r-pub{--rc:var(--ro-pub)}
+.crewbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 12px;padding:8px 10px;background:var(--soft);border-radius:4px}
+.crewbar > span:first-child{font-family:var(--f-mono);font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-right:4px}
+.crewbar .role b{font-weight:800;margin-left:5px;opacity:.85}
+.stops .sline{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px}
+.stops .sline b{margin-right:2px}
+.stops .sw{display:block;margin-top:2px}
+.roster-wrap{overflow-x:auto;border:2px solid var(--ink);border-radius:4px;background:var(--card)}
+table.roster{border-collapse:separate;border-spacing:0;min-width:1280px;width:100%;font-size:13.5px}
+.roster th,.roster td{border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);padding:8px 9px;vertical-align:top;text-align:left;line-height:1.35}
+.roster thead th{position:sticky;top:0;background:var(--card);font-weight:800;font-size:13px;border-bottom:2px solid var(--ink);border-top:6px solid var(--zc,var(--rule))}
+.roster thead th span{display:block;font-weight:500;font-size:11px;color:var(--muted)}
+.roster th.rh{position:sticky;left:0;z-index:2;background:var(--card);min-width:190px;max-width:210px;border-right:2px solid var(--ink)}
+.roster thead th.rh{z-index:3;border-top-color:var(--card)}
+.roster th.rh .role{font-size:12.5px;margin-bottom:4px}
+.roster th.rh small{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.roster td{min-width:96px;transition:opacity .2s,background .2s}
+.roster td:empty{background:repeating-linear-gradient(-45deg,transparent 0 6px,var(--soft) 6px 7px)}
+.roster td.lc{min-width:34px;width:34px;padding:0;background:var(--ink)}
+.roster thead th.lc{background:var(--ink);color:var(--card);writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;font-size:11px;letter-spacing:.14em;border-top-color:var(--ink)}
+.roster td.dec{min-width:200px;background:var(--soft)}
+.roster.focus td:not(.on):not(.lc):not(.dec){opacity:.3}
+.roster td.on{background:color-mix(in srgb,var(--rc) 16%,var(--card));box-shadow:inset 4px 0 0 var(--rc);font-weight:600}
+.roster tr.dimrow th.rh{opacity:.45}
+.roster-key{font-size:13.5px;color:var(--muted);margin:10px 0 0}
+
+/* ---------- rulebook ---------- */
+.rules{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+details.rule{min-width:0}
+details.rule{background:var(--card);border:2px solid var(--ink);border-radius:4px}
+details.rule summary{cursor:pointer;list-style:none;padding:12px 16px;display:flex;align-items:center;gap:12px;font-weight:800;font-size:17px}
+details.rule summary::-webkit-details-marker{display:none}
+details.rule summary::after{content:"+";margin-left:auto;font-weight:900;font-size:22px;line-height:1}
+details.rule[open] summary::after{content:"\2212"}
+details.rule summary .rn{font-family:var(--f-mono);font-size:12px;background:var(--ink);color:var(--card);border-radius:3px;padding:2px 7px}
+.rb{padding:0 16px 16px;font-size:15px}
+.rb ul,.rb ol{margin:6px 0 0;padding-left:20px;display:grid;gap:4px}
+.tbl{overflow-x:auto}
+.rb table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:560px}
+.rb th,.rb td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.rb th{font-family:var(--f-mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.lname-chip{display:inline-flex;align-items:center;gap:6px;font-weight:800;text-transform:uppercase;font-size:13px;white-space:nowrap}
+.lname-chip i{width:20px;height:7px;border-radius:4px;background:var(--c)}
+.ph{display:inline-block;font-family:var(--f-mono);font-size:12.5px;background:var(--soft);border:1px dashed var(--muted);border-radius:3px;padding:0 5px}
+footer{margin-top:50px;border-top:2px solid var(--ink);padding-block:18px 50px;font-size:14px;color:var(--muted)}
+.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.lane,.stop,.lname,.btn{transition:none}}
+:root{--custom:var(--standard)}
+/* how to read */
+.howto{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border:2px solid var(--ink);border-radius:4px;background:var(--card);margin-top:26px}
+@media (max-width:900px){.howto{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.howto{grid-template-columns:minmax(0,1fr)}}
+.howto > div{padding:12px 14px;display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:start;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.howto b{display:block;font-weight:900;text-transform:uppercase;font-size:14px;letter-spacing:.02em}
+.howto span{font-size:13.5px;color:var(--muted);line-height:1.35;display:block}
+.howto svg{width:34px;height:34px}
+.preset-ex{margin:-6px 0 14px;font-size:14px;color:var(--muted);min-height:1.4em}
+.preset-ex b{color:var(--ink)}
+.presets button[aria-pressed="true"]{border-color:var(--ink);background:var(--soft)}
+.callout{margin-top:14px;padding:14px 16px;border-left:8px solid var(--custom)}
+.callout h3{margin:0 0 6px}
+.callout ul{margin:0;padding-left:20px;display:grid;gap:3px;font-size:14.5px}
+.callout p{margin:8px 0 0;font-size:14px;color:var(--muted)}
+.p1box{margin:0 0 12px;padding:8px 10px;border:2px solid var(--urgent);border-radius:4px;font-size:14px}
+.p1box b{color:var(--urgent)}
+/* network services */
+.svc-layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:960px){.svc-layout{grid-template-columns:minmax(0,1fr)}}
+.svc-list{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.svc-list .g{font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;color:var(--amber-dim);padding:10px 4px 2px;text-transform:uppercase}
+.svc-list button{appearance:none;width:100%;display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:12px;align-items:center;text-align:left;background:var(--board-2);border:2px solid transparent;border-radius:3px;padding:9px 12px;cursor:pointer;font-family:var(--f-mono);color:var(--amber)}
+.svc-list button:hover{border-color:var(--amber-dim)}
+.svc-list button[aria-pressed="true"]{border-color:var(--amber);background:#2a2410}
+.svc-list .w{color:#fff;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase}
+.svc-list .n{color:#FFD27A;font-weight:700;font-size:14.5px;letter-spacing:.05em;text-transform:uppercase}
+.svc-list .o{font-size:12px;color:#9fb1c6;letter-spacing:.03em;text-align:right}
+@media (max-width:560px){.svc-list button{grid-template-columns:80px minmax(0,1fr)} .svc-list .o{display:none}}
+.svc-detail{position:sticky;top:64px;padding:0;overflow:hidden}
+@media (max-width:960px){.svc-detail{position:static}}
+.svc-detail .dh{background:var(--board);color:var(--amber);padding:14px 16px}
+.svc-detail .dh .k{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--amber-dim);text-transform:uppercase}
+.svc-detail .dh h3{color:#FFD27A;font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.06em;font-size:22px;margin:4px 0 0}
+.svc-detail dl{margin:0;padding:14px 16px;display:grid;grid-template-columns:110px minmax(0,1fr);gap:10px 14px;font-size:14.5px}
+.svc-detail dt{font-family:var(--f-mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;padding-top:2px}
+.svc-detail dd{margin:0}
+.runs{display:inline-flex;align-items:center;gap:6px;font-weight:700}
+.runs i{width:12px;height:12px;border-radius:50%}
+.runs.AUTO i{background:var(--signal-go)} .runs.SEMI i{background:var(--amber)} .runs.MEET i{background:#8892A0}
+.svc-detail .acts{padding:0 16px 16px;display:flex;gap:8px;flex-wrap:wrap}
+.lchips{display:flex;flex-wrap:wrap;gap:6px}.lchips i{font-style:normal;font-size:12.5px;font-weight:700;padding:2px 8px;border-radius:99px;border:2px solid var(--c)}
+/* objectives */
+.okr-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.okr-tabs button{appearance:none;border:2px solid var(--ink);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px 6px 8px;font:inherit;font-weight:800;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:40px}
+.okr-tabs button .role{font-size:11px}
+.okr-tabs button[aria-pressed="true"]{background:var(--ink);color:var(--card)}
+.okr-tabs button small{font-weight:600;opacity:.75;font-size:12.5px}
+.okr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:16px}
+.obj{display:flex;flex-direction:column;min-width:0}
+.obj-h{padding:14px 16px 12px;border-bottom:2px solid var(--ink);background:var(--zc,var(--z0))}
+.obj-h .k{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.obj-h h3{margin:4px 0 0;font-size:19px;line-height:1.25}
+.obj-h p{margin:6px 0 0;font-size:14px;color:var(--muted)}
+.krs{list-style:none;margin:0;padding:0}
+.kr{padding:12px 16px;border-top:1px solid var(--rule)}
+.kr:first-child{border-top:0}
+.kr.hl{background:color-mix(in srgb,var(--amber) 22%,transparent);outline:2px solid var(--amber);outline-offset:-2px}
+.kr .id{font-family:var(--f-mono);font-size:12px;font-weight:700;margin-right:6px}
+.kr .t{font-weight:700}
+.tg{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:8px 0 0;font-size:14px}
+.tg dt{font-family:var(--f-mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-top:2px}
+.tg dd{margin:0}
+.kr-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}
+.kr-links>span{font-family:var(--f-mono);font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-right:2px}
+.kchip{appearance:none;font:inherit;font-size:12.5px;font-weight:700;border:1.5px solid var(--ink);background:var(--card);color:var(--ink);border-radius:999px;padding:2px 9px;cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+.kchip:hover{background:var(--ink);color:var(--card)}
+.kchip i{width:9px;height:9px;border-radius:50%;background:var(--c,var(--ink))}
+.kchip.kr-ref{border-style:dashed}
+.kchip.none{cursor:default;border-color:var(--rule);color:var(--muted)}
+.kchip.none:hover{background:var(--card);color:var(--muted)}
+.okr-note{margin:12px 0 0;font-size:14px;color:var(--muted)}
+.ph2{font-family:var(--f-mono);font-size:.92em;border:1px dashed var(--muted);padding:0 3px;border-radius:2px}
+.trips{margin:0 0 16px}
+.trips-h{margin:0 0 8px;font-family:var(--f-mono);font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.trips-h .mine{text-transform:none;letter-spacing:0;font-family:var(--f-sans);color:var(--ink);font-weight:700;margin-left:8px}
+.trip-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px}
+.trip{appearance:none;text-align:left;font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--rule);border-left:8px solid var(--c);border-radius:4px;padding:10px 12px;cursor:pointer;display:flex;flex-direction:column;gap:4px}
+.trip:hover{border-color:var(--ink);border-left-color:var(--c)}
+.trip[aria-pressed="true"]{border-color:var(--ink);border-left-color:var(--c);background:var(--soft);box-shadow:4px 4px 0 var(--ink)}
+.trip .tn{font-family:var(--f-mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.trip b{font-size:15.5px;line-height:1.3}
+.trip .tw{font-size:13.5px;color:var(--muted);line-height:1.4}
+.trip .tm{font-family:var(--f-mono);font-size:11.5px;font-weight:700;margin-top:auto;padding-top:4px}
+.info .trip-list{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px}
+.info .trip-list button{appearance:none;font:inherit;font-size:14px;text-align:left;background:none;border:0;border-left:4px solid var(--c);padding:2px 0 2px 8px;color:var(--ink);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.stepn{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 4px;border-radius:10px;background:var(--ink);color:var(--card);font-family:var(--f-mono);font-size:11.5px;font-weight:800;line-height:1;vertical-align:middle}
+.roster td .stepn{display:grid;width:max-content;margin:0 0 5px}
+.roster thead th .stepn.hd{display:inline-grid;margin-right:5px;background:var(--zc,var(--ink));color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.roster td.lc{vertical-align:middle;text-align:center}
+.stepn.ln{background:var(--loop);color:#0D1117}
+</style>
+
+<div class="stripe" aria-hidden="true" id="stripe"></div>
+<header class="top">
+  <div class="wrap">
+    <svg class="logo" viewBox="-60 -60 120 120" aria-hidden="true" id="logo">
+      <circle r="56" fill="none" stroke="currentColor" stroke-width="3" opacity=".25"/>
+      <g id="logoSpin">
+        <circle class="p" cx="-25" cy="-14" r="19" fill="#9A6BE0"/><circle class="p" cx="25" cy="-14" r="19" fill="#2FBF6E"/><circle class="p" cx="0" cy="29" r="19" fill="#5A93F0"/>
+      </g>
+    </svg>
+    <div>
+      <p class="mono" style="margin:0;font-size:12px;letter-spacing:.14em;opacity:.7">IRCC · WEB OPERATIONS · DRAFT FOR DISCUSSION</p>
+      <h1>WebOps Network</h1>
+      <p>How web work travels through Web Operations: which line a request rides, which stations it stops at, who works there, and the regular services that keep the network running.</p>
+    </div>
+  </div>
+</header>
+<nav class="bar" aria-label="Sections">
+  <ul>
+    <li><a href="#planner"><b>1</b>Journey planner</a></li>
+    <li><a href="#map"><b>2</b>Network map</a></li>
+    <li><a href="#crew"><b>3</b>Crew roster</a></li>
+    <li><a href="#services"><b>4</b>Network services</a></li>
+    <li><a href="#objectives"><b>5</b>Objectives</a></li>
+    <li><a href="#signals"><b>6</b>Signals</a></li>
+    <li><a href="#rulebook"><b>7</b>Triage rulebook</a></li>
+  </ul>
+</nav>
+
+<main class="wrap">
+  <div class="howto" aria-label="How to read this network">
+    <div><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="9" fill="var(--card)" stroke="var(--ink)" stroke-width="4"/></svg><div><b>Station</b><span>A stage of the work: intake, triage, design, check, launch, monitor…</span></div></div>
+    <div><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="2" y="13" width="30" height="8" rx="4" fill="var(--express)"/></svg><div><b>Line</b><span>A route type. It decides which stations the work stops at. Triage picks it.</span></div></div>
+    <div><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="3" y="7" width="28" height="20" rx="3" fill="var(--card)" stroke="var(--ink)" stroke-width="3"/><path d="M3 13h28" stroke="var(--ink)" stroke-width="3"/></svg><div><b>Trip</b><span>One request riding one line. The journey planner gives each trip a ticket.</span></div></div>
+    <div><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="4" y="8" width="26" height="18" rx="3" fill="var(--urgent)"/><text x="17" y="22" text-anchor="middle" font-family="Overpass,sans-serif" font-weight="900" font-size="12" fill="#fff">P1</text></svg><div><b>Priority</b><span>P1 to P3, separate from the line. P1 boards first on any line.</span></div></div>
+    <div><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="13" fill="var(--board)"/><path d="M17 9v8l5 4" stroke="var(--amber)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><div><b>Network service</b><span>A regular service, like the monthly outcome report, that finds the next trips.</span></div></div>
+  </div>
+
+  <!-- 1 PLANNER -->
+  <section id="planner" aria-labelledby="h1p">
+    <div class="sh"><span class="num" aria-hidden="true">1</span><h2 id="h1p">Journey planner</h2></div>
+    <p class="lede">This is triage. Answer the triager's questions and the ticket shows the line, the priority, every stop and who works there, plus what to record in Asana. Or start from a line and pick one of its example trips.</p>
+    <div class="presets" id="presets"><span>Start from a line</span></div>
+    <div class="trips" id="trips" aria-live="polite"></div>
+    <div class="planner">
+      <form class="card form" id="form" aria-label="Triage questions"></form>
+      <div class="card ticket" id="ticket" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- 2 MAP -->
+  <section id="map" aria-labelledby="h2m">
+    <div class="sh"><span class="num" aria-hidden="true">2</span><h2 id="h2m">Network map</h2></div>
+    <p class="lede">Each line is a route type. A ring is a stop; a line running past a station without a ring skips it. The shaded zones are the loop's three poles, and launch is the interchange between design and measurement. The yellow loop line brings discovered work back to triage.</p>
+    <div class="card map-card">
+      <div class="legend" id="legend" role="group" aria-label="Highlight a line"></div>
+      <p class="scroll-hint">Scroll the map sideways.</p>
+      <div class="map-scroll"><svg id="net" viewBox="0 0 1300 470" role="img" aria-labelledby="netDesc"></svg></div>
+      <div class="info"><div id="lineInfo"></div><div id="stnInfo"></div></div>
+    </div>
+    <div class="card callout">
+      <h3>When does a trip need Enterprise?</h3>
+      <ul>
+        <li>A design that differs from existing templates and components</li>
+        <li>Content driven by data files behind the page, such as JSON</li>
+        <li>Interactivity: tools, wizards, calculators, filters, dynamic content</li>
+        <li>A new template or component, or a link to another system (DPM, APIs)</li>
+      </ul>
+      <p>Any of these puts the trip on the Custom build line (or New pattern, if other pages will reuse it). Otherwise Publishing builds it on the Express line.</p>
+    </div>
+  </section>
+
+  <!-- 3 CREW -->
+  <section id="crew" aria-labelledby="h3c">
+    <div class="sh"><span class="num" aria-hidden="true">3</span><h2 id="h3c">Crew roster</h2></div>
+    <p class="lede">What each role does at each station. Duties on the current ticket are highlighted; hatched cells mean that role isn't needed there.</p>
+    <div class="roster-wrap"><table class="roster" id="roster"></table></div>
+    <p class="roster-key" id="rosterKey"></p>
+  </section>
+
+  <!-- 4 SERVICES -->
+  <section id="services" aria-labelledby="h4s">
+    <div class="sh"><span class="num" aria-hidden="true">4</span><h2 id="h4s">Network services</h2></div>
+    <p class="lede">The regular services that keep the network running and find the next trips. Select a service to see what it is, who runs it, how it runs, and how to use it.</p>
+    <div class="svc-layout">
+      <div class="board">
+        <div class="board-top"><b>NETWORK SERVICES</b><span class="clock" id="clock">--:--</span></div>
+        <ul class="svc-list" id="svcList"></ul>
+        <p class="board-foot">Weeks are counted within each quarter. Timings are proposals to set with the team.</p>
+      </div>
+      <div class="card svc-detail" id="svcDetail" aria-live="polite"></div>
+    </div>
+    <div class="instr" id="instr"></div>
+  </section>
+
+  <!-- 5 OBJECTIVES -->
+  <section id="objectives" aria-labelledby="h5o">
+    <div class="sh"><span class="num" aria-hidden="true">5</span><h2 id="h5o">Objectives</h2></div>
+    <p class="lede">WebOps OKRs for FY 2026–27, one objective per part of the network, and the team OKRs that feed them. Each key result links to the station, line or network service that moves or measures it. Q3 is October to December 2026; Q4 is January to March 2027.</p>
+    <div class="okr-tabs" id="okrTabs" role="group" aria-label="Whose objectives"></div>
+    <div class="okr-grid" id="okrGrid" aria-live="polite"></div>
+    <p class="okr-note">Numbers in dashed boxes are placeholders to set with the team. Many Q3 targets are baselines: an honest target needs a quarter of data first.</p>
+  </section>
+
+  <!-- 6 SIGNALS -->
+  <section id="signals" aria-labelledby="h5s">
+    <div class="sh"><span class="num" aria-hidden="true">6</span><h2 id="h5s">Signals</h2></div>
+    <p class="lede">Automatic triggers. Nobody has to remember them: they're Asana rules, Adobe Analytics alerts or fixed calendar items. Green signals apply to the ticket in the journey planner.</p>
+    <div class="signals" id="sigs"></div>
+  </section>
+
+  <!-- 7 RULEBOOK -->
+  <section id="rulebook" aria-labelledby="h6r">
+    <div class="sh"><span class="num" aria-hidden="true">7</span><h2 id="h6r">Triage rulebook</h2></div>
+    <p class="lede">The criteria behind the journey planner. Numbers in dashed boxes are placeholders to set with the team, and the priority section should be reconciled with WebOps' existing P1 to P3 definitions.</p>
+    <div class="rules" id="rules"></div>
+  </section>
+
+  <footer>Draft for discussion. Builds on the WebOps operating model, the performance framework and the RAD team's three poles. Line names, timings and thresholds are proposals.</footer>
+</main>
+
+<script>
+"use strict";
+/* ============================== NETWORK DATA ============================== */
+const STATIONS=[
+  {id:"prep",n:"Prepare",s:"content ready",z:"0",what:"The WUX advisor gets the content approved by the program and sends it to translation, before the request. For new patterns and rethinks, the owner frames the problem first and content follows the design.",who:"Owner (sends to translation), program (approves)"},
+  {id:"intake",n:"Intake",s:"Asana form",z:"0",what:"The request arrives through the Asana form with its readiness checklist: owner, pages, the change and why, approved and translated content, deadline type.",who:"Owner"},
+  {id:"triage",n:"Triage",s:"line + priority",z:"0",what:"The triager picks the line, sets priority (P1 to P3), records the flags, and names who leads. Top-task and big work gets its baseline here.",who:"Triager (RAD for baselines)"},
+  {id:"research",n:"Research",s:"& explore",z:"r",what:"Understand people, their tasks and the problem. Start from existing evidence: analytics, page feedback, search terms, past studies.",who:"RAD, with the owner"},
+  {id:"design",n:"Design",s:"& prototype",z:"d",what:"Design from library components first. Prototype and test with real people. New patterns start here.",who:"RAD, Enterprise"},
+  {id:"build",n:"Build",s:"part of design",z:"d",what:"Publishing builds from existing templates and components, and publishes PDIs and corporate items. Enterprise builds anything custom: different designs, data-driven pages, interactivity, reusable components.",who:"Publishing or Enterprise"},
+  {id:"check",n:"Check",s:"QA gate",z:"d",what:"Code QA always. Design QA by RAD for anything custom. Content QA by the owner, with a second reviewer for sensitive content.",who:"Publishing or Enterprise, RAD, owner"},
+  {id:"launch",n:"Launch",s:"interchange",z:"L",what:"The point between design and measurement. Every launch updates the inventory and adds the page to the outcome report.",who:"Publishing or Enterprise"},
+  {id:"monitor",n:"Monitor",s:"outcome report",z:"m",what:"Every launched page is watched in the monthly outcome report; top tasks also get a dashboard and alerts.",who:"RAD"},
+  {id:"checks",n:"Check-ins",s:"2 wk · 30 · 90 days",z:"m",what:"Before-and-after checks against the baseline: 2 weeks after a P1, 30 and 90 days for top tasks and big work, 90-day prove-in-use for new patterns.",who:"RAD, owner"},
+  {id:"library",n:"Library",s:"& repository",z:"f",what:"Proven patterns join the IRCC library; research findings go into the repository. The next trip on the same need gets shorter.",who:"RAD, Enterprise"}
+];
+const SI=Object.fromEntries(STATIONS.map((s,i)=>[s.id,i]));
+const ZONES=[{z:"0",n:"FRONT DOOR",from:0,to:2,c:"--z0"},{z:"r",n:"RESEARCH",from:3,to:3,c:"--zr"},{z:"d",n:"DESIGN & TEST",from:4,to:6,c:"--zd"},{z:"m",n:"MEASURE",from:8,to:9,c:"--zm"},{z:"f",n:"FOUNDATION",from:10,to:10,c:"--zf"}];
+
+/* lines: base stops (station id -> [what, who]) */
+const PREP=["Content approved by the program; translation sent by the WUX advisor","owner, program"];
+const LINES={
+  rethink:{n:"Rethink",lead:"RAD, with Enterprise",when:"A section or journey needs redesigning.",ex:"Rethink the “apply for citizenship” section",
+    stops:{prep:["Problem framed","owner"],intake:["Request","owner"],triage:["Line, priority, baseline","triager, RAD"],research:["Team forms; research","RAD, Enterprise, owner"],design:["Prototype and test; content approved and translated","RAD, owner, program"],build:["New pages and pieces","Enterprise, Publishing"],check:["Design, code and content QA","RAD, Enterprise, owner"],monitor:["Outcome report","RAD"],checks:["30- and 90-day checks","RAD, owner"],library:["Findings into the repository","RAD"]}},
+  newpattern:{n:"New pattern",lead:"RAD, with Enterprise",when:"Custom work that other pages will reuse.",ex:"A progress tracker that every application page could use",
+    stops:{prep:["Problem framed","owner"],intake:["Request","owner"],triage:["Line, priority, baseline","triager, RAD"],research:["Confirms nothing in the library fits","RAD"],design:["Design and test a new pattern; content approved and translated","RAD, owner, program"],build:["Reusable component","Enterprise"],check:["Design, code and content QA","RAD, Enterprise, owner"],monitor:["Outcome report","RAD"],checks:["90-day prove-in-use","RAD, owner"],library:["Added to the library, if proven","Enterprise, RAD"]}},
+  custom:{n:"Custom build",lead:"Enterprise",when:"Needs custom code: a different design, data files (JSON) behind the page, or interactivity.",ex:"An eligibility checker driven by a JSON data file",
+    stops:{prep:PREP,intake:["Request","owner"],triage:["Line and priority","triager"],design:["Design from library components; RAD advises","RAD, Enterprise"],build:["Custom code","Enterprise"],check:["Design, code and content QA","RAD, Enterprise, owner"],monitor:["Outcome report","RAD"]}},
+  express:{n:"Express",lead:"Publishing",when:"Content, or a page from existing templates and components. No custom code.",ex:"Update a fee amount on a page",
+    stops:{prep:PREP,intake:["Request","owner"],triage:["Line and priority","triager"],build:["Built from templates and components","Publishing"],check:["Code QA and content QA","Publishing, owner"],monitor:["Outcome report","RAD"]}},
+  direct:{n:"Direct",lead:"Publishing",when:"PDIs and corporate items, straight from the program, without a WUX advisor.",ex:"A new program delivery instruction",
+    stops:{build:["PDI or corporate item published","Publishing"],check:["Code QA; requester confirms the content","Publishing, program"],monitor:["Outcome report","RAD"]}},
+  advice:{n:"Advice",lead:"RAD",when:"Content isn't final; the owner wants ways to solve a problem. The change comes back later as its own trip.",ex:"Options for explaining a complicated eligibility rule",
+    stops:{intake:["Request","owner"],triage:["Line","triager"],design:["Options to solve it","RAD"]}},
+  evidence:{n:"Evidence",lead:"RAD",when:"Numbers, an analysis, or something to track over time.",ex:"Traffic and “No” clicks for a program's pages",
+    stops:{intake:["Request","owner"],triage:["Line and priority","triager"],research:["Numbers, analysis or dashboard","RAD"]}}
+};
+const LINE_ORDER=["rethink","newpattern","custom","express","direct","advice","evidence"];
+const LAUNCHES=new Set(["rethink","newpattern","custom","express","direct"]);
+
+/* ============================== MAP ============================== */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const REDUCED=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+const X=i=>160+i*106, Y0=176, DY=19, NL=LINE_ORDER.length, YL=k=>Y0+LINE_ORDER.indexOf(k)*DY, YB=Y0+DY*(NL-1);
+let mapLine=null, mapAuto=[], mapStation=null;
+
+$("#stripe").innerHTML=LINE_ORDER.concat(["loop"]).map(k=>`<i style="background:var(--${k})"></i>`).join("");
+
+function drawMap(){
+  let s="";
+  ZONES.forEach(z=>{ const x1=X(z.from)-53, x2=X(z.to)+53; s+=`<g class="zone"><rect x="${x1}" y="58" width="${x2-x1}" height="270" style="fill:var(${z.c})"/><text class="zl" x="${(x1+x2)/2}" y="78" text-anchor="middle">${z.n}</text></g>`; });
+  STATIONS.forEach((st,i)=>{
+    if(st.id==="launch") return;
+    s+=`<g class="stn${mapStation===st.id?" sel":""}" data-st="${st.id}" tabindex="0" role="button" aria-label="Station: ${esc(st.n)}"><rect class="hit" x="${X(i)-51}" y="92" width="102" height="236"/><line class="guide" x1="${X(i)}" y1="142" x2="${X(i)}" y2="${YB+14}"/>`+
+      `<text class="stn-name" x="${X(i)}" y="112" text-anchor="middle">${esc(st.n)}</text><text class="stn-sub" x="${X(i)}" y="128" text-anchor="middle">${esc(st.s)}</text></g>`;
+  });
+  LINE_ORDER.forEach(k=>{
+    const L=LINES[k], idx=Object.keys(L.stops).map(id=>SI[id]).sort((a,b)=>a-b);
+    let last=idx[idx.length-1]; if(LAUNCHES.has(k)&&last<SI.launch) last=SI.launch;
+    if(k===mapLine&&mapAuto.length) last=Math.max(last,...mapAuto.map(id=>SI[id]));
+    const x1=X(idx[0]), x2=X(Math.max(last,idx[idx.length-1])), y=YL(k), on=mapLine===k;
+    let g=`<g class="lineg${on?" on":""}" data-line="${k}" tabindex="0" role="button" aria-label="${esc(L.n)} line">`;
+    g+=`<text class="lname" x="${x1-16}" y="${y+4.5}" text-anchor="end" style="fill:var(--${k})">${esc(L.n)}</text>`;
+    g+=`<path class="lane" d="M${x1},${y} H${x2}" style="stroke:var(--${k})"/>`;
+    idx.forEach((i,n)=>{ const term=(n===0||n===idx.length-1); g+=`<circle class="stop${term?" term":""}" cx="${X(i)}" cy="${y}" r="${term?7:5.5}" style="stroke:var(--${k})"/>`; });
+    g+=`</g>`; s+=g;
+  });
+  const lx=X(SI.launch);
+  s+=`<g aria-hidden="true"><rect class="launchbar" x="${lx-15}" y="92" width="30" height="${YB+30-92}" rx="15"/><text class="launchtxt" transform="translate(${lx+5},${(92+YB+30)/2}) rotate(-90)" text-anchor="middle">LAUNCH</text></g>`;
+  const mx=X(SI.monitor), tx=X(SI.triage), yb=YB+14, yl=392;
+  const d=`M${mx},${yb} C${mx},${yl} ${mx-30},${yl} ${mx-60},${yl} H${tx+60} C${tx+30},${yl} ${tx},${yl} ${tx},${yb}`;
+  s+=`<g class="loopg" data-line="loop" tabindex="0" role="button" aria-label="Loop line: discovered work"><path class="loop-edge" d="${d}"/><path class="loop" d="${d}"/>`;
+  [X(SI.build)+54,X(SI.research)+54,X(SI.triage)+90].forEach(x=>{ s+=`<path class="chev" d="M${x+6},${yl-6} L${x-4},${yl} L${x+6},${yl+6} Z"/>`; });
+  [[X(SI.check),"Flag raised","network service: report, alert, review date"],[X(SI.design),"Owner decides","fix, plan or accept"]].forEach(([x,a,b])=>{
+    s+=`<circle class="loop-stop" cx="${x}" cy="${yl}" r="8"/><text class="loop-lab" x="${x}" y="${yl+28}" text-anchor="middle">${a}</text><text class="loop-sub" x="${x}" y="${yl+44}" text-anchor="middle">${b}</text>`;
+  });
+  s+=`<text class="lname" x="${tx-16}" y="${yl+5}" text-anchor="end" style="fill:var(--ink)">Loop line</text></g>`;
+  if(mapLine&&mapLine!=="loop"&&mapAuto.length){
+    const y=YL(mapLine);
+    mapAuto.forEach(id=>{ const x=X(SI[id]); s+=`<g class="autoMark" aria-hidden="true"><rect x="${x-17}" y="${y-28}" width="34" height="15" rx="3"/><text x="${x}" y="${y-17}" text-anchor="middle">AUTO</text><circle cx="${x}" cy="${y}" r="6.5" style="fill:var(--loop);stroke:var(--${mapLine});stroke-width:3.2"/></g>`; });
+  }
+  const net=$("#net"); net.innerHTML=`<desc id="netDesc">Network map of WebOps lines and stations. Text versions of each line appear in the panel below the map and on the journey planner's ticket.</desc>`+s;
+  net.classList.toggle("focus",!!mapLine); net.classList.toggle("loopsel",mapLine==="loop");
+  $("#legend").innerHTML=LINE_ORDER.map(k=>`<button type="button" data-line="${k}" aria-pressed="${mapLine===k}" style="--c:var(--${k})"><i></i>${esc(LINES[k].n)}</button>`).join("")+
+    `<button type="button" data-line="loop" aria-pressed="${mapLine==="loop"}" style="--c:var(--loop)"><i style="box-shadow:0 0 0 2px var(--loop-edge)"></i>Loop line</button>`;
+  renderLineInfo(); renderStationInfo();
+}
+function renderLineInfo(){
+  const el=$("#lineInfo");
+  if(!mapLine){ el.innerHTML=`<p class="k">Line</p><p>Select a line on the map or in the legend to see its stops.</p>`; return; }
+  if(mapLine==="loop"){ el.innerHTML=`<p class="k">Line</p><h3>Loop line</h3><p>Discovered work. A network service (the outcome report, a top-task alert, search data, a review date) raises a flag. RAD confirms it's real, the owner decides to fix, plan or accept, and a fix boards a regular line at triage.</p><p class="k" style="margin-top:12px">Example trips</p><ul class="trip-list" style="--c:var(--loop-edge)">${TRIPS.loop.map((tr,i)=>`<li><button type="button" data-trip="loop:${i}">${esc(tr.t)}</button></li>`).join("")}</ul>`; return; }
+  const L=LINES[mapLine], stops=Object.entries(L.stops).sort((a,b)=>SI[a[0]]-SI[b[0]]);
+  const li=stops.map(([id,[w,who]])=>`<li><b>${esc(STATIONS[SI[id]].n)}</b>: ${esc(w)} <span class="muted">(${esc(who)})</span></li>`);
+  if(LAUNCHES.has(mapLine)){ const at=stops.findIndex(([id])=>SI[id]>SI.launch); li.splice(at<0?li.length:at,0,`<li><b>Launch</b></li>`); }
+  el.innerHTML=`<p class="k">Line</p><h3 style="color:var(--${mapLine})">${esc(L.n)}</h3><p>${esc(L.when)} Led by ${esc(L.lead)}.</p><ul>${li.join("")}</ul><p class="k" style="margin-top:12px">Example trips</p><ul class="trip-list" style="--c:var(--${mapLine})">${TRIPS[mapLine].map((tr,i)=>`<li><button type="button" data-trip="${mapLine}:${i}">${esc(tr.t)}</button></li>`).join("")}</ul>`;
+}
+function renderStationInfo(){
+  const el=$("#stnInfo");
+  if(!mapStation){ el.innerHTML=`<p class="k">Station</p><p>Select a station name to see what happens there and who works there.</p>`; return; }
+  const st=STATIONS[SI[mapStation]], lines=LINE_ORDER.filter(k=>LINES[k].stops[mapStation]);
+  el.innerHTML=`<p class="k">Station</p><h3>${esc(st.n)} <span class="muted" style="font-weight:600;font-size:15px">${esc(st.s)}</span></h3><p>${esc(st.what)}</p><p><b>Crew:</b> ${esc(st.who)}</p><div class="lchips">${lines.map(k=>`<i style="--c:var(--${k})">${esc(LINES[k].n)}</i>`).join("")}</div>`;
+}
+document.addEventListener("click",e=>{
+  const l=e.target.closest("[data-line]"); if(l&&(l.closest("#net")||l.closest("#legend"))){ mapLine=mapLine===l.dataset.line?null:l.dataset.line; mapAuto=[]; drawMap(); return; }
+  const st=e.target.closest("[data-st]"); if(st){ mapStation=st.dataset.st; drawMap(); }
+});
+$("#net").addEventListener("keydown",e=>{ if(e.key!=="Enter"&&e.key!==" ") return; const t=e.target.closest("[data-line],[data-st]"); if(!t) return; e.preventDefault(); t.dispatchEvent(new MouseEvent("click",{bubbles:true})); });
+
+/* ============================== ROLES ============================== */
+const ROLES=[
+  {k:"owner",n:"Owner",sub:"WUX advisor for their line of business; RAD advisor for the Help Centre and DPM",dec:"What changes on their pages, and what to do with each flag: fix, plan or accept."},
+  {k:"prog",n:"Program",sub:"The program area, outside WebOps",dec:"Content accuracy and approval."},
+  {k:"tri",n:"Triager",sub:"One for all of WebOps (proposed); has a named backup",dec:"Line, priority and flags."},
+  {k:"mgr",n:"Manager",sub:"WebOps manager",dec:"Capacity and trade-offs between lines of business; escalations."},
+  {k:"rad",n:"RAD",sub:"Research, analytics and design",dec:"Whether a change in the data is real. With Enterprise, whether a pattern has proved itself."},
+  {k:"ent",n:"Enterprise",sub:"Custom code and the platform",dec:"How custom work is built to scale: components, data files, WET and AEM."},
+  {k:"pub",n:"Publishing",sub:"Template builds and direct publishing",dec:"How standard changes are published, merged and retired."}
+];
+const RK=Object.fromEntries(ROLES.map(r=>[r.k,r]));
+function rolesOf(str){
+  const t=(str||"").toLowerCase(), out=[];
+  if(/owner|wux|advisor/.test(t)) out.push("owner");
+  if(/program|requester/.test(t)) out.push("prog");
+  if(/triager/.test(t)) out.push("tri");
+  if(/manager/.test(t)) out.push("mgr");
+  if(/\brad\b/.test(t)) out.push("rad");
+  if(/enterprise/.test(t)) out.push("ent");
+  if(/publishing/.test(t)) out.push("pub");
+  return out;
+}
+let OWNER_LABEL="WUX advisor";
+const pill=k=>`<span class="role r-${k}">${esc(k==="owner"?OWNER_LABEL:RK[k].n)}</span>`;
+
+/* ============================== PLANNER ============================== */
+const Q=[
+  {id:"who",l:"Who's asking?",who:"Triager",o:[["wux","A WUX advisor"],["rad","RAD, for the Help Centre or DPM"],["pdi","A program: a PDI or corporate item"],["flag","Nobody: a flag from a network service"]]},
+  {id:"real",l:"Is the change real, beyond normal variation?",who:"RAD, using the control rule",show:s=>s.who==="flag",o:[["yes","Yes"],["no","No, it's noise"]]},
+  {id:"decision",l:"What does the page's owner decide?",who:"Owner (WUX advisor)",show:s=>s.who==="flag"&&s.real==="yes",o:[["fix","Fix it"],["plan","Plan it"],["accept","Accept it"]]},
+  {id:"need",l:"What do they need?",who:"Owner, with the triager",show:s=>["wux","rad"].includes(s.who),o:[["change","A change on the site"],["numbers","Numbers"],["analysis","An analysis"],["track","Tracking over time"],["ideas","Ideas, before content is final"]]},
+  {id:"build",l:"What does it take to build?",who:"Triager; Enterprise confirms",h:"Custom means a design that differs from existing templates, data files (JSON) behind the page, or interactivity.",show:s=>isChange(s),o:[["template","Content, or existing templates and components"],["custom","Custom code"],["rethink","Rethinking a section or journey"]]},
+  {id:"reuse",l:"Will other pages need it too?",who:"RAD and Enterprise",h:"If yes, it's built once as a reusable pattern and can join the library.",show:s=>isChange(s)&&s.build==="custom",o:[["no","No, or not sure"],["yes","Yes"]]},
+  {id:"clear",l:"Is the problem clear, with evidence?",who:"RAD, with the owner",show:s=>isChange(s)&&s.build==="rethink",o:[["yes","Yes"],["no","Not yet"]]},
+  {id:"ready",l:"Is the content approved and translated?",who:"Triager checks the Asana form",h:"The WUX advisor gets program approval and sends content to translation before the request.",show:s=>isChange(s)&&s.build==="template"||(isChange(s)&&s.build==="custom"&&s.reuse!=="yes"),o:[["yes","Yes"],["no","Not yet"]]},
+  {id:"nsd",l:"Anything beyond standard templates?",who:"Publishing flags, RAD confirms",h:"Depending on the product, RAD does design QA and Enterprise builds the custom part.",show:s=>s.who==="pdi",o:[["no","No"],["yes","Yes"]]},
+  {id:"top",l:"Does it touch a top task?",who:"Triager, using the top-task list",h:"The page is on a top task's path: entry, steps or confirmation.",show:s=>isChange(s),o:[["no","No"],["yes","Yes"]]},
+  {id:"sens",l:"Sensitive content?",who:"Triager",h:"Fees, eligibility, deadlines, processing times or legal obligations.",show:s=>isChange(s)||s.who==="pdi",o:[["no","No"],["yes","Yes"]]}
+];
+const P1=[["hurt","Wrong information that could hurt clients"],["blocked","A top task can't be completed"],["date","A fixed public or legal date"],["security","A security or privacy issue"]];
+const SCORE=[
+  {id:"harm",l:"Harm",o:[["0","None"],["1","Inconvenient"],["2","Confusing"],["3","Blocks or misleads"]]},
+  {id:"reach",l:"Reach",o:[["0","Low traffic"],["1","Moderate"],["2","High traffic"],["3","Top task"]]},
+  {id:"deadline",l:"Deadline",o:[["0","None"],["1","Internal preference"],["2","Announced, later"],["3","Announced, within 4 wks"]]},
+  {id:"evidence",l:"Evidence",o:[["0","None"],["1","Data or research"]]}
+];
+const DEF={who:"wux",real:"yes",decision:"fix",need:"change",build:"template",reuse:"no",clear:"yes",ready:"yes",nsd:"no",top:"no",sens:"no",p1:[],harm:"1",reach:"1",deadline:"0",evidence:"0"};
+let S={...DEF,p1:[]};
+function isChange(s){ return (["wux","rad"].includes(s.who)&&s.need==="change")||(s.who==="flag"&&s.real==="yes"&&s.decision==="fix"); }
+const needsPriority=s=>!(s.who==="flag"&&(s.real!=="yes"||s.decision!=="fix"));
+
+function renderForm(){
+  let h="";
+  Q.forEach(q=>{
+    if(q.show&&!q.show(S)) return;
+    h+=`<fieldset><legend>${esc(q.l)}<small>Answered by: ${esc(q.who)}</small></legend>${q.h?`<p class="hint">${esc(q.h)}</p>`:""}<div class="seg">`+
+      q.o.map(([v,l])=>`<label><input type="radio" name="${q.id}" value="${v}"${S[q.id]===v?" checked":""}><span>${esc(l)}</span></label>`).join("")+`</div></fieldset>`;
+  });
+  if(needsPriority(S)){
+    const reachLocked=S.top==="yes"&&isChange(S), evLocked=S.who==="flag";
+    h+=`<fieldset><legend>Priority<small>Answered by: Triager. Priority is separate from the line.</small></legend><div class="pgroup"><p>P1 if any is true</p><div class="seg checks">`+
+      P1.map(([v,l])=>`<label><input type="checkbox" name="p1" value="${v}"${S.p1.includes(v)?" checked":""}><span>${esc(l)}</span></label>`).join("")+`</div></div>`;
+    if(!S.p1.length){
+      h+=`<div class="pgroup"><p>Otherwise, score it: 6 or more is P2</p><div class="score-grid">`+SCORE.map(sc=>{
+        const locked=(sc.id==="reach"&&reachLocked)||(sc.id==="evidence"&&evLocked);
+        const val=locked?(sc.id==="reach"?"3":"1"):S[sc.id];
+        return `<b>${esc(sc.l)}</b><div class="seg" role="radiogroup" aria-label="${esc(sc.l)}">`+sc.o.map(([v,l])=>`<label><input type="radio" name="${sc.id}" value="${v}"${val===v?" checked":""}${locked?" disabled":""}><span>${v} · ${esc(l)}</span></label>`).join("")+(locked?`<span class="lock">set automatically</span>`:"")+`</div>`;
+      }).join("")+`</div></div>`;
+    }
+    h+=`</fieldset>`;
+  }
+  h+=`<div class="t-cta"><button type="button" class="btn" id="resetBtn">Start over</button></div>`;
+  $("#form").innerHTML=h;
+  $("#resetBtn").addEventListener("click",()=>{ S={...DEF,p1:[]}; tripSel=null; update(); });
+}
+$("#form").addEventListener("change",e=>{
+  const t=e.target; if(!t.name) return;
+  if(t.name==="p1"){ S.p1=[...$("#form").querySelectorAll('input[name="p1"]:checked')].map(x=>x.value); }
+  else S[t.name]=t.value;
+  tripSel=null;
+  const keep=`input[name="${t.name}"][value="${t.value}"]`;
+  update(); const el=$("#form").querySelector(keep); if(el) el.focus({preventScroll:true});
+});
+
+function compute(s){
+  const T={stops:[],auto:[],flags:[],notes:[],signals:new Set(),from:"Front door"};
+  OWNER_LABEL=s.who==="rad"?"RAD as owner":"WUX advisor";
+  let pr=null, score=null;
+  if(needsPriority(s)){
+    if(s.p1.length) pr="P1";
+    else { const r=(s.top==="yes"&&isChange(s))?3:+s.reach, ev=s.who==="flag"?1:+s.evidence; score=+s.harm+r+(+s.deadline)+ev; pr=score>=6?"P2":"P3"; }
+  }
+  T.pr=pr; T.score=score;
+  if(s.who==="flag"&&s.real==="no") return {...T,none:true,title:"No trip",sub:"Normal variation. The page stays in the monthly outcome report.",line:null};
+  if(s.who==="flag"&&s.decision==="plan") return {...T,none:true,title:"Planned",sub:"Goes into the owner's backlog with the evidence attached. It boards a line when scheduled.",line:"loop"};
+  if(s.who==="flag"&&s.decision==="accept") return {...T,none:true,title:"Accepted",sub:"The decision is recorded and the page stays in the outcome report. A top task flagged two cycles in a row goes to the director.",line:"loop"};
+  let line, sub="";
+  if(s.who==="pdi"){ line="direct"; sub="PDI or corporate item"; }
+  else if(s.who!=="flag"&&s.need==="numbers"){ line="evidence"; sub="Analytics request"; }
+  else if(s.who!=="flag"&&s.need==="analysis"){ line="evidence"; sub="Insight request"; }
+  else if(s.who!=="flag"&&s.need==="track"){ line="evidence"; sub="Tracking dashboard"; }
+  else if(s.who!=="flag"&&s.need==="ideas"){ line="advice"; sub="Early design advice"; }
+  else if(s.build==="template"){ line="express"; sub="Content or templates, led by Publishing"; }
+  else if(s.build==="custom"){ line=s.reuse==="yes"?"newpattern":"custom"; sub=line==="custom"?"Custom code, led by Enterprise":"Reusable custom code, led by RAD with Enterprise"; }
+  else { line="rethink"; sub="Section or journey, led by RAD with Enterprise"; }
+  const big=line==="newpattern"||line==="rethink";
+  if(isChange(s)&&s.ready==="no"&&!big){
+    return {...T,none:true,notReady:true,title:"Not ready",sub:"Returned with the readiness checklist. The SLA clock doesn't start. If the content can't be final yet, take the Advice line.",line};
+  }
+  if(s.who==="flag"){ T.from="Loop line"; T.notes.push("Discovered work: the evidence from the flag travels with the request."); }
+  const L=LINES[line];
+  let stops=Object.entries(L.stops).map(([id,[w,who]])=>({id,w,who}));
+  const custom=line==="custom"||big||(line==="direct"&&s.nsd==="yes");
+  const ck=stops.find(x=>x.id==="check");
+  if(ck){
+    const parts=[];
+    if(line==="direct"&&s.nsd==="yes"){ parts.push("design QA by RAD"); stops.find(x=>x.id==="build").who="Publishing, Enterprise (custom part)"; }
+    if(s.sens==="yes"){ parts.push("a second content reviewer"); T.signals.add("sens"); }
+    if(parts.length) ck.extra=parts.join(" and ");
+  }
+  if(custom){ T.flags.push("Custom design or code"); T.signals.add("nsd"); }
+  if(s.sens==="yes") T.flags.push("Sensitive content");
+  if(isChange(s)&&s.top==="yes"&&LAUNCHES.has(line)){
+    T.flags.push("Top task"); T.signals.add("top");
+    if(!big){ stops.push({id:"triage",w:"Baseline set",who:"RAD",auto:true}); T.auto.push("triage"); }
+    stops.push({id:"monitor",w:"Monitoring dashboard and alerts",who:"RAD",auto:true}); T.auto.push("monitor");
+    if(!stops.some(x=>x.id==="checks")){ stops.push({id:"checks",w:"30- and 90-day checks",who:"RAD, owner",auto:true}); T.auto.push("checks"); }
+  }
+  if(pr==="P1"){
+    T.signals.add("p1"); T.p1=true;
+    const tr=stops.find(x=>x.id==="triage"); if(tr) tr.w+=", the same day";
+    const pp=stops.find(x=>x.id==="prep"); if(pp&&!big) pp.w="Fast-track approval; WUX advisor fast-tracks translation";
+    const b=stops.find(x=>x.id==="build"); if(b) b.w+=", first in the queue";
+    if(LAUNCHES.has(line)){ const c=stops.find(x=>x.id==="checks");
+      if(c){ c.w="2-week check, then "+c.w.replace(/^(\d)/,"$1"); c.auto=true; }
+      else stops.push({id:"checks",w:"2-week check",who:"RAD",auto:true});
+      if(!T.auto.includes("checks")) T.auto.push("checks"); }
+  }
+  if(line==="newpattern") T.signals.add("pattern");
+  if(big) T.signals.add("big");
+  if(LAUNCHES.has(line)) T.signals.add("launch");
+  if(line==="rethink"&&s.clear==="no") stops.find(x=>x.id==="research").w="Team forms; research with people first";
+  if(s.who==="rad") T.notes.push("RAD acts as the owner for the Help Centre and DPM files, so this work counts against the Committed lane.");
+  if(line==="evidence"&&s.need==="track") stops.find(x=>x.id==="research").w="Dashboard on the outcome measures, reviewed monthly";
+  stops.sort((a,b)=>SI[a.id]-SI[b.id]||(a.auto?1:0)-(b.auto?1:0));
+  const launchRoles=line==="custom"||line==="newpattern"?["ent"]:line==="rethink"?["ent","pub"]:["pub"];
+  const duties=[];
+  stops.forEach(st=>{ const rs=rolesOf(st.who); if(st.extra&&/design qa/.test(st.extra)&&!rs.includes("rad")) rs.push("rad"); rs.forEach(k=>duties.push([k,st.id])); });
+  if(LAUNCHES.has(line)) launchRoles.forEach(k=>duties.push([k,"launch"]));
+  return {...T,duties,launchRoles,line,title:L.n,sub,lead:L.lead,stops,launch:LAUNCHES.has(line)};
+}
+
+function renderTicket(t){
+  const el=$("#ticket");
+  const lc=t.line&&t.line!=="loop"?`var(--${t.line})`:t.line==="loop"?"#7a5b00":"var(--direct)";
+  el.style.setProperty("--lc",lc);
+  const prio=t.pr?`<div class="prio" aria-label="Priority ${t.pr}"><b>${t.pr}</b><span>${t.score!==null?`score ${t.score}/10`:"hard trigger"}</span></div>`:"";
+  let h=`<div class="t-head"><div><div class="k">${t.none?"Triage result":"Your line"}</div><h3>${esc(t.title)}</h3><div class="sub">${esc(t.sub)}</div></div>${prio}</div><div class="t-body">`;
+  if(t.none){
+    h+=`<p style="margin:0 0 8px">${t.notReady?"Status in Asana: <b>Not ready</b>.":"No new trip on the network."}</p>`;
+    h+=`<div class="t-cta">${t.notReady?`<button type="button" class="btn" data-go-advice>Switch to the Advice line</button>`:""}<button type="button" class="btn solid" data-show-map>See it on the map</button></div></div>`;
+    el.innerHTML=h; return;
+  }
+  if(t.p1) h+=`<p class="p1box"><b>P1: priority boarding.</b> Same line, same stops, but triaged the same day, first in the queue, posted to Slack, and checked 2 weeks after launch.</p>`;
+  const end=t.stops[t.stops.length-1];
+  h+=`<div class="t-route"><span>${esc(t.from)}</span><i aria-hidden="true"></i><span>${esc(STATIONS[SI[end.id]].n)}</span></div>`;
+  const count={}; t.duties.forEach(([k])=>{ count[k]=(count[k]||0)+1; });
+  h+=`<div class="crewbar"><span>Crew on this trip</span>${ROLES.filter(r=>count[r.k]).map(r=>`<span class="role r-${r.k}">${esc(r.k==="owner"?OWNER_LABEL:r.n)}<b>${count[r.k]}</b></span>`).join("")}</div><ol class="stops">`;
+  const steps=tripSteps(t);
+  const launchLi=`<li class="launch"><div class="sline">${stepB(steps.launch)}<b>Launch</b>${t.launchRoles.map(pill).join("")}</div><span class="sw muted">Inventory updated; the page joins the outcome report.</span></li>`;
+  let launched=false;
+  t.stops.forEach(st=>{
+    if(t.launch&&!launched&&SI[st.id]>SI.launch){ h+=launchLi; launched=true; }
+    const rs=rolesOf(st.who); if(st.extra&&/design qa/.test(st.extra)&&!rs.includes("rad")) rs.push("rad");
+    h+=`<li><div class="sline">${stepB(steps[st.id])}<b>${esc(STATIONS[SI[st.id]].n)}</b>${rs.map(pill).join("")}${st.auto?`<span class="auto">AUTO</span>`:""}</div><span class="sw">${esc(st.w)}${st.extra?`, plus ${esc(st.extra)} <span class="auto">AUTO</span>`:""}</span></li>`;
+  });
+  if(t.launch&&!launched) h+=launchLi;
+  h+=`</ol>`;
+  t.notes.forEach(n=>{ h+=`<p class="t-note">${esc(n)}</p>`; });
+  h+=`<p class="stub-h">Record in Asana</p><div class="stub">
+    <div><span>Line</span>${esc(t.title)}${t.sub&&!/led by/.test(t.sub)?": "+esc(t.sub):""}</div>
+    <div><span>Priority</span>${t.pr||"—"}${t.score!==null?` (score ${t.score})`:""}</div>
+    <div><span>Lead</span>${esc(t.lead)}</div>
+    <div><span>Flags</span>${t.flags.length?esc(t.flags.join(", ")):"none"}</div>
+    <div><span>Target</span><span class="ph">SLA for ${t.pr||"the priority"}</span></div>
+  </div>
+  <div class="t-cta"><button type="button" class="btn solid" data-show-map>Ride it on the map</button><button type="button" class="btn" data-show-crew>Who does what</button></div></div>`;
+  el.innerHTML=h;
+}
+$("#ticket").addEventListener("click",e=>{
+  const go=id=>$(id).scrollIntoView({behavior:REDUCED?"auto":"smooth"});
+  if(e.target.closest("[data-show-map]")) go("#map");
+  if(e.target.closest("[data-show-crew]")) go("#crew");
+  if(e.target.closest("[data-go-advice]")){ S.need="ideas"; tripSel=null; update(); }
+});
+
+/* example trips: three per line, each a full set of planner answers */
+const TRIPS={
+  express:[
+    {t:"Correct the document checklist on a study permit page",why:"Approved, translated text on an existing page. Nothing custom, so Publishing builds it from the template.",s:{harm:"2",reach:"2"}},
+    {t:"New work permit fees take effect on a fixed date",why:"Still a text change, so still Express. A fixed public date makes it P1, and fees make it sensitive: a second reviewer at check.",s:{top:"yes",sens:"yes",p1:["date"]}},
+    {t:"Update an answer in the Help Centre",why:"RAD owns the Help Centre, so RAD plays the WUX advisor's part. The change itself is plain Express.",s:{who:"rad",harm:"1"}}],
+  custom:[
+    {t:"Visa requirement checker driven by a JSON list of countries",why:"Interactive, with a data file behind it. Only this page needs it, so it's a Custom build, not a New pattern.",s:{build:"custom",reuse:"no",top:"yes",harm:"2",deadline:"2"}},
+    {t:"Fee calculator for family sponsorship",why:"Interactivity plus fee amounts: Enterprise builds it, RAD does design QA, and a second reviewer checks the content.",s:{build:"custom",reuse:"no",sens:"yes",harm:"2",reach:"2"}},
+    {t:"Filterable list of designated learning institutions, fed by a data file",why:"A different design and a data source behind the page. Enterprise leads; Publishing isn't involved.",s:{build:"custom",reuse:"no",harm:"1",reach:"2"}}],
+  newpattern:[
+    {t:"Application progress tracker for every application guide",why:"Custom work that many pages will reuse, so it's designed and tested once, then proven for 90 days before it joins the library.",s:{build:"custom",reuse:"yes",harm:"2",reach:"2"}},
+    {t:"Reusable document checklist builder",why:"Several programs keep asking for the same custom checklist. Building it as a pattern turns their future requests into Express trips.",s:{build:"custom",reuse:"yes",top:"yes",harm:"2",evidence:"1"}},
+    {t:"Standard pattern for eligibility questions",why:"Every program writes its own “Are you eligible?” questions differently. One tested pattern replaces many one-offs.",s:{build:"custom",reuse:"yes",harm:"2",evidence:"1"}}],
+  rethink:[
+    {t:"Rethink the “Apply for citizenship” section",why:"A whole section and several tasks, and the problem isn't clear yet. RAD leads research first; content follows the design.",s:{build:"rethink",clear:"no",top:"yes",harm:"3"}},
+    {t:"Redesign the Help Centre landing page",why:"RAD is the owner and the designer here. The goal, helping people find answers in core content, is clear, with evidence.",s:{who:"rad",build:"rethink",clear:"yes",top:"yes",harm:"2",evidence:"1"}},
+    {t:"Visitor visa journey, flagged two cycles running",why:"Arrives on the loop line. Patching hasn't worked twice, so the owner chooses a rethink instead of another fix.",s:{who:"flag",real:"yes",decision:"fix",build:"rethink",clear:"yes",top:"yes",harm:"3"}}],
+  direct:[
+    {t:"New PDI for a temporary public policy",why:"Straight from the program to Publishing, no WUX advisor. Standard templates, an announced date within weeks.",s:{who:"pdi",nsd:"no",harm:"2",deadline:"3"}},
+    {t:"Annual Report to Parliament on Immigration",why:"A corporate item with interactive charts: beyond templates, so RAD does design QA and Enterprise builds that part.",s:{who:"pdi",nsd:"yes",deadline:"2",reach:"1"}},
+    {t:"Updated PDI on processing time standards",why:"Direct line, but processing times are sensitive content, so a second reviewer is added at check.",s:{who:"pdi",nsd:"no",sens:"yes",harm:"2"}}],
+  advice:[
+    {t:"How to explain a complicated eligibility rule",why:"The owner has a problem, not final content. RAD offers options; the change comes back later as its own trip.",s:{need:"ideas"}},
+    {t:"Structuring content for a pathway still in policy design",why:"Content can't be approved yet, so it can't board a building line. Early advice saves a redesign later.",s:{need:"ideas",harm:"0"}},
+    {t:"One page or a step-by-step guide?",why:"A design question before writing starts. A short Advice trip, often a single conversation with RAD.",s:{need:"ideas",harm:"0"}}],
+  evidence:[
+    {t:"Traffic and “No” clicks for study permit pages, last quarter",why:"Numbers only. RAD pulls them from Adobe Analytics and the page feedback tool.",s:{need:"numbers",harm:"0"}},
+    {t:"Why do searches spike from the processing times page?",why:"An analysis, not a number: RAD looks at search terms, feedback and paths to explain it.",s:{need:"analysis",harm:"1",reach:"2"}},
+    {t:"A dashboard to track a new pathway after launch",why:"Tracking over time: a dashboard on the outcome measures, reviewed monthly with the owner.",s:{need:"track",harm:"0"}}],
+  loop:[
+    {t:"“No” clicks doubled on “Extend your work permit”; the owner fixes it",why:"The outcome report raises the flag, RAD confirms it's real, the owner decides to fix it, and it boards Express with the evidence attached.",s:{who:"flag",real:"yes",decision:"fix",build:"template",top:"yes",harm:"2"}},
+    {t:"An alert on “Sponsor your spouse” turns out to be noise",why:"RAD checks it against the page's normal range. No trip; the page stays in the monthly report.",s:{who:"flag",real:"no"}},
+    {t:"A flag on an old program page; the owner plans a retirement",why:"Real, but not urgent. It goes in the owner's backlog and rides Express when the lifecycle sweep schedules it.",s:{who:"flag",real:"yes",decision:"plan"}}]
+};
+let tripLine="express", tripSel=0;
+const tripState=(k,i)=>({...DEF,p1:[],...TRIPS[k][i].s});
+S=tripState("express",0);
+function loadTrip(k,i){ tripLine=k; tripSel=i; S=tripState(k,i); update(); }
+function renderPresets(){
+  $("#presets").innerHTML=`<span>Start from a line</span>`+LINE_ORDER.concat(["loop"]).map(k=>`<button type="button" data-preset="${k}" aria-pressed="${tripLine===k}" style="--c:var(--${k})"><i${k==="loop"?' style="box-shadow:0 0 0 1px var(--loop-edge)"':""}></i>${esc(k==="loop"?"Loop line":LINES[k].n)}</button>`).join("");
+  const c=`var(--${tripLine})`;
+  $("#trips").style.setProperty("--c",c);
+  $("#trips").innerHTML=`<p class="trips-h">Example trips on the ${esc(tripLine==="loop"?"loop line":LINES[tripLine].n+" line")}${tripSel===null?' <span class="mine">You’ve changed the answers: the ticket is your own trip now.</span>':""}</p><div class="trip-row">`+
+    TRIPS[tripLine].map((tr,i)=>{ const r=compute(tripState(tripLine,i));
+      const meta=r.none?r.title:[r.title+" line",r.pr,...r.flags].filter(Boolean).join(" · ");
+      return `<button type="button" class="trip" data-trip="${tripLine}:${i}" aria-pressed="${tripSel===i}"><span class="tn">Trip ${i+1}</span><b>${esc(tr.t)}</b><span class="tw">${esc(tr.why)}</span><span class="tm">${esc(meta)}</span></button>`; }).join("")+`</div>`;
+}
+$("#presets").addEventListener("click",e=>{ const b=e.target.closest("[data-preset]"); if(!b) return; loadTrip(b.dataset.preset,0); });
+document.addEventListener("click",e=>{ const b=e.target.closest("[data-trip]"); if(!b) return; const [k,i]=b.dataset.trip.split(":"); loadTrip(k,+i); if(!b.closest("#trips")) $("#planner").scrollIntoView({behavior:REDUCED?"auto":"smooth"}); });
+
+/* ============================== CREW ROSTER ============================== */
+const DUTY={
+  owner:{prep:"Gets program approval; sends content to translation; frames the problem for big work",intake:"Sends the request through the Asana form",triage:"Answers the sizing questions",research:"Joins research sessions",design:"Reviews prototypes; sends final content to translation (big work)",check:"Content QA",monitor:"Monthly review: fix, plan or accept each flag",checks:"Reviews before-and-after results"},
+  prog:{prep:"Approves content",design:"Approves content once the design settles (big work)",build:"Sends PDIs and corporate items straight to Publishing",check:"Confirms PDI and corporate content"},
+  tri:{intake:"Checks readiness; returns requests that aren't ready",triage:"Sets line, priority, flags and lead; runs the Monday meeting"},
+  mgr:{triage:"Settles priority conflicts between lines of business",monitor:"Operations report, quarterly capacity check, yearly retrospective"},
+  rad:{triage:"Sets baselines for top tasks and big work",research:"Research, analytics and insight requests",design:"Design, prototypes, new patterns, advice",check:"Design QA for anything custom",monitor:"Outcome report, dashboards, top-task alerts",checks:"2-week, 30/90-day and prove-in-use checks",library:"Decides with Enterprise what joins the library; research repository"},
+  ent:{design:"Builds prototypes with RAD",build:"Custom code: different designs, JSON data files, interactivity, reusable components",check:"Code QA for custom work",monitor:"Inventory, lifecycle, Search Console export",library:"Documents and scales proven patterns"},
+  pub:{build:"Pages from templates and components; PDIs; corporate items",check:"Code QA for template work",monitor:"Merges and retires pages after cleanup decisions"}
+};
+const ZC={"0":"var(--rule)",r:"var(--newpattern)",d:"var(--express)",m:"var(--custom)",f:"var(--muted)"};
+function tripSteps(t){ const ids=[...new Set((t&&t.duties||[]).map(([,st])=>st))].sort((a,b)=>SI[a]-SI[b]); return Object.fromEntries(ids.map((id,i)=>[id,i+1])); }
+const stepB=(n,cls="")=>n?`<span class="stepn${cls}" aria-label="Step ${n}">${n}</span>`:"";
+function renderRoster(t){
+  const steps=tripSteps(t);
+  const on=new Set((t&&t.duties||[]).map(([k,st])=>k+"|"+st));
+  const used=new Set((t&&t.duties||[]).map(([k])=>k));
+  let h=`<thead><tr><th class="rh" scope="col">Role</th>`+STATIONS.map(st=>st.id==="launch"?`<th class="lc" scope="col">LAUNCH</th>`:`<th scope="col" style="--zc:${ZC[st.z]}">${stepB(steps[st.id]," hd")}${esc(st.n)}<span>${esc(st.s)}</span></th>`).join("")+`<th scope="col">Decides</th></tr></thead><tbody>`;
+  ROLES.forEach(r=>{
+    h+=`<tr class="${on.size&&!used.has(r.k)?"dimrow":""}"><th class="rh r-${r.k}" scope="row"><span class="role r-${r.k}">${esc(r.n)}</span><small>${esc(r.sub)}</small></th>`;
+    STATIONS.forEach(st=>{
+      if(st.id==="launch"){ h+=`<td class="lc">${on.has(r.k+"|launch")?stepB(steps.launch," ln"):""}</td>`; return; }
+      const d=(DUTY[r.k]||{})[st.id]||"";
+      const isOn=on.has(r.k+"|"+st.id);
+      h+=`<td class="r-${r.k}${isOn?" on":""}">${isOn?stepB(steps[st.id]):""}${esc(d)}</td>`;
+    });
+    h+=`<td class="dec">${esc(r.dec)}</td></tr>`;
+  });
+  const tbl=$("#roster"); tbl.innerHTML=h+`</tbody>`;
+  tbl.classList.toggle("focus",on.size>0);
+  $("#rosterKey").innerHTML=on.size?`Highlighted: the duties on the <b style="color:var(--ink)">${esc(t.title)}</b> ticket. Numbers give the order of the stops, the same as on the ticket; roles with the same number work at the same station. Change the journey planner to see another trip.`:"Choose a trip in the journey planner to highlight its duties.";
+}
+
+/* ============================== NETWORK SERVICES ============================== */
+const RUNS={AUTO:"Runs on its own",SEMI:"A person starts it",MEET:"A meeting"};
+const SERVICES=[
+  {g:"Every day and every week"},
+  {id:"alerts",w:"Daily",n:"Top-task alerts",by:"RAD",runs:"AUTO",tool:"Adobe Analytics anomaly alerts",
+   what:"Automatic alerts when a top-task page leaves its normal range: “No” clicks per 1K visits, searches launched from the page per 1K visits, or a traffic drop.",
+   use:"RAD checks each alert. If it's real, the page's owner hears that week, by email or Slack, and decides to fix, plan or accept.",feeds:"Loop line",line:"loop"},
+  {id:"triage",w:"Mondays",n:"Triage meeting",by:"Triager, function leads",runs:"MEET",tool:"Asana queue",
+   what:"A short weekly review of the queue: new requests, P1s, requests past their target date, and anything that needs re-triage.",
+   use:"Requesters don't attend. Submit through the Asana form; anything received by Friday is routed on Monday. P1s don't wait for the meeting.",feeds:"All lines"},
+  {g:"Every month"},
+  {id:"outcome",w:"Week 1",n:"Outcome report",by:"RAD",runs:"AUTO",tool:"Scheduled Adobe Analytics Workspace project, plus Search Console data",
+   what:"Per page and per top task: page feedback, searches from the page, site search, Google search and task success, each compared with its own normal range. Pages outside it are flagged.",
+   use:"Each WUX advisor gets the section for their line of business, and brings the flags to the owner review in week 2.",feeds:"Loop line",line:"loop"},
+  {id:"ops",w:"Week 1",n:"Operations report",by:"Manager, Publishing",runs:"AUTO",tool:"Asana reporting, Adobe Analytics",
+   what:"Traffic, requests received and completed by line, SLA adherence by priority, backlog age, and the share of trips on the Express line.",
+   use:"The manager uses it for capacity decisions and shares it with the director. A growing Express share means the library is paying off.",feeds:"Capacity check"},
+  {id:"gsc",w:"Week 1",n:"Search Console export",by:"Enterprise",runs:"SEMI",tool:"Google Search Console",
+   what:"A monthly export of search performance: queries, impressions, clicks, click-through rate and position, including AI features as Search Console reports them.",
+   use:"Feeds the outcome report. Exporting monthly keeps a history beyond the 16 months Google retains.",feeds:"Outcome report"},
+  {id:"review",w:"Week 2",n:"Owner reviews",by:"RAD, each WUX advisor",runs:"MEET",tool:"30 minutes, flags only",
+   what:"RAD walks each owner through the flags on their pages. Nothing else is on the agenda.",
+   use:"The owner decides for each flag: fix it (it boards a line at triage), plan it, or accept it. Decisions are recorded in Asana.",feeds:"Loop line",line:"loop"},
+  {g:"Every quarter"},
+  {id:"sweep",w:"Week 11",n:"Lifecycle sweep",by:"Enterprise, owners",runs:"SEMI",tool:"Content inventory",
+   what:"Pages past their review date or without an owner, with their numbers from the outcome report.",
+   use:"Owners decide for each page: keep (new review date), improve, merge or retire. Merges and retirements ride the Express line.",feeds:"Express line",line:"express"},
+  {id:"tss",w:"Week 12",n:"Task success report",by:"RAD",runs:"SEMI",tool:"GC Task Success Survey",
+   what:"Completion and ease for IRCC's top tasks, with trends.",
+   use:"Feeds the owner reviews and tunes the top-task alerts.",feeds:"Loop line",line:"loop"},
+  {id:"library",w:"Week 12",n:"Library review",by:"RAD, Enterprise",runs:"MEET",tool:"Figma library, AEM components",
+   what:"Patterns that reached their 90-day prove-in-use check, and candidates for new ones.",
+   use:"Proven patterns are documented and added to the library; others stay one-offs or are retired.",feeds:"Library",line:"newpattern"},
+  {id:"capacity",w:"Week 13",n:"Capacity check",by:"WebOps manager",runs:"MEET",tool:"Operations report",
+   what:"Work by capacity lane (Committed, Commissioned, Standing, Discovered) against the plan.",
+   use:"If a lane has run over its share for two quarters, the manager rebalances or escalates.",feeds:"Next quarter"},
+  {g:"Every year"},
+  {id:"toptasks",w:"Q1",n:"Top-task refresh",by:"RAD, WUX advisors",runs:"MEET",tool:"Task success data, analytics",
+   what:"Which tasks matter most for each line of business.",use:"The top-task list drives priority scores, alerts and automatic check-ins.",feeds:"Triage"},
+  {id:"audit",w:"Q2",n:"Inventory audit",by:"Enterprise",runs:"SEMI",tool:"Content inventory",
+   what:"Every page, its owner and its purpose.",use:"Keeps the outcome report and lifecycle sweep complete.",feeds:"Inventory"},
+  {id:"retro",w:"Q4",n:"Retrospective",by:"Everyone",runs:"MEET",tool:"This network map",
+   what:"What to keep, change or drop in how WebOps works.",use:"Lines, thresholds and services get updated here.",feeds:"This network"},
+  {g:"On request"},
+  {id:"adhoc",w:"Anytime",n:"Ad hoc reporting",by:"RAD",runs:"SEMI",tool:"Adobe Analytics, Search Console, surveys",
+   what:"Numbers or an analysis for an owner, outside the regular reports.",use:"Ask through the Asana form; it rides the Evidence line.",feeds:"Evidence line",line:"evidence"}
+];
+let svcSel="outcome";
+function svcKRs(id){ if(typeof OKR==="undefined") return ""; const ks=OKR.flatMap(o=>o.krs.filter(k=>k[5].includes("svc:"+id)).map(k=>k[0])); return ks.length?`<dt>Key results</dt><dd class="kr-links" style="margin:0">${ks.map(krChip).join("")}</dd>`:""; }
+function renderServices(){
+  $("#svcList").innerHTML=SERVICES.map(s=>s.g?`<li class="g" aria-hidden="true">${esc(s.g)}</li>`:
+    `<li><button type="button" data-svc="${s.id}" aria-pressed="${svcSel===s.id}"><span class="w">${esc(s.w)}</span><span class="n">${esc(s.n)}</span><span class="o">${esc(s.by)}</span></button></li>`).join("");
+  const s=SERVICES.find(x=>x.id===svcSel);
+  $("#svcDetail").innerHTML=`<div class="dh"><div class="k">${esc(s.w)} · network service</div><h3>${esc(s.n)}</h3></div><dl>
+    <dt>What it is</dt><dd>${esc(s.what)}</dd>
+    <dt>Run by</dt><dd>${esc(s.by)}</dd>
+    <dt>How it runs</dt><dd><span class="runs ${s.runs}"><i aria-hidden="true"></i>${RUNS[s.runs]}</span>: ${esc(s.tool)}</dd>
+    <dt>How to use it</dt><dd>${esc(s.use)}</dd>
+    <dt>Feeds</dt><dd>${esc(s.feeds)}</dd>${svcKRs(s.id)}</dl>
+    ${s.line?`<div class="acts"><button type="button" class="btn" data-svc-line="${s.line}">Show the ${esc(s.line==="loop"?"loop line":LINES[s.line].n+" line")} on the map</button></div>`:""}`;
+}
+$("#svcList").addEventListener("click",e=>{ const b=e.target.closest("[data-svc]"); if(!b) return; svcSel=b.dataset.svc; renderServices(); const n=$(`#svcList [data-svc="${svcSel}"]`); if(n) n.focus({preventScroll:true}); });
+$("#svcDetail").addEventListener("click",e=>{ const b=e.target.closest("[data-svc-line]"); if(!b) return; mapLine=b.dataset.svcLine; mapAuto=[]; drawMap(); $("#map").scrollIntoView({behavior:REDUCED?"auto":"smooth"}); });
+function clock(){ const d=new Date(); $("#clock").textContent=d.toLocaleTimeString("en-CA",{hour:"2-digit",minute:"2-digit",hour12:false}); }
+clock(); setInterval(clock,30000);
+const INSTR=[
+  ["out","Task success","Completion and ease for top tasks","GC Task Success Survey · quarterly"],
+  ["out","Page feedback","“No” clicks per 1K visits, and No compared with Yes","Page feedback tool · monthly"],
+  ["out","Searches from the page","Searches launched from a page per 1K visits","Adobe Analytics · monthly"],
+  ["out","Site search","Top terms, and searches with no useful result","Canada.ca search · monthly"],
+  ["out","Google search","Impressions, clicks, click-through and position, including AI features as Search Console reports them","Search Console · monthly"],
+  ["out","Check-ins","Before and after, against the baseline","Post-launch · 2 wk, 30, 90 days"],
+  ["ops","Operations","Traffic, requests by line, SLA by priority, backlog age","Asana, Adobe Analytics · monthly"],
+  ["ops","Express share","Share of trips on the Express line. It should grow as the library does.","Asana · monthly"]
+];
+$("#instr").innerHTML=INSTR.map(([t,h,p,s])=>`<div class="card gauge ${t}"><span class="k">${t==="out"?"Outcome measure":"Operations measure"}</span><h3>${esc(h)}</h3><p>${esc(p)}</p><span class="src">${esc(s)}</span></div>`).join("");
+
+/* ============================== SIGNALS ============================== */
+const SIG=[
+  {id:"ready",when:"Content ready = no",then:"Status set to Not ready, checklist comment sent, SLA clock paused.",set:"Asana form and rule"},
+  {id:"p1",when:"Priority = P1",then:"Posted to the WebOps Slack channel, triaged the same day, first in the build queue, and a 2-week check after launch.",set:"Asana rule, Slack"},
+  {id:"top",when:"Top task = yes",then:"Subtasks for the baseline, a monitoring dashboard, and 30- and 90-day checks.",set:"Asana rule"},
+  {id:"nsd",when:"Custom design or code",then:"Design QA subtask assigned to RAD, before code QA.",set:"Asana rule"},
+  {id:"sens",when:"Sensitive content = yes",then:"A second content reviewer is added to content QA.",set:"Asana rule"},
+  {id:"launch",when:"Anything launches",then:"The inventory is updated with owner and review date, and the page joins the outcome report.",set:"Asana rule, inventory"},
+  {id:"big",when:"Rethink or new pattern",then:"A baseline before work starts and 30- and 90-day checks, even outside top tasks.",set:"Asana rule"},
+  {id:"pattern",when:"A new pattern launches",then:"A 90-day prove-in-use check. Only a proven pattern joins the library.",set:"Asana rule"},
+  {id:"alert",when:"A top-task page leaves its normal range",then:"Its owner hears that week, not at the next monthly review.",set:"Adobe Analytics alert"},
+  {id:"esc",when:"A top task is flagged two cycles running",then:"It goes to the director, whatever the owner decided.",set:"Owner review"},
+  {id:"review",when:"A page reaches its review date",then:"It joins the quarterly lifecycle sweep.",set:"Content inventory"},
+  {id:"late",when:"A request passes its target for its priority",then:"Raised at the Monday triage meeting.",set:"Asana rule"},
+  {id:"p1share",when:"P1s exceed [15%] of a month's requests",then:"The manager reviews how P1 is being used.",set:"Asana reporting"}
+];
+function renderSignals(t){
+  const on=t&&t.signals?t.signals:new Set(), ready=t&&t.notReady;
+  $("#sigs").innerHTML=SIG.map(s=>{ const go=on.has(s.id)||(s.id==="ready"&&ready);
+    return `<div class="card sig${go?" go":""}"><div class="lamp" aria-hidden="true"><i></i><i></i><i></i></div><div><div class="when">When: ${esc(s.when)}</div><div class="then">${esc(s.then)}</div><div class="set">Set up in: ${esc(s.set)} <span class="auto applies">APPLIES TO THIS TICKET</span></div></div></div>`; }).join("");
+}
+
+/* ============================== RULEBOOK ============================== */
+const ph=x=>`<span class="ph">${x}</span>`;
+const chip=k=>`<span class="lname-chip" style="--c:var(--${k})"><i></i>${esc(LINES[k].n)}</span>`;
+const RULES=[
+  ["1","Ready to board",`<p>Accept a request only when it has an owner, the pages affected, the change and why, content approved by the program and translated (the WUX advisor sends it to translation), the deadline type, and for PDIs the approval reference. Otherwise: status <b>Not ready</b>, checklist comment, SLA clock paused. Content that can't be final yet goes to the ${chip("advice")} line. New patterns and rethinks board without final content: it follows the design.</p>`],
+  ["2","Choosing the line",`<p>Check from the top; the first match wins.</p><div class="tbl"><table><thead><tr><th>If</th><th>Line</th><th>Led by</th></tr></thead><tbody>
+    <tr><td>PDI or corporate item</td><td>${chip("direct")}</td><td>Publishing</td></tr>
+    <tr><td>Numbers, an analysis or tracking, not a change</td><td>${chip("evidence")}</td><td>RAD</td></tr>
+    <tr><td>Content isn't final and the solution is unclear</td><td>${chip("advice")}</td><td>RAD</td></tr>
+    <tr><td>Spans a section or journey (more than ${ph("10")} pages or more than one task), flagged ${ph("2")}+ cycles running, or the owner can't name the solution</td><td>${chip("rethink")}</td><td>RAD, with Enterprise</td></tr>
+    <tr><td>Needs custom code, and other pages will reuse it</td><td>${chip("newpattern")}</td><td>RAD, with Enterprise</td></tr>
+    <tr><td>Needs custom code: a design that differs from templates, data files (JSON) behind the page, interactivity, a new template or component, or a link to another system</td><td>${chip("custom")}</td><td>Enterprise</td></tr>
+    <tr><td>Everything else: content, or pages from existing templates and components</td><td>${chip("express")}</td><td>Publishing</td></tr></tbody></table></div>
+    <p>In doubt between two lines: take the lighter one and record the doubt. RAD or Enterprise can upgrade within ${ph("2")} days, with a reason. Upgrades and downgrades are logged.</p>`],
+  ["3","Priority is separate from the line",`<p><b>P1 if any is true:</b> wrong information that could hurt clients; a top task can't be completed; a fixed public or legal date; a security or privacy issue. A P1 needs a written reason. P1 doesn't change the line: it boards first (same-day triage, front of the queue, fast-track approval and translation, a 2-week check after launch).</p>
+    <p><b>Otherwise score it out of 10:</b> harm (0 to 3), reach (0 to 3, top task = 3), deadline (0 to 3; an internal preference never counts for more than 1), evidence (0 or 1). ${ph("6")} or more is P2; less is P3. The score also orders the queue.</p>`],
+  ["4","Flags",`<ul>
+    <li><b>Top task:</b> the page is on a top task's path (entry, steps, confirmation). Triggers a baseline, a dashboard and 30- and 90-day checks.</li>
+    <li><b>Custom design or code:</b> any trip on the Custom build, New pattern or Rethink lines, and PDIs or corporate items that go beyond templates. Triggers design QA by RAD.</li>
+    <li><b>Sensitive content:</b> fees, eligibility, deadlines, processing times, legal obligations. Adds a second content reviewer.</li>
+    <li><b>Dependency:</b> DPM or another platform, another line of business, external sites, pending translation. Shown on the Asana task and reflected in the target date.</li></ul>`],
+  ["5","Before boarding",`<ul><li>Duplicates or open requests on the same pages: bundle them.</li><li>An active rethink covers the page: fold it in instead of patching.</li><li>An outcome flag exists on the page: attach the evidence.</li><li>Low traffic and past its review date: consider retiring the page instead.</li></ul>`],
+  ["6","Re-triage and quality",`<ul><li>Re-triage when the scope changes, content isn't ready at build time, custom work turns up, or the deadline moves.</li><li>Reason codes on every decision. A monthly audit of ${ph("10")} random requests by the manager and RAD.</li><li>Track time to triage (target ${ph("1 business day")}; P1 the same day), re-triage rate, upgrades and downgrades by line, and P1 share.</li></ul>`]
+];
+$("#rules").innerHTML=RULES.map(([n,t,b],i)=>`<details class="rule"${i<3?" open":""}><summary><span class="rn">RULE ${n}</span>${esc(t)}</summary><div class="rb">${b}</div></details>`).join("");
+
+/* ============================== OBJECTIVES ============================== */
+const TEAMS=[{k:"wo",n:"WebOps",r:"mgr",sub:"Manager owns"},{k:"rad",n:"RAD",r:"rad",sub:"4 objectives"},{k:"ent",n:"Enterprise",r:"ent",sub:"3 objectives"},{k:"pub",n:"Publishing",r:"pub",sub:"3 objectives"}];
+const PARTS={fd:["Front door","--z0"],me:["Measure","--zm"],fo:["Foundation","--zf"],cr:["Crew","--zr"]};
+/* KR: [id, text, Q3, Q4, feeds(WO ids), links] ; link = st:|line:|svc:|sig: */
+const OKR=[
+ {id:"WO 1",team:"wo",part:"fd",t:"Every request boards the right line, quickly and predictably",why:"Intake and triage. Today requests arrive as Outlook tasks and two triagers route them.",krs:[
+  ["WO 1.1","Share of requests that arrive through the Asana form","Form live; [2] lines of business on it","100%; Outlook tasks retired",[],["st:intake","sig:ready"]],
+  ["WO 1.2","One triager; time to triage","Single triager and backup named; rulebook adopted","Median ≤ [1] business day; P1 the same day, 100%",[],["st:triage","svc:triage"]],
+  ["WO 1.3","Requests that meet the SLA for their priority","Baseline by line and priority","P1 100%; P2 ≥ [90%]; P3 ≥ [85%]",[],["svc:ops","sig:late"]],
+  ["WO 1.4","Requests re-triaged after boarding","Baseline","≤ [10%]",[],["st:triage"]]]},
+ {id:"WO 2",team:"wo",part:"me",t:"We know whether our changes help people, and we act on it",why:"The measure pole and the loop line: the outcome reporting WebOps doesn't do yet.",krs:[
+  ["WO 2.1","Top tasks covered by the automatic outcome report and alerts","Top-task list confirmed; baselines for 100%","Report and alerts run on their own for 100%",[],["svc:outcome","svc:alerts","st:monitor"]],
+  ["WO 2.2","Flags that get an owner decision within the month","Owner reviews start with every WUX advisor","≥ [90%]",[],["svc:review","line:loop"]],
+  ["WO 2.3","Top-task and big-work launches with a baseline and 30- and 90-day checks","100% from October","100%",[],["st:checks","sig:top"]],
+  ["WO 2.4","Top tasks with a measured improvement","Measures baselined: “No” clicks and searches per 1K visits, task success","[3] top tasks improve on [2] measures; FY 2027–28 targets set",[],["svc:outcome","svc:tss"]]]},
+ {id:"WO 3",team:"wo",part:"fo",t:"Build once, reuse everywhere",why:"The more patterns the library holds, the more work rides Express, which frees Enterprise for work only it can do.",krs:[
+  ["WO 3.1","Express share of change trips","Baseline","Baseline + [10] points",[],["line:express","svc:ops"]],
+  ["WO 3.2","New patterns that prove themselves and join the library","Library review set up","[3] patterns",[],["line:newpattern","svc:library","st:library"]],
+  ["WO 3.3","Pages in the inventory with an owner and a review date","Baseline","100%",[],["svc:audit","sig:launch"]],
+  ["WO 3.4","Pages retired or merged after a lifecycle decision","First lifecycle sweep held","[X] pages",[],["svc:sweep"]]]},
+ {id:"WO 4",team:"wo",part:"cr",t:"One WebOps: clear roles, capacity where it matters",why:"RAD joins Enterprise and Publishing; the model only works if everyone knows their part.",krs:[
+  ["WO 4.1","Crew roster and triage rulebook validated with all three teams and the WUX advisors","Walkthroughs held; changes logged","Version 1 adopted",[],["svc:retro"]],
+  ["WO 4.2","Capacity tracked by lane (Committed, Commissioned, Standing, Discovered)","Lanes tagged in Asana","Quarterly capacity check held; lanes within [10 points] of plan",[],["svc:capacity"]],
+  ["WO 4.3","Network services running on schedule","[6] monthly and quarterly services running","All services running",[],["svc:ops"]]]},
+
+ {id:"RAD 1",team:"rad",part:"me",t:"Outcome data that runs on its own",krs:[
+  ["RAD 1.1","Top tasks with a baseline on the four outcome measures","100%","Refreshed after the GC TSS quarter",["WO 2.1","WO 2.4"],["svc:tss","st:triage"]],
+  ["RAD 1.2","Outcome report built as a scheduled Adobe Analytics Workspace project","First version sent to WUX advisors","Runs monthly without manual steps; includes Search Console",["WO 2.1","WO 4.3"],["svc:outcome"]],
+  ["RAD 1.3","Top-task pages with anomaly alerts","[Pilot on 1 line of business]","100%; alert to owner ≤ [1 week]",["WO 2.1"],["svc:alerts","sig:alert"]]]},
+ {id:"RAD 2",team:"rad",part:"me",t:"Evidence turns into decisions",krs:[
+  ["RAD 2.1","WUX advisors with a monthly owner review","100%","100%",["WO 2.2"],["svc:review"]],
+  ["RAD 2.2","Flags that are real (confirmed by the control rule)","Baseline","≥ [70%]; alert thresholds tuned",["WO 2.2"],["line:loop"]],
+  ["RAD 2.3","Top-task and big-work launches checked at 30 and 90 days","100% since October","100%",["WO 2.3"],["st:checks"]],
+  ["RAD 2.4","Loop-line fixes launched, with a before-and-after result","[2]","[6]",["WO 2.4"],["line:loop","st:checks"]]]},
+ {id:"RAD 3",team:"rad",part:"fo",t:"The library grows from proven work",krs:[
+  ["RAD 3.1","Library review held with Enterprise","First review","Quarterly",["WO 3.2"],["svc:library"]],
+  ["RAD 3.2","New patterns through the 90-day prove-in-use check","[2] under test","[3] proven",["WO 3.2"],["line:newpattern","sig:pattern"]],
+  ["RAD 3.3","Research findings in the repository, tagged by task","Repository set up; WURD findings migrated","[X] findings; cited in [50%] of new design work",["WO 3.1"],["st:library","st:research"]]]},
+ {id:"RAD 4",team:"rad",part:"cr",t:"The two files, delivered without crowding out the network",krs:[
+  ["RAD 4.1","Share of RAD capacity on the Help Centre and DPM","Tracked in Asana as Committed","≤ [50%]",["WO 4.2"],["svc:capacity"]],
+  ["RAD 4.2","Help Centre landing page","Research and prototype tested","Launched with a baseline; 30-day check",["WO 2.3"],["line:rethink"]],
+  ["RAD 4.3","DPM: journeys where web assets point to the right place","Inventory of touchpoints","[X] journeys checked and mapped",["WO 2.4"],["line:evidence"]]]},
+
+ {id:"ENT 1",team:"ent",part:"fo",t:"Custom work that scales",krs:[
+  ["ENT 1.1","Custom trips checked against the library before build","100% with a “library checked” note in Asana","100%",["WO 3.1"],["line:custom","st:design"]],
+  ["ENT 1.2","Reusable components shipped and documented","[1]","[3] (with RAD 3.2)",["WO 3.2"],["line:newpattern","st:library"]],
+  ["ENT 1.3","One documented approach for data-driven pages (JSON data files)","Draft","Used on 100% of new data-driven pages",["WO 3.1"],["line:custom"]],
+  ["ENT 1.4","Recurring custom requests turned into templates","Candidates listed with Publishing","[2] templates available to Publishing",["WO 3.1"],["line:express"]]]},
+ {id:"ENT 2",team:"ent",part:"fo",t:"A clean, known inventory",krs:[
+  ["ENT 2.1","Pages with an owner and a review date","Inventory baseline","100%",["WO 3.3"],["svc:audit"]],
+  ["ENT 2.2","Lifecycle sweep held, with owner decisions recorded","First sweep","Quarterly; ≥ [90%] of pages decided",["WO 3.4"],["svc:sweep","sig:review"]],
+  ["ENT 2.3","Monthly Search Console export, with no gap","Running from October","Running; history kept beyond 16 months",["WO 2.1","WO 4.3"],["svc:gsc"]]]},
+ {id:"ENT 3",team:"ent",part:"fd",t:"Predictable custom delivery",krs:[
+  ["ENT 3.1","Custom build and New pattern trips that meet their SLA","Baseline","≥ [85%]",["WO 1.3"],["line:custom","svc:ops"]],
+  ["ENT 3.2","Defects found after launch on custom work","Baseline","Down [30%]",["WO 1.3"],["st:check"]],
+  ["ENT 3.3","Triage handed over to the single triager","Handover plan with Publishing","Done; Enterprise backs up on custom questions",["WO 1.2"],["st:triage"]]]},
+
+ {id:"PUB 1",team:"pub",part:"fd",t:"Express and Direct are fast and reliable",krs:[
+  ["PUB 1.1","Express and Direct trips that meet their SLA","Baseline","P1 100%; P2 and P3 ≥ [95%]",["WO 1.3"],["line:express","line:direct"]],
+  ["PUB 1.2","Median Express cycle time, boarding to launch","Baseline","Down [20%]",["WO 1.3"],["line:express","svc:ops"]],
+  ["PUB 1.3","Publishing queue in Asana","Migrated from Outlook tasks","100%; Outlook tasks retired",["WO 1.1"],["st:intake"]],
+  ["PUB 1.4","Requests ready on first submission","Readiness checklist live","≥ [80%]",["WO 1.4"],["sig:ready","st:prep"]]]},
+ {id:"PUB 2",team:"pub",part:"fd",t:"Quality at the check station",krs:[
+  ["PUB 2.1","Corrections needed after launch","Baseline","Down [30%]",["WO 1.3"],["st:check"]],
+  ["PUB 2.2","PDIs and corporate items beyond templates routed to RAD for design QA","100% flagged","100%",["WO 3.1"],["line:direct","sig:nsd"]],
+  ["PUB 2.3","Launches that update the inventory (owner, review date)","100%","100%",["WO 3.3"],["sig:launch"]]]},
+ {id:"PUB 3",team:"pub",part:"fo",t:"Feed the library, retire what doesn't help",krs:[
+  ["PUB 3.1","Recurring requests templates can't cover, passed to Enterprise","[5] candidates listed","[5] more per quarter",["WO 3.1"],["st:library"]],
+  ["PUB 3.2","Merges and retirements done within [30] days of a lifecycle decision","Baseline","≥ [90%]",["WO 3.4"],["svc:sweep"]],
+  ["PUB 3.3","Single triager in place (with ENT 3.3)","Handover plan","Done; Publishing backs up on Express questions",["WO 1.2"],["st:triage"]]]}
+];
+const KRI={}; OKR.forEach(o=>o.krs.forEach(k=>{KRI[k[0]]={o,k};}));
+const FEDBY={}; OKR.forEach(o=>o.krs.forEach(k=>k[4].forEach(w=>{(FEDBY[w]=FEDBY[w]||[]).push(k[0]);})));
+let okrTeam="wo", okrHl=null;
+const phx=s=>esc(s).replace(/\[([^\]]+)\]/g,'<span class="ph2">$1</span>');
+const teamOf=id=>TEAMS.find(t=>t.k===KRI[id].o.team);
+function linkChip(l){
+  const [kind,v]=l.split(":");
+  if(kind==="st") return `<button type="button" class="kchip" data-go="${l}"><i style="background:var(--ink)"></i>${esc(STATIONS[SI[v]].n)} station</button>`;
+  if(kind==="line") return `<button type="button" class="kchip" data-go="${l}"><i style="--c:var(--${v})"></i>${esc(v==="loop"?"Loop":LINES[v].n)} line</button>`;
+  if(kind==="svc"){ const s=SERVICES.find(x=>x.id===v); return `<button type="button" class="kchip" data-go="${l}"><i style="--c:var(--amber)"></i>${esc(s.n)}</button>`; }
+  if(kind==="sig"){ const s=SIG.find(x=>x.id===v); return `<button type="button" class="kchip" data-go="${l}"><i style="--c:var(--signal-go)"></i>Signal: ${esc(s.when)}</button>`; }
+  return "";
+}
+const krChip=id=>{ const t=teamOf(id); return `<button type="button" class="kchip kr-ref" data-kr="${id}"><span class="role r-${t.r}">${esc(t.n)}</span>${esc(id)}</button>`; };
+function renderOKR(){
+  $("#okrTabs").innerHTML=TEAMS.map(t=>`<button type="button" data-team="${t.k}" aria-pressed="${okrTeam===t.k}"><span class="role r-${t.r}">${esc(t.n)}</span><small>${esc(t.sub)}</small></button>`).join("");
+  $("#okrGrid").innerHTML=OKR.filter(o=>o.team===okrTeam).map(o=>{
+    const [pn,pz]=PARTS[o.part];
+    return `<article class="card obj" style="--zc:var(${pz})"><div class="obj-h"><div class="k"><span>${esc(o.id)}</span><span>· ${okrTeam==="wo"?"":"mainly feeds "}${esc(pn.toUpperCase())}</span></div><h3>${esc(o.t)}</h3>${o.why?`<p>${esc(o.why)}</p>`:""}</div><ul class="krs">`+
+    o.krs.map(([id,t,q3,q4,feeds,links])=>{
+      const rel=o.team==="wo"?(FEDBY[id]||[]):feeds;
+      const relH=o.team==="wo"?(rel.length?`<span>Fed by</span>${rel.map(krChip).join("")}`:`<span>Fed by</span><span class="kchip none">The manager, directly</span>`):`<span>Feeds</span>${rel.map(krChip).join("")}`;
+      return `<li class="kr${okrHl===id?" hl":""}" id="kr-${id.replace(/\W+/g,"")}"><span class="id">${esc(id)}</span><span class="t">${phx(t)}</span>
+        <dl class="tg"><dt>Q3</dt><dd>${phx(q3)}</dd><dt>Q4</dt><dd>${phx(q4)}</dd></dl>
+        <div class="kr-links">${relH}</div><div class="kr-links"><span>On the network</span>${links.map(linkChip).join("")}</div></li>`;
+    }).join("")+`</ul></article>`;
+  }).join("");
+}
+const goTo=id=>$(id).scrollIntoView({behavior:REDUCED?"auto":"smooth"});
+document.addEventListener("click",e=>{
+  const tb=e.target.closest("#okrTabs [data-team]"); if(tb){ okrTeam=tb.dataset.team; okrHl=null; renderOKR(); return; }
+  const kr=e.target.closest("[data-kr]"); if(kr){ const id=kr.dataset.kr; okrTeam=KRI[id].o.team; okrHl=id; renderOKR(); const el=document.getElementById("kr-"+id.replace(/\W+/g,"")); if(el) el.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"center"}); return; }
+  const g=e.target.closest("[data-go]"); if(!g) return;
+  const [kind,v]=g.dataset.go.split(":");
+  if(kind==="st"){ mapStation=v; drawMap(); goTo("#map"); }
+  else if(kind==="line"){ mapLine=v; mapAuto=[]; drawMap(); goTo("#map"); }
+  else if(kind==="svc"){ svcSel=v; renderServices(); goTo("#services"); }
+  else if(kind==="sig"){ goTo("#signals"); }
+});
+
+/* ============================== WIRE UP ============================== */
+function update(){
+  renderPresets(); renderForm();
+  const t=compute(S);
+  renderTicket(t); renderSignals(t); renderRoster(t.none?null:t);
+  mapLine=t.line||null; mapAuto=t.auto||[]; drawMap();
+}
+renderServices();
+renderOKR();
+update();
+(function(){ const g=$("#logoSpin"); let a=0,raf=null; const spin=()=>{ a=(a+1.2)%360; g.setAttribute("transform",`rotate(${a})`); raf=requestAnimationFrame(spin); };
+  const logo=$("#logo"); if(REDUCED) return; logo.addEventListener("mouseenter",()=>{ if(!raf) raf=requestAnimationFrame(spin); }); logo.addEventListener("mouseleave",()=>{ cancelAnimationFrame(raf); raf=null; }); })();
+</script>
+</body></html>
