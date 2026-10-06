@@ -1,0 +1,206 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body>
+<title>WebOps in One Picture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600&family=Atkinson+Hyperlegible+Next:wght@400;600;700&display=swap">
+<style>
+/* Layout: one picture, three sentences. Same calm field-guide look as the full WebOps Network. */
+:root{
+  --paper:#F2F5F4; --card:#FFFFFF; --ink:#1E2B32; --muted:#5A6A70; --rule:#DCE4E1;
+  --zone:#E8EEEC; --express:#2E9461; --custom:#3D6FC2; --rethink:#CF7A27; --newpattern:#7657C2; --direct:#76838D; --advice:#B64F92; --evidence:#1E8F8C; --loop:#E9B634; --loop-ink:#8A6A12; --trunk:#9AA8AD;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-sans:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#11191C; --card:#182226; --ink:#E3EBE9; --muted:#9AAEAE; --rule:#2A383C;
+    --zone:#1A2427; --express:#58C08C; --custom:#78A3EC; --rethink:#EDA05A; --newpattern:#A88EEA; --direct:#A1ADB6; --advice:#E083BE; --evidence:#4FC2BE; --loop:#EAC055; --loop-ink:#EAC055; --trunk:#6E7F84;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#11191C; --card:#182226; --ink:#E3EBE9; --muted:#9AAEAE; --rule:#2A383C;
+  --zone:#1A2427; --express:#58C08C; --custom:#78A3EC; --rethink:#EDA05A; --newpattern:#A88EEA; --direct:#A1ADB6; --advice:#E083BE; --evidence:#4FC2BE; --loop:#EAC055; --loop-ink:#EAC055; --trunk:#6E7F84;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:24px;padding-block:56px 64px}
+@media (max-width:600px){.wrap{padding-inline:16px;padding-block:32px 48px}}
+.eyebrow{margin:0;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:600;font-size:clamp(34px,5vw,54px);line-height:1.05;letter-spacing:-.02em;margin:8px 0 0;text-wrap:balance}
+.intro{margin:14px 0 0;max-width:56ch;font-size:18.5px;color:var(--muted)}
+figure{margin:36px 0 0;background:var(--card);border:1px solid var(--rule);border-radius:18px;padding:18px 10px 8px}
+.scroll{overflow-x:auto}
+svg.net{display:block;width:100%;min-width:720px;height:auto}
+svg.net text{font-family:var(--f-sans);fill:var(--ink)}
+.zone{fill:var(--zone)}
+.zl{font-size:11.5px;font-weight:700;letter-spacing:.1em;fill:var(--muted)!important}
+.sn{font-family:var(--f-display)!important;font-weight:600;font-size:16px}
+.line{fill:none;stroke-width:7;stroke-linecap:round}
+.stop{fill:var(--card);stroke-width:3.2}
+.bar{fill:var(--ink)}
+.bart{font-size:11px;font-weight:700;letter-spacing:.16em;fill:var(--card)!important}
+.trunk{fill:none;stroke:var(--trunk);stroke-width:7;stroke-linecap:round}
+.loop{fill:none;stroke:var(--loop);stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+.chev{fill:var(--loop-ink)}
+.ln{font-family:var(--f-display)!important;font-weight:600;font-size:16px}
+.lead{font-size:13px;fill:var(--muted)!important}
+.loopl{font-size:14px;font-weight:600}
+figcaption{font-size:14px;color:var(--muted);padding:6px 14px 8px}
+.ideas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin:44px 0 0}
+@media (max-width:820px){.ideas{grid-template-columns:minmax(0,1fr);gap:24px}}
+.ideas h2{font-family:var(--f-display);font-weight:600;font-size:22px;line-height:1.2;margin:0 0 6px;text-wrap:balance}
+.ideas p{margin:0;color:var(--muted);font-size:16px}
+.ideas .k{display:block;width:28px;height:5px;border-radius:3px;margin-bottom:14px}
+.also{margin:44px 0 0;padding-top:20px;border-top:1px solid var(--rule);font-size:15px;color:var(--muted);max-width:80ch}
+.also b{color:var(--ink)}
+.services{margin:56px 0 0;padding-top:36px;border-top:1px solid var(--rule)}
+.services h2{font-family:var(--f-display);font-weight:600;font-size:30px;letter-spacing:-.01em;margin:0}
+.svc-intro{margin:8px 0 0;color:var(--muted);max-width:62ch}
+.svc-intro::after{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--loop);margin-left:6px;vertical-align:1px}
+.svc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:24px}
+@media (max-width:900px){.svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.svc-grid{grid-template-columns:minmax(0,1fr)}}
+.cad{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:18px 18px 8px}
+.cad h3{margin:0 0 10px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.cad ul{list-style:none;margin:0;padding:0}
+.cad li{padding:10px 0 12px;border-top:1px solid var(--rule)}
+.cad li:first-child{border-top:0;padding-top:2px}
+.cad li b{display:flex;align-items:center;gap:8px;font-family:var(--f-display);font-weight:600;font-size:16.5px}
+.cad li.feeds b::after{content:"";width:9px;height:9px;border-radius:50%;background:var(--loop);flex:none}
+.cad li span{display:block;font-size:14px;color:var(--muted);line-height:1.45;margin-top:2px}
+</style>
+
+<main class="wrap">
+  <p class="eyebrow">IRCC · Web Operations · Draft for discussion</p>
+  <h1>WebOps as a transit network</h1>
+  <p class="intro">Every request rides a line. The line decides which stops it makes. And what we measure after launch finds the next request.</p>
+
+  <figure>
+    <div class="scroll">
+      <svg class="net" viewBox="0 0 1090 400" role="img" aria-labelledby="netTitle netDesc">
+        <title id="netTitle">The WebOps network, simplified</title>
+        <desc id="netDesc">Requests enter at the front door and are triaged onto a line. Rethink and New pattern stop at research, design and build. Custom build stops at design and build. Express stops only at build. Direct skips the front door and starts at build. All five then launch and are measured. Advice ends at design and Evidence ends at research, without a build. After launch, measurement feeds a loop line back to triage.</desc>
+
+        <!-- zones -->
+        <rect class="zone" x="20" y="44" width="215" height="276" rx="12"/>
+        <rect class="zone" x="250" y="44" width="350" height="276" rx="12"/>
+        <rect class="zone" x="712" y="44" width="126" height="276" rx="12"/>
+        <text class="zl" x="127" y="68" text-anchor="middle">FRONT DOOR</text>
+        <text class="zl" x="425" y="68" text-anchor="middle">DESIGN AND BUILD</text>
+        <text class="zl" x="775" y="68" text-anchor="middle">MEASURE</text>
+
+        <!-- station names -->
+        <text class="sn" x="62" y="104" text-anchor="middle">Request</text>
+        <text class="sn" x="175" y="104" text-anchor="middle">Triage</text>
+        <text class="sn" x="305" y="104" text-anchor="middle">Research</text>
+        <text class="sn" x="425" y="104" text-anchor="middle">Design</text>
+        <text class="sn" x="545" y="104" text-anchor="middle">Build</text>
+        <text class="sn" x="656" y="104" text-anchor="middle">Launch</text>
+        <text class="sn" x="775" y="104" text-anchor="middle">Measure</text>
+
+        <!-- trunk into triage -->
+        <path class="trunk" d="M62 222 H163"/>
+        <circle class="stop" cx="62" cy="222" r="9" style="stroke:var(--trunk)"/>
+
+        <!-- loop line back to triage -->
+        <path class="loop" d="M775 256 V330 Q775 352 753 352 H197 Q175 352 175 330 V316"/>
+        <path class="chev" d="M560 346 l-11 6 l11 6 z"/>
+        <path class="chev" d="M380 346 l-11 6 l11 6 z"/>
+        <text class="loopl" x="475" y="382" text-anchor="middle">Loop line: the monthly outcome report sends problems back to triage</text>
+
+        <!-- lines -->
+        <path class="line" d="M187 150 H775" style="stroke:var(--rethink)"/>
+        <path class="line" d="M187 174 H775" style="stroke:var(--newpattern)"/>
+        <path class="line" d="M187 198 H775" style="stroke:var(--custom)"/>
+        <path class="line" d="M187 222 H775" style="stroke:var(--express)"/>
+        <path class="line" d="M545 246 H775" style="stroke:var(--direct)"/>
+        <path class="line" d="M187 270 H425" style="stroke:var(--advice)"/>
+        <path class="line" d="M187 294 H305" style="stroke:var(--evidence)"/>
+
+        <!-- stops -->
+        <g style="stroke:var(--rethink)"><circle class="stop" cx="305" cy="150" r="7"/><circle class="stop" cx="425" cy="150" r="7"/><circle class="stop" cx="545" cy="150" r="7"/><circle class="stop" cx="775" cy="150" r="7"/></g>
+        <g style="stroke:var(--newpattern)"><circle class="stop" cx="305" cy="174" r="7"/><circle class="stop" cx="425" cy="174" r="7"/><circle class="stop" cx="545" cy="174" r="7"/><circle class="stop" cx="775" cy="174" r="7"/></g>
+        <g style="stroke:var(--custom)"><circle class="stop" cx="425" cy="198" r="7"/><circle class="stop" cx="545" cy="198" r="7"/><circle class="stop" cx="775" cy="198" r="7"/></g>
+        <g style="stroke:var(--express)"><circle class="stop" cx="545" cy="222" r="7"/><circle class="stop" cx="775" cy="222" r="7"/></g>
+        <g style="stroke:var(--direct)"><circle class="stop" cx="545" cy="246" r="7"/><circle class="stop" cx="775" cy="246" r="7"/></g>
+        <g style="stroke:var(--advice)"><circle class="stop" cx="425" cy="270" r="7"/></g>
+        <g style="stroke:var(--evidence)"><circle class="stop" cx="305" cy="294" r="7"/></g>
+
+        <!-- interchanges -->
+        <rect class="bar" x="163" y="132" width="24" height="180" rx="12"/>
+        <rect class="bar" x="644" y="132" width="24" height="132" rx="12"/>
+        <text class="bart" transform="translate(660,198) rotate(-90)" text-anchor="middle">LAUNCH</text>
+
+        <!-- line names -->
+        <text x="856" y="155"><tspan class="ln" style="fill:var(--rethink)">Rethink</tspan><tspan class="lead" dx="8">RAD</tspan></text>
+        <text x="856" y="179"><tspan class="ln" style="fill:var(--newpattern)">New pattern</tspan><tspan class="lead" dx="8">RAD, Enterprise</tspan></text>
+        <text x="856" y="203"><tspan class="ln" style="fill:var(--custom)">Custom build</tspan><tspan class="lead" dx="8">Enterprise</tspan></text>
+        <text x="856" y="227"><tspan class="ln" style="fill:var(--express)">Express</tspan><tspan class="lead" dx="8">Publishing</tspan></text>
+        <text x="856" y="251"><tspan class="ln" style="fill:var(--direct)">Direct</tspan><tspan class="lead" dx="8">Publishing</tspan></text>
+        <text x="443" y="275"><tspan class="ln" style="fill:var(--advice)">Advice</tspan><tspan class="lead" dx="8">RAD, no build</tspan></text>
+        <text x="323" y="299"><tspan class="ln" style="fill:var(--evidence)">Evidence</tspan><tspan class="lead" dx="8">RAD, numbers and analysis</tspan></text>
+      </svg>
+    </div>
+    <figcaption>A ring is a stop; a line that runs past a station without a ring skips it. Direct skips the front door: PDIs and corporate items go straight to Publishing. New patterns that prove themselves join the shared library, so later requests can ride Express.</figcaption>
+  </figure>
+
+  <section class="ideas" aria-label="The three ideas">
+    <div>
+      <span class="k" style="background:var(--trunk)"></span>
+      <h2>One front door</h2>
+      <p>Every request comes in through the same form. One triager picks its line and its priority (P1 to P3), so work stops depending on who you know.</p>
+    </div>
+    <div>
+      <span class="k" style="background:var(--custom)"></span>
+      <h2>The line decides the stops</h2>
+      <p>A text change rides Express straight to build. Custom code adds design. A rethink adds research too. Simple work stays light; complex work gets the attention it needs.</p>
+    </div>
+    <div>
+      <span class="k" style="background:var(--loop)"></span>
+      <h2>Measuring closes the loop</h2>
+      <p>Launch isn't the end. A monthly outcome report shows which pages work for people, and anything that doesn't goes back to triage as a new trip.</p>
+    </div>
+  </section>
+
+  <section class="services" aria-labelledby="svcH">
+    <h2 id="svcH">Network services</h2>
+    <p class="svc-intro">The regular reports and meetings that keep the network running. The ones marked with a yellow dot feed the loop line: they find the next requests.</p>
+    <div class="svc-grid">
+      <div class="cad">
+        <h3>Every week</h3>
+        <ul>
+          <li class="feeds"><b>Top-task alerts</b><span>RAD · daily, automatic. A top-task page leaves its normal range and its owner hears that week.</span></li>
+          <li><b>Triage meeting</b><span>Triager and leads · Mondays. Reviews the queue, P1s and late requests.</span></li>
+        </ul>
+      </div>
+      <div class="cad">
+        <h3>Every month</h3>
+        <ul>
+          <li class="feeds"><b>Outcome report</b><span>RAD · automatic. Web stats, page feedback, searches, Google search and task success, with problem pages flagged.</span></li>
+          <li class="feeds"><b>Owner reviews</b><span>RAD and each WUX Assistant Director. Each flag gets a decision: fix, plan or accept.</span></li>
+          <li><b>Operations report</b><span>Publishing · automatic. What WebOps produced: requests, service levels, backlog.</span></li>
+        </ul>
+      </div>
+      <div class="cad">
+        <h3>Every quarter</h3>
+        <ul>
+          <li class="feeds"><b>Task success report</b><span>RAD. Completion and ease for top tasks.</span></li>
+          <li><b>Lifecycle sweep</b><span>Enterprise and owners. Keep, improve, merge or retire old pages.</span></li>
+          <li><b>Library review</b><span>RAD and Enterprise. Proven patterns join the library.</span></li>
+          <li><b>Capacity check</b><span>WebOps manager. Is the work balanced?</span></li>
+        </ul>
+      </div>
+      <div class="cad">
+        <h3>Every year</h3>
+        <ul>
+          <li><b>Top-task refresh</b><span>RAD and WUX advisors. Which tasks matter most.</span></li>
+          <li><b>Inventory audit</b><span>Enterprise. Every page, its owner and its purpose.</span></li>
+          <li><b>Retrospective</b><span>Everyone. What to keep, change or drop.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+</body></html>
