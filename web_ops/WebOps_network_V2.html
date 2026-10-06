@@ -1,3 +1,4 @@
+
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body>
 <title>WebOps Network</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -348,6 +349,14 @@ footer{margin-top:72px;border-top:1px solid var(--rule);padding-block:24px 64px;
 .crit-t td{padding:6px 0;display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--muted)}
 .crit-t td b{color:var(--ink);font-variant-numeric:tabular-nums}
 .crit-t tr+tr th,.crit-t tr+tr td{border-top:1px solid var(--rule)}
+.crew-pick{margin:0 0 18px;display:grid;gap:10px}
+.crew-pick .presets{margin:0}
+.trip-mini{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.trip-mini button{appearance:none;text-align:left;border:1px solid var(--rule);background:var(--card);border-radius:18px;padding:6px 15px;font-size:14px;cursor:pointer;display:inline-flex;gap:8px;align-items:baseline;transition:border-color .15s}
+.trip-mini button span{font-size:12.5px;color:var(--muted);font-weight:600;white-space:nowrap}
+.trip-mini button:hover{border-color:var(--muted)}
+.trip-mini button[aria-pressed="true"]{border-color:var(--c);box-shadow:inset 0 0 0 1px var(--c);background:color-mix(in srgb,var(--c) 8%,var(--card))}
+.trip-mini .mine{font-size:13.5px;color:var(--ink);background:var(--accent-soft);padding:4px 12px;border-radius:999px;font-weight:600}
 </style>
 
 <header class="top">
@@ -426,6 +435,10 @@ footer{margin-top:72px;border-top:1px solid var(--rule);padding-block:24px 64px;
   <section id="crew" aria-labelledby="h3c">
     <div class="sh"><h2 id="h3c">Crew roster</h2></div>
     <p class="lede">What each role does at each station. Duties on the current ticket are highlighted and numbered in the order of the stops.</p>
+    <div class="crew-pick" id="crewPick" aria-label="Choose the trip shown in the roster">
+      <div class="presets" id="presets2"></div>
+      <div class="trip-mini" id="tripMini"></div>
+    </div>
     <div class="roster-wrap"><table class="roster" id="roster"></table></div>
     <p class="roster-key" id="rosterKey"></p>
   </section>
@@ -804,7 +817,11 @@ const tripState=(k,i)=>({...DEF,...TRIPS[k][i].s});
 S=tripState("express",0);
 function loadTrip(k,i){ tripLine=k; tripSel=i; S=tripState(k,i); update(); }
 function renderPresets(){
-  $("#presets").innerHTML=`<span>Start from a line</span>`+LINE_ORDER.concat(["loop"]).map(k=>`<button type="button" data-preset="${k}" aria-pressed="${tripLine===k}" style="--c:var(--${k})"><i${k==="loop"?' style="box-shadow:0 0 0 1px var(--loop-edge)"':""}></i>${esc(k==="loop"?"Loop line":LINES[k].n)}</button>`).join("");
+  const lineBtns=LINE_ORDER.concat(["loop"]).map(k=>`<button type="button" data-preset="${k}" aria-pressed="${tripLine===k}" style="--c:var(--${k})"><i${k==="loop"?' style="box-shadow:0 0 0 1px var(--loop-edge)"':""}></i>${esc(k==="loop"?"Loop line":LINES[k].n)}</button>`).join("");
+  $("#presets").innerHTML=`<span>Start from a line</span>`+lineBtns;
+  $("#presets2").innerHTML=`<span>Show a trip on</span>`+lineBtns;
+  $("#tripMini").style.setProperty("--c",`var(--${tripLine})`);
+  $("#tripMini").innerHTML=TRIPS[tripLine].map((tr,i)=>`<button type="button" data-trip="${tripLine}:${i}" aria-pressed="${tripSel===i}"><span>Trip ${i+1}</span>${esc(tr.t)}</button>`).join("")+(tripSel===null?`<span class="mine">Showing your own trip from the journey planner</span>`:"");
   const c=`var(--${tripLine})`;
   $("#trips").style.setProperty("--c",c);
   $("#trips").innerHTML=`<p class="trips-h">Example trips on the ${esc(tripLine==="loop"?"loop line":LINES[tripLine].n+" line")}${tripSel===null?' <span class="mine">You’ve changed the answers: the ticket is your own trip now.</span>':""}</p><div class="trip-row">`+
@@ -812,18 +829,18 @@ function renderPresets(){
       const meta=r.none?r.title:[r.title+" line",r.pr,...r.flags].filter(Boolean).join(" · ");
       return `<button type="button" class="trip" data-trip="${tripLine}:${i}" aria-pressed="${tripSel===i}"><span class="tn">Trip ${i+1}</span><b>${esc(tr.t)}</b><span class="tw">${esc(tr.why)}</span><span class="tm">${esc(meta)}</span></button>`; }).join("")+`</div>`;
 }
-$("#presets").addEventListener("click",e=>{ const b=e.target.closest("[data-preset]"); if(!b) return; loadTrip(b.dataset.preset,0); });
-document.addEventListener("click",e=>{ const b=e.target.closest("[data-trip]"); if(!b) return; const [k,i]=b.dataset.trip.split(":"); loadTrip(k,+i); if(!b.closest("#trips")) $("#planner").scrollIntoView({behavior:REDUCED?"auto":"smooth"}); });
+document.addEventListener("click",e=>{ const b=e.target.closest("[data-preset]"); if(!b) return; loadTrip(b.dataset.preset,0); });
+document.addEventListener("click",e=>{ const b=e.target.closest("[data-trip]"); if(!b) return; const [k,i]=b.dataset.trip.split(":"); loadTrip(k,+i); if(!b.closest("#trips,#crewPick")) $("#planner").scrollIntoView({behavior:REDUCED?"auto":"smooth"}); });
 
 /* ============================== CREW ROSTER ============================== */
 const DUTY={
   owner:{prep:"Gets program approval; sends content to translation; frames the problem for big work",intake:"Sends the request through the Asana form",triage:"Answers the sizing questions",research:"Joins research sessions",design:"Reviews prototypes; sends final content to translation (big work)",check:"Content QA",monitor:"Brings context to the owner review; carries out its decisions",checks:"Reviews before-and-after results"},
   prog:{prep:"Approves content",design:"Approves content once the design settles (big work)",build:"Sends PDIs and corporate items straight to Publishing",check:"Confirms PDI and corporate content"},
   tri:{intake:"Checks readiness; returns requests that aren't ready",triage:"Sets line, priority, flags and lead; runs the Monday meeting"},
-  mgr:{triage:"Settles priority conflicts between lines of business",monitor:"Operations report, quarterly capacity check, yearly retrospective"},
-  rad:{triage:"Sets baselines for top tasks and big work",research:"Research, analytics and insight requests",design:"Design, prototypes, new patterns, advice",check:"Design QA for anything custom",monitor:"Outcome report, dashboards, top-task alerts",checks:"2-week, 30/90-day and prove-in-use checks",library:"Decides with Enterprise what joins the library; research repository"},
-  ent:{design:"Builds prototypes with RAD",build:"Custom code: different designs, JSON data files, interactivity, reusable components",check:"Code QA for custom work",monitor:"Inventory, lifecycle; Search Console data for the outcome report",library:"Documents and scales proven patterns"},
-  pub:{build:"Pages from templates and components; PDIs; corporate items",check:"Code QA for template work",monitor:"Merges and retires pages after cleanup decisions"}
+  mgr:{triage:"Settles priority conflicts between lines of business",monitor:"Uses the operations report; quarterly capacity check; yearly retrospective"},
+  rad:{triage:"Sets baselines for top tasks and big work",research:"Research, analytics and insight requests",design:"Design, prototypes, new patterns, advice",check:"Design QA for anything custom",monitor:"Outcome report (web stats and outcomes), dashboards, top-task alerts",checks:"2-week, 30/90-day and prove-in-use checks",library:"Decides with Enterprise what joins the library; research repository"},
+  ent:{design:"Builds prototypes with RAD",build:"Custom code: different designs, JSON data files, interactivity, reusable components",check:"Code QA for custom work",monitor:"Inventory and lifecycle",library:"Documents and scales proven patterns"},
+  pub:{build:"Pages from templates and components; PDIs; corporate items",check:"Code QA for template work",monitor:"Operations report; merges and retires pages after cleanup decisions"}
 };
 const ZC={"0":"var(--rule)",r:"var(--newpattern)",d:"var(--express)",m:"var(--custom)",f:"var(--muted)"};
 function tripSteps(t){ const ids=[...new Set((t&&t.duties||[]).map(([,st])=>st))].sort((a,b)=>SI[a]-SI[b]); return Object.fromEntries(ids.map((id,i)=>[id,i+1])); }
@@ -859,11 +876,11 @@ const SERVICES=[
    what:"A short weekly review of the queue: new requests, P1s, requests past their target date, and anything that needs re-triage.",
    use:"Requesters don't attend. Submit through the Asana form; anything received by Friday is routed on Monday. P1s don't wait for the meeting.",feeds:"All lines"},
   {g:"Every month"},
-  {id:"outcome",w:"Week 1",n:"Outcome report",by:"RAD, with Enterprise",runs:"AUTO",tool:"Scheduled Adobe Analytics Workspace project, plus the monthly Google Search Console export from Enterprise",
-   what:"Per page and per top task: page feedback, searches from the page, site search, Google search (impressions, clicks and position, including AI features as Search Console reports them) and task success, each compared with its own normal range. Pages outside it are flagged.",
+  {id:"outcome",w:"Week 1",n:"Outcome report",by:"RAD",runs:"AUTO",tool:"Scheduled Adobe Analytics Workspace project, plus RAD's monthly Google Search Console export",
+   what:"How the site is doing for the people using it. Basic web stats (visits, page views, top pages and trends), then per page and per top task: page feedback, searches from the page, site search, Google search (impressions, clicks and position, including AI features as Search Console reports them) and task success, each compared with its own normal range. Pages outside it are flagged.",
    use:"Each WUX Assistant Director gets the section for their line of business. The flags are the agenda for the owner review in week 2. Exporting Search Console data every month also keeps a history beyond the 16 months Google retains.",feeds:"Loop line",line:"loop"},
-  {id:"ops",w:"Week 1",n:"Operations report",by:"Manager, Publishing",runs:"AUTO",tool:"Asana reporting, Adobe Analytics",
-   what:"Traffic, requests received and completed by line, SLA adherence by priority, backlog age, and the share of trips on the Express line.",
+  {id:"ops",w:"Week 1",n:"Operations report",by:"Publishing",runs:"AUTO",tool:"Asana reporting",
+   what:"What WebOps itself produced, and nothing about site traffic: requests received and completed by line and by team, SLA adherence by priority, cycle times, backlog age, re-triage rate, requests returned not ready, and the share of trips on the Express line.",
    use:"The manager uses it for capacity decisions and shares it with the director. A growing Express share means the library is paying off.",feeds:"Capacity check"},
   {id:"review",w:"Week 2",n:"Owner reviews",by:"RAD, each WUX Assistant Director",runs:"MEET",tool:"30 minutes per line of business, flags only",
    what:"RAD walks each WUX Assistant Director through the flags on their line of business. Advisors join when their pages are on the list.",
@@ -962,7 +979,7 @@ const OKR=[
 
  {id:"RAD 1",team:"rad",part:"me",t:"Outcome data that runs on its own",krs:[
   ["RAD 1.1","Top tasks with a baseline on the four outcome measures","100%","Refreshed after the GC TSS quarter",["WO 2.1","WO 2.4"],["svc:tss","st:triage"]],
-  ["RAD 1.2","Outcome report built as a scheduled Adobe Analytics Workspace project","First version sent to WUX advisors","Runs monthly without manual steps; includes Search Console",["WO 2.1","WO 4.3"],["svc:outcome"]],
+  ["RAD 1.2","Outcome report built as a scheduled Adobe Analytics Workspace project","First version, with basic web stats, sent to WUX Assistant Directors","Runs monthly without manual steps; includes RAD's Search Console export",["WO 2.1","WO 4.3"],["svc:outcome"]],
   ["RAD 1.3","Top-task pages with anomaly alerts","[Pilot on 1 line of business]","100%; alert to owner ≤ [1 week]",["WO 2.1"],["svc:alerts","sig:alert"]]]},
  {id:"RAD 2",team:"rad",part:"me",t:"Evidence turns into decisions",krs:[
   ["RAD 2.1","WUX Assistant Directors with a monthly owner review","100%","100%",["WO 2.2"],["svc:review"]],
@@ -985,8 +1002,7 @@ const OKR=[
   ["ENT 1.4","Recurring custom requests turned into templates","Candidates listed with Publishing","[2] templates available to Publishing",["WO 3.1"],["line:express"]]]},
  {id:"ENT 2",team:"ent",part:"fo",t:"A clean, known inventory",krs:[
   ["ENT 2.1","Pages with an owner and a review date","Inventory baseline","100%",["WO 3.3"],["svc:audit"]],
-  ["ENT 2.2","Lifecycle sweep held, with owner decisions recorded","First sweep","Quarterly; ≥ [90%] of pages decided",["WO 3.4"],["svc:sweep","sig:review"]],
-  ["ENT 2.3","Monthly Search Console export, with no gap","Running from October","Running; history kept beyond 16 months",["WO 2.1","WO 4.3"],["svc:outcome"]]]},
+  ["ENT 2.2","Lifecycle sweep held, with owner decisions recorded","First sweep","Quarterly; ≥ [90%] of pages decided",["WO 3.4"],["svc:sweep","sig:review"]]]},
  {id:"ENT 3",team:"ent",part:"fd",t:"Predictable custom delivery",krs:[
   ["ENT 3.1","Custom build and New pattern trips that meet their SLA","Baseline","≥ [85%]",["WO 1.3"],["line:custom","svc:ops"]],
   ["ENT 3.2","Defects found after launch on custom work","Baseline","Down [30%]",["WO 1.3"],["st:check"]],
@@ -996,7 +1012,8 @@ const OKR=[
   ["PUB 1.1","Express and Direct trips that meet their SLA","Baseline","P1 100%; P2 and P3 ≥ [95%]",["WO 1.3"],["line:express","line:direct"]],
   ["PUB 1.2","Median Express cycle time, boarding to launch","Baseline","Down [20%]",["WO 1.3"],["line:express","svc:ops"]],
   ["PUB 1.3","Publishing queue in Asana","Migrated from Outlook tasks","100%; Outlook tasks retired",["WO 1.1"],["st:intake"]],
-  ["PUB 1.4","Requests ready on first submission","Readiness checklist live","≥ [80%]",["WO 1.4"],["sig:ready","st:prep"]]]},
+  ["PUB 1.4","Requests ready on first submission","Readiness checklist live","≥ [80%]",["WO 1.4"],["sig:ready","st:prep"]],
+  ["PUB 1.5","Operations report built from Asana: internal outputs only","First version from Asana","Runs monthly without manual steps",["WO 1.3","WO 4.3"],["svc:ops"]]]},
  {id:"PUB 2",team:"pub",part:"fd",t:"Quality at the check station",krs:[
   ["PUB 2.1","Corrections needed after launch","Baseline","Down [30%]",["WO 1.3"],["st:check"]],
   ["PUB 2.2","PDIs and corporate items beyond templates routed to RAD for design QA","100% flagged","100%",["WO 3.1"],["line:direct","sig:nsd"]],
