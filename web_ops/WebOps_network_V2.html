@@ -482,14 +482,14 @@ footer{margin-top:72px;border-top:1px solid var(--rule);padding-block:24px 64px;
 const STATIONS=[
   {id:"prep",n:"Prepare",s:"content ready",z:"0",what:"The WUX advisor gets the content approved by the program and sends it to translation, before the request. For new patterns and rethinks, the owner frames the problem first and content follows the design.",who:"Owner (sends to translation), program (approves)"},
   {id:"intake",n:"Intake",s:"Asana form",z:"0",what:"The request arrives through the Asana form with its readiness checklist: owner, pages, the change and why, approved and translated content, deadline type.",who:"Owner"},
-  {id:"triage",n:"Triage",s:"line + priority",z:"0",what:"The triager picks the line, sets priority (P1 to P3), records the flags, and names who leads. Top-task and big work gets its baseline here.",who:"Triager (RAD for baselines)"},
+  {id:"triage",n:"Triage",s:"line + priority",z:"0",what:"The triager picks the line, sets priority (P1 to P3), records the flags, and names who leads. Changes flagged for impact monitoring get their baseline here.",who:"Triager (RAD for baselines)"},
   {id:"research",n:"Research",s:"& explore",z:"r",what:"Understand people, their tasks and the problem. Start from existing evidence: analytics, page feedback, search terms, past studies.",who:"RAD, with the owner"},
   {id:"design",n:"Design",s:"& prototype",z:"d",what:"Design from library components first. Prototype and test with real people. New patterns start here.",who:"RAD, Enterprise"},
   {id:"build",n:"Build",s:"part of design",z:"d",what:"Publishing builds from existing templates and components, and publishes PDIs and corporate items. Enterprise builds anything custom: different designs, data-driven pages, interactivity, reusable components.",who:"Publishing or Enterprise"},
   {id:"check",n:"Check",s:"QA gate",z:"d",what:"Code QA always. Design QA by RAD for anything custom. Content QA by the owner.",who:"Publishing or Enterprise, RAD, owner"},
   {id:"launch",n:"Launch",s:"interchange",z:"L",what:"The point between design and measurement. Every launch updates the inventory and adds the page to the outcome report.",who:"Publishing or Enterprise"},
-  {id:"monitor",n:"Monitor",s:"outcome report",z:"m",what:"Every launched page is watched in the monthly outcome report; top tasks also get a dashboard and alerts.",who:"RAD"},
-  {id:"checks",n:"Check-ins",s:"2 wk · 30 · 90 days",z:"m",what:"Before-and-after checks against the baseline: 2 weeks after a P1, 30 and 90 days for top tasks and big work, 90-day prove-in-use for new patterns.",who:"RAD, owner"},
+  {id:"monitor",n:"Monitor",s:"outcome report",z:"m",what:"Every launched page is watched in the monthly outcome report. Changes flagged for impact monitoring also get their own dashboard.",who:"RAD"},
+  {id:"checks",n:"Check-ins",s:"2 wk · 30 · 90 days",z:"m",what:"Before-and-after checks against the baseline: 2 weeks after a P1, 30 and 90 days for changes flagged for impact monitoring, 90-day prove-in-use for new patterns.",who:"RAD, owner"},
   {id:"library",n:"Library",s:"& repository",z:"f",what:"Proven patterns join the IRCC library; research findings go into the repository. The next trip on the same need gets shorter.",who:"RAD, Enterprise"}
 ];
 const SI=Object.fromEntries(STATIONS.map((s,i)=>[s.id,i]));
@@ -499,9 +499,9 @@ const ZONES=[{z:"0",n:"FRONT DOOR",from:0,to:2,c:"--z0"},{z:"r",n:"RESEARCH",fro
 const PREP=["Content approved by the program; translation sent by the WUX advisor","owner, program"];
 const LINES={
   rethink:{n:"Rethink",lead:"RAD, with Enterprise",when:"A section or journey needs redesigning.",ex:"Rethink the “apply for citizenship” section",
-    stops:{prep:["Problem framed","owner"],intake:["Request","owner"],triage:["Line, priority, baseline","triager, RAD"],research:["Team forms; research","RAD, Enterprise, owner"],design:["Prototype and test; content approved and translated","RAD, owner, program"],build:["New pages and pieces","Enterprise, Publishing"],check:["Design, code and content QA","RAD, Enterprise, owner"],monitor:["Outcome report","RAD"],checks:["30- and 90-day checks","RAD, owner"],library:["Findings into the repository","RAD"]}},
+    stops:{prep:["Problem framed","owner"],intake:["Request","owner"],triage:["Line and priority","triager"],research:["Team forms; research","RAD, Enterprise, owner"],design:["Prototype and test; content approved and translated","RAD, owner, program"],build:["New pages and pieces","Enterprise, Publishing"],check:["Design, code and content QA","RAD, Enterprise, owner"],monitor:["Outcome report","RAD"],library:["Findings into the repository","RAD"]}},
   newpattern:{n:"New pattern",lead:"RAD, with Enterprise",when:"Custom work that other pages will reuse.",ex:"A progress tracker that every application page could use",
-    stops:{prep:["Problem framed","owner"],intake:["Request","owner"],triage:["Line, priority, baseline","triager, RAD"],research:["Confirms nothing in the library fits","RAD"],design:["Design and test a new pattern; content approved and translated","RAD, owner, program"],build:["Reusable component","Enterprise"],check:["Design, code and content QA","RAD, Enterprise, owner"],monitor:["Outcome report","RAD"],checks:["90-day prove-in-use","RAD, owner"],library:["Added to the library, if proven","Enterprise, RAD"]}},
+    stops:{prep:["Problem framed","owner"],intake:["Request","owner"],triage:["Line and priority","triager"],research:["Confirms nothing in the library fits","RAD"],design:["Design and test a new pattern; content approved and translated","RAD, owner, program"],build:["Reusable component","Enterprise"],check:["Design, code and content QA","RAD, Enterprise, owner"],monitor:["Outcome report","RAD"],checks:["90-day prove-in-use","RAD, owner"],library:["Added to the library, if proven","Enterprise, RAD"]}},
   custom:{n:"Custom build",lead:"Enterprise",when:"Needs custom code: a different design, data files (JSON) behind the page, or interactivity.",ex:"An eligibility checker driven by a JSON data file",
     stops:{prep:PREP,intake:["Request","owner"],triage:["Line and priority","triager"],design:["Design from library components; RAD advises","RAD, Enterprise"],build:["Custom code","Enterprise"],check:["Design, code and content QA","RAD, Enterprise, owner"],monitor:["Outcome report","RAD"]}},
   express:{n:"Express",lead:"Publishing",when:"Content, or a page from existing templates and components. No custom code.",ex:"Update a fee amount on a page",
@@ -620,7 +620,7 @@ const Q=[
   {id:"clear",l:"Is the problem clear, with evidence?",who:"RAD, with the owner",show:s=>isChange(s)&&s.build==="rethink",o:[["yes","Yes"],["no","Not yet"]]},
   {id:"ready",l:"Is the content approved and translated?",who:"Triager checks the Asana form",h:"The WUX advisor gets program approval and sends content to translation before the request.",show:s=>isChange(s)&&s.build==="template"||(isChange(s)&&s.build==="custom"&&s.reuse!=="yes"),o:[["yes","Yes"],["no","Not yet"]]},
   {id:"nsd",l:"Anything beyond standard templates?",who:"Publishing flags, RAD confirms",h:"Depending on the product, RAD does design QA and Enterprise builds the custom part.",show:s=>s.who==="pdi",o:[["no","No"],["yes","Yes"]]},
-  {id:"top",l:"Does it touch a top task?",who:"Triager, using the top-task list",h:"The page is on a top task's path: entry, steps or confirmation.",show:s=>isChange(s),o:[["no","No"],["yes","Yes"]]},
+  {id:"monitor",l:"Will you need to monitor the impact of this change?",who:"Owner, with the triager",h:"Yes when someone will want to know whether it worked: a known problem, a big redesign, a change people will ask about. It's often a top task, but not always. Yes adds a baseline before the change, a dashboard after it, and 30- and 90-day check-ins.",show:s=>isChange(s)||s.who==="pdi",o:[["no","No"],["yes","Yes"]]},
 ];
 const PRIOS=[["P1","Urgent: boards first"],["P2","High"],["P3","Normal"]];
 let critOpen=false;
@@ -631,7 +631,7 @@ const SCORE=[
   {id:"deadline",l:"Deadline",o:[["0","None"],["1","Internal preference"],["2","Announced, later"],["3","Announced, within 4 wks"]]},
   {id:"evidence",l:"Evidence",o:[["0","None"],["1","Data or research"]]}
 ];
-const DEF={who:"wux",real:"yes",decision:"fix",need:"change",build:"template",reuse:"no",clear:"yes",ready:"yes",nsd:"no",top:"no",prio:"P3"};
+const DEF={who:"wux",real:"yes",decision:"fix",need:"change",build:"template",reuse:"no",clear:"yes",ready:"yes",nsd:"no",monitor:"no",prio:"P3"};
 let S={...DEF};
 function isChange(s){ return (["wux","rad"].includes(s.who)&&s.need==="change")||(s.who==="flag"&&s.real==="yes"&&s.decision==="fix"); }
 const needsPriority=s=>!(s.who==="flag"&&(s.real!=="yes"||s.decision!=="fix"));
@@ -703,11 +703,13 @@ function compute(s){
     if(parts.length) ck.extra=parts.join(" and ");
   }
   if(custom){ T.flags.push("Custom design or code"); T.signals.add("nsd"); }
-  if(isChange(s)&&s.top==="yes"&&LAUNCHES.has(line)){
-    T.flags.push("Top task"); T.signals.add("top");
-    if(!big){ stops.push({id:"triage",w:"Baseline set",who:"RAD",auto:true}); T.auto.push("triage"); }
-    stops.push({id:"monitor",w:"Monitoring dashboard and alerts",who:"RAD",auto:true}); T.auto.push("monitor");
-    if(!stops.some(x=>x.id==="checks")){ stops.push({id:"checks",w:"30- and 90-day checks",who:"RAD, owner",auto:true}); T.auto.push("checks"); }
+  if((isChange(s)||s.who==="pdi")&&s.monitor==="yes"&&LAUNCHES.has(line)){
+    T.flags.push("Impact monitoring"); T.signals.add("top");
+    stops.push({id:"triage",w:"Baseline gathered",who:"RAD",auto:true}); T.auto.push("triage");
+    stops.push({id:"monitor",w:"Impact dashboard",who:"RAD",auto:true}); T.auto.push("monitor");
+    const ck=stops.find(x=>x.id==="checks");
+    if(ck){ ck.w+="; 30- and 90-day impact checks"; }
+    else { stops.push({id:"checks",w:"30- and 90-day impact checks",who:"RAD, owner",auto:true}); T.auto.push("checks"); }
   }
   if(pr==="P1"){
     T.signals.add("p1"); T.p1=true;
@@ -781,20 +783,20 @@ $("#ticket").addEventListener("click",e=>{
 const TRIPS={
   express:[
     {t:"Correct the document checklist on a study permit page",why:"Approved, translated text on an existing page. Nothing custom, so Publishing builds it from the template.",s:{}},
-    {t:"New work permit fees take effect on a fixed date",why:"Still a text change, so still Express. The fixed public date makes it P1: same stops, but it boards first.",s:{top:"yes",prio:"P1"}},
+    {t:"New work permit fees take effect on a fixed date",why:"Still a text change, so still Express. The fixed public date makes it P1: same stops, but it boards first.",s:{prio:"P1"}},
     {t:"Update an answer in the Help Centre",why:"RAD owns the Help Centre, so RAD plays the WUX advisor's part. The change itself is plain Express.",s:{who:"rad"}}],
   custom:[
-    {t:"Visa requirement checker driven by a JSON list of countries",why:"Interactive, with a data file behind it. Only this page needs it, so it's a Custom build, not a New pattern.",s:{build:"custom",reuse:"no",top:"yes",prio:"P2"}},
+    {t:"Visa requirement checker driven by a JSON list of countries",why:"Interactive, with a data file behind it. Only this page needs it, so it's a Custom build, not a New pattern.",s:{build:"custom",reuse:"no",monitor:"yes",prio:"P2"}},
     {t:"Fee calculator for family sponsorship",why:"An interactive tool, so Enterprise builds it, and RAD does design QA before it launches.",s:{build:"custom",reuse:"no"}},
     {t:"Filterable list of designated learning institutions, fed by a data file",why:"A different design and a data source behind the page. Enterprise leads; Publishing isn't involved.",s:{build:"custom",reuse:"no"}}],
   newpattern:[
     {t:"Application progress tracker for every application guide",why:"Custom work that many pages will reuse, so it's designed and tested once, then proven for 90 days before it joins the library.",s:{build:"custom",reuse:"yes"}},
-    {t:"Reusable document checklist builder",why:"Several programs keep asking for the same custom checklist. Building it as a pattern turns their future requests into Express trips.",s:{build:"custom",reuse:"yes",top:"yes",prio:"P2"}},
+    {t:"Reusable document checklist builder",why:"Several programs keep asking for the same custom checklist. Building it as a pattern turns their future requests into Express trips.",s:{build:"custom",reuse:"yes",monitor:"yes",prio:"P2"}},
     {t:"Standard pattern for eligibility questions",why:"Every program writes its own “Are you eligible?” questions differently. One tested pattern replaces many one-offs.",s:{build:"custom",reuse:"yes"}}],
   rethink:[
-    {t:"Rethink the “Apply for citizenship” section",why:"A whole section and several tasks, and the problem isn't clear yet. RAD leads research first; content follows the design.",s:{build:"rethink",clear:"no",top:"yes",prio:"P2"}},
-    {t:"Redesign the Help Centre landing page",why:"RAD is the owner and the designer here. The goal, helping people find answers in core content, is clear, with evidence.",s:{who:"rad",build:"rethink",clear:"yes",top:"yes",prio:"P2"}},
-    {t:"Visitor visa journey, flagged two cycles running",why:"Arrives on the loop line. Patching hasn't worked twice, so the owner chooses a rethink instead of another fix.",s:{who:"flag",real:"yes",decision:"fix",build:"rethink",clear:"yes",top:"yes",prio:"P2"}}],
+    {t:"Rethink the “Apply for citizenship” section",why:"A whole section and several tasks, and the problem isn't clear yet. RAD leads research first; content follows the design.",s:{build:"rethink",clear:"no",monitor:"yes",prio:"P2"}},
+    {t:"Redesign the Help Centre landing page",why:"RAD is the owner and the designer here. The goal, helping people find answers in core content, is clear, with evidence.",s:{who:"rad",build:"rethink",clear:"yes",monitor:"yes",prio:"P2"}},
+    {t:"Visitor visa journey, flagged two cycles running",why:"Arrives on the loop line. Patching hasn't worked twice, so the owner chooses a rethink instead of another fix.",s:{who:"flag",real:"yes",decision:"fix",build:"rethink",clear:"yes",monitor:"yes",prio:"P2"}}],
   direct:[
     {t:"New PDI for a temporary public policy",why:"Straight from the program to Publishing, no WUX advisor. Standard templates, an announced date within weeks.",s:{who:"pdi",nsd:"no",prio:"P2"}},
     {t:"Annual Report to Parliament on Immigration",why:"A corporate item with interactive charts: beyond templates, so RAD does design QA and Enterprise builds that part.",s:{who:"pdi",nsd:"yes"}},
@@ -808,7 +810,7 @@ const TRIPS={
     {t:"Why do searches spike from the processing times page?",why:"An analysis, not a number: RAD looks at search terms, feedback and paths to explain it.",s:{need:"analysis"}},
     {t:"A dashboard to track a new pathway after launch",why:"Tracking over time: a dashboard on the outcome measures, reviewed monthly with the owner.",s:{need:"track"}}],
   loop:[
-    {t:"“No” clicks doubled on “Extend your work permit”; the owner fixes it",why:"The outcome report raises the flag, RAD confirms it's real, the owner review decides to fix it, and it boards Express with the evidence attached.",s:{who:"flag",real:"yes",decision:"fix",build:"template",top:"yes",prio:"P2"}},
+    {t:"“No” clicks doubled on “Extend your work permit”; the owner fixes it",why:"The outcome report raises the flag, RAD confirms it's real, the owner review decides to fix it, and it boards Express with the evidence attached.",s:{who:"flag",real:"yes",decision:"fix",build:"template",monitor:"yes",prio:"P2"}},
     {t:"An alert on “Sponsor your spouse” turns out to be noise",why:"RAD checks it against the page's normal range. No trip; the page stays in the monthly report.",s:{who:"flag",real:"no"}},
     {t:"A flag on an old program page; the owner review plans a retirement",why:"Real, but not urgent. It goes in the owner's backlog and rides Express when the lifecycle sweep schedules it.",s:{who:"flag",real:"yes",decision:"plan"}}]
 };
@@ -834,11 +836,11 @@ document.addEventListener("click",e=>{ const b=e.target.closest("[data-trip]"); 
 
 /* ============================== CREW ROSTER ============================== */
 const DUTY={
-  owner:{prep:"Gets program approval; sends content to translation; frames the problem for big work",intake:"Sends the request through the Asana form",triage:"Answers the sizing questions",research:"Joins research sessions",design:"Reviews prototypes; sends final content to translation (big work)",check:"Content QA",monitor:"Brings context to the owner review; carries out its decisions",checks:"Reviews before-and-after results"},
+  owner:{prep:"Gets program approval; sends content to translation; frames the problem for big work",intake:"Sends the request through the Asana form",triage:"Answers the sizing questions, including whether to monitor impact",research:"Joins research sessions",design:"Reviews prototypes; sends final content to translation (big work)",check:"Content QA",monitor:"Brings context to the owner review; carries out its decisions",checks:"Reviews before-and-after results"},
   prog:{prep:"Approves content",design:"Approves content once the design settles (big work)",build:"Sends PDIs and corporate items straight to Publishing",check:"Confirms PDI and corporate content"},
   tri:{intake:"Checks readiness; returns requests that aren't ready",triage:"Sets line, priority, flags and lead; runs the Monday meeting"},
   mgr:{triage:"Settles priority conflicts between lines of business",monitor:"Uses the operations report; quarterly capacity check; yearly retrospective"},
-  rad:{triage:"Sets baselines for top tasks and big work",research:"Research, analytics and insight requests",design:"Design, prototypes, new patterns, advice",check:"Design QA for anything custom",monitor:"Outcome report (web stats and outcomes), dashboards, top-task alerts",checks:"2-week, 30/90-day and prove-in-use checks",library:"Decides with Enterprise what joins the library; research repository"},
+  rad:{triage:"Gathers the baseline when impact will be monitored",research:"Research, analytics and insight requests",design:"Design, prototypes, new patterns, advice",check:"Design QA for anything custom",monitor:"Outcome report (web stats and outcomes), dashboards, top-task alerts",checks:"2-week, 30/90-day and prove-in-use checks",library:"Decides with Enterprise what joins the library; research repository"},
   ent:{design:"Builds prototypes with RAD",build:"Custom code: different designs, JSON data files, interactivity, reusable components",check:"Code QA for custom work",monitor:"Inventory and lifecycle",library:"Documents and scales proven patterns"},
   pub:{build:"Pages from templates and components; PDIs; corporate items",check:"Code QA for template work",monitor:"Operations report; merges and retires pages after cleanup decisions"}
 };
@@ -900,7 +902,7 @@ const SERVICES=[
    use:"If a lane has run over its share for two quarters, the manager rebalances or escalates.",feeds:"Next quarter"},
   {g:"Every year"},
   {id:"toptasks",w:"Q1",n:"Top-task refresh",by:"RAD, WUX advisors",runs:"MEET",tool:"Task success data, analytics",
-   what:"Which tasks matter most for each line of business.",use:"The top-task list drives priority scores, alerts and automatic check-ins.",feeds:"Triage"},
+   what:"Which tasks matter most for each line of business.",use:"The top-task list drives priority scores and top-task alerts.",feeds:"Triage"},
   {id:"audit",w:"Q2",n:"Inventory audit",by:"Enterprise",runs:"SEMI",tool:"Content inventory",
    what:"Every page, its owner and its purpose.",use:"Keeps the outcome report and lifecycle sweep complete.",feeds:"Inventory"},
   {id:"retro",w:"Q4",n:"Retrospective",by:"Everyone",runs:"MEET",tool:"This network map",
@@ -944,7 +946,7 @@ const RULES=[
   ["3","Priority is separate from the line",`<p><b>P1 if any is true:</b> wrong information that could hurt clients; a top task can't be completed; a fixed public or legal date; a security or privacy issue. A P1 needs a written reason. P1 doesn't change the line: it boards first (same-day triage, front of the queue, fast-track approval and translation, a 2-week check after launch).</p>
     <p><b>Otherwise score it out of 10:</b> harm (0 to 3), reach (0 to 3, top task = 3), deadline (0 to 3; an internal preference never counts for more than 1), evidence (0 or 1). ${ph("6")} or more is P2; less is P3. The score also orders the queue.</p>`],
   ["4","Flags",`<ul>
-    <li><b>Top task:</b> the page is on a top task's path (entry, steps, confirmation). Triggers a baseline, a dashboard and 30- and 90-day checks.</li>
+    <li><b>Impact monitoring:</b> the owner will want to know whether the change worked. Often a top task, a big redesign or a known problem, but it's a choice, not automatic. Triggers a baseline before the change, a dashboard after it, and 30- and 90-day check-ins.</li>
     <li><b>Custom design or code:</b> any trip on the Custom build, New pattern or Rethink lines, and PDIs or corporate items that go beyond templates. Triggers design QA by RAD.</li>
     <li><b>Dependency:</b> DPM or another platform, another line of business, external sites, pending translation. Shown on the Asana task and reflected in the target date.</li></ul>`],
   ["5","Before boarding",`<ul><li>Duplicates or open requests on the same pages: bundle them.</li><li>An active rethink covers the page: fold it in instead of patching.</li><li>An outcome flag exists on the page: attach the evidence.</li><li>Low traffic and past its review date: consider retiring the page instead.</li></ul>`],
@@ -965,7 +967,7 @@ const OKR=[
  {id:"WO 2",team:"wo",part:"me",t:"We know whether our changes help people, and we act on it",why:"The measure pole and the loop line: the outcome reporting WebOps doesn't do yet.",krs:[
   ["WO 2.1","Top tasks covered by the automatic outcome report and alerts","Top-task list confirmed; baselines for 100%","Report and alerts run on their own for 100%",[],["svc:outcome","svc:alerts","st:monitor"]],
   ["WO 2.2","Flags that get an owner decision within the month","Owner reviews start with every WUX Assistant Director","≥ [90%]",[],["svc:review","line:loop"]],
-  ["WO 2.3","Top-task and big-work launches with a baseline and 30- and 90-day checks","100% from October","100%",[],["st:checks","sig:top"]],
+  ["WO 2.3","Launches flagged for impact monitoring that get a baseline and 30- and 90-day checks","100% from October","100%",[],["st:checks","sig:top"]],
   ["WO 2.4","Top tasks with a measured improvement","Measures baselined: “No” clicks and searches per 1K visits, task success","[3] top tasks improve on [2] measures; FY 2027–28 targets set",[],["svc:outcome","svc:tss"]]]},
  {id:"WO 3",team:"wo",part:"fo",t:"Build once, reuse everywhere",why:"The more patterns the library holds, the more work rides Express, which frees Enterprise for work only it can do.",krs:[
   ["WO 3.1","Express share of change trips","Baseline","Baseline + [10] points",[],["line:express","svc:ops"]],
@@ -984,7 +986,7 @@ const OKR=[
  {id:"RAD 2",team:"rad",part:"me",t:"Evidence turns into decisions",krs:[
   ["RAD 2.1","WUX Assistant Directors with a monthly owner review","100%","100%",["WO 2.2"],["svc:review"]],
   ["RAD 2.2","Flags that are real (confirmed by the control rule)","Baseline","≥ [70%]; alert thresholds tuned",["WO 2.2"],["line:loop"]],
-  ["RAD 2.3","Top-task and big-work launches checked at 30 and 90 days","100% since October","100%",["WO 2.3"],["st:checks"]],
+  ["RAD 2.3","Launches flagged for impact monitoring, checked at 30 and 90 days","100% since October","100%",["WO 2.3"],["st:checks"]],
   ["RAD 2.4","Loop-line fixes launched, with a before-and-after result","[2]","[6]",["WO 2.4"],["line:loop","st:checks"]]]},
  {id:"RAD 3",team:"rad",part:"fo",t:"The library grows from proven work",krs:[
   ["RAD 3.1","Library review held with Enterprise","First review","Quarterly",["WO 3.2"],["svc:library"]],
