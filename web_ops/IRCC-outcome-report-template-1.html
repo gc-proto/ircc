@@ -1,0 +1,1194 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body>
+<title>IRCC Outcome Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a monthly report you read top to bottom and print. One column, summary first, then one section per WUX Assistant Director.
+   Colour: one blue for data, red/green only for worse/better (always with an arrow and a word), everything else slate. */
+:root{
+  --paper:#F2F5F4; --card:#FFFFFF; --ink:#1E2B32; --muted:#5A6A70; --faint:#8A989C; --rule:#DCE4E1; --soft:#EAF0EE;
+  --accent:#2C6E73; --accent-soft:#E0EEEE;
+  --series:#2a78d6; --series-wash:rgba(42,120,214,.10); --band:#E6ECEA; --grid:#E3E8E6; --axis:#C9D2CF;
+  --worse:#d03b3b; --worse-text:#B3261E; --worse-soft:#FBECEA; --better:#0ca30c; --better-text:#006300; --better-soft:#E7F4E7;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-sans:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#11191C; --card:#182226; --ink:#E3EBE9; --muted:#9AAEAE; --faint:#7C8E90; --rule:#2A383C; --soft:#1F2B2F;
+    --accent:#77BDBD; --accent-soft:#1E3436;
+    --series:#3987e5; --series-wash:rgba(57,135,229,.16); --band:#24323A; --grid:#26343A; --axis:#3A4A50;
+    --worse:#e66767; --worse-text:#F08A8A; --worse-soft:#3A2224; --better:#0ca30c; --better-text:#4FCB4F; --better-soft:#1C3220;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#11191C; --card:#182226; --ink:#E3EBE9; --muted:#9AAEAE; --faint:#7C8E90; --rule:#2A383C; --soft:#1F2B2F;
+  --accent:#77BDBD; --accent-soft:#1E3436;
+  --series:#3987e5; --series-wash:rgba(57,135,229,.16); --band:#24323A; --grid:#26343A; --axis:#3A4A50;
+  --worse:#e66767; --worse-text:#F08A8A; --worse-soft:#3A2224; --better:#0ca30c; --better-text:#4FCB4F; --better-soft:#1C3220;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-sans);font-size:15.5px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:24px;padding-block:40px 64px}
+@media (max-width:600px){.wrap{padding-inline:16px;padding-block:24px 48px}}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;text-wrap:balance;margin:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.muted{color:var(--muted)}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- data panel (screen only) ---------- */
+.panel{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:20px 22px;margin-bottom:32px}
+.panel h2{font-size:18px;margin-bottom:4px}
+.panel p{margin:0;color:var(--muted);font-size:14.5px}
+.drop{margin-top:14px;border:1.5px dashed var(--axis);border-radius:12px;padding:16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;transition:background .15s,border-color .15s}
+.drop.over{background:var(--accent-soft);border-color:var(--accent)}
+.drop label.btn{position:relative;overflow:hidden}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.btn{appearance:none;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 16px;font:inherit;font-weight:600;font-size:14px;cursor:pointer;min-height:38px;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{border-color:var(--muted)}
+.btn.solid{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.files{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:6px;font-size:14px}
+.files li{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.files .tag{font-size:12px;font-weight:700;padding:1px 9px;border-radius:999px;background:var(--soft)}
+.files .bad{background:var(--worse-soft);color:var(--worse-text)}
+.ctl{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-size:14.5px}
+.ctl select{font:inherit;padding:6px 10px;border-radius:8px;border:1px solid var(--rule);background:var(--card);color:var(--ink)}
+.ctl .hint{color:var(--muted);font-size:13.5px}
+
+/* ---------- report ---------- */
+.sample{display:flex;gap:10px;align-items:center;background:color-mix(in srgb,#E9B634 22%,var(--card));border:1px solid color-mix(in srgb,#E9B634 50%,var(--rule));border-radius:10px;padding:8px 14px;font-size:14px;font-weight:600;margin-bottom:22px}
+.rh .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0}
+.rh h1{font-size:clamp(32px,4.6vw,48px);letter-spacing:-.02em;line-height:1.05;margin-top:6px}
+.rh .meta{margin:10px 0 0;color:var(--muted);font-size:14.5px;max-width:80ch}
+section.rs{margin-top:44px}
+section.rs > h2{font-size:26px;letter-spacing:-.01em}
+.lede{margin:6px 0 18px;color:var(--muted);max-width:70ch}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}
+@media (max-width:780px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:440px){.tiles{grid-template-columns:minmax(0,1fr)}}
+.tile{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:14px 16px 10px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:end}
+.tile .l{grid-column:1/-1;font-size:13.5px;color:var(--muted);font-weight:600}
+.tile .v{font-size:28px;font-weight:700;line-height:1.15;letter-spacing:-.01em}
+.tile .d{grid-column:1;font-size:13px}
+.tile svg{grid-column:2;grid-row:2/4;width:110px;height:38px}
+.delta{font-weight:600;white-space:nowrap}
+.delta.worse{color:var(--worse-text)} .delta.better{color:var(--better-text)} .delta.flat{color:var(--muted)}
+.notes{margin-top:16px;background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:10px;padding:12px 16px}
+.notes .nl{font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.notes [contenteditable]{min-height:2.6em;outline:none;margin-top:4px;white-space:pre-wrap}
+.notes [contenteditable]:empty::before{content:attr(data-ph);color:var(--faint)}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:14px}
+figure{margin:0;padding:16px 18px 10px}
+figure h3{font-size:16px}
+figure .sub{font-size:13px;color:var(--muted);margin:2px 0 8px}
+.chart{position:relative}
+.chart svg{display:block;width:100%;height:auto}
+.chart text{font-family:var(--f-sans);fill:var(--muted);font-size:11px}
+.chart .end{fill:var(--ink);font-weight:700;font-size:12px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:720px){.two{grid-template-columns:minmax(0,1fr)}}
+.tip{position:absolute;pointer-events:none;background:var(--card);border:1px solid var(--rule);box-shadow:0 6px 20px -8px rgba(0,0,0,.25);border-radius:8px;padding:6px 10px;font-size:13px;white-space:nowrap;transform:translate(-50%,-100%);z-index:5}
+.tip b{display:block;font-size:15px}
+.tip span{color:var(--muted)}
+details.tv{padding:0 18px 12px;font-size:13.5px}
+details.tv summary{cursor:pointer;color:var(--accent);font-weight:600}
+.tw{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+table.t th{text-align:left;font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;padding:8px 10px;border-bottom:1px solid var(--rule);white-space:nowrap}
+table.t td{padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:middle}
+table.t tr:last-child td{border-bottom:0}
+table.t td.r,table.t th.r{text-align:right}
+table.t .pg{font-weight:600}
+table.t .pg small{display:block;font-weight:400;color:var(--muted);font-size:12.5px}
+.tt{display:inline-block;font-size:11.5px;font-weight:700;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:0 8px;margin-left:6px;vertical-align:1px}
+.st{display:inline-flex;align-items:center;gap:5px;font-weight:700;font-size:13px;white-space:nowrap}
+.st.worse{color:var(--worse-text)} .st.better{color:var(--better-text)}
+.sp{width:120px;height:30px;display:block}
+.bar{height:6px;border-radius:3px;background:var(--series);opacity:.75}
+.range{color:var(--muted);font-size:13px;white-space:nowrap}
+.cell-v{display:flex;align-items:center;gap:10px;justify-content:flex-end}
+.dumb text{font-size:12px}
+.dumb .lab{fill:var(--ink);font-size:13px;font-weight:600}
+.dumb .lob{fill:var(--muted);font-size:11.5px}
+.lobh{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.lobh .for{font-size:14px;color:var(--muted)}
+.empty{padding:18px;color:var(--muted);font-size:14.5px}
+.appx{margin-top:56px;padding-top:24px;border-top:1px solid var(--rule)}
+.appx h2{font-size:22px}
+.appx h3{font-size:16px;margin:20px 0 6px}
+.appx p,.appx li{font-size:14.5px;max-width:78ch}
+.appx code{font-size:13px;background:var(--soft);padding:1px 5px;border-radius:4px}
+footer{margin-top:40px;font-size:13px;color:var(--muted)}
+
+@page{size:letter;margin:14mm 12mm}
+@media print{
+  :root{--paper:#fff;--card:#fff;--ink:#1E2B32;--muted:#5A6A70;--faint:#8A989C;--rule:#DCE4E1;--soft:#EAF0EE;--series:#2a78d6;--series-wash:rgba(42,120,214,.10);--band:#E6ECEA;--grid:#E3E8E6;--axis:#C9D2CF;--worse:#d03b3b;--worse-text:#B3261E;--worse-soft:#FBECEA;--better:#0ca30c;--better-text:#006300;--better-soft:#E7F4E7;--accent:#2C6E73;--accent-soft:#E0EEEE;color-scheme:light}
+  body{font-size:11pt;background:#fff}
+  .no-print,details.tv{display:none!important}
+  .wrap{max-width:none;padding:0}
+  section.rs{margin-top:22px}
+  section.lob{break-before:page}
+  .tile,.card,figure,tr,.notes{break-inside:avoid}
+  section.rs > h2,.lobh,.lede,.rh{break-after:avoid}
+  .lede,.rh{break-inside:avoid}
+  .tw{overflow:visible}
+  table.t{min-width:0;font-size:9.5pt}
+  table.t td,table.t th{padding:6px 7px}
+  .sp{width:96px}
+  .notes [contenteditable]:empty{display:none}
+  .notes:has([contenteditable]:empty){display:none}
+  .sample{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .bar,.tt,.st{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <div class="panel no-print" id="panel">
+    <h2>Data for this report</h2>
+    <p>Drop this month's exports here: the Adobe Analytics pages table, the Search Console pages export, the GC Task Success Survey results and the page list. The report rebuilds in your browser; nothing is uploaded anywhere.</p>
+    <div class="drop" id="drop">
+      <label class="btn solid" for="fileIn">Choose files<input type="file" id="fileIn" multiple accept=".csv,text/csv"></label>
+      <span class="muted">or drag the CSV files onto this box</span>
+      <button type="button" class="btn" id="sampleBtn">Use sample data</button>
+    </div>
+    <ul class="files" id="files"></ul>
+    <div class="ctl">
+      <label for="monthSel">Report month <select id="monthSel"></select></label>
+      <span class="hint">To make a PDF, open this file in a browser and use Print, then Save as PDF. Notes you type in the report are printed too.</span>
+    </div>
+  </div>
+
+  <main id="report" aria-live="polite"></main>
+
+  <footer>Outcome report template, RAD. Normal ranges, flags and charts are calculated from the files above each time the report is opened.</footer>
+</div>
+
+<script type="text/plain" id="s-aa">
+#=================================================================
+# Outcome report: pages by month
+# Freeform table
+# Report suite: IRCC Canada.ca (SAMPLE DATA)
+# Date: Sep 1, 2025 - Sep 30, 2026
+#=================================================================
+Month,Page URL,Visits,Page Views,Page feedback: Yes,Page feedback: No,Searches from page
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,"2,512,026","3,611,184",8170,3739,36018
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,"2,385,760","3,336,681",11011,3767,31102
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,"2,495,182","3,971,554",7284,4350,35363
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,"2,285,047","3,000,847",8546,3377,31010
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,"2,354,354","3,503,608",7853,3438,30638
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,"2,327,331","3,107,997",9006,3575,34117
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,"2,460,481","3,435,676",10599,3770,37093
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,"2,359,434","3,672,264",8202,3902,34430
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,"2,655,619","3,760,182",11215,4212,39201
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,"2,814,395","3,898,014",13208,4947,41431
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,"2,759,737","3,574,603",8138,4077,35910
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,"2,786,468","4,282,099",13161,4413,39319
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,"2,886,066","3,785,584",9802,4973,43364
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,"1,594,818","2,199,635",8376,3342,32302
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,"1,566,447","2,451,233",10045,3527,35433
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,"1,516,163","1,928,236",5581,3268,31240
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,"1,478,448","1,900,563",6462,2962,29925
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,"1,510,716","2,080,947",5551,3090,31918
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,"1,488,500","2,039,130",6605,3264,30577
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,"1,437,204","2,069,732",5664,3447,31761
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,"1,645,985","2,153,714",10668,3763,34828
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,"1,610,396","2,493,570",9672,3347,37195
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,"1,655,726","2,085,847",7482,3655,35584
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,"1,864,111","2,953,218",8860,4058,43878
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,"1,734,373","2,678,136",8498,3590,38914
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,"1,715,221","2,594,356",9211,3895,71696
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,"429,380","597,046",5529,1775,18933
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,"416,168","541,501",4413,1510,18168
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,"422,360","671,472",4389,1663,16294
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,"420,872","563,187",3647,1763,18156
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,"408,941","561,813",3661,1569,15777
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,"418,912","600,396",2885,1770,17180
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,"405,103","609,201",4169,1674,15738
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,"446,851","597,428",3763,1842,17166
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,"463,730","679,079",4584,1903,20268
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,"474,266","708,898",5591,1862,19377
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,"494,274","638,882",4843,2099,21368
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,"473,640","617,653",5244,1910,20301
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,"524,314","728,477",5321,2236,20532
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,"377,192","497,331",2198,1042,13235
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,"394,795","579,707",2642,1092,12752
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,"402,585","508,809",3512,1234,13199
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,"382,207","497,740",3556,1158,14060
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,"365,505","466,145",2894,933,13178
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,"367,373","517,562",2361,1102,11966
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,"382,294","492,512",1842,991,13438
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,"394,574","562,280",2001,1062,14383
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,"404,008","531,800",2412,1022,14668
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,"445,896","618,717",2970,1232,15594
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,"432,032","601,234",2781,1290,15621
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,"424,321","542,948",3668,1245,14270
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,"438,009","571,662",2690,1163,14823
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,"866,506","1,177,011",4556,2099,19946
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,"723,901","906,130",3515,1738,16542
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,"621,700","904,546",3303,1350,14453
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,"653,654","1,042,353",3104,1688,15410
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,"636,443","959,023",4726,1630,16233
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,"760,949","1,106,741",5903,1949,19153
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,"850,553","1,094,424",5434,1850,19215
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,"1,015,137","1,552,342",7060,2524,24322
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,"1,114,198","1,421,781",4945,2442,27754
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,"1,168,385","1,656,365",8273,3071,28014
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,"1,136,379","1,716,076",5211,2497,25735
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,"989,215","1,470,466",4676,2264,24395
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,"934,291","1,487,712",6416,2071,23835
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,"823,961","1,090,465",3365,1081,7356
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,"668,260","1,027,167",1946,806,6450
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,"581,217","727,252",1797,753,5219
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,"506,306","633,191",1650,589,4423
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,"532,084","734,424",1484,666,5096
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,"532,328","684,360",1849,630,4619
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,"609,815","841,955",2182,697,5498
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,"759,709","1,140,969",1657,987,7319
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,"896,045","1,410,708",1995,1106,7789
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,"939,775","1,390,490",2460,1182,9103
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,"964,535","1,373,475",2106,1079,8275
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,"978,102","1,339,691",1901,1089,8370
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,"915,348","1,276,781",2885,1183,8567
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,"626,736","893,844",4529,1737,18188
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,"531,464","841,775",4330,1464,14119
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,"404,489","588,739",1956,1222,11613
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,"354,759","456,989",2035,1102,10302
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,"327,746","462,143",2465,993,9058
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,"338,119","437,792",2129,1063,9342
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,"427,751","592,789",2220,1134,11594
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,"571,418","891,024",3881,1644,16561
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,"765,078","1,089,783",6189,2310,20021
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,"848,191","1,160,595",6066,2669,21900
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,"908,222","1,443,573",5793,2760,24541
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,"821,107","1,168,860",4759,2505,21442
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,"771,766","1,022,230",3888,1231,19659
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,"323,001","486,586",2122,664,6528
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,"328,024","486,313",1652,749,6478
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,"320,083","507,150",1088,605,5867
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,"315,635","399,985",1662,705,6306
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,"297,267","414,325",1760,607,6007
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,"283,389","428,357",1649,543,5746
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,"315,515","429,343",1384,678,5767
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,"322,277","429,226",1640,695,6558
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,"318,376","501,390",1202,635,5981
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,"356,783","485,882",1721,790,6895
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,"351,318","443,312",1925,775,6405
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,"398,857","512,032",2203,919,7293
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,"377,661","570,945",5390,1824,10763
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,"297,699","449,026",1698,885,9327
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,"274,013","380,501",2917,915,8601
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,"289,899","410,546",2695,926,9693
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,"254,503","404,797",1915,756,7409
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,"270,229","427,231",1467,829,8055
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,"243,203","325,702",1878,734,7107
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,"236,140","320,977",1361,707,7529
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,"243,941","359,499",1215,696,7435
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,"267,781","364,002",1990,794,8046
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,"300,672","452,454",1974,1025,9118
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,"302,962","427,576",1858,999,9251
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,"325,207","448,719",2626,1091,9419
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,"328,015","502,415",3471,1103,9532
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,"305,419","480,778",1932,870,6701
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,"274,419","381,873",1965,665,6313
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,"237,220","306,743",1205,604,5234
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,"227,116","350,525",1069,598,5202
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,"255,110","356,902",1693,638,5541
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,"260,836","395,754",1976,694,5729
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,"309,881","397,298",1712,742,6412
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,"351,458","502,239",1412,837,8021
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,"393,066","592,048",2753,948,9141
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,"385,208","587,802",3376,1093,9039
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,"392,771","603,088",1742,952,9189
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,"348,469","440,078",1632,863,7674
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,"338,913","437,292",2329,951,7061
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,"605,435","778,961",2733,857,7358
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,"611,685","841,733",2304,816,7916
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,"626,827","923,775",2533,798,7907
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,"617,752","905,389",1785,779,6860
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,"626,327","783,483",1797,829,7700
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,"652,277","957,787",2190,928,7939
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,"665,489","1,034,802",2469,866,7469
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,"649,432","958,536",2162,936,7871
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,"664,592","925,176",1992,1006,7393
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,"636,329","839,847",2316,900,8175
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,"691,170","875,693",2736,905,8041
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,"621,486","938,204",2161,930,7750
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,"641,651","958,170",2406,815,7497
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,"688,415","924,440",1429,544,5041
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,"728,880","1,100,869",1640,527,4907
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,"751,642","1,105,472",1574,581,5042
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,"743,189","1,042,713",1752,635,5367
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,"746,691","971,153",1006,612,4874
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,"781,424","1,166,212",1516,580,5058
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,"768,202","1,180,609",1894,626,5260
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,"854,769","1,101,959",1233,745,5607
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,"821,871","1,056,069",1230,700,5874
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,"780,446","1,052,749",1688,615,5044
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,"830,018","1,046,522",1503,665,6137
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,"765,411","1,187,753",1112,637,5390
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,"1,324,203","1,657,275",2376,996,9658
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,"319,912","429,067",2286,735,6554
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,"346,974","443,540",2283,798,6832
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,"354,805","554,078",1376,792,7333
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,"349,813","483,706",2309,766,7818
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,"377,393","517,772",1936,912,8246
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,"394,594","600,060",2403,951,7848
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,"412,167","616,646",2649,898,8228
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,"383,839","523,873",1621,852,8089
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,"374,402","596,925",2702,941,7361
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,"373,662","517,865",1461,883,7353
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,"391,072","508,250",2309,900,8386
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,"397,602","555,611",1773,902,8448
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,"392,889","579,330",2187,940,8716
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,"216,998","319,066",812,406,4082
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,"235,753","309,796",1165,440,4363
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,"239,324","312,628",1420,498,3989
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,"236,738","338,361",1199,457,4289
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,"255,034","353,828",1489,528,4378
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,"260,813","327,231",1026,452,4525
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,"265,350","418,982",1173,480,4566
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,"267,906","410,794",1255,480,4536
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,"260,751","400,659",1572,541,4583
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,"267,460","413,957",953,470,5071
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,"259,756","350,261",922,463,4304
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,"257,686","405,869",1492,503,4757
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,"273,534","402,534",892,549,4640
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,"278,109","370,379",2478,872,7551
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,"284,235","415,816",2830,993,7805
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,"281,800","404,602",2768,993,7776
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,"279,353","397,401",1487,878,7757
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,"285,808","357,921",2777,943,8341
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,"302,687","480,127",1836,1067,8602
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,"290,257","396,393",3104,979,8663
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,"331,770","454,031",2958,993,9957
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,"323,211","451,797",2795,1124,8939
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,"336,403","480,131",3441,1089,9762
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,"314,917","463,617",2858,1001,8839
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,"331,626","415,254",2102,1104,8924
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,"318,234","466,482",4646,1785,9834
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,"194,126","294,477",354,201,1993
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,"200,015","307,606",680,238,2050
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,"194,937","287,457",653,211,1893
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,"195,747","307,621",461,199,2055
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,"217,211","302,867",458,260,2339
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,"211,937","273,947",664,211,1951
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,"215,097","324,096",407,214,2226
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,"231,984","341,021",747,273,2405
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,"218,049","273,685",692,262,2256
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,"216,576","307,584",422,249,2050
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,"216,794","298,556",650,247,2045
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,"213,627","309,414",513,248,2288
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,"222,662","354,501",765,261,2167
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,"298,837","436,489",1954,644,4980
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,"298,290","458,053",1715,568,5008
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,"350,562","542,639",2177,753,6028
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,"352,377","465,191",1809,646,6042
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,"380,611","509,698",2208,788,6434
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,"365,743","531,372",2355,776,6488
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,"383,316","503,388",2123,780,6192
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,"371,211","593,566",1638,745,5956
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,"374,151","535,714",1138,697,6459
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,"362,617","552,164",1650,723,6231
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,"350,508","462,792",1447,766,5724
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,"338,519","530,958",1238,727,5716
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,"329,098","485,164",2251,719,5377
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,"190,624","253,074",502,302,2663
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,"211,652","322,818",1064,389,2900
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,"203,577","302,700",667,321,2754
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,"217,622","308,687",667,357,2719
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,"244,237","308,375",1157,375,3285
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,"255,636","328,223",1444,468,3132
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,"243,217","357,496",731,400,3325
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,"245,152","329,298",951,421,3006
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,"239,538","326,089",1200,394,2948
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,"209,291","296,589",790,384,2794
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,"211,332","271,382",815,395,2966
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,"219,762","336,777",768,358,3076
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,"228,183","358,064",760,390,2817
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,"158,101","202,012",783,450,3759
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,"168,357","258,268",1084,428,3942
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,"189,467","290,591",1072,502,4512
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,"195,640","304,260",966,477,4795
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,"201,708","252,462",1235,508,4544
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,"200,329","272,917",1544,564,4841
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,"198,631","283,974",1411,576,4900
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,"216,368","289,427",1605,552,4724
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,"201,990","293,243",1248,512,4287
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,"197,870","281,520",1337,557,4220
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,"182,056","236,951",1148,456,4249
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,"190,558","294,204",1367,560,4305
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,"194,337","272,548",1610,508,4284
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,"770,570","1,221,548",4847,1566,11448
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,"644,835","903,778",2870,1192,10368
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,"632,804","970,243",3826,1269,10833
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,"660,820","951,442",3686,1197,10875
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,"780,036","1,058,426",3854,1462,13381
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,"1,006,213","1,445,768",3522,1917,15503
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,"1,105,562","1,415,945",5099,2061,17090
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,"1,282,019","1,809,326",6214,2509,19532
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,"1,301,359","1,801,224",5949,2345,19894
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,"1,355,888","1,830,024",7762,2441,21891
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,"1,135,873","1,444,496",4377,1971,19254
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,"971,028","1,266,300",3731,1744,16678
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,"861,274","1,299,291",4884,1751,14489
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,"383,944","596,952",1414,880,7779
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,"317,284","483,632",2286,763,6098
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,"297,805","412,978",1618,650,5860
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,"336,083","441,772",1650,791,6385
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,"392,879","607,071",2332,793,7967
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,"472,790","684,471",2698,1126,8280
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,"569,439","848,367",3064,1378,10850
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,"624,299","801,998",3290,1496,12197
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,"671,737","943,157",4133,1590,13711
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,"652,080","1,038,404",4456,1525,11737
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,"620,236","968,095",3219,1416,12389
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,"510,109","750,133",2880,1123,9208
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,"431,667","585,928",2335,863,8085
+Sep 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,"270,675","385,510",2463,991,9173
+Oct 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,"224,497","290,168",1645,889,7497
+Nov 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,"187,612","274,767",1824,631,6213
+Dec 2025,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,"194,674","254,886",1370,676,6646
+Jan 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,"203,678","258,496",2151,711,6667
+Feb 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,"232,563","366,470",2543,857,7367
+Mar 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,"289,286","411,782",3123,1001,9703
+Apr 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,"332,613","472,156",3244,1131,10641
+May 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,"352,895","510,475",2125,1191,12524
+Jun 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,"370,154","508,197",2424,1217,11479
+Jul 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,"355,286","463,492",3166,1160,12033
+Aug 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,"352,075","539,283",2176,1173,11513
+Sep 2026,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,"293,046","418,086",2262,1152,9219
+</script>
+<script type="text/plain" id="s-gsc">
+Month,Top pages,Clicks,Impressions,CTR,Position
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,841617,11209645,7.51%,2.9
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,800840,8686983,9.22%,1.9
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,864291,3051856,28.32%,2.2
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,825049,3648762,22.61%,2.4
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,799794,5645143,14.17%,3.1
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,830775,4226764,19.66%,4.1
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,828277,8323055,9.95%,2.8
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,831832,3454785,24.08%,3.2
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,970798,12811747,7.58%,3.5
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,963820,14632963,6.59%,2.7
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,991817,6135700,16.16%,4.1
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,1012654,7649052,13.24%,2.6
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,974862,8078919,12.07%,2.8
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,348016,1130636,30.78%,3.5
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,329248,1145715,28.74%,3.8
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,338035,2957995,11.43%,1.7
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,313916,4711315,6.66%,4.1
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,327285,1165862,28.07%,4.5
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,314443,1141344,27.55%,1.7
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,305011,1545859,19.73%,4.4
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,357290,1800185,19.85%,3.8
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,371467,1361849,27.28%,3.6
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,347102,2724819,12.74%,3.5
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,430119,3666197,11.73%,1.9
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,396836,1727069,22.98%,3.8
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,388001,3646090,10.64%,3.8
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,42491,171026,24.84%,1.8
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,42892,136217,31.49%,3.4
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,40184,204072,19.69%,4.3
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,40871,333531,12.25%,3.1
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,42571,201119,21.17%,4.2
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,42025,240924,17.44%,1.8
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,40403,279112,14.48%,2.9
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,44955,172381,26.08%,2.9
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,46110,238712,19.32%,3.5
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,49520,162378,30.50%,2.1
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,47634,604017,7.89%,2.0
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,49244,212564,23.17%,1.7
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,54804,172684,31.74%,3.9
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,66802,269625,24.78%,1.3
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,69866,910714,7.67%,4.5
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,70766,543034,13.03%,1.6
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,67137,322225,20.84%,3.5
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,65300,290281,22.50%,3.8
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,68526,336247,20.38%,4.3
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,67013,916746,7.31%,1.9
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,69532,462867,15.02%,1.3
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,73093,241225,30.30%,1.6
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,82947,347331,23.88%,4.4
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,78823,1063150,7.41%,1.6
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,73806,257757,28.63%,3.4
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,78522,611336,12.84%,4.4
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,408085,6770058,6.03%,2.5
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,325910,3910800,8.33%,2.5
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,272290,1067216,25.51%,3.4
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,289030,1164127,24.83%,3.3
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,290046,3014405,9.62%,2.9
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,353604,1488528,23.76%,3.5
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,377417,1839111,20.52%,3.3
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,434122,2275601,19.08%,3.0
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,488964,1958778,24.96%,1.9
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,519599,2002986,25.94%,3.2
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,498788,2402431,20.76%,1.2
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,453702,2335068,19.43%,2.7
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,407786,6317253,6.46%,2.7
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,442695,3856756,11.48%,3.1
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,354040,1218373,29.06%,3.5
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,304480,1718307,17.72%,2.2
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,287943,1035138,27.82%,1.6
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,286496,896179,31.97%,3.1
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,279555,2082160,13.43%,4.3
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,324996,1121026,28.99%,3.9
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,419897,1676827,25.04%,2.7
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,470597,2574835,18.28%,2.3
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,504480,2462035,20.49%,2.5
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,552030,1867317,29.56%,4.5
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,515938,4223015,12.22%,2.1
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,499050,3158842,15.80%,2.3
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,241315,848673,28.43%,1.9
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,211435,736831,28.70%,1.3
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,161363,997327,16.18%,4.3
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,138334,706452,19.58%,3.5
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,134570,1914714,7.03%,3.8
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,132594,588168,22.54%,3.5
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,172519,797680,21.63%,1.2
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,231872,1915669,12.10%,2.0
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,291396,1722157,16.92%,2.0
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,323469,1362162,23.75%,1.9
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,352580,1290551,27.32%,2.0
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,343286,2907620,11.81%,2.6
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,305417,3151980,9.69%,1.4
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,127449,421717,30.22%,2.3
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,118814,755767,15.72%,2.3
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,119825,385648,31.07%,1.9
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,119131,759252,15.69%,4.2
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,107655,415122,25.93%,1.3
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,105071,709182,14.82%,2.1
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,122493,2008720,6.10%,3.7
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,116639,377763,30.88%,4.3
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,120904,450013,26.87%,3.6
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,133243,505888,26.34%,1.5
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,127690,882464,14.47%,4.4
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,145262,594020,24.45%,2.7
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,146010,627324,23.28%,1.6
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,146959,1181993,12.43%,2.0
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,134627,701532,19.19%,2.0
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,139185,499686,27.85%,4.2
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,123301,408491,30.18%,2.4
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,138868,645903,21.50%,3.2
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,118002,514333,22.94%,1.9
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,114353,428653,26.68%,3.0
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,122582,1195231,10.26%,3.5
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,139958,915553,15.29%,2.6
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,145784,2369396,6.15%,4.2
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,157280,2463006,6.39%,3.0
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,164590,1680680,9.79%,2.1
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,163852,1472048,11.13%,1.6
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,151725,514152,29.51%,3.2
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,138732,503402,27.56%,1.8
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,121918,490676,24.85%,4.2
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,112646,521811,21.59%,3.0
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,133753,759247,17.62%,2.6
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,132044,737037,17.92%,1.8
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,160020,830660,19.26%,1.3
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,187832,983309,19.10%,2.4
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,214535,1943887,11.04%,4.4
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,193600,2513169,7.70%,2.4
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,199645,1047584,19.06%,4.2
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,177925,1745738,10.19%,4.3
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,181255,803995,22.54%,2.4
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,264010,1179976,22.37%,2.5
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,258895,1479457,17.50%,1.8
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,256782,1209375,21.23%,3.4
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,250358,1295203,19.33%,4.2
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,250491,2857715,8.77%,2.4
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,265852,2797421,9.50%,4.3
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,283368,1722521,16.45%,2.1
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,268679,884800,30.37%,3.6
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,280009,3724585,7.52%,3.8
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,257697,1343526,19.18%,3.3
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,284493,1079370,26.36%,3.6
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,260117,2190522,11.87%,1.5
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,276221,1127258,24.50%,2.1
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,207005,665747,31.09%,1.9
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,212894,838167,25.40%,2.3
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,234683,1007390,23.30%,4.4
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,230928,1108693,20.83%,2.2
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,233209,2658065,8.77%,4.3
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,223682,927287,24.12%,3.6
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,237779,3082171,7.71%,4.1
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,248885,887586,28.04%,3.9
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,241319,939297,25.69%,1.9
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,228437,1467290,15.57%,2.3
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,251951,1452361,17.35%,3.8
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,223115,816820,27.32%,1.8
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,416245,2216594,18.78%,3.8
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,155348,1161309,13.38%,1.9
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,165304,685166,24.13%,3.8
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,165001,567020,29.10%,1.3
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,164432,1361985,12.07%,2.7
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,179970,1792799,10.04%,4.0
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,184324,1986789,9.28%,2.7
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,189873,1895044,10.02%,1.7
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,174287,555871,31.35%,3.6
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,173932,693907,25.07%,2.6
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,170466,1041042,16.37%,3.8
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,183129,1108358,16.52%,3.6
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,191528,772985,24.78%,4.1
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,187974,1329531,14.14%,3.3
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,128542,755548,17.01%,2.7
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,142619,543670,26.23%,2.5
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,139410,457753,30.46%,2.9
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,140292,509160,27.55%,2.9
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,150647,1640631,9.18%,4.4
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,149754,884328,16.93%,3.5
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,157619,1348122,11.69%,3.8
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,159684,877475,18.20%,3.1
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,153335,843862,18.17%,2.2
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,152874,968792,15.78%,2.0
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,154000,1112128,13.85%,2.8
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,147402,1969658,7.48%,3.9
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,163906,2602321,6.30%,4.3
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,117996,786244,15.01%,1.7
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,129955,555841,23.38%,4.1
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,126382,726198,17.40%,4.1
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,118482,652993,18.14%,1.7
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,130319,717340,18.17%,3.1
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,132101,585475,22.56%,3.3
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,133224,691130,19.28%,2.8
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,147808,952364,15.52%,2.8
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,141291,513882,27.49%,2.2
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,144638,628354,23.02%,3.8
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,139761,1984867,7.04%,3.6
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,143003,477357,29.96%,3.2
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,141588,587344,24.11%,3.2
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,119851,1118665,10.71%,1.3
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,122383,593670,20.61%,2.1
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,120023,1617547,7.42%,3.1
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,122277,1920362,6.37%,2.5
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,134340,590320,22.76%,1.9
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,133816,1613870,8.29%,4.1
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,129923,1778888,7.30%,3.8
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,137851,766901,17.98%,4.3
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,128585,471855,27.25%,1.5
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,139124,894302,15.56%,3.1
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,138409,618660,22.37%,2.6
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,136219,1797895,7.58%,4.4
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,139511,645001,21.63%,2.2
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,140006,518646,26.99%,2.1
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,138402,1949403,7.10%,3.9
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,157612,662218,23.80%,4.2
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,166914,552242,30.22%,2.0
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,169944,639289,26.58%,2.7
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,163747,564403,29.01%,2.9
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,170900,1107334,15.43%,3.1
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,162981,1860710,8.76%,3.3
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,169440,2465279,6.87%,4.5
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,162827,531958,30.61%,3.7
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,153783,1881123,8.18%,1.4
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,162683,754917,21.55%,2.5
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,152361,650761,23.41%,2.5
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,119998,948420,12.65%,2.4
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,121239,531427,22.81%,4.5
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,127513,596466,21.38%,3.7
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,125666,1030058,12.20%,1.7
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,142074,1210752,11.73%,4.3
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,152572,546883,27.90%,3.3
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,145602,1237805,11.76%,1.4
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,152544,1518176,10.05%,2.1
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,143594,1601115,8.97%,4.4
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,121947,960014,12.70%,1.9
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,132189,451139,29.30%,1.4
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,125476,1301115,9.64%,1.2
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,75300,401186,18.77%,3.0
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,73587,337208,21.82%,2.8
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,82490,732622,11.26%,1.4
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,86901,311589,27.89%,4.1
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,93688,864491,10.84%,3.9
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,97739,555652,17.59%,2.9
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,99672,626233,15.92%,3.7
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,95293,477166,19.97%,1.3
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,99730,1470529,6.78%,1.5
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,97919,403477,24.27%,1.5
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,91397,688739,13.27%,1.6
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,90542,356310,25.41%,1.7
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,90741,557156,16.29%,4.3
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,91743,340877,26.91%,4.2
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,393674,3154086,12.48%,2.6
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,314700,4810804,6.54%,1.7
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,327029,1127659,29.00%,1.3
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,329382,1486871,22.15%,2.0
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,389366,4264729,9.13%,3.2
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,511445,5545970,9.22%,1.6
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,549369,1973774,27.83%,3.2
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,667584,3043771,21.93%,2.7
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,664519,10533154,6.31%,2.4
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,690909,5049356,13.68%,3.7
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,575819,3302221,17.44%,3.6
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,507042,3343764,15.16%,3.4
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,440030,1708718,25.75%,2.8
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,181120,699100,25.91%,3.1
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,154193,707610,21.79%,2.5
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,142903,893310,16.00%,2.3
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,163759,1676183,9.77%,3.1
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,189120,611488,30.93%,1.9
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,221183,739048,29.93%,3.8
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,279507,1826782,15.30%,3.2
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,306679,1867348,16.42%,3.1
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,328714,1030476,31.90%,2.3
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,313706,1623113,19.33%,1.6
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,318815,3167123,10.07%,2.2
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,242015,1594009,15.18%,4.5
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,217601,3566212,6.10%,2.2
+2025-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,86613,670562,12.92%,3.3
+2025-10,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,73425,285180,25.75%,1.6
+2025-11,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,63913,839304,7.62%,1.2
+2025-12,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,63303,737295,8.59%,4.2
+2026-01,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,66445,314172,21.15%,4.4
+2026-02,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,73246,516376,14.18%,4.2
+2026-03,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,99856,810775,12.32%,2.5
+2026-04,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,113882,923755,12.33%,1.8
+2026-05,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,114018,573603,19.88%,2.5
+2026-06,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,126131,1149668,10.97%,2.1
+2026-07,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,115385,1372256,8.41%,2.1
+2026-08,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,120092,791334,15.18%,3.6
+2026-09,https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,101066,568745,17.77%,1.6
+</script>
+<script type="text/plain" id="s-tss">
+Quarter,Task,Line of business,Responses,Task completion,Ease
+2025-Q3,Apply for a visitor visa,Temporary residence,714,71.6%,61.6%
+2025-Q4,Apply for a visitor visa,Temporary residence,933,71.8%,61.9%
+2026-Q1,Apply for a visitor visa,Temporary residence,1224,70.5%,65.2%
+2026-Q2,Apply for a visitor visa,Temporary residence,431,73.9%,61.0%
+2026-Q3,Apply for a visitor visa,Temporary residence,733,74.8%,65.6%
+2025-Q3,Apply for a study permit,Temporary residence,238,64.9%,55.4%
+2025-Q4,Apply for a study permit,Temporary residence,816,61.7%,56.8%
+2026-Q1,Apply for a study permit,Temporary residence,542,66.9%,54.4%
+2026-Q2,Apply for a study permit,Temporary residence,565,66.8%,54.2%
+2026-Q3,Apply for a study permit,Temporary residence,1330,75.9%,63.7%
+2025-Q3,Extend your work permit,Temporary residence,788,66.2%,59.3%
+2025-Q4,Extend your work permit,Temporary residence,360,67.0%,56.3%
+2026-Q1,Extend your work permit,Temporary residence,997,67.9%,58.4%
+2026-Q2,Extend your work permit,Temporary residence,1131,71.4%,61.8%
+2026-Q3,Extend your work permit,Temporary residence,450,64.0%,51.8%
+2025-Q3,Create an Express Entry profile,Permanent residence,930,60.1%,50.0%
+2025-Q4,Create an Express Entry profile,Permanent residence,899,62.0%,46.7%
+2026-Q1,Create an Express Entry profile,Permanent residence,1127,58.7%,52.1%
+2026-Q2,Create an Express Entry profile,Permanent residence,901,63.2%,48.1%
+2026-Q3,Create an Express Entry profile,Permanent residence,776,59.1%,53.5%
+2025-Q3,Sponsor your spouse or partner,Permanent residence,628,56.3%,43.2%
+2025-Q4,Sponsor your spouse or partner,Permanent residence,261,56.3%,46.1%
+2026-Q1,Sponsor your spouse or partner,Permanent residence,800,54.1%,48.4%
+2026-Q2,Sponsor your spouse or partner,Permanent residence,1311,55.7%,48.3%
+2026-Q3,Sponsor your spouse or partner,Permanent residence,547,57.8%,46.4%
+2025-Q3,Renew a PR card,Permanent residence,1199,67.3%,55.5%
+2025-Q4,Renew a PR card,Permanent residence,1070,67.6%,58.0%
+2026-Q1,Renew a PR card,Permanent residence,181,64.9%,59.6%
+2026-Q2,Renew a PR card,Permanent residence,766,70.2%,60.8%
+2026-Q3,Renew a PR card,Permanent residence,1378,69.0%,56.3%
+2025-Q3,Apply for citizenship,Citizenship and passports,680,75.1%,63.2%
+2025-Q4,Apply for citizenship,Citizenship and passports,832,72.9%,69.0%
+2026-Q1,Apply for citizenship,Citizenship and passports,356,74.7%,68.5%
+2026-Q2,Apply for citizenship,Citizenship and passports,632,74.5%,65.0%
+2026-Q3,Apply for citizenship,Citizenship and passports,1048,76.1%,67.0%
+2025-Q3,Renew a passport,Citizenship and passports,1210,82.4%,75.0%
+2025-Q4,Renew a passport,Citizenship and passports,1107,81.7%,74.6%
+2026-Q1,Renew a passport,Citizenship and passports,601,81.8%,74.1%
+2026-Q2,Renew a passport,Citizenship and passports,441,82.7%,72.6%
+2026-Q3,Renew a passport,Citizenship and passports,1325,82.0%,75.3%
+2025-Q3,Check application status,Help Centre,663,62.3%,49.5%
+2025-Q4,Check application status,Help Centre,301,60.6%,50.6%
+2026-Q1,Check application status,Help Centre,369,61.4%,50.9%
+2026-Q2,Check application status,Help Centre,459,64.9%,52.4%
+2026-Q3,Check application status,Help Centre,1168,57.8%,48.0%
+2025-Q3,Check processing times,Help Centre,1235,78.1%,67.8%
+2025-Q4,Check processing times,Help Centre,899,78.8%,68.3%
+2026-Q1,Check processing times,Help Centre,470,78.7%,69.4%
+2026-Q2,Check processing times,Help Centre,421,79.1%,73.1%
+2026-Q3,Check processing times,Help Centre,526,80.5%,69.9%
+</script>
+<script type="text/plain" id="s-pages">
+Page URL,Page title,Line of business,Top task
+https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html,Check processing times,Help Centre,Check processing times
+https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html,Check your application status,Help Centre,Check application status
+https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-webform.html,Contact IRCC: web form,Help Centre,
+https://www.canada.ca/en/immigration-refugees-citizenship/services/help-centre.html,Help Centre,Help Centre,
+https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html,Apply for a visitor visa,Temporary residence,Apply for a visitor visa
+https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html,Apply for an eTA,Temporary residence,Apply for an eTA
+https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html,Apply for a study permit,Temporary residence,Apply for a study permit
+https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/extend.html,Extend your work permit,Temporary residence,Extend your work permit
+https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/eligibility.html,Work permit: who can apply,Temporary residence,
+https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html,Post-graduation work permit,Temporary residence,
+https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html,Express Entry,Permanent residence,Create an Express Entry profile
+https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html,Express Entry: rounds of invitations,Permanent residence,
+https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html,"Sponsor your spouse, partner or children",Permanent residence,Sponsor your spouse or partner
+https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees.html,Provincial Nominee Program,Permanent residence,
+https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace.html,Renew or replace a PR card,Permanent residence,Renew a PR card
+https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/criteria-comprehensive-ranking-system/grid.html,CRS criteria,Permanent residence,
+https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/apply.html,Apply for citizenship,Citizenship and passports,Apply for citizenship
+https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-test.html,Citizenship test,Citizenship and passports,
+https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility/find-out-physical-presence.html,Calculate your physical presence,Citizenship and passports,
+https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/renew-adult-passport.html,Renew an adult passport,Citizenship and passports,Renew a passport
+https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/new-adult-passport.html,Apply for a new adult passport,Citizenship and passports,
+https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports/passport-status.html,Check your passport status,Citizenship and passports,
+</script>
+
+<script>
+"use strict";
+/* ========================= parsing ========================= */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const MFULL=["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+function parseCSV(text){
+  text=text.replace(/^﻿/,"");
+  const rows=[]; let row=[], f="", q=false;
+  for(let i=0;i<text.length;i++){
+    const c=text[i];
+    if(q){ if(c==='"'){ if(text[i+1]==='"'){ f+='"'; i++; } else q=false; } else f+=c; }
+    else if(c==='"') q=true;
+    else if(c===','){ row.push(f); f=""; }
+    else if(c==='\n'||c==='\r'){ if(c==='\r'&&text[i+1]==='\n') i++; row.push(f); rows.push(row); row=[]; f=""; }
+    else f+=c;
+  }
+  if(f!==""||row.length){ row.push(f); rows.push(row); }
+  const clean=rows.filter(r=>r.some(x=>x.trim()!=="") && !String(r[0]).trim().startsWith("#"));
+  if(!clean.length) return {header:[],rows:[]};
+  const header=clean[0].map(h=>h.trim());
+  return {header, rows:clean.slice(1)};
+}
+const num=v=>{ if(v==null) return null; const s=String(v).replace(/[,\s$% ]/g,""); if(s===""||s==="-") return null; const n=+s; return isFinite(n)?n:null; };
+function findCol(header,...res){ for(const re of res){ const i=header.findIndex(h=>re.test(h)); if(i>-1) return i; } return -1; }
+function normMonth(s,fallback){
+  s=String(s||"").trim(); let m;
+  if((m=s.match(/^(\d{4})[-\/](\d{1,2})/))) return `${m[1]}-${String(+m[2]).padStart(2,"0")}`;
+  if((m=s.match(/^([A-Za-z]{3,})\.?\s+(\d{4})/))){ const i=MN.findIndex(x=>m[1].toLowerCase().startsWith(x.toLowerCase())); if(i>-1) return `${m[2]}-${String(i+1).padStart(2,"0")}`; }
+  if((m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/))) return `${m[3]}-${String(+m[1]).padStart(2,"0")}`;
+  if(fallback&&(m=String(fallback).match(/(\d{4})[-_](\d{2})/))) return `${m[1]}-${m[2]}`;
+  return null;
+}
+function normUrl(u){
+  u=String(u||"").trim().toLowerCase();
+  u=u.replace(/^https?:\/\/[^\/]+/,"").replace(/[?#].*$/,"");
+  if(u.length>1) u=u.replace(/\/$/,"");
+  return u;
+}
+const mLabel=k=>{ const [y,m]=k.split("-"); return `${MN[+m-1]} ${y}`; };
+const mLong=k=>{ const [y,m]=k.split("-"); return `${MFULL[+m-1]} ${y}`; };
+const mShort=k=>{ const [y,m]=k.split("-"); return +m===1?`${MN[0]} ${y.slice(2)}`:MN[+m-1]; };
+
+/* detect each file by its column headings */
+function ingest(name,text,store){
+  const {header,rows}=parseCSV(text);
+  const H=header.join(" | ");
+  const out={name,kind:null,rows:0,note:""};
+  if(/completion/i.test(H)){
+    const iq=findCol(header,/quarter|period/i), it=findCol(header,/task/i), il=findCol(header,/line of business|lob/i), ir=findCol(header,/responses|n$/i), ic=findCol(header,/completion/i), ie=findCol(header,/ease/i);
+    rows.forEach(r=>{ if(!r[it]) return; store.tss.push({q:String(r[iq]).trim(),task:r[it].trim(),lob:il>-1?r[il].trim():"",n:num(r[ir]),comp:num(r[ic]),ease:ie>-1?num(r[ie]):null}); out.rows++; });
+    out.kind="tss";
+  } else if(/impressions/i.test(H)&&/clicks/i.test(H)){
+    const ip=findCol(header,/top pages|^page|url|landing/i), im=findCol(header,/month|date/i), ic=findCol(header,/^clicks/i), ii=findCol(header,/impressions/i), ipos=findCol(header,/position/i);
+    rows.forEach(r=>{ const mo=normMonth(im>-1?r[im]:"",name); if(!mo||!r[ip]) return; store.gsc.push({m:mo,url:normUrl(r[ip]),clicks:num(r[ic]),imp:num(r[ii]),pos:num(r[ipos])}); out.rows++; });
+    out.kind="gsc"; if(im<0&&!normMonth("",name)) out.note="No month column and no YYYY-MM in the file name";
+  } else if(/visits/i.test(H)){
+    const im=findCol(header,/month|date/i), ip=findCol(header,/page url|url|^page/i), iv=findCol(header,/^visits/i), ipv=findCol(header,/page views|pageviews/i),
+      iy=findCol(header,/feedback.*yes|yes clicks|^yes/i), ino=findCol(header,/feedback.*no|no clicks|^no$/i), is=findCol(header,/search/i);
+    rows.forEach(r=>{ const mo=normMonth(im>-1?r[im]:"",name); const url=r[ip]; if(!mo||!url||/^total/i.test(url)) return;
+      store.aa.push({m:mo,url:normUrl(url),visits:num(r[iv]),pv:ipv>-1?num(r[ipv]):null,yes:iy>-1?num(r[iy]):null,no:ino>-1?num(r[ino]):null,srch:is>-1?num(r[is]):null}); out.rows++; });
+    out.kind="aa";
+  } else if(/line of business/i.test(H)){
+    const iu=findCol(header,/url|page/i), it=findCol(header,/title/i), il=findCol(header,/line of business/i), itt=findCol(header,/top task/i);
+    rows.forEach(r=>{ if(!r[iu]) return; store.pages.push({url:normUrl(r[iu]),full:r[iu].trim(),title:it>-1?r[it].trim():"",lob:r[il].trim()||"Unassigned",top:itt>-1?r[itt].trim():""}); out.rows++; });
+    out.kind="pages";
+  }
+  if(!out.kind) out.note="Not recognized. Columns found: "+header.slice(0,6).join(", ");
+  return out;
+}
+const KIND={aa:"Adobe Analytics pages",gsc:"Search Console pages",tss:"GC Task Success Survey",pages:"Page list"};
+
+/* ========================= model ========================= */
+let STORE=null, FILES=[], SAMPLE=false, REPORT_M=null; const TEXTS=new Map();
+const MIN_VISITS=1000, MIN_CLICKS=500;
+const MEAS=[
+  {k:"noK",l:"“No” clicks per 1K visits",short:"“No” per 1K",bad:"up",dec:1},
+  {k:"srK",l:"Searches from the page per 1K visits",short:"Searches per 1K",bad:"up",dec:1},
+  {k:"clicks",l:"Clicks from Google search",short:"Google clicks",bad:"down",dec:0}
+];
+function build(){
+  const S=STORE, M={};
+  const pageInfo=new Map(S.pages.map(p=>[p.url,p]));
+  const pages=new Map();
+  const get=url=>{ if(!pages.has(url)){ const i=pageInfo.get(url)||{url,title:titleFromUrl(url),lob:"Unassigned",top:""}; pages.set(url,{...i,m:{}}); } return pages.get(url); };
+  S.aa.forEach(r=>{ const p=get(r.url); const o=p.m[r.m]||(p.m[r.m]={}); Object.assign(o,{visits:r.visits,pv:r.pv,yes:r.yes,no:r.no,srch:r.srch}); });
+  S.gsc.forEach(r=>{ if(!pages.has(r.url)&&!pageInfo.has(r.url)) return; const p=get(r.url); const o=p.m[r.m]||(p.m[r.m]={}); Object.assign(o,{clicks:r.clicks,imp:r.imp,pos:r.pos}); });
+  pages.forEach(p=>Object.values(p.m).forEach(o=>{ o.noK=o.visits&&o.no!=null?o.no/o.visits*1000:null; o.srK=o.visits&&o.srch!=null?o.srch/o.visits*1000:null; }));
+  const months=[...new Set(S.aa.map(r=>r.m).concat(S.gsc.map(r=>r.m)))].sort();
+  M.allMonths=months;
+  const rm=REPORT_M&&months.includes(REPORT_M)?REPORT_M:months[months.length-1];
+  M.rm=rm; const ri=months.indexOf(rm);
+  M.months=months.slice(Math.max(0,ri-12),ri+1);
+  M.prev=months[ri-1]||null;
+  M.pages=[...pages.values()];
+  // site totals
+  M.tot={};
+  M.months.forEach(m=>{ const t={visits:0,pv:0,no:0,srch:0,clicks:0,imp:0,posW:0,hasG:false};
+    M.pages.forEach(p=>{ const o=p.m[m]; if(!o) return; t.visits+=o.visits||0; t.pv+=o.pv||0; t.no+=o.no||0; t.srch+=o.srch||0; if(o.clicks!=null){ t.hasG=true; t.clicks+=o.clicks; t.imp+=o.imp||0; t.posW+=(o.pos||0)*(o.imp||0); } });
+    t.noK=t.visits?t.no/t.visits*1000:null; t.srK=t.visits?t.srch/t.visits*1000:null; t.ctr=t.imp?t.clicks/t.imp*100:null; t.pos=t.imp?t.posW/t.imp:null;
+    if(!t.hasG){ t.clicks=null; t.imp=null; }
+    M.tot[m]=t; });
+  // normal ranges and flags
+  M.flags=[];
+  M.pages.forEach(p=>{
+    p.range={}; p.flag={};
+    MEAS.forEach(me=>{
+      const hist=M.months.slice(0,-1).map(m=>p.m[m]?p.m[m][me.k]:null).filter(v=>v!=null);
+      const cur=p.m[rm]?p.m[rm][me.k]:null;
+      if(hist.length<6||cur==null) return;
+      const mean=hist.reduce((a,b)=>a+b,0)/hist.length;
+      const sd=Math.sqrt(hist.reduce((a,b)=>a+(b-mean)**2,0)/(hist.length-1));
+      const lo=Math.max(0,mean-2*sd), hi=mean+2*sd;
+      p.range[me.k]={lo,hi,mean,sd};
+      const vol=me.k==="clicks"?mean>=MIN_CLICKS:(p.m[rm].visits||0)>=MIN_VISITS;
+      if(!vol) return;
+      let st=null;
+      if(cur>hi) st=me.bad==="up"?"worse":"better";
+      else if(cur<lo) st=me.bad==="up"?"better":"worse";
+      if(st){ const z=sd?Math.abs(cur-mean)/sd:0; p.flag[me.k]=st; M.flags.push({p,me,st,cur,lo,hi,z}); }
+    });
+  });
+  M.flags.sort((a,b)=>(a.st===b.st?0:a.st==="worse"?-1:1)||b.z-a.z);
+  M.lobs=[...new Set(M.pages.map(p=>p.lob))].sort((a,b)=>(a==="Unassigned")-(b==="Unassigned")||a.localeCompare(b));
+  // task success
+  const qs=[...new Set(S.tss.map(r=>r.q))].sort();
+  M.tssQ=qs[qs.length-1]||null; M.tssPrev=qs[qs.length-2]||null;
+  M.tss=[...new Set(S.tss.map(r=>r.task))].map(task=>{ const rows=S.tss.filter(r=>r.task===task); const cur=rows.find(r=>r.q===M.tssQ), pre=rows.find(r=>r.q===M.tssPrev); return {task,lob:(cur||pre||{}).lob||"",cur,pre}; }).filter(t=>t.cur);
+  M.tss.sort((a,b)=>a.cur.comp-b.cur.comp);
+  return M;
+}
+function titleFromUrl(u){ const s=u.split("/").filter(Boolean).pop()||u; return s.replace(/\.html?$/,"").replace(/-/g," ").replace(/^\w/,c=>c.toUpperCase()); }
+
+/* ========================= formatting ========================= */
+function compact(n){ if(n==null) return "—"; const a=Math.abs(n); if(a>=1e6) return (n/1e6).toFixed(a>=1e7?0:1).replace(/\.0$/,"")+"M"; if(a>=1e4) return Math.round(n/1e3)+"K"; if(a>=1e3) return (n/1e3).toFixed(1).replace(/\.0$/,"")+"K"; return String(Math.round(n)); }
+const full=n=>n==null?"—":Math.round(n).toLocaleString("en-CA");
+const fx=(n,d)=>n==null?"—":n.toFixed(d);
+function deltaHTML(cur,prev,badDir,unit){
+  if(cur==null||prev==null||!prev) return `<span class="delta flat">no comparison</span>`;
+  const pct=(cur-prev)/prev*100, up=pct>0, small=Math.abs(pct)<3;
+  const cls=small?"flat":((up&&badDir==="up")||(!up&&badDir==="down"))?"worse":badDir?"better":"flat";
+  const arrow=small?"→":up?"↑":"↓";
+  return `<span class="delta ${cls}">${arrow} ${Math.abs(pct).toFixed(Math.abs(pct)<10?1:0)}%</span>${unit?` <span class="muted">vs ${esc(unit)}</span>`:""}`;
+}
+
+/* ========================= charts ========================= */
+function niceTicks(max,count=4){ if(!(max>0)) return [0,1]; const raw=max/count, mag=10**Math.floor(Math.log10(raw)), step=[1,2,2.5,5,10].map(x=>x*mag).find(x=>x>=raw); const t=[]; for(let v=0;v<=max+step*0.001;v+=step) t.push(v); if(t[t.length-1]<max) t.push(t[t.length-1]+step); return t; }
+const TIP=document.createElement("div"); TIP.className="tip"; TIP.hidden=true;
+
+function lineChart(el,{months,values,fmt,label,h=200}){
+  const W=(PRINTW?(el.closest(".two")?Math.round(PRINTW/2-8):PRINTW):Math.max(300,Math.round(el.clientWidth||640))),H=h,L=46,R=56,T=14,B=26, pw=W-L-R, ph=H-T-B;
+  const vals=values.map(v=>v==null?null:v); const max=Math.max(...vals.filter(v=>v!=null),0); const ticks=niceTicks(max), ymax=ticks[ticks.length-1]||1;
+  const x=i=>L+(months.length<2?pw/2:i*pw/(months.length-1)), y=v=>T+ph-(v/ymax)*ph;
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(label)}">`;
+  ticks.forEach(t=>{ s+=`<line x1="${L}" x2="${W-R}" y1="${y(t)}" y2="${y(t)}" stroke="var(--grid)" stroke-width="1"/><text x="${L-8}" y="${y(t)+4}" text-anchor="end" class="num">${compact(t)}</text>`; });
+  months.forEach((m,i)=>{ if((months.length-1-i)%2===0) s+=`<text x="${x(i)}" y="${H-6}" text-anchor="middle">${mShort(m)}</text>`; });
+  const pts=vals.map((v,i)=>v==null?null:[x(i),y(v)]).filter(Boolean);
+  if(pts.length){
+    s+=`<path d="M${pts[0][0]},${T+ph} ${pts.map(p=>`L${p[0]},${p[1]}`).join(" ")} L${pts[pts.length-1][0]},${T+ph} Z" fill="var(--series-wash)"/>`;
+    s+=`<path d="M${pts.map(p=>p.join(",")).join(" L")}" fill="none" stroke="var(--series)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+    const lp=pts[pts.length-1]; s+=`<circle cx="${lp[0]}" cy="${lp[1]}" r="4.5" fill="var(--series)" stroke="var(--card)" stroke-width="2"/><text class="end" x="${lp[0]+8}" y="${lp[1]+4}">${fmt(vals[vals.length-1])}</text>`;
+  }
+  s+=`<line class="xh" x1="0" x2="0" y1="${T}" y2="${T+ph}" stroke="var(--axis)" stroke-width="1" visibility="hidden"/><circle class="xd" r="4.5" fill="var(--series)" stroke="var(--card)" stroke-width="2" visibility="hidden"/>`;
+  s+=`<rect x="${L}" y="${T}" width="${pw}" height="${ph}" fill="transparent" class="hit"/></svg>`;
+  el.innerHTML=s; el.appendChild(TIP.cloneNode());
+  const svg=el.querySelector("svg"), tip=el.querySelector(".tip"), xh=svg.querySelector(".xh"), xd=svg.querySelector(".xd");
+  const show=i=>{ const v=vals[i]; xh.setAttribute("x1",x(i)); xh.setAttribute("x2",x(i)); xh.setAttribute("visibility","visible");
+    if(v!=null){ xd.setAttribute("cx",x(i)); xd.setAttribute("cy",y(v)); xd.setAttribute("visibility","visible"); }
+    const r=svg.getBoundingClientRect(), sc=r.width/W; tip.hidden=false; tip.style.left=(x(i)*sc)+"px"; tip.style.top=((v!=null?y(v):T)*sc-10)+"px";
+    tip.innerHTML=`<b>${esc(v==null?"no data":fmt(v))}</b><span>${esc(mLong(months[i]))}</span>`; };
+  const hide=()=>{ tip.hidden=true; xh.setAttribute("visibility","hidden"); xd.setAttribute("visibility","hidden"); };
+  svg.addEventListener("pointermove",e=>{ const r=svg.getBoundingClientRect(); const px=(e.clientX-r.left)*W/r.width; const i=Math.max(0,Math.min(months.length-1,Math.round((px-L)/(pw/(Math.max(1,months.length-1)))))); show(i); });
+  svg.addEventListener("pointerleave",hide);
+  svg.setAttribute("tabindex","0"); let ki=months.length-1;
+  svg.addEventListener("focus",()=>show(ki)); svg.addEventListener("blur",hide);
+  svg.addEventListener("keydown",e=>{ if(e.key==="ArrowLeft"){ki=Math.max(0,ki-1);show(ki);e.preventDefault();} if(e.key==="ArrowRight"){ki=Math.min(months.length-1,ki+1);show(ki);e.preventDefault();} });
+}
+function sparkline(values,range,status,title){
+  const W=120,H=30,P=4; const vs=values.filter(v=>v!=null); if(!vs.length) return "";
+  let lo=Math.min(...vs), hi=Math.max(...vs); if(range){ lo=Math.min(lo,range.lo); hi=Math.max(hi,range.hi); } if(hi===lo){ hi+=1; lo=Math.max(0,lo-1); }
+  const x=i=>P+i*(W-2*P)/Math.max(1,values.length-1), y=v=>H-P-(v-lo)/(hi-lo)*(H-2*P);
+  let s=`<svg class="sp" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(title)}"><title>${esc(title)}</title>`;
+  if(range) s+=`<rect x="${P}" y="${y(range.hi)}" width="${W-2*P}" height="${Math.max(1,y(range.lo)-y(range.hi))}" fill="var(--band)" rx="2"/>`;
+  const pts=values.map((v,i)=>v==null?null:`${x(i).toFixed(1)},${y(v).toFixed(1)}`).filter(Boolean);
+  s+=`<polyline points="${pts.join(" ")}" fill="none" stroke="var(--series)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>`;
+  const li=values.length-1, lv=values[li];
+  if(lv!=null) s+=`<circle cx="${x(li)}" cy="${y(lv)}" r="3.5" fill="${status==="worse"?"var(--worse)":status==="better"?"var(--better)":"var(--series)"}" stroke="var(--card)" stroke-width="1.5"/>`;
+  return s+`</svg>`;
+}
+function stHTML(st){ return st==="worse"?`<span class="st worse">▲ Worse</span>`:st==="better"?`<span class="st better">▼ Better</span>`:""; }
+function stFor(st,me){ if(!st) return ""; const arrow=(st==="worse")===(me.bad==="up")?"↑":"↓"; return `<span class="st ${st}">${arrow} ${st==="worse"?"Worse":"Better"}</span>`; }
+
+/* ========================= render ========================= */
+function notes(key,ph){
+  let v=""; try{ v=localStorage.getItem("or-notes|"+key)||""; }catch(e){}
+  return `<div class="notes"><div class="nl">RAD notes</div><div contenteditable="true" data-key="${esc(key)}" data-ph="${esc(ph)}" role="textbox" aria-multiline="true" aria-label="RAD notes">${esc(v)}</div></div>`;
+}
+function tile(label,cur,prev,series,badDir,fmt,unit){
+  return `<div class="tile"><span class="l">${esc(label)}</span><span class="v">${fmt(cur)}</span>${sparkline(series,null,null,label+" over 13 months")}<span class="d">${deltaHTML(cur,prev,badDir,unit)}</span></div>`;
+}
+function render(){
+  const R=$("#report");
+  if(!STORE||!STORE.aa.length){ R.innerHTML=`<div class="empty">Add the Adobe Analytics pages export to build the report.</div>`; return; }
+  const M=build(); REPORT_M=M.rm;
+  const sel=$("#monthSel"); sel.innerHTML=M.allMonths.slice().reverse().map(m=>`<option value="${m}"${m===M.rm?" selected":""}>${mLong(m)}</option>`).join("");
+  const T=M.tot, rm=M.rm, pm=M.prev, ser=k=>M.months.map(m=>T[m]?T[m][k]:null);
+  const worse=M.flags.filter(f=>f.st==="worse"), better=M.flags.filter(f=>f.st==="better");
+  const gMonths=M.months.filter(m=>T[m]&&T[m].clicks!=null);
+  let h="";
+  if(SAMPLE) h+=`<div class="sample" role="note">⚠ Sample data: every number in this report is made up, to show how the template works.</div>`;
+  h+=`<header class="rh"><p class="eyebrow">IRCC · Web Operations · Research, analytics and design</p><h1>Outcome report, ${esc(mLong(rm))}</h1>
+    <p class="meta">${M.pages.length} pages · Adobe Analytics ${esc(mLabel(M.months[0]))} to ${esc(mLabel(rm))}${gMonths.length?` · Google Search Console ${esc(mLabel(gMonths[0]))} to ${esc(mLabel(gMonths[gMonths.length-1]))}`:""}${M.tssQ?` · GC Task Success Survey ${esc(M.tssQ)}`:""}. Each page is compared with its own normal range over the previous 12 months.</p></header>`;
+
+  // summary
+  h+=`<section class="rs" aria-labelledby="h-sum"><h2 id="h-sum">This month at a glance</h2><div class="tiles">`+
+    tile("Visits",T[rm].visits,pm&&T[pm].visits,ser("visits"),null,compact,mLabel(pm||rm))+
+    tile("Page views",T[rm].pv,pm&&T[pm].pv,ser("pv"),null,compact,mLabel(pm||rm))+
+    tile("“No” clicks per 1K visits",T[rm].noK,pm&&T[pm].noK,ser("noK"),"up",v=>fx(v,2),mLabel(pm||rm))+
+    tile("Searches from pages per 1K visits",T[rm].srK,pm&&T[pm].srK,ser("srK"),"up",v=>fx(v,1),mLabel(pm||rm))+
+    tile("Clicks from Google search",T[rm].clicks,pm&&T[pm].clicks,ser("clicks"),"down",compact,mLabel(pm||rm))+
+    `<div class="tile"><span class="l">Pages outside their normal range</span><span class="v">${worse.length}</span><span class="d"><span class="st worse">⚠ ${worse.length} worse</span> · <span class="st better">✓ ${better.length} better</span></span></div>`+
+    `</div>${notes(rm+"|summary","Add the two or three things readers should take away this month.")}</section>`;
+
+  // traffic
+  const top=M.pages.filter(p=>p.m[rm]&&p.m[rm].visits!=null).sort((a,b)=>b.m[rm].visits-a.m[rm].visits).slice(0,10);
+  const topMax=top.length?top[0].m[rm].visits:1;
+  h+=`<section class="rs" aria-labelledby="h-tr"><h2 id="h-tr">Traffic</h2><p class="lede">Visits and the most visited pages. Basic web statistics from Adobe Analytics.</p>
+    <div class="card"><figure><h3>Visits per month</h3><p class="sub">All pages in this report</p><div class="chart" id="c-visits"></div></figure>
+    <details class="tv"><summary>Show the numbers</summary><div class="tw">${monthTable(M.months,[["Visits",ser("visits"),full],["Page views",ser("pv"),full]])}</div></details></div>
+    <div class="card" style="margin-top:14px"><div class="tw"><table class="t"><caption class="muted" style="text-align:left;padding:14px 10px 4px;font-size:13.5px"><b style="color:var(--ink);font-size:15px;font-family:var(--f-display)">Most visited pages</b> · ${esc(mLong(rm))}</caption>
+    <thead><tr><th>Page</th><th class="r">Visits</th><th style="width:22%"></th><th class="r">vs ${esc(mLabel(pm||rm))}</th></tr></thead><tbody>`+
+    top.map(p=>{ const v=p.m[rm].visits, pv=pm&&p.m[pm]?p.m[pm].visits:null; return `<tr><td class="pg">${esc(p.title)}<small>${esc(p.lob)}</small></td><td class="r num">${compact(v)}</td><td><div class="bar" style="width:${(v/topMax*100).toFixed(1)}%"></div></td><td class="r">${deltaHTML(v,pv,null,"")}</td></tr>`; }).join("")+
+    `</tbody></table></div></div></section>`;
+
+  // google
+  if(gMonths.length){
+    const gp=M.pages.filter(p=>p.m[rm]&&p.m[rm].clicks!=null).sort((a,b)=>b.m[rm].clicks-a.m[rm].clicks).slice(0,8);
+    h+=`<section class="rs" aria-labelledby="h-g"><h2 id="h-g">Google search</h2><p class="lede">How often our pages show up in Google, and how often people click through. Average click-through rate this month: <b>${fx(T[rm].ctr,1)}%</b>; average position: <b>${fx(T[rm].pos,1)}</b>.</p>
+      <div class="two"><div class="card"><figure><h3>Clicks</h3><p class="sub">From Google search to our pages</p><div class="chart" id="c-clicks"></div></figure></div>
+      <div class="card"><figure><h3>Impressions</h3><p class="sub">Times our pages appeared in results, including AI features as Search Console reports them</p><div class="chart" id="c-imp"></div></figure></div></div>
+      <div class="card" style="margin-top:14px"><div class="tw"><table class="t"><thead><tr><th>Page</th><th class="r">Clicks</th><th class="r">vs ${esc(mLabel(pm||rm))}</th><th class="r">Click-through</th><th class="r">Position</th></tr></thead><tbody>`+
+      gp.map(p=>{ const o=p.m[rm], po=pm&&p.m[pm]?p.m[pm].clicks:null; return `<tr><td class="pg">${esc(p.title)}<small>${esc(p.lob)}</small></td><td class="r num">${compact(o.clicks)}</td><td class="r">${deltaHTML(o.clicks,po,"down","")}</td><td class="r num">${o.imp?fx(o.clicks/o.imp*100,1)+"%":"—"}</td><td class="r num">${fx(o.pos,1)}</td></tr>`; }).join("")+
+      `</tbody></table></div></div></section>`;
+  }
+
+  // flags
+  h+=`<section class="rs" aria-labelledby="h-f"><h2 id="h-f">Pages outside their normal range</h2><p class="lede">The agenda for the owner reviews. A page is flagged when this month's value falls outside the range it usually stays in (its 12-month average, plus or minus two standard deviations). The shaded band in each line is that range.</p>`;
+  h+=M.flags.length?`<div class="card"><div class="tw"><table class="t"><thead><tr><th>Status</th><th>Page</th><th>Measure</th><th class="r">${esc(mLabel(rm))}</th><th>Normal range</th><th>Last 13 months</th></tr></thead><tbody>`+
+    M.flags.map(f=>{ const vals=M.months.map(m=>f.p.m[m]?f.p.m[m][f.me.k]:null); const fm=v=>f.me.dec?fx(v,f.me.dec):compact(v);
+      return `<tr><td>${stFor(f.st,f.me)}</td><td class="pg">${esc(f.p.title)}<small>${esc(f.p.lob)}</small></td><td>${esc(f.me.short)}</td><td class="r num"><b>${fm(f.cur)}</b></td><td class="range num">${fm(f.lo)} to ${fm(f.hi)}</td><td>${sparkline(vals,{lo:f.lo,hi:f.hi},f.st,`${f.me.short}: ${fm(f.cur)} in ${mLabel(rm)}, normal range ${fm(f.lo)} to ${fm(f.hi)}`)}</td></tr>`; }).join("")+
+    `</tbody></table></div></div>`:`<div class="card empty">No page is outside its normal range this month.</div>`;
+  h+=notes(rm+"|flags","Which flags are real, and what each owner review should decide.")+`</section>`;
+
+  // task success
+  if(M.tss.length){
+    h+=`<section class="rs" aria-labelledby="h-t"><h2 id="h-t">Task success</h2><p class="lede">From the GC Task Success Survey, ${esc(M.tssQ)}${M.tssPrev?`, compared with ${esc(M.tssPrev)}`:""}: the share of visitors who say they completed what they came to do.</p>
+      <div class="card"><figure><h3>Task completion by top task</h3><p class="sub">Hollow dot: ${esc(M.tssPrev||"previous quarter")}. Filled dot: ${esc(M.tssQ)}. Lowest first.</p><div class="chart" id="c-tss"></div></figure>
+      <details class="tv"><summary>Show the numbers</summary><div class="tw"><table class="t"><thead><tr><th>Task</th><th class="r">${esc(M.tssPrev||"")}</th><th class="r">${esc(M.tssQ)}</th><th class="r">Ease</th><th class="r">Responses</th></tr></thead><tbody>${M.tss.map(t=>`<tr><td>${esc(t.task)}</td><td class="r num">${t.pre?fx(t.pre.comp,1)+"%":"—"}</td><td class="r num">${fx(t.cur.comp,1)}%</td><td class="r num">${t.cur.ease!=null?fx(t.cur.ease,1)+"%":"—"}</td><td class="r num">${full(t.cur.n)}</td></tr>`).join("")}</tbody></table></div></details></div></section>`;
+  }
+
+  // per line of business
+  M.lobs.forEach(lob=>{
+    const ps=M.pages.filter(p=>p.lob===lob).sort((a,b)=>((b.m[rm]||{}).visits||0)-((a.m[rm]||{}).visits||0));
+    const sum=(m,k)=>ps.reduce((a,p)=>a+((p.m[m]||{})[k]||0),0);
+    const v=sum(rm,"visits"), vp=pm?sum(pm,"visits"):null, no=sum(rm,"no"), sr=sum(rm,"srch");
+    const nk=v?no/v*1000:null, nkp=pm&&vp?sum(pm,"no")/vp*1000:null, sk=v?sr/v*1000:null, skp=pm&&vp?sum(pm,"srch")/vp*1000:null;
+    const fl=M.flags.filter(f=>f.p.lob===lob&&f.st==="worse").length;
+    const id="lob-"+lob.toLowerCase().replace(/[^a-z]+/g,"-");
+    h+=`<section class="rs lob" aria-labelledby="${id}"><div class="lobh"><h2 id="${id}">${esc(lob)}</h2>${lob!=="Unassigned"?`<span class="for">For the WUX Assistant Director and advisors</span>`:`<span class="for">Pages missing from the page list</span>`}</div>
+      <div class="tiles">`+
+      tile("Visits",v,vp,M.months.map(m=>sum(m,"visits")),null,compact,mLabel(pm||rm))+
+      tile("“No” clicks per 1K visits",nk,nkp,M.months.map(m=>{const vv=sum(m,"visits");return vv?sum(m,"no")/vv*1000:null;}),"up",x=>fx(x,2),mLabel(pm||rm))+
+      `<div class="tile"><span class="l">Pages flagged worse</span><span class="v">${fl}</span><span class="d muted">of ${ps.length} pages</span></div></div>
+      <div class="card" style="margin-top:14px"><div class="tw"><table class="t"><thead><tr><th>Page</th><th class="r">Visits</th><th class="r">“No” per 1K</th><th></th><th class="r">Searches per 1K</th><th></th><th class="r">Google clicks</th></tr></thead><tbody>`+
+      ps.map(p=>{ const o=p.m[rm]||{}; const ser=k=>M.months.map(m=>p.m[m]?p.m[m][k]:null);
+        return `<tr><td class="pg">${esc(p.title)}${p.top?`<span class="tt" title="Top task: ${esc(p.top)}">Top task</span>`:""}</td>
+          <td class="r num">${compact(o.visits)}</td>
+          <td class="r num">${fx(o.noK,1)} ${stFor(p.flag.noK,MEAS[0])}</td><td>${sparkline(ser("noK"),p.range.noK,p.flag.noK,`“No” per 1K, last 13 months`)}</td>
+          <td class="r num">${fx(o.srK,1)} ${stFor(p.flag.srK,MEAS[1])}</td><td>${sparkline(ser("srK"),p.range.srK,p.flag.srK,`Searches per 1K, last 13 months`)}</td>
+          <td class="r num">${compact(o.clicks)} ${stFor(p.flag.clicks,MEAS[2])}</td></tr>`; }).join("")+
+      `</tbody></table></div></div>${notes(rm+"|"+lob,"What this line of business should look at, and any decisions from the owner review.")}</section>`;
+  });
+
+  // appendix
+  h+=`<section class="appx" aria-labelledby="h-a"><h2 id="h-a">How this report works</h2>
+    <h3>Measures</h3><ul>
+      <li><b>“No” clicks per 1K visits</b>: clicks on “No” in the page feedback question, for every 1,000 visits. Higher is worse.</li>
+      <li><b>Searches from the page per 1K visits</b>: site searches started from the page. Higher usually means people didn't find what they expected.</li>
+      <li><b>Google clicks</b>: clicks from Google search results to the page, from Search Console. Lower is worse.</li>
+      <li><b>Task completion</b>: GC Task Success Survey, quarterly.</li></ul>
+    <h3>Normal range and flags</h3><p>For each page and measure, the normal range is the average of the previous 12 months, plus or minus two standard deviations. A page needs at least 6 months of history, ${MIN_VISITS.toLocaleString("en-CA")} visits this month (feedback and search measures) or an average of ${MIN_CLICKS} Google clicks to be flagged, so small pages don't flag on noise. Seasonal pages can flag in their busy month; the owner review decides whether a flag is real.</p>
+    <h3>Files</h3><p>The template recognizes each file by its column headings, so extra columns and Adobe's <code>#</code> header lines are fine.</p><ul>
+      <li><b>Adobe Analytics pages</b>: <code>Month</code>, <code>Page URL</code>, <code>Visits</code>, <code>Page Views</code>, <code>Page feedback: Yes</code>, <code>Page feedback: No</code>, <code>Searches from page</code>. One row per page per month, at least 13 months. Schedule it monthly from a Workspace freeform table or a Data Warehouse request.</li>
+      <li><b>Search Console pages</b>: the Pages export (<code>Top pages</code>, <code>Clicks</code>, <code>Impressions</code>, <code>CTR</code>, <code>Position</code>) with a <code>Month</code> column, or one file per month with the month in the file name, like <code>gsc_pages_2026-09.csv</code>.</li>
+      <li><b>GC Task Success Survey</b>: <code>Quarter</code>, <code>Task</code>, <code>Line of business</code>, <code>Responses</code>, <code>Task completion</code>, <code>Ease</code>.</li>
+      <li><b>Page list</b> (kept by RAD): <code>Page URL</code>, <code>Page title</code>, <code>Line of business</code>, <code>Top task</code>. It names pages and groups them into the sections for each Assistant Director.</li></ul></section>`;
+  R.innerHTML=h;
+
+  LASTM=M; drawCharts();
+  R.querySelectorAll("[contenteditable]").forEach(n=>n.addEventListener("input",()=>{ try{ localStorage.setItem("or-notes|"+n.dataset.key,n.innerText); }catch(e){} }));
+}
+let LASTM=null, PRINTW=0;
+function drawCharts(){
+  const M=LASTM; if(!M) return; const T=M.tot, ser=k=>M.months.map(m=>T[m]?T[m][k]:null), gMonths=M.months.filter(m=>T[m]&&T[m].clicks!=null);
+  lineChart($("#c-visits"),{months:M.months,values:ser("visits"),fmt:compact,label:"Visits per month, last 13 months"});
+  if(gMonths.length){ lineChart($("#c-clicks"),{months:M.months,values:ser("clicks"),fmt:compact,label:"Google clicks per month",h:220}); lineChart($("#c-imp"),{months:M.months,values:ser("imp"),fmt:compact,label:"Google impressions per month",h:220}); }
+  if(M.tss.length) dumbbell($("#c-tss"),M);
+}
+const toPrint=on=>{ PRINTW=on?700:0; drawCharts(); };
+window.addEventListener("beforeprint",()=>toPrint(true)); window.addEventListener("afterprint",()=>toPrint(false));
+try{ matchMedia("print").addEventListener("change",e=>toPrint(e.matches)); }catch(e){}
+let rT=null, lastW=innerWidth; window.addEventListener("resize",()=>{ clearTimeout(rT); rT=setTimeout(()=>{ if(Math.abs(innerWidth-lastW)>20){ lastW=innerWidth; drawCharts(); } },150); });
+function monthTable(months,cols){
+  return `<table class="t"><thead><tr><th>Month</th>${cols.map(c=>`<th class="r">${esc(c[0])}</th>`).join("")}</tr></thead><tbody>${months.map((m,i)=>`<tr><td>${esc(mLabel(m))}</td>${cols.map(c=>`<td class="r num">${c[2](c[1][i])}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+}
+function dumbbell(el,M){
+  const rows=M.tss, W=(PRINTW?(el.closest(".two")?Math.round(PRINTW/2-8):PRINTW):Math.max(300,Math.round(el.clientWidth||640))), narrow=W<560, L=narrow?6:230, R=96, RH=narrow?52:38, T=24, H=T+rows.length*RH+6;
+  const lo=Math.max(0,Math.floor((Math.min(...rows.map(r=>Math.min(r.cur.comp,r.pre?r.pre.comp:100)))-5)/10)*10), hi=100;
+  const x=v=>L+(v-lo)/(hi-lo)*(W-L-R);
+  let s=`<svg viewBox="0 0 ${W} ${H}" class="dumb" role="img" aria-label="Task completion by top task">`;
+  for(let v=lo;v<=hi;v+=10){ s+=`<line x1="${x(v)}" x2="${x(v)}" y1="${T-6}" y2="${H-4}" stroke="var(--grid)"/><text x="${x(v)}" y="${T-12}" text-anchor="middle" class="num">${v}%</text>`; }
+  rows.forEach((r,i)=>{ const y=T+i*RH+RH/2+(narrow?8:0), c=r.cur.comp, p=r.pre?r.pre.comp:null, d=p!=null?c-p:null;
+    const st=d==null?null:d<=-5?"worse":d>=5?"better":null;
+    s+=`<g tabindex="0"><title>${esc(r.task)}: ${fx(c,1)}% in ${esc(M.tssQ)}${p!=null?` (${fx(p,1)}% in ${esc(M.tssPrev)})`:""}</title>`;
+    if(narrow){ s+=`<text class="lab" x="0" y="${y-12}">${esc(r.task)}</text>`; } else { s+=`<text class="lab" x="0" y="${y-2}">${esc(r.task)}</text><text class="lob" x="0" y="${y+13}">${esc(r.lob)}</text>`; }
+    if(p!=null) s+=`<line x1="${x(p)}" x2="${x(c)}" y1="${y}" y2="${y}" stroke="var(--axis)" stroke-width="2"/><circle cx="${x(p)}" cy="${y}" r="4.5" fill="var(--card)" stroke="var(--muted)" stroke-width="2"/>`;
+    s+=`<circle cx="${x(c)}" cy="${y}" r="5" fill="${st==="worse"?"var(--worse)":st==="better"?"var(--better)":"var(--series)"}" stroke="var(--card)" stroke-width="2"/>`;
+    s+=`<text x="${W-R+10}" y="${y+4}" style="fill:var(--ink);font-weight:700;font-size:12.5px" class="num">${fx(c,0)}%</text>`;
+    if(d!=null) s+=`<text x="${W-R+48}" y="${y+4}" style="font-size:12px;font-weight:600;fill:${st==="worse"?"var(--worse-text)":st==="better"?"var(--better-text)":"var(--muted)"}" class="num">${d>0?"+":""}${fx(d,0)}</text>`;
+    s+=`</g>`; });
+  el.innerHTML=s+`</svg>`;
+}
+
+/* ========================= loading ========================= */
+function emptyStore(){ return {aa:[],gsc:[],tss:[],pages:[]}; }
+function showFiles(){
+  $("#files").innerHTML=FILES.map(f=>`<li><span class="tag${f.kind?"":" bad"}">${esc(f.kind?KIND[f.kind]:"Not used")}</span><span>${esc(f.name)}</span><span class="muted">${f.kind?f.rows.toLocaleString("en-CA")+" rows":""}${f.note?" · "+esc(f.note):""}</span></li>`).join("");
+}
+function loadSample(){
+  SAMPLE=true; STORE=emptyStore(); FILES=[];
+  [["adobe_pages_monthly.csv","s-aa"],["gsc_pages_monthly.csv","s-gsc"],["gc_task_success.csv","s-tss"],["pages.csv","s-pages"]].forEach(([n,id])=>FILES.push(ingest(n+" (sample)",document.getElementById(id).textContent.trim(),STORE)));
+  REPORT_M=null; showFiles(); render();
+}
+async function loadFiles(list){
+  const fs=[...list].filter(f=>/\.csv$/i.test(f.name)||f.type==="text/csv"); if(!fs.length) return;
+  if(SAMPLE){ TEXTS.clear(); SAMPLE=false; }
+  for(const f of fs) TEXTS.set(f.name,await f.text());
+  STORE=emptyStore(); FILES=[...TEXTS].map(([n,t])=>ingest(n,t,STORE));
+  REPORT_M=null; showFiles(); render();
+}
+$("#fileIn").addEventListener("change",e=>{ loadFiles(e.target.files); e.target.value=""; });
+$("#sampleBtn").addEventListener("click",loadSample);
+$("#monthSel").addEventListener("change",e=>{ REPORT_M=e.target.value; render(); });
+const drop=$("#drop");
+["dragenter","dragover"].forEach(t=>document.addEventListener(t,e=>{ e.preventDefault(); drop.classList.add("over"); }));
+["dragleave","drop"].forEach(t=>document.addEventListener(t,e=>{ e.preventDefault(); if(t==="drop"||e.target===document.documentElement) drop.classList.remove("over"); }));
+document.addEventListener("drop",e=>{ if(e.dataTransfer&&e.dataTransfer.files.length) loadFiles(e.dataTransfer.files); });
+loadSample();
+</script>
+</body></html>
