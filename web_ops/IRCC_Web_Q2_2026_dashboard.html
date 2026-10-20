@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IRCC Web Q2 2026</title>
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f3f4f6; --surface:#ffffff; --border:#e5e7eb; --border-2:#eef0f3;
+  --text:#0b0b0b; --text-2:#4b4f56; --muted:#80848c;
+  --s1:#2a78d6; --s1-soft:#e6f0fc; --s2:#eb6834; --s2-soft:#fdeee7; --s3:#1baf7a; --s4:#eda100;
+  --past:#c9ccd2; --past-2:#a6aab2; --track:#eceef1;
+  --hero:#0f2742; --hero-2:#1d4a7a;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0f1012; --surface:#1a1b1e; --border:#2b2d31; --border-2:#232428;
+  --text:#f0efec; --text-2:#c3c2b7; --muted:#8f8e86;
+  --s1:#3987e5; --s1-soft:#17304f; --s2:#d95926; --s2-soft:#3a2117; --s3:#199e70; --s4:#c98500;
+  --past:#3d4046; --past-2:#5a5e66; --track:#26282c;
+  --hero:#0b1a2c; --hero-2:#143a63;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}
+
+/* hero */
+.hero{background:linear-gradient(135deg,var(--hero),var(--hero-2));color:#fff}
+.hero .in{max-width:1180px;margin:0 auto;padding:28px 16px 0}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.7;font-weight:600}
+.hero h1{font-size:30px;margin:6px 0 4px;letter-spacing:-.01em}
+.hero p{margin:0;opacity:.8}
+.tabs{display:flex;gap:6px;margin-top:22px}
+.tabs button{font:inherit;font-weight:600;font-size:14.5px;border:0;cursor:pointer;padding:11px 18px;border-radius:10px 10px 0 0;background:rgba(255,255,255,.08);color:rgba(255,255,255,.8)}
+.tabs button[aria-selected="true"]{background:var(--bg);color:var(--text)}
+.tabs button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+.wrap{max-width:1180px;margin:0 auto;padding:22px 16px 56px}
+.panel[hidden]{display:none}
+
+/* takeaways */
+.take{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-bottom:8px}
+.take div{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--s1);border-radius:10px;padding:12px 14px;font-size:14px;color:var(--text-2)}
+.take b{display:block;color:var(--text);font-size:15px;margin-bottom:2px}
+
+/* section heads */
+.sec{display:flex;align-items:center;gap:10px;margin:34px 0 12px}
+.sec .n{width:26px;height:26px;border-radius:50%;background:var(--s1);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700;flex:none}
+.sec h2{font-size:18px;margin:0}
+.sec span.sub{color:var(--muted);font-size:13.5px;margin-left:4px}
+
+.grid{display:grid;gap:12px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.span2{grid-column:span 2}
+@media (max-width:760px){.span2{grid-column:auto}.g2{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;min-width:0}
+.card h3{margin:0;font-size:13.5px;font-weight:600;color:var(--text-2)}
+.big{font-size:34px;font-weight:750;letter-spacing:-.02em;line-height:1.1;margin-top:6px}
+.big small{font-size:14px;font-weight:500;color:var(--text-2);margin-left:6px;letter-spacing:0}
+.row{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.chip{font-size:12.5px;font-weight:650;padding:3px 9px;border-radius:999px;white-space:nowrap;background:var(--track);color:var(--text)}
+.chip.up{background:var(--s1-soft)} .chip.dn{background:var(--s2-soft)}
+.chip i{font-style:normal;font-weight:500;color:var(--text-2);margin-left:3px}
+.ctx{font-size:13px;color:var(--text-2);margin:10px 0 0}
+
+/* mini comparison bars */
+.mb{display:grid;gap:5px;margin-top:14px}
+.mb .r{display:grid;grid-template-columns:62px 1fr 58px;gap:8px;align-items:center;font-size:12px;color:var(--muted)}
+.mb .t{height:9px;border-radius:0 4px 4px 0;background:var(--track)}
+.mb .f{display:block;height:100%;border-radius:0 4px 4px 0;background:var(--past)}
+.mb .r.cur{color:var(--text);font-weight:600}
+.mb .r.cur .f{background:var(--s1)}
+.mb .v{text-align:right}
+
+/* rank track */
+.track{position:relative;height:46px;margin-top:16px}
+.track .line{position:absolute;left:0;right:0;top:20px;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--s1-soft),var(--track))}
+.track .dot{position:absolute;top:13px;width:20px;height:20px;border-radius:50%;transform:translateX(-50%);border:3px solid var(--surface)}
+.track .lbl{position:absolute;top:-2px;transform:translateX(-50%);font-size:11px;color:var(--muted);white-space:nowrap}
+.track .ax{position:absolute;bottom:-6px;font-size:11px;color:var(--muted)}
+
+/* waffle */
+.waffle{display:grid;grid-template-columns:repeat(20,1fr);gap:3px;margin-top:14px;max-width:320px}
+.waffle i{aspect-ratio:1;border-radius:2px;background:var(--track)}
+.waffle i.on{background:var(--s1)}
+
+/* timeline */
+.tl{position:relative;display:grid;grid-template-columns:repeat(4,1fr);margin-top:18px}
+.tl:before{content:"";position:absolute;left:6px;right:6px;top:6px;height:2px;background:var(--border)}
+.tl div{position:relative;padding-top:20px;padding-right:8px;font-size:12.5px;color:var(--text-2)}
+.tl div:before{content:"";position:absolute;left:0;top:0;width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--s1)}
+.tl div:last-child:before{background:var(--s1)}
+.tl b{display:block;color:var(--text);font-size:13px}
+@media (max-width:560px){.tl{grid-template-columns:1fr 1fr;row-gap:14px}.tl:before{display:none}}
+
+/* rings */
+.rings{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.ring{position:relative;display:inline-block}
+.ring .c{position:absolute;inset:0;display:grid;place-content:center}
+.ring .c b{font-size:24px;font-weight:750;letter-spacing:-.02em}
+.rings h4{margin:8px 0 4px;font-size:14px}
+
+/* diverging */
+.div{display:grid;gap:8px;margin-top:14px}
+.div .r{display:grid;grid-template-columns:minmax(0,1fr) 46% ;gap:12px;align-items:center;font-size:13.5px;padding:3px 0}
+.div .lab{color:var(--text);text-align:right}
+.div .ch{position:relative;height:22px;display:grid;grid-template-columns:1fr 1fr}
+.div .ch:after{content:"";position:absolute;left:50%;top:-6px;bottom:-6px;width:1px;background:var(--past-2)}
+.div .neg,.div .pos{white-space:nowrap;display:flex;align-items:center;gap:6px;font-weight:700;font-size:12.5px}
+.div .neg{justify-content:flex-end}
+.div .b{height:14px}
+.div .neg .b{background:var(--s2);border-radius:4px 0 0 4px}
+.div .pos .b{background:var(--s1);border-radius:0 4px 4px 0}
+.div .sep{height:1px;background:var(--border-2);margin:4px 0}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--text-2);margin-top:10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+
+.tasks{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tasks span{font-size:13px;padding:6px 10px;border-radius:8px;background:var(--s1-soft);color:var(--text)}
+
+/* stacked bar */
+.stack{display:flex;height:34px;gap:2px;margin-top:16px}
+.stack div{height:100%}
+.stack div:first-child{border-radius:6px 0 0 6px}.stack div:last-child{border-radius:0 6px 6px 0}
+.slist{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-top:16px}
+.slist div{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2)}
+.slist i{width:12px;height:12px;border-radius:3px;margin-top:3px;flex:none}
+.slist b{display:block;color:var(--text);font-size:18px;line-height:1.1}
+
+svg text{font-family:inherit}
+#tip{position:fixed;pointer-events:none;background:var(--text);color:var(--surface);font-size:12.5px;padding:6px 9px;border-radius:6px;opacity:0;transition:opacity .1s;z-index:9;max-width:260px}
+[data-tip]{cursor:default}
+@media (max-width:560px){.hero h1{font-size:24px}.big{font-size:30px}.rings .ring svg{width:92px;height:92px}.ring .c b{font-size:19px}.slist{grid-template-columns:1fr}}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.langbtn{font:inherit;font-size:13.5px;font-weight:600;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 14px;cursor:pointer}
+.langbtn:hover{background:rgba(255,255,255,.22)}
+.langbtn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.langblock[hidden]{display:none}
+.tools{display:flex;gap:8px}
+.themebtn .ic{margin-right:6px}
+</style>
+</head>
+<body>
+<div class="langblock" lang="en" id="L-en">
+<div class="hero"><div class="in">
+  <div class="topbar"><div class="eyebrow">IRCC · Quarterly web report</div><div class="tools"><button class="langbtn themebtn" data-l="en" aria-pressed="false"><span class="ic">☾</span><span class="tx">Dark mode</span></button><button class="langbtn" data-lang="fr" lang="fr">Français</button></div></div>
+  <h1>Q2 2026-27 at a glance</h1>
+  <p>July 1 – September 30, 2026 · compared with last year and last quarter</p>
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-p="perf">Web performance</button>
+    <button role="tab" aria-selected="false" data-p="ops">Web Operations</button>
+  </div>
+</div></div>
+
+<div class="wrap">
+<!-- ================= PERFORMANCE ================= -->
+<section class="panel" id="perf">
+  <div class="take">
+    <div><b>Fewer visitors, better rankings</b>Traffic is down 6% and search impressions halved, but IRCC now ranks much higher in Google.</div>
+    <div><b>AI is a small but fast-growing door</b>1% of site entries come from AI tools — up 50% in a year.</div>
+    <div><b>Users still succeed</b>Task success is stable and ahead of CRA and ESDC on every measure.</div>
+  </div>
+
+  <div class="sec"><span class="n">1</span><h2>Traffic &amp; search</h2><span class="sub">Q2 2026 vs Q2 2025</span></div>
+  <div class="grid g4">
+    <div class="card">
+      <div class="row"><h3>Total visitors</h3><span class="chip dn">↓ 6%</span></div>
+      <div class="big num">24.0M</div>
+      <div class="mb" id="mbVisitors"></div>
+      <p class="ctx">3rd most-visited federal institution, after CRA and ESDC.</p>
+    </div>
+    <div class="card">
+      <div class="row"><h3>Google impressions</h3><span class="chip dn">↓ 49%</span></div>
+      <div class="big num">381M</div>
+      <div class="mb" id="mbImpr"></div>
+      <p class="ctx">Canada.ca overall: ↓ 20%.</p>
+    </div>
+    <div class="card">
+      <div class="row"><h3>Google clicks</h3><span class="chip dn">↓ 15%</span></div>
+      <div class="big num">26.2M</div>
+      <div class="mb" id="mbClicks"></div>
+      <p class="ctx">Clicks fell far less than impressions.</p>
+    </div>
+    <div class="card">
+      <div class="row"><h3>Avg. search position</h3><span class="chip up">8.3 spots higher</span></div>
+      <div class="big num">6.0<small>was 14.3</small></div>
+      <div class="track" data-tip="Average Google position: 14.3 → 6.0 (lower is better)">
+        <div class="line"></div>
+        <span class="lbl" style="left:calc(14.3/20*100%)">2025</span>
+        <span class="dot" style="left:calc(14.3/20*100%);background:var(--past-2)"></span>
+        <span class="lbl" style="left:calc(6/20*100%);color:var(--text);font-weight:600">2026</span>
+        <span class="dot" style="left:calc(6/20*100%);background:var(--s1)"></span>
+        <span class="ax" style="left:0">#1</span><span class="ax" style="right:0">#20</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec"><span class="n">2</span><h2>AI and search</h2><span class="sub">how AI tools are changing the way people arrive</span></div>
+  <div class="grid g3">
+    <div class="card">
+      <div class="row"><h3>Site entries from AI tools</h3><span class="chip up">↑ 50% YoY</span></div>
+      <div class="big num">1%<small>of all entries</small></div>
+      <div class="waffle" id="waffle" data-tip="1 in every 100 site entries comes from an AI tool"></div>
+    </div>
+    <div class="card">
+      <h3>Google AI impressions</h3>
+      <div class="big num">88.2M</div>
+      <p class="ctx">First quarter with data, so the baseline for future comparisons. Equal to about <b>23%</b> of traditional Google impressions (381M).</p>
+      <div class="stack" style="height:14px;margin-top:14px">
+        <div style="flex:381;background:var(--past)" data-tip="Traditional impressions: 381M"></div>
+        <div style="flex:88.2;background:var(--s1)" data-tip="AI impressions: 88.2M"></div>
+      </div>
+      <div class="legend"><span><i style="background:var(--past)"></i>Traditional 381M</span><span><i style="background:var(--s1)"></i>AI 88.2M</span></div>
+    </div>
+    <div class="card">
+      <h3>Key moments in AI-enabled search</h3>
+      <div class="tl">
+        <div><b>Nov 2022</b>ChatGPT launches</div>
+        <div><b>Oct 2024</b>Google AI Overviews in Canada</div>
+        <div><b>Aug 2025</b>Google AI Mode in Canada</div>
+        <div><b>Jun 2026</b>AI impressions reported</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec"><span class="n">3</span><h2>Do people succeed?</h2><span class="sub">Task success survey and page feedback</span></div>
+  <div class="grid g2">
+    <div class="card">
+      <div class="row"><h3>Task success survey · Q2 2026</h3><span class="chip">Stable · ahead of CRA &amp; ESDC</span></div>
+      <div class="rings" id="rings" style="margin-top:16px"></div>
+      <p class="ctx" style="text-align:center">IRCC drives <b>34%</b> of all Canada.ca survey responses and <b>9 of the top 25</b> tasks.</p>
+    </div>
+    <div class="card">
+      <h3>Biggest changes in task completion</h3>
+      <div class="div" id="div"></div>
+      <div class="legend"><span><i style="background:var(--s1)"></i>Gain</span><span><i style="background:var(--s2)"></i>Drop</span></div>
+    </div>
+    <div class="card">
+      <div class="row"><h3>Most popular tasks — 75% of IRCC responses</h3><span class="chip up">74–83% completion</span></div>
+      <div class="tasks"><span>Apply for a work permit</span><span>Apply for a visitor visa</span><span>Check your application status</span><span>Immigrate through Express Entry</span><span>Apply for an eTA</span></div>
+    </div>
+    <div class="card">
+      <h3>Page feedback: “Did you find what you were looking for?”</h3>
+      <div class="grid" style="grid-template-columns:auto 1fr;gap:18px;align-items:center;margin-top:12px">
+        <div id="pftRing"></div>
+        <div>
+          <div class="row" style="justify-content:flex-start"><b class="num" style="font-size:22px">36%</b><span style="color:var(--text-2)">said “No”</span><span class="chip up">↓ 5% YoY</span></div>
+          <div class="row" style="justify-content:flex-start;margin-top:10px"><b class="num" style="font-size:22px">5.57</b><span style="color:var(--text-2)">“No” per 1,000 visits</span><span class="chip dn">↑ 3% YoY</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec"><span class="n">4</span><h2>What people visit</h2><span class="sub">ranked by visitors</span></div>
+  <div class="grid g2">
+    <div class="card span2">
+      <div class="row"><h3>Top 10 pages — 8 of 10 are the same as last year</h3>
+        <div class="legend" style="margin:0"><span><i style="background:var(--s1)"></i>New in top 10</span><span><i style="background:var(--past-2)"></i>Stayed</span></div></div>
+      <div id="slopePages" style="margin-top:8px"></div>
+    </div>
+    <div class="card">
+      <h3>Lines of business — Passports up 11%, overtakes Corporate</h3>
+      <div id="slopeLob" style="margin-top:8px"></div>
+    </div>
+    <div class="card">
+      <h3>What the top pages tell us</h3>
+      <div class="slist" style="grid-template-columns:1fr">
+        <div><i style="background:var(--s1)"></i><span><b>4 of 10</b>are about signing in or tracking an application — many users have files in progress.</span></div>
+        <div><i style="background:var(--s3)"></i><span><b>eTA ×2</b>eTA pages entered the top 10 (major events like FIFA likely contributed).</span></div>
+        <div><i style="background:var(--s4)"></i><span><b>Express Entry</b>remains one of the most visited programs.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OPERATIONS ================= -->
+<section class="panel" id="ops" hidden>
+  <div class="take">
+    <div><b>Lighter quarter, same reliability</b>Requests down 21% from Q1, SLA held at 99%.</div>
+    <div><b>Fewer fire drills</b>Last-minute requests dropped by a third.</div>
+    <div><b>More new content</b>New pages up 17% while updates and deletions fell.</div>
+  </div>
+
+  <div class="sec"><span class="n">1</span><h2>Workload &amp; service</h2><span class="sub">Q2 2025-26 · Q1 2026-27 · Q2 2026-27</span></div>
+  <div class="grid g4">
+    <div class="card">
+      <div class="row"><h3>SLA met</h3><span class="chip up">↑ 1 pt vs Q1</span></div>
+      <div style="display:flex;justify-content:center;margin-top:10px" id="slaRing"></div>
+      <p class="ctx" style="text-align:center">Same as Q2 last year.</p>
+    </div>
+    <div class="card">
+      <div class="row"><h3>Total requests</h3><span class="chip dn">↓ 21% vs Q1</span></div>
+      <div class="big num">907</div>
+      <div class="mb" id="mbReq"></div>
+    </div>
+    <div class="card">
+      <div class="row"><h3>Last-minute requests</h3><span class="chip up">↓ 33% vs Q1</span></div>
+      <div class="big num">229<small>25% of requests</small></div>
+      <div class="mb" id="mbLast"></div>
+    </div>
+    <div class="card">
+      <div class="row"><h3>PDIs, OBs &amp; PDUs</h3><span class="chip up">↑ 64% YoY</span></div>
+      <div class="big num">42</div>
+      <div class="mb" id="mbPdi"></div>
+    </div>
+  </div>
+
+  <div class="sec"><span class="n">2</span><h2>Where requests came from</h2><span class="sub">907 requests</span></div>
+  <div class="card">
+    <div class="stack" id="reqStack"></div>
+    <div class="slist" id="reqList" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))"></div>
+  </div>
+
+  <div class="sec"><span class="n">3</span><h2>Publishing output &amp; quality</h2><span class="sub">pages updated, created and deleted</span></div>
+  <div class="grid g2">
+    <div class="card span2" style="grid-column:span 1">
+      <div class="row"><h3>Page changes by quarter</h3>
+        <div class="legend" style="margin:0"><span><i style="background:var(--past)"></i>Q2 2025-26</span><span><i style="background:var(--past-2)"></i>Q1 2026-27</span><span><i style="background:var(--s1)"></i>Q2 2026-27</span></div></div>
+      <div id="pageChart" style="margin-top:10px"></div>
+    </div>
+    <div class="card">
+      <div class="row"><h3>QA: errors caught before publishing</h3><span class="chip">On par with Q1 &amp; last year</span></div>
+      <div class="grid" style="grid-template-columns:auto 1fr;gap:18px;align-items:center;margin-top:14px">
+        <div id="qaRing"></div>
+        <div>
+          <div class="big num" style="margin:0">150<small>errors</small></div>
+          <p class="ctx">found across <b>1,525</b> pages reviewed — about <b>1 in 10</b> pages needed a fix before going live.</p>
+        </div>
+      </div>
+      <div class="slist" style="grid-template-columns:repeat(3,1fr);margin-top:18px;border-top:1px solid var(--border-2);padding-top:14px">
+        <div><span><b class="num">3,373</b>updated</span></div>
+        <div><span><b class="num">1,241</b>new</span></div>
+        <div><span><b class="num">686</b>deleted</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+</div>
+<div class="langblock" lang="fr" id="L-fr" hidden>
+<div class="hero"><div class="in">
+  <div class="topbar"><div class="eyebrow">IRCC · Rapport Web trimestriel</div><div class="tools"><button class="langbtn themebtn" data-l="fr" aria-pressed="false"><span class="ic">☾</span><span class="tx">Mode sombre</span></button><button class="langbtn" data-lang="en" lang="en">English</button></div></div>
+  <h1>T2 2026-2027 en un coup d’œil</h1>
+  <p>Du 1<sup>er</sup> juillet au 30 septembre 2026 · par rapport à l’an dernier et au trimestre précédent</p>
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-p="perf-fr">Rendement Web</button>
+    <button role="tab" aria-selected="false" data-p="ops-fr">Opérations Web</button>
+  </div>
+</div></div>
+
+<div class="wrap">
+<section class="panel" id="perf-fr">
+  <div class="take">
+    <div><b>Moins de visiteurs, meilleur classement</b>Le trafic recule de 6&nbsp;% et les impressions de recherche ont diminué de moitié, mais IRCC se classe beaucoup plus haut dans Google.</div>
+    <div><b>L’IA : une porte d’entrée modeste, mais en forte croissance</b>1&nbsp;% des entrées sur le site proviennent d’outils d’IA, une hausse de 50&nbsp;% en un an.</div>
+    <div><b>Les utilisateurs réussissent toujours</b>La réussite des tâches est stable et dépasse celle de l’ARC et d’EDSC sur toutes les mesures.</div>
+  </div>
+
+  <div class="sec"><span class="n">1</span><h2>Trafic et recherche</h2><span class="sub">T2 2026 par rapport au T2 2025</span></div>
+  <div class="grid g4">
+    <div class="card">
+      <div class="row"><h3>Nombre total de visiteurs</h3><span class="chip dn">↓ 6&nbsp;%</span></div>
+      <div class="big num">24,0&nbsp;M</div>
+      <div class="mb" id="mbVisitors-fr"></div>
+      <p class="ctx">3<sup>e</sup> institution fédérale la plus visitée, après l’ARC et EDSC.</p>
+    </div>
+    <div class="card">
+      <div class="row"><h3>Impressions Google</h3><span class="chip dn">↓ 49&nbsp;%</span></div>
+      <div class="big num">381&nbsp;M</div>
+      <div class="mb" id="mbImpr-fr"></div>
+      <p class="ctx">Canada.ca dans son ensemble&nbsp;: ↓&nbsp;20&nbsp;%.</p>
+    </div>
+    <div class="card">
+      <div class="row"><h3>Clics Google</h3><span class="chip dn">↓ 15&nbsp;%</span></div>
+      <div class="big num">26,2&nbsp;M</div>
+      <div class="mb" id="mbClicks-fr"></div>
+      <p class="ctx">Les clics ont beaucoup moins baissé que les impressions.</p>
+    </div>
+    <div class="card">
+      <div class="row"><h3>Position moyenne</h3><span class="chip up">8,3 rangs plus haut</span></div>
+      <div class="big num">6,0<small>contre 14,3</small></div>
+      <div class="track" data-tip="Position moyenne dans Google : 14,3 → 6,0 (plus bas = meilleur)">
+        <div class="line"></div>
+        <span class="lbl" style="left:calc(14.3/20*100%)">2025</span>
+        <span class="dot" style="left:calc(14.3/20*100%);background:var(--past-2)"></span>
+        <span class="lbl" style="left:calc(6/20*100%);color:var(--text);font-weight:600">2026</span>
+        <span class="dot" style="left:calc(6/20*100%);background:var(--s1)"></span>
+        <span class="ax" style="left:0">n<sup>o</sup> 1</span><span class="ax" style="right:0">n<sup>o</sup> 20</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec"><span class="n">2</span><h2>IA et recherche</h2><span class="sub">comment les outils d’IA changent la façon dont les gens arrivent sur le site</span></div>
+  <div class="grid g3">
+    <div class="card">
+      <div class="row"><h3>Entrées provenant d’outils d’IA</h3><span class="chip up">↑ 50&nbsp;% sur un an</span></div>
+      <div class="big num">1&nbsp;%<small>des entrées</small></div>
+      <div class="waffle" id="waffle-fr" data-tip="1 entrée sur 100 provient d’un outil d’IA"></div>
+    </div>
+    <div class="card">
+      <h3>Impressions dans la recherche IA de Google</h3>
+      <div class="big num">88,2&nbsp;M</div>
+      <p class="ctx">Premier trimestre de données : il servira de point de référence. Équivaut à environ <b>23&nbsp;%</b> des impressions Google traditionnelles (381&nbsp;M).</p>
+      <div class="stack" style="height:14px;margin-top:14px">
+        <div style="flex:381;background:var(--past)" data-tip="Impressions traditionnelles : 381 M"></div>
+        <div style="flex:88.2;background:var(--s1)" data-tip="Impressions IA : 88,2 M"></div>
+      </div>
+      <div class="legend"><span><i style="background:var(--past)"></i>Traditionnelles 381&nbsp;M</span><span><i style="background:var(--s1)"></i>IA 88,2&nbsp;M</span></div>
+    </div>
+    <div class="card">
+      <h3>Moments clés de la recherche assistée par IA</h3>
+      <div class="tl">
+        <div><b>Nov. 2022</b>Lancement de ChatGPT</div>
+        <div><b>Oct. 2024</b>Aperçus IA de Google au Canada</div>
+        <div><b>Août 2025</b>Mode IA de Google au Canada</div>
+        <div><b>Juin 2026</b>Impressions IA déclarées</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec"><span class="n">3</span><h2>Les gens réussissent-ils?</h2><span class="sub">Sondage sur la réussite des tâches et rétroaction sur les pages</span></div>
+  <div class="grid g2">
+    <div class="card">
+      <div class="row"><h3>Sondage sur la réussite des tâches · T2 2026</h3><span class="chip">Stable · devant l’ARC et EDSC</span></div>
+      <div class="rings" id="rings-fr" style="margin-top:16px"></div>
+      <p class="ctx" style="text-align:center">IRCC génère <b>34&nbsp;%</b> de toutes les réponses au sondage de Canada.ca et <b>9 des 25</b> tâches les plus populaires.</p>
+    </div>
+    <div class="card">
+      <h3>Plus grands changements du taux de réussite</h3>
+      <div class="div" id="div-fr"></div>
+      <div class="legend"><span><i style="background:var(--s1)"></i>Hausse</span><span><i style="background:var(--s2)"></i>Baisse</span></div>
+    </div>
+    <div class="card">
+      <div class="row"><h3>Tâches les plus populaires — 75&nbsp;% des réponses d’IRCC</h3><span class="chip up">Réussite de 74 à 83&nbsp;%</span></div>
+      <div class="tasks"><span>Présenter une demande de permis de travail</span><span>Présenter une demande de visa de visiteur</span><span>Vérifier l’état de votre demande</span><span>Immigrer par Entrée express</span><span>Présenter une demande d’AVE</span></div>
+    </div>
+    <div class="card">
+      <h3>Rétroaction sur les pages : « Avez-vous trouvé ce que vous cherchiez? »</h3>
+      <div class="grid" style="grid-template-columns:auto 1fr;gap:18px;align-items:center;margin-top:12px">
+        <div id="pftRing-fr"></div>
+        <div>
+          <div class="row" style="justify-content:flex-start"><b class="num" style="font-size:22px">36&nbsp;%</b><span style="color:var(--text-2)">ont répondu « Non »</span><span class="chip up">↓ 5&nbsp;% sur un an</span></div>
+          <div class="row" style="justify-content:flex-start;margin-top:10px"><b class="num" style="font-size:22px">5,57</b><span style="color:var(--text-2)">« Non » par 1&nbsp;000 visites</span><span class="chip dn">↑ 3&nbsp;% sur un an</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec"><span class="n">4</span><h2>Ce que les gens consultent</h2><span class="sub">classement selon le nombre de visiteurs</span></div>
+  <div class="grid g2">
+    <div class="card span2">
+      <div class="row"><h3>10 pages les plus visitées — 8 sur 10 sont les mêmes que l’an dernier</h3>
+        <div class="legend" style="margin:0"><span><i style="background:var(--s1)"></i>Nouvelle dans le top 10</span><span><i style="background:var(--past-2)"></i>Maintenue</span></div></div>
+      <div id="slopePages-fr" style="margin-top:8px"></div>
+    </div>
+    <div class="card">
+      <h3>Secteurs d’activité — Passeports en hausse de 11&nbsp;%, devant Ministériel</h3>
+      <div id="slopeLob-fr" style="margin-top:8px"></div>
+    </div>
+    <div class="card">
+      <h3>Ce que révèlent les pages les plus visitées</h3>
+      <div class="slist" style="grid-template-columns:1fr">
+        <div><i style="background:var(--s1)"></i><span><b>4 sur 10</b>portent sur la connexion ou le suivi d’une demande : beaucoup d’utilisateurs ont un dossier en cours.</span></div>
+        <div><i style="background:var(--s3)"></i><span><b>AVE ×2</b>Deux pages sur l’AVE font leur entrée dans le top 10 (de grands événements comme la Coupe du monde de la FIFA y ont sans doute contribué).</span></div>
+        <div><i style="background:var(--s4)"></i><span><b>Entrée express</b>demeure l’un des programmes les plus consultés.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="ops-fr" hidden>
+  <div class="take">
+    <div><b>Trimestre plus léger, même fiabilité</b>Demandes en baisse de 21&nbsp;% par rapport au T1; norme de service maintenue à 99&nbsp;%.</div>
+    <div><b>Moins d’urgences</b>Les demandes de dernière minute ont diminué d’un tiers.</div>
+    <div><b>Plus de nouveau contenu</b>Les nouvelles pages augmentent de 17&nbsp;%, alors que les mises à jour et les suppressions diminuent.</div>
+  </div>
+
+  <div class="sec"><span class="n">1</span><h2>Charge de travail et service</h2><span class="sub">T2 2025-2026 · T1 2026-2027 · T2 2026-2027</span></div>
+  <div class="grid g4">
+    <div class="card">
+      <div class="row"><h3>Norme de service respectée</h3><span class="chip up">↑ 1 pt c. T1</span></div>
+      <div style="display:flex;justify-content:center;margin-top:10px" id="slaRing-fr"></div>
+      <p class="ctx" style="text-align:center">Identique au T2 de l’an dernier.</p>
+    </div>
+    <div class="card">
+      <div class="row"><h3>Total des demandes</h3><span class="chip dn">↓ 21&nbsp;% c. T1</span></div>
+      <div class="big num">907</div>
+      <div class="mb" id="mbReq-fr"></div>
+    </div>
+    <div class="card">
+      <div class="row"><h3>Demandes de dernière minute</h3><span class="chip up">↓ 33&nbsp;% c. T1</span></div>
+      <div class="big num">229<small>25&nbsp;% des demandes</small></div>
+      <div class="mb" id="mbLast-fr"></div>
+    </div>
+    <div class="card">
+      <div class="row"><h3>IEP, BO et MEP</h3><span class="chip up">↑ 64&nbsp;% sur un an</span></div>
+      <div class="big num">42</div>
+      <div class="mb" id="mbPdi-fr"></div>
+    </div>
+  </div>
+
+  <div class="sec"><span class="n">2</span><h2>Provenance des demandes</h2><span class="sub">907 demandes</span></div>
+  <div class="card">
+    <div class="stack" id="reqStack-fr"></div>
+    <div class="slist" id="reqList-fr" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))"></div>
+  </div>
+
+  <div class="sec"><span class="n">3</span><h2>Production et qualité</h2><span class="sub">pages mises à jour, créées et supprimées</span></div>
+  <div class="grid g2">
+    <div class="card span2" style="grid-column:span 1">
+      <div class="row"><h3>Modifications de pages par trimestre</h3>
+        <div class="legend" style="margin:0"><span><i style="background:var(--past)"></i>T2 2025-2026</span><span><i style="background:var(--past-2)"></i>T1 2026-2027</span><span><i style="background:var(--s1)"></i>T2 2026-2027</span></div></div>
+      <div id="pageChart-fr" style="margin-top:10px"></div>
+    </div>
+    <div class="card">
+      <div class="row"><h3>AQ : erreurs relevées avant la publication</h3><span class="chip">Comparable au T1 et à l’an dernier</span></div>
+      <div class="grid" style="grid-template-columns:auto 1fr;gap:18px;align-items:center;margin-top:14px">
+        <div id="qaRing-fr"></div>
+        <div>
+          <div class="big num" style="margin:0">150<small>erreurs</small></div>
+          <p class="ctx">relevées sur <b>1&nbsp;525</b> pages vérifiées : environ <b>1 page sur 10</b> a dû être corrigée avant sa mise en ligne.</p>
+        </div>
+      </div>
+      <div class="slist" style="grid-template-columns:repeat(3,1fr);margin-top:18px;border-top:1px solid var(--border-2);padding-top:14px">
+        <div><span><b class="num">3&nbsp;373</b>mises à jour</span></div>
+        <div><span><b class="num">1&nbsp;241</b>nouvelles</span></div>
+        <div><span><b class="num">686</b>supprimées</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+</div>
+<div id="tip" role="tooltip"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+const T = {
+  en: {
+    loc:'en-CA', pct:'%', M:'M',
+    yLY:'Q2 2025', yTY:'Q2 2026', q:['Q2 25-26','Q1 26-27','Q2 26-27'], qLong:['Q2 2025-26','Q1 2026-27','Q2 2026-27'],
+    rings:[['Task completion',77.5,-0.3],['Ease',63.8,0.3],['Satisfaction',61.7,0.2]], pts:'pts', yoy:'YoY',
+    pftTip:'36% answered “No”', slaTip:'SLA met 99% of the time', qaTip:'150 errors ÷ 1,525 pages = 9.8%',
+    chg:[['Get, renew or replace a PR card',12],['Contact IRCC',6],['Biometrics: do I need them, where',5],
+         ['Find your NOC',-8],['Pay your fees online',-10],['Find a visa application centre',-12]],
+    pagesL:['Secure account sign-in','Immigration theme page','Account wizard','Processing times tool','Check application status','Express Entry: Check your score','Institutional landing page','Visit Canada topic page','IRCC applications','Express Entry: Rounds of invitations'],
+    pagesR:['Secure account sign-in','Immigration theme page','Account wizard','Processing times tool','Check application status','Your IRCC application','Express Entry: Check your score','Institutional landing page','eTA: How to apply','eTA topic page'],
+    lobL:['My application','Immigrate (PR)','Visit','Corporate','Passports'],
+    lobR:['My application','Immigrate (PR)','Visit','Passports','Corporate'], pass:'Passports',
+    NEW:'NEW', lastYear:'last year', thisYear:'this year', leftTop:n=>`left the top ${n}`, newTop:n=>`new in top ${n}`, was:r=>`was #${r}`, rank:r=>`#${r}`,
+    ariaPages:'Top 10 pages, last year vs this year', ariaLob:'Lines of business ranking', ariaPC:'Page changes by quarter',
+    req:[['Canada.ca (external)',443],['Connexion (intranet)',386],['Program Delivery Instructions',50],['Newsroom',28]],
+    cats:['Updated','New','Deleted']
+  },
+  fr: {
+    loc:'fr-CA', pct:'\u00a0%', M:'\u00a0M',
+    yLY:'T2 2025', yTY:'T2 2026', q:['T2 25-26','T1 26-27','T2 26-27'], qLong:['T2 2025-2026','T1 2026-2027','T2 2026-2027'],
+    rings:[['Réussite des tâches',77.5,-0.3],['Facilité',63.8,0.3],['Satisfaction',61.7,0.2]], pts:'pt', yoy:'sur un an',
+    pftTip:'36 % ont répondu « Non »', slaTip:'Norme de service respectée 99 % du temps', qaTip:'150 erreurs ÷ 1 525 pages = 9,8 %',
+    chg:[['Obtenir, renouveler ou remplacer une carte de RP',12],['Communiquer avec IRCC',6],['Biométrie : faut-il la fournir et où',5],
+         ['Trouver votre CNP',-8],['Payer vos frais en ligne',-10],['Trouver un centre de réception des demandes de visa',-12]],
+    pagesL:['Connexion au compte sécurisé','Page thématique Immigration','Assistant de compte','Outil des délais de traitement','Vérifier l’état de la demande','Entrée express : Vérifier votre note','Page d’accueil de l’institution','Page Visiter le Canada','Demandes à IRCC','Entrée express : Rondes d’invitations'],
+    pagesR:['Connexion au compte sécurisé','Page thématique Immigration','Assistant de compte','Outil des délais de traitement','Vérifier l’état de la demande','Votre demande à IRCC','Entrée express : Vérifier votre note','Page d’accueil de l’institution','AVE : Comment présenter une demande','Page thématique AVE'],
+    lobL:['Ma demande','Immigrer (RP)','Visiter','Ministériel','Passeports'],
+    lobR:['Ma demande','Immigrer (RP)','Visiter','Passeports','Ministériel'], pass:'Passeports',
+    NEW:'NOUVEAU', lastYear:'l’an dernier', thisYear:'cette année', leftTop:n=>`sortie du top ${n}`, newTop:n=>`nouvelle dans le top ${n}`, was:r=>`était n° ${r}`, rank:r=>`n° ${r}`,
+    ariaPages:'10 pages les plus visitées, l’an dernier et cette année', ariaLob:'Classement des secteurs d’activité', ariaPC:'Modifications de pages par trimestre',
+    req:[['Canada.ca (externe)',443],['Connexion (intranet)',386],['Instructions sur l’exécution des programmes',50],['Salle de presse',28]],
+    cats:['Mises à jour','Nouvelles','Supprimées']
+  }
+};
+const COLS=['var(--s1)','var(--s2)','var(--s3)','var(--s4)'];
+
+function render(lang){
+  const L=T[lang], sx=lang==='fr'?'-fr':'';
+  const el=id=>$(id+sx);
+  const n=(v,d=0)=>v.toLocaleString(L.loc,{maximumFractionDigits:d,minimumFractionDigits:d});
+  const p=(v,d=0)=>n(v,d)+L.pct;
+
+  /* mini comparison bars */
+  function mini(id, rows){
+    const max=Math.max(...rows.map(r=>r[1]));
+    el(id).innerHTML=rows.map(([l,v,cur,disp])=>
+      `<div class="r ${cur?'cur':''}" data-tip="${l} : ${disp}">
+        <span>${l}</span><span class="t"><span class="f" style="width:${v/max*100}%"></span></span><span class="v num">${disp}</span></div>`.replace(' : ', lang==='fr'?' : ':': ')).join('');
+  }
+  const m=v=>n(v,1)+L.M;
+  mini('mbVisitors',[[L.yLY,25.5,0,m(25.5)],[L.yTY,24.0,1,m(24.0)]]);
+  mini('mbImpr',[[L.yLY,747,0,n(747)+L.M],[L.yTY,381,1,n(381)+L.M]]);
+  mini('mbClicks',[[L.yLY,30.8,0,m(30.8)],[L.yTY,26.2,1,m(26.2)]]);
+  mini('mbReq',[[L.q[0],1031,0,n(1031)],[L.q[1],1148,0,n(1148)],[L.q[2],907,1,n(907)]]);
+  mini('mbLast',[[L.q[0],301,0,'301'],[L.q[1],342,0,'342'],[L.q[2],229,1,'229']]);
+  mini('mbPdi',[[L.q[0],26,0,'26'],[L.q[1],53,0,'53'],[L.q[2],42,1,'42']]);
+
+  el('waffle').innerHTML=Array.from({length:100},(_,i)=>`<i class="${i===0?'on':''}"></i>`).join('');
+
+  function ring(pct,size,stroke,label,color,tip){
+    const r=(size-stroke)/2,c=2*Math.PI*r;
+    return `<div class="ring" data-tip="${tip}"><svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="${tip}">
+      <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--track)" stroke-width="${stroke}"/>
+      <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${color}" stroke-width="${stroke}" stroke-linecap="round"
+        stroke-dasharray="${c*pct/100} ${c}" transform="rotate(-90 ${size/2} ${size/2})"/></svg>
+      <div class="c"><b class="num">${label}</b></div></div>`;
+  }
+  el('rings').innerHTML=L.rings.map(([l,v,d])=>{
+    const ds=`${d<0?'↓':'↑'} ${n(Math.abs(d),1)} ${L.pts}`;
+    return `<div>${ring(v,120,12,p(v,1),'var(--s1)',`${l} : ${p(v,1)} (${ds} ${L.yoy})`.replace(' : ',lang==='fr'?' : ':': '))}<h4>${l}</h4><span class="chip ${d<0?'dn':'up'}">${ds}</span></div>`;}).join('');
+  el('pftRing').innerHTML=ring(36,96,11,p(36),'var(--s2)',L.pftTip);
+  el('slaRing').innerHTML=ring(99,120,12,p(99),'var(--s1)',L.slaTip);
+  el('qaRing').innerHTML=ring(9.8,96,11,p(9.8,1),'var(--s2)',L.qaTip);
+
+  /* diverging */
+  el('div').innerHTML=L.chg.map(([l,v],i)=>{
+    const bar=`<span class="b" style="width:${Math.abs(v)/12*80}%"></span>`;
+    const t=`${v>0?'+':'−'}${Math.abs(v)}${L.pct}`;
+    return (i===3?'<div class="sep"></div>':'')+`<div class="r" data-tip="${l} : ${t}">
+      <span class="lab">${l}</span>
+      <span class="ch"><span class="neg">${v<0?t+bar:''}</span><span class="pos">${v>0?bar+t:''}</span></span></div>`;}).join('');
+
+  /* slope chart */
+  function slope(id,left,right,o){
+    const W=o.w,rowH=o.rowH||30,top=26,N=Math.max(left.length,right.length),H=top+N*rowH+4,lx=o.lx,rx=W-o.rx;
+    const y=i=>top+i*rowH+rowH/2;
+    let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${o.aria}" style="display:block;overflow:visible">`;
+    s+=`<text x="${lx-14}" y="12" text-anchor="end" font-size="12" fill="var(--muted)" font-weight="600">${L.yLY}</text>`;
+    s+=`<text x="${rx+14}" y="12" font-size="12" fill="var(--muted)" font-weight="600">${L.yTY}</text>`;
+    right.forEach((q,i)=>{const j=left.indexOf(q);if(j>-1){const hl=o.hl&&o.hl.includes(q);
+      s+=`<line x1="${lx}" y1="${y(j)}" x2="${rx}" y2="${y(i)}" stroke="${hl?'var(--s1)':'var(--past)'}" stroke-width="${hl?3:2}" stroke-linecap="round"/>`;}});
+    left.forEach((q,i)=>{const gone=!right.includes(q);
+      s+=`<g data-tip="${q} : ${L.rank(i+1)} ${L.lastYear} → ${gone?L.leftTop(N):L.rank(right.indexOf(q)+1)}">
+        <rect x="0" y="${y(i)-rowH/2}" width="${lx+10}" height="${rowH}" fill="transparent"/>
+        <text x="${lx-14}" y="${y(i)+4}" text-anchor="end" font-size="13" fill="${gone?'var(--muted)':'var(--text)'}">${q}  <tspan fill="var(--muted)">${i+1}</tspan></text>
+        <circle cx="${lx}" cy="${y(i)}" r="5" fill="${gone?'var(--surface)':'var(--past-2)'}" stroke="${gone?'var(--past-2)':'var(--surface)'}" stroke-width="2"/></g>`;
+      if(gone) s+=`<line x1="${lx+8}" y1="${y(i)}" x2="${lx+40}" y2="${y(i)}" stroke="var(--past)" stroke-width="2" stroke-dasharray="3 4"/>`;});
+    right.forEach((q,i)=>{const isNew=!left.includes(q),hl=isNew||(o.hl&&o.hl.includes(q));
+      if(isNew) s+=`<line x1="${rx-40}" y1="${y(i)}" x2="${rx-8}" y2="${y(i)}" stroke="var(--s1)" stroke-width="2" stroke-dasharray="3 4"/>`;
+      s+=`<g data-tip="${q} : ${L.rank(i+1)} ${L.thisYear} (${isNew?L.newTop(N):L.was(left.indexOf(q)+1)})">
+        <rect x="${rx-10}" y="${y(i)-rowH/2}" width="${W-rx+10}" height="${rowH}" fill="transparent"/>
+        <circle cx="${rx}" cy="${y(i)}" r="${hl?6:5}" fill="${hl?'var(--s1)':'var(--past-2)'}" stroke="var(--surface)" stroke-width="2"/>
+        <text x="${rx+14}" y="${y(i)+4}" font-size="13" fill="var(--text)" font-weight="${hl?650:400}"><tspan fill="var(--muted)" font-weight="400">${i+1}</tspan>  ${q}${isNew?`  <tspan fill="var(--s1)" font-size="11" font-weight="700">${L.NEW}</tspan>`:''}${o.extra&&o.extra[q]?`  <tspan fill="var(--s1)" font-weight="700">${o.extra[q]}</tspan>`:''}</text></g>`;});
+    el(id).innerHTML=s+'</svg>';
+  }
+  slope('slopePages',L.pagesL,L.pagesR,{w:1000,lx:340,rx:340,aria:L.ariaPages});
+  slope('slopeLob',L.lobL,L.lobR,{w:440,lx:130,rx:160,rowH:34,hl:[L.pass],extra:{[L.pass]:'↑ '+p(11)},aria:L.ariaLob});
+
+  /* requests stacked */
+  const tot=L.req.reduce((a,r)=>a+r[1],0);
+  el('reqStack').innerHTML=L.req.map(([l,v],i)=>`<div style="flex:${v};background:${COLS[i]}" data-tip="${l} : ${v} (${p(Math.round(v/tot*100))})"></div>`).join('');
+  el('reqList').innerHTML=L.req.map(([l,v],i)=>`<div><i style="background:${COLS[i]}"></i><span><b class="num">${v} <span style="font-size:13px;color:var(--muted);font-weight:500">${p(Math.round(v/tot*100))}</span></b>${l}</span></div>`).join('');
+
+  /* grouped bars */
+  const data=[[4216,4751,3373],[1118,1061,1241],[738,1024,686]], col=['var(--past)','var(--past-2)','var(--s1)'];
+  const W=560,H=260,pl=48,pb=28,pt=10,max=5000,ih=H-pb-pt,gw=(W-pl)/3,bw=34,gap=2;
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${L.ariaPC}" style="display:block">`;
+  [0,1000,2000,3000,4000,5000].forEach(t=>{const yy=pt+ih-t/max*ih;
+    s+=`<line x1="${pl}" x2="${W}" y1="${yy}" y2="${yy}" stroke="var(--border-2)"/><text x="${pl-8}" y="${yy+4}" text-anchor="end" font-size="11" fill="var(--muted)">${n(t)}</text>`;});
+  data.forEach((vals,gi)=>{const c=L.cats[gi],cx=pl+gw*gi+gw/2,x0=cx-(bw*3+gap*2)/2;
+    vals.forEach((v,k)=>{const h=v/max*ih,x=x0+k*(bw+gap),yy=pt+ih-h;
+      s+=`<path d="M${x},${pt+ih} V${yy+4} q0,-4 4,-4 h${bw-8} q4,0 4,4 V${pt+ih} Z" fill="${col[k]}" data-tip="${c} · ${L.qLong[k]} : ${k<2?'≈ ':''}${n(v)}"/>`;
+      if(k===2) s+=`<text x="${x+bw/2}" y="${yy-6}" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text)">${n(v)}</text>`;});
+    s+=`<text x="${cx}" y="${H-8}" text-anchor="middle" font-size="13" fill="var(--text-2)" font-weight="600">${c}</text>`;});
+  s+=`<line x1="${pl}" x2="${W}" y1="${pt+ih}" y2="${pt+ih}" stroke="var(--past-2)"/>`;
+  el('pageChart').innerHTML=s+'</svg>';
+
+  /* English tooltips use "Label: value"; French keeps the space before the colon */
+  if(lang==='en') $('L-en').querySelectorAll('[data-tip]').forEach(e=>e.dataset.tip=e.dataset.tip.replace(' : ',': '));
+}
+render('en'); render('fr');
+
+/* tooltip */
+const tip=$('tip');
+document.addEventListener('mousemove',e=>{
+  const t=e.target.closest('[data-tip]');
+  if(!t){tip.style.opacity=0;return;}
+  tip.textContent=t.dataset.tip; tip.style.opacity=1;
+  tip.style.left=Math.min(e.clientX+14,innerWidth-tip.offsetWidth-8)+'px';
+  tip.style.top=(e.clientY+16)+'px';
+});
+
+/* tabs (scoped per language, kept in sync) */
+let tabIdx=0;
+function showTab(i){
+  tabIdx=i;
+  document.querySelectorAll('.langblock').forEach(b=>{
+    b.querySelectorAll('.tabs button').forEach((x,j)=>x.setAttribute('aria-selected',j===i));
+    b.querySelectorAll('.panel').forEach((pn,j)=>pn.hidden=j!==i);
+  });
+}
+document.querySelectorAll('.langblock').forEach(b=>b.querySelectorAll('.tabs button').forEach((x,j)=>x.onclick=()=>showTab(j)));
+
+/* language toggle */
+function setLang(lang){
+  document.documentElement.lang=lang;
+  document.title=lang==='fr'?'Web IRCC T2 2026':'IRCC Web Q2 2026';
+  $('L-en').hidden=lang!=='en'; $('L-fr').hidden=lang!=='fr';
+  try{localStorage.setItem('dash-lang',lang);}catch(e){}
+}
+document.querySelectorAll('.langbtn').forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+let start='en';
+try{start=localStorage.getItem('dash-lang')||'';}catch(e){}
+if(!start) start=(navigator.language||'en').toLowerCase().startsWith('fr')?'fr':'en';
+setLang(start);
+
+/* theme toggle: light by default */
+function setTheme(t){
+  document.documentElement.dataset.theme=t;
+  document.querySelectorAll('.themebtn').forEach(b=>{
+    const fr=b.dataset.l==='fr', dark=t==='dark';
+    b.setAttribute('aria-pressed',dark);
+    b.querySelector('.ic').textContent=dark?'☀':'☾';
+    b.querySelector('.tx').textContent=dark?(fr?'Mode clair':'Light mode'):(fr?'Mode sombre':'Dark mode');
+  });
+  try{localStorage.setItem('dash-theme',t);}catch(e){}
+}
+document.querySelectorAll('.themebtn').forEach(b=>b.onclick=()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
+let th='light'; try{th=localStorage.getItem('dash-theme')||'light';}catch(e){}
+setTheme(th);
+</script>
+</body>
+</html>
