@@ -82,6 +82,12 @@ body{margin:0;background:var(--bg);color:var(--text);font:15px/1.45 system-ui,-a
 .track .lbl{position:absolute;top:-2px;transform:translateX(-50%);font-size:11px;color:var(--muted);white-space:nowrap}
 .track .ax{position:absolute;bottom:-6px;font-size:11px;color:var(--muted)}
 
+/* callout */
+.callout{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;margin-top:12px;background:var(--s1-soft);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+.callout .ic{width:28px;height:28px;border-radius:50%;background:var(--s1);color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px;font-family:Georgia,serif}
+.callout b{display:block;margin-bottom:2px}
+.callout p{margin:0;color:var(--text-2);font-size:14px}
+.mb.wide .r{grid-template-columns:100px 1fr 58px}
 /* waffle */
 .waffle{display:grid;grid-template-columns:repeat(20,1fr);gap:3px;margin-top:14px;max-width:320px}
 .waffle i{aspect-ratio:1;border-radius:2px;background:var(--track)}
@@ -161,7 +167,7 @@ svg text{font-family:inherit}
 <section class="panel" id="perf">
   <div class="take">
     <div><b>Fewer visitors, better rankings</b>Traffic is down 6% and search impressions halved, but IRCC now ranks much higher in Google.</div>
-    <div><b>AI is a small but fast-growing door</b>1% of site entries come from AI tools — up 50% in a year.</div>
+    <div><b>AI is a fast-growing way in</b>3.2% of site entries now come from AI tools — more than triple last year (↑ 221%).</div>
     <div><b>Users still succeed</b>Task success is stable and ahead of CRA and ESDC on every measure.</div>
   </div>
 
@@ -198,23 +204,22 @@ svg text{font-family:inherit}
       </div>
     </div>
   </div>
+  <div class="callout"><span class="ic">i</span><div><b>Why is Google visibility down?</b>
+    <p>Clicks fell 15%, but impressions fell 49%. Zero-click and AI-powered search likely explain part of the drop in clicks. The much steeper drop in impressions points to other factors as well, such as a shift in the mix of search queries. This needs further investigation.</p></div></div>
 
   <div class="sec"><span class="n">2</span><h2>AI and search</h2><span class="sub">how AI tools are changing the way people arrive</span></div>
   <div class="grid g3">
     <div class="card">
-      <div class="row"><h3>Site entries from AI tools</h3><span class="chip up">↑ 50% YoY</span></div>
-      <div class="big num">1%<small>of all entries</small></div>
-      <div class="waffle" id="waffle" data-tip="1 in every 100 site entries comes from an AI tool"></div>
+      <div class="row"><h3>Site entries from AI tools</h3><span class="chip up">↑ 221% YoY</span></div>
+      <div class="big num">3.2%<small>of all entries</small></div>
+      <div class="waffle" id="waffle" data-tip="About 1 in every 30 site entries comes from an AI tool"></div>
+      <div class="mb" id="mbAIent"></div>
     </div>
     <div class="card">
       <h3>Google AI impressions</h3>
       <div class="big num">88.2M</div>
-      <p class="ctx">First quarter with data, so the baseline for future comparisons. Equal to about <b>23%</b> of traditional Google impressions (381M).</p>
-      <div class="stack" style="height:14px;margin-top:14px">
-        <div style="flex:381;background:var(--past)" data-tip="Traditional impressions: 381M"></div>
-        <div style="flex:88.2;background:var(--s1)" data-tip="AI impressions: 88.2M"></div>
-      </div>
-      <div class="legend"><span><i style="background:var(--past)"></i>Traditional 381M</span><span><i style="background:var(--s1)"></i>AI 88.2M</span></div>
+      <div class="mb wide" id="mbAIimp"></div>
+      <p class="ctx">Compared with traditional Google Search impressions in the same quarter. This is the first quarter with AI data, so it sets the baseline for future comparisons.</p>
     </div>
     <div class="card">
       <h3>Key moments in AI-enabled search</h3>
@@ -252,6 +257,7 @@ svg text{font-family:inherit}
           <div class="row" style="justify-content:flex-start;margin-top:10px"><b class="num" style="font-size:22px">5.57</b><span style="color:var(--text-2)">“No” per 1,000 visits</span><span class="chip dn">↑ 3% YoY</span></div>
         </div>
       </div>
+      <p class="ctx" style="border-top:1px solid var(--border-2);padding-top:10px;margin-top:14px">The feedback tool’s coverage varies over time and isn’t applied consistently across pages, so year-over-year comparisons are indicative only.</p>
     </div>
   </div>
 
@@ -356,7 +362,7 @@ svg text{font-family:inherit}
 <section class="panel" id="perf-fr">
   <div class="take">
     <div><b>Moins de visiteurs, meilleur classement</b>Le trafic recule de 6&nbsp;% et les impressions de recherche ont diminué de moitié, mais IRCC se classe beaucoup plus haut dans Google.</div>
-    <div><b>L’IA : une porte d’entrée modeste, mais en forte croissance</b>1&nbsp;% des entrées sur le site proviennent d’outils d’IA, une hausse de 50&nbsp;% en un an.</div>
+    <div><b>L’IA, une porte d’entrée en forte croissance</b>3,2&nbsp;% des entrées sur le site proviennent maintenant d’outils d’IA, plus du triple de l’an dernier (↑&nbsp;221&nbsp;%).</div>
     <div><b>Les utilisateurs réussissent toujours</b>La réussite des tâches est stable et dépasse celle de l’ARC et d’EDSC sur toutes les mesures.</div>
   </div>
 
@@ -393,23 +399,22 @@ svg text{font-family:inherit}
       </div>
     </div>
   </div>
+  <div class="callout"><span class="ic">i</span><div><b>Pourquoi la visibilité dans Google diminue-t-elle?</b>
+    <p>Les clics ont reculé de 15&nbsp;%, mais les impressions de 49&nbsp;%. La recherche sans clic et la recherche assistée par IA expliquent sans doute une partie de la baisse des clics. La chute beaucoup plus marquée des impressions indique que d’autres facteurs entrent aussi en jeu, comme un changement dans la nature des requêtes. Une analyse plus poussée est nécessaire.</p></div></div>
 
   <div class="sec"><span class="n">2</span><h2>IA et recherche</h2><span class="sub">comment les outils d’IA changent la façon dont les gens arrivent sur le site</span></div>
   <div class="grid g3">
     <div class="card">
-      <div class="row"><h3>Entrées provenant d’outils d’IA</h3><span class="chip up">↑ 50&nbsp;% sur un an</span></div>
-      <div class="big num">1&nbsp;%<small>des entrées</small></div>
-      <div class="waffle" id="waffle-fr" data-tip="1 entrée sur 100 provient d’un outil d’IA"></div>
+      <div class="row"><h3>Entrées provenant d’outils d’IA</h3><span class="chip up">↑ 221&nbsp;% sur un an</span></div>
+      <div class="big num">3,2&nbsp;%<small>des entrées</small></div>
+      <div class="waffle" id="waffle-fr" data-tip="Environ 1 entrée sur 30 provient d’un outil d’IA"></div>
+      <div class="mb" id="mbAIent-fr"></div>
     </div>
     <div class="card">
       <h3>Impressions dans la recherche IA de Google</h3>
       <div class="big num">88,2&nbsp;M</div>
-      <p class="ctx">Premier trimestre de données : il servira de point de référence. Équivaut à environ <b>23&nbsp;%</b> des impressions Google traditionnelles (381&nbsp;M).</p>
-      <div class="stack" style="height:14px;margin-top:14px">
-        <div style="flex:381;background:var(--past)" data-tip="Impressions traditionnelles : 381 M"></div>
-        <div style="flex:88.2;background:var(--s1)" data-tip="Impressions IA : 88,2 M"></div>
-      </div>
-      <div class="legend"><span><i style="background:var(--past)"></i>Traditionnelles 381&nbsp;M</span><span><i style="background:var(--s1)"></i>IA 88,2&nbsp;M</span></div>
+      <div class="mb wide" id="mbAIimp-fr"></div>
+      <p class="ctx">Comparaison avec les impressions de la recherche Google traditionnelle au même trimestre. Premier trimestre de données IA : il servira de point de référence.</p>
     </div>
     <div class="card">
       <h3>Moments clés de la recherche assistée par IA</h3>
@@ -447,6 +452,7 @@ svg text{font-family:inherit}
           <div class="row" style="justify-content:flex-start;margin-top:10px"><b class="num" style="font-size:22px">5,57</b><span style="color:var(--text-2)">« Non » par 1&nbsp;000 visites</span><span class="chip dn">↑ 3&nbsp;% sur un an</span></div>
         </div>
       </div>
+      <p class="ctx" style="border-top:1px solid var(--border-2);padding-top:10px;margin-top:14px">La couverture de l’outil varie dans le temps et n’est pas uniforme d’une page à l’autre; les comparaisons d’une année à l’autre sont donc indicatives.</p>
     </div>
   </div>
 
@@ -544,7 +550,7 @@ const T = {
   en: {
     loc:'en-CA', pct:'%', M:'M',
     yLY:'Q2 2025', yTY:'Q2 2026', q:['Q2 25-26','Q1 26-27','Q2 26-27'], qLong:['Q2 2025-26','Q1 2026-27','Q2 2026-27'],
-    rings:[['Task completion',77.5,-0.3],['Ease',63.8,0.3],['Satisfaction',61.7,0.2]], pts:'pts', yoy:'YoY',
+    rings:[['Task completion',77.5,-0.3],['Ease',63.8,0.3],['Satisfaction',61.7,0.2]], yoy:'YoY', trad:'Traditional', ai:'AI',
     pftTip:'36% answered “No”', slaTip:'SLA met 99% of the time', qaTip:'150 errors ÷ 1,525 pages = 9.8%',
     chg:[['Get, renew or replace a PR card',12],['Contact IRCC',6],['Biometrics: do I need them, where',5],
          ['Find your NOC',-8],['Pay your fees online',-10],['Find a visa application centre',-12]],
@@ -560,7 +566,7 @@ const T = {
   fr: {
     loc:'fr-CA', pct:'\u00a0%', M:'\u00a0M',
     yLY:'T2 2025', yTY:'T2 2026', q:['T2 25-26','T1 26-27','T2 26-27'], qLong:['T2 2025-2026','T1 2026-2027','T2 2026-2027'],
-    rings:[['Réussite des tâches',77.5,-0.3],['Facilité',63.8,0.3],['Satisfaction',61.7,0.2]], pts:'pt', yoy:'sur un an',
+    rings:[['Réussite des tâches',77.5,-0.3],['Facilité',63.8,0.3],['Satisfaction',61.7,0.2]], yoy:'sur un an', trad:'Traditionnelles', ai:'IA',
     pftTip:'36 % ont répondu « Non »', slaTip:'Norme de service respectée 99 % du temps', qaTip:'150 erreurs ÷ 1 525 pages = 9,8 %',
     chg:[['Obtenir, renouveler ou remplacer une carte de RP',12],['Communiquer avec IRCC',6],['Biométrie : faut-il la fournir et où',5],
          ['Trouver votre CNP',-8],['Payer vos frais en ligne',-10],['Trouver un centre de réception des demandes de visa',-12]],
@@ -597,7 +603,9 @@ function render(lang){
   mini('mbLast',[[L.q[0],301,0,'301'],[L.q[1],342,0,'342'],[L.q[2],229,1,'229']]);
   mini('mbPdi',[[L.q[0],26,0,'26'],[L.q[1],53,0,'53'],[L.q[2],42,1,'42']]);
 
-  el('waffle').innerHTML=Array.from({length:100},(_,i)=>`<i class="${i===0?'on':''}"></i>`).join('');
+  el('waffle').innerHTML=Array.from({length:100},(_,i)=>i<3?'<i class="on"></i>':i===3?'<i style="background:linear-gradient(90deg,var(--s1) 20%,var(--track) 20%)"></i>':'<i></i>').join('');
+  mini('mbAIent',[[L.yLY,1.0,0,p(1.0,1)],[L.yTY,3.2,1,p(3.2,1)]]);
+  mini('mbAIimp',[[L.trad,381,0,n(381)+L.M],[L.ai,88.2,1,m(88.2)]]);
 
   function ring(pct,size,stroke,label,color,tip){
     const r=(size-stroke)/2,c=2*Math.PI*r;
@@ -608,7 +616,7 @@ function render(lang){
       <div class="c"><b class="num">${label}</b></div></div>`;
   }
   el('rings').innerHTML=L.rings.map(([l,v,d])=>{
-    const ds=`${d<0?'↓':'↑'} ${n(Math.abs(d),1)} ${L.pts}`;
+    const ds=`${d<0?'↓':'↑'} ${p(Math.abs(d),1)}`;
     return `<div>${ring(v,120,12,p(v,1),'var(--s1)',`${l} : ${p(v,1)} (${ds} ${L.yoy})`.replace(' : ',lang==='fr'?' : ':': '))}<h4>${l}</h4><span class="chip ${d<0?'dn':'up'}">${ds}</span></div>`;}).join('');
   el('pftRing').innerHTML=ring(36,96,11,p(36),'var(--s2)',L.pftTip);
   el('slaRing').innerHTML=ring(99,120,12,p(99),'var(--s1)',L.slaTip);
