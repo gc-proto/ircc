@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body>
+<title>WebOps Coder Skill Tree</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Atkinson+Hyperlegible+Next:wght@400;600;700&display=swap">
+<style>
+/* Layout: a game-style skill tree on a dark board (four branches, three IS levels), a side panel for the selected skill,
+   then readiness, a training-points plan and a separate French path. The board stays dark in both themes. */
+:root{
+  --bg:#EDF1F3; --surface:#FFFFFF; --soft:#F4F7F8; --ink:#17232B; --muted:#56656D; --line:#D7DFE3;
+  --board:#141D25; --board-2:#1B2731; --board-line:#2A3946; --board-ink:#E8EEF2; --board-muted:#93A4B0;
+  --code:#5B9BFF; --a11y:#3CC6BF; --pub:#4CC585; --adv:#F2A24B; --fr:#DE7FC4;
+  --code-d:#2F62C4; --a11y-d:#16827D; --pub-d:#23834F; --adv-d:#A9620F; --fr-d:#A33F87;
+  --free:#1F7A50; --free-bg:#E3F4EA; --work:#2D5E9E; --work-bg:#E4EDF8; --course:#8A5A10; --course-bg:#F8EEDC;
+  --focus:#2F62C4;
+  --f-display:"Chakra Petch","Bahnschrift","Segoe UI",system-ui,sans-serif;
+  --f-sans:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1419; --surface:#161F27; --soft:#1B252E; --ink:#E6ECEF; --muted:#9AAAB4; --line:#283641;
+    --board:#0B1116; --board-2:#131C24; --board-line:#26333E; --board-ink:#E8EEF2; --board-muted:#8FA0AC;
+    --code-d:#7EB0FF; --a11y-d:#5AD3CD; --pub-d:#6BD39B; --adv-d:#F5B56B; --fr-d:#E89BD2;
+    --free:#7FD6A6; --free-bg:#16342A; --work:#8FB8F0; --work-bg:#18283C; --course:#F0C27A; --course-bg:#352A16;
+    --focus:#7EB0FF;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1419; --surface:#161F27; --soft:#1B252E; --ink:#E6ECEF; --muted:#9AAAB4; --line:#283641;
+  --board:#0B1116; --board-2:#131C24; --board-line:#26333E; --board-ink:#E8EEF2; --board-muted:#8FA0AC;
+  --code-d:#7EB0FF; --a11y-d:#5AD3CD; --pub-d:#6BD39B; --adv-d:#F5B56B; --fr-d:#E89BD2;
+  --free:#7FD6A6; --free-bg:#16342A; --work:#8FB8F0; --work-bg:#18283C; --course:#F0C27A; --course-bg:#352A16;
+  --focus:#7EB0FF;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1220px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));padding-block:44px 64px}
+@media (max-width:600px){.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+button{font:inherit;color:inherit}
+.eyebrow{margin:0;font-family:var(--f-display);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(32px,4.4vw,48px);line-height:1.05;letter-spacing:-.01em;margin:6px 0 0;text-wrap:balance}
+.intro{margin:12px 0 0;max-width:68ch;font-size:17.5px;color:var(--muted)}
+h2{font-family:var(--f-display);font-weight:700;font-size:26px;letter-spacing:-.005em;margin:0;text-wrap:balance}
+.lede{margin:6px 0 0;color:var(--muted);max-width:68ch}
+
+/* HUD: level choice, readiness, points */
+.hud{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.3fr) minmax(0,.9fr);gap:14px;margin:28px 0 0}
+@media (max-width:900px){.hud{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;min-width:0}
+.k{font-family:var(--f-display);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.seg{display:inline-flex;flex-wrap:wrap;gap:6px}
+.seg button{appearance:none;border:1px solid var(--line);background:var(--soft);border-radius:9px;padding:6px 11px;font-size:14px;font-weight:600;cursor:pointer;min-height:36px}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.row2{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 12px;align-items:center}
+.row2 .lab{font-size:14px;color:var(--muted)}
+.ready{display:grid;gap:9px}
+.rbar{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:10px;align-items:center;font-size:14px}
+.rbar b{font-family:var(--f-display);font-weight:600}
+.track{height:10px;border-radius:5px;background:var(--soft);border:1px solid var(--line);overflow:hidden}
+.track i{display:block;height:100%;background:var(--ink);border-radius:5px;transition:width .3s}
+.rbar.aim .track i{background:var(--pub-d)}
+.rbar span{color:var(--muted);font-variant-numeric:tabular-nums;font-size:13.5px;white-space:nowrap}
+.pts{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.pts .big{font-family:var(--f-display);font-weight:700;font-size:40px;line-height:1;font-variant-numeric:tabular-nums}
+.pts .of{color:var(--muted)}
+.budget{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:14px;color:var(--muted)}
+.budget input{width:64px;padding:5px 8px;border-radius:8px;border:1px solid var(--line);background:var(--soft);color:var(--ink);font:inherit;font-size:15px}
+.ptbar{height:8px;border-radius:4px;background:var(--soft);border:1px solid var(--line);margin-top:10px;overflow:hidden}
+.ptbar i{display:block;height:100%;background:var(--adv-d)}
+.ptbar.over i{background:#C8414F}
+
+/* main: board + panel */
+.main{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;margin:16px 0 0;align-items:start}
+@media (max-width:1040px){.main{grid-template-columns:minmax(0,1fr)}}
+.board-wrap{background:var(--board);border-radius:18px;padding:16px;min-width:0;color:var(--board-ink)}
+.board-scroll{overflow-x:auto}
+.board{position:relative;min-width:720px;display:grid;grid-template-columns:96px repeat(4,minmax(0,1fr));gap:0}
+.board svg.links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.bh{padding:8px 6px 14px;text-align:center;font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
+.bh small{display:block;font-family:var(--f-sans);font-size:11.5px;letter-spacing:0;text-transform:none;color:var(--board-muted);font-weight:400}
+.tier{display:flex;flex-direction:column;justify-content:center;padding:10px 8px;border-top:1px solid var(--board-line)}
+.tier b{font-family:var(--f-display);font-size:20px;font-weight:700}
+.tier span{font-size:11.5px;color:var(--board-muted);line-height:1.3}
+.tier.aim{background:linear-gradient(90deg,rgba(76,197,133,.14),transparent)}
+.tier.aim b{color:var(--pub)}
+.cell{display:flex;flex-direction:column;align-items:center;gap:14px;padding:18px 6px;border-top:1px solid var(--board-line);position:relative;z-index:1}
+.cell.aim{background:rgba(76,197,133,.05)}
+.node{appearance:none;background:var(--board);border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;width:132px;padding:6px 4px;border-radius:12px;color:var(--board-ink)}
+.node:hover .badge{transform:translateY(-2px)}
+.badge{position:relative;width:60px;height:60px;transition:transform .15s}
+.badge svg{width:60px;height:60px;display:block}
+.node .nm{font-size:13px;font-weight:600;line-height:1.25;text-align:center}
+.node .st{font-size:11px;color:var(--board-muted);font-family:var(--f-display);letter-spacing:.06em;text-transform:uppercase}
+.node.locked .badge{opacity:.42}
+.node.locked .nm{color:var(--board-muted)}
+.node[aria-pressed="true"]{background:var(--board-2);box-shadow:0 0 0 2px var(--c)}
+.node.avail .badge::after{content:"";position:absolute;inset:-5px;border-radius:50%;box-shadow:0 0 0 2px var(--c);opacity:.55;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.15}50%{opacity:.7}}
+@media (prefers-reduced-motion: reduce){.node.avail .badge::after{animation:none;opacity:.5}}
+.board-key{display:flex;flex-wrap:wrap;gap:8px 18px;margin:12px 4px 0;font-size:12.5px;color:var(--board-muted)}
+.board-key span{display:inline-flex;align-items:center;gap:6px}
+.board-key i{display:inline-block;width:12px;height:12px;border-radius:50%;border:2px solid var(--board-muted)}
+
+.panel{position:sticky;top:max(16px,env(safe-area-inset-top,0px));background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 20px 18px;min-width:0}
+@media (max-width:1040px){.panel{position:static}}
+.p-top{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--soft);border:1px solid var(--line)}
+.chip i{width:9px;height:9px;border-radius:50%;background:var(--cd)}
+.panel h3{font-family:var(--f-display);font-weight:700;font-size:24px;line-height:1.15;margin:10px 0 4px;text-wrap:balance}
+.panel .req{margin:0;color:var(--muted);font-size:14.5px}
+.panel h4{font-family:var(--f-display);font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
+.panel ul{margin:0;padding-left:19px;display:grid;gap:5px;font-size:15px}
+.panel .ev{font-size:15px;margin:0}
+.assess{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+.assess button{appearance:none;border:1px solid var(--line);background:var(--soft);border-radius:9px;padding:7px 4px;font-size:12.5px;font-weight:600;cursor:pointer;line-height:1.2;min-height:44px}
+.assess button[aria-pressed="true"]{background:var(--cd);border-color:var(--cd);color:var(--surface)}
+.res{list-style:none;padding:0!important;gap:8px!important}
+.res li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px;align-items:start}
+.tag{font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;white-space:nowrap;margin-top:2px}
+.tag.free{background:var(--free-bg);color:var(--free)} .tag.work{background:var(--work-bg);color:var(--work)} .tag.course{background:var(--course-bg);color:var(--course)}
+.res a{color:var(--ink);font-weight:600;text-underline-offset:2px}
+.res small{display:block;color:var(--muted);font-size:13.5px}
+.spend{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.step{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.step button{appearance:none;border:0;background:var(--soft);width:40px;height:40px;font-size:20px;font-weight:700;cursor:pointer}
+.step output{min-width:64px;text-align:center;font-family:var(--f-display);font-weight:700;font-size:18px;font-variant-numeric:tabular-nums}
+.spend .hint{font-size:13px;color:var(--muted)}
+.effort{font-size:13.5px;color:var(--muted);margin:6px 0 0}
+.locknote{margin:12px 0 0;font-size:14px;padding:10px 12px;border-radius:10px;background:var(--soft);border:1px solid var(--line)}
+
+/* plan + suggestions */
+.lower{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin:16px 0 0}
+@media (max-width:900px){.lower{grid-template-columns:minmax(0,1fr)}}
+.sugg{display:grid;gap:8px;margin-top:4px}
+.sugg button{appearance:none;display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:10px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--soft);border-radius:10px;padding:9px 12px;cursor:pointer}
+.sugg button i{width:12px;height:12px;border-radius:50%;background:var(--cd)}
+.sugg button span{font-size:12.5px;color:var(--muted)}
+.empty{color:var(--muted);font-size:14.5px;margin:4px 0 0}
+.plan{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:6px}
+.plan li{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:10px;align-items:center;font-size:15px;padding:7px 0;border-bottom:1px solid var(--line)}
+.plan li i{width:12px;height:12px;border-radius:50%;background:var(--cd)}
+.plan li b{font-family:var(--f-display);font-variant-numeric:tabular-nums}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.btn{appearance:none;border:1px solid var(--line);background:var(--soft);border-radius:10px;padding:8px 14px;font-size:14px;font-weight:700;cursor:pointer;min-height:40px}
+.btn.solid{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.status{font-size:13.5px;color:var(--muted);min-height:1.4em;margin:8px 0 0}
+textarea.out{width:100%;min-height:150px;margin-top:10px;border-radius:10px;border:1px solid var(--line);background:var(--soft);color:var(--ink);font:13.5px/1.5 ui-monospace,Consolas,monospace;padding:10px}
+
+/* free time callout */
+.callout{margin:16px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:start;background:var(--free-bg);border:1px solid var(--free);border-radius:14px;padding:16px 20px}
+.callout .ico{font-family:var(--f-display);font-weight:700;font-size:22px;color:var(--free);line-height:1}
+.callout h3{font-family:var(--f-display);font-weight:700;font-size:19px;margin:0 0 4px;color:var(--ink)}
+.callout p{margin:0;font-size:15.5px;color:var(--ink);max-width:80ch}
+
+/* French path */
+.sec{margin:48px 0 0;padding-top:30px;border-top:1px solid var(--line)}
+.fr-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:16px;margin-top:18px;align-items:start}
+@media (max-width:1040px){.fr-grid{grid-template-columns:minmax(0,1fr)}}
+.path{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:f}
+@media (max-width:900px){.path{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.path{grid-template-columns:minmax(0,1fr)}}
+.path>li{counter-increment:f;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;position:relative;min-width:0;display:flex;flex-direction:column;gap:6px}
+.path>li::before{content:counter(f);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--soft);border:2px solid var(--fr-d);color:var(--fr-d);font-family:var(--f-display);font-weight:700}
+.path>li.rec{border-color:var(--fr-d);box-shadow:0 0 0 2px var(--fr-d) inset}
+.path>li.rec::before{background:var(--fr-d);color:var(--surface)}
+.path h3{font-family:var(--f-display);font-weight:700;font-size:18px;margin:2px 0 0}
+.path .who{font-size:13px;font-weight:700;color:var(--fr-d)}
+.path p{margin:0;font-size:14.5px;color:var(--muted)}
+.path ul{margin:2px 0 0;padding-left:18px;font-size:14px;display:grid;gap:4px}
+.path a{color:var(--ink);font-weight:600}
+.path .fund{margin-top:auto;padding-top:6px}
+.fr-self .sel{display:grid;grid-template-columns:72px minmax(0,1fr);gap:8px 10px;align-items:center;margin-top:6px}
+.fr-self label{font-size:14px;font-weight:600}
+.fr-self select{width:100%;padding:7px 9px;border-radius:9px;border:1px solid var(--line);background:var(--soft);color:var(--ink);font:inherit;font-size:14.5px}
+.gap{margin:14px 0 0;padding:12px 14px;border-radius:12px;background:var(--soft);border:1px solid var(--line);font-size:15px}
+.gap b{font-family:var(--f-display)}
+.note{font-size:13.5px;color:var(--muted);margin:10px 0 0}
+footer{margin:48px 0 0;font-size:13.5px;color:var(--muted);max-width:90ch}
+.confirm{display:inline-flex;gap:8px;align-items:center;font-size:14px}
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">WebOps · coding roles</p>
+  <h1>Coder skill tree</h1>
+  <p class="intro">Every skill from the IS-02 to IS-04 training roadmap, laid out as a skill tree. Rate yourself on each one, see how close you are to the next level, and plan where to spend this quarter's training points. French is a separate path, because not every position needs it.</p>
+
+  <div class="hud">
+    <div class="card">
+      <p class="k">Where you are</p>
+      <div class="row2">
+        <span class="lab">Now</span><div class="seg" id="curSeg" role="group" aria-label="Your current level"></div>
+        <span class="lab">Aiming for</span><div class="seg" id="aimSeg" role="group" aria-label="The level you're aiming for"></div>
+      </div>
+    </div>
+    <div class="card">
+      <p class="k">Readiness, by level</p>
+      <div class="ready" id="ready"></div>
+    </div>
+    <div class="card">
+      <p class="k">Training points this quarter</p>
+      <div class="pts"><span class="big" id="ptsLeft">0</span><span class="of" id="ptsOf">hours left</span></div>
+      <div class="ptbar" id="ptbar"><i></i></div>
+      <label class="budget" for="budget">Agreed with your manager: <input id="budget" type="number" min="0" max="200" step="1" value="16"> hours</label>
+    </div>
+  </div>
+
+  <div class="callout" role="note">
+    <span class="ico" aria-hidden="true">+h</span>
+    <div>
+      <h3>Training points aren't only courses</h3>
+      <p>A point is an hour of learning. Some hours go to paid courses, but many don't need to: with your manager's OK, you can set aside a few hours, say two hours every second Friday, to work through free resources or practise on real requests. Those hours count as training too. Agree on the total with your manager and plan it here.</p>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="board-wrap">
+      <div class="board-scroll">
+        <div class="board" id="board" aria-label="Skill tree"></div>
+      </div>
+      <div class="board-key">
+        <span><i style="opacity:.45"></i>Locked: build the skills it depends on first</span>
+        <span><i style="border-color:var(--pub);box-shadow:0 0 0 2px rgba(76,197,133,.4)"></i>Ready to learn</span>
+        <span><i style="background:var(--board-muted)"></i>The ring fills as you progress</span>
+      </div>
+    </div>
+    <aside class="panel" id="panel" aria-live="polite"></aside>
+  </div>
+
+  <div class="lower">
+    <div class="card">
+      <p class="k">Suggested next</p>
+      <div class="sugg" id="sugg"></div>
+    </div>
+    <div class="card">
+      <p class="k">Your plan this quarter</p>
+      <ul class="plan" id="plan"></ul>
+      <div class="btns">
+        <button type="button" class="btn solid" id="copyBtn">Copy my plan</button>
+        <span id="resetWrap"><button type="button" class="btn" id="resetBtn">Start over</button></span>
+      </div>
+      <p class="status" id="status" aria-live="polite"></p>
+      <textarea class="out" id="out" hidden readonly aria-label="Your plan as text"></textarea>
+    </div>
+  </div>
+
+  <section class="sec" aria-labelledby="h-fr">
+    <h2 id="h-fr">French: a separate path</h2>
+    <p class="lede">Some positions are bilingual and need a specific language profile; others don't need French at all. Check the profile on the job poster or ask your manager. The path goes from simple, free habits to intensive training, which management offers to people who are ready to move up.</p>
+    <div class="fr-grid">
+      <ol class="path" id="frPath"></ol>
+      <div class="card fr-self">
+        <p class="k">Where you are in French</p>
+        <div class="sel">
+          <label for="frR">Reading</label><select id="frR"></select>
+          <label for="frW">Writing</label><select id="frW"></select>
+          <label for="frO">Oral</label><select id="frO"></select>
+          <label for="frT">Target</label><select id="frT"></select>
+        </div>
+        <div class="gap" id="frGap"></div>
+        <p class="note">Use your most recent second language evaluation results, or your best guess. The target is the position's profile: reading, writing and oral, in that order (for example CBC).</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>Built from the WebOps IS-02, IS-03 and IS-04 training and development roadmap. Your ratings and plan stay in this browser only; nobody else sees them unless you copy and share your plan. Effort estimates are rough guides.</footer>
+</div>
+
+<script>
+"use strict";
+/* ===================== CONTENT: edit skills, resources and the French path here ===================== */
+const LEVELS=[
+  {id:"IS-02",name:"Web Publisher"},
+  {id:"IS-03",name:"Web Publishing Specialist"},
+  {id:"IS-04",name:"Web Technical Advisor"},
+];
+const BRANCHES=[
+  {id:"code",name:"Code",sub:"HTML and JavaScript",c:"var(--code)",cd:"var(--code-d)",icon:"code"},
+  {id:"a11y",name:"Accessibility",sub:"WCAG and standards",c:"var(--a11y)",cd:"var(--a11y-d)",icon:"a11y"},
+  {id:"pub",name:"Publishing and QA",sub:"Platform and quality",c:"var(--pub)",cd:"var(--pub-d)",icon:"pub"},
+  {id:"adv",name:"Clients and advice",sub:"People and projects",c:"var(--adv)",cd:"var(--adv-d)",icon:"adv"},
+];
+const R={
+  mdnLearn:["MDN: Learn web development","https://developer.mozilla.org/en-US/docs/Learn_web_development"],
+  webdevHTML:["web.dev: Learn HTML","https://web.dev/learn/html"],
+  jsinfo:["The Modern JavaScript Tutorial (javascript.info)","https://javascript.info/"],
+  fcc:["freeCodeCamp","https://www.freecodecamp.org/"],
+  mdnJS:["MDN: JavaScript guide","https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide"],
+  mdnJSON:["MDN: Working with JSON","https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON"],
+  openData:["Open Government Portal datasets","https://open.canada.ca/en/open-data"],
+  waiFound:["W3C: Digital Accessibility Foundations (free course)","https://www.w3.org/WAI/courses/foundations-course/"],
+  wcagQR:["W3C: How to Meet WCAG (quick reference)","https://www.w3.org/WAI/WCAG22/quickref/"],
+  toolkit:["GC Digital Accessibility Toolkit","https://a11y.canada.ca/en/"],
+  waiTut:["W3C: Web accessibility tutorials","https://www.w3.org/WAI/tutorials/"],
+  wcagEM:["W3C: WCAG-EM evaluation methodology","https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/"],
+  design:["Canada.ca design system","https://design.canada.ca/"],
+  style:["Canada.ca Content Style Guide","https://www.canada.ca/en/treasury-board-secretariat/services/government-communications/canada-content-style-guide.html"],
+  digStd:["Government of Canada Digital Standards","https://www.canada.ca/en/government/system/digital-government/government-canada-digital-standards.html"],
+  wet:["Web Experience Toolkit (WET) documentation","https://wet-boew.github.io/"],
+  aemLeague:["Adobe Experience League: AEM","https://experienceleague.adobe.com/"],
+  csps:["Canada School of Public Service (GCcampus)","https://www.csps-efpc.gc.ca/"],
+};
+const res=(k,type,note)=>({t:R[k][0],url:R[k][1],type,note});
+const job=(t,note)=>({t,type:"work",note});
+const course=(t,note,k)=>({t,type:"course",note,url:k?R[k][1]:null});
+const SKILLS=[
+  // CODE
+  {id:"html",b:"code",lv:"IS-02",name:"HTML5",req:"Proficiency in HTML5",pre:[],effort:"15–30 h",
+   can:["Write valid, semantic HTML5 from scratch: headings, lists, tables, forms","Pick the right element for the job instead of styling a generic one","Read and fix markup someone else wrote"],
+   show:"A page you built that passes the W3C validator with no errors and reads well without CSS.",
+   learn:[res("mdnLearn","free","The HTML modules"),res("webdevHTML","free"),job("Rebuild a published page by hand","Then compare with the template version")]},
+  {id:"jsb",b:"code",lv:"IS-02",name:"JavaScript basics",req:"Basic JavaScript",pre:["html"],effort:"20–30 h",
+   can:["Read and change a small script: variables, functions, conditions, loops","Hook up an event, like a click or a form submit","Use the browser console to find an error"],
+   show:"A small script you changed on a real page, with a colleague's review.",
+   learn:[res("jsinfo","free","Part 1, up to Objects"),res("fcc","free","JavaScript certification"),job("Fix a small script with a colleague","Ask to be paired on the next one")]},
+  {id:"jsi",b:"code",lv:"IS-03",name:"Intermediate JavaScript",req:"Intermediate JavaScript",pre:["jsb"],effort:"30–50 h",
+   can:["Change the page with the DOM: create, update and remove elements","Load data with fetch, using promises and async/await","Debug with breakpoints instead of guesswork"],
+   show:"An interactive component you wrote and debugged, reviewed by a senior coder.",
+   learn:[res("jsinfo","free","Part 1 to the end, then Part 2: DOM and events"),res("mdnJS","free"),job("Pair on a WET plug-in customization")]},
+  {id:"jsjson",b:"code",lv:"IS-03",name:"Web apps with JavaScript and JSON",req:"Experience developing web applications using JavaScript and JSON",pre:["jsi"],effort:"30–60 h",
+   can:["Build a small tool driven by a JSON data file, like an eligibility checker","Validate data and handle errors and empty states","Keep dynamic content accessible: focus, live regions, keyboard"],
+   show:"A working tool, or a JSON-driven update to an existing one, that passed QA.",
+   learn:[res("mdnJSON","free"),res("openData","free","Build a practice tool from a public dataset"),job("Maintain the JSON data file of an existing tool","The Custom build line, from the inside")]},
+  {id:"jsa",b:"code",lv:"IS-04",name:"Very advanced JavaScript",req:"Very advanced JavaScript",pre:["jsjson"],effort:"60+ h",
+   can:["Structure larger applications so others can maintain them","Find and fix performance and security problems (XSS, unsafe data)","Review other coders' JavaScript and explain your changes","Know when a standard component beats custom code"],
+   show:"Code reviews you led, and a complex tool you designed or refactored.",
+   learn:[res("jsinfo","free","Advanced sections: modules, classes, error handling"),job("Review the team's JavaScript","Start with one review a week"),course("An advanced JavaScript course","Needs approval and may have a cost","csps")]},
+  // ACCESSIBILITY
+  {id:"wcag",b:"a11y",lv:"IS-02",name:"WCAG fundamentals",req:"W3C Web Content Accessibility Guidelines (WCAG)",pre:[],effort:"10–20 h",
+   can:["Explain the four principles: perceivable, operable, understandable, robust","Test a page with the keyboard only","Check headings, alternative text, link text and colour contrast"],
+   show:"Accessibility issues you caught and fixed on your own pages.",
+   learn:[res("waiFound","free","Self-paced, from the people who write WCAG"),res("wcagQR","free"),res("toolkit","free","Government of Canada tools and guidance")]},
+  {id:"std",b:"a11y",lv:"IS-02",name:"Web standards and Canada.ca rules",req:"Web standards and best practices, including WCAG, TBS, and Canada.ca guidelines",pre:["wcag"],effort:"10–20 h",
+   can:["Know which Canada.ca templates and patterns are mandatory","Apply the Content Style Guide and Treasury Board requirements to a request","Find the rule when you're not sure"],
+   show:"Requests you published that met the standards without coming back.",
+   learn:[res("design","free"),res("style","free"),res("digStd","free"),job("Shadow a senior coder during QA")]},
+  {id:"a11yqa",b:"a11y",lv:"IS-03",name:"Advanced accessibility QA",req:"Quality assurance: advanced web accessibility",pre:["std"],effort:"30–50 h",
+   can:["Test with a screen reader, like NVDA, as well as automated tools","Assess complex components: tabs, dialogs, forms, data tables","Write fix requests a coder can act on"],
+   show:"Accessibility QA you did on real requests, checked by a reviewer.",
+   learn:[res("waiTut","free"),res("toolkit","free","Testing tools and checklists"),course("Digital accessibility courses","Canada School of Public Service","csps"),job("Run accessibility QA on 10 requests with a reviewer")]},
+  {id:"a11yas",b:"a11y",lv:"IS-04",name:"Accessibility assessments at scale",req:"Experience performing web accessibility assessments for numerous web pages",pre:["a11yqa"],effort:"40+ h",
+   can:["Assess a whole section, choosing a fair sample of pages","Prioritize what to fix first, by impact","Report findings and a fix plan that owners can follow"],
+   show:"An assessment report for a section, and the fixes that came out of it.",
+   learn:[res("wcagEM","free","How to assess a whole website"),job("Lead the assessment of one section"),course("Professional accessibility certification prep","Optional; needs approval and has a cost")]},
+  // PUBLISHING AND QA
+  {id:"aem",b:"pub",lv:"IS-02",name:"Adobe Experience Manager",req:"Proficiency in Adobe Experience Manager",pre:[],effort:"15–30 h",
+   can:["Create, edit and publish pages in both languages","Manage assets, metadata and workflows","Troubleshoot common publishing problems"],
+   show:"Requests you published end to end in AEM.",
+   learn:[res("aemLeague","free","Free tutorials for authors"),job("Shadow, then publish requests with a reviewer")]},
+  {id:"wet",b:"pub",lv:"IS-02",name:"WET templates and plug-ins",req:"Web Experience Toolkit (WET) templates and plug-ins",pre:["aem"],effort:"10–20 h",
+   can:["Build pages from GCWeb templates and components correctly","Configure common plug-ins: tabs, expand and collapse, tables, forms","Know what not to customize"],
+   show:"Pages built from templates that needed no rework at QA.",
+   learn:[res("wet","free","Working examples for every plug-in"),res("design","free","Patterns and when to use them"),job("Build Express requests from templates")]},
+  {id:"qareq",b:"pub",lv:"IS-03",name:"QA of web requests",req:"Experience evaluating web requests and ensuring they meet publishing standards",pre:["wet","std"],effort:"20–40 h",
+   can:["Check a request against publishing standards before and after the build","Check code, links, metadata, both languages and accessibility basics","Handle the back and forth with coders, advisors and clients"],
+   show:"Requests you QA'd, and the issues you caught before launch.",
+   learn:[job("Second-check a colleague's requests","Using the team's QA checklist"),job("Join the QA back and forth on a Custom build")]},
+  {id:"qalead",b:"pub",lv:"IS-04",name:"Quality assurance lead",req:"Experience providing quality assurance for web requests",pre:["qareq","a11yqa"],effort:"30+ h",
+   can:["Own the QA checklist and keep it current","Decide when a page is ready to launch","Coach other coders through QA"],
+   show:"A period where you ran QA for the team, and a checklist you improved.",
+   learn:[job("Run the QA queue for a few weeks"),job("Mentor a newer coder through QA")]},
+  // CLIENTS AND ADVICE
+  {id:"client",b:"adv",lv:"IS-02",name:"Client support",req:"Client support and client management",pre:[],effort:"10–20 h",
+   can:["Understand what the client actually needs","Set expectations: priority, SLA and what's ready","Keep clients informed, and say no with an alternative"],
+   show:"Requests you handled end to end, with clear updates to the client.",
+   learn:[course("Client service courses","Canada School of Public Service","csps"),job("Handle requests end to end with a mentor")]},
+  {id:"advice",b:"adv",lv:"IS-03",name:"Design and technical advice",req:"Experience providing advice on design practices and technical matters related to web publishing",pre:["client","std"],effort:"20–40 h",
+   can:["Recommend standard components before custom work, and explain why","Explain trade-offs: speed, accessibility, maintenance","Put advice in writing that clients can act on"],
+   show:"Advice you gave that changed a request for the better.",
+   learn:[res("design","free"),res("digStd","free"),job("Join triage and help size requests")]},
+  {id:"pm",b:"adv",lv:"IS-04",name:"Project management",req:"Project management",pre:["advice"],effort:"40+ h",
+   can:["Plan and track a web project with several people","Manage scope, risks and timelines","Negotiate the SLA for custom work and report status"],
+   show:"A project you led from request to launch.",
+   learn:[course("Project management courses","Canada School of Public Service","csps"),job("Lead a Custom build or New pattern request")]},
+];
+const STATUS=["Not yet","Learning","With help","On my own"];
+const FR_PATH=[
+  {id:1,name:"Keep in touch",who:"Anyone, any time",what:"A few minutes, several times a week. Free and self-paced; a good use of set-aside hours.",
+   items:[["Mauril, a free app for learning French and English","https://mauril.ca/en/"],["Second-language tools on GCcampus","https://www.csps-efpc.gc.ca/"],["Read the French version of the pages you publish",null]],fund:"free"},
+  {id:2,name:"Use it at work",who:"Anyone who wants to grow",what:"Low-stakes practice on real work.",
+   items:[["Do the French-side checks during QA: same content, links and metadata in both languages",null],["Write short messages and updates in French",null],["Join a French conversation group",null]],fund:"work"},
+  {id:3,name:"Part-time training",who:"People with a plan to move up",what:"Structured classes a few hours a week, aimed at a specific level in one skill. Usually funded; agree on it with your manager.",items:[],fund:"course"},
+  {id:4,name:"Intensive training",who:"People ready to move into a bilingual position",what:"Full-time or intensive training, offered by management when a move is planned. Ends with the second language evaluation.",items:[],fund:"course"},
+];
+const FR_LEVELS=["None yet","A","B","C"];
+const FR_TARGETS=[["none","No French needed"],["AAA","AAA"],["BBB","BBB"],["CBC","CBC"],["CCC","CCC"]];
+/* ===================== END OF CONTENT ===================== */
+
+const KEY="webops-skilltree-v1";
+const SID={}; SKILLS.forEach(s=>SID[s.id]=s);
+const BID={}; BRANCHES.forEach(b=>BID[b.id]=b);
+const LI=Object.fromEntries(LEVELS.map((l,i)=>[l.id,i]));
+let S={cur:"IS-02",aim:"IS-03",budget:16,status:{},plan:{},sel:"html",fr:{r:"B",w:"A",o:"B",t:"none"}};
+try{ const raw=localStorage.getItem(KEY); if(raw){ const p=JSON.parse(raw); S={...S,...p,fr:{...S.fr,...(p.fr||{})}}; } }catch(e){}
+function save(){ try{ localStorage.setItem(KEY,JSON.stringify(S)); }catch(e){} }
+const st=id=>S.status[id]||0;
+const unlocked=s=>s.pre.every(p=>st(p)>=2);
+const esc=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const $=q=>document.querySelector(q);
+
+/* icons: simple glyphs per branch */
+const ICON={
+  code:'<path d="M24 23 l-7 7 7 7 M36 23 l7 7 -7 7 M32 20 l-4 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>',
+  a11y:'<circle cx="30" cy="20" r="3" fill="currentColor"/><path d="M21 26 h18 M30 26 v8 M30 34 l-5 9 M30 34 l5 9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>',
+  pub:'<path d="M23 18 h10 l6 6 v18 h-16 z M33 18 v6 h6 M27 31 l3 3 5 -6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>',
+  adv:'<path d="M19 22 h22 v13 h-12 l-6 5 v-5 h-4 z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>',
+};
+function badge(s){
+  const b=BID[s.b], v=st(s.id), C=2*Math.PI*26, frac=v/3;
+  return `<svg viewBox="0 0 60 60" aria-hidden="true" style="color:${v>=3?"var(--board)":b.c}">
+    <circle cx="30" cy="30" r="26" fill="${v>=3?b.c:"var(--board-2)"}" stroke="var(--board-line)" stroke-width="4"/>
+    <circle cx="30" cy="30" r="26" fill="none" stroke="${b.c}" stroke-width="4" stroke-linecap="round" stroke-dasharray="${C*frac} ${C}" transform="rotate(-90 30 30)"/>
+    ${ICON[b.icon]}</svg>`;
+}
+
+/* ---------- HUD ---------- */
+function renderHUD(){
+  const seg=(el,key)=>{ el.innerHTML=LEVELS.map(l=>`<button type="button" data-${key}="${l.id}" aria-pressed="${S[key]===l.id}">${l.id}</button>`).join(""); };
+  seg($("#curSeg"),"cur"); seg($("#aimSeg"),"aim");
+  $("#ready").innerHTML=LEVELS.map(l=>{ const sk=SKILLS.filter(s=>s.lv===l.id), own=sk.filter(s=>st(s.id)>=3).length, pct=sk.reduce((a,s)=>a+st(s.id),0)/(sk.length*3)*100;
+    return `<div class="rbar${S.aim===l.id?" aim":""}"><b>${l.id}</b><div class="track" role="img" aria-label="${Math.round(pct)}% progress"><i style="width:${pct}%"></i></div><span>${own} of ${sk.length} on your own</span></div>`; }).join("");
+  const used=Object.values(S.plan).reduce((a,b)=>a+b,0), left=S.budget-used;
+  $("#ptsLeft").textContent=left; $("#ptsOf").textContent=`of ${S.budget} hours left`;
+  const bar=$("#ptbar"); bar.classList.toggle("over",left<0); bar.firstElementChild.style.width=Math.min(100,S.budget?used/S.budget*100:0)+"%";
+  $("#budget").value=S.budget;
+}
+document.addEventListener("click",e=>{
+  const c=e.target.closest("[data-cur]"); if(c){ S.cur=c.dataset.cur; if(LI[S.aim]<LI[S.cur]) S.aim=S.cur; save(); renderAll(); }
+  const a=e.target.closest("[data-aim]"); if(a){ S.aim=a.dataset.aim; save(); renderAll(); }
+});
+$("#budget").addEventListener("input",e=>{ const v=Math.max(0,Math.min(200,parseInt(e.target.value||"0",10)||0)); S.budget=v; save(); renderHUD(); renderPlan(); });
+
+/* ---------- board ---------- */
+function renderBoard(){
+  const bd=$("#board");
+  let h=`<svg class="links" id="links" aria-hidden="true"></svg><div></div>`;
+  h+=BRANCHES.map(b=>`<div class="bh" style="--c:${b.c}">${esc(b.name)}<small>${esc(b.sub)}</small></div>`).join("");
+  LEVELS.forEach(l=>{
+    const aim=l.id===S.aim;
+    h+=`<div class="tier${aim?" aim":""}"><b>${l.id}</b><span>${esc(l.name)}${l.id===S.cur?"<br>(you are here)":aim?"<br>(your aim)":""}</span></div>`;
+    BRANCHES.forEach(b=>{
+      const sk=SKILLS.filter(s=>s.b===b.id&&s.lv===l.id);
+      h+=`<div class="cell${aim?" aim":""}">`+sk.map(s=>{ const v=st(s.id), un=unlocked(s);
+        const cls=!un?"locked":(v<3?"avail":"");
+        return `<button type="button" class="node ${cls}" data-node="${s.id}" aria-pressed="${S.sel===s.id}" style="--c:${b.c}" aria-label="${esc(s.name)}, ${l.id}, ${STATUS[v]}${un?"":", locked"}"><span class="badge" data-badge="${s.id}">${badge(s)}</span><span class="nm">${esc(s.name)}</span><span class="st">${un?STATUS[v]:"Locked"}</span></button>`; }).join("")+`</div>`;
+    });
+  });
+  bd.innerHTML=h;
+  requestAnimationFrame(drawLinks);
+}
+function drawLinks(){
+  const bd=$("#board"), svg=$("#links"); if(!bd||!svg) return;
+  const R0=bd.getBoundingClientRect(); let p="";
+  SKILLS.forEach(s=>s.pre.forEach(pid=>{
+    const a=bd.querySelector(`[data-badge="${pid}"]`), b=bd.querySelector(`[data-badge="${s.id}"]`); if(!a||!b) return;
+    const ra=a.getBoundingClientRect(), rb=b.getBoundingClientRect();
+    const x1=ra.left+ra.width/2-R0.left, y1=ra.bottom-R0.top+2, x2=rb.left+rb.width/2-R0.left, y2=rb.top-R0.top-2;
+    const done=st(pid)>=2, col=BID[SID[pid].b].c, my=(y1+y2)/2;
+    p+=`<path d="M${x1} ${y1} C ${x1} ${my}, ${x2} ${my}, ${x2} ${y2}" fill="none" stroke="${done?col:"var(--board-line)"}" stroke-width="${done?3:2}" ${done?"":'stroke-dasharray="4 5"'} opacity="${done?0.9:1}"/>`;
+  }));
+  svg.innerHTML=p;
+}
+new ResizeObserver(()=>drawLinks()).observe(document.getElementById("board"));
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(drawLinks);
+$("#board").addEventListener("click",e=>{ const n=e.target.closest("[data-node]"); if(!n) return; S.sel=n.dataset.node; save(); renderBoard(); renderPanel(); });
+
+/* ---------- panel ---------- */
+const TYPE={free:"Free",work:"On the job",course:"Course"};
+function renderPanel(){
+  const s=SID[S.sel]||SKILLS[0], b=BID[s.b], v=st(s.id), un=unlocked(s), hrs=S.plan[s.id]||0;
+  const missing=s.pre.filter(p=>st(p)<2).map(p=>SID[p].name);
+  $("#panel").style.setProperty("--cd",b.cd);
+  $("#panel").innerHTML=`
+    <div class="p-top"><span class="chip"><i></i>${esc(b.name)}</span><span class="chip">${s.lv} · ${esc(LEVELS[LI[s.lv]].name)}</span></div>
+    <h3>${esc(s.name)}</h3>
+    <p class="req">Roadmap: ${esc(s.req)}</p>
+    ${!un?`<p class="locknote"><b>Locked.</b> Reach “With help” on ${missing.map(esc).join(" and ")} first.</p>`:""}
+    <h4>Where are you?</h4>
+    <div class="assess" role="group" aria-label="Rate yourself on ${esc(s.name)}">${STATUS.map((t,i)=>`<button type="button" data-rate="${i}" aria-pressed="${v===i}">${t}</button>`).join("")}</div>
+    <h4>What it looks like</h4>
+    <ul>${s.can.map(c=>`<li>${esc(c)}</li>`).join("")}</ul>
+    <h4>How to show it</h4>
+    <p class="ev">${esc(s.show)}</p>
+    <h4>Ways to build it</h4>
+    <ul class="res">${s.learn.map(r=>`<li><span class="tag ${r.type}">${TYPE[r.type]}</span><span>${r.url?`<a href="${r.url}" target="_blank" rel="noopener">${esc(r.t)}</a>`:`<b>${esc(r.t)}</b>`}${r.note?`<small>${esc(r.note)}</small>`:""}</span></li>`).join("")}</ul>
+    <h4>Spend training points</h4>
+    <div class="spend"><div class="step"><button type="button" data-pts="-2" aria-label="Remove 2 hours">−</button><output aria-live="polite">${hrs} h</output><button type="button" data-pts="2" aria-label="Add 2 hours">+</button></div><span class="hint">this quarter</span></div>
+    <p class="effort">Rough effort to get from “Not yet” to “On my own”: ${esc(s.effort)}.</p>`;
+}
+$("#panel").addEventListener("click",e=>{
+  const r=e.target.closest("[data-rate]"); if(r){ S.status[S.sel]=+r.dataset.rate; save(); renderAll(); return; }
+  const p=e.target.closest("[data-pts]"); if(p){ const v=Math.max(0,(S.plan[S.sel]||0)+(+p.dataset.pts)); if(v) S.plan[S.sel]=v; else delete S.plan[S.sel]; save(); renderHUD(); renderPanel(); renderPlan(); }
+});
+
+/* ---------- suggestions and plan ---------- */
+function suggestions(){
+  const aimI=LI[S.aim];
+  return SKILLS.filter(s=>unlocked(s)&&st(s.id)<3&&LI[s.lv]<=aimI)
+    .sort((a,b)=>LI[a.lv]-LI[b.lv]||st(b.id)-st(a.id)||BRANCHES.findIndex(x=>x.id===a.b)-BRANCHES.findIndex(x=>x.id===b.b)).slice(0,4);
+}
+function renderPlan(){
+  const sg=suggestions();
+  $("#sugg").innerHTML=sg.length?sg.map(s=>`<button type="button" data-go="${s.id}" style="--cd:${BID[s.b].cd}"><i></i><b>${esc(s.name)}</b><span>${s.lv} · ${STATUS[st(s.id)]}</span></button>`).join("")
+    :`<p class="empty">Nothing left to unlock up to ${S.aim}. Aim higher, or keep your skills sharp.</p>`;
+  const ids=Object.keys(S.plan).filter(id=>SID[id]);
+  $("#plan").innerHTML=ids.length?ids.map(id=>{ const s=SID[id]; return `<li style="--cd:${BID[s.b].cd}"><i></i><span>${esc(s.name)} <small style="color:var(--muted)">${s.lv}</small></span><b>${S.plan[id]} h</b></li>`; }).join("")
+    :`<li style="display:block;border:0"><span class="empty">No hours planned yet. Pick a skill and use “Spend training points”.</span></li>`;
+}
+$("#sugg").addEventListener("click",e=>{ const b=e.target.closest("[data-go]"); if(!b) return; S.sel=b.dataset.go; save(); renderBoard(); renderPanel(); $("#panel").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"nearest"}); });
+
+function planText(){
+  const used=Object.values(S.plan).reduce((a,b)=>a+b,0);
+  const L=[`My learning plan`,`Current level: ${S.cur} · Aiming for: ${S.aim}`,""];
+  const ids=Object.keys(S.plan).filter(id=>SID[id]);
+  L.push("Skills to work on this quarter:");
+  if(!ids.length) L.push("- (none yet)");
+  ids.forEach(id=>{ const s=SID[id]; const how=s.learn.slice(0,2).map(r=>r.t).join("; ");
+    L.push(`- ${s.name} (${s.lv}): now "${STATUS[st(id)]}", ${S.plan[id]} h. How: ${how}`); });
+  L.push("",`Total: ${used} h of the ${S.budget} h agreed with my manager.`);
+  const fr=S.fr; L.push("",`French: reading ${fr.r}, writing ${fr.w}, oral ${fr.o}. Target: ${fr.t==="none"?"no French needed":fr.t}. Next step: ${FR_PATH[frStep()-1].name}.`);
+  L.push("","Self-rating by skill:");
+  LEVELS.forEach(l=>L.push(`${l.id}: `+SKILLS.filter(s=>s.lv===l.id).map(s=>`${s.name} (${STATUS[st(s.id)]})`).join(", ")));
+  return L.join("\n");
+}
+$("#copyBtn").addEventListener("click",()=>{
+  const t=planText(), out=$("#out"); out.value=t;
+  const done=()=>{ $("#status").textContent="Copied. Paste it into your learning plan or an email to your manager."; };
+  if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(done).catch(()=>{ out.hidden=false; out.select(); $("#status").textContent="Select all and copy the text below."; }); }
+  else { out.hidden=false; out.select(); $("#status").textContent="Select all and copy the text below."; }
+});
+$("#resetWrap").addEventListener("click",e=>{
+  const w=$("#resetWrap");
+  if(e.target.id==="resetBtn"){ w.innerHTML=`<span class="confirm">Clear all ratings and your plan? <button type="button" class="btn" data-reset="yes">Clear</button><button type="button" class="btn" data-reset="no">Keep</button></span>`; return; }
+  const r=e.target.closest("[data-reset]"); if(!r) return;
+  if(r.dataset.reset==="yes"){ S.status={}; S.plan={}; save(); renderAll(); $("#status").textContent="Cleared."; }
+  w.innerHTML=`<button type="button" class="btn" id="resetBtn">Start over</button>`;
+});
+
+/* ---------- French ---------- */
+function frStep(){
+  const f=S.fr; if(f.t==="none") return 1;
+  const need=f.t.split(""), have=[f.r,f.w,f.o];
+  const gaps=need.map((n,i)=>Math.max(0,FR_LEVELS.indexOf(n)-FR_LEVELS.indexOf(have[i])));
+  const tot=gaps.reduce((a,b)=>a+b,0), mx=Math.max(...gaps);
+  if(tot===0) return 2; if(mx>=2||tot>=3) return 4; if(tot===1) return 2; return 3;
+}
+function renderFrench(){
+  const opt=(arr,v)=>arr.map(o=>Array.isArray(o)?`<option value="${o[0]}"${o[0]===v?" selected":""}>${esc(o[1])}</option>`:`<option value="${o}"${o===v?" selected":""}>${o}</option>`).join("");
+  $("#frR").innerHTML=opt(FR_LEVELS,S.fr.r); $("#frW").innerHTML=opt(FR_LEVELS,S.fr.w); $("#frO").innerHTML=opt(FR_LEVELS,S.fr.o); $("#frT").innerHTML=opt(FR_TARGETS,S.fr.t);
+  const step=frStep(), f=S.fr;
+  let msg;
+  if(f.t==="none") msg=`Your target position doesn't need French. Step 1 or 2 keeps the door open if you want it later.`;
+  else { const need=f.t.split(""), have=[f.r,f.w,f.o], names=["Reading","Writing","Oral"];
+    const gaps=names.map((n,i)=>FR_LEVELS.indexOf(have[i])<FR_LEVELS.indexOf(need[i])?`${n}: ${have[i]==="None yet"?"none":have[i]} → ${need[i]}`:null).filter(Boolean);
+    msg=gaps.length?`<b>Gap to ${f.t}:</b> ${gaps.map(esc).join(" · ")}. Suggested step: <b>${step}. ${FR_PATH[step-1].name}</b>.${step>=3?" Talk to your manager: this step is usually offered when you're ready to move up.":""}`
+      :`<b>You meet ${f.t}.</b> Keep it up with step 2 so it stays current before your next evaluation.`; }
+  $("#frGap").innerHTML=msg;
+  const fund={free:'<span class="tag free">Free</span>',work:'<span class="tag work">On the job</span>',course:'<span class="tag course">Funded, offered by management</span>'};
+  $("#frPath").innerHTML=FR_PATH.map(p=>`<li class="${p.id===step?"rec":""}"><span class="who">${esc(p.who)}</span><h3>${esc(p.name)}</h3><p>${esc(p.what)}</p>${p.items.length?`<ul>${p.items.map(([t,u])=>`<li>${u?`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`:esc(t)}</li>`).join("")}</ul>`:""}<div class="fund">${fund[p.fund]}</div></li>`).join("");
+}
+["frR","frW","frO","frT"].forEach(id=>$("#"+id).addEventListener("change",e=>{ const k={frR:"r",frW:"w",frO:"o",frT:"t"}[id]; S.fr[k]=e.target.value; save(); renderFrench(); }));
+
+function renderAll(){ renderHUD(); renderBoard(); renderPanel(); renderPlan(); renderFrench(); }
+renderAll();
+</script>
+
+</body>
+</html>
