@@ -84,29 +84,27 @@ h2{font-family:var(--f-display);font-weight:700;font-size:26px;letter-spacing:-.
 @media (max-width:1040px){.main{grid-template-columns:minmax(0,1fr)}}
 .board-wrap{background:var(--board);border-radius:18px;padding:16px;min-width:0;color:var(--board-ink)}
 .board-scroll{overflow-x:auto}
-.board{position:relative;min-width:770px;display:grid;grid-template-columns:84px repeat(5,minmax(0,1fr));gap:0}
+.board{position:relative;min-width:720px;display:grid;grid-template-columns:84px repeat(5,minmax(0,1fr));gap:0}
 .board svg.links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
 .bh{padding:8px 6px 14px;text-align:center;font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
 .bh small{display:block;font-family:var(--f-sans);font-size:11.5px;letter-spacing:0;text-transform:none;color:var(--board-muted);font-weight:400}
 .tier{display:flex;flex-direction:column;justify-content:center;padding:10px 8px;border-top:1px solid var(--board-line)}
 .tier b{font-family:var(--f-display);font-size:20px;font-weight:700}
 .tier span{font-size:11.5px;color:var(--board-muted);line-height:1.3}
-.tier.aim{background:linear-gradient(90deg,rgba(76,197,133,.14),transparent)}
+.tier.aim{background:none}
 .tier.aim b{color:var(--pub)}
 .cell{display:flex;flex-direction:column;align-items:center;gap:14px;padding:18px 2px;border-top:1px solid var(--board-line);position:relative;z-index:1}
-.cell.aim{background:rgba(76,197,133,.05)}
+.cell.aim{background:none}
 .node{appearance:none;background:var(--board);border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;width:128px;max-width:100%;padding:6px 4px;border-radius:12px;color:var(--board-ink)}
 .node:hover .badge{transform:translateY(-2px)}
 .badge{position:relative;width:60px;height:60px;transition:transform .15s}
 .badge svg{width:60px;height:60px;display:block}
 .node .nm{font-size:13px;font-weight:600;line-height:1.25;text-align:center}
 .node .st{font-size:11px;color:var(--board-muted);font-family:var(--f-display);letter-spacing:.06em;text-transform:uppercase}
-.node.locked .badge{opacity:.42}
+.node.locked .badge{opacity:.35}
 .node.locked .nm{color:var(--board-muted)}
 .node[aria-pressed="true"]{background:var(--board-2);box-shadow:0 0 0 2px var(--c)}
-.node.avail .badge::after{content:"";position:absolute;inset:-5px;border-radius:50%;box-shadow:0 0 0 2px var(--c);opacity:.55;animation:pulse 2.4s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:.15}50%{opacity:.7}}
-@media (prefers-reduced-motion: reduce){.node.avail .badge::after{animation:none;opacity:.5}}
+.node.avail .badge::after{content:"";position:absolute;right:1px;top:1px;width:11px;height:11px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px var(--board)}
 .board-key{display:flex;flex-wrap:wrap;gap:8px 18px;margin:12px 4px 0;font-size:12.5px;color:var(--board-muted)}
 .board-key span{display:inline-flex;align-items:center;gap:6px}
 .board-key i{display:inline-block;width:12px;height:12px;border-radius:50%;border:2px solid var(--board-muted)}
@@ -157,7 +155,8 @@ h2{font-family:var(--f-display);font-weight:700;font-size:26px;letter-spacing:-.
 textarea.out{width:100%;min-height:150px;margin-top:10px;border-radius:10px;border:1px solid var(--line);background:var(--soft);color:var(--ink);font:13.5px/1.5 ui-monospace,Consolas,monospace;padding:10px}
 
 /* free time callout */
-.callout{margin:16px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:start;background:var(--free-bg);border:1px solid var(--free);border-radius:14px;padding:16px 20px}
+.callout{margin:12px 0 0;font-size:15px;color:var(--muted);max-width:90ch}
+.callout b{color:var(--free)}
 .callout .ico{font-family:var(--f-display);font-weight:700;font-size:22px;color:var(--free);line-height:1}
 .callout h3{font-family:var(--f-display);font-weight:700;font-size:19px;margin:0 0 4px;color:var(--ink)}
 .callout p{margin:0;font-size:15.5px;color:var(--ink);max-width:80ch}
@@ -166,7 +165,7 @@ textarea.out{width:100%;min-height:150px;margin-top:10px;border-radius:10px;bord
 .sec{margin:48px 0 0;padding-top:30px;border-top:1px solid var(--line)}
 .fr-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:16px;margin-top:18px;align-items:start}
 @media (max-width:1040px){.fr-grid{grid-template-columns:minmax(0,1fr)}}
-.path{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:f}
+.path{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;counter-reset:f}
 @media (max-width:900px){.path{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.path{grid-template-columns:minmax(0,1fr)}}
 .path>li{counter-increment:f;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;position:relative;min-width:0;display:flex;flex-direction:column;gap:6px}
@@ -214,13 +213,7 @@ footer{margin:48px 0 0;font-size:13.5px;color:var(--muted);max-width:90ch}
     </div>
   </div>
 
-  <div class="callout" role="note">
-    <span class="ico" aria-hidden="true">+h</span>
-    <div>
-      <h3>Training points aren't only courses</h3>
-      <p>A point is an hour of learning. Some hours go to paid courses, but many don't need to: with your manager's OK, you can set aside a few hours, say two hours every second Friday, to work through free resources or practise on real requests. Those hours count as training too. Agree on the total with your manager and plan it here.</p>
-    </div>
-  </div>
+  <p class="callout" role="note"><b>Not every training hour is a course.</b> With your manager's OK, a few hours set aside for free resources or practice on real work count as training points too.</p>
 
   <div class="main">
     <div class="board-wrap">
@@ -228,10 +221,10 @@ footer{margin:48px 0 0;font-size:13.5px;color:var(--muted);max-width:90ch}
         <div class="board" id="board" aria-label="Skill tree"></div>
       </div>
       <div class="board-key">
-        <span><i style="opacity:.45"></i>Locked: build the skills it depends on first</span>
-        <span><i style="border-color:var(--pub);box-shadow:0 0 0 2px rgba(76,197,133,.4)"></i>Ready to learn</span>
-        <span><i style="background:var(--board-muted)"></i>The ring fills as you progress</span>
-        <span>IS-05 squad leads lead the work, not the people: no staff management</span>
+        <span><i style="background:var(--pub);border-color:var(--pub)"></i>Ready to learn</span>
+        <span><i style="opacity:.45"></i>Dimmed: build the skills it needs first</span>
+        <span>Select a skill to see what it needs and what it unlocks</span>
+        <span>IS-05 squad leads lead the work, not the people</span>
       </div>
     </div>
     <aside class="panel" id="panel" aria-live="polite"></aside>
@@ -256,7 +249,7 @@ footer{margin:48px 0 0;font-size:13.5px;color:var(--muted);max-width:90ch}
 
   <section class="sec" aria-labelledby="h-fr">
     <h2 id="h-fr">French: a separate path</h2>
-    <p class="lede">Some positions are bilingual and need a specific language profile; others don't need French at all. Check the profile on the job poster or ask your manager. The path goes from simple, free habits to intensive training, which management offers to people who are ready to move up.</p>
+    <p class="lede">Some positions are bilingual and need a specific language profile; others don't need French at all. Check the profile on the job poster or ask your manager. The path goes from simple, free habits to part-time training, which management offers to people who are ready to move up.</p>
     <div class="fr-grid">
       <ol class="path" id="frPath"></ol>
       <div class="card fr-self">
@@ -420,8 +413,7 @@ const FR_PATH=[
    items:[["Mauril, a free app for learning French and English","https://mauril.ca/en/"],["Second-language tools on GCcampus","https://www.csps-efpc.gc.ca/"],["Read the French version of the pages you own",null]],fund:"free"},
   {id:2,name:"Use it at work",who:"Anyone who wants to grow",what:"Low-stakes practice on real work.",
    items:[["Review the French version of your pages before launch",null],["Write short messages and updates in French",null],["Hold part of a client meeting in French",null]],fund:"work"},
-  {id:3,name:"Part-time training",who:"People with a plan to move up",what:"Structured classes a few hours a week, aimed at a specific level in one skill. Usually funded; agree on it with your manager.",items:[],fund:"course"},
-  {id:4,name:"Intensive training",who:"People ready to move into a bilingual position",what:"Full-time or intensive training, offered by management when a move is planned. Ends with the second language evaluation.",items:[],fund:"course"},
+  {id:3,name:"Part-time training",who:"People ready to move up",what:"Structured classes a few hours a week, aimed at the level a position needs. Funded and offered by management to people with a plan to move up; talk to your manager.",items:[],fund:"course"},
 ];
 const FR_LEVELS=["None yet","A","B","C"];
 const FR_TARGETS=[["none","No French needed"],["AAA","AAA"],["BBB","BBB"],["CBC","CBC"],["CCC","CCC"]];
@@ -486,7 +478,7 @@ function renderBoard(){
       const sk=SKILLS.filter(s=>s.b===b.id&&s.lv===l.id);
       h+=`<div class="cell${aim?" aim":""}">`+sk.map(s=>{ const v=st(s.id), un=unlocked(s);
         const cls=!un?"locked":(v<3?"avail":"");
-        return `<button type="button" class="node ${cls}" data-node="${s.id}" aria-pressed="${S.sel===s.id}" style="--c:${b.c}" aria-label="${esc(s.name)}, ${l.id}, ${STATUS[v]}${un?"":", locked"}"><span class="badge" data-badge="${s.id}">${badge(s)}</span><span class="nm">${esc(s.name)}</span><span class="st">${un?STATUS[v]:"Locked"}</span></button>`; }).join("")+`</div>`;
+        return `<button type="button" class="node ${cls}" data-node="${s.id}" aria-pressed="${S.sel===s.id}" style="--c:${b.c}" aria-label="${esc(s.name)}, ${l.id}, ${STATUS[v]}${un?"":", locked"}"><span class="badge" data-badge="${s.id}">${badge(s)}</span><span class="nm">${esc(s.name)}</span><span class="st">${un&&v>0?STATUS[v]:""}</span></button>`; }).join("")+`</div>`;
     });
   });
   bd.innerHTML=h;
@@ -496,6 +488,7 @@ function drawLinks(){
   const bd=$("#board"), svg=$("#links"); if(!bd||!svg) return;
   const R0=bd.getBoundingClientRect(); let p="";
   SKILLS.forEach(s=>s.pre.forEach(pid=>{
+    if(s.id!==S.sel&&pid!==S.sel) return;
     const a=bd.querySelector(`[data-badge="${pid}"]`), b=bd.querySelector(`[data-badge="${s.id}"]`); if(!a||!b) return;
     const ra=a.getBoundingClientRect(), rb=b.getBoundingClientRect();
     const x1=ra.left+ra.width/2-R0.left, y1=ra.bottom-R0.top+2, x2=rb.left+rb.width/2-R0.left, y2=rb.top-R0.top-2;
@@ -514,12 +507,13 @@ $("#board").addEventListener("click",e=>{ const n=e.target.closest("[data-node]"
 const TYPE={free:"Free",work:"On the job",course:"Course"};
 function renderPanel(){
   const s=SID[S.sel]||SKILLS[0], b=BID[s.b], v=st(s.id), un=unlocked(s), hrs=S.plan[s.id]||0;
-  const missing=s.pre.filter(p=>st(p)<2).map(p=>SID[p].name);
+  const missing=s.pre.filter(p=>st(p)<2).map(p=>SID[p].name); const needs=s.pre.map(p=>SID[p].name), unl=SKILLS.filter(x=>x.pre.includes(s.id)).map(x=>x.name);
   $("#panel").style.setProperty("--cd",b.cd);
   $("#panel").innerHTML=`
     <div class="p-top"><span class="chip"><i></i>${esc(b.name)}</span><span class="chip">${s.lv} · ${esc(LEVELS[LI[s.lv]].name)}</span></div>
     <h3>${esc(s.name)}</h3>
     <p class="req">${esc(REQ_LABEL)}: ${esc(s.req)}</p>
+    ${needs.length||unl.length?`<p class="req" style="margin-top:6px">${needs.length?`Needs: ${needs.map(esc).join(", ")}. `:""}${unl.length?`Unlocks: ${unl.map(esc).join(", ")}.`:""}</p>`:""}
     ${!un?`<p class="locknote"><b>Locked.</b> Reach “With help” on ${missing.map(esc).join(" and ")} first.</p>`:""}
     <h4>Where are you?</h4>
     <div class="assess" role="group" aria-label="Rate yourself on ${esc(s.name)}">${STATUS.map((t,i)=>`<button type="button" data-rate="${i}" aria-pressed="${v===i}">${t}</button>`).join("")}</div>
@@ -588,7 +582,7 @@ function frStep(){
   const need=f.t.split(""), have=[f.r,f.w,f.o];
   const gaps=need.map((n,i)=>Math.max(0,FR_LEVELS.indexOf(n)-FR_LEVELS.indexOf(have[i])));
   const tot=gaps.reduce((a,b)=>a+b,0), mx=Math.max(...gaps);
-  if(tot===0) return 2; if(mx>=2||tot>=3) return 4; if(tot===1) return 2; return 3;
+  if(tot<=1) return 2; return 3;
 }
 function renderFrench(){
   const opt=(arr,v)=>arr.map(o=>Array.isArray(o)?`<option value="${o[0]}"${o[0]===v?" selected":""}>${esc(o[1])}</option>`:`<option value="${o}"${o===v?" selected":""}>${o}</option>`).join("");
@@ -598,7 +592,7 @@ function renderFrench(){
   if(f.t==="none") msg=`Your target position doesn't need French. Step 1 or 2 keeps the door open if you want it later.`;
   else { const need=f.t.split(""), have=[f.r,f.w,f.o], names=["Reading","Writing","Oral"];
     const gaps=names.map((n,i)=>FR_LEVELS.indexOf(have[i])<FR_LEVELS.indexOf(need[i])?`${n}: ${have[i]==="None yet"?"none":have[i]} → ${need[i]}`:null).filter(Boolean);
-    msg=gaps.length?`<b>Gap to ${f.t}:</b> ${gaps.map(esc).join(" · ")}. Suggested step: <b>${step}. ${FR_PATH[step-1].name}</b>.${step>=3?" Talk to your manager: this step is usually offered when you're ready to move up.":""}`
+    msg=gaps.length?`<b>Gap to ${f.t}:</b> ${gaps.map(esc).join(" · ")}. Suggested step: <b>${step}. ${FR_PATH[step-1].name}</b>.${step===3?" Talk to your manager: part-time training is offered when you're ready to move up.":""}`
       :`<b>You meet ${f.t}.</b> Keep it up with step 2 so it stays current before your next evaluation.`; }
   $("#frGap").innerHTML=msg;
   const fund={free:'<span class="tag free">Free</span>',work:'<span class="tag work">On the job</span>',course:'<span class="tag course">Funded, offered by management</span>'};
