@@ -156,7 +156,7 @@ const TIMING = { speed: 260, passBy: 0.4 };
      "@apt"        the apartment the work moves into (set to:, or it uses from:)
      "@foundation" the library in the foundation
      "@roof"       the rooftop, where measurement happens
-   To show back and forth, list "build" and "qa" again in the order the work moves.
+   Back and forth between QA and Build is shown by the arrows on the building; mention it in the QA caption.
    A loop trip uses elevator: "loop" and rejoin: the elevator it boards after the front desk.
    delay: 9 starts a trip 9 seconds into its scene, so two trips can share a scene.
    ===================================================================================== */
@@ -181,9 +181,7 @@ const SCENES = [
       ["@from",   "A request",       "Study owner (WUX advisor)", "Content is approved by the program and translated before the request goes in.", 2.2],
       ["@desk",   "Front desk",      "Triager",                   "Approved, translated text on existing templates: the Express elevator.", 2.2],
       ["build",   "Build",           "Publishing",                "Built from existing templates and components.", 1.8],
-      ["qa",      "QA",              "Publishing, Study owner",   "Code QA and content QA.", 1.6],
-      ["build",   "Back and forth",  "Publishing",                "A wording issue goes back for a fix.", 1.5],
-      ["qa",      "QA again",        "Study owner",               "Approved.", 1.3],
+      ["qa",      "QA",              "Publishing, Study owner",   "Code QA and content QA, back and forth with Build until the owner approves.", 2.4],
       ["@launch", "Launch",          "Publishing",                "The change moves in. The building's inventory is updated.", 1.8],
       ["@apt",    "Moved in",        "Study owner",               "The page is live, and the rooftop measures it like every other page.", 2.2],
     ] } ] },
@@ -195,9 +193,7 @@ const SCENES = [
       ["@desk",   "Negotiate the timeline", "Triager, Enterprise, owner", "Custom work gets a negotiated SLA. Standard library components would go faster.", 3],
       ["design",  "Design and test",       "RAD, Enterprise",            "Designed from library components where possible.", 2],
       ["build",   "Build",                 "Enterprise",                 "Custom code and the JSON data file.", 1.8],
-      ["qa",      "QA",                    "RAD, Enterprise, owner",     "Design QA, code QA and content QA.", 1.6],
-      ["build",   "Back and forth",        "Enterprise",                 "A rule in the logic needs a fix.", 1.4],
-      ["qa",      "QA again",              "RAD, owner",                 "Approved.", 1.2],
+      ["qa",      "QA",                    "RAD, Enterprise, owner",     "Design QA, code QA and content QA, back and forth with Build until approved.", 2.4],
       ["@launch", "Launch",                "Enterprise",                 "The new room is ready.", 1.6],
       ["@apt",    "Moved in",              "Work owner",                 "The tool is live in the Work apartment.", 2],
     ] } ] },
@@ -222,9 +218,7 @@ const SCENES = [
       ["research", "Research",         "RAD, Enterprise, owner",     "The team forms. Research with people, plus a baseline before anything changes.", 2.2],
       ["design",   "Design and test",  "RAD, owner, program",        "Prototype and test. Content is approved and translated as the design settles.", 2.2],
       ["build",    "Build",            "Enterprise, Publishing",     "New pages and pieces.", 1.5],
-      ["qa",       "QA",               "RAD, Enterprise, owner",     "Design, code and content QA.", 1.4],
-      ["build",    "Back and forth",   "Publishing",                 "A few pages go back for fixes.", 1.3],
-      ["qa",       "QA again",         "Citizenship owner",          "Approved.", 1.1],
+      ["qa",       "QA",               "RAD, Enterprise, owner",     "Design, code and content QA, back and forth with Build until approved.", 2.4],
       ["@launch",  "Launch",           "Enterprise, Publishing",     "The renovated section moves in.", 1.5],
       ["@apt",     "Moved in",         "Citizenship owner",          "Live.", 1],
       ["@roof",    "Measure",          "RAD",                        "An impact dashboard, then 30- and 90-day checks against the baseline.", 2.6],
