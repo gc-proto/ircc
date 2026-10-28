@@ -71,7 +71,7 @@ h3{text-wrap:balance}
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
 
 /* file bar */
-.filebar{margin:22px 0 0;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) auto;gap:12px 18px;align-items:end}
+.filebar{margin:22px 0 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr) auto;gap:12px 18px;align-items:end}
 @media (max-width:900px){.filebar{grid-template-columns:minmax(0,1fr)}}
 .field{display:grid;gap:4px;font-size:13.5px;color:var(--muted);font-weight:600}
 .field input,.field select{padding:8px 10px;border-radius:9px;border:1px solid var(--line);background:var(--soft);color:var(--ink);font-size:15.5px;font-weight:600;width:100%}
@@ -174,7 +174,7 @@ h3{text-wrap:balance}
 
 .lower{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr);gap:16px;margin:16px 0 0}
 @media (max-width:1000px){.lower{grid-template-columns:minmax(0,1fr)}}
-.radar svg{display:block;width:100%;max-width:400px;height:auto;margin:0 auto}
+.radar svg{display:block;width:100%;max-width:460px;height:auto;margin:0 auto}
 .radar text{font-family:var(--f-sans);fill:var(--ink)}
 .rleg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--muted);margin-top:6px}
 .rleg span{display:inline-flex;align-items:center;gap:6px}
@@ -273,63 +273,68 @@ table.scale{width:100%;border-collapse:collapse;font-size:14.5px}
 .scale td:first-child{white-space:nowrap;font-family:var(--f-display);font-weight:700}
 .warnbox{margin:16px 0 0;padding:14px 16px;border-radius:12px;background:var(--warn-bg);color:var(--ink);font-size:15px}
 .warnbox b{color:var(--warn)}
+.topbar{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin:0 0 6px}
+.topbar .btn{min-height:34px;padding:5px 12px;font-size:13.5px}
 footer{margin:44px 0 0;font-size:13.5px;color:var(--muted);max-width:92ch}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
-
 <div class="wrap">
-  <p class="eyebrow">WebOps · coders and web advisors</p>
-  <h1>WebOps skill map</h1>
-  <p class="intro">A skill tree for every role, a shared 1-to-5 scale, and a review where you and your manager agree on each rating. Your map is saved as a file you keep in the team folder, so it carries over from one review to the next, and your manager can open everyone's files for the team picture.</p>
+  <div class="topbar">
+    <button type="button" class="btn" id="bLang" lang="fr">Français</button>
+    <button type="button" class="btn" id="bTheme"></button>
+  </div>
+  <p class="eyebrow" data-t="eyebrow"></p>
+  <h1 data-t="h1"></h1>
+  <p class="intro" data-t="intro"></p>
 
   <div class="card filebar" id="filebar">
-    <label class="field">Name<input id="pName" type="text" autocomplete="name" placeholder="Your name"></label>
-    <label class="field">Stream
-      <select id="pStream"><option value="coder">Coder (IS-02 to IS-04)</option><option value="advisor">Web advisor (IS-03 to IS-05)</option></select>
+    <label class="field"><span data-t="fName"></span><input id="pName" type="text" autocomplete="name" data-tp="fNamePh"></label>
+    <label class="field"><span data-t="fStream"></span>
+      <select id="pStream"><option value="coder" data-t="streamCoder"></option><option value="advisor" data-t="streamAdvisor"></option></select>
     </label>
     <div class="fbtns">
-      <button type="button" class="btn" id="bNew">New map</button>
-      <button type="button" class="btn" id="bOpen">Open map file</button>
-      <button type="button" class="btn solid" id="bSave">Save</button>
+      <button type="button" class="btn" id="bNew" data-t="bNew"></button>
+      <button type="button" class="btn" id="bOpen" data-t="bOpen"></button>
+      <button type="button" class="btn solid" id="bSave" data-t="bSave"></button>
     </div>
     <p class="fstatus" id="fstatus" aria-live="polite"><span class="dot"></span><span id="fstatusT"></span></p>
     <input type="file" id="fileOne" accept=".json,application/json" class="vh" tabindex="-1" aria-hidden="true">
     <input type="file" id="fileMany" accept=".json,application/json" multiple class="vh" tabindex="-1" aria-hidden="true">
   </div>
 
-  <div class="tabs" role="tablist" aria-label="Views">
-    <button type="button" role="tab" id="t-map" aria-controls="p-map" aria-selected="true">My map</button>
-    <button type="button" role="tab" id="t-rev" aria-controls="p-rev" aria-selected="false">Review together<span class="cnt" id="revCnt" hidden></span></button>
-    <button type="button" role="tab" id="t-team" aria-controls="p-team" aria-selected="false">Team view</button>
-    <button type="button" role="tab" id="t-how" aria-controls="p-how" aria-selected="false">How it works</button>
+  <div class="tabs" role="tablist" data-ta="tabsLabel">
+    <button type="button" role="tab" id="t-map" aria-controls="p-map" aria-selected="true" data-t="tabMap"></button>
+    <button type="button" role="tab" id="t-rev" aria-controls="p-rev" aria-selected="false"><span data-t="tabRev"></span><span class="cnt" id="revCnt" hidden></span></button>
+    <button type="button" role="tab" id="t-team" aria-controls="p-team" aria-selected="false" data-t="tabTeam"></button>
+    <button type="button" role="tab" id="t-how" aria-controls="p-how" aria-selected="false" data-t="tabHow"></button>
   </div>
 
   <!-- MY MAP -->
   <section class="tabpanel" role="tabpanel" id="p-map" aria-labelledby="t-map">
     <div class="hud">
       <div class="card">
-        <p class="k">Where you are</p>
+        <p class="k" data-t="kWhere"></p>
         <div class="row2">
-          <span class="lab">Now</span><div class="seg" id="curSeg" role="group" aria-label="Your current level"></div>
-          <span class="lab">Aiming for</span><div class="seg" id="aimSeg" role="group" aria-label="The level you're aiming for"></div>
+          <span class="lab" data-t="now"></span><div class="seg" id="curSeg" role="group" data-ta="curLabel"></div>
+          <span class="lab" data-t="aimingFor"></span><div class="seg" id="aimSeg" role="group" data-ta="aimLabel"></div>
         </div>
       </div>
       <div class="card">
-        <p class="k">Readiness: skills at “Independent” or higher</p>
+        <p class="k" data-t="kReady"></p>
         <div class="ready" id="ready"></div>
       </div>
       <div class="card">
-        <p class="k">Training points this quarter</p>
+        <p class="k" data-t="kPoints"></p>
         <div class="pts"><span class="big" id="ptsLeft">0</span><span class="of" id="ptsOf"></span></div>
         <div class="ptbar" id="ptbar"><i></i></div>
-        <label class="budget" for="budget">Agreed with your manager: <input id="budget" type="number" min="0" max="200" step="1" value="16"> hours</label>
+        <label class="budget" for="budget"><span data-t="budgetA"></span> <input id="budget" type="number" min="0" max="200" step="1" value="16"> <span data-t="hours"></span></label>
       </div>
     </div>
-    <p class="freenote"><b>Not every training hour is a course.</b> With your manager's OK, a few hours set aside for free resources or practice on real work count as training points too.</p>
+    <p class="freenote" data-th="freenote"></p>
 
     <div class="main">
       <div class="board-wrap">
-        <div class="board-scroll"><div class="board" id="board" aria-label="Skill tree"></div></div>
+        <div class="board-scroll"><div class="board" id="board" data-ta="boardLabel"></div></div>
         <div class="board-key" id="boardKey"></div>
       </div>
       <aside class="panel" id="panel" aria-live="polite"></aside>
@@ -337,35 +342,35 @@ footer{margin:44px 0 0;font-size:13.5px;color:var(--muted);max-width:92ch}
 
     <div class="lower">
       <div class="card radar">
-        <p class="k">Your skill map</p>
+        <p class="k" data-t="kMyMap"></p>
         <div id="myRadar"></div>
-        <p class="note">Average rating per branch, for the skills up to the level you're aiming for. The dashed ring is “Independent”, the bar for that level.</p>
+        <p class="note" data-t="myMapNote"></p>
       </div>
       <div class="card">
-        <p class="k">Suggested next</p>
+        <p class="k" data-t="kSugg"></p>
         <div class="sugg" id="sugg"></div>
       </div>
       <div class="card">
-        <p class="k">Your plan this quarter</p>
+        <p class="k" data-t="kPlan"></p>
         <ul class="plan" id="plan"></ul>
       </div>
     </div>
 
     <section class="sec" aria-labelledby="h-fr">
-      <h2 id="h-fr">French: a separate path</h2>
-      <p class="lede">Some positions are bilingual and need a specific language profile; others don't need French at all. Check the profile on the job poster or ask your manager. The path goes from simple, free habits to part-time training, which management offers to people who are ready to move up.</p>
+      <h2 id="h-fr" data-t="frTitle"></h2>
+      <p class="lede" data-t="frLede"></p>
       <div class="fr-grid">
         <ol class="path" id="frPath"></ol>
         <div class="card">
-          <p class="k">Where you are in French</p>
+          <p class="k" data-t="frWhere"></p>
           <div class="sel">
-            <label for="frR">Reading</label><select id="frR"></select>
-            <label for="frW">Writing</label><select id="frW"></select>
-            <label for="frO">Oral</label><select id="frO"></select>
-            <label for="frT">Target</label><select id="frT"></select>
+            <label for="frR" data-t="reading"></label><select id="frR"></select>
+            <label for="frW" data-t="writing"></label><select id="frW"></select>
+            <label for="frO" data-t="oral"></label><select id="frO"></select>
+            <label for="frT" data-t="target"></label><select id="frT"></select>
           </div>
           <div class="gap" id="frGap"></div>
-          <p class="note">Use your most recent second language evaluation results, or your best guess. The target is the position's profile: reading, writing and oral, in that order (for example CBC).</p>
+          <p class="note" data-t="frNote"></p>
         </div>
       </div>
     </section>
@@ -375,33 +380,33 @@ footer{margin:44px 0 0;font-size:13.5px;color:var(--muted);max-width:92ch}
   <section class="tabpanel" role="tabpanel" id="p-rev" aria-labelledby="t-rev" hidden>
     <div class="rv-head">
       <div>
-        <h2 id="rvTitle">Review together</h2>
-        <p class="lede">Open the employee's map file, then go through it together. The employee rates first in “My map”. The manager adds their rating here. Where you differ by 2 points or more, talk it through with an example, then set the agreed rating. Agreed ratings are what the tree and the team view use.</p>
+        <h2 id="rvTitle"></h2>
+        <p class="lede" data-t="rvLede"></p>
       </div>
       <div class="rv-actions">
-        <button type="button" class="btn" id="bMatch">Agree where you match</button>
-        <button type="button" class="btn solid" id="bSign">Record this review</button>
+        <button type="button" class="btn" id="bMatch" data-t="bMatch"></button>
+        <button type="button" class="btn solid" id="bSign" data-t="bSign"></button>
       </div>
     </div>
     <div class="tblwrap"><table class="rv" id="rvTable"></table></div>
     <div class="card" style="margin-top:14px">
-      <p class="k">Past reviews in this file</p>
+      <p class="k" data-t="kHist"></p>
       <ul class="hist" id="hist"></ul>
-      <p class="note">“Record this review” saves today's agreed ratings as a dated snapshot in the file, so the next review shows what moved. Then save the file.</p>
+      <p class="note" data-t="histNote"></p>
     </div>
   </section>
 
   <!-- TEAM -->
   <section class="tabpanel" role="tabpanel" id="p-team" aria-labelledby="t-team" hidden>
-    <h2>Team view</h2>
-    <p class="lede">For managers: open everyone's map files at once (select them all in the team folder) to see the team's shape, its gaps and who carries what. Nothing is uploaded: the files are only read in this browser.</p>
+    <h2 data-t="tabTeam"></h2>
+    <p class="lede" data-t="tmLede"></p>
     <div class="tm-actions" style="margin-top:12px">
-      <button type="button" class="btn solid" id="bTeam">Open team files</button>
-      <button type="button" class="btn" id="bSample">Show a sample team</button>
-      <button type="button" class="btn" id="bClearTeam">Clear</button>
-      <span class="seg" id="tmStream" role="group" aria-label="Stream"></span>
+      <button type="button" class="btn solid" id="bTeam" data-t="bTeam"></button>
+      <button type="button" class="btn" id="bSample" data-t="bSample"></button>
+      <button type="button" class="btn" id="bClearTeam" data-t="bClear"></button>
+      <span class="seg" id="tmStream" role="group" data-ta="streamLabel"></span>
     </div>
-    <div class="drop" id="drop">Or drop map files here.</div>
+    <div class="drop" id="drop" data-t="drop"></div>
     <div id="teamBody"></div>
   </section>
 
@@ -409,40 +414,28 @@ footer{margin:44px 0 0;font-size:13.5px;color:var(--muted);max-width:92ch}
   <section class="tabpanel" role="tabpanel" id="p-how" aria-labelledby="t-how" hidden>
     <div class="how">
       <div class="card">
-        <h2>The yearly cycle</h2>
-        <ol class="cycle" style="margin-top:14px">
-          <li><div><b>The employee rates themselves</b><span>In “My map”, on the 1-to-5 scale, then saves the file in their folder in the team space.</span></div></li>
-          <li><div><b>The manager rates too</b><span>Before the meeting, the manager opens the file, adds their ratings in “Review together”, and saves.</span></div></li>
-          <li><div><b>Meet and agree</b><span>Go through the gaps of 2 points or more, with examples. Set the agreed ratings, then “Record this review” and save.</span></div></li>
-          <li><div><b>Plan training points</b><span>Pick the next skills and the hours for the quarter, including set-aside hours for free resources.</span></div></li>
-          <li><div><b>See the team picture</b><span>The manager opens all the files in “Team view” to spot gaps and single points of failure.</span></div></li>
-          <li><div><b>Check in</b><span>A short check-in each quarter on the plan; a full review once or twice a year.</span></div></li>
-        </ol>
+        <h2 data-t="cycleTitle"></h2>
+        <ol class="cycle" id="cycle" style="margin-top:14px"></ol>
       </div>
       <div class="card">
-        <h2>The scale</h2>
-        <p class="lede">Adapted from the Nielsen Norman Group skill mapping method. Rate what you do now, on typical work, not what you could do on a good day.</p>
+        <h2 data-t="scaleTitle"></h2>
+        <p class="lede" data-t="scaleLede"></p>
         <table class="scale" id="scaleTbl" style="margin-top:10px"></table>
       </div>
     </div>
     <div class="card" style="margin-top:16px">
-      <h2>Where the files live</h2>
-      <ul style="margin:10px 0 0;padding-left:20px;display:grid;gap:6px">
-        <li>Each person's map is one small file, like <code>skillmap-alex-tremblay.json</code>. Keep it in a folder only the employee and their manager can open, on approved GC systems (Teams or SharePoint).</li>
-        <li>“Save” updates the same file when your browser allows it (Edge and Chrome). Otherwise it downloads a new copy: replace the old file in the folder with it.</li>
-        <li>This page reads and writes files only on your computer. It doesn't send ratings anywhere.</li>
-        <li>Open this tool from the HTML file itself. In a preview (for example, inside Teams or claude.ai), saving may not work.</li>
-      </ul>
-      <div class="warnbox"><b>Treat the files as personal information.</b> Skill ratings are about a person. Store them the way your team stores other employee information, and check with your privacy or information management contact if you're unsure.</div>
+      <h2 data-t="filesTitle"></h2>
+      <ul id="filesList" style="margin:10px 0 0;padding-left:20px;display:grid;gap:6px"></ul>
+      <div class="warnbox" data-th="privacy"></div>
     </div>
   </section>
 
-  <footer>Skill trees: the coder roadmap (IS-02 to IS-04) and a first draft for web advisors (IS-03 to IS-05). Rating scale and team map adapted from the Nielsen Norman Group skill mapping method. Effort estimates are rough guides.</footer>
+  <footer data-t="footer"></footer>
 </div>
 
 <script>
 "use strict";
-/* ===================== CONTENT: the two skill trees ===================== */
+/* ===================== CONTENT: the two skill trees (English) ===================== */
 const CODER=(()=>{ const REQ_LABEL="From the roadmap";
 const LEVELS=[
   {id:"IS-02",name:"Web Publisher"},
@@ -450,7 +443,7 @@ const LEVELS=[
   {id:"IS-04",name:"Web Technical Advisor"},
 ];
 const BRANCHES=[
-  {id:"code",name:"Code",sub:"HTML and JavaScript",c:"var(--code)",cd:"var(--code-d)",icon:"code"},
+  {id:"code",name:"Code",sub:"HTML, CSS and JavaScript",c:"var(--code)",cd:"var(--code-d)",icon:"code"},
   {id:"a11y",name:"Accessibility",sub:"WCAG and standards",c:"var(--a11y)",cd:"var(--a11y-d)",icon:"a11y"},
   {id:"pub",name:"Publishing and QA",sub:"Platform and quality",c:"var(--pub)",cd:"var(--pub-d)",icon:"pub"},
   {id:"adv",name:"Clients and advice",sub:"People and projects",c:"var(--adv)",cd:"var(--adv-d)",icon:"adv"},
@@ -458,6 +451,7 @@ const BRANCHES=[
 const R={
   mdnLearn:["MDN: Learn web development","https://developer.mozilla.org/en-US/docs/Learn_web_development"],
   webdevHTML:["web.dev: Learn HTML","https://web.dev/learn/html"],
+  webdevCSS:["web.dev: Learn CSS","https://web.dev/learn/css"],
   jsinfo:["The Modern JavaScript Tutorial (javascript.info)","https://javascript.info/"],
   fcc:["freeCodeCamp","https://www.freecodecamp.org/"],
   mdnJS:["MDN: JavaScript guide","https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide"],
@@ -484,6 +478,10 @@ const SKILLS=[
    can:["Write valid, semantic HTML5 from scratch: headings, lists, tables, forms","Pick the right element for the job instead of styling a generic one","Read and fix markup someone else wrote"],
    show:"A page you built that passes the W3C validator with no errors and reads well without CSS.",
    learn:[res("mdnLearn","free","The HTML modules"),res("webdevHTML","free"),job("Rebuild a published page by hand","Then compare with the template version")]},
+  {id:"css",b:"code",lv:"IS-02",name:"CSS and the GCWeb theme",req:"Basic CSS, using the GCWeb theme",proposed:true,pre:["html"],effort:"10–20 h",
+   can:["Read and write basic CSS: selectors, the box model, colours and spacing","Use GCWeb's built-in classes before writing any custom CSS","Know why overriding the Canada.ca theme causes problems, and when it's allowed"],
+   show:"Pages styled with GCWeb classes only, with no custom overrides at QA.",
+   learn:[res("mdnLearn","free","The CSS modules"),res("wet","free","GCWeb classes and examples"),job("Restyle a test page using only GCWeb classes")]},
   {id:"jsb",b:"code",lv:"IS-02",name:"JavaScript basics",req:"Basic JavaScript",pre:["html"],effort:"20–30 h",
    can:["Read and change a small script: variables, functions, conditions, loops","Hook up an event, like a click or a form submit","Use the browser console to find an error"],
    show:"A small script you changed on a real page, with a colleague's review.",
@@ -496,6 +494,10 @@ const SKILLS=[
    can:["Build a small tool driven by a JSON data file, like an eligibility checker","Validate data and handle errors and empty states","Keep dynamic content accessible: focus, live regions, keyboard"],
    show:"A working tool, or a JSON-driven update to an existing one, that passed QA.",
    learn:[res("mdnJSON","free"),res("openData","free","Build a practice tool from a public dataset"),job("Maintain the JSON data file of an existing tool","The Custom build line, from the inside")]},
+  {id:"csslay",b:"code",lv:"IS-03",name:"Responsive CSS for custom components",req:"Advanced CSS for responsive custom components",proposed:true,pre:["css"],effort:"20–40 h",
+   can:["Lay out custom components with Flexbox and Grid","Make them work at every screen size, and at up to 400% zoom","Keep custom CSS small, scoped and consistent with the theme"],
+   show:"A custom component whose CSS passed design and accessibility QA at every size.",
+   learn:[res("mdnLearn","free","The CSS layout modules"),res("webdevCSS","free"),job("Write the styles for the next Custom build component, with a review")]},
   {id:"jsa",b:"code",lv:"IS-04",name:"Very advanced JavaScript",req:"Very advanced JavaScript",pre:["jsjson"],effort:"60+ h",
    can:["Structure larger applications so others can maintain them","Find and fix performance and security problems (XSS, unsafe data)","Review other coders' JavaScript and explain your changes","Know when a standard component beats custom code"],
    show:"Code reviews you led, and a complex tool you designed or refactored.",
@@ -706,28 +708,311 @@ const FR_PATH=[
 const FR_LEVELS=["None yet","A","B","C"];
 const FR_TARGETS=[["none","No French needed"],["AAA","AAA"],["BBB","BBB"],["CBC","CBC"],["CCC","CCC"]];
 return {LEVELS,BRANCHES,SKILLS,FR_PATH,REQ_LABEL}; })();
-const STREAMS={coder:{label:"Coders",...CODER},advisor:{label:"Web advisors",...ADVISOR}};
-const SCALE=[
-  {v:1,n:"Aware",d:"I know what it is and why it matters, but I haven't done it yet."},
-  {v:2,n:"Learning",d:"I've done it with guidance: someone shows me how or checks each step."},
-  {v:3,n:"Independent",d:"I do it on my own for typical work. A normal review is all it needs."},
-  {v:4,n:"Advanced",d:"I handle the hard cases, and I can coach others."},
-  {v:5,n:"Expert",d:"I'm the go-to person: consistent results across many projects, and I help set how the team does it."},
-];
-const FR_LEVELS=["None yet","A","B","C"];
-const FR_TARGETS=[["none","No French needed"],["AAA","AAA"],["BBB","BBB"],["CBC","CBC"],["CCC","CCC"]];
+/* ===================== FRENCH CONTENT: same ids as the English content ===================== */
+/* Resources: English URL -> [French title, French URL (or the same URL when the resource exists only in English)] */
+const RES_FR={
+  "https://developer.mozilla.org/en-US/docs/Learn_web_development":["MDN : Apprendre le développement Web","https://developer.mozilla.org/fr/docs/Learn_web_development"],
+  "https://web.dev/learn/html":["web.dev : Learn HTML (en anglais)",null],
+  "https://web.dev/learn/css":["web.dev : Learn CSS (en anglais)",null],
+  "https://javascript.info/":["The Modern JavaScript Tutorial, javascript.info (en anglais)",null],
+  "https://www.freecodecamp.org/":["freeCodeCamp (en anglais)",null],
+  "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide":["MDN : Guide JavaScript","https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide"],
+  "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON":["MDN : Travailler avec JSON","https://developer.mozilla.org/fr/docs/Learn_web_development/Core/Scripting/JSON"],
+  "https://open.canada.ca/en/open-data":["Portail du gouvernement ouvert : jeux de données","https://ouvert.canada.ca/fr/donnees-ouvertes"],
+  "https://www.w3.org/WAI/courses/foundations-course/":["W3C : Digital Accessibility Foundations, cours gratuit (en anglais)",null],
+  "https://www.w3.org/WAI/WCAG22/quickref/":["W3C : référence rapide des WCAG (en anglais)",null],
+  "https://a11y.canada.ca/en/":["Boîte à outils de l'accessibilité numérique du GC","https://a11y.canada.ca/fr/"],
+  "https://www.w3.org/WAI/tutorials/":["W3C : tutoriels sur l'accessibilité Web (en anglais)",null],
+  "https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/":["W3C : méthode d'évaluation WCAG-EM (en anglais)",null],
+  "https://design.canada.ca/":["Système de conception de Canada.ca","https://conception.canada.ca/"],
+  "https://www.canada.ca/en/treasury-board-secretariat/services/government-communications/canada-content-style-guide.html":["Guide de rédaction du contenu du site Canada.ca","https://conception.canada.ca/guide-redaction"],
+  "https://www.canada.ca/en/government/system/digital-government/government-canada-digital-standards.html":["Normes numériques du gouvernement du Canada","https://www.canada.ca/fr/gouvernement/systeme/gouvernement-numerique/normes-numeriques-gouvernement-canada.html"],
+  "https://wet-boew.github.io/":["Documentation de la Boîte à outils de l'expérience Web (BOEW)",null],
+  "https://experienceleague.adobe.com/":["Adobe Experience League (en anglais)",null],
+  "https://www.csps-efpc.gc.ca/":["École de la fonction publique du Canada (GCcampus)","https://ecolecanada.gc.ca/"],
+  "https://www.noslangues-ourlanguages.gc.ca/en":["Portail linguistique du Canada : outils d'aide à la rédaction","https://www.noslangues-ourlanguages.gc.ca/fr"],
+  "https://design.canada.ca/specifications/design-content.html":["Spécifications de Canada.ca : concevoir le contenu","https://conception.canada.ca/specifications/concevoir-contenu.html"],
+  "https://design.canada.ca/specifications/information-findability.html":["Spécifications de Canada.ca","https://conception.canada.ca/specifications.html"],
+  "https://developers.google.com/search/docs/fundamentals/seo-starter-guide":["Google Search Central : guide de démarrage en référencement","https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=fr"],
+  "https://design-system.canada.ca/en":["Système de design GC (Service numérique canadien)","https://design-system.canada.ca/fr"],
+  "https://www.nngroup.com/articles/":["Nielsen Norman Group : articles gratuits (en anglais)",null],
+  "https://www.gov.uk/service-manual/user-research":["GOV.UK Service Manual : recherche auprès des utilisateurs (en anglais)",null],
+  "https://www.gov.uk/service-manual":["GOV.UK Service Manual (en anglais)",null],
+  "https://scrumguides.org/":["Le guide Scrum (offert en français)",null],
+  "https://www.liberatingstructures.com/":["Liberating Structures : méthodes d'animation (en anglais)",null],
+  "https://www.canada.ca/en/treasury-board-secretariat/services/professional-development/key-leadership-competency-profile.html":["Compétences clés en leadership (Conseil du Trésor)","https://www.canada.ca/fr/secretariat-conseil-tresor/services/perfectionnement-professionnel/profil-competence-cle-leadership.html"],
+  "https://mauril.ca/en/":["Mauril, une application gratuite pour apprendre le français et l'anglais","https://mauril.ca/fr/"],
+};
+/* learn: one entry per English "Ways to build it" item, in order: [title or null to keep the resource title, note or null] */
+const FR_CODER={
+  REQ_LABEL:"Selon la feuille de route",
+  LEVELS:{"IS-02":"Éditeur ou éditrice Web","IS-03":"Spécialiste de l'édition Web","IS-04":"Conseiller ou conseillère technique Web"},
+  BRANCHES:{code:["Code","HTML, CSS et JavaScript"],a11y:["Accessibilité","WCAG et normes"],pub:["Publication et AQ","Plateforme et qualité"],adv:["Clients et conseils","Personnes et projets"]},
+  SKILLS:{
+    html:{name:"HTML5",req:"Maîtrise du HTML5",can:["Écrire du HTML5 valide et sémantique : titres, listes, tableaux, formulaires","Choisir le bon élément au lieu de styliser un élément générique","Lire et corriger le code de quelqu'un d'autre"],show:"Une page que vous avez codée, sans erreur au validateur du W3C et lisible sans CSS.",learn:[[null,"Les modules sur le HTML"],[null,null],["Recoder une page publiée à la main","Puis comparer avec la version du gabarit"]]},
+    css:{name:"CSS et thème GCWeb",req:"CSS de base, avec le thème GCWeb",can:["Lire et écrire du CSS de base : sélecteurs, modèle de boîte, couleurs et espacement","Utiliser les classes intégrées de GCWeb avant d'écrire du CSS sur mesure","Savoir pourquoi surcharger le thème de Canada.ca cause des problèmes, et quand c'est permis"],show:"Des pages stylisées seulement avec les classes GCWeb, sans surcharge à l'AQ.",learn:[[null,"Les modules sur le CSS"],[null,"Classes et exemples GCWeb"],["Restyliser une page d'essai avec seulement les classes GCWeb",null]]},
+    csslay:{name:"CSS adaptatif pour les composants sur mesure",req:"CSS avancé pour des composants sur mesure adaptatifs",can:["Mettre en page des composants sur mesure avec Flexbox et Grid","Les faire fonctionner à toutes les tailles d'écran, et avec un zoom jusqu'à 400 %","Garder le CSS sur mesure léger, ciblé et cohérent avec le thème"],show:"Un composant sur mesure dont le CSS a passé l'AQ de conception et d'accessibilité à toutes les tailles.",learn:[[null,"Les modules sur la mise en page CSS"],[null,null],["Coder les styles du prochain composant sur mesure, avec une revue",null]]},
+    jsb:{name:"Bases de JavaScript",req:"Connaissances de base en JavaScript",can:["Lire et modifier un petit script : variables, fonctions, conditions, boucles","Associer un événement, comme un clic ou l'envoi d'un formulaire","Trouver une erreur avec la console du navigateur"],show:"Un petit script modifié sur une vraie page, revu par un ou une collègue.",learn:[[null,"Partie 1, jusqu'aux objets"],[null,"Certification JavaScript"],["Corriger un petit script avec un ou une collègue","Demander à travailler en binôme sur le suivant"]]},
+    jsi:{name:"JavaScript intermédiaire",req:"Connaissances intermédiaires en JavaScript",can:["Modifier la page avec le DOM : créer, mettre à jour et retirer des éléments","Charger des données avec fetch, avec les promesses et async/await","Déboguer avec des points d'arrêt plutôt qu'au hasard"],show:"Un composant interactif que vous avez écrit et débogué, revu par un codeur ou une codeuse d'expérience.",learn:[[null,"Partie 1 au complet, puis la partie 2 : DOM et événements"],[null,null],["Travailler en binôme sur la personnalisation d'un plugiciel de la BOEW",null]]},
+    jsjson:{name:"Applications Web avec JavaScript et JSON",req:"Expérience du développement d'applications Web avec JavaScript et JSON",can:["Créer un petit outil alimenté par un fichier de données JSON, comme un outil d'admissibilité","Valider les données et gérer les erreurs et les états vides","Garder le contenu dynamique accessible : focus, régions dynamiques, clavier"],show:"Un outil fonctionnel, ou une mise à jour JSON d'un outil existant, qui a passé l'AQ.",learn:[[null,null],[null,"Créer un outil d'exercice à partir d'un jeu de données public"],["Tenir à jour le fichier JSON d'un outil existant","La ligne Développement sur mesure, de l'intérieur"]]},
+    jsa:{name:"JavaScript très avancé",req:"Connaissances très avancées en JavaScript",can:["Structurer de grandes applications pour que d'autres puissent les maintenir","Trouver et corriger les problèmes de performance et de sécurité (XSS, données non fiables)","Revoir le JavaScript des autres et expliquer vos changements","Savoir quand un composant standard vaut mieux que du code sur mesure"],show:"Des revues de code que vous avez menées, et un outil complexe que vous avez conçu ou restructuré.",learn:[[null,"Sections avancées : modules, classes, gestion des erreurs"],["Revoir le JavaScript de l'équipe","Commencer par une revue par semaine"],["Un cours de JavaScript avancé","Approbation requise; peut avoir un coût"]]},
+    wcag:{name:"Fondements des WCAG",req:"Règles pour l'accessibilité des contenus Web (WCAG) du W3C",can:["Expliquer les quatre principes : perceptible, utilisable, compréhensible, robuste","Tester une page au clavier seulement","Vérifier les titres, les textes de remplacement, les libellés de liens et le contraste"],show:"Des problèmes d'accessibilité repérés et corrigés dans vos propres pages.",learn:[[null,"À votre rythme, par les gens qui rédigent les WCAG"],[null,null],[null,"Outils et conseils du gouvernement du Canada"]]},
+    std:{name:"Normes Web et règles de Canada.ca",req:"Normes et pratiques exemplaires du Web, dont les WCAG, celles du SCT et les lignes directrices de Canada.ca",can:["Savoir quels gabarits et modèles de Canada.ca sont obligatoires","Appliquer le Guide de rédaction et les exigences du Conseil du Trésor à une demande","Trouver la règle quand vous avez un doute"],show:"Des demandes publiées conformes aux normes, sans retour.",learn:[[null,null],[null,null],[null,null],["Accompagner un codeur ou une codeuse d'expérience pendant l'AQ",null]]},
+    a11yqa:{name:"AQ avancée en accessibilité",req:"Assurance de la qualité : accessibilité Web avancée",can:["Tester avec un lecteur d'écran, comme NVDA, en plus des outils automatisés","Évaluer des composants complexes : onglets, dialogues, formulaires, tableaux de données","Rédiger des demandes de correction claires pour les codeurs"],show:"L'AQ d'accessibilité que vous avez faite sur de vraies demandes, vérifiée par un réviseur ou une réviseure.",learn:[[null,null],[null,"Outils de test et listes de vérification"],["Cours sur l'accessibilité numérique","École de la fonction publique du Canada"],["Faire l'AQ d'accessibilité de 10 demandes avec un réviseur ou une réviseure",null]]},
+    a11yas:{name:"Évaluations d'accessibilité à grande échelle",req:"Expérience de l'évaluation de l'accessibilité de nombreuses pages Web",can:["Évaluer une section entière à partir d'un échantillon juste de pages","Établir les priorités de correction selon l'impact","Présenter les constats et un plan de correction que les responsables peuvent suivre"],show:"Un rapport d'évaluation pour une section, et les corrections qui en ont découlé.",learn:[[null,"Comment évaluer un site Web entier"],["Diriger l'évaluation d'une section",null],["Préparation à une certification professionnelle en accessibilité","Facultatif; approbation requise et coût à prévoir"]]},
+    aem:{name:"Adobe Experience Manager",req:"Maîtrise de la plateforme Adobe Experience Manager",can:["Créer, modifier et publier des pages dans les deux langues","Gérer les ressources, les métadonnées et les flux de travail","Régler les problèmes de publication courants"],show:"Des demandes publiées de bout en bout dans AEM.",learn:[[null,"Tutoriels gratuits pour les auteurs"],["Observer, puis publier des demandes avec un réviseur ou une réviseure",null]]},
+    wet:{name:"Gabarits et plugiciels de la BOEW",req:"Gabarits et plugiciels de la Boîte à outils de l'expérience Web (BOEW)",can:["Créer des pages correctement à partir des gabarits et composants GCWeb","Configurer les plugiciels courants : onglets, contenu dépliable, tableaux, formulaires","Savoir ce qu'il ne faut pas personnaliser"],show:"Des pages créées à partir des gabarits, sans reprise à l'AQ.",learn:[[null,"Des exemples fonctionnels pour chaque plugiciel"],[null,"Les modèles et quand les utiliser"],["Coder des demandes Express à partir des gabarits",null]]},
+    qareq:{name:"AQ des demandes Web",req:"Expérience de l'évaluation des demandes Web et de leur conformité aux normes de publication",can:["Vérifier une demande selon les normes de publication, avant et après le codage","Vérifier le code, les liens, les métadonnées, les deux langues et les bases de l'accessibilité","Gérer les allers-retours avec les codeurs, les conseillers et les clients"],show:"Des demandes que vous avez vérifiées, et les problèmes repérés avant le lancement.",learn:[["Faire la contre-vérification des demandes d'un ou une collègue","Avec la liste de vérification d'AQ de l'équipe"],["Participer aux allers-retours d'AQ d'un développement sur mesure",null]]},
+    qalead:{name:"Responsable de l'assurance de la qualité",req:"Expérience de l'assurance de la qualité des demandes Web",can:["Tenir à jour la liste de vérification d'AQ","Décider quand une page est prête pour le lancement","Accompagner les autres codeurs pendant l'AQ"],show:"Une période où vous avez géré l'AQ de l'équipe, et une liste de vérification que vous avez améliorée.",learn:[["Gérer la file d'AQ pendant quelques semaines",null],["Accompagner un nouveau codeur ou une nouvelle codeuse pendant l'AQ",null]]},
+    client:{name:"Soutien à la clientèle",req:"Soutien et gestion de la clientèle",can:["Comprendre le besoin réel du client","Établir les attentes : priorité, norme de service et état de préparation","Tenir les clients informés, et dire non en proposant une solution de rechange"],show:"Des demandes traitées de bout en bout, avec des suivis clairs au client.",learn:[["Cours sur le service à la clientèle","École de la fonction publique du Canada"],["Traiter des demandes de bout en bout avec un mentor",null]]},
+    advice:{name:"Conseils en conception et techniques",req:"Expérience de la prestation de conseils sur les pratiques de conception et les questions techniques liées à la publication Web",can:["Recommander des composants standards avant du sur mesure, et expliquer pourquoi","Expliquer les compromis : rapidité, accessibilité, maintenance","Donner des conseils écrits sur lesquels les clients peuvent agir"],show:"Un conseil que vous avez donné et qui a amélioré une demande.",learn:[[null,null],[null,null],["Participer au triage et aider à évaluer l'ampleur des demandes",null]]},
+    pm:{name:"Gestion de projet",req:"Gestion de projet",can:["Planifier et suivre un projet Web qui implique plusieurs personnes","Gérer la portée, les risques et les échéanciers","Négocier la norme de service du travail sur mesure et rendre compte de l'avancement"],show:"Un projet que vous avez mené de la demande au lancement.",learn:[["Cours de gestion de projet","École de la fonction publique du Canada"],["Diriger une demande de développement sur mesure ou de nouveau modèle",null]]},
+  },
+  FR_PATH:[
+    {name:"Garder le contact",who:"Tout le monde, en tout temps",what:"Quelques minutes, plusieurs fois par semaine. Gratuit et à votre rythme; un bon usage des heures réservées.",items:[null,["Outils de langue seconde sur GCcampus","https://ecolecanada.gc.ca/"],["Lire la version anglaise des pages que vous publiez",null]]},
+    {name:"S'en servir au travail",who:"Toute personne qui veut progresser",what:"De la pratique sans enjeu, sur du vrai travail.",items:[["Faire les vérifications de la version anglaise pendant l'AQ : même contenu, mêmes liens et métadonnées dans les deux langues",null],["Écrire de courts messages et suivis en anglais",null],["Participer à un groupe de conversation",null]]},
+    {name:"Formation à temps partiel",who:"Les personnes prêtes à avancer",what:"Des cours structurés quelques heures par semaine, qui visent le niveau exigé par un poste. Financés et offerts par la direction aux personnes qui ont un plan d'avancement; parlez-en à votre gestionnaire.",items:[]},
+  ],
+};
+const FR_ADVISOR={
+  REQ_LABEL:"En bref",
+  LEVELS:{"IS-03":"Analyste Web","IS-04":"Conseiller ou conseillère Web","IS-05":"Conseiller principal ou conseillère principale Web, et chef d'escouade"},
+  BRANCHES:{content:["Rédaction Web","Contenu et repérabilité"],ux:["UX et recherche","Données probantes et tests"],design:["Conception Web","Modèles et prototypes"],clients:["Clients et projets","Conseils et livraison"],lead:["Leadership","Escouades, pas d'employés"]},
+  SKILLS:{
+    plain:{name:"Rédaction Web en langage clair",req:"Rédiger du contenu Web clair et facile à survoler, conforme au Guide de rédaction de Canada.ca",can:["Écrire pour le survol : l'essentiel d'abord, phrases courtes, titres évocateurs","Transformer le texte d'un programme en ce que les gens doivent faire","Appliquer le Guide de rédaction sans chercher chaque règle"],show:"Des pages que vous avez réécrites, avec les versions avant et après.",learn:[[null,null],[null,"Conseils de rédaction et jeux-questionnaires"],["Réécrire une page dense par mois, revue par un conseiller ou une conseillère principale",null]]},
+    parity:{name:"Contenu bilingue et traduction",req:"Garder le contenu anglais et français synchronisé, de la demande de traduction au lancement",can:["Envoyer du contenu final et propre à la traduction, avec du contexte pour l'équipe de traduction","Vérifier que les deux versions concordent : contenu, liens, métadonnées","Planifier les échéanciers en tenant compte de la traduction"],show:"Des demandes lancées dans les deux langues sans problème de concordance.",learn:[["Suivre une demande en traduction du début à la fin",null],["Faire la vérification de concordance avant l'AQ",null]]},
+    cdesign:{name:"Conception de contenu",req:"Concevoir le contenu autour des tâches : structure, ordre et format, à partir de données probantes",can:["Structurer une page ou un parcours autour des tâches que les gens viennent accomplir","Choisir le bon format : étapes, tableau, liste de vérification, page de navigation","Réécrire à partir de données probantes, comme la rétroaction sur les pages ou les termes de recherche"],show:"Une page ou un parcours remanié, avec les données avant et après.",learn:[[null,null],[null,"Articles sur la stratégie de contenu et la rédaction"],["Diriger le volet contenu d'une demande de refonte",null]]},
+    seo:{name:"Repérabilité et référencement",req:"Rendre le contenu facile à trouver, dans Google et dans la recherche de Canada.ca",can:["Rédiger des titres, des descriptions et des intertitres qui reprennent les mots des gens","Utiliser les termes de recherche et la Google Search Console pour repérer les lacunes","Corriger la navigation pour que les gens trouvent la bonne page"],show:"Des pages dont la performance en recherche s'est améliorée après vos changements.",learn:[[null,null],[null,null],["Revoir le rapport des termes de recherche avec RAD chaque mois",null]]},
+    ia:{name:"Stratégie de contenu et architecture de l'information",req:"Façonner une section entière : sa structure, son cycle de vie et qui est responsable de quoi",can:["Concevoir ou restructurer l'architecture et la navigation d'une section","Décider quoi retirer, fusionner ou garder, à partir de données probantes","Établir les responsables et les dates de révision pour garder le contenu à jour"],show:"Une section que vous avez restructurée, et les décisions de cycle de vie qui l'appuient.",learn:[[null,"Organiser le contenu sur Canada.ca"],["Faire l'inventaire du contenu et le tri du cycle de vie d'une section",null],["Cours d'architecture de l'information","Approbation requise; peut avoir un coût"]]},
+    evidence:{name:"Travailler avec des données probantes",req:"Lire l'analytique, la rétroaction sur les pages et les termes de recherche, et s'en servir dans son travail",can:["Lire le trafic d'une page, les clics « Non » et les termes de recherche","Distinguer un vrai changement d'une variation normale, avec l'aide de RAD","Apporter des données probantes dans une discussion avec un programme"],show:"Une recommandation que vous avez appuyée avec des données.",learn:[[null,"Les bases d'Analysis Workspace"],["Demander à RAD une demande de données probantes sur une de vos pages, et la parcourir ensemble",null]]},
+    usability:{name:"Tests d'utilisabilité",req:"Planifier et mener des tests d'utilisabilité, et transformer les constats en changements",can:["Rédiger des tâches et des scénarios qui n'orientent pas les participants","Animer une séance, en personne ou à distance","Résumer les constats en quelques changements qui comptent"],show:"Un test que vous avez mené et les changements qui en sont ressortis.",learn:[[null,null],[null,"Articles sur les tests d'utilisabilité"],["Prendre des notes, puis coanimer, puis mener un test avec RAD",null]]},
+    outcomes:{name:"Mesurer les résultats",req:"Établir une base de référence, définir le succès et vérifier si un changement a fonctionné",can:["Choisir les bonnes mesures : réussite des tâches, clics « Non », recherches lancées depuis la page","Obtenir une base de référence avant le changement","Lire les suivis à 30 et 90 jours et décider de la suite"],show:"Un changement mesuré avant et après, et ce que vous avez fait du résultat.",learn:[["Demander « mesurer l'impact » au triage pour votre prochain gros changement",null],["Participer à une revue des responsables du rapport sur les résultats",null]]},
+    rstrat:{name:"Stratégie de recherche",req:"Choisir la bonne recherche pour un problème, et la planifier sur tout un parcours",can:["Choisir les méthodes selon la question : entrevues, tests, sondages, analytique","Planifier la recherche d'un parcours entier, avec RAD","Gérer correctement le consentement, la confidentialité et l'éthique"],show:"Un plan de recherche pour un parcours, et les décisions qui en ont découlé.",learn:[[null,"Planifier la recherche"],[null,null],["Coplanifier la recherche d'une demande de refonte",null]]},
+    dsys:{name:"Système de conception de Canada.ca",req:"Connaître les gabarits, les modèles et les éléments obligatoires, et choisir le bon",can:["Choisir le bon gabarit et le bon modèle pour une page","Savoir ce qui est obligatoire et ce qui est flexible","Reconnaître quand une demande exige du sur mesure, et pourquoi cela prend du temps"],show:"Des demandes où vous avez choisi le modèle et qui sont passées par Express.",learn:[[null,null],[null,"Des composants du Service numérique canadien"]]},
+    a11yc:{name:"Contenu accessible",req:"Rendre le contenu accessible : structure, liens, images, tableaux et documents",can:["Utiliser de vrais titres, listes et tableaux","Rédiger des libellés de liens et des textes de remplacement significatifs","Éviter le contenu difficile à rendre accessible, comme du texte dans une image"],show:"Vos pages qui passent l'AQ d'accessibilité sans correction de contenu.",learn:[[null,null],[null,null]]},
+    proto:{name:"Prototypage",req:"Esquisser, faire des maquettes et des prototypes de pages et de parcours pour tester des idées",can:["Esquisser rapidement des options avant de s'engager","Créer un prototype cliquable à partir des composants de la bibliothèque dans Figma","Se servir du prototype pour recueillir les réactions des clients et des utilisateurs"],show:"Un prototype qui a changé une décision.",learn:[["Présenter votre prochaine proposition sous forme de prototype avec la bibliothèque de conception du GC dans Figma",null],[null,"Articles sur le prototypage et les maquettes"]]},
+    ixd:{name:"Conception d'interactions",req:"Concevoir des formulaires, des parcours par étapes, des messages d'erreur et d'autres interactions",can:["Concevoir un parcours en plusieurs étapes que les gens réussissent","Rédiger des messages d'erreur et des textes d'aide qui aident vraiment","Travailler avec Entreprise sur ce qui est faisable"],show:"Un parcours ou un outil que vous avez conçu et qui a bien réussi les tests.",learn:[[null,"Formulaires et modèles"],[null,"Conseils de conception"],["Travailler en binôme avec RAD sur la conception d'un développement sur mesure",null]]},
+    service:{name:"Conception de services",req:"Voir le service au complet, au-delà du Web : canaux, programmes et systèmes",can:["Cartographier un parcours entre le Web, le téléphone, le papier et les comptes en ligne","Repérer où le Web peut régler un problème de service, et où il ne le peut pas","Travailler avec les programmes et la MPPS sur l'expérience complète"],show:"Une carte de parcours ou un plan de service qui a mené à un changement.",learn:[[null,null],[null,null],["Cours de conception de services","École de la fonction publique du Canada"]]},
+    client:{name:"Service à la clientèle",req:"Recevoir les demandes des programmes et les mener à terme avec WebOps",can:["Comprendre le besoin du programme, derrière sa demande","Préparer une demande prête : contenu approuvé et traduit, échéance claire","Tenir le programme informé jusqu'au lancement"],show:"Des demandes acceptées du premier coup, sans retour pour cause de « pas prête ».",learn:[["Observer les rencontres avec les clients d'un conseiller principal ou d'une conseillère principale",null],["Cours sur le service à la clientèle","École de la fonction publique du Canada"]]},
+    advise:{name:"Conseiller et influencer",req:"Donner des conseils que les programmes appliquent, et argumenter avec des données probantes",can:["Présenter les compromis : rapidité, coût, accessibilité, maintenance","Dire non en proposant une solution acceptable pour le programme","Appuyer un désaccord sur des données plutôt que sur une opinion"],show:"Une demande que vous avez améliorée, et comment vous avez obtenu l'accord.",learn:[[null,"Articles sur les parties prenantes"],["Présenter votre recommandation à la prochaine revue des responsables",null]]},
+    coord:{name:"Coordination de projets",req:"Coordonner un projet de contenu : approbations, traduction, codage et lancement",can:["Établir un échéancier réaliste qui inclut les approbations et la traduction","Suivre qui doit quoi, et faire les relances","Mener les allers-retours d'AQ jusqu'au lancement"],show:"Un projet de plusieurs pages livré à temps.",learn:[["Coordonner la mise à jour d'une section du début à la fin",null],["Principes de base de la gestion de projet","École de la fonction publique du Canada"]]},
+    pm:{name:"Gestion de projet",req:"Diriger des projets multiéquipes : portée, risques, dépendances et compte rendu",can:["Planifier une refonte ou un nouveau modèle avec RAD, Entreprise et Publication","Gérer la portée, les risques et les dépendances","Rendre compte honnêtement de l'avancement à la direction"],show:"Un projet complexe que vous avez mené de la demande au lancement.",learn:[["Cours de gestion de projet","École de la fonction publique du Canada"],["Diriger la prochaine refonte de votre secteur d'activité",null]]},
+    stake:{name:"Mobiliser la haute direction",req:"Informer et influencer les directeurs et les directeurs adjoints",can:["Rédiger et présenter une courte note d'information à la haute direction","Mener la revue des responsables avec un directeur adjoint ou une directrice adjointe","S'y retrouver dans la gouvernance et faire prendre les décisions"],show:"Une note ou une décision que vous avez portée à un niveau supérieur.",learn:[[null,"Ce que les cadres supérieurs recherchent"],["Coprésenter à la prochaine revue des responsables, puis en mener une",null]]},
+    squad:{name:"Travailler en escouade",req:"Bien travailler dans une équipe agile : montrer son travail tôt, donner et recevoir de la rétroaction",can:["Montrer le travail en cours tôt plutôt que de le peaufiner seul","Donner et recevoir de la rétroaction de façon utile et bienveillante","Participer aux mêlées et aux rétrospectives avec quelque chose à dire"],show:"La rétroaction de votre escouade sur votre façon de travailler avec elle.",learn:[[null,"Une courte lecture sur les rôles et les rythmes agiles"],["Vous proposer pour les notes de la prochaine rétrospective",null]]},
+    mentor:{name:"Revue par les pairs et mentorat",req:"Revoir le travail des autres et aider les nouveaux analystes à progresser",can:["Revoir du contenu avec des commentaires précis et constructifs","Accompagner un ou une analyste dans sa première grosse demande","Partager ce que vous apprenez avec l'équipe"],show:"Une personne que vous avez accompagnée, et des revues qui ont amélioré son travail.",learn:[["Faire équipe avec un nouvel analyste ou une nouvelle analyste pendant un mois",null],["Présenter brièvement à l'équipe quelque chose que vous avez appris",null]]},
+    squadlead:{name:"Chef d'escouade",req:"Diriger le travail d'une escouade sans en gérer les membres",can:["Animer les mêlées, la planification et les rétrospectives","Garder les priorités de l'escouade claires et son travail débloqué","Accompagner les membres, et signaler les enjeux de personnel à leur gestionnaire"],show:"Une escouade qui livre de façon prévisible et s'améliore après chaque rétrospective.",learn:[[null,"Des méthodes d'animation simples"],[null,null],["Cours sur l'agilité et le leadership d'équipe","École de la fonction publique du Canada"]]},
+    influence:{name:"Diriger sans autorité",req:"Diriger entre équipes par l'influence, pas par la hiérarchie",can:["Rassembler RAD, Entreprise et Publication autour d'un objectif commun","Gérer les désaccords et les conflits de façon constructive","Faire en sorte qu'on puisse signaler les problèmes tôt, sans crainte"],show:"Un problème entre équipes que vous avez aidé à régler.",learn:[[null,null],[null,null],["Animer une séance de travail entre équipes sur une demande bloquée",null]]},
+  },
+  FR_PATH:[
+    {name:"Garder le contact",who:"Tout le monde, en tout temps",what:"Quelques minutes, plusieurs fois par semaine. Gratuit et à votre rythme; un bon usage des heures réservées.",items:[null,["Outils de langue seconde sur GCcampus","https://ecolecanada.gc.ca/"],["Lire la version anglaise des pages dont vous êtes responsable",null]]},
+    {name:"S'en servir au travail",who:"Toute personne qui veut progresser",what:"De la pratique sans enjeu, sur du vrai travail.",items:[["Revoir la version anglaise de vos pages avant le lancement",null],["Écrire de courts messages et suivis en anglais",null],["Tenir une partie d'une rencontre avec un client en anglais",null]]},
+    {name:"Formation à temps partiel",who:"Les personnes prêtes à avancer",what:"Des cours structurés quelques heures par semaine, qui visent le niveau exigé par un poste. Financés et offerts par la direction aux personnes qui ont un plan d'avancement; parlez-en à votre gestionnaire.",items:[]},
+  ],
+};
+const SCALE_I18N={
+  en:[{n:"Aware",d:"I know what it is and why it matters, but I haven't done it yet."},
+      {n:"Learning",d:"I've done it with guidance: someone shows me how or checks each step."},
+      {n:"Independent",d:"I do it on my own for typical work. A normal review is all it needs."},
+      {n:"Advanced",d:"I handle the hard cases, and I can coach others."},
+      {n:"Expert",d:"I'm the go-to person: consistent results across many projects, and I help set how the team does it."}],
+  fr:[{n:"Sensibilisé",d:"Je sais ce que c'est et pourquoi c'est important, mais je ne l'ai pas encore fait."},
+      {n:"En apprentissage",d:"Je l'ai fait avec de l'encadrement : quelqu'un me montre comment ou vérifie chaque étape."},
+      {n:"Autonome",d:"Je le fais seul pour du travail courant. Une révision normale suffit."},
+      {n:"Avancé",d:"Je gère les cas difficiles et je peux accompagner les autres."},
+      {n:"Expert",d:"Je suis la personne-ressource : des résultats constants sur de nombreux projets, et j'aide à définir comment l'équipe travaille."}],
+};
+const FR_LEVELS=["","A","B","C"];
 /* ===================== END OF CONTENT ===================== */
 
+/* ===================== INTERFACE TEXT ===================== */
+const I18N={
+en:{
+  langBtn:"Français", themeToDark:"Dark mode", themeToLight:"Light mode",
+  eyebrow:"WebOps · coders and web advisors", h1:"WebOps skill map",
+  intro:"A skill tree for every role, a shared 1-to-5 scale, and a review where you and your manager agree on each rating. Your map is saved as a file you keep in the team folder, so it carries over from one review to the next, and your manager can open everyone's files for the team picture.",
+  fName:"Name", fNamePh:"Your name", fStream:"Stream", streamCoder:"Coder (IS-02 to IS-04)", streamAdvisor:"Web advisor (IS-03 to IS-05)",
+  bNew:"New map", bOpen:"Open map file", bSave:"Save",
+  tabsLabel:"Views", tabMap:"My map", tabRev:"Review together", tabTeam:"Team view", tabHow:"How it works",
+  kWhere:"Where you are", now:"Now", aimingFor:"Aiming for", curLabel:"Your current level", aimLabel:"The level you're aiming for",
+  kReady:"Readiness: skills at “Independent” or higher", kPoints:"Training points this quarter", budgetA:"Agreed with your manager:", hours:"hours",
+  hoursLeft:"of {n} hours left",
+  freenote:"<b>Not every training hour is a course.</b> With your manager's OK, a few hours set aside for free resources or practice on real work count as training points too.",
+  boardLabel:"Skill tree", kMyMap:"Your skill map", myMapNote:"Average rating per branch, for the skills up to the level you're aiming for. The dashed ring is “Independent”, the bar for that level.",
+  kSugg:"Suggested next", kPlan:"Your plan this quarter",
+  frTitle:"French: a separate path", frLede:"Some positions are bilingual and need a specific language profile; others don't need French at all. Check the profile on the job poster or ask your manager. The path goes from simple, free habits to part-time training, which management offers to people who are ready to move up.",
+  frWhere:"Where you are in French", reading:"Reading", writing:"Writing", oral:"Oral", target:"Target",
+  frNote:"Use your most recent second language evaluation results, or your best guess. The target is the position's profile: reading, writing and oral, in that order (for example CBC).",
+  frNone:"None yet", frNoneShort:"none", frNoTarget:"No French needed",
+  frMsgNone:"Your target position doesn't need French. Step 1 or 2 keeps the door open if you want it later.",
+  frMsgGap:"<b>Gap to {t}:</b> {g}. Suggested step: <b>{n}. {s}</b>.", frMsgTalk:" Talk to your manager: part-time training is offered when you're ready to move up.",
+  frMsgMeet:"<b>You meet {t}.</b> Keep it up with step 2 so it stays current before your next evaluation.",
+  fundFree:"Free", fundWork:"On the job", fundCourse:"Funded, offered by management", frCol:"French",
+  rvTitle:"Review together", rvTitleName:"Review together: {n}",
+  rvLede:"Open the employee's map file, then go through it together. The employee rates first in “My map”. The manager adds their rating here. Where you differ by 2 points or more, talk it through with an example, then set the agreed rating. Agreed ratings are what the tree and the team view use.",
+  bMatch:"Agree where you match", bSign:"Record this review", kHist:"Past reviews in this file",
+  histNote:"“Record this review” saves today's agreed ratings as a dated snapshot in the file, so the next review shows what moved. Then save the file.",
+  thSkill:"Skill", thEmp:"Employee", thMgr:"Manager", thAgr:"Agreed", thSince:"Since last review",
+  notRated:"Not rated", notAgreed:"Not agreed", talk:"Talk it through", agreedFlag:"Agreed", useN:"Use {n}",
+  mgrFor:"Manager rating for {s}", agrFor:"Agreed rating for {s}", histItem:"{n} skills agreed", noHist:"No reviews recorded yet.",
+  needAgreed:"Set at least one agreed rating first.", recorded:"Review recorded for {d}. Save the file to keep it.",
+  tmLede:"For managers: open everyone's map files at once (select them all in the team folder) to see the team's shape, its gaps and who carries what. Nothing is uploaded: the files are only read in this browser.",
+  bTeam:"Open team files", bSample:"Show a sample team", bClear:"Clear", streamLabel:"Stream", drop:"Or drop map files here.",
+  skipped:"Skipped {n} file(s) that aren't skill maps: {f}",
+  tmEmpty:"No maps open yet. Use “Open team files” and select everyone's map files, or “Show a sample team” to see how it works.",
+  insNoOne:"No one at “Independent”", insNoOneOk:"Every skill up to {l} has someone at 3 or higher.", andMore:"and {n} more",
+  insSpof:"Single points of failure", insSpofItem:"{s}: only {p}", insSpofOk:"Every covered skill has at least two people.",
+  insReady:"Ready for their aim", insReadyNone:"No one meets every skill for their aim yet.",
+  insPending:"Reviews to finish", insPendingNone:"All ratings agreed.",
+  insHours:"Training planned", insHoursSub:"this quarter, across {n} people",
+  kTeamMap:"Team skill map", teamMapNote:"Each line is one person: average rating per branch, up to the level they're aiming for. Where all the lines pull in, the team is thin.",
+  kHeat:"Every skill, every person", atLeast3:"At 3 or higher", selfOnly:"Self-rating, not agreed yet", unnamed:"Unnamed", onePerson:"one person",
+  notRatedLow:"not rated", selfOnlyTip:" (self-rating, not agreed yet)", frTipNone:"No French needed", frTipTarget:"Target {t}", gapShort:"gap",
+  streamsCoder:"Coders", streamsAdvisor:"Web advisors", sampleTag:"Sample",
+  cycleTitle:"The yearly cycle", scaleTitle:"The scale",
+  scaleLede:"Adapted from the Nielsen Norman Group skill mapping method. Rate what you do now, on typical work, not what you could do on a good day.",
+  cycle:[["The employee rates themselves","In “My map”, on the 1-to-5 scale, then saves the file in their folder in the team space."],["The manager rates too","Before the meeting, the manager opens the file, adds their ratings in “Review together”, and saves."],["Meet and agree","Go through the gaps of 2 points or more, with examples. Set the agreed ratings, then “Record this review” and save."],["Plan training points","Pick the next skills and the hours for the quarter, including set-aside hours for free resources."],["See the team picture","The manager opens all the files in “Team view” to spot gaps and single points of failure."],["Check in","A short check-in each quarter on the plan; a full review once or twice a year."]],
+  filesTitle:"Where the files live",
+  files:["Each person's map is one small file, like <code>skillmap-alex-tremblay.json</code>. Keep it in a folder only the employee and their manager can open, on approved GC systems (Teams or SharePoint).","“Save” updates the same file when your browser allows it (Edge and Chrome). Otherwise it downloads a new copy: replace the old file in the folder with it.","This page reads and writes files only on your computer. It doesn't send ratings anywhere.","Open this tool from the HTML file itself. In a preview (for example, inside Teams or claude.ai), saving may not work.","The file doesn't depend on the language: a map saved in French opens in English, and the reverse."],
+  privacy:"<b>Treat the files as personal information.</b> Skill ratings are about a person. Store them the way your team stores other employee information, and check with your privacy or information management contact if you're unsure.",
+  footer:"Skill trees: the coder roadmap (IS-02 to IS-04) and a first draft for web advisors (IS-03 to IS-05). Rating scale and team map adapted from the Nielsen Norman Group skill mapping method. Effort estimates are rough guides.",
+  fileIs:"File: {f}. ", notSaved:"Not saved to a file yet. ", changes:"Changes not saved.", allSaved:"All changes saved.",
+  opened:"Opened {f}.", saved:"Saved {f}.", notMap:"This isn't a WebOps skill map file.", cantOpen:"That file couldn't be opened.",
+  cantSave:"Couldn't save here. Open the downloaded HTML file in Edge or Chrome and try again.",
+  confirmSwitch:"Switching stream starts a new map. Save this one first if you want to keep it.", confirmNew:"Start a new map? Unsaved changes will be lost.",
+  cont:"Continue", cancel:"Cancel",
+  readyKey:"Ready to learn", dimKey:"Dimmed: needs other skills first", filledKey:"Filled: “Independent” or higher", squadKey:"IS-05 squad leads lead the work, not the people",
+  nowTier:"(now)", aimTier:"(your aim)", notRatedAria:"not rated", needsFirstAria:"needs other skills first",
+  needs:"Needs: {l}. ", unlocks:"Unlocks: {l}.", reachFirst:"Reach “Learning” on {l} first.", and:" and ",
+  yourRating:"Your rating", rateLabel:"Rate yourself on {s}", rateHint:"Rate what you do now, on typical work. Select again to clear.",
+  mgrIs:"Manager:", agrIs:"Agreed:", looks:"What it looks like", show:"How to show it", ways:"Ways to build it",
+  spend:"Spend training points", thisQ:"this quarter · rough effort to reach “Independent”: {e}", rem2:"Remove 2 hours", add2:"Add 2 hours",
+  typeFree:"Free", typeWork:"On the job", typeCourse:"Course",
+  allDone:"Everything up to {l} is at “Independent” or higher. Aim higher, or coach someone.", noPlan:"No hours planned yet. Pick a skill and use “Spend training points”.",
+  radarLabel:"Skill map chart", ofN:"{a} of {b}", proposedLabel:"Proposed addition, not yet in the roadmap",
+},
+fr:{
+  langBtn:"English", themeToDark:"Mode sombre", themeToLight:"Mode clair",
+  eyebrow:"WebOps · codeurs et conseillers Web", h1:"Carte des compétences WebOps",
+  intro:"Un arbre de compétences pour chaque rôle, une échelle commune de 1 à 5 et une revue où vous et votre gestionnaire vous entendez sur chaque cote. Votre carte est enregistrée dans un fichier que vous gardez dans le dossier de l'équipe : elle vous suit d'une revue à l'autre, et votre gestionnaire peut ouvrir les fichiers de tout le monde pour avoir le portrait de l'équipe.",
+  fName:"Nom", fNamePh:"Votre nom", fStream:"Volet", streamCoder:"Codeur ou codeuse (IS-02 à IS-04)", streamAdvisor:"Conseiller ou conseillère Web (IS-03 à IS-05)",
+  bNew:"Nouvelle carte", bOpen:"Ouvrir un fichier", bSave:"Enregistrer",
+  tabsLabel:"Vues", tabMap:"Ma carte", tabRev:"Revue commune", tabTeam:"Vue d'équipe", tabHow:"Fonctionnement",
+  kWhere:"Où vous en êtes", now:"Maintenant", aimingFor:"Objectif", curLabel:"Votre niveau actuel", aimLabel:"Le niveau que vous visez",
+  kReady:"État de préparation : compétences au niveau « Autonome » ou plus", kPoints:"Points de formation ce trimestre", budgetA:"Convenu avec votre gestionnaire :", hours:"heures",
+  hoursLeft:"heures restantes sur {n}",
+  freenote:"<b>Toutes les heures de formation ne sont pas des cours.</b> Avec l'accord de votre gestionnaire, quelques heures réservées à des ressources gratuites ou à de la pratique sur du vrai travail comptent aussi comme points de formation.",
+  boardLabel:"Arbre de compétences", kMyMap:"Votre carte de compétences", myMapNote:"Cote moyenne par branche, pour les compétences jusqu'au niveau que vous visez. L'anneau pointillé correspond à « Autonome », la barre pour ce niveau.",
+  kSugg:"Suggestions", kPlan:"Votre plan ce trimestre",
+  frTitle:"Langue seconde : un parcours à part", frLede:"Certains postes sont bilingues et exigent un profil linguistique précis; d'autres n'exigent pas de langue seconde. Vérifiez le profil dans l'affiche de poste ou demandez à votre gestionnaire. Le parcours va de petites habitudes gratuites à la formation à temps partiel, que la direction offre aux personnes prêtes à avancer.",
+  frWhere:"Où vous en êtes en langue seconde", reading:"Lecture", writing:"Écriture", oral:"Oral", target:"Cible",
+  frNote:"Utilisez vos résultats d'évaluation de langue seconde les plus récents, ou votre meilleure estimation. La cible est le profil du poste : lecture, écriture et oral, dans cet ordre (par exemple CBC).",
+  frNone:"Aucun encore", frNoneShort:"aucun", frNoTarget:"Langue seconde non requise",
+  frMsgNone:"Le poste visé n'exige pas de langue seconde. Les étapes 1 ou 2 gardent la porte ouverte si vous le souhaitez plus tard.",
+  frMsgGap:"<b>Écart avec {t} :</b> {g}. Étape suggérée : <b>{n}. {s}</b>.", frMsgTalk:" Parlez-en à votre gestionnaire : la formation à temps partiel est offerte quand vous êtes prêt à avancer.",
+  frMsgMeet:"<b>Vous atteignez {t}.</b> Continuez avec l'étape 2 pour maintenir vos acquis d'ici votre prochaine évaluation.",
+  fundFree:"Gratuit", fundWork:"Au travail", fundCourse:"Financé, offert par la direction", frCol:"Langue seconde",
+  rvTitle:"Revue commune", rvTitleName:"Revue commune : {n}",
+  rvLede:"Ouvrez le fichier de l'employé, puis parcourez-le ensemble. L'employé se cote d'abord dans « Ma carte ». Le gestionnaire ajoute sa cote ici. Là où l'écart est de 2 points ou plus, discutez-en avec un exemple, puis fixez la cote convenue. L'arbre et la vue d'équipe utilisent les cotes convenues.",
+  bMatch:"Convenir là où vous concordez", bSign:"Consigner cette revue", kHist:"Revues précédentes dans ce fichier",
+  histNote:"« Consigner cette revue » enregistre les cotes convenues d'aujourd'hui dans le fichier, avec la date, pour que la prochaine revue montre ce qui a évolué. Enregistrez ensuite le fichier.",
+  thSkill:"Compétence", thEmp:"Employé", thMgr:"Gestionnaire", thAgr:"Convenue", thSince:"Depuis la dernière revue",
+  notRated:"Non cotée", notAgreed:"Non convenue", talk:"À discuter", agreedFlag:"Convenue", useN:"Prendre {n}",
+  mgrFor:"Cote du gestionnaire pour {s}", agrFor:"Cote convenue pour {s}", histItem:"{n} compétences convenues", noHist:"Aucune revue consignée pour l'instant.",
+  needAgreed:"Fixez d'abord au moins une cote convenue.", recorded:"Revue consignée le {d}. Enregistrez le fichier pour la conserver.",
+  tmLede:"Pour les gestionnaires : ouvrez les fichiers de tout le monde à la fois (sélectionnez-les tous dans le dossier de l'équipe) pour voir le profil de l'équipe, ses lacunes et qui porte quoi. Rien n'est téléversé : les fichiers sont seulement lus dans ce navigateur.",
+  bTeam:"Ouvrir les fichiers de l'équipe", bSample:"Voir une équipe fictive", bClear:"Effacer", streamLabel:"Volet", drop:"Ou glissez les fichiers ici.",
+  skipped:"{n} fichier(s) ignoré(s), qui ne sont pas des cartes de compétences : {f}",
+  tmEmpty:"Aucune carte ouverte pour l'instant. Utilisez « Ouvrir les fichiers de l'équipe » et sélectionnez les fichiers de tout le monde, ou « Voir une équipe fictive » pour voir comment ça fonctionne.",
+  insNoOne:"Personne au niveau « Autonome »", insNoOneOk:"Chaque compétence jusqu'au niveau {l} a au moins une personne à 3 ou plus.", andMore:"et {n} autres",
+  insSpof:"Dépendances à une seule personne", insSpofItem:"{s} : seulement {p}", insSpofOk:"Chaque compétence couverte compte au moins deux personnes.",
+  insReady:"Prêts pour leur objectif", insReadyNone:"Personne ne satisfait encore à toutes les compétences de son objectif.",
+  insPending:"Revues à terminer", insPendingNone:"Toutes les cotes sont convenues.",
+  insHours:"Formation prévue", insHoursSub:"ce trimestre, pour {n} personnes",
+  kTeamMap:"Carte des compétences de l'équipe", teamMapNote:"Chaque ligne est une personne : cote moyenne par branche, jusqu'au niveau visé. Là où toutes les lignes se resserrent, l'équipe est mince.",
+  kHeat:"Chaque compétence, chaque personne", atLeast3:"À 3 ou plus", selfOnly:"Autoévaluation, pas encore convenue", unnamed:"Sans nom", onePerson:"une personne",
+  notRatedLow:"non cotée", selfOnlyTip:" (autoévaluation, pas encore convenue)", frTipNone:"Langue seconde non requise", frTipTarget:"Cible {t}", gapShort:"écart",
+  streamsCoder:"Codeurs", streamsAdvisor:"Conseillers Web", sampleTag:"Fictif",
+  cycleTitle:"Le cycle annuel", scaleTitle:"L'échelle",
+  scaleLede:"Adaptée de la méthode de cartographie des compétences du Nielsen Norman Group. Cotez ce que vous faites maintenant, dans le travail courant, et non ce que vous pourriez faire dans une bonne journée.",
+  cycle:[["L'employé se cote","Dans « Ma carte », sur l'échelle de 1 à 5, puis enregistre le fichier dans son dossier de l'espace d'équipe."],["Le gestionnaire cote aussi","Avant la rencontre, le gestionnaire ouvre le fichier, ajoute ses cotes dans « Revue commune » et l'enregistre."],["Se rencontrer et convenir","Passez en revue les écarts de 2 points ou plus, avec des exemples. Fixez les cotes convenues, puis « Consigner cette revue » et enregistrez."],["Planifier les points de formation","Choisissez les prochaines compétences et les heures du trimestre, y compris les heures réservées aux ressources gratuites."],["Voir le portrait de l'équipe","Le gestionnaire ouvre tous les fichiers dans la « Vue d'équipe » pour repérer les lacunes et les dépendances à une seule personne."],["Faire le point","Un court suivi du plan chaque trimestre; une revue complète une ou deux fois par année."]],
+  filesTitle:"Où sont les fichiers",
+  files:["La carte de chaque personne est un petit fichier, comme <code>skillmap-alex-tremblay.json</code>. Gardez-le dans un dossier que seuls l'employé et son gestionnaire peuvent ouvrir, sur des systèmes approuvés du GC (Teams ou SharePoint).","« Enregistrer » met à jour le même fichier quand votre navigateur le permet (Edge et Chrome). Sinon, une nouvelle copie est téléchargée : remplacez l'ancien fichier du dossier par celle-ci.","Cette page lit et écrit les fichiers seulement sur votre ordinateur. Elle n'envoie les cotes nulle part.","Ouvrez cet outil à partir du fichier HTML lui-même. Dans un aperçu (par exemple dans Teams ou claude.ai), l'enregistrement pourrait ne pas fonctionner.","Le fichier ne dépend pas de la langue : une carte enregistrée en français s'ouvre en anglais, et l'inverse."],
+  privacy:"<b>Traitez les fichiers comme des renseignements personnels.</b> Les cotes de compétences concernent une personne. Conservez-les comme votre équipe conserve les autres renseignements sur les employés, et vérifiez auprès de votre personne-ressource en protection des renseignements personnels ou en gestion de l'information en cas de doute.",
+  footer:"Arbres de compétences : la feuille de route des codeurs (IS-02 à IS-04) et une première ébauche pour les conseillers Web (IS-03 à IS-05). Échelle de cotation et carte d'équipe adaptées de la méthode de cartographie des compétences du Nielsen Norman Group. Les estimations d'effort sont approximatives.",
+  fileIs:"Fichier : {f}. ", notSaved:"Pas encore enregistrée dans un fichier. ", changes:"Modifications non enregistrées.", allSaved:"Toutes les modifications sont enregistrées.",
+  opened:"{f} ouvert.", saved:"{f} enregistré.", notMap:"Ce fichier n'est pas une carte de compétences WebOps.", cantOpen:"Impossible d'ouvrir ce fichier.",
+  cantSave:"Impossible d'enregistrer ici. Ouvrez le fichier HTML téléchargé dans Edge ou Chrome et réessayez.",
+  confirmSwitch:"Changer de volet crée une nouvelle carte. Enregistrez celle-ci d'abord si vous voulez la garder.", confirmNew:"Créer une nouvelle carte? Les modifications non enregistrées seront perdues.",
+  cont:"Continuer", cancel:"Annuler",
+  readyKey:"Prête à apprendre", dimKey:"Estompée : exige d'abord d'autres compétences", filledKey:"Pleine : « Autonome » ou plus", squadKey:"Les chefs d'escouade IS-05 dirigent le travail, pas les personnes",
+  nowTier:"(maintenant)", aimTier:"(votre objectif)", notRatedAria:"non cotée", needsFirstAria:"exige d'abord d'autres compétences",
+  needs:"Exige : {l}. ", unlocks:"Débloque : {l}.", reachFirst:"Atteignez d'abord « En apprentissage » pour {l}.", and:" et ",
+  yourRating:"Votre cote", rateLabel:"Cotez-vous pour {s}", rateHint:"Cotez ce que vous faites maintenant, dans le travail courant. Sélectionnez de nouveau pour effacer.",
+  mgrIs:"Gestionnaire :", agrIs:"Convenue :", looks:"À quoi ça ressemble", show:"Comment le démontrer", ways:"Façons de la développer",
+  spend:"Dépenser des points de formation", thisQ:"ce trimestre · effort approximatif pour atteindre « Autonome » : {e}", rem2:"Retirer 2 heures", add2:"Ajouter 2 heures",
+  typeFree:"Gratuit", typeWork:"Au travail", typeCourse:"Cours",
+  allDone:"Tout jusqu'au niveau {l} est à « Autonome » ou plus. Visez plus haut, ou accompagnez quelqu'un.", noPlan:"Aucune heure prévue pour l'instant. Choisissez une compétence et utilisez « Dépenser des points de formation ».",
+  radarLabel:"Graphique de la carte des compétences", ofN:"{a} sur {b}", proposedLabel:"Ajout proposé, pas encore dans la feuille de route",
+},
+};
+let LANG="en", THEME=null;
+try{ LANG=localStorage.getItem("webops-skillmap-lang")||((navigator.language||"").toLowerCase().startsWith("fr")?"fr":"en"); }catch(e){}
+try{ THEME=localStorage.getItem("webops-skillmap-theme"); }catch(e){}
+const t=(k,v={})=>{ let s=(I18N[LANG][k]??I18N.en[k]??k); if(typeof s==="string") s=s.replace(/\{(\w+)\}/g,(_,x)=>v[x]??""); return s; };
+
+/* localized content: English content with the French overlay */
+function localize(base,fr){
+  if(LANG!=="fr") return base;
+  const resFR=x=>{ const m=x.url&&RES_FR[x.url]; return m?{t:m[0],url:m[1]||x.url}:{}; };
+  return {...base, REQ_LABEL:fr.REQ_LABEL,
+    LEVELS:base.LEVELS.map(l=>({...l,name:fr.LEVELS[l.id]||l.name})),
+    BRANCHES:base.BRANCHES.map(b=>{ const f=fr.BRANCHES[b.id]; return f?{...b,name:f[0],sub:f[1]}:b; }),
+    SKILLS:base.SKILLS.map(s=>{ const f=fr.SKILLS[s.id]; if(!f) return s;
+      return {...s,name:f.name,req:f.req,can:f.can,show:f.show,learn:s.learn.map((x,i)=>{ const o=(f.learn||[])[i]||[]; const r=resFR(x); return {...x,...r,t:o[0]||r.t||x.t,note:o[1]||null}; })}; }),
+    FR_PATH:base.FR_PATH.map((p,i)=>{ const f=fr.FR_PATH[i]; if(!f) return p; return {...p,name:f.name,who:f.who,what:f.what,items:p.items.map((it,j)=>{ const o=f.items[j]; if(o) return [o[0],o[1]||it[1]]; const m=it[1]&&RES_FR[it[1]]; return m?[m[0],m[1]||it[1]]:it; })}; }),
+  };
+}
+let STREAMS, SCALE;
+function buildContent(){
+  STREAMS={coder:{label:t("streamsCoder"),...localize(CODER,FR_CODER)},advisor:{label:t("streamsAdvisor"),...localize(ADVISOR,FR_ADVISOR)}};
+  SCALE=SCALE_I18N[LANG].map((x,i)=>({v:i+1,...x}));
+}
+buildContent();
+const FR_TARGETS=()=>[["none",t("frNoTarget")],["AAA","AAA"],["BBB","BBB"],["CBC","CBC"],["CCC","CCC"]];
+/* ===================== END OF INTERFACE TEXT ===================== */
+
 const $=q=>document.querySelector(q);
+const C=()=>LANG==="fr"?" : ":": ";
 const esc=x=>String(x??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const today=()=>new Date().toISOString().slice(0,10);
 const DRAFT="webops-skillmap-draft";
 
+/* ---------- language and theme ---------- */
+function effectiveTheme(){ return THEME||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"); }
+function applyTheme(){ if(THEME) document.documentElement.setAttribute("data-theme",THEME); else document.documentElement.removeAttribute("data-theme");
+  $("#bTheme").textContent=effectiveTheme()==="dark"?t("themeToLight"):t("themeToDark"); }
+$("#bTheme").addEventListener("click",()=>{ THEME=effectiveTheme()==="dark"?"light":"dark"; try{ localStorage.setItem("webops-skillmap-theme",THEME); }catch(e){} applyTheme(); requestAnimationFrame(drawLinks); });
+function applyStatic(){
+  document.documentElement.lang=LANG==="fr"?"fr-CA":"en-CA";
+  document.querySelectorAll("[data-t]").forEach(el=>{ el.textContent=t(el.dataset.t); });
+  document.querySelectorAll("[data-th]").forEach(el=>{ el.innerHTML=t(el.dataset.th); });
+  document.querySelectorAll("[data-ta]").forEach(el=>{ el.setAttribute("aria-label",t(el.dataset.ta)); });
+  document.querySelectorAll("[data-tp]").forEach(el=>{ el.setAttribute("placeholder",t(el.dataset.tp)); });
+  const lb=$("#bLang"); lb.textContent=t("langBtn"); lb.setAttribute("lang",LANG==="fr"?"en":"fr");
+  $("#cycle").innerHTML=t("cycle").map(([b,s])=>`<li><div><b>${esc(b)}</b><span>${esc(s)}</span></div></li>`).join("");
+  $("#filesList").innerHTML=t("files").map(x=>`<li>${x}</li>`).join("");
+  $("#scaleTbl").innerHTML=SCALE.map(x=>`<tr><td>${x.v} ${esc(x.n)}</td><td>${esc(x.d)}</td></tr>`).join("");
+  applyTheme();
+}
+$("#bLang").addEventListener("click",()=>{ LANG=LANG==="fr"?"en":"fr"; try{ localStorage.setItem("webops-skillmap-lang",LANG); }catch(e){} buildContent(); applyStatic(); renderAll(); if(!$("#p-team").hidden) renderTeam(); });
+
+/* ---------- the map in memory ---------- */
 function blankMap(stream){ const L=STREAMS[stream].LEVELS;
   return {format:"webops-skillmap",version:1,name:"",stream,cur:L[0].id,aim:L[1].id,ratings:{},plan:{},budget:16,fr:{r:"B",w:"A",o:"B",t:"none"},history:[],updated:null}; }
 function normalize(m){
-  if(!m||m.format!=="webops-skillmap"||!STREAMS[m.stream]) throw new Error("This isn't a WebOps skill map file.");
+  if(!m||m.format!=="webops-skillmap"||!STREAMS[m.stream]) throw new Error(t("notMap"));
   const b=blankMap(m.stream); const out={...b,...m,fr:{...b.fr,...(m.fr||{})}};
+  if(out.fr.r==="None yet") out.fr.r=""; if(out.fr.w==="None yet") out.fr.w=""; if(out.fr.o==="None yet") out.fr.o="";
   out.ratings=out.ratings||{}; out.plan=out.plan||{}; out.history=Array.isArray(out.history)?out.history:[]; return out; }
 
 let M=blankMap("coder"), handle=null, fileName=null, dirty=false, sel=null;
@@ -740,47 +1025,43 @@ const R=id=>M.ratings[id]||{};
 const effOf=(m,id)=>{ const r=m.ratings[id]||{}; return r.agreed||r.self||0; };
 const eff=id=>effOf(M,id);
 const unlocked=s=>s.pre.every(p=>eff(p)>=2);
-
-function touch(){ dirty=true; M.updated=new Date().toISOString(); try{ localStorage.setItem(DRAFT,JSON.stringify({map:M,fileName,dirty})); }catch(e){} renderFileBar(); }
+const saveDraft=()=>{ try{ localStorage.setItem(DRAFT,JSON.stringify({map:M,fileName,dirty})); }catch(e){} };
+function touch(){ dirty=true; M.updated=new Date().toISOString(); saveDraft(); renderFileBar(); }
 
 /* ---------- file bar ---------- */
 function renderFileBar(){
   $("#pName").value=M.name||""; $("#pStream").value=M.stream;
-  const fs=$("#fstatus"); fs.classList.toggle("dirty",dirty);
-  $("#fstatusT").textContent=(fileName?`File: ${fileName}. `:"Not saved to a file yet. ")+(dirty?"Changes not saved.":"All changes saved.");
+  $("#fstatus").classList.toggle("dirty",dirty);
+  $("#fstatusT").textContent=(fileName?t("fileIs",{f:fileName}):t("notSaved"))+(dirty?t("changes"):t("allSaved"));
   const pending=ST().SKILLS.filter(s=>{ const r=R(s.id); return (r.self||r.mgr)&&!r.agreed; }).length;
   const c=$("#revCnt"); c.hidden=!pending; c.textContent=pending;
 }
 $("#pName").addEventListener("input",e=>{ M.name=e.target.value; touch(); });
-$("#pStream").addEventListener("change",e=>{
-  const s=e.target.value; if(s===M.stream) return;
-  if(Object.keys(M.ratings).length) confirmInline("Switching stream starts a new map. Save this one first if you want to keep it.",()=>startNew(s,M.name),()=>{ e.target.value=M.stream; });
-  else { const n=M.name; M=blankMap(s); M.name=n; sel=null; touch(); renderAll(); }
-});
-function startNew(stream,name){ M=blankMap(stream); M.name=name||""; handle=null; fileName=null; sel=null; dirty=false; try{ localStorage.removeItem(DRAFT); }catch(e){} renderAll(); }
-/* in-page confirmation (dialogs are not used) */
 function confirmInline(msg,yes,no){
-  const st=$("#fstatusT"); const box=document.createElement("span"); box.className="confirm";
-  box.innerHTML=`<b>${esc(msg)}</b> <button type="button" class="btn" data-y>Continue</button> <button type="button" class="btn" data-n>Cancel</button>`;
-  st.replaceChildren(box);
+  const box=document.createElement("span");
+  box.innerHTML=`<b>${esc(msg)}</b> <button type="button" class="btn" data-y>${esc(t("cont"))}</button> <button type="button" class="btn" data-n>${esc(t("cancel"))}</button>`;
+  $("#fstatusT").replaceChildren(box);
   box.querySelector("[data-y]").onclick=()=>{ yes(); renderFileBar(); };
   box.querySelector("[data-n]").onclick=()=>{ if(no) no(); renderFileBar(); };
-  return false;
 }
-$("#bNew").addEventListener("click",()=>{ if(dirty) confirmInline("Start a new map? Unsaved changes will be lost.",()=>startNew(M.stream,""),null); else startNew(M.stream,""); });
-
+function startNew(stream,name){ M=blankMap(stream); M.name=name||""; handle=null; fileName=null; sel=null; dirty=false; try{ localStorage.removeItem(DRAFT); }catch(e){} renderAll(); }
+$("#pStream").addEventListener("change",e=>{
+  const s=e.target.value; if(s===M.stream) return;
+  if(Object.keys(M.ratings).length) confirmInline(t("confirmSwitch"),()=>startNew(s,M.name),()=>{ e.target.value=M.stream; });
+  else { const n=M.name; M=blankMap(s); M.name=n; sel=null; touch(); renderAll(); }
+});
+$("#bNew").addEventListener("click",()=>{ if(dirty) confirmInline(t("confirmNew"),()=>startNew(M.stream,""),null); else startNew(M.stream,""); });
 const slug=s=>(s||"me").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"me";
 async function readFile(f){ return normalize(JSON.parse(await f.text())); }
+function loaded(m,h,name){ M=m; handle=h; fileName=name; dirty=false; sel=null; saveDraft(); renderAll(); say(t("opened",{f:name})); }
 $("#bOpen").addEventListener("click",async()=>{
   if(window.showOpenFilePicker){
-    try{ const [h]=await window.showOpenFilePicker({types:[{description:"Skill map",accept:{"application/json":[".json"]}}]});
-      const m=await readFile(await h.getFile()); M=m; handle=h; fileName=h.name; dirty=false; sel=null; try{ localStorage.setItem(DRAFT,JSON.stringify({map:M,fileName,dirty})); }catch(e){} renderAll(); say(`Opened ${fileName}.`); }
-    catch(e){ if(e.name!=="AbortError") say(e.message||"That file couldn't be opened."); }
+    try{ const [h]=await window.showOpenFilePicker({types:[{description:"Skill map",accept:{"application/json":[".json"]}}]}); loaded(await readFile(await h.getFile()),h,h.name); }
+    catch(e){ if(e.name!=="AbortError") say(e.message||t("cantOpen")); }
   } else $("#fileOne").click();
 });
 $("#fileOne").addEventListener("change",async e=>{ const f=e.target.files[0]; if(!f) return;
-  try{ M=await readFile(f); handle=null; fileName=f.name; dirty=false; sel=null; try{ localStorage.setItem(DRAFT,JSON.stringify({map:M,fileName,dirty})); }catch(er){} renderAll(); say(`Opened ${fileName}.`); }
-  catch(er){ say(er.message||"That file couldn't be opened."); } e.target.value=""; });
+  try{ loaded(await readFile(f),null,f.name); }catch(er){ say(er.message||t("cantOpen")); } e.target.value=""; });
 $("#bSave").addEventListener("click",save);
 async function save(){
   M.updated=new Date().toISOString();
@@ -789,28 +1070,28 @@ async function save(){
     if(handle&&handle.createWritable){ const w=await handle.createWritable(); await w.write(data); await w.close(); }
     else if(window.showSaveFilePicker){ const h=await window.showSaveFilePicker({suggestedName:name,types:[{description:"Skill map",accept:{"application/json":[".json"]}}]}); const w=await h.createWritable(); await w.write(data); await w.close(); handle=h; fileName=h.name; }
     else { const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([data],{type:"application/json"})); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },500); fileName=name; }
-    dirty=false; try{ localStorage.setItem(DRAFT,JSON.stringify({map:M,fileName,dirty})); }catch(e){} renderFileBar(); say(`Saved ${fileName}.`);
-  }catch(e){ if(e.name!=="AbortError") say("Couldn't save here. Open the downloaded HTML file in Edge or Chrome and try again."); }
+    dirty=false; saveDraft(); renderFileBar(); say(t("saved",{f:fileName}));
+  }catch(e){ if(e.name!=="AbortError") say(t("cantSave")); }
 }
-function say(t){ $("#fstatusT").textContent=t; setTimeout(renderFileBar,3500); }
+function say(x){ $("#fstatusT").textContent=x; setTimeout(renderFileBar,3500); }
 window.addEventListener("beforeunload",e=>{ if(dirty){ e.preventDefault(); e.returnValue=""; } });
 
 /* ---------- tabs ---------- */
 const TABS=["map","rev","team","how"];
-function showTab(k){ TABS.forEach(t=>{ $("#t-"+t).setAttribute("aria-selected",t===k); $("#p-"+t).hidden=t!==k; }); if(k==="map") requestAnimationFrame(drawLinks); if(k==="rev") renderReview(); if(k==="team") renderTeam(); }
-TABS.forEach(t=>$("#t-"+t).addEventListener("click",()=>showTab(t)));
-document.querySelector(".tabs").addEventListener("keydown",e=>{ const i=TABS.findIndex(t=>$("#t-"+t).getAttribute("aria-selected")==="true"); let j=null;
+function showTab(k){ TABS.forEach(x=>{ $("#t-"+x).setAttribute("aria-selected",x===k); $("#p-"+x).hidden=x!==k; }); if(k==="map") requestAnimationFrame(drawLinks); if(k==="rev") renderReview(); if(k==="team") renderTeam(); }
+TABS.forEach(x=>$("#t-"+x).addEventListener("click",()=>showTab(x)));
+document.querySelector(".tabs").addEventListener("keydown",e=>{ const i=TABS.findIndex(x=>$("#t-"+x).getAttribute("aria-selected")==="true"); let j=null;
   if(e.key==="ArrowRight") j=(i+1)%TABS.length; if(e.key==="ArrowLeft") j=(i+TABS.length-1)%TABS.length; if(j!=null){ showTab(TABS[j]); $("#t-"+TABS[j]).focus(); } });
 
 /* ---------- HUD ---------- */
 function renderHUD(){
-  const L=ST().LEVELS, li=LI();
+  const L=ST().LEVELS;
   const seg=(el,key)=>{ el.innerHTML=L.map(l=>`<button type="button" data-${key}="${l.id}" aria-pressed="${M[key]===l.id}">${l.id}</button>`).join(""); };
   seg($("#curSeg"),"cur"); seg($("#aimSeg"),"aim");
   $("#ready").innerHTML=L.map(l=>{ const sk=ST().SKILLS.filter(s=>s.lv===l.id), ok=sk.filter(s=>eff(s.id)>=3).length;
-    return `<div class="rbar${M.aim===l.id?" aim":""}"><b>${l.id}</b><div class="track" role="img" aria-label="${ok} of ${sk.length}"><i style="width:${ok/sk.length*100}%"></i></div><span>${ok} of ${sk.length}</span></div>`; }).join("");
+    return `<div class="rbar${M.aim===l.id?" aim":""}"><b>${l.id}</b><div class="track" role="img" aria-label="${esc(t("ofN",{a:ok,b:sk.length}))}"><i style="width:${ok/sk.length*100}%"></i></div><span>${esc(t("ofN",{a:ok,b:sk.length}))}</span></div>`; }).join("");
   const used=Object.values(M.plan).reduce((a,b)=>a+b,0), left=M.budget-used;
-  $("#ptsLeft").textContent=left; $("#ptsOf").textContent=`of ${M.budget} hours left`;
+  $("#ptsLeft").textContent=left; $("#ptsOf").textContent=t("hoursLeft",{n:M.budget});
   const bar=$("#ptbar"); bar.classList.toggle("over",left<0); bar.firstElementChild.style.width=Math.min(100,M.budget?used/M.budget*100:0)+"%";
   $("#budget").value=M.budget;
 }
@@ -836,19 +1117,19 @@ function badge(s,b){ const v=eff(s.id), C=2*Math.PI*26;
     <circle cx="30" cy="30" r="26" fill="none" stroke="${b.c}" stroke-width="4" stroke-linecap="round" stroke-dasharray="${C*v/5} ${C}" transform="rotate(-90 30 30)"/>
     ${ICON[b.icon]||""}</svg>`; }
 function renderBoard(){
-  const st=ST(), bd=$("#board"), bid=BID();
+  const st=ST(), bd=$("#board");
   if(!sel||!SID()[sel]) sel=st.SKILLS[0].id;
   bd.style.gridTemplateColumns=`84px repeat(${st.BRANCHES.length},minmax(0,1fr))`;
   let h=`<svg class="links" id="links" aria-hidden="true"></svg><div></div>`;
   h+=st.BRANCHES.map(b=>`<div class="bh" style="--c:${b.c}">${esc(b.name)}<small>${esc(b.sub)}</small></div>`).join("");
   st.LEVELS.forEach(l=>{ const aim=l.id===M.aim;
-    h+=`<div class="tier${aim?" aim":""}"><b>${l.id}</b><span>${esc(l.name)}${l.id===M.cur?"<br>(now)":aim?"<br>(your aim)":""}</span></div>`;
+    h+=`<div class="tier${aim?" aim":""}"><b>${l.id}</b><span>${esc(l.name)}${l.id===M.cur?"<br>"+esc(t("nowTier")):aim?"<br>"+esc(t("aimTier")):""}</span></div>`;
     st.BRANCHES.forEach(b=>{ const sk=st.SKILLS.filter(s=>s.b===b.id&&s.lv===l.id);
       h+=`<div class="cell">`+sk.map(s=>{ const v=eff(s.id), un=unlocked(s), cls=!un?"locked":(v<3?"avail":"");
         const lab=v?SCALE[v-1].n:"";
-        return `<button type="button" class="node ${cls}" data-node="${s.id}" aria-pressed="${sel===s.id}" style="--c:${b.c}" aria-label="${esc(s.name)}, ${l.id}, ${v?lab:"not rated"}${un?"":", needs other skills first"}"><span class="badge" data-badge="${s.id}">${badge(s,b)}</span><span class="nm">${esc(s.name)}</span><span class="st">${esc(lab)}</span></button>`; }).join("")+`</div>`; }); });
+        return `<button type="button" class="node ${cls}" data-node="${s.id}" aria-pressed="${sel===s.id}" style="--c:${b.c}" aria-label="${esc(s.name)}, ${l.id}, ${esc(v?lab:t("notRatedAria"))}${un?"":", "+esc(t("needsFirstAria"))}"><span class="badge" data-badge="${s.id}">${badge(s,b)}</span><span class="nm">${esc(s.name)}</span><span class="st">${esc(lab)}</span></button>`; }).join("")+`</div>`; }); });
   bd.innerHTML=h;
-  $("#boardKey").innerHTML=`<span><i style="background:var(--pub);border-color:var(--pub)"></i>Ready to learn</span><span><i style="opacity:.45"></i>Dimmed: needs other skills first</span><span>Filled: “Independent” or higher</span>${M.stream==="advisor"?"<span>IS-05 squad leads lead the work, not the people</span>":""}`;
+  $("#boardKey").innerHTML=`<span><i style="background:var(--pub);border-color:var(--pub)"></i>${esc(t("readyKey"))}</span><span><i style="opacity:.45"></i>${esc(t("dimKey"))}</span><span>${esc(t("filledKey"))}</span>${M.stream==="advisor"?`<span>${esc(t("squadKey"))}</span>`:""}`;
   requestAnimationFrame(drawLinks);
 }
 function drawLinks(){
@@ -869,31 +1150,30 @@ if(document.fonts&&document.fonts.ready) document.fonts.ready.then(drawLinks);
 $("#board").addEventListener("click",e=>{ const n=e.target.closest("[data-node]"); if(!n) return; sel=n.dataset.node; renderBoard(); renderPanel(); });
 
 /* ---------- panel ---------- */
-const TYPE={free:"Free",work:"On the job",course:"Course"};
 function renderPanel(){
   const sid=SID(), s=sid[sel], b=BID()[s.b], r=R(s.id), un=unlocked(s), hrs=M.plan[s.id]||0, st=ST();
   const needs=s.pre.map(p=>sid[p].name), unl=st.SKILLS.filter(x=>x.pre.includes(s.id)).map(x=>x.name);
   const missing=s.pre.filter(p=>eff(p)<2).map(p=>sid[p].name);
-  const cur=r.self||0;
+  const cur=r.self||0, TYPE={free:t("typeFree"),work:t("typeWork"),course:t("typeCourse")};
   $("#panel").style.setProperty("--cd",b.cd);
   $("#panel").innerHTML=`
     <div class="p-top"><span class="chip"><i></i>${esc(b.name)}</span><span class="chip">${s.lv} · ${esc(st.LEVELS[LI()[s.lv]].name)}</span></div>
     <h3>${esc(s.name)}</h3>
-    <p class="req">${esc(st.REQ_LABEL)}: ${esc(s.req)}</p>
-    ${needs.length||unl.length?`<p class="req" style="margin-top:6px">${needs.length?`Needs: ${needs.map(esc).join(", ")}. `:""}${unl.length?`Unlocks: ${unl.map(esc).join(", ")}.`:""}</p>`:""}
-    ${!un?`<p class="locknote">Reach “Learning” on ${missing.map(esc).join(" and ")} first.</p>`:""}
-    <h4>Your rating</h4>
-    <div class="rate" role="group" aria-label="Rate yourself on ${esc(s.name)}">${SCALE.map(x=>`<button type="button" data-rate="${x.v}" aria-pressed="${cur===x.v}"><b>${x.v}</b><span><strong>${x.n}.</strong> ${esc(x.d)}</span></button>`).join("")}</div>
-    <p class="hint" style="margin:6px 0 0">Rate what you do now, on typical work. Select again to clear.</p>
-    ${r.mgr||r.agreed?`<div class="others">${r.mgr?`<span>Manager: <b>${r.mgr}</b> ${SCALE[r.mgr-1].n}</span>`:""}${r.agreed?`<span>Agreed: <b>${r.agreed}</b> ${SCALE[r.agreed-1].n}</span>`:""}</div>`:""}
-    <h4>What it looks like</h4>
+    <p class="req">${esc(s.proposed?t("proposedLabel"):st.REQ_LABEL)}${C()}${esc(s.req)}</p>
+    ${needs.length||unl.length?`<p class="req" style="margin-top:6px">${needs.length?esc(t("needs",{l:needs.join(", ")})):""}${unl.length?esc(t("unlocks",{l:unl.join(", ")})):""}</p>`:""}
+    ${!un?`<p class="locknote">${esc(t("reachFirst",{l:missing.join(t("and"))}))}</p>`:""}
+    <h4>${esc(t("yourRating"))}</h4>
+    <div class="rate" role="group" aria-label="${esc(t("rateLabel",{s:s.name}))}">${SCALE.map(x=>`<button type="button" data-rate="${x.v}" aria-pressed="${cur===x.v}"><b>${x.v}</b><span><strong>${esc(x.n)}.</strong> ${esc(x.d)}</span></button>`).join("")}</div>
+    <p class="hint" style="margin:6px 0 0">${esc(t("rateHint"))}</p>
+    ${r.mgr||r.agreed?`<div class="others">${r.mgr?`<span>${esc(t("mgrIs"))} <b>${r.mgr}</b> ${esc(SCALE[r.mgr-1].n)}</span>`:""}${r.agreed?`<span>${esc(t("agrIs"))} <b>${r.agreed}</b> ${esc(SCALE[r.agreed-1].n)}</span>`:""}</div>`:""}
+    <h4>${esc(t("looks"))}</h4>
     <ul>${s.can.map(c=>`<li>${esc(c)}</li>`).join("")}</ul>
-    <h4>How to show it</h4>
+    <h4>${esc(t("show"))}</h4>
     <p class="ev">${esc(s.show)}</p>
-    <h4>Ways to build it</h4>
-    <ul class="res">${s.learn.map(x=>`<li><span class="tag ${x.type}">${TYPE[x.type]}</span><span>${x.url?`<a href="${x.url}" target="_blank" rel="noopener">${esc(x.t)}</a>`:`<b>${esc(x.t)}</b>`}${x.note?`<small>${esc(x.note)}</small>`:""}</span></li>`).join("")}</ul>
-    <h4>Spend training points</h4>
-    <div class="spend"><div class="step"><button type="button" data-pts="-2" aria-label="Remove 2 hours">−</button><output aria-live="polite">${hrs} h</output><button type="button" data-pts="2" aria-label="Add 2 hours">+</button></div><span class="hint">this quarter · rough effort to reach “Independent”: ${esc(s.effort)}</span></div>`;
+    <h4>${esc(t("ways"))}</h4>
+    <ul class="res">${s.learn.map(x=>`<li><span class="tag ${x.type}">${esc(TYPE[x.type])}</span><span>${x.url?`<a href="${x.url}" target="_blank" rel="noopener">${esc(x.t)}</a>`:`<b>${esc(x.t)}</b>`}${x.note?`<small>${esc(x.note)}</small>`:""}</span></li>`).join("")}</ul>
+    <h4>${esc(t("spend"))}</h4>
+    <div class="spend"><div class="step"><button type="button" data-pts="-2" aria-label="${esc(t("rem2"))}">−</button><output aria-live="polite">${hrs} h</output><button type="button" data-pts="2" aria-label="${esc(t("add2"))}">+</button></div><span class="hint">${esc(t("thisQ",{e:s.effort}))}</span></div>`;
 }
 $("#panel").addEventListener("click",e=>{
   const r=e.target.closest("[data-rate]"); if(r){ const v=+r.dataset.rate; const cur=M.ratings[sel]||{}; M.ratings[sel]={...cur,self:cur.self===v?0:v}; touch(); renderMap(); return; }
@@ -907,7 +1187,7 @@ function branchScores(m){ const st=STREAMS[m.stream], li=Object.fromEntries(st.L
 function radar(axes,series,size=340){
   const cx=size/2, cy=size/2+4, r=size/2-84, n=axes.length, ang=i=>-Math.PI/2+i*2*Math.PI/n;
   const pt=(i,v)=>[cx+Math.cos(ang(i))*r*v/5, cy+Math.sin(ang(i))*r*v/5];
-  let s=`<svg viewBox="-44 0 ${size+88} ${size}" role="img" aria-label="Skill map chart">`;
+  let s=`<svg viewBox="-60 0 ${size+120} ${size}" role="img" aria-label="${esc(t("radarLabel"))}">`;
   for(let k=1;k<=5;k++) s+=`<polygon points="${axes.map((_,i)=>pt(i,k).join(",")).join(" ")}" fill="none" stroke="var(--line)" stroke-width="${k===5?1.5:1}"/>`;
   axes.forEach((a,i)=>{ const [x,y]=pt(i,5); s+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="var(--line)"/>`;
     const [lx,ly]=pt(i,6.1); const anchor=Math.abs(lx-cx)<8?"middle":lx>cx?"start":"end";
@@ -923,46 +1203,46 @@ function renderLower(){
   const axes=st.BRANCHES.map(b=>({name:b.name,c:b.cd}));
   $("#myRadar").innerHTML=radar(axes,[{values:axes.map(()=>3),color:"var(--muted)",dash:true,w:1.5},{values:branchScores(M),color:"var(--pub-d)",fill:"color-mix(in srgb, var(--pub-d) 18%, transparent)"}]);
   const sg=st.SKILLS.filter(s=>unlocked(s)&&eff(s.id)<3&&li[s.lv]<=aimI).sort((a,b)=>li[a.lv]-li[b.lv]||eff(b.id)-eff(a.id)).slice(0,5);
-  $("#sugg").innerHTML=sg.length?sg.map(s=>`<button type="button" data-go="${s.id}" style="--cd:${bid[s.b].cd}"><i></i><b>${esc(s.name)}</b><span>${s.lv}${eff(s.id)?" · "+SCALE[eff(s.id)-1].n:""}</span></button>`).join(""):`<p class="empty">Everything up to ${M.aim} is at “Independent” or higher. Aim higher, or coach someone.</p>`;
+  $("#sugg").innerHTML=sg.length?sg.map(s=>`<button type="button" data-go="${s.id}" style="--cd:${bid[s.b].cd}"><i></i><b>${esc(s.name)}</b><span>${s.lv}${eff(s.id)?" · "+esc(SCALE[eff(s.id)-1].n):""}</span></button>`).join(""):`<p class="empty">${esc(t("allDone",{l:M.aim}))}</p>`;
   const ids=Object.keys(M.plan).filter(id=>sid[id]);
-  $("#plan").innerHTML=ids.length?ids.map(id=>`<li style="--cd:${bid[sid[id].b].cd}"><i></i><span>${esc(sid[id].name)} <small style="color:var(--muted)">${sid[id].lv}</small></span><b>${M.plan[id]} h</b></li>`).join(""):`<li style="display:block;border:0"><span class="empty">No hours planned yet. Pick a skill and use “Spend training points”.</span></li>`;
+  $("#plan").innerHTML=ids.length?ids.map(id=>`<li style="--cd:${bid[sid[id].b].cd}"><i></i><span>${esc(sid[id].name)} <small style="color:var(--muted)">${sid[id].lv}</small></span><b>${M.plan[id]} h</b></li>`).join(""):`<li style="display:block;border:0"><span class="empty">${esc(t("noPlan"))}</span></li>`;
 }
 $("#sugg").addEventListener("click",e=>{ const b=e.target.closest("[data-go]"); if(!b) return; sel=b.dataset.go; renderBoard(); renderPanel(); $("#panel").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"nearest"}); });
 
-/* ---------- French ---------- */
+/* ---------- second language ---------- */
+const lvName=v=>v?v:t("frNone");
 function frStepOf(f){ if(f.t==="none") return 1; const need=f.t.split(""), have=[f.r,f.w,f.o];
-  const tot=need.map((n,i)=>Math.max(0,FR_LEVELS.indexOf(n)-FR_LEVELS.indexOf(have[i]))).reduce((a,b)=>a+b,0); return tot<=1?2:3; }
-function frGaps(f){ if(f.t==="none") return []; const need=f.t.split(""), have=[f.r,f.w,f.o], names=["Reading","Writing","Oral"];
-  return names.map((n,i)=>FR_LEVELS.indexOf(have[i])<FR_LEVELS.indexOf(need[i])?`${n}: ${have[i]==="None yet"?"none":have[i]} → ${need[i]}`:null).filter(Boolean); }
+  const tot=need.map((n,i)=>Math.max(0,FR_LEVELS.indexOf(n)-FR_LEVELS.indexOf(have[i]||""))).reduce((a,b)=>a+b,0); return tot<=1?2:3; }
+function frGaps(f){ if(f.t==="none") return []; const need=f.t.split(""), have=[f.r,f.w,f.o], names=[t("reading"),t("writing"),t("oral")];
+  return names.map((n,i)=>FR_LEVELS.indexOf(have[i]||"")<FR_LEVELS.indexOf(need[i])?`${n}${C()}${have[i]||t("frNoneShort")} → ${need[i]}`:null).filter(Boolean); }
 function renderFrench(){
-  const opt=(arr,v)=>arr.map(o=>Array.isArray(o)?`<option value="${o[0]}"${o[0]===v?" selected":""}>${esc(o[1])}</option>`:`<option value="${o}"${o===v?" selected":""}>${o}</option>`).join("");
-  const f=M.fr; $("#frR").innerHTML=opt(FR_LEVELS,f.r); $("#frW").innerHTML=opt(FR_LEVELS,f.w); $("#frO").innerHTML=opt(FR_LEVELS,f.o); $("#frT").innerHTML=opt(FR_TARGETS,f.t);
+  const optL=v=>FR_LEVELS.map(o=>`<option value="${o}"${o===(v||"")?" selected":""}>${esc(lvName(o))}</option>`).join("");
+  const f=M.fr; $("#frR").innerHTML=optL(f.r); $("#frW").innerHTML=optL(f.w); $("#frO").innerHTML=optL(f.o);
+  $("#frT").innerHTML=FR_TARGETS().map(([v,l])=>`<option value="${v}"${v===f.t?" selected":""}>${esc(l)}</option>`).join("");
   const step=frStepOf(f), P=ST().FR_PATH, g=frGaps(f);
-  $("#frGap").innerHTML=f.t==="none"?`Your target position doesn't need French. Step 1 or 2 keeps the door open if you want it later.`
-    :g.length?`<b>Gap to ${f.t}:</b> ${g.map(esc).join(" · ")}. Suggested step: <b>${step}. ${esc(P[step-1].name)}</b>.${step===3?" Talk to your manager: part-time training is offered when you're ready to move up.":""}`
-    :`<b>You meet ${f.t}.</b> Keep it up with step 2 so it stays current before your next evaluation.`;
-  const fund={free:'<span class="tag free">Free</span>',work:'<span class="tag work">On the job</span>',course:'<span class="tag course">Funded, offered by management</span>'};
-  $("#frPath").innerHTML=P.map(p=>`<li class="${p.id===step?"rec":""}"><span class="who">${esc(p.who)}</span><h3>${esc(p.name)}</h3><p>${esc(p.what)}</p>${p.items.length?`<ul>${p.items.map(([t,u])=>`<li>${u?`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`:esc(t)}</li>`).join("")}</ul>`:""}<div class="fund">${fund[p.fund]}</div></li>`).join("");
+  $("#frGap").innerHTML=f.t==="none"?esc(t("frMsgNone")):g.length?t("frMsgGap",{t:esc(f.t),g:g.map(esc).join(" · "),n:step,s:esc(P[step-1].name)})+(step===3?esc(t("frMsgTalk")):""):t("frMsgMeet",{t:esc(f.t)});
+  const fund={free:`<span class="tag free">${esc(t("fundFree"))}</span>`,work:`<span class="tag work">${esc(t("fundWork"))}</span>`,course:`<span class="tag course">${esc(t("fundCourse"))}</span>`};
+  $("#frPath").innerHTML=P.map(p=>`<li class="${p.id===step?"rec":""}"><span class="who">${esc(p.who)}</span><h3>${esc(p.name)}</h3><p>${esc(p.what)}</p>${p.items.length?`<ul>${p.items.map(([x,u])=>`<li>${u?`<a href="${u}" target="_blank" rel="noopener">${esc(x)}</a>`:esc(x)}</li>`).join("")}</ul>`:""}<div class="fund">${fund[p.fund]}</div></li>`).join("");
 }
 ["frR","frW","frO","frT"].forEach(id=>$("#"+id).addEventListener("change",e=>{ M.fr[{frR:"r",frW:"w",frO:"o",frT:"t"}[id]]=e.target.value; touch(); renderFrench(); }));
 
 /* ---------- review ---------- */
 function renderReview(){
-  const st=ST(), bid=BID(), prevs=M.history.filter(x=>x.date<today()), last=prevs[prevs.length-1];
-  $("#rvTitle").textContent=M.name?`Review together: ${M.name}`:"Review together";
-  const opts=(v,label)=>`<option value="0"${!v?" selected":""}>${label}</option>`+SCALE.map(x=>`<option value="${x.v}"${v===x.v?" selected":""}>${x.v} ${x.n}</option>`).join("");
-  let h=`<thead><tr><th scope="col">Skill</th><th scope="col">Employee</th><th scope="col">Manager</th><th scope="col">Agreed</th><th scope="col">Since last review</th><th scope="col"></th></tr></thead><tbody>`;
+  const st=ST(), prevs=M.history.filter(x=>x.date<today()), last=prevs[prevs.length-1];
+  $("#rvTitle").textContent=M.name?t("rvTitleName",{n:M.name}):t("rvTitle");
+  const opts=(v,label)=>`<option value="0"${!v?" selected":""}>${esc(label)}</option>`+SCALE.map(x=>`<option value="${x.v}"${v===x.v?" selected":""}>${x.v} ${esc(x.n)}</option>`).join("");
+  let h=`<thead><tr><th scope="col">${esc(t("thSkill"))}</th><th scope="col">${esc(t("thEmp"))}</th><th scope="col">${esc(t("thMgr"))}</th><th scope="col">${esc(t("thAgr"))}</th><th scope="col">${esc(t("thSince"))}</th><th scope="col"></th></tr></thead><tbody>`;
   st.BRANCHES.forEach(b=>{ h+=`<tr class="grp" style="--cd:${b.cd}"><td colspan="6">${esc(b.name)}</td></tr>`;
     st.SKILLS.filter(s=>s.b===b.id).forEach(s=>{ const r=R(s.id), gap=r.self&&r.mgr&&Math.abs(r.self-r.mgr)>=2;
       const prev=last&&last.agreed?last.agreed[s.id]||0:0, d=r.agreed&&prev?r.agreed-prev:0;
       h+=`<tr><td class="nm"><b>${esc(s.name)}</b><small>${s.lv}</small></td>
         <td><span class="val">${r.self||"–"}</span></td>
-        <td><select data-mgr="${s.id}" aria-label="Manager rating for ${esc(s.name)}">${opts(r.mgr||0,"Not rated")}</select></td>
-        <td><select data-agr="${s.id}" aria-label="Agreed rating for ${esc(s.name)}">${opts(r.agreed||0,"Not agreed")}</select></td>
+        <td><select data-mgr="${s.id}" aria-label="${esc(t("mgrFor",{s:s.name}))}">${opts(r.mgr||0,t("notRated"))}</select></td>
+        <td><select data-agr="${s.id}" aria-label="${esc(t("agrFor",{s:s.name}))}">${opts(r.agreed||0,t("notAgreed"))}</select></td>
         <td>${d?`<span class="delta${d<0?" dn":""}">${d>0?"+":""}${d}</span>`:""}</td>
-        <td>${gap?`<span class="flag">Talk it through</span>`:r.agreed?`<span class="okflag">Agreed</span>`:(r.self&&r.mgr?`<button type="button" class="mini" data-use="${s.id}">Use ${Math.round((r.self+r.mgr)/2)}</button>`:"")}</td></tr>`; }); });
+        <td>${gap?`<span class="flag">${esc(t("talk"))}</span>`:r.agreed?`<span class="okflag">${esc(t("agreedFlag"))}</span>`:(r.self&&r.mgr?`<button type="button" class="mini" data-use="${s.id}">${esc(t("useN",{n:Math.round((r.self+r.mgr)/2)}))}</button>`:"")}</td></tr>`; }); });
   $("#rvTable").innerHTML=h+`</tbody>`;
-  $("#hist").innerHTML=M.history.length?M.history.slice().reverse().map(x=>{ const n=Object.values(x.agreed||{}).filter(Boolean).length; return `<li><b>${esc(x.date)}</b><span>${n} skills agreed</span></li>`; }).join(""):`<li class="empty">No reviews recorded yet.</li>`;
+  $("#hist").innerHTML=M.history.length?M.history.slice().reverse().map(x=>{ const n=Object.values(x.agreed||{}).filter(Boolean).length; return `<li><b>${esc(x.date)}</b><span>${esc(t("histItem",{n}))}</span></li>`; }).join(""):`<li class="empty">${esc(t("noHist"))}</li>`;
 }
 $("#rvTable").addEventListener("change",e=>{ const m=e.target.closest("[data-mgr]"), a=e.target.closest("[data-agr]");
   if(m){ const id=m.dataset.mgr; M.ratings[id]={...(M.ratings[id]||{}),mgr:+m.value}; }
@@ -971,16 +1251,16 @@ $("#rvTable").addEventListener("change",e=>{ const m=e.target.closest("[data-mgr
 $("#rvTable").addEventListener("click",e=>{ const u=e.target.closest("[data-use]"); if(!u) return; const id=u.dataset.use, r=R(id); M.ratings[id]={...r,agreed:Math.round((r.self+r.mgr)/2)}; touch(); renderReview(); renderMap(); });
 $("#bMatch").addEventListener("click",()=>{ ST().SKILLS.forEach(s=>{ const r=R(s.id); if(r.self&&r.mgr&&r.self===r.mgr&&!r.agreed) M.ratings[s.id]={...r,agreed:r.self}; }); touch(); renderReview(); renderMap(); });
 $("#bSign").addEventListener("click",()=>{ const agreed={}; ST().SKILLS.forEach(s=>{ if(R(s.id).agreed) agreed[s.id]=R(s.id).agreed; });
-  if(!Object.keys(agreed).length){ say("Set at least one agreed rating first."); return; }
+  if(!Object.keys(agreed).length){ say(t("needAgreed")); return; }
   const d=today(); const i=M.history.findIndex(x=>x.date===d); const snap={date:d,cur:M.cur,aim:M.aim,agreed};
-  if(i>=0) M.history[i]=snap; else M.history.push(snap); touch(); renderReview(); say(`Review recorded for ${d}. Save the file to keep it.`); });
+  if(i>=0) M.history[i]=snap; else M.history.push(snap); touch(); renderReview(); say(t("recorded",{d})); });
 
 /* ---------- team ---------- */
 let TEAM=[], tmStream="coder";
 function addTeamMaps(list){ list.forEach(({m,file})=>{ const k=(m.name||file)+"|"+m.stream; const i=TEAM.findIndex(x=>x.key===k); const rec={key:k,m,file}; if(i>=0) TEAM[i]=rec; else TEAM.push(rec); });
   if(TEAM.length&&!TEAM.some(x=>x.m.stream===tmStream)) tmStream=TEAM[0].m.stream; renderTeam(); }
 async function loadFiles(files){ const ok=[], bad=[]; for(const f of files){ try{ ok.push({m:await readFile(f),file:f.name}); }catch(e){ bad.push(f.name); } }
-  addTeamMaps(ok); if(bad.length) $("#drop").textContent=`Skipped ${bad.length} file(s) that aren't skill maps: ${bad.join(", ")}`; }
+  addTeamMaps(ok); $("#drop").textContent=bad.length?t("skipped",{n:bad.length,f:bad.join(", ")}):t("drop"); }
 $("#bTeam").addEventListener("click",async()=>{ if(window.showOpenFilePicker){ try{ const hs=await window.showOpenFilePicker({multiple:true,types:[{description:"Skill maps",accept:{"application/json":[".json"]}}]}); loadFiles(await Promise.all(hs.map(h=>h.getFile()))); }catch(e){} } else $("#fileMany").click(); });
 $("#fileMany").addEventListener("change",e=>{ loadFiles([...e.target.files]); e.target.value=""; });
 const drop=$("#drop");
@@ -990,25 +1270,25 @@ drop.addEventListener("drop",e=>{ loadFiles([...e.dataTransfer.files]); });
 $("#bClearTeam").addEventListener("click",()=>{ TEAM=[]; renderTeam(); });
 $("#bSample").addEventListener("click",()=>{ addTeamMaps(sampleTeam()); });
 $("#tmStream").addEventListener("click",e=>{ const b=e.target.closest("[data-tms]"); if(!b) return; tmStream=b.dataset.tms; renderTeam(); });
-
 function sampleTeam(){
   let seed=7; const rnd=()=>{ seed=(seed*16807)%2147483647; return seed/2147483647; };
-  const people=[["Sample: Alex","coder","IS-02","IS-03",0],["Sample: Bao","coder","IS-03","IS-04",1],["Sample: Chloé","coder","IS-02","IS-02",-.5],["Sample: Dev","coder","IS-04","IS-04",2],["Sample: Emma","coder","IS-03","IS-03",.6],
-    ["Sample: Farah","advisor","IS-03","IS-04",0],["Sample: Gabriel","advisor","IS-04","IS-05",1],["Sample: Hana","advisor","IS-05","IS-05",2],["Sample: Isaac","advisor","IS-04","IS-04",.4]];
-  return people.map(([name,stream,cur,aim,boost])=>{ const m=blankMap(stream); m.name=name; m.cur=cur; m.aim=aim; const st=STREAMS[stream], li=Object.fromEntries(st.LEVELS.map((l,i)=>[l.id,i]));
-    st.SKILLS.forEach(s=>{ let base=3+li[cur]-li[s.lv]+boost+(rnd()-.5)*2.2; let v=Math.max(1,Math.min(5,Math.round(base))); if(s.id==="pm"&&name.includes("Dev")) v=4; if(s.id==="a11yas") v=Math.min(v,name.includes("Dev")?4:2);
+  const tag=t("sampleTag");
+  const people=[["Alex","coder","IS-02","IS-03",0],["Bao","coder","IS-03","IS-04",1],["Chloé","coder","IS-02","IS-02",-.5],["Dev","coder","IS-04","IS-04",2],["Emma","coder","IS-03","IS-03",.6],
+    ["Farah","advisor","IS-03","IS-04",0],["Gabriel","advisor","IS-04","IS-05",1],["Hana","advisor","IS-05","IS-05",2],["Isaac","advisor","IS-04","IS-04",.4]];
+  return people.map(([nm,stream,cur,aim,boost])=>{ const m=blankMap(stream); m.name=`${tag}${C()}${nm}`; m.cur=cur; m.aim=aim; const st=STREAMS[stream], li=Object.fromEntries(st.LEVELS.map((l,i)=>[l.id,i]));
+    st.SKILLS.forEach(s=>{ let v=Math.max(1,Math.min(5,Math.round(3+li[cur]-li[s.lv]+boost+(rnd()-.5)*2.2))); if(s.id==="pm"&&nm==="Dev") v=4; if(s.id==="a11yas") v=Math.min(v,nm==="Dev"?4:2);
       const self=Math.max(1,Math.min(5,v+(rnd()<.25?1:0))); const agreed=rnd()<.8?v:0; m.ratings[s.id]={self,mgr:agreed?v:0,agreed}; });
-    const sk=st.SKILLS.filter(s=>li[s.lv]>=li[cur]); sk.slice(0,2).forEach((s,i)=>{ m.plan[s.id]=4+i*2; });
+    st.SKILLS.filter(s=>li[s.lv]>=li[cur]).slice(0,2).forEach((s,i)=>{ m.plan[s.id]=4+i*2; });
     m.fr={r:"B",w:rnd()<.5?"A":"B",o:"B",t:stream==="advisor"?"CBC":(rnd()<.5?"BBB":"none")};
     m.history=[{date:"2026-04-15",cur,aim,agreed:{}}]; return {m,file:"(sample)"}; });
 }
 const PAL=["#2F62C4","#C8414F","#23834F","#A9620F","#6A4DB5","#16827D","#A33F87","#5E6B76","#B4541A","#3D8E9A"];
 function renderTeam(){
   const box=$("#teamBody"); const streams=[...new Set(TEAM.map(x=>x.m.stream))];
-  $("#tmStream").innerHTML=streams.length>1?Object.entries(STREAMS).filter(([k])=>streams.includes(k)).map(([k,v])=>`<button type="button" data-tms="${k}" aria-pressed="${tmStream===k}">${v.label}</button>`).join(""):"";
+  $("#tmStream").innerHTML=streams.length>1?Object.entries(STREAMS).filter(([k])=>streams.includes(k)).map(([k,v])=>`<button type="button" data-tms="${k}" aria-pressed="${tmStream===k}">${esc(v.label)}</button>`).join(""):"";
   const people=TEAM.filter(x=>x.m.stream===tmStream).map(x=>x.m).sort((a,b)=>(a.name||"").localeCompare(b.name||""));
-  if(!people.length){ box.innerHTML=`<div class="card" style="margin-top:16px"><p class="empty" style="margin:0">No maps open yet. Use “Open team files” and select everyone's map files, or “Show a sample team” to see how it works.</p></div>`; return; }
-  const st=STREAMS[tmStream], li=Object.fromEntries(st.LEVELS.map((l,i)=>[l.id,i])), bid=Object.fromEntries(st.BRANCHES.map(b=>[b.id,b]));
+  if(!people.length){ box.innerHTML=`<div class="card" style="margin-top:16px"><p class="empty" style="margin:0">${esc(t("tmEmpty"))}</p></div>`; return; }
+  const st=STREAMS[tmStream], li=Object.fromEntries(st.LEVELS.map((l,i)=>[l.id,i]));
   const maxAim=Math.max(...people.map(p=>li[p.aim]));
   const cov=Object.fromEntries(st.SKILLS.map(s=>[s.id,people.filter(p=>effOf(p,s.id)>=3)]));
   const noOne=st.SKILLS.filter(s=>li[s.lv]<=maxAim&&cov[s.id].length===0);
@@ -1018,40 +1298,38 @@ function renderTeam(){
   const hours={}; let tot=0; people.forEach(p=>Object.entries(p.plan).forEach(([k,v])=>{ hours[k]=(hours[k]||0)+v; tot+=v; }));
   const topH=Object.entries(hours).filter(([k])=>st.SKILLS.some(s=>s.id===k)).sort((a,b)=>b[1]-a[1]).slice(0,3);
   const sname=id=>esc(st.SKILLS.find(s=>s.id===id).name);
+  const nm=p=>esc(p.name||t("unnamed"));
   let h=`<div class="insights">
-    <div class="card ins"><h3>No one at “Independent”</h3>${noOne.length?`<ul>${noOne.slice(0,6).map(s=>`<li>${esc(s.name)} <small style="color:var(--muted)">${s.lv}</small></li>`).join("")}${noOne.length>6?`<li>and ${noOne.length-6} more</li>`:""}</ul>`:`<p class="empty">Every skill up to ${st.LEVELS[maxAim].id} has someone at 3 or higher.</p>`}</div>
-    <div class="card ins"><h3>Single points of failure</h3>${oneOnly.length?`<ul>${oneOnly.slice(0,6).map(s=>`<li>${esc(s.name)}: only ${esc(cov[s.id][0].name||"one person")}</li>`).join("")}${oneOnly.length>6?`<li>and ${oneOnly.length-6} more</li>`:""}</ul>`:`<p class="empty">Every covered skill has at least two people.</p>`}</div>
-    <div class="card ins"><h3>Ready for their aim</h3>${ready.length?`<ul>${ready.map(p=>`<li>${esc(p.name)}: ${p.cur} → ${p.aim}</li>`).join("")}</ul>`:`<p class="empty">No one meets every skill for their aim yet.</p>`}<h3 style="margin-top:12px">Reviews to finish</h3>${pending.length?`<ul>${pending.map(p=>`<li>${esc(p.name)}</li>`).join("")}</ul>`:`<p class="empty">All ratings agreed.</p>`}</div>
-    <div class="card ins"><h3>Training planned</h3><p class="num">${tot} h</p><p class="empty" style="margin-top:6px">this quarter, across ${people.length} people</p>${topH.length?`<ul style="margin-top:8px">${topH.map(([k,v])=>`<li>${sname(k)}: ${v} h</li>`).join("")}</ul>`:""}</div>
+    <div class="card ins"><h3>${esc(t("insNoOne"))}</h3>${noOne.length?`<ul>${noOne.slice(0,6).map(s=>`<li>${esc(s.name)} <small style="color:var(--muted)">${s.lv}</small></li>`).join("")}${noOne.length>6?`<li>${esc(t("andMore",{n:noOne.length-6}))}</li>`:""}</ul>`:`<p class="empty">${esc(t("insNoOneOk",{l:st.LEVELS[maxAim].id}))}</p>`}</div>
+    <div class="card ins"><h3>${esc(t("insSpof"))}</h3>${oneOnly.length?`<ul>${oneOnly.slice(0,6).map(s=>`<li>${esc(t("insSpofItem",{s:s.name,p:cov[s.id][0].name||t("onePerson")}))}</li>`).join("")}${oneOnly.length>6?`<li>${esc(t("andMore",{n:oneOnly.length-6}))}</li>`:""}</ul>`:`<p class="empty">${esc(t("insSpofOk"))}</p>`}</div>
+    <div class="card ins"><h3>${esc(t("insReady"))}</h3>${ready.length?`<ul>${ready.map(p=>`<li>${nm(p)}${C()}${p.cur} → ${p.aim}</li>`).join("")}</ul>`:`<p class="empty">${esc(t("insReadyNone"))}</p>`}<h3 style="margin-top:12px">${esc(t("insPending"))}</h3>${pending.length?`<ul>${pending.map(p=>`<li>${nm(p)}</li>`).join("")}</ul>`:`<p class="empty">${esc(t("insPendingNone"))}</p>`}</div>
+    <div class="card ins"><h3>${esc(t("insHours"))}</h3><p class="num">${tot} h</p><p class="empty" style="margin-top:6px">${esc(t("insHoursSub",{n:people.length}))}</p>${topH.length?`<ul style="margin-top:8px">${topH.map(([k,v])=>`<li>${sname(k)}${C()}${v} h</li>`).join("")}</ul>`:""}</div>
   </div>`;
   const axes=st.BRANCHES.map(b=>({name:b.name,c:b.cd}));
   const series=people.map((p,i)=>({values:branchScores(p),color:PAL[i%PAL.length],w:2,op:.9}));
-  h+=`<div class="tm-grid"><div class="card radar"><p class="k">Team skill map</p>${radar(axes,[{values:axes.map(()=>3),color:"var(--muted)",dash:true,w:1.5},...series])}
-    <div class="rleg">${people.map((p,i)=>`<span style="--c:${PAL[i%PAL.length]}"><i></i>${esc(p.name||"Unnamed")}</span>`).join("")}</div>
-    <p class="note">Each line is one person: average rating per branch, up to the level they're aiming for. Where all the lines pull in, the team is thin.</p></div>
-    <div class="card" style="min-width:0"><p class="k">Every skill, every person</p><div style="overflow-x:auto"><table class="heat"><thead><tr><th></th>`;
+  h+=`<div class="tm-grid"><div class="card radar"><p class="k">${esc(t("kTeamMap"))}</p>${radar(axes,[{values:axes.map(()=>3),color:"var(--muted)",dash:true,w:1.5},...series])}
+    <div class="rleg">${people.map((p,i)=>`<span style="--c:${PAL[i%PAL.length]}"><i></i>${nm(p)}</span>`).join("")}</div>
+    <p class="note">${esc(t("teamMapNote"))}</p></div>
+    <div class="card" style="min-width:0"><p class="k">${esc(t("kHeat"))}</p><div style="overflow-x:auto"><table class="heat"><thead><tr><th></th>`;
   st.BRANCHES.forEach(b=>{ const n=st.SKILLS.filter(s=>s.b===b.id).length; h+=`<th class="br" colspan="${n}" style="--cd:${b.cd}">${esc(b.name)}</th>`; });
   h+=`<th></th></tr><tr><th></th>`;
   const order=st.BRANCHES.flatMap(b=>st.SKILLS.filter(s=>s.b===b.id));
   order.forEach(s=>{ h+=`<th class="sk" scope="col"><span title="${esc(s.name)} (${s.lv})">${esc(s.name)}</span></th>`; });
-  h+=`<th class="sk" scope="col"><span>French</span></th></tr></thead><tbody>`;
-  people.forEach(p=>{ h+=`<tr><td class="pn">${esc(p.name||"Unnamed")}<small>${p.cur} → ${p.aim}</small></td>`;
+  h+=`<th class="sk" scope="col"><span>${esc(t("frCol"))}</span></th></tr></thead><tbody>`;
+  people.forEach(p=>{ h+=`<tr><td class="pn">${nm(p)}<small>${p.cur} → ${p.aim}</small></td>`;
     order.forEach(s=>{ const r=p.ratings[s.id]||{}, v=r.agreed||r.self||0, so=!r.agreed&&r.self;
-      h+=`<td class="v${v}${so?" selfonly":""}" title="${esc(s.name)}: ${v?v+" "+SCALE[v-1].n:"not rated"}${so?" (self-rating, not agreed yet)":""}">${v||""}</td>`; });
-    const g=frGaps(p.fr); h+=`<td class="fr" title="${p.fr.t==="none"?"No French needed":"Target "+p.fr.t}">${p.fr.t==="none"?"–":g.length?esc(p.fr.t)+": gap":esc(p.fr.t)+" ✓"}</td></tr>`; });
-  h+=`<tr><td class="pn"><small>At 3 or higher</small></td>`+order.map(s=>`<td class="cov${cov[s.id].length?"":" zero"}">${cov[s.id].length}</td>`).join("")+`<td></td></tr>`;
+      h+=`<td class="v${v}${so?" selfonly":""}" title="${esc(s.name)}${C()}${v?v+" "+esc(SCALE[v-1].n):esc(t("notRatedLow"))}${so?esc(t("selfOnlyTip")):""}">${v||""}</td>`; });
+    const g=frGaps(p.fr); h+=`<td class="fr" title="${esc(p.fr.t==="none"?t("frTipNone"):t("frTipTarget",{t:p.fr.t}))}">${p.fr.t==="none"?"–":g.length?esc(p.fr.t)+C()+esc(t("gapShort")):esc(p.fr.t)+" ✓"}</td></tr>`; });
+  h+=`<tr><td class="pn"><small>${esc(t("atLeast3"))}</small></td>`+order.map(s=>`<td class="cov${cov[s.id].length?"":" zero"}">${cov[s.id].length}</td>`).join("")+`<td></td></tr>`;
   h+=`</tbody></table></div>
-    <div class="hkey">${SCALE.map(x=>`<span><i class="v${x.v}" style="background:var(--h${x.v})"></i>${x.v} ${x.n}</span>`).join("")}<span><i style="outline:2px dashed var(--muted);outline-offset:-3px;background:var(--soft)"></i>Self-rating, not agreed yet</span></div></div></div>`;
+    <div class="hkey">${SCALE.map(x=>`<span><i style="background:var(--h${x.v})"></i>${x.v} ${esc(x.n)}</span>`).join("")}<span><i style="outline:2px dashed var(--muted);outline-offset:-3px;background:var(--soft)"></i>${esc(t("selfOnly"))}</span></div></div></div>`;
   box.innerHTML=h;
 }
-
-/* ---------- how it works ---------- */
-$("#scaleTbl").innerHTML=SCALE.map(x=>`<tr><td>${x.v} ${x.n}</td><td>${esc(x.d)}</td></tr>`).join("");
 
 /* ---------- render ---------- */
 function renderMap(){ renderHUD(); renderBoard(); renderPanel(); renderLower(); renderFileBar(); }
 function renderAll(){ renderMap(); renderFrench(); if(!$("#p-rev").hidden) renderReview(); }
-renderAll();
+applyStatic(); renderAll();
 </script>
 
 </body>
